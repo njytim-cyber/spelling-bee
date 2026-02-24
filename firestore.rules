@@ -1,0 +1,167 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Users Collection ──
+    match /users/{uid} {
+      // Any authenticated user can read (needed for leaderboard)
+      allow read: if request.auth != null;
+
+      // Users can only write their OWN document
+      // Field validation: prevent injecting arbitrary large payloads
+      allow write: if request.auth != null
+                   && request.auth.uid == uid
+                   // For updates (merge:true), only check the fields being written
+                   // For creates, check all fields
+                   && (resource == null
+                       ? request.resource.data.keys().hasOnly([
+                           'displayName', 'totalXP', 'bestStreak', 'totalSolved',
+                           'accuracy', 'isAnonymous', 'createdAt', 'updatedAt',
+                           'stats', 'achievements', 'preferences',
+                           'activeThemeId', 'activeCostume', 'activeTrailId', 'activeBadgeId',
+                           'bestSpeedrunTime', 'speedrunHardMode', 'totalCorrect', 'sessionsPlayed',
+                           'dayStreak', 'streakShields', 'lastPlayedDate', 'byType',
+                           'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
+                           'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
+                           'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
+                           'lastPingAt'
+                         ])
+                       : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                           'displayName', 'totalXP', 'bestStreak', 'totalSolved',
+                           'accuracy', 'isAnonymous', 'createdAt', 'updatedAt',
+                           'stats', 'achievements', 'preferences',
+                           'activeThemeId', 'activeCostume', 'activeTrailId', 'activeBadgeId',
+                           'bestSpeedrunTime', 'speedrunHardMode', 'totalCorrect', 'sessionsPlayed',
+                           'dayStreak', 'streakShields', 'lastPlayedDate', 'byType',
+                           'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
+                           'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
+                           'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
+                           'lastPingAt'
+                         ])
+                      )
+                   // String field constraints
+                   && (!('displayName' in request.resource.data)
+                       || (request.resource.data.displayName is string
+                           && request.resource.data.displayName.size() <= 20))
+                   && (!('activeBadgeId' in request.resource.data)
+                       || (request.resource.data.activeBadgeId is string
+                           && request.resource.data.activeBadgeId.size() <= 50))
+                   && (!('activeThemeId' in request.resource.data)
+                       || (request.resource.data.activeThemeId is string
+                           && request.resource.data.activeThemeId.size() <= 50))
+                   && (!('activeCostume' in request.resource.data)
+                       || (request.resource.data.activeCostume is string
+                           && request.resource.data.activeCostume.size() <= 50))
+                   && (!('activeTrailId' in request.resource.data)
+                       || (request.resource.data.activeTrailId is string
+                           && request.resource.data.activeTrailId.size() <= 50))
+                   // Numeric field constraints + anti-spoofing caps
+                   && (!('bestSpeedrunTime' in request.resource.data)
+                       || (request.resource.data.bestSpeedrunTime is number
+                           && request.resource.data.bestSpeedrunTime >= 0
+                           && (request.resource.data.bestSpeedrunTime == 0
+                               || request.resource.data.bestSpeedrunTime >= 5000)))  // can't finish 10 problems in < 5s
+                   && (!('totalXP' in request.resource.data)
+                       || (request.resource.data.totalXP is number
+                           && request.resource.data.totalXP >= 0
+                           && request.resource.data.totalXP <= 1000000))             // 1M XP cap
+                   && (!('bestStreak' in request.resource.data)
+                       || (request.resource.data.bestStreak is number
+                           && request.resource.data.bestStreak >= 0
+                           && request.resource.data.bestStreak <= 1000))             // 1000 streak cap
+                   && (!('totalSolved' in request.resource.data)
+                       || (request.resource.data.totalSolved is number
+                           && request.resource.data.totalSolved >= 0
+                           && request.resource.data.totalSolved <= 500000))          // 500K problems cap
+                   && (!('accuracy' in request.resource.data)
+                       || (request.resource.data.accuracy is number
+                           && request.resource.data.accuracy >= 0
+                           && request.resource.data.accuracy <= 100))                // percentage cap
+                   && (!('streakShields' in request.resource.data)
+                       || (request.resource.data.streakShields is number
+                           && request.resource.data.streakShields >= 0
+                           && request.resource.data.streakShields <= 10))
+                   // Rate-limiting: reject writes less than 1s after last update
+                   && (!(resource != null && 'updatedAt' in resource.data)
+                       || request.time > resource.data.updatedAt + duration.value(1, 's'))
+                   // Nested object size constraints (prevent payload bloat DoS)
+                   && (!('stats' in request.resource.data)
+                       || request.resource.data.stats is map)
+                   && (!('achievements' in request.resource.data)
+                       || request.resource.data.achievements is list)
+                   && (!('preferences' in request.resource.data)
+                       || request.resource.data.preferences is map)
+                   && (!('byType' in request.resource.data)
+                       || request.resource.data.byType is map);
+    }
+
+    // ── Pings Collection (social nudges) ──
+    match /pings/{pingId} {
+      // Users can only read pings targeted at them
+      allow read: if request.auth != null
+                  && resource.data.targetUid == request.auth.uid;
+
+      // Authenticated users can create pings (but not update/delete)
+      // Rate-limited to 1 ping per 30 seconds per sender, enforced server-side.
+      // Self-pings are blocked.
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly([
+                         'targetUid', 'senderUid', 'senderName',
+                         'createdAt', 'read'
+                       ])
+                    && request.resource.data.senderUid == request.auth.uid
+                    && request.resource.data.senderUid != request.resource.data.targetUid
+                    && request.resource.data.senderName is string
+                    && request.resource.data.senderName.size() <= 20
+                    && request.resource.data.targetUid is string
+                    && request.resource.data.read == false
+                    // Server-side rate limit: sender's lastPingAt must be > 30s ago
+                    && (
+                         !('lastPingAt' in get(/databases/$(database)/documents/users/$(request.auth.uid)).data)
+                         || request.time > get(/databases/$(database)/documents/users/$(request.auth.uid)).data.lastPingAt + duration.value(30, 's')
+                       );
+
+      // Only the target user can mark a ping as read
+      allow update: if request.auth != null
+                    && resource.data.targetUid == request.auth.uid
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']);
+    }
+
+    // ── Error Reports (monitoring) ──
+    match /errors/{errorId} {
+      // No reads — only admins via console
+      allow read: if false;
+
+      // Authenticated users can create error reports
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly([
+                         'message', 'stack', 'source', 'userAgent', 'url', 'timestamp'
+                       ])
+                    && request.resource.data.message is string
+                    && request.resource.data.message.size() <= 500
+                    && (!('stack' in request.resource.data) || (request.resource.data.stack is string && request.resource.data.stack.size() <= 2000))
+                    && (!('source' in request.resource.data) || (request.resource.data.source is string && request.resource.data.source.size() <= 200))
+                    && (!('userAgent' in request.resource.data) || (request.resource.data.userAgent is string && request.resource.data.userAgent.size() <= 200))
+                    && (!('url' in request.resource.data) || (request.resource.data.url is string && request.resource.data.url.size() <= 500));
+
+      allow update, delete: if false;
+    }
+
+    // ── Web Vitals (performance monitoring) ──
+    match /vitals/{vitalId} {
+      allow read: if false;
+
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly([
+                         'name', 'value', 'rating', 'navigationType', 'userAgent', 'timestamp'
+                       ])
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 10
+                    && request.resource.data.value is number
+                    && request.resource.data.rating is string
+                    && request.resource.data.rating.size() <= 20;
+
+      allow update, delete: if false;
+    }
+  }
+}

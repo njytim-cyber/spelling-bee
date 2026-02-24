@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#1b1b1b"/>
+  <rect x="16" y="16" width="480" height="480" rx="80" fill="none" stroke="#2a3a2e" stroke-width="2" opacity="0.4"/>
+  <!-- Chalk × symbol -->
+  <g stroke="#e0ddd5" stroke-width="28" stroke-linecap="round" opacity="0.9">
+    <line x1="160" y1="160" x2="352" y2="352"/>
+    <line x1="352" y1="160" x2="160" y2="352"/>
+  </g>
+  <!-- Gold glow -->
+  <g stroke="#fbbf24" stroke-width="6" stroke-linecap="round" opacity="0.35">
+    <line x1="160" y1="160" x2="352" y2="352"/>
+    <line x1="352" y1="160" x2="160" y2="352"/>
+  </g>
+  <!-- Chalk dust dots -->
+  <circle cx="148" cy="148" r="3" fill="#e0ddd5" opacity="0.3"/>
+  <circle cx="362" cy="155" r="2.5" fill="#e0ddd5" opacity="0.25"/>
+  <circle cx="155" cy="360" r="2" fill="#e0ddd5" opacity="0.2"/>
+  <circle cx="358" cy="358" r="3" fill="#e0ddd5" opacity="0.3"/>
+</svg>

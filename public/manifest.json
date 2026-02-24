@@ -1,0 +1,18 @@
+{
+  "name": "Math Swipe",
+  "short_name": "Math Swipe",
+  "description": "Swipe your way to mental math mastery. Fast, fun, addictive.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1b1b1b",
+  "theme_color": "#1b1b1b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

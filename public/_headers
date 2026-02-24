@@ -1,0 +1,12 @@
+# Cloudflare Pages custom headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# HTML pages — never cache, always revalidate
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# Hashed assets (Vite adds content hashes) — cache aggressively
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Spelling Bee — Word Spelling Game</title>
+  <meta name="description"
+    content="Swipe your way to spelling mastery. Fast, fun, addictive. Challenge your friends!" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#1b1b1b" id="meta-theme-color" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Spelling Bee" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Spelling Bee — Word Spelling Game" />
+  <meta property="og:description"
+    content="Swipe your way to spelling mastery. Fast, fun, addictive. Can you beat my streak? 🐝" />
+  <meta property="og:image" content="/icon.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Spelling Bee — Word Spelling Game" />
+  <meta name="twitter:description"
+    content="Swipe your way to spelling mastery. Fast, fun, addictive. Can you beat my streak? 🐝" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredericka+the+Great&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredericka+the+Great&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Prevent flash of wrong theme on load + set correct PWA theme-color -->
+  <script>try { if (localStorage.getItem('spell-bee-theme') === 'light') { document.documentElement.setAttribute('data-theme', 'light'); document.getElementById('meta-theme-color')?.setAttribute('content', '#f5f0e8') } } catch (e) { }</script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
