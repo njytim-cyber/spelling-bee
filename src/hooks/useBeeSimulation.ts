@@ -6,7 +6,7 @@
  */
 import { useState, useCallback, useRef } from 'react';
 import type { SpellingWord } from '../domains/spelling/words/types';
-import { ALL_WORDS, difficultyRange, BAND_DIFFICULTY_CAP } from '../domains/spelling/words';
+import { getAllWords, difficultyRange, BAND_DIFFICULTY_CAP } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { usePronunciation } from './usePronunciation';
 
@@ -48,8 +48,9 @@ function pickBeeWord(round: number, band?: string): SpellingWord {
     const effectiveMax = Math.min(maxDiff, bandCap) as DifficultyTier;
     const effectiveMin = Math.min(minDiff, effectiveMax) as DifficultyTier;
 
-    const pool = ALL_WORDS.filter(w => w.difficulty >= effectiveMin && w.difficulty <= effectiveMax);
-    const source = pool.length > 0 ? pool : ALL_WORDS;
+    const all = getAllWords();
+    const pool = all.filter(w => w.difficulty >= effectiveMin && w.difficulty <= effectiveMax);
+    const source = pool.length > 0 ? pool : all;
     return source[Math.floor(Math.random() * source.length)];
 }
 

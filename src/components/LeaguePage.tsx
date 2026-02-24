@@ -19,7 +19,7 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
-type LeagueTab = 'score' | 'speedrun';
+type LeagueTab = 'score' | 'speedrun' | 'daily';
 
 interface Props {
     userXP: number;
@@ -45,8 +45,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
     const [tab, setTab] = useState<LeagueTab>('score');
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [speedrunEntries, setSpeedrunEntries] = useState<LeaderboardEntry[]>([]);
+    const [dailyEntries, setDailyEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [speedrunLoading, setSpeedrunLoading] = useState(true);
+    const [dailyLoading, setDailyLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
     const [pingCooldown, setPingCooldown] = useState(false);
     const [pingSuccess, setPingSuccess] = useState('');
@@ -147,6 +149,36 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
         return unsub;
     }, []);
 
+    // ── Daily leaderboard query ──
+    useEffect(() => {
+        const today = new Date();
+        const todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        const q = query(
+            collection(db, 'users'),
+            where('lastDailyDate', '==', todayStr),
+            where('todayDailyCorrect', '>', 0),
+            orderBy('todayDailyCorrect', 'desc'),
+            limit(20),
+        );
+        const unsub = onSnapshot(q, (snap) => {
+            const data: LeaderboardEntry[] = snap.docs.map(d => ({
+                uid: d.id,
+                displayName: d.data().displayName || 'Anonymous',
+                totalXP: d.data().todayDailyCorrect || 0,  // repurpose totalXP field for display
+                bestStreak: d.data().todayDailySolved || 0,
+                activeThemeId: d.data().activeThemeId || 'classic',
+                activeCostume: d.data().activeCostume || '',
+                activeBadgeId: d.data().activeBadgeId || '',
+            }));
+            setDailyEntries(data);
+            setDailyLoading(false);
+        }, (err) => {
+            console.warn('Daily leaderboard query failed:', err);
+            setDailyLoading(false);
+        });
+        return unsub;
+    }, []);
+
     // ── Build score board with current user injected ──
     const scoreBoard = (() => {
         let list = [...entries];
@@ -187,8 +219,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
 
-    const isLoading = tab === 'score' ? loading : speedrunLoading;
-    const board = tab === 'score' ? scoreBoard : speedrunBoard;
+    const isLoading = tab === 'score' ? loading : tab === 'speedrun' ? speedrunLoading : dailyLoading;
+    const board = tab === 'score' ? scoreBoard : tab === 'speedrun' ? speedrunBoard : dailyEntries;
 
     return (
         <div className="flex-1 flex flex-col items-center px-4 pt-[calc(env(safe-area-inset-top,16px)+40px)] pb-24 overflow-y-auto">
@@ -221,6 +253,15 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                         }`}
                 >
                     ⏱️ Speedrun
+                </button>
+                <button
+                    onClick={() => setTab('daily')}
+                    className={`flex-1 py-2 rounded-lg text-xs ui font-semibold transition-all duration-200 ${tab === 'daily'
+                        ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] shadow-sm'
+                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                >
+                    📅 Daily
                 </button>
             </div>
 
@@ -333,6 +374,13 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                             </div>
                                         </div>
                                     </>
+                                ) : tab === 'daily' ? (
+                                    <div className="text-right">
+                                        <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/50'}`}>
+                                            {entry.totalXP}/{entry.bestStreak}
+                                        </div>
+                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">correct/total</div>
+                                    </div>
                                 ) : (
                                     <div className="text-right">
                                         <div className={`text-sm ui font-semibold tabular-nums ${entry.isYou ? 'text-[#FF00FF]' : 'text-[#FF00FF]/70'}`}>

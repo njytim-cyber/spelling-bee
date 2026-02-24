@@ -8,6 +8,7 @@ import { CHALK_THEMES, type ChalkTheme } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { StudyAnalyticsModal } from './StudyAnalyticsModal';
+import { SettingsModal } from './SettingsModal';
 
 interface Props {
     stats: ReturnType<typeof useStats>['stats'];
@@ -28,9 +29,12 @@ interface Props {
     onLinkGoogle: () => Promise<void>;
     onSendEmailLink: (email: string) => Promise<void>;
     ageBand: SpellingBand;
+    onBandChange: (band: SpellingBand) => void;
     activeBadge: string;
     onBadgeChange: (id: string) => void;
     wordRecords?: Record<string, WordRecord>;
+    themeMode: string;
+    onThemeModeToggle: () => void;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -92,9 +96,10 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, ageBand, activeBadge, onBadgeChange, wordRecords }: Props) {
+export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, ageBand, onBandChange, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle }: Props) {
     const [showRanks, setShowRanks] = useState(false);
     const [showAnalytics, setShowAnalytics] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
@@ -111,6 +116,15 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20">
+            {/* Settings gear button */}
+            <button
+                onClick={() => setShowSettings(true)}
+                className="self-end mb-2 text-lg opacity-40 hover:opacity-70 transition-opacity"
+                aria-label="Settings"
+            >
+                ⚙️
+            </button>
+
             {/* Display name + edit */}
             <div className="flex items-center gap-2 mb-2">
                 {editingName ? (
@@ -627,6 +641,19 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             <AnimatePresence>
                 {showAnalytics && wordRecords && (
                     <StudyAnalyticsModal records={wordRecords} onClose={() => setShowAnalytics(false)} />
+                )}
+            </AnimatePresence>
+
+            {/* Settings modal */}
+            <AnimatePresence>
+                {showSettings && (
+                    <SettingsModal
+                        ageBand={ageBand}
+                        onBandChange={onBandChange}
+                        themeMode={themeMode}
+                        onThemeModeToggle={onThemeModeToggle}
+                        onClose={() => setShowSettings(false)}
+                    />
                 )}
             </AnimatePresence>
 

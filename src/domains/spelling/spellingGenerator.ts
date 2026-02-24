@@ -10,7 +10,7 @@
 import type { EngineItem } from '../../engine/domain';
 import type { SpellingWord, PhonicsPattern, DifficultyTier } from './words/types';
 import {
-    ALL_WORDS,
+    getAllWords,
     wordsByPattern,
     wordsByDifficulty,
     wordsByPatternAndDifficulty,
@@ -212,7 +212,7 @@ function pickRichWord(
         pool = wordsByDifficulty(effectiveMin, effectiveMax);
     }
 
-    if (pool.length === 0) pool = ALL_WORDS;
+    if (pool.length === 0) pool = getAllWords();
 
     return pool[Math.floor(rng() * pool.length)];
 }

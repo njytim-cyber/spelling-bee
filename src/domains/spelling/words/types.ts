@@ -44,4 +44,6 @@ export interface SpellingWord {
     etymology?: string;
     /** Optional secondary patterns */
     secondaryPatterns?: PhonicsPattern[];
+    /** Source provenance tag for competition word packs */
+    source?: 'core' | 'scripps' | 'state-bee';
 }

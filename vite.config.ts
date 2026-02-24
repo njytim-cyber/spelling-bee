@@ -30,6 +30,11 @@ export default defineConfig({
             handler: 'CacheFirst',
             options: { cacheName: 'google-fonts-webfonts', expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
+          {
+            urlPattern: /words-tier[345].*\.js$/,
+            handler: 'CacheFirst',
+            options: { cacheName: 'word-packs', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } },
+          },
         ],
       },
       manifest: {
@@ -50,9 +55,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          firebase: ['firebase/app', 'firebase/auth', 'firebase/firestore'],
-          'framer-motion': ['framer-motion'],
+        manualChunks(id) {
+          if (id.includes('firebase/app') || id.includes('firebase/auth') || id.includes('firebase/firestore')) return 'firebase';
+          if (id.includes('framer-motion')) return 'framer-motion';
+          if (id.includes('/words/tier3')) return 'words-tier3';
+          if (id.includes('/words/tier4')) return 'words-tier4';
+          if (id.includes('/words/tier5') && !id.includes('tier5-')) return 'words-tier5';
         },
       },
     },

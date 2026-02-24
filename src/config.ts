@@ -28,6 +28,9 @@ export const STORAGE_KEYS = {
     chalkTheme: `${STORAGE_PREFIX}-chalk-theme`,
     theme: `${STORAGE_PREFIX}-theme`,
     ageBand: `${STORAGE_PREFIX}-age-band`,
+    onboarded: `${STORAGE_PREFIX}-onboarded`,
+    ttsVoice: `${STORAGE_PREFIX}-tts-voice`,
+    ttsRate: `${STORAGE_PREFIX}-tts-rate`,
 } as const;
 
 // ── Firestore collection names ────────────────────────────────────────────────

@@ -1,35 +1,35 @@
 /**
  * words/index.ts
  *
- * Re-exports all word tiers and provides lookup utilities.
- * The dataset is small (750 words) so linear .filter() is fine.
+ * Re-exports word types and provides lookup utilities.
+ * Backed by the dynamic registry — tier 1-2 are always available,
+ * tier 3-5 load on demand via ensureTiersForBand().
  */
 import type { SpellingWord, PhonicsPattern, DifficultyTier } from './types';
-import { TIER_1_WORDS } from './tier1';
-import { TIER_2_WORDS } from './tier2';
-import { TIER_3_WORDS } from './tier3';
-import { TIER_4_WORDS } from './tier4';
-import { TIER_5_WORDS } from './tier5';
+import { getLoadedWords } from './registry';
 
 export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech } from './types';
+export { ensureTiersForBand, getRegistryVersion, loadCompetitionPack } from './registry';
 
-/** Every word in the bank, combined from all tiers. */
-export const ALL_WORDS: SpellingWord[] = [
-    ...TIER_1_WORDS,
-    ...TIER_2_WORDS,
-    ...TIER_3_WORDS,
-    ...TIER_4_WORDS,
-    ...TIER_5_WORDS,
-];
+/** Every word currently loaded in the registry. */
+export function getAllWords(): SpellingWord[] {
+    return getLoadedWords();
+}
+
+/**
+ * @deprecated Use getAllWords() instead. Kept for backward compat.
+ * Returns a snapshot of currently loaded words (not live).
+ */
+export const ALL_WORDS: SpellingWord[] = getLoadedWords();
 
 /** Get words matching a specific phonics pattern. */
 export function wordsByPattern(pattern: PhonicsPattern): SpellingWord[] {
-    return ALL_WORDS.filter(w => w.pattern === pattern || w.secondaryPatterns?.includes(pattern));
+    return getLoadedWords().filter(w => w.pattern === pattern || w.secondaryPatterns?.includes(pattern));
 }
 
 /** Get words within a difficulty range (inclusive). */
 export function wordsByDifficulty(min: DifficultyTier, max: DifficultyTier): SpellingWord[] {
-    return ALL_WORDS.filter(w => w.difficulty >= min && w.difficulty <= max);
+    return getLoadedWords().filter(w => w.difficulty >= min && w.difficulty <= max);
 }
 
 /** Get words matching BOTH a pattern AND a difficulty range. */
@@ -38,7 +38,7 @@ export function wordsByPatternAndDifficulty(
     min: DifficultyTier,
     max: DifficultyTier,
 ): SpellingWord[] {
-    return ALL_WORDS.filter(w =>
+    return getLoadedWords().filter(w =>
         (w.pattern === pattern || w.secondaryPatterns?.includes(pattern)) &&
         w.difficulty >= min &&
         w.difficulty <= max,

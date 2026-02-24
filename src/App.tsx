@@ -51,6 +51,10 @@ import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages'
 import type { SpellingCategory } from './domains/spelling/spellingCategories';
 import type { EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE } from './config';
+import { ensureTiersForBand, getRegistryVersion } from './domains/spelling/words';
+import { OnboardingModal } from './components/OnboardingModal';
+import { DailyChallengeComplete } from './components/DailyChallengeComplete';
+import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 
 type Tab = 'game' | 'league' | 'me' | 'magic';
 const TAB_ORDER: Tab[] = ['game', 'league', 'magic', 'me'];
@@ -106,6 +110,11 @@ function App() {
   const [hardMode, setHardMode] = useState(false);
   const [timedMode, setTimedMode] = useState(false);
 
+  // ── Onboarding (first-launch detection) ──
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.onboarded));
+  // ── Daily challenge completion ──
+  const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
+
   // ── Check URL for challenge link ──
   const [challengeId] = useState<string | null>(() => {
     const params = new URLSearchParams(window.location.search);
@@ -138,6 +147,16 @@ function App() {
   // ── Age Band (must be above useGameLoop so generators can capture it) ──
   const [ageBand, setAgeBand] = useLocalState(STORAGE_KEYS.ageBand, 'starter' as SpellingBand, uid) as [SpellingBand, (v: SpellingBand) => void];
 
+  // ── Lazy-load word tiers for the current band ──
+  const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
+  useEffect(() => {
+    let cancelled = false;
+    ensureTiersForBand(ageBand).then(() => {
+      if (!cancelled) setWordRegistryVersion(getRegistryVersion());
+    });
+    return () => { cancelled = true; };
+  }, [ageBand]);
+
   // ── Word history (Leitner spaced repetition) ──
   const { records: wordRecords, recordAttempt, reviewQueue, weakCategories, masteredCount } = useWordHistory();
 
@@ -155,7 +174,9 @@ function App() {
   }, [recordAttempt, questionType]);
 
   // Band-aware generators — closures that capture the current ageBand + review queue
-  const generateItem = useMemo(() => makeGenerateItem(ageBand), [ageBand]);
+  // wordRegistryVersion ensures generators refresh after lazy-loading new tiers
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const generateItem = useMemo(() => makeGenerateItem(ageBand), [ageBand, wordRegistryVersion]);
   const generateFiniteSet = useMemo(() => {
     const baseFn = makeGenerateFiniteSet(ageBand);
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
@@ -167,7 +188,8 @@ function App() {
       }
       return baseFn(categoryId, challengeId);
     };
-  }, [ageBand, reviewQueue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ageBand, reviewQueue, wordRegistryVersion]);
 
   const {
     problems,
@@ -242,6 +264,14 @@ function App() {
   const { showSummary, setShowSummary, isNewSpeedrunRecord } = useAutoSummary(
     dailyComplete, speedrunFinalTime, stats.bestSpeedrunTime, updateBestSpeedrunTime, hardMode
   );
+
+  // ── Save daily result when daily set is completed ──
+  useEffect(() => {
+    if (dailyComplete && questionType === 'daily' && !dailyCompleted) {
+      saveDailyResult({ score, correct: totalCorrect, total: totalAnswered, timeMs: Date.now() });
+      setDailyCompleted(true);
+    }
+  }, [dailyComplete, questionType, dailyCompleted, score, totalCorrect, totalAnswered]);
 
   // ── Ping Listener (Async Taunts) ──
   const [pingMessage, setPingMessage] = useState<string | null>(null);
@@ -406,6 +436,14 @@ function App() {
 
   return (
     <>
+      {/* Onboarding modal — first launch only */}
+      {showOnboarding && (
+        <OnboardingModal onSelect={(band) => {
+          setAgeBand(band);
+          localStorage.setItem(STORAGE_KEYS.onboarded, '1');
+          setShowOnboarding(false);
+        }} />
+      )}
 
       <BlackboardLayout>
         <OfflineBanner />
@@ -645,6 +683,13 @@ function App() {
                     recordAttempt(word, 'bee', correct, ms);
                   }}
                 />
+              ) : questionType === 'daily' && dailyComplete ? (
+                <DailyChallengeComplete
+                  correct={totalCorrect}
+                  total={totalAnswered}
+                  score={score}
+                  onExit={() => setQuestionType(defaultTypeForBand(ageBand) as QuestionType)}
+                />
               ) : questionType === 'tournament' && tournamentEliminated ? (
                 <TournamentSummary
                   round={tournamentRound}
@@ -768,9 +813,12 @@ function App() {
               onLinkGoogle={linkGoogle}
               onSendEmailLink={sendEmailLink}
               ageBand={ageBand}
+              onBandChange={handleBandChange}
               activeBadge={stats.activeBadgeId || ''}
               onBadgeChange={updateBadge}
               wordRecords={wordRecords}
+              themeMode={themeMode}
+              onThemeModeToggle={toggleThemeMode}
             /></Suspense>
           </motion.div>
         )}
