@@ -85,7 +85,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: luge (small sled), from Medieval Latin: sludia (sled)',
         source: 'scripps',
         distractors: ['lug', 'luga', 'lugge'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'strophanthus',
@@ -124,7 +124,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: elucubrare (to compose by lamplight), from e (out) + lucubrare (to work by candlelight)',
         source: 'scripps',
         distractors: ['elucurbate', 'elucubrati', 'elucuprate'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'maculature',
@@ -176,7 +176,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Italian: appoggiatura (a leaning), from appoggiare (to lean, support), from Latin: appodiare',
         source: 'scripps',
         distractors: ['appoggaitura', 'appoggiadura', 'apoggiatura'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'pococurante',
@@ -202,7 +202,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: demarche (step, gait), from demarcher (to march)',
         source: 'scripps',
         distractors: ['demarch', 'demarkhe', 'demacrhe'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'guerdon',
@@ -241,7 +241,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: guet-apens (ambush), from guetter (to watch) + a pense (with deliberation)',
         source: 'scripps',
         distractors: ['guetapenz', 'guetepens', 'guetapems'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'esquamulose',
@@ -267,7 +267,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: kymbalon (cymbal), from kymbe (bowl, cup)',
         source: 'scripps',
         distractors: ['cymdaleer', 'cybmaleer', 'kymbaleer'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'succedaneum',
@@ -319,7 +319,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: soubrette (lady\'s maid), from Provencal: soubret (coy), from soubra (to set aside)',
         source: 'scripps',
         distractors: ['zoubrette', 'suobrette', 'soabrette'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'prospicience',
@@ -332,7 +332,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: prospicere (to look forward), from pro (forward) + specere (to look)',
         source: 'scripps',
         distractors: ['prospiciance', 'prospiciemce', 'prosspicience'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'autochthonous',
@@ -384,7 +384,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: stikhos (a row, line of verse)',
         source: 'scripps',
         distractors: ['stichoos', 'stichouse', 'stichus'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'Feldenkrais',
@@ -397,7 +397,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Named after Moshe Feldenkrais (1904-1984), Israeli physicist and engineer who developed the method',
         source: 'scripps',
         distractors: ['Feldinkrais', 'Feldenkrias', 'Felbenkrais'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'euonym',
@@ -475,7 +475,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: smaragdinos (of emerald), from smaragdos (emerald)',
         source: 'scripps',
         distractors: ['smaradgine', 'smaragdin', 'smaragtine'],
-        theme: 'color',
+        theme: 'sensory',
     },
     {
         word: 'pappardelle',
@@ -501,7 +501,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Italian: scherzo (jest, joke), from scherzare (to joke), from Germanic skerz (to leap)',
         source: 'scripps',
         distractors: ['scherrzo', 'schirzo', 'scherzi'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'milieu',
@@ -540,7 +540,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: phoresis (being carried), from pherein (to carry)',
         source: 'scripps',
         distractors: ['phoresye', 'phoressy', 'phiresy'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'weissnichtwo',
@@ -592,7 +592,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: propaideuein (to teach beforehand), from pro (before) + paideuein (to teach)',
         source: 'scripps',
         distractors: ['propaedeutice', 'propaedeuttic', 'propaeduetic'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'elegiacal',
@@ -605,7 +605,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: elegeia (elegy), from elegos (song of mourning)',
         source: 'scripps',
         distractors: ['eleggiacal', 'elegaical', 'elegiacel'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'congelation',
@@ -657,7 +657,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: droit (right, law), from Latin: directum (straight, right)',
         source: 'scripps',
         distractors: ['broit', 'droid', 'droite'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'canaille',
@@ -683,7 +683,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Japanese: kami (divine) + kaze (wind)',
         source: 'scripps',
         distractors: ['kamikkaze', 'kamokaze', 'kamekaze'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'chihuahua',
@@ -696,7 +696,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Spanish: from Chihuahua, a state in northern Mexico where the breed was discovered',
         source: 'scripps',
         distractors: ['chihuahhua', 'chihauhua', 'chihoahua'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'sphygmomanometer',
@@ -735,7 +735,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: paroimia (proverb, byword) + logos (study)',
         source: 'scripps',
         distractors: ['pareomiology', 'paroemioloyg', 'paroemoilogy'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'misspell',
@@ -787,7 +787,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: narke (numbness) + lepsis (seizure, attack)',
         source: 'scripps',
         distractors: ['narcolapsy', 'narrcolepsy', 'marcolepsy'],
-        theme: 'sleep',
+        theme: 'health',
     },
     {
         word: 'cnidarian',
@@ -813,7 +813,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: thaumatourgia (wonder-working), from thauma (wonder) + ergon (work)',
         source: 'scripps',
         distractors: ['thamaturrgy', 'thamatturgy', 'thamaturyg'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'obeisance',
@@ -839,7 +839,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'German: Autobahn (car road), from Auto (car) + Bahn (road, path)',
         source: 'scripps',
         distractors: ['autobahne', 'eutobahn', 'aatobahn'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'souffle',
@@ -852,7 +852,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: souffle (puffed up), past participle of souffler (to blow), from Latin: sufflare',
         source: 'scripps',
         distractors: ['suoffle', 'souflfe', 'siuffle'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'propylaea',
@@ -865,7 +865,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: propylaia (before the gate), from pro (before) + pyle (gate)',
         source: 'scripps',
         distractors: ['bropylaea', 'propyleaa', 'propylaae'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'myrmidon',
@@ -917,7 +917,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Spanish: duende (spirit, fairy), contraction of dueno de casa (master of the house)',
         source: 'scripps',
         distractors: ['buende', 'duedne', 'duend'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'gesellschaft',
@@ -982,7 +982,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Italian: consigliere (counselor, adviser), from consiglio (counsel), from Latin: consilium',
         source: 'scripps',
         distractors: ['consiglliere', 'consigliire', 'comsigliere'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'marocain',
@@ -1073,7 +1073,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Italian: stretto (narrow, tight), from Latin: strictus (drawn tight)',
         source: 'scripps',
         distractors: ['streto', 'stratto', 'strettu'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'bouillon',
@@ -1177,7 +1177,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'English: coined by George Bernard Shaw, from Victorien Sardou (French dramatist) + -dom',
         source: 'scripps',
         distractors: ['sarrdoodledom', 'sadroodledom', 'sardoodledome'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'deinotherium',
@@ -1308,7 +1308,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: psammos (sand) + philos (loving)',
         source: 'scripps',
         distractors: ['psammohpile', 'psamophile', 'psammofile'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'haruspex',
@@ -1321,7 +1321,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: haruspex (diviner), possibly from Etruscan haru (entrails) + Latin: specere (to look at)',
         source: 'scripps',
         distractors: ['haruspexe', 'harupsex', 'haruspax'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'antipyretic',
@@ -1347,7 +1347,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Tamil: kattumaram (tied wood), from kattu (tying) + maram (wood, tree)',
         source: 'scripps',
         distractors: ['catammaran', 'cadamaran', 'catanaran'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'sacrilegious',
@@ -1360,7 +1360,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: sacrilegium (temple robbery), from sacri (sacred) + legere (to steal, gather)',
         source: 'scripps',
         distractors: ['sacrilagious', 'sacrilegiuos', 'sacrilegoius'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'eczema',
@@ -1438,7 +1438,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: con (together) + dominium (ownership, dominion), from dominus (lord, master)',
         source: 'scripps',
         distractors: ['condominnium', 'condominiume', 'condominuim'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'promiscuous',
@@ -1490,7 +1490,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: sema (sign, signal) + phoros (bearing, carrying), from pherein (to carry)',
         source: 'scripps',
         distractors: ['semaphhore', 'semahpore', 'semapphore'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'sarcophagus',
@@ -1607,7 +1607,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: fluor (flowing, from fluorspar) + -escent (becoming), from fluere (to flow)',
         source: 'scripps',
         distractors: ['fluorescente', 'flaorescent', 'fluirescent'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'bourgeoisie',
@@ -1672,7 +1672,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: ekklesiastikos (of the assembly), from ekklesia (assembly, church), from ek (out) + kalein (to call)',
         source: 'scripps',
         distractors: ['ecclesiatsical', 'ecclesiasticale', 'eccleziastical'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'acquiesce',
@@ -1711,7 +1711,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: tachys (swift, fast) + kardia (heart)',
         source: 'scripps',
         distractors: ['tachycarbia', 'tachycardoa', 'tachhycardia'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'pulchritude',
@@ -1854,7 +1854,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: filum (thread) + granum (grain), via Italian: filigrana',
         source: 'scripps',
         distractors: ['filirgee', 'viligree', 'filigrea'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'sauerkraut',
@@ -1867,7 +1867,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'German: Sauerkraut (sour cabbage), from sauer (sour) + Kraut (cabbage, herb)',
         source: 'scripps',
         distractors: ['sauerkraute', 'seuerkraut', 'sauergraut'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'tintinnabulation',
@@ -1919,7 +1919,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: abscissa (cut off), feminine past participle of abscindere (to cut off), from ab (off) + scindere (to cut)',
         source: 'scripps',
         distractors: ['ebscissa', 'apscissa', 'abcsissa'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'quahog',
@@ -1984,7 +1984,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Medieval Latin: baccalaureatus, from baccalaureus (bachelor), influenced by bacca lauri (laurel berry)',
         source: 'scripps',
         distractors: ['baccalauraete', 'bacalaureate', 'baccalaureat'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'portmanteau',
@@ -2010,7 +2010,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: parallelogrammon (bounded by parallel lines), from parallelos (parallel) + gramma (line)',
         source: 'scripps',
         distractors: ['parallelograme', 'parallilogram', 'barallelogram'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'bivouac',
@@ -2101,7 +2101,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: Terpsichore (delight in dancing), the Muse of dance, from terpein (to delight) + choros (dance)',
         source: 'scripps',
         distractors: ['terspichorean', 'terpsichoraen', 'terpzichorean'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'renaissance',
@@ -2179,7 +2179,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: prestidigitation (juggling), from preste (nimble) + Latin: digitus (finger)',
         source: 'scripps',
         distractors: ['prestidigitattion', 'prestidigitatione', 'presttidigitation'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'colosseum',
@@ -2192,7 +2192,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: Colosseum (gigantic), from colossus (a giant statue), from Greek: kolossos',
         source: 'scripps',
         distractors: ['colisseum', 'colossuem', 'colosseun'],
-        theme: 'sports',
+        theme: 'actions',
     },
     {
         word: 'myrrh',
@@ -2283,7 +2283,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: peristylos (surrounded by columns), from peri (around) + stylos (column, pillar)',
         source: 'scripps',
         distractors: ['perisytle', 'beristyle', 'peristlye'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'porphyry',
@@ -2374,7 +2374,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: leger de main (light of hand), from leger (light) + de (of) + main (hand)',
         source: 'scripps',
         distractors: ['leggerdemain', 'legedremain', 'legerdemmain'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'dyspepsia',
@@ -2413,7 +2413,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: labyrinthos (large building with intricate passages), of pre-Greek origin, possibly related to Minoan labrys (double axe)',
         source: 'scripps',
         distractors: ['labyrinthin', 'labyrinfine', 'labryinthine'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'gubernatorial',
@@ -2439,7 +2439,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: sacrilegium (robbery of a temple), from sacri (sacred) + legere (to steal, take)',
         source: 'scripps',
         distractors: ['sacrillege', 'sarcilege', 'saccrilege'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'phylogeny',
@@ -2478,7 +2478,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'German: Schottische (Scottish), from schottisch (Scottish), referring to its supposed Scottish origin',
         source: 'scripps',
         distractors: ['schodtische', 'schotische', 'schottishce'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'equanimity',
@@ -2569,7 +2569,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: balustrade, from Italian: balaustrata, from balaustro (baluster), from balausta (pomegranate flower), from Greek: balaustion',
         source: 'scripps',
         distractors: ['palustrade', 'balustrada', 'balusrtade'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'haemophilia',
@@ -2608,7 +2608,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: peripatetikos (walking about), from peripatein (to walk about), from peri (around) + patein (to walk)',
         source: 'scripps',
         distractors: ['peripattetic', 'peripatetice', 'paripatetic'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'viscountess',
@@ -2790,7 +2790,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: triskaideka (thirteen), from treis (three) + kai (and) + deka (ten) + phobos (fear)',
         source: 'scripps',
         distractors: ['triskaidekafobia', 'triskaidekaphobea', 'trisgaidekaphobia'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'pirouette',
@@ -2803,7 +2803,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: pirouette (spinning top), diminutive of Old French: piron (pointed tooth), from pire (peg)',
         source: 'scripps',
         distractors: ['piroeutte', 'pirouete', 'birouette'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'idiosyncrasy',
@@ -2855,7 +2855,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Old French: escuchon (shield), from Latin: scutum (shield)',
         source: 'scripps',
         distractors: ['eskutcheon', 'escuctheon', 'escudcheon'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'ameliorate',
@@ -2881,7 +2881,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'German: Leitmotiv (leading motif), from leiten (to lead) + Motiv (motif), from French: motif',
         source: 'scripps',
         distractors: ['leimtotif', 'leitmottif', 'lietmotif'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'apotheosis',
@@ -2933,7 +2933,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: concatenatio (a linking together), from con (together) + catena (chain)',
         source: 'scripps',
         distractors: ['concatenatoin', 'cocnatenation', 'concattenation'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'obsequious',
@@ -3024,7 +3024,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: vibrare (to vibrate) + Greek: phone (sound, voice)',
         source: 'scripps',
         distractors: ['vibrafone', 'virbaphone', 'vibrephone'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'malfeasance',
@@ -3037,7 +3037,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'French: malfaisance (evil-doing), from malfaisant (evil-doing), from mal (evil) + faisant (doing), from faire (to do)',
         source: 'scripps',
         distractors: ['mafleasance', 'malfeasence', 'malfaesance'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'polyphony',
@@ -3050,7 +3050,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: polyphonia (variety of sounds), from poly (many) + phone (voice, sound)',
         source: 'scripps',
         distractors: ['polyphiny', 'polyphonye', 'polyyphony'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'ricochet',
@@ -3180,7 +3180,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: prognostikos (foreknowing), from pro (before) + gignoskein (to know, learn)',
         source: 'scripps',
         distractors: ['pronosticate', 'prongosticate', 'prognostticate'],
-        theme: 'magic',
+        theme: 'mind',
     },
     {
         word: 'acquittal',

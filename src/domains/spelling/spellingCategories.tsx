@@ -34,15 +34,13 @@ export type SpellingCategory =
     // Semantic themes (42)
     | 'theme-animals' | 'theme-plants' | 'theme-weather' | 'theme-earth'
     | 'theme-food' | 'theme-body' | 'theme-health' | 'theme-home'
-    | 'theme-clothing' | 'theme-music' | 'theme-art' | 'theme-performance'
-    | 'theme-sports' | 'theme-science' | 'theme-math' | 'theme-money'
+    | 'theme-clothing' | 'theme-art' | 'theme-academic'
+    | 'theme-science' | 'theme-math' | 'theme-money'
     | 'theme-language' | 'theme-time' | 'theme-people' | 'theme-feelings'
     | 'theme-mind' | 'theme-character' | 'theme-communication' | 'theme-actions'
-    | 'theme-quantity' | 'theme-texture' | 'theme-water' | 'theme-light'
-    | 'theme-sensory' | 'theme-tools' | 'theme-nature' | 'theme-building'
-    | 'theme-movement' | 'theme-law' | 'theme-color' | 'theme-power'
-    | 'theme-war' | 'theme-fire' | 'theme-sleep' | 'theme-school'
-    | 'theme-magic' | 'theme-travel' | 'theme-everyday';
+    | 'theme-quantity' | 'theme-texture' | 'theme-water'
+    | 'theme-sensory' | 'theme-nature'
+    | 'theme-society' | 'theme-travel' | 'theme-everyday';
 
 export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'practice';
 
@@ -274,39 +272,12 @@ const iClothing = I(<>
     <path d="M3 9l9-3 9 3-3 2v10H6V11L3 9z" />
 </>);
 
-// Theme: Music — music note
-const iMusic = I(<>
-    <path d="M9 18V5l12-3v13" />
-    <circle cx="6" cy="18" r="3" />
-    <circle cx="18" cy="15" r="3" />
-</>);
-
 // Theme: Art — palette
 const iArt = I(<>
     <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1 0 2-.8 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.4c3 0 5.6-2.5 5.6-5.6C22 5.8 17.5 2 12 2z" />
     <circle cx="8" cy="10" r="1.5" fill="currentColor" />
     <circle cx="12" cy="7" r="1.5" fill="currentColor" />
     <circle cx="16" cy="10" r="1.5" fill="currentColor" />
-</>);
-
-// Theme: Performance — theater masks
-const iPerformance = I(<>
-    <path d="M4 4h7v7c0 2-1.5 3.5-3.5 3.5S4 13 4 11V4z" />
-    <circle cx="6" cy="8" r="1" fill="currentColor" />
-    <circle cx="9" cy="8" r="1" fill="currentColor" />
-    <path d="M6 11c.5.5 1.5.5 2 0" />
-    <path d="M13 7h7v7c0 2-1.5 3.5-3.5 3.5S13 16 13 14V7z" />
-    <circle cx="15" cy="11" r="1" fill="currentColor" />
-    <circle cx="18" cy="11" r="1" fill="currentColor" />
-    <path d="M15 14c.5-.5 1.5-.5 2 0" />
-</>);
-
-// Theme: Sports — trophy
-const iSports = I(<>
-    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-    <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
-    <path d="M10 15v3c0 1-2 2-3 3h10c-1-1-3-2-3-3v-3" />
 </>);
 
 // Theme: Science — beaker
@@ -407,26 +378,10 @@ const iWater = I(<>
     <path d="M12 2c-4 6-7 9-7 13a7 7 0 0 0 14 0c0-4-3-7-7-13z" />
 </>);
 
-// Theme: Light — sun/rays
-const iLight = I(<>
-    <circle cx="12" cy="12" r="4" />
-    <line x1="12" y1="2" x2="12" y2="5" />
-    <line x1="12" y1="19" x2="12" y2="22" />
-    <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
-    <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
-    <line x1="2" y1="12" x2="5" y2="12" />
-    <line x1="19" y1="12" x2="22" y2="12" />
-</>);
-
 // Theme: Sensory — ear / nose / eye
 const iSensory = I(<>
     <path d="M6 8.5c0-3 2.5-5.5 5.5-5.5S17 5.5 17 8.5c0 2-1 3.5-2 4.5l-1 2.5c-.5 1.5-1 2.5-2 2.5s-1.5-1-2-2.5" />
     <path d="M9 12c0 1 .7 2 2 2" />
-</>);
-
-// Theme: Tools — wrench
-const iTools = I(<>
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a3 3 0 0 1-4.2 4.2L7.5 19.5a2.1 2.1 0 0 1-3-3l9.8-9.8a3 3 0 0 1 4.2-4.2L14.7 6.3z" />
 </>);
 
 // Theme: Nature — tree / pine
@@ -434,79 +389,16 @@ const iNature = I(<>
     <path d="M12 3L6 12h3l-3 5h4l-3 4h10l-3-4h4l-3-5h3L12 3z" />
 </>);
 
-// Theme: Building — building
-const iBuilding = I(<>
-    <rect x="4" y="6" width="16" height="16" />
-    <path d="M12 2l10 4H2l10-4z" />
-    <rect x="7" y="9" width="3" height="3" />
-    <rect x="14" y="9" width="3" height="3" />
-    <rect x="10" y="16" width="4" height="6" />
+// Theme: Society — pillars / law
+const iSociety = I(<>
+    <path d="M2 22h20 M4 22v-8 M8 22v-8 M12 22v-8 M16 22v-8 M20 22v-8 M2 14l10-8 10 8z" />
 </>);
 
-// Theme: Movement — arrow in motion
-const iMovement = I(<>
-    <path d="M5 12h14" />
-    <polyline points="15,8 19,12 15,16" />
-    <path d="M5 6c2 2 4 2 6 0" />
-    <path d="M5 18c2-2 4-2 6 0" />
-</>);
-
-// Theme: Law — scales of justice
-const iLaw = I(<>
-    <line x1="12" y1="2" x2="12" y2="22" />
-    <path d="M4 7h16" />
-    <path d="M2 14c0 2 1 3 2 3s2-1 2-3L4 7 2 14z" />
-    <path d="M18 14c0 2 1 3 2 3s2-1 2-3l-2-7-2 7z" />
-    <path d="M9 22h6" />
-</>);
-
-// Theme: Color — palette dots
-const iColor = I(<>
-    <circle cx="12" cy="12" r="9" />
-    <circle cx="8" cy="9" r="2" fill="currentColor" />
-    <circle cx="16" cy="9" r="2" fill="currentColor" opacity={0.6} />
-    <circle cx="12" cy="16" r="2" fill="currentColor" opacity={0.3} />
-</>);
-
-// Theme: Power — crown
-const iPower = I(<>
-    <path d="M2 18l3-10 4 5 3-8 3 8 4-5 3 10H2z" />
-    <line x1="2" y1="20" x2="22" y2="20" />
-</>);
-
-// Theme: War — crossed swords
-const iWar = I(<>
-    <line x1="4" y1="20" x2="20" y2="4" />
-    <line x1="20" y1="20" x2="4" y2="4" />
-    <path d="M4 20l2 1 1-2" />
-    <path d="M20 20l-2 1-1-2" />
-    <path d="M20 4l-2-1-1 2" />
-    <path d="M4 4l2-1 1 2" />
-</>);
-
-// Theme: Fire — flame
-const iFire = I(<>
-    <path d="M12 2c-4 6-7 8-7 12a7 7 0 0 0 14 0c0-4-3-6-7-12z" />
-    <path d="M12 12c-1 2-2 3-2 5a2 2 0 0 0 4 0c0-2-1-3-2-5z" fill="currentColor" />
-</>);
-
-// Theme: Sleep — moon and z's
-const iSleep = I(<>
-    <path d="M12 3a9 9 0 1 0 9 9c0-1-.2-2-.5-3A6 6 0 0 1 15 3.5c-1-.3-2-.5-3-.5z" />
-</>);
-
-// Theme: School — pencil
-const iSchool = I(<>
-    <path d="M17 3l4 4-12 12H5v-4L17 3z" />
-    <line x1="13" y1="7" x2="17" y2="11" />
-</>);
-
-// Theme: Magic — wand with sparkle
-const iMagic = I(<>
-    <line x1="4" y1="20" x2="18" y2="6" />
-    <path d="M18 6l2-2-4 0 0-4-2 2" />
-    <circle cx="8" cy="6" r="1" fill="currentColor" />
-    <circle cx="5" cy="10" r="0.8" fill="currentColor" />
+// Theme: Academic — graduation cap / book
+const iAcademic = I(<>
+    <path d="M12 4 2 9l10 5 10-5z" />
+    <path d="M6 11v5c0 2 6 3 6 3s6-1 6-3v-5" />
+    <path d="M22 9v7" />
 </>);
 
 // Theme: Travel — compass
@@ -588,22 +480,9 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'theme-texture', icon: iTexture, label: 'Texture', group: 'themes' },
     { id: 'theme-water', icon: iWater, label: 'Water', group: 'themes' },
     { id: 'theme-nature', icon: iNature, label: 'Nature', group: 'themes' },
-    { id: 'theme-music', icon: iMusic, label: 'Music', group: 'themes' },
-    { id: 'theme-light', icon: iLight, label: 'Light', group: 'themes' },
-    { id: 'theme-tools', icon: iTools, label: 'Tools', group: 'themes' },
-    { id: 'theme-building', icon: iBuilding, label: 'Building', group: 'themes' },
-    { id: 'theme-art', icon: iArt, label: 'Art', group: 'themes' },
-    { id: 'theme-sports', icon: iSports, label: 'Sports', group: 'themes' },
-    { id: 'theme-movement', icon: iMovement, label: 'Movement', group: 'themes' },
-    { id: 'theme-law', icon: iLaw, label: 'Law', group: 'themes' },
-    { id: 'theme-performance', icon: iPerformance, label: 'Performance', group: 'themes' },
-    { id: 'theme-war', icon: iWar, label: 'War', group: 'themes' },
-    { id: 'theme-power', icon: iPower, label: 'Power', group: 'themes' },
-    { id: 'theme-school', icon: iSchool, label: 'School', group: 'themes' },
-    { id: 'theme-magic', icon: iMagic, label: 'Magic', group: 'themes' },
-    { id: 'theme-fire', icon: iFire, label: 'Fire', group: 'themes' },
-    { id: 'theme-sleep', icon: iSleep, label: 'Sleep', group: 'themes' },
-    { id: 'theme-color', icon: iColor, label: 'Color', group: 'themes' },
+    { id: 'theme-society', icon: iSociety, label: 'Society', group: 'themes' },
+    { id: 'theme-academic', icon: iAcademic, label: 'Academic', group: 'themes' },
+    { id: 'theme-art', icon: iArt, label: 'Arts', group: 'themes' },
     // Practice
     { id: 'review', icon: iReview, label: 'Review', group: 'practice' },
 ];

@@ -21,17 +21,14 @@ export type PhonicsPattern =
     | 'compound' | 'multisyllable' | 'irregular'
     | 'latin-roots' | 'greek-roots' | 'french-origin';
 
-/** Semantic theme for topic-based word grouping (42 themes) */
+/** Semantic theme for topic-based word grouping (27 themes) */
 export type SemanticTheme =
-    | 'animals' | 'plants' | 'weather' | 'earth' | 'food'
-    | 'body' | 'health' | 'home' | 'clothing' | 'music'
-    | 'art' | 'performance' | 'sports' | 'science' | 'math'
-    | 'money' | 'language' | 'time' | 'people' | 'feelings'
-    | 'mind' | 'character' | 'communication' | 'actions' | 'quantity'
-    | 'texture' | 'water' | 'light' | 'sensory' | 'tools'
-    | 'nature' | 'building' | 'movement' | 'law' | 'color'
-    | 'power' | 'war' | 'fire' | 'sleep' | 'school'
-    | 'magic' | 'travel' | 'everyday';
+    | 'actions' | 'people' | 'mind' | 'home' | 'character'
+    | 'feelings' | 'sensory' | 'academic' | 'animals' | 'food'
+    | 'body' | 'language' | 'art' | 'communication' | 'plants'
+    | 'time' | 'health' | 'earth' | 'society' | 'quantity'
+    | 'money' | 'clothing' | 'nature' | 'travel' | 'everyday'
+    | 'weather' | 'water';
 
 /**
  * A single curated spelling word with rich metadata.

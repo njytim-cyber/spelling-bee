@@ -33,7 +33,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'French: accoutrement (equipment), from accoutrer (to equip, dress)',
         source: 'state-bee',
         distractors: ['accuoterments', 'accuuterments', 'accoaterments'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'adjudicate',
@@ -46,7 +46,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: adjudicare (to award judicially), from ad (to) + judicare (to judge)',
         source: 'state-bee',
         distractors: ['adjudicata', 'addjudicate', 'ajdudicate'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'ambidextrous',
@@ -306,7 +306,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: fluor (a flowing), from fluere (to flow); named after the mineral fluorite',
         source: 'state-bee',
         distractors: ['fluorescente', 'flaorescent', 'fluirescent'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'flocculent',
@@ -371,7 +371,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: hyperbole (excess), from hyper (beyond) + ballein (to throw)',
         source: 'state-bee',
         distractors: ['hyyperbole', 'hyparbole', 'hyperbbole'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'imprimatur',
@@ -397,7 +397,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: incandescere (to become white hot), from in (intensive) + candescere (to glow)',
         source: 'state-bee',
         distractors: ['incadnescent', 'incandescant', 'incantescent'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'infinitesimal',
@@ -449,7 +449,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: isoskeles (equal-legged), from isos (equal) + skelos (leg)',
         source: 'state-bee',
         distractors: ['ososceles', 'isoscelese', 'isossceles'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'kaleidoscope',
@@ -488,7 +488,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: labyrinthos (maze), associated with the mythical maze built by Daedalus for King Minos',
         source: 'state-bee',
         distractors: ['labyrenth', 'laybrinth', 'labryinth'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'legitimacy',
@@ -501,7 +501,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: legitimus (lawful), from lex (law)',
         source: 'state-bee',
         distractors: ['legitimacye', 'legitinacy', 'lekitimacy'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'liaison',
@@ -618,7 +618,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: opalus (opal) + -escent (becoming, displaying)',
         source: 'state-bee',
         distractors: ['oppalescent', 'obalescent', 'opelescent'],
-        theme: 'color',
+        theme: 'sensory',
     },
     {
         word: 'oscillate',
@@ -657,7 +657,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: parapherna (property beyond a dowry), from para (beyond) + pherne (dowry)',
         source: 'state-bee',
         distractors: ['parafernalia', 'paraphermalia', 'parahpernalia'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'pasteurize',
@@ -683,7 +683,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Spanish: pecadillo (small sin), diminutive of pecado (sin), from Latin: peccatum (sin)',
         source: 'state-bee',
         distractors: ['pekcadillo', 'peccadollo', 'pecadillo'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'penicillin',
@@ -748,7 +748,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'French: reconnaissance (recognition, exploration), from reconnaitre (to recognize)',
         source: 'state-bee',
         distractors: ['reconaissance', 'rekonnaissance', 'reconniassance'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'rendezvous',
@@ -800,7 +800,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: sacrosanctus (consecrated with religious ceremonies), from sacer (sacred) + sanctus (holy)',
         source: 'state-bee',
         distractors: ['sacrosancte', 'secrosanct', 'sacrasanct'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'schmaltz',
@@ -852,7 +852,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Old French: souverainete (authority), from souverain (sovereign), from Latin: superanus (chief)',
         source: 'state-bee',
         distractors: ['sovereigntye', 'sovereinty', 'sovereignyt'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'spontaneity',
@@ -943,7 +943,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: translucere (to shine through), from trans (through) + lucere (to shine)',
         source: 'state-bee',
         distractors: ['trasnlucent', 'translucant', 'translukent'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'tyrannical',
@@ -969,7 +969,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: conscientia (moral awareness), with un- (not) and -able (capable of)',
         source: 'state-bee',
         distractors: ['unconscionalbe', 'unconscoinable', 'unconsceonable'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'ventriloquist',
@@ -1125,7 +1125,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: gesticulari (to make mimic gestures), from gesticulus (a mimic gesture), from gestus (gesture)',
         source: 'state-bee',
         distractors: ['gessticulate', 'gesticulata', 'gesticulat'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'heuristic',
@@ -1151,7 +1151,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: hypoteinousa (subtending), from hypo (under) + teinein (to stretch)',
         source: 'state-bee',
         distractors: ['hypotenus', 'hypitenuse', 'hypotenusse'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'idiomatic',
@@ -1242,7 +1242,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: prae (before) + requisitus (required), from requirere (to seek again)',
         source: 'state-bee',
         distractors: ['prereqiusite', 'brerequisite', 'prerequiside'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'pseudonym',

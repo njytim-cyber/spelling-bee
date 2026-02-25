@@ -758,34 +758,64 @@ var FALLBACK_DEF_THEMES = [
 
 var audit = [];
 var distribution = {};
-var allThemeNames = ['animals', 'plants', 'weather', 'earth', 'food', 'body', 'health', 'home', 'clothing', 'music', 'art', 'performance', 'sports', 'science', 'math', 'money', 'language', 'time', 'people', 'feelings', 'mind', 'character', 'communication', 'actions', 'quantity', 'texture', 'water', 'light', 'sensory', 'tools', 'nature', 'building', 'movement', 'law', 'color', 'power', 'war', 'fire', 'sleep', 'school', 'magic', 'travel', 'everyday'];
+var allThemeNames = ['animals', 'plants', 'weather', 'earth', 'food', 'body', 'health', 'home', 'clothing', 'art', 'academic', 'money', 'language', 'time', 'people', 'feelings', 'mind', 'character', 'communication', 'actions', 'quantity', 'water', 'sensory', 'nature', 'society', 'travel', 'everyday'];
 allThemeNames.forEach(function (t) { distribution[t] = 0; });
 
 function classify(word, definition) {
   var wordLower = word.toLowerCase();
 
+  var matchedTheme = 'everyday';
+
   // PASS 1: Direct word lookup
   if (WORD_THEME[wordLower]) {
-    return WORD_THEME[wordLower];
-  }
+    matchedTheme = WORD_THEME[wordLower];
+  } else {
+    var defLower = definition.toLowerCase();
+    var found = false;
 
-  var defLower = definition.toLowerCase();
+    // PASS 2: Definition keyword matching
+    for (var i = 0; i < DEF_THEMES.length; i++) {
+      if (DEF_THEMES[i][1].test(defLower)) {
+        matchedTheme = DEF_THEMES[i][0];
+        found = true;
+        break;
+      }
+    }
 
-  // PASS 2: Definition keyword matching
-  for (var i = 0; i < DEF_THEMES.length; i++) {
-    if (DEF_THEMES[i][1].test(defLower)) {
-      return DEF_THEMES[i][0];
+    if (!found) {
+      // PASS 3: Looser fallback patterns
+      for (var j = 0; j < FALLBACK_DEF_THEMES.length; j++) {
+        if (FALLBACK_DEF_THEMES[j][1].test(defLower)) {
+          matchedTheme = FALLBACK_DEF_THEMES[j][0];
+          break;
+        }
+      }
     }
   }
 
-  // PASS 3: Looser fallback patterns
-  for (var j = 0; j < FALLBACK_DEF_THEMES.length; j++) {
-    if (FALLBACK_DEF_THEMES[j][1].test(defLower)) {
-      return FALLBACK_DEF_THEMES[j][0];
-    }
-  }
+  // Combine small themes into broader ones
+  var merges = {
+    'color': 'sensory',
+    'light': 'sensory',
+    'texture': 'sensory',
+    'music': 'art',
+    'performance': 'art',
+    'magic': 'mind',
+    'fire': 'nature',
+    'sleep': 'health',
+    'movement': 'actions',
+    'sports': 'actions',
+    'building': 'home',
+    'tools': 'home',
+    'power': 'society',
+    'law': 'society',
+    'war': 'society',
+    'school': 'academic',
+    'math': 'academic',
+    'science': 'academic'
+  };
 
-  return 'everyday';
+  return merges[matchedTheme] || matchedTheme;
 }
 
 tierFiles.forEach(function (tierName) {

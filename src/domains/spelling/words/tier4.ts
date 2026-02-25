@@ -20,7 +20,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SPEK-tuh-kul',
         etymology: 'Latin: spectare (to look at)',
         distractors: ['spectaccle', 'specttacle', 'spetcacle'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'portable',
@@ -80,7 +80,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'VIZ-uh-bul',
         etymology: 'Latin: visibilis (that may be seen), from videre (to see)',
         distractors: ['visable', 'visilbe', 'fisible'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'conductor',
@@ -92,7 +92,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kun-DUK-tur',
         etymology: 'Latin: conducere (to lead together)',
         distractors: ['codnuctor', 'conducter', 'conducdor'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'construct',
@@ -104,7 +104,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kun-STRUKT',
         etymology: 'Latin: construere (to pile up, build)',
         distractors: ['canstruct', 'constract', 'constructe'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'dictator',
@@ -140,7 +140,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'man-yoo-FAK-chur',
         etymology: 'Latin: manu factus (made by hand)',
         distractors: ['manufatcure', 'manufacdure', 'manufactur'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'prediction',
@@ -188,7 +188,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'proh-JEK-shun',
         etymology: 'Latin: proicere (to throw forward)',
         distractors: ['projectoin', 'projectione', 'projectiun'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'annual',
@@ -344,7 +344,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'sur-KUM-fur-unss',
         etymology: 'Latin: circumferre (to carry around)',
         distractors: ['circumferemce', 'circumferance', 'circumferecne'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'terrestrial',
@@ -380,7 +380,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ih-LOO-mih-nayt',
         etymology: 'Latin: illuminare (to light up), from lumen (light)',
         distractors: ['iluminate', 'illuminat', 'illuminata'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'sentiment',
@@ -428,7 +428,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'MAG-nuh-fy',
         etymology: 'Latin: magnificare (to make great), from magnus (great)',
         distractors: ['magniyf', 'magnnify', 'maggnify'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'translucent',
@@ -440,7 +440,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'trans-LOO-sunt',
         etymology: 'Latin: translucere (to shine through), from lux (light)',
         distractors: ['trasnlucent', 'translucant', 'translukent'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'aquatic',
@@ -500,7 +500,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ap-uh-RAT-us',
         etymology: 'Latin: apparatus (preparation, equipment), from apparare (to prepare)',
         distractors: ['apparatous', 'abparatus', 'apparatuz'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'adjacent',
@@ -608,7 +608,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-ROB-uh-rayt',
         etymology: 'Latin: corroborare (to strengthen), from robur (strength)',
         distractors: ['corroporate', 'corrodorate', 'corroborata'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'culminate',
@@ -656,7 +656,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ED-ih-fiss',
         etymology: 'Latin: aedificium (building), from aedes (dwelling) + facere (to make)',
         distractors: ['edifica', 'ediffice', 'edifoce'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'elucidate',
@@ -680,7 +680,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ih-MAN-sih-payt',
         etymology: 'Latin: emancipare (to release from authority), from manus (hand) + capere (to take)',
         distractors: ['emacnipate', 'emancipat', 'enancipate'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'excursion',
@@ -716,7 +716,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'FLUK-choo-ayt',
         etymology: 'Latin: fluctuare (to wave, flow), from fluctus (wave)',
         distractors: ['flutcuate', 'flucttuate', 'flucduate'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'formidable',
@@ -752,7 +752,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'im-PUR-vee-us',
         etymology: 'Latin: impervius (impassable), from in (not) + pervius (passable)',
         distractors: ['imppervious', 'imbervious', 'impevrious'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'incandescent',
@@ -764,7 +764,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'in-kan-DES-unt',
         etymology: 'Latin: incandescere (to glow white), from candere (to shine)',
         distractors: ['incadnescent', 'incandescant', 'incantescent'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'incessant',
@@ -800,7 +800,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'IN-fruh-struk-chur',
         etymology: 'Latin: infra (below) + structura (structure)',
         distractors: ['ifnrastructure', 'infrastructur', 'infrasrtucture'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'innumerable',
@@ -812,7 +812,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ih-NOO-mur-uh-bul',
         etymology: 'Latin: innumerabilis, from in (not) + numerare (to count)',
         distractors: ['innumereble', 'innumerible', 'inumerable'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'juxtapose',
@@ -836,7 +836,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'LOO-mih-nus',
         etymology: 'Latin: luminosus (full of light), from lumen (light)',
         distractors: ['luminouz', 'luminouse', 'luminus'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'malevolent',
@@ -1004,7 +1004,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SPES-ih-mun',
         etymology: 'Latin: specimen (indication, example), from specere (to look at)',
         distractors: ['specimene', 'specimin', 'specinen'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'subordinate',
@@ -1016,7 +1016,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'sub-OR-dih-nut',
         etymology: 'Latin: subordinare (to place in a lower order), from sub (under) + ordinare (to arrange)',
         distractors: ['subordinat', 'suborbinate', 'subodrinate'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'sufficient',
@@ -1052,7 +1052,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'truh-VUR-sul',
         etymology: 'Latin: transversare (to cross), from trans (across) + versare (to turn)',
         distractors: ['traversel', 'trafersal', 'treversal'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'ubiquitous',
@@ -1076,7 +1076,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'veh-LOS-ih-tee',
         etymology: 'Latin: velocitas (swiftness), from velox (swift)',
         distractors: ['velucity', 'felocity', 'velociyt'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'vigilant',
@@ -1220,7 +1220,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'rih-SIP-ruh-kul',
         etymology: 'Latin: reciprocus (returning the same way), from re (back) + pro (forward)',
         distractors: ['recciprocal', 'reciprocale', 'reciprocel'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'exquisite',
@@ -1232,7 +1232,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ek-SKWIZ-it',
         etymology: 'Latin: exquisitus (carefully sought out), from exquirere (to search out)',
         distractors: ['exqiusite', 'eqxuisite', 'exquisit'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'desolate',
@@ -1256,7 +1256,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'REV-uh-kuh-bul',
         etymology: 'Latin: revocare (to call back), from re (back) + vocare (to call)',
         distractors: ['revocible', 'revocablle', 'revocabla'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'municipal',
@@ -1268,7 +1268,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'myoo-NIS-ih-pul',
         etymology: 'Latin: municipalis (of a citizen), from municipium (free town)',
         distractors: ['munikipal', 'municipale', 'municippal'],
-        theme: 'power',
+        theme: 'society',
     },
 
     // ── Greek Roots (difficulty 7-8) ───────────────────────────────────
@@ -1330,7 +1330,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'MY-kroh-skohp',
         etymology: 'Greek: mikros (small) + skopein (to look at)',
         distractors: ['microscupe', 'mircoscope', 'microzcope'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'geography',
@@ -1438,7 +1438,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'tek-NOL-uh-jee',
         etymology: 'Greek: techne (art, skill) + logos (study)',
         distractors: ['tecnhology', 'technilogy', 'technulogy'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'hypothesis',
@@ -1450,7 +1450,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'hy-POTH-uh-sis',
         etymology: 'Greek: hypo (under) + thesis (placing, proposition)',
         distractors: ['hypothezis', 'hybothesis', 'hypothesise'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'philanthropy',
@@ -1474,7 +1474,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'feh-NOM-uh-non',
         etymology: 'Greek: phainomenon (thing appearing), from phainein (to show)',
         distractors: ['phenomenone', 'phenonenon', 'phanomenon'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'catastrophe',
@@ -1510,7 +1510,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'pair-uh-LEL-oh-gram',
         etymology: 'Greek: parallelos (beside one another) + gramma (something written or drawn)',
         distractors: ['parallelograme', 'parallilogram', 'barallelogram'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'metamorphosis',
@@ -1522,7 +1522,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'met-uh-MOR-fuh-sis',
         etymology: 'Greek: meta (change) + morphe (form)',
         distractors: ['metamorfosis', 'matamorphosis', 'metamorphosos'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'bibliography',
@@ -1570,7 +1570,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'AT-mus-feer',
         etymology: 'Greek: atmos (vapor) + sphaira (sphere)',
         distractors: ['admosphere', 'amtosphere', 'atmopshere'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'polygon',
@@ -1582,7 +1582,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'POL-ee-gon',
         etymology: 'Greek: poly (many) + gonia (angle)',
         distractors: ['pollygon', 'polygom', 'polgyon'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'diagnosis',
@@ -1618,7 +1618,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SIM-fuh-nee',
         etymology: 'Greek: symphonia (agreement in sound), from syn (together) + phone (sound)',
         distractors: ['symfony', 'symhpony', 'syymphony'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'pseudonym',
@@ -1666,7 +1666,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'puh-RIM-uh-tur',
         etymology: 'Greek: peri (around) + metron (measure)',
         distractors: ['perimetir', 'perimetor', 'pirimeter'],
-        theme: 'math',
+        theme: 'academic',
     },
     {
         word: 'epidemic',
@@ -1714,7 +1714,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'proh-TAG-uh-nist',
         etymology: 'Greek: protos (first) + agonistes (actor, combatant)',
         distractors: ['protagoniste', 'protagonits', 'prutagonist'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'eccentric',
@@ -1798,7 +1798,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'aw-TON-uh-mus',
         etymology: 'Greek: autonomos (self-governing), from autos (self) + nomos (law)',
         distractors: ['autonomus', 'autonomouse', 'automomous'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'cacophony',
@@ -1858,7 +1858,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'sy-bur-NET-iks',
         etymology: 'Greek: kybernetikos (good at steering), from kybernetes (steersman)',
         distractors: ['cyberneticse', 'cybarnetics', 'cybernatics'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'demographics',
@@ -1870,7 +1870,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'dem-oh-GRAF-iks',
         etymology: 'Greek: demos (people) + graphein (to write)',
         distractors: ['demographicse', 'damographics', 'demagraphics'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'dialogue',
@@ -1978,7 +1978,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'jee-oh-SEN-trik',
         etymology: 'Greek: geo (earth) + kentron (center)',
         distractors: ['geocentrice', 'gaocentric', 'giocentric'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'heliocentric',
@@ -1990,7 +1990,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'hee-lee-oh-SEN-trik',
         etymology: 'Greek: helios (sun) + kentron (center)',
         distractors: ['haliocentric', 'heliocentrice', 'heliocemtric'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'heterogeneous',
@@ -2002,7 +2002,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'het-ur-oh-JEE-nee-us',
         etymology: 'Greek: heterogenes (of different kinds), from heteros (other) + genos (kind)',
         distractors: ['heterogenious', 'heterogenoeus', 'heterogeneuos'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'hierarchy',
@@ -2014,7 +2014,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'HY-uh-rar-kee',
         etymology: 'Greek: hierarchia (rule of a high priest), from hieros (sacred) + arkhein (to rule)',
         distractors: ['hierarhcy', 'hierarchye', 'hierarkhy'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'homogeneous',
@@ -2026,7 +2026,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'hoh-moh-JEE-nee-us',
         etymology: 'Greek: homogenes (of the same kind), from homos (same) + genos (kind)',
         distractors: ['homokeneous', 'hommogeneous', 'homogeneuos'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'hypothermia',
@@ -2062,7 +2062,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kih-NET-ik',
         etymology: 'Greek: kinetikos (putting in motion), from kinein (to move)',
         distractors: ['kimetic', 'kinnetic', 'konetic'],
-        theme: 'movement',
+        theme: 'actions',
     },
     {
         word: 'labyrinth',
@@ -2074,7 +2074,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'LAB-uh-rinth',
         etymology: 'Greek: labyrinthos (maze), possibly from Minoan palace at Knossos',
         distractors: ['labyrenth', 'laybrinth', 'labryinth'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'nostalgia',
@@ -2098,7 +2098,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'OR-thuh-doks',
         etymology: 'Greek: orthodoxos (having the right opinion), from orthos (right) + doxa (opinion)',
         distractors: ['orthodux', 'orthodoxe', 'orthotox'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'panorama',
@@ -2146,7 +2146,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'thee-OK-ruh-see',
         etymology: 'Greek: theokratia (rule of God), from theos (god) + kratos (rule)',
         distractors: ['theocracye', 'thoecracy', 'theokracy'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'phobia',
@@ -2170,7 +2170,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'pol-ee-TEK-nik',
         etymology: 'Greek: poly (many) + technikos (of art or skill), from techne (skill)',
         distractors: ['polytechmic', 'polytechnice', 'polytehcnic'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'rhetorical',
@@ -2194,7 +2194,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'skee-MAT-ik',
         etymology: 'Greek: schematikos (of or relating to form), from schema (form, figure)',
         distractors: ['schemutic', 'schemmatic', 'schemadic'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'stoic',
@@ -2266,7 +2266,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'zoh-OL-uh-jee',
         etymology: 'Greek: zoon (animal) + logos (study)',
         distractors: ['zooloyg', 'zoollogy', 'zoologye'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'amphibious',
@@ -2338,7 +2338,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SOO-doh-sy-unss',
         etymology: 'Greek: pseudo (false) + Latin: scientia (knowledge)',
         distractors: ['pseudocsience', 'seudoscience', 'pseudosccience'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'polyglot',
@@ -2398,7 +2398,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'OL-ih-gar-kee',
         etymology: 'Greek: oligarkhia, from oligos (few) + arkhein (to rule)',
         distractors: ['olikarchy', 'oligarchye', 'ologarchy'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'symbiosis',
@@ -2436,7 +2436,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'KUR-nul',
         etymology: 'Italian: colonnello (commander of a column of soldiers)',
         distractors: ['colonal', 'colomel', 'colonnel'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'tsunami',
@@ -2520,7 +2520,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SIZ-urz',
         etymology: 'Latin: cisorium (cutting instrument), from caedere (to cut)',
         distractors: ['scissorse', 'scisors', 'scissurs'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'mischievous',
@@ -2616,7 +2616,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'loo-TEN-unt',
         etymology: 'French: lieu (place) + tenant (holding)',
         distractors: ['lieutenante', 'liuetenant', 'lieutenent'],
-        theme: 'war',
+        theme: 'society',
     },
     {
         word: 'February',
@@ -2676,7 +2676,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SEG-way',
         etymology: 'Italian: segue (it follows), from seguire (to follow)',
         distractors: ['segu', 'seggue', 'segeu'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'aisle',
@@ -2772,7 +2772,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'KOWN-tur-fit',
         etymology: 'Old French: contrefait (imitated), from contrefaire (to imitate)',
         distractors: ['countterfeit', 'coumterfeit', 'cuonterfeit'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'diaphragm',
@@ -2820,7 +2820,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ESH-uh-lon',
         etymology: 'French: echelon (rung of a ladder), from echelle (ladder)',
         distractors: ['echelone', 'echelom', 'ehcelon'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'gauge',
@@ -2832,7 +2832,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'GAYJ',
         etymology: 'Old French: gauge (a measuring rod), of uncertain origin',
         distractors: ['gaugi', 'gaage', 'guage'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'gauntlet',
@@ -2988,7 +2988,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'noo-MAT-ik',
         etymology: 'Greek: pneumatikos (of wind), from pneuma (wind, breath)',
         distractors: ['neumatic', 'pnaumatic', 'pneamatic'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'poignant',
@@ -3048,7 +3048,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SAK-rih-lij',
         etymology: 'Latin: sacrilegium (temple robbery), from sacer (sacred) + legere (to gather)',
         distractors: ['sacrillege', 'sarcilege', 'saccrilege'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'succumb',
@@ -3084,7 +3084,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SUT-ul',
         etymology: 'Latin: subtilis (fine, thin), from sub (under) + tela (web)',
         distractors: ['suptle', 'sudtle', 'sublte'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'subpoena',
@@ -3132,7 +3132,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'VAK-yoom',
         etymology: 'Latin: vacuum (empty space), from vacuus (empty)',
         distractors: ['vacuume', 'vaccuum', 'vucuum'],
-        theme: 'tools',
+        theme: 'home',
     },
     {
         word: 'vague',
@@ -3276,7 +3276,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'lab-uh-RIN-theen',
         etymology: 'Greek: labyrinthos (maze), from the legendary Cretan labyrinth',
         distractors: ['labyrinthin', 'labyrinfine', 'labryinthine'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'pharaoh',
@@ -3362,7 +3362,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ba-LAY',
         etymology: 'French: ballet (a dance), from Italian balletto (little dance)',
         distractors: ['balet', 'ballete', 'ballit'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'boutique',
@@ -3434,7 +3434,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'sil-oo-ET',
         etymology: 'French: named after Etienne de Silhouette, a French finance minister',
         distractors: ['silhouedte', 'silhoeutte', 'silhouete'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'brochure',
@@ -3638,7 +3638,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'buh-RAY',
         etymology: 'French: beret (flat cap), from Latin birrus (hooded cloak)',
         distractors: ['berete', 'peret', 'biret'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'bourgeoisie',
@@ -3830,7 +3830,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'fuh-SAHD',
         etymology: 'French: facade (face of a building), from face (face)',
         distractors: ['facadi', 'fucade', 'faccade'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'fatigue',
@@ -3866,7 +3866,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'fih-NESS',
         etymology: 'French: finesse (delicacy, subtlety), from fin (fine)',
         distractors: ['finese', 'finezse', 'fimesse'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'genre',
@@ -3878,7 +3878,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ZHON-ruh',
         etymology: 'French: genre (kind, sort), from Latin genus (birth, kind)',
         distractors: ['gemre', 'gerne', 'kenre'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'grotesque',
@@ -3914,7 +3914,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'im-PROMP-too',
         etymology: 'French: impromptu (extempore), from Latin in promptu (in readiness)',
         distractors: ['inpromptu', 'imprompdu', 'ompromptu'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'lacquer',
@@ -3926,7 +3926,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'LAK-ur',
         etymology: 'French: lacre (sealing wax), from Portuguese lacre',
         distractors: ['lakquer', 'lacqaer', 'lacqquer'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'layette',
@@ -3974,7 +3974,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'mat-ih-NAY',
         etymology: 'French: matinee (morning or daytime event), from matin (morning)',
         distractors: ['matimee', 'matine', 'mattinee'],
-        theme: 'music',
+        theme: 'art',
     },
     {
         word: 'melee',
@@ -4010,7 +4010,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'mih-RAHZH',
         etymology: 'French: mirage (illusion), from mirer (to look at, wonder at)',
         distractors: ['miraga', 'nirage', 'merage'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'naive',
@@ -4046,7 +4046,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'oh-PAYK',
         etymology: 'French: opaque (dark), from Latin opacus (shady, dark)',
         distractors: ['oppaque', 'opaqque', 'opaqui'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'panache',
@@ -4130,7 +4130,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'preh-MEER',
         etymology: 'French: premiere (first), from premier (first)',
         distractors: ['preniere', 'premierre', 'premeire'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'prestige',
@@ -4190,7 +4190,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SAB-uh-tahzh',
         etymology: 'French: sabotage (deliberate destruction), from saboter (to clatter with wooden shoes)',
         distractors: ['sabotagge', 'sapotage', 'zabotage'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'sautee',
@@ -4250,7 +4250,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'TAB-loh',
         etymology: 'French: tableau (picture), from table (flat surface)',
         distractors: ['tablaeu', 'talbeau', 'dableau'],
-        theme: 'color',
+        theme: 'sensory',
     },
     {
         word: 'toupee',
@@ -4432,7 +4432,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-RIK-yoo-lum',
         etymology: 'Latin: curriculum (a running, course), from currere (to run)',
         distractors: ['corriculum', 'carriculum', 'curiculum'],
-        theme: 'school',
+        theme: 'academic',
     },
     {
         word: 'deteriorate',
@@ -4456,7 +4456,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ee-kwih-LIB-ree-um',
         etymology: 'Latin: aequilibrium (an even balance), from aequus (equal) + libra (balance)',
         distractors: ['equiliprium', 'equilibriun', 'equilibriume'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'immaculate',
@@ -4518,7 +4518,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kroh-MAT-ik',
         etymology: 'Greek: chromatikos (of color), from chroma (color)',
         distractors: ['chramatic', 'chrometic', 'chromatac'],
-        theme: 'color',
+        theme: 'sensory',
     },
     {
         word: 'demographic',
@@ -4530,7 +4530,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'dem-oh-GRAF-ik',
         etymology: 'Greek: demos (people) + graphein (to write)',
         distractors: ['dimographic', 'bemographic', 'demogrraphic'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'monotonous',
@@ -4566,7 +4566,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'puh-THOL-uh-jee',
         etymology: 'Greek: pathos (suffering) + logos (study)',
         distractors: ['padhology', 'patholoky', 'pahtology'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'periphery',
@@ -4688,7 +4688,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'AL-guh-rith-um',
         etymology: 'Medieval Latin: algorismus, from al-Khwarizmi, a Persian mathematician',
         distractors: ['algorithme', 'elgorithm', 'algarithm'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'asthma',
@@ -4762,7 +4762,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'day-BYOO',
         etymology: 'French: debut (beginning, first appearance), from debuter (to begin)',
         distractors: ['dedut', 'debat', 'debute'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'denouement',
@@ -4886,7 +4886,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'EK-wih-tuh-bul',
         etymology: 'Latin: aequitas (equality), from aequus (equal)',
         distractors: ['equitaple', 'eqiutable', 'equitible'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'fabricate',
@@ -4898,7 +4898,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'FAB-rih-kayt',
         etymology: 'Latin: fabricare (to make, construct), from fabrica (workshop)',
         distractors: ['fabbricate', 'fabricade', 'farbicate'],
-        theme: 'building',
+        theme: 'home',
     },
     {
         word: 'gregarious',
@@ -5006,7 +5006,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'TAN-juh-bul',
         etymology: 'Latin: tangibilis (that may be touched), from tangere (to touch)',
         distractors: ['tankible', 'tangidle', 'tangilbe'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'verdant',
@@ -5080,7 +5080,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'dy-AF-uh-nus',
         etymology: 'Greek: diaphanes (transparent), from dia- (through) + phainein (to show)',
         distractors: ['diapphanous', 'diaphamous', 'daiphanous'],
-        theme: 'texture',
+        theme: 'sensory',
     },
     {
         word: 'ephemeral',
@@ -5164,7 +5164,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'NEM-uh-sis',
         etymology: 'Greek: Nemesis (goddess of retribution), from nemein (to give what is due)',
         distractors: ['nemasis', 'nenesis', 'nemisis'],
-        theme: 'sports',
+        theme: 'actions',
     },
     {
         word: 'ostracize',
@@ -5334,7 +5334,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'shuh-RAYD',
         etymology: 'French: charade (entertainment, riddle)',
         distractors: ['charad', 'charrade', 'cherade'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'clairvoyant',
@@ -5454,7 +5454,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'rih-POST',
         etymology: 'French: riposte (reply), from Italian risposta (response)',
         distractors: ['ripost', 'ripotse', 'riposste'],
-        theme: 'sports',
+        theme: 'actions',
     },
     {
         word: 'saboteur',
@@ -5504,7 +5504,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kun-GLOM-ur-it',
         etymology: 'Latin: conglomerare (to roll together), from con- (together) + glomus (ball)',
         distractors: ['conglumerate', 'comglomerate', 'conglomerat'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'disambiguation',
@@ -5540,7 +5540,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ek-struh-tuh-RES-tree-ul',
         etymology: 'Latin: extra (outside) + terrestris (of the earth)',
         distractors: ['extraterresrtial', 'exdraterrestrial', 'extraterrestrail'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'idiosyncratic',
@@ -5648,7 +5648,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'tem-pruh-MEN-tul',
         etymology: 'Latin: temperamentum (proper mixture), from temperare (to mix)',
         distractors: ['temperamentale', 'tepmeramental', 'temperametnal'],
-        theme: 'performance',
+        theme: 'art',
     },
     {
         word: 'uncharacteristically',
@@ -5684,7 +5684,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'uh-kown-tuh-BIL-ih-tee',
         etymology: 'Latin: computare (to calculate, reckon) via Old French acont',
         distractors: ['accoutnability', 'accoumtability', 'accountabiliyt'],
-        theme: 'law',
+        theme: 'society',
     },
 
     // ── Irregular (~15) ─────────────────────────────────────────────────
@@ -5710,7 +5710,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'byoo-ROK-ruh-see',
         etymology: 'French: bureaucratie, from bureau (desk, office) + Greek kratos (power)',
         distractors: ['bureaucrecy', 'bureuacracy', 'bureaukracy'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'tyrannical',
@@ -5770,7 +5770,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'floo-RES-unt',
         etymology: 'From fluorite (mineral that fluoresces) + Latin -escent (becoming)',
         distractors: ['fluorescente', 'flaorescent', 'fluirescent'],
-        theme: 'science',
+        theme: 'academic',
     },
     {
         word: 'heuristic',
@@ -5794,7 +5794,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ir-ih-DES-unt',
         etymology: 'Latin: iris (rainbow) + -escent (becoming)',
         distractors: ['iribescent', 'iridesscent', 'iridecsent'],
-        theme: 'light',
+        theme: 'sensory',
     },
     {
         word: 'catarrh',
@@ -5904,7 +5904,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'KON-fih-skayt',
         etymology: 'Latin: confiscare (to seize for the treasury), from con- (together) + fiscus (treasury)',
         distractors: ['conficsate', 'confoscate', 'confiscat'],
-        theme: 'power',
+        theme: 'society',
     },
     {
         word: 'disenchanted',
@@ -6026,7 +6026,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kum-PUL-suh-ree',
         etymology: 'Latin: compellere (to compel) + -ory (relating to)',
         distractors: ['compulsorye', 'compuslory', 'commpulsory'],
-        theme: 'law',
+        theme: 'society',
     },
     {
         word: 'extemporaneous',
