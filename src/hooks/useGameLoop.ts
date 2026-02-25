@@ -45,7 +45,7 @@ const INITIAL_STATE: GameState = {
 /**
  * Function the domain provides to generate one item.
  * @param difficulty  0-10 adaptive difficulty level
- * @param categoryId  The active question type/category (e.g. 'multiply')
+ * @param categoryId  The active question type/category (e.g. 'cvc')
  * @param hardMode    Whether hard mode is active
  * @param rng         Optional seeded RNG for reproducible daily/challenge sets
  */
@@ -60,7 +60,7 @@ export type ItemGenerator = (
 
 export function useGameLoop(
     generateItem: ItemGenerator,
-    categoryId: string = 'multiply',
+    categoryId: string = 'cvc',
     hardMode = false,
     challengeId: string | null = null,
     timedMode = false,
@@ -75,12 +75,14 @@ export function useGameLoop(
     generateFiniteSet?: (categoryId: string, challengeId: string | null) => EngineItem[],
     /** Optional callback fired after every answer with the item, correctness, and response time. */
     onAnswer?: (item: EngineItem, correct: boolean, responseTimeMs: number) => void,
+    /** Minimum adaptive difficulty level (from grade selection). */
+    minLevel = 1,
 ) {
-    const { level, recordAnswer } = useDifficulty();
+    const { level, recordAnswer } = useDifficulty(minLevel);
     const [items, setItems] = useState<EngineItem[]>([]);
     const [gs, setGs] = useState<GameState>(INITIAL_STATE);
 
-    const { bufferSize, speedrunCount, autoAdvanceMs, failPauseMs, milestones, speedrunTypeId, finiteTypeIds } = config;
+    const { bufferSize, autoAdvanceMs, failPauseMs, milestones, finiteTypeIds } = config;
 
     const onAnswerRef = useRef(onAnswer);
     onAnswerRef.current = onAnswer;
@@ -111,27 +113,17 @@ export function useGameLoop(
     const timedModeRef = useRef(timedMode);
     timedModeRef.current = timedMode;
 
-    // ── Speedrun timing ───────────────────────────────────────────────────────
-    const speedrunStartRef = useRef<number>(0);
-    const speedrunRafRef = useRef<number>(0);
-    const [speedrunElapsed, setSpeedrunElapsed] = useState(0);
-    const [speedrunFinalTime, setSpeedrunFinalTime] = useState<number | null>(null);
-
     // ── Helpers ───────────────────────────────────────────────────────────────
 
     const isFinite = (id: string) => finiteTypeIds.includes(id);
-    const isSpeedrun = (id: string) => id === speedrunTypeId;
 
     const buildInitialSet = useCallback((catId: string, hard: boolean): EngineItem[] => {
-        if (isSpeedrun(catId)) {
-            return Array.from({ length: speedrunCount }, () => generateItem(level, 'mix-all', hard));
-        }
         if (isFinite(catId) && generateFiniteSet) {
             return generateFiniteSet(catId, challengeId);
         }
         return Array.from({ length: bufferSize }, () => generateItem(level, catId, hard));
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [level, bufferSize, speedrunCount, challengeId, generateItem, generateFiniteSet]);
+    }, [level, bufferSize, challengeId, generateItem, generateFiniteSet]);
 
     // ── Initialize buffer ─────────────────────────────────────────────────────
     useEffect(() => {
@@ -139,11 +131,7 @@ export function useGameLoop(
         startedRef.current = true;
         const initial = buildInitialSet(categoryId, hardMode);
         if (initial[0]) initial[0].startTime = Date.now();
-        if (isSpeedrun(categoryId)) {
-            speedrunStartRef.current = Date.now();
-            setSpeedrunFinalTime(null);
-            correctCountRef.current = 0;
-        } else if (isFinite(categoryId)) {
+        if (isFinite(categoryId)) {
             dailyRef.current = { dateLabel: '' }; // populated by generateFiniteSet if needed
         }
         setItems(initial);
@@ -153,26 +141,23 @@ export function useGameLoop(
     // ── Regenerate on category / hard mode change ─────────────────────────────
     useEffect(() => {
         if (prevCategoryId.current === categoryId && prevHard.current === hardMode) return;
+        const categoryChanged = prevCategoryId.current !== categoryId;
         prevCategoryId.current = categoryId;
         prevHard.current = hardMode;
 
         const fresh = buildInitialSet(categoryId, hardMode);
         if (fresh[0]) fresh[0].startTime = Date.now();
 
-        if (isSpeedrun(categoryId)) {
-            speedrunStartRef.current = Date.now();
-            setSpeedrunFinalTime(null);
-            correctCountRef.current = 0;
-        }
-
         setItems(fresh);
-        setGs(INITIAL_STATE);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // Only reset score/stats when category changes; hard mode toggle just refreshes questions
+        if (categoryChanged) {
+            setGs(INITIAL_STATE);
+        }
     }, [categoryId, hardMode, buildInitialSet]);
 
     // ── Keep infinite buffer full ─────────────────────────────────────────────
     useEffect(() => {
-        if (isSpeedrun(categoryId) || isFinite(categoryId)) return;
+        if (isFinite(categoryId)) return;
         if (items.length < bufferSize) {
             setItems(prev => [...prev, generateItem(level, categoryId, hardMode)]);
         }
@@ -211,9 +196,6 @@ export function useGameLoop(
         if (direction === 'up') {
             frozenRef.current = true;
             setGs(prev => ({ ...prev, streak: 0, chalkState: 'idle', frozen: true }));
-            if (isSpeedrun(categoryId)) {
-                setItems(p => [...p, generateItem(level, 'mix-all', hardMode)]);
-            }
             safeTimeout(() => {
                 setGs(prev => ({ ...prev, frozen: false }));
                 frozenRef.current = false;
@@ -230,7 +212,6 @@ export function useGameLoop(
             recordAnswer(tts, true);
             const isFast = tts < FAST_ANSWER_MS;
             correctCountRef.current += 1;
-            const actualCorrectCount = correctCountRef.current;
             let newStreak = 0;
             let milestoneEmoji = '';
 
@@ -257,14 +238,6 @@ export function useGameLoop(
             scheduleChalkReset(newStreak >= 10 ? 2000 : 800);
             if (milestoneEmoji) safeTimeout(() => setGs(p => ({ ...p, milestone: '' })), 1300);
             if (isFast) safeTimeout(() => setGs(p => ({ ...p, speedBonus: false })), 900);
-
-            // Speedrun win condition
-            if (isSpeedrun(categoryId) && actualCorrectCount >= speedrunCount) {
-                const finalTime = Date.now() - speedrunStartRef.current;
-                setSpeedrunFinalTime(finalTime);
-                setGs(prev => ({ ...prev, flash: 'none' }));
-                return;
-            }
 
             safeTimeout(() => {
                 setGs(prev => ({ ...prev, flash: 'none', frozen: false }));
@@ -310,9 +283,6 @@ export function useGameLoop(
                 // Normal wrong answer
                 frozenRef.current = true;
                 scheduleChalkReset(failPauseMs);
-                if (isSpeedrun(categoryId)) {
-                    setItems(p => [...p, generateItem(level, 'mix-all', hardMode)]);
-                }
                 safeTimeout(() => {
                     setGs(p => ({ ...p, flash: 'none', frozen: false }));
                     frozenRef.current = false;
@@ -335,7 +305,7 @@ export function useGameLoop(
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, level, milestones, autoAdvanceMs, failPauseMs, speedrunCount, generateItem]);
+    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, level, milestones, autoAdvanceMs, failPauseMs, generateItem]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     useEffect(() => {
@@ -383,29 +353,12 @@ export function useGameLoop(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timedMode, items[0]?.id, gs.frozen]);
 
-    // ── Speedrun live stopwatch ───────────────────────────────────────────────
-    useEffect(() => {
-        if (!isSpeedrun(categoryId) || speedrunFinalTime !== null) {
-            cancelAnimationFrame(speedrunRafRef.current);
-            return;
-        }
-        if (speedrunStartRef.current === 0) return;
-        const tick = () => {
-            setSpeedrunElapsed(Date.now() - speedrunStartRef.current);
-            speedrunRafRef.current = requestAnimationFrame(tick);
-        };
-        speedrunRafRef.current = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(speedrunRafRef.current);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryId, speedrunFinalTime, items.length]);
-
     // ── Cleanup ───────────────────────────────────────────────────────────────
     useEffect(() => {
         return () => {
             if (chalkTimerRef.current) clearTimeout(chalkTimerRef.current);
             pendingTimers.current.forEach(t => clearTimeout(t));
             pendingTimers.current = [];
-            cancelAnimationFrame(speedrunRafRef.current);
         };
     }, []);
 
@@ -422,7 +375,5 @@ export function useGameLoop(
         timerProgress,
         dailyComplete,
         dailyDateLabel: dailyRef.current?.dateLabel ?? '',
-        speedrunFinalTime,
-        speedrunElapsed,
     };
 }

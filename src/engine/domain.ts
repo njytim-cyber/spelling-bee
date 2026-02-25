@@ -74,8 +74,6 @@ export type FeedbackFlash = 'none' | 'correct' | 'wrong';
 export interface GameConfig {
     /** Pre-generated problem buffer (infinite mode only) */
     bufferSize: number;
-    /** Number of correct answers to win a speedrun round */
-    speedrunCount: number;
     /** Ms before advancing to next problem after a correct answer */
     autoAdvanceMs: number;
     /** Ms before advancing to next problem after a wrong answer */
@@ -84,11 +82,6 @@ export interface GameConfig {
     timedModeMs: number;
     /** Streak thresholds → emoji displayed centre screen */
     milestones: Record<number, string>;
-    /**
-     * Question-type ID used for speedrun.
-     * The generator for this type must be registered via generateItem.
-     */
-    speedrunTypeId: string;
     /** Question-type IDs that are "finite sets" (daily, challenge).
      *  The engine will not refill the buffer for these types. */
     finiteTypeIds: string[];
@@ -96,11 +89,9 @@ export interface GameConfig {
 
 export const DEFAULT_GAME_CONFIG: GameConfig = {
     bufferSize: 8,
-    speedrunCount: 10,
     autoAdvanceMs: 150,
     failPauseMs: 400,
     timedModeMs: 10_000,
     milestones: { 5: '🔥', 10: '⚡', 20: '👑', 50: '🏆' },
-    speedrunTypeId: 'speedrun',
     finiteTypeIds: ['daily', 'challenge', 'review'],
 };

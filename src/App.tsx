@@ -8,8 +8,9 @@ import { ScoreCounter } from './components/ScoreCounter';
 import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
-import type { SpellingBand } from './domains/spelling/spellingCategories';
-import { defaultTypeForBand, typesForBand, SPELLING_AGE_BANDS, SPELLING_BAND_LABELS } from './domains/spelling/spellingCategories';
+import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
+import { getGradeConfig } from './domains/spelling/spellingCategories';
+import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { OfflineBanner } from './components/OfflineBanner';
 import { ReloadPrompt } from './components/ReloadPrompt';
@@ -28,7 +29,6 @@ function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Pr
 
 const LeaguePage = lazy(() => lazyRetry(() => import('./components/LeaguePage')).then(m => ({ default: m.LeaguePage })));
 const MePage = lazy(() => lazyRetry(() => import('./components/MePage')).then(m => ({ default: m.MePage })));
-const TricksPage = lazy(() => lazyRetry(() => import('./components/TricksPage')).then(m => ({ default: m.TricksPage })));
 
 import { useGameLoop } from './hooks/useGameLoop';
 import { useStats } from './hooks/useStats';
@@ -46,43 +46,33 @@ import { generateSpellingItem } from './domains/spelling/spellingGenerator';
 import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
 import { BeeSimPage } from './components/BeeSimPage';
-import { TournamentSummary } from './components/TournamentSummary';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
-import type { SpellingCategory } from './domains/spelling/spellingCategories';
 import type { EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE } from './config';
-import { ensureTiersForBand, getRegistryVersion } from './domains/spelling/words';
-import { OnboardingModal } from './components/OnboardingModal';
+import { ensureAllTiers, getRegistryVersion } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 
-type Tab = 'game' | 'league' | 'me' | 'magic';
-const TAB_ORDER: Tab[] = ['game', 'league', 'magic', 'me'];
+type Tab = 'game' | 'bee' | 'league' | 'me';
+const TAB_ORDER: Tab[] = ['game', 'bee', 'league', 'me'];
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
-/**
- * Creates a band-aware item generator closure.
- * The closure captures the current ageBand so the word difficulty is capped.
- */
-function makeGenerateItem(band: string) {
+function makeGenerateItem() {
   return (
     difficulty: number,
     categoryId: string,
     hardMode: boolean,
     rng?: () => number,
-  ): EngineItem => generateSpellingItem(difficulty, categoryId, hardMode, rng, band);
+  ): EngineItem => generateSpellingItem(difficulty, categoryId, hardMode, rng);
 }
 
-/**
- * Creates a band-aware finite-set generator for daily / challenge modes.
- */
-function makeGenerateFiniteSet(band: string) {
+function makeGenerateFiniteSet() {
   return (categoryId: string, challengeId: string | null): EngineItem[] => {
     if (challengeId) {
       return generateChallenge(challengeId);
     }
     return Array.from({ length: 10 }, (_, i) =>
-      generateSpellingItem(2 + Math.floor(i / 4), categoryId || 'mix', false, undefined, band)
+      generateSpellingItem(2 + Math.floor(i / 4), categoryId || 'cvc', false)
     );
   };
 }
@@ -106,12 +96,9 @@ function App() {
   const uid = user?.uid ?? null;
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
-  const [isMagicLessonActive, setIsMagicLessonActive] = useState(false);
   const [hardMode, setHardMode] = useState(false);
   const [timedMode, setTimedMode] = useState(false);
 
-  // ── Onboarding (first-launch detection) ──
-  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.onboarded));
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
 
@@ -125,71 +112,68 @@ function App() {
     }
     return c;
   });
-  const [questionType, setQuestionTypeRaw] = useState<QuestionType>(
-    challengeId ? 'challenge' : 'cvc'
-  );
+  const [questionType, setQuestionTypeRaw] = useState<QuestionType>(() => {
+    if (challengeId) return 'challenge';
+    const stored = localStorage.getItem(STORAGE_KEYS.grade);
+    if (stored) return getGradeConfig(stored as GradeLevel).defaultCategory;
+    return 'cvc';
+  });
 
-  // ── Tournament state (must be before setQuestionType wrapper) ──
-  const [tournamentRound, setTournamentRound] = useState(0);
-  const [tournamentEliminated, setTournamentEliminated] = useState(false);
-
-  // Wrap setter to reset tournament state when entering tournament mode
+  // Track the last non-bee category so bee sim can inherit the user's theme/topic
+  const [lastCategory, setLastCategory] = useState<QuestionType>(() => {
+    const stored = localStorage.getItem(STORAGE_KEYS.grade);
+    if (stored) return getGradeConfig(stored as GradeLevel).defaultCategory;
+    return 'cvc';
+  });
   const setQuestionType = useCallback((type: QuestionType) => {
-    if (type === 'tournament') {
-      setTournamentRound(0);
-      setTournamentEliminated(false);
-    }
+    if (type !== 'bee') setLastCategory(type);
     setQuestionTypeRaw(type);
   }, []);
 
-  const { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBestSpeedrunTime, updateBadge, consumeShield } = useStats(uid);
+  const { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBadge, consumeShield } = useStats(uid);
 
-  // ── Age Band (must be above useGameLoop so generators can capture it) ──
-  const [ageBand, setAgeBand] = useLocalState(STORAGE_KEYS.ageBand, 'starter' as SpellingBand, uid) as [SpellingBand, (v: SpellingBand) => void];
-
-  // ── Lazy-load word tiers for the current band ──
+  // ── Load all word tiers ──
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
   useEffect(() => {
     let cancelled = false;
-    ensureTiersForBand(ageBand).then(() => {
+    ensureAllTiers().then(() => {
       if (!cancelled) setWordRegistryVersion(getRegistryVersion());
     });
     return () => { cancelled = true; };
-  }, [ageBand]);
+  }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, reviewQueue, weakCategories, masteredCount } = useWordHistory();
+  const { records: wordRecords, recordAttempt, reviewQueue, masteredCount } = useWordHistory();
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
     const word = item.meta?.['word'] as string | undefined;
-    if (word) recordAttempt(word, item.meta?.['category'] as string ?? 'mix', correct, responseTimeMs);
-    // Tournament elimination
-    if (questionType === 'tournament') {
-      if (correct) {
-        setTournamentRound(r => r + 1);
-      } else {
-        setTournamentEliminated(true);
-      }
-    }
-  }, [recordAttempt, questionType]);
+    if (word) recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
+  }, [recordAttempt]);
 
-  // Band-aware generators — closures that capture the current ageBand + review queue
-  // wordRegistryVersion ensures generators refresh after lazy-loading new tiers
+  // wordRegistryVersion ensures generators refresh after loading new tiers
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const generateItem = useMemo(() => makeGenerateItem(ageBand), [ageBand, wordRegistryVersion]);
+  const generateItem = useMemo(() => makeGenerateItem(), [wordRegistryVersion]);
   const generateFiniteSet = useMemo(() => {
-    const baseFn = makeGenerateFiniteSet(ageBand);
+    const baseFn = makeGenerateFiniteSet();
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
       if (categoryId === 'review' && reviewQueue.length > 0) {
-        // Generate items from the review queue words
         return reviewQueue.slice(0, 10).map(r =>
-          generateSpellingItem(3, r.category || 'mix', false, undefined, ageBand)
+          generateSpellingItem(3, r.category || 'cvc', false)
         );
       }
       return baseFn(categoryId, challengeId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ageBand, reviewQueue, wordRegistryVersion]);
+  }, [reviewQueue, wordRegistryVersion]);
+
+  // ── Grade config (needed before useGameLoop) ──
+  const [grade, setGrade] = useLocalState(STORAGE_KEYS.grade, '', uid);
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.grade));
+
+  const gradeConfig = useMemo(
+    () => grade ? getGradeConfig(grade as GradeLevel) : null,
+    [grade],
+  );
 
   const {
     problems,
@@ -207,8 +191,6 @@ function App() {
     handleSwipe,
     timerProgress,
     dailyComplete,
-    speedrunFinalTime,
-    speedrunElapsed,
     shieldBroken,
   } = useGameLoop(
     generateItem,
@@ -221,6 +203,7 @@ function App() {
     undefined, // use DEFAULT_GAME_CONFIG
     generateFiniteSet,
     onAnswer,
+    gradeConfig?.minDifficultyLevel ?? 1,
   );
 
   // ── Shield consumed toast ──
@@ -260,10 +243,8 @@ function App() {
     [answerHistory]
   );
 
-  // ── Session summary (auto-show on daily/speedrun finish) ──
-  const { showSummary, setShowSummary, isNewSpeedrunRecord } = useAutoSummary(
-    dailyComplete, speedrunFinalTime, stats.bestSpeedrunTime, updateBestSpeedrunTime, hardMode
-  );
+  // ── Session summary (auto-show on daily finish) ──
+  const { showSummary, setShowSummary } = useAutoSummary(dailyComplete);
 
   // ── Save daily result when daily set is completed ──
   useEffect(() => {
@@ -334,7 +315,7 @@ function App() {
       beeSessions: 0, // tracked per-session, not persisted yet
       beeNoHelpStreak: 0,
       beeBestRun: 0,
-      bestTournamentRound: tournamentRound,
+      bestTournamentRound: 0,
       tournamentSessions: 0,
     };
     const fresh = checkAchievements(EVERY_SPELLING_ACHIEVEMENT, snap, unlockedRef.current);
@@ -351,7 +332,7 @@ function App() {
         return () => clearTimeout(t);
       }
     }
-  }, [stats, bestStreak, uid, masteredCount, tournamentRound, wordRecords]);
+  }, [stats, bestStreak, uid, masteredCount, wordRecords]);
 
   // ── Personal best detection ──
   const showPB = usePersonalBest(bestStreak, stats.bestStreak);
@@ -366,7 +347,6 @@ function App() {
 
   // ── Tab swipe (non-game tabs only) ──
   const handleTabSwipe = useCallback((_: unknown, info: PanInfo) => {
-    if (isMagicLessonActive) return;
     if (activeTab === 'game') return; // game uses horizontal swipe for answers
     const t = 80;
     const idx = TAB_ORDER.indexOf(activeTab);
@@ -375,10 +355,17 @@ function App() {
     } else if ((info.offset.x > t || info.velocity.x > 400) && idx > 0) {
       handleTabChange(TAB_ORDER[idx - 1]);
     }
-  }, [activeTab, handleTabChange, isMagicLessonActive]);
+  }, [activeTab, handleTabChange]);
 
   const [activeCostume, handleCostumeChange] = useLocalState(STORAGE_KEYS.costume, '', uid);
   const [activeTrailId, handleTrailChange] = useLocalState(STORAGE_KEYS.trail, '', uid);
+
+  const handleGradeSelect = useCallback((g: GradeLevel) => {
+    setGrade(g);
+    const config = getGradeConfig(g);
+    setQuestionType(config.defaultCategory);
+    setShowOnboarding(false);
+  }, [setGrade, setQuestionType]);
 
   // ── Chalk themes ──
   const [activeThemeId, setActiveThemeId] = useLocalState(STORAGE_KEYS.chalkTheme, 'classic', uid);
@@ -406,28 +393,6 @@ function App() {
   const toggleThemeMode = useCallback(() => {
     setThemeMode(themeMode === 'dark' ? 'light' : 'dark');
   }, [themeMode, setThemeMode]);
-  // (ageBand is declared above useGameLoop)
-
-  // ── Practice focus: find lowest-accuracy topic ──
-  const levelUpSuggestion = useMemo(() => {
-    const available = typesForBand(ageBand).filter(t => t.id !== 'speedrun' && t.id !== 'challenge');
-    let worst: { type: QuestionType; acc: number; label: string } | null = null;
-    for (const t of available) {
-      const s = stats.byType[t.id];
-      if (!s || s.solved < 5) continue;
-      const acc = s.correct / s.solved;
-      if (!worst || acc < worst.acc) worst = { type: t.id as QuestionType, acc, label: t.label };
-    }
-    return worst && worst.acc < 0.8 ? worst : null;
-  }, [stats.byType, ageBand]);  // SpellingBand-aware via spelling typesForBand
-  const handleBandChange = useCallback((band: SpellingBand) => {
-    setAgeBand(band);
-    // Reset to the band's default type if current type isn't in the new band
-    const available = typesForBand(band);
-    if (!available.some(t => t.id === questionType)) {
-      setQuestionType(defaultTypeForBand(band));
-    }
-  }, [questionType, setAgeBand, setQuestionType]);
 
   // Show loading screen while Firebase auth initializes
   if (authLoading) {
@@ -436,15 +401,6 @@ function App() {
 
   return (
     <>
-      {/* Onboarding modal — first launch only */}
-      {showOnboarding && (
-        <OnboardingModal onSelect={(band) => {
-          setAgeBand(band);
-          localStorage.setItem(STORAGE_KEYS.onboarded, '1');
-          setShowOnboarding(false);
-        }} />
-      )}
-
       <BlackboardLayout>
         <OfflineBanner />
         <ReloadPrompt suppress={activeTab === 'game'} />
@@ -455,44 +411,27 @@ function App() {
           baseColor={CHALK_THEMES.find(t => t.id === activeThemeId)?.color}
         />
 
-        {/* ── Top-right controls (band picker + theme toggle) — game tab only ── */}
+        {/* ── Top-right controls (theme toggle) — game tab only ── */}
         {activeTab === 'game' && (
           <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-2">
-            <button
-              onClick={() => {
-                const idx = SPELLING_AGE_BANDS.indexOf(ageBand);
-                handleBandChange(SPELLING_AGE_BANDS[(idx + 1) % SPELLING_AGE_BANDS.length]);
-              }}
-              className="flex items-center gap-1 px-2 py-1 rounded-lg text-[rgb(var(--color-fg))]/50 active:text-[var(--color-gold)] transition-colors"
-              aria-label="Change difficulty band"
-            >
-              <span className="text-base">{SPELLING_BAND_LABELS[ageBand].emoji}</span>
-              <span className="text-[10px] ui">{SPELLING_BAND_LABELS[ageBand].label}</span>
-            </button>
             <button
               onClick={toggleThemeMode}
               className="w-9 h-9 flex items-center justify-center text-[rgb(var(--color-fg))]/60 active:text-[var(--color-gold)] transition-colors"
               aria-label="Toggle theme"
             >
               {themeMode === 'light' ? (
-                <motion.svg
-                  viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                <motion.svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                 >
                   <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                  <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </motion.svg>
               ) : (
-                <motion.svg
-                  viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                <motion.svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                   animate={{ rotate: [0, -8, 8, -5, 5, 0] }}
                   transition={{ duration: 4, repeat: Infinity, repeatDelay: 3, ease: 'easeInOut' }}
                 >
@@ -513,7 +452,7 @@ function App() {
             }
           }} className="flex-1 flex flex-col w-full">
             {/* ── Score (centered, pushed down from edge) ── */}
-            <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,16px)+40px)] pb-6 z-30">
+            <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
               {/* Challenge header */}
               {questionType === 'challenge' && (
                 <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
@@ -522,20 +461,7 @@ function App() {
                   <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/10</span>
                 </div>
               )}
-              {questionType === 'speedrun' && (
-                <div className="text-xs ui text-[#FF00FF] mb-2 flex items-center gap-2">
-                  <span>⏱️ Speedrun</span>
-                  <span className="text-[rgb(var(--color-fg))]/30">·</span>
-                  <span className="text-[rgb(var(--color-fg))]/40">{totalCorrect}/10</span>
-                </div>
-              )}
-              {questionType === 'speedrun' ? (
-                <div className="chalk text-[#FF00FF] text-7xl leading-none tabular-nums">
-                  {((speedrunFinalTime ?? speedrunElapsed) / 1000).toFixed(1)}<span className="text-3xl">s</span>
-                </div>
-              ) : (
-                <ScoreCounter value={score} />
-              )}
+              <ScoreCounter value={score} />
 
               {/* Shield count */}
               {/* Screen reader announcement for game feedback */}
@@ -610,50 +536,15 @@ function App() {
                   )}
                 </div>
               )}
-              {/* Level Up suggestion — only visible when idle */}
-              {isFirstQuestion && levelUpSuggestion && questionType !== 'speedrun' && questionType !== 'challenge' && (
-                <motion.button
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 flex items-center gap-2 text-[10px] ui text-[var(--color-gold)]/70 hover:text-[var(--color-gold)] transition-colors"
-                  onClick={() => setQuestionType(levelUpSuggestion.type)}
-                >
-                  <span>🚀</span>
-                  <span>Level up your {levelUpSuggestion.label}!</span>
-                  <span className="text-[rgb(var(--color-fg))]/20">({Math.round(levelUpSuggestion.acc * 100)}%)</span>
-                </motion.button>
-              )}
-              {/* Review queue callout — when words are due */}
-              {isFirstQuestion && reviewQueue.length > 0 && questionType !== 'review' && questionType !== 'speedrun' && (
-                <motion.button
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-1.5 flex items-center gap-2 text-[10px] ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                  onClick={() => setQuestionType('review' as QuestionType)}
-                >
-                  <span>📝</span>
-                  <span>{reviewQueue.length} word{reviewQueue.length !== 1 ? 's' : ''} due for review</span>
-                </motion.button>
-              )}
-              {/* Mastered words + weak category hints */}
-              {isFirstQuestion && masteredCount > 0 && (
-                <div className="mt-1 text-[9px] ui text-[rgb(var(--color-fg))]/20">
-                  🐝 {masteredCount} word{masteredCount !== 1 ? 's' : ''} mastered
-                  {weakCategories.length > 0 && (
-                    <span> · Practice {weakCategories[0].category}</span>
-                  )}
-                </div>
-              )}
-              {/* Daily challenge callout — subtle, only when idle and not already on daily */}
-              {isFirstQuestion && questionType !== 'daily' && questionType !== 'speedrun' && questionType !== 'challenge' && (
+              {/* Review queue badge — single subtle pill when words are due */}
+              {isFirstQuestion && reviewQueue.length > 0 && questionType !== 'review' && (
                 <motion.button
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-1.5 text-[10px] ui text-[rgb(var(--color-fg))]/25 hover:text-[rgb(var(--color-fg))]/40 transition-colors"
-                  onClick={() => setQuestionType('daily' as QuestionType)}
+                  className="mt-2 px-3 py-1 rounded-full bg-[rgb(var(--color-fg))]/5 text-[10px] ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                  onClick={() => setQuestionType('review' as QuestionType)}
                 >
-                  📅 Daily challenge available
+                  📝 {reviewQueue.length} to review
                 </motion.button>
               )}
             </div>
@@ -677,34 +568,19 @@ function App() {
             <div className="flex-1 flex flex-col">
               {questionType === 'bee' ? (
                 <BeeSimPage
-                  band={ageBand}
-                  onExit={() => setQuestionType('mix' as QuestionType)}
+                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
                   onAnswer={(word, correct, ms) => {
                     recordAttempt(word, 'bee', correct, ms);
                   }}
+                  category={lastCategory}
+                  hardMode={hardMode}
                 />
               ) : questionType === 'daily' && dailyComplete ? (
                 <DailyChallengeComplete
                   correct={totalCorrect}
                   total={totalAnswered}
                   score={score}
-                  onExit={() => setQuestionType(defaultTypeForBand(ageBand) as QuestionType)}
-                />
-              ) : questionType === 'tournament' && tournamentEliminated ? (
-                <TournamentSummary
-                  round={tournamentRound}
-                  onRestart={() => {
-                    setTournamentRound(0);
-                    setTournamentEliminated(false);
-                    setQuestionType('mix' as QuestionType);
-                    // Brief delay then switch back to tournament to re-trigger
-                    setTimeout(() => setQuestionType('tournament' as QuestionType), 50);
-                  }}
-                  onExit={() => {
-                    setTournamentRound(0);
-                    setTournamentEliminated(false);
-                    setQuestionType('mix' as QuestionType);
-                  }}
+                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
                 />
               ) : (
                 <AnimatePresence mode="wait">
@@ -739,7 +615,7 @@ function App() {
               timedMode={timedMode}
               onTimedModeToggle={toggleTimedMode}
               timerProgress={timerProgress}
-              ageBand={ageBand}
+              reviewQueueCount={reviewQueue.length}
             />
 
             {/* ── Bee Buddy PiP ── */}
@@ -786,9 +662,22 @@ function App() {
         )}
 
         {/* Non-game tabs (no wrapper — each page scrolls independently) */}
+        {activeTab === 'bee' && (
+          <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
+            <BeeSimPage
+              onExit={() => setActiveTab('game')}
+              onAnswer={(word, correct, ms) => {
+                recordAttempt(word, 'bee', correct, ms);
+              }}
+              category={lastCategory}
+              hardMode={hardMode}
+            />
+          </motion.div>
+        )}
+
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} bestSpeedrunTime={stats.bestSpeedrunTime} speedrunHardMode={stats.speedrunHardMode} onStartSpeedrun={() => { setQuestionType('speedrun'); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} /></Suspense>
           </motion.div>
         )}
 
@@ -812,20 +701,14 @@ function App() {
               isAnonymous={user?.isAnonymous ?? true}
               onLinkGoogle={linkGoogle}
               onSendEmailLink={sendEmailLink}
-              ageBand={ageBand}
-              onBandChange={handleBandChange}
               activeBadge={stats.activeBadgeId || ''}
               onBadgeChange={updateBadge}
               wordRecords={wordRecords}
               themeMode={themeMode}
               onThemeModeToggle={toggleThemeMode}
+              grade={grade as string}
+              onGradeChange={handleGradeSelect}
             /></Suspense>
-          </motion.div>
-        )}
-
-        {activeTab === 'magic' && (
-          <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={!isMagicLessonActive ? handleTabSwipe : undefined}>
-            <Suspense fallback={<LoadingFallback />}><TricksPage onLessonActive={setIsMagicLessonActive} /></Suspense>
           </motion.div>
         )}
 
@@ -842,21 +725,9 @@ function App() {
           answerHistory={answerHistory}
           questionType={questionType}
           visible={showSummary}
-          onDismiss={() => {
-            setShowSummary(false);
-            if (questionType === 'speedrun') {
-              // Record session stats before leaving (can't use handleTabChange — it re-shows summary)
-              if (totalAnswered > 0) {
-                recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
-              }
-              setActiveTab('league');
-              setQuestionType(defaultTypeForBand(ageBand) as QuestionType);
-            }
-          }}
+          onDismiss={() => setShowSummary(false)}
           hardMode={hardMode}
           timedMode={timedMode}
-          speedrunFinalTime={speedrunFinalTime}
-          isNewSpeedrunRecord={isNewSpeedrunRecord}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
@@ -902,6 +773,13 @@ function App() {
           )}
         </AnimatePresence>
       </BlackboardLayout>
+
+      {/* ── Grade picker (first launch) ── */}
+      <AnimatePresence>
+        {showOnboarding && (
+          <OnboardingModal onSelect={handleGradeSelect} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

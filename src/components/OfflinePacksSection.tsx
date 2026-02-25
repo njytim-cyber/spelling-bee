@@ -19,7 +19,7 @@ export const OfflinePacksSection = memo(function OfflinePacksSection() {
     const handleDownload = useCallback(async (packId: string) => {
         setDownloading(packId);
         try {
-            await downloadPack(packId);
+            await downloadPack();
         } finally {
             setDownloading(null);
         }
@@ -30,7 +30,7 @@ export const OfflinePacksSection = memo(function OfflinePacksSection() {
         try {
             for (const pack of packs) {
                 if (!pack.downloaded) {
-                    await downloadPack(pack.id);
+                    await downloadPack();
                 }
             }
         } finally {
@@ -42,10 +42,7 @@ export const OfflinePacksSection = memo(function OfflinePacksSection() {
 
     return (
         <section>
-            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Offline Word Packs</h4>
-            <p className="text-[10px] ui text-[rgb(var(--color-fg))]/25 mb-3">
-                Download packs so words are available offline.
-            </p>
+            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-3">Offline Word Packs</h4>
 
             <div className="space-y-2">
                 {packs.map(pack => (

@@ -192,7 +192,7 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-[100] pointer-events-none touch-none mix-blend-screen"
+            className="fixed inset-0 z-[9999] pointer-events-none touch-none mix-blend-screen"
         />
     );
 });

@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Auto-shows session summary when daily challenge or speedrun finishes.
- * Returns showSummary state + setter, plus isNewSpeedrunRecord flag.
+ * Auto-shows session summary when daily challenge finishes.
+ * Returns showSummary state + setter.
  */
-export function useAutoSummary(
-    dailyComplete: boolean,
-    speedrunFinalTime: number | null,
-    bestSpeedrunTime: number,
-    updateBestSpeedrunTime: (time: number, hardMode?: boolean) => void,
-    hardMode: boolean,
-) {
+export function useAutoSummary(dailyComplete: boolean) {
     const [showSummary, setShowSummary] = useState(false);
 
     // Daily challenge auto-show
@@ -23,20 +17,7 @@ export function useAutoSummary(
         setPrevDailyComplete(false);
     }
 
-    // Speedrun auto-show
-    const [prevSpeedrunTime, setPrevSpeedrunTime] = useState<number | null>(null);
-    const isNewSpeedrunRecord = !!(speedrunFinalTime && (bestSpeedrunTime === 0 || speedrunFinalTime < bestSpeedrunTime));
-
-    if (speedrunFinalTime && speedrunFinalTime !== prevSpeedrunTime) {
-        setPrevSpeedrunTime(speedrunFinalTime);
-        setShowSummary(true);
-        updateBestSpeedrunTime(speedrunFinalTime, hardMode);
-    }
-    if (!speedrunFinalTime && prevSpeedrunTime) {
-        setPrevSpeedrunTime(null);
-    }
-
-    return { showSummary, setShowSummary, isNewSpeedrunRecord };
+    return { showSummary, setShowSummary };
 }
 
 /**

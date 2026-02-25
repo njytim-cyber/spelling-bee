@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { QuestionTypePicker } from './QuestionTypePicker';
-import type { SpellingCategory, SpellingBand } from '../domains/spelling/spellingCategories';
+import type { SpellingCategory } from '../domains/spelling/spellingCategories';
 
 interface Props {
     questionType: SpellingCategory;
@@ -11,7 +11,7 @@ interface Props {
     timedMode: boolean;
     onTimedModeToggle: () => void;
     timerProgress: number; // 0 → 1
-    ageBand: SpellingBand;
+    reviewQueueCount?: number;
 }
 
 /** Circular countdown ring drawn as an SVG arc */
@@ -49,44 +49,12 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
 export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange, hardMode, onHardModeToggle,
     timedMode, onTimedModeToggle, timerProgress,
-    ageBand,
+    reviewQueueCount,
 }: Props) {
-    const handleShare = async () => {
-        const shareData = {
-            title: 'Spelling Bee',
-            text: 'Try this spelling game! 🐝✨',
-            url: window.location.href,
-        };
-        try {
-            if (navigator.share) {
-                await navigator.share(shareData);
-            } else {
-                await navigator.clipboard.writeText(window.location.href);
-            }
-        } catch {
-            // User cancelled share
-        }
-    };
-
     return (
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
-            {/* Share */}
-            <motion.button
-                onClick={handleShare}
-                className="w-11 h-11 flex items-center justify-center text-[rgb(var(--color-fg))]/70 active:text-[var(--color-gold)]"
-                whileTap={{ scale: 0.88 }}
-            >
-                <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="18" cy="5" r="2.5" />
-                    <circle cx="6" cy="12" r="2.5" />
-                    <circle cx="18" cy="19" r="2.5" />
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-                </svg>
-            </motion.button>
-
             {/* Question type */}
-            <QuestionTypePicker current={questionType} onChange={onTypeChange} ageBand={ageBand} />
+            <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
 
             {/* Stopwatch / timed mode */}
             <motion.button
@@ -121,28 +89,6 @@ export const ActionButtons = memo(function ActionButtons({
                 </motion.svg>
             </motion.button>
 
-            {/* Bee simulation mode */}
-            <motion.button
-                onClick={() => onTypeChange('bee' as SpellingCategory)}
-                className={`w-11 h-11 flex items-center justify-center text-xl ${
-                    questionType === 'bee' ? 'opacity-100' : 'opacity-50'
-                }`}
-                whileTap={{ scale: 0.88 }}
-            >
-                🐝
-            </motion.button>
-
-            {/* Tournament mode */}
-            <motion.button
-                onClick={() => onTypeChange('tournament' as SpellingCategory)}
-                className={`w-11 h-11 flex items-center justify-center text-xl ${
-                    questionType === 'tournament' ? 'opacity-100' : 'opacity-50'
-                }`}
-                whileTap={{ scale: 0.88 }}
-            >
-                🏆
-            </motion.button>
-
             {/* Hard mode skull */}
             <motion.button
                 onClick={onHardModeToggle}
@@ -167,6 +113,32 @@ export const ActionButtons = memo(function ActionButtons({
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
             </motion.button>
+
+            {/* Review queue */}
+            <AnimatePresence>
+                {reviewQueueCount != null && reviewQueueCount > 0 && (
+                    <motion.button
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        onClick={() => onTypeChange('review' as SpellingCategory)}
+                        className={`w-11 h-11 flex flex-col items-center justify-center relative ${questionType === 'review' ? 'opacity-100' : 'opacity-60'}`}
+                        whileTap={{ scale: 0.88 }}
+                    >
+                        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                            <path d="M9 7h7M9 11h5" />
+                        </svg>
+                        <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] flex items-center justify-center rounded-full bg-[var(--color-streak-fire)] text-white text-[8px] ui font-bold px-0.5">
+                            {reviewQueueCount > 99 ? '99+' : reviewQueueCount}
+                        </span>
+                        {questionType === 'review' && (
+                            <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
+                        )}
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </div>
     );
 });

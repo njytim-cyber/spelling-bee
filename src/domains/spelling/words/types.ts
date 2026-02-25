@@ -21,6 +21,18 @@ export type PhonicsPattern =
     | 'compound' | 'multisyllable' | 'irregular'
     | 'latin-roots' | 'greek-roots' | 'french-origin';
 
+/** Semantic theme for topic-based word grouping (42 themes) */
+export type SemanticTheme =
+    | 'animals' | 'plants' | 'weather' | 'earth' | 'food'
+    | 'body' | 'health' | 'home' | 'clothing' | 'music'
+    | 'art' | 'performance' | 'sports' | 'science' | 'math'
+    | 'money' | 'language' | 'time' | 'people' | 'feelings'
+    | 'mind' | 'character' | 'communication' | 'actions' | 'quantity'
+    | 'texture' | 'water' | 'light' | 'sensory' | 'tools'
+    | 'nature' | 'building' | 'movement' | 'law' | 'color'
+    | 'power' | 'war' | 'fire' | 'sleep' | 'school'
+    | 'magic' | 'travel' | 'everyday';
+
 /**
  * A single curated spelling word with rich metadata.
  * This is the data-at-rest format stored statically in tier files.
@@ -42,6 +54,10 @@ export interface SpellingWord {
     pronunciation: string;
     /** Optional etymology for competitive learners */
     etymology?: string;
+    /** Pre-computed plausible misspellings (baked at build time) */
+    distractors?: string[];
+    /** Semantic theme for topic-based filtering */
+    theme?: SemanticTheme;
     /** Optional secondary patterns */
     secondaryPatterns?: PhonicsPattern[];
     /** Source provenance tag for competition word packs */

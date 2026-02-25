@@ -1,7 +1,8 @@
-import { memo, useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { PanInfo } from 'framer-motion';
 import type { useStats } from '../hooks/useStats';
-import { typesForBand, type SpellingBand } from '../domains/spelling/spellingCategories';
+import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievements';
 import { AchievementBadge } from './AchievementBadge';
 import { CHALK_THEMES, type ChalkTheme } from '../utils/chalkThemes';
@@ -9,6 +10,29 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { StudyAnalyticsModal } from './StudyAnalyticsModal';
 import { SettingsModal } from './SettingsModal';
+
+type MeTab = 'grades' | 'themes' | 'topics';
+const ME_TABS: { id: MeTab; label: string }[] = [
+    { id: 'grades', label: 'Grades' },
+    { id: 'themes', label: 'Themes' },
+    { id: 'topics', label: 'Topics' },
+];
+
+/** Per-grade breakdown for the Grades tab */
+function tierIcon(tier: string) {
+    return SPELLING_CATEGORIES.find(c => c.id === tier)?.icon;
+}
+const GRADE_LEVELS = [
+    { label: 'Kindergarten', tier: 'tier-1', grades: 'K' },
+    { label: 'Grade 1', tier: 'tier-1', grades: '1st' },
+    { label: 'Grade 2', tier: 'tier-2', grades: '2nd' },
+    { label: 'Grade 3', tier: 'tier-2', grades: '3rd' },
+    { label: 'Grade 4', tier: 'tier-3', grades: '4th' },
+    { label: 'Grade 5', tier: 'tier-3', grades: '5th' },
+    { label: 'Grade 6', tier: 'tier-4', grades: '6th' },
+    { label: 'Grade 7', tier: 'tier-4', grades: '7th' },
+    { label: 'Grade 8+', tier: 'tier-5', grades: '8th+' },
+];
 
 interface Props {
     stats: ReturnType<typeof useStats>['stats'];
@@ -28,13 +52,13 @@ interface Props {
     isAnonymous: boolean;
     onLinkGoogle: () => Promise<void>;
     onSendEmailLink: (email: string) => Promise<void>;
-    ageBand: SpellingBand;
-    onBandChange: (band: SpellingBand) => void;
     activeBadge: string;
     onBadgeChange: (id: string) => void;
     wordRecords?: Record<string, WordRecord>;
     themeMode: string;
     onThemeModeToggle: () => void;
+    grade: string;
+    onGradeChange: (grade: import('../domains/spelling/spellingCategories').GradeLevel) => void;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -96,7 +120,8 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, ageBand, onBandChange, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle }: Props) {
+export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange }: Props) {
+    const [meTab, setMeTab] = useState<MeTab>('grades');
     const [showRanks, setShowRanks] = useState(false);
     const [showAnalytics, setShowAnalytics] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
@@ -114,8 +139,19 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
     const dailyDoneToday = stats.lastDailyDate === today && stats.todayDailySolved > 0;
     const dailyAcc = dailyDoneToday ? Math.round((stats.todayDailyCorrect / stats.todayDailySolved) * 100) : null;
 
+    // Swipe between sub-tabs
+    const handleMeTabSwipe = useCallback((_: unknown, info: PanInfo) => {
+        const t = 80;
+        const idx = ME_TABS.findIndex(tab => tab.id === meTab);
+        if ((info.offset.x < -t || info.velocity.x < -400) && idx < ME_TABS.length - 1) {
+            setMeTab(ME_TABS[idx + 1].id);
+        } else if ((info.offset.x > t || info.velocity.x > 400) && idx > 0) {
+            setMeTab(ME_TABS[idx - 1].id);
+        }
+    }, [meTab]);
+
     return (
-        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20">
+        <div className="flex-1 flex flex-col items-center overflow-hidden px-6 pt-4 pb-20">
             {/* Settings gear button */}
             <button
                 onClick={() => setShowSettings(true)}
@@ -232,308 +268,340 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 );
             })()}
 
-            {/* Always-visible sign-in escape hatch */}
-            {isAnonymous && !showEmailInput && (
-                <div className="flex items-center gap-3 mb-4 px-1">
-                    <button
-                        onClick={onLinkGoogle}
-                        className="flex items-center gap-1.5 text-xs ui font-semibold text-[rgb(var(--color-fg))]/70 hover:text-[rgb(var(--color-fg))]/90 border border-[rgb(var(--color-fg))]/20 rounded-lg px-3 py-1.5 transition-colors"
+            {/* ── Sub-tab bar ── */}
+            <div className="flex items-center gap-1 mb-4 relative">
+                {ME_TABS.map(tab => {
+                    const isActive = tab.id === meTab;
+                    return (
+                        <button
+                            key={tab.id}
+                            onClick={() => setMeTab(tab.id)}
+                            className={`relative px-4 py-1.5 text-xs ui tracking-wide transition-colors ${isActive ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'}`}
+                        >
+                            {tab.label}
+                            {isActive && (
+                                <motion.div
+                                    layoutId="me-tab-indicator"
+                                    className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-[var(--color-gold)]"
+                                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                                />
+                            )}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* ── Swipeable tab content ── */}
+            <motion.div
+                className="flex-1 w-full overflow-y-auto"
+                key={meTab}
+                onPanEnd={handleMeTabSwipe}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+            >
+                <div className="flex flex-col items-center">
+
+            {/* ═══════ GRADES TAB ═══════ */}
+            {meTab === 'grades' && (
+                <>
+                    {/* Rank + XP header */}
+                    <motion.div
+                        className="text-center mb-6"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
                     >
-                        <span>🔗</span> Sign in with Google
-                    </button>
+                        <div className="text-4xl mb-1">{rank.emoji}</div>
+                        <button
+                            onClick={() => setShowRanks(true)}
+                            className="text-xl chalk text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
+                        >
+                            {rank.name}
+                        </button>
+                        {nextRank && (
+                            <div className="mt-2 w-44 mx-auto">
+                                <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                                    <motion.div
+                                        className="h-full rounded-full bg-[var(--color-gold)]"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${Math.round(progress * 100)}%` }}
+                                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                                    />
+                                </div>
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50 mt-1">
+                                    {stats.totalXP.toLocaleString()} / {nextRank.xp.toLocaleString()} → {nextRank.name}
+                                </div>
+                            </div>
+                        )}
+                        {!nextRank && mastery && (
+                            <div className="mt-2 w-48 mx-auto">
+                                <div className="flex items-center justify-between mb-1">
+                                    <span className="text-[10px] ui font-semibold text-[var(--color-skull)]">✨ Mastery Lv. {mastery.level}</span>
+                                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{stats.totalXP.toLocaleString()} XP</span>
+                                </div>
+                                <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                                    <motion.div
+                                        className="h-full rounded-full bg-[var(--color-skull)]"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${Math.round(mastery.progress * 100)}%` }}
+                                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </motion.div>
+
+                    {/* Summary stats row */}
+                    <div className="flex gap-5 mb-6">
+                        <div className="text-center">
+                            <div className="text-xl chalk text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50">🔥 streak</div>
+                        </div>
+                        <button className="text-center hover:opacity-80 transition-opacity" onClick={() => wordRecords && setShowAnalytics(true)}>
+                            <div className="text-xl chalk text-[var(--color-correct)]">{accuracy}%</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">🎯 accuracy</div>
+                        </button>
+                        <div className="text-center">
+                            <div className="text-xl chalk text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">✅ solved</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-xl chalk text-[var(--color-gold)]">{dailyAcc !== null ? `${dailyAcc}%` : '-'}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50">📅 daily</div>
+                        </div>
+                    </div>
+
+                    {/* Per-grade breakdown */}
+                    <div className="w-full max-w-sm space-y-2">
+                        {GRADE_LEVELS.map(g => {
+                            const ts = stats.byType[g.tier] ?? { solved: 0, correct: 0 };
+                            const pct = ts.solved > 0 ? Math.round((ts.correct / ts.solved) * 100) : 0;
+                            const hasData = ts.solved > 0;
+                            return (
+                                <div key={g.label} className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03]">
+                                    <span className="w-8 flex justify-center text-[rgb(var(--color-fg))]/50">{tierIcon(g.tier)}</span>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm ui text-[rgb(var(--color-fg))]/70 font-medium">{g.label}</span>
+                                            <span className={`text-sm ui font-semibold ${!hasData ? 'text-[rgb(var(--color-fg))]/20' :
+                                                pct >= 80 ? 'text-[var(--color-correct)]' :
+                                                    pct >= 50 ? 'text-[var(--color-gold)]' :
+                                                        'text-[rgb(var(--color-fg))]/50'
+                                                }`}>
+                                                {hasData ? `${pct}%` : '—'}
+                                            </span>
+                                        </div>
+                                        {hasData && (
+                                            <div className="mt-1 h-1 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                                                <div
+                                                    className={`h-full rounded-full transition-all ${pct >= 80 ? 'bg-[var(--color-correct)]' :
+                                                        pct >= 50 ? 'bg-[var(--color-gold)]' : 'bg-[rgb(var(--color-fg))]/30'
+                                                        }`}
+                                                    style={{ width: `${pct}%` }}
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-0.5">
+                                            {hasData ? `${ts.correct}/${ts.solved} correct` : 'not started'}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
                     <button
-                        onClick={() => setShowEmailInput(true)}
-                        className="text-xs ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors underline underline-offset-2"
+                        onClick={() => {
+                            const prompts = [
+                                `You've earned ${stats.totalXP.toLocaleString()} points! Are you sure you want to start fresh? 🥺`,
+                                `Bee Buddy will miss your ${stats.bestStreak}-streak record! Reset anyway? 🤔`,
+                                `${stats.totalSolved} words spelled and counting… wipe it all? 😱`,
+                                'A fresh start can be beautiful! Ready to begin again? 🌱',
+                                'Your spelling journey so far has been amazing! Really reset? ✨',
+                                'Even superheroes get a fresh origin story! Reset? 🦸',
+                            ];
+                            setResetConfirm(prompts[Math.floor(Math.random() * prompts.length)]);
+                        }}
+                        className="text-sm ui text-[rgb(var(--color-fg))]/35 mt-10 hover:text-[rgb(var(--color-fg))]/50 transition-colors uppercase tracking-widest"
                     >
-                        Email
+                        RESET STATS
                     </button>
+                </>
+            )}
+
+            {/* ═══════ TOPICS TAB ═══════ */}
+            {meTab === 'topics' && (
+                <div className="w-full max-w-sm">
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-1">
+                        achievements · {[...unlocked].length}/{EVERY_SPELLING_ACHIEVEMENT.length}
+                    </div>
+                    {activeBadge && (
+                        <div className="text-[10px] ui text-[var(--color-gold)]/60 text-center mb-3">
+                            🏷️ Badge: <span className="font-semibold">{EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === activeBadge)?.name || activeBadge}</span>
+                            <button onClick={() => onBadgeChange('')} className="ml-1 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60">✕</button>
+                        </div>
+                    )}
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
+                    <div className="grid grid-cols-4 gap-3 justify-items-center">
+                        {CORE_ACHIEVEMENTS.map(a => {
+                            const isUnlocked = unlocked.has(a.id);
+                            const hasCostume = ['streak-5', 'streak-20', 'sharpshooter', 'math-machine', 'century'].includes(a.id);
+                            const isActive = activeCostume === a.id;
+                            const isBadgeEquipped = activeBadge === a.id;
+                            return (
+                                <div
+                                    key={a.id}
+                                    onClick={() => {
+                                        if (!isUnlocked) return;
+                                        if (hasCostume) onCostumeChange(isActive ? '' : a.id);
+                                        onBadgeChange(isBadgeEquipped ? '' : a.id);
+                                    }}
+                                    className={isUnlocked ? 'cursor-pointer' : ''}
+                                >
+                                    <AchievementBadge
+                                        achievementId={a.id}
+                                        unlocked={isUnlocked}
+                                        equipped={isActive || isBadgeEquipped}
+                                        name={a.name}
+                                        desc={isBadgeEquipped ? '🏷️ badge' : isActive ? '✅ costume' : a.desc}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* 💀 Hard Mode */}
+                    <div className="mt-5 text-xs ui text-[var(--color-skull)] uppercase tracking-widest text-center mb-2">
+                        💀 hard mode
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 justify-items-center">
+                        {HARD_MODE_ACHIEVEMENTS.map(a => {
+                            const isUnlocked = unlocked.has(a.id);
+                            const isBadge = activeBadge === a.id;
+                            return (
+                                <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
+                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* ⏱️ Timed Mode */}
+                    <div className="mt-5 text-xs ui text-[var(--color-timed)] uppercase tracking-widest text-center mb-2">
+                        ⏱️ timed mode
+                    </div>
+                    <div className="grid grid-cols-4 gap-3 justify-items-center">
+                        {TIMED_MODE_ACHIEVEMENTS.map(a => {
+                            const isUnlocked = unlocked.has(a.id);
+                            const isBadge = activeBadge === a.id;
+                            return (
+                                <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
+                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* 💀⏱️ Ultimate Mode */}
+                    <div className="mt-5 text-xs ui text-[var(--color-ultimate)] uppercase tracking-widest text-center mb-2">
+                        💀⏱️ ultimate
+                    </div>
+                    <div className="grid grid-cols-3 gap-3 justify-items-center">
+                        {ULTIMATE_ACHIEVEMENTS.map(a => {
+                            const isUnlocked = unlocked.has(a.id);
+                            const isBadge = activeBadge === a.id;
+                            return (
+                                <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
+                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
 
-            <motion.div
-                className="text-center mb-8"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-            >
-                <div className="text-5xl mb-2">{rank.emoji}</div>
-                <button
-                    onClick={() => setShowRanks(true)}
-                    className="text-2xl chalk text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
-                >
-                    {rank.name}
-                </button>
-                {/* Progress to next rank */}
-                {nextRank && (
-                    <div className="mt-3 w-48 mx-auto">
-                        <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
-                            <motion.div
-                                className="h-full rounded-full bg-[var(--color-gold)]"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${Math.round(progress * 100)}%` }}
-                                transition={{ duration: 0.8, ease: 'easeOut' }}
-                            />
+            {/* ═══════ THEMES TAB ═══════ */}
+            {meTab === 'themes' && (
+                <>
+                    {/* Chalk Themes — locked ones faded like achievements */}
+                    <div className="w-full max-w-sm">
+                        <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                            CHALK COLOR
                         </div>
-                        <div className="text-xs ui text-[rgb(var(--color-fg))]/50 mt-1.5">
-                            {stats.totalXP.toLocaleString()} / {nextRank.xp.toLocaleString()} → {nextRank.name}
-                        </div>
-                    </div>
-                )}
-                {!nextRank && mastery && (
-                    <div className="mt-3 w-52 mx-auto">
-                        <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs ui font-semibold text-[var(--color-skull)]">✨ Mastery Lv. {mastery.level}</span>
-                            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{stats.totalXP.toLocaleString()} XP</span>
-                        </div>
-                        <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
-                            <motion.div
-                                className="h-full rounded-full bg-[var(--color-skull)]"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${Math.round(mastery.progress * 100)}%` }}
-                                transition={{ duration: 0.8, ease: 'easeOut' }}
-                            />
-                        </div>
-                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/35 mt-1">
-                            → Mastery Lv. {mastery.level + 1} at {mastery.xpForNext.toLocaleString()} XP
+                        <div className="flex justify-center gap-2.5 flex-wrap">
+                            {CHALK_THEMES.map(t => {
+                                const rankIdx = RANKS.findIndex(r => r.name === rank.name);
+                                const rankOk = rankIdx >= (t.minLevel - 1);
+                                // Mode-exclusive unlock checks
+                                const hardOk = !t.hardModeOnly || (stats.hardModeSolved >= (t.hardModeMin ?? 0));
+                                const timedOk = !t.timedModeOnly || (stats.timedModeSolved >= (t.timedModeMin ?? 0));
+                                const ultimateOk = !t.ultimateOnly || (stats.ultimateSolved >= (t.ultimateMin ?? 0));
+                                const isAvailable = rankOk && hardOk && timedOk && ultimateOk;
+                                const isActive = activeTheme === t.id;
+                                const modeIcon = t.ultimateOnly ? '💀⏱️' : t.hardModeOnly ? '💀' : t.timedModeOnly ? '⏱️' : '';
+                                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                                const swatchColor = isLight ? t.lightColor : t.color;
+                                return (
+                                    <button
+                                        key={t.id}
+                                        onClick={() => isAvailable && onThemeChange(t)}
+                                        title={`${t.name}${modeIcon ? ` ${modeIcon}` : ''}${!isAvailable ? ' (locked)' : ''}`}
+                                        className={`w-8 h-8 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
+                                            isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
+                                                'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
+                                            }`}
+                                        style={{ backgroundColor: swatchColor }}
+                                    >
+                                        {modeIcon && !isAvailable && (
+                                            <span className="absolute -top-1 -right-1 text-[8px]">{modeIcon}</span>
+                                        )}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
-                )}
+
+                    {/* Swipe Trails */}
+                    <div className="w-full max-w-sm mt-6">
+                        <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                            SWIPE TRAIL
+                        </div>
+                        <div className="flex justify-center gap-2.5 flex-wrap">
+                            {SWIPE_TRAILS.map(t => {
+                                const rankIdx = RANKS.findIndex(r => r.name === rank.name);
+                                const isUnlocked =
+                                    (!t.minLevel || rankIdx >= t.minLevel - 1) &&
+                                    (!t.minStreak || stats.bestStreak >= t.minStreak) &&
+                                    (!t.hardModeOnly || stats.hardModeSessions > 0) &&
+                                    (!t.timedModeOnly || stats.timedModeSessions > 0) &&
+                                    (!t.ultimateOnly || stats.ultimateSessions > 0);
+
+                                const isActive = (activeTrailId || 'chalk-dust') === t.id;
+
+                                return (
+                                    <button
+                                        key={t.id}
+                                        onClick={() => isUnlocked && onTrailChange(t.id)}
+                                        title={`${t.name}${!isUnlocked ? ' (Locked)' : ''}`}
+                                        className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all
+                                            ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
+                                                isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
+                                                    'border-[rgb(var(--color-fg))]/5 opacity-30 cursor-not-allowed bg-[var(--color-surface)]'
+                                            }`}
+                                    >
+                                        <span className={`text-2xl ${isActive ? 'drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]' : ''}`}>
+                                            {t.emoji}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </>
+            )}
+
+                </div>
             </motion.div>
-
-            {/* Core stats — horizontal, chalk style */}
-            <div className="flex gap-6 mb-8">
-                <div className="text-center">
-                    <div className="text-2xl chalk text-[var(--color-streak-fire)]">
-                        {stats.bestStreak}
-                    </div>
-                    <div className="text-xs ui text-[rgb(var(--color-fg))]/60">🔥 streak</div>
-                </div>
-                <button className="text-center hover:opacity-80 transition-opacity" onClick={() => wordRecords && setShowAnalytics(true)}>
-                    <div className="text-2xl chalk text-[var(--color-correct)]">
-                        {accuracy}%
-                    </div>
-                    <div className="text-xs ui text-[rgb(var(--color-fg))]/40">🎯 accuracy</div>
-                </button>
-                <div className="text-center">
-                    <div className="text-2xl chalk text-[rgb(var(--color-fg))]/70">
-                        {stats.totalSolved}
-                    </div>
-                    <div className="text-xs ui text-[rgb(var(--color-fg))]/40">✅ solved</div>
-                </div>
-                <div className="text-center">
-                    <div className="text-2xl chalk text-[var(--color-gold)]">
-                        {dailyAcc !== null ? `${dailyAcc}%` : '-'}
-                    </div>
-                    <div className="text-xs ui text-[rgb(var(--color-fg))]/60">📅 daily</div>
-                </div>
-            </div>
-
-            {/* Per question type row */}
-            <div className="w-full max-w-sm">
-                <div className="text-xs ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                    by type
-                </div>
-                <div className="grid grid-cols-5 gap-2 justify-items-center">
-                    {typesForBand(ageBand).filter(t => !t.id.startsWith('mix-') && t.id !== 'daily' && t.id !== 'challenge').map(t => {
-                        const ts = stats.byType[t.id] ?? { solved: 0, correct: 0 };
-                        const pct = ts.solved > 0 ? Math.round((ts.correct / ts.solved) * 100) : 0;
-                        return (
-                            <div key={t.id} className="flex flex-col items-center gap-1">
-                                <div className={`chalk text-[rgb(var(--color-fg))]/50 ${t.icon.length === 1 ? 'text-xl' : 'text-lg'}`}>
-                                    {t.icon}
-                                </div>
-                                <div className={`text-sm ui font-semibold ${ts.solved === 0 ? 'text-[rgb(var(--color-fg))]/20' :
-                                    pct >= 80 ? 'text-[var(--color-correct)]' :
-                                        pct >= 50 ? 'text-[var(--color-gold)]' :
-                                            'text-[rgb(var(--color-fg))]/50'
-                                    }`}>
-                                    {ts.solved === 0 ? '—' : `${pct}%`}
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* Achievements */}
-            <div className="w-full max-w-sm mt-8">
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-1">
-                    achievements · {[...unlocked].length}/{EVERY_SPELLING_ACHIEVEMENT.length}
-                </div>
-                {activeBadge && (
-                    <div className="text-[10px] ui text-[var(--color-gold)]/60 text-center mb-3">
-                        🏷️ Badge: <span className="font-semibold">{EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === activeBadge)?.name || activeBadge}</span>
-                        <button onClick={() => onBadgeChange('')} className="ml-1 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60">✕</button>
-                    </div>
-                )}
-                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
-                <div className="grid grid-cols-4 gap-3 justify-items-center">
-                    {CORE_ACHIEVEMENTS.map(a => {
-                        const isUnlocked = unlocked.has(a.id);
-                        const hasCostume = ['streak-5', 'streak-20', 'sharpshooter', 'math-machine', 'century'].includes(a.id);
-                        const isActive = activeCostume === a.id;
-                        const isBadgeEquipped = activeBadge === a.id;
-                        return (
-                            <div
-                                key={a.id}
-                                onClick={() => {
-                                    if (!isUnlocked) return;
-                                    if (hasCostume) onCostumeChange(isActive ? '' : a.id);
-                                    onBadgeChange(isBadgeEquipped ? '' : a.id);
-                                }}
-                                className={isUnlocked ? 'cursor-pointer' : ''}
-                            >
-                                <AchievementBadge
-                                    achievementId={a.id}
-                                    unlocked={isUnlocked}
-                                    equipped={isActive || isBadgeEquipped}
-                                    name={a.name}
-                                    desc={isBadgeEquipped ? '🏷️ badge' : isActive ? '✅ costume' : a.desc}
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* 💀 Hard Mode */}
-                <div className="mt-5 text-xs ui text-[var(--color-skull)] uppercase tracking-widest text-center mb-2">
-                    💀 hard mode
-                </div>
-                <div className="grid grid-cols-3 gap-3 justify-items-center">
-                    {HARD_MODE_ACHIEVEMENTS.map(a => {
-                        const isUnlocked = unlocked.has(a.id);
-                        const isBadge = activeBadge === a.id;
-                        return (
-                            <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* ⏱️ Timed Mode */}
-                <div className="mt-5 text-xs ui text-[var(--color-timed)] uppercase tracking-widest text-center mb-2">
-                    ⏱️ timed mode
-                </div>
-                <div className="grid grid-cols-4 gap-3 justify-items-center">
-                    {TIMED_MODE_ACHIEVEMENTS.map(a => {
-                        const isUnlocked = unlocked.has(a.id);
-                        const isBadge = activeBadge === a.id;
-                        return (
-                            <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* 💀⏱️ Ultimate Mode */}
-                <div className="mt-5 text-xs ui text-[var(--color-ultimate)] uppercase tracking-widest text-center mb-2">
-                    💀⏱️ ultimate
-                </div>
-                <div className="grid grid-cols-3 gap-3 justify-items-center">
-                    {ULTIMATE_ACHIEVEMENTS.map(a => {
-                        const isUnlocked = unlocked.has(a.id);
-                        const isBadge = activeBadge === a.id;
-                        return (
-                            <div key={a.id} onClick={() => isUnlocked && onBadgeChange(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* Chalk Themes — locked ones faded like achievements */}
-            <div className="w-full max-w-sm mt-6">
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                    CHALK COLOR
-                </div>
-                <div className="flex justify-center gap-2.5 flex-wrap">
-                    {CHALK_THEMES.map(t => {
-                        const rankIdx = RANKS.findIndex(r => r.name === rank.name);
-                        const rankOk = rankIdx >= (t.minLevel - 1);
-                        // Mode-exclusive unlock checks
-                        const hardOk = !t.hardModeOnly || (stats.hardModeSolved >= (t.hardModeMin ?? 0));
-                        const timedOk = !t.timedModeOnly || (stats.timedModeSolved >= (t.timedModeMin ?? 0));
-                        const ultimateOk = !t.ultimateOnly || (stats.ultimateSolved >= (t.ultimateMin ?? 0));
-                        const isAvailable = rankOk && hardOk && timedOk && ultimateOk;
-                        const isActive = activeTheme === t.id;
-                        const modeIcon = t.ultimateOnly ? '💀⏱️' : t.hardModeOnly ? '💀' : t.timedModeOnly ? '⏱️' : '';
-                        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                        const swatchColor = isLight ? t.lightColor : t.color;
-                        return (
-                            <button
-                                key={t.id}
-                                onClick={() => isAvailable && onThemeChange(t)}
-                                title={`${t.name}${modeIcon ? ` ${modeIcon}` : ''}${!isAvailable ? ' (locked)' : ''}`}
-                                className={`w-8 h-8 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
-                                    isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
-                                        'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
-                                    }`}
-                                style={{ backgroundColor: swatchColor }}
-                            >
-                                {modeIcon && !isAvailable && (
-                                    <span className="absolute -top-1 -right-1 text-[8px]">{modeIcon}</span>
-                                )}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {/* Swipe Trails */}
-            <div className="w-full max-w-sm mt-6">
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                    SWIPE TRAIL
-                </div>
-                <div className="flex justify-center gap-2.5 flex-wrap">
-                    {SWIPE_TRAILS.map(t => {
-                        const rankIdx = RANKS.findIndex(r => r.name === rank.name);
-                        const isUnlocked =
-                            (!t.minLevel || rankIdx >= t.minLevel - 1) &&
-                            (!t.minStreak || stats.bestStreak >= t.minStreak) &&
-                            (!t.hardModeOnly || stats.hardModeSessions > 0) &&
-                            (!t.timedModeOnly || stats.timedModeSessions > 0) &&
-                            (!t.ultimateOnly || stats.ultimateSessions > 0);
-
-                        const isActive = (activeTrailId || 'chalk-dust') === t.id;
-
-                        return (
-                            <button
-                                key={t.id}
-                                onClick={() => isUnlocked && onTrailChange(t.id)}
-                                title={`${t.name}${!isUnlocked ? ' (Locked)' : ''}`}
-                                className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all 
-                                    ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
-                                        isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
-                                            'border-[rgb(var(--color-fg))]/5 opacity-30 cursor-not-allowed bg-[var(--color-surface)]'
-                                    }`}
-                            >
-                                <span className={`text-2xl ${isActive ? 'drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]' : ''}`}>
-                                    {t.emoji}
-                                </span>
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-
-            <button
-                onClick={() => {
-                    const prompts = [
-                        `You've earned ${stats.totalXP.toLocaleString()} points! Are you sure you want to start fresh? 🥺`,
-                        `Bee Buddy will miss your ${stats.bestStreak}-streak record! Reset anyway? 🤔`,
-                        `${stats.totalSolved} words spelled and counting… wipe it all? 😱`,
-                        'A fresh start can be beautiful! Ready to begin again? 🌱',
-                        'Your spelling journey so far has been amazing! Really reset? ✨',
-                        'Even superheroes get a fresh origin story! Reset? 🦸',
-                    ];
-                    setResetConfirm(prompts[Math.floor(Math.random() * prompts.length)]);
-                }}
-                className="text-sm ui text-[rgb(var(--color-fg))]/35 mt-12 hover:text-[rgb(var(--color-fg))]/50 transition-colors uppercase tracking-widest"
-            >
-                RESET STATS
-            </button>
 
             {/* Rank list modal */}
             <AnimatePresence>
@@ -648,10 +716,10 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             <AnimatePresence>
                 {showSettings && (
                     <SettingsModal
-                        ageBand={ageBand}
-                        onBandChange={onBandChange}
                         themeMode={themeMode}
                         onThemeModeToggle={onThemeModeToggle}
+                        grade={grade}
+                        onGradeChange={onGradeChange}
                         onClose={() => setShowSettings(false)}
                     />
                 )}

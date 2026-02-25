@@ -4,231 +4,189 @@
  * Bee Simulation mode — simulates a real spelling bee.
  * Phases: listening → asking → spelling → feedback → [next | eliminated | complete]
  */
-import { memo } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useBeeSimulation, type InfoRequest } from '../hooks/useBeeSimulation';
+import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
+import { BeeClassroom } from './BeeClassroom';
 
 interface Props {
-    band?: string;
     onExit: () => void;
     onAnswer?: (word: string, correct: boolean, responseTimeMs: number) => void;
+    /** Category to filter words (e.g. 'theme-nature', 'prefixes'). Falls back to all words. */
+    category?: string;
+    /** When true, bias toward harder/longer words in the pool. */
+    hardMode?: boolean;
 }
 
-const INFO_BUTTONS: { type: InfoRequest; label: string; icon: string }[] = [
-    { type: 'definition', label: 'Definition', icon: '📖' },
-    { type: 'sentence', label: 'Sentence', icon: '💬' },
-    { type: 'origin', label: 'Origin', icon: '🌍' },
-    { type: 'repeat', label: 'Repeat', icon: '🔊' },
-];
+/** Compact inline feedback — correct answers advance fast, wrong answers linger */
+function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; word: string; typed: string; onNext: () => void }) {
+    const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+    useEffect(() => {
+        timer.current = setTimeout(onNext, correct ? 600 : 2800);
+        return () => clearTimeout(timer.current);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-export const BeeSimPage = memo(function BeeSimPage({ band, onExit, onAnswer }: Props) {
+    if (correct) {
+        return (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center gap-2 py-1"
+                onClick={onNext}
+            >
+                <span className="text-lg text-[var(--color-correct)]">&#10003;</span>
+                <span className="text-sm chalk text-[var(--color-correct)]">Correct!</span>
+            </motion.div>
+        );
+    }
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="flex flex-col items-center gap-1 py-2"
+        >
+            <div className="flex items-center gap-2">
+                <span className="text-2xl">&#10007;</span>
+                <span className="text-xl chalk text-[var(--color-chalk)]">{word}</span>
+            </div>
+            <p className="text-sm ui text-[var(--color-wrong)]">
+                You spelled: &ldquo;{typed}&rdquo;
+            </p>
+            <button
+                onClick={onNext}
+                className="mt-1 text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+            >
+                tap to continue
+            </button>
+        </motion.div>
+    );
+}
+
+export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category, hardMode }: Props) {
     const {
         state,
         startSession,
         pronounce,
-        moveToAsking,
-        requestInfo,
         moveToSpelling,
         updateTyping,
         submitSpelling,
         nextWord,
         sessionXP,
         ttsSupported,
-    } = useBeeSimulation(band);
+        npcResults,
+        npcAlive,
+        npcScores,
+        npcSpellings,
+    } = useBeeSimulation(category, hardMode);
 
-    const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, infoRequested, lastResult, infoResponses } = state;
+    const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
-    // If no word yet, show start screen
-    if (!currentWord) {
-        return (
-            <div className="flex-1 flex flex-col items-center justify-center px-6 gap-6">
-                <div className="text-6xl">🐝</div>
-                <h2 className="text-2xl chalk text-[var(--color-chalk)]">Spelling Bee</h2>
-                <p className="text-sm ui text-[rgb(var(--color-fg))]/40 text-center max-w-[260px]">
-                    Listen to the word, ask questions, then spell it. One wrong answer and you&apos;re eliminated!
-                </p>
-                {!ttsSupported && (
-                    <p className="text-xs ui text-[var(--color-wrong)] text-center">
-                        Text-to-speech not available in this browser. Words will be shown instead.
-                    </p>
-                )}
-                <button
-                    onClick={startSession}
-                    className="px-8 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                >
-                    Start Bee
-                </button>
-                <button
-                    onClick={onExit}
-                    className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
-                >
-                    Back to game
-                </button>
-            </div>
-        );
-    }
+    // Auto-start session on mount
+    useEffect(() => {
+        if (!currentWord) startSession();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // Still loading first word
+    if (!currentWord) return null;
 
     return (
         <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 relative">
             {/* Round counter */}
-            <div className="absolute top-4 left-4 text-xs ui text-[rgb(var(--color-fg))]/30">
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-base ui text-[rgb(var(--color-fg))]/50 font-medium">
                 Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
             </div>
             <button
                 onClick={onExit}
-                className="absolute top-4 right-4 text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+                className="absolute top-4 right-4 text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
             >
                 Exit
             </button>
 
             <AnimatePresence mode="wait">
-                {/* LISTENING PHASE */}
-                {phase === 'listening' && (
+                {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
+                {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
                     <motion.div
-                        key="listening"
+                        key="classroom"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="flex flex-col items-center gap-6"
+                        className="flex flex-col items-center gap-3 w-full max-w-[320px]"
                     >
-                        <button
-                            onClick={pronounce}
-                            className="w-24 h-24 rounded-full border-2 border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 flex items-center justify-center text-4xl hover:bg-[var(--color-gold)]/15 transition-colors"
-                        >
-                            🔊
-                        </button>
-                        <p className="text-sm ui text-[rgb(var(--color-fg))]/40">
-                            {ttsSupported ? 'Tap to hear again' : currentWord.word}
-                        </p>
-                        <button
-                            onClick={moveToAsking}
-                            className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
-                        >
-                            Ask a question
-                        </button>
-                        <button
-                            onClick={moveToSpelling}
-                            className="px-8 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
-                            Ready to spell
-                        </button>
-                    </motion.div>
-                )}
-
-                {/* ASKING PHASE */}
-                {phase === 'asking' && (
-                    <motion.div
-                        key="asking"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="flex flex-col items-center gap-4 w-full max-w-[320px]"
-                    >
-                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-2">Ask about the word:</p>
-                        <div className="grid grid-cols-2 gap-2 w-full">
-                            {INFO_BUTTONS.map(btn => {
-                                const used = infoRequested.has(btn.type) && btn.type !== 'repeat';
-                                return (
-                                    <button
-                                        key={btn.type}
-                                        onClick={() => requestInfo(btn.type)}
-                                        disabled={used}
-                                        className={`py-2.5 px-3 rounded-xl border text-sm ui transition-colors ${
-                                            used
-                                                ? 'border-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/20 cursor-not-allowed'
-                                                : 'border-[rgb(var(--color-fg))]/20 text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/40'
-                                        }`}
-                                    >
-                                        {btn.icon} {btn.label}
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        {/* Info responses */}
-                        <div className="w-full space-y-2 mt-2">
-                            {Object.entries(infoResponses).map(([key, value]) => (
-                                <motion.div
-                                    key={key}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-4 py-3 text-sm ui text-[rgb(var(--color-fg))]/60"
-                                >
-                                    <span className="text-xs text-[rgb(var(--color-fg))]/30 uppercase">{key}: </span>
-                                    {value}
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={moveToSpelling}
-                            className="mt-2 px-8 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
-                            Ready to spell
-                        </button>
-                    </motion.div>
-                )}
-
-                {/* SPELLING PHASE */}
-                {phase === 'spelling' && (
-                    <motion.div
-                        key="spelling"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="flex flex-col items-center gap-4 w-full"
-                    >
-                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Spell the word:</p>
-                        <button
-                            onClick={pronounce}
-                            className="text-2xl opacity-40 hover:opacity-80 transition-opacity"
-                        >
-                            🔊
-                        </button>
-                        <SpellingInput
-                            value={typedSpelling}
-                            onChange={updateTyping}
-                            onSubmit={() => {
-                                submitSpelling();
-                                if (onAnswer && currentWord) {
-                                    const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
-                                    onAnswer(currentWord.word, correct, Date.now());
-                                }
-                            }}
+                        <BeeClassroom
+                            pupilResults={npcResults}
+                            npcAlive={npcAlive}
+                            npcScores={npcScores}
+                            npcSpellings={npcSpellings}
+                            phase={phase}
+                            onPronounce={pronounce}
+                            onPlayerTurn={moveToSpelling}
+                            round={round}
                         />
-                    </motion.div>
-                )}
 
-                {/* FEEDBACK PHASE */}
-                {phase === 'feedback' && currentWord && (
-                    <motion.div
-                        key="feedback"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="flex flex-col items-center gap-4"
-                    >
-                        <div className={`text-6xl ${lastResult ? '' : ''}`}>
-                            {lastResult ? '✅' : '❌'}
-                        </div>
-                        <div className="text-2xl chalk text-[var(--color-chalk)]">
-                            {currentWord.word}
-                        </div>
-                        <div className="text-sm ui text-[rgb(var(--color-fg))]/40 italic text-center max-w-[280px]">
-                            {currentWord.definition}
-                        </div>
-                        {!lastResult && (
-                            <div className="text-xs ui text-[var(--color-wrong)]">
-                                You spelled: &ldquo;{typedSpelling}&rdquo;
+                        {/* Info responses (definition, sentence, origin) */}
+                        {Object.keys(infoResponses).length > 0 && phase !== 'feedback' && (
+                            <div className="w-full space-y-1.5">
+                                {Object.entries(infoResponses).map(([key, value]) => (
+                                    <motion.div
+                                        key={key}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/50"
+                                    >
+                                        <span className="text-xs text-[rgb(var(--color-fg))]/25 uppercase">{key}: </span>
+                                        {value}
+                                    </motion.div>
+                                ))}
                             </div>
                         )}
-                        <button
-                            onClick={nextWord}
-                            className="mt-2 px-8 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
-                            Next Word
-                        </button>
+
+                        {/* Inline spelling input */}
+                        <AnimatePresence>
+                            {phase === 'spelling' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 12, height: 0 }}
+                                    animate={{ opacity: 1, y: 0, height: 'auto' }}
+                                    exit={{ opacity: 0, y: 12, height: 0 }}
+                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                    className="w-full overflow-hidden"
+                                >
+                                    <SpellingInput
+                                        value={typedSpelling}
+                                        onChange={updateTyping}
+                                        onSubmit={() => {
+                                            submitSpelling();
+                                            if (onAnswer && currentWord) {
+                                                const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
+                                                onAnswer(currentWord.word, correct, Date.now());
+                                            }
+                                        }}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Inline feedback — replaces input after submit, auto-advances */}
+                        <AnimatePresence>
+                            {phase === 'feedback' && currentWord && (
+                                <InlineFeedback
+                                    correct={!!lastResult}
+                                    word={currentWord.word}
+                                    typed={typedSpelling}
+                                    onNext={nextWord}
+                                />
+                            )}
+                        </AnimatePresence>
+
+                        {phase === 'listening' && (
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/20">
+                                {ttsSupported ? 'Tap teacher to hear word again' : currentWord.word}
+                            </p>
+                        )}
                     </motion.div>
                 )}
 
@@ -241,17 +199,17 @@ export const BeeSimPage = memo(function BeeSimPage({ band, onExit, onAnswer }: P
                         className="flex flex-col items-center gap-4"
                     >
                         <div className="text-6xl">🐝</div>
-                        <h2 className="text-xl chalk text-[var(--color-wrong)]">Eliminated!</h2>
-                        <div className="text-lg chalk text-[var(--color-chalk)]">
+                        <h2 className="text-2xl chalk text-[var(--color-wrong)]">Eliminated!</h2>
+                        <div className="text-xl chalk text-[var(--color-chalk)]">
                             The word was: {currentWord.word}
                         </div>
-                        <div className="text-sm ui text-[rgb(var(--color-fg))]/40 italic text-center max-w-[280px]">
+                        <div className="text-base ui text-[rgb(var(--color-fg))]/40 italic text-center max-w-[280px]">
                             {currentWord.definition}
                         </div>
                         <div className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-6 py-4 text-center mt-2">
-                            <div className="text-2xl chalk text-[var(--color-gold)]">{wordsCorrect}</div>
-                            <div className="text-xs ui text-[rgb(var(--color-fg))]/40">words spelled correctly</div>
-                            <div className="text-xs ui text-[rgb(var(--color-fg))]/25 mt-1">+{sessionXP} XP earned</div>
+                            <div className="text-3xl chalk text-[var(--color-gold)]">{wordsCorrect}</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/40">words spelled correctly</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">+{sessionXP} XP earned</div>
                         </div>
                         <div className="flex gap-3 mt-2">
                             <button

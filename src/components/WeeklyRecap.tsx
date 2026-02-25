@@ -39,19 +39,6 @@ export function WeeklyRecap({ stats }: Props) {
 
     const acc = stats.totalSolved > 0 ? Math.round((stats.totalCorrect / stats.totalSolved) * 100) : 0;
 
-    // Build positive messages
-    const messages: string[] = [];
-    if (stats.totalSolved > 0) messages.push(`You've solved ${stats.totalSolved.toLocaleString()} problems! 🧠`);
-    if (acc >= 80) messages.push(`${acc}% accuracy — impressive! 🎯`);
-    else if (acc >= 50) messages.push(`${acc}% accuracy — keep it up! 📈`);
-    else if (stats.totalSolved > 0) messages.push(`Every mistake is a lesson learned 💪`);
-    if (stats.bestStreak >= 10) messages.push(`Your best streak: ${stats.bestStreak} in a row! 🔥`);
-    if (stats.dayStreak >= 3) messages.push(`${stats.dayStreak}-day streak and counting! 🌟`);
-    if (stats.sessionsPlayed >= 5) messages.push(`${stats.sessionsPlayed} sessions played — you're dedicated! 💎`);
-
-    // Ensure at least one message
-    if (messages.length === 0) messages.push(`Great start! Keep playing to see your progress 🚀`);
-
     return (
         <AnimatePresence>
             {visible && (
@@ -69,22 +56,7 @@ export function WeeklyRecap({ stats }: Props) {
                         exit={{ scale: 0.85, opacity: 0 }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="text-3xl mb-2">📊</div>
-                        <h3 className="text-lg chalk text-[var(--color-gold)] mb-4">Your Week So Far</h3>
-
-                        <div className="space-y-2 mb-5">
-                            {messages.slice(0, 4).map((msg, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2 + i * 0.15 }}
-                                    className="text-sm ui text-[rgb(var(--color-fg))]/60"
-                                >
-                                    {msg}
-                                </motion.div>
-                            ))}
-                        </div>
+                        <h3 className="text-lg chalk text-[var(--color-gold)] mb-4">This Week</h3>
 
                         <div className="flex justify-center gap-6 mb-4">
                             <div className="text-center">

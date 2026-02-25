@@ -4,7 +4,7 @@ import {
     getLoadedWords,
     getLoadedTiers,
     getLoadedPacks,
-    ensureTiersForBand,
+    ensureAllTiers,
 } from '../domains/spelling/words/registry';
 
 describe('wordRegistry.ts', () => {
@@ -27,37 +27,25 @@ describe('wordRegistry.ts', () => {
         expect(unique.size / words.length).toBeGreaterThan(0.9);
     });
 
-    it('starter band does not load extra tiers', async () => {
-        const vBefore = getRegistryVersion();
-        await ensureTiersForBand('starter');
-        // starter needs only 1,2 which are already loaded
-        expect(getRegistryVersion()).toBe(vBefore);
-    });
-
-    it('rising band loads tiers 3-4', async () => {
+    it('ensureAllTiers loads tiers 3-5', async () => {
         const wordsBefore = getLoadedWords().length;
-        await ensureTiersForBand('rising');
+        await ensureAllTiers();
         expect(getLoadedTiers().has(3)).toBe(true);
         expect(getLoadedTiers().has(4)).toBe(true);
+        expect(getLoadedTiers().has(5)).toBe(true);
         expect(getLoadedWords().length).toBeGreaterThan(wordsBefore);
     });
 
     it('version increments after tier load', async () => {
-        // Ensure rising is loaded first (may have loaded in previous test)
-        await ensureTiersForBand('rising');
-        const vBefore = getRegistryVersion();
-        // sigma adds tier 5
-        await ensureTiersForBand('sigma');
-        if (getLoadedTiers().has(5)) {
-            expect(getRegistryVersion()).toBeGreaterThanOrEqual(vBefore);
-        }
+        // ensureAllTiers was already called — version should be > 0
+        expect(getRegistryVersion()).toBeGreaterThan(0);
     });
 
-    it('re-loading same band is idempotent', async () => {
-        await ensureTiersForBand('rising');
+    it('re-loading is idempotent', async () => {
+        await ensureAllTiers();
         const v1 = getRegistryVersion();
         const count1 = getLoadedWords().length;
-        await ensureTiersForBand('rising');
+        await ensureAllTiers();
         expect(getRegistryVersion()).toBe(v1);
         expect(getLoadedWords().length).toBe(count1);
     });

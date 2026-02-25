@@ -20,8 +20,6 @@ interface Stats {
     streakShields: number;
     lastPlayedDate: string;
     byType: Record<string, TypeStat>;
-    bestSpeedrunTime: number;
-    speedrunHardMode: boolean;
     // Mode stats omitted for brevity — tested via totalXP merge
 }
 
@@ -36,8 +34,6 @@ function makeStats(overrides: Partial<Stats> = {}): Stats {
         streakShields: 0,
         lastPlayedDate: '',
         byType: {},
-        bestSpeedrunTime: 0,
-        speedrunHardMode: false,
         ...overrides,
     };
 }
@@ -66,13 +62,6 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         streakShields: Math.max(local.streakShields, cloud.streakShields),
         lastPlayedDate: local.lastPlayedDate > cloud.lastPlayedDate ? local.lastPlayedDate : cloud.lastPlayedDate,
         byType: mergedByType,
-        bestSpeedrunTime: local.bestSpeedrunTime > 0 && cloud.bestSpeedrunTime > 0
-            ? Math.min(local.bestSpeedrunTime, cloud.bestSpeedrunTime)
-            : local.bestSpeedrunTime || cloud.bestSpeedrunTime,
-        speedrunHardMode: (local.bestSpeedrunTime > 0 && cloud.bestSpeedrunTime > 0
-            ? (local.bestSpeedrunTime <= cloud.bestSpeedrunTime ? local : cloud)
-            : local.bestSpeedrunTime ? local : cloud
-        ).speedrunHardMode,
     };
 }
 
@@ -89,29 +78,13 @@ describe('mergeStats', () => {
         expect(mergeStats(local, cloud).bestStreak).toBe(15);
     });
 
-    it('takes best (lowest) speedrun time', () => {
-        const local = makeStats({ bestSpeedrunTime: 12000, speedrunHardMode: true });
-        const cloud = makeStats({ bestSpeedrunTime: 15000, speedrunHardMode: false });
-        const merged = mergeStats(local, cloud);
-        expect(merged.bestSpeedrunTime).toBe(12000);
-        expect(merged.speedrunHardMode).toBe(true); // from the faster run
-    });
-
-    it('takes non-zero speedrun time when other is 0', () => {
-        const local = makeStats({ bestSpeedrunTime: 0 });
-        const cloud = makeStats({ bestSpeedrunTime: 9000, speedrunHardMode: true });
-        const merged = mergeStats(local, cloud);
-        expect(merged.bestSpeedrunTime).toBe(9000);
-        expect(merged.speedrunHardMode).toBe(true);
-    });
-
     it('merges byType per-key, taking max of each', () => {
-        const local = makeStats({ byType: { multiply: { solved: 100, correct: 80 }, add: { solved: 50, correct: 50 } } });
-        const cloud = makeStats({ byType: { multiply: { solved: 80, correct: 90 }, divide: { solved: 30, correct: 25 } } });
+        const local = makeStats({ byType: { cvc: { solved: 100, correct: 80 }, blends: { solved: 50, correct: 50 } } });
+        const cloud = makeStats({ byType: { cvc: { solved: 80, correct: 90 }, digraphs: { solved: 30, correct: 25 } } });
         const merged = mergeStats(local, cloud);
-        expect(merged.byType.multiply).toEqual({ solved: 100, correct: 90 });
-        expect(merged.byType.add).toEqual({ solved: 50, correct: 50 });
-        expect(merged.byType.divide).toEqual({ solved: 30, correct: 25 });
+        expect(merged.byType.cvc).toEqual({ solved: 100, correct: 90 });
+        expect(merged.byType.blends).toEqual({ solved: 50, correct: 50 });
+        expect(merged.byType.digraphs).toEqual({ solved: 30, correct: 25 });
     });
 
     it('takes more recent lastPlayedDate', () => {
@@ -123,7 +96,6 @@ describe('mergeStats', () => {
     it('handles two empty stats', () => {
         const merged = mergeStats(makeStats(), makeStats());
         expect(merged.totalXP).toBe(0);
-        expect(merged.bestSpeedrunTime).toBe(0);
     });
 });
 

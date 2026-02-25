@@ -35,10 +35,11 @@ describe('dailyChallenge.ts', () => {
 
     it('problems have increasing difficulty', () => {
         const { problems } = generateDailyChallenge();
-        // First problems should be easier than last (difficulty ramps from 2 to 5)
-        const firstDiff = problems[0].meta?.['difficulty'] as number;
-        const lastDiff = problems[9].meta?.['difficulty'] as number;
-        expect(lastDiff).toBeGreaterThanOrEqual(firstDiff);
+        // Last problem's requested difficulty (5) > first problem's (2),
+        // so max difficulty in second half should be >= max in first half
+        const firstMax = Math.max(...problems.slice(0, 5).map(p => p.meta?.['difficulty'] as number));
+        const secondMax = Math.max(...problems.slice(5).map(p => p.meta?.['difficulty'] as number));
+        expect(secondMax).toBeGreaterThanOrEqual(firstMax);
     });
 });
 

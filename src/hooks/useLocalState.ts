@@ -32,7 +32,7 @@ export function useLocalState(
                     'spell-bee-costume': 'costume',
                     'spell-bee-chalk-theme': 'chalkTheme',
                     'spell-bee-theme': 'themeMode',
-                    'spell-bee-age-band': 'ageBand',
+                    'spell-bee-grade': 'grade',
                     'spell-bee-trail': 'trailId',
                 };
                 const field = fieldMap[key];

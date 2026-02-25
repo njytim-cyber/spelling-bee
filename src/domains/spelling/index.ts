@@ -5,14 +5,10 @@
  * Other modules should import from here, not from individual spelling domain files.
  */
 
-export type { SpellingCategory, SpellingBand, SpellingGroup } from './spellingCategories';
+export type { SpellingCategory, SpellingGroup } from './spellingCategories';
 export {
     SPELLING_CATEGORIES,
-    SPELLING_BANDS,
-    SPELLING_BAND_LABELS,
-    SPELLING_AGE_BANDS,
-    typesForBand,
-    defaultTypeForBand,
+    SPELLING_GROUP_LABELS,
 } from './spellingCategories';
 
 export { SPELLING_MESSAGE_OVERRIDES } from './spellingMessages';

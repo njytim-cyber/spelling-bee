@@ -1,9 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
+import { getAllWords } from '../domains/spelling/words';
+import { ensureAllTiers } from '../domains/spelling/words/registry';
 
 describe('spellingGenerator.ts', () => {
 
-    const CATEGORIES = ['cvc', 'blends', 'digraphs', 'silent-e', 'vowel-teams', 'mix'] as const;
+    const CATEGORIES = ['cvc', 'blends', 'digraphs', 'silent-e', 'vowel-teams', 'tier-1'] as const;
 
     describe('EngineItem shape', () => {
         it('produces an item with 3 unique options where options[correctIndex] === answer', () => {
@@ -58,22 +60,15 @@ describe('spellingGenerator.ts', () => {
     describe('Difficulty filtering', () => {
         it('level 1 words have difficulty ≤ 2', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(1, 'mix', false);
+                const item = generateSpellingItem(1, 'tier-1', false);
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
         });
 
-        it('starter band caps difficulty at 4', () => {
+        it('level 5 words have difficulty ≤ 10', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(3, 'mix', false, undefined, 'starter');
-                expect(item.meta?.['difficulty']).toBeLessThanOrEqual(4);
-            }
-        });
-
-        it('rising band caps difficulty at 7', () => {
-            for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(5, 'mix', false, undefined, 'rising');
-                expect(item.meta?.['difficulty']).toBeLessThanOrEqual(7);
+                const item = generateSpellingItem(5, 'tier-5', false);
+                expect(item.meta?.['difficulty']).toBeLessThanOrEqual(10);
             }
         });
     });
@@ -113,14 +108,60 @@ describe('spellingGenerator.ts', () => {
         });
     });
 
-    describe('Mix category', () => {
-        it('generates words from the combined bank', () => {
+    describe('Tier category', () => {
+        it('tier-1 generates words from difficulty 1-2 range', () => {
             const answers = new Set<string>();
             for (let i = 0; i < 100; i++) {
-                answers.add(generateSpellingItem(1, 'mix', false).answer as string);
+                const item = generateSpellingItem(1, 'tier-1', false);
+                answers.add(item.answer as string);
+                expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
-            // With ~750 words in the bank, 100 samples should hit >15 unique words
+            // With ~500 words in tier 1, 100 samples should hit >15 unique words
             expect(answers.size).toBeGreaterThan(15);
+        });
+    });
+
+    describe('Full word bank audit', () => {
+        it('every word has at least 2 pre-baked distractors', async () => {
+            await ensureAllTiers();
+            const allWords = getAllWords();
+            const failures: string[] = [];
+
+            for (const w of allWords) {
+                if (!w.distractors || w.distractors.length < 2) {
+                    failures.push(`"${w.word}": only ${w.distractors?.length ?? 0} distractors`);
+                }
+                // Distractors must all differ from the correct word
+                if (w.distractors) {
+                    for (const d of w.distractors) {
+                        if (d === w.word) {
+                            failures.push(`"${w.word}": distractor is same as correct word`);
+                        }
+                    }
+                    // All distractors must be unique
+                    if (new Set(w.distractors).size !== w.distractors.length) {
+                        failures.push(`"${w.word}": duplicate distractors`);
+                    }
+                }
+            }
+
+            expect(failures).toEqual([]);
+        });
+
+        it('generated items always have 3 unique options', async () => {
+            await ensureAllTiers();
+            const failures: string[] = [];
+
+            for (let diff = 1; diff <= 5; diff++) {
+                for (let i = 0; i < 50; i++) {
+                    const item = generateSpellingItem(diff, 'tier-1', false);
+                    if (new Set(item.options).size < 3) {
+                        failures.push(`${item.answer} (diff=${diff}): only ${new Set(item.options).size} unique options`);
+                    }
+                }
+            }
+
+            expect(failures).toEqual([]);
         });
     });
 

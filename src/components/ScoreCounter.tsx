@@ -31,9 +31,7 @@ export const ScoreCounter = memo(function ScoreCounter({ value }: { value: numbe
             aria-live="polite"
             aria-label={`Score: ${value}`}
         >
-            {value === 0 ? (
-                <span className="text-5xl leading-tight">Let's<br />Goooooooo!</span>
-            ) : display}
+            {display}
         </motion.div>
     );
 });

@@ -3,13 +3,13 @@
  *
  * Re-exports word types and provides lookup utilities.
  * Backed by the dynamic registry — tier 1-2 are always available,
- * tier 3-5 load on demand via ensureTiersForBand().
+ * tier 3-5 load on demand via ensureAllTiers().
  */
-import type { SpellingWord, PhonicsPattern, DifficultyTier } from './types';
+import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
 import { getLoadedWords } from './registry';
 
-export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech } from './types';
-export { ensureTiersForBand, getRegistryVersion, loadCompetitionPack } from './registry';
+export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme } from './types';
+export { ensureAllTiers, getRegistryVersion, loadCompetitionPack } from './registry';
 
 /** Every word currently loaded in the registry. */
 export function getAllWords(): SpellingWord[] {
@@ -60,9 +60,27 @@ export function difficultyRange(level: number): [DifficultyTier, DifficultyTier]
     }
 }
 
-/** Maximum word difficulty allowed per age band. */
-export const BAND_DIFFICULTY_CAP: Record<string, DifficultyTier> = {
-    starter: 4,
-    rising: 7,
-    sigma: 10,
-};
+/** Get words matching a specific semantic theme. */
+export function wordsByTheme(theme: SemanticTheme): SpellingWord[] {
+    return getLoadedWords().filter(w => w.theme === theme);
+}
+
+/** Get words matching BOTH a theme AND a difficulty range. */
+export function wordsByThemeAndDifficulty(
+    theme: SemanticTheme,
+    min: DifficultyTier,
+    max: DifficultyTier,
+): SpellingWord[] {
+    return getLoadedWords().filter(w =>
+        w.theme === theme && w.difficulty >= min && w.difficulty <= max,
+    );
+}
+
+/** Build a word-keyed lookup map from currently loaded words. */
+export function getWordMap(): Map<string, SpellingWord> {
+    const map = new Map<string, SpellingWord>();
+    for (const w of getLoadedWords()) {
+        map.set(w.word, w);
+    }
+    return map;
+}

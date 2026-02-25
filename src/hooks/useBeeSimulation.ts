@@ -6,8 +6,8 @@
  */
 import { useState, useCallback, useRef } from 'react';
 import type { SpellingWord } from '../domains/spelling/words/types';
-import { getAllWords, difficultyRange, BAND_DIFFICULTY_CAP } from '../domains/spelling/words';
-import type { DifficultyTier } from '../domains/spelling/words/types';
+import { getAllWords, difficultyRange, wordsByTheme, wordsByThemeAndDifficulty, wordsByPattern, wordsByPatternAndDifficulty, wordsByDifficulty } from '../domains/spelling/words';
+import { categoryToTheme, categoryToPattern } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 
 export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'complete';
@@ -25,7 +25,20 @@ export interface BeeSimState {
     infoRequested: Set<InfoRequest>;
     lastResult: boolean | null;
     infoResponses: Partial<Record<InfoRequest, string>>;
+    /** NPC results for the current round: null = not gone yet, true/false = result. Index 2 is the player. */
+    npcResults: (boolean | null)[];
+    /** Which pupils are still in the bee */
+    npcAlive: boolean[];
+    /** Skill levels per pupil (probability of correct answer). Index 2 = player, unused. */
+    npcSkill: number[];
+    /** Running scores for each pupil (index 2 = player) */
+    npcScores: number[];
+    /** NPC spelling attempts for the current round (shown in speech bubbles) */
+    npcSpellings: (string | null)[];
 }
+
+// Stronger NPCs: brainiac lasts ~10 rounds, eager ~6, nervous ~3
+const NPC_BASE_SKILL = [0.96, 0.82, 1.0, 0.55]; // brainiac, eager, player(unused), nervous
 
 const INITIAL_STATE: BeeSimState = {
     phase: 'listening',
@@ -38,50 +51,179 @@ const INITIAL_STATE: BeeSimState = {
     infoRequested: new Set(),
     lastResult: null,
     infoResponses: {},
+    npcResults: [null, null, null, null],
+    npcAlive: [true, true, true, true],
+    npcSkill: NPC_BASE_SKILL,
+    npcScores: [0, 0, 0, 0],
+    npcSpellings: [null, null, null, null],
 };
 
-function pickBeeWord(round: number, band?: string): SpellingWord {
-    // Progressive difficulty based on round
-    const diffLevel = Math.min(5, 1 + Math.floor(round / 5));
-    const [minDiff, maxDiff] = difficultyRange(diffLevel);
-    const bandCap = band ? (BAND_DIFFICULTY_CAP[band] ?? 10) : 10;
-    const effectiveMax = Math.min(maxDiff, bandCap) as DifficultyTier;
-    const effectiveMin = Math.min(minDiff, effectiveMax) as DifficultyTier;
-
-    const all = getAllWords();
-    const pool = all.filter(w => w.difficulty >= effectiveMin && w.difficulty <= effectiveMax);
-    const source = pool.length > 0 ? pool : all;
-    return source[Math.floor(Math.random() * source.length)];
+/** Replace the target word in a sentence with underscores so users can't read the answer. */
+function redactWord(sentence: string, word: string): string {
+    const blank = '_'.repeat(word.length);
+    return sentence.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), blank);
 }
 
-export function useBeeSimulation(band?: string) {
+function pickBeeWord(round: number, category?: string, hardMode = false): SpellingWord {
+    // Aggressive difficulty ramp: hits max by round 12
+    const diffLevel = Math.min(5, 1 + Math.floor(round / 3));
+    const effectiveDifficulty = hardMode ? Math.min(5, diffLevel + 1) : diffLevel;
+    const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
+
+    const theme = category ? categoryToTheme(category) : null;
+    const pattern = category ? categoryToPattern(category) : null;
+
+    let pool: SpellingWord[];
+
+    if (theme) {
+        pool = wordsByThemeAndDifficulty(theme, minDiff, maxDiff);
+        if (pool.length === 0) pool = wordsByTheme(theme);
+    } else if (pattern) {
+        pool = wordsByPatternAndDifficulty(pattern, minDiff, maxDiff);
+        if (pool.length === 0) pool = wordsByPattern(pattern);
+    } else {
+        pool = wordsByDifficulty(minDiff, maxDiff);
+    }
+
+    if (pool.length === 0) pool = getAllWords();
+
+    // Hard mode: bias toward the longest, hardest words in the pool
+    if (hardMode && pool.length > 3) {
+        pool.sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
+        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
+        pool = pool.slice(0, cutoff);
+    }
+
+    return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/** Build auto-displayed info responses for a word (definition, sentence, origin if available). */
+function buildAutoInfo(word: SpellingWord): { infoRequested: Set<InfoRequest>; infoResponses: Partial<Record<InfoRequest, string>> } {
+    const infoRequested = new Set<InfoRequest>(['definition', 'sentence']);
+    const infoResponses: Partial<Record<InfoRequest, string>> = {
+        definition: redactWord(word.definition, word.word),
+        sentence: redactWord(word.exampleSentence, word.word),
+    };
+    if (word.etymology) {
+        infoRequested.add('origin');
+        infoResponses.origin = word.etymology;
+    }
+    return { infoRequested, infoResponses };
+}
+
+// Per-NPC decay rates: brainiac decays slowly, nervous decays fast
+const NPC_DECAY = [0.008, 0.025, 0, 0.045];
+
+/** Generate a plausible misspelling of a word */
+function misspell(word: string): string {
+    const w = word.split('');
+    const strategies = [
+        // Swap two adjacent letters
+        () => {
+            const i = Math.floor(Math.random() * (w.length - 1));
+            [w[i], w[i + 1]] = [w[i + 1], w[i]];
+        },
+        // Double a letter
+        () => {
+            const i = Math.floor(Math.random() * w.length);
+            w.splice(i, 0, w[i]);
+        },
+        // Drop a letter (not first)
+        () => {
+            if (w.length > 3) {
+                const i = 1 + Math.floor(Math.random() * (w.length - 1));
+                w.splice(i, 1);
+            }
+        },
+        // Replace a vowel
+        () => {
+            const vowels = 'aeiou';
+            const vowelIdxs = w.map((c, i) => vowels.includes(c.toLowerCase()) ? i : -1).filter(i => i >= 0);
+            if (vowelIdxs.length > 0) {
+                const i = vowelIdxs[Math.floor(Math.random() * vowelIdxs.length)];
+                const replacement = vowels[Math.floor(Math.random() * vowels.length)];
+                if (replacement !== w[i].toLowerCase()) w[i] = replacement;
+            }
+        },
+    ];
+    strategies[Math.floor(Math.random() * strategies.length)]();
+    const result = w.join('');
+    return result === word ? word.slice(0, -1) + 'e' : result;
+}
+
+/** Simulate NPC turns for one round. Player is index 2 (always null).
+ *  Each NPC gets their own word (like a real bee) for speech bubble display. */
+export function simulateNpcTurns(
+    npcAlive: boolean[],
+    npcSkill: number[],
+    npcScores: number[],
+    round: number,
+    eliminationMode: boolean,
+    pickWord?: () => string,
+): { npcResults: (boolean | null)[]; npcAlive: boolean[]; npcScores: number[]; npcSpellings: (string | null)[] } {
+    const results: (boolean | null)[] = [null, null, null, null];
+    const alive = [...npcAlive];
+    const scores = [...npcScores];
+    const spellings: (string | null)[] = [null, null, null, null];
+
+    for (const idx of [0, 1, 3]) {
+        if (!alive[idx]) continue;
+        const adjusted = Math.max(0.15, npcSkill[idx] - round * NPC_DECAY[idx]);
+        const correct = Math.random() < adjusted;
+        results[idx] = correct;
+        if (pickWord) {
+            const npcWord = pickWord();
+            spellings[idx] = correct ? npcWord : misspell(npcWord);
+        }
+        if (correct) scores[idx]++;
+        if (!correct && eliminationMode) alive[idx] = false;
+    }
+    // Index 2 (player) stays null — determined by actual spelling
+    return { npcResults: results, npcAlive: alive, npcScores: scores, npcSpellings: spellings };
+}
+
+export function useBeeSimulation(category?: string, hardMode = false) {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
 
     const startRound = useCallback(() => {
-        const word = pickBeeWord(state.round, band);
-        setState(prev => ({
-            ...prev,
-            phase: 'listening',
-            currentWord: word,
-            typedSpelling: '',
-            infoRequested: new Set(),
-            lastResult: null,
-            infoResponses: {},
-        }));
+        const word = pickBeeWord(state.round, category, hardMode);
+        const info = buildAutoInfo(word);
+        setState(prev => {
+            const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
+            return {
+                ...prev,
+                phase: 'listening',
+                currentWord: word,
+                typedSpelling: '',
+                ...info,
+                lastResult: null,
+                npcResults: npc.npcResults,
+                npcAlive: npc.npcAlive,
+                npcScores: npc.npcScores,
+                npcSpellings: npc.npcSpellings,
+            };
+        });
         if (isSupported) speak(word.word);
-    }, [state.round, band, speak, isSupported]);
+    }, [state.round, category, hardMode, speak, isSupported]);
 
     const startSession = useCallback(() => {
-        const word = pickBeeWord(0, band);
+        const word = pickBeeWord(0, category, hardMode);
+        const info = buildAutoInfo(word);
+        const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode).word);
         setState({
             ...INITIAL_STATE,
             currentWord: word,
             phase: 'listening',
+            ...info,
+            npcResults: npc.npcResults,
+            npcAlive: npc.npcAlive,
+            npcScores: npc.npcScores,
+            npcSpellings: npc.npcSpellings,
         });
         if (isSupported) speak(word.word);
-    }, [band, speak, isSupported]);
+    }, [category, hardMode, speak, isSupported]);
 
     const pronounce = useCallback(() => {
         if (state.currentWord && isSupported) {
@@ -106,10 +248,10 @@ export function useBeeSimulation(band?: string) {
 
             switch (type) {
                 case 'definition':
-                    newResponses.definition = word.definition;
+                    newResponses.definition = redactWord(word.definition, word.word);
                     break;
                 case 'sentence':
-                    newResponses.sentence = word.exampleSentence;
+                    newResponses.sentence = redactWord(word.exampleSentence, word.word);
                     break;
                 case 'origin':
                     newResponses.origin = word.etymology || 'Origin information not available.';
@@ -138,6 +280,8 @@ export function useBeeSimulation(band?: string) {
             const correct = prev.typedSpelling.trim().toLowerCase() === prev.currentWord.word.toLowerCase();
             const wordsCorrect = prev.wordsCorrect + (correct ? 1 : 0);
             const wordsAttempted = prev.wordsAttempted + 1;
+            const npcScores = [...prev.npcScores];
+            if (correct) npcScores[2]++;
 
             if (!correct && prev.eliminationMode) {
                 return {
@@ -146,6 +290,7 @@ export function useBeeSimulation(band?: string) {
                     lastResult: false,
                     wordsCorrect,
                     wordsAttempted,
+                    npcScores,
                 };
             }
 
@@ -155,31 +300,39 @@ export function useBeeSimulation(band?: string) {
                 lastResult: correct,
                 wordsCorrect,
                 wordsAttempted,
+                npcScores,
             };
         });
     }, []);
 
     const nextWord = useCallback(() => {
+        // Pick word outside setState so we can speak it *after* — speaking inside
+        // setState causes the browser to play the previous word on some platforms.
+        const newRound = state.round + 1;
+        const word = pickBeeWord(newRound, category, hardMode);
+        const info = buildAutoInfo(word);
+
         setState(prev => {
-            const newRound = prev.round + 1;
-            const word = pickBeeWord(newRound, band);
-            if (isSupported) speak(word.word);
+            const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
             return {
                 ...prev,
                 phase: 'listening',
                 currentWord: word,
                 round: newRound,
                 typedSpelling: '',
-                infoRequested: new Set(),
+                ...info,
                 lastResult: null,
-                infoResponses: {},
+                npcResults: npc.npcResults,
+                npcAlive: npc.npcAlive,
+                npcScores: npc.npcScores,
+                npcSpellings: npc.npcSpellings,
             };
         });
-    }, [band, speak, isSupported]);
+        if (isSupported) speak(word.word);
+    }, [state.round, category, hardMode, speak, isSupported]);
 
     /** XP earned for the current session */
-    const sessionXP = state.wordsCorrect * 15
-        + state.wordsCorrect * (state.infoRequested.size === 0 ? 5 : 0);
+    const sessionXP = state.wordsCorrect * 20;
 
     return {
         state,
@@ -194,5 +347,9 @@ export function useBeeSimulation(band?: string) {
         nextWord,
         sessionXP,
         ttsSupported: isSupported,
+        npcResults: state.npcResults,
+        npcAlive: state.npcAlive,
+        npcScores: state.npcScores,
+        npcSpellings: state.npcSpellings,
     };
 }

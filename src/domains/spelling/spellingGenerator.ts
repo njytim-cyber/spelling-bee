@@ -5,25 +5,24 @@
  * The core mechanic: "Which spelling is correct?" — players pick the
  * correctly spelled word from misspellings of the same word.
  *
- * Now powered by rich SpellingWord objects from the tiered word bank.
+ * Distractors are pre-baked into each SpellingWord at build time
+ * (via scripts/bake-distractors.ts). Runtime generation is only
+ * used as a fallback for words missing pre-computed distractors.
  */
 import type { EngineItem } from '../../engine/domain';
-import type { SpellingWord, PhonicsPattern, DifficultyTier } from './words/types';
+import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './words/types';
 import {
     getAllWords,
     wordsByPattern,
     wordsByDifficulty,
     wordsByPatternAndDifficulty,
+    wordsByTheme,
+    wordsByThemeAndDifficulty,
     difficultyRange,
-    BAND_DIFFICULTY_CAP,
 } from './words';
 
 // ── Pattern → category mapping ───────────────────────────────────────────────
 
-/**
- * Maps a SpellingCategory id to a PhonicsPattern (or null for mixed/special).
- * Categories that directly correspond to patterns use the same string id.
- */
 const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'cvc': 'cvc',
     'blends': 'blends',
@@ -40,171 +39,191 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'french-origin': 'french-origin',
     'compound': 'compound',
     'irregular': 'irregular',
-    // Mixed / special modes — no single pattern
-    'mix': null,
     'daily': null,
     'challenge': null,
-    'speedrun': null,
     'ghost': null,
-    'competition': null,
+    'review': null,
+    'tier-1': null,
+    'tier-2': null,
+    'tier-3': null,
+    'tier-4': null,
+    'tier-5': null,
 };
 
-// ── Misspelling Generator ───────────────────────────────────────────────────
+// ── Theme → category mapping ────────────────────────────────────────────────
 
-/** Common vowel/consonant confusion pairs */
-const VOWEL_SWAPS: [string, string][] = [
-    ['a', 'e'], ['e', 'i'], ['i', 'o'], ['o', 'u'], ['a', 'u'],
-];
+const CATEGORY_TO_THEME: Record<string, SemanticTheme | null> = {
+    'theme-animals': 'animals',
+    'theme-plants': 'plants',
+    'theme-weather': 'weather',
+    'theme-earth': 'earth',
+    'theme-food': 'food',
+    'theme-body': 'body',
+    'theme-health': 'health',
+    'theme-home': 'home',
+    'theme-clothing': 'clothing',
+    'theme-music': 'music',
+    'theme-art': 'art',
+    'theme-performance': 'performance',
+    'theme-sports': 'sports',
+    'theme-science': 'science',
+    'theme-math': 'math',
+    'theme-money': 'money',
+    'theme-language': 'language',
+    'theme-time': 'time',
+    'theme-people': 'people',
+    'theme-feelings': 'feelings',
+    'theme-mind': 'mind',
+    'theme-character': 'character',
+    'theme-communication': 'communication',
+    'theme-actions': 'actions',
+    'theme-quantity': 'quantity',
+    'theme-texture': 'texture',
+    'theme-water': 'water',
+    'theme-light': 'light',
+    'theme-sensory': 'sensory',
+    'theme-tools': 'tools',
+    'theme-nature': 'nature',
+    'theme-building': 'building',
+    'theme-movement': 'movement',
+    'theme-law': 'law',
+    'theme-color': 'color',
+    'theme-power': 'power',
+    'theme-war': 'war',
+    'theme-fire': 'fire',
+    'theme-sleep': 'sleep',
+    'theme-school': 'school',
+    'theme-magic': 'magic',
+    'theme-travel': 'travel',
+    'theme-everyday': 'everyday',
+};
 
-const CONSONANT_CONFUSIONS: [string, string][] = [
-    ['b', 'd'], ['p', 'b'], ['m', 'n'], ['s', 'z'], ['f', 'v'],
-    ['t', 'd'], ['g', 'k'], ['c', 'k'],
-];
-
-const DIGRAPH_CONFUSIONS: [string, string][] = [
-    ['sh', 'ch'], ['th', 'f'], ['wh', 'w'], ['ck', 'k'], ['ph', 'f'],
-];
-
-/**
- * Generate a plausible misspelling of a word using common error patterns.
- * Returns a different string or null if no mutation was possible.
- */
-function generateMisspelling(word: string, rng: () => number): string | null {
-    const strategies: (() => string | null)[] = [
-        // 1. Swap two adjacent letters
-        () => {
-            if (word.length < 3) return null;
-            const i = 1 + Math.floor(rng() * (word.length - 2));
-            return word.slice(0, i) + word[i + 1] + word[i] + word.slice(i + 2);
-        },
-        // 2. Swap a vowel for a similar vowel
-        () => {
-            const vowelPositions = [...word].map((ch, i) => ({ ch, i })).filter(({ ch }) => 'aeiou'.includes(ch));
-            if (vowelPositions.length === 0) return null;
-            const pos = vowelPositions[Math.floor(rng() * vowelPositions.length)];
-            const swaps = VOWEL_SWAPS.filter(([a, b]) => a === pos.ch || b === pos.ch);
-            if (swaps.length === 0) return null;
-            const [a, b] = swaps[Math.floor(rng() * swaps.length)];
-            const newCh = pos.ch === a ? b : a;
-            return word.slice(0, pos.i) + newCh + word.slice(pos.i + 1);
-        },
-        // 3. Double a consonant (or remove a double)
-        () => {
-            for (let i = 0; i < word.length - 1; i++) {
-                if (word[i] === word[i + 1] && !'aeiou'.includes(word[i])) {
-                    // Remove the double
-                    return word.slice(0, i) + word.slice(i + 1);
-                }
-            }
-            // Add a double to a single consonant
-            const consonants = [...word].map((ch, i) => ({ ch, i })).filter(({ ch }) => !'aeiou'.includes(ch) && /[a-z]/.test(ch));
-            if (consonants.length === 0) return null;
-            const c = consonants[Math.floor(rng() * consonants.length)];
-            // Don't double if already doubled or at start
-            if (c.i > 0 && word[c.i - 1] !== c.ch && (c.i + 1 >= word.length || word[c.i + 1] !== c.ch)) {
-                return word.slice(0, c.i) + c.ch + word.slice(c.i);
-            }
-            return null;
-        },
-        // 4. Swap consonant confusion pairs
-        () => {
-            for (const [a, b] of CONSONANT_CONFUSIONS) {
-                const idx = word.indexOf(a);
-                if (idx >= 0 && rng() > 0.5) {
-                    return word.slice(0, idx) + b + word.slice(idx + a.length);
-                }
-                const idx2 = word.indexOf(b);
-                if (idx2 >= 0) {
-                    return word.slice(0, idx2) + a + word.slice(idx2 + b.length);
-                }
-            }
-            return null;
-        },
-        // 5. Digraph confusion
-        () => {
-            for (const [a, b] of DIGRAPH_CONFUSIONS) {
-                const idx = word.indexOf(a);
-                if (idx >= 0) {
-                    return word.slice(0, idx) + b + word.slice(idx + a.length);
-                }
-            }
-            return null;
-        },
-    ];
-
-    // Shuffle strategies and try each
-    const shuffled = [...strategies].sort(() => rng() - 0.5);
-    for (const strategy of shuffled) {
-        const result = strategy();
-        if (result && result !== word && result.length > 0) {
-            return result;
-        }
-    }
-    return null;
+/** Look up the SemanticTheme for a category, or null if it isn't theme-based. */
+export function categoryToTheme(category: string): SemanticTheme | null {
+    return CATEGORY_TO_THEME[category] ?? null;
 }
 
-/**
- * Generate 2 unique misspellings of a word.
- * Falls back to simple letter substitutions if needed.
- */
-function makeMisspellings(correct: string, rng: () => number): string[] {
-    const misspellings = new Set<string>();
-    let attempts = 0;
+/** Look up the PhonicsPattern for a category, or null if it isn't pattern-based. */
+export function categoryToPattern(category: string): PhonicsPattern | null {
+    return CATEGORY_TO_PATTERN[category] ?? null;
+}
 
-    while (misspellings.size < 2 && attempts < 20) {
-        const mis = generateMisspelling(correct, rng);
-        if (mis && mis !== correct && !misspellings.has(mis)) {
-            misspellings.add(mis);
+// ── Distractor selection ────────────────────────────────────────────────────
+
+const VOWELS = 'aeiou';
+
+/**
+ * Pick 2 distractors from a word's pre-baked list.
+ * If the word has 3+ distractors, randomly select 2.
+ * Falls back to simple vowel/consonant swaps if no distractors are baked.
+ */
+function pickDistractors(word: SpellingWord, rng: () => number, hardMode: boolean): string[] {
+    const correct = word.word;
+    const baked = word.distractors;
+
+    if (baked && baked.length >= 2) {
+        if (hardMode) {
+            const sameLenBaked = baked.filter(d => d.length === correct.length);
+            if (sameLenBaked.length >= 2) {
+                const shuffled = [...sameLenBaked].sort(() => rng() - 0.5);
+                return shuffled.slice(0, 2);
+            }
         }
-        attempts++;
+        const shuffled = [...baked].sort(() => rng() - 0.5);
+        return shuffled.slice(0, 2);
     }
 
-    // Fallback: if we couldn't generate enough, use simple character swaps
-    if (misspellings.size < 2) {
-        const chars = [...correct];
-        for (let i = 0; i < chars.length && misspellings.size < 2; i++) {
-            if ('aeiou'.includes(chars[i])) {
-                const replacement = 'aeiou'.replace(chars[i], '')[Math.floor(rng() * 4)];
-                const mis = correct.slice(0, i) + replacement + correct.slice(i + 1);
-                if (mis !== correct && !misspellings.has(mis)) {
-                    misspellings.add(mis);
+    return runtimeFallbackDistractors(correct, rng);
+}
+
+/** Simple runtime fallback for words without pre-baked distractors */
+function runtimeFallbackDistractors(correct: string, rng: () => number): string[] {
+    const result = new Set<string>();
+
+    for (let i = 0; i < correct.length && result.size < 2; i++) {
+        if (VOWELS.includes(correct[i])) {
+            for (const v of 'aeiou') {
+                if (v !== correct[i]) {
+                    const mis = correct.slice(0, i) + v + correct.slice(i + 1);
+                    if (!result.has(mis)) { result.add(mis); break; }
                 }
             }
         }
     }
 
-    // Last resort: append/remove a letter
-    while (misspellings.size < 2) {
-        misspellings.add(correct + 'e');
-        if (misspellings.size < 2) misspellings.add(correct.slice(0, -1));
+    if (result.size < 2) {
+        if (correct.endsWith('e') && correct.length > 2) {
+            const mis = correct.slice(0, -1);
+            if (mis !== correct && !result.has(mis)) result.add(mis);
+        } else {
+            const mis = correct + 'e';
+            if (!result.has(mis)) result.add(mis);
+        }
     }
 
-    return [...misspellings].slice(0, 2);
+    const CONSONANT_CONFUSIONS: [string, string][] = [
+        ['b', 'd'], ['p', 'b'], ['m', 'n'], ['s', 'z'], ['f', 'v'],
+        ['t', 'd'], ['g', 'k'], ['c', 'k'],
+    ];
+    if (result.size < 2) {
+        for (let i = 0; i < correct.length && result.size < 2; i++) {
+            if (!VOWELS.includes(correct[i]) && /[a-z]/.test(correct[i])) {
+                for (const [a, b] of CONSONANT_CONFUSIONS) {
+                    if (correct[i] === a || correct[i] === b) {
+                        const replacement = correct[i] === a ? b : a;
+                        const mis = correct.slice(0, i) + replacement + correct.slice(i + 1);
+                        if (mis !== correct && !result.has(mis)) { result.add(mis); break; }
+                    }
+                }
+            }
+        }
+    }
+
+    return [...result].sort(() => rng() - 0.5).slice(0, 2);
 }
 
 // ── Word selection ───────────────────────────────────────────────────────────
 
-/**
- * Pick a SpellingWord from the bank, filtered by category and difficulty.
- * Falls back gracefully to broader pools when a narrow filter yields nothing.
- */
+/** Fixed difficulty range for tier-N categories */
+const TIER_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
+    'tier-1': [1, 2],
+    'tier-2': [3, 4],
+    'tier-3': [5, 6],
+    'tier-4': [7, 8],
+    'tier-5': [9, 10],
+};
+
 function pickRichWord(
     category: string,
     difficulty: number,
-    band: string | undefined,
     rng: () => number,
+    hardMode = false,
 ): SpellingWord {
-    const [minDiff, maxDiff] = difficultyRange(difficulty);
-    const bandCap = band ? (BAND_DIFFICULTY_CAP[band] ?? 10) : 10;
-    const effectiveMax = Math.min(maxDiff, bandCap) as DifficultyTier;
-    const effectiveMin = Math.min(minDiff, effectiveMax) as DifficultyTier;
+    const tierRange = TIER_RANGES[category];
 
+    let effectiveMin: DifficultyTier;
+    let effectiveMax: DifficultyTier;
+
+    if (tierRange) {
+        [effectiveMin, effectiveMax] = tierRange;
+    } else {
+        const effectiveDifficulty = hardMode ? 5 : difficulty;
+        const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
+        effectiveMax = maxDiff;
+        effectiveMin = minDiff;
+    }
+
+    const theme = CATEGORY_TO_THEME[category] ?? null;
     const pattern = CATEGORY_TO_PATTERN[category] ?? null;
 
-    // Try narrowest filter first, then progressively broaden
     let pool: SpellingWord[];
 
-    if (pattern) {
+    if (theme) {
+        // Theme-based filtering
+        pool = wordsByThemeAndDifficulty(theme, effectiveMin, effectiveMax);
+        if (pool.length === 0) pool = wordsByTheme(theme);
+        if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
+    } else if (pattern) {
         pool = wordsByPatternAndDifficulty(pattern, effectiveMin, effectiveMax);
         if (pool.length === 0) pool = wordsByPattern(pattern);
         if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
@@ -214,6 +233,13 @@ function pickRichWord(
 
     if (pool.length === 0) pool = getAllWords();
 
+    // Hard mode: bias toward the longest, hardest words in the pool
+    if (hardMode && pool.length > 3) {
+        pool.sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
+        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
+        pool = pool.slice(0, cutoff);
+    }
+
     return pool[Math.floor(rng() * pool.length)];
 }
 
@@ -222,26 +248,20 @@ function pickRichWord(
 /**
  * Generate a single spelling EngineItem.
  *
- * The core mechanic: "Which spelling is correct?" — all 3 options are
- * variations of the SAME word (1 correct + 2 misspellings).
- *
- * @param difficulty - adaptive difficulty level 1-5 (from useDifficulty)
- * @param category   - SpellingCategory string id
- * @param hardMode   - if true, misspellings are subtler
- * @param rng        - optional seeded random function (defaults to Math.random)
- * @param band       - optional age band for difficulty capping
+ * Uses pre-baked distractors from the word bank for guaranteed quality.
+ * Each word carries 3 pre-validated, pronounceable misspellings;
+ * 2 are randomly selected per question for variety.
  */
 export function generateSpellingItem(
     difficulty: number,
     category: string,
     hardMode: boolean,
     rng: () => number = Math.random,
-    band?: string,
 ): EngineItem {
-    const richWord = pickRichWord(category, difficulty, band, rng);
+    const richWord = pickRichWord(category, difficulty, rng, hardMode);
     const correct = richWord.word;
-    const misspellings = makeMisspellings(correct, rng);
-    const options = [correct, ...misspellings].sort(() => rng() - 0.5);
+    const distractors = pickDistractors(richWord, rng, hardMode);
+    const options = [correct, ...distractors].sort(() => rng() - 0.5);
     const correctIndex = options.indexOf(correct);
 
     return {

@@ -27,7 +27,7 @@ export const STORAGE_KEYS = {
     trail: `${STORAGE_PREFIX}-trail`,
     chalkTheme: `${STORAGE_PREFIX}-chalk-theme`,
     theme: `${STORAGE_PREFIX}-theme`,
-    ageBand: `${STORAGE_PREFIX}-age-band`,
+    grade: `${STORAGE_PREFIX}-grade`,
     onboarded: `${STORAGE_PREFIX}-onboarded`,
     ttsVoice: `${STORAGE_PREFIX}-tts-voice`,
     ttsRate: `${STORAGE_PREFIX}-tts-rate`,
@@ -44,8 +44,8 @@ export const FIRESTORE = {
 
 export const NAV_TABS = [
     { id: 'game' as const, label: "Spell!", ariaLabel: 'Play' },
-    { id: 'league' as const, label: 'League', ariaLabel: 'Leaderboard' },
-    { id: 'magic' as const, label: 'Word Lab', ariaLabel: 'Lessons' },
+    { id: 'bee' as const, label: 'Bee', ariaLabel: 'Spelling Bee' },
+    { id: 'league' as const, label: 'Leaderboard', ariaLabel: 'Leaderboard' },
     { id: 'me' as const, label: 'Me', ariaLabel: 'Profile' },
 ] as const;
 

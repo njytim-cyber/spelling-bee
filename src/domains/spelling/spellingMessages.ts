@@ -15,7 +15,7 @@ const TOPIC_SUCCESS: Partial<Record<SpellingCategory, string[]>> = {
     digraphs: ['Two letters, one sound — and you nailed it! 🔤', 'Digraph dynamo! 💥', 'Two-for-one! ✌️'],
     'silent-e': ['Silent but deadly! 🤫✨', 'Magic E mastered! 🪄', 'The E may be quiet, but you\'re loud! 📣'],
     'vowel-teams': ['Vowel power! 🎭', 'The team works! 🤝', 'Two vowels, walk the walk! 🚶‍♂️'],
-    mix: ['Mix master! 🎧', 'You can spell EVERYTHING! 🌈'],
+    'review': ['Mix master! 🎧', 'You can spell EVERYTHING! 🌈'],
 };
 
 const TOPIC_FAIL: Partial<Record<SpellingCategory, string[]>> = {
@@ -24,7 +24,7 @@ const TOPIC_FAIL: Partial<Record<SpellingCategory, string[]>> = {
     digraphs: ['Two letters sneaking around! 🔤', 'That digraph got you — next time! 💙'],
     'silent-e': ['That E is sneaky! 🤫', 'Magic takes practice! 🪄', 'Even wizards need practice! ⚡'],
     'vowel-teams': ['Vowels working together — team effort! 🎭', 'When two vowels go walking… practice! 📖'],
-    mix: ['Mixed bag — keep going! 🌀', 'One word at a time! 📝'],
+    'review': ['Mixed bag — keep going! 🌀', 'One word at a time! 📝'],
 };
 
 // ── Spelling Easter eggs ──────────────────────────────────────────────────────

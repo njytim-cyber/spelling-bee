@@ -11,7 +11,6 @@ interface LeaderboardEntry {
     displayName: string;
     totalXP: number;
     bestStreak: number;
-    bestSpeedrunTime?: number;
     activeThemeId?: string;
     activeCostume?: string;
     activeBadgeId?: string;
@@ -19,7 +18,7 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
-type LeagueTab = 'score' | 'speedrun' | 'daily';
+type LeagueTab = 'score' | 'daily';
 
 interface Props {
     userXP: number;
@@ -28,26 +27,13 @@ interface Props {
     displayName: string;
     activeThemeId: string;
     activeCostume: string;
-    bestSpeedrunTime?: number;
-    speedrunHardMode?: boolean;
-    onStartSpeedrun?: () => void;
 }
 
-function formatTime(ms: number): string {
-    const totalSeconds = ms / 1000;
-    if (totalSeconds < 60) return `${totalSeconds.toFixed(2)}s`;
-    const m = Math.floor(totalSeconds / 60);
-    const s = Math.floor(totalSeconds % 60);
-    return `${m}m ${s.toString().padStart(2, '0')}s`;
-}
-
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, bestSpeedrunTime, speedrunHardMode, onStartSpeedrun }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume }: Props) {
     const [tab, setTab] = useState<LeagueTab>('score');
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
-    const [speedrunEntries, setSpeedrunEntries] = useState<LeaderboardEntry[]>([]);
     const [dailyEntries, setDailyEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
-    const [speedrunLoading, setSpeedrunLoading] = useState(true);
     const [dailyLoading, setDailyLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
     const [pingCooldown, setPingCooldown] = useState(false);
@@ -107,7 +93,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 displayName: doc.data().displayName || 'Anonymous',
                 totalXP: doc.data().totalXP || 0,
                 bestStreak: doc.data().bestStreak || 0,
-                bestSpeedrunTime: doc.data().bestSpeedrunTime || 0,
                 activeThemeId: doc.data().activeThemeId || 'classic',
                 activeCostume: doc.data().activeCostume || '',
                 activeBadgeId: doc.data().activeBadgeId || '',
@@ -117,34 +102,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
         }, (err) => {
             console.warn('Leaderboard query failed:', err);
             setLoading(false);
-        });
-        return unsub;
-    }, []);
-
-    // ── Speedrun leaderboard query ──
-    useEffect(() => {
-        const q = query(
-            collection(db, 'users'),
-            where('bestSpeedrunTime', '>', 0),
-            orderBy('bestSpeedrunTime', 'asc'),
-            limit(10),
-        );
-        const unsub = onSnapshot(q, (snap) => {
-            const data: LeaderboardEntry[] = snap.docs.map(doc => ({
-                uid: doc.id,
-                displayName: doc.data().displayName || 'Anonymous',
-                totalXP: doc.data().totalXP || 0,
-                bestStreak: doc.data().bestStreak || 0,
-                bestSpeedrunTime: doc.data().bestSpeedrunTime || 0,
-                activeThemeId: doc.data().activeThemeId || 'classic',
-                activeCostume: doc.data().activeCostume || '',
-                activeBadgeId: doc.data().activeBadgeId || '',
-            }));
-            setSpeedrunEntries(data);
-            setSpeedrunLoading(false);
-        }, (err) => {
-            console.warn('Speedrun leaderboard query failed:', err);
-            setSpeedrunLoading(false);
         });
         return unsub;
     }, []);
@@ -186,7 +143,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
         if (userIdx === -1 && uid) {
             list.push({
                 uid, displayName: displayName || 'You', totalXP: userXP, bestStreak: userStreak,
-                activeThemeId, activeCostume, bestSpeedrunTime: bestSpeedrunTime || 0,
+                activeThemeId, activeCostume,
             });
         } else if (userIdx >= 0) {
             list = list.map((e, i) => i === userIdx ? {
@@ -202,25 +159,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
 
-    // ── Build speedrun board with current user injected ──
-    const speedrunBoard = (() => {
-        const list = [...speedrunEntries];
-        const userInList = uid ? list.find(e => e.uid === uid) : null;
-        if (!userInList && uid && bestSpeedrunTime && bestSpeedrunTime > 0) {
-            list.push({
-                uid, displayName: displayName || 'You', totalXP: userXP, bestStreak: userStreak,
-                activeThemeId, activeCostume, bestSpeedrunTime,
-            });
-        } else if (userInList && bestSpeedrunTime) {
-            userInList.bestSpeedrunTime = Math.min(userInList.bestSpeedrunTime || Infinity, bestSpeedrunTime);
-        }
-        return list
-            .sort((a, b) => (a.bestSpeedrunTime || Infinity) - (b.bestSpeedrunTime || Infinity))
-            .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
-    })();
-
-    const isLoading = tab === 'score' ? loading : tab === 'speedrun' ? speedrunLoading : dailyLoading;
-    const board = tab === 'score' ? scoreBoard : tab === 'speedrun' ? speedrunBoard : dailyEntries;
+    const isLoading = tab === 'score' ? loading : dailyLoading;
+    const board = tab === 'score' ? scoreBoard : dailyEntries;
 
     return (
         <div className="flex-1 flex flex-col items-center px-4 pt-[calc(env(safe-area-inset-top,16px)+40px)] pb-24 overflow-y-auto">
@@ -230,8 +170,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <h2 className="text-3xl chalk text-[var(--color-gold)] mb-1">League</h2>
-                <p className="text-xs ui text-[rgb(var(--color-fg))]/30">Global leaderboard</p>
+                <h2 className="text-3xl chalk text-[var(--color-gold)] mb-1">Leaderboard</h2>
+                <p className="text-xs ui text-[rgb(var(--color-fg))]/50">Global leaderboard</p>
             </motion.div>
 
             {/* Tab Toggle */}
@@ -246,15 +186,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                     ⚡ Score
                 </button>
                 <button
-                    onClick={() => setTab('speedrun')}
-                    className={`flex-1 py-2 rounded-lg text-xs ui font-semibold transition-all duration-200 ${tab === 'speedrun'
-                        ? 'bg-[#FF00FF]/15 text-[#FF00FF] shadow-sm'
-                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                        }`}
-                >
-                    ⏱️ Speedrun
-                </button>
-                <button
                     onClick={() => setTab('daily')}
                     className={`flex-1 py-2 rounded-lg text-xs ui font-semibold transition-all duration-200 ${tab === 'daily'
                         ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] shadow-sm'
@@ -264,26 +195,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                     📅 Daily
                 </button>
             </div>
-
-            {/* Start Speedrun CTA (only on speedrun tab) */}
-            {tab === 'speedrun' && onStartSpeedrun && (
-                <motion.button
-                    onClick={onStartSpeedrun}
-                    className="w-full max-w-xs mb-4 py-3 rounded-xl ui font-bold text-sm bg-gradient-to-r from-[#FF00FF]/20 to-[#00FFFF]/20 border border-[#FF00FF]/30 text-[#FF00FF] active:scale-95 transition-transform"
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                >
-                    ⏱️ Start Speedrun (10 Questions)
-                </motion.button>
-            )}
-
-            {/* Your best time badge */}
-            {tab === 'speedrun' && bestSpeedrunTime != null && bestSpeedrunTime > 0 && (
-                <div className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-3">
-                    Your best: <span className="text-[#FF00FF] font-semibold">{formatTime(bestSpeedrunTime)}</span>{speedrunHardMode && <span title="Hard Mode"> 💀</span>}
-                </div>
-            )}
 
             {/* Loading state */}
             {isLoading && (
@@ -301,9 +212,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             {/* Empty state */}
             {!isLoading && board.length === 0 && (
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/30 mt-8 text-center">
-                    {tab === 'speedrun'
-                        ? 'No speedrun times yet. Be the first! ⏱️'
-                        : 'No players yet. Be the first! 🎮'}
+                    No players yet. Be the first! 🎮
                 </div>
             )}
 
@@ -313,9 +222,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                     <motion.div
                         key={tab}
                         className="w-full max-w-sm"
-                        initial={{ opacity: 0, x: tab === 'speedrun' ? 20 : -20 }}
+                        initial={{ opacity: 0, x: tab === 'daily' ? 20 : -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: tab === 'speedrun' ? -20 : 20 }}
+                        exit={{ opacity: 0, x: tab === 'daily' ? -20 : 20 }}
                         transition={{ duration: 0.2 }}
                     >
                         {board.map((entry, i) => (
@@ -333,7 +242,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                 <div className={`w-7 text-center ui font-bold text-lg ${entry.rank === 1 ? 'text-[var(--color-gold)]' :
                                     entry.rank === 2 ? 'text-[rgb(var(--color-fg))]/60' :
                                         entry.rank === 3 ? 'text-[var(--color-streak-fire)]' :
-                                            'text-[rgb(var(--color-fg))]/30'
+                                            'text-[rgb(var(--color-fg))]/60'
                                     }`}>
                                     {entry.rank === 1 ? '👑' : entry.rank === 2 ? '⚡' : entry.rank === 3 ? '🔥' : entry.rank}
                                 </div>
@@ -346,7 +255,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                         </div>
                                     )}
                                     <div
-                                        className={`text-sm ui font-semibold truncate ${entry.isYou ? '' : 'text-[rgb(var(--color-fg))]/70'}`}
+                                        className={`text-sm ui font-semibold truncate ${entry.isYou ? '' : 'text-[rgb(var(--color-fg))]/90'}`}
                                         style={entry.activeThemeId ? { color: getThemeColor(entry.activeThemeId) } : undefined}
                                     >
                                         {entry.displayName}
@@ -359,14 +268,14 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                     )}
                                 </div>
 
-                                {/* Score or Time */}
+                                {/* Score */}
                                 {tab === 'score' ? (
                                     <>
                                         <div className="text-right">
-                                            <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/50'}`}>
+                                            <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
                                                 {entry.totalXP.toLocaleString()}
                                             </div>
-                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">XP</div>
+                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">XP</div>
                                         </div>
                                         <div className="text-right w-10">
                                             <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
@@ -374,19 +283,12 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                             </div>
                                         </div>
                                     </>
-                                ) : tab === 'daily' ? (
-                                    <div className="text-right">
-                                        <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/50'}`}>
-                                            {entry.totalXP}/{entry.bestStreak}
-                                        </div>
-                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">correct/total</div>
-                                    </div>
                                 ) : (
                                     <div className="text-right">
-                                        <div className={`text-sm ui font-semibold tabular-nums ${entry.isYou ? 'text-[#FF00FF]' : 'text-[#FF00FF]/70'}`}>
-                                            {entry.bestSpeedrunTime ? formatTime(entry.bestSpeedrunTime) : '—'}
+                                        <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
+                                            {entry.totalXP}/{entry.bestStreak}
                                         </div>
-                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">time</div>
+                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">correct/total</div>
                                     </div>
                                 )}
                             </motion.div>

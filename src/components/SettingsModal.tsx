@@ -1,27 +1,22 @@
 /**
  * components/SettingsModal.tsx
  *
- * App settings: TTS voice/speed, theme toggle, difficulty band.
+ * App settings: TTS voice/speed, theme toggle.
  */
 import { memo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import type { SpellingBand } from '../domains/spelling/spellingCategories';
 import { STORAGE_KEYS } from '../config';
 import { OfflinePacksSection } from './OfflinePacksSection';
+import type { GradeLevel } from '../domains/spelling/spellingCategories';
+import { GRADE_LEVELS, gradeIcon } from '../domains/spelling/spellingCategories';
 
 interface Props {
-    ageBand: SpellingBand;
-    onBandChange: (band: SpellingBand) => void;
     themeMode: string;
     onThemeModeToggle: () => void;
+    grade: string;
+    onGradeChange: (grade: GradeLevel) => void;
     onClose: () => void;
 }
-
-const BANDS: { id: SpellingBand; emoji: string; label: string; grades: string }[] = [
-    { id: 'starter', emoji: '🐣', label: 'Starter', grades: 'K – 1st' },
-    { id: 'rising', emoji: '📚', label: 'Rising', grades: '2nd – 5th' },
-    { id: 'sigma', emoji: '🚀', label: 'Sigma', grades: '6th+' },
-];
 
 function getStoredRate(): number {
     const v = localStorage.getItem(STORAGE_KEYS.ttsRate);
@@ -32,7 +27,7 @@ function getStoredVoice(): string {
     return localStorage.getItem(STORAGE_KEYS.ttsVoice) ?? '';
 }
 
-export const SettingsModal = memo(function SettingsModal({ ageBand, onBandChange, themeMode, onThemeModeToggle, onClose }: Props) {
+export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeModeToggle, grade, onGradeChange, onClose }: Props) {
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsVoice, setTtsVoice] = useState(getStoredVoice);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
@@ -94,22 +89,24 @@ export const SettingsModal = memo(function SettingsModal({ ageBand, onBandChange
                     </button>
                 </div>
 
-                {/* Difficulty Band */}
+                {/* Grade Level */}
                 <section className="mb-5">
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Difficulty Level</h4>
-                    <div className="flex gap-2">
-                        {BANDS.map(b => (
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Grade Level</h4>
+                    <div className="flex flex-col gap-1.5">
+                        {GRADE_LEVELS.map(g => (
                             <button
-                                key={b.id}
-                                onClick={() => onBandChange(b.id)}
-                                className={`flex-1 py-2 rounded-xl border text-center transition-colors ${
-                                    ageBand === b.id
-                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
-                                        : 'border-[rgb(var(--color-fg))]/15 hover:border-[rgb(var(--color-fg))]/30'
+                                key={g.id}
+                                onClick={() => onGradeChange(g.id)}
+                                className={`flex items-center gap-3 px-3 py-2 rounded-xl border transition-colors text-left text-sm ui ${
+                                    grade === g.id
+                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                        : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
                                 }`}
                             >
-                                <div className="text-lg">{b.emoji}</div>
-                                <div className="text-xs ui text-[var(--color-chalk)]">{b.label}</div>
+                                <span className={`w-5 h-5 flex items-center justify-center ${grade === g.id ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/50'}`}>
+                                    {gradeIcon(g.id)}
+                                </span>
+                                <span>{g.grades}</span>
                             </button>
                         ))}
                     </div>

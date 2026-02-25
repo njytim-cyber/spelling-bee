@@ -46,10 +46,6 @@ export interface Stats {
     activeCostume?: string;
     activeTrailId?: string;
     activeBadgeId?: string; // Achievement badge shown on leaderboard
-
-    // Speedrun tracking
-    bestSpeedrunTime: number; // Stored in ms. 0 means unplayed.
-    speedrunHardMode: boolean; // true if best speedrun was on hard mode
 }
 
 const STORAGE_KEY = STORAGE_KEYS.stats;
@@ -63,7 +59,7 @@ function buildEmptyByType(): Record<string, TypeStat> {
         out[qt.id] = { ...EMPTY_TYPE };
     }
     // Add meta types not in the picker list
-    for (const id of ['speedrun', 'challenge', 'ghost']) {
+    for (const id of ['challenge', 'ghost']) {
         out[id] = { ...EMPTY_TYPE };
     }
     return out;
@@ -97,8 +93,6 @@ const EMPTY_STATS: Stats = {
     ultimateBestStreak: 0,
     ultimateSessions: 0,
     ultimatePerfects: 0,
-    bestSpeedrunTime: 0,
-    speedrunHardMode: false,
 };
 
 /** Load from localStorage (fast, synchronous) */
@@ -136,8 +130,6 @@ async function saveStatsCloud(uid: string, s: Stats) {
             activeCostume: s.activeCostume || '',
             activeTrailId: s.activeTrailId || '',
             activeBadgeId: s.activeBadgeId || '',
-            bestSpeedrunTime: s.bestSpeedrunTime || 0,
-            speedrunHardMode: s.speedrunHardMode || false,
             streakShields: s.streakShields || 0,
             // Full stats blob — strip undefined values (Firestore rejects them)
             stats: JSON.parse(JSON.stringify(s)),
@@ -208,13 +200,6 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         ultimateBestStreak: Math.max(local.ultimateBestStreak, cloud.ultimateBestStreak),
         ultimateSessions: Math.max(local.ultimateSessions, cloud.ultimateSessions),
         ultimatePerfects: Math.max(local.ultimatePerfects, cloud.ultimatePerfects),
-        bestSpeedrunTime: local.bestSpeedrunTime > 0 && cloud.bestSpeedrunTime > 0
-            ? Math.min(local.bestSpeedrunTime, cloud.bestSpeedrunTime)
-            : local.bestSpeedrunTime || cloud.bestSpeedrunTime,
-        speedrunHardMode: (local.bestSpeedrunTime > 0 && cloud.bestSpeedrunTime > 0
-            ? (local.bestSpeedrunTime <= cloud.bestSpeedrunTime ? local : cloud)
-            : local.bestSpeedrunTime ? local : cloud
-        ).speedrunHardMode,
         // Preserve cosmetics from whichever side has them
         activeThemeId: local.activeThemeId || cloud.activeThemeId,
         activeCostume: local.activeCostume || cloud.activeCostume,
@@ -359,13 +344,6 @@ export function useStats(uid: string | null) {
         setStats(EMPTY_STATS);
     }, []);
 
-    const updateBestSpeedrunTime = useCallback((timeMs: number, hardMode = false) => {
-        setStats(prev => {
-            if (prev.bestSpeedrunTime > 0 && timeMs >= prev.bestSpeedrunTime) return prev;
-            return { ...prev, bestSpeedrunTime: timeMs, speedrunHardMode: hardMode };
-        });
-    }, []);
-
     const updateBadge = useCallback((badgeId: string) => {
         setStats(prev => ({ ...prev, activeBadgeId: badgeId }));
     }, []);
@@ -381,5 +359,5 @@ export function useStats(uid: string | null) {
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-    return { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBestSpeedrunTime, updateBadge, consumeShield };
+    return { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBadge, consumeShield };
 }

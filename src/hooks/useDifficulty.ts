@@ -1,14 +1,13 @@
 import { useState, useCallback, useRef } from 'react';
 
-const MIN_LEVEL = 1;
 const MAX_LEVEL = 5;
 const FAST_THRESHOLD_MS = 1500;
 const SLOW_THRESHOLD_MS = 4000;
 const FAST_STREAK_TO_LEVEL_UP = 3;
 const SLOW_STREAK_TO_LEVEL_DOWN = 2;
 
-export function useDifficulty() {
-    const [level, setLevel] = useState(2);
+export function useDifficulty(minLevel = 1) {
+    const [level, setLevel] = useState(Math.max(2, minLevel));
     const fastCount = useRef(0);
     const slowCount = useRef(0);
 
@@ -31,7 +30,7 @@ export function useDifficulty() {
             fastCount.current = 0;
             slowCount.current += 1;
             if (slowCount.current >= SLOW_STREAK_TO_LEVEL_DOWN) {
-                setLevel(l => Math.max(l - 1, MIN_LEVEL));
+                setLevel(l => Math.max(l - 1, minLevel));
                 slowCount.current = 0;
             }
         } else {
@@ -39,7 +38,7 @@ export function useDifficulty() {
             fastCount.current = 0;
             slowCount.current = 0;
         }
-    }, []);
+    }, [minLevel]);
 
     return { level, recordAnswer };
 }

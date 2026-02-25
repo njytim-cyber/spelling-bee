@@ -30,10 +30,8 @@ const DEFAULT_ICONS: Record<Tab, ReactNode> = {
             <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
         </svg>
     ),
-    magic: (
-        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M12 2l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" />
-        </svg>
+    bee: (
+        <span className="text-xl leading-none">🐝</span>
     ),
     me: (
         <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">

@@ -1,7 +1,7 @@
 /**
  * words/registry.ts
  *
- * Dynamic word loading registry. Tier 1-2 are eagerly loaded (starter band).
+ * Dynamic word loading registry. Tier 1-2 are eagerly loaded.
  * Tier 3-5 and competition packs load on demand via dynamic import().
  */
 import type { SpellingWord } from './types';
@@ -39,20 +39,13 @@ const tierImporters: Record<number, () => Promise<{ default?: SpellingWord[]; [k
     5: () => import('./tier5'),
 };
 
-/** Tiers required per band. */
-const BAND_TIERS: Record<string, number[]> = {
-    starter: [1, 2],
-    rising: [1, 2, 3, 4],
-    sigma: [1, 2, 3, 4, 5],
-};
-
 /**
- * Ensure all word tiers needed for the given band are loaded.
+ * Ensure all word tiers (1-5) are loaded.
  * Returns immediately if already loaded. Safe to call multiple times.
  */
-export async function ensureTiersForBand(band: string): Promise<void> {
-    const needed = BAND_TIERS[band] ?? [1, 2];
-    const missing = needed.filter(t => !loadedTiers.has(t));
+export async function ensureAllTiers(): Promise<void> {
+    const allTiers = [1, 2, 3, 4, 5];
+    const missing = allTiers.filter(t => !loadedTiers.has(t));
     if (missing.length === 0) return;
 
     const modules = await Promise.all(

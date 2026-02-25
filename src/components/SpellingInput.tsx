@@ -1,10 +1,12 @@
 /**
  * components/SpellingInput.tsx
  *
- * Large text input for spelling bee simulation mode.
- * Shows character-by-character display above the input field.
+ * Letter-by-letter spelling display for bee simulation mode.
+ * A hidden input captures keyboard input while animated letters
+ * appear one at a time in a chalk-style display.
  */
 import { memo, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Props {
     value: string;
@@ -15,6 +17,7 @@ interface Props {
 
 export const SpellingInput = memo(function SpellingInput({ value, onChange, onSubmit, disabled }: Props) {
     const inputRef = useRef<HTMLInputElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
     // Auto-focus when component mounts
     useEffect(() => {
@@ -28,23 +31,20 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
         }
     };
 
-    return (
-        <div className="w-full max-w-[320px] mx-auto">
-            {/* Character-by-character display */}
-            <div className="flex justify-center gap-1 mb-4 min-h-[48px] flex-wrap">
-                {(value || ' ').split('').map((ch, i) => (
-                    <div
-                        key={i}
-                        className="w-8 h-10 border-b-2 border-[rgb(var(--color-fg))]/30 flex items-end justify-center pb-1"
-                    >
-                        <span className="text-2xl chalk text-[var(--color-chalk)]">
-                            {ch === ' ' ? '' : ch}
-                        </span>
-                    </div>
-                ))}
-            </div>
+    // Tap anywhere on the display area to focus the hidden input
+    const focusInput = () => {
+        inputRef.current?.focus();
+    };
 
-            {/* Input field */}
+    const letters = value.split('');
+
+    return (
+        <div
+            ref={wrapperRef}
+            className="w-full max-w-[320px] mx-auto relative cursor-text"
+            onClick={focusInput}
+        >
+            {/* Hidden input — captures keyboard, invisible but overlays the display */}
             <input
                 ref={inputRef}
                 type="text"
@@ -56,18 +56,43 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                 autoCorrect="off"
                 autoCapitalize="off"
                 spellCheck={false}
-                className="w-full bg-transparent border-2 border-[rgb(var(--color-fg))]/20 rounded-xl px-4 py-3 text-lg chalk text-[var(--color-chalk)] text-center focus:border-[var(--color-gold)]/50 focus:outline-none transition-colors"
-                placeholder="Type your spelling..."
+                className="absolute inset-0 opacity-0 w-full h-full z-10"
+                style={{ caretColor: 'transparent' }}
             />
 
-            {/* Submit button */}
-            <button
-                onClick={onSubmit}
-                disabled={disabled || value.trim().length === 0}
-                className="w-full mt-3 py-3 rounded-xl border-2 border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            {/* Letter display area */}
+            <div className="flex items-center justify-center gap-1 min-h-[60px] px-4 py-3 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 bg-[var(--color-surface)] transition-colors"
+                style={{ borderColor: value.length > 0 ? 'rgba(var(--color-fg), 0.2)' : undefined }}
             >
-                Submit
-            </button>
+                <AnimatePresence mode="popLayout">
+                    {letters.map((letter, i) => (
+                        <motion.span
+                            key={`${i}-${letter}`}
+                            initial={{ opacity: 0, scale: 0.5, y: 8 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.5, y: -8 }}
+                            transition={{ duration: 0.15, ease: 'easeOut' }}
+                            className="text-2xl chalk text-[var(--color-chalk)] tracking-[0.15em] uppercase"
+                        >
+                            {letter}
+                        </motion.span>
+                    ))}
+                </AnimatePresence>
+
+                {/* Blinking cursor */}
+                <motion.span
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ repeat: Infinity, duration: 1, times: [0, 0.5, 0.5], ease: 'linear' }}
+                    className="text-2xl chalk text-[var(--color-gold)] ml-0.5"
+                >
+                    _
+                </motion.span>
+            </div>
+
+            {/* Hint text */}
+            <p className="text-center mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/25">
+                {value.length === 0 ? 'start typing...' : 'press Enter to submit'}
+            </p>
         </div>
     );
 });

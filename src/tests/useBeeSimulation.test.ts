@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { getAllWords, difficultyRange, BAND_DIFFICULTY_CAP } from '../domains/spelling/words';
-import type { DifficultyTier, SpellingWord } from '../domains/spelling/words/types';
+import { getAllWords, difficultyRange } from '../domains/spelling/words';
+import type { SpellingWord } from '../domains/spelling/words/types';
+import { simulateNpcTurns } from '../hooks/useBeeSimulation';
 
 /**
  * Tests for bee simulation logic.
@@ -10,15 +11,12 @@ import type { DifficultyTier, SpellingWord } from '../domains/spelling/words/typ
 
 // ── Extracted pickBeeWord logic ─────────────────────────────────────────────
 
-function pickBeeWord(round: number, band?: string): SpellingWord {
-    const diffLevel = Math.min(5, 1 + Math.floor(round / 5));
+function pickBeeWord(round: number): SpellingWord {
+    const diffLevel = Math.min(5, 1 + Math.floor(round / 3));
     const [minDiff, maxDiff] = difficultyRange(diffLevel);
-    const bandCap = band ? (BAND_DIFFICULTY_CAP[band] ?? 10) : 10;
-    const effectiveMax = Math.min(maxDiff, bandCap) as DifficultyTier;
-    const effectiveMin = Math.min(minDiff, effectiveMax) as DifficultyTier;
 
     const all = getAllWords();
-    const pool = all.filter(w => w.difficulty >= effectiveMin && w.difficulty <= effectiveMax);
+    const pool = all.filter(w => w.difficulty >= minDiff && w.difficulty <= maxDiff);
     const source = pool.length > 0 ? pool : all;
     return source[Math.floor(Math.random() * source.length)];
 }
@@ -33,10 +31,10 @@ function calcSessionXP(wordsCorrect: number, usedInfoRequests: boolean): number 
 
 describe('Bee simulation (pickBeeWord)', () => {
 
-    it('round 0 picks easy words (difficulty ≤ 4)', () => {
+    it('round 0 picks easy words (difficulty ≤ 2)', () => {
         for (let i = 0; i < 30; i++) {
-            const word = pickBeeWord(0, 'starter');
-            expect(word.difficulty).toBeLessThanOrEqual(4);
+            const word = pickBeeWord(0);
+            expect(word.difficulty).toBeLessThanOrEqual(2);
         }
     });
 
@@ -52,29 +50,6 @@ describe('Bee simulation (pickBeeWord)', () => {
         expect(lateAvg).toBeGreaterThan(earlyAvg);
     });
 
-    it('starter band caps at difficulty 4', () => {
-        for (let i = 0; i < 50; i++) {
-            const word = pickBeeWord(25, 'starter');
-            expect(word.difficulty).toBeLessThanOrEqual(4);
-        }
-    });
-
-    it('rising band caps at difficulty 7', () => {
-        for (let i = 0; i < 50; i++) {
-            const word = pickBeeWord(25, 'rising');
-            expect(word.difficulty).toBeLessThanOrEqual(7);
-        }
-    });
-
-    it('sigma band allows difficulty up to 10', () => {
-        // Just verify it doesn't crash and returns valid words
-        for (let i = 0; i < 30; i++) {
-            const word = pickBeeWord(25, 'sigma');
-            expect(word.difficulty).toBeGreaterThanOrEqual(1);
-            expect(word.difficulty).toBeLessThanOrEqual(10);
-        }
-    });
-
     it('always returns a valid SpellingWord', () => {
         for (let i = 0; i < 30; i++) {
             const word = pickBeeWord(i);
@@ -84,15 +59,15 @@ describe('Bee simulation (pickBeeWord)', () => {
         }
     });
 
-    it('difficulty level plateaus at round 20+', () => {
-        // diffLevel = min(5, 1 + floor(round/5))
-        // round 20 → 1+4 = 5 (max)
-        // round 30 → 1+6 capped to 5
+    it('difficulty level plateaus at round 12+', () => {
+        // diffLevel = min(5, 1 + floor(round/3))
+        // round 12 → 1+4 = 5 (max)
+        // round 20 → 1+6 capped to 5
+        const word12 = pickBeeWord(12);
         const word20 = pickBeeWord(20);
-        const word30 = pickBeeWord(30);
         // Both should use difficulty level 5 so same difficulty range
+        expect(word12.difficulty).toBeGreaterThanOrEqual(1);
         expect(word20.difficulty).toBeGreaterThanOrEqual(1);
-        expect(word30.difficulty).toBeGreaterThanOrEqual(1);
     });
 });
 
@@ -108,5 +83,61 @@ describe('Bee simulation (XP calculation)', () => {
 
     it('0 correct = 0 XP', () => {
         expect(calcSessionXP(0, false)).toBe(0);
+    });
+});
+
+describe('NPC turn simulation', () => {
+    const alive = [true, true, true, true];
+    const skill = [0.96, 0.82, 1.0, 0.55];
+    const scores = [0, 0, 0, 0];
+
+    it('player index 2 is always null', () => {
+        for (let i = 0; i < 20; i++) {
+            const { npcResults } = simulateNpcTurns(alive, skill, scores, 0, true);
+            expect(npcResults[2]).toBeNull();
+        }
+    });
+
+    it('skips dead NPCs', () => {
+        const deadAlive = [false, true, true, false];
+        for (let i = 0; i < 20; i++) {
+            const { npcResults } = simulateNpcTurns(deadAlive, skill, scores, 0, true);
+            expect(npcResults[0]).toBeNull();
+            expect(npcResults[3]).toBeNull();
+            // Index 1 should have a result
+            expect(npcResults[1]).not.toBeNull();
+        }
+    });
+
+    it('eliminates NPCs on wrong answer in elimination mode', () => {
+        // Run many times — with skill 0.45, nervous NPC should eventually fail
+        let sawElimination = false;
+        for (let i = 0; i < 100; i++) {
+            const { npcAlive } = simulateNpcTurns(alive, skill, scores, 0, true);
+            if (!npcAlive[3]) { sawElimination = true; break; }
+        }
+        expect(sawElimination).toBe(true);
+    });
+
+    it('does not eliminate in non-elimination mode', () => {
+        for (let i = 0; i < 50; i++) {
+            const { npcAlive } = simulateNpcTurns(alive, skill, scores, 0, false);
+            expect(npcAlive[0]).toBe(true);
+            expect(npcAlive[1]).toBe(true);
+            expect(npcAlive[3]).toBe(true);
+        }
+    });
+
+    it('increments scores for correct answers', () => {
+        // Run many times and accumulate scores
+        let totalScores = [0, 0, 0, 0];
+        for (let i = 0; i < 100; i++) {
+            const { npcScores } = simulateNpcTurns(alive, skill, [0, 0, 0, 0], 0, false);
+            totalScores = totalScores.map((s, j) => s + npcScores[j]);
+        }
+        // Brainiac (0.85) should have more correct than Nervous (0.45)
+        expect(totalScores[0]).toBeGreaterThan(totalScores[3]);
+        // Player score should stay 0 (not simulated)
+        expect(totalScores[2]).toBe(0);
     });
 });

@@ -19,6 +19,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ab-SIZH-un',
         etymology: 'Latin: abscissio (a cutting off), from abscindere (to cut off), from ab (off) + scindere (to cut)',
         source: 'state-bee',
+        distractors: ['abscision', 'abzcission', 'apscission'],
+        theme: 'plants',
     },
     {
         word: 'accouterments',
@@ -30,6 +32,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'uh-KOO-tur-munts',
         etymology: 'French: accoutrement (equipment), from accoutrer (to equip, dress)',
         source: 'state-bee',
+        distractors: ['accuoterments', 'accuuterments', 'accoaterments'],
+        theme: 'tools',
     },
     {
         word: 'adjudicate',
@@ -41,6 +45,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'uh-JOO-dih-kayt',
         etymology: 'Latin: adjudicare (to award judicially), from ad (to) + judicare (to judge)',
         source: 'state-bee',
+        distractors: ['adjudicata', 'addjudicate', 'ajdudicate'],
+        theme: 'law',
     },
     {
         word: 'ambidextrous',
@@ -52,6 +58,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'am-bih-DEK-strus',
         etymology: 'Latin: ambi (both) + dexter (right hand, skillful)',
         source: 'state-bee',
+        distractors: ['ambidextrouse', 'amidextrous', 'ambidextrus'],
+        theme: 'body',
     },
     {
         word: 'antithesis',
@@ -63,6 +71,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'an-TITH-uh-sis',
         etymology: 'Greek: antithesis (opposition), from anti (against) + thesis (a placing, proposition)',
         source: 'state-bee',
+        distractors: ['antithesise', 'atnithesis', 'antethesis'],
+        theme: 'mind',
     },
     {
         word: 'archipelago',
@@ -74,6 +84,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ar-kih-PEL-uh-goh',
         etymology: 'Greek: archi (chief) + pelagos (sea)',
         source: 'state-bee',
+        distractors: ['archipellago', 'arhcipelago', 'archibelago'],
+        theme: 'earth',
     },
     {
         word: 'bacchanalia',
@@ -85,6 +97,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'bak-uh-NAY-lee-uh',
         etymology: 'Latin: Bacchanalia (festival of Bacchus), from Bacchus (god of wine)',
         source: 'state-bee',
+        distractors: ['bachcanalia', 'bacchunalia', 'bachanalia'],
+        theme: 'people',
     },
     {
         word: 'bifurcate',
@@ -96,6 +110,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'BY-fur-kayt',
         etymology: 'Latin: bifurcus (two-forked), from bi (two) + furca (fork)',
         source: 'state-bee',
+        distractors: ['pifurcate', 'bifucrate', 'difurcate'],
+        theme: 'actions',
     },
     {
         word: 'calligraphy',
@@ -107,6 +123,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-LIG-ruh-fee',
         etymology: 'Greek: kalligraphia (beautiful writing), from kallos (beauty) + graphein (to write)',
         source: 'state-bee',
+        distractors: ['celligraphy', 'callography', 'calligrafy'],
+        theme: 'language',
     },
     {
         word: 'cantaloupe',
@@ -118,6 +136,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'KAN-tuh-lohp',
         etymology: 'French: cantaloup, from Cantalupo, a papal estate near Rome where the melon was first cultivated',
         source: 'state-bee',
+        distractors: ['cantalloupe', 'canttaloupe', 'cantaloup'],
+        theme: 'food',
     },
     {
         word: 'chauvinism',
@@ -129,6 +149,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'SHOH-vin-iz-um',
         etymology: 'French: chauvinisme, from Nicolas Chauvin, a legendary soldier fanatically devoted to Napoleon',
         source: 'state-bee',
+        distractors: ['chuavinism', 'chauvinisme', 'chauvenism'],
+        theme: 'people',
     },
     {
         word: 'coagulate',
@@ -140,6 +162,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'koh-AG-yoo-layt',
         etymology: 'Latin: coagulare (to cause to curdle), from coagulum (rennet), from cogere (to drive together)',
         source: 'state-bee',
+        distractors: ['caogulate', 'koagulate', 'cuagulate'],
+        theme: 'water',
     },
     {
         word: 'corroboration',
@@ -151,6 +175,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-rob-uh-RAY-shun',
         etymology: 'Latin: corroboratio (strengthening), from corroborare (to strengthen)',
         source: 'state-bee',
+        distractors: ['corroboratiom', 'coroboration', 'corroboratoin'],
+        theme: 'mind',
     },
     {
         word: 'daguerreotype',
@@ -162,6 +188,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'duh-GAIR-oh-typ',
         etymology: 'French: from Louis Daguerre, the French inventor who developed the process in 1839',
         source: 'state-bee',
+        distractors: ['dageurreotype', 'daguerroetype', 'daguereotype'],
+        theme: 'art',
     },
     {
         word: 'delineate',
@@ -173,6 +201,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'deh-LIN-ee-ayt',
         etymology: 'Latin: delineare (to sketch out), from de (completely) + lineare (to draw a line), from linea (line)',
         source: 'state-bee',
+        distractors: ['delinaete', 'delineat', 'delineati'],
+        theme: 'actions',
     },
     {
         word: 'desiccate',
@@ -184,6 +214,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'DES-ih-kayt',
         etymology: 'Latin: desiccare (to dry up), from de (thoroughly) + siccare (to dry), from siccus (dry)',
         source: 'state-bee',
+        distractors: ['desikcate', 'desiccete', 'desicate'],
+        theme: 'actions',
     },
     {
         word: 'discombobulate',
@@ -195,6 +227,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'dis-kum-BOB-yoo-layt',
         etymology: 'American English: humorous alteration of discompose or discomfit, of uncertain further origin',
         source: 'state-bee',
+        distractors: ['biscombobulate', 'discomobulate', 'discobmobulate'],
+        theme: 'actions',
     },
     {
         word: 'efficacious',
@@ -206,6 +240,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ef-ih-KAY-shus',
         etymology: 'Latin: efficax (effective), from efficere (to accomplish), from ex (out) + facere (to make)',
         source: 'state-bee',
+        distractors: ['efficaciouse', 'efficatious', 'efficaciuos'],
+        theme: 'health',
     },
     {
         word: 'eloquence',
@@ -217,6 +253,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'EL-oh-kwenss',
         etymology: 'Latin: eloquentia (fluency of speech), from eloqui (to speak out)',
         source: 'state-bee',
+        distractors: ['eloqquence', 'eloquemce', 'eloquencce'],
+        theme: 'language',
     },
     {
         word: 'embouchure',
@@ -228,6 +266,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'AHM-boo-shoor',
         etymology: 'French: embouchure (mouth of a river, mouthpiece), from emboucher (to put to the mouth)',
         source: 'state-bee',
+        distractors: ['emboucchure', 'emouchure', 'emdouchure'],
+        theme: 'weather',
     },
     {
         word: 'erysipelas',
@@ -239,6 +279,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'er-ih-SIP-uh-lus',
         etymology: 'Greek: erysipelas (red skin), from erythros (red) + pella (skin)',
         source: 'state-bee',
+        distractors: ['ersyipelas', 'eryysipelas', 'eryssipelas'],
+        theme: 'health',
     },
     {
         word: 'evanescent',
@@ -250,6 +292,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ev-uh-NES-unt',
         etymology: 'Latin: evanescere (to vanish), from e (out) + vanescere (to vanish), from vanus (empty)',
         source: 'state-bee',
+        distractors: ['evanescant', 'evamescent', 'ivanescent'],
+        theme: 'mind',
     },
     {
         word: 'fluorescent',
@@ -261,6 +305,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'floo-RES-unt',
         etymology: 'Latin: fluor (a flowing), from fluere (to flow); named after the mineral fluorite',
         source: 'state-bee',
+        distractors: ['fluorescente', 'flaorescent', 'fluirescent'],
+        theme: 'science',
     },
     {
         word: 'flocculent',
@@ -272,6 +318,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'FLOK-yoo-lunt',
         etymology: 'Latin: flocculus (small tuft), diminutive of floccus (tuft of wool)',
         source: 'state-bee',
+        distractors: ['flocculente', 'floculent', 'flocculant'],
+        theme: 'clothing',
     },
     {
         word: 'fuselage',
@@ -283,6 +331,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'FYOO-zuh-lahzh',
         etymology: 'French: fuselage (spindle-shaped), from fusele (shaped like a spindle), from fuseau (spindle)',
         source: 'state-bee',
+        distractors: ['fuselagge', 'vuselage', 'fuselaga'],
+        theme: 'body',
     },
     {
         word: 'gargantuan',
@@ -294,6 +344,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'gar-GAN-choo-un',
         etymology: 'French: from Gargantua, the giant king in Rabelais\' satirical novels',
         source: 'state-bee',
+        distractors: ['gargamtuan', 'gargantaun', 'gergantuan'],
+        theme: 'quantity',
     },
     {
         word: 'hemorrhoid',
@@ -305,6 +357,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'HEM-uh-royd',
         etymology: 'Greek: haimorrhoides (bleeding veins), from haima (blood) + rhein (to flow)',
         source: 'state-bee',
+        distractors: ['hemorrhuid', 'himorrhoid', 'hemorrhoit'],
+        theme: 'body',
     },
     {
         word: 'hyperbole',
@@ -316,6 +370,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'hy-PUR-buh-lee',
         etymology: 'Greek: hyperbole (excess), from hyper (beyond) + ballein (to throw)',
         source: 'state-bee',
+        distractors: ['hyyperbole', 'hyparbole', 'hyperbbole'],
+        theme: 'science',
     },
     {
         word: 'imprimatur',
@@ -327,6 +383,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'im-prih-MAH-tur',
         etymology: 'Latin: imprimatur (let it be printed), from imprimere (to impress, print)',
         source: 'state-bee',
+        distractors: ['imprimutur', 'impromatur', 'imrpimatur'],
+        theme: 'language',
     },
     {
         word: 'incandescent',
@@ -338,6 +396,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'in-kan-DES-unt',
         etymology: 'Latin: incandescere (to become white hot), from in (intensive) + candescere (to glow)',
         source: 'state-bee',
+        distractors: ['incadnescent', 'incandescant', 'incantescent'],
+        theme: 'light',
     },
     {
         word: 'infinitesimal',
@@ -349,6 +409,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'in-fin-ih-TES-ih-mul',
         etymology: 'Latin: infinitesimus (infinite in degree), from infinitus (unlimited)',
         source: 'state-bee',
+        distractors: ['ifninitesimal', 'infinitesimel', 'infinitessimal'],
+        theme: 'quantity',
     },
     {
         word: 'inoculate',
@@ -360,6 +422,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'in-OK-yoo-layt',
         etymology: 'Latin: inoculare (to graft a bud), from in (into) + oculus (eye, bud)',
         source: 'state-bee',
+        distractors: ['inocullate', 'inoculatte', 'imoculate'],
+        theme: 'health',
     },
     {
         word: 'insatiable',
@@ -371,6 +435,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'in-SAY-shuh-bul',
         etymology: 'Latin: insatiabilis (that cannot be satisfied), from in (not) + satiare (to fill, satisfy)',
         source: 'state-bee',
+        distractors: ['isnatiable', 'insatiible', 'insatiablle'],
+        theme: 'feelings',
     },
     {
         word: 'isosceles',
@@ -382,6 +448,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'eye-SOS-uh-leez',
         etymology: 'Greek: isoskeles (equal-legged), from isos (equal) + skelos (leg)',
         source: 'state-bee',
+        distractors: ['ososceles', 'isoscelese', 'isossceles'],
+        theme: 'math',
     },
     {
         word: 'kaleidoscope',
@@ -393,6 +461,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-LY-duh-skohp',
         etymology: 'Greek: kalos (beautiful) + eidos (form) + skopein (to look at)',
         source: 'state-bee',
+        distractors: ['kaleiddoscope', 'kaleiboscope', 'caleidoscope'],
+        theme: 'art',
     },
     {
         word: 'knowledgeable',
@@ -404,6 +474,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'NOL-ij-uh-bul',
         etymology: 'Middle English: knowleche (knowledge), from know + -leche (suffix denoting action)',
         source: 'state-bee',
+        distractors: ['nowledgeable', 'knowledgeeble', 'knowledgeible'],
+        theme: 'character',
     },
     {
         word: 'labyrinth',
@@ -415,6 +487,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'LAB-uh-rinth',
         etymology: 'Greek: labyrinthos (maze), associated with the mythical maze built by Daedalus for King Minos',
         source: 'state-bee',
+        distractors: ['labyrenth', 'laybrinth', 'labryinth'],
+        theme: 'building',
     },
     {
         word: 'legitimacy',
@@ -426,6 +500,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'leh-JIT-ih-muh-see',
         etymology: 'Latin: legitimus (lawful), from lex (law)',
         source: 'state-bee',
+        distractors: ['legitimacye', 'legitinacy', 'lekitimacy'],
+        theme: 'law',
     },
     {
         word: 'liaison',
@@ -437,6 +513,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'lee-AY-zon',
         etymology: 'French: liaison (connection, linking), from lier (to bind), from Latin: ligare',
         source: 'state-bee',
+        distractors: ['liaisom', 'liiason', 'liaisson'],
+        theme: 'people',
     },
     {
         word: 'malevolent',
@@ -448,6 +526,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'muh-LEV-uh-lunt',
         etymology: 'Latin: malevolens (ill-disposed), from male (badly) + volens (wishing), from velle (to wish)',
         source: 'state-bee',
+        distractors: ['melevolent', 'malevolant', 'malevollent'],
+        theme: 'character',
     },
     {
         word: 'masquerade',
@@ -459,6 +539,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'mas-kuh-RAYD',
         etymology: 'French: mascarade (masked ball), from Italian: mascherata, from maschera (mask)',
         source: 'state-bee',
+        distractors: ['masqeurade', 'masquerad', 'masqueradde'],
+        theme: 'people',
     },
     {
         word: 'meringue',
@@ -470,6 +552,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'muh-RANG',
         etymology: 'French: meringue, of uncertain origin; possibly from German: Meringer (a cake from Mehringen)',
         source: 'state-bee',
+        distractors: ['neringue', 'meringua', 'merringue'],
+        theme: 'food',
     },
     {
         word: 'miscellaneous',
@@ -481,6 +565,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'mis-uh-LAY-nee-us',
         etymology: 'Latin: miscellaneus (mixed), from miscere (to mix)',
         source: 'state-bee',
+        distractors: ['miscellaneuos', 'miscelaneous', 'miscellanoeus'],
+        theme: 'quantity',
     },
     {
         word: 'mischievous',
@@ -492,6 +578,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'MIS-chuh-vus',
         etymology: 'Old French: meschever (to come to grief), from mes (wrongly) + chever (to come to an end)',
         source: 'state-bee',
+        distractors: ['mischievuos', 'micshievous', 'mischievoos'],
+        theme: 'character',
     },
     {
         word: 'mosaic',
@@ -503,6 +591,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'moh-ZAY-ik',
         etymology: 'Greek: mouseion (place of the Muses), via Latin: musaicum (artistic work inspired by the Muses)',
         source: 'state-bee',
+        distractors: ['mozaic', 'mosiac', 'mosaice'],
+        theme: 'art',
     },
     {
         word: 'nonchalant',
@@ -514,6 +604,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'non-shuh-LAHNT',
         etymology: 'French: nonchalant (careless), from non (not) + chaloir (to be concerned), from Latin: calere (to be warm)',
         source: 'state-bee',
+        distractors: ['ninchalant', 'nonchalante', 'monchalant'],
+        theme: 'feelings',
     },
     {
         word: 'opalescent',
@@ -525,6 +617,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'oh-puh-LES-unt',
         etymology: 'Latin: opalus (opal) + -escent (becoming, displaying)',
         source: 'state-bee',
+        distractors: ['oppalescent', 'obalescent', 'opelescent'],
+        theme: 'color',
     },
     {
         word: 'oscillate',
@@ -536,6 +630,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'OS-ih-layt',
         etymology: 'Latin: oscillare (to swing), from oscillum (a swing)',
         source: 'state-bee',
+        distractors: ['oscilate', 'ocsillate', 'oskillate'],
+        theme: 'actions',
     },
     {
         word: 'outrageous',
@@ -547,6 +643,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'owt-RAY-jus',
         etymology: 'Old French: outrage (excess), from outre (beyond), from Latin: ultra',
         source: 'state-bee',
+        distractors: ['outragious', 'outragoeus', 'outrageouz'],
+        theme: 'character',
     },
     {
         word: 'paraphernalia',
@@ -558,6 +656,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'par-uh-fur-NAY-lee-uh',
         etymology: 'Greek: parapherna (property beyond a dowry), from para (beyond) + pherne (dowry)',
         source: 'state-bee',
+        distractors: ['parafernalia', 'paraphermalia', 'parahpernalia'],
+        theme: 'tools',
     },
     {
         word: 'pasteurize',
@@ -569,6 +669,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'PAS-chur-yz',
         etymology: 'French: from Louis Pasteur, the French microbiologist who developed the process',
         source: 'state-bee',
+        distractors: ['pasteurise', 'pazteurize', 'patseurize'],
+        theme: 'food',
     },
     {
         word: 'peccadillo',
@@ -580,6 +682,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'pek-uh-DIL-oh',
         etymology: 'Spanish: pecadillo (small sin), diminutive of pecado (sin), from Latin: peccatum (sin)',
         source: 'state-bee',
+        distractors: ['pekcadillo', 'peccadollo', 'pecadillo'],
+        theme: 'law',
     },
     {
         word: 'penicillin',
@@ -591,6 +695,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'pen-ih-SIL-in',
         etymology: 'Latin: penicillum (paintbrush, tuft of hair), describing the brush-like shape of the mold',
         source: 'state-bee',
+        distractors: ['penocillin', 'penicollin', 'panicillin'],
+        theme: 'health',
     },
     {
         word: 'perennial',
@@ -602,6 +708,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'puh-REN-ee-ul',
         etymology: 'Latin: perennis (lasting through the year), from per (through) + annus (year)',
         source: 'state-bee',
+        distractors: ['perenniel', 'perenniale', 'peremnial'],
+        theme: 'time',
     },
     {
         word: 'plausible',
@@ -613,6 +721,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'PLAW-zih-bul',
         etymology: 'Latin: plausibilis (worthy of applause), from plaudere (to applaud)',
         source: 'state-bee',
+        distractors: ['plausable', 'pluasible', 'blausible'],
+        theme: 'mind',
     },
     {
         word: 'predecessor',
@@ -624,6 +734,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'PRED-uh-ses-ur',
         etymology: 'Latin: praedecessor (one who retires from office), from prae (before) + decessor (retiring officer)',
         source: 'state-bee',
+        distractors: ['predecesser', 'predecassor', 'predecessur'],
+        theme: 'people',
     },
     {
         word: 'reconnaissance',
@@ -635,6 +747,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'reh-KON-uh-sunss',
         etymology: 'French: reconnaissance (recognition, exploration), from reconnaitre (to recognize)',
         source: 'state-bee',
+        distractors: ['reconaissance', 'rekonnaissance', 'reconniassance'],
+        theme: 'war',
     },
     {
         word: 'rendezvous',
@@ -646,6 +760,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'RON-day-voo',
         etymology: 'French: rendez-vous (present yourselves), from se rendre (to present oneself)',
         source: 'state-bee',
+        distractors: ['rednezvous', 'rendezfous', 'rendezvvous'],
+        theme: 'people',
     },
     {
         word: 'resuscitate',
@@ -657,6 +773,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'reh-SUS-ih-tayt',
         etymology: 'Latin: resuscitare (to raise up again), from re (again) + suscitare (to raise)',
         source: 'state-bee',
+        distractors: ['resucsitate', 'resuscittate', 'resuscidate'],
+        theme: 'actions',
     },
     {
         word: 'rhododendron',
@@ -668,6 +786,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'roh-duh-DEN-drun',
         etymology: 'Greek: rhododendron (rose tree), from rhodon (rose) + dendron (tree)',
         source: 'state-bee',
+        distractors: ['rhadodendron', 'rhodadendron', 'rhododandron'],
+        theme: 'plants',
     },
     {
         word: 'sacrosanct',
@@ -679,6 +799,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'SAK-roh-sankt',
         etymology: 'Latin: sacrosanctus (consecrated with religious ceremonies), from sacer (sacred) + sanctus (holy)',
         source: 'state-bee',
+        distractors: ['sacrosancte', 'secrosanct', 'sacrasanct'],
+        theme: 'law',
     },
     {
         word: 'schmaltz',
@@ -690,6 +812,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'SHMAHLTS',
         etymology: 'Yiddish: shmalts (rendered fat), from German: Schmalz (grease, lard)',
         source: 'state-bee',
+        distractors: ['schmeltz', 'schmaltze'],
+        theme: 'animals',
     },
     {
         word: 'silhouette',
@@ -701,6 +825,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'sil-oo-ET',
         etymology: 'French: from Etienne de Silhouette, a French finance minister whose austerity policies were mocked',
         source: 'state-bee',
+        distractors: ['silhouedte', 'silhoeutte', 'silhouete'],
+        theme: 'people',
     },
     {
         word: 'solemnity',
@@ -712,6 +838,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'suh-LEM-nih-tee',
         etymology: 'Latin: solemnitas (ceremony, completeness), from sollemnis (established, ceremonial)',
         source: 'state-bee',
+        distractors: ['solemnitye', 'solemnitty', 'solenmity'],
+        theme: 'character',
     },
     {
         word: 'sovereignty',
@@ -723,6 +851,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'SOV-run-tee',
         etymology: 'Old French: souverainete (authority), from souverain (sovereign), from Latin: superanus (chief)',
         source: 'state-bee',
+        distractors: ['sovereigntye', 'sovereinty', 'sovereignyt'],
+        theme: 'power',
     },
     {
         word: 'spontaneity',
@@ -734,6 +864,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'spon-tuh-NEE-ih-tee',
         etymology: 'Latin: spontaneus (voluntary, of one\'s own accord), from sponte (of one\'s free will)',
         source: 'state-bee',
+        distractors: ['spontaneiyt', 'spontaneitye', 'sponntaneity'],
+        theme: 'actions',
     },
     {
         word: 'strenuous',
@@ -745,6 +877,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'STREN-yoo-us',
         etymology: 'Latin: strenuus (active, vigorous)',
         source: 'state-bee',
+        distractors: ['stranuous', 'strenuius', 'strenuouse'],
+        theme: 'character',
     },
     {
         word: 'subterranean',
@@ -756,6 +890,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'sub-tuh-RAY-nee-un',
         etymology: 'Latin: subterraneus (underground), from sub (under) + terra (earth)',
         source: 'state-bee',
+        distractors: ['subteranean', 'supterranean', 'sutberranean'],
+        theme: 'earth',
     },
     {
         word: 'surveillance',
@@ -767,6 +903,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'sur-VAY-lunss',
         etymology: 'French: surveillance (oversight, watching), from surveiller (to watch over), from sur (over) + veiller (to watch)',
         source: 'state-bee',
+        distractors: ['surveillacne', 'surveillence', 'surveellance'],
+        theme: 'people',
     },
     {
         word: 'therapeutic',
@@ -778,6 +916,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'thair-uh-PYOO-tik',
         etymology: 'Greek: therapeutikos (inclined to serve), from therapeuein (to heal, attend)',
         source: 'state-bee',
+        distractors: ['therapeutec', 'therapeutice', 'therappeutic'],
+        theme: 'body',
     },
     {
         word: 'topography',
@@ -789,6 +929,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'toh-POG-ruh-fee',
         etymology: 'Greek: topographia (description of a place), from topos (place) + graphein (to write)',
         source: 'state-bee',
+        distractors: ['topographhy', 'topogruphy', 'toporgaphy'],
+        theme: 'nature',
     },
     {
         word: 'translucent',
@@ -800,6 +942,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'trans-LOO-sunt',
         etymology: 'Latin: translucere (to shine through), from trans (through) + lucere (to shine)',
         source: 'state-bee',
+        distractors: ['trasnlucent', 'translucant', 'translukent'],
+        theme: 'light',
     },
     {
         word: 'tyrannical',
@@ -811,6 +955,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'tih-RAN-ih-kul',
         etymology: 'Greek: tyrannikos (of a tyrant), from tyrannos (absolute ruler)',
         source: 'state-bee',
+        distractors: ['tryannical', 'tyranical', 'tyrannicel'],
+        theme: 'character',
     },
     {
         word: 'unconscionable',
@@ -822,6 +968,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'un-KON-shun-uh-bul',
         etymology: 'Latin: conscientia (moral awareness), with un- (not) and -able (capable of)',
         source: 'state-bee',
+        distractors: ['unconscionalbe', 'unconscoinable', 'unconsceonable'],
+        theme: 'law',
     },
     {
         word: 'ventriloquist',
@@ -833,6 +981,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ven-TRIL-oh-kwist',
         etymology: 'Latin: ventriloquus (one who speaks from the belly), from venter (belly) + loqui (to speak)',
         source: 'state-bee',
+        distractors: ['vemtriloquist', 'vetnriloquist', 'fentriloquist'],
+        theme: 'people',
     },
     {
         word: 'vicarious',
@@ -844,6 +994,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'vy-KAIR-ee-us',
         etymology: 'Latin: vicarius (substituted, delegated), from vicis (change, alternation)',
         source: 'state-bee',
+        distractors: ['vicariuos', 'vicaroius', 'viccarious'],
+        theme: 'mind',
     },
     {
         word: 'wisteria',
@@ -855,6 +1007,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'wis-TEER-ee-uh',
         etymology: 'Named after Caspar Wistar (1761-1818), American anatomist',
         source: 'state-bee',
+        distractors: ['wisderia', 'wisterria', 'wissteria'],
+        theme: 'plants',
     },
     {
         word: 'acquittal',
@@ -866,6 +1020,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'uh-KWIT-ul',
         etymology: 'Old French: acquiter (to discharge a debt), from a (to) + quiter (to set free)',
         source: 'state-bee',
+        distractors: ['acqiuttal', 'acquidtal', 'acquital'],
+        theme: 'people',
     },
     {
         word: 'bourgeois',
@@ -877,6 +1033,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'boor-ZHWAH',
         etymology: 'French: bourgeois (citizen, middle class), from bourg (market town)',
         source: 'state-bee',
+        distractors: ['pourgeois', 'bourgeuis', 'biurgeois'],
+        theme: 'people',
     },
     {
         word: 'claustrophobia',
@@ -888,6 +1046,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'klaws-truh-FOH-bee-uh',
         etymology: 'Latin: claustrum (enclosed place) + Greek: phobos (fear)',
         source: 'state-bee',
+        distractors: ['clautsrophobia', 'claustrofobia', 'claustrobhobia'],
+        theme: 'feelings',
     },
     {
         word: 'concatenate',
@@ -899,6 +1059,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'kon-KAT-uh-nayt',
         etymology: 'Latin: concatenare (to chain together), from con (together) + catena (chain)',
         source: 'state-bee',
+        distractors: ['concadenate', 'concattenate', 'concatenatte'],
+        theme: 'actions',
     },
     {
         word: 'convalescence',
@@ -910,6 +1072,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'kon-vuh-LES-unss',
         etymology: 'Latin: convalescere (to grow strong), from con (intensive) + valescere (to grow strong)',
         source: 'state-bee',
+        distractors: ['comvalescence', 'convalescance', 'convaliscence'],
+        theme: 'health',
     },
     {
         word: 'demitasse',
@@ -921,6 +1085,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'DEM-ee-tass',
         etymology: 'French: demitasse (half cup), from demi (half) + tasse (cup)',
         source: 'state-bee',
+        distractors: ['bemitasse', 'demitase', 'dimitasse'],
+        theme: 'food',
     },
     {
         word: 'eccentricity',
@@ -932,6 +1098,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'ek-sen-TRIS-ih-tee',
         etymology: 'Greek: ekkentros (out of center), from ek (out) + kentron (center)',
         source: 'state-bee',
+        distractors: ['eccemtricity', 'ecentricity', 'eccentricitye'],
+        theme: 'character',
     },
     {
         word: 'flamboyant',
@@ -943,6 +1111,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'flam-BOY-unt',
         etymology: 'French: flamboyant (flaming, blazing), from flamboyer (to flame), from flambe (flame)',
         source: 'state-bee',
+        distractors: ['flemboyant', 'flamdoyant', 'flabmoyant'],
+        theme: 'character',
     },
     {
         word: 'gesticulate',
@@ -954,6 +1124,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'jeh-STIK-yoo-layt',
         etymology: 'Latin: gesticulari (to make mimic gestures), from gesticulus (a mimic gesture), from gestus (gesture)',
         source: 'state-bee',
+        distractors: ['gessticulate', 'gesticulata', 'gesticulat'],
+        theme: 'performance',
     },
     {
         word: 'heuristic',
@@ -965,6 +1137,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'hyoo-RIS-tik',
         etymology: 'Greek: heuriskein (to find, discover)',
         source: 'state-bee',
+        distractors: ['heuriztic', 'heurristic', 'heuristec'],
+        theme: 'people',
     },
     {
         word: 'hypotenuse',
@@ -976,6 +1150,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'hy-POT-uh-nooss',
         etymology: 'Greek: hypoteinousa (subtending), from hypo (under) + teinein (to stretch)',
         source: 'state-bee',
+        distractors: ['hypotenus', 'hypitenuse', 'hypotenusse'],
+        theme: 'math',
     },
     {
         word: 'idiomatic',
@@ -987,6 +1163,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'id-ee-oh-MAT-ik',
         etymology: 'Greek: idiomatikos (peculiar), from idioma (peculiar phraseology), from idios (own, private)',
         source: 'state-bee',
+        distractors: ['ibiomatic', 'idoimatic', 'idiomattic'],
+        theme: 'language',
     },
     {
         word: 'magnolia',
@@ -998,6 +1176,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'mag-NOH-lee-uh',
         etymology: 'Named after Pierre Magnol (1638-1715), French botanist',
         source: 'state-bee',
+        distractors: ['magnulia', 'magnolai', 'maggnolia'],
+        theme: 'plants',
     },
     {
         word: 'neurology',
@@ -1009,6 +1189,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'noo-ROL-uh-jee',
         etymology: 'Greek: neuron (nerve) + logos (study)',
         source: 'state-bee',
+        distractors: ['meurology', 'neurologye', 'neurollogy'],
+        theme: 'plants',
     },
     {
         word: 'nomenclature',
@@ -1020,6 +1202,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'NOH-men-klay-chur',
         etymology: 'Latin: nomenclatura (calling by name), from nomen (name) + calare (to call)',
         source: 'state-bee',
+        distractors: ['nomenclatur', 'nimenclature', 'nomenlcature'],
+        theme: 'language',
     },
     {
         word: 'palindromic',
@@ -1031,6 +1215,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'pal-in-DROM-ik',
         etymology: 'Greek: palindromos (running back again), from palin (again) + dromos (running)',
         source: 'state-bee',
+        distractors: ['palindrumic', 'palidnromic', 'palindronic'],
+        theme: 'communication',
     },
     {
         word: 'parenthetical',
@@ -1042,6 +1228,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'par-un-THEH-tih-kul',
         etymology: 'Greek: parenthesis (a putting in beside), from para (beside) + en (in) + tithenai (to place)',
         source: 'state-bee',
+        distractors: ['parentheticul', 'parentheticel', 'barenthetical'],
+        theme: 'communication',
     },
     {
         word: 'prerequisite',
@@ -1053,6 +1241,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'pree-REK-wih-zit',
         etymology: 'Latin: prae (before) + requisitus (required), from requirere (to seek again)',
         source: 'state-bee',
+        distractors: ['prereqiusite', 'brerequisite', 'prerequiside'],
+        theme: 'school',
     },
     {
         word: 'pseudonym',
@@ -1064,6 +1254,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'SOO-doh-nim',
         etymology: 'Greek: pseudonymon (having a false name), from pseudos (false) + onyma (name)',
         source: 'state-bee',
+        distractors: ['pseudomym', 'psuedonym', 'pseudonmy'],
+        theme: 'language',
     },
     {
         word: 'quarantine',
@@ -1075,6 +1267,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'KWOR-un-teen',
         etymology: 'Italian: quarantina (forty days), from quaranta (forty), from Latin: quadraginta',
         source: 'state-bee',
+        distractors: ['querantine', 'quaranntine', 'quarantina'],
+        theme: 'health',
     },
     {
         word: 'sarsaparilla',
@@ -1086,6 +1280,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'sar-suh-puh-RIL-uh',
         etymology: 'Spanish: zarzaparrilla, from zarza (bramble) + parrilla (small vine, diminutive of parra)',
         source: 'state-bee',
+        distractors: ['sarsaparila', 'sarsabarilla', 'sasraparilla'],
+        theme: 'plants',
     },
     {
         word: 'soliloquize',
@@ -1097,6 +1293,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'suh-LIL-oh-kwyz',
         etymology: 'Latin: soliloquium (a talking to oneself), from solus (alone) + loqui (to speak)',
         source: 'state-bee',
+        distractors: ['soliloquiz', 'solliloquize', 'soliluquize'],
+        theme: 'communication',
     },
     {
         word: 'surreptitious',
@@ -1108,6 +1306,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'sur-up-TISH-us',
         etymology: 'Latin: surrepticius (stolen, secret), from surripere (to snatch secretly)',
         source: 'state-bee',
+        distractors: ['surreptitoius', 'surreptetious', 'surrebtitious'],
+        theme: 'actions',
     },
     {
         word: 'tautology',
@@ -1119,6 +1319,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'taw-TOL-uh-jee',
         etymology: 'Greek: tautologia (saying the same thing), from tauto (the same) + logos (word)',
         source: 'state-bee',
+        distractors: ['tautoloyg', 'tautologgy', 'tautologye'],
+        theme: 'communication',
     },
     {
         word: 'temperamental',
@@ -1130,6 +1332,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'tem-pruh-MEN-tul',
         etymology: 'Latin: temperamentum (proper mixture), from temperare (to mingle, regulate)',
         source: 'state-bee',
+        distractors: ['temperamentale', 'tepmeramental', 'temperametnal'],
+        theme: 'feelings',
     },
     {
         word: 'verisimilitude',
@@ -1141,6 +1345,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'vair-ih-sih-MIL-ih-tood',
         etymology: 'Latin: verisimilitudo (likeness to truth), from verus (true) + similis (similar)',
         source: 'state-bee',
+        distractors: ['verisimilitud', 'verosimilitude', 'verisimilitute'],
+        theme: 'mind',
     },
     {
         word: 'vituperative',
@@ -1152,6 +1358,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'vy-TOO-pur-uh-tiv',
         etymology: 'Latin: vituperare (to blame, censure), from vitium (fault) + parare (to make)',
         source: 'state-bee',
+        distractors: ['vituparative', 'vituperatove', 'vituperutive'],
+        theme: 'character',
     },
     {
         word: 'onomatopoeia',
@@ -1163,6 +1371,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'on-uh-mat-uh-PEE-uh',
         etymology: 'Greek: onomatopoiia (word-making), from onoma (name) + poiein (to make)',
         source: 'state-bee',
+        distractors: ['ononatopoeia', 'onommatopoeia', 'onomatopoeie'],
+        theme: 'sensory',
     },
     {
         word: 'presumptuous',
@@ -1174,6 +1384,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'prih-ZUMP-choo-us',
         etymology: 'Latin: praesumptuosus (full of presumption), from praesumere (to take beforehand)',
         source: 'state-bee',
+        distractors: ['presumptouus', 'presumtpuous', 'presumptuouse'],
+        theme: 'character',
     },
     {
         word: 'idiosyncrasy',
@@ -1185,6 +1397,8 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'id-ee-oh-SING-kruh-see',
         etymology: 'Greek: idiosynkrasia (peculiar temperament), from idios (own) + synkrasis (mixture)',
         source: 'state-bee',
+        distractors: ['idiosynkrasy', 'idiosnycrasy', 'idiosyncrays'],
+        theme: 'mind',
     },
     {
         word: 'bourgeoisie',
@@ -1196,5 +1410,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         pronunciation: 'boor-zhwah-ZEE',
         etymology: 'French: bourgeoisie (middle class), from bourgeois (citizen of a town)',
         source: 'state-bee',
+        distractors: ['bourgeoissie', 'buorgeoisie', 'bourgeiosie'],
+        theme: 'people',
     },
 ];
