@@ -12,6 +12,8 @@ import { StudyAnalyticsModal } from './StudyAnalyticsModal';
 import { SettingsModal } from './SettingsModal';
 import { WordBookModal } from './WordBookModal';
 import { RootsBrowser } from './RootsBrowser';
+import { STORAGE_KEYS } from '../config';
+import { todayStr } from '../utils/dateHelpers';
 
 type MeTab = 'grades' | 'themes' | 'topics';
 const ME_TABS: { id: MeTab; label: string }[] = [
@@ -142,7 +144,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
     const mastery = !nextRank ? getMasteryInfo(stats.totalXP) : null;
 
     // Today's date string to check daily freshness
-    const today = (() => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; })();
+    const today = todayStr();
     const dailyDoneToday = stats.lastDailyDate === today && stats.todayDailySolved > 0;
     const dailyAcc = dailyDoneToday ? Math.round((stats.todayDailyCorrect / stats.todayDailySolved) * 100) : null;
 
@@ -204,7 +206,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
 
             {/* Contextual save-progress nudge — value-framed, dismissible with cooldown */}
             {isAnonymous && (() => {
-                const DISMISS_KEY = 'spell-bee-login-dismiss';
+                const DISMISS_KEY = STORAGE_KEYS.loginDismiss;
                 const dismissed = localStorage.getItem(DISMISS_KEY);
                 const dismissedAt = dismissed ? parseInt(dismissed, 10) : 0;
                 const sessionsSinceDismiss = stats.sessionsPlayed - dismissedAt;

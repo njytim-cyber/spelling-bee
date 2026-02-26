@@ -5,8 +5,9 @@ import type { EngineItem } from '../engine/domain';
 import { ProblemView } from './ProblemView';
 import { BeeBuddy } from './BeeBuddy';
 import type { ChalkState } from '../engine/domain';
+import { STORAGE_KEYS } from '../config';
 
-const MASTERY_KEY = 'spell-bee-mastered-tricks';
+const MASTERY_KEY = STORAGE_KEYS.masteredTricks;
 
 /** Load mastered trick IDs from localStorage */
 // eslint-disable-next-line react-refresh/only-export-components

@@ -5,6 +5,7 @@
  */
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase';
+import { STORAGE_KEYS } from '../config';
 
 let reportCount = 0;
 const MAX_REPORTS = 10;
@@ -20,7 +21,7 @@ function reportError(error: { message: string; stack?: string; source?: string }
         message: error.message.slice(0, 500),
         stack: (error.stack || '').slice(0, 2000),
         source: error.source || 'unknown',
-        user: localStorage.getItem('spell-bee-displayName') || 'anonymous',
+        user: localStorage.getItem(STORAGE_KEYS.displayName) || 'anonymous',
         userAgent: navigator.userAgent.slice(0, 200),
         url: window.location.href,
         timestamp: serverTimestamp(),

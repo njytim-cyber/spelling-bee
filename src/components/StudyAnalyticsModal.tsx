@@ -6,8 +6,8 @@
  * Opens from tapping the accuracy stat on MePage.
  */
 import { memo, useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
+import { ModalShell } from './ModalShell';
 import {
     getErrorPatterns,
     getCategoryAccuracy,
@@ -93,21 +93,7 @@ export const StudyAnalyticsModal = memo(function StudyAnalyticsModal({ records, 
     const masteredWords = Object.values(records).filter(r => r.box >= 4).length;
 
     return (
-        <>
-            <motion.div
-                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={onClose}
-            />
-            <motion.div
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 max-h-[80vh] overflow-y-auto w-[340px]"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                transition={{ duration: 0.15 }}
-            >
+        <ModalShell onClose={onClose}>
                 <div className="flex items-center justify-between mb-3">
                     <div className="w-8" />
                     <h3 className="text-lg chalk text-[var(--color-gold)]">Study Analytics</h3>
@@ -282,7 +268,6 @@ export const StudyAnalyticsModal = memo(function StudyAnalyticsModal({ records, 
                 >
                     close
                 </button>
-            </motion.div>
-        </>
+        </ModalShell>
     );
 });

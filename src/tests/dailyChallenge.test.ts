@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { generateDailyChallenge, generateChallenge, createChallengeId } from '../utils/dailyChallenge';
 import { isDailyComplete, saveDailyResult, getDailyStreak, getTodayResult } from '../utils/dailyTracking';
+import { STORAGE_KEYS } from '../config';
 
 // ── dailyChallenge.ts ────────────────────────────────────────────────────────
 
@@ -111,14 +112,14 @@ describe('dailyTracking.ts', () => {
     it('trims results to 30 entries', () => {
         // Save 35 results with different dates
         for (let i = 0; i < 35; i++) {
-            const key = 'spell-bee-daily-results';
+            const key = STORAGE_KEYS.dailyResults;
             const existing = JSON.parse(localStorage.getItem(key) || '[]');
             existing.push({ date: `2026-01-${String(i + 1).padStart(2, '0')}`, score: 100, correct: 10, total: 10, timeMs: 20000 });
             localStorage.setItem(key, JSON.stringify(existing));
         }
         // Now save one more via the function (triggers trim)
         saveDailyResult({ score: 100, correct: 10, total: 10, timeMs: 20000 });
-        const raw = JSON.parse(localStorage.getItem('spell-bee-daily-results')!);
+        const raw = JSON.parse(localStorage.getItem(STORAGE_KEYS.dailyResults)!);
         expect(raw.length).toBeLessThanOrEqual(30);
     });
 });

@@ -35,7 +35,28 @@ export const STORAGE_KEYS = {
     ttsEngine: `${STORAGE_PREFIX}-tts-engine`,
     ttsCloudVoice: `${STORAGE_PREFIX}-tts-cloud-voice`,
     customLists: `${STORAGE_PREFIX}-custom-lists`,
+    wordHistory: `${STORAGE_PREFIX}-word-history`,
+    dailyResults: `${STORAGE_PREFIX}-daily-results`,
+    displayName: `${STORAGE_PREFIX}-displayName`,
+    emailForSignin: `${STORAGE_PREFIX}-email-for-signin`,
+    loginDismiss: `${STORAGE_PREFIX}-login-dismiss`,
+    lastRecapWeek: `${STORAGE_PREFIX}-last-recap-week`,
+    masteredTricks: `${STORAGE_PREFIX}-mastered-tricks`,
+    uid: `${STORAGE_PREFIX}-uid`,
 } as const;
+
+/**
+ * Maps localStorage keys to Firestore `users/{uid}.preferences` field names.
+ * Single source of truth for cloud sync field mapping.
+ */
+export const STORAGE_TO_FIRESTORE: Record<string, string> = {
+    [STORAGE_KEYS.costume]: 'costume',
+    [STORAGE_KEYS.chalkTheme]: 'chalkTheme',
+    [STORAGE_KEYS.theme]: 'themeMode',
+    [STORAGE_KEYS.grade]: 'grade',
+    [STORAGE_KEYS.trail]: 'trailId',
+    [STORAGE_KEYS.dialect]: 'dialect',
+};
 
 // ── Firestore collection names ────────────────────────────────────────────────
 

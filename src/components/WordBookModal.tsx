@@ -7,8 +7,10 @@
 import { memo, useState, useMemo, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
+import { ModalShell } from './ModalShell';
 import { getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words';
+import { STORAGE_KEYS } from '../config';
 import { printStudySheet } from '../utils/printStudySheet';
 
 interface Props {
@@ -44,7 +46,7 @@ function speak(word: string) {
     if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(word);
         u.rate = 0.85;
-        const dialect = localStorage.getItem('spell-bee-dialect') || 'en-US';
+        const dialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
         u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
         speechSynthesis.cancel();
         speechSynthesis.speak(u);
@@ -176,21 +178,7 @@ export const WordBookModal = memo(function WordBookModal({ records, onClose }: P
     }, []);
 
     return (
-        <>
-            <motion.div
-                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={onClose}
-            />
-            <motion.div
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 max-h-[80vh] overflow-y-auto w-[340px]"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                transition={{ duration: 0.15 }}
-            >
+        <ModalShell onClose={onClose}>
                 <div className="flex items-center justify-between mb-3">
                     <div className="w-12" />
                     <h3 className="text-lg chalk text-[var(--color-gold)] text-center">Word Book</h3>
@@ -292,7 +280,6 @@ export const WordBookModal = memo(function WordBookModal({ records, onClose }: P
                 >
                     close
                 </button>
-            </motion.div>
-        </>
+        </ModalShell>
     );
 });

@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { STORAGE_KEYS, FIRESTORE } from '../config';
+import { todayStr, yesterdayStr } from '../utils/dateHelpers';
 import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 
 interface TypeStat {
@@ -257,17 +258,14 @@ export function useStats(uid: string | null) {
     ) => {
         setStats(prev => {
             const prevType = prev.byType[questionType] || { ...EMPTY_TYPE };
-            const today = new Date();
-            const todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+            const todayDate = todayStr();
             let dayStreak = prev.dayStreak;
             let streakShields = prev.streakShields || 0;
 
-            if (prev.lastPlayedDate !== todayStr) {
-                const yest = new Date(today);
-                yest.setDate(yest.getDate() - 1);
-                const yesterdayStr = `${yest.getFullYear()}-${yest.getMonth() + 1}-${yest.getDate()}`;
+            if (prev.lastPlayedDate !== todayDate) {
+                const yesterdayDate = yesterdayStr();
 
-                if (prev.lastPlayedDate === yesterdayStr) {
+                if (prev.lastPlayedDate === yesterdayDate) {
                     dayStreak = prev.dayStreak + 1;
                     if (dayStreak % 7 === 0) {
                         streakShields = Math.min(3, streakShields + 1);
@@ -277,7 +275,7 @@ export function useStats(uid: string | null) {
                     // Calculate exact gap in days
                     const lastParts = prev.lastPlayedDate.split('-').map(Number);
                     const lastDate = new Date(lastParts[0], lastParts[1] - 1, lastParts[2]);
-                    const gap = Math.round((today.getTime() - lastDate.getTime()) / 86400000) - 1;
+                    const gap = Math.round((Date.now() - lastDate.getTime()) / 86400000) - 1;
 
                     if (gap <= 1 && streakShields > 0) {
                         streakShields -= 1;
@@ -294,10 +292,10 @@ export function useStats(uid: string | null) {
             }
             // Track today's daily progress (reset each new day)
             const isDaily = questionType === 'daily';
-            const dailySameDay = prev.lastDailyDate === todayStr;
+            const dailySameDay = prev.lastDailyDate === todayDate;
             const todayDailySolved = isDaily ? (dailySameDay ? prev.todayDailySolved : 0) + answered : prev.todayDailySolved;
             const todayDailyCorrect = isDaily ? (dailySameDay ? prev.todayDailyCorrect : 0) + correct : prev.todayDailyCorrect;
-            const lastDailyDate = isDaily ? todayStr : prev.lastDailyDate;
+            const lastDailyDate = isDaily ? todayDate : prev.lastDailyDate;
 
             const isPerfect = answered > 0 && correct === answered;
             const isUltimate = hardMode && timedMode;
@@ -313,7 +311,7 @@ export function useStats(uid: string | null) {
                 sessionsPlayed: prev.sessionsPlayed + 1,
                 dayStreak,
                 streakShields,
-                lastPlayedDate: todayStr,
+                lastPlayedDate: todayDate,
                 byType: {
                     ...prev.byType,
                     [questionType]: {

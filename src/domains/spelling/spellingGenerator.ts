@@ -205,6 +205,51 @@ const TIER_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
     'wotc-three': [7, 10],
 };
 
+/**
+ * Build a candidate pool of words for a category + difficulty range.
+ * Filters by origin/theme/pattern with fallback chains, applies hard mode bias.
+ * Shared by both the swipe game (pickRichWord) and the bee simulation (pickBeeWord).
+ */
+export function selectWordPool(
+    category: string | undefined,
+    min: DifficultyTier,
+    max: DifficultyTier,
+    hardMode: boolean,
+): SpellingWord[] {
+    const origin = category ? (CATEGORY_TO_ORIGIN[category] ?? null) : null;
+    const theme = category ? (CATEGORY_TO_THEME[category] ?? null) : null;
+    const pattern = category ? (CATEGORY_TO_PATTERN[category] ?? null) : null;
+
+    let pool: SpellingWord[];
+
+    if (origin) {
+        pool = wordsByLanguageAndDifficulty(origin, min, max);
+        if (pool.length === 0) pool = wordsByLanguageOfOrigin(origin);
+        if (pool.length === 0) pool = wordsByDifficulty(min, max);
+    } else if (theme) {
+        pool = wordsByThemeAndDifficulty(theme, min, max);
+        if (pool.length === 0) pool = wordsByTheme(theme);
+        if (pool.length === 0) pool = wordsByDifficulty(min, max);
+    } else if (pattern) {
+        pool = wordsByPatternAndDifficulty(pattern, min, max);
+        if (pool.length === 0) pool = wordsByPattern(pattern);
+        if (pool.length === 0) pool = wordsByDifficulty(min, max);
+    } else {
+        pool = wordsByDifficulty(min, max);
+    }
+
+    if (pool.length === 0) pool = getAllWords();
+
+    // Hard mode: bias toward the longest, hardest words in the pool
+    if (hardMode && pool.length > 3) {
+        pool = [...pool].sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
+        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
+        pool = pool.slice(0, cutoff);
+    }
+
+    return pool;
+}
+
 function pickRichWord(
     category: string,
     difficulty: number,
@@ -220,44 +265,10 @@ function pickRichWord(
         [effectiveMin, effectiveMax] = tierRange;
     } else {
         const effectiveDifficulty = hardMode ? 5 : difficulty;
-        const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
-        effectiveMax = maxDiff;
-        effectiveMin = minDiff;
+        [effectiveMin, effectiveMax] = difficultyRange(effectiveDifficulty);
     }
 
-    const origin = CATEGORY_TO_ORIGIN[category] ?? null;
-    const theme = CATEGORY_TO_THEME[category] ?? null;
-    const pattern = CATEGORY_TO_PATTERN[category] ?? null;
-
-    let pool: SpellingWord[];
-
-    if (origin) {
-        // Origin-based filtering (etymology language)
-        pool = wordsByLanguageAndDifficulty(origin, effectiveMin, effectiveMax);
-        if (pool.length === 0) pool = wordsByLanguageOfOrigin(origin);
-        if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
-    } else if (theme) {
-        // Theme-based filtering
-        pool = wordsByThemeAndDifficulty(theme, effectiveMin, effectiveMax);
-        if (pool.length === 0) pool = wordsByTheme(theme);
-        if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
-    } else if (pattern) {
-        pool = wordsByPatternAndDifficulty(pattern, effectiveMin, effectiveMax);
-        if (pool.length === 0) pool = wordsByPattern(pattern);
-        if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
-    } else {
-        pool = wordsByDifficulty(effectiveMin, effectiveMax);
-    }
-
-    if (pool.length === 0) pool = getAllWords();
-
-    // Hard mode: bias toward the longest, hardest words in the pool
-    if (hardMode && pool.length > 3) {
-        pool.sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
-        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
-        pool = pool.slice(0, cutoff);
-    }
-
+    const pool = selectWordPool(category, effectiveMin, effectiveMax, hardMode);
     return pool[Math.floor(rng() * pool.length)];
 }
 

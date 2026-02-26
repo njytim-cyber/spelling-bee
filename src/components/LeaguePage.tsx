@@ -5,6 +5,7 @@ import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
+import { todayStr } from '../utils/dateHelpers';
 
 interface LeaderboardEntry {
     uid: string;
@@ -109,11 +110,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
 
     // ── Daily leaderboard query ──
     useEffect(() => {
-        const today = new Date();
-        const todayStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+        const todayDate = todayStr();
         const q = query(
             collection(db, 'users'),
-            where('lastDailyDate', '==', todayStr),
+            where('lastDailyDate', '==', todayDate),
             where('todayDailyCorrect', '>', 0),
             orderBy('todayDailyCorrect', 'desc'),
             limit(20),

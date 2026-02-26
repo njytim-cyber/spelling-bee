@@ -35,6 +35,76 @@ let ukOverrides: Record<string, UkOverride> | null = null;
 /** Reverse map: UK spelling → US canonical key (for word history) */
 let ukToUsMap: Map<string, string> | null = null;
 
+// ── Indexed caches (invalidated whenever loadedWords changes) ───────────────
+
+/** word string → SpellingWord */
+let wordMapCache: Map<string, SpellingWord> | null = null;
+/** PhonicsPattern → SpellingWord[] (includes secondary patterns) */
+let byPatternCache: Map<string, SpellingWord[]> | null = null;
+/** SemanticTheme → SpellingWord[] */
+let byThemeCache: Map<string, SpellingWord[]> | null = null;
+
+function invalidateCaches(): void {
+    wordMapCache = null;
+    byPatternCache = null;
+    byThemeCache = null;
+}
+
+function ensureWordMapCache(): Map<string, SpellingWord> {
+    if (!wordMapCache) {
+        wordMapCache = new Map();
+        for (const w of loadedWords) wordMapCache.set(w.word, w);
+    }
+    return wordMapCache;
+}
+
+function ensurePatternCache(): Map<string, SpellingWord[]> {
+    if (!byPatternCache) {
+        byPatternCache = new Map();
+        for (const w of loadedWords) {
+            let arr = byPatternCache.get(w.pattern);
+            if (!arr) { arr = []; byPatternCache.set(w.pattern, arr); }
+            arr.push(w);
+            if (w.secondaryPatterns) {
+                for (const p of w.secondaryPatterns) {
+                    let arr2 = byPatternCache.get(p);
+                    if (!arr2) { arr2 = []; byPatternCache.set(p, arr2); }
+                    arr2.push(w);
+                }
+            }
+        }
+    }
+    return byPatternCache;
+}
+
+function ensureThemeCache(): Map<string, SpellingWord[]> {
+    if (!byThemeCache) {
+        byThemeCache = new Map();
+        for (const w of loadedWords) {
+            if (!w.theme) continue;
+            let arr = byThemeCache.get(w.theme);
+            if (!arr) { arr = []; byThemeCache.set(w.theme, arr); }
+            arr.push(w);
+        }
+    }
+    return byThemeCache;
+}
+
+/** Cached word-keyed lookup map. O(1) per lookup after first build. */
+export function getCachedWordMap(): Map<string, SpellingWord> {
+    return ensureWordMapCache();
+}
+
+/** Words matching a phonics pattern. O(1) lookup via index. */
+export function getCachedByPattern(pattern: string): SpellingWord[] {
+    return ensurePatternCache().get(pattern) ?? [];
+}
+
+/** Words matching a semantic theme. O(1) lookup via index. */
+export function getCachedByTheme(theme: string): SpellingWord[] {
+    return ensureThemeCache().get(theme) ?? [];
+}
+
 // ── Public getters ───────────────────────────────────────────────────────────
 
 /** Current registry version — increments on every new tier/pack load or dialect change. */
@@ -110,6 +180,7 @@ function rebuildLoadedWords(): void {
             };
         });
     }
+    invalidateCaches();
 }
 
 // ── Tier loading ─────────────────────────────────────────────────────────────

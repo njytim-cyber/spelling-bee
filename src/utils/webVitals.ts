@@ -5,9 +5,10 @@
 import type { Metric } from 'web-vitals';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase';
+import { STORAGE_KEYS } from '../config';
 
 function reportMetric(metric: Metric) {
-    const uid = localStorage.getItem('spell-bee-uid') || 'unknown';
+    const uid = localStorage.getItem(STORAGE_KEYS.uid) || 'unknown';
     const id = `${uid}-${metric.name}-${Date.now()}`;
 
     setDoc(doc(db, 'vitals', id), {

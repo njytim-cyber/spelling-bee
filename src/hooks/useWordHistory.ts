@@ -5,6 +5,7 @@
  * Data lives in localStorage only (too granular for Firestore in MVP).
  */
 import { useState, useCallback, useMemo } from 'react';
+import { STORAGE_KEYS } from '../config';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -36,7 +37,7 @@ interface WordHistory {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = 'spell-bee-word-history';
+const STORAGE_KEY = STORAGE_KEYS.wordHistory;
 const MAX_RECENT = 200;
 
 /** Leitner box → review delay in milliseconds */

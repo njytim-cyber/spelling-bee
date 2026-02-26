@@ -1,8 +1,9 @@
 /** Dark / Light mode toggle — persisted to localStorage */
+import { STORAGE_KEYS } from '../config';
 
 export type ThemeMode = 'dark' | 'light';
 
-const STORAGE_KEY = 'spell-bee-theme';
+const STORAGE_KEY = STORAGE_KEYS.theme;
 
 export function loadMode(): ThemeMode {
     return (localStorage.getItem(STORAGE_KEY) as ThemeMode) || 'dark';

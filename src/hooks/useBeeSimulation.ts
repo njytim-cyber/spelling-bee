@@ -6,8 +6,8 @@
  */
 import { useState, useCallback, useRef } from 'react';
 import type { SpellingWord } from '../domains/spelling/words/types';
-import { getAllWords, difficultyRange, wordsByTheme, wordsByThemeAndDifficulty, wordsByPattern, wordsByPatternAndDifficulty, wordsByDifficulty } from '../domains/spelling/words';
-import { categoryToTheme, categoryToPattern } from '../domains/spelling/spellingGenerator';
+import { difficultyRange } from '../domains/spelling/words';
+import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 import { parseEtymology } from '../utils/etymologyParser';
 
@@ -71,30 +71,7 @@ function pickBeeWord(round: number, category?: string, hardMode = false): Spelli
     const effectiveDifficulty = hardMode ? Math.min(5, diffLevel + 1) : diffLevel;
     const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
 
-    const theme = category ? categoryToTheme(category) : null;
-    const pattern = category ? categoryToPattern(category) : null;
-
-    let pool: SpellingWord[];
-
-    if (theme) {
-        pool = wordsByThemeAndDifficulty(theme, minDiff, maxDiff);
-        if (pool.length === 0) pool = wordsByTheme(theme);
-    } else if (pattern) {
-        pool = wordsByPatternAndDifficulty(pattern, minDiff, maxDiff);
-        if (pool.length === 0) pool = wordsByPattern(pattern);
-    } else {
-        pool = wordsByDifficulty(minDiff, maxDiff);
-    }
-
-    if (pool.length === 0) pool = getAllWords();
-
-    // Hard mode: bias toward the longest, hardest words in the pool
-    if (hardMode && pool.length > 3) {
-        pool.sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
-        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
-        pool = pool.slice(0, cutoff);
-    }
-
+    const pool = selectWordPool(category, minDiff, maxDiff, hardMode);
     return pool[Math.floor(Math.random() * pool.length)];
 }
 

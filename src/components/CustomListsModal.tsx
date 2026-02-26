@@ -5,8 +5,8 @@
  * 340px wide, follows the standard modal pattern.
  */
 import { memo, useState } from 'react';
-import { motion } from 'framer-motion';
 import type { CustomWordList } from '../types/customList';
+import { ModalShell } from './ModalShell';
 
 interface Props {
     lists: CustomWordList[];
@@ -36,21 +36,7 @@ export const CustomListsModal = memo(function CustomListsModal({
     };
 
     return (
-        <>
-            <motion.div
-                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={onClose}
-            />
-            <motion.div
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 w-[340px] max-h-[80vh] overflow-y-auto custom-scrollbar"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                transition={{ duration: 0.15 }}
-            >
+        <ModalShell onClose={onClose} className="custom-scrollbar">
                 <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-4">
                     {mode === 'create' ? 'New List' : mode === 'view' ? viewList?.name ?? 'List' : 'Custom Lists'}
                 </h3>
@@ -195,7 +181,6 @@ export const CustomListsModal = memo(function CustomListsModal({
                 >
                     Close
                 </button>
-            </motion.div>
-        </>
+        </ModalShell>
     );
 });

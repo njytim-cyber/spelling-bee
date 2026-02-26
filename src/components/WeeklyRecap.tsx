@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Stats } from '../hooks/useStats';
+import { STORAGE_KEYS } from '../config';
 
 interface Props {
     stats: Stats;
 }
 
-const RECAP_KEY = 'spell-bee-last-recap-week';
+const RECAP_KEY = STORAGE_KEYS.lastRecapWeek;
 
 function getWeekId(): string {
     const now = new Date();

@@ -5,7 +5,9 @@
  * Stored in localStorage (last 30 days).
  */
 
-const STORAGE_KEY = 'spell-bee-daily-results';
+import { STORAGE_KEYS } from '../config';
+
+const STORAGE_KEY = STORAGE_KEYS.dailyResults;
 
 export interface DailyResult {
     date: string;     // YYYY-MM-DD

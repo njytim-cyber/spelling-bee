@@ -14,6 +14,7 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../utils/firebase';
+import { STORAGE_KEYS } from '../config';
 
 /** Random display name generator */
 const ADJECTIVES = ['Swift', 'Clever', 'Bold', 'Quick', 'Bright', 'Sharp', 'Keen', 'Cool', 'Lucky', 'Epic'];
@@ -40,7 +41,7 @@ export function useFirebaseAuth() {
             if (fbUser) {
                 // Auth succeeded — set user immediately with a temporary name
                 // Don't block on Firestore read
-                const tempName = localStorage.getItem('spell-bee-displayName') || randomName();
+                const tempName = localStorage.getItem(STORAGE_KEYS.displayName) || randomName();
                 setUser({
                     uid: fbUser.uid,
                     displayName: tempName,
@@ -53,12 +54,12 @@ export function useFirebaseAuth() {
                 getDoc(userRef).then(snap => {
                     if (snap.exists()) {
                         const cloudName = snap.data().displayName || tempName;
-                        localStorage.setItem('spell-bee-displayName', cloudName);
+                        localStorage.setItem(STORAGE_KEYS.displayName, cloudName);
                         setUser(prev => prev ? { ...prev, displayName: cloudName } : null);
                     } else {
                         // First time — create user doc
                         const name = tempName;
-                        localStorage.setItem('spell-bee-displayName', name);
+                        localStorage.setItem(STORAGE_KEYS.displayName, name);
                         setDoc(userRef, {
                             displayName: name,
                             totalXP: 0,
@@ -89,14 +90,14 @@ export function useFirebaseAuth() {
     // ── Email link sign-in completion (runs once on page load) ──
     useEffect(() => {
         if (!isSignInWithEmailLink(auth, window.location.href)) return;
-        const email = localStorage.getItem('spell-bee-email-for-signin');
+        const email = localStorage.getItem(STORAGE_KEYS.emailForSignin);
         if (!email) return;
         const currentUser = auth.currentUser;
         if (currentUser?.isAnonymous) {
             const credential = EmailAuthProvider.credentialWithLink(email, window.location.href);
             linkWithCredential(currentUser, credential)
                 .then(() => {
-                    localStorage.removeItem('spell-bee-email-for-signin');
+                    localStorage.removeItem(STORAGE_KEYS.emailForSignin);
                     setUser(prev => prev ? { ...prev, isAnonymous: false } : null);
                     setDoc(doc(db, 'users', currentUser.uid), { isAnonymous: false, updatedAt: serverTimestamp() }, { merge: true }).catch(() => { });
                     // Clean the URL
@@ -106,7 +107,7 @@ export function useFirebaseAuth() {
         } else {
             signInWithEmailLink(auth, email, window.location.href)
                 .then(() => {
-                    localStorage.removeItem('spell-bee-email-for-signin');
+                    localStorage.removeItem(STORAGE_KEYS.emailForSignin);
                     window.history.replaceState(null, '', window.location.pathname);
                 })
                 .catch(err => console.warn('Email link sign-in failed:', err));
@@ -123,7 +124,7 @@ export function useFirebaseAuth() {
             .trim()
             .slice(0, 20);
         if (!sanitized) return;
-        localStorage.setItem('spell-bee-displayName', sanitized);
+        localStorage.setItem(STORAGE_KEYS.displayName, sanitized);
         setUser(prev => prev ? { ...prev, displayName: sanitized } : null);
         try {
             await setDoc(doc(db, 'users', user.uid), { displayName: sanitized, updatedAt: serverTimestamp() }, { merge: true });
@@ -143,7 +144,7 @@ export function useFirebaseAuth() {
                 // Link anonymous account to Google
                 const result = await linkWithPopup(currentUser, provider);
                 const displayName = result.user.displayName || user?.displayName || randomName();
-                localStorage.setItem('spell-bee-displayName', displayName);
+                localStorage.setItem(STORAGE_KEYS.displayName, displayName);
                 setUser(prev => prev ? { ...prev, displayName, isAnonymous: false } : null);
                 await setDoc(doc(db, 'users', currentUser.uid), {
                     displayName,
@@ -172,7 +173,7 @@ export function useFirebaseAuth() {
             handleCodeInApp: true,
         };
         await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-        localStorage.setItem('spell-bee-email-for-signin', email);
+        localStorage.setItem(STORAGE_KEYS.emailForSignin, email);
     }, []);
 
     return { user, loading, setDisplayName, linkGoogle, sendEmailLink };

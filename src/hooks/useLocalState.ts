@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import { STORAGE_TO_FIRESTORE } from '../config';
 
 /**
  * useState backed by localStorage + Firestore cloud sync.
@@ -27,16 +28,7 @@ export function useLocalState(
         getDoc(doc(db, 'users', uid)).then(snap => {
             if (snap.exists() && snap.data().preferences) {
                 const prefs = snap.data().preferences;
-                // Map key to preference field
-                const fieldMap: Record<string, string> = {
-                    'spell-bee-costume': 'costume',
-                    'spell-bee-chalk-theme': 'chalkTheme',
-                    'spell-bee-theme': 'themeMode',
-                    'spell-bee-grade': 'grade',
-                    'spell-bee-trail': 'trailId',
-                    'spell-bee-dialect': 'dialect',
-                };
-                const field = fieldMap[key];
+                const field = STORAGE_TO_FIRESTORE[key];
                 if (field && prefs[field]) {
                     setInner(prefs[field]);
                     localStorage.setItem(key, prefs[field]);
@@ -50,15 +42,7 @@ export function useLocalState(
         localStorage.setItem(key, value);
         // Async cloud sync
         if (uid) {
-            const fieldMap: Record<string, string> = {
-                'spell-bee-costume': 'costume',
-                'spell-bee-chalk-theme': 'chalkTheme',
-                'spell-bee-theme': 'themeMode',
-                'spell-bee-age-band': 'ageBand',
-                'spell-bee-trail': 'trailId',
-                'spell-bee-dialect': 'dialect',
-            };
-            const field = fieldMap[key];
+            const field = STORAGE_TO_FIRESTORE[key];
             if (field) {
                 setDoc(doc(db, 'users', uid), {
                     preferences: { [field]: value },
