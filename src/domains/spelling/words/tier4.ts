@@ -32,7 +32,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'POR-tuh-bul',
         etymology: 'Latin: portare (to carry)',
         distractors: ['portible', 'portablle', 'portalbe'],
-        theme: 'actions',
+        theme: 'home',
     },
     {
         word: 'manuscript',
@@ -68,7 +68,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'in-tuh-RUPT',
         etymology: 'Latin: interrumpere (to break apart)',
         distractors: ['imterrupt', 'interrapt', 'interupt'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'visible',
@@ -128,7 +128,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'trans-PORT',
         etymology: 'Latin: transportare (to carry across)',
         distractors: ['transporte', 'tramsport', 'dransport'],
-        theme: 'actions',
+        theme: 'travel',
     },
     {
         word: 'manufacture',
@@ -236,7 +236,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'uh-TRAKT',
         etymology: 'Latin: attrahere (to draw toward)',
         distractors: ['atrtact', 'adtract', 'attracte'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'perspective',
@@ -296,7 +296,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kon-truh-DIKT',
         etymology: 'Latin: contradicere (to speak against)',
         distractors: ['contradicte', 'cintradict', 'cuntradict'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'export',
@@ -512,7 +512,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'uh-JAY-sunt',
         etymology: 'Latin: adjacere (to lie near), from ad (to) + jacere (to lie)',
         distractors: ['ajdacent', 'adjacente', 'adjacint'],
-        theme: 'earth',
+        theme: 'academic',
     },
     {
         word: 'agriculture',
@@ -536,7 +536,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kuh-MEM-uh-rayt',
         etymology: 'Latin: commemorare (to bring to remembrance), from memor (mindful)',
         distractors: ['commemorat', 'cummemorate', 'kommemorate'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'competent',
@@ -992,7 +992,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'SOL-ih-tair-ee',
         etymology: 'Latin: solitarius (alone), from solus (alone)',
         distractors: ['solitarye', 'solitery', 'solittary'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'specimen',
@@ -1148,7 +1148,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'klan-DES-tin',
         etymology: 'Latin: clandestinus (secret, hidden), from clam (secretly)',
         distractors: ['cladnestine', 'clandetsine', 'clanndestine'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'cognizant',
@@ -1244,7 +1244,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'DES-uh-lut',
         etymology: 'Latin: desolare (to leave alone), from de (completely) + solare (to make lonely)',
         distractors: ['desilate', 'dessolate', 'desolat'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'revocable',
@@ -1402,7 +1402,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'HY-drayt',
         etymology: 'Greek: hydor (water)',
         distractors: ['hydrata', 'hydrat', 'hydrrate'],
-        theme: 'body',
+        theme: 'health',
     },
     {
         word: 'chronological',
@@ -1498,7 +1498,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'uh-NON-uh-mus',
         etymology: 'Greek: anonymos (nameless), from an (without) + onoma (name)',
         distractors: ['anonymmous', 'anonmyous', 'anonymouz'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'parallelogram',
@@ -1918,7 +1918,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'EM-puh-thee',
         etymology: 'Greek: empatheia (passion), from en (in) + pathos (feeling)',
         distractors: ['emppathy', 'empafy', 'empahty'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'endemic',
@@ -2062,7 +2062,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'kih-NET-ik',
         etymology: 'Greek: kinetikos (putting in motion), from kinein (to move)',
         distractors: ['kimetic', 'kinnetic', 'konetic'],
-        theme: 'actions',
+        theme: 'academic',
     },
     {
         word: 'labyrinth',
@@ -2206,7 +2206,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'STOH-ik',
         etymology: 'Greek: stoikos (of the portico), from Stoa (the porch where Zeno taught)',
         distractors: ['stiic', 'stioc', 'stoice'],
-        theme: 'people',
+        theme: 'character',
     },
     {
         word: 'synopsis',
@@ -2326,7 +2326,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'fil-an-THROP-ih-kul',
         etymology: 'Greek: philanthropos (human-loving), from philos (loving) + anthropos (human)',
         distractors: ['philanfropical', 'phalanthropical', 'philenthropical'],
-        theme: 'money',
+        theme: 'character',
     },
     {
         word: 'pseudoscience',
@@ -2592,7 +2592,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'uh-KOM-uh-dayt',
         etymology: 'Latin: accommodare (to make fitting), from commodus (suitable)',
         distractors: ['accimmodate', 'accommodat', 'accommodade'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'occurrence',
@@ -2700,7 +2700,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'boor-ZHWAH',
         etymology: 'French: bourgeois (citizen of a town), from bourg (town)',
         distractors: ['pourgeois', 'bourgeuis', 'biurgeois'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'camouflage',
@@ -2760,7 +2760,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'KAWF',
         etymology: 'Middle English: coghen, of imitative origin',
         distractors: ['coughe', 'cuogh', 'kough'],
-        theme: 'body',
+        theme: 'health',
     },
     {
         word: 'counterfeit',
@@ -2880,7 +2880,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'in-DYT',
         etymology: 'Latin: indictare (to declare, proclaim), from in (in) + dictare (to say)',
         distractors: ['inbict', 'imdict', 'endict'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'isthmus',
@@ -3276,7 +3276,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'lab-uh-RIN-theen',
         etymology: 'Greek: labyrinthos (maze), from the legendary Cretan labyrinth',
         distractors: ['labyrinthin', 'labyrinfine', 'labryinthine'],
-        theme: 'home',
+        theme: 'mind',
     },
     {
         word: 'pharaoh',
@@ -4094,7 +4094,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'peh-TEET',
         etymology: 'French: petite (small), from petit (small)',
         distractors: ['petit', 'patite', 'petete'],
-        theme: 'people',
+        theme: 'body',
     },
     {
         word: 'pirouette',
@@ -4370,7 +4370,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'FOH',
         etymology: 'French: faux (false), from Latin falsus (false)',
         distractors: ['fuax', 'feux', 'faax'],
-        theme: 'clothing',
+        theme: 'sensory',
     },
     {
         word: 'rapport',
@@ -4420,7 +4420,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'beh-LIJ-ur-unt',
         etymology: 'Latin: belligerare (to wage war), from bellum (war) + gerere (to carry on)',
         distractors: ['belligerant', 'beligerent', 'billigerent'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'curriculum',
@@ -4468,7 +4468,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'ih-MAK-yoo-lut',
         etymology: 'Latin: immaculatus (unstained), from in (not) + macula (stain)',
         distractors: ['imaculate', 'immaculat', 'immaculata'],
-        theme: 'home',
+        theme: 'character',
     },
     {
         word: 'inevitable',
@@ -4628,7 +4628,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'NAW',
         etymology: 'Old English: gnagan (to gnaw, bite)',
         distractors: ['gnawe', 'naw', 'gnew'],
-        theme: 'animals',
+        theme: 'actions',
     },
     {
         word: 'depot',
@@ -4910,7 +4910,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'greh-GAIR-ee-us',
         etymology: 'Latin: gregarius (belonging to a flock), from grex (flock)',
         distractors: ['gregariouse', 'gregariuos', 'gregaroius'],
-        theme: 'money',
+        theme: 'character',
     },
     {
         word: 'immutable',
@@ -5018,7 +5018,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'VUR-dunt',
         etymology: 'Latin: viridis (green), via Old French verdoyant',
         distractors: ['virdant', 'verdent', 'verdante'],
-        theme: 'plants',
+        theme: 'sensory',
     },
     {
         word: 'vociferous',
@@ -5660,7 +5660,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'un-kar-ik-tur-IS-tik-lee',
         etymology: 'English: un- + characteristic + -ally, from Greek kharakter (engraved mark)',
         distractors: ['umcharacteristically', 'uncharatceristically', 'uncharacteristicalyl'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'verisimilitude',
@@ -5782,7 +5782,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'hyoo-RIS-tik',
         etymology: 'Greek: heuriskein (to find, discover)',
         distractors: ['heuriztic', 'heurristic', 'heuristec'],
-        theme: 'people',
+        theme: 'academic',
     },
     {
         word: 'iridescent',
@@ -5916,7 +5916,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'dis-en-CHAN-tid',
         etymology: 'French: désenchanter, from dis- (reversal) + enchanter (to bewitch)',
         distractors: ['dizenchanted', 'disenchantad', 'disemchanted'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'expatriate',
@@ -5940,7 +5940,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'in-tur-SEED',
         etymology: 'Latin: intercedere (to go between), from inter- (between) + cedere (to go)',
         distractors: ['indercede', 'intercebe', 'inntercede'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'juxtaposition',
@@ -5988,7 +5988,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'trans-at-LAN-tik',
         etymology: 'Latin: trans- (across) + Atlanticus (of the Atlas mountains)',
         distractors: ['transatlantice', 'transatlantoc', 'transatlatnic'],
-        theme: 'earth',
+        theme: 'travel',
     },
 
     // ── Suffixes (~8) ───────────────────────────────────────────────────
@@ -6050,7 +6050,7 @@ export const TIER_4_WORDS: SpellingWord[] = [
         pronunciation: 'huh-RED-ih-ter-ee',
         etymology: 'Latin: hereditarius (of an inheritance), from heres (heir) + -ary',
         distractors: ['hereditarry', 'heretitary', 'hereditayr'],
-        theme: 'people',
+        theme: 'health',
     },
     {
         word: 'inflammatory',

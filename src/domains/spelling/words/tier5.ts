@@ -222,7 +222,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'sur-up-TISH-us',
         etymology: 'Latin: surrepticius (stolen, secret), from surripere (to snatch secretly)',
         distractors: ['surreptitoius', 'surreptetious', 'surrebtitious'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'gubernatorial',
@@ -234,7 +234,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'goo-bur-nuh-TOR-ee-ul',
         etymology: 'Latin: gubernator (governor), from gubernare (to steer, govern)',
         distractors: ['gupernatorial', 'gubernatorail', 'guberrnatorial'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'xylophone',
@@ -366,7 +366,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'lab-uh-RIN-theen',
         etymology: 'Greek: labyrinthos (maze), from the mythical labyrinth of King Minos',
         distractors: ['labyrinthin', 'labyrinfine', 'labryinthine'],
-        theme: 'home',
+        theme: 'mind',
     },
     {
         word: 'effervescent',
@@ -510,7 +510,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'el-ih-MOS-ih-nair-ee',
         etymology: 'Greek: eleemosyne (compassion, pity), from eleos (mercy)',
         distractors: ['eleenosynary', 'eleemosynarye', 'eleemosynnary'],
-        theme: 'money',
+        theme: 'society',
     },
     {
         word: 'floccinaucinihilipilification',
@@ -534,7 +534,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'pul-krih-TOO-dih-nus',
         etymology: 'Latin: pulchritudo (beauty), from pulcher (beautiful)',
         distractors: ['palchritudinous', 'pulchratudinous', 'pulchritadinous'],
-        theme: 'body',
+        theme: 'sensory',
     },
     {
         word: 'syzygy',
@@ -810,7 +810,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'ab-STEE-mee-us',
         etymology: 'Latin: abstemius (temperate), from abs (from) + temetum (strong drink)',
         distractors: ['abstemoous', 'abstemeous', 'adstemious'],
-        theme: 'food',
+        theme: 'character',
     },
     {
         word: 'lascivious',
@@ -882,7 +882,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'an-tee-dih-LOO-vee-un',
         etymology: 'Latin: ante (before) + diluvium (flood, deluge)',
         distractors: ['anteddiluvian', 'antediluvvian', 'atnediluvian'],
-        theme: 'weather',
+        theme: 'time',
     },
     {
         word: 'callipygian',
@@ -1158,7 +1158,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'BEL-ih-kohs',
         etymology: 'Latin: bellicosus (warlike), from bellum (war)',
         distractors: ['bellicosi', 'belicose', 'pellicose'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'beneficence',
@@ -1938,7 +1938,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'par-sih-MOH-nee-us',
         etymology: 'Latin: parsimonia (thrift, frugality), from parsus (sparing), past participle of parcere (to spare)',
         distractors: ['parrsimonious', 'parsimonoius', 'parsimmonious'],
-        theme: 'money',
+        theme: 'character',
     },
     {
         word: 'pecuniary',
@@ -2262,7 +2262,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'REK-wih-zit',
         etymology: 'Latin: requisitus (required), from requirere (to seek again), from re (again) + quaerere (to seek)',
         distractors: ['requisit', 'reqiusite', 'requiside'],
-        theme: 'actions',
+        theme: 'everyday',
     },
     {
         word: 'sartorial',
@@ -2478,7 +2478,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'VEE-nul',
         etymology: 'Latin: venalis (for sale), from venum (sale)',
         distractors: ['vemal', 'vanal', 'venel'],
-        theme: 'money',
+        theme: 'character',
     },
     {
         word: 'verbiage',
@@ -2574,7 +2574,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'beh-LIJ-ur-ent',
         etymology: 'Latin: belligerare (to wage war), from bellum (war) + gerere (to carry on)',
         distractors: ['belligerant', 'beligerent', 'billigerent'],
-        theme: 'society',
+        theme: 'character',
     },
     {
         word: 'cantankerous',
@@ -2670,7 +2670,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'eh-klee-zee-AS-tih-kul',
         etymology: 'Greek: ekklesiastikos (of the assembly), from ekklesia (assembly, church)',
         distractors: ['ecclesiatsical', 'ecclesiasticale', 'eccleziastical'],
-        theme: 'home',
+        theme: 'society',
     },
     {
         word: 'emollient',
@@ -3006,7 +3006,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'fiz-ee-OG-nuh-mee',
         etymology: 'Greek: physiognomonia (judging of nature), from physis (nature) + gnomon (judge, interpreter)',
         distractors: ['physiognomye', 'physsiognomy', 'physionomy'],
-        theme: 'people',
+        theme: 'mind',
     },
     {
         word: 'precipitous',
@@ -3102,7 +3102,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'sur-up-TISH-us-lee',
         etymology: 'Latin: surrepticius (stolen, secret), from surripere (to snatch secretly)',
         distractors: ['surreptitiousyl', 'surraptitiously', 'zurreptitiously'],
-        theme: 'actions',
+        theme: 'everyday',
     },
     {
         word: 'sycophancy',
@@ -3174,7 +3174,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'vur-TIJ-ih-nus',
         etymology: 'Latin: vertiginosus (suffering from dizziness), from vertigo (whirling), from vertere (to turn)',
         distractors: ['vertigimous', 'vertiginouz', 'vetriginous'],
-        theme: 'actions',
+        theme: 'health',
     },
     {
         word: 'blandishment',
@@ -3366,7 +3366,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'in-GRAY-shee-ayt',
         etymology: 'Latin: in gratiam (into favor), from in (into) + gratia (favor, grace)',
         distractors: ['ingrattiate', 'ingratiat', 'ignratiate'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'invidious',
@@ -3474,7 +3474,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'per-ih-puh-TET-ik',
         etymology: 'Greek: peripatetikos (given to walking about), from peripatein (to walk about), from peri (around) + patein (to walk)',
         distractors: ['peripattetic', 'peripatetice', 'paripatetic'],
-        theme: 'actions',
+        theme: 'travel',
     },
     {
         word: 'perquisite',
@@ -3894,7 +3894,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'EN-ur-vayt',
         etymology: 'Latin: enervare (to weaken), from e (out of) + nervus (sinew, vigor)',
         distractors: ['enevrate', 'emervate', 'enervade'],
-        theme: 'people',
+        theme: 'health',
     },
     {
         word: 'enumerate',
@@ -3966,7 +3966,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'gruh-TOO-ih-tus',
         etymology: 'Latin: gratuitus (given freely), from gratis (for nothing), from gratia (favor)',
         distractors: ['gratiutous', 'gratuitouse', 'gretuitous'],
-        theme: 'money',
+        theme: 'everyday',
     },
     {
         word: 'harbinger',
@@ -4158,7 +4158,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'OS-ih-fy',
         etymology: 'Latin: os (bone) + facere (to make)',
         distractors: ['ossifye', 'ossiyf', 'ozsify'],
-        theme: 'body',
+        theme: 'earth',
     },
     {
         word: 'penultimate',
@@ -4314,7 +4314,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'sik-oh-FAN-tik',
         etymology: 'Greek: sykophantes (informer, false accuser), from sykon (fig) + phainein (to show)',
         distractors: ['sycofantic', 'sycophatnic', 'scyophantic'],
-        theme: 'people',
+        theme: 'character',
     },
     {
         word: 'tarantella',
@@ -4410,7 +4410,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'VUR-dunt',
         etymology: 'French: verdoyant (becoming green), from Latin: viridis (green)',
         distractors: ['virdant', 'verdent', 'verdante'],
-        theme: 'plants',
+        theme: 'sensory',
     },
     {
         word: 'virulent',
@@ -5455,7 +5455,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'LAP-ih-dair-ee',
         etymology: 'Latin: lapidarius (of or pertaining to stone), from lapis (stone)',
         distractors: ['lapitary', 'labidary', 'lapedary'],
-        theme: 'earth',
+        theme: 'art',
     },
     {
         word: 'liminal',
@@ -5539,7 +5539,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'NAY-kree-us',
         etymology: 'French: nacre (mother-of-pearl), from Italian naccara, ultimately from Arabic naqqarah (small drum, shell)',
         distractors: ['nacroeus', 'nacrreous', 'nacrious'],
-        theme: 'people',
+        theme: 'sensory',
     },
     {
         word: 'nosocomial',
@@ -5863,7 +5863,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'sas-er-DOH-tul',
         etymology: 'Latin: sacerdotalis (of or pertaining to a priest), from sacerdos (priest), from sacer (sacred) + dare (to give)',
         distractors: ['sacardotal', 'saccerdotal', 'sacedrotal'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'sangoma',
@@ -5971,7 +5971,7 @@ export const TIER_5_WORDS: SpellingWord[] = [
         pronunciation: 'STRID-yoo-layt',
         etymology: 'Latin: stridulus (creaking, hissing), from stridere (to make a harsh sound)',
         distractors: ['strodulate', 'stribulate', 'stridulat'],
-        theme: 'body',
+        theme: 'sensory',
     },
     {
         word: 'susurration',

@@ -139,7 +139,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'dis-uh-GREE',
         distractors: ['disagre', 'disagrree', 'tisagree'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'recycle',
@@ -271,7 +271,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'un-AY-bul',
         distractors: ['unablle', 'unible', 'unaple'],
-        theme: 'actions',
+        theme: 'mind',
     },
     {
         word: 'overreact',
@@ -304,7 +304,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'trans-PLANT',
         distractors: ['trensplant', 'transplent', 'transplante'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'nonprofit',
@@ -526,7 +526,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'suffixes',
         pronunciation: 'KWIK-lee',
         distractors: ['quicgly', 'quicklye', 'queckly'],
-        theme: 'actions',
+        theme: 'time',
     },
     {
         word: 'statement',
@@ -1144,7 +1144,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'compound',
         pronunciation: 'WYD-spred',
         distractors: ['widdespread', 'wibespread', 'widesbread'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'outstanding',
@@ -1243,7 +1243,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'compound',
         pronunciation: 'wurth-WYL',
         distractors: ['warthwhile', 'worthwhale', 'worthwhila'],
-        theme: 'money',
+        theme: 'mind',
     },
     {
         word: 'sportsmanship',
@@ -1575,7 +1575,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'proh-FESH-uh-nul',
         distractors: ['professoinal', 'prifessional', 'profesional'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'pronunciation',
@@ -1608,7 +1608,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'ak-sih-DEN-tuh-lee',
         distractors: ['accibentally', 'akcidentally', 'accidetnally'],
-        theme: 'actions',
+        theme: 'everyday',
     },
     {
         word: 'veterinarian',
@@ -1698,7 +1698,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'mis-LEED',
         distractors: ['milsead', 'misleade', 'misslead'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'pretest',
@@ -1731,7 +1731,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'ree-KOWNT',
         distractors: ['recounte', 'racount', 'recoont'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'discover',
@@ -1764,7 +1764,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'pree-HEET',
         distractors: ['prehaet', 'preheate', 'prehead'],
-        theme: 'weather',
+        theme: 'actions',
     },
     {
         word: 'unusual',
@@ -1907,7 +1907,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'dis-KUR-ij',
         distractors: ['disscourage', 'discouragge', 'disccourage'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'impractical',
@@ -2083,7 +2083,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'mis-in-FORM',
         distractors: ['missinform', 'misinforme', 'mosinform'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'uneventful',
@@ -2149,7 +2149,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'trans-PORT',
         distractors: ['transporte', 'tramsport', 'dransport'],
-        theme: 'people',
+        theme: 'travel',
     },
     {
         word: 'nonfiction',
@@ -2171,7 +2171,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'soo-pur-HYOO-mun',
         distractors: ['supehruman', 'superhumane', 'superhumun'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'unfinished',
@@ -2182,7 +2182,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'un-FIN-isht',
         distractors: ['ufninished', 'unfinishede', 'unfinishet'],
-        theme: 'actions',
+        theme: 'time',
     },
     {
         word: 'regroup',
@@ -2259,7 +2259,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'dis-PLEEZ',
         distractors: ['displeas', 'dislpease', 'displaese'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'overestimate',
@@ -2292,7 +2292,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'trans-at-LAN-tik',
         distractors: ['transatlantice', 'transatlantoc', 'transatlatnic'],
-        theme: 'earth',
+        theme: 'travel',
     },
     {
         word: 'nonstop',
@@ -3396,7 +3396,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'compound',
         pronunciation: 'HOHM-sik',
         distractors: ['homessick', 'homesicke', 'homesik'],
-        theme: 'home',
+        theme: 'feelings',
     },
     {
         word: 'underground',
@@ -3407,7 +3407,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'compound',
         pronunciation: 'UN-dur-grownd',
         distractors: ['unberground', 'umderground', 'anderground'],
-        theme: 'home',
+        theme: 'earth',
     },
     {
         word: 'suitcase',
@@ -3574,7 +3574,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'RID-ih-kyool',
         distractors: ['ridicul', 'ridiccule', 'ribicule'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'auditorium',
@@ -3607,7 +3607,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'kun-TAY-jus',
         distractors: ['cotnagious', 'comtagious', 'contagiouse'],
-        theme: 'people',
+        theme: 'health',
     },
     {
         word: 'cafeteria',
@@ -4280,7 +4280,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'suffixes',
         pronunciation: 'suk-SESS-ful-ee',
         distractors: ['successfulyl', 'succesfsully', 'saccessfully'],
-        theme: 'actions',
+        theme: 'everyday',
     },
     {
         word: 'sandcastle',
@@ -4438,7 +4438,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'pree-JUJ',
         distractors: ['prejugde', 'prejodge', 'prijudge'],
-        theme: 'people',
+        theme: 'mind',
     },
     {
         word: 'reposition',
@@ -4592,7 +4592,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'trans-MIT',
         distractors: ['tranmsit', 'dransmit', 'transmite'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'overburden',
@@ -4603,7 +4603,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'oh-vur-BUR-den',
         distractors: ['overpurden', 'overbudren', 'overdurden'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'intervene',
@@ -4625,7 +4625,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'trans-FUR-uh-bul',
         distractors: ['trasnferable', 'transfarable', 'transferible'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'overthrow',
@@ -4636,7 +4636,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'prefixes',
         pronunciation: 'oh-vur-THROH',
         distractors: ['overfrow', 'averthrow', 'ovarthrow'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'prerequisite',
@@ -4737,7 +4737,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'suffixes',
         pronunciation: 'FASH-un-uh-bul',
         distractors: ['fahsionable', 'fashionuble', 'fashionible'],
-        theme: 'clothing',
+        theme: 'society',
     },
     {
         word: 'eagerness',
@@ -5236,7 +5236,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'RES-puh-ruh-tor-ee',
         distractors: ['resbiratory', 'respiratoyr', 'repsiratory'],
-        theme: 'body',
+        theme: 'health',
     },
     {
         word: 'negotiate',
@@ -5335,7 +5335,7 @@ export const TIER_3_WORDS: SpellingWord[] = [
         pattern: 'multisyllable',
         pronunciation: 'kon-truh-VUR-shul',
         distractors: ['comtroversial', 'controfersial', 'controverseal'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'archaeology',

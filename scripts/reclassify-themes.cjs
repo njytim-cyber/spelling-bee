@@ -630,7 +630,22 @@ var WORD_THEME = {
   need: 'everyday', main: 'everyday', remain: 'everyday', further: 'everyday',
   perfect: 'everyday', apart: 'everyday', center: 'math', choice: 'mind',
   perk: 'everyday', preview: 'time', brunt: 'everyday',
+
+  // ── MISCLASSIFICATION OVERRIDES (ROUND 1 & 2) ──
+  // Round 1 (People/Food/Animals strict)
+  nag: 'communication', dub: 'actions', snub: 'feelings', chat: 'communication', thank: 'communication', whom: 'everyday', shush: 'communication', vex: 'feelings', stun: 'mind', chide: 'communication', chase: 'actions', amaze: 'feelings', invite: 'communication', teach: 'academic', greet: 'communication', approach: 'actions', care: 'feelings', hurt: 'feelings', march: 'actions', loyal: 'character', royal: 'society', proud: 'feelings', allow: 'actions', annoy: 'feelings', employ: 'society', announce: 'communication', astound: 'feelings', vouch: 'communication', disagree: 'communication', widespread: 'everyday', professional: 'society', mislead: 'communication', recount: 'communication', discourage: 'feelings', misinform: 'communication', transport: 'travel', superhuman: 'everyday', displease: 'feelings', ridicule: 'communication', contagious: 'health', biography: 'language', prejudge: 'mind', transmit: 'communication', overburden: 'actions', transferable: 'everyday', overthrow: 'society', controversial: 'society', interrupt: 'communication', attract: 'actions', contradict: 'communication', commemorate: 'society', solitary: 'feelings', desolate: 'feelings', anonymous: 'everyday', stoic: 'character', accommodate: 'actions', bourgeois: 'society', indict: 'society', petite: 'body', uncharacteristically: 'everyday', heuristic: 'academic', disenchanted: 'feelings', intercede: 'actions', hereditary: 'health', gubernatorial: 'society', ingratiate: 'actions', enervate: 'health', sycophantic: 'character', nacreous: 'sensory', sacerdotal: 'society', vouchsafe: 'communication', coxcombical: 'character', flap: 'actions', sting: 'actions', hatch: 'actions', chirp: 'sensory', bred: 'actions', ride: 'travel', howl: 'sensory', flutter: 'actions', gnaw: 'actions', esquamulose: 'animals', rich: 'money', raw: 'food', ripe: 'food', bitter: 'sensory', brown: 'sensory', sour: 'sensory', gourmet: 'food', abstemious: 'character', farinaceous: 'food', preheat: 'actions', drove: 'actions', spoke: 'communication', slept: 'health',
+
+  // Round 2 (Strict pass on all adverbs/adjectives/verbs masquerading as concrete nouns/actions)
+  precipitation: 'weather', evaporation: 'weather', terraqueous: 'earth', hot: 'weather', white: 'sensory', murky: 'sensory', antediluvian: 'time',
+  lop: 'actions', graft: 'actions', thresh: 'actions', thrive: 'actions', graze: 'actions', bloom: 'plants', treed: 'plants', transplant: 'actions', verdant: 'sensory', glaucous: 'sensory',
+  swift: 'movement', brisk: 'movement', stiff: 'movement', round: 'math', unable: 'mind', quickly: 'time', accidentally: 'everyday', unfinished: 'time', unsteady: 'movement', successfully: 'everyday', portable: 'home', clandestine: 'character', kinetic: 'science', belligerent: 'character', surreptitious: 'character', bellicose: 'character', requisite: 'everyday', surreptitiously: 'everyday', vertiginous: 'health', peripatetic: 'travel', ludic: 'actions', deasil: 'movement', initials: 'language',
+  cheap: 'money', worthwhile: 'mind', philanthropical: 'character', gregarious: 'character', lucrative: 'money', eleemosynary: 'society', impecunious: 'money', parsimonious: 'character', pecuniary: 'money', venal: 'character', gratuitous: 'everyday', usurious: 'money',
+  think: 'mind', chafe: 'actions', poke: 'actions', point: 'actions', stoop: 'actions', respiratory: 'health', corporal: 'body', hydrate: 'health', cough: 'health', ambidextrous: 'body', pulchritudinous: 'sensory', callipygian: 'body', ossify: 'earth', stridulate: 'sensory', cymotrichous: 'body', parasympathetic: 'body', therapeutic: 'health',
+  sew: 'actions', weave: 'actions', fashionable: 'society', faux: 'sensory', sartorial: 'clothing', flocculent: 'sensory',
+  clean: 'home', plain: 'earth', transatlantic: 'travel', adjacent: 'math', empathy: 'feelings', physiognomy: 'mind', endemic: 'earth', lapidary: 'art', tellurian: 'earth', appalachian: 'earth',
+  downstairs: 'home', homesick: 'feelings', underground: 'earth', unoccupied: 'home', labyrinthine: 'mind', immaculate: 'character', ecclesiastical: 'society'
 };
+
 
 // ─── PASS 2: Definition-based keyword matching ──────────────────────────────
 // Single-keyword patterns with \b boundaries on BOTH sides.

@@ -1303,7 +1303,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'lop',
         distractors: ['lip', 'lup', 'lob'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'fun',
@@ -1438,7 +1438,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'nag',
         distractors: ['mag', 'neg', 'nug'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'wok',
@@ -1493,7 +1493,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'dub',
         distractors: ['tub', 'dob', 'dab'],
-        theme: 'people',
+        theme: 'actions',
     },
     {
         word: 'tot',
@@ -2107,7 +2107,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'slept',
         distractors: ['slipt', 'slepte', 'slapt'],
-        theme: 'time',
+        theme: 'health',
     },
     {
         word: 'plop',
@@ -2275,7 +2275,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'flap',
         distractors: ['flep', 'flup', 'flape'],
-        theme: 'animals',
+        theme: 'actions',
     },
     {
         word: 'slab',
@@ -2473,7 +2473,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'snub',
         distractors: ['snab', 'snube', 'snob'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'stem',
@@ -2773,7 +2773,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'sting',
         distractors: ['steng', 'stink', 'stong'],
-        theme: 'animals',
+        theme: 'actions',
     },
     {
         word: 'gloss',
@@ -2872,7 +2872,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'graft',
         distractors: ['greft', 'grafte', 'gruft'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'clink',
@@ -2974,7 +2974,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'chat',
         distractors: ['chate', 'chad', 'chet'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'ship',
@@ -3130,7 +3130,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'rich',
         distractors: ['riche', 'rech', 'roch'],
-        theme: 'food',
+        theme: 'money',
     },
     {
         word: 'chap',
@@ -3329,7 +3329,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'thangk',
         distractors: ['fank', 'thanke', 'thenk'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'white',
@@ -3340,7 +3340,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'wyt',
         distractors: ['whide', 'whiti', 'whit'],
-        theme: 'weather',
+        theme: 'sensory',
     },
     {
         word: 'catch',
@@ -3385,7 +3385,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pronunciation: 'thingk',
         etymology: 'Old English',
         distractors: ['thenk', 'thinke', 'fink'],
-        theme: 'body',
+        theme: 'mind',
     },
     {
         word: 'while',
@@ -4060,7 +4060,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'thresh',
         distractors: ['thrish', 'threshe', 'fresh'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'whoosh',
@@ -4082,7 +4082,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'hach',
         distractors: ['hatche', 'hetch', 'hutch'],
-        theme: 'animals',
+        theme: 'actions',
     },
     {
         word: 'chest',
@@ -4126,7 +4126,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'hoom',
         distractors: ['whome', 'whim', 'whum'],
-        theme: 'people',
+        theme: 'everyday',
     },
     {
         word: 'porch',
@@ -4247,7 +4247,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'shush',
         distractors: ['shushe', 'shosh', 'shash'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'throb',
@@ -4368,7 +4368,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'thryv',
         distractors: ['thriv', 'thrife', 'frive'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'chirp',
@@ -4379,7 +4379,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'churp',
         distractors: ['chirpe', 'chorp', 'cherp'],
-        theme: 'animals',
+        theme: 'sensory',
     },
     {
         word: 'church',
@@ -4548,7 +4548,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'soh',
         distractors: ['sewe', 'siw', 'saw'],
-        theme: 'clothing',
+        theme: 'actions',
     },
     {
         word: 'mew',
@@ -4669,7 +4669,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'veks',
         distractors: ['fex', 'vexe', 'vax'],
-        theme: 'people',
+        theme: 'feelings',
     },
     {
         word: 'orb',
@@ -4959,7 +4959,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'stun',
         distractors: ['ston', 'stum', 'stan'],
-        theme: 'people',
+        theme: 'mind',
     },
     {
         word: 'snot',
@@ -5036,7 +5036,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'bred',
         distractors: ['brede', 'pred', 'brad'],
-        theme: 'animals',
+        theme: 'actions',
     },
     {
         word: 'clod',
@@ -5179,7 +5179,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'grayz',
         distractors: ['graza', 'grase', 'gruze'],
-        theme: 'plants',
+        theme: 'actions',
     },
     {
         word: 'fluke',
@@ -5260,7 +5260,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'chayf',
         distractors: ['chefe', 'chaf', 'chaffe'],
-        theme: 'body',
+        theme: 'actions',
     },
     {
         word: 'chaff',
@@ -5315,7 +5315,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'chyd',
         distractors: ['chede', 'chidde', 'chidi'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'thrash',

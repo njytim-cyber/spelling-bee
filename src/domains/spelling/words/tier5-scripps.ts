@@ -59,7 +59,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Middle English: vouchen sauf (to warrant as safe), from Anglo-French: voucher (to vouch) + sauf (safe)',
         source: 'scripps',
         distractors: ['voukhsafe', 'fouchsafe', 'vouchsaf'],
-        theme: 'people',
+        theme: 'communication',
     },
     {
         word: 'croissant',
@@ -150,7 +150,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: ante (before) + diluvium (flood, deluge)',
         source: 'scripps',
         distractors: ['anteddiluvian', 'antediluvvian', 'atnediluvian'],
-        theme: 'weather',
+        theme: 'time',
     },
     {
         word: 'logorrhea',
@@ -449,7 +449,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Middle English: cokkes comb (cock\'s comb), referring to the cap of a court jester',
         source: 'scripps',
         distractors: ['coxcombicale', 'cocxombical', 'coxcompical'],
-        theme: 'people',
+        theme: 'character',
     },
     {
         word: 'ratoon',
@@ -1151,7 +1151,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: terra (earth, land) + aqueous (watery), from aqua (water)',
         source: 'scripps',
         distractors: ['terraqueouse', 'terraquoeus', 'terraqoeous'],
-        theme: 'water',
+        theme: 'earth',
     },
     {
         word: 'peradventure',
@@ -1229,7 +1229,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: glaukos (gleaming, silvery, bluish-green)',
         source: 'scripps',
         distractors: ['glaucus', 'glaucuus', 'glaucuos'],
-        theme: 'plants',
+        theme: 'sensory',
     },
     {
         word: 'haussmannize',
@@ -1672,7 +1672,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: ekklesiastikos (of the assembly), from ekklesia (assembly, church), from ek (out) + kalein (to call)',
         source: 'scripps',
         distractors: ['ecclesiatsical', 'ecclesiasticale', 'eccleziastical'],
-        theme: 'home',
+        theme: 'society',
     },
     {
         word: 'acquiesce',
@@ -2413,7 +2413,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: labyrinthos (large building with intricate passages), of pre-Greek origin, possibly related to Minoan labrys (double axe)',
         source: 'scripps',
         distractors: ['labyrinthin', 'labyrinfine', 'labryinthine'],
-        theme: 'home',
+        theme: 'mind',
     },
     {
         word: 'gubernatorial',
@@ -2426,7 +2426,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: gubernator (governor, helmsman), from gubernare (to steer, govern), from Greek: kybernan (to steer)',
         source: 'scripps',
         distractors: ['gupernatorial', 'gubernatorail', 'guberrnatorial'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'sacrilege',
@@ -2608,7 +2608,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Greek: peripatetikos (walking about), from peripatein (to walk about), from peri (around) + patein (to walk)',
         source: 'scripps',
         distractors: ['peripattetic', 'peripatetice', 'paripatetic'],
-        theme: 'actions',
+        theme: 'travel',
     },
     {
         word: 'viscountess',
@@ -2751,7 +2751,7 @@ export const TIER_5_SCRIPPS_WORDS: SpellingWord[] = [
         etymology: 'Latin: surrepticius (stolen, furtive), from surripere (to steal secretly), from sub (under, secretly) + rapere (to seize)',
         source: 'scripps',
         distractors: ['surreptitoius', 'surreptetious', 'surrebtitious'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'xerophyte',

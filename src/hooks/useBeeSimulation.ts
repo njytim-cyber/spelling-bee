@@ -10,7 +10,7 @@ import { getAllWords, difficultyRange, wordsByTheme, wordsByThemeAndDifficulty, 
 import { categoryToTheme, categoryToPattern } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 
-export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'complete';
+export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'won' | 'complete';
 
 export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'repeat';
 
@@ -106,7 +106,7 @@ function buildAutoInfo(word: SpellingWord): { infoRequested: Set<InfoRequest>; i
     };
     if (word.etymology) {
         infoRequested.add('origin');
-        infoResponses.origin = word.etymology;
+        infoResponses.origin = redactWord(word.etymology, word.word);
     }
     return { infoRequested, infoResponses };
 }
@@ -192,9 +192,11 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         const info = buildAutoInfo(word);
         setState(prev => {
             const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
+            // Check if all NPCs just got eliminated — player wins!
+            const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
             return {
                 ...prev,
-                phase: 'listening',
+                phase: anyNpcLeft ? 'listening' : 'won',
                 currentWord: word,
                 typedSpelling: '',
                 ...info,
@@ -254,7 +256,7 @@ export function useBeeSimulation(category?: string, hardMode = false) {
                     newResponses.sentence = redactWord(word.exampleSentence, word.word);
                     break;
                 case 'origin':
-                    newResponses.origin = word.etymology || 'Origin information not available.';
+                    newResponses.origin = word.etymology ? redactWord(word.etymology, word.word) : 'Origin information not available.';
                     break;
                 case 'repeat':
                     if (isSupported) speak(word.word);
@@ -283,7 +285,11 @@ export function useBeeSimulation(category?: string, hardMode = false) {
             const npcScores = [...prev.npcScores];
             if (correct) npcScores[2]++;
 
-            if (!correct && prev.eliminationMode) {
+            // Check if any NPC is still alive (player is index 2)
+            const anyNpcAlive = prev.npcAlive.some((alive, i) => alive && i !== 2);
+
+            // Only eliminate if other NPCs are still in the game
+            if (!correct && prev.eliminationMode && anyNpcAlive) {
                 return {
                     ...prev,
                     phase: 'eliminated',
@@ -312,11 +318,15 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         const word = pickBeeWord(newRound, category, hardMode);
         const info = buildAutoInfo(word);
 
+        let won = false;
         setState(prev => {
             const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
+            // Check if all NPCs just got eliminated — player wins!
+            const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
+            won = !anyNpcLeft;
             return {
                 ...prev,
-                phase: 'listening',
+                phase: anyNpcLeft ? 'listening' : 'won',
                 currentWord: word,
                 round: newRound,
                 typedSpelling: '',
@@ -328,7 +338,7 @@ export function useBeeSimulation(category?: string, hardMode = false) {
                 npcSpellings: npc.npcSpellings,
             };
         });
-        if (isSupported) speak(word.word);
+        if (!won && isSupported) speak(word.word);
     }, [state.round, category, hardMode, speak, isSupported]);
 
     /** XP earned for the current session */

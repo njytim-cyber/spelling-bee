@@ -68,11 +68,15 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                     {letters.map((letter, i) => (
                         <motion.span
                             key={`${i}-${letter}`}
-                            initial={{ opacity: 0, scale: 0.5, y: 8 }}
+                            initial={{ opacity: 0, scale: 0.8, y: 6 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.5, y: -8 }}
-                            transition={{ duration: 0.15, ease: 'easeOut' }}
-                            className="text-2xl chalk text-[var(--color-chalk)] tracking-[0.15em] uppercase"
+                            exit={{ opacity: 0, scale: 0.6, y: -6 }}
+                            transition={{
+                                duration: 0.15,
+                                ease: [0.34, 1.56, 0.64, 1],
+                                scale: { duration: 0.15, ease: [0.34, 1.56, 0.64, 1] },
+                            }}
+                            className="text-2xl chalk text-[var(--color-chalk)] tracking-[0.15em] uppercase inline-block"
                         >
                             {letter}
                         </motion.span>

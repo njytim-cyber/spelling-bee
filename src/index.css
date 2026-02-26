@@ -371,6 +371,46 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+/* ── Hand-drawn irregular borders (chalk-style) ── */
+.hand-drawn-box {
+  position: relative;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.hand-drawn-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 12px 8px 14px 6px;
+  border: 1.5px solid rgba(var(--color-fg), 0.15);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.03' numOctaves='4' seed='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='4'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.03' numOctaves='4' seed='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='4'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
+}
+
+[data-theme="light"] .hand-drawn-box::before {
+  border-color: rgba(var(--color-fg), 0.12);
+}
+
+/* Variant with slightly different wobble */
+.hand-drawn-box-alt {
+  position: relative;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.hand-drawn-box-alt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 6px 14px 8px 12px;
+  border: 1.5px solid rgba(var(--color-fg), 0.15);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='3'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='3'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
+}
+
 /* ── GPU hints for animated elements ── */
 .gpu-layer {
   will-change: transform, opacity;

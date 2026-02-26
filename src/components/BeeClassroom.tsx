@@ -23,6 +23,10 @@ interface Props {
     /** Called when NPC turns finish and it's the player's turn to spell */
     onPlayerTurn: () => void;
     round: number;
+    /** Whether the player is actively typing (for breathing animation) */
+    isTyping?: boolean;
+    /** Last answer result for triggering celebration/shake on audience */
+    lastResult?: boolean | null;
 }
 
 // ── Pupil names for speech bubbles ──────────────────────────────────────────
@@ -105,16 +109,45 @@ const PUPIL_ACTIVE: TargetAndTransition = {
     transition: { repeat: Infinity, duration: 0.9, ease: 'easeInOut' as const },
 };
 
+/** Player breathing/anticipation while typing */
+const PUPIL_TYPING: TargetAndTransition = {
+    scaleY: [1, 1.02, 1],
+    y: [0, -2, 0],
+    transition: { repeat: Infinity, duration: 1.8, ease: 'easeInOut' as const },
+};
+
 const PUPIL_SUCCESS: TargetAndTransition = {
     scale: [1, 1.2, 1],
     y: [0, -10, 0],
     transition: { duration: 0.5, ease: 'easeOut' as const },
 };
 
+/** Arms-up celebration for the player on success */
+const PUPIL_CELEBRATE: TargetAndTransition = {
+    scale: [1, 1.25, 1.1, 1.2, 1],
+    y: [0, -14, -8, -12, 0],
+    transition: { duration: 0.8, ease: 'easeOut' as const },
+};
+
+/** NPC audience clapping when player succeeds */
+const PUPIL_CLAP: TargetAndTransition = {
+    scale: [1, 1.05, 1, 1.05, 1],
+    y: [0, -2, 0, -2, 0],
+    transition: { duration: 0.6, ease: 'easeInOut' as const },
+};
+
 const PUPIL_FAIL: TargetAndTransition = {
     x: [-5, 5, -5, 5, -3, 3, 0],
     y: [0, 2, 0],
     transition: { duration: 0.45 },
+};
+
+/** Player loses balance on wrong answer */
+const PUPIL_STUMBLE: TargetAndTransition = {
+    rotate: [0, -8, 6, -4, 3, 0],
+    x: [-3, 5, -4, 3, 0],
+    y: [0, 3, 0],
+    transition: { duration: 0.6 },
 };
 
 // ── Positioning constants ────────────────────────────────────────────────────
@@ -163,16 +196,40 @@ function getPupilTransform(
 
 function MicStand({ cx }: { cx: number }) {
     return (
-        <g opacity="0.35">
-            {/* Stand pole */}
-            <line x1={cx} y1="118" x2={cx} y2="135" stroke="currentColor" strokeWidth="1.5" />
-            {/* Base */}
-            <ellipse cx={cx} cy="136" rx="6" ry="2" stroke="currentColor" strokeWidth="1" fill="none" />
-            {/* Mic head */}
-            <ellipse cx={cx} cy="116" rx="3.5" ry="4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            {/* Mic grill lines */}
-            <line x1={cx - 2} y1="115" x2={cx + 2} y2="115" stroke="currentColor" strokeWidth="0.5" opacity="0.6" />
-            <line x1={cx - 2.5} y1="117" x2={cx + 2.5} y2="117" stroke="currentColor" strokeWidth="0.5" opacity="0.6" />
+        <g opacity="0.4">
+            {/* Tripod base — three legs splaying out */}
+            <line x1={cx} y1="134" x2={cx - 8} y2="140" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            <line x1={cx} y1="134" x2={cx + 8} y2="140" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            <line x1={cx} y1="134" x2={cx} y2="141" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            {/* Foot caps */}
+            <circle cx={cx - 8} cy="140.5" r="1" fill="currentColor" opacity="0.3" />
+            <circle cx={cx + 8} cy="140.5" r="1" fill="currentColor" opacity="0.3" />
+            <circle cx={cx} cy="141.5" r="1" fill="currentColor" opacity="0.3" />
+
+            {/* Stand pole — two segments with a joint */}
+            <line x1={cx} y1="134" x2={cx} y2="124" stroke="currentColor" strokeWidth="1.8" />
+            {/* Joint knob */}
+            <ellipse cx={cx} cy="124" rx="1.5" ry="1" fill="currentColor" opacity="0.35" />
+            {/* Upper pole */}
+            <line x1={cx} y1="124" x2={cx} y2="116" stroke="currentColor" strokeWidth="1.5" />
+
+            {/* Mic clip / holder */}
+            <path
+                d={`M ${cx - 2.5} 116 L ${cx - 2.5} 114 Q ${cx - 2.5} 112.5 ${cx - 1} 112.5 L ${cx + 1} 112.5 Q ${cx + 2.5} 112.5 ${cx + 2.5} 114 L ${cx + 2.5} 116`}
+                stroke="currentColor" strokeWidth="1" fill="none" opacity="0.6"
+            />
+
+            {/* Mic head — rounded capsule shape */}
+            <rect x={cx - 4} y="104" width="8" height="9" rx="4" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.7" />
+
+            {/* Grill mesh pattern */}
+            <line x1={cx - 2.5} y1="105.5" x2={cx + 2.5} y2="105.5" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
+            <line x1={cx - 3} y1="107.5" x2={cx + 3} y2="107.5" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <line x1={cx - 3} y1="109.5" x2={cx + 3} y2="109.5" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
+            <line x1={cx - 2.5} y1="111.5" x2={cx + 2.5} y2="111.5" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
+
+            {/* Highlight reflection on mic head */}
+            <line x1={cx - 1.5} y1="105" x2={cx - 1.5} y2="112" stroke="currentColor" strokeWidth="0.4" opacity="0.15" />
         </g>
     );
 }
@@ -507,12 +564,59 @@ function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; 
             <text
                 x={textX + w / 2 - 3} y="136"
                 textAnchor="middle" fontSize="13"
-                fill="currentColor" opacity="0.8"
+                fill="var(--color-chalk)" opacity="0.9"
                 fontFamily="var(--font-ui)"
-                fontWeight="600"
+                fontWeight="700"
             >
                 {text}
             </text>
+        </motion.g>
+    );
+}
+
+// ── Mini bee mascot for stage decoration ────────────────────────────────────
+
+function StageBee({ phase }: { phase: BeePhase }) {
+    const isSpelling = phase === 'spelling';
+    return (
+        <motion.g
+            animate={isSpelling
+                ? { y: [0, -3, 0], x: [0, 2, -2, 0], transition: { repeat: Infinity, duration: 1.2, ease: 'easeInOut' as const } }
+                : { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2.5, ease: 'easeInOut' as const } }
+            }
+        >
+            {/* Body */}
+            <ellipse cx="128" cy="110" rx="5" ry="6" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.45" />
+            {/* Stripes */}
+            <line x1="124" y1="108" x2="132" y2="108" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+            <line x1="124" y1="111" x2="132" y2="111" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+            {/* Head */}
+            <circle cx="128" cy="103" r="3.5" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.45" />
+            {/* Eyes */}
+            <circle cx="127" cy="102.5" r="0.7" fill="currentColor" opacity="0.4" />
+            <circle cx="129.5" cy="102.5" r="0.7" fill="currentColor" opacity="0.4" />
+            {/* Smile */}
+            <path d="M 126.5 104 Q 128 105.5 129.5 104" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
+            {/* Wings */}
+            <motion.ellipse
+                cx="123" cy="106" rx="4" ry="5"
+                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.25"
+                style={{ originX: '126px', originY: '106px' }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.2, ease: 'easeInOut' as const } }}
+            />
+            <motion.ellipse
+                cx="133" cy="106" rx="4" ry="5"
+                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.25"
+                style={{ originX: '130px', originY: '106px' }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.2, ease: 'easeInOut' as const } }}
+            />
+            {/* Antennae */}
+            <path d="M 126.5 100 Q 124 96 122 97" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
+            <circle cx="122" cy="97" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
+            <path d="M 129.5 100 Q 131.5 96 134 97" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
+            <circle cx="134" cy="97" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
+            {/* Stinger */}
+            <path d="M 127 115.5 L 128 118 L 129 115.5" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
         </motion.g>
     );
 }
@@ -552,6 +656,8 @@ export const BeeClassroom = memo(function BeeClassroom({
     onPronounce,
     onPlayerTurn,
     round,
+    isTyping = false,
+    lastResult = null,
 }: Props) {
     // Turn sequencing: step through NPC turns visually, then land on player
     const [displayedTurn, setDisplayedTurn] = useState(-1);
@@ -562,11 +668,25 @@ export const BeeClassroom = memo(function BeeClassroom({
     const [announcing, setAnnouncing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
+    // Track player feedback animation (celebrate/stumble)
+    const [playerFeedbackAnim, setPlayerFeedbackAnim] = useState<'celebrate' | 'stumble' | null>(null);
+
+    // Trigger celebrate/stumble when feedback phase starts
+    useEffect(() => {
+        if (phase === 'feedback' && lastResult !== null) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- animation trigger on phase transition
+            setPlayerFeedbackAnim(lastResult ? 'celebrate' : 'stumble');
+            const t = setTimeout(() => setPlayerFeedbackAnim(null), 900);
+            return () => clearTimeout(t);
+        }
+        setPlayerFeedbackAnim(null);
+    }, [phase, lastResult]);
+
     useEffect(() => {
         if (phase !== 'listening') return;
 
         // Reset
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- phase transition resets
         setDisplayedTurn(-1);
         setRevealedResults(new Set());
         setSpeechBubbles({});
@@ -729,6 +849,9 @@ export const BeeClassroom = memo(function BeeClassroom({
             {/* Stage decor */}
             <StageDecor />
 
+            {/* Mini bee mascot near stage title */}
+            <StageBee phase={phase} />
+
             {/* Microphone at center stage */}
             <MicStand cx={160} />
 
@@ -759,9 +882,9 @@ export const BeeClassroom = memo(function BeeClassroom({
                         />
                         <text
                             x="160" y="14" textAnchor="middle"
-                            fontSize="14" fill="currentColor" opacity="0.85"
+                            fontSize="14" fill="var(--color-chalk)" opacity="0.95"
                             fontFamily="var(--font-ui)"
-                            fontWeight="600"
+                            fontWeight="700"
                         >
                             {teacherBubble}
                         </text>
@@ -782,8 +905,17 @@ export const BeeClassroom = memo(function BeeClassroom({
                 let anim: TargetAndTransition;
                 if (!alive && !isPlayer) {
                     anim = { opacity: 0.15 };
+                } else if (isPlayer && playerFeedbackAnim === 'celebrate') {
+                    anim = PUPIL_CELEBRATE;
+                } else if (isPlayer && playerFeedbackAnim === 'stumble') {
+                    anim = PUPIL_STUMBLE;
+                } else if (!isPlayer && playerFeedbackAnim === 'celebrate' && alive) {
+                    // NPCs clap when player celebrates
+                    anim = PUPIL_CLAP;
                 } else if (isActive && resultRevealed && result !== null && !isPlayer) {
                     anim = result ? PUPIL_SUCCESS : PUPIL_FAIL;
+                } else if (isPlayer && isTyping && phase === 'spelling') {
+                    anim = PUPIL_TYPING;
                 } else if (isActive) {
                     anim = PUPIL_ACTIVE;
                 } else {
@@ -829,9 +961,10 @@ export const BeeClassroom = memo(function BeeClassroom({
                                 <text
                                     x={cx} y="196" textAnchor="middle"
                                     fontSize="10"
-                                    fill="currentColor"
-                                    opacity={0.4}
+                                    fill={isActive ? 'var(--color-gold)' : 'currentColor'}
+                                    opacity={isActive ? 0.9 : 0.6}
                                     fontFamily="var(--font-ui)"
+                                    fontWeight={isActive ? 'bold' : 'normal'}
                                 >
                                     {NPC_NAMES[i]}{score > 0 ? ` (${score})` : ''}
                                 </text>

@@ -15,9 +15,9 @@
   },
   {
     "word": "bed",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -29,9 +29,9 @@
   },
   {
     "word": "net",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -71,9 +71,9 @@
   },
   {
     "word": "pen",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -225,9 +225,9 @@
   },
   {
     "word": "nap",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -365,9 +365,9 @@
   },
   {
     "word": "dim",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -400,9 +400,9 @@
   },
   {
     "word": "win",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -435,9 +435,9 @@
   },
   {
     "word": "red",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -456,9 +456,9 @@
   },
   {
     "word": "wax",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -470,9 +470,9 @@
   },
   {
     "word": "gig",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -547,9 +547,9 @@
   },
   {
     "word": "nib",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -687,9 +687,9 @@
   },
   {
     "word": "ten",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -757,9 +757,9 @@
   },
   {
     "word": "dot",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -807,8 +807,8 @@
   {
     "word": "lop",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -820,16 +820,16 @@
   },
   {
     "word": "sum",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "hum",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -890,8 +890,8 @@
   },
   {
     "word": "nag",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier1"
   },
@@ -925,8 +925,8 @@
   },
   {
     "word": "dub",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier1"
   },
@@ -1051,9 +1051,9 @@
   },
   {
     "word": "flat",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1114,9 +1114,9 @@
   },
   {
     "word": "drum",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1163,9 +1163,9 @@
   },
   {
     "word": "blob",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1212,9 +1212,9 @@
   },
   {
     "word": "trot",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1268,23 +1268,23 @@
   },
   {
     "word": "clamp",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "swift",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "crisp",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1310,8 +1310,8 @@
   },
   {
     "word": "slept",
-    "oldTheme": "time",
-    "newTheme": "time",
+    "oldTheme": "health",
+    "newTheme": "health",
     "changed": false,
     "file": "tier1"
   },
@@ -1352,9 +1352,9 @@
   },
   {
     "word": "brisk",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1415,8 +1415,8 @@
   },
   {
     "word": "flap",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier1"
   },
@@ -1443,9 +1443,9 @@
   },
   {
     "word": "glob",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1471,9 +1471,9 @@
   },
   {
     "word": "grid",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1541,8 +1541,8 @@
   },
   {
     "word": "snub",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier1"
   },
@@ -1597,9 +1597,9 @@
   },
   {
     "word": "skit",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1632,16 +1632,16 @@
   },
   {
     "word": "gruff",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "blunt",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1730,16 +1730,16 @@
   },
   {
     "word": "sting",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier1"
   },
   {
     "word": "gloss",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1794,8 +1794,8 @@
   {
     "word": "graft",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -1842,9 +1842,9 @@
   },
   {
     "word": "block",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1856,8 +1856,8 @@
   },
   {
     "word": "chat",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier1"
   },
@@ -1898,9 +1898,9 @@
   },
   {
     "word": "shed",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -1954,8 +1954,8 @@
   },
   {
     "word": "rich",
-    "oldTheme": "food",
-    "newTheme": "food",
+    "oldTheme": "money",
+    "newTheme": "money",
     "changed": false,
     "file": "tier1"
   },
@@ -2059,9 +2059,9 @@
   },
   {
     "word": "match",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2080,16 +2080,16 @@
   },
   {
     "word": "thank",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier1"
   },
   {
     "word": "white",
     "oldTheme": "weather",
-    "newTheme": "weather",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -2116,8 +2116,8 @@
   {
     "word": "think",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "mind",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -2143,9 +2143,9 @@
   },
   {
     "word": "shade",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2192,9 +2192,9 @@
   },
   {
     "word": "whisk",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2206,23 +2206,23 @@
   },
   {
     "word": "chess",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "shack",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "theft",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2262,9 +2262,9 @@
   },
   {
     "word": "rush",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2297,23 +2297,23 @@
   },
   {
     "word": "shot",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "sheen",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "shaft",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2381,9 +2381,9 @@
   },
   {
     "word": "shape",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2430,16 +2430,16 @@
   },
   {
     "word": "shine",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "three",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2458,9 +2458,9 @@
   },
   {
     "word": "chant",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2535,16 +2535,16 @@
   },
   {
     "word": "shiver",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "thresh",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -2556,8 +2556,8 @@
   },
   {
     "word": "hatch",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier1"
   },
@@ -2570,9 +2570,9 @@
   },
   {
     "word": "shovel",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2584,8 +2584,8 @@
   },
   {
     "word": "whom",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier1"
   },
@@ -2661,16 +2661,16 @@
   },
   {
     "word": "shush",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier1"
   },
   {
     "word": "throb",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2731,22 +2731,22 @@
   },
   {
     "word": "champ",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "thrive",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
     "word": "chirp",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier1"
   },
@@ -2759,9 +2759,9 @@
   },
   {
     "word": "chart",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2822,9 +2822,9 @@
   },
   {
     "word": "saw",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2843,16 +2843,16 @@
   },
   {
     "word": "pew",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "sew",
     "oldTheme": "clothing",
-    "newTheme": "clothing",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -2920,23 +2920,23 @@
   },
   {
     "word": "hex",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "vex",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier1"
   },
   {
     "word": "orb",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -2955,9 +2955,9 @@
   },
   {
     "word": "axe",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -3109,8 +3109,8 @@
   },
   {
     "word": "stun",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "mind",
+    "newTheme": "mind",
     "changed": false,
     "file": "tier1"
   },
@@ -3151,15 +3151,15 @@
   },
   {
     "word": "snore",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "bred",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier1"
   },
@@ -3250,8 +3250,8 @@
   {
     "word": "graze",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -3291,16 +3291,16 @@
   },
   {
     "word": "char",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "chafe",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier1"
   },
   {
@@ -3333,8 +3333,8 @@
   },
   {
     "word": "chide",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier1"
   },
@@ -3389,16 +3389,16 @@
   },
   {
     "word": "sheath",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
     "word": "whist",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -3431,9 +3431,9 @@
   },
   {
     "word": "shimmer",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -3480,9 +3480,9 @@
   },
   {
     "word": "checker",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -3564,9 +3564,9 @@
   },
   {
     "word": "chopper",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier1"
   },
   {
@@ -3585,9 +3585,9 @@
   },
   {
     "word": "note",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3599,16 +3599,16 @@
   },
   {
     "word": "tune",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "make",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3641,8 +3641,8 @@
   },
   {
     "word": "ride",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "travel",
+    "newTheme": "travel",
     "changed": false,
     "file": "tier2"
   },
@@ -3655,9 +3655,9 @@
   },
   {
     "word": "shine",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3704,9 +3704,9 @@
   },
   {
     "word": "flute",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3739,23 +3739,23 @@
   },
   {
     "word": "flame",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "drove",
-    "oldTheme": "time",
-    "newTheme": "time",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
   {
     "word": "prize",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3767,9 +3767,9 @@
   },
   {
     "word": "scale",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3788,9 +3788,9 @@
   },
   {
     "word": "shade",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3858,9 +3858,9 @@
   },
   {
     "word": "stripe",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3872,9 +3872,9 @@
   },
   {
     "word": "space",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -3900,22 +3900,22 @@
   },
   {
     "word": "scene",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "cube",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "chase",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
@@ -4026,9 +4026,9 @@
   },
   {
     "word": "wire",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4047,37 +4047,37 @@
   },
   {
     "word": "blade",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "spoke",
-    "oldTheme": "time",
-    "newTheme": "time",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
   {
     "word": "spike",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "spade",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "skate",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4089,9 +4089,9 @@
   },
   {
     "word": "flake",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4103,16 +4103,16 @@
   },
   {
     "word": "cone",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "brake",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4138,16 +4138,16 @@
   },
   {
     "word": "snore",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "poke",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -4229,8 +4229,8 @@
   },
   {
     "word": "amaze",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -4250,8 +4250,8 @@
   },
   {
     "word": "invite",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
@@ -4411,9 +4411,9 @@
   },
   {
     "word": "spoon",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4426,15 +4426,15 @@
   {
     "word": "clean",
     "oldTheme": "earth",
-    "newTheme": "earth",
-    "changed": false,
+    "newTheme": "home",
+    "changed": true,
     "file": "tier2"
   },
   {
     "word": "broom",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4453,9 +4453,9 @@
   },
   {
     "word": "speed",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4495,8 +4495,8 @@
   },
   {
     "word": "teach",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "academic",
+    "newTheme": "academic",
     "changed": false,
     "file": "tier2"
   },
@@ -4516,9 +4516,9 @@
   },
   {
     "word": "proof",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4670,9 +4670,9 @@
   },
   {
     "word": "roof",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4712,8 +4712,8 @@
   },
   {
     "word": "greet",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
@@ -4761,16 +4761,16 @@
   },
   {
     "word": "clay",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "play",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4824,16 +4824,16 @@
   },
   {
     "word": "aim",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "loop",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -4929,8 +4929,8 @@
   },
   {
     "word": "approach",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
@@ -4957,8 +4957,8 @@
   },
   {
     "word": "care",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -4971,15 +4971,15 @@
   },
   {
     "word": "star",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "hurt",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -4999,23 +4999,23 @@
   },
   {
     "word": "burn",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "horn",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "dark",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5027,9 +5027,9 @@
   },
   {
     "word": "porch",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5097,9 +5097,9 @@
   },
   {
     "word": "chart",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5139,9 +5139,9 @@
   },
   {
     "word": "harsh",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5160,9 +5160,9 @@
   },
   {
     "word": "sport",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5195,9 +5195,9 @@
   },
   {
     "word": "marsh",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5251,9 +5251,9 @@
   },
   {
     "word": "circle",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5321,16 +5321,16 @@
   },
   {
     "word": "barn",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "firm",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5363,9 +5363,9 @@
   },
   {
     "word": "third",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5377,22 +5377,22 @@
   },
   {
     "word": "chirp",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier2"
   },
   {
     "word": "torch",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "march",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
@@ -5426,9 +5426,9 @@
   },
   {
     "word": "sword",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5468,9 +5468,9 @@
   },
   {
     "word": "verse",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5510,8 +5510,8 @@
   },
   {
     "word": "bitter",
-    "oldTheme": "food",
-    "newTheme": "food",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier2"
   },
@@ -5524,9 +5524,9 @@
   },
   {
     "word": "umber",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5538,9 +5538,9 @@
   },
   {
     "word": "center",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5552,16 +5552,16 @@
   },
   {
     "word": "soccer",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "number",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5643,8 +5643,8 @@
   },
   {
     "word": "brown",
-    "oldTheme": "food",
-    "newTheme": "food",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier2"
   },
@@ -5671,9 +5671,9 @@
   },
   {
     "word": "join",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5700,8 +5700,8 @@
   {
     "word": "point",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -5734,9 +5734,9 @@
   },
   {
     "word": "tower",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5755,8 +5755,8 @@
   },
   {
     "word": "loyal",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "character",
+    "newTheme": "character",
     "changed": false,
     "file": "tier2"
   },
@@ -5769,9 +5769,9 @@
   },
   {
     "word": "power",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5783,8 +5783,8 @@
   },
   {
     "word": "round",
-    "oldTheme": "sports",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "academic",
     "changed": true,
     "file": "tier2"
   },
@@ -5797,9 +5797,9 @@
   },
   {
     "word": "bounce",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5811,15 +5811,15 @@
   },
   {
     "word": "royal",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier2"
   },
   {
     "word": "proud",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -5846,8 +5846,8 @@
   },
   {
     "word": "allow",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
@@ -5874,15 +5874,15 @@
   },
   {
     "word": "amount",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "annoy",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -5902,9 +5902,9 @@
   },
   {
     "word": "count",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -5979,9 +5979,9 @@
   },
   {
     "word": "coil",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6000,8 +6000,8 @@
   },
   {
     "word": "howl",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier2"
   },
@@ -6105,8 +6105,8 @@
   },
   {
     "word": "employ",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier2"
   },
@@ -6147,16 +6147,16 @@
   },
   {
     "word": "slouch",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "stout",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6217,15 +6217,15 @@
   },
   {
     "word": "sour",
-    "oldTheme": "food",
-    "newTheme": "food",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier2"
   },
   {
     "word": "recount",
-    "oldTheme": "language",
-    "newTheme": "language",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
@@ -6252,9 +6252,9 @@
   },
   {
     "word": "outline",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6266,8 +6266,8 @@
   },
   {
     "word": "announce",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
@@ -6287,9 +6287,9 @@
   },
   {
     "word": "thousand",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6315,23 +6315,23 @@
   },
   {
     "word": "snare",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "glare",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "thrive",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -6343,9 +6343,9 @@
   },
   {
     "word": "stride",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6371,9 +6371,9 @@
   },
   {
     "word": "blaze",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6386,8 +6386,8 @@
   {
     "word": "graze",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -6448,9 +6448,9 @@
   },
   {
     "word": "wedge",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6476,23 +6476,23 @@
   },
   {
     "word": "truce",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "flare",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "singe",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6505,8 +6505,8 @@
   {
     "word": "weave",
     "oldTheme": "clothing",
-    "newTheme": "clothing",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -6560,9 +6560,9 @@
   },
   {
     "word": "sleek",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6609,9 +6609,9 @@
   },
   {
     "word": "croon",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6623,9 +6623,9 @@
   },
   {
     "word": "gleam",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6645,8 +6645,8 @@
   {
     "word": "stoop",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -6686,9 +6686,9 @@
   },
   {
     "word": "decay",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6700,9 +6700,9 @@
   },
   {
     "word": "relay",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6763,9 +6763,9 @@
   },
   {
     "word": "scorch",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6777,16 +6777,16 @@
   },
   {
     "word": "spur",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "murky",
     "oldTheme": "weather",
-    "newTheme": "weather",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier2"
   },
   {
@@ -6833,8 +6833,8 @@
   },
   {
     "word": "flutter",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier2"
   },
@@ -6854,9 +6854,9 @@
   },
   {
     "word": "timber",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6896,9 +6896,9 @@
   },
   {
     "word": "verdict",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -6973,9 +6973,9 @@
   },
   {
     "word": "loiter",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -7022,9 +7022,9 @@
   },
   {
     "word": "trounce",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -7036,15 +7036,15 @@
   },
   {
     "word": "compound",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "astound",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier2"
   },
@@ -7057,16 +7057,16 @@
   },
   {
     "word": "trowel",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
     "word": "grout",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier2"
   },
   {
@@ -7085,8 +7085,8 @@
   },
   {
     "word": "vouch",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier2"
   },
@@ -7113,9 +7113,9 @@
   },
   {
     "word": "rebuild",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7183,8 +7183,8 @@
   },
   {
     "word": "disagree",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
@@ -7268,8 +7268,8 @@
   {
     "word": "unable",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "mind",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -7289,8 +7289,8 @@
   {
     "word": "transplant",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "actions",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -7309,9 +7309,9 @@
   },
   {
     "word": "irregular",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7351,9 +7351,9 @@
   },
   {
     "word": "invisible",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7407,16 +7407,16 @@
   },
   {
     "word": "movement",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "darkness",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7428,8 +7428,8 @@
   },
   {
     "word": "quickly",
-    "oldTheme": "movement",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "time",
     "changed": true,
     "file": "tier3"
   },
@@ -7624,16 +7624,16 @@
   },
   {
     "word": "gracefully",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "punishment",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7673,9 +7673,9 @@
   },
   {
     "word": "sunshine",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7687,9 +7687,9 @@
   },
   {
     "word": "basketball",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7701,9 +7701,9 @@
   },
   {
     "word": "earthquake",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7757,9 +7757,9 @@
   },
   {
     "word": "scoreboard",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7771,9 +7771,9 @@
   },
   {
     "word": "skateboard",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7820,8 +7820,8 @@
   },
   {
     "word": "widespread",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier3"
   },
@@ -7884,15 +7884,15 @@
   {
     "word": "worthwhile",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "mind",
+    "changed": true,
     "file": "tier3"
   },
   {
     "word": "sportsmanship",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7939,9 +7939,9 @@
   },
   {
     "word": "temperature",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -7967,9 +7967,9 @@
   },
   {
     "word": "electricity",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8065,16 +8065,16 @@
   },
   {
     "word": "experiment",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "civilization",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8093,8 +8093,8 @@
   },
   {
     "word": "professional",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier3"
   },
@@ -8115,8 +8115,8 @@
   {
     "word": "accidentally",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "everyday",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -8128,9 +8128,9 @@
   },
   {
     "word": "elementary",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8142,9 +8142,9 @@
   },
   {
     "word": "approximately",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8170,16 +8170,16 @@
   },
   {
     "word": "mislead",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
   {
     "word": "pretest",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8191,8 +8191,8 @@
   },
   {
     "word": "recount",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
@@ -8205,15 +8205,15 @@
   },
   {
     "word": "miscount",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "preheat",
-    "oldTheme": "weather",
-    "newTheme": "weather",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier3"
   },
@@ -8247,9 +8247,9 @@
   },
   {
     "word": "unfair",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8303,8 +8303,8 @@
   },
   {
     "word": "discourage",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier3"
   },
@@ -8352,9 +8352,9 @@
   },
   {
     "word": "recharge",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8415,8 +8415,8 @@
   },
   {
     "word": "misinform",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
@@ -8457,8 +8457,8 @@
   },
   {
     "word": "transport",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "travel",
+    "newTheme": "travel",
     "changed": false,
     "file": "tier3"
   },
@@ -8471,16 +8471,16 @@
   },
   {
     "word": "superhuman",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier3"
   },
   {
     "word": "unfinished",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "time",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -8527,8 +8527,8 @@
   },
   {
     "word": "displease",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier3"
   },
@@ -8549,8 +8549,8 @@
   {
     "word": "transatlantic",
     "oldTheme": "earth",
-    "newTheme": "earth",
-    "changed": false,
+    "newTheme": "travel",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -8569,9 +8569,9 @@
   },
   {
     "word": "unsteady",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8583,16 +8583,16 @@
   },
   {
     "word": "disqualify",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "brightness",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8604,16 +8604,16 @@
   },
   {
     "word": "gently",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "achievement",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8646,9 +8646,9 @@
   },
   {
     "word": "thickness",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8681,9 +8681,9 @@
   },
   {
     "word": "graceful",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8723,9 +8723,9 @@
   },
   {
     "word": "measurement",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8786,9 +8786,9 @@
   },
   {
     "word": "sharpness",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -8814,9 +8814,9 @@
   },
   {
     "word": "clumsiness",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9045,9 +9045,9 @@
   },
   {
     "word": "chalkboard",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9115,9 +9115,9 @@
   },
   {
     "word": "lighthouse",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9171,9 +9171,9 @@
   },
   {
     "word": "arrowhead",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9249,14 +9249,14 @@
   {
     "word": "homesick",
     "oldTheme": "home",
-    "newTheme": "home",
-    "changed": false,
+    "newTheme": "feelings",
+    "changed": true,
     "file": "tier3"
   },
   {
     "word": "underground",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "earth",
     "changed": true,
     "file": "tier3"
   },
@@ -9276,9 +9276,9 @@
   },
   {
     "word": "moonlight",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9297,9 +9297,9 @@
   },
   {
     "word": "drawbridge",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9318,16 +9318,16 @@
   },
   {
     "word": "dishwasher",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "typewriter",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9360,8 +9360,8 @@
   },
   {
     "word": "ridicule",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
@@ -9381,8 +9381,8 @@
   },
   {
     "word": "contagious",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "health",
+    "newTheme": "health",
     "changed": false,
     "file": "tier3"
   },
@@ -9472,9 +9472,9 @@
   },
   {
     "word": "competition",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9528,9 +9528,9 @@
   },
   {
     "word": "curriculum",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9570,9 +9570,9 @@
   },
   {
     "word": "documentary",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9598,9 +9598,9 @@
   },
   {
     "word": "population",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9612,16 +9612,16 @@
   },
   {
     "word": "mathematical",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "spectacular",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9633,16 +9633,16 @@
   },
   {
     "word": "multiplication",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "championship",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9654,9 +9654,9 @@
   },
   {
     "word": "constellation",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9724,16 +9724,16 @@
   },
   {
     "word": "constitution",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "unbreakable",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9809,8 +9809,8 @@
   {
     "word": "successfully",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "everyday",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -9829,16 +9829,16 @@
   },
   {
     "word": "springboard",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "skyscraper",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9857,9 +9857,9 @@
   },
   {
     "word": "observatory",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -9885,29 +9885,29 @@
   },
   {
     "word": "calculator",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "transparent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "certificate",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "prejudge",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "mind",
+    "newTheme": "mind",
     "changed": false,
     "file": "tier3"
   },
@@ -10004,15 +10004,15 @@
   },
   {
     "word": "transmit",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier3"
   },
   {
     "word": "overburden",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier3"
   },
@@ -10025,23 +10025,23 @@
   },
   {
     "word": "transferable",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier3"
   },
   {
     "word": "overthrow",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier3"
   },
   {
     "word": "prerequisite",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10088,16 +10088,16 @@
   },
   {
     "word": "enrollment",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "fashionable",
     "oldTheme": "clothing",
-    "newTheme": "clothing",
-    "changed": false,
+    "newTheme": "society",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -10214,9 +10214,9 @@
   },
   {
     "word": "stopwatch",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10235,9 +10235,9 @@
   },
   {
     "word": "clockwork",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10284,16 +10284,16 @@
   },
   {
     "word": "pitchfork",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "matchstick",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10305,9 +10305,9 @@
   },
   {
     "word": "flagpole",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10333,23 +10333,23 @@
   },
   {
     "word": "troubleshoot",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "fingerboard",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "watchtower",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10389,9 +10389,9 @@
   },
   {
     "word": "equivalent",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10411,8 +10411,8 @@
   {
     "word": "respiratory",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "health",
+    "changed": true,
     "file": "tier3"
   },
   {
@@ -10438,9 +10438,9 @@
   },
   {
     "word": "circumference",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10452,16 +10452,16 @@
   },
   {
     "word": "phenomenon",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "architecture",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10473,8 +10473,8 @@
   },
   {
     "word": "controversial",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier3"
   },
@@ -10543,9 +10543,9 @@
   },
   {
     "word": "silhouette",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10557,16 +10557,16 @@
   },
   {
     "word": "lieutenant",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
     "word": "colonel",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10606,9 +10606,9 @@
   },
   {
     "word": "knowledge",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier3"
   },
   {
@@ -10641,16 +10641,16 @@
   },
   {
     "word": "spectacle",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "portable",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "home",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -10669,30 +10669,30 @@
   },
   {
     "word": "interrupt",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "visible",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "conductor",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "construct",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10704,16 +10704,16 @@
   },
   {
     "word": "transport",
-    "oldTheme": "actions",
-    "newTheme": "actions",
+    "oldTheme": "travel",
+    "newTheme": "travel",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "manufacture",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10739,9 +10739,9 @@
   },
   {
     "word": "projection",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10767,8 +10767,8 @@
   },
   {
     "word": "attract",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier4"
   },
@@ -10802,8 +10802,8 @@
   },
   {
     "word": "contradict",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier4"
   },
@@ -10830,9 +10830,9 @@
   },
   {
     "word": "circumference",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10851,9 +10851,9 @@
   },
   {
     "word": "illuminate",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10879,16 +10879,16 @@
   },
   {
     "word": "magnify",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "translucent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -10921,16 +10921,16 @@
   },
   {
     "word": "apparatus",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "adjacent",
     "oldTheme": "earth",
-    "newTheme": "earth",
-    "changed": false,
+    "newTheme": "academic",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -10942,8 +10942,8 @@
   },
   {
     "word": "commemorate",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier4"
   },
@@ -10984,9 +10984,9 @@
   },
   {
     "word": "corroborate",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11012,9 +11012,9 @@
   },
   {
     "word": "edifice",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11026,9 +11026,9 @@
   },
   {
     "word": "emancipate",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11047,9 +11047,9 @@
   },
   {
     "word": "fluctuate",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11068,16 +11068,16 @@
   },
   {
     "word": "impervious",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "incandescent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11096,16 +11096,16 @@
   },
   {
     "word": "infrastructure",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "innumerable",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11117,9 +11117,9 @@
   },
   {
     "word": "luminous",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11208,23 +11208,23 @@
   },
   {
     "word": "solitary",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "specimen",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "subordinate",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11243,9 +11243,9 @@
   },
   {
     "word": "traversal",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11257,9 +11257,9 @@
   },
   {
     "word": "velocity",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11300,8 +11300,8 @@
   {
     "word": "clandestine",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -11341,37 +11341,37 @@
   },
   {
     "word": "reciprocal",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "exquisite",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "desolate",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "revocable",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "municipal",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11404,9 +11404,9 @@
   },
   {
     "word": "microscope",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11447,8 +11447,8 @@
   {
     "word": "hydrate",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "health",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -11467,16 +11467,16 @@
   },
   {
     "word": "technology",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "hypothesis",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11488,9 +11488,9 @@
   },
   {
     "word": "phenomenon",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11502,23 +11502,23 @@
   },
   {
     "word": "anonymous",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "parallelogram",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "metamorphosis",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11544,16 +11544,16 @@
   },
   {
     "word": "atmosphere",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "polygon",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11572,9 +11572,9 @@
   },
   {
     "word": "symphony",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11600,9 +11600,9 @@
   },
   {
     "word": "perimeter",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11628,9 +11628,9 @@
   },
   {
     "word": "protagonist",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11677,9 +11677,9 @@
   },
   {
     "word": "autonomous",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11712,16 +11712,16 @@
   },
   {
     "word": "cybernetics",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "demographics",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11748,8 +11748,8 @@
   {
     "word": "empathy",
     "oldTheme": "people",
-    "newTheme": "people",
-    "changed": false,
+    "newTheme": "feelings",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -11782,37 +11782,37 @@
   },
   {
     "word": "geocentric",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "heliocentric",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "heterogeneous",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "hierarchy",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "homogeneous",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11831,16 +11831,16 @@
   },
   {
     "word": "kinetic",
-    "oldTheme": "movement",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "academic",
     "changed": true,
     "file": "tier4"
   },
   {
     "word": "labyrinth",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11852,9 +11852,9 @@
   },
   {
     "word": "orthodox",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11880,9 +11880,9 @@
   },
   {
     "word": "theocracy",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11894,9 +11894,9 @@
   },
   {
     "word": "polytechnic",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11908,15 +11908,15 @@
   },
   {
     "word": "schematic",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "stoic",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "character",
+    "newTheme": "character",
     "changed": false,
     "file": "tier4"
   },
@@ -11950,9 +11950,9 @@
   },
   {
     "word": "zoology",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -11986,15 +11986,15 @@
   {
     "word": "philanthropical",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier4"
   },
   {
     "word": "pseudoscience",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12027,9 +12027,9 @@
   },
   {
     "word": "oligarchy",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12048,9 +12048,9 @@
   },
   {
     "word": "colonel",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12097,9 +12097,9 @@
   },
   {
     "word": "scissors",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12139,8 +12139,8 @@
   },
   {
     "word": "accommodate",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier4"
   },
@@ -12153,9 +12153,9 @@
   },
   {
     "word": "lieutenant",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12188,9 +12188,9 @@
   },
   {
     "word": "segue",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12202,8 +12202,8 @@
   },
   {
     "word": "bourgeois",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier4"
   },
@@ -12238,15 +12238,15 @@
   {
     "word": "cough",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "health",
+    "changed": true,
     "file": "tier4"
   },
   {
     "word": "counterfeit",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12272,16 +12272,16 @@
   },
   {
     "word": "echelon",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "gauge",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12300,8 +12300,8 @@
   },
   {
     "word": "indict",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier4"
   },
@@ -12363,9 +12363,9 @@
   },
   {
     "word": "pneumatic",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12398,9 +12398,9 @@
   },
   {
     "word": "sacrilege",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12419,9 +12419,9 @@
   },
   {
     "word": "subtle",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12447,9 +12447,9 @@
   },
   {
     "word": "vacuum",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12531,8 +12531,8 @@
   },
   {
     "word": "labyrinthine",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "mind",
     "changed": true,
     "file": "tier4"
   },
@@ -12580,9 +12580,9 @@
   },
   {
     "word": "ballet",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12622,9 +12622,9 @@
   },
   {
     "word": "silhouette",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12741,9 +12741,9 @@
   },
   {
     "word": "beret",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12853,9 +12853,9 @@
   },
   {
     "word": "facade",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12874,16 +12874,16 @@
   },
   {
     "word": "finesse",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "genre",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12902,16 +12902,16 @@
   },
   {
     "word": "impromptu",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "lacquer",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12937,9 +12937,9 @@
   },
   {
     "word": "matinee",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12958,9 +12958,9 @@
   },
   {
     "word": "mirage",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -12979,9 +12979,9 @@
   },
   {
     "word": "opaque",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13007,8 +13007,8 @@
   },
   {
     "word": "petite",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "body",
+    "newTheme": "body",
     "changed": false,
     "file": "tier4"
   },
@@ -13028,9 +13028,9 @@
   },
   {
     "word": "premiere",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13063,9 +13063,9 @@
   },
   {
     "word": "sabotage",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13098,9 +13098,9 @@
   },
   {
     "word": "tableau",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13169,8 +13169,8 @@
   {
     "word": "faux",
     "oldTheme": "clothing",
-    "newTheme": "clothing",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -13197,15 +13197,15 @@
   {
     "word": "belligerent",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier4"
   },
   {
     "word": "curriculum",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13217,16 +13217,16 @@
   },
   {
     "word": "equilibrium",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "immaculate",
     "oldTheme": "home",
-    "newTheme": "home",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -13252,16 +13252,16 @@
   },
   {
     "word": "chromatic",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "demographic",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13280,9 +13280,9 @@
   },
   {
     "word": "pathology",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13315,8 +13315,8 @@
   },
   {
     "word": "gnaw",
-    "oldTheme": "animals",
-    "newTheme": "animals",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier4"
   },
@@ -13350,9 +13350,9 @@
   },
   {
     "word": "algorithm",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13392,9 +13392,9 @@
   },
   {
     "word": "debut",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13462,23 +13462,23 @@
   },
   {
     "word": "equitable",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "fabricate",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "gregarious",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -13532,16 +13532,16 @@
   },
   {
     "word": "tangible",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "verdant",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -13574,9 +13574,9 @@
   },
   {
     "word": "diaphanous",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13623,9 +13623,9 @@
   },
   {
     "word": "nemesis",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13721,9 +13721,9 @@
   },
   {
     "word": "charade",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13791,9 +13791,9 @@
   },
   {
     "word": "riposte",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13819,9 +13819,9 @@
   },
   {
     "word": "conglomerate",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13840,9 +13840,9 @@
   },
   {
     "word": "extraterrestrial",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13903,15 +13903,15 @@
   },
   {
     "word": "temperamental",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "uncharacteristically",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "everyday",
+    "newTheme": "everyday",
     "changed": false,
     "file": "tier4"
   },
@@ -13924,9 +13924,9 @@
   },
   {
     "word": "accountability",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13938,9 +13938,9 @@
   },
   {
     "word": "bureaucracy",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -13973,23 +13973,23 @@
   },
   {
     "word": "fluorescent",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "heuristic",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "academic",
+    "newTheme": "academic",
     "changed": false,
     "file": "tier4"
   },
   {
     "word": "iridescent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -14050,15 +14050,15 @@
   },
   {
     "word": "confiscate",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
     "word": "disenchanted",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "feelings",
+    "newTheme": "feelings",
     "changed": false,
     "file": "tier4"
   },
@@ -14071,8 +14071,8 @@
   },
   {
     "word": "intercede",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier4"
   },
@@ -14100,8 +14100,8 @@
   {
     "word": "transatlantic",
     "oldTheme": "earth",
-    "newTheme": "earth",
-    "changed": false,
+    "newTheme": "travel",
+    "changed": true,
     "file": "tier4"
   },
   {
@@ -14120,9 +14120,9 @@
   },
   {
     "word": "compulsory",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier4"
   },
   {
@@ -14134,8 +14134,8 @@
   },
   {
     "word": "hereditary",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "health",
+    "newTheme": "health",
     "changed": false,
     "file": "tier4"
   },
@@ -14162,9 +14162,9 @@
   },
   {
     "word": "bureaucracy",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14218,9 +14218,9 @@
   },
   {
     "word": "sacrilegious",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14267,37 +14267,37 @@
   },
   {
     "word": "staphylococcus",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "antidisestablishmentarianism",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "surreptitious",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5"
   },
   {
     "word": "gubernatorial",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier5"
   },
   {
     "word": "xylophone",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14330,9 +14330,9 @@
   },
   {
     "word": "psychedelic",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14365,8 +14365,8 @@
   },
   {
     "word": "labyrinthine",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "mind",
     "changed": true,
     "file": "tier5"
   },
@@ -14442,16 +14442,16 @@
   },
   {
     "word": "triskaidekaphobia",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "eleemosynary",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "society",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -14464,22 +14464,22 @@
   {
     "word": "pulchritudinous",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier5"
   },
   {
     "word": "syzygy",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "legerdemain",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14491,9 +14491,9 @@
   },
   {
     "word": "recalcitrant",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14540,9 +14540,9 @@
   },
   {
     "word": "prestidigitation",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14617,8 +14617,8 @@
   },
   {
     "word": "abstemious",
-    "oldTheme": "food",
-    "newTheme": "food",
+    "oldTheme": "character",
+    "newTheme": "character",
     "changed": false,
     "file": "tier5"
   },
@@ -14652,16 +14652,16 @@
   },
   {
     "word": "terpsichorean",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "antediluvian",
     "oldTheme": "weather",
-    "newTheme": "weather",
-    "changed": false,
+    "newTheme": "time",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -14771,9 +14771,9 @@
   },
   {
     "word": "algorithm",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14821,8 +14821,8 @@
   {
     "word": "bellicose",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -14883,9 +14883,9 @@
   },
   {
     "word": "conflagration",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -14932,9 +14932,9 @@
   },
   {
     "word": "diaphanous",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15009,9 +15009,9 @@
   },
   {
     "word": "ethereal",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15072,9 +15072,9 @@
   },
   {
     "word": "hegemony",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15086,9 +15086,9 @@
   },
   {
     "word": "heterogeneous",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15114,9 +15114,9 @@
   },
   {
     "word": "imperious",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15177,16 +15177,16 @@
   },
   {
     "word": "legerity",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "malfeasance",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15205,9 +15205,9 @@
   },
   {
     "word": "metamorphosis",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15276,8 +15276,8 @@
   {
     "word": "parsimonious",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -15394,9 +15394,9 @@
   },
   {
     "word": "proscribe",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15408,16 +15408,16 @@
   },
   {
     "word": "quagmire",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "quiescence",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15436,9 +15436,9 @@
   },
   {
     "word": "recidivism",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15465,8 +15465,8 @@
   {
     "word": "requisite",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "everyday",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -15485,9 +15485,9 @@
   },
   {
     "word": "somnambulism",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15499,9 +15499,9 @@
   },
   {
     "word": "subterfuge",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15576,9 +15576,9 @@
   },
   {
     "word": "unctuous",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15591,8 +15591,8 @@
   {
     "word": "venal",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -15646,8 +15646,8 @@
   },
   {
     "word": "belligerent",
-    "oldTheme": "war",
-    "newTheme": "society",
+    "oldTheme": "society",
+    "newTheme": "character",
     "changed": true,
     "file": "tier5"
   },
@@ -15674,9 +15674,9 @@
   },
   {
     "word": "concomitant",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15702,8 +15702,8 @@
   },
   {
     "word": "ecclesiastical",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "society",
     "changed": true,
     "file": "tier5"
   },
@@ -15751,9 +15751,9 @@
   },
   {
     "word": "fulminate",
-    "oldTheme": "fire",
+    "oldTheme": "nature",
     "newTheme": "nature",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15772,9 +15772,9 @@
   },
   {
     "word": "impervious",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15786,9 +15786,9 @@
   },
   {
     "word": "incontrovertible",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15800,16 +15800,16 @@
   },
   {
     "word": "internecine",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "litigious",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15821,9 +15821,9 @@
   },
   {
     "word": "maelstrom",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15899,8 +15899,8 @@
   {
     "word": "physiognomy",
     "oldTheme": "people",
-    "newTheme": "people",
-    "changed": false,
+    "newTheme": "mind",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -15940,9 +15940,9 @@
   },
   {
     "word": "soporific",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15955,8 +15955,8 @@
   {
     "word": "surreptitiously",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "everyday",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -15982,9 +15982,9 @@
   },
   {
     "word": "unilateral",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -15996,8 +15996,8 @@
   },
   {
     "word": "vertiginous",
-    "oldTheme": "movement",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "health",
     "changed": true,
     "file": "tier5"
   },
@@ -16073,9 +16073,9 @@
   },
   {
     "word": "fiduciary",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16108,8 +16108,8 @@
   },
   {
     "word": "ingratiate",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "actions",
+    "newTheme": "actions",
     "changed": false,
     "file": "tier5"
   },
@@ -16143,9 +16143,9 @@
   },
   {
     "word": "mellifluous",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16171,8 +16171,8 @@
   },
   {
     "word": "peripatetic",
-    "oldTheme": "movement",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "travel",
     "changed": true,
     "file": "tier5"
   },
@@ -16192,9 +16192,9 @@
   },
   {
     "word": "promulgate",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16206,23 +16206,23 @@
   },
   {
     "word": "recalcitrance",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "renascence",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "resplendent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16241,9 +16241,9 @@
   },
   {
     "word": "supersede",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16262,9 +16262,9 @@
   },
   {
     "word": "transmogrify",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16304,9 +16304,9 @@
   },
   {
     "word": "baccalaureate",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16318,16 +16318,16 @@
   },
   {
     "word": "commensurate",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "concatenation",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16339,9 +16339,9 @@
   },
   {
     "word": "coruscate",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16416,8 +16416,8 @@
   },
   {
     "word": "enervate",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "health",
+    "newTheme": "health",
     "changed": false,
     "file": "tier5"
   },
@@ -16430,9 +16430,9 @@
   },
   {
     "word": "ersatz",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16459,8 +16459,8 @@
   {
     "word": "gratuitous",
     "oldTheme": "money",
-    "newTheme": "money",
-    "changed": false,
+    "newTheme": "everyday",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -16514,9 +16514,9 @@
   },
   {
     "word": "megalomania",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16556,9 +16556,9 @@
   },
   {
     "word": "oligarchy",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16571,8 +16571,8 @@
   {
     "word": "ossify",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "earth",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -16619,9 +16619,9 @@
   },
   {
     "word": "scintillate",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16647,9 +16647,9 @@
   },
   {
     "word": "stochastic",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16661,30 +16661,30 @@
   },
   {
     "word": "sycophantic",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "character",
+    "newTheme": "character",
     "changed": false,
     "file": "tier5"
   },
   {
     "word": "tarantella",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "tessellation",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "threnody",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16718,8 +16718,8 @@
   {
     "word": "verdant",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -16759,9 +16759,9 @@
   },
   {
     "word": "anodyne",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16836,9 +16836,9 @@
   },
   {
     "word": "pellucid",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16857,9 +16857,9 @@
   },
   {
     "word": "sclerotic",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16892,9 +16892,9 @@
   },
   {
     "word": "afflatus",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16906,9 +16906,9 @@
   },
   {
     "word": "anamorphosis",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16941,9 +16941,9 @@
   },
   {
     "word": "atavism",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16955,9 +16955,9 @@
   },
   {
     "word": "bathos",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -16983,9 +16983,9 @@
   },
   {
     "word": "caesura",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17004,16 +17004,16 @@
   },
   {
     "word": "celerity",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "chatoyant",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17046,9 +17046,9 @@
   },
   {
     "word": "connivance",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17074,9 +17074,9 @@
   },
   {
     "word": "crepuscular",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17088,9 +17088,9 @@
   },
   {
     "word": "deasil",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17116,23 +17116,23 @@
   },
   {
     "word": "descant",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "deuteragonist",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "diapason",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17158,9 +17158,9 @@
   },
   {
     "word": "ergodic",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17214,9 +17214,9 @@
   },
   {
     "word": "frangible",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17235,9 +17235,9 @@
   },
   {
     "word": "geminate",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17249,23 +17249,23 @@
   },
   {
     "word": "glossolalia",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "guerrilla",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "hamartia",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17291,9 +17291,9 @@
   },
   {
     "word": "idempotent",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17327,8 +17327,8 @@
   {
     "word": "lapidary",
     "oldTheme": "earth",
-    "newTheme": "earth",
-    "changed": false,
+    "newTheme": "art",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -17347,9 +17347,9 @@
   },
   {
     "word": "manumission",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17375,8 +17375,8 @@
   },
   {
     "word": "nacreous",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "sensory",
+    "newTheme": "sensory",
     "changed": false,
     "file": "tier5"
   },
@@ -17452,9 +17452,9 @@
   },
   {
     "word": "penumbra",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17480,9 +17480,9 @@
   },
   {
     "word": "prolegomenon",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17508,9 +17508,9 @@
   },
   {
     "word": "psephology",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17543,9 +17543,9 @@
   },
   {
     "word": "riposte",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17557,23 +17557,23 @@
   },
   {
     "word": "rubescent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
     "word": "sacerdotal",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier5"
   },
   {
     "word": "sangoma",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17613,9 +17613,9 @@
   },
   {
     "word": "somnolent",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5"
   },
   {
@@ -17628,8 +17628,8 @@
   {
     "word": "stridulate",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier5"
   },
   {
@@ -17760,8 +17760,8 @@
   },
   {
     "word": "vouchsafe",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "communication",
+    "newTheme": "communication",
     "changed": false,
     "file": "tier5-scripps"
   },
@@ -17774,9 +17774,9 @@
   },
   {
     "word": "luge",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17795,9 +17795,9 @@
   },
   {
     "word": "elucubrate",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17810,8 +17810,8 @@
   {
     "word": "antediluvian",
     "oldTheme": "weather",
-    "newTheme": "weather",
-    "changed": false,
+    "newTheme": "time",
+    "changed": true,
     "file": "tier5-scripps"
   },
   {
@@ -17823,9 +17823,9 @@
   },
   {
     "word": "appoggiatura",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17837,9 +17837,9 @@
   },
   {
     "word": "demarche",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17858,9 +17858,9 @@
   },
   {
     "word": "guetapens",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17872,9 +17872,9 @@
   },
   {
     "word": "cymbaleer",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17900,16 +17900,16 @@
   },
   {
     "word": "soubrette",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "prospicience",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17935,16 +17935,16 @@
   },
   {
     "word": "stichous",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "Feldenkrais",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17970,8 +17970,8 @@
   },
   {
     "word": "coxcombical",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "character",
+    "newTheme": "character",
     "changed": false,
     "file": "tier5-scripps"
   },
@@ -17984,9 +17984,9 @@
   },
   {
     "word": "smaragdine",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -17998,9 +17998,9 @@
   },
   {
     "word": "scherzo",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18019,9 +18019,9 @@
   },
   {
     "word": "phoresy",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18047,16 +18047,16 @@
   },
   {
     "word": "propaedeutic",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "elegiacal",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18082,9 +18082,9 @@
   },
   {
     "word": "droit",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18096,16 +18096,16 @@
   },
   {
     "word": "kamikaze",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "chihuahua",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18124,9 +18124,9 @@
   },
   {
     "word": "paroemiology",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18152,9 +18152,9 @@
   },
   {
     "word": "narcolepsy",
-    "oldTheme": "sleep",
+    "oldTheme": "health",
     "newTheme": "health",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18166,9 +18166,9 @@
   },
   {
     "word": "thamaturgy",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18180,23 +18180,23 @@
   },
   {
     "word": "autobahn",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "souffle",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "propylaea",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18222,9 +18222,9 @@
   },
   {
     "word": "duende",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18257,9 +18257,9 @@
   },
   {
     "word": "consigliere",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18306,9 +18306,9 @@
   },
   {
     "word": "stretto",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18349,8 +18349,8 @@
   {
     "word": "terraqueous",
     "oldTheme": "water",
-    "newTheme": "water",
-    "changed": false,
+    "newTheme": "earth",
+    "changed": true,
     "file": "tier5-scripps"
   },
   {
@@ -18362,9 +18362,9 @@
   },
   {
     "word": "sardoodledom",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18391,8 +18391,8 @@
   {
     "word": "glaucous",
     "oldTheme": "plants",
-    "newTheme": "plants",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier5-scripps"
   },
   {
@@ -18432,16 +18432,16 @@
   },
   {
     "word": "psammophile",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "haruspex",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18453,16 +18453,16 @@
   },
   {
     "word": "catamaran",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "sacrilegious",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18502,9 +18502,9 @@
   },
   {
     "word": "condominium",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18530,9 +18530,9 @@
   },
   {
     "word": "semaphore",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18593,9 +18593,9 @@
   },
   {
     "word": "fluorescent",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18628,8 +18628,8 @@
   },
   {
     "word": "ecclesiastical",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "society",
     "changed": true,
     "file": "tier5-scripps"
   },
@@ -18649,9 +18649,9 @@
   },
   {
     "word": "tachycardia",
-    "oldTheme": "movement",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18726,16 +18726,16 @@
   },
   {
     "word": "filigree",
-    "oldTheme": "texture",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "sauerkraut",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18761,9 +18761,9 @@
   },
   {
     "word": "abscissa",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18796,9 +18796,9 @@
   },
   {
     "word": "baccalaureate",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18810,9 +18810,9 @@
   },
   {
     "word": "parallelogram",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18852,9 +18852,9 @@
   },
   {
     "word": "terpsichorean",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18894,16 +18894,16 @@
   },
   {
     "word": "prestidigitation",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "colosseum",
-    "oldTheme": "sports",
+    "oldTheme": "actions",
     "newTheme": "actions",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18950,9 +18950,9 @@
   },
   {
     "word": "peristyle",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -18999,9 +18999,9 @@
   },
   {
     "word": "legerdemain",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19020,23 +19020,23 @@
   },
   {
     "word": "labyrinthine",
-    "oldTheme": "building",
-    "newTheme": "home",
+    "oldTheme": "home",
+    "newTheme": "mind",
     "changed": true,
     "file": "tier5-scripps"
   },
   {
     "word": "gubernatorial",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "sacrilege",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19055,9 +19055,9 @@
   },
   {
     "word": "schottische",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19104,9 +19104,9 @@
   },
   {
     "word": "balustrade",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19125,8 +19125,8 @@
   },
   {
     "word": "peripatetic",
-    "oldTheme": "movement",
-    "newTheme": "actions",
+    "oldTheme": "actions",
+    "newTheme": "travel",
     "changed": true,
     "file": "tier5-scripps"
   },
@@ -19203,8 +19203,8 @@
   {
     "word": "surreptitious",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5-scripps"
   },
   {
@@ -19223,16 +19223,16 @@
   },
   {
     "word": "triskaidekaphobia",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "pirouette",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19258,9 +19258,9 @@
   },
   {
     "word": "escutcheon",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19272,9 +19272,9 @@
   },
   {
     "word": "leitmotif",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19300,9 +19300,9 @@
   },
   {
     "word": "concatenation",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19349,23 +19349,23 @@
   },
   {
     "word": "vibraphone",
-    "oldTheme": "music",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "malfeasance",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
     "word": "polyphony",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19433,9 +19433,9 @@
   },
   {
     "word": "prognosticate",
-    "oldTheme": "magic",
+    "oldTheme": "mind",
     "newTheme": "mind",
-    "changed": true,
+    "changed": false,
     "file": "tier5-scripps"
   },
   {
@@ -19489,16 +19489,16 @@
   },
   {
     "word": "accouterments",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
     "word": "adjudicate",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19636,16 +19636,16 @@
   },
   {
     "word": "fluorescent",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
     "word": "flocculent",
     "oldTheme": "clothing",
-    "newTheme": "clothing",
-    "changed": false,
+    "newTheme": "sensory",
+    "changed": true,
     "file": "tier5-state"
   },
   {
@@ -19671,9 +19671,9 @@
   },
   {
     "word": "hyperbole",
-    "oldTheme": "science",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19685,9 +19685,9 @@
   },
   {
     "word": "incandescent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19713,9 +19713,9 @@
   },
   {
     "word": "isosceles",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19734,16 +19734,16 @@
   },
   {
     "word": "labyrinth",
-    "oldTheme": "building",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
     "word": "legitimacy",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19804,9 +19804,9 @@
   },
   {
     "word": "opalescent",
-    "oldTheme": "color",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19825,9 +19825,9 @@
   },
   {
     "word": "paraphernalia",
-    "oldTheme": "tools",
+    "oldTheme": "home",
     "newTheme": "home",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19839,9 +19839,9 @@
   },
   {
     "word": "peccadillo",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19874,9 +19874,9 @@
   },
   {
     "word": "reconnaissance",
-    "oldTheme": "war",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19902,9 +19902,9 @@
   },
   {
     "word": "sacrosanct",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19930,9 +19930,9 @@
   },
   {
     "word": "sovereignty",
-    "oldTheme": "power",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19966,8 +19966,8 @@
   {
     "word": "therapeutic",
     "oldTheme": "body",
-    "newTheme": "body",
-    "changed": false,
+    "newTheme": "health",
+    "changed": true,
     "file": "tier5-state"
   },
   {
@@ -19979,9 +19979,9 @@
   },
   {
     "word": "translucent",
-    "oldTheme": "light",
+    "oldTheme": "sensory",
     "newTheme": "sensory",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -19993,9 +19993,9 @@
   },
   {
     "word": "unconscionable",
-    "oldTheme": "law",
+    "oldTheme": "society",
     "newTheme": "society",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -20028,8 +20028,8 @@
   },
   {
     "word": "bourgeois",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "society",
+    "newTheme": "society",
     "changed": false,
     "file": "tier5-state"
   },
@@ -20077,23 +20077,23 @@
   },
   {
     "word": "gesticulate",
-    "oldTheme": "performance",
+    "oldTheme": "art",
     "newTheme": "art",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
     "word": "heuristic",
-    "oldTheme": "people",
-    "newTheme": "people",
+    "oldTheme": "academic",
+    "newTheme": "academic",
     "changed": false,
     "file": "tier5-state"
   },
   {
     "word": "hypotenuse",
-    "oldTheme": "math",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -20140,9 +20140,9 @@
   },
   {
     "word": "prerequisite",
-    "oldTheme": "school",
+    "oldTheme": "academic",
     "newTheme": "academic",
-    "changed": true,
+    "changed": false,
     "file": "tier5-state"
   },
   {
@@ -20176,8 +20176,8 @@
   {
     "word": "surreptitious",
     "oldTheme": "actions",
-    "newTheme": "actions",
-    "changed": false,
+    "newTheme": "character",
+    "changed": true,
     "file": "tier5-state"
   },
   {

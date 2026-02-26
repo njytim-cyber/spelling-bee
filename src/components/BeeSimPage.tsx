@@ -4,7 +4,7 @@
  * Bee Simulation mode — simulates a real spelling bee.
  * Phases: listening → asking → spelling → feedback → [next | eliminated | complete]
  */
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
@@ -86,6 +86,20 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
+    // Screen shake on wrong answer
+    const [shakeClass, setShakeClass] = useState('');
+    const prevPhaseRef = useRef(phase);
+    useEffect(() => {
+        if (phase === 'feedback' && prevPhaseRef.current === 'spelling' && lastResult === false) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- animation trigger on phase transition
+            setShakeClass('wrong-shake');
+            const t = setTimeout(() => setShakeClass(''), 300);
+            prevPhaseRef.current = phase;
+            return () => clearTimeout(t);
+        }
+        prevPhaseRef.current = phase;
+    }, [phase, lastResult]);
+
     // Auto-start session on mount
     useEffect(() => {
         if (!currentWord) startSession();
@@ -100,12 +114,14 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-base ui text-[rgb(var(--color-fg))]/50 font-medium">
                 Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
             </div>
-            <button
-                onClick={onExit}
-                className="absolute top-4 right-4 text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
-            >
-                Exit
-            </button>
+            {phase !== 'eliminated' && phase !== 'won' && (
+                <button
+                    onClick={onExit}
+                    className="absolute top-4 right-4 text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+                >
+                    Exit
+                </button>
+            )}
 
             <AnimatePresence mode="wait">
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
@@ -115,7 +131,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="flex flex-col items-center gap-3 w-full max-w-[320px]"
+                        className={`flex flex-col items-center gap-3 w-full max-w-[320px] ${shakeClass}`}
                     >
                         <BeeClassroom
                             pupilResults={npcResults}
@@ -126,19 +142,21 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                             onPronounce={pronounce}
                             onPlayerTurn={moveToSpelling}
                             round={round}
+                            isTyping={phase === 'spelling' && typedSpelling.length > 0}
+                            lastResult={phase === 'feedback' ? lastResult : null}
                         />
 
                         {/* Info responses (definition, sentence, origin) */}
                         {Object.keys(infoResponses).length > 0 && phase !== 'feedback' && (
                             <div className="w-full space-y-1.5">
-                                {Object.entries(infoResponses).map(([key, value]) => (
+                                {Object.entries(infoResponses).map(([key, value], idx) => (
                                     <motion.div
                                         key={key}
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/50"
+                                        className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                     >
-                                        <span className="text-xs text-[rgb(var(--color-fg))]/25 uppercase">{key}: </span>
+                                        <span className="text-xs text-[var(--color-gold)] uppercase font-bold">{key}: </span>
                                         {value}
                                     </motion.div>
                                 ))}
@@ -183,7 +201,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                         </AnimatePresence>
 
                         {phase === 'listening' && (
-                            <p className="text-xs ui text-[rgb(var(--color-fg))]/20">
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
                                 {ttsSupported ? 'Tap teacher to hear word again' : currentWord.word}
                             </p>
                         )}
@@ -225,6 +243,71 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                                 Exit
                             </button>
                         </div>
+                    </motion.div>
+                )}
+
+                {/* VICTORY PHASE — last one standing! */}
+                {phase === 'won' && (
+                    <motion.div
+                        key="won"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                        className="flex flex-col items-center gap-4"
+                    >
+                        <motion.div
+                            className="text-6xl"
+                            animate={{ rotate: [0, -10, 10, -5, 5, 0], scale: [1, 1.2, 1] }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                        >
+                            🏆
+                        </motion.div>
+                        <motion.h2
+                            className="text-3xl chalk text-[var(--color-gold)]"
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                        >
+                            Champion!
+                        </motion.h2>
+                        <motion.p
+                            className="text-base ui text-[rgb(var(--color-fg))]/60 text-center max-w-[280px]"
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                        >
+                            You&rsquo;re the last one standing!
+                        </motion.p>
+                        <motion.div
+                            className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-6 py-4 text-center mt-2"
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <div className="text-3xl chalk text-[var(--color-gold)]">{wordsCorrect}</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/40">words spelled correctly</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">Survived {round + 1} rounds</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">+{sessionXP} XP earned</div>
+                        </motion.div>
+                        <motion.div
+                            className="flex gap-3 mt-2"
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                        >
+                            <button
+                                onClick={startSession}
+                                className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                            >
+                                Play Again
+                            </button>
+                            <button
+                                onClick={onExit}
+                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
+                            >
+                                Exit
+                            </button>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

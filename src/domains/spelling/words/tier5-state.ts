@@ -319,7 +319,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: flocculus (small tuft), diminutive of floccus (tuft of wool)',
         source: 'state-bee',
         distractors: ['flocculente', 'floculent', 'flocculant'],
-        theme: 'clothing',
+        theme: 'sensory',
     },
     {
         word: 'fuselage',
@@ -917,7 +917,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: therapeutikos (inclined to serve), from therapeuein (to heal, attend)',
         source: 'state-bee',
         distractors: ['therapeutec', 'therapeutice', 'therappeutic'],
-        theme: 'body',
+        theme: 'health',
     },
     {
         word: 'topography',
@@ -1034,7 +1034,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'French: bourgeois (citizen, middle class), from bourg (market town)',
         source: 'state-bee',
         distractors: ['pourgeois', 'bourgeuis', 'biurgeois'],
-        theme: 'people',
+        theme: 'society',
     },
     {
         word: 'claustrophobia',
@@ -1138,7 +1138,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Greek: heuriskein (to find, discover)',
         source: 'state-bee',
         distractors: ['heuriztic', 'heurristic', 'heuristec'],
-        theme: 'people',
+        theme: 'academic',
     },
     {
         word: 'hypotenuse',
@@ -1307,7 +1307,7 @@ export const TIER_5_STATE_WORDS: SpellingWord[] = [
         etymology: 'Latin: surrepticius (stolen, secret), from surripere (to snatch secretly)',
         source: 'state-bee',
         distractors: ['surreptitoius', 'surreptetious', 'surrebtitious'],
-        theme: 'actions',
+        theme: 'character',
     },
     {
         word: 'tautology',

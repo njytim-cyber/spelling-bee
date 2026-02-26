@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "scribble-math-prod"
-  }
+  },
+  "targets": {
+    "scribble-math-prod": {
+      "hosting": {
+        "spelling-bee": [
+          "spelling-bee-prod"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
