@@ -59,6 +59,8 @@ interface Props {
     onThemeModeToggle: () => void;
     grade: string;
     onGradeChange: (grade: import('../domains/spelling/spellingCategories').GradeLevel) => void;
+    dialect: string;
+    onDialectChange: (d: import('../domains/spelling/words/types').Dialect) => void;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -120,7 +122,7 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange }: Props) {
+export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange }: Props) {
     const [meTab, setMeTab] = useState<MeTab>('grades');
     const [showRanks, setShowRanks] = useState(false);
     const [showAnalytics, setShowAnalytics] = useState(false);
@@ -720,6 +722,8 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         onThemeModeToggle={onThemeModeToggle}
                         grade={grade}
                         onGradeChange={onGradeChange}
+                        dialect={dialect}
+                        onDialectChange={onDialectChange}
                         onClose={() => setShowSettings(false)}
                     />
                 )}

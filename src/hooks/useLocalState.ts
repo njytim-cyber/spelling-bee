@@ -34,6 +34,7 @@ export function useLocalState(
                     'spell-bee-theme': 'themeMode',
                     'spell-bee-grade': 'grade',
                     'spell-bee-trail': 'trailId',
+                    'spell-bee-dialect': 'dialect',
                 };
                 const field = fieldMap[key];
                 if (field && prefs[field]) {
@@ -55,6 +56,7 @@ export function useLocalState(
                 'spell-bee-theme': 'themeMode',
                 'spell-bee-age-band': 'ageBand',
                 'spell-bee-trail': 'trailId',
+                'spell-bee-dialect': 'dialect',
             };
             const field = fieldMap[key];
             if (field) {

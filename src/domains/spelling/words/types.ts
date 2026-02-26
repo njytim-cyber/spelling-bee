@@ -7,6 +7,9 @@
  * and study analytics.
  */
 
+/** English dialect for spelling conventions */
+export type Dialect = 'en-US' | 'en-GB';
+
 export type PartOfSpeech =
     | 'noun' | 'verb' | 'adjective' | 'adverb'
     | 'preposition' | 'conjunction' | 'pronoun' | 'interjection';

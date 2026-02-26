@@ -8,8 +8,8 @@
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
 import { getLoadedWords } from './registry';
 
-export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme } from './types';
-export { ensureAllTiers, getRegistryVersion, loadCompetitionPack } from './registry';
+export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect } from './types';
+export { ensureAllTiers, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
 
 /** Every word currently loaded in the registry. */
 export function getAllWords(): SpellingWord[] {

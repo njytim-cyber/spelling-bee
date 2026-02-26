@@ -1,7 +1,7 @@
 /**
  * components/SettingsModal.tsx
  *
- * App settings: TTS voice/speed, theme toggle.
+ * App settings: dialect, grade, TTS voice/speed, theme toggle.
  */
 import { memo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -9,12 +9,16 @@ import { STORAGE_KEYS } from '../config';
 import { OfflinePacksSection } from './OfflinePacksSection';
 import type { GradeLevel } from '../domains/spelling/spellingCategories';
 import { GRADE_LEVELS, gradeIcon } from '../domains/spelling/spellingCategories';
+import type { Dialect } from '../domains/spelling/words/types';
+import { CLOUD_VOICES, voicesForDialect, synthesizeCloud } from '../services/cloudTts';
 
 interface Props {
     themeMode: string;
     onThemeModeToggle: () => void;
     grade: string;
     onGradeChange: (grade: GradeLevel) => void;
+    dialect: string;
+    onDialectChange: (d: Dialect) => void;
     onClose: () => void;
 }
 
@@ -27,12 +31,23 @@ function getStoredVoice(): string {
     return localStorage.getItem(STORAGE_KEYS.ttsVoice) ?? '';
 }
 
-export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeModeToggle, grade, onGradeChange, onClose }: Props) {
+function getStoredEngine(): string {
+    return localStorage.getItem(STORAGE_KEYS.ttsEngine) ?? 'browser';
+}
+
+function getStoredCloudVoice(): string {
+    return localStorage.getItem(STORAGE_KEYS.ttsCloudVoice) ?? '';
+}
+
+export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange, onClose }: Props) {
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsVoice, setTtsVoice] = useState(getStoredVoice);
+    const [ttsEngine, setTtsEngine] = useState(getStoredEngine);
+    const [ttsCloudVoice, setTtsCloudVoice] = useState(getStoredCloudVoice);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+    const [previewLoading, setPreviewLoading] = useState(false);
 
-    // Load available voices
+    // Load available browser voices
     useEffect(() => {
         if (!('speechSynthesis' in window)) return;
         const load = () => {
@@ -54,18 +69,56 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
         localStorage.setItem(STORAGE_KEYS.ttsVoice, voiceURI);
     };
 
-    const previewTTS = () => {
+    const handleEngineChange = (engine: string) => {
+        setTtsEngine(engine);
+        localStorage.setItem(STORAGE_KEYS.ttsEngine, engine);
+    };
+
+    const handleCloudVoiceChange = (voiceId: string) => {
+        setTtsCloudVoice(voiceId);
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, voiceId);
+    };
+
+    const previewTTS = async () => {
+        const previewWord = dialect === 'en-GB' ? 'colour' : 'color';
+
+        if (ttsEngine === 'cloud' && ttsCloudVoice) {
+            setPreviewLoading(true);
+            try {
+                const url = await synthesizeCloud(previewWord, ttsCloudVoice, ttsRate);
+                const audio = new Audio(url);
+                audio.onended = () => setPreviewLoading(false);
+                audio.onerror = () => setPreviewLoading(false);
+                await audio.play();
+                return;
+            } catch {
+                setPreviewLoading(false);
+                // Fall through to browser TTS
+            }
+        }
+
         if (!('speechSynthesis' in window)) return;
         speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance('Spelling Bee');
+        const u = new SpeechSynthesisUtterance(previewWord);
         u.rate = ttsRate;
-        u.lang = 'en-US';
+        u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
         if (ttsVoice) {
             const v = speechSynthesis.getVoices().find(v => v.voiceURI === ttsVoice);
             if (v) u.voice = v;
         }
         speechSynthesis.speak(u);
     };
+
+    // Filter cloud voices by dialect
+    const dialectCloudVoices = voicesForDialect(dialect);
+    // Show all cloud voices but group by dialect
+    const allCloudVoicesSorted = [...CLOUD_VOICES].sort((a, b) => {
+        // Current dialect first
+        const dPref = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+        if (a.langCode === dPref && b.langCode !== dPref) return -1;
+        if (b.langCode === dPref && a.langCode !== dPref) return 1;
+        return a.label.localeCompare(b.label);
+    });
 
     return (
         <>
@@ -88,6 +141,27 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                         Close
                     </button>
                 </div>
+
+                {/* Dialect */}
+                <section className="mb-5">
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Spelling Dialect</h4>
+                    <div className="flex gap-2">
+                        {([['en-US', 'US English', 'color, center'], ['en-GB', 'UK English', 'colour, centre']] as const).map(([d, label, examples]) => (
+                            <button
+                                key={d}
+                                onClick={() => onDialectChange(d)}
+                                className={`flex-1 px-3 py-2.5 rounded-xl border transition-colors text-left ${
+                                    dialect === d
+                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
+                                        : 'border-[rgb(var(--color-fg))]/10 hover:border-[rgb(var(--color-fg))]/25'
+                                }`}
+                            >
+                                <div className={`text-sm ui font-medium ${dialect === d ? 'text-[var(--color-gold)]' : 'text-[var(--color-chalk)]'}`}>{label}</div>
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-0.5">{examples}</div>
+                            </button>
+                        ))}
+                    </div>
+                </section>
 
                 {/* Grade Level */}
                 <section className="mb-5">
@@ -123,6 +197,33 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                     </button>
                 </section>
 
+                {/* Voice Engine Toggle */}
+                <section className="mb-5">
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Voice Engine</h4>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => handleEngineChange('browser')}
+                            className={`flex-1 px-3 py-2.5 rounded-xl border transition-colors text-center text-sm ui ${
+                                ttsEngine === 'browser'
+                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                    : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                            }`}
+                        >
+                            Browser
+                        </button>
+                        <button
+                            onClick={() => handleEngineChange('cloud')}
+                            className={`flex-1 px-3 py-2.5 rounded-xl border transition-colors text-center text-sm ui ${
+                                ttsEngine === 'cloud'
+                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                    : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                            }`}
+                        >
+                            Neural2
+                        </button>
+                    </div>
+                </section>
+
                 {/* TTS Speed */}
                 <section className="mb-5">
                     <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">
@@ -143,10 +244,28 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                     </div>
                 </section>
 
-                {/* TTS Voice */}
-                {'speechSynthesis' in globalThis && voices.length > 0 && (
+                {/* Cloud Voice Picker (when engine=cloud) */}
+                {ttsEngine === 'cloud' && (
                     <section className="mb-5">
-                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Voice</h4>
+                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Neural2 Voice</h4>
+                        <select
+                            value={ttsCloudVoice || (dialectCloudVoices[0]?.id ?? '')}
+                            onChange={e => handleCloudVoiceChange(e.target.value)}
+                            className="w-full bg-transparent border border-[rgb(var(--color-fg))]/15 rounded-xl px-3 py-2 text-sm ui text-[var(--color-chalk)] focus:outline-none focus:border-[var(--color-gold)]/40"
+                        >
+                            {allCloudVoicesSorted.map(v => (
+                                <option key={v.id} value={v.id}>
+                                    {v.label}
+                                </option>
+                            ))}
+                        </select>
+                    </section>
+                )}
+
+                {/* Browser Voice Picker (when engine=browser) */}
+                {ttsEngine === 'browser' && 'speechSynthesis' in globalThis && voices.length > 0 && (
+                    <section className="mb-5">
+                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Browser Voice</h4>
                         <select
                             value={ttsVoice}
                             onChange={e => handleVoiceChange(e.target.value)}
@@ -165,9 +284,10 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                 {/* Preview */}
                 <button
                     onClick={previewTTS}
-                    className="w-full py-2.5 mb-5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/15 transition-colors"
+                    disabled={previewLoading}
+                    className="w-full py-2.5 mb-5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/15 transition-colors disabled:opacity-50"
                 >
-                    🔊 Preview Voice
+                    {previewLoading ? 'Loading...' : '🔊 Preview Voice'}
                 </button>
 
                 {/* Offline Word Packs */}

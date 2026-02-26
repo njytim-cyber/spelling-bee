@@ -31,6 +31,9 @@ export const STORAGE_KEYS = {
     onboarded: `${STORAGE_PREFIX}-onboarded`,
     ttsVoice: `${STORAGE_PREFIX}-tts-voice`,
     ttsRate: `${STORAGE_PREFIX}-tts-rate`,
+    dialect: `${STORAGE_PREFIX}-dialect`,
+    ttsEngine: `${STORAGE_PREFIX}-tts-engine`,
+    ttsCloudVoice: `${STORAGE_PREFIX}-tts-cloud-voice`,
 } as const;
 
 // ── Firestore collection names ────────────────────────────────────────────────

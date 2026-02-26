@@ -43,6 +43,8 @@ function speak(word: string) {
     if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(word);
         u.rate = 0.85;
+        const dialect = localStorage.getItem('spell-bee-dialect') || 'en-US';
+        u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
         speechSynthesis.cancel();
         speechSynthesis.speak(u);
     }

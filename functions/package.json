@@ -1,0 +1,22 @@
+{
+    "name": "spelling-bee-functions",
+    "private": true,
+    "main": "lib/index.js",
+    "scripts": {
+        "build": "tsc",
+        "serve": "npm run build && firebase emulators:start --only functions",
+        "deploy": "firebase deploy --only functions"
+    },
+    "engines": {
+        "node": "20"
+    },
+    "dependencies": {
+        "@google-cloud/storage": "^7.14.0",
+        "@google-cloud/text-to-speech": "^5.5.0",
+        "firebase-admin": "^12.7.0",
+        "firebase-functions": "^6.1.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.7.0"
+    }
+}

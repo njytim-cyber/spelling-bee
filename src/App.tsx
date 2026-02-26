@@ -49,7 +49,8 @@ import { BeeSimPage } from './components/BeeSimPage';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import type { EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE } from './config';
-import { ensureAllTiers, getRegistryVersion } from './domains/spelling/words';
+import { ensureAllTiers, getRegistryVersion, setDialect } from './domains/spelling/words';
+import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 
@@ -132,11 +133,23 @@ function App() {
 
   const { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBadge, consumeShield } = useStats(uid);
 
+  // ── Dialect (US/UK English) ──
+  const [dialect, setDialectState] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
+
+  const handleDialectChange = useCallback(async (d: Dialect) => {
+    setDialectState(d);
+    await setDialect(d);
+    setWordRegistryVersion(getRegistryVersion());
+  }, [setDialectState]);
+
   // ── Load all word tiers ──
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
   useEffect(() => {
     let cancelled = false;
-    ensureAllTiers().then(() => {
+    ensureAllTiers().then(async () => {
+      // Apply stored dialect after tiers are loaded
+      const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
+      if (stored === 'en-GB') await setDialect(stored as Dialect);
       if (!cancelled) setWordRegistryVersion(getRegistryVersion());
     });
     return () => { cancelled = true; };
@@ -708,6 +721,8 @@ function App() {
               onThemeModeToggle={toggleThemeMode}
               grade={grade as string}
               onGradeChange={handleGradeSelect}
+              dialect={dialect}
+              onDialectChange={handleDialectChange}
             /></Suspense>
           </motion.div>
         )}
