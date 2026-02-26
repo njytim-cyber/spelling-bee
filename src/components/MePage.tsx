@@ -19,7 +19,7 @@ type MeTab = 'grades' | 'themes' | 'topics';
 const ME_TABS: { id: MeTab; label: string }[] = [
     { id: 'grades', label: 'Grades' },
     { id: 'themes', label: 'Themes' },
-    { id: 'topics', label: 'Topics' },
+    { id: 'topics', label: 'Achievements' },
 ];
 
 /** Per-grade breakdown for the Grades tab */

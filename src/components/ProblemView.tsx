@@ -156,7 +156,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             onPanEnd={handlePanEnd}
         >
             {/* Problem expression / prompt */}
-            <motion.div className="text-center mb-8" animate={pulseAnim}>
+            <motion.div className="text-center mb-8 pr-12" animate={pulseAnim}>
                 {/* Vocab mode label */}
                 {p.meta?.['mode'] === 'vocab' && (
                     <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 font-semibold">

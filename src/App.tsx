@@ -385,13 +385,21 @@ function App() {
   // ── Personal best detection ──
   const showPB = usePersonalBest(bestStreak, stats.bestStreak);
 
+  const pendingTabRef = useRef<Tab | null>(null);
   const handleTabChange = useCallback((tab: Tab) => {
+    // If summary is already showing, just update the destination
+    if (showSummary) {
+      pendingTabRef.current = tab;
+      return;
+    }
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
       setShowSummary(true);
+      pendingTabRef.current = tab;        // defer the tab switch
+      return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary, showSummary]);
 
   // ── Tab swipe (non-game tabs only) ──
   const handleTabSwipe = useCallback((_: unknown, info: PanInfo) => {
@@ -784,7 +792,13 @@ function App() {
           answerHistory={answerHistory}
           questionType={questionType}
           visible={showSummary}
-          onDismiss={() => setShowSummary(false)}
+          onDismiss={() => {
+            setShowSummary(false);
+            if (pendingTabRef.current) {
+              setActiveTab(pendingTabRef.current);
+              pendingTabRef.current = null;
+            }
+          }}
           hardMode={hardMode}
           timedMode={timedMode}
         />

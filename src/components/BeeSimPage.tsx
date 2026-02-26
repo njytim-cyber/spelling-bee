@@ -152,43 +152,43 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
 
     return (
         <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 relative">
-            {/* Round counter */}
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-base ui text-[rgb(var(--color-fg))]/50 font-medium">
-                Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
-            </div>
-            {phase !== 'eliminated' && phase !== 'won' && (
-                <div className="absolute top-4 right-4 flex items-center gap-2">
-                    {/* Dictation mode toggle */}
-                    <button
-                        onClick={() => { setDictationMode(d => !d); }}
-                        className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
-                            dictationMode
-                                ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
-                                : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
-                        }`}
-                        title="Dictation mode — hear & spell, no classroom"
-                    >
-                        Dictation
-                    </button>
-                    {/* Timer toggle */}
-                    <button
-                        onClick={toggleBeeTimer}
-                        className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
-                            beeTimedMode
-                                ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
-                                : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
-                        }`}
-                    >
-                        30s
-                    </button>
-                    <button
-                        onClick={onExit}
-                        className="text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
-                    >
-                        Exit
-                    </button>
+            {/* Top bar — round counter + controls in a single row */}
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium truncate mr-2">
+                    Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
                 </div>
-            )}
+                {phase !== 'eliminated' && phase !== 'won' && (
+                    <div className="flex items-center gap-2 shrink-0">
+                        <button
+                            onClick={() => { setDictationMode(d => !d); }}
+                            className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
+                                dictationMode
+                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
+                                    : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
+                            }`}
+                            title="Dictation mode — hear & spell, no classroom"
+                        >
+                            Dictation
+                        </button>
+                        <button
+                            onClick={toggleBeeTimer}
+                            className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
+                                beeTimedMode
+                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
+                                    : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
+                            }`}
+                        >
+                            30s
+                        </button>
+                        <button
+                            onClick={onExit}
+                            className="text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+                        >
+                            Exit
+                        </button>
+                    </div>
+                )}
+            </div>
 
             {/* Timer ring — shown during asking/spelling when timed */}
             {beeTimedMode && isTimerPhase && (

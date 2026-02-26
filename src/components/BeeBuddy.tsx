@@ -195,7 +195,7 @@ export const BeeBuddy = memo(function BeeBuddy({
 
     return (
         <motion.div
-            className={`absolute bottom-4 right-2 pointer-events-none z-30 ${displayState === 'streak' ? 'on-fire' : ''}`}
+            className={`absolute bottom-20 right-2 pointer-events-none z-30 ${displayState === 'streak' ? 'on-fire' : ''}`}
             animate={ANIMS[displayState]}
         >
             {/* Speech bubble */}
