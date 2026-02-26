@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words';
+import { printStudySheet } from '../utils/printStudySheet';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -190,7 +191,18 @@ export const WordBookModal = memo(function WordBookModal({ records, onClose }: P
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ duration: 0.15 }}
             >
-                <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-3">Word Book</h3>
+                <div className="flex items-center justify-between mb-3">
+                    <div className="w-12" />
+                    <h3 className="text-lg chalk text-[var(--color-gold)] text-center">Word Book</h3>
+                    {filteredWords.length > 0 ? (
+                        <button
+                            onClick={() => printStudySheet('Spelling Bee Study Sheet', filteredWords, wordMap)}
+                            className="w-12 text-right text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                        >
+                            Print
+                        </button>
+                    ) : <div className="w-12" />}
+                </div>
 
                 {totalWords === 0 ? (
                     <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">

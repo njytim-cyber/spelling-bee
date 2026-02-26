@@ -9,10 +9,11 @@ import type { SpellingWord } from '../domains/spelling/words/types';
 import { getAllWords, difficultyRange, wordsByTheme, wordsByThemeAndDifficulty, wordsByPattern, wordsByPatternAndDifficulty, wordsByDifficulty } from '../domains/spelling/words';
 import { categoryToTheme, categoryToPattern } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
+import { parseEtymology } from '../utils/etymologyParser';
 
 export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'won' | 'complete';
 
-export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'repeat';
+export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat';
 
 export interface BeeSimState {
     phase: BeePhase;
@@ -97,20 +98,6 @@ function pickBeeWord(round: number, category?: string, hardMode = false): Spelli
     return pool[Math.floor(Math.random() * pool.length)];
 }
 
-/** Build auto-displayed info responses for a word (definition, sentence, origin if available). */
-function buildAutoInfo(word: SpellingWord): { infoRequested: Set<InfoRequest>; infoResponses: Partial<Record<InfoRequest, string>> } {
-    const infoRequested = new Set<InfoRequest>(['definition', 'sentence']);
-    const infoResponses: Partial<Record<InfoRequest, string>> = {
-        definition: redactWord(word.definition, word.word),
-        sentence: redactWord(word.exampleSentence, word.word),
-    };
-    if (word.etymology) {
-        infoRequested.add('origin');
-        infoResponses.origin = redactWord(word.etymology, word.word);
-    }
-    return { infoRequested, infoResponses };
-}
-
 // Per-NPC decay rates: brainiac decays slowly, nervous decays fast
 const NPC_DECAY = [0.008, 0.025, 0, 0.045];
 
@@ -189,17 +176,16 @@ export function useBeeSimulation(category?: string, hardMode = false) {
 
     const startRound = useCallback(() => {
         const word = pickBeeWord(state.round, category, hardMode);
-        const info = buildAutoInfo(word);
         setState(prev => {
             const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
-            // Check if all NPCs just got eliminated — player wins!
             const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
             return {
                 ...prev,
                 phase: anyNpcLeft ? 'listening' : 'won',
                 currentWord: word,
                 typedSpelling: '',
-                ...info,
+                infoRequested: new Set(),
+                infoResponses: {},
                 lastResult: null,
                 npcResults: npc.npcResults,
                 npcAlive: npc.npcAlive,
@@ -212,13 +198,11 @@ export function useBeeSimulation(category?: string, hardMode = false) {
 
     const startSession = useCallback(() => {
         const word = pickBeeWord(0, category, hardMode);
-        const info = buildAutoInfo(word);
         const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode).word);
         setState({
             ...INITIAL_STATE,
             currentWord: word,
             phase: 'listening',
-            ...info,
             npcResults: npc.npcResults,
             npcAlive: npc.npcAlive,
             npcScores: npc.npcScores,
@@ -256,7 +240,16 @@ export function useBeeSimulation(category?: string, hardMode = false) {
                     newResponses.sentence = redactWord(word.exampleSentence, word.word);
                     break;
                 case 'origin':
-                    newResponses.origin = word.etymology ? redactWord(word.etymology, word.word) : 'Origin information not available.';
+                    if (word.etymology) {
+                        const parsed = parseEtymology(word.etymology);
+                        const rootPart = parsed.roots.length > 0 ? ` — ${parsed.roots.join(', ')}` : '';
+                        newResponses.origin = `Language: ${parsed.language}${rootPart}`;
+                    } else {
+                        newResponses.origin = 'Origin information not available.';
+                    }
+                    break;
+                case 'partOfSpeech':
+                    newResponses.partOfSpeech = word.partOfSpeech ?? 'Part of speech not available.';
                     break;
                 case 'repeat':
                     if (isSupported) speak(word.word);
@@ -316,12 +309,10 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         // setState causes the browser to play the previous word on some platforms.
         const newRound = state.round + 1;
         const word = pickBeeWord(newRound, category, hardMode);
-        const info = buildAutoInfo(word);
 
         let won = false;
         setState(prev => {
             const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
-            // Check if all NPCs just got eliminated — player wins!
             const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
             won = !anyNpcLeft;
             return {
@@ -330,7 +321,8 @@ export function useBeeSimulation(category?: string, hardMode = false) {
                 currentWord: word,
                 round: newRound,
                 typedSpelling: '',
-                ...info,
+                infoRequested: new Set(),
+                infoResponses: {},
                 lastResult: null,
                 npcResults: npc.npcResults,
                 npcAlive: npc.npcAlive,
@@ -340,6 +332,19 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         });
         if (!won && isSupported) speak(word.word);
     }, [state.round, category, hardMode, speak, isSupported]);
+
+    /** Force-submit an empty answer (used by timer expiry). Transitions asking→spelling→submit. */
+    const forceSubmit = useCallback(() => {
+        setState(prev => {
+            if (!prev.currentWord) return prev;
+            const wordsAttempted = prev.wordsAttempted + 1;
+            const anyNpcAlive = prev.npcAlive.some((alive, i) => alive && i !== 2);
+            if (prev.eliminationMode && anyNpcAlive) {
+                return { ...prev, phase: 'eliminated', lastResult: false, wordsAttempted, typedSpelling: '' };
+            }
+            return { ...prev, phase: 'feedback', lastResult: false, wordsAttempted, typedSpelling: '' };
+        });
+    }, []);
 
     /** XP earned for the current session */
     const sessionXP = state.wordsCorrect * 20;
@@ -354,6 +359,7 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         moveToSpelling,
         updateTyping,
         submitSpelling,
+        forceSubmit,
         nextWord,
         sessionXP,
         ttsSupported: isSupported,

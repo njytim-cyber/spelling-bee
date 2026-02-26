@@ -147,6 +147,28 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // ── Multiplayer Rooms ──
+    match /rooms/{roomId} {
+      // Any authenticated user can read rooms (needed for joining by code)
+      allow read: if request.auth != null;
+
+      // Authenticated users can create rooms
+      allow create: if request.auth != null
+                    && request.resource.data.hostUid == request.auth.uid
+                    && request.resource.data.roomCode is string
+                    && request.resource.data.roomCode.size() == 6
+                    && request.resource.data.status == 'waiting';
+
+      // Participants can update (join, ready, submit answers, advance rounds)
+      allow update: if request.auth != null
+                    && (request.auth.uid in resource.data.players
+                        || request.resource.data.keys().hasAny(['players']));
+
+      // Only host can delete
+      allow delete: if request.auth != null
+                    && resource.data.hostUid == request.auth.uid;
+    }
+
     // ── Web Vitals (performance monitoring) ──
     match /vitals/{vitalId} {
       allow read: if false;

@@ -27,9 +27,10 @@ interface Props {
     displayName: string;
     activeThemeId: string;
     activeCostume: string;
+    onOpenMultiplayer?: () => void;
 }
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer }: Props) {
     const [tab, setTab] = useState<LeagueTab>('score');
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [dailyEntries, setDailyEntries] = useState<LeaderboardEntry[]>([]);
@@ -172,6 +173,14 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             >
                 <h2 className="text-3xl chalk text-[var(--color-gold)] mb-1">Leaderboard</h2>
                 <p className="text-xs ui text-[rgb(var(--color-fg))]/50">Global leaderboard</p>
+                {onOpenMultiplayer && (
+                    <button
+                        onClick={onOpenMultiplayer}
+                        className="mt-2 px-4 py-2 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-xs ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                        ⚔️ 1v1 Match
+                    </button>
+                )}
             </motion.div>
 
             {/* Tab Toggle */}

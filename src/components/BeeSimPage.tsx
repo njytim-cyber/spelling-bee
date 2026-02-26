@@ -4,11 +4,14 @@
  * Bee Simulation mode — simulates a real spelling bee.
  * Phases: listening → asking → spelling → feedback → [next | eliminated | complete]
  */
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
 import { BeeClassroom } from './BeeClassroom';
+
+const BEE_TIMER_MS = 30_000;
+const TIMER_CIRCUMFERENCE = 2 * Math.PI * 18; // radius 18
 
 interface Props {
     onExit: () => void;
@@ -72,9 +75,12 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         state,
         startSession,
         pronounce,
+        moveToAsking,
+        requestInfo,
         moveToSpelling,
         updateTyping,
         submitSpelling,
+        forceSubmit,
         nextWord,
         sessionXP,
         ttsSupported,
@@ -105,6 +111,37 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         if (!currentWord) startSession();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    // ── 30s Timer ──
+    const [beeTimedMode, setBeeTimedMode] = useState(false);
+    const [timerProgress, setTimerProgress] = useState(0); // 0..1
+    const timerStartRef = useRef(0);
+    const rafRef = useRef(0);
+
+    const toggleBeeTimer = useCallback(() => setBeeTimedMode(t => !t), []);
+
+    // Start/stop timer based on phase
+    const isTimerPhase = phase === 'asking' || phase === 'spelling';
+    useEffect(() => {
+        if (!beeTimedMode || !isTimerPhase) {
+            cancelAnimationFrame(rafRef.current);
+            queueMicrotask(() => setTimerProgress(0));
+            return;
+        }
+        timerStartRef.current = performance.now();
+        const tick = () => {
+            const elapsed = performance.now() - timerStartRef.current;
+            const progress = Math.min(1, elapsed / BEE_TIMER_MS);
+            setTimerProgress(progress);
+            if (progress >= 1) {
+                forceSubmit();
+            } else {
+                rafRef.current = requestAnimationFrame(tick);
+            }
+        };
+        rafRef.current = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(rafRef.current);
+    }, [beeTimedMode, isTimerPhase, forceSubmit]);
+
     // Still loading first word
     if (!currentWord) return null;
 
@@ -115,12 +152,46 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                 Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
             </div>
             {phase !== 'eliminated' && phase !== 'won' && (
-                <button
-                    onClick={onExit}
-                    className="absolute top-4 right-4 text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
-                >
-                    Exit
-                </button>
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                    {/* Timer toggle */}
+                    <button
+                        onClick={toggleBeeTimer}
+                        className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
+                            beeTimedMode
+                                ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
+                                : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
+                        }`}
+                    >
+                        30s
+                    </button>
+                    <button
+                        onClick={onExit}
+                        className="text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+                    >
+                        Exit
+                    </button>
+                </div>
+            )}
+
+            {/* Timer ring — shown during asking/spelling when timed */}
+            {beeTimedMode && isTimerPhase && (
+                <div className="absolute top-12 right-4">
+                    <svg width="40" height="40" viewBox="0 0 40 40" className="transform -rotate-90">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.1" />
+                        <circle
+                            cx="20" cy="20" r="18"
+                            fill="none"
+                            stroke={timerProgress > 0.75 ? 'var(--color-wrong)' : 'var(--color-gold)'}
+                            strokeWidth="2.5"
+                            strokeDasharray={TIMER_CIRCUMFERENCE}
+                            strokeDashoffset={TIMER_CIRCUMFERENCE * timerProgress}
+                            strokeLinecap="round"
+                        />
+                    </svg>
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] ui text-[rgb(var(--color-fg))]/40">
+                        {Math.ceil(BEE_TIMER_MS / 1000 * (1 - timerProgress))}
+                    </span>
+                </div>
             )}
 
             <AnimatePresence mode="wait">
@@ -140,28 +211,78 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                             npcSpellings={npcSpellings}
                             phase={phase}
                             onPronounce={pronounce}
-                            onPlayerTurn={moveToSpelling}
+                            onPlayerTurn={moveToAsking}
                             round={round}
                             isTyping={phase === 'spelling' && typedSpelling.length > 0}
                             lastResult={phase === 'feedback' ? lastResult : null}
                         />
 
-                        {/* Info responses (definition, sentence, origin) */}
-                        {Object.keys(infoResponses).length > 0 && phase !== 'feedback' && (
-                            <div className="w-full space-y-1.5">
-                                {Object.entries(infoResponses).map(([key, value], idx) => (
-                                    <motion.div
-                                        key={key}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                        {/* Asking phase — player requests info one at a time */}
+                        <AnimatePresence>
+                            {phase === 'asking' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -8 }}
+                                    className="w-full flex flex-col items-center gap-2"
+                                >
+                                    {/* Info request buttons */}
+                                    <div className="flex flex-wrap justify-center gap-2">
+                                        {([
+                                            ['definition', 'Definition'],
+                                            ['sentence', 'Example Sentence'],
+                                            ['partOfSpeech', 'Part of Speech'],
+                                            ['origin', 'Language of Origin'],
+                                            ['repeat', 'Repeat Word'],
+                                        ] as const).map(([type, label]) => {
+                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat';
+                                            return (
+                                                <button
+                                                    key={type}
+                                                    onClick={() => requestInfo(type)}
+                                                    disabled={alreadyAsked}
+                                                    className={`px-3 py-1.5 rounded-lg text-xs ui transition-colors ${
+                                                        alreadyAsked
+                                                            ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default'
+                                                            : 'border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10'
+                                                    }`}
+                                                >
+                                                    {label}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+
+                                    {/* Revealed info cards */}
+                                    <div className="w-full space-y-1.5">
+                                        <AnimatePresence>
+                                            {Object.entries(infoResponses).map(([key, value], idx) => (
+                                                <motion.div
+                                                    key={key}
+                                                    initial={{ opacity: 0, y: 10, height: 0 }}
+                                                    animate={{ opacity: 1, y: 0, height: 'auto' }}
+                                                    exit={{ opacity: 0 }}
+                                                    className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                                                >
+                                                    <span className="text-xs text-[var(--color-gold)] uppercase font-bold">
+                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key}:{' '}
+                                                    </span>
+                                                    {value}
+                                                </motion.div>
+                                            ))}
+                                        </AnimatePresence>
+                                    </div>
+
+                                    {/* Ready to spell button */}
+                                    <button
+                                        onClick={moveToSpelling}
+                                        className="mt-1 px-6 py-2 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
                                     >
-                                        <span className="text-xs text-[var(--color-gold)] uppercase font-bold">{key}: </span>
-                                        {value}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        )}
+                                        Ready to Spell
+                                    </button>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
 
                         {/* Inline spelling input */}
                         <AnimatePresence>
@@ -173,6 +294,22 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                                     transition={{ duration: 0.3, ease: 'easeOut' }}
                                     className="w-full overflow-hidden"
                                 >
+                                    {/* Show any previously requested info during spelling */}
+                                    {Object.keys(infoResponses).length > 0 && (
+                                        <div className="w-full space-y-1 mb-2">
+                                            {Object.entries(infoResponses).map(([key, value], idx) => (
+                                                <div
+                                                    key={key}
+                                                    className={`bg-[rgb(var(--color-fg))]/5 px-3 py-1.5 text-xs ui text-[rgb(var(--color-fg))]/50 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                                                >
+                                                    <span className="text-[10px] text-[var(--color-gold)] uppercase font-bold">
+                                                        {key === 'partOfSpeech' ? 'POS' : key}:{' '}
+                                                    </span>
+                                                    {value}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                     <SpellingInput
                                         value={typedSpelling}
                                         onChange={updateTyping}
@@ -202,7 +339,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
 
                         {phase === 'listening' && (
                             <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
-                                {ttsSupported ? 'Tap teacher to hear word again' : currentWord.word}
+                                {ttsSupported ? 'Tap teacher to hear word again' : 'Audio not available — tap teacher'}
                             </p>
                         )}
                     </motion.div>

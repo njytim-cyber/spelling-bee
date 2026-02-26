@@ -18,8 +18,11 @@ import {
     wordsByPatternAndDifficulty,
     wordsByTheme,
     wordsByThemeAndDifficulty,
+    wordsByLanguageOfOrigin,
+    wordsByLanguageAndDifficulty,
     difficultyRange,
 } from './words';
+import type { LanguageOfOrigin } from '../../utils/etymologyParser';
 
 // ── Pattern → category mapping ───────────────────────────────────────────────
 
@@ -48,6 +51,18 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'tier-3': null,
     'tier-4': null,
     'tier-5': null,
+    'vocab': null,
+    'origin-latin': null,
+    'origin-greek': null,
+    'origin-french': null,
+    'origin-german': null,
+    'origin-other': null,
+    'wotc-one': null,
+    'wotc-two': null,
+    'wotc-three': null,
+    'written-test': null,
+    'roots': null,
+    'custom': null,
 };
 
 // ── Theme → category mapping ────────────────────────────────────────────────
@@ -80,6 +95,16 @@ const CATEGORY_TO_THEME: Record<string, SemanticTheme | null> = {
     'theme-everyday': 'everyday',
     'theme-weather': 'weather',
     'theme-water': 'water',
+};
+
+// ── Origin → category mapping ───────────────────────────────────────────────
+
+const CATEGORY_TO_ORIGIN: Record<string, LanguageOfOrigin | null> = {
+    'origin-latin': 'Latin',
+    'origin-greek': 'Greek',
+    'origin-french': 'French',
+    'origin-german': 'German',
+    'origin-other': 'Other',
 };
 
 /** Look up the SemanticTheme for a category, or null if it isn't theme-based. */
@@ -168,13 +193,16 @@ function runtimeFallbackDistractors(correct: string, rng: () => number): string[
 
 // ── Word selection ───────────────────────────────────────────────────────────
 
-/** Fixed difficulty range for tier-N categories */
+/** Fixed difficulty range for tier-N and WOTC categories */
 const TIER_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
     'tier-1': [1, 2],
     'tier-2': [3, 4],
     'tier-3': [5, 6],
     'tier-4': [7, 8],
     'tier-5': [9, 10],
+    'wotc-one': [1, 2],
+    'wotc-two': [3, 6],
+    'wotc-three': [7, 10],
 };
 
 function pickRichWord(
@@ -197,12 +225,18 @@ function pickRichWord(
         effectiveMin = minDiff;
     }
 
+    const origin = CATEGORY_TO_ORIGIN[category] ?? null;
     const theme = CATEGORY_TO_THEME[category] ?? null;
     const pattern = CATEGORY_TO_PATTERN[category] ?? null;
 
     let pool: SpellingWord[];
 
-    if (theme) {
+    if (origin) {
+        // Origin-based filtering (etymology language)
+        pool = wordsByLanguageAndDifficulty(origin, effectiveMin, effectiveMax);
+        if (pool.length === 0) pool = wordsByLanguageOfOrigin(origin);
+        if (pool.length === 0) pool = wordsByDifficulty(effectiveMin, effectiveMax);
+    } else if (theme) {
         // Theme-based filtering
         pool = wordsByThemeAndDifficulty(theme, effectiveMin, effectiveMax);
         if (pool.length === 0) pool = wordsByTheme(theme);

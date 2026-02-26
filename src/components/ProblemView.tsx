@@ -157,6 +157,12 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         >
             {/* Problem expression / prompt */}
             <motion.div className="text-center mb-8" animate={pulseAnim}>
+                {/* Vocab mode label */}
+                {p.meta?.['mode'] === 'vocab' && (
+                    <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 font-semibold">
+                        Which word matches?
+                    </div>
+                )}
                 {typeof p.meta?.['definition'] === 'string' ? (
                     <div className={`landscape-question chalk leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
                         {p.meta['definition']}

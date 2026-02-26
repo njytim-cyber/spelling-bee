@@ -40,9 +40,15 @@ export type SpellingCategory =
     | 'theme-mind' | 'theme-character' | 'theme-communication' | 'theme-actions'
     | 'theme-quantity' | 'theme-texture' | 'theme-water'
     | 'theme-sensory' | 'theme-nature'
-    | 'theme-society' | 'theme-travel' | 'theme-everyday';
+    | 'theme-society' | 'theme-travel' | 'theme-everyday'
+    | 'vocab'
+    | 'origin-latin' | 'origin-greek' | 'origin-french' | 'origin-german' | 'origin-other'
+    | 'wotc-one' | 'wotc-two' | 'wotc-three'
+    | 'written-test'
+    | 'roots'
+    | 'custom';
 
-export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'practice';
+export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'origins' | 'competition' | 'practice';
 
 // ── Grade levels ─────────────────────────────────────────────────────────────
 
@@ -417,10 +423,93 @@ const iEveryday = I(<>
     <polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" />
 </>);
 
+// Origin: Latin — pillar (reuse concept)
+const iOriginLatin = I(<>
+    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">L</text>
+    <path d="M16 4v16 M13 4h6 M13 20h6" />
+</>);
+
+// Origin: Greek — alpha symbol
+const iOriginGreek = I(<>
+    <text x="4" y="18" fill="currentColor" stroke="none" fontSize="16" fontFamily="var(--font-chalk)" fontStyle="italic">&alpha;</text>
+    <path d="M16 6c2 0 3 2 3 5s-1 5-3 5" />
+</>);
+
+// Origin: French — fleur simplified
+const iOriginFrench = I(<>
+    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">F</text>
+    <path d="M17 4c0 4-2 6-2 9 0 1.5 1 2.5 2.5 2.5" />
+</>);
+
+// Origin: German — gothic G
+const iOriginGerman = I(<>
+    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">G</text>
+    <path d="M18 8c-1-2-3-3-5-3s-4 2-4 4 2 3 4 3" />
+</>);
+
+// Origin: Other — globe with question
+const iOriginOther = I(<>
+    <circle cx="12" cy="12" r="9" />
+    <text x="8" y="16" fill="currentColor" stroke="none" fontSize="10" fontFamily="var(--font-chalk)">?</text>
+</>);
+
 // Review — circular arrow
 const iReview = I(<>
     <path d="M21 12a9 9 0 1 1-3-6.7" />
     <polyline points="21 3 21 9 15 9" />
+</>);
+
+// Vocab — book with question mark
+const iVocab = I(<>
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v16H6.5a2.5 2.5 0 0 0 0 5H20" />
+    <text x="10" y="14" fill="currentColor" stroke="none" fontSize="10" fontFamily="var(--font-chalk)" fontWeight="bold">?</text>
+</>);
+
+// WOTC: One Bee — single bee
+const iWotcOne = I(<>
+    <circle cx="12" cy="10" r="5" />
+    <path d="M9 15c0 2 1.5 4 3 4s3-2 3-4" />
+    <path d="M8 8l-3-3 M16 8l3-3" />
+</>);
+
+// WOTC: Two Bee — two bees
+const iWotcTwo = I(<>
+    <circle cx="8" cy="10" r="4" />
+    <circle cx="16" cy="10" r="4" />
+    <path d="M5 8l-2-2 M11 8l-1-2 M13 8l1-2 M19 8l2-2" />
+</>);
+
+// WOTC: Three Bee — trophy bee
+const iWotcThree = I(<>
+    <path d="M8 3h8v5a4 4 0 0 1-8 0V3z" />
+    <path d="M8 5H5c0 3 1.5 4 3 4 M16 5h3c0 3-1.5 4-3 4" />
+    <line x1="12" y1="12" x2="12" y2="16" />
+    <path d="M8 16h8 M9 19h6" />
+</>);
+
+// Written Test — clipboard with checklist
+const iWrittenTest = I(<>
+    <rect x="5" y="2" width="14" height="20" rx="2" />
+    <path d="M9 2v2h6V2" />
+    <line x1="9" y1="10" x2="15" y2="10" />
+    <line x1="9" y1="14" x2="15" y2="14" />
+    <line x1="9" y1="18" x2="12" y2="18" />
+</>);
+
+// Roots — tree with branching roots
+const iRoots = I(<>
+    <line x1="12" y1="4" x2="12" y2="14" />
+    <path d="M8 4h8" />
+    <path d="M12 14c-3 2-6 4-7 6" />
+    <path d="M12 14c0 3 0 5 0 8" />
+    <path d="M12 14c3 2 6 4 7 6" />
+</>);
+
+// Custom — pencil writing on paper
+const iCustom = I(<>
+    <path d="M4 20h16" />
+    <path d="M4 16l12-12 4 4-12 12H4v-4z" />
+    <path d="M14 6l4 4" />
 </>);
 
 // ── Category list ───────────────────────────────────────────────────────────
@@ -483,8 +572,22 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'theme-society', icon: iSociety, label: 'Society', group: 'themes' },
     { id: 'theme-academic', icon: iAcademic, label: 'Academic', group: 'themes' },
     { id: 'theme-art', icon: iArt, label: 'Arts', group: 'themes' },
+    // Competition (WOTC tiers)
+    { id: 'wotc-one', icon: iWotcOne, label: 'One Bee', group: 'competition' },
+    { id: 'wotc-two', icon: iWotcTwo, label: 'Two Bee', group: 'competition' },
+    { id: 'wotc-three', icon: iWotcThree, label: 'Three Bee', group: 'competition' },
+    { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'competition' },
+    // Origins (by etymology / language of origin)
+    { id: 'origin-latin', icon: iOriginLatin, label: 'Latin', group: 'origins' },
+    { id: 'origin-greek', icon: iOriginGreek, label: 'Greek', group: 'origins' },
+    { id: 'origin-french', icon: iOriginFrench, label: 'French', group: 'origins' },
+    { id: 'origin-german', icon: iOriginGerman, label: 'German', group: 'origins' },
+    { id: 'origin-other', icon: iOriginOther, label: 'Other Origins', group: 'origins' },
     // Practice
     { id: 'review', icon: iReview, label: 'Review', group: 'practice' },
+    { id: 'vocab', icon: iVocab, label: 'Vocab Quiz', group: 'practice' },
+    { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'practice' },
+    { id: 'custom', icon: iCustom, label: 'My Lists', group: 'practice' },
 ];
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -496,6 +599,8 @@ export const SPELLING_GROUP_LABELS: Record<SpellingGroup, string> = {
     expert: 'Expert',
     tier: 'By Grade',
     themes: 'Themes',
+    origins: 'By Origin',
+    competition: 'Competition',
     practice: 'Practice',
 };
 

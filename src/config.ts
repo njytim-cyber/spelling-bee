@@ -34,6 +34,7 @@ export const STORAGE_KEYS = {
     dialect: `${STORAGE_PREFIX}-dialect`,
     ttsEngine: `${STORAGE_PREFIX}-tts-engine`,
     ttsCloudVoice: `${STORAGE_PREFIX}-tts-cloud-voice`,
+    customLists: `${STORAGE_PREFIX}-custom-lists`,
 } as const;
 
 // ── Firestore collection names ────────────────────────────────────────────────
@@ -41,6 +42,7 @@ export const STORAGE_KEYS = {
 export const FIRESTORE = {
     USERS: 'users',
     PINGS: 'pings',
+    ROOMS: 'rooms',
 } as const;
 
 // ── Bottom navigation tabs ────────────────────────────────────────────────────

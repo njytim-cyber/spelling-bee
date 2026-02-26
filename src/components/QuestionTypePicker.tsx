@@ -10,13 +10,14 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'grades' | 'themes';
+type Tab = 'grades' | 'themes' | 'origins';
 
 const GRADE_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
+const ORIGIN_GROUPS: SpellingGroup[] = ['competition', 'origins'];
 
-const TABS: Tab[] = ['grades', 'themes'];
-const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', themes: 'Themes' };
+const TABS: Tab[] = ['grades', 'themes', 'origins'];
+const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', themes: 'Themes', origins: 'Competition' };
 const SWIPE_THRESHOLD = 50;
 
 export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
@@ -25,6 +26,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
 
     const gradeGroups = useMemo(() => GRADE_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const themeGroups = useMemo(() => THEME_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
+    const originGroups = useMemo(() => ORIGIN_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
 
     const currentEntry = SPELLING_CATEGORIES.find(t => t.id === current);
 
@@ -143,7 +145,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             exit={{ opacity: 0, x: -30 }}
                                             transition={{ duration: 0.15 }}
                                         >
-                                            {tab === 'grades' ? renderGrid(gradeGroups) : renderGrid(themeGroups)}
+                                            {tab === 'grades' ? renderGrid(gradeGroups) : tab === 'themes' ? renderGrid(themeGroups) : renderGrid(originGroups)}
                                         </motion.div>
                                     </AnimatePresence>
                                 </motion.div>

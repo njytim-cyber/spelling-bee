@@ -17,6 +17,9 @@ export type PartOfSpeech =
 /** 1 = Kindergarten CVC, 10 = national spelling bee championship */
 export type DifficultyTier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
+/** Scripps Words of the Champions tiers */
+export type WotcTier = 'one-bee' | 'two-bee' | 'three-bee';
+
 /** Phonics pattern categories — superset of the original 5 SpellingCategory patterns */
 export type PhonicsPattern =
     | 'cvc' | 'blends' | 'digraphs' | 'silent-e' | 'vowel-teams'

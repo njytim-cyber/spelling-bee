@@ -7,8 +7,9 @@
  */
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
 import { getLoadedWords } from './registry';
+import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymologyParser';
 
-export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect } from './types';
+export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier } from './types';
 export { ensureAllTiers, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
 
 /** Every word currently loaded in the registry. */
@@ -83,4 +84,40 @@ export function getWordMap(): Map<string, SpellingWord> {
         map.set(w.word, w);
     }
     return map;
+}
+
+/** Get words whose etymology matches a specific language of origin. */
+export function wordsByLanguageOfOrigin(lang: LanguageOfOrigin): SpellingWord[] {
+    return getLoadedWords().filter(w => extractLanguage(w.etymology) === lang);
+}
+
+/** Get words matching BOTH a language of origin AND a difficulty range. */
+export function wordsByLanguageAndDifficulty(
+    lang: LanguageOfOrigin,
+    min: DifficultyTier,
+    max: DifficultyTier,
+): SpellingWord[] {
+    return getLoadedWords().filter(w =>
+        extractLanguage(w.etymology) === lang &&
+        w.difficulty >= min &&
+        w.difficulty <= max,
+    );
+}
+
+/** Map difficulty to Scripps WOTC tier: ≤2 → One Bee, ≤6 → Two Bee, ≤10 → Three Bee */
+export function getWotcTier(difficulty: number): import('./types').WotcTier {
+    if (difficulty <= 2) return 'one-bee';
+    if (difficulty <= 6) return 'two-bee';
+    return 'three-bee';
+}
+
+/** Get words matching a WOTC tier. */
+export function wordsByWotcTier(tier: import('./types').WotcTier): SpellingWord[] {
+    const ranges: Record<string, [DifficultyTier, DifficultyTier]> = {
+        'one-bee': [1, 2],
+        'two-bee': [3, 6],
+        'three-bee': [7, 10],
+    };
+    const [min, max] = ranges[tier];
+    return wordsByDifficulty(min, max);
 }

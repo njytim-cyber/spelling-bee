@@ -2,8 +2,12 @@
  * utils/errorPatterns.ts
  *
  * Pure functions that analyze WordHistory records to surface error patterns.
+ * Extended with phonics-pattern, origin, and theme breakdowns for study analytics.
  */
 import type { WordRecord } from '../hooks/useWordHistory';
+import { getWordMap } from '../domains/spelling/words';
+import { extractLanguage } from './etymologyParser';
+import type { PhonicsPattern } from '../domains/spelling/words/types';
 
 export interface ErrorPattern {
     category: string;
@@ -80,3 +84,171 @@ export function getWordDrillDown(records: Record<string, WordRecord>): WordDrill
         }))
         .sort((a, b) => a.accuracy - b.accuracy);
 }
+
+// ── Extended analytics ────────────────────────────────────────────────────────
+
+export interface AccuracyBar {
+    label: string;
+    key: string;
+    accuracy: number;
+    attempts: number;
+    correct: number;
+}
+
+/** Accuracy breakdown by phonics pattern. */
+export function getPatternAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+    const wordMap = getWordMap();
+    const buckets: Record<string, { attempts: number; correct: number }> = {};
+
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        const pattern = detail?.pattern ?? 'unknown';
+        if (!buckets[pattern]) buckets[pattern] = { attempts: 0, correct: 0 };
+        buckets[pattern].attempts += r.attempts;
+        buckets[pattern].correct += r.correct;
+    }
+
+    return Object.entries(buckets)
+        .filter(([, s]) => s.attempts >= 3)
+        .map(([pattern, s]) => ({
+            label: formatPattern(pattern),
+            key: pattern,
+            accuracy: s.correct / s.attempts,
+            attempts: s.attempts,
+            correct: s.correct,
+        }))
+        .sort((a, b) => a.accuracy - b.accuracy);
+}
+
+/** Accuracy breakdown by language of origin. */
+export function getOriginAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+    const wordMap = getWordMap();
+    const buckets: Record<string, { attempts: number; correct: number }> = {};
+
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        const lang = detail ? extractLanguage(detail.etymology) : 'Other';
+        if (!buckets[lang]) buckets[lang] = { attempts: 0, correct: 0 };
+        buckets[lang].attempts += r.attempts;
+        buckets[lang].correct += r.correct;
+    }
+
+    return Object.entries(buckets)
+        .filter(([, s]) => s.attempts >= 3)
+        .map(([lang, s]) => ({
+            label: lang,
+            key: lang,
+            accuracy: s.correct / s.attempts,
+            attempts: s.attempts,
+            correct: s.correct,
+        }))
+        .sort((a, b) => a.accuracy - b.accuracy);
+}
+
+/** Accuracy breakdown by semantic theme. */
+export function getThemeAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+    const wordMap = getWordMap();
+    const buckets: Record<string, { attempts: number; correct: number }> = {};
+
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        const theme = detail?.theme ?? 'none';
+        if (theme === 'none') continue;
+        if (!buckets[theme]) buckets[theme] = { attempts: 0, correct: 0 };
+        buckets[theme].attempts += r.attempts;
+        buckets[theme].correct += r.correct;
+    }
+
+    return Object.entries(buckets)
+        .filter(([, s]) => s.attempts >= 3)
+        .map(([theme, s]) => ({
+            label: theme.charAt(0).toUpperCase() + theme.slice(1),
+            key: theme,
+            accuracy: s.correct / s.attempts,
+            attempts: s.attempts,
+            correct: s.correct,
+        }))
+        .sort((a, b) => a.accuracy - b.accuracy);
+}
+
+export interface PracticeRecommendation {
+    category: string;
+    label: string;
+    reason: string;
+}
+
+/** Up to 3 actionable practice recommendations based on weakest areas. */
+export function getRecommendations(records: Record<string, WordRecord>): PracticeRecommendation[] {
+    const recs: PracticeRecommendation[] = [];
+
+    // Weakest phonics pattern
+    const patterns = getPatternAccuracy(records);
+    if (patterns.length > 0 && patterns[0].accuracy < 0.7) {
+        const p = patterns[0];
+        const catId = patternToCategory(p.key as PhonicsPattern);
+        if (catId) {
+            recs.push({
+                category: catId,
+                label: p.label,
+                reason: `${Math.round(p.accuracy * 100)}% accuracy on ${p.label} words`,
+            });
+        }
+    }
+
+    // Weakest origin
+    const origins = getOriginAccuracy(records);
+    if (origins.length > 0 && origins[0].accuracy < 0.7) {
+        const o = origins[0];
+        const originCat = `origin-${o.key.toLowerCase()}`;
+        recs.push({
+            category: originCat,
+            label: `${o.label} Origin`,
+            reason: `${Math.round(o.accuracy * 100)}% accuracy on ${o.label}-origin words`,
+        });
+    }
+
+    // Weakest theme
+    const themes = getThemeAccuracy(records);
+    if (themes.length > 0 && themes[0].accuracy < 0.7) {
+        const t = themes[0];
+        recs.push({
+            category: `theme-${t.key}` as string,
+            label: t.label,
+            reason: `${Math.round(t.accuracy * 100)}% accuracy on ${t.label} words`,
+        });
+    }
+
+    return recs.slice(0, 3);
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+const PATTERN_LABELS: Record<string, string> = {
+    'cvc': 'CVC',
+    'blends': 'Blends',
+    'digraphs': 'Digraphs',
+    'silent-e': 'Silent E',
+    'vowel-teams': 'Vowel Teams',
+    'r-controlled': 'R-Controlled',
+    'diphthongs': 'Diphthongs',
+    'prefixes': 'Prefixes',
+    'suffixes': 'Suffixes',
+    'compound': 'Compound',
+    'multisyllable': 'Multisyllable',
+    'irregular': 'Irregular',
+    'latin-roots': 'Latin Roots',
+    'greek-roots': 'Greek Roots',
+    'french-origin': 'French Origin',
+};
+
+function formatPattern(pattern: string): string {
+    return PATTERN_LABELS[pattern] ?? pattern;
+}
+
+/** Map a PhonicsPattern back to its SpellingCategory ID. */
+function patternToCategory(pattern: PhonicsPattern): string | null {
+    // Category IDs match pattern names for the primary patterns
+    if (PATTERN_LABELS[pattern]) return pattern;
+    return null;
+}
+

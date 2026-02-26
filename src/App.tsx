@@ -43,9 +43,18 @@ import { useFirebaseAuth } from './hooks/useFirebaseAuth';
 import { collection, query, where, onSnapshot, doc, updateDoc, orderBy, limit } from 'firebase/firestore';
 import { db } from './utils/firebase';
 import { generateSpellingItem } from './domains/spelling/spellingGenerator';
+import { generateVocabItem } from './domains/spelling/vocabGenerator';
+import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
 import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
 import { BeeSimPage } from './components/BeeSimPage';
+import { WrittenTestPage } from './components/WrittenTestPage';
+import { MultiplayerLobby } from './components/MultiplayerLobby';
+import { MultiplayerMatch } from './components/MultiplayerMatch';
+import { useMultiplayerRoom } from './hooks/useMultiplayerRoom';
+import { useCustomLists } from './hooks/useCustomLists';
+import { CustomListsModal } from './components/CustomListsModal';
+import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import type { EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE } from './config';
@@ -58,13 +67,20 @@ type Tab = 'game' | 'bee' | 'league' | 'me';
 const TAB_ORDER: Tab[] = ['game', 'bee', 'league', 'me'];
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
-function makeGenerateItem() {
+function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]) {
   return (
     difficulty: number,
     categoryId: string,
     hardMode: boolean,
     rng?: () => number,
-  ): EngineItem => generateSpellingItem(difficulty, categoryId, hardMode, rng);
+  ): EngineItem => {
+    if (categoryId === 'custom' && customPool && customPool.length > 0) {
+      return generateCustomItem(customPool, difficulty, categoryId, hardMode, rng);
+    }
+    if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, hardMode, rng);
+    if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, hardMode, rng);
+    return generateSpellingItem(difficulty, categoryId, hardMode, rng);
+  };
 }
 
 function makeGenerateFiniteSet() {
@@ -100,6 +116,15 @@ function App() {
   const [hardMode, setHardMode] = useState(false);
   const [timedMode, setTimedMode] = useState(false);
 
+  // ── Multiplayer ──
+  const [showMultiplayerLobby, setShowMultiplayerLobby] = useState(false);
+  const mp = useMultiplayerRoom(uid, user?.displayName ?? 'Player');
+
+  // ── Custom Word Lists ──
+  const customLists = useCustomLists();
+  const [showCustomLists, setShowCustomLists] = useState(false);
+  const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
+
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
 
@@ -127,6 +152,10 @@ function App() {
     return 'cvc';
   });
   const setQuestionType = useCallback((type: QuestionType) => {
+    if (type === 'custom') {
+      setShowCustomLists(true);
+      return;
+    }
     if (type !== 'bee') setLastCategory(type);
     setQuestionTypeRaw(type);
   }, []);
@@ -164,8 +193,9 @@ function App() {
   }, [recordAttempt]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
+  const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const generateItem = useMemo(() => makeGenerateItem(), [wordRegistryVersion]);
+  const generateItem = useMemo(() => makeGenerateItem(activeCustomList?.words), [wordRegistryVersion, activeCustomList]);
   const generateFiniteSet = useMemo(() => {
     const baseFn = makeGenerateFiniteSet();
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
@@ -588,6 +618,10 @@ function App() {
                   category={lastCategory}
                   hardMode={hardMode}
                 />
+              ) : questionType === 'written-test' ? (
+                <WrittenTestPage
+                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                />
               ) : questionType === 'daily' && dailyComplete ? (
                 <DailyChallengeComplete
                   correct={totalCorrect}
@@ -690,7 +724,7 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} /></Suspense>
           </motion.div>
         )}
 
@@ -723,6 +757,10 @@ function App() {
               onGradeChange={handleGradeSelect}
               dialect={dialect}
               onDialectChange={handleDialectChange}
+              onPracticeCategory={(cat) => {
+                setQuestionType(cat as QuestionType);
+                setActiveTab('game');
+              }}
             /></Suspense>
           </motion.div>
         )}
@@ -787,6 +825,56 @@ function App() {
             </motion.div>
           )}
         </AnimatePresence>
+        {/* ── Custom Lists Modal ── */}
+        <AnimatePresence>
+          {showCustomLists && (
+            <CustomListsModal
+              lists={customLists.lists}
+              onCreate={customLists.createList}
+              onDelete={customLists.deleteList}
+              onPractice={(listId) => {
+                setActiveCustomListId(listId);
+                setShowCustomLists(false);
+                setQuestionTypeRaw('custom');
+                setLastCategory('custom');
+              }}
+              onClose={() => setShowCustomLists(false)}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* ── Multiplayer Lobby Modal ── */}
+        <AnimatePresence>
+          {showMultiplayerLobby && mp.phase !== 'playing' && mp.phase !== 'finished' && (
+            <MultiplayerLobby
+              phase={mp.phase === 'creating' ? 'creating' : mp.phase === 'lobby' ? 'lobby' : 'idle'}
+              roomCode={mp.roomCode}
+              players={Object.entries(mp.roomData?.players ?? {}).map(([id, p]) => ({ uid: id, displayName: p.displayName, ready: p.ready }))}
+              isHost={mp.isHost}
+              error={mp.error}
+              onCreate={mp.createRoom}
+              onJoin={mp.joinRoom}
+              onReady={mp.setReady}
+              onStart={mp.startMatch}
+              onClose={() => { mp.leaveRoom(); setShowMultiplayerLobby(false); }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* ── Multiplayer Match (full-screen overlay) ── */}
+        {(mp.phase === 'playing' || mp.phase === 'finished') && mp.roomData && uid && (
+          <div className="fixed inset-0 z-50 bg-[var(--color-bg)]">
+            <MultiplayerMatch
+              phase={mp.phase}
+              roomData={mp.roomData}
+              currentRound={mp.currentRound}
+              roundTimeLeft={mp.roundTimeLeft}
+              uid={uid}
+              onSubmitAnswer={mp.submitAnswer}
+              onLeave={() => { mp.leaveRoom(); setShowMultiplayerLobby(false); }}
+            />
+          </div>
+        )}
       </BlackboardLayout>
 
       {/* ── Grade picker (first launch) ── */}
