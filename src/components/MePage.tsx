@@ -10,6 +10,8 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { StudyAnalyticsModal } from './StudyAnalyticsModal';
 import { SettingsModal } from './SettingsModal';
+import { WordBookModal } from './WordBookModal';
+import { RootsBrowser } from './RootsBrowser';
 
 type MeTab = 'grades' | 'themes' | 'topics';
 const ME_TABS: { id: MeTab; label: string }[] = [
@@ -128,6 +130,8 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
     const [showRanks, setShowRanks] = useState(false);
     const [showAnalytics, setShowAnalytics] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [showWordBook, setShowWordBook] = useState(false);
+    const [showRoots, setShowRoots] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
@@ -372,6 +376,22 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             <div className="text-xl chalk text-[var(--color-gold)]">{dailyAcc !== null ? `${dailyAcc}%` : '-'}</div>
                             <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50">📅 daily</div>
                         </div>
+                    </div>
+
+                    {/* Study tools */}
+                    <div className="flex gap-2 mb-4">
+                        <button
+                            onClick={() => wordRecords && setShowWordBook(true)}
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.04] border border-[rgb(var(--color-fg))]/8 text-xs ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
+                        >
+                            <span className="text-sm">📖</span> Word Book
+                        </button>
+                        <button
+                            onClick={() => setShowRoots(true)}
+                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.04] border border-[rgb(var(--color-fg))]/8 text-xs ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
+                        >
+                            <span className="text-sm">🌳</span> Word Roots
+                        </button>
                     </div>
 
                     {/* Per-grade breakdown */}
@@ -716,6 +736,23 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         onClose={() => setShowAnalytics(false)}
                         onPractice={onPracticeCategory ? (cat) => { setShowAnalytics(false); onPracticeCategory(cat); } : undefined}
                     />
+                )}
+            </AnimatePresence>
+
+            {/* Word Book modal */}
+            <AnimatePresence>
+                {showWordBook && wordRecords && (
+                    <WordBookModal
+                        records={wordRecords}
+                        onClose={() => setShowWordBook(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* Roots Browser modal */}
+            <AnimatePresence>
+                {showRoots && (
+                    <RootsBrowser onClose={() => setShowRoots(false)} />
                 )}
             </AnimatePresence>
 

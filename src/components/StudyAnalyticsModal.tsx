@@ -19,6 +19,8 @@ import {
     type AccuracyBar,
     type PracticeRecommendation,
 } from '../utils/errorPatterns';
+import { printStudySheet } from '../utils/printStudySheet';
+import { getWordMap } from '../domains/spelling/words';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -106,7 +108,19 @@ export const StudyAnalyticsModal = memo(function StudyAnalyticsModal({ records, 
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ duration: 0.15 }}
             >
-                <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-3">Study Analytics</h3>
+                <div className="flex items-center justify-between mb-3">
+                    <div className="w-8" />
+                    <h3 className="text-lg chalk text-[var(--color-gold)]">Study Analytics</h3>
+                    {totalWords > 0 ? (
+                        <button
+                            onClick={() => printStudySheet('Study Analytics', Object.values(records), getWordMap())}
+                            className="w-8 text-center text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors text-sm"
+                            title="Print"
+                        >
+                            🖨️
+                        </button>
+                    ) : <div className="w-8" />}
+                </div>
 
                 {totalWords === 0 ? (
                     <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">
