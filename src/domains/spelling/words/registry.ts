@@ -8,6 +8,7 @@
 import type { SpellingWord, Dialect } from './types';
 import { TIER_1_WORDS } from './tier1';
 import { TIER_2_WORDS } from './tier2';
+import { applyCompetitionTags } from './competitionLists';
 
 // ── UK override types ────────────────────────────────────────────────────────
 
@@ -48,6 +49,7 @@ function invalidateCaches(): void {
     wordMapCache = null;
     byPatternCache = null;
     byThemeCache = null;
+    byListCache = null;
 }
 
 function ensureWordMapCache(): Map<string, SpellingWord> {
@@ -103,6 +105,28 @@ export function getCachedByPattern(pattern: string): SpellingWord[] {
 /** Words matching a semantic theme. O(1) lookup via index. */
 export function getCachedByTheme(theme: string): SpellingWord[] {
     return ensureThemeCache().get(theme) ?? [];
+}
+
+/** Words belonging to a competition list. Builds index lazily. */
+let byListCache: Map<string, SpellingWord[]> | null = null;
+
+function ensureListCache(): Map<string, SpellingWord[]> {
+    if (!byListCache) {
+        byListCache = new Map();
+        for (const w of loadedWords) {
+            if (!w.lists) continue;
+            for (const listId of w.lists) {
+                let arr = byListCache.get(listId);
+                if (!arr) { arr = []; byListCache.set(listId, arr); }
+                arr.push(w);
+            }
+        }
+    }
+    return byListCache;
+}
+
+export function getCachedByList(listId: string): SpellingWord[] {
+    return ensureListCache().get(listId) ?? [];
 }
 
 // ── Public getters ───────────────────────────────────────────────────────────
@@ -180,6 +204,7 @@ function rebuildLoadedWords(): void {
             };
         });
     }
+    applyCompetitionTags(loadedWords);
     invalidateCaches();
 }
 

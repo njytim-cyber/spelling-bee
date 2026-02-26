@@ -46,6 +46,7 @@ export type SpellingCategory =
     | 'wotc-one' | 'wotc-two' | 'wotc-three'
     | 'written-test'
     | 'roots'
+    | 'etymology'
     | 'custom';
 
 export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'origins' | 'competition' | 'practice';
@@ -505,6 +506,15 @@ const iRoots = I(<>
     <path d="M12 14c3 2 6 4 7 6" />
 </>);
 
+// Etymology — DNA/origin helix
+const iEtymology = I(<>
+    <path d="M6 3c0 6 12 6 12 12" />
+    <path d="M18 3c0 6-12 6-12 12" />
+    <line x1="7" y1="7" x2="17" y2="7" />
+    <line x1="7" y1="11" x2="17" y2="11" />
+    <path d="M6 15v6 M18 15v6" />
+</>);
+
 // Custom — pencil writing on paper
 const iCustom = I(<>
     <path d="M4 20h16" />
@@ -587,6 +597,7 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'review', icon: iReview, label: 'Review', group: 'practice' },
     { id: 'vocab', icon: iVocab, label: 'Vocab Quiz', group: 'practice' },
     { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'practice' },
+    { id: 'etymology', icon: iEtymology, label: 'Etymology Quiz', group: 'practice' },
     { id: 'custom', icon: iCustom, label: 'My Lists', group: 'practice' },
 ];
 

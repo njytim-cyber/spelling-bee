@@ -66,6 +66,7 @@ interface Props {
     dialect: string;
     onDialectChange: (d: import('../domains/spelling/words/types').Dialect) => void;
     onPracticeCategory?: (category: string) => void;
+    reviewDueCount?: number;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -127,7 +128,7 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange, onPracticeCategory }: Props) {
+export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange, onPracticeCategory, reviewDueCount }: Props) {
     const [meTab, setMeTab] = useState<MeTab>('grades');
     const [showRanks, setShowRanks] = useState(false);
     const [showAnalytics, setShowAnalytics] = useState(false);
@@ -737,6 +738,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         records={wordRecords}
                         onClose={() => setShowAnalytics(false)}
                         onPractice={onPracticeCategory ? (cat) => { setShowAnalytics(false); onPracticeCategory(cat); } : undefined}
+                        reviewDueCount={reviewDueCount}
                     />
                 )}
             </AnimatePresence>

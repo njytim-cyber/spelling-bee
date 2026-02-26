@@ -65,4 +65,18 @@ export interface SpellingWord {
     secondaryPatterns?: PhonicsPattern[];
     /** Source provenance tag for competition word packs */
     source?: 'core' | 'scripps' | 'state-bee';
+    /** Competition word lists this word belongs to (e.g. 'school-bee-study', 'spell-it-g') */
+    lists?: string[];
+}
+
+/**
+ * Competition word list metadata.
+ * Each list is a curated collection (e.g. Scripps School Bee Study List).
+ * Words reference lists by ID; lists are registered here with display info.
+ */
+export interface CompetitionList {
+    id: string;
+    name: string;
+    description: string;
+    difficulty: 'beginner' | 'intermediate' | 'advanced' | 'championship';
 }

@@ -42,9 +42,10 @@ import { useLocalState } from './hooks/useLocalState';
 import { useFirebaseAuth } from './hooks/useFirebaseAuth';
 import { collection, query, where, onSnapshot, doc, updateDoc, orderBy, limit } from 'firebase/firestore';
 import { db } from './utils/firebase';
-import { generateSpellingItem } from './domains/spelling/spellingGenerator';
+import { generateSpellingItem, generateItemForWord } from './domains/spelling/spellingGenerator';
 import { generateVocabItem } from './domains/spelling/vocabGenerator';
 import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
+import { generateEtymologyItem } from './domains/spelling/etymologyGenerator';
 import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
 import { BeeSimPage } from './components/BeeSimPage';
@@ -79,6 +80,7 @@ function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]
     }
     if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, hardMode, rng);
     if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, hardMode, rng);
+    if (categoryId === 'etymology') return generateEtymologyItem(difficulty, categoryId, hardMode, rng);
     return generateSpellingItem(difficulty, categoryId, hardMode, rng);
   };
 }
@@ -200,9 +202,12 @@ function App() {
     const baseFn = makeGenerateFiniteSet();
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
       if (categoryId === 'review' && reviewQueue.length > 0) {
-        return reviewQueue.slice(0, 10).map(r =>
-          generateSpellingItem(3, r.category || 'cvc', false)
-        );
+        return reviewQueue.slice(0, 10).map(r => {
+          // Generate an item for the exact review word (not a random word from its category)
+          const item = generateItemForWord(r.word, r.category || 'review');
+          // Fallback if word not found in current word bank (e.g. dialect changed)
+          return item ?? generateSpellingItem(3, r.category || 'cvc', false);
+        });
       }
       return baseFn(categoryId, challengeId);
     };
@@ -761,6 +766,7 @@ function App() {
                 setQuestionType(cat as QuestionType);
                 setActiveTab('game');
               }}
+              reviewDueCount={reviewQueue.length}
             /></Suspense>
           </motion.div>
         )}

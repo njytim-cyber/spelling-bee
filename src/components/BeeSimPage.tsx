@@ -71,6 +71,7 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
 }
 
 export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category, hardMode }: Props) {
+    const [dictationMode, setDictationMode] = useState(false);
     const {
         state,
         startSession,
@@ -88,7 +89,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         npcAlive,
         npcScores,
         npcSpellings,
-    } = useBeeSimulation(category, hardMode);
+    } = useBeeSimulation(category, hardMode, dictationMode);
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
@@ -106,10 +107,14 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         prevPhaseRef.current = phase;
     }, [phase, lastResult]);
 
-    // Auto-start session on mount
+    // Auto-start session on mount and when dictation mode toggles
+    const prevDictation = useRef(dictationMode);
     useEffect(() => {
-        if (!currentWord) startSession();
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+        if (!currentWord || prevDictation.current !== dictationMode) {
+            prevDictation.current = dictationMode;
+            startSession();
+        }
+    }, [dictationMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // ── 30s Timer ──
     const [beeTimedMode, setBeeTimedMode] = useState(false);
@@ -153,6 +158,18 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
             </div>
             {phase !== 'eliminated' && phase !== 'won' && (
                 <div className="absolute top-4 right-4 flex items-center gap-2">
+                    {/* Dictation mode toggle */}
+                    <button
+                        onClick={() => { setDictationMode(d => !d); }}
+                        className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
+                            dictationMode
+                                ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
+                                : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
+                        }`}
+                        title="Dictation mode — hear & spell, no classroom"
+                    >
+                        Dictation
+                    </button>
                     {/* Timer toggle */}
                     <button
                         onClick={toggleBeeTimer}
@@ -195,8 +212,65 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
             )}
 
             <AnimatePresence mode="wait">
+                {/* DICTATION MODE — minimal UI: hear word, spell it */}
+                {dictationMode && (phase === 'spelling' || phase === 'feedback') && (
+                    <motion.div
+                        key="dictation"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className={`flex flex-col items-center gap-4 w-full max-w-[320px] ${shakeClass}`}
+                    >
+                        {/* Pronounce button */}
+                        <button
+                            onClick={pronounce}
+                            className="w-16 h-16 rounded-full bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 flex items-center justify-center hover:bg-[var(--color-gold)]/20 transition-colors"
+                            title="Hear word again"
+                        >
+                            <span className="text-2xl">&#128266;</span>
+                        </button>
+                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
+                            {ttsSupported ? 'Tap to hear again' : 'Audio not available'}
+                        </p>
+
+                        <AnimatePresence>
+                            {phase === 'spelling' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 12 }}
+                                    className="w-full"
+                                >
+                                    <SpellingInput
+                                        value={typedSpelling}
+                                        onChange={updateTyping}
+                                        onSubmit={() => {
+                                            submitSpelling();
+                                            if (onAnswer && currentWord) {
+                                                const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
+                                                onAnswer(currentWord.word, correct, Date.now());
+                                            }
+                                        }}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        <AnimatePresence>
+                            {phase === 'feedback' && currentWord && (
+                                <InlineFeedback
+                                    correct={!!lastResult}
+                                    word={currentWord.word}
+                                    typed={typedSpelling}
+                                    onNext={nextWord}
+                                />
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+                )}
+
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
-                {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
+                {!dictationMode && (phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
                     <motion.div
                         key="classroom"
                         initial={{ opacity: 0, y: 20 }}

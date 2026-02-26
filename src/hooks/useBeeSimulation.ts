@@ -146,47 +146,80 @@ export function simulateNpcTurns(
     return { npcResults: results, npcAlive: alive, npcScores: scores, npcSpellings: spellings };
 }
 
-export function useBeeSimulation(category?: string, hardMode = false) {
+export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false) {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
 
+    // In dictation mode: no NPCs, no elimination, go straight to spelling
+    const dictationInitial: Partial<BeeSimState> = dictationMode ? {
+        eliminationMode: false,
+        npcAlive: [false, false, false, false],
+    } : {};
+
     const startRound = useCallback(() => {
         const word = pickBeeWord(state.round, category, hardMode);
-        setState(prev => {
-            const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
-            const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
-            return {
+        if (dictationMode) {
+            // Dictation: skip classroom, go straight to spelling
+            setState(prev => ({
                 ...prev,
-                phase: anyNpcLeft ? 'listening' : 'won',
+                ...dictationInitial,
+                phase: 'spelling',
                 currentWord: word,
                 typedSpelling: '',
                 infoRequested: new Set(),
                 infoResponses: {},
                 lastResult: null,
+                npcResults: [null, null, null, null],
+                npcSpellings: [null, null, null, null],
+            }));
+        } else {
+            setState(prev => {
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
+                const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
+                return {
+                    ...prev,
+                    phase: anyNpcLeft ? 'listening' : 'won',
+                    currentWord: word,
+                    typedSpelling: '',
+                    infoRequested: new Set(),
+                    infoResponses: {},
+                    lastResult: null,
+                    npcResults: npc.npcResults,
+                    npcAlive: npc.npcAlive,
+                    npcScores: npc.npcScores,
+                    npcSpellings: npc.npcSpellings,
+                };
+            });
+        }
+        if (isSupported) speak(word.word);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [state.round, category, hardMode, dictationMode, speak, isSupported]);
+
+    const startSession = useCallback(() => {
+        const word = pickBeeWord(0, category, hardMode);
+        if (dictationMode) {
+            setState({
+                ...INITIAL_STATE,
+                ...dictationInitial,
+                currentWord: word,
+                phase: 'spelling',
+            });
+        } else {
+            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode).word);
+            setState({
+                ...INITIAL_STATE,
+                currentWord: word,
+                phase: 'listening',
                 npcResults: npc.npcResults,
                 npcAlive: npc.npcAlive,
                 npcScores: npc.npcScores,
                 npcSpellings: npc.npcSpellings,
-            };
-        });
+            });
+        }
         if (isSupported) speak(word.word);
-    }, [state.round, category, hardMode, speak, isSupported]);
-
-    const startSession = useCallback(() => {
-        const word = pickBeeWord(0, category, hardMode);
-        const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode).word);
-        setState({
-            ...INITIAL_STATE,
-            currentWord: word,
-            phase: 'listening',
-            npcResults: npc.npcResults,
-            npcAlive: npc.npcAlive,
-            npcScores: npc.npcScores,
-            npcSpellings: npc.npcSpellings,
-        });
-        if (isSupported) speak(word.word);
-    }, [category, hardMode, speak, isSupported]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [category, hardMode, dictationMode, speak, isSupported]);
 
     const pronounce = useCallback(() => {
         if (state.currentWord && isSupported) {
@@ -287,28 +320,46 @@ export function useBeeSimulation(category?: string, hardMode = false) {
         const newRound = state.round + 1;
         const word = pickBeeWord(newRound, category, hardMode);
 
-        let won = false;
-        setState(prev => {
-            const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
-            const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
-            won = !anyNpcLeft;
-            return {
+        if (dictationMode) {
+            setState(prev => ({
                 ...prev,
-                phase: anyNpcLeft ? 'listening' : 'won',
+                eliminationMode: false,
+                npcAlive: [false, false, false, false],
+                phase: 'spelling',
                 currentWord: word,
                 round: newRound,
                 typedSpelling: '',
                 infoRequested: new Set(),
                 infoResponses: {},
                 lastResult: null,
-                npcResults: npc.npcResults,
-                npcAlive: npc.npcAlive,
-                npcScores: npc.npcScores,
-                npcSpellings: npc.npcSpellings,
-            };
-        });
-        if (!won && isSupported) speak(word.word);
-    }, [state.round, category, hardMode, speak, isSupported]);
+                npcResults: [null, null, null, null],
+                npcSpellings: [null, null, null, null],
+            }));
+            if (isSupported) speak(word.word);
+        } else {
+            let won = false;
+            setState(prev => {
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
+                const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
+                won = !anyNpcLeft;
+                return {
+                    ...prev,
+                    phase: anyNpcLeft ? 'listening' : 'won',
+                    currentWord: word,
+                    round: newRound,
+                    typedSpelling: '',
+                    infoRequested: new Set(),
+                    infoResponses: {},
+                    lastResult: null,
+                    npcResults: npc.npcResults,
+                    npcAlive: npc.npcAlive,
+                    npcScores: npc.npcScores,
+                    npcSpellings: npc.npcSpellings,
+                };
+            });
+            if (!won && isSupported) speak(word.word);
+        }
+    }, [state.round, category, hardMode, dictationMode, speak, isSupported]);
 
     /** Force-submit an empty answer (used by timer expiry). Transitions asking→spelling→submit. */
     const forceSubmit = useCallback(() => {

@@ -9,10 +9,11 @@
  * that are lazily built and auto-invalidated on tier/dialect changes.
  */
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
-import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme } from './registry';
+import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme, getCachedByList } from './registry';
 import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymologyParser';
 
-export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier } from './types';
+export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier, CompetitionList } from './types';
+export { COMPETITION_LISTS } from './competitionLists';
 export { ensureAllTiers, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
 
 /** Every word currently loaded in the registry. */
@@ -111,4 +112,9 @@ export function wordsByWotcTier(tier: import('./types').WotcTier): SpellingWord[
     };
     const [min, max] = ranges[tier];
     return wordsByDifficulty(min, max);
+}
+
+/** Get words belonging to a competition list. Uses cached index. */
+export function wordsByList(listId: string): SpellingWord[] {
+    return getCachedByList(listId);
 }

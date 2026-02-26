@@ -175,6 +175,10 @@ export interface PracticeRecommendation {
     category: string;
     label: string;
     reason: string;
+    /** Priority: 'review' > 'weak' > 'explore'. Controls display order and badge color. */
+    priority?: 'review' | 'weak' | 'explore';
+    /** Number of words in this recommendation (e.g. review count) */
+    wordCount?: number;
 }
 
 /** Up to 3 actionable practice recommendations based on weakest areas. */
@@ -191,6 +195,7 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
                 category: catId,
                 label: p.label,
                 reason: `${Math.round(p.accuracy * 100)}% accuracy on ${p.label} words`,
+                priority: 'weak',
             });
         }
     }
@@ -204,6 +209,7 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
             category: originCat,
             label: `${o.label} Origin`,
             reason: `${Math.round(o.accuracy * 100)}% accuracy on ${o.label}-origin words`,
+            priority: 'weak',
         });
     }
 
@@ -215,10 +221,88 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
             category: `theme-${t.key}` as string,
             label: t.label,
             reason: `${Math.round(t.accuracy * 100)}% accuracy on ${t.label} words`,
+            priority: 'weak',
         });
     }
 
     return recs.slice(0, 3);
+}
+
+/**
+ * Full study plan combining SRS review, weak-area drills, and new exploration.
+ * Returns up to 5 prioritized recommendations.
+ *
+ * @param records  - All word history records
+ * @param reviewDueCount - Number of words currently due for Leitner review
+ */
+export function getStudyPlan(
+    records: Record<string, WordRecord>,
+    reviewDueCount: number,
+): PracticeRecommendation[] {
+    const plan: PracticeRecommendation[] = [];
+
+    // 1. SRS review is always top priority when words are due
+    if (reviewDueCount > 0) {
+        plan.push({
+            category: 'review',
+            label: 'Review Due Words',
+            reason: `${reviewDueCount} word${reviewDueCount === 1 ? '' : 's'} ready for review`,
+            priority: 'review',
+            wordCount: reviewDueCount,
+        });
+    }
+
+    // 2. Weak-area drills from existing recommendation engine
+    const weakRecs = getRecommendations(records);
+    plan.push(...weakRecs);
+
+    // 3. Suggest etymology quiz if user has enough data but hasn't tried it
+    const recordArr = Object.values(records);
+    const totalAttempts = recordArr.reduce((sum, r) => sum + r.attempts, 0);
+    const hasEtymologyAttempts = recordArr.some(r => r.category === 'etymology');
+    if (totalAttempts >= 20 && !hasEtymologyAttempts) {
+        plan.push({
+            category: 'etymology',
+            label: 'Etymology Quiz',
+            reason: 'Learn word origins to unlock deeper spelling patterns',
+            priority: 'explore',
+        });
+    }
+
+    // 4. Suggest bee sim for users who haven't tried it
+    const hasBeeAttempts = recordArr.some(r => r.category === 'bee-sim');
+    if (totalAttempts >= 30 && !hasBeeAttempts) {
+        plan.push({
+            category: 'bee-sim',
+            label: 'Spelling Bee',
+            reason: 'Practice under competition pressure',
+            priority: 'explore',
+        });
+    }
+
+    // 5. Progress nudge — suggest harder categories if mastery is high
+    const attemptedCount = recordArr.length;
+    const mastered = recordArr.filter(r => r.box >= 4).length;
+    const masteryRate = attemptedCount > 0 ? mastered / attemptedCount : 0;
+    if (masteryRate > 0.5 && attemptedCount >= 20 && plan.length < 5) {
+        const coveredPatterns = new Set<string>(recordArr.map(r => {
+            const detail = getWordMap().get(r.word);
+            return detail?.pattern ?? '';
+        }).filter(p => p !== ''));
+        const allPatterns = Object.keys(PATTERN_LABELS);
+        const unexplored = allPatterns.filter(p => !coveredPatterns.has(p));
+        if (unexplored.length > 0) {
+            const next = unexplored[0];
+            plan.push({
+                category: next,
+                label: `Try ${formatPattern(next)}`,
+                reason: `${unexplored.length} pattern${unexplored.length === 1 ? '' : 's'} not yet explored`,
+                priority: 'explore',
+            });
+        }
+    }
+
+    return plan.slice(0, 5);
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────

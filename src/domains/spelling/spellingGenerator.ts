@@ -13,6 +13,7 @@ import type { EngineItem } from '../../engine/domain';
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './words/types';
 import {
     getAllWords,
+    getWordMap,
     wordsByPattern,
     wordsByDifficulty,
     wordsByPatternAndDifficulty,
@@ -62,6 +63,7 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'wotc-three': null,
     'written-test': null,
     'roots': null,
+    'etymology': null,
     'custom': null,
 };
 
@@ -273,6 +275,46 @@ function pickRichWord(
 }
 
 // ── Public API ────────────────────────────────────────────────────────────────
+
+/**
+ * Generate a spelling EngineItem for a specific word (used by SRS review).
+ * Looks up the SpellingWord by string and generates distractors for it.
+ * Returns null if the word isn't found in the loaded word bank.
+ */
+export function generateItemForWord(
+    wordStr: string,
+    category: string,
+    rng: () => number = Math.random,
+): EngineItem | null {
+    const wordMap = getWordMap();
+    const richWord = wordMap.get(wordStr.toLowerCase());
+    if (!richWord) return null;
+
+    const correct = richWord.word;
+    const distractors = pickDistractors(richWord, rng, false);
+    const options = [correct, ...distractors].sort(() => rng() - 0.5);
+    const correctIndex = options.indexOf(correct);
+
+    return {
+        id: `review-${correct}-${Date.now()}-${Math.floor(rng() * 1e6)}`,
+        prompt: 'Which spelling is correct?',
+        answer: correct,
+        options,
+        correctIndex,
+        meta: {
+            word: correct,
+            category,
+            hardMode: false,
+            definition: richWord.definition,
+            exampleSentence: richWord.exampleSentence,
+            pronunciation: richWord.pronunciation,
+            partOfSpeech: richWord.partOfSpeech,
+            pattern: richWord.pattern,
+            difficulty: richWord.difficulty,
+            ...(richWord.etymology ? { etymology: richWord.etymology } : {}),
+        },
+    };
+}
 
 /**
  * Generate a single spelling EngineItem.
