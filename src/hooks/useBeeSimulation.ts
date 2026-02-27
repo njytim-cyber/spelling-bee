@@ -10,11 +10,11 @@ import { difficultyRange } from '../domains/spelling/words';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 import { parseEtymology } from '../utils/etymologyParser';
-import { playDing, playBuzzer, playGasp, playApplause } from '../utils/beeSounds';
+import { playDing, playBuzzer, playGasp, playApplause, playFanfare } from '../utils/beeSounds';
 
 export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'won' | 'complete';
 
-export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat';
+export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat' | 'pronounceAgain' | 'spellInSections';
 
 /** Bee competition level — controls starting difficulty floor */
 export type BeeLevel = 'classroom' | 'district' | 'state' | 'national';
@@ -255,7 +255,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
 
     const requestInfo = useCallback((type: InfoRequest) => {
         setState(prev => {
-            if (prev.infoRequested.has(type) && type !== 'repeat') return prev;
+            if (prev.infoRequested.has(type) && type !== 'repeat' && type !== 'pronounceAgain' && type !== 'spellInSections') return prev;
 
             const newRequested = new Set(prev.infoRequested);
             newRequested.add(type);
@@ -301,8 +301,20 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     break;
                 }
                 case 'repeat':
+                case 'pronounceAgain':
                     if (isSupported) speak(word.word);
                     break;
+                case 'spellInSections': {
+                    // Parse pronunciation into syllable sections (e.g. "SPEK-tuh-kul" → "SPEK, tuh, kul")
+                    const pron = word.pronunciation || word.word;
+                    const sections = pron.split(/[-·]/).map(s => s.trim()).filter(Boolean);
+                    const sectionText = sections.join(', ');
+                    newResponses.spellInSections = sectionText;
+                    if (isSupported) {
+                        setTimeout(() => speak(sectionText), 50);
+                    }
+                    break;
+                }
             }
 
             // Speak the info response aloud (like a real bee pronouncer)
@@ -419,7 +431,12 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     npcSpellings: npc.npcSpellings,
                 };
             });
-            if (!won && isSupported) speakWordNumber(word.word, newRound + 1);
+            if (won) {
+                playFanfare();
+                playApplause();
+            } else if (isSupported) {
+                speakWordNumber(word.word, newRound + 1);
+            }
         }
     }, [state.round, category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
 

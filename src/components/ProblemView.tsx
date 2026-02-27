@@ -1,8 +1,10 @@
-import { memo, useEffect, useRef, useCallback } from 'react';
+import { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useMotionTemplate, animate, type MotionValue } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import { EtymologyExplainer } from './EtymologyExplainer';
 
 /** Arrow-key → swipe direction map for desktop play */
 const KEY_MAP: Record<string, 'left' | 'right' | 'up' | 'down'> = {
@@ -16,6 +18,8 @@ interface Props {
     frozen: boolean;
     highlightCorrect?: boolean;
     showHints?: boolean;
+    wrongAnswer?: boolean;
+    onDismissWrong?: () => void;
     onSwipe: (dir: 'left' | 'right' | 'up' | 'down') => void;
 }
 
@@ -49,13 +53,14 @@ const correctFlashAnim = {
 };
 
 const AnswerOption = memo(function AnswerOption({
-    value, label, dir, glow, frozen, onSwipe, highlighted, correctFlash,
+    value, label, dir, glow, frozen, onSwipe, highlighted, correctFlash, reducedMotion,
 }: {
     value: number | string; label?: string; dir: 'left' | 'down' | 'right';
     glow: MotionValue<number>; frozen: boolean;
     onSwipe: (d: 'left' | 'right' | 'up' | 'down') => void;
     highlighted?: boolean;
     correctFlash?: boolean;
+    reducedMotion?: boolean;
 }) {
     const scale = useTransform(glow, [0, 0.3, 1], [1, 1.03, 1.12]);
     const opacity = useTransform(glow, [0, 1], [0.95, 1]);
@@ -82,8 +87,8 @@ const AnswerOption = memo(function AnswerOption({
                         : 'border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)]'
                     }`}
                 style={!correctFlash && !highlighted ? { borderColor, boxShadow } : {}}
-                animate={correctFlash ? correctFlashAnim : highlighted ? glowAnim : {}}
-                transition={correctFlash ? { duration: 0.35 } : highlighted ? glowTransition : {}}
+                animate={reducedMotion ? {} : correctFlash ? correctFlashAnim : highlighted ? glowAnim : {}}
+                transition={reducedMotion ? {} : correctFlash ? { duration: 0.35 } : highlighted ? glowTransition : {}}
             >
                 {text}
             </motion.div>
@@ -91,10 +96,14 @@ const AnswerOption = memo(function AnswerOption({
     );
 });
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, onSwipe }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, wrongAnswer, onDismissWrong, onSwipe }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported } = usePronunciation();
+    const { reducedMotion } = useReducedMotion();
+    const [showEtymology, setShowEtymology] = useState(false);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    useEffect(() => { setShowEtymology(false); }, [p.id]);
 
     const handleSpeak = useCallback(() => {
         const word = p.meta?.['word'];
@@ -156,7 +165,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             onPanEnd={handlePanEnd}
         >
             {/* Problem expression / prompt */}
-            <motion.div className="text-center mb-8 pr-12" animate={pulseAnim}>
+            <motion.div className="text-center mb-8 pr-12" animate={reducedMotion ? {} : pulseAnim}>
                 {/* Vocab mode label */}
                 {p.meta?.['mode'] === 'vocab' && (
                     <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 font-semibold">
@@ -213,12 +222,85 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                         onSwipe={onSwipe}
                         highlighted={highlightCorrect && i === p.correctIndex}
                         correctFlash={frozen && i === p.correctIndex}
+                        reducedMotion={reducedMotion}
                     />
                 ))}
             </div>
 
+            {/* Wrong-answer detail panel — tap to dismiss */}
+            {frozen && wrongAnswer && onDismissWrong && (
+                <motion.div
+                    className="mt-4 w-full max-w-[320px] rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
+                    initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25 }}
+                >
+                    {/* Correct word */}
+                    <div className="text-center mb-2">
+                        <span className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider">Correct spelling</span>
+                        <div className="text-lg chalk text-[var(--color-correct)] font-bold">
+                            {typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex])}
+                        </div>
+                    </div>
+
+                    {/* Definition */}
+                    {typeof p.meta?.['definition'] === 'string' && p.meta['mode'] !== 'vocab' && (
+                        <div className="text-xs ui text-[rgb(var(--color-fg))]/50 text-center mb-1.5">
+                            {p.meta['definition']}
+                        </div>
+                    )}
+
+                    {/* Etymology — toggle between simple and full explainer */}
+                    {typeof p.meta?.['etymology'] === 'string' && (
+                        showEtymology ? (
+                            <div className="mb-2">
+                                <EtymologyExplainer
+                                    etymology={p.meta['etymology'] as string}
+                                    word={typeof p.meta?.['word'] === 'string' ? p.meta['word'] as string : undefined}
+                                />
+                            </div>
+                        ) : (
+                            <div className="text-xs ui text-[rgb(var(--color-fg))]/35 text-center italic mb-1.5">
+                                {p.meta['etymology']}
+                            </div>
+                        )
+                    )}
+
+                    {/* Action row: pronunciation + explore origin */}
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                        {ttsSupported && typeof p.meta?.['word'] === 'string' && (
+                            <button
+                                type="button"
+                                onClick={handleSpeak}
+                                className="flex items-center gap-1 text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
+                            >
+                                <span>🔊</span> Hear it
+                            </button>
+                        )}
+                        {typeof p.meta?.['etymology'] === 'string' && !showEtymology && (
+                            <button
+                                type="button"
+                                onClick={() => setShowEtymology(true)}
+                                className="text-xs ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
+                            >
+                                Explore origin
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Tap to continue */}
+                    <button
+                        type="button"
+                        onClick={onDismissWrong}
+                        className="w-full mt-1 py-2 rounded-xl bg-[rgb(var(--color-fg))]/10 text-xs ui text-[rgb(var(--color-fg))]/50 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
+                    >
+                        tap to continue
+                    </button>
+                </motion.div>
+            )}
+
             {/* Skip hint — only on the very first question */}
-            {showHints && (
+            {showHints && !wrongAnswer && (
                 <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
                     <span className="text-[10px] ui tracking-wider">swipe up to skip</span>
                 </div>

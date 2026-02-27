@@ -14,6 +14,11 @@ interface Props {
     onDismiss: () => void;
     hardMode?: boolean;
     timedMode?: boolean;
+    onDrillHardest?: () => void;
+    hardestWordCount?: number;
+    totalXP?: number;
+    streakFreezes?: number;
+    onPurchaseFreeze?: () => boolean;
 }
 
 function buildShareText(
@@ -50,7 +55,8 @@ function buildShareText(
 
 export const SessionSummary = memo(function SessionSummary({
     solved, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
-    hardMode, timedMode,
+    hardMode, timedMode, onDrillHardest, hardestWordCount,
+    totalXP, streakFreezes, onPurchaseFreeze,
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
@@ -268,6 +274,26 @@ export const SessionSummary = memo(function SessionSummary({
                         >
                             {isSharing ? 'Sharing...' : copied ? '✅ Copied!' : '📤 Share'}
                         </motion.button>
+
+                        {accuracy < 80 && (hardestWordCount ?? 0) > 0 && onDrillHardest && (
+                            <motion.button
+                                onClick={onDrillHardest}
+                                className="w-full py-2.5 rounded-xl border text-sm ui mb-3 bg-[var(--color-streak-fire)]/10 border-[var(--color-streak-fire)]/30 text-[var(--color-streak-fire)] active:bg-[var(--color-streak-fire)]/20"
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Drill {hardestWordCount} Hardest Words
+                            </motion.button>
+                        )}
+
+                        {/* Streak freeze purchase */}
+                        {onPurchaseFreeze && (totalXP ?? 0) >= 500 && (
+                            <button
+                                onClick={onPurchaseFreeze}
+                                className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[var(--color-gold)] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 transition-colors mb-3"
+                            >
+                                Buy Streak Freeze (500 XP){(streakFreezes ?? 0) > 0 ? ` · ${streakFreezes} owned` : ''}
+                            </button>
+                        )}
 
                         <button
                             onClick={onDismiss}

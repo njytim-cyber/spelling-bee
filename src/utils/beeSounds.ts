@@ -163,3 +163,35 @@ export async function playApplause(): Promise<void> {
     source.start(t);
     source.stop(t + duration);
 }
+
+/** Fanfare — ascending major chord (C4→E4→G4→C5) for championship wins */
+export async function playFanfare(): Promise<void> {
+    const ac = getCtx();
+    if (!ac) return;
+    await ensureResumed(ac);
+    const t = ac.currentTime;
+
+    // C major chord ascending: C4, E4, G4, C5
+    const notes = [261.63, 329.63, 392.0, 523.25];
+    const stagger = 0.15;
+
+    for (let i = 0; i < notes.length; i++) {
+        const noteTime = t + i * stagger;
+        const osc = ac.createOscillator();
+        const gain = ac.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(notes[i], noteTime);
+
+        const ring = i === notes.length - 1 ? 1.2 : 0.6;
+        gain.gain.setValueAtTime(0, noteTime);
+        gain.gain.linearRampToValueAtTime(0.15, noteTime + 0.02);
+        gain.gain.setValueAtTime(0.15, noteTime + ring * 0.6);
+        gain.gain.exponentialRampToValueAtTime(0.001, noteTime + ring);
+
+        osc.connect(gain);
+        gain.connect(ac.destination);
+        osc.start(noteTime);
+        osc.stop(noteTime + ring);
+    }
+}

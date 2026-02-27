@@ -43,6 +43,7 @@ export const STORAGE_KEYS = {
     lastRecapWeek: `${STORAGE_PREFIX}-last-recap-week`,
     masteredTricks: `${STORAGE_PREFIX}-mastered-tricks`,
     uid: `${STORAGE_PREFIX}-uid`,
+    reducedMotion: `${STORAGE_PREFIX}-reduced-motion`,
 } as const;
 
 /**

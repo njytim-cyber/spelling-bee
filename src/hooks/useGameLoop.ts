@@ -82,7 +82,7 @@ export function useGameLoop(
     const [items, setItems] = useState<EngineItem[]>([]);
     const [gs, setGs] = useState<GameState>(INITIAL_STATE);
 
-    const { bufferSize, autoAdvanceMs, failPauseMs, milestones, finiteTypeIds } = config;
+    const { bufferSize, autoAdvanceMs, failPauseMs, milestones, finiteTypeIds, wrongAnswerTapToDismiss } = config;
 
     const onAnswerRef = useRef(onAnswer);
     onAnswerRef.current = onAnswer;
@@ -264,11 +264,13 @@ export function useGameLoop(
                     onConsumeShield();
                     frozenRef.current = true;
                     scheduleChalkReset(failPauseMs);
-                    safeTimeout(() => {
-                        setGs(p => ({ ...p, flash: 'none', frozen: false, shieldBroken: false }));
-                        frozenRef.current = false;
-                        advanceProblem();
-                    }, failPauseMs);
+                    if (!wrongAnswerTapToDismiss) {
+                        safeTimeout(() => {
+                            setGs(p => ({ ...p, flash: 'none', frozen: false, shieldBroken: false }));
+                            frozenRef.current = false;
+                            advanceProblem();
+                        }, failPauseMs);
+                    }
                     return {
                         ...prev,
                         totalAnswered: prev.totalAnswered + 1,
@@ -283,11 +285,13 @@ export function useGameLoop(
                 // Normal wrong answer
                 frozenRef.current = true;
                 scheduleChalkReset(failPauseMs);
-                safeTimeout(() => {
-                    setGs(p => ({ ...p, flash: 'none', frozen: false }));
-                    frozenRef.current = false;
-                    advanceProblem();
-                }, failPauseMs);
+                if (!wrongAnswerTapToDismiss) {
+                    safeTimeout(() => {
+                        setGs(p => ({ ...p, flash: 'none', frozen: false }));
+                        frozenRef.current = false;
+                        advanceProblem();
+                    }, failPauseMs);
+                }
 
                 const wrongStreak = prev.wrongStreak + 1;
                 return {
@@ -305,7 +309,7 @@ export function useGameLoop(
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, level, milestones, autoAdvanceMs, failPauseMs, generateItem]);
+    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     useEffect(() => {
@@ -362,6 +366,14 @@ export function useGameLoop(
         };
     }, []);
 
+    /** Manually dismiss a wrong-answer freeze (tap-to-dismiss mode) */
+    const dismissWrongAnswer = useCallback(() => {
+        if (!frozenRef.current) return;
+        setGs(prev => ({ ...prev, flash: 'none', frozen: false, shieldBroken: false }));
+        frozenRef.current = false;
+        advanceProblem();
+    }, [advanceProblem]);
+
     const dailyComplete =
         (isFinite(categoryId)) &&
         gs.totalAnswered > 0 &&
@@ -372,6 +384,7 @@ export function useGameLoop(
         ...gs,
         level,
         handleSwipe,
+        dismissWrongAnswer,
         timerProgress,
         dailyComplete,
         dailyDateLabel: dailyRef.current?.dateLabel ?? '',

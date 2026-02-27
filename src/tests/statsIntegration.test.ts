@@ -18,6 +18,7 @@ interface Stats {
     sessionsPlayed: number;
     dayStreak: number;
     streakShields: number;
+    streakFreezes: number;
     lastPlayedDate: string;
     byType: Record<string, TypeStat>;
     // Mode stats omitted for brevity — tested via totalXP merge
@@ -32,6 +33,7 @@ function makeStats(overrides: Partial<Stats> = {}): Stats {
         sessionsPlayed: 0,
         dayStreak: 0,
         streakShields: 0,
+        streakFreezes: 0,
         lastPlayedDate: '',
         byType: {},
         ...overrides,
@@ -60,6 +62,7 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         sessionsPlayed: Math.max(local.sessionsPlayed, cloud.sessionsPlayed),
         dayStreak: Math.max(local.dayStreak, cloud.dayStreak),
         streakShields: Math.max(local.streakShields, cloud.streakShields),
+        streakFreezes: Math.max(local.streakFreezes || 0, cloud.streakFreezes || 0),
         lastPlayedDate: local.lastPlayedDate > cloud.lastPlayedDate ? local.lastPlayedDate : cloud.lastPlayedDate,
         byType: mergedByType,
     };
@@ -153,5 +156,79 @@ describe('day streak logic', () => {
         }
         expect(dayStreak).toBe(11);
         expect(shields).toBe(1);
+    });
+});
+
+describe('streak freeze', () => {
+    /** Simulate the recordSession day-streak logic with freezes */
+    function computeStreak(prev: Stats, todayStr: string, yesterdayStr: string) {
+        let dayStreak = prev.dayStreak;
+        let shields = prev.streakShields;
+        let freezes = prev.streakFreezes || 0;
+
+        if (prev.lastPlayedDate !== todayStr) {
+            if (prev.lastPlayedDate === yesterdayStr) {
+                dayStreak = prev.dayStreak + 1;
+            } else if (prev.lastPlayedDate !== '') {
+                // Missed day(s) — consume freeze first, then shield
+                if (freezes > 0) {
+                    freezes -= 1;
+                    dayStreak = prev.dayStreak + 1;
+                } else if (shields > 0) {
+                    shields -= 1;
+                    dayStreak = prev.dayStreak + 1;
+                } else {
+                    dayStreak = 1;
+                }
+            } else {
+                dayStreak = 1;
+            }
+        }
+        return { dayStreak, shields, freezes };
+    }
+
+    it('consumes freeze before shield on 1-day gap', () => {
+        const prev = makeStats({ dayStreak: 10, lastPlayedDate: '2026-2-20', streakShields: 2, streakFreezes: 1 });
+        const result = computeStreak(prev, '2026-2-22', '2026-2-21');
+        expect(result.dayStreak).toBe(11); // Streak preserved
+        expect(result.freezes).toBe(0);    // Freeze consumed
+        expect(result.shields).toBe(2);    // Shields untouched
+    });
+
+    it('falls back to shield when no freezes', () => {
+        const prev = makeStats({ dayStreak: 10, lastPlayedDate: '2026-2-20', streakShields: 2, streakFreezes: 0 });
+        const result = computeStreak(prev, '2026-2-22', '2026-2-21');
+        expect(result.dayStreak).toBe(11);
+        expect(result.freezes).toBe(0);
+        expect(result.shields).toBe(1);   // Shield consumed
+    });
+
+    it('breaks streak when no freezes and no shields', () => {
+        const prev = makeStats({ dayStreak: 10, lastPlayedDate: '2026-2-20', streakShields: 0, streakFreezes: 0 });
+        const result = computeStreak(prev, '2026-2-22', '2026-2-21');
+        expect(result.dayStreak).toBe(1); // Streak broken
+    });
+
+    it('purchase deducts 500 XP and increments freeze count', () => {
+        const stats = makeStats({ totalXP: 1200, streakFreezes: 1 });
+        // Simulate purchaseStreakFreeze
+        const canBuy = stats.totalXP >= 500;
+        expect(canBuy).toBe(true);
+        const after = { ...stats, totalXP: stats.totalXP - 500, streakFreezes: stats.streakFreezes + 1 };
+        expect(after.totalXP).toBe(700);
+        expect(after.streakFreezes).toBe(2);
+    });
+
+    it('rejects purchase when XP insufficient', () => {
+        const stats = makeStats({ totalXP: 300, streakFreezes: 0 });
+        const canBuy = stats.totalXP >= 500;
+        expect(canBuy).toBe(false);
+    });
+
+    it('merges streakFreezes taking max', () => {
+        const local = makeStats({ streakFreezes: 2 });
+        const cloud = makeStats({ streakFreezes: 3 });
+        const merged = mergeStats(local, cloud);
+        expect(merged.streakFreezes).toBe(3);
     });
 });

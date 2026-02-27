@@ -11,6 +11,7 @@
 import { memo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, type TargetAndTransition } from 'framer-motion';
 import type { BeePhase } from '../hooks/useBeeSimulation';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface Props {
     pupilResults: (boolean | null)[];
@@ -623,6 +624,75 @@ function StageBee({ phase }: { phase: BeePhase }) {
 
 // ── Floor / atmosphere details ───────────────────────────────────────────────
 
+// ── Audience Row ──────────────────────────────────────────────────────────────
+
+const AUDIENCE_CX = [45, 85, 125, 160, 195, 235, 275];
+
+/** Audience reaction state driven by phase and lastResult */
+type AudienceReaction = 'idle' | 'gasp' | 'cheer' | 'ovation';
+
+const AUDIENCE_IDLES: TargetAndTransition[] = AUDIENCE_CX.map((_, i) => ({
+    y: [0, -0.5, 0],
+    transition: { repeat: Infinity, duration: 2 + i * 0.3, ease: 'easeInOut' as const, delay: i * 0.2 },
+}));
+
+const AUDIENCE_GASP: TargetAndTransition = {
+    y: [0, -2, 0],
+    scale: [1, 1.05, 1],
+    transition: { duration: 0.4 },
+};
+
+const AUDIENCE_CHEER: TargetAndTransition = {
+    y: [0, -3, 0, -2, 0],
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+};
+
+const AUDIENCE_OVATION: TargetAndTransition = {
+    y: [0, -4, 0, -3, 0, -4, 0],
+    scale: [1, 1.08, 1, 1.06, 1, 1.08, 1],
+    transition: { duration: 1.2, ease: 'easeInOut' as const },
+};
+
+function AudienceRow({ reaction, reducedMotion }: { reaction: AudienceReaction; reducedMotion: boolean }) {
+    return (
+        <g opacity="0.15">
+            {AUDIENCE_CX.map((cx, i) => (
+                <motion.g
+                    key={i}
+                    animate={reducedMotion ? {} :
+                        reaction === 'ovation' ? AUDIENCE_OVATION :
+                        reaction === 'cheer' ? AUDIENCE_CHEER :
+                        reaction === 'gasp' ? AUDIENCE_GASP :
+                        AUDIENCE_IDLES[i]
+                    }
+                >
+                    {/* Head */}
+                    <circle cx={cx} cy="238" r="2.5" stroke="currentColor" strokeWidth="0.8" fill="none" />
+                    {/* Body */}
+                    <line x1={cx} y1="240.5" x2={cx} y2="248" stroke="currentColor" strokeWidth="0.8" />
+                    {/* Arms — change based on reaction */}
+                    {reaction === 'cheer' || reaction === 'ovation' ? (
+                        <>
+                            <line x1={cx} y1="243" x2={cx - 3} y2="239" stroke="currentColor" strokeWidth="0.6" />
+                            <line x1={cx} y1="243" x2={cx + 3} y2="239" stroke="currentColor" strokeWidth="0.6" />
+                        </>
+                    ) : reaction === 'gasp' ? (
+                        <>
+                            <line x1={cx} y1="243" x2={cx - 2} y2="240" stroke="currentColor" strokeWidth="0.6" />
+                            <line x1={cx} y1="243" x2={cx + 2} y2="240" stroke="currentColor" strokeWidth="0.6" />
+                        </>
+                    ) : (
+                        <>
+                            <line x1={cx} y1="243" x2={cx - 3} y2="246" stroke="currentColor" strokeWidth="0.6" />
+                            <line x1={cx} y1="243" x2={cx + 3} y2="246" stroke="currentColor" strokeWidth="0.6" />
+                        </>
+                    )}
+                </motion.g>
+            ))}
+        </g>
+    );
+}
+
 function StageDecor() {
     return (
         <g>
@@ -659,6 +729,7 @@ export const BeeClassroom = memo(function BeeClassroom({
     isTyping = false,
     lastResult = null,
 }: Props) {
+    const { reducedMotion } = useReducedMotion();
     // Turn sequencing: step through NPC turns visually, then land on player
     const [displayedTurn, setDisplayedTurn] = useState(-1);
     const [revealedResults, setRevealedResults] = useState<Set<number>>(new Set());
@@ -839,7 +910,7 @@ export const BeeClassroom = memo(function BeeClassroom({
 
     return (
         <svg
-            viewBox="0 0 320 248"
+            viewBox="0 0 320 260"
             className="w-full max-w-[320px] h-auto cursor-pointer"
             style={{ color: 'var(--color-chalk)' }}
             onClick={onPronounce}
@@ -905,6 +976,9 @@ export const BeeClassroom = memo(function BeeClassroom({
                 let anim: TargetAndTransition;
                 if (!alive && !isPlayer) {
                     anim = { opacity: 0.15 };
+                } else if (reducedMotion) {
+                    // Keep positional transitions, skip personality animations
+                    anim = {};
                 } else if (isPlayer && playerFeedbackAnim === 'celebrate') {
                     anim = PUPIL_CELEBRATE;
                 } else if (isPlayer && playerFeedbackAnim === 'stumble') {
@@ -1002,6 +1076,17 @@ export const BeeClassroom = memo(function BeeClassroom({
             })}
 
             {/* "Your turn!" text when player is highlighted — removed since pronouncer bubble now says it */}
+
+            {/* Audience row — small stick figures at the bottom */}
+            <AudienceRow
+                reaction={
+                    phase === 'won' ? 'ovation'
+                        : playerFeedbackAnim === 'celebrate' ? 'cheer'
+                        : playerFeedbackAnim === 'stumble' ? 'gasp'
+                        : 'idle'
+                }
+                reducedMotion={reducedMotion}
+            />
         </svg>
     );
 });

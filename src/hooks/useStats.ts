@@ -49,6 +49,9 @@ export interface Stats {
     beeBestLevel: string;     // highest bee level played (classroom/district/state/national)
     beeWins: number;          // times player won (last one standing)
 
+    // Streak freeze — purchased with XP, consumed before shields on 1-day gap
+    streakFreezes: number;
+
     // Cosmetics for Leaderboard broadcast
     activeThemeId?: string;
     activeCostume?: string;
@@ -106,6 +109,7 @@ const EMPTY_STATS: Stats = {
     beeWordsCorrect: 0,
     beeBestLevel: '',
     beeWins: 0,
+    streakFreezes: 0,
 };
 
 /** Load from localStorage (fast, synchronous) */
@@ -218,6 +222,7 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         beeWordsCorrect: Math.max(local.beeWordsCorrect, cloud.beeWordsCorrect),
         beeBestLevel: (local.beeBestLevel || '') >= (cloud.beeBestLevel || '') ? local.beeBestLevel : cloud.beeBestLevel,
         beeWins: Math.max(local.beeWins, cloud.beeWins),
+        streakFreezes: Math.max(local.streakFreezes || 0, cloud.streakFreezes || 0),
         // Preserve cosmetics from whichever side has them
         activeThemeId: local.activeThemeId || cloud.activeThemeId,
         activeCostume: local.activeCostume || cloud.activeCostume,
@@ -279,6 +284,8 @@ export function useStats(uid: string | null) {
             let dayStreak = prev.dayStreak;
             let streakShields = prev.streakShields || 0;
 
+            let streakFreezes = prev.streakFreezes || 0;
+
             if (prev.lastPlayedDate !== todayDate) {
                 const yesterdayDate = yesterdayStr();
 
@@ -294,14 +301,21 @@ export function useStats(uid: string | null) {
                     const lastDate = new Date(lastParts[0], lastParts[1] - 1, lastParts[2]);
                     const gap = Math.round((Date.now() - lastDate.getTime()) / 86400000) - 1;
 
-                    if (gap <= 1 && streakShields > 0) {
+                    if (gap <= 1 && streakFreezes > 0) {
+                        // Consume freeze first (purchased protection)
+                        streakFreezes -= 1;
+                        dayStreak = prev.dayStreak + 1;
+                        if (dayStreak % 7 === 0) {
+                            streakShields = Math.min(3, streakShields + 1);
+                        }
+                    } else if (gap <= 1 && streakShields > 0) {
                         streakShields -= 1;
                         dayStreak = prev.dayStreak + 1; // Shield consumed! Forgive and extend.
                         if (dayStreak % 7 === 0) {
                             streakShields = Math.min(3, streakShields + 1);
                         }
                     } else {
-                        dayStreak = 1; // Streak broken (gap too large or no shields)
+                        dayStreak = 1; // Streak broken (gap too large or no protection)
                     }
                 } else {
                     dayStreak = 1; // First session ever
@@ -328,6 +342,7 @@ export function useStats(uid: string | null) {
                 sessionsPlayed: prev.sessionsPlayed + 1,
                 dayStreak,
                 streakShields,
+                streakFreezes,
                 lastPlayedDate: todayDate,
                 byType: {
                     ...prev.byType,
@@ -382,9 +397,24 @@ export function useStats(uid: string | null) {
         }));
     }, []);
 
+    /** Purchase a streak freeze for 500 XP. Returns false if insufficient XP. */
+    const purchaseStreakFreeze = useCallback((): boolean => {
+        let success = false;
+        setStats(prev => {
+            if (prev.totalXP < 500) return prev;
+            success = true;
+            return {
+                ...prev,
+                totalXP: prev.totalXP - 500,
+                streakFreezes: (prev.streakFreezes || 0) + 1,
+            };
+        });
+        return success;
+    }, []);
+
     const accuracy = stats.totalSolved > 0
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-    return { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield };
+    return { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze };
 }

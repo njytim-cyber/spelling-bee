@@ -59,7 +59,7 @@ import { useCustomLists } from './hooks/useCustomLists';
 import { CustomListsModal } from './components/CustomListsModal';
 import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
-import type { EngineItem } from './engine/domain';
+import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE } from './config';
 import { ensureAllTiers, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
@@ -68,6 +68,7 @@ import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 
 type Tab = 'game' | 'path' | 'league' | 'me';
 const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
+const GAME_CONFIG = { ...DEFAULT_GAME_CONFIG, wrongAnswerTapToDismiss: true };
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
 function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]) {
@@ -160,7 +161,7 @@ function App() {
     setQuestionTypeRaw(type);
   }, []);
 
-  const { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield } = useStats(uid);
+  const { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze } = useStats(uid);
 
   // ── Dialect (US/UK English) ──
   const [dialect, setDialectState] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
@@ -235,6 +236,7 @@ function App() {
     milestone,
     speedBonus,
     handleSwipe,
+    dismissWrongAnswer,
     timerProgress,
     dailyComplete,
     shieldBroken,
@@ -246,7 +248,7 @@ function App() {
     timedMode,
     stats.streakShields,
     consumeShield,
-    undefined, // use DEFAULT_GAME_CONFIG
+    GAME_CONFIG,
     generateFiniteSet,
     onAnswer,
     gradeConfig?.minDifficultyLevel ?? 1,
@@ -263,6 +265,18 @@ function App() {
       });
     }
   }, [shieldBroken]);
+
+  // ── Streak toast — show once per session when dayStreak > 1 ──
+  const streakToastShown = useRef(false);
+  const [streakToast, setStreakToast] = useState(false);
+  useEffect(() => {
+    if (stats.dayStreak > 1 && !streakToastShown.current) {
+      streakToastShown.current = true;
+      setStreakToast(true);
+      const t = setTimeout(() => setStreakToast(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [stats.dayStreak]);
 
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
@@ -581,11 +595,24 @@ function App() {
 
               {/* Daily streak */}
               {stats.dayStreak > 0 && (
-                <div className="mt-1 flex items-center justify-center gap-1 text-[10px] ui text-[rgb(var(--color-fg))]/25">
-                  <span>🔥 Day {stats.dayStreak}</span>
-                  {(stats.streakShields || 0) > 0 && (
-                    <span className="text-[var(--color-gold)] opacity-80" title="Streak Freeze Active">
-                      {'🛡️'.repeat(stats.streakShields)}
+                <div className="mt-1 flex flex-col items-center gap-0.5">
+                  <div className="flex items-center justify-center gap-1 text-[10px] ui text-[rgb(var(--color-fg))]/25">
+                    <span>🔥 Day {stats.dayStreak}</span>
+                    {(stats.streakShields || 0) > 0 && (
+                      <span className="text-[var(--color-gold)] opacity-80" title="Streak shields">
+                        {'🛡️'.repeat(stats.streakShields)}
+                      </span>
+                    )}
+                    {(stats.streakFreezes || 0) > 0 && (
+                      <span className="opacity-60" title={`${stats.streakFreezes} streak freeze${stats.streakFreezes !== 1 ? 's' : ''}`}>
+                        {'❄️'.repeat(Math.min(stats.streakFreezes, 3))}
+                      </span>
+                    )}
+                  </div>
+                  {/* Streak danger — show protection count when streak is notable */}
+                  {streak > 5 && (
+                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/15">
+                      {1 + (stats.streakFreezes || 0) + (stats.streakShields || 0)} miss{(1 + (stats.streakFreezes || 0) + (stats.streakShields || 0)) !== 1 ? 'es' : ''} until streak breaks
                     </span>
                   )}
                 </div>
@@ -667,6 +694,8 @@ function App() {
                         frozen={frozen}
                         highlightCorrect={isFirstQuestion}
                         showHints={totalCorrect < 4}
+                        wrongAnswer={flash === 'wrong' && !isFirstQuestion}
+                        onDismissWrong={dismissWrongAnswer}
                         onSwipe={handleSwipe}
                       />
                     </motion.div>
@@ -809,6 +838,16 @@ function App() {
           }}
           hardMode={hardMode}
           timedMode={timedMode}
+          hardestWordCount={hardestWords.length}
+          onDrillHardest={() => {
+            setDrillHardest(true);
+            setQuestionType('guided');
+            setShowSummary(false);
+            pendingTabRef.current = null;
+          }}
+          totalXP={stats.totalXP}
+          streakFreezes={stats.streakFreezes}
+          onPurchaseFreeze={purchaseStreakFreeze}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
@@ -853,6 +892,27 @@ function App() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* ── Day streak toast ── */}
+        <AnimatePresence>
+          {streakToast && (
+            <motion.div
+              key="streak-toast"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.3 }}
+              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 flex items-center gap-3"
+            >
+              <span className="text-2xl">🔥</span>
+              <div>
+                <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.dayStreak}-day streak!</div>
+                <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Keep it going</div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* ── Custom Lists Modal ── */}
         <AnimatePresence>
           {showCustomLists && (

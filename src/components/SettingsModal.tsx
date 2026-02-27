@@ -7,6 +7,7 @@ import { memo, useState, useEffect } from 'react';
 import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
 import { OfflinePacksSection } from './OfflinePacksSection';
+import { useReducedMotion, type MotionPreference } from '../hooks/useReducedMotion';
 import type { GradeLevel } from '../domains/spelling/spellingCategories';
 import { GRADE_LEVELS, gradeIcon } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
@@ -38,6 +39,7 @@ function getStoredCloudVoice(): string {
 }
 
 export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange, dialect, onDialectChange, onClose }: Props) {
+    const { preference: motionPref, setPreference: setMotionPref } = useReducedMotion();
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsVoice, setTtsVoice] = useState(getStoredVoice);
     const [ttsEngine, setTtsEngine] = useState(getStoredEngine);
@@ -166,6 +168,26 @@ export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange,
                                     {gradeIcon(g.id)}
                                 </span>
                                 <span>{g.grades}</span>
+                            </button>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Motion */}
+                <section className="mb-5">
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Motion</h4>
+                    <div className="flex gap-2">
+                        {([['system', 'System'], ['always', 'Reduce'], ['never', 'Full']] as const).map(([val, label]) => (
+                            <button
+                                key={val}
+                                onClick={() => setMotionPref(val as MotionPreference)}
+                                className={`flex-1 px-3 py-2 rounded-xl border text-sm ui transition-colors ${
+                                    motionPref === val
+                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                        : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                }`}
+                            >
+                                {label}
                             </button>
                         ))}
                     </div>

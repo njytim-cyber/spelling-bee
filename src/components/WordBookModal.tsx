@@ -11,6 +11,7 @@ import { getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words';
 import { STORAGE_KEYS } from '../config';
 import { printStudySheet } from '../utils/printStudySheet';
+import { EtymologyExplainer } from './EtymologyExplainer';
 
 const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost', 'Mastered'];
 const BOX_COLORS = [
@@ -113,7 +114,7 @@ const WordRow = memo(function WordRow({
                                     <p className="text-xs ui text-[rgb(var(--color-fg))]/60">{detail.definition}</p>
                                     <p className="text-[11px] ui text-[rgb(var(--color-fg))]/35 italic">&ldquo;{detail.exampleSentence}&rdquo;</p>
                                     {detail.etymology && (
-                                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/25">Origin: {detail.etymology}</p>
+                                        <EtymologyExplainer etymology={detail.etymology} word={detail.word} />
                                     )}
                                     <div className="flex gap-3 text-[10px] ui text-[rgb(var(--color-fg))]/30 pt-1.5 mt-1 border-t border-[rgb(var(--color-fg))]/5">
                                         <span>{record.attempts} attempt{record.attempts !== 1 ? 's' : ''}</span>

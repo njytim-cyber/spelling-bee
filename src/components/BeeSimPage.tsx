@@ -336,12 +336,13 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     <div className="flex flex-wrap justify-center gap-2">
                                         {([
                                             ['definition', 'Definition'],
-                                            ['sentence', 'Example Sentence'],
+                                            ['sentence', 'Use in a Sentence'],
                                             ['partOfSpeech', 'Part of Speech'],
                                             ['origin', 'Language of Origin'],
+                                            ['spellInSections', 'Spell in Sections'],
                                             ['repeat', 'Repeat Word'],
                                         ] as const).map(([type, label]) => {
-                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat';
+                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat' && type !== 'spellInSections';
                                             return (
                                                 <button
                                                     key={type}
@@ -371,7 +372,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                                     className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                                 >
                                                     <span className="text-xs text-[var(--color-gold)] uppercase font-bold">
-                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key}:{' '}
+                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Sections' : key}:{' '}
                                                     </span>
                                                     {value}
                                                 </motion.div>
@@ -415,6 +416,15 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                                 </div>
                                             ))}
                                         </div>
+                                    )}
+                                    {/* Pronounce Again — available during spelling phase */}
+                                    {ttsSupported && (
+                                        <button
+                                            onClick={() => requestInfo('pronounceAgain')}
+                                            className="mb-2 w-full text-center text-xs ui border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-1.5 transition-colors"
+                                        >
+                                            Pronounce Again
+                                        </button>
                                     )}
                                     <SpellingInput
                                         value={typedSpelling}

@@ -85,6 +85,8 @@ export interface GameConfig {
     /** Question-type IDs that are "finite sets" (daily, challenge).
      *  The engine will not refill the buffer for these types. */
     finiteTypeIds: string[];
+    /** When true, wrong answers require a tap to dismiss (no auto-advance) */
+    wrongAnswerTapToDismiss?: boolean;
 }
 
 export const DEFAULT_GAME_CONFIG: GameConfig = {
