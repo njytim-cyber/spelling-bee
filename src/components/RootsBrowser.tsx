@@ -8,10 +8,6 @@ import { memo, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WORD_ROOTS, type WordRoot } from '../domains/spelling/words/roots';
 
-interface Props {
-    onClose: () => void;
-}
-
 type OriginFilter = 'all' | 'Greek' | 'Latin' | 'French';
 const ORIGINS: OriginFilter[] = ['all', 'Latin', 'Greek', 'French'];
 
@@ -68,7 +64,7 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
     );
 }
 
-export const RootsBrowser = memo(function RootsBrowser({ onClose }: Props) {
+export const RootsContent = memo(function RootsContent() {
     const [filter, setFilter] = useState<OriginFilter>('all');
     const [search, setSearch] = useState('');
     const [expandedRoot, setExpandedRoot] = useState<string | null>(null);
@@ -99,73 +95,50 @@ export const RootsBrowser = memo(function RootsBrowser({ onClose }: Props) {
 
     return (
         <>
-            <motion.div
-                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={onClose}
+            {/* Search */}
+            <input
+                type="text"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                placeholder="Search roots or words..."
+                className="w-full mb-2 text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-2 text-[rgb(var(--color-fg))]/60 placeholder:text-[rgb(var(--color-fg))]/20 outline-none"
             />
-            <motion.div
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 max-h-[80vh] overflow-y-auto w-[340px]"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                transition={{ duration: 0.15 }}
-            >
-                <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-3">Word Roots</h3>
 
-                {/* Search */}
-                <input
-                    type="text"
-                    value={search}
-                    onChange={e => setSearch(e.target.value)}
-                    placeholder="Search roots or words..."
-                    className="w-full mb-2 text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-2 text-[rgb(var(--color-fg))]/60 placeholder:text-[rgb(var(--color-fg))]/20 outline-none"
-                />
+            {/* Origin filter */}
+            <div className="flex gap-1 mb-3">
+                {ORIGINS.map(o => (
+                    <button
+                        key={o}
+                        onClick={() => setFilter(o)}
+                        className={`px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
+                            filter === o
+                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                    >
+                        {o === 'all' ? `All (${WORD_ROOTS.length})` : `${o} (${originCounts[o] ?? 0})`}
+                    </button>
+                ))}
+            </div>
 
-                {/* Origin filter */}
-                <div className="flex gap-1 mb-3">
-                    {ORIGINS.map(o => (
-                        <button
-                            key={o}
-                            onClick={() => setFilter(o)}
-                            className={`px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
-                                filter === o
-                                    ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                    : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                            }`}
-                        >
-                            {o === 'all' ? `All (${WORD_ROOTS.length})` : `${o} (${originCounts[o] ?? 0})`}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Root list */}
-                <div className="mt-1">
-                    {filtered.length === 0 ? (
-                        <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
-                            No roots match this filter
-                        </div>
-                    ) : (
-                        filtered.map(root => (
-                            <RootCard
-                                key={root.root}
-                                root={root}
-                                expanded={expandedRoot === root.root}
-                                onToggle={() => setExpandedRoot(prev => prev === root.root ? null : root.root)}
-                            />
-                        ))
-                    )}
-                </div>
-
-                <button
-                    onClick={onClose}
-                    className="w-full mt-3 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                >
-                    close
-                </button>
-            </motion.div>
+            {/* Root list */}
+            <div className="mt-1">
+                {filtered.length === 0 ? (
+                    <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
+                        No roots match this filter
+                    </div>
+                ) : (
+                    filtered.map(root => (
+                        <RootCard
+                            key={root.root}
+                            root={root}
+                            expanded={expandedRoot === root.root}
+                            onToggle={() => setExpandedRoot(prev => prev === root.root ? null : root.root)}
+                        />
+                    ))
+                )}
+            </div>
         </>
     );
 });
+

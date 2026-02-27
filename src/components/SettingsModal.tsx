@@ -13,8 +13,6 @@ import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, voicesForDialect, synthesizeCloud } from '../services/cloudTts';
 
 interface Props {
-    themeMode: string;
-    onThemeModeToggle: () => void;
     grade: string;
     onGradeChange: (grade: GradeLevel) => void;
     dialect: string;
@@ -39,7 +37,7 @@ function getStoredCloudVoice(): string {
     return localStorage.getItem(STORAGE_KEYS.ttsCloudVoice) ?? '';
 }
 
-export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange, onClose }: Props) {
+export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange, dialect, onDialectChange, onClose }: Props) {
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsVoice, setTtsVoice] = useState(getStoredVoice);
     const [ttsEngine, setTtsEngine] = useState(getStoredEngine);
@@ -173,17 +171,6 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                     </div>
                 </section>
 
-                {/* Theme */}
-                <section className="mb-5">
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Theme</h4>
-                    <button
-                        onClick={onThemeModeToggle}
-                        className="w-full py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/30 transition-colors"
-                    >
-                        {themeMode === 'dark' ? '🌙 Dark Mode' : '☀️ Light Mode'} — tap to switch
-                    </button>
-                </section>
-
                 {/* Voice Engine Toggle */}
                 <section className="mb-5">
                     <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Voice Engine</h4>
@@ -241,7 +228,7 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                             className="w-full bg-transparent border border-[rgb(var(--color-fg))]/15 rounded-xl px-3 py-2 text-sm ui text-[var(--color-chalk)] focus:outline-none focus:border-[var(--color-gold)]/40"
                         >
                             {allCloudVoicesSorted.map(v => (
-                                <option key={v.id} value={v.id}>
+                                <option key={v.id} value={v.id} className="bg-[#1a1a2e] text-white">
                                     {v.label}
                                 </option>
                             ))}
@@ -258,9 +245,9 @@ export const SettingsModal = memo(function SettingsModal({ themeMode, onThemeMod
                             onChange={e => handleVoiceChange(e.target.value)}
                             className="w-full bg-transparent border border-[rgb(var(--color-fg))]/15 rounded-xl px-3 py-2 text-sm ui text-[var(--color-chalk)] focus:outline-none focus:border-[var(--color-gold)]/40"
                         >
-                            <option value="">Auto (best available)</option>
+                            <option value="" className="bg-[#1a1a2e] text-white">Auto (best available)</option>
                             {voices.map(v => (
-                                <option key={v.voiceURI} value={v.voiceURI}>
+                                <option key={v.voiceURI} value={v.voiceURI} className="bg-[#1a1a2e] text-white">
                                     {v.name} {v.localService ? '(local)' : ''}
                                 </option>
                             ))}

@@ -270,10 +270,10 @@ export function getStudyPlan(
     }
 
     // 4. Suggest bee sim for users who haven't tried it
-    const hasBeeAttempts = recordArr.some(r => r.category === 'bee-sim');
+    const hasBeeAttempts = recordArr.some(r => r.category === 'bee');
     if (totalAttempts >= 30 && !hasBeeAttempts) {
         plan.push({
-            category: 'bee-sim',
+            category: 'bee',
             label: 'Spelling Bee',
             reason: 'Practice under competition pressure',
             priority: 'explore',

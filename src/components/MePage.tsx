@@ -2,40 +2,17 @@ import { memo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { PanInfo } from 'framer-motion';
 import type { useStats } from '../hooks/useStats';
-import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievements';
 import { AchievementBadge } from './AchievementBadge';
 import { CHALK_THEMES, type ChalkTheme } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
-import type { WordRecord } from '../hooks/useWordHistory';
-import { StudyAnalyticsModal } from './StudyAnalyticsModal';
 import { SettingsModal } from './SettingsModal';
-import { WordBookModal } from './WordBookModal';
-import { RootsBrowser } from './RootsBrowser';
 import { STORAGE_KEYS } from '../config';
-import { todayStr } from '../utils/dateHelpers';
 
-type MeTab = 'grades' | 'themes' | 'topics';
+type MeTab = 'themes' | 'topics';
 const ME_TABS: { id: MeTab; label: string }[] = [
-    { id: 'grades', label: 'Grades' },
     { id: 'themes', label: 'Themes' },
     { id: 'topics', label: 'Achievements' },
-];
-
-/** Per-grade breakdown for the Grades tab */
-function tierIcon(tier: string) {
-    return SPELLING_CATEGORIES.find(c => c.id === tier)?.icon;
-}
-const GRADE_LEVELS = [
-    { label: 'Kindergarten', tier: 'tier-1', grades: 'K' },
-    { label: 'Grade 1', tier: 'tier-1', grades: '1st' },
-    { label: 'Grade 2', tier: 'tier-2', grades: '2nd' },
-    { label: 'Grade 3', tier: 'tier-2', grades: '3rd' },
-    { label: 'Grade 4', tier: 'tier-3', grades: '4th' },
-    { label: 'Grade 5', tier: 'tier-3', grades: '5th' },
-    { label: 'Grade 6', tier: 'tier-4', grades: '6th' },
-    { label: 'Grade 7', tier: 'tier-4', grades: '7th' },
-    { label: 'Grade 8+', tier: 'tier-5', grades: '8th+' },
 ];
 
 interface Props {
@@ -58,15 +35,10 @@ interface Props {
     onSendEmailLink: (email: string) => Promise<void>;
     activeBadge: string;
     onBadgeChange: (id: string) => void;
-    wordRecords?: Record<string, WordRecord>;
-    themeMode: string;
-    onThemeModeToggle: () => void;
     grade: string;
     onGradeChange: (grade: import('../domains/spelling/spellingCategories').GradeLevel) => void;
     dialect: string;
     onDialectChange: (d: import('../domains/spelling/words/types').Dialect) => void;
-    onPracticeCategory?: (category: string) => void;
-    reviewDueCount?: number;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -128,13 +100,10 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, wordRecords, themeMode, onThemeModeToggle, grade, onGradeChange, dialect, onDialectChange, onPracticeCategory, reviewDueCount }: Props) {
-    const [meTab, setMeTab] = useState<MeTab>('grades');
+export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, grade, onGradeChange, dialect, onDialectChange }: Props) {
+    const [meTab, setMeTab] = useState<MeTab>('themes');
     const [showRanks, setShowRanks] = useState(false);
-    const [showAnalytics, setShowAnalytics] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
-    const [showWordBook, setShowWordBook] = useState(false);
-    const [showRoots, setShowRoots] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
@@ -143,11 +112,6 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
     const [emailSent, setEmailSent] = useState(false);
     const { rank, nextRank, progress } = getRank(stats.totalXP);
     const mastery = !nextRank ? getMasteryInfo(stats.totalXP) : null;
-
-    // Today's date string to check daily freshness
-    const today = todayStr();
-    const dailyDoneToday = stats.lastDailyDate === today && stats.todayDailySolved > 0;
-    const dailyAcc = dailyDoneToday ? Math.round((stats.todayDailyCorrect / stats.todayDailySolved) * 100) : null;
 
     // Swipe between sub-tabs
     const handleMeTabSwipe = useCallback((_: unknown, info: PanInfo) => {
@@ -278,6 +242,67 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 );
             })()}
 
+            {/* Rank + XP header (above tabs — identity content) */}
+            <motion.div
+                className="text-center mb-4"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+            >
+                <div className="text-4xl mb-1">{rank.emoji}</div>
+                <button
+                    onClick={() => setShowRanks(true)}
+                    className="text-xl chalk text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
+                >
+                    {rank.name}
+                </button>
+                {nextRank && (
+                    <div className="mt-2 w-44 mx-auto">
+                        <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                            <motion.div
+                                className="h-full rounded-full bg-[var(--color-gold)]"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${Math.round(progress * 100)}%` }}
+                                transition={{ duration: 0.8, ease: 'easeOut' }}
+                            />
+                        </div>
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50 mt-1">
+                            {stats.totalXP.toLocaleString()} / {nextRank.xp.toLocaleString()} → {nextRank.name}
+                        </div>
+                    </div>
+                )}
+                {!nextRank && mastery && (
+                    <div className="mt-2 w-48 mx-auto">
+                        <div className="flex items-center justify-between mb-1">
+                            <span className="text-[10px] ui font-semibold text-[var(--color-skull)]">✨ Mastery Lv. {mastery.level}</span>
+                            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{stats.totalXP.toLocaleString()} XP</span>
+                        </div>
+                        <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                            <motion.div
+                                className="h-full rounded-full bg-[var(--color-skull)]"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${Math.round(mastery.progress * 100)}%` }}
+                                transition={{ duration: 0.8, ease: 'easeOut' }}
+                            />
+                        </div>
+                    </div>
+                )}
+                {/* Quick stats */}
+                <div className="flex justify-center gap-5 mt-3">
+                    <div className="text-center">
+                        <div className="text-sm chalk text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">streak</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-sm chalk text-[var(--color-correct)]">{accuracy}%</div>
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">accuracy</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-sm chalk text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">solved</div>
+                    </div>
+                </div>
+            </motion.div>
+
             {/* ── Sub-tab bar ── */}
             <div className="flex items-center gap-1 mb-4 relative">
                 {ME_TABS.map(tab => {
@@ -311,149 +336,6 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 transition={{ duration: 0.15, ease: 'easeOut' }}
             >
                 <div className="flex flex-col items-center">
-
-            {/* ═══════ GRADES TAB ═══════ */}
-            {meTab === 'grades' && (
-                <>
-                    {/* Rank + XP header */}
-                    <motion.div
-                        className="text-center mb-6"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                    >
-                        <div className="text-4xl mb-1">{rank.emoji}</div>
-                        <button
-                            onClick={() => setShowRanks(true)}
-                            className="text-xl chalk text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
-                        >
-                            {rank.name}
-                        </button>
-                        {nextRank && (
-                            <div className="mt-2 w-44 mx-auto">
-                                <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
-                                    <motion.div
-                                        className="h-full rounded-full bg-[var(--color-gold)]"
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${Math.round(progress * 100)}%` }}
-                                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                                    />
-                                </div>
-                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50 mt-1">
-                                    {stats.totalXP.toLocaleString()} / {nextRank.xp.toLocaleString()} → {nextRank.name}
-                                </div>
-                            </div>
-                        )}
-                        {!nextRank && mastery && (
-                            <div className="mt-2 w-48 mx-auto">
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="text-[10px] ui font-semibold text-[var(--color-skull)]">✨ Mastery Lv. {mastery.level}</span>
-                                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{stats.totalXP.toLocaleString()} XP</span>
-                                </div>
-                                <div className="h-1.5 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
-                                    <motion.div
-                                        className="h-full rounded-full bg-[var(--color-skull)]"
-                                        initial={{ width: 0 }}
-                                        animate={{ width: `${Math.round(mastery.progress * 100)}%` }}
-                                        transition={{ duration: 0.8, ease: 'easeOut' }}
-                                    />
-                                </div>
-                            </div>
-                        )}
-                    </motion.div>
-
-                    {/* Summary stats row */}
-                    <div className="flex gap-5 mb-6">
-                        <div className="text-center">
-                            <div className="text-xl chalk text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50">🔥 streak</div>
-                        </div>
-                        <button className="text-center hover:opacity-80 transition-opacity" onClick={() => wordRecords && setShowAnalytics(true)}>
-                            <div className="text-xl chalk text-[var(--color-correct)]">{accuracy}%</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">🎯 accuracy</div>
-                        </button>
-                        <div className="text-center">
-                            <div className="text-xl chalk text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">✅ solved</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-xl chalk text-[var(--color-gold)]">{dailyAcc !== null ? `${dailyAcc}%` : '-'}</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/50">📅 daily</div>
-                        </div>
-                    </div>
-
-                    {/* Study tools */}
-                    <div className="flex gap-2 mb-4">
-                        <button
-                            onClick={() => wordRecords && setShowWordBook(true)}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.04] border border-[rgb(var(--color-fg))]/8 text-xs ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
-                        >
-                            <span className="text-sm">📖</span> Word Book
-                        </button>
-                        <button
-                            onClick={() => setShowRoots(true)}
-                            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.04] border border-[rgb(var(--color-fg))]/8 text-xs ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
-                        >
-                            <span className="text-sm">🌳</span> Word Roots
-                        </button>
-                    </div>
-
-                    {/* Per-grade breakdown */}
-                    <div className="w-full max-w-sm space-y-2">
-                        {GRADE_LEVELS.map(g => {
-                            const ts = stats.byType[g.tier] ?? { solved: 0, correct: 0 };
-                            const pct = ts.solved > 0 ? Math.round((ts.correct / ts.solved) * 100) : 0;
-                            const hasData = ts.solved > 0;
-                            return (
-                                <div key={g.label} className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03]">
-                                    <span className="w-8 flex justify-center text-[rgb(var(--color-fg))]/50">{tierIcon(g.tier)}</span>
-                                    <div className="flex-1 min-w-0">
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm ui text-[rgb(var(--color-fg))]/70 font-medium">{g.label}</span>
-                                            <span className={`text-sm ui font-semibold ${!hasData ? 'text-[rgb(var(--color-fg))]/20' :
-                                                pct >= 80 ? 'text-[var(--color-correct)]' :
-                                                    pct >= 50 ? 'text-[var(--color-gold)]' :
-                                                        'text-[rgb(var(--color-fg))]/50'
-                                                }`}>
-                                                {hasData ? `${pct}%` : '—'}
-                                            </span>
-                                        </div>
-                                        {hasData && (
-                                            <div className="mt-1 h-1 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
-                                                <div
-                                                    className={`h-full rounded-full transition-all ${pct >= 80 ? 'bg-[var(--color-correct)]' :
-                                                        pct >= 50 ? 'bg-[var(--color-gold)]' : 'bg-[rgb(var(--color-fg))]/30'
-                                                        }`}
-                                                    style={{ width: `${pct}%` }}
-                                                />
-                                            </div>
-                                        )}
-                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-0.5">
-                                            {hasData ? `${ts.correct}/${ts.solved} correct` : 'not started'}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    <button
-                        onClick={() => {
-                            const prompts = [
-                                `You've earned ${stats.totalXP.toLocaleString()} points! Are you sure you want to start fresh? 🥺`,
-                                `Bee Buddy will miss your ${stats.bestStreak}-streak record! Reset anyway? 🤔`,
-                                `${stats.totalSolved} words spelled and counting… wipe it all? 😱`,
-                                'A fresh start can be beautiful! Ready to begin again? 🌱',
-                                'Your spelling journey so far has been amazing! Really reset? ✨',
-                                'Even superheroes get a fresh origin story! Reset? 🦸',
-                            ];
-                            setResetConfirm(prompts[Math.floor(Math.random() * prompts.length)]);
-                        }}
-                        className="text-sm ui text-[rgb(var(--color-fg))]/35 mt-10 hover:text-[rgb(var(--color-fg))]/50 transition-colors uppercase tracking-widest"
-                    >
-                        RESET STATS
-                    </button>
-                </>
-            )}
 
             {/* ═══════ TOPICS TAB ═══════ */}
             {meTab === 'topics' && (
@@ -629,6 +511,24 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 </div>
             </motion.div>
 
+            {/* Reset stats */}
+            <button
+                onClick={() => {
+                    const prompts = [
+                        `You've earned ${stats.totalXP.toLocaleString()} points! Are you sure you want to start fresh? 🥺`,
+                        `Bee Buddy will miss your ${stats.bestStreak}-streak record! Reset anyway? 🤔`,
+                        `${stats.totalSolved} words spelled and counting… wipe it all? 😱`,
+                        'A fresh start can be beautiful! Ready to begin again? 🌱',
+                        'Your spelling journey so far has been amazing! Really reset? ✨',
+                        'Even superheroes get a fresh origin story! Reset? 🦸',
+                    ];
+                    setResetConfirm(prompts[Math.floor(Math.random() * prompts.length)]);
+                }}
+                className="text-[10px] ui text-[rgb(var(--color-fg))]/20 mt-4 hover:text-[rgb(var(--color-fg))]/40 transition-colors uppercase tracking-widest"
+            >
+                reset stats
+            </button>
+
             {/* Rank list modal */}
             <AnimatePresence>
                 {showRanks && (
@@ -731,41 +631,10 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 )}
             </AnimatePresence>
 
-            {/* Study Analytics modal */}
-            <AnimatePresence>
-                {showAnalytics && wordRecords && (
-                    <StudyAnalyticsModal
-                        records={wordRecords}
-                        onClose={() => setShowAnalytics(false)}
-                        onPractice={onPracticeCategory ? (cat) => { setShowAnalytics(false); onPracticeCategory(cat); } : undefined}
-                        reviewDueCount={reviewDueCount}
-                    />
-                )}
-            </AnimatePresence>
-
-            {/* Word Book modal */}
-            <AnimatePresence>
-                {showWordBook && wordRecords && (
-                    <WordBookModal
-                        records={wordRecords}
-                        onClose={() => setShowWordBook(false)}
-                    />
-                )}
-            </AnimatePresence>
-
-            {/* Roots Browser modal */}
-            <AnimatePresence>
-                {showRoots && (
-                    <RootsBrowser onClose={() => setShowRoots(false)} />
-                )}
-            </AnimatePresence>
-
             {/* Settings modal */}
             <AnimatePresence>
                 {showSettings && (
                     <SettingsModal
-                        themeMode={themeMode}
-                        onThemeModeToggle={onThemeModeToggle}
                         grade={grade}
                         onGradeChange={onGradeChange}
                         dialect={dialect}
@@ -776,7 +645,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             </AnimatePresence>
 
             {/* Version */}
-            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-8 tracking-widest">
+            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-4 tracking-widest">
                 v{__APP_VERSION__}
             </div>
         </div>

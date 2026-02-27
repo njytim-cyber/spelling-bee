@@ -69,9 +69,9 @@ export const FIRESTORE = {
 // ── Bottom navigation tabs ────────────────────────────────────────────────────
 
 export const NAV_TABS = [
-    { id: 'game' as const, label: "Spell!", ariaLabel: 'Play' },
-    { id: 'bee' as const, label: 'Bee', ariaLabel: 'Spelling Bee' },
-    { id: 'league' as const, label: 'Leaderboard', ariaLabel: 'Leaderboard' },
+    { id: 'game' as const, label: "Freeplay!", ariaLabel: 'Play' },
+    { id: 'path' as const, label: 'Path', ariaLabel: 'Study Dashboard' },
+    { id: 'league' as const, label: 'League', ariaLabel: 'Leaderboard' },
     { id: 'me' as const, label: 'Me', ariaLabel: 'Profile' },
 ] as const;
 

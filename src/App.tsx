@@ -48,6 +48,7 @@ import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
 import { generateEtymologyItem } from './domains/spelling/etymologyGenerator';
 import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
+import { PathPage } from './components/PathPage';
 import { BeeSimPage } from './components/BeeSimPage';
 import { WrittenTestPage } from './components/WrittenTestPage';
 import { MultiplayerLobby } from './components/MultiplayerLobby';
@@ -64,8 +65,8 @@ import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 
-type Tab = 'game' | 'bee' | 'league' | 'me';
-const TAB_ORDER: Tab[] = ['game', 'bee', 'league', 'me'];
+type Tab = 'game' | 'path' | 'league' | 'me';
+const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
 function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]) {
@@ -722,15 +723,15 @@ function App() {
         )}
 
         {/* Non-game tabs (no wrapper — each page scrolls independently) */}
-        {activeTab === 'bee' && (
+        {activeTab === 'path' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <BeeSimPage
-              onExit={() => setActiveTab('game')}
-              onAnswer={(word, correct, ms) => {
-                recordAttempt(word, 'bee', correct, ms);
+            <PathPage
+              records={wordRecords}
+              reviewDueCount={reviewQueue.length}
+              onPractice={(cat) => {
+                setQuestionType(cat as QuestionType);
+                setActiveTab('game');
               }}
-              category={lastCategory}
-              hardMode={hardMode}
             />
           </motion.div>
         )}
@@ -763,18 +764,10 @@ function App() {
               onSendEmailLink={sendEmailLink}
               activeBadge={stats.activeBadgeId || ''}
               onBadgeChange={updateBadge}
-              wordRecords={wordRecords}
-              themeMode={themeMode}
-              onThemeModeToggle={toggleThemeMode}
               grade={grade as string}
               onGradeChange={handleGradeSelect}
               dialect={dialect}
               onDialectChange={handleDialectChange}
-              onPracticeCategory={(cat) => {
-                setQuestionType(cat as QuestionType);
-                setActiveTab('game');
-              }}
-              reviewDueCount={reviewQueue.length}
             /></Suspense>
           </motion.div>
         )}

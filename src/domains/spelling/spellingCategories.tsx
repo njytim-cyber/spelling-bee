@@ -488,6 +488,14 @@ const iWotcThree = I(<>
     <path d="M8 16h8 M9 19h6" />
 </>);
 
+// Bee Sim — microphone (spelling bee stage)
+const iBeeSim = I(<>
+    <path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z" />
+    <path d="M19 11a7 7 0 0 1-14 0" />
+    <line x1="12" y1="18" x2="12" y2="23" />
+    <line x1="8" y1="23" x2="16" y2="23" />
+</>);
+
 // Written Test — clipboard with checklist
 const iWrittenTest = I(<>
     <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -587,6 +595,7 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'wotc-two', icon: iWotcTwo, label: 'Two Bee', group: 'competition' },
     { id: 'wotc-three', icon: iWotcThree, label: 'Three Bee', group: 'competition' },
     { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'competition' },
+    { id: 'bee', icon: iBeeSim, label: 'Bee Sim', group: 'competition' },
     // Origins (by etymology / language of origin)
     { id: 'origin-latin', icon: iOriginLatin, label: 'Latin', group: 'origins' },
     { id: 'origin-greek', icon: iOriginGreek, label: 'Greek', group: 'origins' },

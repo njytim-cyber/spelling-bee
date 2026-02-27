@@ -10,14 +10,19 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'grades' | 'themes' | 'origins';
+type Tab = 'grades' | 'themes' | 'compete' | 'origins';
 
 const GRADE_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
-const ORIGIN_GROUPS: SpellingGroup[] = ['competition', 'origins'];
+const ORIGIN_GROUPS: SpellingGroup[] = ['origins'];
 
-const TABS: Tab[] = ['grades', 'themes', 'origins'];
-const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', themes: 'Themes', origins: 'Competition' };
+/** Competition word-list categories (swipe mode — same game, different word pool) */
+const COMP_WORD_IDS: SpellingCategory[] = ['wotc-one', 'wotc-two', 'wotc-three'];
+/** Competition game-mode categories (different UI entirely) */
+const COMP_MODE_IDS: SpellingCategory[] = ['bee', 'written-test'];
+
+const TABS: Tab[] = ['grades', 'themes', 'compete', 'origins'];
+const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', themes: 'Themes', compete: 'Compete', origins: 'Origins' };
 const SWIPE_THRESHOLD = 50;
 
 export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
@@ -28,6 +33,9 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
     const themeGroups = useMemo(() => THEME_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const originGroups = useMemo(() => ORIGIN_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
 
+    const compWords = useMemo(() => SPELLING_CATEGORIES.filter(t => COMP_WORD_IDS.includes(t.id)), []);
+    const compModes = useMemo(() => SPELLING_CATEGORIES.filter(t => COMP_MODE_IDS.includes(t.id)), []);
+
     const currentEntry = SPELLING_CATEGORIES.find(t => t.id === current);
 
     const handleSwipe = useCallback((_: unknown, info: PanInfo) => {
@@ -35,6 +43,32 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
         if (info.offset.x < -SWIPE_THRESHOLD && idx < TABS.length - 1) setTab(TABS[idx + 1]);
         else if (info.offset.x > SWIPE_THRESHOLD && idx > 0) setTab(TABS[idx - 1]);
     }, [tab]);
+
+    function renderItem(t: (typeof SPELLING_CATEGORIES)[number]) {
+        return (
+            <motion.button
+                key={t.id}
+                onClick={() => { onChange(t.id); setOpen(false); }}
+                className={`flex flex-col items-center gap-1 py-2 px-1 rounded-xl transition-colors ${t.id === current
+                    ? 'bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/40'
+                    : 'border border-transparent active:bg-[var(--color-surface)]'
+                    }`}
+                whileTap={{ scale: 0.92 }}
+            >
+                <div className={`h-8 flex items-center justify-center ${t.id === current ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70'}`}>
+                    {t.icon}
+                </div>
+                <span className={`text-[10px] ui ${t.id === current ? 'text-[var(--color-gold)]/80' : 'text-[rgb(var(--color-fg))]/40'} relative`}>
+                    {t.label}
+                    {t.id === 'review' && reviewQueueCount != null && reviewQueueCount > 0 && (
+                        <span className="absolute -top-2 -right-3 min-w-[14px] h-[14px] flex items-center justify-center rounded-full bg-[var(--color-streak-fire)] text-white text-[8px] ui font-bold px-0.5">
+                            {reviewQueueCount > 99 ? '99+' : reviewQueueCount}
+                        </span>
+                    )}
+                </span>
+            </motion.button>
+        );
+    }
 
     function renderGrid(groups: SpellingGroup[]) {
         return groups.map(group => {
@@ -45,33 +79,37 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                         {SPELLING_GROUP_LABELS[group]}
                     </div>
                     <div className="grid grid-cols-3 gap-2">
-                        {items.map(t => (
-                            <motion.button
-                                key={t.id}
-                                onClick={() => { onChange(t.id); setOpen(false); }}
-                                className={`flex flex-col items-center gap-1 py-2 px-1 rounded-xl transition-colors ${t.id === current
-                                    ? 'bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/40'
-                                    : 'border border-transparent active:bg-[var(--color-surface)]'
-                                    }`}
-                                whileTap={{ scale: 0.92 }}
-                            >
-                                <div className={`h-8 flex items-center justify-center ${t.id === current ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70'}`}>
-                                    {t.icon}
-                                </div>
-                                <span className={`text-[10px] ui ${t.id === current ? 'text-[var(--color-gold)]/80' : 'text-[rgb(var(--color-fg))]/40'} relative`}>
-                                    {t.label}
-                                    {t.id === 'review' && reviewQueueCount != null && reviewQueueCount > 0 && (
-                                        <span className="absolute -top-2 -right-3 min-w-[14px] h-[14px] flex items-center justify-center rounded-full bg-[var(--color-streak-fire)] text-white text-[8px] ui font-bold px-0.5">
-                                            {reviewQueueCount > 99 ? '99+' : reviewQueueCount}
-                                        </span>
-                                    )}
-                                </span>
-                            </motion.button>
-                        ))}
+                        {items.map(renderItem)}
                     </div>
                 </div>
             );
         });
+    }
+
+    function renderCompete() {
+        return (
+            <>
+                {/* Word lists — same swipe game, different word pools */}
+                <div className="mb-3">
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-2 px-1">
+                        Word Lists
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                        {compWords.map(renderItem)}
+                    </div>
+                </div>
+
+                {/* Game modes — different UI experience */}
+                <div className="mb-3 last:mb-0">
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-2 px-1">
+                        Simulation Modes
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                        {compModes.map(renderItem)}
+                    </div>
+                </div>
+            </>
+        );
     }
 
     return (
@@ -145,7 +183,10 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             exit={{ opacity: 0, x: -30 }}
                                             transition={{ duration: 0.15 }}
                                         >
-                                            {tab === 'grades' ? renderGrid(gradeGroups) : tab === 'themes' ? renderGrid(themeGroups) : renderGrid(originGroups)}
+                                            {tab === 'grades' ? renderGrid(gradeGroups)
+                                                : tab === 'themes' ? renderGrid(themeGroups)
+                                                : tab === 'compete' ? renderCompete()
+                                                : renderGrid(originGroups)}
                                         </motion.div>
                                     </AnimatePresence>
                                 </motion.div>

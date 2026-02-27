@@ -7,16 +7,10 @@
 import { memo, useState, useMemo, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
-import { ModalShell } from './ModalShell';
 import { getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words';
 import { STORAGE_KEYS } from '../config';
 import { printStudySheet } from '../utils/printStudySheet';
-
-interface Props {
-    records: Record<string, WordRecord>;
-    onClose: () => void;
-}
 
 const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost', 'Mastered'];
 const BOX_COLORS = [
@@ -133,7 +127,7 @@ const WordRow = memo(function WordRow({
     );
 });
 
-export const WordBookModal = memo(function WordBookModal({ records, onClose }: Props) {
+export const WordBookContent = memo(function WordBookContent({ records }: { records: Record<string, WordRecord> }) {
     const [boxFilter, setBoxFilter] = useState<number | null>(null);
     const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
     const [expandedWord, setExpandedWord] = useState<string | null>(null);
@@ -177,109 +171,102 @@ export const WordBookModal = memo(function WordBookModal({ records, onClose }: P
         setExpandedWord(prev => prev === word ? null : word);
     }, []);
 
-    return (
-        <ModalShell onClose={onClose}>
-                <div className="flex items-center justify-between mb-3">
-                    <div className="w-12" />
-                    <h3 className="text-lg chalk text-[var(--color-gold)] text-center">Word Book</h3>
-                    {filteredWords.length > 0 ? (
-                        <button
-                            onClick={() => printStudySheet('Spelling Bee Study Sheet', filteredWords, wordMap)}
-                            className="w-12 text-right text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                        >
-                            Print
-                        </button>
-                    ) : <div className="w-12" />}
-                </div>
+    if (totalWords === 0) {
+        return (
+            <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">
+                No words yet
+            </div>
+        );
+    }
 
-                {totalWords === 0 ? (
-                    <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">
-                        No words yet
+    return (
+        <>
+            {/* Print */}
+            {filteredWords.length > 0 && (
+                <div className="flex justify-end mb-2">
+                    <button
+                        onClick={() => printStudySheet('Spelling Bee Study Sheet', filteredWords, wordMap)}
+                        className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                    >
+                        Print
+                    </button>
+                </div>
+            )}
+
+            {/* Summary */}
+            <div className="flex justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
+                <span>{totalWords} word{totalWords !== 1 ? 's' : ''}</span>
+                <span>{masteredWords} mastered</span>
+            </div>
+
+            {/* Box filter chips */}
+            <div className="flex gap-1 overflow-x-auto mb-2 pb-1 scrollbar-none">
+                <button
+                    onClick={() => setBoxFilter(null)}
+                    className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === null
+                            ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                            : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                >
+                    All ({totalWords})
+                </button>
+                {BOX_LABELS.map((label, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setBoxFilter(boxFilter === i ? null : i)}
+                        className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === i
+                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                            }`}
+                    >
+                        {label} ({boxCounts[i]})
+                    </button>
+                ))}
+            </div>
+
+            {/* Category filter */}
+            {categories.length > 1 && (
+                <select
+                    value={categoryFilter ?? ''}
+                    onChange={e => setCategoryFilter(e.target.value || null)}
+                    className="w-full mb-3 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
+                >
+                    <option value="" className="bg-[#1a1a2e] text-white">All categories</option>
+                    {categories.map(c => (
+                        <option key={c} value={c} className="bg-[#1a1a2e] text-white">{c}</option>
+                    ))}
+                </select>
+            )}
+
+            {/* Word list */}
+            <div className="mt-1">
+                {filteredWords.length === 0 ? (
+                    <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
+                        No words match this filter
                     </div>
                 ) : (
                     <>
-                        {/* Summary */}
-                        <div className="flex justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
-                            <span>{totalWords} word{totalWords !== 1 ? 's' : ''}</span>
-                            <span>{masteredWords} mastered</span>
-                        </div>
-
-                        {/* Box filter chips */}
-                        <div className="flex gap-1 overflow-x-auto mb-2 pb-1 scrollbar-none">
+                        {filteredWords.slice(0, displayLimit).map(record => (
+                            <WordRow
+                                key={record.word}
+                                record={record}
+                                detail={wordMap.get(record.word)}
+                                expanded={expandedWord === record.word}
+                                onToggle={() => toggleWord(record.word)}
+                            />
+                        ))}
+                        {displayLimit < filteredWords.length && (
                             <button
-                                onClick={() => setBoxFilter(null)}
-                                className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === null
-                                        ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                                    }`}
+                                onClick={() => setDisplayLimit(l => l + 50)}
+                                className="w-full py-2 mt-1 text-[11px] ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
                             >
-                                All ({totalWords})
+                                Show {Math.min(50, filteredWords.length - displayLimit)} more...
                             </button>
-                            {BOX_LABELS.map((label, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setBoxFilter(boxFilter === i ? null : i)}
-                                    className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === i
-                                            ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                            : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                                        }`}
-                                >
-                                    {label} ({boxCounts[i]})
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Category filter */}
-                        {categories.length > 1 && (
-                            <select
-                                value={categoryFilter ?? ''}
-                                onChange={e => setCategoryFilter(e.target.value || null)}
-                                className="w-full mb-3 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
-                            >
-                                <option value="">All categories</option>
-                                {categories.map(c => (
-                                    <option key={c} value={c}>{c}</option>
-                                ))}
-                            </select>
                         )}
-
-                        {/* Word list */}
-                        <div className="mt-1">
-                            {filteredWords.length === 0 ? (
-                                <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
-                                    No words match this filter
-                                </div>
-                            ) : (
-                                <>
-                                    {filteredWords.slice(0, displayLimit).map(record => (
-                                        <WordRow
-                                            key={record.word}
-                                            record={record}
-                                            detail={wordMap.get(record.word)}
-                                            expanded={expandedWord === record.word}
-                                            onToggle={() => toggleWord(record.word)}
-                                        />
-                                    ))}
-                                    {displayLimit < filteredWords.length && (
-                                        <button
-                                            onClick={() => setDisplayLimit(l => l + 50)}
-                                            className="w-full py-2 mt-1 text-[11px] ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
-                                        >
-                                            Show {Math.min(50, filteredWords.length - displayLimit)} more...
-                                        </button>
-                                    )}
-                                </>
-                            )}
-                        </div>
                     </>
                 )}
-
-                <button
-                    onClick={onClose}
-                    className="w-full mt-3 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                >
-                    close
-                </button>
-        </ModalShell>
+            </div>
+        </>
     );
 });
+
