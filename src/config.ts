@@ -71,7 +71,7 @@ export const FIRESTORE = {
 export const NAV_TABS = [
     { id: 'game' as const, label: "Freeplay!", ariaLabel: 'Play' },
     { id: 'path' as const, label: 'Path', ariaLabel: 'Study Dashboard' },
-    { id: 'league' as const, label: 'League', ariaLabel: 'Leaderboard' },
+    { id: 'league' as const, label: 'Compete', ariaLabel: 'Compete' },
     { id: 'me' as const, label: 'Me', ariaLabel: 'Profile' },
 ] as const;
 

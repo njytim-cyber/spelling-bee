@@ -45,6 +45,7 @@ export type SpellingCategory =
     | 'origin-latin' | 'origin-greek' | 'origin-french' | 'origin-german' | 'origin-other'
     | 'wotc-one' | 'wotc-two' | 'wotc-three'
     | 'written-test'
+    | 'guided'
     | 'roots'
     | 'etymology'
     | 'custom';
@@ -496,6 +497,12 @@ const iBeeSim = I(<>
     <line x1="8" y1="23" x2="16" y2="23" />
 </>);
 
+// Guided Spelling — pencil writing letters
+const iGuided = I(<>
+    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+    <path d="M15 5l4 4" />
+</>);
+
 // Written Test — clipboard with checklist
 const iWrittenTest = I(<>
     <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -594,6 +601,7 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'wotc-one', icon: iWotcOne, label: 'One Bee', group: 'competition' },
     { id: 'wotc-two', icon: iWotcTwo, label: 'Two Bee', group: 'competition' },
     { id: 'wotc-three', icon: iWotcThree, label: 'Three Bee', group: 'competition' },
+    { id: 'guided', icon: iGuided, label: 'Guided Spell', group: 'competition' },
     { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'competition' },
     { id: 'bee', icon: iBeeSim, label: 'Bee Sim', group: 'competition' },
     // Origins (by etymology / language of origin)

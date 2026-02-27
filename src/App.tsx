@@ -51,6 +51,7 @@ import { useWordHistory } from './hooks/useWordHistory';
 import { PathPage } from './components/PathPage';
 import { BeeSimPage } from './components/BeeSimPage';
 import { WrittenTestPage } from './components/WrittenTestPage';
+import { GuidedSpellingPage } from './components/GuidedSpellingPage';
 import { MultiplayerLobby } from './components/MultiplayerLobby';
 import { MultiplayerMatch } from './components/MultiplayerMatch';
 import { useMultiplayerRoom } from './hooks/useMultiplayerRoom';
@@ -632,6 +633,15 @@ function App() {
                   category={lastCategory}
                   hardMode={hardMode}
                 />
+              ) : questionType === 'guided' ? (
+                <GuidedSpellingPage
+                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                  onAnswer={(word, correct, ms) => {
+                    recordAttempt(word, 'guided', correct, ms);
+                  }}
+                  category={lastCategory}
+                  hardMode={hardMode}
+                />
               ) : questionType === 'written-test' ? (
                 <WrittenTestPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
@@ -738,7 +748,7 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 

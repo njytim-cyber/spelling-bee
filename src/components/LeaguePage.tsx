@@ -5,7 +5,6 @@ import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
-import { todayStr } from '../utils/dateHelpers';
 
 interface LeaderboardEntry {
     uid: string;
@@ -19,8 +18,6 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
-type LeagueTab = 'score' | 'daily';
-
 interface Props {
     userXP: number;
     userStreak: number;
@@ -29,14 +26,13 @@ interface Props {
     activeThemeId: string;
     activeCostume: string;
     onOpenMultiplayer?: () => void;
+    onOpenBee?: () => void;
+    onOpenGuided?: () => void;
 }
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer }: Props) {
-    const [tab, setTab] = useState<LeagueTab>('score');
+export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenGuided }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
-    const [dailyEntries, setDailyEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
-    const [dailyLoading, setDailyLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
     const [pingCooldown, setPingCooldown] = useState(false);
     const [pingSuccess, setPingSuccess] = useState('');
@@ -71,7 +67,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 }
                 const name = selectedPlayer.displayName;
                 setSelectedPlayer(null);
-                setPingSuccess(`Pinged ${name}! 👋`);
+                setPingSuccess(`Pinged ${name}!`);
                 pingSuccessTimer.current = setTimeout(() => setPingSuccess(''), 3000);
             } catch {
                 setSelectedPlayer(null);
@@ -108,35 +104,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
         return unsub;
     }, []);
 
-    // ── Daily leaderboard query ──
-    useEffect(() => {
-        const todayDate = todayStr();
-        const q = query(
-            collection(db, 'users'),
-            where('lastDailyDate', '==', todayDate),
-            where('todayDailyCorrect', '>', 0),
-            orderBy('todayDailyCorrect', 'desc'),
-            limit(20),
-        );
-        const unsub = onSnapshot(q, (snap) => {
-            const data: LeaderboardEntry[] = snap.docs.map(d => ({
-                uid: d.id,
-                displayName: d.data().displayName || 'Anonymous',
-                totalXP: d.data().todayDailyCorrect || 0,  // repurpose totalXP field for display
-                bestStreak: d.data().todayDailySolved || 0,
-                activeThemeId: d.data().activeThemeId || 'classic',
-                activeCostume: d.data().activeCostume || '',
-                activeBadgeId: d.data().activeBadgeId || '',
-            }));
-            setDailyEntries(data);
-            setDailyLoading(false);
-        }, (err) => {
-            console.warn('Daily leaderboard query failed:', err);
-            setDailyLoading(false);
-        });
-        return unsub;
-    }, []);
-
     // ── Build score board with current user injected ──
     const scoreBoard = (() => {
         let list = [...entries];
@@ -160,9 +127,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
 
-    const isLoading = tab === 'score' ? loading : dailyLoading;
-    const board = tab === 'score' ? scoreBoard : dailyEntries;
-
     return (
         <div className="flex-1 flex flex-col items-center px-4 pt-[calc(env(safe-area-inset-top,16px)+40px)] pb-24 overflow-y-auto">
             {/* Header */}
@@ -171,140 +135,137 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <h2 className="text-3xl chalk text-[var(--color-gold)] mb-1">Leaderboard</h2>
-                <p className="text-xs ui text-[rgb(var(--color-fg))]/50">Global leaderboard</p>
-                {onOpenMultiplayer && (
-                    <button
-                        onClick={onOpenMultiplayer}
-                        className="mt-2 px-4 py-2 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-xs ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                    >
-                        ⚔️ 1v1 Match
-                    </button>
-                )}
+                <h2 className="text-3xl chalk text-[var(--color-gold)] mb-3">Compete</h2>
             </motion.div>
 
-            {/* Tab Toggle */}
-            <div className="flex gap-1 mb-4 p-1 bg-[rgb(var(--color-fg))]/5 rounded-xl w-full max-w-xs">
-                <button
-                    onClick={() => setTab('score')}
-                    className={`flex-1 py-2 rounded-lg text-xs ui font-semibold transition-all duration-200 ${tab === 'score'
-                        ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] shadow-sm'
-                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                        }`}
-                >
-                    ⚡ Score
-                </button>
-                <button
-                    onClick={() => setTab('daily')}
-                    className={`flex-1 py-2 rounded-lg text-xs ui font-semibold transition-all duration-200 ${tab === 'daily'
-                        ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] shadow-sm'
-                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                        }`}
-                >
-                    📅 Daily
-                </button>
+            {/* Competition mode buttons */}
+            <div className="w-full max-w-sm space-y-2 mb-6">
+                {onOpenBee && (
+                    <button
+                        onClick={onOpenBee}
+                        className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                        <span className="text-2xl">&#127941;</span>
+                        <div className="text-left flex-1">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">Spelling Bee</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Compete against NPCs in a real spelling bee</div>
+                        </div>
+                    </button>
+                )}
+                {onOpenGuided && (
+                    <button
+                        onClick={onOpenGuided}
+                        className="w-full flex items-center gap-3 py-3 px-5 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                    >
+                        <span className="text-xl">&#9997;&#65039;</span>
+                        <div className="text-left flex-1">
+                            <div className="text-sm ui font-semibold text-[rgb(var(--color-fg))]/80">Guided Spelling</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Type words from memory — learn before you compete</div>
+                        </div>
+                    </button>
+                )}
+                <div className="flex gap-2">
+                    {onOpenMultiplayer && (
+                        <button
+                            onClick={onOpenMultiplayer}
+                            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                        >
+                            <span className="text-sm">&#9876;&#65039;</span>
+                            <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">1v1 Match</span>
+                        </button>
+                    )}
+                </div>
+            </div>
+
+            {/* Leaderboard header */}
+            <div className="w-full max-w-sm mb-2">
+                <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
             </div>
 
             {/* Loading state */}
-            {isLoading && (
+            {loading && (
                 <div className="flex-1 flex items-center justify-center">
                     <motion.div
                         className="text-sm ui text-[rgb(var(--color-fg))]/30"
                         animate={{ opacity: [0.3, 1, 0.3] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                        Loading leaderboard...
+                        Loading...
                     </motion.div>
                 </div>
             )}
 
             {/* Empty state */}
-            {!isLoading && board.length === 0 && (
+            {!loading && scoreBoard.length === 0 && (
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/30 mt-8 text-center">
-                    No players yet. Be the first! 🎮
+                    No players yet. Be the first!
                 </div>
             )}
 
             {/* Leaderboard */}
-            <AnimatePresence mode="wait">
-                {!isLoading && (
-                    <motion.div
-                        key={tab}
-                        className="w-full max-w-sm"
-                        initial={{ opacity: 0, x: tab === 'daily' ? 20 : -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: tab === 'daily' ? -20 : 20 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        {board.map((entry, i) => (
-                            <motion.div
-                                key={entry.uid}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.04 }}
-                                className={`flex items-center gap-3 py-3 px-3 rounded-xl mb-1 ${entry.isYou
-                                    ? 'bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/20'
-                                    : ''
-                                    }`}
-                            >
-                                {/* Rank */}
-                                <div className={`w-7 text-center ui font-bold text-lg ${entry.rank === 1 ? 'text-[var(--color-gold)]' :
-                                    entry.rank === 2 ? 'text-[rgb(var(--color-fg))]/60' :
-                                        entry.rank === 3 ? 'text-[var(--color-streak-fire)]' :
-                                            'text-[rgb(var(--color-fg))]/60'
-                                    }`}>
-                                    {entry.rank === 1 ? '👑' : entry.rank === 2 ? '⚡' : entry.rank === 3 ? '🔥' : entry.rank}
-                                </div>
+            {!loading && (
+                <motion.div
+                    className="w-full max-w-sm"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                >
+                    {scoreBoard.map((entry, i) => (
+                        <motion.div
+                            key={entry.uid}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.04 }}
+                            className={`flex items-center gap-3 py-3 px-3 rounded-xl mb-1 ${entry.isYou
+                                ? 'bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/20'
+                                : ''
+                                }`}
+                        >
+                            {/* Rank */}
+                            <div className={`w-7 text-center ui font-bold text-lg ${entry.rank === 1 ? 'text-[var(--color-gold)]' :
+                                entry.rank === 2 ? 'text-[rgb(var(--color-fg))]/60' :
+                                    entry.rank === 3 ? 'text-[var(--color-streak-fire)]' :
+                                        'text-[rgb(var(--color-fg))]/60'
+                                }`}>
+                                {entry.rank === 1 ? '\u{1F451}' : entry.rank === 2 ? '\u26A1' : entry.rank === 3 ? '\u{1F525}' : entry.rank}
+                            </div>
 
-                                {/* Name & Cosmetic & Badge */}
-                                <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && setSelectedPlayer(entry)}>
-                                    {entry.activeBadgeId && (
-                                        <div className="flex-shrink-0 w-[18px] h-[18px]">
-                                            <AchievementBadge achievementId={entry.activeBadgeId} unlocked={true} name="" desc="" />
-                                        </div>
-                                    )}
-                                    <div
-                                        className={`text-sm ui font-semibold truncate ${entry.isYou ? '' : 'text-[rgb(var(--color-fg))]/90'}`}
-                                        style={entry.activeThemeId ? { color: getThemeColor(entry.activeThemeId) } : undefined}
-                                    >
-                                        {entry.displayName}
-                                        {entry.isYou && <span className="ml-1 text-xs opacity-50" style={{ color: 'rgb(var(--color-fg))' }}>(you)</span>}
-                                    </div>
-                                    {entry.activeCostume && COSTUMES[entry.activeCostume] && (
-                                        <svg viewBox="0 0 100 160" className="w-[14px] h-[22px] flex-shrink-0" style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}>
-                                            {COSTUMES[entry.activeCostume]}
-                                        </svg>
-                                    )}
-                                </div>
-
-                                {/* Score */}
-                                {tab === 'score' ? (
-                                    <>
-                                        <div className="text-right">
-                                            <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                                {entry.totalXP.toLocaleString()}
-                                            </div>
-                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">XP</div>
-                                        </div>
-                                        <div className="text-right w-10">
-                                            <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
-                                                {entry.bestStreak > 0 ? `${entry.bestStreak}🔥` : '—'}
-                                            </div>
-                                        </div>
-                                    </>
-                                ) : (
-                                    <div className="text-right">
-                                        <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                            {entry.totalXP}/{entry.bestStreak}
-                                        </div>
-                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">correct/total</div>
+                            {/* Name & Cosmetic & Badge */}
+                            <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && setSelectedPlayer(entry)}>
+                                {entry.activeBadgeId && (
+                                    <div className="flex-shrink-0 w-[18px] h-[18px]">
+                                        <AchievementBadge achievementId={entry.activeBadgeId} unlocked={true} name="" desc="" />
                                     </div>
                                 )}
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                                <div
+                                    className={`text-sm ui font-semibold truncate ${entry.isYou ? '' : 'text-[rgb(var(--color-fg))]/90'}`}
+                                    style={entry.activeThemeId ? { color: getThemeColor(entry.activeThemeId) } : undefined}
+                                >
+                                    {entry.displayName}
+                                    {entry.isYou && <span className="ml-1 text-xs opacity-50" style={{ color: 'rgb(var(--color-fg))' }}>(you)</span>}
+                                </div>
+                                {entry.activeCostume && COSTUMES[entry.activeCostume] && (
+                                    <svg viewBox="0 0 100 160" className="w-[14px] h-[22px] flex-shrink-0" style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}>
+                                        {COSTUMES[entry.activeCostume]}
+                                    </svg>
+                                )}
+                            </div>
+
+                            {/* Score */}
+                            <div className="text-right">
+                                <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
+                                    {entry.totalXP.toLocaleString()}
+                                </div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">XP</div>
+                            </div>
+                            <div className="text-right w-10">
+                                <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
+                                    {entry.bestStreak > 0 ? `${entry.bestStreak}\u{1F525}` : '\u2014'}
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            )}
 
             {/* Action Sheet Modal */}
             <AnimatePresence>
@@ -330,7 +291,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                         {COSTUMES[selectedPlayer.activeCostume]}
                                     </svg>
                                 ) : (
-                                    <div className="w-[28px] h-[44px] flex items-center justify-center text-xl">👤</div>
+                                    <div className="w-[28px] h-[44px] flex items-center justify-center text-xl">{'\u{1F464}'}</div>
                                 )}
                                 <div>
                                     <h3
@@ -339,7 +300,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                     >
                                         {selectedPlayer.displayName}
                                     </h3>
-                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} • {selectedPlayer.totalXP.toLocaleString()} XP</p>
+                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} &bull; {selectedPlayer.totalXP.toLocaleString()} XP</p>
                                 </div>
                             </div>
 
@@ -348,13 +309,13 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                     onClick={() => handleAction('race')}
                                     className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui text-[#422006] bg-[var(--color-gold)] active:opacity-80 transition-opacity"
                                 >
-                                    <span>⚔️</span> Ghost Race
+                                    <span>{'\u2694\uFE0F'}</span> Ghost Race
                                 </button>
                                 <button
                                     onClick={() => handleAction('ping')}
                                     className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10 transition-colors"
                                 >
-                                    <span>👋</span> Ping Player
+                                    <span>{'\u{1F44B}'}</span> Ping Player
                                 </button>
                             </div>
                         </motion.div>
