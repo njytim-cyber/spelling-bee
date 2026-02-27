@@ -51,13 +51,16 @@ export const ActionButtons = memo(function ActionButtons({
     timedMode, onTimedModeToggle, timerProgress,
     reviewQueueCount,
 }: Props) {
+    // Hide hard/timed toggles during full-screen modes that have their own controls
+    const hideToggles = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
+
     return (
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
             {/* Question type */}
             <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
 
             {/* Stopwatch / timed mode */}
-            <motion.button
+            {!hideToggles && <motion.button
                 onClick={onTimedModeToggle}
                 className={`w-11 h-11 relative flex items-center justify-center ${timedMode
                     ? 'text-[var(--color-gold)]'
@@ -87,10 +90,10 @@ export const ActionButtons = memo(function ActionButtons({
                     <line x1="9" y1="3" x2="15" y2="3" />
                     <line x1="12" y1="14" x2="12" y2="10" />
                 </motion.svg>
-            </motion.button>
+            </motion.button>}
 
             {/* Hard mode skull */}
-            <motion.button
+            {!hideToggles && <motion.button
                 onClick={onHardModeToggle}
                 className={`w-11 h-11 flex flex-col items-center justify-center text-xl ${hardMode
                     ? 'opacity-100'
@@ -112,7 +115,7 @@ export const ActionButtons = memo(function ActionButtons({
                 {hardMode && (
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
-            </motion.button>
+            </motion.button>}
 
             {/* Review queue */}
             <AnimatePresence>

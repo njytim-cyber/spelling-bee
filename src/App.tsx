@@ -51,7 +51,7 @@ import { useWordHistory } from './hooks/useWordHistory';
 import { PathPage } from './components/PathPage';
 import { BeeSimPage } from './components/BeeSimPage';
 import { WrittenTestPage } from './components/WrittenTestPage';
-import { GuidedSpellingPage } from './components/GuidedSpellingPage';
+const GuidedSpellingPage = lazy(() => lazyRetry(() => import('./components/GuidedSpellingPage')).then(m => ({ default: m.GuidedSpellingPage })));
 import { MultiplayerLobby } from './components/MultiplayerLobby';
 import { MultiplayerMatch } from './components/MultiplayerMatch';
 import { useMultiplayerRoom } from './hooks/useMultiplayerRoom';
@@ -149,22 +149,15 @@ function App() {
     return 'cvc';
   });
 
-  // Track the last non-bee category so bee sim can inherit the user's theme/topic
-  const [lastCategory, setLastCategory] = useState<QuestionType>(() => {
-    const stored = localStorage.getItem(STORAGE_KEYS.grade);
-    if (stored) return getGradeConfig(stored as GradeLevel).defaultCategory;
-    return 'cvc';
-  });
   const setQuestionType = useCallback((type: QuestionType) => {
     if (type === 'custom') {
       setShowCustomLists(true);
       return;
     }
-    if (type !== 'bee') setLastCategory(type);
     setQuestionTypeRaw(type);
   }, []);
 
-  const { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBadge, consumeShield } = useStats(uid);
+  const { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield } = useStats(uid);
 
   // ── Dialect (US/UK English) ──
   const [dialect, setDialectState] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
@@ -630,18 +623,20 @@ function App() {
                   onAnswer={(word, correct, ms) => {
                     recordAttempt(word, 'bee', correct, ms);
                   }}
-                  category={lastCategory}
-                  hardMode={hardMode}
+                  onBeeResult={recordBeeResult}
                 />
               ) : questionType === 'guided' ? (
-                <GuidedSpellingPage
-                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
-                  onAnswer={(word, correct, ms) => {
-                    recordAttempt(word, 'guided', correct, ms);
-                  }}
-                  category={lastCategory}
-                  hardMode={hardMode}
-                />
+                <Suspense fallback={<LoadingFallback />}>
+                  <GuidedSpellingPage
+                    onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                    onAnswer={(word, correct, ms) => {
+                      recordAttempt(word, 'guided', correct, ms);
+                    }}
+                    reviewQueue={reviewQueue}
+                    masteredCount={masteredCount}
+                    onOpenBee={() => setQuestionType('bee')}
+                  />
+                </Suspense>
               ) : questionType === 'written-test' ? (
                 <WrittenTestPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
@@ -748,7 +743,7 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} beeBestRound={stats.beeBestRound} beeBestLevel={stats.beeBestLevel} beeWins={stats.beeWins} masteredCount={masteredCount} /></Suspense>
           </motion.div>
         )}
 
@@ -859,7 +854,6 @@ function App() {
                 setActiveCustomListId(listId);
                 setShowCustomLists(false);
                 setQuestionTypeRaw('custom');
-                setLastCategory('custom');
               }}
               onClose={() => setShowCustomLists(false)}
             />

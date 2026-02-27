@@ -11,31 +11,50 @@ import { SpellingInput } from './SpellingInput';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { playDing, playBuzzer } from '../utils/beeSounds';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
-import { difficultyRange } from '../domains/spelling/words';
+import { difficultyRange, getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words/types';
+import type { WordRecord } from '../hooks/useWordHistory';
 
 type Phase = 'typing' | 'correct' | 'showing' | 'retyping' | 'retype-correct';
 
 interface Props {
     onExit: () => void;
     onAnswer?: (word: string, correct: boolean, responseTimeMs: number) => void;
-    category?: string;
-    hardMode?: boolean;
+    /** Review queue from Leitner SRS — guided mode prioritizes these words */
+    reviewQueue?: WordRecord[];
+    /** Count of mastered words — used for 'ready for bee?' prompt */
+    masteredCount?: number;
+    onOpenBee?: () => void;
 }
 
-function pickWord(round: number, category?: string, hardMode = false): SpellingWord {
+function pickRandomWord(round: number): SpellingWord {
     const diffLevel = Math.min(5, 1 + Math.floor(round / 4));
-    const effective = hardMode ? Math.min(5, diffLevel + 1) : diffLevel;
-    const [minDiff, maxDiff] = difficultyRange(effective);
-    const pool = selectWordPool(category, minDiff, maxDiff, hardMode);
+    const [minDiff, maxDiff] = difficultyRange(diffLevel);
+    const pool = selectWordPool(undefined, minDiff, maxDiff, false);
     return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/** Pick next word: prioritize review queue, fall back to random */
+function pickWord(round: number, reviewQueue?: WordRecord[], usedWords?: Set<string>): SpellingWord {
+    const wordMap = getWordMap();
+    if (reviewQueue && reviewQueue.length > 0) {
+        // Find a review word we haven't used this session
+        for (const r of reviewQueue) {
+            if (usedWords?.has(r.word)) continue;
+            const sw = wordMap.get(r.word);
+            if (sw) return sw;
+        }
+    }
+    // Fall back to random word selection
+    return pickRandomWord(round);
 }
 
 const SHOW_DURATION_MS = 3500;
 
-export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onAnswer, category, hardMode }: Props) {
+export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onAnswer, reviewQueue, masteredCount, onOpenBee }: Props) {
     const [round, setRound] = useState(0);
-    const [word, setWord] = useState<SpellingWord>(() => pickWord(0, category, hardMode));
+    const usedWordsRef = useRef(new Set<string>());
+    const [word, setWord] = useState<SpellingWord>(() => pickWord(0, reviewQueue));
     const [typed, setTyped] = useState('');
     const [phase, setPhase] = useState<Phase>('typing');
     const [wordsCorrect, setWordsCorrect] = useState(0);
@@ -111,12 +130,13 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
 
     const advanceWord = useCallback(() => {
         cancel();
+        usedWordsRef.current.add(word.word.toLowerCase());
         const nextRound = round + 1;
         setRound(nextRound);
-        setWord(pickWord(nextRound, category, hardMode));
+        setWord(pickWord(nextRound, reviewQueue, usedWordsRef.current));
         setTyped('');
         setPhase('typing');
-    }, [round, category, hardMode, cancel]);
+    }, [round, word, reviewQueue, cancel]);
 
     // Auto-advance after correct celebration
     useEffect(() => {
@@ -131,7 +151,10 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
             {/* Top bar */}
             <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium">
-                    Word {wordsAttempted + (phase === 'typing' || phase === 'showing' || phase === 'retyping' ? 1 : 0)} · {wordsCorrect}/{wordsAttempted} correct
+                    Word {wordsAttempted + (phase === 'typing' || phase === 'showing' || phase === 'retyping' ? 1 : 0)} · {wordsCorrect}/{wordsAttempted}
+                    {reviewQueue && reviewQueue.length > 0 && (
+                        <span className="text-[var(--color-gold)]"> · {reviewQueue.length} to review</span>
+                    )}
                 </div>
                 <button
                     onClick={onExit}
@@ -263,6 +286,18 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                         </motion.div>
                     )}
                 </AnimatePresence>
+
+                {/* Ready for the Bee? — shown when user has mastered enough words */}
+                {onOpenBee && masteredCount != null && masteredCount >= 20 && wordsCorrect >= 5 && (
+                    <motion.button
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        onClick={onOpenBee}
+                        className="mt-4 w-full py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                        Ready for the Spelling Bee? &#127941;
+                    </motion.button>
+                )}
             </div>
         </div>
     );

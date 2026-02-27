@@ -42,6 +42,13 @@ export interface Stats {
     ultimateSessions: number;
     ultimatePerfects: number;
 
+    // Bee simulation tracking
+    beeSessions: number;
+    beeBestRound: number;     // furthest round reached in any bee session
+    beeWordsCorrect: number;  // total words spelled correctly across all bees
+    beeBestLevel: string;     // highest bee level played (classroom/district/state/national)
+    beeWins: number;          // times player won (last one standing)
+
     // Cosmetics for Leaderboard broadcast
     activeThemeId?: string;
     activeCostume?: string;
@@ -94,6 +101,11 @@ const EMPTY_STATS: Stats = {
     ultimateBestStreak: 0,
     ultimateSessions: 0,
     ultimatePerfects: 0,
+    beeSessions: 0,
+    beeBestRound: 0,
+    beeWordsCorrect: 0,
+    beeBestLevel: '',
+    beeWins: 0,
 };
 
 /** Load from localStorage (fast, synchronous) */
@@ -201,6 +213,11 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         ultimateBestStreak: Math.max(local.ultimateBestStreak, cloud.ultimateBestStreak),
         ultimateSessions: Math.max(local.ultimateSessions, cloud.ultimateSessions),
         ultimatePerfects: Math.max(local.ultimatePerfects, cloud.ultimatePerfects),
+        beeSessions: Math.max(local.beeSessions, cloud.beeSessions),
+        beeBestRound: Math.max(local.beeBestRound, cloud.beeBestRound),
+        beeWordsCorrect: Math.max(local.beeWordsCorrect, cloud.beeWordsCorrect),
+        beeBestLevel: (local.beeBestLevel || '') >= (cloud.beeBestLevel || '') ? local.beeBestLevel : cloud.beeBestLevel,
+        beeWins: Math.max(local.beeWins, cloud.beeWins),
         // Preserve cosmetics from whichever side has them
         activeThemeId: local.activeThemeId || cloud.activeThemeId,
         activeCostume: local.activeCostume || cloud.activeCostume,
@@ -346,6 +363,18 @@ export function useStats(uid: string | null) {
         setStats(prev => ({ ...prev, activeBadgeId: badgeId }));
     }, []);
 
+    const recordBeeResult = useCallback((round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => {
+        setStats(prev => ({
+            ...prev,
+            totalXP: prev.totalXP + xp,
+            beeSessions: prev.beeSessions + 1,
+            beeBestRound: Math.max(prev.beeBestRound, round),
+            beeWordsCorrect: prev.beeWordsCorrect + wordsCorrect,
+            beeBestLevel: beeLevel >= (prev.beeBestLevel || '') ? beeLevel : prev.beeBestLevel,
+            beeWins: prev.beeWins + (won ? 1 : 0),
+        }));
+    }, []);
+
     const consumeShield = useCallback(() => {
         setStats(prev => ({
             ...prev,
@@ -357,5 +386,5 @@ export function useStats(uid: string | null) {
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-    return { stats, accuracy, recordSession, resetStats, updateCosmetics, updateBadge, consumeShield };
+    return { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield };
 }

@@ -50,8 +50,14 @@ export interface BeeSimState {
     npcSpellings: (string | null)[];
 }
 
-// Stronger NPCs: brainiac lasts ~10 rounds, eager ~6, nervous ~3
-const NPC_BASE_SKILL = [0.96, 0.82, 1.0, 0.55]; // brainiac, eager, player(unused), nervous
+// NPC skill scales with bee level: classroom is easy, national is tough
+// [brainiac, eager, player(unused), nervous]
+const NPC_SKILL_BY_LEVEL: Record<BeeLevel, number[]> = {
+    classroom: [0.80, 0.60, 1.0, 0.35],
+    district:  [0.88, 0.72, 1.0, 0.45],
+    state:     [0.93, 0.80, 1.0, 0.52],
+    national:  [0.96, 0.82, 1.0, 0.55],
+};
 
 const INITIAL_STATE: BeeSimState = {
     phase: 'listening',
@@ -66,7 +72,7 @@ const INITIAL_STATE: BeeSimState = {
     infoResponses: {},
     npcResults: [null, null, null, null],
     npcAlive: [true, true, true, true],
-    npcSkill: NPC_BASE_SKILL,
+    npcSkill: NPC_SKILL_BY_LEVEL.national,
     npcScores: [0, 0, 0, 0],
     npcSpellings: [null, null, null, null],
 };
@@ -211,17 +217,20 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
 
     const startSession = useCallback(() => {
         const word = pickBeeWord(0, category, hardMode, beeLevel);
+        const levelSkill = NPC_SKILL_BY_LEVEL[beeLevel];
         if (dictationMode) {
             setState({
                 ...INITIAL_STATE,
                 ...dictationInitial,
+                npcSkill: levelSkill,
                 currentWord: word,
                 phase: 'spelling',
             });
         } else {
-            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode, beeLevel).word);
+            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, levelSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode, beeLevel).word);
             setState({
                 ...INITIAL_STATE,
+                npcSkill: levelSkill,
                 currentWord: word,
                 phase: 'listening',
                 npcResults: npc.npcResults,

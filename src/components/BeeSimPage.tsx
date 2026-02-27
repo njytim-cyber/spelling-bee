@@ -24,10 +24,7 @@ const TIMER_CIRCUMFERENCE = 2 * Math.PI * 18; // radius 18
 interface Props {
     onExit: () => void;
     onAnswer?: (word: string, correct: boolean, responseTimeMs: number) => void;
-    /** Category to filter words (e.g. 'theme-nature', 'prefixes'). Falls back to all words. */
-    category?: string;
-    /** When true, bias toward harder/longer words in the pool. */
-    hardMode?: boolean;
+    onBeeResult?: (round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => void;
 }
 
 /** Compact inline feedback — correct answers advance fast, wrong answers linger */
@@ -78,7 +75,7 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
     );
 }
 
-export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category, hardMode }: Props) {
+export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult }: Props) {
     const [dictationMode, setDictationMode] = useState(false);
     const [beeLevel, setBeeLevel] = useState<BeeLevel>('national');
     const {
@@ -99,7 +96,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         npcAlive,
         npcScores,
         npcSpellings,
-    } = useBeeSimulation(category, hardMode, dictationMode, beeLevel);
+    } = useBeeSimulation(undefined, false, dictationMode, beeLevel);
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
@@ -116,6 +113,16 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         }
         prevPhaseRef.current = phase;
     }, [phase, lastResult]);
+
+    // Report bee result when session ends
+    const beeResultFired = useRef(false);
+    useEffect(() => {
+        if ((phase === 'eliminated' || phase === 'won') && !beeResultFired.current) {
+            beeResultFired.current = true;
+            onBeeResult?.(round, wordsCorrect, phase === 'won', beeLevel, sessionXP);
+        }
+        if (phase === 'listening') beeResultFired.current = false;
+    }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult]);
 
     // Auto-start session on mount and when dictation mode toggles
     const prevDictation = useRef(dictationMode);

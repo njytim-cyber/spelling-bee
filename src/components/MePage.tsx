@@ -301,6 +301,23 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">solved</div>
                     </div>
                 </div>
+                {/* Bee stats row */}
+                {stats.beeSessions > 0 && (
+                    <div className="flex justify-center gap-5 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeBestRound + 1}</div>
+                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee round</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeWins}</div>
+                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee wins</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeSessions}</div>
+                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee tries</div>
+                        </div>
+                    </div>
+                )}
             </motion.div>
 
             {/* ── Sub-tab bar ── */}
