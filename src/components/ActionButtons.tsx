@@ -57,7 +57,10 @@ export const ActionButtons = memo(function ActionButtons({
     return (
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
             {/* Question type */}
-            <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
+            <div className="relative">
+                <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Topic</span>
+            </div>
 
             {/* Stopwatch / timed mode */}
             {!hideToggles && <motion.button
@@ -67,6 +70,7 @@ export const ActionButtons = memo(function ActionButtons({
                     : 'text-[rgb(var(--color-fg))]/70'
                     }`}
                 whileTap={{ scale: 0.88 }}
+                aria-label={timedMode ? 'Timer on' : 'Timer off'}
             >
                 <TimerRing progress={timerProgress} active={timedMode} />
                 <motion.svg
@@ -90,6 +94,7 @@ export const ActionButtons = memo(function ActionButtons({
                     <line x1="9" y1="3" x2="15" y2="3" />
                     <line x1="12" y1="14" x2="12" y2="10" />
                 </motion.svg>
+                <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Timer</span>
             </motion.button>}
 
             {/* Hard mode skull */}
@@ -110,11 +115,13 @@ export const ActionButtons = memo(function ActionButtons({
                     repeatDelay: 2,
                     ease: 'easeInOut' as const,
                 } : {}}
+                aria-label={hardMode ? 'Hard mode on' : 'Hard mode off'}
             >
                 💀
                 {hardMode && (
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
+                <span className="text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">Hard</span>
             </motion.button>}
 
             {/* Review queue */}
@@ -139,6 +146,7 @@ export const ActionButtons = memo(function ActionButtons({
                         {questionType === 'review' && (
                             <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                         )}
+                        <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Review</span>
                     </motion.button>
                 )}
             </AnimatePresence>

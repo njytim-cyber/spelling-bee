@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import type { BeeLevel } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
+import { SpellingDiffView } from './SpellingDiffView';
 import { BeeClassroom } from './BeeClassroom';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
@@ -23,7 +24,7 @@ const TIMER_CIRCUMFERENCE = 2 * Math.PI * 18; // radius 18
 
 interface Props {
     onExit: () => void;
-    onAnswer?: (word: string, correct: boolean, responseTimeMs: number) => void;
+    onAnswer?: (word: string, correct: boolean, responseTimeMs: number, typed?: string) => void;
     onBeeResult?: (round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => void;
 }
 
@@ -56,15 +57,9 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="flex flex-col items-center gap-1 py-2"
+            className="flex flex-col items-center gap-1 py-2 w-full"
         >
-            <div className="flex items-center gap-2">
-                <span className="text-2xl">&#10007;</span>
-                <span className="text-xl ui font-bold text-[var(--color-chalk)]">{word}</span>
-            </div>
-            <p className="text-sm ui text-[var(--color-wrong)]">
-                You spelled: &ldquo;{typed}&rdquo;
-            </p>
+            <SpellingDiffView typed={typed} correct={word} />
             <button
                 onClick={onNext}
                 className="mt-1 text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
@@ -223,7 +218,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
             {beeTimedMode && isTimerPhase && (
                 <div className="absolute top-12 right-4">
                     <svg width="40" height="40" viewBox="0 0 40 40" className="transform -rotate-90">
-                        <circle cx="20" cy="20" r="18" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.1" />
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.2" />
                         <circle
                             cx="20" cy="20" r="18"
                             fill="none"
@@ -277,7 +272,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                             submitSpelling();
                                             if (onAnswer && currentWord) {
                                                 const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
-                                                onAnswer(currentWord.word, correct, Date.now());
+                                                onAnswer(currentWord.word, correct, Date.now(), correct ? undefined : typedSpelling.trim());
                                             }
                                         }}
                                     />
@@ -428,7 +423,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                             submitSpelling();
                                             if (onAnswer && currentWord) {
                                                 const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
-                                                onAnswer(currentWord.word, correct, Date.now());
+                                                onAnswer(currentWord.word, correct, Date.now(), correct ? undefined : typedSpelling.trim());
                                             }
                                         }}
                                     />

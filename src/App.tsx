@@ -129,6 +129,9 @@ function App() {
   const [showCustomLists, setShowCustomLists] = useState(false);
   const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
 
+  // ── Hardest-words drill override ──
+  const [drillHardest, setDrillHardest] = useState(false);
+
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
 
@@ -182,7 +185,7 @@ function App() {
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, reviewQueue, masteredCount } = useWordHistory();
+  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount } = useWordHistory();
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
     const word = item.meta?.['word'] as string | undefined;
@@ -620,19 +623,19 @@ function App() {
               {questionType === 'bee' ? (
                 <BeeSimPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
-                  onAnswer={(word, correct, ms) => {
-                    recordAttempt(word, 'bee', correct, ms);
+                  onAnswer={(word, correct, ms, typed) => {
+                    recordAttempt(word, 'bee', correct, ms, typed);
                   }}
                   onBeeResult={recordBeeResult}
                 />
               ) : questionType === 'guided' ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
-                    onAnswer={(word, correct, ms) => {
-                      recordAttempt(word, 'guided', correct, ms);
+                    onExit={() => { setDrillHardest(false); setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
+                    onAnswer={(word, correct, ms, typed) => {
+                      recordAttempt(word, 'guided', correct, ms, typed);
                     }}
-                    reviewQueue={reviewQueue}
+                    reviewQueue={drillHardest ? hardestWords : reviewQueue}
                     masteredCount={masteredCount}
                     onOpenBee={() => setQuestionType('bee')}
                   />
@@ -733,6 +736,12 @@ function App() {
             <PathPage
               records={wordRecords}
               reviewDueCount={reviewQueue.length}
+              hardestWordCount={hardestWords.length}
+              onDrillHardest={() => {
+                setDrillHardest(true);
+                setQuestionType('guided');
+                setActiveTab('game');
+              }}
               onPractice={(cat) => {
                 setQuestionType(cat as QuestionType);
                 setActiveTab('game');

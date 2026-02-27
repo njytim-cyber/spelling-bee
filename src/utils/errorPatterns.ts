@@ -305,6 +305,241 @@ export function getStudyPlan(
     return plan.slice(0, 5);
 }
 
+// ── Mistake pattern detection ────────────────────────────────────────────────
+
+export interface MistakeInsight {
+    /** Short label like "Double letters", "ie vs ei" */
+    label: string;
+    /** Longer explanation */
+    detail: string;
+    /** How many misspellings match this pattern */
+    count: number;
+    /** Related category ID for practice, if any */
+    category?: string;
+}
+
+/**
+ * Analyze stored misspellings to find recurring mistake patterns.
+ * Returns up to 3 insights sorted by frequency.
+ */
+export function getMistakeInsights(records: Record<string, WordRecord>): MistakeInsight[] {
+    // Collect all (correct, misspelled) pairs
+    const pairs: { correct: string; typed: string }[] = [];
+    for (const r of Object.values(records)) {
+        if (r.misspellings) {
+            for (const m of r.misspellings) {
+                pairs.push({ correct: r.word, typed: m });
+            }
+        }
+    }
+
+    if (pairs.length < 2) return [];
+
+    // Pattern detectors — each returns a category key or null
+    const buckets: Record<string, { label: string; detail: string; count: number; category?: string }> = {};
+
+    function bump(key: string, label: string, detail: string, category?: string) {
+        if (!buckets[key]) buckets[key] = { label, detail, count: 0, category };
+        buckets[key].count++;
+    }
+
+    for (const { correct, typed } of pairs) {
+        // 1. Double letter errors (e.g., "comittee" vs "committee")
+        const doubleRe = /(.)\1/g;
+        const correctDoubles = new Set([...correct.matchAll(doubleRe)].map(m => m[0]));
+        const typedDoubles = new Set([...typed.matchAll(doubleRe)].map(m => m[0]));
+        for (const d of correctDoubles) {
+            if (!typedDoubles.has(d)) bump('double-miss', 'Double letters', `You sometimes drop doubled letters (e.g., "${d}" in "${correct}")`);
+        }
+        for (const d of typedDoubles) {
+            if (!correctDoubles.has(d)) bump('double-extra', 'Extra doubles', `You sometimes double letters unnecessarily (e.g., "${d}" in "${typed}")`);
+        }
+
+        // 2. ie/ei confusion
+        if ((correct.includes('ie') && typed.includes('ei')) || (correct.includes('ei') && typed.includes('ie'))) {
+            bump('ie-ei', 'ie vs ei', 'You sometimes swap "ie" and "ei" — remember: "i before e, except after c"');
+        }
+
+        // 3. Silent letter drops (e.g., "kn", "wr", "gn", "mb", "gh")
+        const silentPairs = ['kn', 'wr', 'gn', 'mb', 'mn', 'ps', 'pn'];
+        for (const sp of silentPairs) {
+            if (correct.includes(sp) && !typed.includes(sp) && typed.includes(sp[1])) {
+                bump('silent', 'Silent letters', `You sometimes drop silent letters (e.g., "${sp}" in "${correct}")`);
+            }
+        }
+
+        // 4. Vowel confusion (a/e/i/o/u swaps)
+        if (correct.length === typed.length) {
+            let vowelSwaps = 0;
+            const vowels = new Set('aeiou');
+            for (let i = 0; i < correct.length; i++) {
+                if (correct[i] !== typed[i] && vowels.has(correct[i]) && vowels.has(typed[i])) {
+                    vowelSwaps++;
+                }
+            }
+            if (vowelSwaps > 0) {
+                bump('vowel-swap', 'Vowel confusion', 'You sometimes mix up vowels — try sounding out each syllable');
+            }
+        }
+
+        // 5. Common suffix errors (-tion vs -sion, -able vs -ible, -ent vs -ant)
+        const suffixPairs: [string, string][] = [
+            ['tion', 'sion'], ['able', 'ible'], ['ent', 'ant'],
+            ['ence', 'ance'], ['er', 'or'], ['ous', 'us'],
+        ];
+        for (const [a, b] of suffixPairs) {
+            if ((correct.endsWith(a) && typed.endsWith(b)) || (correct.endsWith(b) && typed.endsWith(a))) {
+                bump(`suffix-${a}-${b}`, `${a}/${b} endings`, `You mix up "-${a}" and "-${b}" endings — try grouping words by suffix`);
+            }
+        }
+
+        // 6. Letter transposition (adjacent swap)
+        if (correct.length === typed.length) {
+            const diffs: number[] = [];
+            for (let i = 0; i < correct.length; i++) {
+                if (correct[i] !== typed[i]) diffs.push(i);
+            }
+            if (diffs.length === 2 && diffs[1] === diffs[0] + 1 &&
+                correct[diffs[0]] === typed[diffs[1]] && correct[diffs[1]] === typed[diffs[0]]) {
+                bump('transposition', 'Letter swaps', 'You sometimes swap adjacent letters — try typing more slowly');
+            }
+        }
+    }
+
+    return Object.values(buckets)
+        .filter(b => b.count >= 2)
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 3);
+}
+
+// ── Grade-level progress ─────────────────────────────────────────────────────
+
+export interface GradeLevelProgress {
+    gradeId: string;
+    label: string;
+    grades: string;
+    totalWords: number;
+    masteredWords: number;
+    progress: number; // 0-1
+}
+
+/**
+ * Returns progress toward mastering words at each grade level.
+ * Only returns levels where the student has attempted at least 1 word.
+ */
+export function getGradeLevelProgress(records: Record<string, WordRecord>): GradeLevelProgress[] {
+    const wordMap = getWordMap();
+
+    // Group words by difficulty tier
+    const tiers: Record<string, { mastered: number; total: number }> = {};
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        if (!detail) continue;
+        const tier = diffToTier(detail.difficulty);
+        if (!tiers[tier]) tiers[tier] = { mastered: 0, total: 0 };
+        tiers[tier].total++;
+        if (r.box >= 3) tiers[tier].mastered++;
+    }
+
+    // Get total available words per tier from the word bank
+    const TIER_INFO: { id: string; label: string; grades: string; minDiff: number; maxDiff: number }[] = [
+        { id: 'tier-1', label: 'Seedling', grades: 'K – 1st', minDiff: 1, maxDiff: 2 },
+        { id: 'tier-2', label: 'Sprout', grades: '2nd – 3rd', minDiff: 3, maxDiff: 4 },
+        { id: 'tier-3', label: 'Growing', grades: '4th – 5th', minDiff: 5, maxDiff: 6 },
+        { id: 'tier-4', label: 'Climbing', grades: '6th – 7th', minDiff: 7, maxDiff: 8 },
+        { id: 'tier-5', label: 'Summit', grades: '8th+', minDiff: 9, maxDiff: 10 },
+    ];
+
+    return TIER_INFO
+        .map(t => {
+            const studied = tiers[t.id] ?? { mastered: 0, total: 0 };
+            if (studied.total === 0) return null;
+            // Count total available words for this tier
+            let available = 0;
+            for (const w of wordMap.values()) {
+                if (w.difficulty >= t.minDiff && w.difficulty <= t.maxDiff) available++;
+            }
+            return {
+                gradeId: t.id,
+                label: t.label,
+                grades: t.grades,
+                totalWords: available,
+                masteredWords: studied.mastered,
+                progress: available > 0 ? studied.mastered / available : 0,
+            };
+        })
+        .filter((x): x is GradeLevelProgress => x !== null);
+}
+
+function diffToTier(diff: number): string {
+    if (diff <= 2) return 'tier-1';
+    if (diff <= 4) return 'tier-2';
+    if (diff <= 6) return 'tier-3';
+    if (diff <= 8) return 'tier-4';
+    return 'tier-5';
+}
+
+// ── Adaptive difficulty nudge ────────────────────────────────────────────────
+
+export interface DifficultyNudge {
+    currentLabel: string;
+    nextLabel: string;
+    nextCategory: string;
+    accuracy: number;
+    wordCount: number;
+}
+
+/**
+ * Suggests moving to a harder category when the student's accuracy
+ * exceeds 85% over 20+ words in a category.
+ */
+export function getDifficultyNudge(records: Record<string, WordRecord>): DifficultyNudge | null {
+    const wordMap = getWordMap();
+
+    // Group by tier
+    const tiers: Record<string, { attempts: number; correct: number; words: number }> = {};
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        if (!detail) continue;
+        const tier = diffToTier(detail.difficulty);
+        if (!tiers[tier]) tiers[tier] = { attempts: 0, correct: 0, words: 0 };
+        tiers[tier].attempts += r.attempts;
+        tiers[tier].correct += r.correct;
+        tiers[tier].words++;
+    }
+
+    const ORDER = ['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5'];
+    const LABELS: Record<string, string> = {
+        'tier-1': 'Seedling (K–1st)',
+        'tier-2': 'Sprout (2nd–3rd)',
+        'tier-3': 'Growing (4th–5th)',
+        'tier-4': 'Climbing (6th–7th)',
+        'tier-5': 'Summit (8th+)',
+    };
+
+    for (let i = 0; i < ORDER.length - 1; i++) {
+        const tier = ORDER[i];
+        const stats = tiers[tier];
+        if (!stats || stats.words < 20 || stats.attempts < 20) continue;
+        const acc = stats.correct / stats.attempts;
+        if (acc >= 0.85) {
+            const next = ORDER[i + 1];
+            // Only nudge if student hasn't already moved up
+            const nextStats = tiers[next];
+            if (nextStats && nextStats.words >= 10) continue;
+            return {
+                currentLabel: LABELS[tier],
+                nextLabel: LABELS[next],
+                nextCategory: next,
+                accuracy: acc,
+                wordCount: stats.words,
+            };
+        }
+    }
+
+    return null;
+}
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 const PATTERN_LABELS: Record<string, string> = {

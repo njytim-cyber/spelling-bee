@@ -5,7 +5,7 @@
   --font-chalk: "Fredericka the Great", cursive;
   --font-ui: "Architects Daughter", cursive, sans-serif;
   --color-board: #000000;
-  --color-chalk: #e0ddd5;
+  --color-chalk: #e8e5dd;
   --color-correct: #4ade80;
   --color-wrong: #f87171;
   --color-gold: #fbbf24;
@@ -21,28 +21,29 @@
   /* white for dark mode — used as rgb() triple */
   --color-overlay: rgba(0, 0, 0, 0.85);
   --color-overlay-dim: rgba(0, 0, 0, 0.60);
-  --color-surface: rgba(255, 255, 255, 0.08);
-  --color-locked: rgba(255, 255, 255, 0.12);
+  --color-surface: rgba(255, 255, 255, 0.10);
+  /* Slightly brighter surface — cards stand out from black */
+  --color-locked: rgba(255, 255, 255, 0.14);
 }
 
 /* ── Light mode overrides ── */
 [data-theme="light"] {
-  --color-board: #ffffff;
-  /* Pure white — clean, standard */
-  --color-chalk: #111827;
-  /* Gray-900 — strong readable text */
-  --color-fg: 17 24 39;
-  /* Gray-900 rgb */
-  --color-overlay: rgba(255, 255, 255, 0.96);
-  --color-overlay-dim: rgba(0, 0, 0, 0.35);
-  --color-surface: rgba(249, 250, 251, 0.90);
-  /* Gray-50 surface cards */
-  --color-locked: rgba(17, 24, 39, 0.06);
-  --color-correct: #16a34a;
-  --color-wrong: #dc2626;
-  --color-gold: #b45309;
-  /* Amber-700 */
-  --color-streak-fire: #c2410c;
+  --color-board: #faf8f5;
+  /* Warm off-white — easier on the eyes than pure white */
+  --color-chalk: #1a1a2e;
+  /* Deep navy-gray — rich, strong text */
+  --color-fg: 26 26 46;
+  /* Navy-gray rgb triple */
+  --color-overlay: rgba(250, 248, 245, 0.97);
+  --color-overlay-dim: rgba(0, 0, 0, 0.40);
+  --color-surface: rgba(235, 228, 218, 0.50);
+  /* Warm tan surface — clearly visible on off-white */
+  --color-locked: rgba(26, 26, 46, 0.08);
+  --color-correct: #15803d;
+  --color-wrong: #b91c1c;
+  --color-gold: #92400e;
+  /* Amber-800 — richer, more contrast on light bg */
+  --color-streak-fire: #9a3412;
 }
 
 /* ── Base ── */
@@ -89,9 +90,9 @@
 
 [data-theme="light"] .blackboard-bg {
   background-image:
-    radial-gradient(ellipse at 15% 40%, rgba(229, 231, 235, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 25%, rgba(229, 231, 235, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 80%, rgba(229, 231, 235, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse at 15% 40%, rgba(210, 195, 170, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 25%, rgba(190, 180, 165, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(200, 190, 175, 0.08) 0%, transparent 50%);
 }
 
 /* ── Vignette overlay ── */
@@ -100,7 +101,7 @@
 }
 
 [data-theme="light"] .vignette-overlay {
-  background: radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.04) 100%);
+  background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(160, 140, 110, 0.06) 100%);
 }
 
 /* ── Light mode global contrast boosts ── */
@@ -141,6 +142,35 @@
   color: rgba(var(--color-fg), 0.85) !important;
 }
 
+/* ── Dark-mode border contrast boosts — faint white borders become visible on black ── */
+:root:not([data-theme="light"]) .border-\[rgb\(var\(--color-fg\)\)\]\/5,
+:root:not([data-theme="light"]) .border-\[rgb\(var\(--color-fg\)\)\]\/8,
+:root:not([data-theme="light"]) .border-\[rgb\(var\(--color-fg\)\)\]\/10 {
+  border-color: rgba(var(--color-fg), 0.18) !important;
+}
+
+:root:not([data-theme="light"]) .border-\[rgb\(var\(--color-fg\)\)\]\/15,
+:root:not([data-theme="light"]) .border-\[rgb\(var\(--color-fg\)\)\]\/20 {
+  border-color: rgba(var(--color-fg), 0.25) !important;
+}
+
+/* ── Dark-mode background contrast boosts — near-invisible tints become visible ── */
+:root:not([data-theme="light"]) .bg-\[rgb\(var\(--color-fg\)\)\]\/\[0\.02\],
+:root:not([data-theme="light"]) .bg-\[rgb\(var\(--color-fg\)\)\]\/\[0\.03\],
+:root:not([data-theme="light"]) .bg-\[rgb\(var\(--color-fg\)\)\]\/5 {
+  background-color: rgba(var(--color-fg), 0.07) !important;
+}
+
+:root:not([data-theme="light"]) .bg-\[rgb\(var\(--color-fg\)\)\]\/10 {
+  background-color: rgba(var(--color-fg), 0.13) !important;
+}
+
+/* ── Dark-mode placeholder contrast ── */
+:root:not([data-theme="light"]) .placeholder\:text-\[rgb\(var\(--color-fg\)\)\]\/15::placeholder,
+:root:not([data-theme="light"]) .placeholder\:text-\[rgb\(var\(--color-fg\)\)\]\/20::placeholder {
+  color: rgba(var(--color-fg), 0.40) !important;
+}
+
 /* ── Light-mode contrast boosts — higher floor for dark-on-white readability ── */
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/15,
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/20 {
@@ -163,7 +193,38 @@
   color: rgba(var(--color-fg), 1) !important;
 }
 
+/* ── Light-mode border contrast boosts — invisible low-opacity borders become visible ── */
+[data-theme="light"] .border-\[rgb\(var\(--color-fg\)\)\]\/5,
+[data-theme="light"] .border-\[rgb\(var\(--color-fg\)\)\]\/8,
+[data-theme="light"] .border-\[rgb\(var\(--color-fg\)\)\]\/10 {
+  border-color: rgba(var(--color-fg), 0.20) !important;
+}
 
+[data-theme="light"] .border-\[rgb\(var\(--color-fg\)\)\]\/15,
+[data-theme="light"] .border-\[rgb\(var\(--color-fg\)\)\]\/20 {
+  border-color: rgba(var(--color-fg), 0.28) !important;
+}
+
+/* ── Light-mode background contrast boosts — faint tinted fills become visible ── */
+[data-theme="light"] .bg-\[rgb\(var\(--color-fg\)\)\]\/\[0\.02\],
+[data-theme="light"] .bg-\[rgb\(var\(--color-fg\)\)\]\/\[0\.03\],
+[data-theme="light"] .bg-\[rgb\(var\(--color-fg\)\)\]\/5 {
+  background-color: rgba(var(--color-fg), 0.06) !important;
+}
+
+[data-theme="light"] .bg-\[rgb\(var\(--color-fg\)\)\]\/10 {
+  background-color: rgba(var(--color-fg), 0.12) !important;
+}
+
+[data-theme="light"] .bg-\[rgb\(var\(--color-fg\)\)\]\/15 {
+  background-color: rgba(var(--color-fg), 0.18) !important;
+}
+
+/* ── Light-mode placeholder contrast ── */
+[data-theme="light"] .placeholder\:text-\[rgb\(var\(--color-fg\)\)\]\/15::placeholder,
+[data-theme="light"] .placeholder\:text-\[rgb\(var\(--color-fg\)\)\]\/20::placeholder {
+  color: rgba(var(--color-fg), 0.45) !important;
+}
 
 /* ── Chalk text — minimal, no filters ── */
 .chalk-text {
@@ -343,7 +404,7 @@
 /* ── Scrollbars ── */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.20) transparent;
 }
 
 [data-theme="light"] * {
@@ -361,12 +422,12 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.20);
   border-radius: 3px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 [data-theme="light"] *::-webkit-scrollbar-thumb {
@@ -390,13 +451,17 @@
   inset: 0;
   pointer-events: none;
   border-radius: 12px 8px 14px 6px;
-  border: 1.5px solid rgba(var(--color-fg), 0.15);
+  border: 1.5px solid rgba(var(--color-fg), 0.22);
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.03' numOctaves='4' seed='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='4'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.03' numOctaves='4' seed='2'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='4'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
 }
 
 [data-theme="light"] .hand-drawn-box::before {
-  border-color: rgba(var(--color-fg), 0.12);
+  border-color: rgba(var(--color-fg), 0.25);
+}
+
+[data-theme="light"] .hand-drawn-box-alt::before {
+  border-color: rgba(var(--color-fg), 0.25);
 }
 
 /* Variant with slightly different wobble */
@@ -412,7 +477,7 @@
   inset: 0;
   pointer-events: none;
   border-radius: 6px 14px 8px 12px;
-  border: 1.5px solid rgba(var(--color-fg), 0.15);
+  border: 1.5px solid rgba(var(--color-fg), 0.22);
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='3'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='3'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
 }

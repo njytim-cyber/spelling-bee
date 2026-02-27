@@ -90,10 +90,11 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
         return (
             <>
                 {/* Word lists — same swipe game, different word pools */}
-                <div className="mb-3">
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-2 px-1">
-                        Word Lists
+                <div className="mb-4">
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-0.5 px-1">
+                        Scripps Word Lists
                     </div>
+                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Swipe-quiz with competition words</div>
                     <div className="grid grid-cols-3 gap-2">
                         {compWords.map(renderItem)}
                     </div>
@@ -101,9 +102,10 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
 
                 {/* Game modes — different UI experience */}
                 <div className="mb-3 last:mb-0">
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-2 px-1">
-                        Simulation Modes
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-0.5 px-1">
+                        Practice Modes
                     </div>
+                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Full spelling practice — type the word</div>
                     <div className="grid grid-cols-3 gap-2">
                         {compModes.map(renderItem)}
                     </div>

@@ -15,7 +15,7 @@ export interface ChalkTheme {
 }
 
 export const CHALK_THEMES: ChalkTheme[] = [
-    { id: 'classic', name: 'Classic White', color: 'rgba(230, 230, 230, 0.95)', lightColor: '#172554', minLevel: 1 }, // classic chalkboard white -> dark navy
+    { id: 'classic', name: 'Classic White', color: 'rgba(232, 229, 221, 0.95)', lightColor: '#1a1a2e', minLevel: 1 }, // classic chalkboard white -> deep navy-gray
     { id: 'sky', name: 'Sky Blue', color: 'rgba(100, 220, 255, 0.95)', lightColor: '#0369a1', minLevel: 1 },
     { id: 'rose', name: 'Chalk Rose', color: 'rgba(255, 140, 170, 0.95)', lightColor: '#be123c', minLevel: 2 },
     { id: 'mint', name: 'Mint Fresh', color: 'rgba(100, 255, 180, 0.95)', lightColor: '#047857', minLevel: 2 },
@@ -51,6 +51,11 @@ export function applyTheme(theme: ChalkTheme) {
 
 /** O(1) theme lookup by ID — avoids repeated .find() across components */
 const THEME_MAP = new Map(CHALK_THEMES.map(t => [t.id, t]));
+/** Returns the appropriate chalk color for the current theme mode */
 export function getThemeColor(id?: string): string | undefined {
-    return id ? THEME_MAP.get(id)?.color : undefined;
+    if (!id) return undefined;
+    const theme = THEME_MAP.get(id);
+    if (!theme) return undefined;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    return isLight ? theme.lightColor : theme.color;
 }

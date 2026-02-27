@@ -8,6 +8,7 @@
 import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SpellingInput } from './SpellingInput';
+import { SpellingDiffView } from './SpellingDiffView';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { playDing, playBuzzer } from '../utils/beeSounds';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
@@ -19,7 +20,7 @@ type Phase = 'typing' | 'correct' | 'showing' | 'retyping' | 'retype-correct';
 
 interface Props {
     onExit: () => void;
-    onAnswer?: (word: string, correct: boolean, responseTimeMs: number) => void;
+    onAnswer?: (word: string, correct: boolean, responseTimeMs: number, typed?: string) => void;
     /** Review queue from Leitner SRS — guided mode prioritizes these words */
     reviewQueue?: WordRecord[];
     /** Count of mastered words — used for 'ready for bee?' prompt */
@@ -56,6 +57,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     const usedWordsRef = useRef(new Set<string>());
     const [word, setWord] = useState<SpellingWord>(() => pickWord(0, reviewQueue));
     const [typed, setTyped] = useState('');
+    const [lastTyped, setLastTyped] = useState(''); // preserve first attempt for diff display
     const [phase, setPhase] = useState<Phase>('typing');
     const [wordsCorrect, setWordsCorrect] = useState(0);
     const [wordsAttempted, setWordsAttempted] = useState(0);
@@ -94,9 +96,10 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
             }
         } else {
             playBuzzer();
-            // Record as incorrect for SRS
-            onAnswer?.(word.word, false, ms);
+            // Record as incorrect for SRS (pass what they typed for pattern analysis)
+            onAnswer?.(word.word, false, ms, typed.trim());
             setWordsAttempted(a => a + 1);
+            setLastTyped(typed.trim());
             setPhase('showing');
             if (isSupported) {
                 speak(`The correct spelling is ${word.word}`);
@@ -219,7 +222,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                         </motion.div>
                     )}
 
-                    {/* SHOWING phase — display correct spelling */}
+                    {/* SHOWING phase — display correct spelling with diff */}
                     {phase === 'showing' && (
                         <motion.div
                             key="showing"
@@ -228,14 +231,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                             exit={{ opacity: 0, y: -12 }}
                             className="flex flex-col items-center gap-3 py-4 w-full"
                         >
-                            <span className="text-sm ui text-[var(--color-wrong)]">Not quite. Study the spelling:</span>
-                            <motion.div
-                                className="text-3xl chalk text-[var(--color-chalk)] tracking-[0.2em] uppercase text-center"
-                                initial={{ scale: 0.9 }}
-                                animate={{ scale: 1 }}
-                            >
-                                {word.word}
-                            </motion.div>
+                            <SpellingDiffView typed={lastTyped} correct={word.word} />
                             {/* Progress bar showing time remaining */}
                             <div className="w-full max-w-[200px] h-1 bg-[rgb(var(--color-fg))]/10 rounded-full overflow-hidden mt-2">
                                 <motion.div

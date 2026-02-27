@@ -21,13 +21,13 @@ export function applyMode(mode: ThemeMode) {
         root.removeAttribute('data-theme');
     }
     // Re-derive --color-chalk from the stashed chalk-theme color
-    const themeColor = root.style.getPropertyValue('--chalk-theme-color') || 'rgba(230, 230, 230, 0.95)';
-    const themeColorLight = root.style.getPropertyValue('--chalk-theme-color-light') || '#172554';
+    const themeColor = root.style.getPropertyValue('--chalk-theme-color') || 'rgba(232, 229, 221, 0.95)';
+    const themeColorLight = root.style.getPropertyValue('--chalk-theme-color-light') || '#1a1a2e';
     root.style.setProperty(
         '--color-chalk',
         mode === 'light' ? themeColorLight : themeColor,
     );
     // Update PWA theme-color to match
     const meta = document.getElementById('meta-theme-color');
-    if (meta) meta.setAttribute('content', mode === 'dark' ? '#0f0d0c' : '#ffffff');
+    if (meta) meta.setAttribute('content', mode === 'dark' ? '#0f0d0c' : '#faf8f5');
 }

@@ -15,6 +15,8 @@ export interface WordAttempt {
     correct: boolean;
     timestamp: number;
     responseTimeMs: number;
+    /** What the student actually typed (only stored on incorrect attempts) */
+    typed?: string;
 }
 
 export interface WordRecord {
@@ -28,6 +30,8 @@ export interface WordRecord {
     box: number;
     /** Timestamp when word should next be reviewed */
     nextReview: number;
+    /** Recent misspellings (last 5) for mistake-pattern analysis */
+    misspellings?: string[];
 }
 
 interface WordHistory {
@@ -75,6 +79,7 @@ export function useWordHistory() {
         category: string,
         correct: boolean,
         responseTimeMs: number,
+        typed?: string,
     ) => {
         setHistory(prev => {
             const now = Date.now();
@@ -85,6 +90,12 @@ export function useWordHistory() {
                 ? (correct ? Math.min(existing.box + 1, 4) : 0)
                 : (correct ? 1 : 0);
 
+            // Keep last 5 misspellings per word for pattern analysis
+            const misspellings = existing?.misspellings ?? [];
+            const nextMisspellings = (!correct && typed)
+                ? [typed.trim().toLowerCase(), ...misspellings].slice(0, 5)
+                : misspellings;
+
             const record: WordRecord = {
                 word: key,
                 category,
@@ -94,9 +105,13 @@ export function useWordHistory() {
                 lastCorrect: correct ? now : (existing?.lastCorrect ?? 0),
                 box: newBox,
                 nextReview: now + (BOX_DELAY_MS[newBox] ?? 0),
+                ...(nextMisspellings.length > 0 ? { misspellings: nextMisspellings } : {}),
             };
 
-            const attempt: WordAttempt = { word: key, category, correct, timestamp: now, responseTimeMs };
+            const attempt: WordAttempt = {
+                word: key, category, correct, timestamp: now, responseTimeMs,
+                ...((!correct && typed) ? { typed: typed.trim().toLowerCase() } : {}),
+            };
 
             const next: WordHistory = {
                 records: { ...prev.records, [key]: record },
@@ -142,6 +157,13 @@ export function useWordHistory() {
             .sort((a, b) => a.accuracy - b.accuracy);
     }, [history.records]);
 
+    /** Words with <50% accuracy and 3+ attempts, sorted by worst first */
+    const hardestWords = useMemo(() =>
+        Object.values(history.records)
+            .filter(r => r.attempts >= 3 && (r.correct / r.attempts) < 0.5)
+            .sort((a, b) => (a.correct / a.attempts) - (b.correct / b.attempts)),
+    [history.records]);
+
     /** Count of words at Leitner box 4 (mastered) */
     const masteredCount = useMemo(() =>
         Object.values(history.records).filter(r => r.box >= 4).length,
@@ -153,6 +175,7 @@ export function useWordHistory() {
         recordAttempt,
         reviewQueue,
         weakCategories,
+        hardestWords,
         masteredCount,
     };
 }
