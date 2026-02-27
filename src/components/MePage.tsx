@@ -9,9 +9,9 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import { SettingsModal } from './SettingsModal';
 import { STORAGE_KEYS } from '../config';
 
-type MeTab = 'themes' | 'topics';
+type MeTab = 'appearance' | 'topics';
 const ME_TABS: { id: MeTab; label: string }[] = [
-    { id: 'themes', label: 'Themes' },
+    { id: 'appearance', label: 'Appearance' },
     { id: 'topics', label: 'Achievements' },
 ];
 
@@ -101,7 +101,7 @@ const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-d
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
 export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked, activeCostume, onCostumeChange, activeTheme, onThemeChange, activeTrailId, onTrailChange, displayName, onDisplayNameChange, isAnonymous, onLinkGoogle, onSendEmailLink, activeBadge, onBadgeChange, grade, onGradeChange, dialect, onDialectChange }: Props) {
-    const [meTab, setMeTab] = useState<MeTab>('themes');
+    const [meTab, setMeTab] = useState<MeTab>('appearance');
     const [showRanks, setShowRanks] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
@@ -446,7 +446,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             )}
 
             {/* ═══════ THEMES TAB ═══════ */}
-            {meTab === 'themes' && (
+            {meTab === 'appearance' && (
                 <>
                     {/* Chalk Themes — locked ones faded like achievements */}
                     <div className="w-full max-w-sm">

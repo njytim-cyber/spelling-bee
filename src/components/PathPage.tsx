@@ -19,6 +19,7 @@ interface Props {
     reviewDueCount?: number;
     hardestWordCount?: number;
     onDrillHardest?: () => void;
+    gradeLabel?: string;
 }
 
 // ── Recommendation card (same pattern as StudyAnalyticsModal) ────────────────
@@ -60,7 +61,7 @@ const COMPETITION_CATS = SPELLING_CATEGORIES.filter(c => c.group === 'competitio
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, gradeLabel }: Props) {
     const curriculum = useMemo(() => evaluateCurriculum(records), [records]);
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount), [records, reviewDueCount]);
     const mistakeInsights = useMemo(() => getMistakeInsights(records), [records]);
@@ -86,6 +87,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                 Path to Champion
             </h2>
             <div className="flex justify-center gap-4 text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-4">
+                {gradeLabel && <span>{gradeLabel}</span>}
                 <span>{totalMastered} mastered</span>
                 <span>{accuracy}% accuracy</span>
                 {reviewDueCount > 0 && (
@@ -311,7 +313,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                                         onClick={() => onPractice(pp.phase.categories[0])}
                                         className="shrink-0 px-3 py-1.5 rounded-xl text-xs ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
                                     >
-                                        Go
+                                        Practice
                                     </button>
                                 )}
                             </div>

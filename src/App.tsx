@@ -737,6 +737,7 @@ function App() {
               records={wordRecords}
               reviewDueCount={reviewQueue.length}
               hardestWordCount={hardestWords.length}
+              gradeLabel={gradeConfig ? `${gradeConfig.label} (${gradeConfig.grades})` : undefined}
               onDrillHardest={() => {
                 setDrillHardest(true);
                 setQuestionType('guided');
@@ -752,7 +753,7 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} beeBestRound={stats.beeBestRound} beeBestLevel={stats.beeBestLevel} beeWins={stats.beeWins} masteredCount={masteredCount} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 

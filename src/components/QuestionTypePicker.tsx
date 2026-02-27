@@ -10,7 +10,7 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'grades' | 'themes' | 'compete' | 'origins';
+type Tab = 'grades' | 'topics' | 'compete' | 'origins';
 
 const GRADE_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
@@ -21,8 +21,8 @@ const COMP_WORD_IDS: SpellingCategory[] = ['wotc-one', 'wotc-two', 'wotc-three']
 /** Competition game-mode categories (different UI entirely) */
 const COMP_MODE_IDS: SpellingCategory[] = ['bee', 'written-test'];
 
-const TABS: Tab[] = ['grades', 'themes', 'compete', 'origins'];
-const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', themes: 'Themes', compete: 'Compete', origins: 'Origins' };
+const TABS: Tab[] = ['grades', 'topics', 'compete', 'origins'];
+const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', topics: 'Topics', compete: 'Compete', origins: 'Origins' };
 const SWIPE_THRESHOLD = 50;
 
 export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
@@ -92,9 +92,9 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                 {/* Word lists — same swipe game, different word pools */}
                 <div className="mb-4">
                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-0.5 px-1">
-                        Scripps Word Lists
+                        Competition Words
                     </div>
-                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Swipe-quiz with competition words</div>
+                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Swipe-quiz with competition word lists</div>
                     <div className="grid grid-cols-3 gap-2">
                         {compWords.map(renderItem)}
                     </div>
@@ -186,7 +186,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             transition={{ duration: 0.15 }}
                                         >
                                             {tab === 'grades' ? renderGrid(gradeGroups)
-                                                : tab === 'themes' ? renderGrid(themeGroups)
+                                                : tab === 'topics' ? renderGrid(themeGroups)
                                                 : tab === 'compete' ? renderCompete()
                                                 : renderGrid(originGroups)}
                                         </motion.div>

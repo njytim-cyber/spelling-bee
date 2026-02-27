@@ -28,20 +28,10 @@ interface Props {
     onOpenMultiplayer?: () => void;
     onOpenBee?: () => void;
     onOpenGuided?: () => void;
-    beeBestRound?: number;
-    beeBestLevel?: string;
-    beeWins?: number;
-    masteredCount?: number;
 }
 
-const BEE_LEVEL_LABELS: Record<string, string> = {
-    classroom: 'Classroom',
-    district: 'District',
-    state: 'State',
-    national: 'National',
-};
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenGuided, beeBestRound, beeBestLevel, beeWins, masteredCount }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenGuided }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
@@ -189,33 +179,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             </div>
 
             {/* Your bee stats */}
-            {(beeBestRound != null && beeBestRound > 0) && (
-                <div className="w-full max-w-sm mb-4 flex items-center justify-center gap-4 py-2 px-4 rounded-xl bg-[rgb(var(--color-fg))]/5">
-                    <div className="text-center">
-                        <div className="text-sm ui font-bold text-[var(--color-gold)]">Round {beeBestRound + 1}</div>
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">best</div>
-                    </div>
-                    {beeBestLevel && (
-                        <div className="text-center">
-                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{BEE_LEVEL_LABELS[beeBestLevel] ?? beeBestLevel}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">level</div>
-                        </div>
-                    )}
-                    {beeWins != null && beeWins > 0 && (
-                        <div className="text-center">
-                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{beeWins}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">wins</div>
-                        </div>
-                    )}
-                    {masteredCount != null && masteredCount > 0 && (
-                        <div className="text-center">
-                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{masteredCount}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">mastered</div>
-                        </div>
-                    )}
-                </div>
-            )}
-
             {/* Leaderboard header */}
             <div className="w-full max-w-sm mb-2">
                 <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
