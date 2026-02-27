@@ -121,7 +121,7 @@ export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange,
     return (
         <ModalShell onClose={onClose}>
                 <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg chalk text-[var(--color-chalk)]">Settings</h3>
+                    <h3 className="text-lg ui font-bold text-[var(--color-chalk)]">Settings</h3>
                     <button onClick={onClose} className="text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60">
                         Close
                     </button>

@@ -45,7 +45,7 @@ export function ReloadPrompt({ suppress = false }: ReloadPromptProps) {
                     <span className="text-xl">✨</span>
                     <div className="flex-1 min-w-0">
                         <div className="text-xs ui text-[rgb(var(--color-fg))]/60">New version available</div>
-                        <div className="text-sm chalk text-[var(--color-chalk)]">Tap update to get the latest!</div>
+                        <div className="text-sm ui font-bold text-[var(--color-chalk)]">Tap update to get the latest!</div>
                     </div>
                     <div className="flex gap-2">
                         <button

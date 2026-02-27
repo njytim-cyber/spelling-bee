@@ -25,7 +25,7 @@ export function FullScreenPanel({ title, onClose, children }: Props) {
             {/* Header */}
             <div className="flex items-center justify-between px-4 pt-[calc(env(safe-area-inset-top,12px)+12px)] pb-3">
                 <div className="w-9" />
-                <h3 className="text-lg chalk text-[var(--color-gold)]">{title}</h3>
+                <h3 className="text-lg ui font-bold text-[var(--color-gold)]">{title}</h3>
                 <button
                     onClick={onClose}
                     className="w-9 h-9 flex items-center justify-center rounded-lg text-[rgb(var(--color-fg))]/60 hover:text-[rgb(var(--color-fg))]/80 transition-colors"

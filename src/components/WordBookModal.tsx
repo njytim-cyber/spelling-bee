@@ -39,9 +39,16 @@ function accuracyColor(acc: number): string {
 function speak(word: string) {
     if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(word);
-        u.rate = 0.85;
+        const storedRate = localStorage.getItem(STORAGE_KEYS.ttsRate);
+        u.rate = storedRate ? parseFloat(storedRate) : 0.85;
         const dialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
         u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+        // Respect user's preferred voice
+        const storedURI = localStorage.getItem(STORAGE_KEYS.ttsVoice);
+        if (storedURI) {
+            const voice = speechSynthesis.getVoices().find(v => v.voiceURI === storedURI);
+            if (voice) u.voice = voice;
+        }
         speechSynthesis.cancel();
         speechSynthesis.speak(u);
     }
@@ -66,7 +73,7 @@ const WordRow = memo(function WordRow({
                 className="w-full flex items-center justify-between py-2 px-1 text-left"
             >
                 <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-sm chalk text-[var(--color-chalk)] truncate">{record.word}</span>
+                    <span className="text-sm ui font-bold text-[var(--color-chalk)] truncate">{record.word}</span>
                     <span className={`text-[9px] ui shrink-0 ${BOX_COLORS[Math.min(record.box, 4)]}`}>
                         {BOX_LABELS[Math.min(record.box, 4)]}
                     </span>

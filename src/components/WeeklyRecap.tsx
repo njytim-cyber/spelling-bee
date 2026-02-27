@@ -57,20 +57,20 @@ export function WeeklyRecap({ stats }: Props) {
                         exit={{ scale: 0.85, opacity: 0 }}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h3 className="text-lg chalk text-[var(--color-gold)] mb-4">This Week</h3>
+                        <h3 className="text-lg ui font-bold text-[var(--color-gold)] mb-4">This Week</h3>
 
                         <div className="flex justify-center gap-6 mb-4">
                             <div className="text-center">
-                                <div className="text-xl chalk text-[var(--color-gold)]">{stats.totalXP.toLocaleString()}</div>
+                                <div className="text-xl ui font-bold text-[var(--color-gold)]">{stats.totalXP.toLocaleString()}</div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">total XP</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-xl chalk text-[var(--color-correct)]">{acc}%</div>
+                                <div className="text-xl ui font-bold text-[var(--color-correct)]">{acc}%</div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">accuracy</div>
                             </div>
                             {stats.dayStreak >= 3 && (
                                 <div className="text-center">
-                                    <div className="text-xl chalk text-[var(--color-streak-fire)]">{stats.dayStreak}🔥</div>
+                                    <div className="text-xl ui font-bold text-[var(--color-streak-fire)]">{stats.dayStreak}🔥</div>
                                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">day streak</div>
                                 </div>
                             )}

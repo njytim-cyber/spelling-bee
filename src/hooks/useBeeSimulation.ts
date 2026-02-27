@@ -10,6 +10,7 @@ import { difficultyRange } from '../domains/spelling/words';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 import { parseEtymology } from '../utils/etymologyParser';
+import { playDing, playBuzzer, playGasp, playApplause } from '../utils/beeSounds';
 
 export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'won' | 'complete';
 
@@ -148,7 +149,7 @@ export function simulateNpcTurns(
 
 export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false) {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
-    const { speak, isSupported } = usePronunciation();
+    const { speak, speakWordNumber, speakLetters, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
 
     // In dictation mode: no NPCs, no elimination, go straight to spelling
@@ -192,9 +193,9 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 };
             });
         }
-        if (isSupported) speak(word.word);
+        if (isSupported) speakWordNumber(word.word, state.round + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.round, category, hardMode, dictationMode, speak, isSupported]);
+    }, [state.round, category, hardMode, dictationMode, speakWordNumber, isSupported]);
 
     const startSession = useCallback(() => {
         const word = pickBeeWord(0, category, hardMode);
@@ -217,9 +218,9 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 npcSpellings: npc.npcSpellings,
             });
         }
-        if (isSupported) speak(word.word);
+        if (isSupported) speakWordNumber(word.word, 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [category, hardMode, dictationMode, speak, isSupported]);
+    }, [category, hardMode, dictationMode, speakWordNumber, isSupported]);
 
     const pronounce = useCallback(() => {
         if (state.currentWord && isSupported) {
@@ -242,28 +243,49 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             const word = prev.currentWord;
             if (!word) return prev;
 
+            let spokenText: string | null = null;
+
             switch (type) {
-                case 'definition':
-                    newResponses.definition = redactWord(word.definition, word.word);
+                case 'definition': {
+                    const def = redactWord(word.definition, word.word);
+                    newResponses.definition = def;
+                    spokenText = `The definition is: ${def}`;
                     break;
-                case 'sentence':
-                    newResponses.sentence = redactWord(word.exampleSentence, word.word);
+                }
+                case 'sentence': {
+                    const sent = redactWord(word.exampleSentence, word.word);
+                    newResponses.sentence = sent;
+                    spokenText = sent;
                     break;
+                }
                 case 'origin':
                     if (word.etymology) {
                         const parsed = parseEtymology(word.etymology);
                         const rootPart = parsed.roots.length > 0 ? ` — ${parsed.roots.join(', ')}` : '';
-                        newResponses.origin = `Language: ${parsed.language}${rootPart}`;
+                        const text = `Language: ${parsed.language}${rootPart}`;
+                        newResponses.origin = text;
+                        spokenText = `The language of origin is ${parsed.language}`;
                     } else {
                         newResponses.origin = 'Origin information not available.';
+                        spokenText = 'Origin information is not available.';
                     }
                     break;
-                case 'partOfSpeech':
-                    newResponses.partOfSpeech = word.partOfSpeech ?? 'Part of speech not available.';
+                case 'partOfSpeech': {
+                    const pos = word.partOfSpeech ?? 'Part of speech not available.';
+                    newResponses.partOfSpeech = pos;
+                    spokenText = `It is ${pos === 'noun' || pos === 'adjective' || pos === 'adverb' || pos === 'interjection'
+                        ? `a ${pos}` : `a ${pos}`}`;
                     break;
+                }
                 case 'repeat':
                     if (isSupported) speak(word.word);
                     break;
+            }
+
+            // Speak the info response aloud (like a real bee pronouncer)
+            if (spokenText && type !== 'repeat' && isSupported) {
+                // Use setTimeout to avoid speaking inside setState
+                setTimeout(() => speak(spokenText!), 50);
             }
 
             return { ...prev, infoRequested: newRequested, infoResponses: newResponses };
@@ -287,6 +309,23 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             const wordsAttempted = prev.wordsAttempted + 1;
             const npcScores = [...prev.npcScores];
             if (correct) npcScores[2]++;
+
+            // Sound effects + pronouncer confirmation (after setState completes)
+            const word = prev.currentWord.word;
+            setTimeout(() => {
+                if (correct) {
+                    playDing();
+                    playApplause();
+                    if (isSupported) speak(`That is correct!`);
+                } else {
+                    playBuzzer();
+                    playGasp();
+                    if (isSupported) {
+                        const letters = word.split('').join(', ');
+                        speak(`I'm sorry, that is incorrect. The correct spelling is ${letters}`);
+                    }
+                }
+            }, 100);
 
             // Check if any NPC is still alive (player is index 2)
             const anyNpcAlive = prev.npcAlive.some((alive, i) => alive && i !== 2);
@@ -312,7 +351,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 npcScores,
             };
         });
-    }, []);
+    }, [speak, isSupported]);
 
     const nextWord = useCallback(() => {
         // Pick word outside setState so we can speak it *after* — speaking inside
@@ -335,7 +374,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 npcResults: [null, null, null, null],
                 npcSpellings: [null, null, null, null],
             }));
-            if (isSupported) speak(word.word);
+            if (isSupported) speakWordNumber(word.word, newRound + 1);
         } else {
             let won = false;
             setState(prev => {
@@ -357,9 +396,9 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     npcSpellings: npc.npcSpellings,
                 };
             });
-            if (!won && isSupported) speak(word.word);
+            if (!won && isSupported) speakWordNumber(word.word, newRound + 1);
         }
-    }, [state.round, category, hardMode, dictationMode, speak, isSupported]);
+    }, [state.round, category, hardMode, dictationMode, speakWordNumber, isSupported]);
 
     /** Force-submit an empty answer (used by timer expiry). Transitions asking→spelling→submit. */
     const forceSubmit = useCallback(() => {
@@ -377,6 +416,13 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
     /** XP earned for the current session */
     const sessionXP = state.wordsCorrect * 20;
 
+    /** Read back the player's typed spelling letter-by-letter (like speaking into the mic) */
+    const readBackSpelling = useCallback(() => {
+        if (state.typedSpelling && isSupported) {
+            speakLetters(state.typedSpelling.trim());
+        }
+    }, [state.typedSpelling, speakLetters, isSupported]);
+
     return {
         state,
         startSession,
@@ -389,6 +435,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         submitSpelling,
         forceSubmit,
         nextWord,
+        readBackSpelling,
         sessionXP,
         ttsSupported: isSupported,
         npcResults: state.npcResults,

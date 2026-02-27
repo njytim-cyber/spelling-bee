@@ -45,7 +45,7 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                 exit={{ opacity: 0, scale: 0.85 }}
                 transition={{ duration: 0.15 }}
             >
-                <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-4">1v1 Match</h3>
+                <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">1v1 Match</h3>
 
                 {phase === 'idle' && (
                     <>
@@ -98,7 +98,7 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                                     onChange={e => setJoinCode(e.target.value.toUpperCase().slice(0, 6))}
                                     placeholder="ABCD12"
                                     maxLength={6}
-                                    className="w-full text-center text-2xl chalk tracking-[0.3em] bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-xl px-4 py-3 text-[var(--color-chalk)] placeholder:text-[rgb(var(--color-fg))]/15 outline-none mb-3"
+                                    className="w-full text-center text-2xl ui font-bold tracking-[0.3em] bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-xl px-4 py-3 text-[var(--color-chalk)] placeholder:text-[rgb(var(--color-fg))]/15 outline-none mb-3"
                                 />
                                 <button
                                     onClick={() => joinCode.length === 6 && onJoin(joinCode)}

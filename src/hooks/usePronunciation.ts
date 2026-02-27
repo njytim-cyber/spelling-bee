@@ -12,6 +12,12 @@ import { synthesizeCloud } from '../services/cloudTts';
 interface UsePronunciationReturn {
     /** Speak the given text aloud */
     speak: (text: string) => void;
+    /** Announce a word with "Your word is ..." intro, like a real spelling bee pronouncer */
+    speakWord: (word: string) => void;
+    /** Announce a word with its number: "Word number N. Your word is ..." */
+    speakWordNumber: (word: string, num: number) => void;
+    /** Spell a word letter-by-letter: "word. W, O, R, D. word." */
+    speakLetters: (word: string) => void;
     /** Whether speech is currently playing */
     isSpeaking: boolean;
     /** Whether the browser supports speech synthesis */
@@ -125,5 +131,21 @@ export function usePronunciation(): UsePronunciationReturn {
         speakBrowser(text);
     }, [speakBrowser]);
 
-    return { speak, isSpeaking, isSupported: supported, cancel };
+    /** Announce a word with "Your word is ..." like a real spelling bee pronouncer */
+    const speakWord = useCallback((word: string) => {
+        speak(`Your word is, ${word}`);
+    }, [speak]);
+
+    /** Announce a word with its number: "Word number 3. Your word is ..." */
+    const speakWordNumber = useCallback((word: string, num: number) => {
+        speak(`Word number ${num}. Your word is, ${word}`);
+    }, [speak]);
+
+    /** Spell a word letter-by-letter, like a speller at the mic */
+    const speakLetters = useCallback((word: string) => {
+        const letters = word.split('').join(', ');
+        speak(`${word}. ${letters}. ${word}`);
+    }, [speak]);
+
+    return { speak, speakWord, speakWordNumber, speakLetters, isSpeaking, isSupported: supported, cancel };
 }

@@ -2,11 +2,11 @@
  * components/BeeClassroom.tsx
  *
  * Visual spelling bee classroom scene — chalk-line stick figures.
- * A teacher at the front announces words; 4 pupils take turns spelling.
- * Pupil index 2 is the player ("YOU"). NPCs have varying skill levels.
+ * A Pronouncer at the front announces words; 4 spellers take turns spelling.
+ * Speller index 2 is the player ("YOU"). NPCs have varying skill levels.
  *
  * Layout: active speller stands at center mic, others sit in a row behind.
- * Rich animations: speech bubbles, microphone, teacher reactions, confetti.
+ * Rich animations: speech bubbles, microphone, Pronouncer reactions, confetti.
  */
 import { memo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, type TargetAndTransition } from 'framer-motion';
@@ -54,13 +54,13 @@ const NPC_FAIL_QUIPS = [
     ['I knew it...', '*sigh*', 'Sorry...'],
 ];
 
-const TEACHER_INTROS = [
+const PRONOUNCER_INTROS = [
     'Welcome to the Spelling Bee!',
     'Spellers, are you ready?',
     'Let the Spelling Bee begin!',
 ];
 
-const TEACHER_ROUND_QUIPS = [
+const PRONOUNCER_ROUND_QUIPS = [
     'Next round!',
     'Moving on...',
     'Here we go!',
@@ -68,7 +68,7 @@ const TEACHER_ROUND_QUIPS = [
     'Alright, next up!',
 ];
 
-const TEACHER_PLAYER_INTROS = [
+const PRONOUNCER_PLAYER_INTROS = [
     'Your word is...',
     'Spell this word, please.',
     'Step up! Your word is...',
@@ -81,12 +81,12 @@ function pickQuip(arr: string[]): string {
 
 // ── Idle animations per personality ──────────────────────────────────────────
 
-const TEACHER_IDLE: TargetAndTransition = {
+const PRONOUNCER_IDLE: TargetAndTransition = {
     y: [0, -2, 0],
     transition: { repeat: Infinity, duration: 3, ease: 'easeInOut' as const },
 };
 
-const TEACHER_ANNOUNCE: TargetAndTransition = {
+const PRONOUNCER_ANNOUNCE: TargetAndTransition = {
     y: [0, -3, 0],
     rotate: [-1, 1, -1],
     transition: { repeat: Infinity, duration: 0.8, ease: 'easeInOut' as const },
@@ -266,11 +266,11 @@ function Sparkles({ cx, cy }: { cx: number; cy: number }) {
 
 // ── SVG sub-components ───────────────────────────────────────────────────────
 
-const Teacher = memo(function Teacher({ announcing, lastNpcResult }: {
+const Pronouncer = memo(function Pronouncer({ announcing, lastNpcResult }: {
     announcing: boolean;
     lastNpcResult: boolean | null;
 }) {
-    // Teacher's face changes based on recent NPC result
+    // Pronouncer's face changes based on recent NPC result
     let mouthPath = 'M 155 33 Q 160 38 165 33'; // default smile
     let eyeL = <circle cx="155" cy="27" r="1.8" fill="currentColor" opacity="0.7" />;
     let eyeR = <circle cx="165" cy="27" r="1.8" fill="currentColor" opacity="0.7" />;
@@ -286,7 +286,7 @@ const Teacher = memo(function Teacher({ announcing, lastNpcResult }: {
     }
 
     return (
-        <motion.g animate={announcing ? TEACHER_ANNOUNCE : TEACHER_IDLE}>
+        <motion.g animate={announcing ? PRONOUNCER_ANNOUNCE : PRONOUNCER_IDLE}>
             {/* Head */}
             <circle cx="160" cy="28" r="13" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.8" />
             {/* Hair — messy professor look */}
@@ -663,8 +663,8 @@ export const BeeClassroom = memo(function BeeClassroom({
     const [displayedTurn, setDisplayedTurn] = useState(-1);
     const [revealedResults, setRevealedResults] = useState<Set<number>>(new Set());
     const [speechBubbles, setSpeechBubbles] = useState<Record<number, string>>({});
-    const [teacherBubble, setTeacherBubble] = useState('');
-    const [teacherReaction, setTeacherReaction] = useState<boolean | null>(null);
+    const [pronouncerBubble, setPronouncerBubble] = useState('');
+    const [pronouncerReaction, setPronouncerReaction] = useState<boolean | null>(null);
     const [announcing, setAnnouncing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
@@ -690,22 +690,22 @@ export const BeeClassroom = memo(function BeeClassroom({
         setDisplayedTurn(-1);
         setRevealedResults(new Set());
         setSpeechBubbles({});
-        setTeacherReaction(null);
+        setPronouncerReaction(null);
         setAnnouncing(true);
 
         // Clear any pending timers
         timerRef.current.forEach(clearTimeout);
         timerRef.current = [];
 
-        // Teacher intro bubble
+        // Pronouncer intro bubble
         const introQuip = round === 0
-            ? pickQuip(TEACHER_INTROS)
-            : pickQuip(TEACHER_ROUND_QUIPS);
-        setTeacherBubble(introQuip);
+            ? pickQuip(PRONOUNCER_INTROS)
+            : pickQuip(PRONOUNCER_ROUND_QUIPS);
+        setPronouncerBubble(introQuip);
 
-        // Clear teacher bubble after a beat
+        // Clear pronouncer bubble after a beat
         timerRef.current.push(setTimeout(() => {
-            setTeacherBubble('');
+            setPronouncerBubble('');
             setAnnouncing(false);
         }, 1200));
 
@@ -717,18 +717,18 @@ export const BeeClassroom = memo(function BeeClassroom({
 
         // Sequence through NPCs before player
         npcsBefore.forEach((npcIdx) => {
-            // Teacher announces NPC's turn
+            // Pronouncer announces NPC's turn
             timerRef.current.push(setTimeout(() => {
                 setDisplayedTurn(npcIdx);
-                setTeacherBubble(`${NPC_NAMES[npcIdx]}, your word is...`);
+                setPronouncerBubble(`${NPC_NAMES[npcIdx]}, your word is...`);
                 setAnnouncing(true);
                 const quip = pickQuip(NPC_IDLE_QUIPS[npcIdx]);
                 setSpeechBubbles(prev => ({ ...prev, [npcIdx]: quip }));
             }, delay));
 
-            // Clear teacher bubble, show spelling attempt
+            // Clear pronouncer bubble, show spelling attempt
             timerRef.current.push(setTimeout(() => {
-                setTeacherBubble('');
+                setPronouncerBubble('');
                 setAnnouncing(false);
                 const spelling = npcSpellings[npcIdx];
                 if (spelling) {
@@ -744,7 +744,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                     ? pickQuip(NPC_SUCCESS_QUIPS[npcIdx])
                     : pickQuip(NPC_FAIL_QUIPS[npcIdx]);
                 setSpeechBubbles(prev => ({ ...prev, [npcIdx]: quip }));
-                setTeacherReaction(result);
+                setPronouncerReaction(result);
             }, delay + 1200));
 
             // Clear speech bubble + result indicator (Step 2: clean between turns)
@@ -759,7 +759,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                     next.delete(npcIdx);
                     return next;
                 });
-                setTeacherReaction(null);
+                setPronouncerReaction(null);
             }, delay + 1900));
 
             delay += 2100;
@@ -767,18 +767,18 @@ export const BeeClassroom = memo(function BeeClassroom({
 
         // NPC after player (Sam/Nervous) — same full turn sequence
         npcsAfter.forEach((npcIdx) => {
-            // Teacher announces
+            // Pronouncer announces
             timerRef.current.push(setTimeout(() => {
                 setDisplayedTurn(npcIdx);
-                setTeacherBubble(`${NPC_NAMES[npcIdx]}, your word is...`);
+                setPronouncerBubble(`${NPC_NAMES[npcIdx]}, your word is...`);
                 setAnnouncing(true);
                 const quip = pickQuip(NPC_IDLE_QUIPS[npcIdx]);
                 setSpeechBubbles(prev => ({ ...prev, [npcIdx]: quip }));
             }, delay));
 
-            // Clear teacher, show spelling
+            // Clear pronouncer, show spelling
             timerRef.current.push(setTimeout(() => {
-                setTeacherBubble('');
+                setPronouncerBubble('');
                 setAnnouncing(false);
                 const spelling = npcSpellings[npcIdx];
                 if (spelling) {
@@ -794,7 +794,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                     ? pickQuip(NPC_SUCCESS_QUIPS[npcIdx])
                     : pickQuip(NPC_FAIL_QUIPS[npcIdx]);
                 setSpeechBubbles(prev => ({ ...prev, [npcIdx]: quip }));
-                setTeacherReaction(result);
+                setPronouncerReaction(result);
             }, delay + 1200));
 
             // Clear speech bubble + result indicator
@@ -809,16 +809,16 @@ export const BeeClassroom = memo(function BeeClassroom({
                     next.delete(npcIdx);
                     return next;
                 });
-                setTeacherReaction(null);
+                setPronouncerReaction(null);
             }, delay + 1900));
 
             delay += 2100;
         });
 
-        // Clear teacher reaction before player's turn (Step 3: improved teacher intros)
+        // Clear pronouncer reaction before player's turn
         timerRef.current.push(setTimeout(() => {
-            setTeacherReaction(null);
-            setTeacherBubble(pickQuip(TEACHER_PLAYER_INTROS));
+            setPronouncerReaction(null);
+            setPronouncerBubble(pickQuip(PRONOUNCER_PLAYER_INTROS));
             setAnnouncing(true);
         }, delay - 200));
 
@@ -829,9 +829,9 @@ export const BeeClassroom = memo(function BeeClassroom({
             onPlayerTurn();
         }, delay));
 
-        // Clear teacher bubble after a beat
+        // Clear pronouncer bubble after a beat
         timerRef.current.push(setTimeout(() => {
-            setTeacherBubble('');
+            setPronouncerBubble('');
         }, delay + 2000));
 
         return () => { timerRef.current.forEach(clearTimeout); };
@@ -844,7 +844,7 @@ export const BeeClassroom = memo(function BeeClassroom({
             style={{ color: 'var(--color-chalk)' }}
             onClick={onPronounce}
             role="button"
-            aria-label="Tap to hear the word"
+            aria-label="Tap the Pronouncer to hear the word"
         >
             {/* Stage decor */}
             <StageDecor />
@@ -855,12 +855,12 @@ export const BeeClassroom = memo(function BeeClassroom({
             {/* Microphone at center stage */}
             <MicStand cx={160} />
 
-            {/* Teacher */}
-            <Teacher announcing={announcing} lastNpcResult={teacherReaction} />
+            {/* Pronouncer */}
+            <Pronouncer announcing={announcing} lastNpcResult={pronouncerReaction} />
 
-            {/* Teacher speech bubble */}
+            {/* Pronouncer speech bubble */}
             <AnimatePresence>
-                {teacherBubble && (
+                {pronouncerBubble && (
                     <motion.g
                         initial={{ opacity: 0, y: 3 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -868,8 +868,8 @@ export const BeeClassroom = memo(function BeeClassroom({
                         transition={{ duration: 0.25 }}
                     >
                         <rect
-                            x={160 - teacherBubble.length * 4.5 - 10}
-                            y="-2" width={teacherBubble.length * 9 + 20} height="22" rx="7"
+                            x={160 - pronouncerBubble.length * 4.5 - 10}
+                            y="-2" width={pronouncerBubble.length * 9 + 20} height="22" rx="7"
                             fill="currentColor" opacity="0.12"
                             stroke="currentColor" strokeWidth="0.7"
                             style={{ strokeOpacity: 0.25 }}
@@ -886,7 +886,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                             fontFamily="var(--font-ui)"
                             fontWeight="700"
                         >
-                            {teacherBubble}
+                            {pronouncerBubble}
                         </text>
                     </motion.g>
                 )}
@@ -1001,7 +1001,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                 );
             })}
 
-            {/* "Your turn!" text when player is highlighted — removed since teacher bubble now says it */}
+            {/* "Your turn!" text when player is highlighted — removed since pronouncer bubble now says it */}
         </svg>
     );
 });

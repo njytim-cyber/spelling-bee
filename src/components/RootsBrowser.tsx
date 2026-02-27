@@ -28,7 +28,7 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
                 className="w-full flex items-center justify-between py-2.5 px-1 text-left"
             >
                 <div className="flex items-center gap-2 min-w-0">
-                    <span className="text-sm chalk text-[var(--color-chalk)] font-semibold">{root.root}</span>
+                    <span className="text-sm ui text-[var(--color-chalk)] font-semibold">{root.root}</span>
                     <span className={`text-[10px] ui px-1.5 py-0.5 rounded-full font-medium shrink-0 ${TYPE_BADGE[root.type] ?? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/40'}`}>
                         {root.type}
                     </span>
@@ -53,7 +53,7 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
                                 {root.examples.map(word => (
                                     <span
                                         key={word}
-                                        className="px-2 py-0.5 rounded-md bg-[rgb(var(--color-fg))]/5 text-xs chalk text-[var(--color-chalk)]"
+                                        className="px-2 py-0.5 rounded-md bg-[rgb(var(--color-fg))]/5 text-xs ui text-[var(--color-chalk)]"
                                     >
                                         {word}
                                     </span>

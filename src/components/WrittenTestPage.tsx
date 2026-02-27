@@ -83,7 +83,7 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
     if (phase === 'setup') {
         return (
             <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-6">
-                <h2 className="text-2xl chalk text-[var(--color-gold)]">Written Test</h2>
+                <h2 className="text-2xl ui font-bold text-[var(--color-gold)]">Written Test</h2>
                 <p className="text-sm ui text-[rgb(var(--color-fg))]/50 text-center max-w-[280px]">
                     Mock Scripps Round 3: 28 spelling + 12 vocabulary = 40 questions. 15-minute timer.
                 </p>
@@ -128,7 +128,7 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
         const percentage = Math.round((results.total / (results.spellingTotal + results.vocabTotal)) * 100);
         return (
             <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-4">
-                <h2 className="text-2xl chalk text-[var(--color-gold)]">Test Complete</h2>
+                <h2 className="text-2xl ui font-bold text-[var(--color-gold)]">Test Complete</h2>
                 <div className="text-5xl chalk text-[var(--color-chalk)]">{percentage}%</div>
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/50">
                     {results.total}/{results.spellingTotal + results.vocabTotal} correct
@@ -221,7 +221,7 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
                     transition={{ duration: 0.15 }}
                     className="w-full max-w-[340px]"
                 >
-                    <p className={`text-center chalk text-[var(--color-chalk)] mb-6 ${
+                    <p className={`text-center ui font-bold text-[var(--color-chalk)] mb-6 ${
                         currentQuestion.prompt.length > 60 ? 'text-sm' : currentQuestion.prompt.length > 35 ? 'text-base' : 'text-lg'
                     }`}>
                         {currentQuestion.prompt}
@@ -246,7 +246,7 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
                                     key={i}
                                     onClick={() => !isReview && selectAnswer(currentIndex, i)}
                                     disabled={isReview}
-                                    className={`w-full px-4 py-3 rounded-xl border-2 text-sm chalk transition-colors ${btnClass}`}
+                                    className={`w-full px-4 py-3 rounded-xl border-2 text-sm ui font-bold transition-colors ${btnClass}`}
                                 >
                                     <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mr-2">
                                         {String.fromCharCode(65 + i)}.

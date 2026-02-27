@@ -76,7 +76,7 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                                 ease: [0.34, 1.56, 0.64, 1],
                                 scale: { duration: 0.15, ease: [0.34, 1.56, 0.64, 1] },
                             }}
-                            className="text-2xl chalk text-[var(--color-chalk)] tracking-[0.15em] uppercase inline-block"
+                            className="text-2xl ui font-bold text-[var(--color-chalk)] tracking-[0.15em] uppercase inline-block"
                         >
                             {letter}
                         </motion.span>
@@ -87,7 +87,7 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                 <motion.span
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ repeat: Infinity, duration: 1, times: [0, 0.5, 0.5], ease: 'linear' }}
-                    className="text-2xl chalk text-[var(--color-gold)] ml-0.5"
+                    className="text-2xl ui font-bold text-[var(--color-gold)] ml-0.5"
                 >
                     _
                 </motion.span>

@@ -37,7 +37,7 @@ export const CustomListsModal = memo(function CustomListsModal({
 
     return (
         <ModalShell onClose={onClose} className="custom-scrollbar">
-                <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-4">
+                <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">
                     {mode === 'create' ? 'New List' : mode === 'view' ? viewList?.name ?? 'List' : 'Custom Lists'}
                 </h3>
 

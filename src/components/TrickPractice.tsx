@@ -159,7 +159,7 @@ export function TrickPractice({ trick, onClose }: Props) {
                     animate={{ scale: 1, opacity: 1 }}
                 >
                     <div className="text-4xl">🎉</div>
-                    <h2 className="text-2xl chalk text-[var(--color-gold)]">Mastered!</h2>
+                    <h2 className="text-2xl ui font-bold text-[var(--color-gold)]">Mastered!</h2>
                     <p className="text-sm ui text-[rgb(var(--color-fg))]/50 text-center">
                         You've learned the <span className="text-[var(--color-gold)]">{trick.title}</span> spelling rule
                     </p>

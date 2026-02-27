@@ -215,7 +215,7 @@ export const SessionSummary = memo(function SessionSummary({
 
                         {accuracy === 100 ? (
                             <motion.div
-                                className="text-2xl chalk text-[var(--color-gold)] mb-4"
+                                className="text-2xl ui font-bold text-[var(--color-gold)] mb-4"
                                 initial={{ scale: 0 }}
                                 animate={{ scale: [0, 1.3, 1] }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -223,27 +223,27 @@ export const SessionSummary = memo(function SessionSummary({
                                 🏆 PERFECT
                             </motion.div>
                         ) : (
-                            <h3 className="text-xl chalk text-[var(--color-gold)] mb-4">
+                            <h3 className="text-xl ui font-bold text-[var(--color-gold)] mb-4">
                                 {hardMode && timedMode ? '💀⏱️ ' : hardMode ? '💀 ' : timedMode ? '⏱️ ' : ''}Done
                             </h3>
                         )}
 
                         <div className="flex justify-center gap-6 mb-4">
                             <div className="text-center">
-                                <div className="text-2xl chalk text-[rgb(var(--color-fg))]/80">{solved}</div>
+                                <div className="text-2xl ui font-bold text-[rgb(var(--color-fg))]/80">{solved}</div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">solved</div>
                             </div>
                             <div className="text-center min-w-[60px]">
-                                <div className="text-2xl chalk text-[var(--color-correct)]">{accuracy}%</div>
+                                <div className="text-2xl ui font-bold text-[var(--color-correct)]">{accuracy}%</div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">accuracy</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-2xl chalk text-[var(--color-streak-fire)]">{streak}🔥</div>
+                                <div className="text-2xl ui font-bold text-[var(--color-streak-fire)]">{streak}🔥</div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">best streak</div>
                             </div>
                         </div>
 
-                        <div className="text-lg chalk text-[var(--color-gold)] mb-4 tabular-nums">+{xpDisplay} pts</div>
+                        <div className="text-lg ui font-bold text-[var(--color-gold)] mb-4 tabular-nums">+{xpDisplay} pts</div>
 
                         {/* Answer history grid — compact */}
                         {answerHistory.length > 0 && (

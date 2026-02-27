@@ -41,7 +41,7 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
                 onClick={onNext}
             >
                 <span className="text-lg text-[var(--color-correct)]">&#10003;</span>
-                <span className="text-sm chalk text-[var(--color-correct)]">Correct!</span>
+                <span className="text-sm ui font-bold text-[var(--color-correct)]">Correct!</span>
             </motion.div>
         );
     }
@@ -55,7 +55,7 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
         >
             <div className="flex items-center gap-2">
                 <span className="text-2xl">&#10007;</span>
-                <span className="text-xl chalk text-[var(--color-chalk)]">{word}</span>
+                <span className="text-xl ui font-bold text-[var(--color-chalk)]">{word}</span>
             </div>
             <p className="text-sm ui text-[var(--color-wrong)]">
                 You spelled: &ldquo;{typed}&rdquo;
@@ -83,6 +83,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         submitSpelling,
         forceSubmit,
         nextWord,
+        readBackSpelling,
         sessionXP,
         ttsSupported,
         npcResults,
@@ -252,6 +253,14 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                                             }
                                         }}
                                     />
+                                    {ttsSupported && typedSpelling.trim().length > 0 && (
+                                        <button
+                                            onClick={readBackSpelling}
+                                            className="mt-2 w-full text-center text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                                        >
+                                            Hear My Spelling
+                                        </button>
+                                    )}
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -395,6 +404,15 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                                             }
                                         }}
                                     />
+                                    {/* Hear My Spelling — reads back letter-by-letter like speaking into the mic */}
+                                    {ttsSupported && typedSpelling.trim().length > 0 && (
+                                        <button
+                                            onClick={readBackSpelling}
+                                            className="mt-2 w-full text-center text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                                        >
+                                            Hear My Spelling
+                                        </button>
+                                    )}
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -413,7 +431,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
 
                         {phase === 'listening' && (
                             <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
-                                {ttsSupported ? 'Tap teacher to hear word again' : 'Audio not available — tap teacher'}
+                                {ttsSupported ? 'Tap the Pronouncer to hear word again' : 'Audio not available — tap the Pronouncer'}
                             </p>
                         )}
                     </motion.div>
@@ -428,8 +446,8 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                         className="flex flex-col items-center gap-4"
                     >
                         <div className="text-6xl">🐝</div>
-                        <h2 className="text-2xl chalk text-[var(--color-wrong)]">Eliminated!</h2>
-                        <div className="text-xl chalk text-[var(--color-chalk)]">
+                        <h2 className="text-2xl ui font-bold text-[var(--color-wrong)]">Eliminated!</h2>
+                        <div className="text-xl ui font-bold text-[var(--color-chalk)]">
                             The word was: {currentWord.word}
                         </div>
                         <div className="text-base ui text-[rgb(var(--color-fg))]/40 italic text-center max-w-[280px]">

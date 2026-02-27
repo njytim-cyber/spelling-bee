@@ -60,7 +60,7 @@ export function TrickLesson({ trick, onClose }: Props) {
                 onPanEnd={handlePanEnd}
             >
                 <div className="text-4xl mb-4">{trick.icon}</div>
-                <h2 className="chalk text-2xl text-[var(--color-gold)] mb-8">{trick.title}</h2>
+                <h2 className="ui font-bold text-2xl text-[var(--color-gold)] mb-8">{trick.title}</h2>
 
                 {/* Example Word */}
                 <div className="mb-12 flex items-center justify-center">

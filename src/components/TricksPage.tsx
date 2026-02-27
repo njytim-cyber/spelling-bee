@@ -79,7 +79,7 @@ export function TricksPage({ onLessonActive }: Props) {
                     </div>
                     <div className="flex-1 min-w-0">
                         <div className="text-[10px] ui text-[var(--color-gold)]/60 mb-0.5">Recommended for you</div>
-                        <div className="text-sm chalk text-[rgb(var(--color-fg))]/90 group-hover:text-[var(--color-gold)] transition-colors truncate">
+                        <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/90 group-hover:text-[var(--color-gold)] transition-colors truncate">
                             {recommended.title}
                         </div>
                         <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 truncate">{recommended.description}</div>
@@ -121,7 +121,7 @@ export function TricksPage({ onLessonActive }: Props) {
                                     <span className="absolute inset-0 flex items-center justify-center text-xs">{cat.emoji}</span>
                                 </div>
                                 <div className="flex-1 text-left">
-                                    <div className="text-sm chalk text-[rgb(var(--color-fg))]/70">{cat.label}</div>
+                                    <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/70">{cat.label}</div>
                                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{catMastered}/{tricks.length} mastered</div>
                                 </div>
                                 {/* Chevron */}
@@ -166,7 +166,7 @@ export function TricksPage({ onLessonActive }: Props) {
                                                                 {trick.icon}
                                                             </div>
                                                             <div className="flex-1 min-w-0">
-                                                                <h3 className="chalk text-sm text-[rgb(var(--color-fg))]/90 group-hover:text-[var(--color-gold)] transition-colors truncate">
+                                                                <h3 className="ui font-bold text-sm text-[rgb(var(--color-fg))]/90 group-hover:text-[var(--color-gold)] transition-colors truncate">
                                                                     {trick.title}
                                                                 </h3>
                                                                 <p className="ui text-[10px] text-[rgb(var(--color-fg))]/50 leading-tight mt-0.5 truncate">
@@ -193,7 +193,7 @@ export function TricksPage({ onLessonActive }: Props) {
                                                                     className="mt-1 bg-[var(--color-overlay)] border border-[var(--color-gold)]/20 rounded-xl p-4 text-center"
                                                                 >
                                                                     <div className="mb-1 flex items-center justify-center">
-                                                                        <span className="text-2xl chalk text-[var(--color-chalk)]">{trick.lesson.word}</span>
+                                                                        <span className="text-2xl ui font-bold text-[var(--color-chalk)]">{trick.lesson.word}</span>
                                                                     </div>
                                                                     <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50 leading-relaxed">{trick.lesson.steps[0]}</div>
                                                                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-2">Tap to dismiss · Tap card to start lesson</div>

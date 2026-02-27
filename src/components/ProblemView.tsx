@@ -75,7 +75,7 @@ const AnswerOption = memo(function AnswerOption({
         >
             {/* Answer pill — adapts width to word length */}
             <motion.div
-                className={`w-full px-4 py-3.5 rounded-2xl border-2 bg-[var(--color-surface)] flex items-center justify-center chalk active:scale-[0.97] transition-transform ${
+                className={`w-full px-4 py-3.5 rounded-2xl border-2 bg-[var(--color-surface)] flex items-center justify-center ui font-bold active:scale-[0.97] transition-transform ${
                     text.length > 10 ? 'text-[17px]' : text.length > 7 ? 'text-[20px]' : 'text-[24px]'
                 } ${correctFlash ? 'border-[var(--color-correct)] text-[var(--color-correct)]'
                     : highlighted ? 'border-[var(--color-gold)] text-[var(--color-gold)]'
@@ -164,11 +164,11 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     </div>
                 )}
                 {typeof p.meta?.['definition'] === 'string' ? (
-                    <div className={`landscape-question chalk leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
                         {p.meta['definition']}
                     </div>
                 ) : (
-                    <div className={`landscape-question chalk leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
                         {displayText}
                     </div>
                 )}

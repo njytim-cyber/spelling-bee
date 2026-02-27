@@ -42,7 +42,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onSelect }: Props
                             {gradeIcon(g.id)}
                         </span>
                         <div className="flex-1">
-                            <div className="text-base chalk text-[var(--color-chalk)]">{g.label}</div>
+                            <div className="text-base ui font-bold text-[var(--color-chalk)]">{g.label}</div>
                             <div className="text-xs ui text-[var(--color-gold)]">{g.grades}</div>
                         </div>
                     </motion.button>

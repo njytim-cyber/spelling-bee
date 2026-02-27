@@ -10,6 +10,7 @@ import { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SpellingInput } from './SpellingInput';
 import type { RoomData, RoomPhase } from '../hooks/useMultiplayerRoom';
+import { usePronunciation } from '../hooks/usePronunciation';
 
 interface Props {
     phase: RoomPhase;
@@ -29,7 +30,7 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
     const [submitted, setSubmitted] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const prevRoundRef = useRef(currentRound);
-    const ttsRef = useRef<SpeechSynthesisUtterance | null>(null);
+    const { speak, speakWord, cancel: cancelTts } = usePronunciation();
 
     const players = Object.entries(roomData.players);
     const me = roomData.players[uid];
@@ -63,30 +64,17 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
         }
     }, [me, opponentData, currentRound, word]);
 
-    // TTS: pronounce word when round starts
+    // TTS: pronounce word when round starts (with "Your word is..." intro)
     useEffect(() => {
         if (phase !== 'playing' || !word || submitted) return;
-        const speak = () => {
-            if (typeof window === 'undefined' || !window.speechSynthesis) return;
-            window.speechSynthesis.cancel();
-            const u = new SpeechSynthesisUtterance(word.prompt);
-            u.rate = 0.85;
-            ttsRef.current = u;
-            window.speechSynthesis.speak(u);
-        };
-        speak();
-        return () => {
-            window.speechSynthesis?.cancel();
-        };
-    }, [phase, currentRound, word, submitted]);
+        speakWord(word.prompt);
+        return () => { cancelTts(); };
+    }, [phase, currentRound, word, submitted, speakWord, cancelTts]);
 
     const handleRepeat = useCallback(() => {
-        if (!word || typeof window === 'undefined' || !window.speechSynthesis) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(word.prompt);
-        u.rate = 0.85;
-        window.speechSynthesis.speak(u);
-    }, [word]);
+        if (!word) return;
+        speak(word.prompt);
+    }, [word, speak]);
 
     const handleSubmit = useCallback(() => {
         if (submitted || !spelling.trim()) return;
@@ -114,12 +102,12 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
 
                     <div className="flex items-center justify-center gap-6 mb-6">
                         <div className="text-center">
-                            <div className="text-4xl chalk text-[var(--color-gold)]">{myScore}</div>
+                            <div className="text-4xl chalk text-[var(--color-gold)] tabular-nums">{myScore}</div>
                             <div className="text-xs ui text-[rgb(var(--color-fg))]/50">{me?.displayName ?? 'You'}</div>
                         </div>
                         <div className="text-lg ui text-[rgb(var(--color-fg))]/20">vs</div>
                         <div className="text-center">
-                            <div className="text-4xl chalk text-[rgb(var(--color-fg))]/70">{oppScore}</div>
+                            <div className="text-4xl chalk text-[rgb(var(--color-fg))]/70 tabular-nums">{oppScore}</div>
                             <div className="text-xs ui text-[rgb(var(--color-fg))]/50">{opponentData?.displayName ?? 'Opponent'}</div>
                         </div>
                     </div>
@@ -164,15 +152,15 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
             {/* Header: round + scores */}
             <div className="w-full max-w-sm flex items-center justify-between mb-4">
                 <div className="text-center flex-1">
-                    <div className="text-lg chalk text-[var(--color-gold)]">{me?.score ?? 0}</div>
+                    <div className="text-lg ui font-bold text-[var(--color-gold)]">{me?.score ?? 0}</div>
                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{me?.displayName ?? 'You'}</div>
                 </div>
                 <div className="text-center px-4">
                     <div className="text-xs ui text-[rgb(var(--color-fg))]/30">Round</div>
-                    <div className="text-xl chalk text-[var(--color-chalk)]">{currentRound + 1}<span className="text-[rgb(var(--color-fg))]/20">/{totalRounds}</span></div>
+                    <div className="text-xl ui font-bold text-[var(--color-chalk)]">{currentRound + 1}<span className="text-[rgb(var(--color-fg))]/20">/{totalRounds}</span></div>
                 </div>
                 <div className="text-center flex-1">
-                    <div className="text-lg chalk text-[rgb(var(--color-fg))]/60">{opponentData?.score ?? 0}</div>
+                    <div className="text-lg ui font-bold text-[rgb(var(--color-fg))]/60">{opponentData?.score ?? 0}</div>
                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{opponentData?.displayName ?? '...'}</div>
                 </div>
             </div>
@@ -204,7 +192,7 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                             animate={{ scale: 1 }}
                             exit={{ scale: 0.8 }}
                         >
-                            <div className="text-lg chalk text-[var(--color-chalk)] mb-2">{word.word}</div>
+                            <div className="text-lg ui font-bold text-[var(--color-chalk)] mb-2">{word.word}</div>
                             <div className="flex items-center justify-center gap-6 mb-3">
                                 <div className="text-center">
                                     <div className={`text-sm ui font-semibold ${me?.results[currentRound] ? 'text-[var(--color-correct)]' : 'text-[var(--color-wrong)]'}`}>
@@ -257,7 +245,7 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                         animate={{ opacity: 1 }}
                     >
                         <div className="text-sm ui text-[rgb(var(--color-fg))]/40 mb-2">Your answer</div>
-                        <div className="text-2xl chalk text-[var(--color-chalk)] mb-4">{spelling}</div>
+                        <div className="text-2xl ui font-bold text-[var(--color-chalk)] mb-4">{spelling}</div>
                         <motion.div
                             className="text-xs ui text-[rgb(var(--color-fg))]/30"
                             animate={{ opacity: [0.3, 1, 0.3] }}

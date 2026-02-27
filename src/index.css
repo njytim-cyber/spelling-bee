@@ -114,45 +114,51 @@
 }
 
 [data-theme="light"] .ui {
-  font-weight: 700;
+  font-weight: 600;
 }
 
-/* ── Dark-mode contrast boosts — faint white text on black needs higher minimums ── */
+/* ── Dark-mode contrast boosts — WCAG-friendly minimums for white-on-black ── */
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/15,
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/20 {
-  color: rgba(var(--color-fg), 0.35) !important;
+  color: rgba(var(--color-fg), 0.45) !important;
 }
 
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/25,
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/30 {
-  color: rgba(var(--color-fg), 0.45) !important;
+  color: rgba(var(--color-fg), 0.55) !important;
 }
 
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/35,
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/40 {
-  color: rgba(var(--color-fg), 0.55) !important;
+  color: rgba(var(--color-fg), 0.65) !important;
 }
 
 :root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/50 {
-  color: rgba(var(--color-fg), 0.65) !important;
-}
-
-:root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/60 {
   color: rgba(var(--color-fg), 0.75) !important;
 }
 
-/* ── Light-mode contrast boosts — dark text on white needs similar floor ── */
+:root:not([data-theme="light"]) .text-\[rgb\(var\(--color-fg\)\)\]\/60 {
+  color: rgba(var(--color-fg), 0.85) !important;
+}
+
+/* ── Light-mode contrast boosts — higher floor for dark-on-white readability ── */
+[data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/15,
+[data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/20 {
+  color: rgba(var(--color-fg), 0.55) !important;
+}
+
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/25,
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/30,
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/40 {
-  color: rgba(var(--color-fg), 0.65) !important;
+  color: rgba(var(--color-fg), 0.75) !important;
 }
 
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/50,
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/60 {
-  color: rgba(var(--color-fg), 0.85) !important;
+  color: rgba(var(--color-fg), 0.90) !important;
 }
 
+[data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/70,
 [data-theme="light"] .text-\[rgb\(var\(--color-fg\)\)\]\/80 {
   color: rgba(var(--color-fg), 1) !important;
 }

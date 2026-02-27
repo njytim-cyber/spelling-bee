@@ -77,7 +77,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
         <>
         <div className="flex-1 flex flex-col min-h-0 overflow-y-auto px-4 pt-[calc(env(safe-area-inset-top,12px)+16px)] pb-4">
             {/* Header */}
-            <h2 className="text-xl chalk text-[var(--color-gold)] text-center mb-1">
+            <h2 className="text-xl ui font-bold text-[var(--color-gold)] text-center mb-1">
                 Path to Champion
             </h2>
             <div className="flex justify-center gap-4 text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-4">

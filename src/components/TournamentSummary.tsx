@@ -28,7 +28,7 @@ export const TournamentSummary = memo(function TournamentSummary({ round, onRest
             className="flex-1 flex flex-col items-center justify-center px-6 gap-4"
         >
             <div className="text-6xl">🏆</div>
-            <h2 className="text-xl chalk text-[var(--color-gold)]">Tournament Over</h2>
+            <h2 className="text-xl ui font-bold text-[var(--color-gold)]">Tournament Over</h2>
 
             <div className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-8 py-5 text-center">
                 <div className="text-4xl chalk text-[var(--color-chalk)]">{round}</div>

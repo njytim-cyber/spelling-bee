@@ -251,7 +251,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 <div className="text-4xl mb-1">{rank.emoji}</div>
                 <button
                     onClick={() => setShowRanks(true)}
-                    className="text-xl chalk text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
+                    className="text-xl ui font-bold text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
                 >
                     {rank.name}
                 </button>
@@ -289,15 +289,15 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                 {/* Quick stats */}
                 <div className="flex justify-center gap-5 mt-3">
                     <div className="text-center">
-                        <div className="text-sm chalk text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
+                        <div className="text-sm ui font-bold text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
                         <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">streak</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-sm chalk text-[var(--color-correct)]">{accuracy}%</div>
+                        <div className="text-sm ui font-bold text-[var(--color-correct)]">{accuracy}%</div>
                         <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">accuracy</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-sm chalk text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
+                        <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
                         <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">solved</div>
                     </div>
                 </div>
@@ -547,7 +547,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             exit={{ opacity: 0, scale: 0.85 }}
                             transition={{ duration: 0.15 }}
                         >
-                            <h3 className="text-lg chalk text-[var(--color-gold)] text-center mb-4">Ranks</h3>
+                            <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">Ranks</h3>
                             <div className="space-y-2">
                                 {RANKS.map((r) => {
                                     const isCurrent = r.name === rank.name;
@@ -609,7 +609,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             transition={{ duration: 0.15 }}
                         >
                             <div className="text-4xl mb-3">🧹</div>
-                            <p className="chalk text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
+                            <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
                                 {resetConfirm}
                             </p>
                             <div className="flex gap-3">

@@ -101,7 +101,7 @@ function LoadingFallback() {
   return (
     <div className="flex-1 flex items-center justify-center">
       <motion.div
-        className="text-lg chalk text-[var(--color-chalk)]/50"
+        className="text-lg ui text-[var(--color-chalk)]/50"
         animate={{ opacity: [0.3, 1, 0.3] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >
@@ -614,7 +614,7 @@ function App() {
                   initial={{ opacity: 1, y: 0 }}
                   animate={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,16px)+100px)] z-30 text-lg chalk text-[var(--color-gold)] pointer-events-none"
+                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,16px)+100px)] z-30 text-lg ui text-[var(--color-gold)] pointer-events-none"
                 >
                   +{pointsFloater}
                 </motion.div>
@@ -713,7 +713,7 @@ function App() {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-[18%] z-40 text-lg chalk text-[var(--color-gold)] whitespace-nowrap"
+                  className="absolute left-1/2 -translate-x-1/2 top-[18%] z-40 text-lg ui font-bold text-[var(--color-gold)] whitespace-nowrap"
                 >
                   🏆 NEW PERSONAL BEST!
                 </motion.div>
@@ -813,7 +813,7 @@ function App() {
               <span className="text-2xl">🏅</span>
               <div>
                 <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Achievement Unlocked!</div>
-                <div className="text-sm chalk text-[var(--color-gold)]">{unlockToast}</div>
+                <div className="text-sm ui font-bold text-[var(--color-gold)]">{unlockToast}</div>
               </div>
             </motion.div>
           )}
@@ -833,7 +833,7 @@ function App() {
               <span className="text-2xl">🛡️</span>
               <div>
                 <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Streak Saved!</div>
-                <div className="text-sm chalk text-[var(--color-gold)]">Shield protected your streak</div>
+                <div className="text-sm ui font-bold text-[var(--color-gold)]">Shield protected your streak</div>
               </div>
             </motion.div>
           )}
