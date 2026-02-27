@@ -117,14 +117,28 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                 </section>
             )}
 
-            {/* Study Tools button */}
+            {/* Study Tools */}
             {totalWords > 0 && (
-                <button
-                    onClick={() => setStudyToolsTab('words')}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 mb-4 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/50 bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/20 hover:bg-[var(--color-gold)]/5 transition-colors font-medium"
-                >
-                    Study Tools
-                </button>
+                <section className="mb-4">
+                    <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Study Tools</h3>
+                    <div className="flex gap-2">
+                        {([
+                            { tab: 'words' as StudyTab, icon: '\uD83D\uDCD6', label: 'Words', desc: `${totalWords} studied` },
+                            { tab: 'roots' as StudyTab, icon: '\uD83C\uDF33', label: 'Roots', desc: 'Etymology' },
+                            { tab: 'analytics' as StudyTab, icon: '\uD83D\uDCCA', label: 'Analytics', desc: 'Patterns' },
+                        ]).map(t => (
+                            <button
+                                key={t.tab}
+                                onClick={() => setStudyToolsTab(t.tab)}
+                                className="flex-1 flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                            >
+                                <span className="text-base">{t.icon}</span>
+                                <span className="text-[11px] ui text-[rgb(var(--color-fg))]/60 font-medium">{t.label}</span>
+                                <span className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{t.desc}</span>
+                            </button>
+                        ))}
+                    </div>
+                </section>
             )}
 
             {/* Curriculum phases */}

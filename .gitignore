@@ -34,3 +34,4 @@ dist-ssr
 # Claude Code / agent artifacts
 .agents/
 .claude/
+.playwright-mcp/

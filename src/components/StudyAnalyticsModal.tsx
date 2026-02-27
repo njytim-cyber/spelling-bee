@@ -81,19 +81,27 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: { re
 
             {/* Sub-tab bar */}
             <div className="flex gap-1 mb-3 overflow-x-auto scrollbar-none">
-                {TABS.map(t => (
-                    <button
-                        key={t.id}
-                        onClick={() => setTab(t.id)}
-                        className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
-                            tab === t.id
-                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                        }`}
-                    >
-                        {t.label}
-                    </button>
-                ))}
+                {TABS.map(t => {
+                    const hasData = t.id === 'overview' ? true :
+                        t.id === 'patterns' ? patternAccuracy.length > 0 :
+                        t.id === 'origins' ? originAccuracy.length > 0 :
+                        themeAccuracy.length > 0;
+
+                    return (
+                        <button
+                            key={t.id}
+                            onClick={() => setTab(t.id)}
+                            className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
+                                tab === t.id
+                                    ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                    : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                            }`}
+                        >
+                            {t.label}
+                            {!hasData && <span className="ml-1 text-[8px] text-[rgb(var(--color-fg))]/20">&ndash;&ndash;</span>}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* ── OVERVIEW TAB ── */}
@@ -104,9 +112,14 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: { re
                             <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Needs Practice</h4>
                             {errorPatterns.slice(0, 3).map(p => (
                                 <div key={p.category} className="flex items-center justify-between py-1.5">
-                                    <span className="text-sm ui text-[rgb(var(--color-fg))]/70">{p.category}</span>
-                                    <span className="text-sm ui text-[var(--color-wrong)]">
-                                        {Math.round(p.errorRate * 100)}% error rate
+                                    <div className="min-w-0">
+                                        <span className="text-sm ui text-[rgb(var(--color-fg))]/70">{p.category}</span>
+                                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 ml-2">
+                                            {p.correct}/{p.attempts} correct
+                                        </span>
+                                    </div>
+                                    <span className="text-sm ui text-[var(--color-wrong)] shrink-0">
+                                        {Math.round(p.errorRate * 100)}% errors
                                     </span>
                                 </div>
                             ))}
@@ -117,22 +130,16 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: { re
                         <section className="mb-4">
                             <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Category Accuracy</h4>
                             {categoryAccuracy.map(c => (
-                                <div key={c.category} className="mb-2">
-                                    <div className="flex justify-between text-xs ui text-[rgb(var(--color-fg))]/60 mb-0.5">
-                                        <span>{c.category}</span>
-                                        <span>{Math.round(c.accuracy * 100)}% ({c.attempts})</span>
-                                    </div>
-                                    <div className="h-1.5 bg-[rgb(var(--color-fg))]/10 rounded-full overflow-hidden">
-                                        <div
-                                            className={`h-full rounded-full transition-all ${
-                                                c.accuracy >= 0.8 ? 'bg-[var(--color-correct)]' :
-                                                c.accuracy >= 0.5 ? 'bg-[var(--color-gold)]' :
-                                                'bg-[var(--color-wrong)]'
-                                            }`}
-                                            style={{ width: `${Math.round(c.accuracy * 100)}%` }}
-                                        />
-                                    </div>
-                                </div>
+                                <AccuracyBarRow
+                                    key={c.category}
+                                    bar={{
+                                        label: c.category,
+                                        key: c.category,
+                                        accuracy: c.accuracy,
+                                        attempts: c.attempts,
+                                        correct: Math.round(c.accuracy * c.attempts),
+                                    }}
+                                />
                             ))}
                         </section>
                     )}

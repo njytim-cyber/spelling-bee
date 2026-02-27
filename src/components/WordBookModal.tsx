@@ -90,7 +90,7 @@ const WordRow = memo(function WordRow({
                         transition={{ duration: 0.15 }}
                         className="overflow-hidden"
                     >
-                        <div className="px-2 pb-3 space-y-1.5">
+                        <div className="px-3 py-2.5 space-y-1.5 bg-[rgb(var(--color-fg))]/[0.02] rounded-lg mb-1">
                             {detail ? (
                                 <>
                                     <div className="flex items-center gap-2">
@@ -108,7 +108,7 @@ const WordRow = memo(function WordRow({
                                     {detail.etymology && (
                                         <p className="text-[10px] ui text-[rgb(var(--color-fg))]/25">Origin: {detail.etymology}</p>
                                     )}
-                                    <div className="flex gap-3 text-[10px] ui text-[rgb(var(--color-fg))]/30 pt-0.5">
+                                    <div className="flex gap-3 text-[10px] ui text-[rgb(var(--color-fg))]/30 pt-1.5 mt-1 border-t border-[rgb(var(--color-fg))]/5">
                                         <span>{record.attempts} attempt{record.attempts !== 1 ? 's' : ''}</span>
                                         <span>{record.correct} correct</span>
                                         <span>Tier {detail.difficulty}</span>
@@ -130,6 +130,7 @@ const WordRow = memo(function WordRow({
 export const WordBookContent = memo(function WordBookContent({ records }: { records: Record<string, WordRecord> }) {
     const [boxFilter, setBoxFilter] = useState<number | null>(null);
     const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+    const [search, setSearch] = useState('');
     const [expandedWord, setExpandedWord] = useState<string | null>(null);
     const [displayLimit, setDisplayLimit] = useState(50);
 
@@ -137,7 +138,7 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     // Reset display limit on filter change
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    useEffect(() => { setDisplayLimit(50); }, [boxFilter, categoryFilter]);
+    useEffect(() => { setDisplayLimit(50); }, [boxFilter, categoryFilter, search]);
 
     const allRecords = useMemo(() => Object.values(records), [records]);
     const totalWords = allRecords.length;
@@ -159,13 +160,17 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
         let list = allRecords;
         if (boxFilter !== null) list = list.filter(r => Math.min(r.box, 4) === boxFilter);
         if (categoryFilter !== null) list = list.filter(r => r.category === categoryFilter);
+        if (search.trim()) {
+            const q = search.trim().toLowerCase();
+            list = list.filter(r => r.word.toLowerCase().includes(q));
+        }
         return list.sort((a, b) => {
             if (a.box !== b.box) return a.box - b.box;
             const aAcc = a.attempts > 0 ? a.correct / a.attempts : 0;
             const bAcc = b.attempts > 0 ? b.correct / b.attempts : 0;
             return aAcc - bAcc;
         });
-    }, [allRecords, boxFilter, categoryFilter]);
+    }, [allRecords, boxFilter, categoryFilter, search]);
 
     const toggleWord = useCallback((word: string) => {
         setExpandedWord(prev => prev === word ? null : word);
@@ -181,22 +186,26 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     return (
         <>
-            {/* Print */}
-            {filteredWords.length > 0 && (
-                <div className="flex justify-end mb-2">
+            {/* Search */}
+            <input
+                type="text"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                placeholder="Search words..."
+                className="w-full mb-2 text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-2 text-[rgb(var(--color-fg))]/60 placeholder:text-[rgb(var(--color-fg))]/20 outline-none"
+            />
+
+            {/* Summary + Print */}
+            <div className="flex items-center justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
+                <span>{totalWords} word{totalWords !== 1 ? 's' : ''} &middot; {masteredWords} mastered</span>
+                {filteredWords.length > 0 && (
                     <button
                         onClick={() => printStudySheet('Spelling Bee Study Sheet', filteredWords, wordMap)}
-                        className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                        className="text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
                     >
                         Print
                     </button>
-                </div>
-            )}
-
-            {/* Summary */}
-            <div className="flex justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
-                <span>{totalWords} word{totalWords !== 1 ? 's' : ''}</span>
-                <span>{masteredWords} mastered</span>
+                )}
             </div>
 
             {/* Box filter chips */}

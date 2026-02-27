@@ -11,10 +11,13 @@ import { WORD_ROOTS, type WordRoot } from '../domains/spelling/words/roots';
 type OriginFilter = 'all' | 'Greek' | 'Latin' | 'French';
 const ORIGINS: OriginFilter[] = ['all', 'Latin', 'Greek', 'French'];
 
-const TYPE_COLORS: Record<string, string> = {
-    prefix: 'text-[var(--color-gold)]',
-    suffix: 'text-[var(--color-correct)]',
-    root: 'text-[rgb(var(--color-fg))]/60',
+type TypeFilter = 'all' | 'prefix' | 'suffix' | 'root';
+const TYPES: TypeFilter[] = ['all', 'prefix', 'suffix', 'root'];
+
+const TYPE_BADGE: Record<string, string> = {
+    prefix: 'bg-[var(--color-gold)]/15 text-[var(--color-gold)]',
+    suffix: 'bg-[var(--color-correct)]/15 text-[var(--color-correct)]',
+    root: 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/50',
 };
 
 function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: boolean; onToggle: () => void }) {
@@ -26,7 +29,7 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
             >
                 <div className="flex items-center gap-2 min-w-0">
                     <span className="text-sm chalk text-[var(--color-chalk)] font-semibold">{root.root}</span>
-                    <span className={`text-[9px] ui shrink-0 ${TYPE_COLORS[root.type] ?? 'text-[rgb(var(--color-fg))]/40'}`}>
+                    <span className={`text-[10px] ui px-1.5 py-0.5 rounded-full font-medium shrink-0 ${TYPE_BADGE[root.type] ?? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/40'}`}>
                         {root.type}
                     </span>
                 </div>
@@ -66,6 +69,7 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
 
 export const RootsContent = memo(function RootsContent() {
     const [filter, setFilter] = useState<OriginFilter>('all');
+    const [typeFilter, setTypeFilter] = useState<TypeFilter>('all');
     const [search, setSearch] = useState('');
     const [expandedRoot, setExpandedRoot] = useState<string | null>(null);
 
@@ -73,6 +77,9 @@ export const RootsContent = memo(function RootsContent() {
         let list = WORD_ROOTS;
         if (filter !== 'all') {
             list = list.filter(r => r.origin === filter);
+        }
+        if (typeFilter !== 'all') {
+            list = list.filter(r => r.type === typeFilter);
         }
         if (search.trim()) {
             const q = search.trim().toLowerCase();
@@ -83,12 +90,20 @@ export const RootsContent = memo(function RootsContent() {
             );
         }
         return list;
-    }, [filter, search]);
+    }, [filter, typeFilter, search]);
 
     const originCounts = useMemo(() => {
         const counts: Record<string, number> = {};
         for (const r of WORD_ROOTS) {
             counts[r.origin] = (counts[r.origin] ?? 0) + 1;
+        }
+        return counts;
+    }, []);
+
+    const typeCounts = useMemo(() => {
+        const counts: Record<string, number> = {};
+        for (const r of WORD_ROOTS) {
+            counts[r.type] = (counts[r.type] ?? 0) + 1;
         }
         return counts;
     }, []);
@@ -105,7 +120,7 @@ export const RootsContent = memo(function RootsContent() {
             />
 
             {/* Origin filter */}
-            <div className="flex gap-1 mb-3">
+            <div className="flex gap-1 mb-2">
                 {ORIGINS.map(o => (
                     <button
                         key={o}
@@ -117,6 +132,23 @@ export const RootsContent = memo(function RootsContent() {
                         }`}
                     >
                         {o === 'all' ? `All (${WORD_ROOTS.length})` : `${o} (${originCounts[o] ?? 0})`}
+                    </button>
+                ))}
+            </div>
+
+            {/* Type filter */}
+            <div className="flex gap-1 mb-3">
+                {TYPES.map(t => (
+                    <button
+                        key={t}
+                        onClick={() => setTypeFilter(t)}
+                        className={`px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
+                            typeFilter === t
+                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                    >
+                        {t === 'all' ? `All types` : `${t === 'prefix' ? 'Prefixes' : t === 'suffix' ? 'Suffixes' : 'Roots'} (${typeCounts[t] ?? 0})`}
                     </button>
                 ))}
             </div>
