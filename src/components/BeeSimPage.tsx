@@ -7,8 +7,16 @@
 import { memo, useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
+import type { BeeLevel } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
 import { BeeClassroom } from './BeeClassroom';
+
+const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
+    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3' },
+    { id: 'district', label: 'District', desc: 'Grades 2-5' },
+    { id: 'state', label: 'State', desc: 'Grades 4-8' },
+    { id: 'national', label: 'National', desc: 'Competition' },
+];
 
 const BEE_TIMER_MS = 30_000;
 const TIMER_CIRCUMFERENCE = 2 * Math.PI * 18; // radius 18
@@ -72,6 +80,7 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
 
 export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category, hardMode }: Props) {
     const [dictationMode, setDictationMode] = useState(false);
+    const [beeLevel, setBeeLevel] = useState<BeeLevel>('national');
     const {
         state,
         startSession,
@@ -90,7 +99,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
         npcAlive,
         npcScores,
         npcSpellings,
-    } = useBeeSimulation(category, hardMode, dictationMode);
+    } = useBeeSimulation(category, hardMode, dictationMode, beeLevel);
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
@@ -160,6 +169,18 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, category,
                 </div>
                 {phase !== 'eliminated' && phase !== 'won' && (
                     <div className="flex items-center gap-2 shrink-0">
+                        {/* Bee level selector */}
+                        <select
+                            value={beeLevel}
+                            onChange={e => setBeeLevel(e.target.value as BeeLevel)}
+                            className="text-xs ui px-2 py-1 rounded-lg bg-transparent border border-[var(--color-gold)]/40 text-[var(--color-gold)] cursor-pointer outline-none"
+                        >
+                            {BEE_LEVELS.map(l => (
+                                <option key={l.id} value={l.id} className="bg-[var(--color-bg,#1a1a2e)] text-[var(--color-chalk)]">
+                                    {l.label}
+                                </option>
+                            ))}
+                        </select>
                         <button
                             onClick={() => { setDictationMode(d => !d); }}
                             className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${

@@ -16,6 +16,17 @@ export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'elimi
 
 export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat';
 
+/** Bee competition level — controls starting difficulty floor */
+export type BeeLevel = 'classroom' | 'district' | 'state' | 'national';
+
+/** Minimum difficulty level per bee level (the floor — rounds still ramp up from here) */
+const BEE_LEVEL_FLOOR: Record<BeeLevel, number> = {
+    classroom: 1,   // starts at kindergarten, ramps to ~6
+    district: 2,    // starts at grade 2-3, ramps to ~8
+    state: 3,       // starts at grade 4-5, ramps to ~9
+    national: 4,    // starts at grade 6+, ramps to 10
+};
+
 export interface BeeSimState {
     phase: BeePhase;
     currentWord: SpellingWord | null;
@@ -66,9 +77,10 @@ function redactWord(sentence: string, word: string): string {
     return sentence.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), blank);
 }
 
-function pickBeeWord(round: number, category?: string, hardMode = false): SpellingWord {
-    // Aggressive difficulty ramp: hits max by round 12
-    const diffLevel = Math.min(5, 1 + Math.floor(round / 3));
+function pickBeeWord(round: number, category?: string, hardMode = false, beeLevel: BeeLevel = 'classroom'): SpellingWord {
+    // Difficulty ramps from the bee level's floor
+    const floor = BEE_LEVEL_FLOOR[beeLevel];
+    const diffLevel = Math.min(5, floor + Math.floor(round / 3));
     const effectiveDifficulty = hardMode ? Math.min(5, diffLevel + 1) : diffLevel;
     const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
 
@@ -147,7 +159,7 @@ export function simulateNpcTurns(
     return { npcResults: results, npcAlive: alive, npcScores: scores, npcSpellings: spellings };
 }
 
-export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false) {
+export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false, beeLevel: BeeLevel = 'classroom') {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, speakWordNumber, speakLetters, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
@@ -159,7 +171,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
     } : {};
 
     const startRound = useCallback(() => {
-        const word = pickBeeWord(state.round, category, hardMode);
+        const word = pickBeeWord(state.round, category, hardMode, beeLevel);
         if (dictationMode) {
             // Dictation: skip classroom, go straight to spelling
             setState(prev => ({
@@ -176,7 +188,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             }));
         } else {
             setState(prev => {
-                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode).word);
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode, beeLevel).word);
                 const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
                 return {
                     ...prev,
@@ -195,10 +207,10 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         }
         if (isSupported) speakWordNumber(word.word, state.round + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.round, category, hardMode, dictationMode, speakWordNumber, isSupported]);
+    }, [state.round, category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     const startSession = useCallback(() => {
-        const word = pickBeeWord(0, category, hardMode);
+        const word = pickBeeWord(0, category, hardMode, beeLevel);
         if (dictationMode) {
             setState({
                 ...INITIAL_STATE,
@@ -207,7 +219,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 phase: 'spelling',
             });
         } else {
-            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode).word);
+            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, INITIAL_STATE.npcSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode, beeLevel).word);
             setState({
                 ...INITIAL_STATE,
                 currentWord: word,
@@ -220,7 +232,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         }
         if (isSupported) speakWordNumber(word.word, 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [category, hardMode, dictationMode, speakWordNumber, isSupported]);
+    }, [category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     const pronounce = useCallback(() => {
         if (state.currentWord && isSupported) {
@@ -249,13 +261,15 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 case 'definition': {
                     const def = redactWord(word.definition, word.word);
                     newResponses.definition = def;
-                    spokenText = `The definition is: ${def}`;
+                    // Speak the FULL definition (hearing the word doesn't reveal the spelling)
+                    spokenText = `The definition is: ${word.definition}`;
                     break;
                 }
                 case 'sentence': {
                     const sent = redactWord(word.exampleSentence, word.word);
                     newResponses.sentence = sent;
-                    spokenText = sent;
+                    // Speak the FULL sentence (hearing the word doesn't reveal the spelling)
+                    spokenText = word.exampleSentence;
                     break;
                 }
                 case 'origin':
@@ -357,7 +371,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         // Pick word outside setState so we can speak it *after* — speaking inside
         // setState causes the browser to play the previous word on some platforms.
         const newRound = state.round + 1;
-        const word = pickBeeWord(newRound, category, hardMode);
+        const word = pickBeeWord(newRound, category, hardMode, beeLevel);
 
         if (dictationMode) {
             setState(prev => ({
@@ -378,7 +392,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         } else {
             let won = false;
             setState(prev => {
-                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode).word);
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode, beeLevel).word);
                 const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
                 won = !anyNpcLeft;
                 return {
@@ -398,7 +412,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             });
             if (!won && isSupported) speakWordNumber(word.word, newRound + 1);
         }
-    }, [state.round, category, hardMode, dictationMode, speakWordNumber, isSupported]);
+    }, [state.round, category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     /** Force-submit an empty answer (used by timer expiry). Transitions asking→spelling→submit. */
     const forceSubmit = useCallback(() => {
