@@ -32,7 +32,14 @@ const DAILY_LIMIT = 200;
 const CACHE_PREFIX = 'tts-cache';
 
 export const synthesizeSpeech = onCall(
-    { region: 'us-central1', cors: true },
+    {
+        region: 'us-central1',
+        cors: [
+            'https://spelling-bee-prod.web.app',
+            'https://spelling-bee-prod.firebaseapp.com',
+            /http:\/\/localhost(:\d+)?$/,
+        ],
+    },
     async (request) => {
         // ── Auth check ──────────────────────────────────────────────────
         if (!request.auth) {

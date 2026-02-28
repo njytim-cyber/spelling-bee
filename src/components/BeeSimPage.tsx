@@ -266,7 +266,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
     }
 
     return (
-        <div className="flex-1 flex flex-col items-center px-6 pb-4 relative overflow-y-auto">
+        <div className="flex-1 flex flex-col items-center relative overflow-hidden">
             {/* Confetti effect with variable intensity */}
             <Confetti trigger={showConfetti} intensity={confettiIntensity} />
 
@@ -319,7 +319,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
             </AnimatePresence>
 
             {/* Top bar — back arrow + round counter + sound toggle + level selector */}
-            <div className="w-full flex items-center gap-3 pt-3 pb-2 shrink-0">
+            <div className="w-full flex items-center gap-3 pt-3 pb-2 px-6 shrink-0">
                 <button
                     onClick={onExit}
                     className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
@@ -365,7 +365,8 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 )}
             </div>
 
-            <div className="flex-1 flex flex-col items-center justify-center w-full">
+            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto px-6 pb-4">
+            <div className="w-full max-w-[360px] py-4">
             <AnimatePresence mode="wait">
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
                 {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
@@ -374,7 +375,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className={`flex flex-col items-center gap-3 w-full max-w-[320px] ${shakeClass}`}
+                        className={`flex flex-col items-center gap-3 w-full ${shakeClass}`}
                     >
                         <BeeClassroom
                             pupilResults={npcResults}
@@ -722,6 +723,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                     </motion.div>
                 )}
             </AnimatePresence>
+            </div>
             </div>
         </div>
     );
