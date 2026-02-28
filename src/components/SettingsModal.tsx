@@ -13,6 +13,8 @@ import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, synthesizeCloud } from '../services/cloudTts';
 import { TIER_1_WORDS } from '../domains/spelling/words/tier1';
 import { TIER_2_WORDS } from '../domains/spelling/words/tier2';
+import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
+import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 
 interface Props {
     grade: string;
@@ -20,6 +22,10 @@ interface Props {
     dialect: string;
     onDialectChange: (d: Dialect) => void;
     onClose: () => void;
+    seasonalTheme?: SeasonalTheme;
+    onSeasonalThemeChange?: (theme: SeasonalTheme) => void;
+    characterStyle?: CharacterStyle;
+    onCharacterStyleChange?: (style: CharacterStyle) => void;
 }
 
 function getStoredRate(): number {
@@ -46,7 +52,17 @@ const TIER_WORD_COUNTS: Record<string, number> = {
     'tier-5': 512 + 250 + 108, // base + scripps + state
 };
 
-export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange, dialect, onDialectChange, onClose }: Props) {
+export const SettingsModal = memo(function SettingsModal({
+    grade,
+    onGradeChange,
+    dialect,
+    onDialectChange,
+    onClose,
+    seasonalTheme = 'auto',
+    onSeasonalThemeChange,
+    characterStyle = 'classic',
+    onCharacterStyleChange,
+}: Props) {
     const { preference: motionPref, setPreference: setMotionPref } = useReducedMotion();
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsCloudVoice, setTtsCloudVoice] = useState(getStoredCloudVoice);
@@ -163,6 +179,65 @@ export const SettingsModal = memo(function SettingsModal({ grade, onGradeChange,
                         })}
                     </div>
                 </section>
+
+                {/* Bee Sim Preferences */}
+                {(onSeasonalThemeChange || onCharacterStyleChange) && (
+                    <>
+                        <div className="border-t border-[rgb(var(--color-fg))]/10 my-5 pt-5">
+                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-3">Spelling Bee Customization</h4>
+                        </div>
+
+                        {/* Seasonal Theme */}
+                        {onSeasonalThemeChange && (
+                            <section className="mb-5">
+                                <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Classroom Decorations</h4>
+                                <div className="flex flex-col gap-1.5">
+                                    {(['auto', 'none', 'halloween', 'winter', 'spring', 'summer', 'fall'] as SeasonalTheme[]).map(theme => (
+                                        <button
+                                            key={theme}
+                                            onClick={() => onSeasonalThemeChange(theme)}
+                                            className={`px-3 py-2 rounded-xl border transition-colors text-left text-sm ui ${
+                                                seasonalTheme === theme
+                                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                                    : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                            }`}
+                                        >
+                                            {getThemeName(theme)}
+                                        </button>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+
+                        {/* Character Style */}
+                        {onCharacterStyleChange && (
+                            <section className="mb-5">
+                                <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Your Character Style</h4>
+                                <div className="flex flex-col gap-1.5">
+                                    {CHARACTER_STYLES.map(style => (
+                                        <button
+                                            key={style.id}
+                                            onClick={() => onCharacterStyleChange(style.id)}
+                                            className={`flex items-center gap-3 px-3 py-2 rounded-xl border transition-colors text-left ${
+                                                characterStyle === style.id
+                                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
+                                                    : 'border-[rgb(var(--color-fg))]/10 hover:border-[rgb(var(--color-fg))]/25'
+                                            }`}
+                                        >
+                                            <span className="text-lg">{style.emoji}</span>
+                                            <div className="flex-1">
+                                                <div className={`text-sm ui font-medium ${characterStyle === style.id ? 'text-[var(--color-gold)]' : 'text-[var(--color-chalk)]'}`}>
+                                                    {style.name}
+                                                </div>
+                                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30">{style.description}</div>
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
+                    </>
+                )}
 
                 {/* Motion */}
                 <section className="mb-5">

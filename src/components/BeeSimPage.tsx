@@ -12,6 +12,7 @@ import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { BeeClassroom } from './BeeClassroom';
 import { ChevronLeft } from './ChevronLeft';
+import { Confetti } from './Confetti';
 import {
     IconCheck,
     IconMessageSquare,
@@ -23,6 +24,17 @@ import {
     IconRepeat,
     IconSpeaker,
 } from './Icons';
+import {
+    playSuccessSound,
+    playWrongSound,
+    playVictorySound,
+    playStreakSound,
+    getSoundEnabled,
+    setSoundEnabled,
+} from '../utils/soundEffects';
+import { STORAGE_KEYS } from '../config';
+import type { SeasonalTheme } from '../utils/seasonalThemes';
+import type { CharacterStyle } from '../utils/characterStyles';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
     { id: 'classroom', label: 'Classroom', desc: 'Grades K-3' },
@@ -102,6 +114,18 @@ function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct:
 
 export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult }: Props) {
     const [beeLevel, setBeeLevel] = useState<BeeLevel>('national');
+
+    // Load user preferences from localStorage
+    const [seasonalTheme] = useState<SeasonalTheme>(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.seasonalTheme);
+        return (stored as SeasonalTheme) || 'auto';
+    });
+
+    const [characterStyle] = useState<CharacterStyle>(() => {
+        const stored = localStorage.getItem(STORAGE_KEYS.stickFigureStyle);
+        return (stored as CharacterStyle) || 'classic';
+    });
+
     const {
         state,
         startSession,
@@ -124,29 +148,96 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
-    // Screen shake on wrong answer
+    // Festive features state
+    const [showConfetti, setShowConfetti] = useState(false);
+    const [confettiIntensity, setConfettiIntensity] = useState<'normal' | 'epic'>('normal');
+    const [soundOn, setSoundOn] = useState(getSoundEnabled());
+    const [streak, setStreak] = useState(0);
+    const [showRoundBanner, setShowRoundBanner] = useState(false);
+    const [showStreakBadge, setShowStreakBadge] = useState(false);
+    const [motivationalMessage, setMotivationalMessage] = useState('');
+
+    // Screen shake on wrong answer + festive effects
     const [shakeClass, setShakeClass] = useState('');
     const prevPhaseRef = useRef(phase);
+    const prevRoundRef = useRef(round);
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on phase change
     useEffect(() => {
-        if (phase === 'feedback' && prevPhaseRef.current === 'spelling' && lastResult === false) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect -- animation trigger on phase transition
-            setShakeClass('wrong-shake');
-            const t = setTimeout(() => setShakeClass(''), 300);
-            prevPhaseRef.current = phase;
-            return () => clearTimeout(t);
+        if (phase === 'feedback' && prevPhaseRef.current === 'spelling') {
+            if (lastResult === true) {
+                // Correct answer celebrations
+                const newStreak = streak + 1;
+                setStreak(newStreak);
+
+                // More intense confetti for streaks
+                setConfettiIntensity(newStreak >= 5 ? 'epic' : 'normal');
+                setShowConfetti(true);
+                setTimeout(() => setShowConfetti(false), newStreak >= 5 ? 2500 : 1500);
+
+                if (soundOn) playSuccessSound();
+
+                // Streak milestones with enhanced effects
+                if (newStreak === 3 || newStreak === 5 || newStreak === 10) {
+                    setShowStreakBadge(true);
+                    setTimeout(() => setShowStreakBadge(false), 2500);
+                    if (soundOn) playStreakSound(newStreak);
+                }
+            } else {
+                // Wrong answer
+                setStreak(0);
+                setShakeClass('wrong-shake');
+                setTimeout(() => setShakeClass(''), 300);
+                if (soundOn) playWrongSound();
+            }
         }
         prevPhaseRef.current = phase;
-    }, [phase, lastResult]);
+    }, [phase, lastResult, streak, soundOn]);
 
-    // Report bee result when session ends
+    // Round transitions with banner
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on round change
+    useEffect(() => {
+        if (round !== prevRoundRef.current && round > 0) {
+            setShowRoundBanner(true);
+            setTimeout(() => setShowRoundBanner(false), 2000);
+
+            // Motivational messages every few rounds
+            const messages = [
+                "You're doing great! 🎯",
+                "Keep it up! ⭐",
+                "Fantastic spelling! 🌟",
+                "You're on fire! 🔥",
+                "Impressive! 💫",
+            ];
+            if (round % 3 === 0) {
+                setMotivationalMessage(messages[Math.floor(Math.random() * messages.length)]);
+                setTimeout(() => setMotivationalMessage(''), 3000);
+            }
+        }
+        prevRoundRef.current = round;
+    }, [round]);
+
+    // Report bee result when session ends + victory sound
     const beeResultFired = useRef(false);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on phase change to won/eliminated
     useEffect(() => {
         if ((phase === 'eliminated' || phase === 'won') && !beeResultFired.current) {
             beeResultFired.current = true;
             onBeeResult?.(round, wordsCorrect, phase === 'won', beeLevel, sessionXP);
+
+            if (phase === 'won') {
+                // Epic confetti for championship win
+                setConfettiIntensity('epic');
+                setShowConfetti(true);
+                if (soundOn) playVictorySound();
+                setTimeout(() => setShowConfetti(false), 4000);
+            }
         }
-        if (phase === 'listening') beeResultFired.current = false;
-    }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult]);
+        if (phase === 'listening') {
+            beeResultFired.current = false;
+            setStreak(0);
+        }
+    }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult, soundOn]);
 
     // Auto-start session on mount
     useEffect(() => {
@@ -176,7 +267,58 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
 
     return (
         <div className="flex-1 flex flex-col items-center px-6 pb-4 relative overflow-y-auto">
-            {/* Top bar — back arrow + round counter + level selector */}
+            {/* Confetti effect with variable intensity */}
+            <Confetti trigger={showConfetti} intensity={confettiIntensity} />
+
+            {/* Round transition banner */}
+            <AnimatePresence>
+                {showRoundBanner && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, y: -50 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: -50 }}
+                        className="fixed top-1/3 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+                    >
+                        <div className="bg-[var(--color-gold)]/95 text-[var(--color-board)] px-8 py-4 rounded-2xl shadow-lg hand-drawn-box">
+                            <div className="text-3xl chalk font-bold text-center">Round {round + 1}!</div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Streak badge */}
+            <AnimatePresence>
+                {showStreakBadge && streak >= 3 && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, rotate: 20 }}
+                        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none"
+                    >
+                        <div className="bg-[var(--color-streak-fire)]/95 text-white px-6 py-3 rounded-xl shadow-lg">
+                            <div className="text-2xl ui font-bold text-center">{streak} IN A ROW! 🔥</div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Motivational message */}
+            <AnimatePresence>
+                {motivationalMessage && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="fixed top-24 left-1/2 -translate-x-1/2 z-40 pointer-events-none"
+                    >
+                        <div className="bg-[var(--color-correct)]/90 text-white px-4 py-2 rounded-lg shadow-md">
+                            <div className="text-sm ui font-semibold">{motivationalMessage}</div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Top bar — back arrow + round counter + sound toggle + level selector */}
             <div className="w-full flex items-center gap-3 pt-3 pb-2 shrink-0">
                 <button
                     onClick={onExit}
@@ -187,7 +329,21 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 </button>
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium truncate flex-1">
                     Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
+                    {streak >= 2 && <span className="ml-2 text-[var(--color-streak-fire)]">🔥{streak}</span>}
                 </div>
+                {/* Sound toggle */}
+                <button
+                    onClick={() => {
+                        const newState = !soundOn;
+                        setSoundOn(newState);
+                        setSoundEnabled(newState);
+                    }}
+                    className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
+                    aria-label={soundOn ? 'Mute sounds' : 'Enable sounds'}
+                    title={soundOn ? 'Mute sounds' : 'Enable sounds'}
+                >
+                    <span className="text-lg">{soundOn ? '🔊' : '🔇'}</span>
+                </button>
                 {phase !== 'eliminated' && phase !== 'won' && (
                     wordsAttempted === 0 ? (
                         <select
@@ -231,6 +387,10 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                             round={round}
                             isTyping={phase === 'spelling' && typedSpelling.length > 0}
                             lastResult={phase === 'feedback' ? lastResult : null}
+                            currentWord={currentWord?.word}
+                            seasonalTheme={seasonalTheme}
+                            characterStyle={characterStyle}
+                            wordDifficulty={currentWord?.difficulty || 5}
                         />
 
                         {/* Asking phase — player requests info one at a time */}
@@ -392,23 +552,59 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                         animate={{ opacity: 1, scale: 1 }}
                         className="flex flex-col items-center gap-4"
                     >
-                        <div className="text-6xl">🐝</div>
-                        <h2 className="text-2xl ui font-bold text-[var(--color-wrong)]">Eliminated!</h2>
-                        <div className="text-xl ui font-bold text-[var(--color-chalk)]">
-                            The word was: {currentWord.word}
-                        </div>
-                        <div className="text-base ui text-[rgb(var(--color-fg))]/40 italic text-center max-w-[280px]">
+                        <motion.div
+                            className="text-7xl"
+                            animate={{ rotate: [0, -5, 5, -3, 3, 0] }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            🐝
+                        </motion.div>
+                        <motion.h2
+                            className="text-2xl ui font-bold text-[var(--color-wrong)]"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            Nice Try!
+                        </motion.h2>
+                        <motion.div
+                            className="text-xl ui font-bold text-[var(--color-chalk)]"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                        >
+                            The word was: <span className="text-[var(--color-gold)]">{currentWord.word}</span>
+                        </motion.div>
+                        <motion.div
+                            className="text-base ui text-[rgb(var(--color-fg))]/60 italic text-center max-w-[280px]"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                        >
                             {currentWord.definition}
-                        </div>
-                        <div className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-6 py-4 text-center mt-2">
-                            <div className="text-3xl chalk text-[var(--color-gold)]">{wordsCorrect}</div>
-                            <div className="text-sm ui text-[rgb(var(--color-fg))]/40">words spelled correctly</div>
-                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">+{sessionXP} XP earned</div>
-                        </div>
-                        <div className="flex gap-3 mt-2">
+                        </motion.div>
+                        <motion.div
+                            className="bg-[rgb(var(--color-fg))]/8 rounded-xl px-6 py-4 text-center mt-2 hand-drawn-box"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.6 }}
+                        >
+                            <div className="text-4xl chalk text-[var(--color-gold)] mb-1">{wordsCorrect}</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/60 font-medium">words spelled correctly</div>
+                            <div className="text-sm ui text-[var(--color-gold)]/60 mt-2">+{sessionXP} XP earned ⭐</div>
+                            {wordsCorrect >= 5 && (
+                                <div className="text-xs ui text-[var(--color-correct)]/70 mt-2">Great effort! Keep practicing! 💪</div>
+                            )}
+                        </motion.div>
+                        <motion.div
+                            className="flex gap-3 mt-2"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.7 }}
+                        >
                             <button
                                 onClick={startSession}
-                                className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                                className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/50 bg-[var(--color-gold)]/15 text-sm ui font-semibold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/25 transition-colors"
                             >
                                 Try Again
                             </button>
@@ -419,7 +615,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                 <ChevronLeft className="w-4 h-4" />
                                 Back
                             </button>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
 
@@ -432,55 +628,92 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                         transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="flex flex-col items-center gap-4"
                     >
-                        <motion.div
-                            className="text-6xl"
-                            animate={{ rotate: [0, -10, 10, -5, 5, 0], scale: [1, 1.2, 1] }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                        >
-                            🏆
-                        </motion.div>
+                        {/* Animated trophy with sparkles */}
+                        <div className="relative">
+                            <motion.div
+                                className="text-8xl"
+                                animate={{
+                                    rotate: [0, -12, 12, -8, 8, -4, 4, 0],
+                                    scale: [1, 1.3, 1.1, 1.25, 1],
+                                    y: [0, -10, 0, -5, 0]
+                                }}
+                                transition={{ duration: 1.2, delay: 0.3, ease: 'easeOut' }}
+                            >
+                                🏆
+                            </motion.div>
+                            {/* Sparkles around trophy */}
+                            {[...Array(6)].map((_, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="absolute text-2xl"
+                                    style={{
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                    }}
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{
+                                        opacity: [0, 1, 0],
+                                        scale: [0, 1.5, 0],
+                                        x: [0, Math.cos((i / 6) * Math.PI * 2) * 60],
+                                        y: [0, Math.sin((i / 6) * Math.PI * 2) * 60],
+                                    }}
+                                    transition={{
+                                        duration: 1,
+                                        delay: 0.5 + i * 0.1,
+                                        ease: 'easeOut',
+                                    }}
+                                >
+                                    ⭐
+                                </motion.div>
+                            ))}
+                        </div>
                         <motion.h2
-                            className="text-3xl chalk text-[var(--color-gold)]"
+                            className="text-4xl chalk text-[var(--color-gold)] font-bold"
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.2 }}
                         >
-                            Champion!
+                            Champion! 🎉
                         </motion.h2>
                         <motion.p
-                            className="text-base ui text-[rgb(var(--color-fg))]/60 text-center max-w-[280px]"
+                            className="text-base ui text-[rgb(var(--color-fg))]/70 font-medium text-center max-w-[280px]"
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 }}
                         >
-                            You&rsquo;re the last one standing!
+                            You&rsquo;re the last one standing!<br />
+                            <span className="text-[var(--color-gold)]">Perfect spelling!</span>
                         </motion.p>
                         <motion.div
-                            className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-6 py-4 text-center mt-2"
-                            initial={{ y: 10, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
+                            className="bg-gradient-to-br from-[var(--color-gold)]/10 to-[var(--color-gold)]/5 rounded-xl px-8 py-5 text-center mt-2 hand-drawn-box border-2 border-[var(--color-gold)]/20"
+                            initial={{ y: 10, opacity: 0, scale: 0.95 }}
+                            animate={{ y: 0, opacity: 1, scale: 1 }}
                             transition={{ delay: 0.5 }}
                         >
-                            <div className="text-3xl chalk text-[var(--color-gold)]">{wordsCorrect}</div>
-                            <div className="text-sm ui text-[rgb(var(--color-fg))]/40">words spelled correctly</div>
-                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">Survived {round + 1} rounds</div>
-                            <div className="text-sm ui text-[rgb(var(--color-fg))]/25 mt-1">+{sessionXP} XP earned</div>
+                            <div className="text-5xl chalk text-[var(--color-gold)] mb-2 font-bold">{wordsCorrect}</div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/70 font-semibold">words spelled perfectly</div>
+                            <div className="text-sm ui text-[var(--color-gold)]/80 mt-2 font-medium">Survived {round + 1} rounds 🎯</div>
+                            <div className="text-base ui text-[var(--color-gold)] mt-2 font-bold">+{sessionXP} XP earned ⚡</div>
+                            <div className="text-xs ui text-[var(--color-correct)]/80 mt-3 italic">
+                                Outstanding performance! 🌟
+                            </div>
                         </motion.div>
                         <motion.div
-                            className="flex gap-3 mt-2"
+                            className="flex gap-3 mt-4"
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.6 }}
+                            transition={{ delay: 0.7 }}
                         >
                             <button
                                 onClick={startSession}
-                                className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                                className="px-8 py-3 rounded-xl border-3 border-[var(--color-gold)]/60 bg-[var(--color-gold)]/20 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 hover:scale-105 transition-all"
                             >
                                 Play Again
                             </button>
                             <button
                                 onClick={onExit}
-                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
+                                className="px-6 py-3 rounded-xl border border-[rgb(var(--color-fg))]/30 text-sm ui text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/50 transition-colors flex items-center gap-1.5"
                             >
                                 <ChevronLeft className="w-4 h-4" />
                                 Back

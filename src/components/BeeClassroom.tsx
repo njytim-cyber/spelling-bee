@@ -12,6 +12,9 @@ import { memo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, type TargetAndTransition } from 'framer-motion';
 import type { BeePhase } from '../hooks/useBeeSimulation';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { getThemeDecorations, type SeasonalTheme } from '../utils/seasonalThemes';
+import { getStyleExtras, getStyleHair, type CharacterStyle } from '../utils/characterStyles';
+import { playApplause } from '../utils/beeSounds';
 
 interface Props {
     pupilResults: (boolean | null)[];
@@ -28,6 +31,14 @@ interface Props {
     isTyping?: boolean;
     /** Last answer result for triggering celebration/shake on audience */
     lastResult?: boolean | null;
+    /** Current word for easter eggs */
+    currentWord?: string | null;
+    /** Seasonal theme preference */
+    seasonalTheme?: SeasonalTheme;
+    /** Player character style */
+    characterStyle?: CharacterStyle;
+    /** Word difficulty (1-10) for audience reactions */
+    wordDifficulty?: number;
 }
 
 // ── Pupil names for speech bubbles ──────────────────────────────────────────
@@ -414,15 +425,24 @@ function EagerFace({ cx }: { cx: number }) {
     );
 }
 
-/** Player — simple friendly face, slight star accent */
-function PlayerFace({ cx }: { cx: number }) {
+/** Player — customizable based on character style */
+function PlayerFace({ cx, style = 'classic' }: { cx: number; style?: CharacterStyle }) {
+    const styleExtras = getStyleExtras(style, cx);
+    const styleHair = getStyleHair(style, cx);
+
     return (
         <>
+            {/* Style-specific hair */}
+            {styleHair}
+
             {/* Friendly eyes */}
             <circle cx={cx - 3} cy="141" r="1.3" fill="currentColor" opacity="0.6" />
             <circle cx={cx + 3} cy="141" r="1.3" fill="currentColor" opacity="0.6" />
             {/* Friendly smile */}
             <path d={`M ${cx - 3} 146 Q ${cx} 150 ${cx + 3} 146`} stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.5" />
+
+            {/* Style-specific accessories (glasses, sweatband, etc) */}
+            {styleExtras}
         </>
     );
 }
@@ -577,15 +597,31 @@ function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; 
 
 // ── Mini bee mascot for stage decoration ────────────────────────────────────
 
-function StageBee({ phase }: { phase: BeePhase }) {
+const BEE_EASTER_EGG_WORDS = [
+    'bee', 'honey', 'hive', 'buzz', 'queen', 'pollen', 'nectar', 'hexagon',
+    'sweet', 'yellow', 'stripe', 'wing', 'flight', 'flower', 'garden',
+];
+
+function StageBee({ phase, currentWord }: { phase: BeePhase; currentWord?: string | null }) {
     const isSpelling = phase === 'spelling';
+
+    // Easter egg: bee does a special trick when certain words appear
+    const isBeeWord = currentWord && BEE_EASTER_EGG_WORDS.some(w =>
+        currentWord.toLowerCase().includes(w)
+    );
+
+    // Bee gets excited and does loop-de-loop when bee-related word appears
+    const trickAnimation = isBeeWord ? {
+        y: [0, -8, -12, -8, 0],
+        rotate: [0, 360],
+        scale: [1, 1.2, 1],
+        transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' as const }
+    } : isSpelling
+        ? { y: [0, -2, 0], transition: { repeat: Infinity, duration: 1.8, ease: 'easeInOut' as const } }
+        : { y: [0, -2, 0], transition: { repeat: Infinity, duration: 3, ease: 'easeInOut' as const } };
+
     return (
-        <motion.g
-            animate={isSpelling
-                ? { y: [0, -2, 0], transition: { repeat: Infinity, duration: 1.8, ease: 'easeInOut' as const } }
-                : { y: [0, -2, 0], transition: { repeat: Infinity, duration: 3, ease: 'easeInOut' as const } }
-            }
-        >
+        <motion.g animate={trickAnimation}>
             {/* Body */}
             <ellipse cx="30" cy="100" rx="5" ry="6" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3" />
             {/* Stripes */}
@@ -593,23 +629,23 @@ function StageBee({ phase }: { phase: BeePhase }) {
             <line x1="26" y1="101" x2="34" y2="101" stroke="currentColor" strokeWidth="0.6" opacity="0.2" />
             {/* Head */}
             <circle cx="30" cy="93" r="3.5" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3" />
-            {/* Eyes */}
-            <circle cx="29" cy="92.5" r="0.7" fill="currentColor" opacity="0.25" />
-            <circle cx="31.5" cy="92.5" r="0.7" fill="currentColor" opacity="0.25" />
-            {/* Smile */}
-            <path d="M 28.5 94 Q 30 95.5 31.5 94" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
-            {/* Wings */}
+            {/* Eyes - sparkle when doing trick */}
+            <circle cx="29" cy="92.5" r="0.7" fill="currentColor" opacity={isBeeWord ? 0.5 : 0.25} />
+            <circle cx="31.5" cy="92.5" r="0.7" fill="currentColor" opacity={isBeeWord ? 0.5 : 0.25} />
+            {/* Smile - bigger when doing trick */}
+            <path d={isBeeWord ? "M 28 94 Q 30 97 32 94" : "M 28.5 94 Q 30 95.5 31.5 94"} stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
+            {/* Wings - flap faster during trick */}
             <motion.ellipse
                 cx="25" cy="96" rx="4" ry="5"
                 stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.2"
                 style={{ originX: '28px', originY: '96px' }}
-                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.25, ease: 'easeInOut' as const } }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: isBeeWord ? 0.15 : 0.25, ease: 'easeInOut' as const } }}
             />
             <motion.ellipse
                 cx="35" cy="96" rx="4" ry="5"
                 stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.2"
                 style={{ originX: '32px', originY: '96px' }}
-                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.25, ease: 'easeInOut' as const } }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: isBeeWord ? 0.15 : 0.25, ease: 'easeInOut' as const } }}
             />
             {/* Antennae */}
             <path d="M 28.5 90 Q 26 86 24 87" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
@@ -618,6 +654,17 @@ function StageBee({ phase }: { phase: BeePhase }) {
             <circle cx="36" cy="87" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.15" />
             {/* Stinger */}
             <path d="M 29 105.5 L 30 108 L 31 105.5" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.2" />
+
+            {/* Sparkle trail during trick */}
+            {isBeeWord && (
+                <motion.g
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 0.4, 0], x: [-5, 0, 5], y: [0, 3, 6] }}
+                    transition={{ duration: 0.6, repeat: Infinity }}
+                >
+                    <circle cx="28" cy="98" r="0.8" fill="var(--color-gold)" />
+                </motion.g>
+            )}
         </motion.g>
     );
 }
@@ -629,7 +676,7 @@ function StageBee({ phase }: { phase: BeePhase }) {
 const AUDIENCE_CX = [45, 85, 125, 160, 195, 235, 275];
 
 /** Audience reaction state driven by phase and lastResult */
-type AudienceReaction = 'idle' | 'gasp' | 'cheer' | 'ovation';
+type AudienceReaction = 'idle' | 'gasp' | 'cheer' | 'ovation' | 'anticipation' | 'ooh';
 
 const AUDIENCE_IDLES: TargetAndTransition[] = AUDIENCE_CX.map((_, i) => ({
     y: [0, -0.5, 0],
@@ -653,7 +700,32 @@ const AUDIENCE_OVATION: TargetAndTransition = {
     transition: { duration: 1.2, ease: 'easeInOut' as const },
 };
 
-function AudienceRow({ reaction, reducedMotion }: { reaction: AudienceReaction; reducedMotion: boolean }) {
+// New: Anticipation for difficult words
+const AUDIENCE_ANTICIPATION: TargetAndTransition = {
+    y: [0, -1, 0, -0.5, 0],
+    scale: [1, 1.02, 1, 1.01, 1],
+    transition: { duration: 2, ease: 'easeInOut' as const, repeat: Infinity },
+};
+
+// New: "Ooh!" reaction for very difficult words
+const AUDIENCE_OOH: TargetAndTransition = {
+    y: [0, -2.5, 0],
+    scale: [1, 1.06, 1],
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+};
+
+function AudienceRow({ reaction, reducedMotion, playSound = false }: {
+    reaction: AudienceReaction;
+    reducedMotion: boolean;
+    playSound?: boolean;
+}) {
+    // Play applause sound when appropriate
+    useEffect(() => {
+        if (playSound && (reaction === 'cheer' || reaction === 'ovation')) {
+            playApplause();
+        }
+    }, [reaction, playSound]);
+
     return (
         <g opacity="0.15">
             {AUDIENCE_CX.map((cx, i) => (
@@ -663,6 +735,8 @@ function AudienceRow({ reaction, reducedMotion }: { reaction: AudienceReaction; 
                         reaction === 'ovation' ? AUDIENCE_OVATION :
                         reaction === 'cheer' ? AUDIENCE_CHEER :
                         reaction === 'gasp' ? AUDIENCE_GASP :
+                        reaction === 'ooh' ? AUDIENCE_OOH :
+                        reaction === 'anticipation' ? AUDIENCE_ANTICIPATION :
                         AUDIENCE_IDLES[i]
                     }
                 >
@@ -673,16 +747,25 @@ function AudienceRow({ reaction, reducedMotion }: { reaction: AudienceReaction; 
                     {/* Arms — change based on reaction */}
                     {reaction === 'cheer' || reaction === 'ovation' ? (
                         <>
+                            {/* Arms up cheering */}
                             <line x1={cx} y1="243" x2={cx - 3} y2="239" stroke="currentColor" strokeWidth="0.6" />
                             <line x1={cx} y1="243" x2={cx + 3} y2="239" stroke="currentColor" strokeWidth="0.6" />
                         </>
                     ) : reaction === 'gasp' ? (
                         <>
+                            {/* Hands to mouth */}
                             <line x1={cx} y1="243" x2={cx - 2} y2="240" stroke="currentColor" strokeWidth="0.6" />
                             <line x1={cx} y1="243" x2={cx + 2} y2="240" stroke="currentColor" strokeWidth="0.6" />
                         </>
+                    ) : reaction === 'ooh' || reaction === 'anticipation' ? (
+                        <>
+                            {/* Leaning forward, interested */}
+                            <line x1={cx} y1="243" x2={cx - 4} y2="245" stroke="currentColor" strokeWidth="0.6" />
+                            <line x1={cx} y1="243" x2={cx + 4} y2="245" stroke="currentColor" strokeWidth="0.6" />
+                        </>
                     ) : (
                         <>
+                            {/* Relaxed */}
                             <line x1={cx} y1="243" x2={cx - 3} y2="246" stroke="currentColor" strokeWidth="0.6" />
                             <line x1={cx} y1="243" x2={cx + 3} y2="246" stroke="currentColor" strokeWidth="0.6" />
                         </>
@@ -728,8 +811,13 @@ export const BeeClassroom = memo(function BeeClassroom({
     round,
     isTyping = false,
     lastResult = null,
+    currentWord = null,
+    seasonalTheme = 'auto',
+    characterStyle = 'classic',
+    wordDifficulty = 5,
 }: Props) {
     const { reducedMotion } = useReducedMotion();
+    const [audiencePlayedSound, setAudiencePlayedSound] = useState(false);
     // Turn sequencing: step through NPC turns visually, then land on player
     const [displayedTurn, setDisplayedTurn] = useState(-1);
     const [revealedResults, setRevealedResults] = useState<Set<number>>(new Set());
@@ -747,11 +835,15 @@ export const BeeClassroom = memo(function BeeClassroom({
         if (phase === 'feedback' && lastResult !== null) {
             // eslint-disable-next-line react-hooks/set-state-in-effect -- animation trigger on phase transition
             setPlayerFeedbackAnim(lastResult ? 'celebrate' : 'stumble');
+            setAudiencePlayedSound(false); // Reset for next reaction
             const t = setTimeout(() => setPlayerFeedbackAnim(null), 900);
             return () => clearTimeout(t);
         }
         setPlayerFeedbackAnim(null);
     }, [phase, lastResult]);
+
+    // Get seasonal decorations
+    const seasonalDecorations = getThemeDecorations(seasonalTheme);
 
     useEffect(() => {
         if (phase !== 'listening') return;
@@ -920,8 +1012,11 @@ export const BeeClassroom = memo(function BeeClassroom({
             {/* Stage decor */}
             <StageDecor />
 
-            {/* Mini bee mascot near stage title */}
-            <StageBee phase={phase} />
+            {/* Seasonal decorations */}
+            {seasonalDecorations}
+
+            {/* Mini bee mascot near stage title with easter eggs */}
+            <StageBee phase={phase} currentWord={currentWord} />
 
             {/* Microphone at center stage */}
             <MicStand cx={160} />
@@ -996,7 +1091,9 @@ export const BeeClassroom = memo(function BeeClassroom({
                     anim = PUPIL_IDLES[i];
                 }
 
-                const FaceComponent = FACE_COMPONENTS[i];
+                const FaceComponent = isPlayer
+                    ? (props: { cx: number }) => <PlayerFace {...props} style={characterStyle} />
+                    : FACE_COMPONENTS[i];
                 const groupOpacity = (!alive && !isPlayer) ? 0.15 : 1;
                 const bubbleText = speechBubbles[i];
 
@@ -1077,15 +1174,18 @@ export const BeeClassroom = memo(function BeeClassroom({
 
             {/* "Your turn!" text when player is highlighted — removed since pronouncer bubble now says it */}
 
-            {/* Audience row — small stick figures at the bottom */}
+            {/* Audience row — small stick figures at the bottom with difficulty-based reactions */}
             <AudienceRow
                 reaction={
                     phase === 'won' ? 'ovation'
                         : playerFeedbackAnim === 'celebrate' ? 'cheer'
                         : playerFeedbackAnim === 'stumble' ? 'gasp'
+                        : phase === 'spelling' && wordDifficulty >= 8 ? 'anticipation'
+                        : phase === 'asking' && wordDifficulty >= 9 ? 'ooh'
                         : 'idle'
                 }
                 reducedMotion={reducedMotion}
+                playSound={!audiencePlayedSound && (playerFeedbackAnim === 'celebrate' || phase === 'won')}
             />
         </svg>
     );

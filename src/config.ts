@@ -44,6 +44,8 @@ export const STORAGE_KEYS = {
     masteredTricks: `${STORAGE_PREFIX}-mastered-tricks`,
     uid: `${STORAGE_PREFIX}-uid`,
     reducedMotion: `${STORAGE_PREFIX}-reduced-motion`,
+    seasonalTheme: `${STORAGE_PREFIX}-seasonal-theme`,
+    stickFigureStyle: `${STORAGE_PREFIX}-stick-figure-style`,
 } as const;
 
 /**
@@ -57,6 +59,8 @@ export const STORAGE_TO_FIRESTORE: Record<string, string> = {
     [STORAGE_KEYS.grade]: 'grade',
     [STORAGE_KEYS.trail]: 'trailId',
     [STORAGE_KEYS.dialect]: 'dialect',
+    [STORAGE_KEYS.seasonalTheme]: 'seasonalTheme',
+    [STORAGE_KEYS.stickFigureStyle]: 'stickFigureStyle',
 };
 
 // ── Firestore collection names ────────────────────────────────────────────────
