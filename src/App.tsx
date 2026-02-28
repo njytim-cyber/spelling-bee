@@ -860,6 +860,10 @@ function App() {
               }}
               onPractice={(cat) => {
                 setQuestionType(cat as QuestionType);
+                // If practicing a tier category, also update grade level to match
+                if (cat.startsWith('tier-')) {
+                  setGrade(cat as GradeLevel);
+                }
                 setActiveTab('game');
               }}
             />
