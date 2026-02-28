@@ -61,11 +61,25 @@ export function usePronunciation(): UsePronunciationReturn {
         return () => speechSynthesis.removeEventListener('voiceschanged', pickVoice);
     }, []);
 
+    // Track mounted state to prevent setState after unmount
+    const mountedRef = useRef(true);
+
     // Cleanup on unmount
     useEffect(() => {
         return () => {
+            mountedRef.current = false;
             if (supported) speechSynthesis.cancel();
-            if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.onended = null; // Clear event handler
+                audioRef.current.onerror = null; // Clear event handler
+                audioRef.current = null;
+            }
+            if (utteranceRef.current) {
+                utteranceRef.current.onstart = null;
+                utteranceRef.current.onend = null;
+                utteranceRef.current.onerror = null;
+            }
         };
     }, []);
 
@@ -89,9 +103,9 @@ export function usePronunciation(): UsePronunciationReturn {
         utterance.pitch = 1;
         if (voiceRef.current) utterance.voice = voiceRef.current;
 
-        utterance.onstart = () => setIsSpeaking(true);
-        utterance.onend = () => setIsSpeaking(false);
-        utterance.onerror = () => setIsSpeaking(false);
+        utterance.onstart = () => { if (mountedRef.current) setIsSpeaking(true); };
+        utterance.onend = () => { if (mountedRef.current) setIsSpeaking(false); };
+        utterance.onerror = () => { if (mountedRef.current) setIsSpeaking(false); };
 
         utteranceRef.current = utterance;
         speechSynthesis.speak(utterance);
@@ -108,15 +122,23 @@ export function usePronunciation(): UsePronunciationReturn {
 
             synthesizeCloud(text, cloudVoice, rate)
                 .then(url => {
+                    if (!mountedRef.current) return; // Don't play if unmounted
+
                     const audio = new Audio(url);
                     audioRef.current = audio;
-                    audio.onended = () => { setIsSpeaking(false); audioRef.current = null; };
+                    audio.onended = () => {
+                        if (!mountedRef.current) return;
+                        setIsSpeaking(false);
+                        audioRef.current = null;
+                    };
                     audio.onerror = () => {
+                        if (!mountedRef.current) return;
                         setIsSpeaking(false);
                         audioRef.current = null;
                         speakBrowser(text); // fallback
                     };
                     audio.play().catch(() => {
+                        if (!mountedRef.current) return;
                         setIsSpeaking(false);
                         speakBrowser(text); // fallback
                     });

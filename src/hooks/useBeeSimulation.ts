@@ -4,7 +4,7 @@
  * State machine for the Bee Simulation mode.
  * Simulates a real spelling bee: hear word → ask questions → spell it.
  */
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import type { SpellingWord } from '../domains/spelling/words/types';
 import { difficultyRange } from '../domains/spelling/words';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
@@ -170,6 +170,16 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, speakWordNumber, speakLetters, isSpeaking, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
+    const timeoutsRef = useRef(new Set<ReturnType<typeof setTimeout>>());
+
+    // Cleanup all pending timeouts on unmount
+    useEffect(() => {
+        const timeouts = timeoutsRef.current;
+        return () => {
+            timeouts.forEach(clearTimeout);
+            timeouts.clear();
+        };
+    }, []);
 
     // In dictation mode: no NPCs, no elimination, go straight to spelling
     const dictationInitial: Partial<BeeSimState> = dictationMode ? {
@@ -312,7 +322,11 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     const sectionText = sections.join(', ');
                     newResponses.spellInSections = sectionText;
                     if (isSupported) {
-                        setTimeout(() => speak(sectionText), 50);
+                        const id = setTimeout(() => {
+                            timeoutsRef.current.delete(id);
+                            speak(sectionText);
+                        }, 50);
+                        timeoutsRef.current.add(id);
                     }
                     break;
                 }
@@ -332,7 +346,11 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             // Speak the info response aloud (like a real bee pronouncer)
             if (spokenText && type !== 'repeat' && isSupported) {
                 // Use setTimeout to avoid speaking inside setState
-                setTimeout(() => speak(spokenText!), 50);
+                const id = setTimeout(() => {
+                    timeoutsRef.current.delete(id);
+                    speak(spokenText!);
+                }, 50);
+                timeoutsRef.current.add(id);
             }
 
             return { ...prev, infoRequested: newRequested, infoResponses: newResponses };

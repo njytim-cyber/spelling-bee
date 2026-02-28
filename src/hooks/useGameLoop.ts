@@ -94,15 +94,26 @@ export function useGameLoop(
     const frozenRef = useRef(false);
     const correctCountRef = useRef(0);
     const dailyRef = useRef<{ dateLabel: string } | null>(null);
-    const pendingTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+    const pendingTimers = useRef(new Set<ReturnType<typeof setTimeout>>());
+    const MAX_PENDING_TIMERS = 32;
 
     /** Schedule a timeout that gets auto-cleared on unmount */
     const safeTimeout = useCallback((fn: () => void, ms: number) => {
+        if (frozenRef.current) return;
+
+        // Prune completed timers before adding new ones to prevent unbounded growth
+        if (pendingTimers.current.size >= MAX_PENDING_TIMERS) {
+            console.warn('Max pending timers reached, clearing oldest');
+            const oldest = Array.from(pendingTimers.current)[0];
+            clearTimeout(oldest);
+            pendingTimers.current.delete(oldest);
+        }
+
         const id = setTimeout(() => {
-            pendingTimers.current = pendingTimers.current.filter(t => t !== id);
+            pendingTimers.current.delete(id);
             fn();
         }, ms);
-        pendingTimers.current.push(id);
+        pendingTimers.current.add(id);
         return id;
     }, []);
 
@@ -359,10 +370,11 @@ export function useGameLoop(
 
     // ── Cleanup ───────────────────────────────────────────────────────────────
     useEffect(() => {
+        const timers = pendingTimers.current;
         return () => {
             if (chalkTimerRef.current) clearTimeout(chalkTimerRef.current);
-            pendingTimers.current.forEach(t => clearTimeout(t));
-            pendingTimers.current = [];
+            timers.forEach(t => clearTimeout(t));
+            timers.clear();
         };
     }, []);
 

@@ -137,6 +137,7 @@ function saveStatsLocal(s: Stats) {
 async function saveStatsCloud(uid: string, s: Stats) {
     try {
         const accuracy = s.totalSolved > 0 ? Math.round((s.totalCorrect / s.totalSolved) * 100) : 0;
+        const version = Date.now();
         await setDoc(doc(db, FIRESTORE.USERS, uid), {
             // Top-level leaderboard-queryable fields
             totalXP: s.totalXP,
@@ -150,8 +151,11 @@ async function saveStatsCloud(uid: string, s: Stats) {
             streakShields: s.streakShields || 0,
             // Full stats blob — strip undefined values (Firestore rejects them)
             stats: JSON.parse(JSON.stringify(s)),
+            _statsVersion: version, // Version field to prevent stale overwrites
             updatedAt: serverTimestamp(),
         }, { merge: true });
+        // Save version to localStorage for comparison on next load
+        localStorage.setItem('stats-version', String(version));
     } catch (err) {
         console.warn('Failed to sync stats to cloud:', err);
     }
@@ -162,7 +166,24 @@ async function loadStatsCloud(uid: string): Promise<Stats | null> {
     try {
         const snap = await getDoc(doc(db, FIRESTORE.USERS, uid));
         if (snap.exists() && snap.data().stats) {
-            const cloud = snap.data().stats;
+            const data = snap.data();
+            const cloud = data.stats;
+
+            // Check version to prevent overwriting newer local data with stale cloud data
+            const localVersion = localStorage.getItem('stats-version');
+            const cloudVersion = data._statsVersion;
+
+            if (localVersion && cloudVersion && parseInt(localVersion) > cloudVersion) {
+                // Local is newer, skip cloud merge
+                console.log('Local stats are newer than cloud, skipping merge');
+                return null;
+            }
+
+            // Update local version if cloud is newer
+            if (cloudVersion) {
+                localStorage.setItem('stats-version', String(cloudVersion));
+            }
+
             return {
                 ...EMPTY_STATS,
                 ...cloud,
@@ -177,9 +198,23 @@ async function loadStatsCloud(uid: string): Promise<Stats | null> {
 
 /** Merge stats from local + cloud — take the best of each field */
 function mergeStats(local: Stats, cloud: Stats): Stats {
-    // Merge byType per-key (take max of each)
+    // Build set of valid categories from SPELLING_CATEGORIES
+    const validCategories = new Set<string>(SPELLING_CATEGORIES.map(c => c.id));
+    // Add meta types not in the picker list
+    validCategories.add('challenge');
+    validCategories.add('ghost');
+
+    // Merge byType per-key (take max of each), filtering out deleted categories
     const mergedByType = { ...EMPTY_STATS.byType };
-    for (const key of Object.keys(mergedByType) as string[]) {
+    const allKeys = new Set([
+        ...Object.keys(local.byType),
+        ...Object.keys(cloud.byType)
+    ]);
+
+    for (const key of allKeys) {
+        // Skip categories that have been removed from the app
+        if (!validCategories.has(key)) continue;
+
         const l = local.byType[key] || EMPTY_TYPE;
         const c = cloud.byType[key] || EMPTY_TYPE;
         mergedByType[key] = {
@@ -234,9 +269,15 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
 export function useStats(uid: string | null) {
     const [stats, setStats] = useState<Stats>(loadStatsLocal);
     const uidRef = useRef(uid);
+    const statsRef = useRef(stats);
+
     useEffect(() => {
         uidRef.current = uid;
     }, [uid]);
+
+    useEffect(() => {
+        statsRef.current = stats;
+    }, [stats]);
 
     // Phase 2: On mount, try to restore from Firestore if localStorage is stale
     useEffect(() => {
@@ -264,6 +305,17 @@ export function useStats(uid: string | null) {
         }
         return () => clearTimeout(cloudTimerRef.current);
     }, [stats]);
+
+    // Flush pending cloud write immediately on unmount to prevent data loss
+    useEffect(() => {
+        return () => {
+            if (uidRef.current && cloudTimerRef.current) {
+                clearTimeout(cloudTimerRef.current);
+                // Fire immediately instead of waiting for debounce
+                saveStatsCloud(uidRef.current, statsRef.current).catch(console.error);
+            }
+        };
+    }, []);
 
     const updateCosmetics = useCallback((themeId: string, costumeId: string, trailId: string) => {
         setStats(prev => ({

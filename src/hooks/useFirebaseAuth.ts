@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
     onAuthStateChanged,
     signInAnonymously,
@@ -35,6 +35,7 @@ export interface FirebaseUser {
 export function useFirebaseAuth() {
     const [user, setUser] = useState<FirebaseUser | null>(null);
     const [loading, setLoading] = useState(true);
+    const authLockRef = useRef(false);
 
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, (fbUser: User | null) => {
@@ -57,7 +58,7 @@ export function useFirebaseAuth() {
                         localStorage.setItem(STORAGE_KEYS.displayName, cloudName);
                         setUser(prev => prev ? { ...prev, displayName: cloudName } : null);
                     } else {
-                        // First time — create user doc
+                        // First time — create user doc with merge:true (idempotent)
                         const name = tempName;
                         localStorage.setItem(STORAGE_KEYS.displayName, name);
                         setDoc(userRef, {
@@ -69,7 +70,7 @@ export function useFirebaseAuth() {
                             isAnonymous: fbUser.isAnonymous,
                             createdAt: serverTimestamp(),
                             updatedAt: serverTimestamp(),
-                        }).catch(err => console.warn('Failed to create user doc:', err));
+                        }, { merge: true }).catch(err => console.warn('Failed to create user doc:', err));
                     }
                 }).catch(err => {
                     console.warn('Failed to fetch user doc:', err);
@@ -89,9 +90,12 @@ export function useFirebaseAuth() {
 
     // ── Email link sign-in completion (runs once on page load) ──
     useEffect(() => {
+        if (authLockRef.current) return; // Skip if auth operation in progress
         if (!isSignInWithEmailLink(auth, window.location.href)) return;
         const email = localStorage.getItem(STORAGE_KEYS.emailForSignin);
         if (!email) return;
+        authLockRef.current = true;
+
         const currentUser = auth.currentUser;
         if (currentUser?.isAnonymous) {
             const credential = EmailAuthProvider.credentialWithLink(email, window.location.href);
@@ -103,14 +107,16 @@ export function useFirebaseAuth() {
                     // Clean the URL
                     window.history.replaceState(null, '', window.location.pathname);
                 })
-                .catch(err => console.warn('Email link linking failed:', err));
+                .catch(err => console.warn('Email link linking failed:', err))
+                .finally(() => { authLockRef.current = false; });
         } else {
             signInWithEmailLink(auth, email, window.location.href)
                 .then(() => {
                     localStorage.removeItem(STORAGE_KEYS.emailForSignin);
                     window.history.replaceState(null, '', window.location.pathname);
                 })
-                .catch(err => console.warn('Email link sign-in failed:', err));
+                .catch(err => console.warn('Email link sign-in failed:', err))
+                .finally(() => { authLockRef.current = false; });
         }
     }, []);
 

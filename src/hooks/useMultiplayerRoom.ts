@@ -63,6 +63,12 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
     const [roundTimeLeft, setRoundTimeLeft] = useState(0);
     const timerRef = useRef(0);
     const unsubRef = useRef<(() => void) | null>(null);
+    const phaseRef = useRef<RoomPhase>(phase);
+
+    // Keep phase ref in sync for snapshot callback
+    useEffect(() => {
+        phaseRef.current = phase;
+    }, [phase]);
 
     // Clean up listener on unmount
     useEffect(() => {
@@ -84,14 +90,15 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
             setRoomData(data);
             setCurrentRound(data.currentRound);
 
-            if (data.status === 'playing' && phase !== 'finished') {
+            // Use phaseRef.current instead of captured phase to avoid stale closure
+            if (data.status === 'playing' && phaseRef.current !== 'finished') {
                 setPhase('playing');
             } else if (data.status === 'finished') {
                 setPhase('finished');
             }
         });
         unsubRef.current = unsub;
-    }, [phase]);
+    }, []); // Remove phase from deps — use ref instead
 
     const createRoom = useCallback(async () => {
         if (!uid) { setError('Must be signed in'); return; }
