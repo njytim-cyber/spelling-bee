@@ -110,6 +110,16 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         if (typeof word === 'string') speak(word);
     }, [p.meta, speak]);
 
+    // Auto-speak word when problem appears (critical for spelling app!)
+    useEffect(() => {
+        const word = p.meta?.['word'];
+        if (typeof word === 'string' && ttsSupported) {
+            // Small delay to let the problem render first
+            const timer = setTimeout(() => speak(word), 300);
+            return () => clearTimeout(timer);
+        }
+    }, [p.id, p.meta, speak, ttsSupported]);
+
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
