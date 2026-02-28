@@ -71,18 +71,19 @@ function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?
 
 // ── Tier group labels ───────────────────────────────────────────────────────
 
-const TIER_LABELS: Record<string, { label: string; grades: string }> = {
-    'tier-1': { label: 'Seedling', grades: 'K \u2013 1st' },
-    'tier-2': { label: 'Sprout', grades: '2nd \u2013 3rd' },
-    'tier-3': { label: 'Growing', grades: '4th \u2013 5th' },
-    'tier-4': { label: 'Climbing', grades: '6th \u2013 8th' },
-    'tier-5': { label: 'Summit', grades: '8th+' },
+const TIER_LABELS: Record<string, { label: string; grades: string; wordCount: number }> = {
+    'tier-1': { label: 'Seedling', grades: 'K \u2013 1st', wordCount: 510 },
+    'tier-2': { label: 'Sprout', grades: '2nd \u2013 3rd', wordCount: 505 },
+    'tier-3': { label: 'Growing', grades: '4th \u2013 5th', wordCount: 505 },
+    'tier-4': { label: 'Climbing', grades: '6th \u2013 8th', wordCount: 504 },
+    'tier-5': { label: 'Summit', grades: '8th+', wordCount: 512 },
 };
 
 interface TierGroup {
     grade: string;
     label: string;
     grades: string;
+    wordCount: number;
     phases: Array<PhaseProgress & { index: number }>;
     /** Is the current active phase inside this tier? */
     isCurrent: boolean;
@@ -100,11 +101,12 @@ function groupByTier(phases: PhaseProgress[], currentPhaseIndex: number): TierGr
     phases.forEach((pp, i) => {
         const g = pp.phase.grade;
         if (!groups.has(g)) {
-            const info = TIER_LABELS[g] ?? { label: g, grades: '' };
+            const info = TIER_LABELS[g] ?? { label: g, grades: '', wordCount: 0 };
             groups.set(g, {
                 grade: g,
                 label: info.label,
                 grades: info.grades,
+                wordCount: info.wordCount,
                 phases: [],
                 isCurrent: false,
                 isComplete: true,

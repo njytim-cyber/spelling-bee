@@ -158,10 +158,10 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                         <select
                             value={beeLevel}
                             onChange={e => setBeeLevel(e.target.value as BeeLevel)}
-                            className="text-xs ui px-2 py-1 rounded-lg bg-[#1a1a2e] border border-[var(--color-gold)]/40 text-[var(--color-gold)] cursor-pointer outline-none shrink-0"
+                            className="text-xs ui px-3 py-1.5 rounded-xl border-2 border-[var(--color-gold)]/30 bg-[var(--color-board)] text-[var(--color-gold)] cursor-pointer outline-none shrink-0 hover:border-[var(--color-gold)]/50 transition-colors"
                         >
                             {BEE_LEVELS.map(l => (
-                                <option key={l.id} value={l.id} className="bg-[#1a1a2e] text-[var(--color-chalk)]">
+                                <option key={l.id} value={l.id} className="bg-[var(--color-board)] text-[var(--color-chalk)]">
                                     {l.label}
                                 </option>
                             ))}
