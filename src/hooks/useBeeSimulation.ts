@@ -10,11 +10,12 @@ import { difficultyRange } from '../domains/spelling/words';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { usePronunciation } from './usePronunciation';
 import { parseEtymology } from '../utils/etymologyParser';
+import { getRootsForWord, formatRootHint } from '../domains/spelling/words/rootUtils';
 import { playDing, playBuzzer, playGasp, playApplause, playFanfare } from '../utils/beeSounds';
 
 export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'eliminated' | 'won' | 'complete';
 
-export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat' | 'pronounceAgain' | 'spellInSections';
+export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat' | 'pronounceAgain' | 'spellInSections' | 'roots';
 
 /** Bee competition level — controls starting difficulty floor */
 export type BeeLevel = 'classroom' | 'district' | 'state' | 'national';
@@ -167,7 +168,7 @@ export function simulateNpcTurns(
 
 export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false, beeLevel: BeeLevel = 'classroom') {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
-    const { speak, speakWordNumber, speakLetters, isSupported } = usePronunciation();
+    const { speak, speakWordNumber, speakLetters, isSpeaking, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
 
     // In dictation mode: no NPCs, no elimination, go straight to spelling
@@ -312,6 +313,17 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     newResponses.spellInSections = sectionText;
                     if (isSupported) {
                         setTimeout(() => speak(sectionText), 50);
+                    }
+                    break;
+                }
+                case 'roots': {
+                    const roots = getRootsForWord(word.word);
+                    if (roots.length > 0) {
+                        newResponses.roots = formatRootHint(roots);
+                        spokenText = `The word roots are: ${roots.map(r => `${r.root}, meaning ${r.meaning}`).join('; ')}`;
+                    } else {
+                        newResponses.roots = 'No known root morphemes for this word.';
+                        spokenText = 'No known root morphemes for this word.';
                     }
                     break;
                 }
@@ -477,6 +489,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         nextWord,
         readBackSpelling,
         sessionXP,
+        isSpeaking,
         ttsSupported: isSupported,
         npcResults: state.npcResults,
         npcAlive: state.npcAlive,

@@ -7,6 +7,7 @@
 import { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWrittenTest } from '../hooks/useWrittenTest';
+import { ChevronLeft } from './ChevronLeft';
 
 interface Props {
     onExit: () => void;
@@ -163,8 +164,9 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
                         New Test
                     </button>
                 </div>
-                <button onClick={onExit} className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-2">
-                    Exit
+                <button onClick={onExit} className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-2 flex items-center gap-1">
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                    Back
                 </button>
             </div>
         );
@@ -313,12 +315,13 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
                 )}
             </div>
 
-            {/* Exit button */}
+            {/* Back button */}
             <button
                 onClick={onExit}
-                className="absolute top-4 right-4 text-xs ui text-[rgb(var(--color-fg))]/20 hover:text-[rgb(var(--color-fg))]/40"
+                className="absolute top-4 left-4 w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                aria-label="Back"
             >
-                Exit
+                <ChevronLeft />
             </button>
         </div>
     );

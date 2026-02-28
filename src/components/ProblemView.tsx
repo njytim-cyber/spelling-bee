@@ -173,11 +173,11 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     </div>
                 )}
                 {typeof p.meta?.['definition'] === 'string' ? (
-                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 break-words ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
                         {p.meta['definition']}
                     </div>
                 ) : (
-                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 break-words ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
                         {displayText}
                     </div>
                 )}
@@ -193,7 +193,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             <button
                                 type="button"
                                 onClick={handleSpeak}
-                                className="text-base opacity-40 hover:opacity-80 transition-opacity"
+                                className="w-10 h-10 flex items-center justify-center text-base opacity-40 hover:opacity-80 transition-opacity"
                                 aria-label="Hear pronunciation"
                             >
                                 🔊

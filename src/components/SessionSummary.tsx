@@ -152,7 +152,7 @@ export const SessionSummary = memo(function SessionSummary({
                     onClick={onDismiss}
                 >
                     <motion.div
-                        className="bg-[var(--color-board)] border border-[rgb(var(--color-fg))]/15 rounded-3xl px-8 py-6 max-w-xs w-full text-center relative overflow-hidden"
+                        className="bg-[var(--color-board)] border border-[rgb(var(--color-fg))]/15 rounded-3xl px-8 py-6 max-w-xs w-[calc(100vw-2rem)] text-center relative overflow-hidden"
                         initial={{ scale: 0.85, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.85, opacity: 0 }}

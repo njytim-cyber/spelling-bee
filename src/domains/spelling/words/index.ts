@@ -15,6 +15,8 @@ import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymology
 export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier, CompetitionList } from './types';
 export { COMPETITION_LISTS } from './competitionLists';
 export { ensureAllTiers, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
+export { getRootsForWord, formatRootHint, highlightRoot, rootFragments, computeRootMastery } from './rootUtils';
+export type { RootMasteryEntry } from './rootUtils';
 
 /** Every word currently loaded in the registry. */
 export function getAllWords(): SpellingWord[] {

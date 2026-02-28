@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SpellingInput } from './SpellingInput';
 import type { RoomData, RoomPhase } from '../hooks/useMultiplayerRoom';
 import { usePronunciation } from '../hooks/usePronunciation';
+import { ChevronLeft } from './ChevronLeft';
 
 interface Props {
     phase: RoomPhase;
@@ -257,12 +258,13 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                 )}
             </div>
 
-            {/* Exit button */}
+            {/* Back button */}
             <button
                 onClick={onLeave}
-                className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] left-4 text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors z-50"
+                className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] left-4 w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors z-50"
+                aria-label="Leave match"
             >
-                Exit Match
+                <ChevronLeft />
             </button>
         </div>
     );

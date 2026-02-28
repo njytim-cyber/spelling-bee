@@ -5,6 +5,7 @@
  */
 import { memo } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft } from './ChevronLeft';
 
 interface Props {
     round: number;
@@ -53,9 +54,10 @@ export const TournamentSummary = memo(function TournamentSummary({ round, onRest
                 </button>
                 <button
                     onClick={onExit}
-                    className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
+                    className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
                 >
-                    Exit
+                    <ChevronLeft className="w-4 h-4" />
+                    Back
                 </button>
             </div>
         </motion.div>

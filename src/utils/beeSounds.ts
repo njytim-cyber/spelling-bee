@@ -33,30 +33,31 @@ export async function playDing(): Promise<void> {
     await ensureResumed(ac);
     const t = ac.currentTime;
 
-    // Two-tone bell: fundamental + octave harmonic
+    // Ascending two-tone bell: quick low→high for a bright, rewarding feel
     const osc1 = ac.createOscillator();
     const osc2 = ac.createOscillator();
     const gain = ac.createGain();
 
     osc1.type = 'sine';
-    osc1.frequency.setValueAtTime(1200, t);
-    osc1.frequency.exponentialRampToValueAtTime(800, t + 0.3);
+    osc1.frequency.setValueAtTime(880, t);
+    osc1.frequency.exponentialRampToValueAtTime(1320, t + 0.08);
 
     osc2.type = 'sine';
-    osc2.frequency.setValueAtTime(1800, t);
-    osc2.frequency.exponentialRampToValueAtTime(1200, t + 0.2);
+    osc2.frequency.setValueAtTime(1320, t + 0.06);
+    osc2.frequency.exponentialRampToValueAtTime(1760, t + 0.14);
 
     gain.gain.setValueAtTime(0.18, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+    gain.gain.setValueAtTime(0.18, t + 0.15);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
 
     osc1.connect(gain);
     osc2.connect(gain);
     gain.connect(ac.destination);
 
     osc1.start(t);
-    osc2.start(t);
-    osc1.stop(t + 0.5);
-    osc2.stop(t + 0.5);
+    osc2.start(t + 0.06);
+    osc1.stop(t + 0.25);
+    osc2.stop(t + 0.45);
 }
 
 /** Buzzer — incorrect answer (short, low, not harsh) */

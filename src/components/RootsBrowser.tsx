@@ -2,14 +2,18 @@
  * components/RootsBrowser.tsx
  *
  * Browsable word roots list grouped by origin (Greek, Latin, French).
- * Each root card shows: root, meaning, type badge, example words.
+ * Each root card shows: root, meaning, type badge, example words,
+ * mastery progress, and a "Practice" drill button.
  */
 import { memo, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WORD_ROOTS, type WordRoot } from '../domains/spelling/words/roots';
+import { highlightRoot } from '../domains/spelling/words/rootUtils';
 
-type OriginFilter = 'all' | 'Greek' | 'Latin' | 'French';
-const ORIGINS: OriginFilter[] = ['all', 'Latin', 'Greek', 'French'];
+const DISMISS_KEY = 'sb-roots-intro-dismissed';
+
+type OriginFilter = 'all' | 'Greek' | 'Latin' | 'French' | 'German' | 'Italian';
+const ORIGINS: OriginFilter[] = ['all', 'Latin', 'Greek', 'French', 'German', 'Italian'];
 
 type TypeFilter = 'all' | 'prefix' | 'suffix' | 'root';
 const TYPES: TypeFilter[] = ['all', 'prefix', 'suffix', 'root'];
@@ -20,7 +24,15 @@ const TYPE_BADGE: Record<string, string> = {
     root: 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/50',
 };
 
-function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: boolean; onToggle: () => void }) {
+interface RootCardProps {
+    root: WordRoot;
+    expanded: boolean;
+    onToggle: () => void;
+    onDrill?: () => void;
+    mastery?: { mastered: number; total: number };
+}
+
+function RootCard({ root, expanded, onToggle, onDrill, mastery }: RootCardProps) {
     return (
         <div className="border-b border-[rgb(var(--color-fg))]/5">
             <button
@@ -32,6 +44,11 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
                     <span className={`text-[10px] ui px-1.5 py-0.5 rounded-full font-medium shrink-0 ${TYPE_BADGE[root.type] ?? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/40'}`}>
                         {root.type}
                     </span>
+                    {mastery && mastery.mastered > 0 && (
+                        <span className="text-[10px] ui text-[var(--color-correct)]/60 shrink-0">
+                            {mastery.mastered}/{mastery.total}
+                        </span>
+                    )}
                 </div>
                 <span className="text-xs ui text-[rgb(var(--color-fg))]/50 shrink-0">{root.meaning}</span>
             </button>
@@ -55,10 +72,18 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
                                         key={word}
                                         className="px-2 py-0.5 rounded-md bg-[rgb(var(--color-fg))]/5 text-xs ui text-[var(--color-chalk)]"
                                     >
-                                        {word}
+                                        {highlightRoot(word, root.root)}
                                     </span>
                                 ))}
                             </div>
+                            {onDrill && root.examples.length >= 3 && (
+                                <button
+                                    onClick={onDrill}
+                                    className="mt-1 w-full py-1.5 rounded-lg text-xs ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                                >
+                                    Practice these words
+                                </button>
+                            )}
                         </div>
                     </motion.div>
                 )}
@@ -67,11 +92,17 @@ function RootCard({ root, expanded, onToggle }: { root: WordRoot; expanded: bool
     );
 }
 
-export const RootsContent = memo(function RootsContent() {
+interface RootsContentProps {
+    onDrillRoot?: (rootId: string) => void;
+    rootMastery?: Map<string, { mastered: number; total: number }>;
+}
+
+export const RootsContent = memo(function RootsContent({ onDrillRoot, rootMastery }: RootsContentProps) {
     const [filter, setFilter] = useState<OriginFilter>('all');
     const [typeFilter, setTypeFilter] = useState<TypeFilter>('all');
     const [search, setSearch] = useState('');
     const [expandedRoot, setExpandedRoot] = useState<string | null>(null);
+    const [introDismissed, setIntroDismissed] = useState(() => localStorage.getItem(DISMISS_KEY) === '1');
 
     const filtered = useMemo(() => {
         let list = WORD_ROOTS;
@@ -108,8 +139,35 @@ export const RootsContent = memo(function RootsContent() {
         return counts;
     }, []);
 
+    const dismissIntro = () => {
+        localStorage.setItem(DISMISS_KEY, '1');
+        setIntroDismissed(true);
+    };
+
     return (
         <>
+            {/* Intro explainer */}
+            {!introDismissed && (
+                <div className="relative mb-3 px-3 py-2.5 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/15">
+                    <button
+                        onClick={dismissIntro}
+                        className="absolute top-1.5 right-2 text-[rgb(var(--color-fg))]/25 hover:text-[rgb(var(--color-fg))]/50 text-sm"
+                        aria-label="Dismiss"
+                    >&times;</button>
+                    <p className="text-xs ui text-[rgb(var(--color-fg))]/60 leading-relaxed pr-4">
+                        <span className="font-semibold text-[var(--color-gold)]">Why learn roots?</span>{' '}
+                        Knowing word roots is like a cheat code — when you see an unfamiliar word, you can break it apart
+                        and figure out what it means. If you know <em>spect</em> means "to look," you can
+                        decode <em>spectacle</em>, <em>inspector</em>, and <em>retrospective</em>.
+                    </p>
+                </div>
+            )}
+
+            {/* Summary line */}
+            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-2">
+                {WORD_ROOTS.length} roots from Latin, Greek, French, German &amp; Italian — tap any to see examples
+            </div>
+
             {/* Search */}
             <input
                 type="text"
@@ -166,6 +224,8 @@ export const RootsContent = memo(function RootsContent() {
                             root={root}
                             expanded={expandedRoot === root.root}
                             onToggle={() => setExpandedRoot(prev => prev === root.root ? null : root.root)}
+                            onDrill={onDrillRoot ? () => onDrillRoot(root.root) : undefined}
+                            mastery={rootMastery?.get(root.root)}
                         />
                     ))
                 )}
@@ -173,4 +233,3 @@ export const RootsContent = memo(function RootsContent() {
         </>
     );
 });
-

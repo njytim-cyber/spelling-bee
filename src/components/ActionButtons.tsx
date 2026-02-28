@@ -12,6 +12,9 @@ interface Props {
     onTimedModeToggle: () => void;
     timerProgress: number; // 0 → 1
     reviewQueueCount?: number;
+    /** Text-entry (guided) mode toggle */
+    guidedMode: boolean;
+    onGuidedModeToggle: () => void;
 }
 
 /** Circular countdown ring drawn as an SVG arc */
@@ -49,7 +52,7 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
 export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange, hardMode, onHardModeToggle,
     timedMode, onTimedModeToggle, timerProgress,
-    reviewQueueCount,
+    reviewQueueCount, guidedMode, onGuidedModeToggle,
 }: Props) {
     // Hide hard/timed toggles during full-screen modes that have their own controls
     const hideToggles = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
@@ -61,6 +64,39 @@ export const ActionButtons = memo(function ActionButtons({
                 <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
                 <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Topic</span>
             </div>
+
+            {/* MCQ / Text mode toggle */}
+            {!hideToggles && <motion.button
+                onClick={onGuidedModeToggle}
+                className={`w-11 h-11 flex flex-col items-center justify-center ${guidedMode
+                    ? 'text-[var(--color-gold)]'
+                    : 'text-[rgb(var(--color-fg))]/70'
+                }`}
+                whileTap={{ scale: 0.88 }}
+                aria-label={guidedMode ? 'Text entry mode (tap for MCQ)' : 'MCQ mode (tap for text entry)'}
+            >
+                {guidedMode ? (
+                    /* Pencil — text entry mode */
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                        <path d="M15 5l4 4" />
+                    </svg>
+                ) : (
+                    /* List/checklist — MCQ mode */
+                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M11 6h9" />
+                        <path d="M11 12h9" />
+                        <path d="M11 18h9" />
+                        <rect x="3" y="4" width="4" height="4" rx="1" />
+                        <rect x="3" y="10" width="4" height="4" rx="1" />
+                        <rect x="3" y="16" width="4" height="4" rx="1" />
+                    </svg>
+                )}
+                {guidedMode && (
+                    <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
+                )}
+                <span className="text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">{guidedMode ? 'Type' : 'MCQ'}</span>
+            </motion.button>}
 
             {/* Stopwatch / timed mode */}
             {!hideToggles && <motion.button

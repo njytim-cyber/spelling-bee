@@ -27,11 +27,12 @@ interface Props {
     activeCostume: string;
     onOpenMultiplayer?: () => void;
     onOpenBee?: () => void;
-    onOpenGuided?: () => void;
+    onOpenWrittenTest?: () => void;
+    onOpenWotc?: (tier: 'wotc-one' | 'wotc-two' | 'wotc-three') => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenGuided }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
@@ -49,7 +50,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
     const handleAction = useCallback(async (action: 'race' | 'ping') => {
         if (!selectedPlayer) return;
         if (action === 'race') {
-            window.location.search = `?c=ghost-${selectedPlayer.uid}`;
+            const params = new URLSearchParams();
+            params.set('c', `ghost-${selectedPlayer.uid}`);
+            window.location.search = params.toString();
         } else if (action === 'ping') {
             if (pingCooldown) return;
             setPingCooldown(true);
@@ -153,19 +156,37 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                         </div>
                     </button>
                 )}
-                {onOpenGuided && (
-                    <button
-                        onClick={onOpenGuided}
-                        className="w-full flex items-center gap-3 py-3 px-5 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
-                    >
-                        <span className="text-xl">&#9997;&#65039;</span>
-                        <div className="text-left flex-1">
-                            <div className="text-sm ui font-semibold text-[rgb(var(--color-fg))]/80">Guided Spelling</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Type words from memory — learn before you compete</div>
-                        </div>
-                    </button>
+
+                {/* WOTC tiers */}
+                {onOpenWotc && (
+                    <div className="flex gap-2">
+                        {([
+                            { tier: 'wotc-one' as const, label: 'One Bee', desc: 'Grades K\u20132' },
+                            { tier: 'wotc-two' as const, label: 'Two Bee', desc: 'Grades 3\u20135' },
+                            { tier: 'wotc-three' as const, label: 'Three Bee', desc: 'Grades 6\u20138' },
+                        ]).map(t => (
+                            <button
+                                key={t.tier}
+                                onClick={() => onOpenWotc(t.tier)}
+                                className="flex-1 flex flex-col items-center gap-1 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                            >
+                                <span className="text-sm ui font-semibold text-[rgb(var(--color-fg))]/80">{t.label}</span>
+                                <span className="text-[9px] ui text-[rgb(var(--color-fg))]/35">{t.desc}</span>
+                            </button>
+                        ))}
+                    </div>
                 )}
+
                 <div className="flex gap-2">
+                    {onOpenWrittenTest && (
+                        <button
+                            onClick={onOpenWrittenTest}
+                            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                        >
+                            <span className="text-sm">&#128203;</span>
+                            <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">Written Test</span>
+                        </button>
+                    )}
                     {onOpenMultiplayer && (
                         <button
                             onClick={onOpenMultiplayer}

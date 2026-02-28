@@ -9,7 +9,7 @@ import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
 import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
-import { getGradeConfig } from './domains/spelling/spellingCategories';
+import { getGradeConfig, SPELLING_CATEGORIES } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { OfflineBanner } from './components/OfflineBanner';
@@ -48,6 +48,8 @@ import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
 import { generateEtymologyItem } from './domains/spelling/etymologyGenerator';
 import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
+import type { WordRecord } from './hooks/useWordHistory';
+import { WORD_ROOTS } from './domains/spelling/words/roots';
 import { PathPage } from './components/PathPage';
 import { BeeSimPage } from './components/BeeSimPage';
 import { WrittenTestPage } from './components/WrittenTestPage';
@@ -57,6 +59,7 @@ import { MultiplayerMatch } from './components/MultiplayerMatch';
 import { useMultiplayerRoom } from './hooks/useMultiplayerRoom';
 import { useCustomLists } from './hooks/useCustomLists';
 import { CustomListsModal } from './components/CustomListsModal';
+import { Toast } from './components/Toast';
 import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
@@ -133,6 +136,13 @@ function App() {
   // ── Hardest-words drill override ──
   const [drillHardest, setDrillHardest] = useState(false);
 
+  // ── Root-family drill override ──
+  const [drillRootId, setDrillRootId] = useState<string | null>(null);
+
+  // ── Guided mode toggle (MCQ vs text-entry) ──
+  const [guidedMode, setGuidedMode] = useState(false);
+  const toggleGuidedMode = useCallback(() => setGuidedMode(g => !g), []);
+
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
 
@@ -187,6 +197,17 @@ function App() {
 
   // ── Word history (Leitner spaced repetition) ──
   const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount } = useWordHistory();
+
+  // Root-family drill queue — maps root's example words to WordRecord[] for GuidedSpellingPage
+  const drillRootQueue = useMemo(() => {
+    if (!drillRootId) return undefined;
+    const root = WORD_ROOTS.find(r => r.root === drillRootId);
+    if (!root) return undefined;
+    return root.examples.map(w => {
+      const key = w.toLowerCase();
+      return wordRecords[key] ?? { word: key, category: 'roots', attempts: 0, correct: 0, lastSeen: 0, lastCorrect: 0, box: 0, nextReview: 0 } as WordRecord;
+    });
+  }, [drillRootId, wordRecords]);
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
     const word = item.meta?.['word'] as string | undefined;
@@ -257,13 +278,13 @@ function App() {
   // ── Shield consumed toast ──
   const [shieldToast, setShieldToast] = useState(false);
   useEffect(() => {
-    if (shieldBroken) {
-      queueMicrotask(() => {
-        setShieldToast(true);
-        const t = setTimeout(() => setShieldToast(false), 3000);
-        return () => clearTimeout(t);
-      });
-    }
+    if (!shieldBroken) return;
+    let t: ReturnType<typeof setTimeout>;
+    queueMicrotask(() => {
+      setShieldToast(true);
+      t = setTimeout(() => setShieldToast(false), 3000);
+    });
+    return () => clearTimeout(t);
   }, [shieldBroken]);
 
   // ── Streak toast — show once per session when dayStreak > 1 ──
@@ -318,6 +339,7 @@ function App() {
   const [pingMessage, setPingMessage] = useState<string | null>(null);
   useEffect(() => {
     if (!uid) return;
+    let pingTimer: ReturnType<typeof setTimeout>;
     const q = query(
       collection(db, FIRESTORE.PINGS),
       where('targetUid', '==', uid),
@@ -335,10 +357,11 @@ function App() {
         updateDoc(doc(db, 'pings', pingDoc.id), { read: true }).catch(console.error);
 
         // Clear after 6 seconds
-        setTimeout(() => setPingMessage(null), 6000);
+        clearTimeout(pingTimer);
+        pingTimer = setTimeout(() => setPingMessage(null), 6000);
       }
     });
-    return unsub;
+    return () => { unsub(); clearTimeout(pingTimer); };
   }, [uid]);
 
   // Track previous tab for session recording (handled in handleTabChange)
@@ -404,6 +427,8 @@ function App() {
       pendingTabRef.current = tab;
       return;
     }
+    // Reset guided mode when leaving game tab
+    if (tab !== 'game' && guidedMode) setGuidedMode(false);
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
       setShowSummary(true);
@@ -411,7 +436,7 @@ function App() {
       return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary, showSummary]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary, showSummary, guidedMode]);
 
   // ── Tab swipe (non-game tabs only) ──
   const handleTabSwipe = useCallback((_: unknown, info: PanInfo) => {
@@ -479,8 +504,8 @@ function App() {
           baseColor={CHALK_THEMES.find(t => t.id === activeThemeId)?.color}
         />
 
-        {/* ── Top-right controls (theme toggle) — game tab only ── */}
-        {activeTab === 'game' && (
+        {/* ── Top-right controls (theme toggle) — game tab only, hidden during immersive sub-modes ── */}
+        {activeTab === 'game' && questionType !== 'bee' && questionType !== 'guided' && questionType !== 'written-test' && !guidedMode && (
           <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-2">
             <button
               onClick={toggleThemeMode}
@@ -519,8 +544,8 @@ function App() {
               el.classList.add(flash === 'wrong' && !shieldBroken ? 'wrong-shake' : flash === 'correct' ? 'answer-bounce' : '');
             }
           }} className="flex-1 flex flex-col w-full">
-            {/* ── Score (centered, pushed down from edge) ── */}
-            <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
+            {/* ── Score (centered, pushed down from edge) — hidden in full-screen sub-modes ── */}
+            {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
               {/* Challenge header */}
               {questionType === 'challenge' && (
                 <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
@@ -628,7 +653,7 @@ function App() {
                   📝 {reviewQueue.length} to review
                 </motion.button>
               )}
-            </div>
+            </div>}
 
             {/* ── Points earned floater ── */}
             <AnimatePresence>
@@ -655,14 +680,14 @@ function App() {
                   }}
                   onBeeResult={recordBeeResult}
                 />
-              ) : questionType === 'guided' ? (
+              ) : (questionType === 'guided' || guidedMode) ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => { setDrillHardest(false); setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
+                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
                     onAnswer={(word, correct, ms, typed) => {
-                      recordAttempt(word, 'guided', correct, ms, typed);
+                      recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
                     }}
-                    reviewQueue={drillHardest ? hardestWords : reviewQueue}
+                    reviewQueue={drillRootId ? drillRootQueue : drillHardest ? hardestWords : reviewQueue}
                     masteredCount={masteredCount}
                     onOpenBee={() => setQuestionType('bee')}
                   />
@@ -704,22 +729,32 @@ function App() {
               )}
             </div>
 
-            {/* ── TikTok-style action buttons ── */}
-            <ActionButtons
-              questionType={questionType}
-              onTypeChange={setQuestionType}
-              hardMode={hardMode}
-              onHardModeToggle={toggleHardMode}
-              timedMode={timedMode}
-              onTimedModeToggle={toggleTimedMode}
-              timerProgress={timerProgress}
-              reviewQueueCount={reviewQueue.length}
-            />
+            {/* ── TikTok-style action buttons — hidden during immersive sub-modes ── */}
+            {questionType !== 'bee' && questionType !== 'guided' && questionType !== 'written-test' && !guidedMode && (
+              <ActionButtons
+                questionType={questionType}
+                onTypeChange={setQuestionType}
+                hardMode={hardMode}
+                onHardModeToggle={toggleHardMode}
+                timedMode={timedMode}
+                onTimedModeToggle={toggleTimedMode}
+                timerProgress={timerProgress}
+                reviewQueueCount={reviewQueue.length}
+                guidedMode={guidedMode}
+                onGuidedModeToggle={toggleGuidedMode}
+              />
+            )}
 
-            {/* ── Bee Buddy PiP ── */}
-            <div className="landscape-hide">
-              <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} hardMode={hardMode} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
-            </div>
+            {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
+            {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && (
+              <div className="landscape-hide">
+                {/* Category label above buddy — prompts users to change topic */}
+                <div className="absolute bottom-[180px] right-2 z-30 text-[10px] ui text-[rgb(var(--color-fg))]/30">
+                  {SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? questionType}
+                </div>
+                <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} hardMode={hardMode} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
+              </div>
+            )}
 
             {/* ── Feedback flash overlay ── */}
             {flash !== 'none' && (
@@ -772,6 +807,11 @@ function App() {
                 setQuestionType('guided');
                 setActiveTab('game');
               }}
+              onDrillRoot={(rootId) => {
+                setDrillRootId(rootId);
+                setGuidedMode(true);
+                setActiveTab('game');
+              }}
               onPractice={(cat) => {
                 setQuestionType(cat as QuestionType);
                 setActiveTab('game');
@@ -782,7 +822,7 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenGuided={() => { setQuestionType('guided'); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 
@@ -816,8 +856,10 @@ function App() {
           </motion.div>
         )}
 
-        {/* ── Bottom Navigation ── */}
-        <BottomNav active={activeTab} onChange={handleTabChange} />
+        {/* ── Bottom Navigation — hidden during immersive sub-modes ── */}
+        {!(activeTab === 'game' && (questionType === 'bee' || questionType === 'guided' || questionType === 'written-test' || guidedMode)) && (
+          <BottomNav active={activeTab} onChange={handleTabChange} />
+        )}
 
         {/* ── Session Summary ── */}
         <SessionSummary
@@ -853,65 +895,10 @@ function App() {
         {/* ── Weekly recap (first open of the week) ── */}
         <WeeklyRecap stats={stats} />
 
-        {/* ── Achievement unlock toast ── */}
-        <AnimatePresence>
-          {unlockToast && (
-            <motion.div
-              key={unlockToast}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.3 }}
-              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 flex items-center gap-3"
-            >
-              <span className="text-2xl">🏅</span>
-              <div>
-                <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Achievement Unlocked!</div>
-                <div className="text-sm ui font-bold text-[var(--color-gold)]">{unlockToast}</div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* ── Streak shield consumed toast ── */}
-        <AnimatePresence>
-          {shieldToast && (
-            <motion.div
-              key="shield-toast"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.3 }}
-              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 flex items-center gap-3"
-            >
-              <span className="text-2xl">🛡️</span>
-              <div>
-                <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Streak Saved!</div>
-                <div className="text-sm ui font-bold text-[var(--color-gold)]">Shield protected your streak</div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* ── Day streak toast ── */}
-        <AnimatePresence>
-          {streakToast && (
-            <motion.div
-              key="streak-toast"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.3 }}
-              className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 flex items-center gap-3"
-            >
-              <span className="text-2xl">🔥</span>
-              <div>
-                <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.dayStreak}-day streak!</div>
-                <div className="text-xs ui text-[rgb(var(--color-fg))]/40">Keep it going</div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* ── Toasts ── */}
+        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast || ''} subtitle="Achievement Unlocked!" toastKey={unlockToast || undefined} />
+        <Toast visible={shieldToast} icon="🛡️" title="Shield protected your streak" subtitle="Streak Saved!" />
+        <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
 
         {/* ── Custom Lists Modal ── */}
         <AnimatePresence>

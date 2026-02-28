@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "verify": "eslint . && tsc -b && vitest run && vite build",
-    "prepare": "node -e \"const fs=require('fs'),p='.git/hooks/pre-push';if(!fs.existsSync(p)){fs.mkdirSync('.git/hooks',{recursive:true});fs.writeFileSync(p,'#!/bin/sh\\nnpm run verify\\n');try{fs.chmodSync(p,0o755)}catch{}}\""
+    "prepare": "node scripts/install-hooks.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

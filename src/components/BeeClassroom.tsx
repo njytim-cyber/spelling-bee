@@ -910,7 +910,7 @@ export const BeeClassroom = memo(function BeeClassroom({
 
     return (
         <svg
-            viewBox="0 0 320 260"
+            viewBox="0 -6 320 266"
             className="w-full max-w-[320px] h-auto cursor-pointer"
             style={{ color: 'var(--color-chalk)' }}
             onClick={onPronounce}

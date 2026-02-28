@@ -5,11 +5,13 @@
  * Flow: hear word → type it → correct? celebrate : show spelling → retype.
  * Fully integrated with Leitner SRS via onAnswer callback.
  */
-import { memo, useState, useCallback, useEffect, useRef } from 'react';
+import { memo, useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SpellingInput } from './SpellingInput';
+import { ChevronLeft } from './ChevronLeft';
 import { SpellingDiffView } from './SpellingDiffView';
 import { usePronunciation } from '../hooks/usePronunciation';
+import { getRootsForWord, formatRootHint } from '../domains/spelling/words/rootUtils';
 import { playDing, playBuzzer } from '../utils/beeSounds';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { difficultyRange, getWordMap } from '../domains/spelling/words';
@@ -64,7 +66,8 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     const startTimeRef = useRef(0);
     const showTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-    const { speak, speakLetters, speakWord, isSupported, cancel } = usePronunciation();
+    const { speak, speakWord, isSupported, cancel } = usePronunciation();
+    const wordRoots = useMemo(() => getRootsForWord(word.word), [word]);
 
     // Announce word on mount and when word changes
     useEffect(() => {
@@ -90,9 +93,9 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
             setWordsCorrect(c => c + 1);
             setWordsAttempted(a => a + 1);
             setPhase('correct');
-            // Read back letter-by-letter like a real speller
+            // Just pronounce the word (no letter-by-letter — that's for Bee mode)
             if (isSupported) {
-                setTimeout(() => speakLetters(word.word), 200);
+                setTimeout(() => speak(word.word), 200);
             }
         } else {
             playBuzzer();
@@ -111,14 +114,14 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                 if (isSupported) speak(`Now spell ${word.word}`);
             }, SHOW_DURATION_MS);
         }
-    }, [typed, word, onAnswer, isSupported, speak, speakLetters]);
+    }, [typed, word, onAnswer, isSupported, speak]);
 
     const handleRetypeSubmit = useCallback(() => {
         const correct = typed.trim().toLowerCase() === word.word.toLowerCase();
         if (correct) {
             playDing();
             setPhase('retype-correct');
-            if (isSupported) speakLetters(word.word);
+            if (isSupported) speak(word.word);
         } else {
             // Still wrong — show again
             playBuzzer();
@@ -129,7 +132,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                 if (isSupported) speak(`Try again. Spell ${word.word}`);
             }, SHOW_DURATION_MS);
         }
-    }, [typed, word, isSupported, speak, speakLetters]);
+    }, [typed, word, isSupported, speak]);
 
     const advanceWord = useCallback(() => {
         cancel();
@@ -152,19 +155,20 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     return (
         <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 relative">
             {/* Top bar */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+            <div className="absolute top-4 left-4 right-4 flex items-center gap-3 z-10">
+                <button
+                    onClick={onExit}
+                    className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
+                    aria-label="Back"
+                >
+                    <ChevronLeft />
+                </button>
                 <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium">
                     Word {wordsAttempted + (phase === 'typing' || phase === 'showing' || phase === 'retyping' ? 1 : 0)} · {wordsCorrect}/{wordsAttempted}
                     {reviewQueue && reviewQueue.length > 0 && (
                         <span className="text-[var(--color-gold)]"> · {reviewQueue.length} to review</span>
                     )}
                 </div>
-                <button
-                    onClick={onExit}
-                    className="text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
-                >
-                    Exit
-                </button>
             </div>
 
             <div className="flex flex-col items-center gap-4 w-full max-w-[320px]">
@@ -185,6 +189,14 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                     <span className="text-[10px] text-[var(--color-gold)] uppercase font-bold">Definition: </span>
                     {word.definition}
                 </div>
+
+                {/* Root hint — shown when word has known roots */}
+                {wordRoots.length > 0 && (
+                    <div className="w-full bg-[rgb(var(--color-fg))]/5 px-4 py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/45">
+                        <span className="text-[10px] text-[var(--color-gold)] uppercase font-bold">Roots: </span>
+                        {formatRootHint(wordRoots)}
+                    </div>
+                )}
 
                 <AnimatePresence mode="wait">
                     {/* TYPING phase — first attempt */}

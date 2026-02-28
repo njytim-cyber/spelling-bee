@@ -4,13 +4,14 @@
  * Bee Simulation mode — simulates a real spelling bee.
  * Phases: listening → asking → spelling → feedback → [next | eliminated | complete]
  */
-import { memo, useEffect, useRef, useState, useCallback } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import type { BeeLevel } from '../hooks/useBeeSimulation';
 import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { BeeClassroom } from './BeeClassroom';
+import { ChevronLeft } from './ChevronLeft';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
     { id: 'classroom', label: 'Classroom', desc: 'Grades K-3' },
@@ -19,22 +20,34 @@ const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
     { id: 'national', label: 'National', desc: 'Competition' },
 ];
 
-const BEE_TIMER_MS = 30_000;
-const TIMER_CIRCUMFERENCE = 2 * Math.PI * 18; // radius 18
-
 interface Props {
     onExit: () => void;
     onAnswer?: (word: string, correct: boolean, responseTimeMs: number, typed?: string) => void;
     onBeeResult?: (round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => void;
 }
 
-/** Compact inline feedback — correct answers advance fast, wrong answers linger */
-function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; word: string; typed: string; onNext: () => void }) {
+/** Compact inline feedback — correct answers advance fast, wrong answers wait for TTS spelling to finish */
+function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct: boolean; word: string; typed: string; onNext: () => void; isSpeaking: boolean }) {
     const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+    const hasFired = useRef(false);
+
+    // Correct answers: advance after 600ms (TTS just says "That is correct!" — short)
     useEffect(() => {
-        timer.current = setTimeout(onNext, correct ? 600 : 2800);
-        return () => clearTimeout(timer.current);
+        if (correct) {
+            timer.current = setTimeout(onNext, 600);
+            return () => clearTimeout(timer.current);
+        }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // Wrong answers: wait for TTS (letter-by-letter spelling) to finish, then linger briefly
+    useEffect(() => {
+        if (correct || hasFired.current) return;
+        if (!isSpeaking) {
+            hasFired.current = true;
+            timer.current = setTimeout(onNext, 1200);
+            return () => clearTimeout(timer.current);
+        }
+    }, [correct, isSpeaking, onNext]);
 
     if (correct) {
         return (
@@ -71,7 +84,6 @@ function InlineFeedback({ correct, word, typed, onNext }: { correct: boolean; wo
 }
 
 export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult }: Props) {
-    const [dictationMode, setDictationMode] = useState(false);
     const [beeLevel, setBeeLevel] = useState<BeeLevel>('national');
     const {
         state,
@@ -82,16 +94,16 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
         moveToSpelling,
         updateTyping,
         submitSpelling,
-        forceSubmit,
         nextWord,
         readBackSpelling,
         sessionXP,
+        isSpeaking,
         ttsSupported,
         npcResults,
         npcAlive,
         npcScores,
         npcSpellings,
-    } = useBeeSimulation(undefined, false, dictationMode, beeLevel);
+    } = useBeeSimulation(undefined, false, false, beeLevel);
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 
@@ -119,63 +131,34 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
         if (phase === 'listening') beeResultFired.current = false;
     }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult]);
 
-    // Auto-start session on mount and when dictation mode toggles
-    const prevDictation = useRef(dictationMode);
+    // Auto-start session on mount
     useEffect(() => {
-        if (!currentWord || prevDictation.current !== dictationMode) {
-            prevDictation.current = dictationMode;
-            startSession();
-        }
-    }, [dictationMode]); // eslint-disable-line react-hooks/exhaustive-deps
-
-    // ── 30s Timer ──
-    const [beeTimedMode, setBeeTimedMode] = useState(false);
-    const [timerProgress, setTimerProgress] = useState(0); // 0..1
-    const timerStartRef = useRef(0);
-    const rafRef = useRef(0);
-
-    const toggleBeeTimer = useCallback(() => setBeeTimedMode(t => !t), []);
-
-    // Start/stop timer based on phase
-    const isTimerPhase = phase === 'asking' || phase === 'spelling';
-    useEffect(() => {
-        if (!beeTimedMode || !isTimerPhase) {
-            cancelAnimationFrame(rafRef.current);
-            queueMicrotask(() => setTimerProgress(0));
-            return;
-        }
-        timerStartRef.current = performance.now();
-        const tick = () => {
-            const elapsed = performance.now() - timerStartRef.current;
-            const progress = Math.min(1, elapsed / BEE_TIMER_MS);
-            setTimerProgress(progress);
-            if (progress >= 1) {
-                forceSubmit();
-            } else {
-                rafRef.current = requestAnimationFrame(tick);
-            }
-        };
-        rafRef.current = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(rafRef.current);
-    }, [beeTimedMode, isTimerPhase, forceSubmit]);
+        if (!currentWord) startSession();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Still loading first word
     if (!currentWord) return null;
 
     return (
-        <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 relative">
-            {/* Top bar — round counter + controls in a single row */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium truncate mr-2">
+        <div className="flex-1 flex flex-col items-center px-6 pb-4 relative overflow-y-auto">
+            {/* Top bar — back arrow + round counter + level selector */}
+            <div className="w-full flex items-center gap-3 pt-3 pb-2 shrink-0">
+                <button
+                    onClick={onExit}
+                    className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
+                    aria-label="Back"
+                >
+                    <ChevronLeft />
+                </button>
+                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium truncate flex-1">
                     Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
                 </div>
                 {phase !== 'eliminated' && phase !== 'won' && (
-                    <div className="flex items-center gap-2 shrink-0">
-                        {/* Bee level selector */}
+                    wordsAttempted === 0 ? (
                         <select
                             value={beeLevel}
                             onChange={e => setBeeLevel(e.target.value as BeeLevel)}
-                            className="text-xs ui px-2 py-1 rounded-lg bg-transparent border border-[var(--color-gold)]/40 text-[var(--color-gold)] cursor-pointer outline-none"
+                            className="text-xs ui px-2 py-1 rounded-lg bg-transparent border border-[var(--color-gold)]/40 text-[var(--color-gold)] cursor-pointer outline-none shrink-0"
                         >
                             {BEE_LEVELS.map(l => (
                                 <option key={l.id} value={l.id} className="bg-[var(--color-bg,#1a1a2e)] text-[var(--color-chalk)]">
@@ -183,126 +166,18 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                 </option>
                             ))}
                         </select>
-                        <button
-                            onClick={() => { setDictationMode(d => !d); }}
-                            className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
-                                dictationMode
-                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
-                                    : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
-                            }`}
-                            title="Dictation mode — hear & spell, no classroom"
-                        >
-                            Dictation
-                        </button>
-                        <button
-                            onClick={toggleBeeTimer}
-                            className={`text-xs ui px-2 py-1 rounded-lg transition-colors ${
-                                beeTimedMode
-                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
-                                    : 'text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50'
-                            }`}
-                        >
-                            30s
-                        </button>
-                        <button
-                            onClick={onExit}
-                            className="text-sm ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
-                        >
-                            Exit
-                        </button>
-                    </div>
+                    ) : (
+                        <span className="text-xs ui px-2 py-1 text-[var(--color-gold)]/60 shrink-0">
+                            {BEE_LEVELS.find(l => l.id === beeLevel)?.label}
+                        </span>
+                    )
                 )}
             </div>
 
-            {/* Timer ring — shown during asking/spelling when timed */}
-            {beeTimedMode && isTimerPhase && (
-                <div className="absolute top-12 right-4">
-                    <svg width="40" height="40" viewBox="0 0 40 40" className="transform -rotate-90">
-                        <circle cx="20" cy="20" r="18" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.2" />
-                        <circle
-                            cx="20" cy="20" r="18"
-                            fill="none"
-                            stroke={timerProgress > 0.75 ? 'var(--color-wrong)' : 'var(--color-gold)'}
-                            strokeWidth="2.5"
-                            strokeDasharray={TIMER_CIRCUMFERENCE}
-                            strokeDashoffset={TIMER_CIRCUMFERENCE * timerProgress}
-                            strokeLinecap="round"
-                        />
-                    </svg>
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] ui text-[rgb(var(--color-fg))]/40">
-                        {Math.ceil(BEE_TIMER_MS / 1000 * (1 - timerProgress))}
-                    </span>
-                </div>
-            )}
-
+            <div className="flex-1 flex flex-col items-center justify-center w-full">
             <AnimatePresence mode="wait">
-                {/* DICTATION MODE — minimal UI: hear word, spell it */}
-                {dictationMode && (phase === 'spelling' || phase === 'feedback') && (
-                    <motion.div
-                        key="dictation"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className={`flex flex-col items-center gap-4 w-full max-w-[320px] ${shakeClass}`}
-                    >
-                        {/* Pronounce button */}
-                        <button
-                            onClick={pronounce}
-                            className="w-16 h-16 rounded-full bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 flex items-center justify-center hover:bg-[var(--color-gold)]/20 transition-colors"
-                            title="Hear word again"
-                        >
-                            <span className="text-2xl">&#128266;</span>
-                        </button>
-                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
-                            {ttsSupported ? 'Tap to hear again' : 'Audio not available'}
-                        </p>
-
-                        <AnimatePresence>
-                            {phase === 'spelling' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 12 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 12 }}
-                                    className="w-full"
-                                >
-                                    <SpellingInput
-                                        value={typedSpelling}
-                                        onChange={updateTyping}
-                                        onSubmit={() => {
-                                            submitSpelling();
-                                            if (onAnswer && currentWord) {
-                                                const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
-                                                onAnswer(currentWord.word, correct, Date.now(), correct ? undefined : typedSpelling.trim());
-                                            }
-                                        }}
-                                    />
-                                    {ttsSupported && typedSpelling.trim().length > 0 && (
-                                        <button
-                                            onClick={readBackSpelling}
-                                            className="mt-2 w-full text-center text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                                        >
-                                            Hear My Spelling
-                                        </button>
-                                    )}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        <AnimatePresence>
-                            {phase === 'feedback' && currentWord && (
-                                <InlineFeedback
-                                    correct={!!lastResult}
-                                    word={currentWord.word}
-                                    typed={typedSpelling}
-                                    onNext={nextWord}
-                                />
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
-                )}
-
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
-                {!dictationMode && (phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
+                {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
                     <motion.div
                         key="classroom"
                         initial={{ opacity: 0, y: 20 }}
@@ -339,6 +214,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                             ['sentence', 'Use in a Sentence'],
                                             ['partOfSpeech', 'Part of Speech'],
                                             ['origin', 'Language of Origin'],
+                                            ['roots', 'Word Roots'],
                                             ['spellInSections', 'Spell in Sections'],
                                             ['repeat', 'Repeat Word'],
                                         ] as const).map(([type, label]) => {
@@ -372,7 +248,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                                     className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                                 >
                                                     <span className="text-xs text-[var(--color-gold)] uppercase font-bold">
-                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Sections' : key}:{' '}
+                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Sections' : key === 'roots' ? 'Roots' : key}:{' '}
                                                     </span>
                                                     {value}
                                                 </motion.div>
@@ -458,6 +334,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     word={currentWord.word}
                                     typed={typedSpelling}
                                     onNext={nextWord}
+                                    isSpeaking={isSpeaking}
                                 />
                             )}
                         </AnimatePresence>
@@ -500,9 +377,10 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                             </button>
                             <button
                                 onClick={onExit}
-                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
+                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
                             >
-                                Exit
+                                <ChevronLeft className="w-4 h-4" />
+                                Back
                             </button>
                         </div>
                     </motion.div>
@@ -565,14 +443,16 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                             </button>
                             <button
                                 onClick={onExit}
-                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
+                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
                             >
-                                Exit
+                                <ChevronLeft className="w-4 h-4" />
+                                Back
                             </button>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
+            </div>
         </div>
     );
 });

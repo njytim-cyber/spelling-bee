@@ -324,6 +324,7 @@
 
 .wrong-shake {
   animation: wrong-shake 0.2s ease-out;
+  will-change: transform;
 }
 
 /* ── Correct-answer bounce ── */
@@ -380,7 +381,7 @@
 }
 
 .flash-wrong {
-  animation: wrong-flash 0.5s ease-out forwards;
+  animation: wrong-flash 0.4s ease-out forwards;
   background: var(--color-wrong);
 }
 
@@ -555,5 +556,10 @@
   /* Hide Bee Buddy in landscape to save space */
   .landscape-hide {
     display: none !important;
+  }
+
+  /* Scale down milestone popup in landscape */
+  .milestone-pop {
+    font-size: 3rem !important;
   }
 }

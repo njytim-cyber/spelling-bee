@@ -10,8 +10,9 @@ import { AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { evaluateCurriculum } from '../domains/spelling/curriculum';
 import { getStudyPlan, getMistakeInsights, getGradeLevelProgress, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
-import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
+import { WORD_ROOTS } from '../domains/spelling/words/roots';
+import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -19,6 +20,7 @@ interface Props {
     reviewDueCount?: number;
     hardestWordCount?: number;
     onDrillHardest?: () => void;
+    onDrillRoot?: (rootId: string) => void;
     gradeLabel?: string;
 }
 
@@ -55,13 +57,9 @@ function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?
     );
 }
 
-// ── Competition categories (static) ─────────────────────────────────────────
-
-const COMPETITION_CATS = SPELLING_CATEGORIES.filter(c => c.group === 'competition');
-
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, gradeLabel }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, gradeLabel }: Props) {
     const curriculum = useMemo(() => evaluateCurriculum(records), [records]);
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount), [records, reviewDueCount]);
     const mistakeInsights = useMemo(() => getMistakeInsights(records), [records]);
@@ -73,6 +71,15 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
     const totalAttempts = useMemo(() => recordArr.reduce((s, r) => s + r.attempts, 0), [recordArr]);
     const totalCorrect = useMemo(() => recordArr.reduce((s, r) => s + r.correct, 0), [recordArr]);
     const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+
+    // Root mastery data
+    const rootMasteryData = useMemo(() => computeRootMastery(records, WORD_ROOTS), [records]);
+    const rootMasteryMap = useMemo(() => {
+        const map = new Map<string, { mastered: number; total: number }>();
+        for (const d of rootMasteryData) map.set(d.root.root, { mastered: d.mastered, total: d.total });
+        return map;
+    }, [rootMasteryData]);
+    const rootsLearned = useMemo(() => rootMasteryData.filter(d => d.progress >= 0.5).length, [rootMasteryData]);
 
     // Study Tools modal
     const [studyToolsTab, setStudyToolsTab] = useState<StudyTab | null>(null);
@@ -90,6 +97,9 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                 {gradeLabel && <span>{gradeLabel}</span>}
                 <span>{totalMastered} mastered</span>
                 <span>{accuracy}% accuracy</span>
+                {rootsLearned > 0 && (
+                    <span>{rootsLearned}/{WORD_ROOTS.length} roots</span>
+                )}
                 {reviewDueCount > 0 && (
                     <span className="text-[var(--color-wrong)]">{reviewDueCount} due</span>
                 )}
@@ -172,25 +182,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                     </div>
                     <span className="text-[10px] ui text-[var(--color-gold)] shrink-0">Drill</span>
                 </button>
-            )}
-
-            {/* Competition Training */}
-            {onPractice && (
-                <section className="mb-4">
-                    <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Competition Training</h3>
-                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-                        {COMPETITION_CATS.map(cat => (
-                            <button
-                                key={cat.id}
-                                onClick={() => onPractice(cat.id)}
-                                className="shrink-0 flex flex-col items-center gap-1.5 py-3 px-4 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors min-w-[72px]"
-                            >
-                                <span className="text-[rgb(var(--color-fg))]/50">{cat.icon}</span>
-                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/50">{cat.label}</span>
-                            </button>
-                        ))}
-                    </div>
-                </section>
             )}
 
             {/* Study Tools */}
@@ -330,6 +321,11 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                     records={records}
                     onClose={() => setStudyToolsTab(null)}
                     defaultTab={studyToolsTab}
+                    onDrillRoot={onDrillRoot ? (rootId) => {
+                        setStudyToolsTab(null);
+                        onDrillRoot(rootId);
+                    } : undefined}
+                    rootMastery={rootMasteryMap}
                 />
             )}
         </AnimatePresence>
