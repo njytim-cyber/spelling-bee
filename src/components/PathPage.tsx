@@ -176,15 +176,22 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
 
                 {/* Tier label */}
                 <div className="flex-1 min-w-0 text-left">
-                    <span className={`text-sm ui font-medium ${
-                        group.isCurrent ? 'text-[var(--color-gold)]' :
-                        group.isComplete ? 'text-[var(--color-correct)]' :
-                        group.isLocked ? 'text-[rgb(var(--color-fg))]/25' :
-                        'text-[rgb(var(--color-fg))]/60'
-                    }`}>
-                        {group.label}
-                    </span>
-                    <span className={`text-[10px] ui ml-1.5 ${
+                    <div className="flex items-baseline gap-1.5">
+                        <span className={`text-sm ui font-medium ${
+                            group.isCurrent ? 'text-[var(--color-gold)]' :
+                            group.isComplete ? 'text-[var(--color-correct)]' :
+                            group.isLocked ? 'text-[rgb(var(--color-fg))]/25' :
+                            'text-[rgb(var(--color-fg))]/60'
+                        }`}>
+                            {group.label}
+                        </span>
+                        <span className={`text-[10px] ui ${
+                            group.isLocked ? 'text-[rgb(var(--color-fg))]/12' : 'text-[rgb(var(--color-fg))]/30'
+                        }`}>
+                            {group.wordCount} words
+                        </span>
+                    </div>
+                    <span className={`text-[10px] ui ${
                         group.isLocked ? 'text-[rgb(var(--color-fg))]/12' : 'text-[rgb(var(--color-fg))]/30'
                     }`}>
                         {group.grades}
