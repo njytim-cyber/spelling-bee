@@ -102,16 +102,68 @@ function makeGenerateFiniteSet() {
   };
 }
 
+const LOADING_WORDS = ['SPELL', 'LEARN', 'WORDS', 'BRAIN', 'SMART', 'THINK', 'QUEST'];
+const LOADING_TIPS = [
+  '"I before E, except after C"',
+  'The word "rhythm" has no vowels!',
+  '"Queue" — 4 silent letters in a row',
+  'Practice makes permanent',
+  '"Necessary" — one collar, two socks',
+  'Sound it out, one syllable at a time',
+];
+
 function LoadingFallback() {
+  const [tipIndex] = useState(() => Math.floor(Math.random() * LOADING_TIPS.length));
+  const [wordIndex] = useState(() => Math.floor(Math.random() * LOADING_WORDS.length));
+  const word = LOADING_WORDS[wordIndex];
+
   return (
-    <div className="flex-1 flex items-center justify-center">
+    <div className="flex-1 flex flex-col items-center justify-center gap-6 px-6">
+      {/* Animated bee */}
       <motion.div
-        className="text-lg ui text-[var(--color-chalk)]/50"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
+        className="text-5xl"
+        animate={{ y: [-6, 6, -6], rotate: [-3, 3, -3] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
-        Loading...
+        <span role="img" aria-label="bee">&#x1F41D;</span>
       </motion.div>
+
+      {/* Letter tiles */}
+      <div className="flex gap-1.5">
+        {word.split('').map((letter, i) => (
+          <motion.div
+            key={i}
+            className="w-10 h-12 rounded-lg bg-[var(--color-gold)]/15 border-2 border-[var(--color-gold)]/30 flex items-center justify-center text-xl chalk text-[var(--color-gold)]"
+            initial={{ opacity: 0, y: 20, rotateX: 90 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ delay: i * 0.1, duration: 0.4, ease: 'backOut' }}
+          >
+            {letter}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Pulsing dots */}
+      <div className="flex gap-1.5">
+        {[0, 1, 2].map(i => (
+          <motion.div
+            key={i}
+            className="w-2 h-2 rounded-full bg-[var(--color-chalk)]/30"
+            animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.2, 0.8] }}
+            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+          />
+        ))}
+      </div>
+
+      {/* Fun tip */}
+      <motion.p
+        className="text-xs ui text-[rgb(var(--color-fg))]/30 text-center max-w-[240px]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+      >
+        {LOADING_TIPS[tipIndex]}
+      </motion.p>
     </div>
   );
 }
