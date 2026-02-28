@@ -7,7 +7,7 @@ import { CHALK_THEMES, type ChalkTheme } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { SettingsModal } from './SettingsModal';
 import { STORAGE_KEYS } from '../config';
-import { IconSettings, IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
 
 // Removed tab switching - now showing everything on one page
 
@@ -109,14 +109,14 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
     const mastery = !nextRank ? getMasteryInfo(stats.totalXP) : null;
 
     return (
-        <div className="flex-1 flex flex-col items-center overflow-hidden px-6 pt-4 pb-20">
+        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20">
             {/* Settings gear button */}
             <button
                 onClick={() => setShowSettings(true)}
-                className="self-end mb-2 opacity-40 hover:opacity-70 transition-opacity"
+                className="self-end mb-2 text-lg opacity-40 hover:opacity-70 transition-opacity"
                 aria-label="Settings"
             >
-                <IconSettings className="w-5 h-5" />
+                ⚙️
             </button>
 
             {/* Display name + edit */}
@@ -312,7 +312,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             </motion.div>
 
             {/* ── Consolidated Content ── */}
-            <div className="flex-1 w-full overflow-y-auto">
+            <div className="w-full">
                 <div className="flex flex-col items-center">
 
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
