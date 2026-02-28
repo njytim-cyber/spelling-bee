@@ -208,7 +208,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     className="w-full flex flex-col items-center gap-2"
                                 >
                                     {/* Info request buttons */}
-                                    <div className="flex flex-wrap justify-center gap-2">
+                                    <div className="flex flex-wrap justify-center gap-2.5">
                                         {([
                                             ['definition', 'Definition'],
                                             ['sentence', 'Use in a Sentence'],
@@ -224,10 +224,10 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                                     key={type}
                                                     onClick={() => requestInfo(type)}
                                                     disabled={alreadyAsked}
-                                                    className={`px-3 py-1.5 rounded-lg text-xs ui transition-colors ${
+                                                    className={`px-3 py-2 rounded-xl text-xs ui transition-colors ${
                                                         alreadyAsked
-                                                            ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default'
-                                                            : 'border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10'
+                                                            ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default border border-transparent'
+                                                            : 'border border-[var(--color-gold)]/30 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/50'
                                                     }`}
                                                 >
                                                     {label}
@@ -256,10 +256,10 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                         </AnimatePresence>
                                     </div>
 
-                                    {/* Ready to spell button */}
+                                    {/* Ready to spell button - primary CTA */}
                                     <button
                                         onClick={moveToSpelling}
-                                        className="mt-1 px-6 py-2 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                                        className="mt-4 px-8 py-3 rounded-xl border-[3px] border-[var(--color-gold)]/60 bg-[var(--color-gold)]/15 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/25 hover:border-[var(--color-gold)]/80 transition-colors"
                                     >
                                         Ready to Spell
                                     </button>

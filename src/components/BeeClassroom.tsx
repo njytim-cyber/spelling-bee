@@ -208,7 +208,7 @@ function MicStand({ cx }: { cx: number }) {
             <circle cx={cx} cy="141.5" r="1" fill="currentColor" opacity="0.3" />
 
             {/* Stand pole — two segments with a joint */}
-            <line x1={cx} y1="134" x2={cx} y2="124" stroke="currentColor" strokeWidth="1.8" />
+            <line x1={cx} y1="134" x2={cx} y2="124" stroke="currentColor" strokeWidth="2.2" />
             {/* Joint knob */}
             <ellipse cx={cx} cy="124" rx="1.5" ry="1" fill="currentColor" opacity="0.35" />
             {/* Upper pole */}
@@ -289,7 +289,7 @@ const Pronouncer = memo(function Pronouncer({ announcing, lastNpcResult }: {
     return (
         <motion.g animate={announcing ? PRONOUNCER_ANNOUNCE : PRONOUNCER_IDLE}>
             {/* Head */}
-            <circle cx="160" cy="28" r="13" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.8" />
+            <circle cx="160" cy="28" r="13" stroke="currentColor" strokeWidth="2.5" fill="none" opacity="0.9" />
             {/* Hair — messy professor look */}
             <path d="M 148 22 Q 146 14 152 16" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.4" />
             <path d="M 155 18 Q 158 12 162 18" stroke="currentColor" strokeWidth="1.2" fill="none" opacity="0.35" />
@@ -311,7 +311,7 @@ const Pronouncer = memo(function Pronouncer({ announcing, lastNpcResult }: {
                 </>
             )}
             {/* Body */}
-            <line x1="160" y1="41" x2="160" y2="82" stroke="currentColor" strokeWidth="2" opacity="0.7" />
+            <line x1="160" y1="41" x2="160" y2="82" stroke="currentColor" strokeWidth="2.5" opacity="0.85" />
             {/* Left arm — animated pointer */}
             <motion.g
                 animate={announcing
@@ -350,19 +350,19 @@ function PupilBody({ cx, variant }: { cx: number; variant: number }) {
     return (
         <>
             {/* Head */}
-            <circle cx={cx} cy="142" r="8" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.7" />
+            <circle cx={cx} cy="142" r="8" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
             {/* Body */}
-            <line x1={cx} y1="150" x2={cx} y2="170" stroke="currentColor" strokeWidth="1.5" opacity="0.6" />
+            <line x1={cx} y1="150" x2={cx} y2="170" stroke="currentColor" strokeWidth="2" opacity="0.75" />
             {/* Default arms */}
             {variant !== 1 && (
                 <>
-                    <line x1={cx} y1="156" x2={cx - 10} y2="163" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-                    <line x1={cx} y1="156" x2={cx + 10} y2="163" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
+                    <line x1={cx} y1="156" x2={cx - 10} y2="163" stroke="currentColor" strokeWidth="2" opacity="0.65" />
+                    <line x1={cx} y1="156" x2={cx + 10} y2="163" stroke="currentColor" strokeWidth="2" opacity="0.65" />
                 </>
             )}
             {/* Legs */}
-            <line x1={cx} y1="170" x2={cx - 7} y2="185" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-            <line x1={cx} y1="170" x2={cx + 7} y2="185" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
+            <line x1={cx} y1="170" x2={cx - 7} y2="185" stroke="currentColor" strokeWidth="2" opacity="0.65" />
+            <line x1={cx} y1="170" x2={cx + 7} y2="185" stroke="currentColor" strokeWidth="2" opacity="0.65" />
         </>
     );
 }
