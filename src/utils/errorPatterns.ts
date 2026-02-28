@@ -571,3 +571,104 @@ function patternToCategory(pattern: PhonicsPattern): string | null {
     return null;
 }
 
+// ── Coaching cards ──────────────────────────────────────────────────────────
+
+export interface CoachingCard {
+    id: string;
+    type: 'improved' | 'trap' | 'weakness' | 'levelup';
+    title: string;
+    detail: string;
+    tip?: string;
+    cta?: { label: string; category: string };
+    /** Before/after stat string for improvement cards, e.g. "box 0 → box 3" */
+    stat?: string;
+}
+
+/**
+ * Find "comeback" words — struggled early but now progressing in Leitner.
+ * Returns up to 3 words sorted by most impressive improvement.
+ */
+export function getImprovements(records: Record<string, WordRecord>): { word: string; box: number; accuracy: number; attempts: number }[] {
+    return Object.values(records)
+        .filter(r => r.attempts >= 4 && r.box >= 2)
+        .filter(r => {
+            // Estimate early performance: if they needed many attempts to reach current box,
+            // they were struggling. A word with 8 attempts and box 3 had a rough start.
+            const earlyErrorRate = 1 - (r.correct / r.attempts);
+            return earlyErrorRate >= 0.3; // At least 30% of attempts were wrong
+        })
+        .map(r => ({
+            word: r.word,
+            box: r.box,
+            accuracy: r.correct / r.attempts,
+            attempts: r.attempts,
+        }))
+        .sort((a, b) => b.box - a.box || b.attempts - a.attempts)
+        .slice(0, 3);
+}
+
+const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost Mastered', 'Mastered'];
+
+/**
+ * Assemble up to 4 personalized coaching cards from analytics data.
+ * Priority: improved > trap > weakness > levelup (celebration first).
+ */
+export function getCoachingCards(
+    records: Record<string, WordRecord>,
+): CoachingCard[] {
+    const cards: CoachingCard[] = [];
+
+    // 1. Improvement celebrations
+    const improvements = getImprovements(records);
+    for (const imp of improvements.slice(0, 2)) {
+        cards.push({
+            id: `improved-${imp.word}`,
+            type: 'improved',
+            title: `You conquered "${imp.word}"`,
+            detail: `After ${imp.attempts} attempts, you've reached ${BOX_LABELS[imp.box]}. Keep reviewing to lock it in!`,
+            stat: `${Math.round(imp.accuracy * 100)}% accuracy`,
+        });
+    }
+
+    // 2. Spelling traps from mistake patterns
+    const insights = getMistakeInsights(records);
+    for (const ins of insights.slice(0, 2)) {
+        cards.push({
+            id: `trap-${ins.label.toLowerCase().replace(/\s+/g, '-')}`,
+            type: 'trap',
+            title: ins.label,
+            detail: `This tripped you up ${ins.count} times.`,
+            tip: ins.detail,
+            cta: ins.category ? { label: `Practice ${formatPattern(ins.category)}`, category: ins.category } : undefined,
+        });
+    }
+
+    // 3. Weakest area
+    const patterns = getPatternAccuracy(records);
+    const weakest = patterns.find(p => p.accuracy < 0.7);
+    if (weakest) {
+        const catId = patternToCategory(weakest.key as PhonicsPattern);
+        cards.push({
+            id: `weakness-${weakest.key}`,
+            type: 'weakness',
+            title: `${weakest.label} needs work`,
+            detail: `${Math.round(weakest.accuracy * 100)}% accuracy across ${weakest.attempts} attempts. Focused practice can bring this up fast.`,
+            cta: catId ? { label: `Drill ${weakest.label}`, category: catId } : undefined,
+        });
+    }
+
+    // 4. Level-up nudge
+    const nudge = getDifficultyNudge(records);
+    if (nudge) {
+        cards.push({
+            id: 'levelup',
+            type: 'levelup',
+            title: 'Ready for harder words!',
+            detail: `${Math.round(nudge.accuracy * 100)}% accuracy on ${nudge.wordCount} ${nudge.currentLabel} words. Time to try ${nudge.nextLabel}.`,
+            cta: { label: `Try ${nudge.nextLabel.split(' ')[0]}`, category: nudge.nextCategory },
+        });
+    }
+
+    return cards.slice(0, 4);
+}
+

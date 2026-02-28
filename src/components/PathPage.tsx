@@ -326,6 +326,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                         onDrillRoot(rootId);
                     } : undefined}
                     rootMastery={rootMasteryMap}
+                    onPractice={onPractice}
                 />
             )}
         </AnimatePresence>

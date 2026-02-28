@@ -1,19 +1,20 @@
 /**
  * components/StudyAnalyticsModal.tsx
  *
- * Shows error patterns, per-word accuracy, and category trends.
+ * Shows personalized coaching cards, error patterns, and category trends.
  * Sub-tabs: Overview | Patterns | Origins | Themes.
- * Opens from tapping the accuracy stat on MePage.
+ * Opens from tapping the accuracy stat on MePage or from Study Tools on PathPage.
  */
 import { memo, useMemo, useState } from 'react';
 import type { WordRecord } from '../hooks/useWordHistory';
 import {
-    getErrorPatterns,
     getCategoryAccuracy,
     getPatternAccuracy,
     getOriginAccuracy,
     getThemeAccuracy,
+    getCoachingCards,
     type AccuracyBar,
+    type CoachingCard,
 } from '../utils/errorPatterns';
 import { printStudySheet } from '../utils/printStudySheet';
 import { getWordMap } from '../domains/spelling/words';
@@ -26,6 +27,44 @@ const TABS: { id: AnalyticsTab; label: string }[] = [
     { id: 'origins', label: 'Origins' },
     { id: 'themes', label: 'Themes' },
 ];
+
+const CARD_STYLES: Record<CoachingCard['type'], { icon: string; border: string; bg: string; accent: string }> = {
+    improved: { icon: '\u2728', border: 'border-[var(--color-correct)]/25', bg: 'bg-[var(--color-correct)]/5', accent: 'text-[var(--color-correct)]' },
+    trap:     { icon: '\u26A0\uFE0F', border: 'border-[var(--color-gold)]/25', bg: 'bg-[var(--color-gold)]/5', accent: 'text-[var(--color-gold)]' },
+    weakness: { icon: '\uD83C\uDFAF', border: 'border-[var(--color-wrong)]/25', bg: 'bg-[var(--color-wrong)]/5', accent: 'text-[var(--color-wrong)]' },
+    levelup:  { icon: '\uD83D\uDE80', border: 'border-[var(--color-timed)]/25', bg: 'bg-[var(--color-timed)]/5', accent: 'text-[var(--color-timed)]' },
+};
+
+function CoachingCardView({ card, onPractice }: { card: CoachingCard; onPractice?: (category: string) => void }) {
+    const style = CARD_STYLES[card.type];
+    return (
+        <div className={`rounded-xl px-4 py-3 ${style.bg} border ${style.border}`}>
+            <div className="flex items-start gap-2.5">
+                <span className="text-base shrink-0 mt-0.5">{style.icon}</span>
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                        <span className={`text-sm ui font-bold ${style.accent}`}>{card.title}</span>
+                        {card.stat && (
+                            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 shrink-0">{card.stat}</span>
+                        )}
+                    </div>
+                    <p className="text-xs ui text-[rgb(var(--color-fg))]/50 mt-0.5">{card.detail}</p>
+                    {card.tip && (
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/35 italic mt-1">{card.tip}</p>
+                    )}
+                    {card.cta && onPractice && (
+                        <button
+                            onClick={() => onPractice(card.cta!.category)}
+                            className="mt-2 px-3 py-1 rounded-lg text-[10px] ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                        >
+                            {card.cta.label}
+                        </button>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
 
 function AccuracyBarRow({ bar }: { bar: AccuracyBar }) {
     return (
@@ -48,10 +87,15 @@ function AccuracyBarRow({ bar }: { bar: AccuracyBar }) {
     );
 }
 
-export const AnalyticsContent = memo(function AnalyticsContent({ records }: { records: Record<string, WordRecord> }) {
+interface AnalyticsContentProps {
+    records: Record<string, WordRecord>;
+    onPractice?: (category: string) => void;
+}
+
+export const AnalyticsContent = memo(function AnalyticsContent({ records, onPractice }: AnalyticsContentProps) {
     const [tab, setTab] = useState<AnalyticsTab>('overview');
 
-    const errorPatterns = useMemo(() => getErrorPatterns(records), [records]);
+    const coachingCards = useMemo(() => getCoachingCards(records), [records]);
     const categoryAccuracy = useMemo(() => getCategoryAccuracy(records), [records]);
     const patternAccuracy = useMemo(() => getPatternAccuracy(records), [records]);
     const originAccuracy = useMemo(() => getOriginAccuracy(records), [records]);
@@ -107,23 +151,21 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: { re
             {/* ── OVERVIEW TAB ── */}
             {tab === 'overview' && (
                 <>
-                    {errorPatterns.length > 0 && (
-                        <section className="mb-4">
-                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Needs Practice</h4>
-                            {errorPatterns.slice(0, 3).map(p => (
-                                <div key={p.category} className="flex items-center justify-between py-1.5">
-                                    <div className="min-w-0">
-                                        <span className="text-sm ui text-[rgb(var(--color-fg))]/70">{p.category}</span>
-                                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 ml-2">
-                                            {p.correct}/{p.attempts} correct
-                                        </span>
-                                    </div>
-                                    <span className="text-sm ui text-[var(--color-wrong)] shrink-0">
-                                        {Math.round(p.errorRate * 100)}% errors
-                                    </span>
-                                </div>
+                    {/* Coaching cards */}
+                    {coachingCards.length > 0 && (
+                        <section className="mb-4 space-y-2.5">
+                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-1">Your Coach</h4>
+                            {coachingCards.map(card => (
+                                <CoachingCardView key={card.id} card={card} onPractice={onPractice} />
                             ))}
                         </section>
+                    )}
+
+                    {/* No coaching cards yet — early encouragement */}
+                    {coachingCards.length === 0 && (
+                        <div className="text-center py-4 mb-4">
+                            <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Keep practicing! Personalized tips will appear as you learn more words.</p>
+                        </div>
                     )}
 
                     {categoryAccuracy.length > 0 && (
@@ -190,4 +232,3 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: { re
         </>
     );
 });
-

@@ -19,6 +19,7 @@ interface Props {
     defaultTab?: StudyTab;
     onDrillRoot?: (rootId: string) => void;
     rootMastery?: Map<string, { mastered: number; total: number }>;
+    onPractice?: (category: string) => void;
 }
 
 const TABS: { id: StudyTab; label: string; icon: string }[] = [
@@ -28,7 +29,7 @@ const TABS: { id: StudyTab; label: string; icon: string }[] = [
 ];
 
 export const StudyToolsModal = memo(function StudyToolsModal({
-    records, onClose, defaultTab = 'words', onDrillRoot, rootMastery,
+    records, onClose, defaultTab = 'words', onDrillRoot, rootMastery, onPractice,
 }: Props) {
     const [tab, setTab] = useState<StudyTab>(defaultTab);
 
@@ -55,7 +56,7 @@ export const StudyToolsModal = memo(function StudyToolsModal({
             {/* Tab content */}
             {tab === 'words' && <WordBookContent records={records} />}
             {tab === 'roots' && <RootsContent onDrillRoot={onDrillRoot} rootMastery={rootMastery} />}
-            {tab === 'analytics' && <AnalyticsContent records={records} />}
+            {tab === 'analytics' && <AnalyticsContent records={records} onPractice={onPractice ? (cat) => { onClose(); onPractice(cat); } : undefined} />}
         </FullScreenPanel>
     );
 });
