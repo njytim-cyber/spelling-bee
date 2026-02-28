@@ -5,7 +5,6 @@
  * Calls a Firebase Cloud Function to synthesize speech, caches results.
  */
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { app } from '../utils/firebase';
 
 // ── Voice catalog ────────────────────────────────────────────────────────────
 
@@ -71,6 +70,8 @@ export async function synthesizeCloud(
     const cached = audioCache.get(cacheKey);
     if (cached) return cached;
 
+    // Lazy-load Firebase app only when synthesis is actually needed
+    const { app } = await import('../utils/firebase');
     const functions = getFunctions(app, 'us-central1');
     const synthesize = httpsCallable<
         { text: string; voiceName: string; speakingRate: number },

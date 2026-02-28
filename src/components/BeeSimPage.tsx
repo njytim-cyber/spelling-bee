@@ -370,8 +370,8 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 )}
             </div>
 
-            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto px-4">
-            <div className="w-full max-w-[360px] py-6 flex flex-col gap-4">
+            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto px-4 pt-12 pb-6">
+            <div className="w-full max-w-[360px] flex flex-col gap-8">
             <AnimatePresence mode="wait">
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
                 {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
