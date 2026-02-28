@@ -483,10 +483,10 @@ function PlayerExtras({ cx, isActive }: { cx: number; isActive: boolean }) {
             {/* "YOU" label */}
             <motion.text
                 x={cx} y="196" textAnchor="middle"
-                fontSize="11" fill="var(--color-gold)" opacity="0.8"
+                fontSize="13" fill="var(--color-gold)" opacity="0.9"
                 fontFamily="var(--font-ui)" fontWeight="bold"
                 animate={isActive
-                    ? { y: [196, 193, 196], opacity: [0.8, 1, 0.8], transition: { repeat: Infinity, duration: 1.0, ease: 'easeInOut' as const } }
+                    ? { y: [196, 193, 196], opacity: [0.9, 1, 0.9], transition: { repeat: Infinity, duration: 1.0, ease: 'easeInOut' as const } }
                     : {}}
             >
                 YOU
@@ -536,7 +536,7 @@ function ResultIndicator({ cx, correct }: { cx: number; correct: boolean }) {
 function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; side?: 'left' | 'right' }) {
     const bx = side === 'right' ? cx + 18 : cx - 18;
     // Estimate width from text length
-    const w = Math.max(44, text.length * 8 + 16);
+    const w = Math.max(50, text.length * 8.5 + 18);
     const textX = side === 'right' ? bx + 4 : bx - w + 4;
 
     return (
@@ -547,27 +547,27 @@ function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; 
             transition={{ duration: 0.25 }}
         >
             <rect
-                x={textX - 5} y="120" width={w} height="22" rx="6"
-                fill="currentColor" opacity="0.1"
-                stroke="currentColor" strokeWidth="0.6"
-                style={{ strokeOpacity: 0.2 }}
+                x={textX - 6} y="118" width={w} height="26" rx="7"
+                fill="var(--color-board)" fillOpacity="0.95"
+                stroke="currentColor" strokeWidth="0.8"
+                style={{ strokeOpacity: 0.3 }}
             />
             {/* Tail */}
             <path
                 d={side === 'right'
-                    ? `M ${bx - 2} 142 L ${cx + 8} 148 L ${bx + 4} 142`
-                    : `M ${bx - 4} 142 L ${cx - 8} 148 L ${bx + 2} 142`
+                    ? `M ${bx - 2} 144 L ${cx + 8} 148 L ${bx + 4} 144`
+                    : `M ${bx - 4} 144 L ${cx - 8} 148 L ${bx + 2} 144`
                 }
-                fill="currentColor" opacity="0.1"
-                stroke="currentColor" strokeWidth="0.6"
-                style={{ strokeOpacity: 0.2 }}
+                fill="var(--color-board)" fillOpacity="0.95"
+                stroke="currentColor" strokeWidth="0.8"
+                style={{ strokeOpacity: 0.3 }}
             />
             <text
-                x={textX + w / 2 - 3} y="136"
-                textAnchor="middle" fontSize="13"
-                fill="var(--color-chalk)" opacity="0.9"
+                x={textX + w / 2 - 3} y="135"
+                textAnchor="middle" fontSize="14"
+                fill="var(--color-chalk)" opacity="1"
                 fontFamily="var(--font-ui)"
-                fontWeight="700"
+                fontWeight="bold"
             >
                 {text}
             </text>
@@ -582,42 +582,42 @@ function StageBee({ phase }: { phase: BeePhase }) {
     return (
         <motion.g
             animate={isSpelling
-                ? { y: [0, -3, 0], x: [0, 2, -2, 0], transition: { repeat: Infinity, duration: 1.2, ease: 'easeInOut' as const } }
-                : { y: [0, -4, 0], transition: { repeat: Infinity, duration: 2.5, ease: 'easeInOut' as const } }
+                ? { y: [0, -2, 0], transition: { repeat: Infinity, duration: 1.8, ease: 'easeInOut' as const } }
+                : { y: [0, -2, 0], transition: { repeat: Infinity, duration: 3, ease: 'easeInOut' as const } }
             }
         >
             {/* Body */}
-            <ellipse cx="128" cy="110" rx="5" ry="6" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.45" />
+            <ellipse cx="30" cy="100" rx="5" ry="6" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3" />
             {/* Stripes */}
-            <line x1="124" y1="108" x2="132" y2="108" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
-            <line x1="124" y1="111" x2="132" y2="111" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+            <line x1="26" y1="98" x2="34" y2="98" stroke="currentColor" strokeWidth="0.6" opacity="0.2" />
+            <line x1="26" y1="101" x2="34" y2="101" stroke="currentColor" strokeWidth="0.6" opacity="0.2" />
             {/* Head */}
-            <circle cx="128" cy="103" r="3.5" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.45" />
+            <circle cx="30" cy="93" r="3.5" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.3" />
             {/* Eyes */}
-            <circle cx="127" cy="102.5" r="0.7" fill="currentColor" opacity="0.4" />
-            <circle cx="129.5" cy="102.5" r="0.7" fill="currentColor" opacity="0.4" />
+            <circle cx="29" cy="92.5" r="0.7" fill="currentColor" opacity="0.25" />
+            <circle cx="31.5" cy="92.5" r="0.7" fill="currentColor" opacity="0.25" />
             {/* Smile */}
-            <path d="M 126.5 104 Q 128 105.5 129.5 104" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
+            <path d="M 28.5 94 Q 30 95.5 31.5 94" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
             {/* Wings */}
             <motion.ellipse
-                cx="123" cy="106" rx="4" ry="5"
-                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.25"
-                style={{ originX: '126px', originY: '106px' }}
-                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.2, ease: 'easeInOut' as const } }}
+                cx="25" cy="96" rx="4" ry="5"
+                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.2"
+                style={{ originX: '28px', originY: '96px' }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.25, ease: 'easeInOut' as const } }}
             />
             <motion.ellipse
-                cx="133" cy="106" rx="4" ry="5"
-                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.25"
-                style={{ originX: '130px', originY: '106px' }}
-                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.2, ease: 'easeInOut' as const } }}
+                cx="35" cy="96" rx="4" ry="5"
+                stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.2"
+                style={{ originX: '32px', originY: '96px' }}
+                animate={{ scaleX: [1, 0.4, 1], transition: { repeat: Infinity, duration: 0.25, ease: 'easeInOut' as const } }}
             />
             {/* Antennae */}
-            <path d="M 126.5 100 Q 124 96 122 97" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
-            <circle cx="122" cy="97" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
-            <path d="M 129.5 100 Q 131.5 96 134 97" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.35" />
-            <circle cx="134" cy="97" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
+            <path d="M 28.5 90 Q 26 86 24 87" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
+            <circle cx="24" cy="87" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.15" />
+            <path d="M 31.5 90 Q 33.5 86 36 87" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.2" />
+            <circle cx="36" cy="87" r="1" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.15" />
             {/* Stinger */}
-            <path d="M 127 115.5 L 128 118 L 129 115.5" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.3" />
+            <path d="M 29 105.5 L 30 108 L 31 105.5" stroke="currentColor" strokeWidth="0.5" fill="none" opacity="0.2" />
         </motion.g>
     );
 }
@@ -700,7 +700,7 @@ function StageDecor() {
             <line x1="15" y1="118" x2="305" y2="118" stroke="currentColor" strokeWidth="1" opacity="0.15" />
             <line x1="20" y1="120" x2="300" y2="120" stroke="currentColor" strokeWidth="0.5" strokeDasharray="3 5" opacity="0.08" />
             {/* "SPELLING BEE" text on stage */}
-            <text x="160" y="114" textAnchor="middle" fontSize="6" fill="currentColor" opacity="0.1" fontFamily="var(--font-ui)" letterSpacing="3">
+            <text x="160" y="96" textAnchor="middle" fontSize="10" fill="currentColor" opacity="0.25" fontFamily="var(--font-ui)" fontWeight="bold" letterSpacing="2">
                 SPELLING BEE
             </text>
             {/* Floor boards hint */}
@@ -939,23 +939,23 @@ export const BeeClassroom = memo(function BeeClassroom({
                         transition={{ duration: 0.25 }}
                     >
                         <rect
-                            x={160 - pronouncerBubble.length * 4.5 - 10}
-                            y="-2" width={pronouncerBubble.length * 9 + 20} height="22" rx="7"
-                            fill="currentColor" opacity="0.12"
-                            stroke="currentColor" strokeWidth="0.7"
-                            style={{ strokeOpacity: 0.25 }}
+                            x={160 - Math.min(pronouncerBubble.length * 4.5, 140) - 12}
+                            y="-8" width={Math.min(pronouncerBubble.length * 9, 280) + 24} height="26" rx="8"
+                            fill="var(--color-board)" fillOpacity="0.95"
+                            stroke="currentColor" strokeWidth="1.2"
+                            style={{ strokeOpacity: 0.4 }}
                         />
                         <path
-                            d="M 155 20 L 160 27 L 165 20"
-                            fill="currentColor" opacity="0.12"
-                            stroke="currentColor" strokeWidth="0.7"
-                            style={{ strokeOpacity: 0.25 }}
+                            d="M 155 18 L 160 26 L 165 18"
+                            fill="var(--color-board)" fillOpacity="0.95"
+                            stroke="currentColor" strokeWidth="1.2"
+                            style={{ strokeOpacity: 0.4 }}
                         />
                         <text
-                            x="160" y="14" textAnchor="middle"
-                            fontSize="14" fill="var(--color-chalk)" opacity="0.95"
+                            x="160" y="10" textAnchor="middle"
+                            fontSize="15" fill="var(--color-chalk)" opacity="1"
                             fontFamily="var(--font-ui)"
-                            fontWeight="700"
+                            fontWeight="bold"
                         >
                             {pronouncerBubble}
                         </text>
@@ -1034,11 +1034,11 @@ export const BeeClassroom = memo(function BeeClassroom({
                             {alive && !isPlayer && (
                                 <text
                                     x={cx} y="196" textAnchor="middle"
-                                    fontSize="10"
+                                    fontSize="12"
                                     fill={isActive ? 'var(--color-gold)' : 'currentColor'}
-                                    opacity={isActive ? 0.9 : 0.6}
+                                    opacity={isActive ? 1 : 0.65}
                                     fontFamily="var(--font-ui)"
-                                    fontWeight={isActive ? 'bold' : 'normal'}
+                                    fontWeight={isActive ? 'bold' : '600'}
                                 >
                                     {NPC_NAMES[i]}{score > 0 ? ` (${score})` : ''}
                                 </text>
@@ -1065,7 +1065,7 @@ export const BeeClassroom = memo(function BeeClassroom({
                                 <g opacity="0.2">
                                     <line x1={cx - 8} y1="140" x2={cx + 8} y2="170" stroke="currentColor" strokeWidth="1" />
                                     <line x1={cx + 8} y1="140" x2={cx - 8} y2="170" stroke="currentColor" strokeWidth="1" />
-                                    <text x={cx} y="196" textAnchor="middle" fontSize="9" fill="currentColor" opacity="0.4" fontFamily="var(--font-ui)">
+                                    <text x={cx} y="196" textAnchor="middle" fontSize="11" fill="currentColor" opacity="0.5" fontFamily="var(--font-ui)" fontWeight="500">
                                         {NPC_NAMES[i]} - out
                                     </text>
                                 </g>
