@@ -9,7 +9,7 @@ import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
 import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
-import { getGradeConfig, SPELLING_CATEGORIES } from './domains/spelling/spellingCategories';
+import { getGradeConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { OfflineBanner } from './components/OfflineBanner';
@@ -63,7 +63,7 @@ import { Toast } from './components/Toast';
 import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
-import { STORAGE_KEYS, FIRESTORE } from './config';
+import { STORAGE_KEYS, FIRESTORE, NAV_TABS } from './config';
 import { ensureAllTiers, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
@@ -173,7 +173,7 @@ function App() {
   const uid = user?.uid ?? null;
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
-  const [hardMode, setHardMode] = useState(false);
+  const hardMode = false;
   const [timedMode, setTimedMode] = useState(false);
 
   // ── Multiplayer ──
@@ -288,7 +288,7 @@ function App() {
 
   // ── Grade config (needed before useGameLoop) ──
   const [grade, setGrade] = useLocalState(STORAGE_KEYS.grade, '', uid);
-  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.grade));
+  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.grade) || !localStorage.getItem(STORAGE_KEYS.dialect));
 
   const gradeConfig = useMemo(
     () => grade ? getGradeConfig(grade as GradeLevel) : null,
@@ -353,7 +353,6 @@ function App() {
 
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
-  const toggleHardMode = useCallback(() => setHardMode(h => !h), []);
   const toggleTimedMode = useCallback(() => setTimedMode(t => !t), []);
 
   // ── Score floater ──
@@ -505,11 +504,18 @@ function App() {
   const [activeCostume, handleCostumeChange] = useLocalState(STORAGE_KEYS.costume, '', uid);
   const [activeTrailId, handleTrailChange] = useLocalState(STORAGE_KEYS.trail, '', uid);
 
-  const handleGradeSelect = useCallback((g: GradeLevel) => {
+  const handleOnboardingComplete = useCallback((d: Dialect, g: GradeLevel) => {
+    setDialectState(d);
     setGrade(g);
     const config = getGradeConfig(g);
     setQuestionType(config.defaultCategory);
     setShowOnboarding(false);
+  }, [setDialectState, setGrade, setQuestionType]);
+
+  const handleGradeChange = useCallback((g: GradeLevel) => {
+    setGrade(g);
+    const config = getGradeConfig(g);
+    setQuestionType(config.defaultCategory);
   }, [setGrade, setQuestionType]);
 
   // ── Chalk themes ──
@@ -694,16 +700,11 @@ function App() {
                   )}
                 </div>
               )}
-              {/* Review queue badge — single subtle pill when words are due */}
-              {isFirstQuestion && reviewQueue.length > 0 && questionType !== 'review' && (
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="mt-2 px-3 py-1 rounded-full bg-[rgb(var(--color-fg))]/5 text-[10px] ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                  onClick={() => setQuestionType('review' as QuestionType)}
-                >
-                  📝 {reviewQueue.length} to review
-                </motion.button>
+              {/* Grade level label */}
+              {gradeConfig && (
+                <div className="mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40 font-medium">
+                  {gradeConfig.label} <span className="text-[rgb(var(--color-fg))]/20">{gradeConfig.grades}</span>
+                </div>
               )}
             </div>}
 
@@ -735,7 +736,7 @@ function App() {
               ) : (questionType === 'guided' || guidedMode) ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
+                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
                     onAnswer={(word, correct, ms, typed) => {
                       recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
                     }}
@@ -748,12 +749,13 @@ function App() {
                 <WrittenTestPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
                 />
-              ) : questionType === 'daily' && dailyComplete ? (
+              ) : dailyComplete ? (
                 <DailyChallengeComplete
                   correct={totalCorrect}
                   total={totalAnswered}
                   score={score}
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                  mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
                 />
               ) : (
                 <AnimatePresence mode="wait">
@@ -786,12 +788,9 @@ function App() {
               <ActionButtons
                 questionType={questionType}
                 onTypeChange={setQuestionType}
-                hardMode={hardMode}
-                onHardModeToggle={toggleHardMode}
                 timedMode={timedMode}
                 onTimedModeToggle={toggleTimedMode}
                 timerProgress={timerProgress}
-                reviewQueueCount={reviewQueue.length}
                 guidedMode={guidedMode}
                 onGuidedModeToggle={toggleGuidedMode}
               />
@@ -800,10 +799,6 @@ function App() {
             {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
             {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && (
               <div className="landscape-hide">
-                {/* Category label above buddy — prompts users to change topic */}
-                <div className="absolute bottom-[180px] right-2 z-30 text-[10px] ui text-[rgb(var(--color-fg))]/30">
-                  {SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? questionType}
-                </div>
                 <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} hardMode={hardMode} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
               </div>
             )}
@@ -853,7 +848,6 @@ function App() {
               records={wordRecords}
               reviewDueCount={reviewQueue.length}
               hardestWordCount={hardestWords.length}
-              gradeLabel={gradeConfig ? `${gradeConfig.label} (${gradeConfig.grades})` : undefined}
               onDrillHardest={() => {
                 setDrillHardest(true);
                 setQuestionType('guided');
@@ -901,7 +895,7 @@ function App() {
               activeBadge={stats.activeBadgeId || ''}
               onBadgeChange={updateBadge}
               grade={grade as string}
-              onGradeChange={handleGradeSelect}
+              onGradeChange={handleGradeChange}
               dialect={dialect}
               onDialectChange={handleDialectChange}
             /></Suspense>
@@ -910,7 +904,11 @@ function App() {
 
         {/* ── Bottom Navigation — hidden during immersive sub-modes ── */}
         {!(activeTab === 'game' && (questionType === 'bee' || questionType === 'guided' || questionType === 'written-test' || guidedMode)) && (
-          <BottomNav active={activeTab} onChange={handleTabChange} />
+          <BottomNav
+            active={activeTab}
+            onChange={handleTabChange}
+            tabs={NAV_TABS.map(t => t.id === 'path' ? { ...t, badge: reviewQueue.length } : t)}
+          />
         )}
 
         {/* ── Session Summary ── */}
@@ -1003,10 +1001,14 @@ function App() {
         )}
       </BlackboardLayout>
 
-      {/* ── Grade picker (first launch) ── */}
+      {/* ── Onboarding (first launch) ── */}
       <AnimatePresence>
         {showOnboarding && (
-          <OnboardingModal onSelect={handleGradeSelect} />
+          <OnboardingModal
+            onComplete={handleOnboardingComplete}
+            currentDialect={dialect as Dialect}
+            currentGrade={grade as GradeLevel}
+          />
         )}
       </AnimatePresence>
     </>

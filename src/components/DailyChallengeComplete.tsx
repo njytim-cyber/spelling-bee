@@ -12,14 +12,24 @@ interface Props {
     total: number;
     score: number;
     onExit: () => void;
+    mode?: 'daily' | 'review' | 'challenge';
 }
 
-export const DailyChallengeComplete = memo(function DailyChallengeComplete({ correct, total, score, onExit }: Props) {
+const MODE_CONFIG = {
+    daily: { icon: '📅', title: 'Daily Complete!' },
+    review: { icon: '📖', title: 'Review Complete!' },
+    challenge: { icon: '🏆', title: 'Challenge Complete!' },
+};
+
+export const DailyChallengeComplete = memo(function DailyChallengeComplete({ correct, total, score, onExit, mode = 'daily' }: Props) {
     const streak = getDailyStreak();
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
     const dateLabel = getTodayLabel();
+    const { icon, title } = MODE_CONFIG[mode];
 
-    const shareText = `Spelling Bee Daily ${dateLabel} -- ${correct}/${total} (${pct}%)${streak > 1 ? ` | ${streak}-day streak` : ''}`;
+    const shareText = mode === 'daily'
+        ? `Spelling Bee Daily ${dateLabel} -- ${correct}/${total} (${pct}%)${streak > 1 ? ` | ${streak}-day streak` : ''}`
+        : `Spelling Bee ${title.replace('!', '')} -- ${correct}/${total} (${pct}%)`;
 
     const handleShare = async () => {
         if (navigator.share) {
@@ -35,9 +45,9 @@ export const DailyChallengeComplete = memo(function DailyChallengeComplete({ cor
             animate={{ opacity: 1, scale: 1 }}
             className="flex-1 flex flex-col items-center justify-center px-6 gap-4"
         >
-            <div className="text-6xl">📅</div>
-            <h2 className="text-xl chalk text-[var(--color-gold)]">Daily Complete!</h2>
-            <div className="text-xs ui text-[rgb(var(--color-fg))]/40">{dateLabel}</div>
+            <div className="text-6xl">{icon}</div>
+            <h2 className="text-xl chalk text-[var(--color-gold)]">{title}</h2>
+            {mode === 'daily' && <div className="text-xs ui text-[rgb(var(--color-fg))]/40">{dateLabel}</div>}
 
             <div className="bg-[rgb(var(--color-fg))]/5 rounded-xl px-8 py-5 text-center">
                 <div className="text-4xl chalk text-[var(--color-chalk)]">{correct}/{total}</div>
@@ -45,7 +55,7 @@ export const DailyChallengeComplete = memo(function DailyChallengeComplete({ cor
                 <div className="text-xs ui text-[rgb(var(--color-fg))]/25 mt-2">+{score} XP</div>
             </div>
 
-            {streak > 0 && (
+            {mode === 'daily' && streak > 0 && (
                 <div className="flex items-center gap-2 text-sm ui text-[var(--color-gold)]">
                     <span className="text-lg">🔥</span>
                     {streak}-day streak!

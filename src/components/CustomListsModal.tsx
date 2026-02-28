@@ -179,7 +179,7 @@ export const CustomListsModal = memo(function CustomListsModal({
                     onClick={onClose}
                     className="w-full mt-3 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
                 >
-                    Close
+                    Back
                 </button>
         </ModalShell>
     );

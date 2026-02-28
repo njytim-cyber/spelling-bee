@@ -4,7 +4,7 @@ import { NAV_TABS, type AppTab } from '../config';
 
 type Tab = AppTab;
 
-interface TabDef { id: Tab; label: string; icon?: ReactNode; ariaLabel?: string }
+interface TabDef { id: Tab; label: string; icon?: ReactNode; ariaLabel?: string; badge?: number }
 
 interface Props {
     active: Tab;
@@ -71,7 +71,14 @@ export const BottomNav = memo(function BottomNav({ active, onChange, tabs: tabsP
                             }`}
                         whileTap={{ scale: 0.92 }}
                     >
-                        {tab.icon}
+                        <span className="relative">
+                            {tab.icon}
+                            {tab.badge != null && tab.badge > 0 && (
+                                <span className="absolute -top-1.5 -right-2.5 min-w-[16px] h-[16px] flex items-center justify-center rounded-full bg-[var(--color-streak-fire)] text-white text-[8px] ui font-bold px-0.5">
+                                    {tab.badge > 99 ? '99+' : tab.badge}
+                                </span>
+                            )}
+                        </span>
                         <span className="text-[10px] ui tracking-wide">
                             {tab.label}
                         </span>

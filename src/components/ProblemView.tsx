@@ -159,8 +159,9 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     };
 
     return (
+        <div className="landscape-answers flex-1 overflow-y-auto overscroll-contain min-h-0 relative z-10" style={{ touchAction: 'pan-y' }}>
         <motion.div
-            className="landscape-answers flex-1 flex flex-col items-center justify-center px-4 pb-20 relative z-10 gpu-layer touch-none"
+            className="flex flex-col items-center justify-center min-h-full px-4 pb-20 gpu-layer touch-none"
             onPan={handlePan}
             onPanEnd={handlePanEnd}
         >
@@ -306,5 +307,6 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 </div>
             )}
         </motion.div>
+        </div>
     );
 });

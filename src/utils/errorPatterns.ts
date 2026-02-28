@@ -238,6 +238,7 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
 export function getStudyPlan(
     records: Record<string, WordRecord>,
     reviewDueCount: number,
+    hardestWordCount = 0,
 ): PracticeRecommendation[] {
     const plan: PracticeRecommendation[] = [];
 
@@ -245,16 +246,27 @@ export function getStudyPlan(
     if (reviewDueCount > 0) {
         plan.push({
             category: 'review',
-            label: 'Review Due Words',
-            reason: `${reviewDueCount} word${reviewDueCount === 1 ? '' : 's'} ready for review`,
+            label: `Review ${reviewDueCount} Word${reviewDueCount === 1 ? '' : 's'}`,
+            reason: `${reviewDueCount} word${reviewDueCount === 1 ? '' : 's'} ready for spaced review`,
             priority: 'review',
             wordCount: reviewDueCount,
         });
     }
 
-    // 2. Weak-area drills from existing recommendation engine
+    // 2. Hardest words — merged into "Improve" priority
+    if (hardestWordCount > 0) {
+        plan.push({
+            category: 'hardest',
+            label: 'Hardest Words',
+            reason: `${hardestWordCount} word${hardestWordCount === 1 ? '' : 's'} below 50%`,
+            priority: 'weak',
+            wordCount: hardestWordCount,
+        });
+    }
+
+    // 3. Weakest area drill (limit to 1)
     const weakRecs = getRecommendations(records);
-    plan.push(...weakRecs);
+    plan.push(...weakRecs.slice(0, 1));
 
     // 3. Suggest etymology quiz if user has enough data but hasn't tried it
     const recordArr = Object.values(records);

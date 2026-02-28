@@ -97,13 +97,13 @@ export function usePronunciation(): UsePronunciationReturn {
         speechSynthesis.speak(utterance);
     }, []);
 
-    /** Speak — tries Cloud TTS first if configured, falls back to browser */
+    /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
     const speak = useCallback((text: string) => {
-        const engine = localStorage.getItem(STORAGE_KEYS.ttsEngine) || 'browser';
         const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
+        const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '0.85');
 
-        if (engine === 'cloud' && cloudVoice) {
-            const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '0.85');
+        // Always try cloud first if a voice is configured
+        if (cloudVoice) {
             setIsSpeaking(true);
 
             synthesizeCloud(text, cloudVoice, rate)
@@ -128,6 +128,7 @@ export function usePronunciation(): UsePronunciationReturn {
             return;
         }
 
+        // No cloud voice configured, use browser directly
         speakBrowser(text);
     }, [speakBrowser]);
 

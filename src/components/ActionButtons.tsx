@@ -1,17 +1,14 @@
 import { memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { QuestionTypePicker } from './QuestionTypePicker';
 import type { SpellingCategory } from '../domains/spelling/spellingCategories';
 
 interface Props {
     questionType: SpellingCategory;
     onTypeChange: (type: SpellingCategory) => void;
-    hardMode: boolean;
-    onHardModeToggle: () => void;
     timedMode: boolean;
     onTimedModeToggle: () => void;
     timerProgress: number; // 0 → 1
-    reviewQueueCount?: number;
     /** Text-entry (guided) mode toggle */
     guidedMode: boolean;
     onGuidedModeToggle: () => void;
@@ -50,9 +47,9 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
 }
 
 export const ActionButtons = memo(function ActionButtons({
-    questionType, onTypeChange, hardMode, onHardModeToggle,
+    questionType, onTypeChange,
     timedMode, onTimedModeToggle, timerProgress,
-    reviewQueueCount, guidedMode, onGuidedModeToggle,
+    guidedMode, onGuidedModeToggle,
 }: Props) {
     // Hide hard/timed toggles during full-screen modes that have their own controls
     const hideToggles = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
@@ -61,7 +58,7 @@ export const ActionButtons = memo(function ActionButtons({
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
             {/* Question type */}
             <div className="relative">
-                <QuestionTypePicker current={questionType} onChange={onTypeChange} reviewQueueCount={reviewQueueCount} />
+                <QuestionTypePicker current={questionType} onChange={onTypeChange} />
                 <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Topic</span>
             </div>
 
@@ -132,60 +129,6 @@ export const ActionButtons = memo(function ActionButtons({
                 </motion.svg>
                 <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Timer</span>
             </motion.button>}
-
-            {/* Hard mode skull */}
-            {!hideToggles && <motion.button
-                onClick={onHardModeToggle}
-                className={`w-11 h-11 flex flex-col items-center justify-center text-xl ${hardMode
-                    ? 'opacity-100'
-                    : 'opacity-50'
-                    }`}
-                whileTap={{ scale: 0.88 }}
-                animate={hardMode ? {
-                    rotate: [0, -8, 8, -5, 5, 0],
-                    scale: [1, 1.1, 1, 1.05, 1],
-                } : {}}
-                transition={hardMode ? {
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                    ease: 'easeInOut' as const,
-                } : {}}
-                aria-label={hardMode ? 'Hard mode on' : 'Hard mode off'}
-            >
-                💀
-                {hardMode && (
-                    <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
-                )}
-                <span className="text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">Hard</span>
-            </motion.button>}
-
-            {/* Review queue */}
-            <AnimatePresence>
-                {reviewQueueCount != null && reviewQueueCount > 0 && (
-                    <motion.button
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        onClick={() => onTypeChange('review' as SpellingCategory)}
-                        className={`w-11 h-11 flex flex-col items-center justify-center relative ${questionType === 'review' ? 'opacity-100' : 'opacity-60'}`}
-                        whileTap={{ scale: 0.88 }}
-                    >
-                        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                            <path d="M9 7h7M9 11h5" />
-                        </svg>
-                        <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] flex items-center justify-center rounded-full bg-[var(--color-streak-fire)] text-white text-[8px] ui font-bold px-0.5">
-                            {reviewQueueCount > 99 ? '99+' : reviewQueueCount}
-                        </span>
-                        {questionType === 'review' && (
-                            <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
-                        )}
-                        <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Review</span>
-                    </motion.button>
-                )}
-            </AnimatePresence>
         </div>
     );
 });
