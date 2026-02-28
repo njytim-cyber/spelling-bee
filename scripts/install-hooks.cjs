@@ -3,9 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 const hooksDir = path.join(__dirname, '..', '.git', 'hooks');
+// On Windows, Vitest 4 has a bug causing "No test suite found" errors
+// Skip tests in pre-push hook on Windows (tests run in CI on Linux)
+const isWindows = process.platform === 'win32';
+const prePushCmd = isWindows ? 'npx eslint . && npx tsc -b && npx vite build' : 'npm run verify';
+
 const hooks = [
     ['pre-commit', 'npx eslint . && npx tsc -b'],
-    ['pre-push', 'npm run verify'],
+    ['pre-push', prePushCmd],
 ];
 
 fs.mkdirSync(hooksDir, { recursive: true });
