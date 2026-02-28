@@ -12,6 +12,17 @@ import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { BeeClassroom } from './BeeClassroom';
 import { ChevronLeft } from './ChevronLeft';
+import {
+    IconCheck,
+    IconMessageSquare,
+    IconFileText,
+    IconType,
+    IconGlobe,
+    IconGitBranch,
+    IconGrid,
+    IconRepeat,
+    IconSpeaker,
+} from './Icons';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
     { id: 'classroom', label: 'Classroom', desc: 'Grades K-3' },
@@ -56,11 +67,17 @@ function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct:
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="flex items-center justify-center gap-2 py-1"
+                className="flex items-center justify-center gap-2 py-2"
                 onClick={onNext}
             >
-                <span className="text-lg text-[var(--color-correct)]">&#10003;</span>
-                <span className="text-sm ui font-bold text-[var(--color-correct)]">Correct!</span>
+                <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1, rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
+                >
+                    <IconCheck className="w-6 h-6 text-[var(--color-correct)]" />
+                </motion.div>
+                <span className="text-base ui font-bold text-[var(--color-correct)]">Correct!</span>
             </motion.div>
         );
     }
@@ -70,14 +87,14 @@ function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct:
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="flex flex-col items-center gap-1 py-2 w-full"
+            className="flex flex-col items-center gap-2 py-2 w-full"
         >
             <SpellingDiffView typed={typed} correct={word} />
             <button
                 onClick={onNext}
-                className="mt-1 text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50"
+                className="mt-2 px-4 py-2 rounded-lg border border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5 text-sm ui text-[rgb(var(--color-fg))]/60 hover:text-[rgb(var(--color-fg))]/80 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
             >
-                tap to continue
+                Continue
             </button>
         </motion.div>
     );
@@ -137,7 +154,25 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Still loading first word
-    if (!currentWord) return null;
+    if (!currentWord) {
+        return (
+            <div className="flex-1 flex flex-col items-center justify-center px-6 pb-4">
+                <div className="flex flex-col items-center gap-4 w-full max-w-[320px]">
+                    {/* Skeleton classroom */}
+                    <div className="w-full h-[280px] bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
+                    {/* Skeleton buttons */}
+                    <div className="flex gap-2">
+                        <div className="w-24 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
+                        <div className="w-32 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
+                        <div className="w-24 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
+                    </div>
+                    <p className="text-sm ui text-[rgb(var(--color-fg))]/40 animate-pulse">
+                        Loading spelling bee...
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="flex-1 flex flex-col items-center px-6 pb-4 relative overflow-y-auto">
@@ -208,28 +243,29 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     className="w-full flex flex-col items-center gap-2"
                                 >
                                     {/* Info request buttons */}
-                                    <div className="flex flex-wrap justify-center gap-2.5">
+                                    <div className="flex flex-wrap justify-center gap-2">
                                         {([
-                                            ['definition', 'Definition'],
-                                            ['sentence', 'Use in a Sentence'],
-                                            ['partOfSpeech', 'Part of Speech'],
-                                            ['origin', 'Language of Origin'],
-                                            ['roots', 'Word Roots'],
-                                            ['spellInSections', 'Spell in Sections'],
-                                            ['repeat', 'Repeat Word'],
-                                        ] as const).map(([type, label]) => {
+                                            ['definition', 'Definition', IconMessageSquare],
+                                            ['sentence', 'Sentence', IconFileText],
+                                            ['partOfSpeech', 'Part of Speech', IconType],
+                                            ['origin', 'Origin', IconGlobe],
+                                            ['roots', 'Roots', IconGitBranch],
+                                            ['spellInSections', 'Sections', IconGrid],
+                                            ['repeat', 'Repeat', IconRepeat],
+                                        ] as const).map(([type, label, Icon]) => {
                                             const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat' && type !== 'spellInSections';
                                             return (
                                                 <button
                                                     key={type}
                                                     onClick={() => requestInfo(type)}
                                                     disabled={alreadyAsked}
-                                                    className={`px-3 py-2 rounded-xl text-xs ui transition-colors ${
+                                                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs ui font-medium transition-colors ${
                                                         alreadyAsked
                                                             ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default border border-transparent'
                                                             : 'border border-[var(--color-gold)]/30 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/50'
                                                     }`}
                                                 >
+                                                    <Icon className="w-3.5 h-3.5" />
                                                     {label}
                                                 </button>
                                             );
@@ -237,7 +273,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     </div>
 
                                     {/* Revealed info cards */}
-                                    <div className="w-full space-y-1.5">
+                                    <div className="w-full space-y-2">
                                         <AnimatePresence>
                                             {Object.entries(infoResponses).map(([key, value], idx) => (
                                                 <motion.div
@@ -245,9 +281,9 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                                     initial={{ opacity: 0, y: 10, height: 0 }}
                                                     animate={{ opacity: 1, y: 0, height: 'auto' }}
                                                     exit={{ opacity: 0 }}
-                                                    className={`bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 text-sm ui text-[rgb(var(--color-fg))]/60 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                                                    className={`bg-[rgb(var(--color-fg))]/8 px-4 py-3 text-sm ui text-[rgb(var(--color-fg))]/70 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                                 >
-                                                    <span className="text-xs text-[var(--color-gold)] uppercase font-bold">
+                                                    <span className="text-xs text-[var(--color-gold)] uppercase font-bold tracking-wide">
                                                         {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Sections' : key === 'roots' ? 'Roots' : key}:{' '}
                                                     </span>
                                                     {value}
@@ -279,13 +315,13 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                 >
                                     {/* Show any previously requested info during spelling */}
                                     {Object.keys(infoResponses).length > 0 && (
-                                        <div className="w-full space-y-1 mb-2">
+                                        <div className="w-full space-y-1.5 mb-3">
                                             {Object.entries(infoResponses).map(([key, value], idx) => (
                                                 <div
                                                     key={key}
-                                                    className={`bg-[rgb(var(--color-fg))]/5 px-3 py-1.5 text-xs ui text-[rgb(var(--color-fg))]/50 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                                                    className={`bg-[rgb(var(--color-fg))]/8 px-3 py-2 text-xs ui text-[rgb(var(--color-fg))]/65 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                                 >
-                                                    <span className="text-[10px] text-[var(--color-gold)] uppercase font-bold">
+                                                    <span className="text-[11px] text-[var(--color-gold)] uppercase font-bold tracking-wide">
                                                         {key === 'partOfSpeech' ? 'POS' : key}:{' '}
                                                     </span>
                                                     {value}
@@ -297,8 +333,9 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                                     {ttsSupported && (
                                         <button
                                             onClick={() => requestInfo('pronounceAgain')}
-                                            className="mb-2 w-full text-center text-xs ui border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-1.5 transition-colors"
+                                            className="mb-2 w-full flex items-center justify-center gap-1.5 text-xs ui font-medium border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-2 transition-colors"
                                         >
+                                            <IconSpeaker className="w-3.5 h-3.5" />
                                             Pronounce Again
                                         </button>
                                     )}
