@@ -318,30 +318,23 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             {CHALK_THEMES.map(t => {
                                 const rankIdx = RANKS.findIndex(r => r.name === rank.name);
                                 const rankOk = rankIdx >= (t.minLevel - 1);
-                                // Mode-exclusive unlock checks
-                                const hardOk = !t.hardModeOnly || (stats.hardModeSolved >= (t.hardModeMin ?? 0));
-                                const timedOk = !t.timedModeOnly || (stats.timedModeSolved >= (t.timedModeMin ?? 0));
-                                const ultimateOk = !t.ultimateOnly || (stats.ultimateSolved >= (t.ultimateMin ?? 0));
-                                const isAvailable = rankOk && hardOk && timedOk && ultimateOk;
+                                const streakOk = !t.minStreak || stats.bestStreak >= t.minStreak;
+                                const solvedOk = !t.minSolved || stats.totalSolved >= t.minSolved;
+                                const isAvailable = rankOk && streakOk && solvedOk;
                                 const isActive = activeTheme === t.id;
-                                const modeIcon = t.ultimateOnly ? '💀⏱️' : t.hardModeOnly ? '💀' : t.timedModeOnly ? '⏱️' : '';
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
                                 return (
                                     <button
                                         key={t.id}
                                         onClick={() => isAvailable && onThemeChange(t)}
-                                        title={`${t.name}${modeIcon ? ` ${modeIcon}` : ''}${!isAvailable ? ' (locked)' : ''}`}
+                                        title={`${t.name}${!isAvailable ? ' (locked)' : ''}`}
                                         className={`w-8 h-8 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
                                             }`}
                                         style={{ backgroundColor: swatchColor }}
-                                    >
-                                        {modeIcon && !isAvailable && (
-                                            <span className="absolute -top-1 -right-1 text-[8px]">{modeIcon}</span>
-                                        )}
-                                    </button>
+                                    />
                                 );
                             })}
                         </div>
@@ -358,9 +351,7 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                                 const isUnlocked =
                                     (!t.minLevel || rankIdx >= t.minLevel - 1) &&
                                     (!t.minStreak || stats.bestStreak >= t.minStreak) &&
-                                    (!t.hardModeOnly || stats.hardModeSessions > 0) &&
-                                    (!t.timedModeOnly || stats.timedModeSessions > 0) &&
-                                    (!t.ultimateOnly || stats.ultimateSessions > 0);
+                                    (!t.minSolved || stats.totalSolved >= t.minSolved);
 
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
 
