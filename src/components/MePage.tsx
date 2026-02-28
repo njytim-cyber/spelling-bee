@@ -7,6 +7,7 @@ import { CHALK_THEMES, type ChalkTheme } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { SettingsModal } from './SettingsModal';
 import { STORAGE_KEYS } from '../config';
+import { IconSettings, IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
 
 // Removed tab switching - now showing everything on one page
 
@@ -112,10 +113,10 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
             {/* Settings gear button */}
             <button
                 onClick={() => setShowSettings(true)}
-                className="self-end mb-2 text-lg opacity-40 hover:opacity-70 transition-opacity"
+                className="self-end mb-2 opacity-40 hover:opacity-70 transition-opacity"
                 aria-label="Settings"
             >
-                ⚙️
+                <IconSettings className="w-5 h-5" />
             </button>
 
             {/* Display name + edit */}
@@ -136,17 +137,17 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             autoFocus
                             className="bg-transparent border-b border-[var(--color-chalk)]/30 text-center text-sm ui text-[rgb(var(--color-fg))]/70 outline-none w-32 py-1"
                         />
-                        <button type="submit" className="text-xs ui text-[var(--color-gold)]">✓</button>
-                        <button type="button" onClick={() => { setEditingName(false); setNameInput(displayName); }} className="text-xs ui text-[rgb(var(--color-fg))]/30">✕</button>
+                        <button type="submit" className="text-[var(--color-gold)]"><IconCheck className="w-4 h-4" /></button>
+                        <button type="button" onClick={() => { setEditingName(false); setNameInput(displayName); }} className="text-[rgb(var(--color-fg))]/30"><IconClose className="w-4 h-4" /></button>
                     </form>
                 ) : (
                     <>
                         <span className="text-sm ui text-[rgb(var(--color-fg))]/60">{displayName}</span>
                         <button
                             onClick={() => { setNameInput(displayName); setEditingName(true); }}
-                            className="text-xs text-[rgb(var(--color-fg))]/20 hover:text-[rgb(var(--color-fg))]/40 transition-colors"
+                            className="text-[rgb(var(--color-fg))]/20 hover:text-[rgb(var(--color-fg))]/40 transition-colors"
                         >
-                            ✏️
+                            <IconEdit className="w-3.5 h-3.5" />
                         </button>
                     </>
                 )}
@@ -166,13 +167,16 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         {/* Dismiss button */}
                         <button
                             onClick={() => localStorage.setItem(DISMISS_KEY, String(stats.sessionsPlayed))}
-                            className="absolute top-2 right-2 z-10 text-[rgb(var(--color-fg))]/20 hover:text-[rgb(var(--color-fg))]/50 text-xs transition-colors"
-                        >✕</button>
+                            className="absolute top-2 right-2 z-10 text-[rgb(var(--color-fg))]/20 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
+                        >
+                            <IconClose className="w-3.5 h-3.5" />
+                        </button>
 
                         {!showEmailInput ? (
                             <div className="p-3">
-                                <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50 mb-2.5">
-                                    ☁️ Save your {stats.totalXP.toLocaleString()} XP across devices
+                                <div className="flex items-center gap-1.5 text-[11px] ui text-[rgb(var(--color-fg))]/50 mb-2.5">
+                                    <IconCloud className="w-3.5 h-3.5" />
+                                    <span>Save your {stats.totalXP.toLocaleString()} XP across devices</span>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
@@ -186,13 +190,15 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                                         onClick={() => setShowEmailInput(true)}
                                         className="flex-1 flex items-center justify-center gap-1.5 text-[11px] ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 transition-colors border border-[rgb(var(--color-fg))]/10 rounded-lg py-1.5"
                                     >
-                                        ✉️ Email
+                                        <IconMail className="w-3 h-3" />
+                                        Email
                                     </button>
                                 </div>
                             </div>
                         ) : emailSent ? (
-                            <div className="p-3 text-[10px] ui text-[var(--color-correct)]">
-                                ✓ Check your email for the magic link!
+                            <div className="p-3 flex items-center gap-1.5 text-[10px] ui text-[var(--color-correct)]">
+                                <IconCheck className="w-3.5 h-3.5" />
+                                <span>Check your email for the magic link!</span>
                             </div>
                         ) : (
                             <form
@@ -218,7 +224,9 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                                     className="flex-1 text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-1.5 text-[rgb(var(--color-fg))]/80 placeholder:text-[rgb(var(--color-fg))]/20 outline-none focus:border-[var(--color-gold)]/40"
                                 />
                                 <button type="submit" className="text-xs ui font-semibold text-[var(--color-gold)] bg-[var(--color-gold)]/10 px-3 py-1.5 rounded-lg">Send</button>
-                                <button type="button" onClick={() => setShowEmailInput(false)} className="text-xs text-[rgb(var(--color-fg))]/30 px-1">✕</button>
+                                <button type="button" onClick={() => setShowEmailInput(false)} className="text-[rgb(var(--color-fg))]/30 px-1">
+                                    <IconClose className="w-3.5 h-3.5" />
+                                </button>
                             </form>
                         )}
                     </div>
@@ -383,9 +391,12 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                         achievements · {[...unlocked].length}/{EVERY_SPELLING_ACHIEVEMENT.length}
                     </div>
                     {activeBadge && (
-                        <div className="text-[10px] ui text-[var(--color-gold)]/60 text-center mb-3">
-                            🏷️ Badge: <span className="font-semibold">{EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === activeBadge)?.name || activeBadge}</span>
-                            <button onClick={() => onBadgeChange('')} className="ml-1 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60">✕</button>
+                        <div className="flex items-center justify-center gap-1.5 text-[10px] ui text-[var(--color-gold)]/60 text-center mb-3">
+                            <IconTag className="w-3 h-3" />
+                            <span>Badge: <span className="font-semibold">{EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === activeBadge)?.name || activeBadge}</span></span>
+                            <button onClick={() => onBadgeChange('')} className="text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60">
+                                <IconClose className="w-3 h-3" />
+                            </button>
                         </div>
                     )}
                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
@@ -567,7 +578,9 @@ export const MePage = memo(function MePage({ stats, accuracy, onReset, unlocked,
                             exit={{ opacity: 0, scale: 0.85 }}
                             transition={{ duration: 0.15 }}
                         >
-                            <div className="text-4xl mb-3">🧹</div>
+                            <div className="mb-3 flex justify-center text-[var(--color-streak-fire)]">
+                                <IconBroom className="w-10 h-10" />
+                            </div>
                             <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
                                 {resetConfirm}
                             </p>

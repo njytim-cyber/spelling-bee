@@ -5,6 +5,7 @@ import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { EtymologyExplainer } from './EtymologyExplainer';
+import { IconSpeaker } from './Icons';
 
 /** Arrow-key → swipe direction map for desktop play */
 const KEY_MAP: Record<string, 'left' | 'right' | 'up' | 'down'> = {
@@ -204,10 +205,10 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             <button
                                 type="button"
                                 onClick={handleSpeak}
-                                className="w-10 h-10 flex items-center justify-center text-base opacity-40 hover:opacity-80 transition-opacity"
+                                className="w-10 h-10 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
                                 aria-label="Hear pronunciation"
                             >
-                                🔊
+                                <IconSpeaker className="w-5 h-5" />
                             </button>
                         )}
                     </div>
@@ -285,7 +286,8 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                                 onClick={handleSpeak}
                                 className="flex items-center gap-1 text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
                             >
-                                <span>🔊</span> Hear it
+                                <IconSpeaker className="w-3.5 h-3.5" />
+                                <span>Hear it</span>
                             </button>
                         )}
                         {typeof p.meta?.['etymology'] === 'string' && !showEtymology && (

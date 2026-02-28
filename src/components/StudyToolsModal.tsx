@@ -10,6 +10,7 @@ import { FullScreenPanel } from './FullScreenPanel';
 import { WordBookContent } from './WordBookModal';
 import { RootsContent } from './RootsBrowser';
 import { AnalyticsContent } from './StudyAnalyticsModal';
+import { IconBook, IconTree, IconChart } from './Icons';
 
 export type StudyTab = 'words' | 'roots' | 'analytics';
 
@@ -22,10 +23,10 @@ interface Props {
     onPractice?: (category: string) => void;
 }
 
-const TABS: { id: StudyTab; label: string; icon: string }[] = [
-    { id: 'words', label: 'Words', icon: '\uD83D\uDCD6' },
-    { id: 'roots', label: 'Roots', icon: '\uD83C\uDF33' },
-    { id: 'analytics', label: 'Analytics', icon: '\uD83D\uDCCA' },
+const TABS: { id: StudyTab; label: string; Icon: typeof IconBook }[] = [
+    { id: 'words', label: 'Words', Icon: IconBook },
+    { id: 'roots', label: 'Roots', Icon: IconTree },
+    { id: 'analytics', label: 'Analytics', Icon: IconChart },
 ];
 
 export const StudyToolsModal = memo(function StudyToolsModal({
@@ -37,20 +38,23 @@ export const StudyToolsModal = memo(function StudyToolsModal({
         <FullScreenPanel title="Study Tools" onClose={onClose}>
             {/* Top-level tab bar */}
             <div className="flex gap-2 mb-4">
-                {TABS.map(t => (
-                    <button
-                        key={t.id}
-                        onClick={() => setTab(t.id)}
-                        className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs ui transition-colors ${
-                            tab === t.id
-                                ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] font-semibold border border-[var(--color-gold)]/30'
-                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 border border-[rgb(var(--color-fg))]/10'
-                        }`}
-                    >
-                        <span className="text-sm">{t.icon}</span>
-                        {t.label}
-                    </button>
-                ))}
+                {TABS.map(t => {
+                    const Icon = t.Icon;
+                    return (
+                        <button
+                            key={t.id}
+                            onClick={() => setTab(t.id)}
+                            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs ui transition-colors ${
+                                tab === t.id
+                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)] font-semibold border border-[var(--color-gold)]/30'
+                                    : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 border border-[rgb(var(--color-fg))]/10'
+                            }`}
+                        >
+                            <Icon className="w-4 h-4" />
+                            {t.label}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Tab content */}

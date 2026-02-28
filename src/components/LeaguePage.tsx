@@ -5,6 +5,7 @@ import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
+import { IconCrown, IconMedal, IconStar } from './Icons';
 
 interface LeaderboardEntry {
     uid: string;
@@ -149,7 +150,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                         onClick={onOpenBee}
                         className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 hover:bg-[var(--color-gold)]/20 transition-colors"
                     >
-                        <span className="text-2xl">&#127941;</span>
+                        <span className="text-2xl">🏆</span>
                         <div className="text-left flex-1">
                             <div className="text-sm ui font-bold text-[var(--color-gold)]">Spelling Bee</div>
                             <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Compete against NPCs in a real spelling bee</div>
@@ -183,7 +184,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                             onClick={onOpenWrittenTest}
                             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
                         >
-                            <span className="text-sm">&#128203;</span>
+                            <span className="text-sm">📋</span>
                             <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">Written Test</span>
                         </button>
                     )}
@@ -192,7 +193,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                             onClick={onOpenMultiplayer}
                             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
                         >
-                            <span className="text-sm">&#9876;&#65039;</span>
+                            <span className="text-sm">⚔️</span>
                             <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">1v1 Match</span>
                         </button>
                     )}
@@ -244,12 +245,15 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                 }`}
                         >
                             {/* Rank */}
-                            <div className={`w-7 text-center ui font-bold text-lg ${entry.rank === 1 ? 'text-[var(--color-gold)]' :
+                            <div className={`w-7 flex items-center justify-center ${entry.rank === 1 ? 'text-[var(--color-gold)]' :
                                 entry.rank === 2 ? 'text-[rgb(var(--color-fg))]/60' :
                                     entry.rank === 3 ? 'text-[var(--color-streak-fire)]' :
                                         'text-[rgb(var(--color-fg))]/60'
                                 }`}>
-                                {entry.rank === 1 ? '\u{1F451}' : entry.rank === 2 ? '\u26A1' : entry.rank === 3 ? '\u{1F525}' : entry.rank}
+                                {entry.rank === 1 ? <IconCrown className="w-5 h-5" /> :
+                                 entry.rank === 2 ? <IconMedal className="w-5 h-5" /> :
+                                 entry.rank === 3 ? <IconStar className="w-5 h-5" /> :
+                                 <span className="ui font-bold text-lg">{entry.rank}</span>}
                             </div>
 
                             {/* Name & Cosmetic & Badge */}
@@ -282,7 +286,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                             </div>
                             <div className="text-right w-10">
                                 <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
-                                    {entry.bestStreak > 0 ? `${entry.bestStreak}\u{1F525}` : '\u2014'}
+                                    {entry.bestStreak > 0 ? `${entry.bestStreak}🔥` : '—'}
                                 </div>
                             </div>
                         </motion.div>
@@ -314,7 +318,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                         {COSTUMES[selectedPlayer.activeCostume]}
                                     </svg>
                                 ) : (
-                                    <div className="w-[28px] h-[44px] flex items-center justify-center text-xl">{'\u{1F464}'}</div>
+                                    <div className="w-[28px] h-[44px] flex items-center justify-center text-xl">👤</div>
                                 )}
                                 <div>
                                     <h3
@@ -332,13 +336,13 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                     onClick={() => handleAction('race')}
                                     className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui text-[#422006] bg-[var(--color-gold)] active:opacity-80 transition-opacity"
                                 >
-                                    <span>{'\u2694\uFE0F'}</span> Ghost Race
+                                    <span>⚔️</span> Ghost Race
                                 </button>
                                 <button
                                     onClick={() => handleAction('ping')}
                                     className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10 transition-colors"
                                 >
-                                    <span>{'\u{1F44B}'}</span> Ping Player
+                                    <span>👋</span> Ping Player
                                 </button>
                             </div>
                         </motion.div>

@@ -43,6 +43,7 @@ src/
 │   ├── useWordHistory.ts # Leitner spaced repetition (5 boxes, review queue)
 │   └── ...
 ├── components/          # UI components
+│   ├── Icons.tsx        # Centralized SVG icon library (settings, speaker, etc.)
 │   ├── MePage.tsx       # Profile/stats page
 │   ├── LeaguePage.tsx   # Leaderboard
 │   ├── BeeSimPage.tsx   # Bee simulation mode
@@ -78,6 +79,52 @@ Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, diffic
 - Color variables: `--color-gold`, `--color-correct`, `--color-wrong`, `--color-streak-fire`, `--color-chalk`, `--color-fg` (RGB triplet), `--color-overlay`
 - Opacity via Tailwind: `text-[rgb(var(--color-fg))]/60` pattern
 - Text sizes: `text-2xl chalk` (headings), `text-sm ui` (body), `text-[10px] ui` (tiny labels)
+
+### Icon Conventions: SVG vs. Emoji
+The app maintains a clear distinction between SVG icons and emojis to preserve its distinctive chalk-line aesthetic.
+
+**USE SVG ICONS FOR:**
+- Navigation elements (bottom nav, tabs)
+- Interactive UI controls (buttons, settings, close/check/edit)
+- Study tools (book, tree, chart icons)
+- Leaderboard ranks (crown, medal, star for top 3)
+- Achievement badges (all 21 achievement icons)
+- Category icons (all 65+ phonics/theme icons)
+- Any structural UI element that should match the chalk aesthetic
+
+**USE EMOJIS FOR:**
+- Swipe trail effects (🖍️🌈🔥⚡)
+- Streak indicators (🔥 fire for streaks)
+- Achievement celebrations (trophy, stars in toasts)
+- Share text grids (🟩🟥 for social sharing)
+- Mode badges (💀⏱️💯🐝)
+- Rank emojis in player profiles (🌱📚🔤✏️ etc.)
+- Playful, celebratory, or cosmetic elements
+
+**Centralized Icon Library:**
+All SVG icons live in `src/components/Icons.tsx`. Icons use:
+- 24×24 viewBox (standard UI size)
+- `stroke="currentColor"` for theme color inheritance
+- `strokeWidth="2"` with `strokeLinecap="round"` `strokeLinejoin="round"`
+- Consistent chalk-line hand-drawn aesthetic
+
+**Examples:**
+```tsx
+// ✅ CORRECT - SVG for structural UI
+import { IconSettings, IconCheck, IconClose } from './Icons';
+<button><IconSettings className="w-5 h-5" /></button>
+
+// ✅ CORRECT - Emoji for celebration/playful context
+<div className="text-2xl">🏆 PERFECT</div>
+<div>{streak}🔥</div>
+
+// ❌ WRONG - Don't use emojis for structural UI
+<button>⚙️</button> // Should use <IconSettings />
+
+// ❌ WRONG - Don't use HTML entities or Unicode escapes
+<span>&#127941;</span> // Use 🏆 directly
+<span>{'\u{1F451}'}</span> // Use 👑 or <IconCrown /> depending on context
+```
 
 ## Testing
 Tests live in `src/tests/`. Run with `npx vitest run`. Key test areas:
