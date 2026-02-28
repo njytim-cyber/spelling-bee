@@ -3,7 +3,7 @@
  * Pure CSS confetti particles with Framer Motion
  * Enhanced with varied shapes, colors, and physics-based motion
  */
-import { memo, useMemo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Props {
@@ -22,30 +22,51 @@ const CONFETTI_COLORS = [
     '#4ECDC4', // Turquoise
 ];
 
-export const Confetti = memo(function Confetti({ trigger, intensity = 'normal' }: Props) {
-    // Generate confetti pieces once and memoize
-    // eslint-disable-next-line react-hooks/purity, react-hooks/exhaustive-deps -- intentional randomization for confetti
-    const pieces = useMemo(() => {
-        const count = intensity === 'epic' ? 50 : 30;
-        return Array.from({ length: count }, (_, i) => {
-            const angle = (i / 30) * 360 + Math.random() * 30;
-            const velocity = 150 + Math.random() * 100;
-            const x = Math.cos((angle * Math.PI) / 180) * velocity;
-            const y = Math.sin((angle * Math.PI) / 180) * velocity - 100;
-            const rotation = Math.random() * 720 - 360;
-            const delay = Math.random() * 0.15;
-            const duration = 1.2 + Math.random() * 0.8;
-            // More shape variety: rectangles, circles, and stars
-            const shapeRand = Math.random();
-            const shape = shapeRand > 0.66 ? 'star' : shapeRand > 0.33 ? 'rect' : 'circle';
-            const size = 4 + Math.random() * 5;
-            const color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
-            // Add flutter rotation for more realistic physics
-            const rotationSpeed = 360 + Math.random() * 360;
+type ConfettiPiece = {
+    x: number;
+    y: number;
+    rotation: number;
+    delay: number;
+    duration: number;
+    shape: 'star' | 'rect' | 'circle';
+    size: number;
+    color: string;
+    rotationSpeed: number;
+};
 
-            return { x, y, rotation, delay, duration, shape, size, color, rotationSpeed };
-        });
-    }, [intensity]);
+function generateConfettiPieces(count: number): ConfettiPiece[] {
+    return Array.from({ length: count }, (_, i) => {
+        const angle = (i / 30) * 360 + Math.random() * 30;
+        const velocity = 150 + Math.random() * 100;
+        const x = Math.cos((angle * Math.PI) / 180) * velocity;
+        const y = Math.sin((angle * Math.PI) / 180) * velocity - 100;
+        const rotation = Math.random() * 720 - 360;
+        const delay = Math.random() * 0.15;
+        const duration = 1.2 + Math.random() * 0.8;
+        // More shape variety: rectangles, circles, and stars
+        const shapeRand = Math.random();
+        const shape = shapeRand > 0.66 ? 'star' : shapeRand > 0.33 ? 'rect' : 'circle';
+        const size = 4 + Math.random() * 5;
+        const color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+        // Add flutter rotation for more realistic physics
+        const rotationSpeed = 360 + Math.random() * 360;
+
+        return { x, y, rotation, delay, duration, shape, size, color, rotationSpeed };
+    });
+}
+
+export const Confetti = memo(function Confetti({ trigger, intensity = 'normal' }: Props) {
+    const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
+    const prevTriggerRef = useRef(trigger);
+
+    // Generate new confetti pieces when trigger changes from false to true
+    useEffect(() => {
+        if (trigger && !prevTriggerRef.current) {
+            const count = intensity === 'epic' ? 50 : 30;
+            queueMicrotask(() => setPieces(generateConfettiPieces(count)));
+        }
+        prevTriggerRef.current = trigger;
+    }, [trigger, intensity]);
 
     if (!trigger) return null;
 

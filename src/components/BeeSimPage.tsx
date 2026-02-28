@@ -162,80 +162,85 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
     const prevPhaseRef = useRef(phase);
     const prevRoundRef = useRef(round);
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on phase change
+    // Handle feedback phase transitions
     useEffect(() => {
         if (phase === 'feedback' && prevPhaseRef.current === 'spelling') {
-            if (lastResult === true) {
-                // Correct answer celebrations
-                const newStreak = streak + 1;
-                setStreak(newStreak);
+            // Use queueMicrotask to defer state updates after render
+            queueMicrotask(() => {
+                if (lastResult === true) {
+                    // Correct answer celebrations
+                    const newStreak = streak + 1;
+                    setStreak(newStreak);
 
-                // More intense confetti for streaks
-                setConfettiIntensity(newStreak >= 5 ? 'epic' : 'normal');
-                setShowConfetti(true);
-                setTimeout(() => setShowConfetti(false), newStreak >= 5 ? 2500 : 1500);
+                    // More intense confetti for streaks
+                    setConfettiIntensity(newStreak >= 5 ? 'epic' : 'normal');
+                    setShowConfetti(true);
+                    setTimeout(() => setShowConfetti(false), newStreak >= 5 ? 2500 : 1500);
 
-                if (soundOn) playSuccessSound();
+                    if (soundOn) playSuccessSound();
 
-                // Streak milestones with enhanced effects
-                if (newStreak === 3 || newStreak === 5 || newStreak === 10) {
-                    setShowStreakBadge(true);
-                    setTimeout(() => setShowStreakBadge(false), 2500);
-                    if (soundOn) playStreakSound(newStreak);
+                    // Streak milestones with enhanced effects
+                    if (newStreak === 3 || newStreak === 5 || newStreak === 10) {
+                        setShowStreakBadge(true);
+                        setTimeout(() => setShowStreakBadge(false), 2500);
+                        if (soundOn) playStreakSound(newStreak);
+                    }
+                } else {
+                    // Wrong answer
+                    setStreak(0);
+                    setShakeClass('wrong-shake');
+                    setTimeout(() => setShakeClass(''), 300);
+                    if (soundOn) playWrongSound();
                 }
-            } else {
-                // Wrong answer
-                setStreak(0);
-                setShakeClass('wrong-shake');
-                setTimeout(() => setShakeClass(''), 300);
-                if (soundOn) playWrongSound();
-            }
+            });
         }
         prevPhaseRef.current = phase;
     }, [phase, lastResult, streak, soundOn]);
 
     // Round transitions with banner
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on round change
     useEffect(() => {
         if (round !== prevRoundRef.current && round > 0) {
-            setShowRoundBanner(true);
-            setTimeout(() => setShowRoundBanner(false), 2000);
+            queueMicrotask(() => {
+                setShowRoundBanner(true);
+                setTimeout(() => setShowRoundBanner(false), 2000);
 
-            // Motivational messages every few rounds
-            const messages = [
-                "You're doing great! 🎯",
-                "Keep it up! ⭐",
-                "Fantastic spelling! 🌟",
-                "You're on fire! 🔥",
-                "Impressive! 💫",
-            ];
-            if (round % 3 === 0) {
-                setMotivationalMessage(messages[Math.floor(Math.random() * messages.length)]);
-                setTimeout(() => setMotivationalMessage(''), 3000);
-            }
+                // Motivational messages every few rounds
+                const messages = [
+                    "You're doing great! 🎯",
+                    "Keep it up! ⭐",
+                    "Fantastic spelling! 🌟",
+                    "You're on fire! 🔥",
+                    "Impressive! 💫",
+                ];
+                if (round % 3 === 0) {
+                    setMotivationalMessage(messages[Math.floor(Math.random() * messages.length)]);
+                    setTimeout(() => setMotivationalMessage(''), 3000);
+                }
+            });
         }
         prevRoundRef.current = round;
     }, [round]);
 
     // Report bee result when session ends + victory sound
     const beeResultFired = useRef(false);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- animation triggers on phase change to won/eliminated
     useEffect(() => {
         if ((phase === 'eliminated' || phase === 'won') && !beeResultFired.current) {
             beeResultFired.current = true;
             onBeeResult?.(round, wordsCorrect, phase === 'won', beeLevel, sessionXP);
 
             if (phase === 'won') {
-                // Epic confetti for championship win
-                setConfettiIntensity('epic');
-                setShowConfetti(true);
-                if (soundOn) playVictorySound();
-                setTimeout(() => setShowConfetti(false), 4000);
+                queueMicrotask(() => {
+                    // Epic confetti for championship win
+                    setConfettiIntensity('epic');
+                    setShowConfetti(true);
+                    if (soundOn) playVictorySound();
+                    setTimeout(() => setShowConfetti(false), 4000);
+                });
             }
         }
         if (phase === 'listening') {
             beeResultFired.current = false;
-            setStreak(0);
+            queueMicrotask(() => setStreak(0));
         }
     }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult, soundOn]);
 
@@ -365,8 +370,8 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 )}
             </div>
 
-            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto px-6 pb-4">
-            <div className="w-full max-w-[360px] py-4">
+            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto">
+            <div className="w-full max-w-[340px] px-4 py-4 flex-1 flex flex-col justify-center min-h-0">
             <AnimatePresence mode="wait">
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}
                 {(phase === 'listening' || phase === 'asking' || phase === 'spelling' || phase === 'feedback') && (
