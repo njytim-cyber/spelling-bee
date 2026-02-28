@@ -271,7 +271,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
     }
 
     return (
-        <div className="flex-1 flex flex-col items-center relative overflow-hidden">
+        <div className="flex-1 flex flex-col items-center relative overflow-hidden min-h-0">
             {/* Confetti effect with variable intensity */}
             <Confetti trigger={showConfetti} intensity={confettiIntensity} />
 
@@ -370,7 +370,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 )}
             </div>
 
-            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto px-4 pt-12 pb-6">
+            <div className="flex-1 flex flex-col items-center w-full overflow-y-auto overflow-x-hidden px-4 pt-12 pb-24 min-h-0">
             <div className="w-full max-w-[360px] flex flex-col gap-8">
             <AnimatePresence mode="wait">
                 {/* CLASSROOM — stays visible for listening, spelling, and feedback phases */}

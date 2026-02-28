@@ -567,7 +567,7 @@ function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; 
             transition={{ duration: 0.25 }}
         >
             <rect
-                x={textX - 6} y="118" width={w} height="26" rx="7"
+                x={textX - 6} y="90" width={w} height="26" rx="7"
                 fill="var(--color-board)" fillOpacity="0.95"
                 stroke="currentColor" strokeWidth="0.8"
                 style={{ strokeOpacity: 0.3 }}
@@ -575,15 +575,15 @@ function SpeechBubble({ cx, text, side = 'right' }: { cx: number; text: string; 
             {/* Tail */}
             <path
                 d={side === 'right'
-                    ? `M ${bx - 2} 144 L ${cx + 8} 148 L ${bx + 4} 144`
-                    : `M ${bx - 4} 144 L ${cx - 8} 148 L ${bx + 2} 144`
+                    ? `M ${bx - 2} 116 L ${cx + 8} 120 L ${bx + 4} 116`
+                    : `M ${bx - 4} 116 L ${cx - 8} 120 L ${bx + 2} 116`
                 }
                 fill="var(--color-board)" fillOpacity="0.95"
                 stroke="currentColor" strokeWidth="0.8"
                 style={{ strokeOpacity: 0.3 }}
             />
             <text
-                x={textX + w / 2 - 3} y="135"
+                x={textX + w / 2 - 3} y="107"
                 textAnchor="middle" fontSize="14"
                 fill="var(--color-chalk)" opacity="1"
                 fontFamily="var(--font-ui)"
@@ -1002,7 +1002,7 @@ export const BeeClassroom = memo(function BeeClassroom({
 
     return (
         <svg
-            viewBox="0 -6 320 266"
+            viewBox="0 -40 320 300"
             className="w-full max-w-[320px] h-auto cursor-pointer"
             style={{ color: 'var(--color-chalk)' }}
             onClick={onPronounce}

@@ -51,6 +51,27 @@ export function voicesForDialect(dialect: string): CloudVoice[] {
     return CLOUD_VOICES.filter(v => v.langCode === langCode);
 }
 
+/**
+ * Initialize default cloud voice if none is set.
+ * Call this on app startup to ensure neural2 voices work by default.
+ */
+export function initializeDefaultVoice(): void {
+    if (typeof window === 'undefined') return;
+
+    const STORAGE_KEYS = {
+        ttsCloudVoice: 'spelling-bee-tts-cloud-voice',
+        ttsEngine: 'spelling-bee-tts-engine',
+    };
+
+    const stored = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
+    if (!stored) {
+        // Default to US Voice C (Female)
+        const defaultVoice = 'en-US-Neural2-C';
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, defaultVoice);
+        localStorage.setItem(STORAGE_KEYS.ttsEngine, 'cloud');
+    }
+}
+
 // ── Synthesis ────────────────────────────────────────────────────────────────
 
 /** In-memory audio cache (per session): cacheKey → blobUrl */

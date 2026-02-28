@@ -601,7 +601,7 @@ function App() {
               void el.offsetHeight; // force reflow
               el.classList.add(flash === 'wrong' && !shieldBroken ? 'wrong-shake' : flash === 'correct' ? 'answer-bounce' : '');
             }
-          }} className="flex-1 flex flex-col w-full">
+          }} className="flex-1 flex flex-col w-full min-h-0">
             {/* ── Score (centered, pushed down from edge) — hidden in full-screen sub-modes ── */}
             {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
               {/* Challenge header */}
@@ -724,7 +724,7 @@ function App() {
             </AnimatePresence>
 
             {/* ── Main Problem Area ── */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col min-h-0">
               {questionType === 'bee' ? (
                 <BeeSimPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
@@ -762,7 +762,7 @@ function App() {
                   {currentProblem && (
                     <motion.div
                       key={currentProblem.id}
-                      className="flex-1 flex flex-col"
+                      className="flex-1 flex flex-col min-h-0"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
