@@ -37,6 +37,8 @@ export interface WordRecord {
 interface WordHistory {
     records: Record<string, WordRecord>;
     recentAttempts: WordAttempt[];
+    /** Sorted index for O(log n) review queue lookups - array of {key, nextReview, box} sorted by nextReview */
+    nextReviewIndex: Array<{ key: string; nextReview: number; box: number }>;
 }
 
 // ── Constants ────────────────────────────────────────────────────────────────
@@ -58,9 +60,18 @@ const BOX_DELAY_MS: Record<number, number> = {
 function loadHistory(): WordHistory {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) return JSON.parse(raw) as WordHistory;
+        if (raw) {
+            const loaded = JSON.parse(raw) as WordHistory;
+            // Rebuild index if missing (backward compatibility)
+            if (!loaded.nextReviewIndex) {
+                loaded.nextReviewIndex = Object.entries(loaded.records)
+                    .map(([key, r]) => ({ key, nextReview: r.nextReview, box: r.box }))
+                    .sort((a, b) => a.nextReview - b.nextReview);
+            }
+            return loaded;
+        }
     } catch { /* corrupt data — start fresh */ }
-    return { records: {}, recentAttempts: [] };
+    return { records: {}, recentAttempts: [], nextReviewIndex: [] };
 }
 
 function saveHistory(h: WordHistory): void {
@@ -113,9 +124,16 @@ export function useWordHistory() {
                 ...((!correct && typed) ? { typed: typed.trim().toLowerCase() } : {}),
             };
 
+            // Update sorted index: remove old entry, add new, re-sort
+            const newIndex = [
+                ...prev.nextReviewIndex.filter(item => item.key !== key),
+                { key, nextReview: record.nextReview, box: record.box }
+            ].sort((a, b) => a.nextReview - b.nextReview);
+
             const next: WordHistory = {
                 records: { ...prev.records, [key]: record },
                 recentAttempts: [attempt, ...prev.recentAttempts].slice(0, MAX_RECENT),
+                nextReviewIndex: newIndex,
             };
 
             saveHistory(next);
@@ -125,23 +143,43 @@ export function useWordHistory() {
 
     /**
      * Words due for review: box < 4 and nextReview ≤ lastAttemptTime.
-     * Uses the latest attempt timestamp as "now" to avoid impure Date.now() in useMemo.
+     * Uses binary search on sorted nextReviewIndex for O(log n) performance.
      * Falls back to 0 (showing all non-mastered words) if no attempts yet.
      */
     const latestTs = history.recentAttempts[0]?.timestamp ?? 0;
     const reviewQueue = useMemo(() => {
-        // Use latest recorded timestamp as a pure proxy for "now"
+        // Use latest timestamp or 0 (shows all non-mastered words if no attempts yet)
         const asOf = latestTs || 0;
-        return Object.values(history.records)
-            .filter(r => r.box < 4 && r.nextReview <= asOf)
-            .sort((a, b) => {
-                // Prioritize lower boxes (harder words) and lower accuracy
-                if (a.box !== b.box) return a.box - b.box;
-                const aAcc = a.attempts > 0 ? a.correct / a.attempts : 0;
-                const bAcc = b.attempts > 0 ? b.correct / b.attempts : 0;
-                return aAcc - bAcc;
-            });
-    }, [history.records, latestTs]);
+
+        // Binary search to find first index where nextReview > asOf
+        let left = 0, right = history.nextReviewIndex.length - 1;
+        let splitPoint = 0;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (history.nextReviewIndex[mid].nextReview <= asOf) {
+                splitPoint = mid + 1; // All items <= mid are due
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        // All words from [0, splitPoint) are due for review
+        const dueWords = history.nextReviewIndex
+            .slice(0, splitPoint)
+            .filter(item => item.box < 4) // Exclude mastered words
+            .map(item => history.records[item.key])
+            .filter(Boolean); // Safety filter for missing records
+
+        // Sort by priority: lower box first, then lower accuracy
+        return dueWords.sort((a, b) => {
+            if (a.box !== b.box) return a.box - b.box;
+            const aAcc = a.attempts > 0 ? a.correct / a.attempts : 0;
+            const bAcc = b.attempts > 0 ? b.correct / b.attempts : 0;
+            return aAcc - bAcc;
+        });
+    }, [history.nextReviewIndex, history.records, latestTs]);
 
     /** Categories with > 20% error rate and at least 5 attempts */
     const weakCategories = useMemo(() => {

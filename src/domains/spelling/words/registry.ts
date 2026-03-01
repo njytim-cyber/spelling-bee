@@ -38,58 +38,79 @@ let ukToUsMap: Map<string, string> | null = null;
 
 // ── Indexed caches (invalidated whenever loadedWords changes) ───────────────
 
-/** word string → SpellingWord */
-let wordMapCache: Map<string, SpellingWord> | null = null;
-/** PhonicsPattern → SpellingWord[] (includes secondary patterns) */
-let byPatternCache: Map<string, SpellingWord[]> | null = null;
-/** SemanticTheme → SpellingWord[] */
-let byThemeCache: Map<string, SpellingWord[]> | null = null;
+/** Cache state tracking for lazy invalidation */
+interface CacheState<T> {
+    valid: boolean;
+    data: T | null;
+}
+
+const cacheState = {
+    wordMap: { valid: false, data: null } as CacheState<Map<string, SpellingWord>>,
+    byPattern: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
+    byTheme: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
+    byList: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
+};
 
 function invalidateCaches(): void {
-    wordMapCache = null;
-    byPatternCache = null;
-    byThemeCache = null;
-    byListCache = null;
+    cacheState.wordMap.valid = false;
+    cacheState.byPattern.valid = false;
+    cacheState.byTheme.valid = false;
+    cacheState.byList.valid = false;
 }
 
 function ensureWordMapCache(): Map<string, SpellingWord> {
-    if (!wordMapCache) {
-        wordMapCache = new Map();
-        for (const w of loadedWords) wordMapCache.set(w.word, w);
+    if (cacheState.wordMap.valid && cacheState.wordMap.data) {
+        return cacheState.wordMap.data;
     }
-    return wordMapCache;
+
+    const map = new Map<string, SpellingWord>();
+    for (const w of loadedWords) map.set(w.word, w);
+
+    cacheState.wordMap.data = map;
+    cacheState.wordMap.valid = true;
+    return map;
 }
 
 function ensurePatternCache(): Map<string, SpellingWord[]> {
-    if (!byPatternCache) {
-        byPatternCache = new Map();
-        for (const w of loadedWords) {
-            let arr = byPatternCache.get(w.pattern);
-            if (!arr) { arr = []; byPatternCache.set(w.pattern, arr); }
-            arr.push(w);
-            if (w.secondaryPatterns) {
-                for (const p of w.secondaryPatterns) {
-                    let arr2 = byPatternCache.get(p);
-                    if (!arr2) { arr2 = []; byPatternCache.set(p, arr2); }
-                    arr2.push(w);
-                }
+    if (cacheState.byPattern.valid && cacheState.byPattern.data) {
+        return cacheState.byPattern.data;
+    }
+
+    const map = new Map<string, SpellingWord[]>();
+    for (const w of loadedWords) {
+        let arr = map.get(w.pattern);
+        if (!arr) { arr = []; map.set(w.pattern, arr); }
+        arr.push(w);
+        if (w.secondaryPatterns) {
+            for (const p of w.secondaryPatterns) {
+                let arr2 = map.get(p);
+                if (!arr2) { arr2 = []; map.set(p, arr2); }
+                arr2.push(w);
             }
         }
     }
-    return byPatternCache;
+
+    cacheState.byPattern.data = map;
+    cacheState.byPattern.valid = true;
+    return map;
 }
 
 function ensureThemeCache(): Map<string, SpellingWord[]> {
-    if (!byThemeCache) {
-        byThemeCache = new Map();
-        for (const w of loadedWords) {
-            if (!w.theme) continue;
-            let arr = byThemeCache.get(w.theme);
-            if (!arr) { arr = []; byThemeCache.set(w.theme, arr); }
-            arr.push(w);
-        }
+    if (cacheState.byTheme.valid && cacheState.byTheme.data) {
+        return cacheState.byTheme.data;
     }
-    return byThemeCache;
+
+    const map = new Map<string, SpellingWord[]>();
+    for (const w of loadedWords) {
+        if (!w.theme) continue;
+        let arr = map.get(w.theme);
+        if (!arr) { arr = []; map.set(w.theme, arr); }
+        arr.push(w);
+    }
+
+    cacheState.byTheme.data = map;
+    cacheState.byTheme.valid = true;
+    return map;
 }
 
 /** Cached word-keyed lookup map. O(1) per lookup after first build. */
@@ -108,21 +129,24 @@ export function getCachedByTheme(theme: string): SpellingWord[] {
 }
 
 /** Words belonging to a competition list. Builds index lazily. */
-let byListCache: Map<string, SpellingWord[]> | null = null;
-
 function ensureListCache(): Map<string, SpellingWord[]> {
-    if (!byListCache) {
-        byListCache = new Map();
-        for (const w of loadedWords) {
-            if (!w.lists) continue;
-            for (const listId of w.lists) {
-                let arr = byListCache.get(listId);
-                if (!arr) { arr = []; byListCache.set(listId, arr); }
-                arr.push(w);
-            }
+    if (cacheState.byList.valid && cacheState.byList.data) {
+        return cacheState.byList.data;
+    }
+
+    const map = new Map<string, SpellingWord[]>();
+    for (const w of loadedWords) {
+        if (!w.lists) continue;
+        for (const listId of w.lists) {
+            let arr = map.get(listId);
+            if (!arr) { arr = []; map.set(listId, arr); }
+            arr.push(w);
         }
     }
-    return byListCache;
+
+    cacheState.byList.data = map;
+    cacheState.byList.valid = true;
+    return map;
 }
 
 export function getCachedByList(listId: string): SpellingWord[] {
@@ -219,14 +243,20 @@ const tierImporters: Record<number, () => Promise<{ default?: SpellingWord[]; [k
 /**
  * Ensure all word tiers (1-5) are loaded.
  * Returns immediately if already loaded. Safe to call multiple times.
+ * Loads all missing tiers in parallel for maximum speed.
  */
 export async function ensureAllTiers(): Promise<void> {
     const allTiers = [1, 2, 3, 4, 5];
     const missing = allTiers.filter(t => !loadedTiers.has(t));
     if (missing.length === 0) return;
 
+    // Load all missing tiers in parallel
     const modules = await Promise.all(
-        missing.map(t => tierImporters[t]?.()),
+        missing.map(async (t) => {
+            const importer = tierImporters[t];
+            if (!importer) return null;
+            return importer();
+        }),
     );
 
     const newWords: SpellingWord[] = [];
@@ -241,7 +271,7 @@ export async function ensureAllTiers(): Promise<void> {
     }
 
     if (newWords.length > 0) {
-        // Deduplicate by US canonical word string
+        // Deduplicate by US canonical word string (build Set once, reuse)
         const existing = new Set(baseWords.map(w => w.word));
         const unique = newWords.filter(w => !existing.has(w.word));
         baseWords = [...baseWords, ...unique];
