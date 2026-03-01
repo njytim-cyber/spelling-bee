@@ -70,9 +70,9 @@ Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, diffic
 | 2 | 2nd-3rd | 3-4 | silent-e, vowel-teams, r-controlled, diphthongs | 505 |
 | 3 | 4th-5th | 5-6 | prefixes, suffixes, compound, multisyllable, irregular | 505 |
 | 4 | 6th-8th | 7-8 | latin-roots, greek-roots, french-origin + above | 504 |
-| 5 | Competition | 9-10 | All patterns, etymology required | 512 |
-| Scripps | National Bee | 10 | Competition words with full etymology | 250 |
-| State | State Bee | 8-10 | State competition words | 108 |
+| 5 | Competition | 9-10 | All patterns, etymology required | 481 |
+| Scripps | National Bee | 8-10 | Competition words with full etymology | 259 |
+| State | State Bee | 8-10 | State competition words | 96 |
 
 ### CSS Conventions
 - Two font families: `chalk` (display) and `ui` (interface)

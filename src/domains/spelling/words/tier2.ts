@@ -225,7 +225,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pronunciation: 'playn',
         etymology: 'Latin: planum (flat surface)',
         distractors: ['plame', 'plan', 'planne'],
-        theme: 'animals',
+        theme: 'travel',
     },
     {
         word: 'smoke',
