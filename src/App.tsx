@@ -14,6 +14,8 @@ import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { OfflineBanner } from './components/OfflineBanner';
 import { ReloadPrompt } from './components/ReloadPrompt';
+import { UserProvider, useUser } from './contexts/UserContext';
+import { useAppModals } from './hooks/useAppModals';
 /** Retry a dynamic import once on chunk-load failure (Cloudflare Pages cache busting) */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Promise<T> {
@@ -31,12 +33,11 @@ const LeaguePage = lazy(() => lazyRetry(() => import('./components/LeaguePage'))
 const MePage = lazy(() => lazyRetry(() => import('./components/MePage')).then(m => ({ default: m.MePage })));
 
 import { useGameLoop } from './hooks/useGameLoop';
-import { useStats } from './hooks/useStats';
 import { loadUnlocked, saveUnlocked, checkAchievements, restoreUnlockedFromCloud } from './utils/achievements';
 import { EVERY_SPELLING_ACHIEVEMENT } from './domains/spelling/spellingAchievements';
 import { SessionSummary } from './components/SessionSummary';
 import { WeeklyRecap } from './components/WeeklyRecap';
-import { CHALK_THEMES, applyTheme, type ChalkTheme } from './utils/chalkThemes';
+import { CHALK_THEMES, applyTheme } from './utils/chalkThemes';
 import { applyMode } from './hooks/useThemeMode';
 import { useLocalState } from './hooks/useLocalState';
 import { useFirebaseAuth } from './hooks/useFirebaseAuth';
@@ -168,21 +169,48 @@ function LoadingFallback() {
   );
 }
 
-function App() {
-  const { user, loading: authLoading, setDisplayName, linkGoogle, sendEmailLink } = useFirebaseAuth();
+function AppInner() {
+  const { user } = useFirebaseAuth();
   const uid = user?.uid ?? null;
+
+  // User state from context
+  const {
+    stats,
+    recordSession,
+    recordBeeResult,
+    consumeShield,
+    purchaseStreakFreeze,
+    updateCosmetics,
+    activeCostume,
+    activeTheme,
+    activeTrailId,
+    grade,
+    onGradeChange,
+    dialect,
+    onDialectChange,
+  } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
   const hardMode = false;
   const [timedMode, setTimedMode] = useState(false);
 
+  // ── Modals ──
+  const {
+    showOnboarding,
+    showCustomLists,
+    showMultiplayerLobby,
+    showSummary,
+    openModal,
+    closeModal,
+    setShowOnboarding,
+    setShowSummary,
+  } = useAppModals();
+
   // ── Multiplayer ──
-  const [showMultiplayerLobby, setShowMultiplayerLobby] = useState(false);
   const mp = useMultiplayerRoom(uid, user?.displayName ?? 'Player');
 
   // ── Custom Word Lists ──
   const customLists = useCustomLists();
-  const [showCustomLists, setShowCustomLists] = useState(false);
   const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
 
   // ── Hardest-words drill override ──
@@ -217,22 +245,17 @@ function App() {
 
   const setQuestionType = useCallback((type: QuestionType) => {
     if (type === 'custom') {
-      setShowCustomLists(true);
+      openModal('showCustomLists');
       return;
     }
     setQuestionTypeRaw(type);
-  }, []);
-
-  const { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze } = useStats(uid);
-
-  // ── Dialect (US/UK English) ──
-  const [dialect, setDialectState] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
+  }, [openModal]);
 
   const handleDialectChange = useCallback(async (d: Dialect) => {
-    setDialectState(d);
+    onDialectChange(d);
     await setDialect(d);
     setWordRegistryVersion(getRegistryVersion());
-  }, [setDialectState]);
+  }, [onDialectChange]);
 
   // ── Load all word tiers ──
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
@@ -287,13 +310,17 @@ function App() {
   }, [reviewQueue, wordRegistryVersion]);
 
   // ── Grade config (needed before useGameLoop) ──
-  const [grade, setGrade] = useLocalState(STORAGE_KEYS.grade, '', uid);
-  const [showOnboarding, setShowOnboarding] = useState(() => !localStorage.getItem(STORAGE_KEYS.grade) || !localStorage.getItem(STORAGE_KEYS.dialect));
-
   const gradeConfig = useMemo(
     () => grade ? getGradeConfig(grade as GradeLevel) : null,
     [grade],
   );
+
+  // Initialize onboarding state on mount
+  useEffect(() => {
+    if (!localStorage.getItem(STORAGE_KEYS.grade) || !localStorage.getItem(STORAGE_KEYS.dialect)) {
+      setShowOnboarding(true);
+    }
+  }, [setShowOnboarding]);
 
   const {
     problems,
@@ -376,7 +403,7 @@ function App() {
   );
 
   // ── Session summary (auto-show on daily finish) ──
-  const { showSummary, setShowSummary } = useAutoSummary(dailyComplete);
+  useAutoSummary(dailyComplete, setShowSummary);
 
   // ── Save daily result when daily set is completed ──
   useEffect(() => {
@@ -501,54 +528,43 @@ function App() {
     }
   }, [activeTab, handleTabChange]);
 
-  const [activeCostume, handleCostumeChange] = useLocalState(STORAGE_KEYS.costume, '', uid);
-  const [activeTrailId, handleTrailChange] = useLocalState(STORAGE_KEYS.trail, '', uid);
-
   const handleOnboardingComplete = useCallback((d: Dialect, g: GradeLevel) => {
-    setDialectState(d);
-    setGrade(g);
+    onDialectChange(d);
+    onGradeChange(g);
     const config = getGradeConfig(g);
     setQuestionType(config.defaultCategory);
     setShowOnboarding(false);
-  }, [setDialectState, setGrade, setQuestionType]);
+  }, [onDialectChange, onGradeChange, setQuestionType, setShowOnboarding]);
 
   const handleGradeChange = useCallback((g: GradeLevel) => {
-    setGrade(g);
+    onGradeChange(g);
     const config = getGradeConfig(g);
     setQuestionType(config.defaultCategory);
-  }, [setGrade, setQuestionType]);
+  }, [onGradeChange, setQuestionType]);
 
   // ── Chalk themes ──
-  const [activeThemeId, setActiveThemeId] = useLocalState(STORAGE_KEYS.chalkTheme, 'classic', uid);
   useEffect(() => {
-    const t = CHALK_THEMES.find(th => th.id === activeThemeId);
+    const t = CHALK_THEMES.find(th => th.id === activeTheme);
     if (t) applyTheme(t);
-  }, [activeThemeId]); // themeMode dep added below after declaration
+  }, [activeTheme]); // themeMode dep added below after declaration
 
   // Persist cosmetics to Firebase payload
   useEffect(() => {
     if (!uid) return;
-    updateCosmetics(activeThemeId as string, activeCostume as string, activeTrailId as string);
-  }, [uid, activeThemeId, activeCostume, activeTrailId, updateCosmetics]);
-
-  const handleThemeChange = useCallback((t: ChalkTheme) => setActiveThemeId(t.id), [setActiveThemeId]);
+    updateCosmetics(activeTheme, activeCostume, activeTrailId);
+  }, [uid, activeTheme, activeCostume, activeTrailId, updateCosmetics]);
 
   // ── Theme mode (dark/light) ──
   const [themeMode, setThemeMode] = useLocalState(STORAGE_KEYS.theme, 'dark', uid);
   useEffect(() => {
     applyMode(themeMode as 'dark' | 'light');
     // Re-apply chalk theme colours for the new mode (dark uses .color, light uses .lightColor)
-    const t = CHALK_THEMES.find(th => th.id === activeThemeId);
+    const t = CHALK_THEMES.find(th => th.id === activeTheme);
     if (t) applyTheme(t);
-  }, [themeMode, activeThemeId]);
+  }, [themeMode, activeTheme]);
   const toggleThemeMode = useCallback(() => {
     setThemeMode(themeMode === 'dark' ? 'light' : 'dark');
   }, [themeMode, setThemeMode]);
-
-  // Show loading screen while Firebase auth initializes
-  if (authLoading) {
-    return <BlackboardLayout><LoadingFallback /></BlackboardLayout>;
-  }
 
   return (
     <>
@@ -558,8 +574,8 @@ function App() {
         {/* ── Global Canvas Overlay (Swipe Trail) ── */}
         <SwipeTrail
           streak={streak}
-          activeTrailId={activeTrailId as string}
-          baseColor={CHALK_THEMES.find(t => t.id === activeThemeId)?.color}
+          activeTrailId={activeTrailId}
+          baseColor={CHALK_THEMES.find(t => t.id === activeTheme)?.color}
         />
 
         {/* ── Top-right controls (theme toggle) — game tab only, hidden during immersive sub-modes ── */}
@@ -862,7 +878,7 @@ function App() {
                 setQuestionType(cat as QuestionType);
                 // If practicing a tier category, also update grade level to match
                 if (cat.startsWith('tier-')) {
-                  setGrade(cat as GradeLevel);
+                  onGradeChange(cat as GradeLevel);
                 }
                 setActiveTab('game');
               }}
@@ -872,35 +888,15 @@ function App() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeThemeId as string} activeCostume={activeCostume as string} onOpenMultiplayer={() => setShowMultiplayerLobby(true)} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 
         {activeTab === 'me' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
             <Suspense fallback={<LoadingFallback />}><MePage
-              stats={stats}
-              accuracy={accuracy}
-              sessionScore={score}
-              sessionStreak={bestStreak}
-              onReset={resetStats}
               unlocked={unlocked}
-              activeCostume={activeCostume}
-              onCostumeChange={handleCostumeChange}
-              activeTheme={activeThemeId}
-              onThemeChange={handleThemeChange}
-              activeTrailId={activeTrailId as string}
-              onTrailChange={handleTrailChange}
-              displayName={user?.displayName ?? ''}
-              onDisplayNameChange={setDisplayName}
-              isAnonymous={user?.isAnonymous ?? true}
-              onLinkGoogle={linkGoogle}
-              onSendEmailLink={sendEmailLink}
-              activeBadge={stats.activeBadgeId || ''}
-              onBadgeChange={updateBadge}
-              grade={grade as string}
               onGradeChange={handleGradeChange}
-              dialect={dialect}
               onDialectChange={handleDialectChange}
             /></Suspense>
           </motion.div>
@@ -963,10 +959,10 @@ function App() {
               onDelete={customLists.deleteList}
               onPractice={(listId) => {
                 setActiveCustomListId(listId);
-                setShowCustomLists(false);
+                closeModal('showCustomLists');
                 setQuestionTypeRaw('custom');
               }}
-              onClose={() => setShowCustomLists(false)}
+              onClose={() => closeModal('showCustomLists')}
             />
           )}
         </AnimatePresence>
@@ -984,7 +980,7 @@ function App() {
               onJoin={mp.joinRoom}
               onReady={mp.setReady}
               onStart={mp.startMatch}
-              onClose={() => { mp.leaveRoom(); setShowMultiplayerLobby(false); }}
+              onClose={() => { mp.leaveRoom(); closeModal('showMultiplayerLobby'); }}
             />
           )}
         </AnimatePresence>
@@ -999,7 +995,7 @@ function App() {
               roundTimeLeft={mp.roundTimeLeft}
               uid={uid}
               onSubmitAnswer={mp.submitAnswer}
-              onLeave={() => { mp.leaveRoom(); setShowMultiplayerLobby(false); }}
+              onLeave={() => { mp.leaveRoom(); closeModal('showMultiplayerLobby'); }}
             />
           </div>
         )}
@@ -1016,6 +1012,22 @@ function App() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function App() {
+  const { user, loading: authLoading } = useFirebaseAuth();
+  const uid = user?.uid ?? null;
+
+  // Show loading screen while Firebase auth initializes
+  if (authLoading) {
+    return <BlackboardLayout><LoadingFallback /></BlackboardLayout>;
+  }
+
+  return (
+    <UserProvider uid={uid}>
+      <AppInner />
+    </UserProvider>
   );
 }
 

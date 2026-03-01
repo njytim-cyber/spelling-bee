@@ -1,23 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 /**
  * Auto-shows session summary when daily challenge finishes.
- * Returns showSummary state + setter.
+ * Calls the provided setShowSummary callback when daily completes.
  */
-export function useAutoSummary(dailyComplete: boolean) {
-    const [showSummary, setShowSummary] = useState(false);
+export function useAutoSummary(dailyComplete: boolean, setShowSummary: (value: boolean) => void) {
+    // Track previous state using ref to avoid cascading renders
+    const prevDailyCompleteRef = useRef(false);
 
-    // Daily challenge auto-show
-    const [prevDailyComplete, setPrevDailyComplete] = useState(false);
-    if (dailyComplete && !prevDailyComplete) {
-        setPrevDailyComplete(true);
-        setShowSummary(true);
-    }
-    if (!dailyComplete && prevDailyComplete) {
-        setPrevDailyComplete(false);
-    }
-
-    return { showSummary, setShowSummary };
+    useEffect(() => {
+        if (dailyComplete && !prevDailyCompleteRef.current) {
+            prevDailyCompleteRef.current = true;
+            setShowSummary(true);
+        } else if (!dailyComplete && prevDailyCompleteRef.current) {
+            prevDailyCompleteRef.current = false;
+        }
+    }, [dailyComplete, setShowSummary]);
 }
 
 /**
