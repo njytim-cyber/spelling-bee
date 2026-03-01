@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievements';
 import { AchievementBadge } from './AchievementBadge';
@@ -109,8 +109,13 @@ export const MePage = memo(function MePage({ unlocked, onGradeChange, onDialectC
     const [showEmailInput, setShowEmailInput] = useState(false);
     const [emailInput, setEmailInput] = useState('');
     const [emailSent, setEmailSent] = useState(false);
-    const { rank, nextRank, progress } = getRank(stats.totalXP);
-    const mastery = !nextRank ? getMasteryInfo(stats.totalXP) : null;
+
+    // Memoize expensive rank calculations
+    const rankInfo = useMemo(() => getRank(stats.totalXP), [stats.totalXP]);
+    const { rank, nextRank, progress } = rankInfo;
+    const mastery = useMemo(() =>
+        !nextRank ? getMasteryInfo(stats.totalXP) : null,
+    [nextRank, stats.totalXP]);
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20">
