@@ -99,8 +99,6 @@ export function useGameLoop(
 
     /** Schedule a timeout that gets auto-cleared on unmount */
     const safeTimeout = useCallback((fn: () => void, ms: number) => {
-        if (frozenRef.current) return;
-
         // Prune completed timers before adding new ones to prevent unbounded growth
         if (pendingTimers.current.size >= MAX_PENDING_TIMERS) {
             console.warn('Max pending timers reached, clearing oldest');

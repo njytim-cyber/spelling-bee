@@ -99,7 +99,7 @@ export function usePronunciation(): UsePronunciationReturn {
         const dialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
         utterance.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
         const storedRate = localStorage.getItem(STORAGE_KEYS.ttsRate);
-        utterance.rate = storedRate ? parseFloat(storedRate) : 0.85;
+        utterance.rate = storedRate ? parseFloat(storedRate) : 1.0;
         utterance.pitch = 1;
         if (voiceRef.current) utterance.voice = voiceRef.current;
 
@@ -114,7 +114,7 @@ export function usePronunciation(): UsePronunciationReturn {
     /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
     const speak = useCallback((text: string) => {
         const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
-        const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '0.85');
+        const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '1.0');
 
         // Always try cloud first if a voice is configured
         if (cloudVoice) {

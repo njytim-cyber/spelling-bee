@@ -1,24 +1,18 @@
 /**
  * components/SettingsModal.tsx
  *
- * App settings: dialect, grade, TTS voice/speed, theme toggle.
+ * App settings: dialect, TTS voice/speed, theme toggle.
  */
 import { memo, useState } from 'react';
 import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
 import { useReducedMotion, type MotionPreference } from '../hooks/useReducedMotion';
-import type { GradeLevel } from '../domains/spelling/spellingCategories';
-import { GRADE_LEVELS, gradeIcon } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, synthesizeCloud } from '../services/cloudTts';
-import { TIER_1_WORDS } from '../domains/spelling/words/tier1';
-import { TIER_2_WORDS } from '../domains/spelling/words/tier2';
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 
 interface Props {
-    grade: string;
-    onGradeChange: (grade: GradeLevel) => void;
     dialect: string;
     onDialectChange: (d: Dialect) => void;
     onClose: () => void;
@@ -30,7 +24,7 @@ interface Props {
 
 function getStoredRate(): number {
     const v = localStorage.getItem(STORAGE_KEYS.ttsRate);
-    return v ? parseFloat(v) : 0.85;
+    return v ? parseFloat(v) : 1.0;
 }
 
 function getStoredCloudVoice(): string {
@@ -43,18 +37,7 @@ function getStoredCloudVoice(): string {
     return defaultVoice;
 }
 
-// Word count mapping (tier 3-5 are lazy-loaded, use approximate counts from CLAUDE.md)
-const TIER_WORD_COUNTS: Record<string, number> = {
-    'tier-1': TIER_1_WORDS.length,
-    'tier-2': TIER_2_WORDS.length,
-    'tier-3': 505,
-    'tier-4': 504,
-    'tier-5': 512 + 250 + 108, // base + scripps + state
-};
-
 export const SettingsModal = memo(function SettingsModal({
-    grade,
-    onGradeChange,
     dialect,
     onDialectChange,
     onClose,
@@ -141,42 +124,6 @@ export const SettingsModal = memo(function SettingsModal({
                                 <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-0.5">{examples}</div>
                             </button>
                         ))}
-                    </div>
-                </section>
-
-                {/* Grade Level */}
-                <section className="mb-5">
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Grade Level</h4>
-                    <div className="flex flex-col gap-1.5">
-                        {GRADE_LEVELS.map(g => {
-                            const wordCount = TIER_WORD_COUNTS[g.id] || 0;
-                            return (
-                                <button
-                                    key={g.id}
-                                    onClick={() => onGradeChange(g.id)}
-                                    className={`flex items-center justify-between px-3 py-2 rounded-xl border transition-colors text-left ${
-                                        grade === g.id
-                                            ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
-                                            : 'border-[rgb(var(--color-fg))]/10 hover:border-[rgb(var(--color-fg))]/25'
-                                    }`}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <span className={`w-5 h-5 flex items-center justify-center ${grade === g.id ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/50'}`}>
-                                            {gradeIcon(g.id)}
-                                        </span>
-                                        <div>
-                                            <div className={`text-sm ui font-medium ${grade === g.id ? 'text-[var(--color-gold)]' : 'text-[var(--color-chalk)]'}`}>
-                                                {g.label}
-                                            </div>
-                                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30">{g.grades}</div>
-                                        </div>
-                                    </div>
-                                    <div className={`text-xs ui ${grade === g.id ? 'text-[var(--color-gold)]/60' : 'text-[rgb(var(--color-fg))]/30'}`}>
-                                        {wordCount.toLocaleString()} words
-                                    </div>
-                                </button>
-                            );
-                        })}
                     </div>
                 </section>
 

@@ -8,6 +8,7 @@ import { memo, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBeeSimulation } from '../hooks/useBeeSimulation';
 import type { BeeLevel } from '../hooks/useBeeSimulation';
+import { usePronunciation } from '../hooks/usePronunciation';
 import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { BeeClassroom } from './BeeClassroom';
@@ -36,11 +37,11 @@ import { STORAGE_KEYS } from '../config';
 import type { SeasonalTheme } from '../utils/seasonalThemes';
 import type { CharacterStyle } from '../utils/characterStyles';
 
-const BEE_LEVELS: { id: BeeLevel; label: string; desc: string }[] = [
-    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3' },
-    { id: 'district', label: 'District', desc: 'Grades 2-5' },
-    { id: 'state', label: 'State', desc: 'Grades 4-8' },
-    { id: 'national', label: 'National', desc: 'Competition' },
+const BEE_LEVELS: { id: BeeLevel; label: string; desc: string; emoji: string }[] = [
+    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3', emoji: '🏫' },
+    { id: 'district', label: 'District', desc: 'Grades 2-5', emoji: '🏙️' },
+    { id: 'state', label: 'State', desc: 'Grades 4-8', emoji: '🗺️' },
+    { id: 'national', label: 'National', desc: 'Competition', emoji: '🏆' },
 ];
 
 interface Props {
@@ -113,8 +114,69 @@ function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct:
 }
 
 export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult }: Props) {
-    const [beeLevel, setBeeLevel] = useState<BeeLevel>('national');
+    const [beeLevel, setBeeLevel] = useState<BeeLevel | null>(null);
 
+    // Level selection screen — shown before the bee starts
+    if (!beeLevel) {
+        return (
+            <div className="flex-1 flex flex-col items-center relative overflow-hidden min-h-0">
+                <div className="w-full flex items-center gap-3 pt-3 pb-2 px-6 shrink-0">
+                    <button
+                        onClick={onExit}
+                        className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
+                        aria-label="Back"
+                    >
+                        <ChevronLeft />
+                    </button>
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium">Spelling Bee</div>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center justify-center px-6 pb-12">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col items-center gap-6 w-full max-w-[320px]"
+                    >
+                        <div className="text-6xl">🐝</div>
+                        <h2 className="text-2xl chalk text-[var(--color-chalk)] font-bold text-center">
+                            Choose Your Bee
+                        </h2>
+                        <p className="text-sm ui text-[rgb(var(--color-fg))]/40 text-center -mt-2">
+                            Pick a competition level to begin
+                        </p>
+
+                        <div className="w-full flex flex-col gap-2">
+                            {BEE_LEVELS.map((level, i) => (
+                                <motion.button
+                                    key={level.id}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.1 + i * 0.08 }}
+                                    onClick={() => setBeeLevel(level.id)}
+                                    className="w-full flex items-center gap-4 px-5 py-4 rounded-xl border-2 border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/50 hover:bg-[var(--color-gold)]/5 transition-all text-left group"
+                                >
+                                    <span className="text-2xl group-hover:scale-110 transition-transform">{level.emoji}</span>
+                                    <div className="flex-1">
+                                        <div className="text-base ui font-bold text-[var(--color-chalk)] group-hover:text-[var(--color-gold)] transition-colors">
+                                            {level.label}
+                                        </div>
+                                        <div className="text-xs ui text-[rgb(var(--color-fg))]/35">{level.desc}</div>
+                                    </div>
+                                    <ChevronLeft className="w-4 h-4 text-[rgb(var(--color-fg))]/20 rotate-180 group-hover:text-[var(--color-gold)]/50 transition-colors" />
+                                </motion.button>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        );
+    }
+
+    return <BeeSimGame beeLevel={beeLevel} onExit={onExit} onAnswer={onAnswer} onBeeResult={onBeeResult} onChangeLevel={() => setBeeLevel(null)} />;
+});
+
+/** The actual bee game — only renders after a level has been chosen */
+const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeResult, onChangeLevel }: Props & { beeLevel: BeeLevel; onChangeLevel: () => void }) {
     // Load user preferences from localStorage
     const [seasonalTheme] = useState<SeasonalTheme>(() => {
         const stored = localStorage.getItem(STORAGE_KEYS.seasonalTheme);
@@ -244,9 +306,18 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
         }
     }, [phase, round, wordsCorrect, beeLevel, sessionXP, onBeeResult, soundOn]);
 
-    // Auto-start session on mount
+    // Welcome greeting + auto-start session on mount
+    const { speak: speakGreeting } = usePronunciation();
+    const greetedRef = useRef(false);
     useEffect(() => {
-        if (!currentWord) startSession();
+        if (!currentWord && !greetedRef.current) {
+            greetedRef.current = true;
+            const levelLabel = BEE_LEVELS.find(l => l.id === beeLevel)?.label ?? 'Spelling';
+            speakGreeting(`Welcome to the ${levelLabel} Spelling Bee!`);
+            // Start session after a short delay so greeting plays first
+            const id = setTimeout(() => startSession(), 1800);
+            return () => clearTimeout(id);
+        }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Still loading first word
@@ -349,25 +420,9 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                 >
                     <span className="text-lg">{soundOn ? '🔊' : '🔇'}</span>
                 </button>
-                {phase !== 'eliminated' && phase !== 'won' && (
-                    wordsAttempted === 0 ? (
-                        <select
-                            value={beeLevel}
-                            onChange={e => setBeeLevel(e.target.value as BeeLevel)}
-                            className="text-xs ui px-3 py-1.5 rounded-xl border-2 border-[var(--color-gold)]/30 bg-[var(--color-board)] text-[var(--color-gold)] cursor-pointer outline-none shrink-0 hover:border-[var(--color-gold)]/50 transition-colors"
-                        >
-                            {BEE_LEVELS.map(l => (
-                                <option key={l.id} value={l.id} className="bg-[var(--color-board)] text-[var(--color-chalk)]">
-                                    {l.label}
-                                </option>
-                            ))}
-                        </select>
-                    ) : (
-                        <span className="text-xs ui px-2 py-1 text-[var(--color-gold)]/60 shrink-0">
-                            {BEE_LEVELS.find(l => l.id === beeLevel)?.label}
-                        </span>
-                    )
-                )}
+                <span className="text-xs ui px-2 py-1 text-[var(--color-gold)]/60 shrink-0">
+                    {BEE_LEVELS.find(l => l.id === beeLevel)?.label}
+                </span>
             </div>
 
             <div className="flex-1 flex flex-col items-center w-full overflow-y-auto overflow-x-hidden px-4 pt-12 pb-24 min-h-0">
@@ -609,7 +664,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                             transition={{ delay: 0.7 }}
                         >
                             <button
-                                onClick={startSession}
+                                onClick={onChangeLevel}
                                 className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/50 bg-[var(--color-gold)]/15 text-sm ui font-semibold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/25 transition-colors"
                             >
                                 Try Again
@@ -712,7 +767,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                             transition={{ delay: 0.7 }}
                         >
                             <button
-                                onClick={startSession}
+                                onClick={onChangeLevel}
                                 className="px-8 py-3 rounded-xl border-3 border-[var(--color-gold)]/60 bg-[var(--color-gold)]/20 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 hover:scale-105 transition-all"
                             >
                                 Play Again

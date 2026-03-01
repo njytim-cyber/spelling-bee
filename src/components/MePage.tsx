@@ -8,14 +8,12 @@ import { SettingsModal } from './SettingsModal';
 import { STORAGE_KEYS } from '../config';
 import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
 import { useUser } from '../contexts/UserContext';
-import type { GradeLevel } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
 
 // Removed tab switching - now showing everything on one page
 
 interface Props {
     unlocked: Set<string>;
-    onGradeChange: (grade: GradeLevel) => void;
     onDialectChange: (d: Dialect) => void;
 }
 
@@ -78,7 +76,7 @@ const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.start
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 
-export const MePage = memo(function MePage({ unlocked, onGradeChange, onDialectChange }: Props) {
+export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props) {
     // Get user state from context
     const {
         stats,
@@ -96,7 +94,6 @@ export const MePage = memo(function MePage({ unlocked, onGradeChange, onDialectC
         linkGoogle,
         sendEmailLink,
         updateBadge,
-        grade,
         dialect,
     } = useUser();
 
@@ -616,8 +613,6 @@ export const MePage = memo(function MePage({ unlocked, onGradeChange, onDialectC
             <AnimatePresence>
                 {showSettings && (
                     <SettingsModal
-                        grade={grade}
-                        onGradeChange={onGradeChange}
                         dialect={dialect}
                         onDialectChange={onDialectChange}
                         onClose={() => setShowSettings(false)}

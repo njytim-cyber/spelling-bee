@@ -15,34 +15,34 @@ export interface CloudVoice {
 }
 
 export const CLOUD_VOICES: CloudVoice[] = [
-    // US English (9 voices)
-    { id: 'en-US-Neural2-A', label: 'US - Voice A (Male)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-C', label: 'US - Voice C (Female)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-D', label: 'US - Voice D (Male)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-E', label: 'US - Voice E (Female)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-F', label: 'US - Voice F (Female)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-G', label: 'US - Voice G (Female)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-H', label: 'US - Voice H (Female)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-I', label: 'US - Voice I (Male)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-J', label: 'US - Voice J (Male)', langCode: 'en-US' },
+    // US English (9 voices) — friendly names describe tone/character
+    { id: 'en-US-Neural2-A', label: 'US - Andrew (Calm)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-C', label: 'US - Clara (Warm)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-D', label: 'US - David (Clear)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-E', label: 'US - Emily (Bright)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-F', label: 'US - Fiona (Friendly)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-G', label: 'US - Grace (Gentle)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-H', label: 'US - Hannah (Steady)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-I', label: 'US - Isaac (Deep)', langCode: 'en-US' },
+    { id: 'en-US-Neural2-J', label: 'US - James (Strong)', langCode: 'en-US' },
     // British English (7 voices)
-    { id: 'en-GB-Neural2-A', label: 'UK - Voice A (Female)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-B', label: 'UK - Voice B (Male)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-C', label: 'UK - Voice C (Female)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-D', label: 'UK - Voice D (Male)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-F', label: 'UK - Voice F (Female)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-N', label: 'UK - Voice N (Male)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-O', label: 'UK - Voice O (Female)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-A', label: 'UK - Alice (Poised)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-B', label: 'UK - Benjamin (Warm)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-C', label: 'UK - Charlotte (Bright)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-D', label: 'UK - Daniel (Clear)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-F', label: 'UK - Florence (Soft)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-N', label: 'UK - Nathan (Steady)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-O', label: 'UK - Olivia (Gentle)', langCode: 'en-GB' },
     // Australian English (4 voices)
-    { id: 'en-AU-Neural2-A', label: 'AU - Voice A (Female)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-B', label: 'AU - Voice B (Male)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-C', label: 'AU - Voice C (Female)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-D', label: 'AU - Voice D (Male)', langCode: 'en-AU' },
+    { id: 'en-AU-Neural2-A', label: 'AU - Amelia (Bright)', langCode: 'en-AU' },
+    { id: 'en-AU-Neural2-B', label: 'AU - Blake (Relaxed)', langCode: 'en-AU' },
+    { id: 'en-AU-Neural2-C', label: 'AU - Chloe (Friendly)', langCode: 'en-AU' },
+    { id: 'en-AU-Neural2-D', label: 'AU - Dylan (Calm)', langCode: 'en-AU' },
     // Indian English (4 voices)
-    { id: 'en-IN-Neural2-A', label: 'IN - Voice A (Female)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-B', label: 'IN - Voice B (Male)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-C', label: 'IN - Voice C (Male)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-D', label: 'IN - Voice D (Female)', langCode: 'en-IN' },
+    { id: 'en-IN-Neural2-A', label: 'IN - Ananya (Clear)', langCode: 'en-IN' },
+    { id: 'en-IN-Neural2-B', label: 'IN - Bhaskar (Warm)', langCode: 'en-IN' },
+    { id: 'en-IN-Neural2-C', label: 'IN - Chetan (Steady)', langCode: 'en-IN' },
+    { id: 'en-IN-Neural2-D', label: 'IN - Diya (Gentle)', langCode: 'en-IN' },
 ];
 
 /** Filter voices matching the active dialect (en-US or en-GB). */

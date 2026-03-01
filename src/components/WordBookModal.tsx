@@ -41,7 +41,7 @@ function speak(word: string) {
     if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance(word);
         const storedRate = localStorage.getItem(STORAGE_KEYS.ttsRate);
-        u.rate = storedRate ? parseFloat(storedRate) : 0.85;
+        u.rate = storedRate ? parseFloat(storedRate) : 1.0;
         const dialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
         u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
         // Respect user's preferred voice

@@ -536,12 +536,6 @@ function AppInner() {
     setShowOnboarding(false);
   }, [onDialectChange, onGradeChange, setQuestionType, setShowOnboarding]);
 
-  const handleGradeChange = useCallback((g: GradeLevel) => {
-    onGradeChange(g);
-    const config = getGradeConfig(g);
-    setQuestionType(config.defaultCategory);
-  }, [onGradeChange, setQuestionType]);
-
   // ── Chalk themes ──
   useEffect(() => {
     const t = CHALK_THEMES.find(th => th.id === activeTheme);
@@ -896,7 +890,6 @@ function AppInner() {
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
             <Suspense fallback={<LoadingFallback />}><MePage
               unlocked={unlocked}
-              onGradeChange={handleGradeChange}
               onDialectChange={handleDialectChange}
             /></Suspense>
           </motion.div>

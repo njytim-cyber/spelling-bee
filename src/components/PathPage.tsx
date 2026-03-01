@@ -168,8 +168,8 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                 <span className={`text-base shrink-0 ${
                     group.isComplete ? 'text-[var(--color-correct)]' :
                     group.isCurrent ? 'text-[var(--color-gold)]' :
-                    group.isLocked ? 'text-[rgb(var(--color-fg))]/15' :
-                    'text-[rgb(var(--color-fg))]/25'
+                    group.isLocked ? 'text-[rgb(var(--color-fg))]/30' :
+                    'text-[rgb(var(--color-fg))]/40'
                 }`}>
                     {group.isComplete ? '\u2713' : group.isLocked ? '\uD83D\uDD12' : '\u25B6'}
                 </span>
@@ -180,19 +180,19 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                         <span className={`text-sm ui font-medium ${
                             group.isCurrent ? 'text-[var(--color-gold)]' :
                             group.isComplete ? 'text-[var(--color-correct)]' :
-                            group.isLocked ? 'text-[rgb(var(--color-fg))]/25' :
-                            'text-[rgb(var(--color-fg))]/60'
+                            group.isLocked ? 'text-[rgb(var(--color-fg))]/45' :
+                            'text-[rgb(var(--color-fg))]/70'
                         }`}>
                             {group.label}
                         </span>
                         <span className={`text-[10px] ui ${
-                            group.isLocked ? 'text-[rgb(var(--color-fg))]/12' : 'text-[rgb(var(--color-fg))]/30'
+                            group.isLocked ? 'text-[rgb(var(--color-fg))]/30' : 'text-[rgb(var(--color-fg))]/40'
                         }`}>
                             {group.wordCount} words
                         </span>
                     </div>
                     <span className={`text-[10px] ui ${
-                        group.isLocked ? 'text-[rgb(var(--color-fg))]/12' : 'text-[rgb(var(--color-fg))]/30'
+                        group.isLocked ? 'text-[rgb(var(--color-fg))]/30' : 'text-[rgb(var(--color-fg))]/40'
                     }`}>
                         {group.grades}
                     </span>
@@ -231,7 +231,7 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                                         <span className={`text-xs shrink-0 ${
                                             isComplete ? 'text-[var(--color-correct)]' :
                                             isCurrent ? 'text-[var(--color-gold)]' :
-                                            'text-[rgb(var(--color-fg))]/15'
+                                            'text-[rgb(var(--color-fg))]/30'
                                         }`}>
                                             {isComplete ? '\u2713' : isLocked ? '\uD83D\uDD12' : '\u25B6'}
                                         </span>
@@ -240,13 +240,13 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                                             <span className={`text-xs ui font-medium ${
                                                 isCurrent ? 'text-[var(--color-gold)]' :
                                                 isComplete ? 'text-[var(--color-correct)]/80' :
-                                                isLocked ? 'text-[rgb(var(--color-fg))]/20' :
-                                                'text-[rgb(var(--color-fg))]/50'
+                                                isLocked ? 'text-[rgb(var(--color-fg))]/40' :
+                                                'text-[rgb(var(--color-fg))]/60'
                                             }`}>
                                                 {pp.phase.name}
                                             </span>
                                             <span className={`text-[9px] ui ml-1.5 ${
-                                                isLocked ? 'text-[rgb(var(--color-fg))]/10' : 'text-[rgb(var(--color-fg))]/25'
+                                                isLocked ? 'text-[rgb(var(--color-fg))]/25' : 'text-[rgb(var(--color-fg))]/35'
                                             }`}>
                                                 {pp.phase.description}
                                             </span>
