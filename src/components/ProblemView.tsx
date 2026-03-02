@@ -78,6 +78,8 @@ const AnswerOption = memo(function AnswerOption({
             className="gpu-layer w-full"
             style={{ scale, opacity }}
             onClick={() => !frozen && onSwipe(dir)}
+            aria-label={`Answer: ${text}`}
+            aria-disabled={frozen}
         >
             {/* Answer pill — adapts width to word length */}
             <motion.div
@@ -172,12 +174,12 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     return (
         <div className="landscape-answers flex-1 overflow-y-auto overscroll-contain min-h-0 relative z-10" style={{ touchAction: 'pan-y' }}>
         <motion.div
-            className="flex flex-col items-center justify-center min-h-full px-4 pb-20 gpu-layer touch-none"
+            className="flex flex-col items-center justify-center min-h-full px-4 pb-20 landscape-compact-pb gpu-layer touch-none"
             onPan={handlePan}
             onPanEnd={handlePanEnd}
         >
             {/* Problem expression / prompt */}
-            <motion.div className="text-center mb-8 pr-12" animate={reducedMotion ? {} : pulseAnim}>
+            <motion.div className="text-center mb-8 landscape-compact-mb pr-12" animate={reducedMotion ? {} : pulseAnim}>
                 {/* Vocab mode label */}
                 {p.meta?.['mode'] === 'vocab' && (
                     <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 font-semibold">
@@ -197,7 +199,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 {(typeof p.meta?.['partOfSpeech'] === 'string' || ttsSupported) && (
                     <div className="mt-2 flex items-center justify-center gap-2">
                         {typeof p.meta?.['partOfSpeech'] === 'string' && (
-                            <span className="text-xs ui text-[rgb(var(--color-fg))]/30 italic">
+                            <span className="text-xs ui text-[rgb(var(--color-fg))]/40 italic">
                                 ({p.meta['partOfSpeech']})
                             </span>
                         )}
@@ -215,14 +217,14 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 )}
                 {/* Example sentence — shown after answering (frozen state) */}
                 {frozen && typeof p.meta?.['exampleSentence'] === 'string' && (
-                    <div className="mt-2 text-xs ui text-[rgb(var(--color-fg))]/30 max-w-[300px] mx-auto">
+                    <div className="mt-2 text-xs ui text-[rgb(var(--color-fg))]/30 max-w-[var(--content-w)] mx-auto">
                         &ldquo;{p.meta['exampleSentence']}&rdquo;
                     </div>
                 )}
             </motion.div>
 
             {/* Answer options */}
-            <div className="flex flex-col items-center gap-3 w-full max-w-[320px]">
+            <div className="flex flex-col items-center gap-3 w-full max-w-[var(--content-w)]">
                 {p.options.map((opt, i) => (
                     <AnswerOption
                         key={`${opt}-${i}`}
@@ -242,7 +244,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             {/* Wrong-answer detail panel — tap to dismiss */}
             {frozen && wrongAnswer && onDismissWrong && (
                 <motion.div
-                    className="mt-4 w-full max-w-[320px] rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
+                    className="mt-4 w-full max-w-[var(--content-w)] rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
                     initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
@@ -284,6 +286,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             <button
                                 type="button"
                                 onClick={handleSpeak}
+                                aria-label="Hear pronunciation"
                                 className="flex items-center gap-1 text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
                             >
                                 <IconSpeaker className="w-3.5 h-3.5" />
@@ -294,6 +297,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             <button
                                 type="button"
                                 onClick={() => setShowEtymology(true)}
+                                aria-label="Show word etymology"
                                 className="text-xs ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
                             >
                                 Explore origin

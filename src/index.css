@@ -483,14 +483,46 @@
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='0.035' numOctaves='3' seed='7'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='3'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='white' filter='url(%23r)'/%3E%3C/svg%3E");
 }
 
+/* ── Focus indicators — visible only for keyboard users ── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Suppress focus ring on mouse/touch — keeps tap-highlight off but keyboard ring visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* ── GPU hints for animated elements ── */
 .gpu-layer {
   will-change: transform, opacity;
   transform: translateZ(0);
 }
 
+/* ── Responsive content-width variable ── */
+/* Phone default: 320px. Wider touch screens: 400px. Galaxy Fold: clamped to 85vw. */
+:root {
+  --content-w: min(320px, 85vw);
+  --content-w-sm: min(280px, 80vw);
+}
+
+@media (min-width: 500px) {
+  :root {
+    --content-w: 400px;
+    --content-w-sm: 360px;
+  }
+}
+
 /* ── Desktop: center the app in a mobile-width column (TikTok style) ── */
-@media (min-width: 768px) {
+/* pointer:fine excludes touch devices (tablets) — they get full-width */
+@media (min-width: 768px) and (pointer: fine) {
+
+  :root {
+    --content-w: 320px;  /* Desktop column is 430px so 320px content stays comfortable */
+    --content-w-sm: 280px;
+  }
 
   html,
   body,
@@ -508,7 +540,48 @@
   }
 }
 
-/* ── Landscape mobile overrides ── */
+/* ── Tablet touch: cap content width so it doesn't stretch edge-to-edge ── */
+@media (min-width: 768px) and (pointer: coarse) {
+  #root {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Landscape: general spacing utilities (all landscape viewports) ── */
+@media (orientation: landscape) {
+  .landscape-compact-py {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  .landscape-compact-pb {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .landscape-compact-mb {
+    margin-bottom: 0.75rem !important;
+  }
+}
+
+/* ── Landscape tablet overrides (moderate compaction) ── */
+@media (orientation: landscape) and (min-height: 501px) and (max-height: 820px) {
+
+  .landscape-score {
+    padding-top: 12px !important;
+  }
+
+  .landscape-hide {
+    display: none !important;
+  }
+
+  .landscape-nav {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+}
+
+/* ── Landscape phone overrides (aggressive compaction) ── */
 @media (orientation: landscape) and (max-height: 500px) {
 
   /* Compact score area */

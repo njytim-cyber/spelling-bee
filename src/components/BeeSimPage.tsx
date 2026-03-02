@@ -135,7 +135,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col items-center gap-6 w-full max-w-[320px]"
+                        className="flex flex-col items-center gap-6 w-full max-w-[var(--content-w)]"
                     >
                         <div className="text-6xl">🐝</div>
                         <h2 className="text-2xl chalk text-[var(--color-chalk)] font-bold text-center">
@@ -324,7 +324,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
     if (!currentWord) {
         return (
             <div className="flex-1 flex flex-col items-center justify-center px-6 pb-4">
-                <div className="flex flex-col items-center gap-4 w-full max-w-[320px]">
+                <div className="flex flex-col items-center gap-4 w-full max-w-[var(--content-w)]">
                     {/* Skeleton classroom */}
                     <div className="w-full h-[280px] bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
                     {/* Skeleton buttons */}
@@ -480,6 +480,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                                     key={type}
                                                     onClick={() => requestInfo(type)}
                                                     disabled={alreadyAsked}
+                                                    aria-label={`Request ${label.toLowerCase()}`}
                                                     className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs ui font-medium transition-colors ${
                                                         alreadyAsked
                                                             ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default border border-transparent'
@@ -637,7 +638,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                             The word was: <span className="text-[var(--color-gold)]">{currentWord.word}</span>
                         </motion.div>
                         <motion.div
-                            className="text-base ui text-[rgb(var(--color-fg))]/60 italic text-center max-w-[280px]"
+                            className="text-base ui text-[rgb(var(--color-fg))]/60 italic text-center max-w-[var(--content-w-sm)]"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
@@ -738,7 +739,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                             Champion! 🎉
                         </motion.h2>
                         <motion.p
-                            className="text-base ui text-[rgb(var(--color-fg))]/70 font-medium text-center max-w-[280px]"
+                            className="text-base ui text-[rgb(var(--color-fg))]/70 font-medium text-center max-w-[var(--content-w-sm)]"
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 }}

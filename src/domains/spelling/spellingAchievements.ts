@@ -154,6 +154,16 @@ const TOURNAMENT_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
     { id: 'tournament-20', name: 'Spelling Gladiator', desc: 'Survive 20 tournament rounds', check: s => s.bestTournamentRound >= 20 },
 ];
 
+// ── Word mastery milestones ──────────────────────────────────────────────────
+
+const MASTERY_MILESTONE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
+    { id: 'word-explorer', name: 'Word Explorer', desc: 'Master 100 words', check: s => s.masteredWordCount >= 100 },
+    { id: 'word-scholar', name: 'Word Scholar', desc: 'Master 500 words', check: s => s.masteredWordCount >= 500 },
+    { id: 'word-professor', name: 'Word Professor', desc: 'Master 1,000 words', check: s => s.masteredWordCount >= 1000 },
+    { id: 'word-savant', name: 'Word Savant', desc: 'Master 5,000 words', check: s => s.masteredWordCount >= 5000 },
+    { id: 'word-omniscient', name: 'Word Omniscient', desc: 'Master 10,000 words', check: s => s.masteredWordCount >= 10000 },
+];
+
 // ── Public export ─────────────────────────────────────────────────────────────
 
 export const EVERY_SPELLING_ACHIEVEMENT: Achievement<SpellingAchievementStats>[] = [
@@ -162,6 +172,7 @@ export const EVERY_SPELLING_ACHIEVEMENT: Achievement<SpellingAchievementStats>[]
     ...TIMED_MODE_ACHIEVEMENTS,
     ...ULTIMATE_ACHIEVEMENTS,
     ...LEARNING_ACHIEVEMENTS,
+    ...MASTERY_MILESTONE_ACHIEVEMENTS,
     ...BEE_SIM_ACHIEVEMENTS,
     ...TOURNAMENT_ACHIEVEMENTS,
 ];

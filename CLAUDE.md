@@ -18,7 +18,7 @@ npm run verify    # Full check: lint + tsc + test + build
 - **Tailwind CSS 4** (via Vite plugin, utility-first)
 - **Framer Motion** (animations, swipe gestures, AnimatePresence)
 - **Firebase** (Auth + Firestore for cloud sync, leaderboards, pings)
-- **Vitest** + React Testing Library (8 test files, 80 tests)
+- **Vitest** + React Testing Library (11 test files, 121 tests)
 - **PWA** via vite-plugin-pwa with offline caching
 
 ## Architecture
@@ -30,13 +30,14 @@ src/
 ├── config.ts            # Storage keys, Firestore collections, app identity
 ├── engine/              # Domain-agnostic game engine (types, scoring)
 ├── domains/spelling/    # Spelling-specific logic
-│   ├── spellingCategories.ts   # Category/band/group definitions
+│   ├── spellingCategories.ts   # Category/grade/group definitions
 │   ├── spellingGenerator.ts    # Word selection + distractor generation
 │   ├── spellingAchievements.ts # Achievement definitions
-│   └── words/                  # Word bank (100K target across 10 tiers)
+│   └── words/                  # Word bank (117K words across 9 tiers)
 │       ├── registry.ts         # Lazy-loading tier registry
 │       ├── index.ts            # Lookup utilities (wordsByPattern, getWordMap, etc.)
-│       └── tier[1-5].ts        # Word data files (tier 3-5 lazy-loaded)
+│       ├── tier[1-5].ts        # Hand-curated word files
+│       └── tier[1-9]-pipeline*.ts  # Pipeline-generated word files (lazy-loaded)
 ├── hooks/               # Custom React hooks
 │   ├── useGameLoop.ts   # Core swipe game loop (problems, scoring, streaks)
 │   ├── useStats.ts      # Persistent stats (localStorage + Firestore sync)
@@ -54,36 +55,34 @@ src/
 ```
 
 ### Key Patterns
-- **Band system**: 3 difficulty bands (starter/rising/sigma) gate which word tiers and categories are available
-- **Category → Generator**: `spellingCategories.ts` defines IDs/groups, `spellingGenerator.ts` maps them to word selection logic
+- **Grade levels**: 5 grades (Seedling/Sprout/Growing/Climbing/Summit) gate difficulty floor and default category. Selected during onboarding, stored in UserContext.
+- **Category → Generator**: `spellingCategories.ts` defines IDs/groups, `spellingGenerator.ts` maps them to word selection logic via `selectWordPool()`
+- **Adaptive difficulty**: `useDifficulty` hook adjusts within the grade's range based on answer speed
 - **Leitner boxes**: Words progress through boxes 0-4 based on correct/incorrect answers, with increasing review delays
-- **Lazy loading**: Tiers 3-5 load on demand via `ensureTiersForBand()`. Registry version counter triggers re-renders
+- **Lazy loading**: Tiers 1-2 core words are eager-loaded. Pipeline expansions + tiers 3-9 load on demand via `ensureAllTiers()`. Registry version counter triggers re-renders.
 - **Stats merge**: Local-first with Firestore sync. `mergeStats()` takes the best of each field from local vs. cloud
 - **Modal pattern**: `AnimatePresence` + `motion.div` with overlay click-to-close, consistent 340px width
 
 ### Word Bank Structure
 Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, difficulty (1-10), pattern, pronunciation, optional etymology/source.
 
-**Target: 100,000 words across 10 tiers** (matching competitor scale).
+**117,324 total words** — 2,796 hand-curated + 91,569 pipeline across 9 tiers.
 
-| Tier | Grade | Difficulty | Patterns | DB Supply | Target |
-|------|-------|-----------|----------|-----------|--------|
-| 1 | Pre-K / K | 1-2 | cvc, blends, digraphs, sight words | 22,531 | 20,000 |
-| 2 | 1st-2nd | 3 | silent-e, vowel-teams | 20,166 | 18,000 |
-| 3 | 2nd-3rd | 4 | r-controlled, diphthongs | 21,193 | 15,000 |
-| 4 | 3rd-4th | 5 | prefixes, suffixes, multisyllable | 19,417 | 13,000 |
-| 5 | 4th-5th | 6 | compound, irregular, latin-roots | 17,828 | 10,000 |
-| 6 | 6th-7th | 7 | latin-roots, greek-roots, french-origin | 14,903 | 8,000 |
-| 7 | 7th-8th | 8 | Advanced roots, etymology required | 12,709 | 6,000 |
-| 8 | 9th-10th | 9 | All patterns, etymology required | 7,271 | 5,000 |
-| 9 | Competition | 10 | Competition words, full etymology | 414* | 3,000 |
-| 10 | Championship | 10 | Scripps/state-level, full etymology | 414* | 2,000 |
+| Tier | Grade Level | Difficulty | Words |
+|------|-------------|-----------|-------|
+| 1 | Seedling (K–1st) | 1-2 | 510 + 14,997 pipeline |
+| 2 | Sprout (2nd–3rd) | 3-4 | 505 + 14,571 pipeline |
+| 3 | Growing (4th–5th) | 5-6 | 505 + 15,000 pipeline |
+| 4 | Climbing (6th–7th) | 7-8 | 504 + 13,000 pipeline |
+| 5 | Summit (8th+) | 9-10 | 481 + 110 expansion + 10,000 pipeline |
+| 6 | Pipeline-only | 7 | 8,000 |
+| 7 | Pipeline-only | 8 | 6,000 |
+| 8 | Pipeline-only | 9 | 5,000 |
+| 9 | Pipeline-only | 10 | 5,000 |
+| Scripps | Competition | 8-10 | 259 |
+| State | Competition | 8-10 | 96 |
 
-*Tiers 9-10 share the diff-10 pool (currently 414). ~4,600 more diff-10 words need enrichment from the 566K DB.
-
-**Current state**: ~2,900 hand-curated + ~2,353 pipeline words in app. Pipeline DB has **566,664 words** (2.7GB Wiktionary dump + WordNet 3.1), with **137,749 fully enriched** (definition + example + distractors). Of those, **~127K pass quality filters** — more than enough for 100K without generating any new data.
-
-**Pipeline**: `scripts/pipeline/export-to-app.cjs` — SQLite → quality filters → TypeScript files. 11 rounds of quality iteration completed. ~25 content rejection rules, 200+ word blocklist, per-tier obscurity gates. No generated example sentences — all examples are real Wiktionary citations.
+**Pipeline**: `scripts/pipeline/export-to-app.cjs` — SQLite → quality filters → TypeScript files. Three-layer child safety filtering: 2,694-word master profanity list + profane root substring matching + 130+ content regex patterns on definitions/examples. 7,773 inappropriate words blocked. All examples are real Wiktionary citations — no AI-generated sentences.
 
 ### CSS Conventions
 - Two font families: `chalk` (display) and `ui` (interface)
@@ -146,35 +145,21 @@ Tests live in `src/tests/`. Run with `npx vitest run`. Key test areas:
 - Daily challenge seeding
 - Word registry loading
 
-## Word Bank Expansion (Active Goal)
-**Target: 100,000 words across 10 tiers** — matching competitor scale while maintaining Principle 1 quality standards.
-
-### Pipeline Architecture
-- **Source DB**: `scripts/output/words.db` — 566,664 words from Wiktionary (2.7GB kaikki.org dump) + WordNet 3.1
-- **Enriched pool**: 137,749 words with definition + example + distractors (ready for export)
-- **IPA coverage**: 85,939 words with Wiktionary IPA pronunciations
-- **Export script**: `scripts/pipeline/export-to-app.cjs` — 11 rounds of quality iteration
+## Word Bank Pipeline
+- **Source DB**: `scripts/output/words.db` — Wiktionary + WordNet 3.1
+- **Export script**: `scripts/pipeline/export-to-app.cjs` — SQLite → quality filters → TypeScript chunk files
+- **Audit script**: `scripts/audit-child-safety.cjs` — scans all word files for inappropriate content
 - **Registry**: `src/domains/spelling/words/registry.ts` — lazy-loading with chunked pipeline files
 
 ### Quality Rules (Principle 1 still applies)
 - Every word must have accurate: definition, example sentence, part of speech, difficulty, pattern, pronunciation, distractors, theme
 - Etymology required for difficulty 8+ (competition words)
 - IPA pronunciation required for tiers 1-4; word-as-fallback OK for tiers 5+
-- Distractors must never contain the correct spelling
+- Distractors must never contain the correct spelling or any profane word
 - No duplicates across hand-curated and pipeline files
-- ~25 content rejection rules (archaic language, inappropriate content, broken references, etc.)
-- 200+ word blocklist + 90+ content pattern blocklist
+- Three-layer child safety filtering: master profanity list (2,694 words) + profane root substring matching + 130+ content regex patterns
 - Per-tier obscurity gates (tier 1: senseCount >= 5, tier 2: >= 3, tier 3: >= 2)
-- Difficulty 10 = genuinely championship-obscure; don't inflate easy words
-
-### Scaling from 5 to 10 Tiers
-The current app uses 5 tiers (difficulty 1-2, 3-4, 5-6, 7-8, 9-10). Expanding to 10 tiers means each difficulty level gets its own tier, allowing finer-grained progression. This requires:
-1. Update `GradeLevel` type and `GradeConfig` to support tiers 1-10
-2. Update `SpellingCategory` union with tier-6 through tier-10
-3. Update band system to map to 10 tiers instead of 5
-4. Update registry lazy-loading for tiers 6-10
-5. Update export script tier mapping (difficulty → tier is now 1:1)
-6. Update UI (grade picker, progression display)
+- All example sentences are real Wiktionary citations — no AI-generated content
 
 ## Pre-push Hook
 `npm run verify` runs automatically before every `git push`. It runs lint, type-check, tests, and build — blocks push on failure.

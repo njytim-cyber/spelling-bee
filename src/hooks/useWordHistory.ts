@@ -207,6 +207,9 @@ export function useWordHistory() {
         Object.values(history.records).filter(r => r.box >= 4).length,
     [history.records]);
 
+    /** Count of unique words the student has ever attempted */
+    const uniqueWordsAttempted = Object.keys(history.records).length;
+
     return {
         records: history.records,
         recentAttempts: history.recentAttempts,
@@ -215,5 +218,6 @@ export function useWordHistory() {
         weakCategories,
         hardestWords,
         masteredCount,
+        uniqueWordsAttempted,
     };
 }

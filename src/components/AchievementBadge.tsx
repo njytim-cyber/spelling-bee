@@ -248,6 +248,66 @@ const UltimatePerfect = ({ size = 48, unlocked }: BadgeProps) => (
     </svg>
 );
 
+/* ── Word Mastery Milestone Badges ── */
+
+/** Open book with sparkle — Word Explorer (100 mastered) */
+const WordExplorer = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M8 10c4-2 8-2 16 2v28c-8-4-12-4-16-2z" {...S} strokeWidth="2.5" />
+        <path d="M40 10c-4-2-8-2-16 2v28c8-4 12-4 16-2z" {...S} strokeWidth="2.5" />
+        <line x1="24" y1="12" x2="24" y2="40" {...S} strokeWidth="1.5" opacity="0.3" />
+        <path d="M34 6l1 4 4 1-4 1-1 4-1-4-4-1 4-1z" fill="currentColor" opacity="0.6" />
+    </svg>
+);
+
+/** Stacked books — Word Scholar (500 mastered) */
+const WordScholar = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <rect x="10" y="30" width="28" height="6" rx="1" {...S} strokeWidth="2.5" />
+        <rect x="12" y="23" width="24" height="6" rx="1" {...S} strokeWidth="2.5" />
+        <rect x="14" y="16" width="20" height="6" rx="1" {...S} strokeWidth="2.5" />
+        <path d="M24 8l-4 8h8z" {...S} strokeWidth="2" />
+    </svg>
+);
+
+/** Graduation cap — Word Professor (1,000 mastered) */
+const WordProfessor = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M4 20l20-10 20 10-20 10z" {...S} strokeWidth="2.5" />
+        <path d="M12 25v10c0 0 5 5 12 5s12-5 12-5V25" {...S} strokeWidth="2.5" />
+        <line x1="40" y1="20" x2="40" y2="38" {...S} strokeWidth="2.5" />
+        <circle cx="40" cy="39" r="2" fill="currentColor" opacity="0.5" />
+    </svg>
+);
+
+/** Brain with rays — Word Savant (5,000 mastered) */
+const WordSavant = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M24 38c-7 0-12-5-12-12 0-4 2-7 4-9 1-1 1-3 0-4 2-3 5-5 8-5s6 2 8 5c-1 1-1 3 0 4 2 2 4 5 4 9 0 7-5 12-12 12z" {...S} strokeWidth="2.5" />
+        <path d="M24 14v24" {...S} strokeWidth="1.5" opacity="0.3" />
+        <path d="M18 22c3 2 6 2 12 0" {...S} strokeWidth="1.5" opacity="0.3" />
+        {[0, 45, 90, 135, 180, 225, 270, 315].map(a => {
+            const r = (a * Math.PI) / 180;
+            const x1 = 24 + 16 * Math.cos(r), y1 = 24 + 16 * Math.sin(r);
+            const x2 = 24 + 20 * Math.cos(r), y2 = 24 + 20 * Math.sin(r);
+            return <line key={a} x1={x1} y1={y1} x2={x2} y2={y2} {...S} strokeWidth="1.5" opacity="0.4" />;
+        })}
+    </svg>
+);
+
+/** All-seeing eye — Word Omniscient (10,000 mastered) */
+const WordOmniscient = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M4 24c0 0 8-14 20-14s20 14 20 14-8 14-20 14S4 24 4 24z" {...S} strokeWidth="2.5" />
+        <circle cx="24" cy="24" r="8" {...S} strokeWidth="2.5" />
+        <circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.6" />
+        {[0, 72, 144, 216, 288].map(a => {
+            const r = (a * Math.PI) / 180;
+            return <line key={a} x1={24 + 12 * Math.cos(r)} y1={24 + 12 * Math.sin(r)} x2={24 + 15 * Math.cos(r)} y2={24 + 15 * Math.sin(r)} {...S} strokeWidth="1.5" opacity="0.3" />;
+        })}
+    </svg>
+);
+
 /** Map from achievement ID to SVG component */
 const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
     'first-steps': FirstSteps,
@@ -274,6 +334,12 @@ const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
     'ultimate-ascend': UltimateAscend,
     'ultimate-streak': UltimateStreak,
     'ultimate-perfect': UltimatePerfect,
+    // Word mastery milestones
+    'word-explorer': WordExplorer,
+    'word-scholar': WordScholar,
+    'word-professor': WordProfessor,
+    'word-savant': WordSavant,
+    'word-omniscient': WordOmniscient,
 };
 
 interface Props {

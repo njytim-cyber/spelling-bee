@@ -66,4 +66,44 @@ describe('achievements.ts', () => {
         const unlocked = checkSpellingAchievements(stats, new Set());
         expect(unlocked).toContain('dedicated');
     });
+
+    it('awards word-explorer at 100 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 100 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).toContain('word-explorer');
+        expect(unlocked).not.toContain('word-scholar');
+    });
+
+    it('awards word-scholar at 500 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 500 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).toContain('word-explorer');
+        expect(unlocked).toContain('word-scholar');
+        expect(unlocked).not.toContain('word-professor');
+    });
+
+    it('awards word-professor at 1000 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 1000 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).toContain('word-professor');
+    });
+
+    it('awards word-savant at 5000 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 5000 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).toContain('word-savant');
+        expect(unlocked).not.toContain('word-omniscient');
+    });
+
+    it('awards word-omniscient at 10000 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 10000 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).toContain('word-omniscient');
+    });
+
+    it('does not award word-explorer below 100 mastered words', () => {
+        const stats: SpellingAchievementStats = { ...baseStats, masteredWordCount: 99 };
+        const unlocked = checkSpellingAchievements(stats, new Set());
+        expect(unlocked).not.toContain('word-explorer');
+    });
 });

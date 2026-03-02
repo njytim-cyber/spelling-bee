@@ -41,7 +41,7 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
     return (
         <div
             ref={wrapperRef}
-            className="w-full max-w-[320px] mx-auto relative cursor-text"
+            className="w-full max-w-[var(--content-w)] mx-auto relative cursor-text"
             onClick={focusInput}
         >
             {/* Hidden input — captures keyboard, invisible but overlays the display */}
@@ -52,6 +52,7 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                 onChange={e => onChange(e.target.value)}
                 onKeyDown={handleKeyDown}
                 disabled={disabled}
+                aria-label="Type your spelling"
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"
@@ -94,7 +95,7 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
             </div>
 
             {/* Hint text */}
-            <p className="text-center mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/25">
+            <p className="text-center mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40">
                 {value.length === 0 ? 'start typing...' : 'press Enter to submit'}
             </p>
         </div>

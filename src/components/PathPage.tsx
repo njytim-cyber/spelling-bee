@@ -351,7 +351,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                 <div className="flex flex-col items-center py-8 px-4 text-center">
                     <span className="text-3xl mb-3">&#127891;</span>
                     <p className="text-sm ui text-[rgb(var(--color-fg))]/60 mb-1">Start practicing to see your progress!</p>
-                    <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 max-w-[240px]">
+                    <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 max-w-[240px]">
                         Go to the Game tab and swipe right for correct, left for wrong. Your study plan, progress, and insights will appear here.
                     </p>
                     {onPractice && (

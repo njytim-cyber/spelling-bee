@@ -271,7 +271,7 @@ function AppInner() {
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount } = useWordHistory();
+  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
 
   // Root-family drill queue — maps root's example words to WordRecord[] for GuidedSpellingPage
   const drillRootQueue = useMemo(() => {
@@ -891,6 +891,8 @@ function AppInner() {
             <Suspense fallback={<LoadingFallback />}><MePage
               unlocked={unlocked}
               onDialectChange={handleDialectChange}
+              masteredCount={masteredCount}
+              uniqueWordsAttempted={uniqueWordsAttempted}
             /></Suspense>
           </motion.div>
         )}

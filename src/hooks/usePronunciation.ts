@@ -24,12 +24,15 @@ interface UsePronunciationReturn {
     isSupported: boolean;
     /** Cancel any ongoing speech */
     cancel: () => void;
+    /** True when cloud TTS failed and browser fallback was used */
+    usedFallback: boolean;
 }
 
 const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
 
 export function usePronunciation(): UsePronunciationReturn {
     const [isSpeaking, setIsSpeaking] = useState(false);
+    const [usedFallback, setUsedFallback] = useState(false);
     const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
     const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -113,6 +116,7 @@ export function usePronunciation(): UsePronunciationReturn {
 
     /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
     const speak = useCallback((text: string) => {
+        setUsedFallback(false);
         const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
         const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '1.0');
 
@@ -134,17 +138,20 @@ export function usePronunciation(): UsePronunciationReturn {
                     audio.onerror = () => {
                         if (!mountedRef.current) return;
                         setIsSpeaking(false);
+                        setUsedFallback(true);
                         audioRef.current = null;
                         speakBrowser(text); // fallback
                     };
                     audio.play().catch(() => {
                         if (!mountedRef.current) return;
                         setIsSpeaking(false);
+                        setUsedFallback(true);
                         speakBrowser(text); // fallback
                     });
                 })
                 .catch(() => {
                     setIsSpeaking(false);
+                    setUsedFallback(true);
                     speakBrowser(text); // fallback
                 });
             return;
@@ -170,5 +177,5 @@ export function usePronunciation(): UsePronunciationReturn {
         speak(`${word}. ${letters}. ${word}`);
     }, [speak]);
 
-    return { speak, speakWord, speakWordNumber, speakLetters, isSpeaking, isSupported: supported, cancel };
+    return { speak, speakWord, speakWordNumber, speakLetters, isSpeaking, isSupported: supported, cancel, usedFallback };
 }

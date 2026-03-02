@@ -1003,7 +1003,7 @@ export const BeeClassroom = memo(function BeeClassroom({
     return (
         <svg
             viewBox="0 -40 320 300"
-            className="w-full max-w-[320px] h-auto cursor-pointer"
+            className="w-full max-w-[var(--content-w)] h-auto cursor-pointer"
             style={{ color: 'var(--color-chalk)' }}
             onClick={onPronounce}
             role="button"

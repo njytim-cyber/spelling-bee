@@ -5,9 +5,11 @@ import { AchievementBadge } from './AchievementBadge';
 import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { SettingsModal } from './SettingsModal';
+import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS } from '../config';
 import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
 import { useUser } from '../contexts/UserContext';
+import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import type { Dialect } from '../domains/spelling/words/types';
 
 // Removed tab switching - now showing everything on one page
@@ -15,6 +17,8 @@ import type { Dialect } from '../domains/spelling/words/types';
 interface Props {
     unlocked: Set<string>;
     onDialectChange: (d: Dialect) => void;
+    masteredCount: number;
+    uniqueWordsAttempted: number;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -71,12 +75,13 @@ function getMasteryInfo(xp: number) {
 }
 
 // Derive achievement sublists from the single spelling array
-const CORE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => !a.id.startsWith('skull-') && !a.id.startsWith('ultimate-') && !['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
+const CORE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => !a.id.startsWith('skull-') && !a.id.startsWith('ultimate-') && !a.id.startsWith('word-') && !['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('skull-'));
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
+const MASTERY_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('word-'));
 
-export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props) {
+export const MePage = memo(function MePage({ unlocked, onDialectChange, masteredCount, uniqueWordsAttempted }: Props) {
     // Get user state from context
     const {
         stats,
@@ -114,16 +119,26 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
         !nextRank ? getMasteryInfo(stats.totalXP) : null,
     [nextRank, stats.totalXP]);
 
+    // Word bank mastery percentile
+    const registryVersion = getRegistryVersion();
+    const totalWords = useMemo(() => getAllWords().length, [registryVersion]);
+    const masteryPercent = useMemo(() => {
+        if (totalWords === 0) return '0%';
+        const pct = (masteredCount / totalWords) * 100;
+        return pct >= 1 ? `${Math.round(pct)}%` : pct > 0 ? `${pct.toFixed(1)}%` : '0%';
+    }, [masteredCount, totalWords]);
+
     return (
-        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20">
+        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20 landscape-compact-pb">
             {/* Settings gear button */}
-            <button
+            <motion.button
                 onClick={() => setShowSettings(true)}
                 className="self-end mb-2 text-lg opacity-40 hover:opacity-70 transition-opacity"
                 aria-label="Settings"
+                whileTap={{ scale: 0.9 }}
             >
                 ⚙️
-            </button>
+            </motion.button>
 
             {/* Display name + edit */}
             <div className="flex items-center gap-2 mb-2">
@@ -287,15 +302,15 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                 <div className="flex justify-center gap-5 mt-3">
                     <div className="text-center">
                         <div className="text-sm ui font-bold text-[var(--color-streak-fire)]">{stats.bestStreak}</div>
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">streak</div>
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">streak</div>
                     </div>
                     <div className="text-center">
                         <div className="text-sm ui font-bold text-[var(--color-correct)]">{accuracy}%</div>
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">accuracy</div>
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">accuracy</div>
                     </div>
                     <div className="text-center">
                         <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/70">{stats.totalSolved}</div>
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">solved</div>
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">solved</div>
                     </div>
                 </div>
                 {/* Bee stats row */}
@@ -303,15 +318,32 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                     <div className="flex justify-center gap-5 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
                         <div className="text-center">
                             <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeBestRound + 1}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee round</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">bee round</div>
                         </div>
                         <div className="text-center">
                             <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeWins}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee wins</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">bee wins</div>
                         </div>
                         <div className="text-center">
                             <div className="text-sm ui font-bold text-[var(--color-gold)]">{stats.beeSessions}</div>
-                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">bee tries</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">bee tries</div>
+                        </div>
+                    </div>
+                )}
+                {/* Word mastery row */}
+                {uniqueWordsAttempted > 0 && (
+                    <div className="flex justify-center gap-5 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{masteredCount.toLocaleString()}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">mastered</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[var(--color-gold)]">{masteryPercent}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">of bank</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/70">{totalWords.toLocaleString()}</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">in bank</div>
                         </div>
                     </div>
                 )}
@@ -342,8 +374,9 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                                     <button
                                         key={t.id}
                                         onClick={() => isAvailable && onThemeChange(t)}
-                                        title={`${t.name}${!isAvailable ? ' (locked)' : ''}`}
-                                        className={`w-8 h-8 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
+                                        aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
+                                        aria-pressed={isActive}
+                                        className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
                                             }`}
@@ -373,7 +406,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                                     <button
                                         key={t.id}
                                         onClick={() => isUnlocked && onTrailChange(t.id)}
-                                        title={`${t.name}${!isUnlocked ? ' (Locked)' : ''}`}
+                                        aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!isUnlocked ? ', locked' : ''}`}
+                                        aria-pressed={isActive}
                                         className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all
                                             ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
                                                 isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
@@ -405,7 +439,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                             </button>
                         </div>
                     )}
-                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
                     <div className="grid grid-cols-4 gap-3 justify-items-center">
                         {CORE_ACHIEVEMENTS.map(a => {
                             const isUnlocked = unlocked.has(a.id);
@@ -415,6 +449,10 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                             return (
                                 <div
                                     key={a.id}
+                                    role={isUnlocked ? 'button' : undefined}
+                                    tabIndex={isUnlocked ? 0 : undefined}
+                                    aria-label={`${a.name}: ${a.desc}${isBadgeEquipped ? ', equipped as badge' : ''}${!isUnlocked ? ', locked' : ''}`}
+                                    onKeyDown={(e) => { if (isUnlocked && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); if (hasCostume) onCostumeChange(isActive ? '' : a.id); updateBadge(isBadgeEquipped ? '' : a.id); }}}
                                     onClick={() => {
                                         if (!isUnlocked) return;
                                         if (hasCostume) onCostumeChange(isActive ? '' : a.id);
@@ -481,6 +519,22 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
                             );
                         })}
                     </div>
+
+                    {/* 📚 Word Mastery */}
+                    <div className="mt-5 text-xs ui text-[var(--color-gold)] uppercase tracking-widest text-center mb-2">
+                        📚 word mastery
+                    </div>
+                    <div className="grid grid-cols-5 gap-3 justify-items-center">
+                        {MASTERY_ACHIEVEMENTS.map(a => {
+                            const isUnlocked = unlocked.has(a.id);
+                            const isBadge = activeBadge === a.id;
+                            return (
+                                <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
+                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
 
@@ -508,104 +562,74 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange }: Props)
             {/* Rank list modal */}
             <AnimatePresence>
                 {showRanks && (
-                    <>
-                        <motion.div
-                            className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setShowRanks(false)}
-                        />
-                        <motion.div
-                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 max-h-[75vh] overflow-y-auto w-[300px]"
-                            initial={{ opacity: 0, scale: 0.85 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.85 }}
-                            transition={{ duration: 0.15 }}
-                        >
-                            <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">Ranks</h3>
-                            <div className="space-y-2">
-                                {RANKS.map((r) => {
-                                    const isCurrent = r.name === rank.name;
-                                    const isReached = stats.totalXP >= r.xp;
-                                    return (
-                                        <div
-                                            key={r.name}
-                                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl ${isCurrent
-                                                ? 'bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30'
-                                                : ''
-                                                }`}
-                                        >
-                                            <span className="text-xl">{r.emoji}</span>
-                                            <div className="flex-1">
-                                                <div className={`text-sm ui font-semibold ${isCurrent ? 'text-[var(--color-gold)]' :
-                                                    isReached ? 'text-[rgb(var(--color-fg))]/70' : 'text-[rgb(var(--color-fg))]/30'
-                                                    }`}>
-                                                    {r.name}
-                                                    {isCurrent && <span className="ml-1 text-xs">← you</span>}
-                                                </div>
-                                                <div className="text-[11px] ui text-[rgb(var(--color-fg))]/25">
-                                                    {r.xp === 0 ? 'Starting rank' : `${r.xp.toLocaleString()} points`}
-                                                </div>
+                    <ModalShell onClose={() => setShowRanks(false)} ariaLabel="Rank progression" className="w-[min(300px,90vw)] max-h-[75vh]">
+                        <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">Ranks</h3>
+                        <div className="space-y-2">
+                            {RANKS.map((r) => {
+                                const isCurrent = r.name === rank.name;
+                                const isReached = stats.totalXP >= r.xp;
+                                return (
+                                    <div
+                                        key={r.name}
+                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl ${isCurrent
+                                            ? 'bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30'
+                                            : ''
+                                            }`}
+                                    >
+                                        <span className="text-xl">{r.emoji}</span>
+                                        <div className="flex-1">
+                                            <div className={`text-sm ui font-semibold ${isCurrent ? 'text-[var(--color-gold)]' :
+                                                isReached ? 'text-[rgb(var(--color-fg))]/70' : 'text-[rgb(var(--color-fg))]/40'
+                                                }`}>
+                                                {r.name}
+                                                {isCurrent && <span className="ml-1 text-xs">← you</span>}
                                             </div>
-                                            {isReached && (
-                                                <span className="text-xs text-[var(--color-correct)]">✓</span>
-                                            )}
+                                            <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40">
+                                                {r.xp === 0 ? 'Starting rank' : `${r.xp.toLocaleString()} points`}
+                                            </div>
                                         </div>
-                                    );
-                                })}
-                            </div>
-                            <button
-                                onClick={() => setShowRanks(false)}
-                                className="w-full mt-4 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                            >
-                                close
-                            </button>
-                        </motion.div>
-                    </>
+                                        {isReached && (
+                                            <span className="text-xs text-[var(--color-correct)]">✓</span>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <button
+                            onClick={() => setShowRanks(false)}
+                            className="w-full mt-4 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                        >
+                            close
+                        </button>
+                    </ModalShell>
                 )}
             </AnimatePresence>
 
             {/* Reset confirmation modal */}
             <AnimatePresence>
                 {resetConfirm && (
-                    <>
-                        <motion.div
-                            className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setResetConfirm(null)}
-                        />
-                        <motion.div
-                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-6 py-6 w-[280px] text-center"
-                            initial={{ opacity: 0, scale: 0.85 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.85 }}
-                            transition={{ duration: 0.15 }}
-                        >
-                            <div className="mb-3 flex justify-center text-[var(--color-streak-fire)]">
-                                <IconBroom className="w-10 h-10" />
-                            </div>
-                            <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
-                                {resetConfirm}
-                            </p>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={() => setResetConfirm(null)}
-                                    className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
-                                >
-                                    cancel
-                                </button>
-                                <button
-                                    onClick={() => { resetStats(); setResetConfirm(null); }}
-                                    className="flex-1 py-2.5 rounded-xl border border-[var(--color-streak-fire)]/40 bg-[var(--color-streak-fire)]/10 text-sm ui text-[var(--color-streak-fire)] hover:bg-[var(--color-streak-fire)]/20 transition-colors"
-                                >
-                                    reset
-                                </button>
-                            </div>
-                        </motion.div>
-                    </>
+                    <ModalShell onClose={() => setResetConfirm(null)} ariaLabel="Reset stats confirmation" className="w-[min(280px,90vw)] text-center">
+                        <div className="mb-3 flex justify-center text-[var(--color-streak-fire)]">
+                            <IconBroom className="w-10 h-10" />
+                        </div>
+                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
+                            {resetConfirm}
+                        </p>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setResetConfirm(null)}
+                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
+                            >
+                                cancel
+                            </button>
+                            <button
+                                onClick={() => { resetStats(); setResetConfirm(null); }}
+                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-streak-fire)]/40 bg-[var(--color-streak-fire)]/10 text-sm ui text-[var(--color-streak-fire)] hover:bg-[var(--color-streak-fire)]/20 transition-colors"
+                            >
+                                reset
+                            </button>
+                        </div>
+                    </ModalShell>
                 )}
             </AnimatePresence>
 

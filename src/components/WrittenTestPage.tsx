@@ -85,11 +85,11 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
         return (
             <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 gap-6">
                 <h2 className="text-2xl ui font-bold text-[var(--color-gold)]">Written Test</h2>
-                <p className="text-sm ui text-[rgb(var(--color-fg))]/50 text-center max-w-[280px]">
+                <p className="text-sm ui text-[rgb(var(--color-fg))]/50 text-center max-w-[var(--content-w-sm)]">
                     Mock Scripps Round 3: 28 spelling + 12 vocabulary = 40 questions. 15-minute timer.
                 </p>
 
-                <div className="w-full max-w-[280px] space-y-2">
+                <div className="w-full max-w-[var(--content-w-sm)] space-y-2">
                     <label className="text-xs ui text-[rgb(var(--color-fg))]/40">Difficulty</label>
                     <div className="flex flex-wrap gap-2">
                         {DIFFICULTY_LABELS.map((label, i) => (
@@ -135,7 +135,7 @@ export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplet
                     {results.total}/{results.spellingTotal + results.vocabTotal} correct
                 </div>
 
-                <div className="w-full max-w-[280px] bg-[rgb(var(--color-fg))]/5 rounded-xl px-5 py-4 space-y-2">
+                <div className="w-full max-w-[var(--content-w-sm)] bg-[rgb(var(--color-fg))]/5 rounded-xl px-5 py-4 space-y-2">
                     <div className="flex justify-between text-xs ui">
                         <span className="text-[rgb(var(--color-fg))]/50">Spelling</span>
                         <span className="text-[var(--color-chalk)]">{results.spellingCorrect}/{results.spellingTotal}</span>

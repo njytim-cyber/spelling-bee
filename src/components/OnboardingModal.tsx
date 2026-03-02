@@ -48,7 +48,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
                         <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Choose your spelling dialect</p>
 
-                        <div className="flex flex-col gap-3 w-full max-w-[320px]">
+                        <div className="flex flex-col gap-3 w-full max-w-[var(--content-w)]">
                             {([
                                 ['en-US', 'US English', 'color, center'],
                                 ['en-GB', 'UK English', 'colour, centre']
@@ -90,7 +90,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
                         <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Pick your grade level</p>
 
-                        <div className="flex flex-col gap-3 w-full max-w-[320px]">
+                        <div className="flex flex-col gap-3 w-full max-w-[var(--content-w)]">
                             {GRADE_LEVELS.map(g => (
                                 <motion.button
                                     key={g.id}

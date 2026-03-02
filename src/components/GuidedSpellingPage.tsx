@@ -66,7 +66,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     const startTimeRef = useRef(0);
     const showTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-    const { speak, speakWord, isSupported, cancel } = usePronunciation();
+    const { speak, speakWord, isSupported, cancel, usedFallback } = usePronunciation();
     const wordRoots = useMemo(() => getRootsForWord(word.word), [word]);
 
     // Announce word on mount and when word changes
@@ -153,7 +153,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     }, [phase, advanceWord]);
 
     return (
-        <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 relative">
+        <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 landscape-compact-py relative">
             {/* Top bar */}
             <div className="absolute top-4 left-4 right-4 flex items-center gap-3 z-10">
                 <button
@@ -171,17 +171,17 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                 </div>
             </div>
 
-            <div className="flex flex-col items-center gap-4 w-full max-w-[320px]">
+            <div className="flex flex-col items-center gap-4 w-full max-w-[var(--content-w)]">
                 {/* Pronounce button */}
                 <button
                     onClick={handleRepeat}
                     className="w-16 h-16 rounded-full bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 flex items-center justify-center hover:bg-[var(--color-gold)]/20 transition-colors"
-                    title="Hear word again"
+                    aria-label="Hear word again"
                 >
                     <span className="text-2xl">&#128266;</span>
                 </button>
                 <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
-                    {isSupported ? 'Tap to hear again' : 'Audio not available'}
+                    {!isSupported ? 'Audio not available' : usedFallback ? 'Using device voice' : 'Tap to hear again'}
                 </p>
 
                 {/* Definition hint — always visible */}

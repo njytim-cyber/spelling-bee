@@ -188,7 +188,7 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-[var(--color-overlay)] rounded-2xl px-6 py-5 w-[300px] text-center"
+                            className="bg-[var(--color-overlay)] rounded-2xl px-6 py-5 w-[min(300px,90vw)] text-center"
                             initial={{ scale: 0.8 }}
                             animate={{ scale: 1 }}
                             exit={{ scale: 0.8 }}

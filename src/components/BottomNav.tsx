@@ -64,7 +64,7 @@ export const BottomNav = memo(function BottomNav({ active, onChange, tabs: tabsP
                         key={tab.id}
                         onClick={() => onChange(tab.id)}
                         aria-current={isActive ? 'page' : undefined}
-                        aria-label={tab.ariaLabel ?? tab.label}
+                        aria-label={`${tab.ariaLabel ?? tab.label}${tab.badge ? `, ${tab.badge} to review` : ''}`}
                         className={`relative flex flex-col items-center gap-0.5 py-1 px-4 rounded-lg transition-colors ${isActive
                             ? 'text-[var(--color-gold)]'
                             : 'text-[rgb(var(--color-fg))]/60 active:text-[rgb(var(--color-fg))]/80'

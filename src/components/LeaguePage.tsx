@@ -221,8 +221,11 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
 
             {/* Empty state */}
             {!loading && scoreBoard.length === 0 && (
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/30 mt-8 text-center">
-                    No players yet. Be the first!
+                <div className="flex flex-col items-center mt-8 text-center gap-2">
+                    <span className="text-3xl">🏆</span>
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/40">
+                        No players yet — be the first!
+                    </div>
                 </div>
             )}
 

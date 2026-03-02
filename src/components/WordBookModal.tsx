@@ -186,8 +186,11 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     if (totalWords === 0) {
         return (
-            <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">
-                No words yet
+            <div className="flex flex-col items-center text-center py-8 gap-2">
+                <span className="text-3xl">📖</span>
+                <div className="text-sm ui text-[rgb(var(--color-fg))]/40">
+                    No words yet — play a round to start collecting!
+                </div>
             </div>
         );
     }
@@ -258,7 +261,7 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
             {/* Word list */}
             <div className="mt-1">
                 {filteredWords.length === 0 ? (
-                    <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
+                    <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/40 py-6">
                         No words match this filter
                     </div>
                 ) : (
