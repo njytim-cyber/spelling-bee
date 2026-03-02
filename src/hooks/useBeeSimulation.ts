@@ -28,6 +28,14 @@ const BEE_LEVEL_FLOOR: Record<BeeLevel, number> = {
     national: 4,    // starts at grade 6+, ramps to 10
 };
 
+/** Timer duration per bee level (seconds). null = no timer. */
+const TIMER_DURATION: Record<BeeLevel, number | null> = {
+    classroom: null,
+    district: 120,
+    state: 90,
+    national: 60,
+};
+
 export interface BeeSimState {
     phase: BeePhase;
     currentWord: SpellingWord | null;
@@ -49,6 +57,8 @@ export interface BeeSimState {
     npcScores: number[];
     /** NPC spelling attempts for the current round (shown in speech bubbles) */
     npcSpellings: (string | null)[];
+    /** Timestamp when timer started for current word (0 = not started) */
+    timerStartedAt: number;
 }
 
 // NPC skill scales with bee level: classroom is easy, national is tough
@@ -76,6 +86,7 @@ const INITIAL_STATE: BeeSimState = {
     npcSkill: NPC_SKILL_BY_LEVEL.national,
     npcScores: [0, 0, 0, 0],
     npcSpellings: [null, null, null, null],
+    timerStartedAt: 0,
 };
 
 /** Replace the target word in a sentence with underscores so users can't read the answer. */
@@ -181,6 +192,11 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         };
     }, []);
 
+    // Timer constants
+    const timerTotal = TIMER_DURATION[beeLevel] ?? 0;
+    const timerIntervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
+    const [timerRemaining, setTimerRemaining] = useState(timerTotal);
+
     // In dictation mode: no NPCs, no elimination, go straight to spelling
     const dictationInitial: Partial<BeeSimState> = dictationMode ? {
         eliminationMode: false,
@@ -261,8 +277,8 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
     }, [state.currentWord, speak, isSupported]);
 
     const moveToAsking = useCallback(() => {
-        setState(prev => ({ ...prev, phase: 'asking' }));
-    }, []);
+        setState(prev => ({ ...prev, phase: 'asking', timerStartedAt: TIMER_DURATION[beeLevel] ? Date.now() : 0 }));
+    }, [beeLevel]);
 
     const requestInfo = useCallback((type: InfoRequest) => {
         setState(prev => {
@@ -404,6 +420,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                     wordsCorrect,
                     wordsAttempted,
                     npcScores,
+                    timerStartedAt: 0,
                 };
             }
 
@@ -414,6 +431,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 wordsCorrect,
                 wordsAttempted,
                 npcScores,
+                timerStartedAt: 0,
             };
         });
     }, [speak, isSupported]);
@@ -476,12 +494,40 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             if (!prev.currentWord) return prev;
             const wordsAttempted = prev.wordsAttempted + 1;
             const anyNpcAlive = prev.npcAlive.some((alive, i) => alive && i !== 2);
+            // Sound effects for timeout
+            setTimeout(() => {
+                playBuzzer();
+                playGasp();
+                if (isSupported) speak(`Time's up! The correct spelling is ${prev.currentWord!.word.split('').join(', ')}`);
+            }, 100);
             if (prev.eliminationMode && anyNpcAlive) {
-                return { ...prev, phase: 'eliminated', lastResult: false, wordsAttempted, typedSpelling: '' };
+                return { ...prev, phase: 'eliminated', lastResult: false, wordsAttempted, typedSpelling: '', timerStartedAt: 0 };
             }
-            return { ...prev, phase: 'feedback', lastResult: false, wordsAttempted, typedSpelling: '' };
+            return { ...prev, phase: 'feedback', lastResult: false, wordsAttempted, typedSpelling: '', timerStartedAt: 0 };
         });
-    }, []);
+    }, [speak, isSupported]);
+
+    // Timer: force-submit when time runs out during asking/spelling phases
+    useEffect(() => {
+        if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        const { phase: p, timerStartedAt } = state;
+        if (!timerTotal || !timerStartedAt || (p !== 'asking' && p !== 'spelling')) {
+            setTimerRemaining(timerTotal);
+            return;
+        }
+        const tick = () => {
+            const elapsed = (Date.now() - timerStartedAt) / 1000;
+            const remaining = Math.max(0, timerTotal - elapsed);
+            setTimerRemaining(remaining);
+            if (remaining <= 0) {
+                if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+                forceSubmit();
+            }
+        };
+        tick();
+        timerIntervalRef.current = setInterval(tick, 250);
+        return () => { if (timerIntervalRef.current) clearInterval(timerIntervalRef.current); };
+    }, [state.phase, state.timerStartedAt, timerTotal, forceSubmit]); // eslint-disable-line react-hooks/exhaustive-deps
 
     /** XP earned for the current session */
     const sessionXP = state.wordsCorrect * 20;
@@ -513,5 +559,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         npcAlive: state.npcAlive,
         npcScores: state.npcScores,
         npcSpellings: state.npcSpellings,
+        timerRemaining,
+        timerTotal,
     };
 }
