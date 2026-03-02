@@ -14,2248 +14,6 @@ import type { SpellingWord } from './types';
 
 export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
     {
-        "word": "atomy",
-        "definition": "A skeleton.",
-        "exampleSentence": "He wrote the word atomy on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ætəmi",
-        "etymology": "Rebracketing of anatomy (“skeleton”) as an atomy.",
-        "distractors": [
-            "atomey",
-            "attomy",
-            "atommy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "beest",
-        "definition": "Second-person singular present indicative or subjunctive of be.",
-        "exampleSentence": "It took a while to learn how to beest.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "beest",
-        "etymology": "From Middle English bēst, biest, beost, bist, from Old English bist; equivalent to be + -est. Compare West Frisian bist, German bist.",
-        "distractors": [
-            "best",
-            "beesst",
-            "beast"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "smaak",
-        "definition": "To like; to be attracted to.",
-        "exampleSentence": "'I thought he was quite good-looking for a Tottie,' Carol said. 'I smaaked that scar - like a pirate.'",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "smɑːk",
-        "distractors": [
-            "smak",
-            "smeak",
-            "smiak"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ejido",
-        "definition": "A Mexican cooperative farm.",
-        "exampleSentence": "They made camp in an oakgrove beside the river and built a fire and sat while the girl prepared their dinner out of the bounty they’d carried off from the ejido.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɛhidoʊ",
-        "etymology": "Borrowed from Mexican Spanish ejido, from Latin exitus (“departure”), an early borrowing from Latin. Doublet of exit and exitus.",
-        "distractors": [
-            "ejjido",
-            "ejiddo",
-            "ejado"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hythe",
-        "definition": "A landing-place in a river; a harbour or small port.",
-        "exampleSentence": "That morn to other hythe we made our way / finding the peoples that before we found, / by a broad River, and we gave it name / from the high hol'iday when to port we came.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hʌɪð",
-        "etymology": "From Old English hȳþ.",
-        "distractors": [
-            "hytthe",
-            "htyhe",
-            "hyteh"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "toffy",
-        "definition": "Posh, upper-class; snooty.",
-        "exampleSentence": "She heaves an exasperated sigh that would do a shop assistant in a toffy dress emporium proud.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "toffy",
-        "etymology": "From toff + -y.",
-        "distractors": [
-            "toffey",
-            "tofy",
-            "taffy"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "pulla",
-        "definition": "A sweet, leavened baked good made of wheat and flavored with crushed cardamom, resembling very soft bread in consistency, eaten in Finland.",
-        "exampleSentence": "Come on, your dad's grabbed us all some pullas and cider.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pulla",
-        "etymology": "Borrowed from Finnish pulla, from Swedish bulle. Doublet of bowl and boule.",
-        "distractors": [
-            "pula",
-            "palla",
-            "pella"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "reffo",
-        "definition": "A refugee who has settled in Australia.",
-        "exampleSentence": "‘There are the reffoes,’ he said loudly. ‘Been here for over a week now and hardly been out at all.…’.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "reffo",
-        "etymology": "From refugee + -o (“diminutive suffix”).",
-        "distractors": [
-            "refo",
-            "raffo",
-            "riffo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hubby",
-        "definition": "Full of hubs or protuberances.",
-        "exampleSentence": "A road that has been frozen while muddy is hubby.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hʌbi",
-        "etymology": "From hub + -y (adjectival suffix).",
-        "distractors": [
-            "hubbey",
-            "huby",
-            "habby"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hissy",
-        "definition": "A tantrum, a fit.",
-        "exampleSentence": "Get into a hissy.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hɪsi",
-        "etymology": "From hiss + -y.",
-        "distractors": [
-            "hissey",
-            "hisy",
-            "hassy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dotty",
-        "definition": "A shotgun.",
-        "exampleSentence": "He wrote the word dotty on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɑti",
-        "distractors": [
-            "dottey",
-            "doty",
-            "datty"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "amaro",
-        "definition": "A type of Italian herbal liqueur.",
-        "exampleSentence": "“Yeah, okay,” we smirked. But we crafted elaborate, absurd concoctions. We layered amaros and ports in medicine vials.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "amaro",
-        "etymology": "Borrowed from Italian amaro.",
-        "distractors": [
-            "ammaro",
-            "amarro",
-            "amero"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cella",
-        "definition": "The central, enclosed part of an ancient temple, as distinguished from the open porticos.",
-        "exampleSentence": "Room by room, Sarrasine advances to the cella of the hermaphrodite god, veiled like Spenser's Venus.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "sɛlə",
-        "etymology": "Learned borrowing from Latin cella. Doublet of cell and hall.",
-        "distractors": [
-            "cela",
-            "calla",
-            "cilla"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "pooka",
-        "definition": "A fairy that supposedly appears in animal form, often large.",
-        "exampleSentence": "The pooka had befriended the kindly old man.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "puːkə",
-        "etymology": "From Old Irish púca (“goblin, sprite”), perhaps from a (nearly) identical Old Irish form, ultimately from Old English pūca (“demon”). Doublet of bucca and puck.",
-        "distractors": [
-            "poka",
-            "pookka",
-            "paoka"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "halls",
-        "definition": "Student accommodation.",
-        "exampleSentence": "'Yes. The first year he was in halls but was glad to leave for digs after that.'",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "halls",
-        "distractors": [
-            "hals",
-            "hells",
-            "hills"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "aroha",
-        "definition": "Love and compassion.",
-        "exampleSentence": "They do not come to this meeting house with respect, nor with aroha.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "aroːha(ː)",
-        "etymology": "From Māori aroha. Doublet of aloha and aropa.",
-        "distractors": [
-            "arroha",
-            "arohha",
-            "araha"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "gumph",
-        "definition": "Gumption; grit.",
-        "exampleSentence": "Never lifted a hand to defend himself, hadn’t got any gumph.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "gumph",
-        "etymology": "Shortening of gumption.",
-        "distractors": [
-            "gummph",
-            "gumf",
-            "gamph"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "izzat",
-        "definition": "Honour, pride; reputation.",
-        "exampleSentence": "‘She has cut off our noses. And our izzat.’.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "izzat",
-        "etymology": "Borrowed from Hindustani عِزَّت ('izzat) / इज़्ज़त (izzat), from Classical Persian عِزَّت (izzat), from Arabic عِزَّة (ʕizza).",
-        "distractors": [
-            "izat",
-            "izzet",
-            "izzit"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "goeth",
-        "definition": "Third-person singular simple present indicative of go.",
-        "exampleSentence": "It took a while to learn how to goeth.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "goeth",
-        "distractors": [
-            "goetth",
-            "gaeth",
-            "geeth"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "seeth",
-        "definition": "Third-person singular simple present indicative of see.",
-        "exampleSentence": "…the Lord seeth not as man seeth; for man looketh on the outward appearance, but the Lord looketh on the heart.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "seeth",
-        "distractors": [
-            "seth",
-            "seetth",
-            "seath"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "lieth",
-        "definition": "Third-person singular simple present indicative of lie.",
-        "exampleSentence": "It took a while to learn how to lieth.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "lieth",
-        "distractors": [
-            "lietth",
-            "leith",
-            "laeth"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "marra",
-        "definition": "A friend, pal, buddy, mate.",
-        "exampleSentence": "He wrote the word marra on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "marra",
-        "etymology": "From Old Norse margr.",
-        "distractors": [
-            "mara",
-            "merra",
-            "mirra"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "dieth",
-        "definition": "Third-person singular simple present indicative of die.",
-        "exampleSentence": "`It is surely the right of a wife to be near her husband when he dieth.'",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "daɪəθ",
-        "distractors": [
-            "dietth",
-            "deith",
-            "daeth"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "manny",
-        "definition": "A male nanny (for children).",
-        "exampleSentence": "He wrote the word manny on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "mæni",
-        "etymology": "Blend of man + nanny.",
-        "distractors": [
-            "manney",
-            "many",
-            "menny"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "murri",
-        "definition": "An indigenous Australian, especially one from Queensland or northern New South Wales.",
-        "exampleSentence": "‘The Murris don't work to whitefeller schedules. That's not the way it is.’.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "mɐriː",
-        "etymology": "From Gamilaraay mari (“Aboriginal man”).",
-        "distractors": [
-            "muri",
-            "marri",
-            "merri"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sotto",
-        "definition": "Ellipsis of sotto voce.",
-        "exampleSentence": "Jimi’s guitar plays flat against the major chord, giving a strange, almost discordant effect. Mitch on drums is behind the bass sotto.",
-        "partOfSpeech": "adverb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "səʊtəʊ",
-        "etymology": "Ellipsis of sotto voce.",
-        "distractors": [
-            "soto",
-            "satto",
-            "setto"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "thorp",
-        "definition": "A group of houses standing together in the country; a hamlet; a village.",
-        "exampleSentence": "He wrote the word thorp on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "θɔɹp",
-        "etymology": "From Middle English thorp, throp, from Old English þorp, þrop (“farm, village”), from Proto-West Germanic *þorp, from Proto-Germanic *þurpą, *þrepą (“village, farmstead, troop”), from Proto-Indo-European *trab-, *treb- (“dwelling, room”).",
-        "distractors": [
-            "thorrp",
-            "tharp",
-            "therp"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "metho",
-        "definition": "Methylated spirits.",
-        "exampleSentence": "Ben Cropp, aided by his wife Lynn, tests the effectiveness of metho and vinegar against box jellyfish stings (above); see Ben′s foreword for details of the experiment.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "metho",
-        "etymology": "From methylated spirits + -o (“diminutive suffix”).",
-        "distractors": [
-            "mettho",
-            "matho",
-            "mitho"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "burra",
-        "definition": "Big or important, used as a respectful honorific.",
-        "exampleSentence": "The most burra of burra sahibs resided in spacious, columned villas within the exclusive enclave of Alipore.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "bʌɹə",
-        "etymology": "Borrowed from Hindi बड़ा (baṛā, “large, important”).",
-        "distractors": [
-            "bura",
-            "barra",
-            "berra"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rathe",
-        "definition": "Ripening or blooming early.",
-        "exampleSentence": "Bring the rathe primrose that forsaken dies.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹeɪð",
-        "etymology": "From Middle English rathe, from Old English hraþe, from Proto-West Germanic *hraþō, *hradō (“quickly”), from *hraþ, *hrad (“quick”), ultimately from Proto-Indo-European *kret- (“quick; to move quickly”).",
-        "distractors": [
-            "ratthe",
-            "rethe",
-            "rithe"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "putto",
-        "definition": "A representation, especially in Renaissance or Baroque art, of a small, naked, often winged (usually male) child; a cherub.",
-        "exampleSentence": "A second putto with a gallows in its hand cries at the judge's feet.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pʊtoʊ",
-        "etymology": "Borrowed from Italian putto (“cupid, putto; boy”), from Latin putus (“boy”), a variant of pūsus (“(little) boy”), from puer (“boy, lad; child”), from Proto-Italic *puweros, ultimately from Proto-Indo-European *peh₂w- (“few, little; smallness”).",
-        "distractors": [
-            "puto",
-            "patto",
-            "petto"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "betta",
-        "definition": "Any fish of the genus Betta, especially Betta splendens (the Siamese fighting fish).",
-        "exampleSentence": "I had previously bought a bright red betta fish from the Chinese spiritual store, which I also sense had been sent for Aurayah.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bɛtɑː(ɹ)",
-        "etymology": "From the genus name.",
-        "distractors": [
-            "beta",
-            "batta",
-            "bitta"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "ragga",
-        "definition": "A subgenre of reggae and dancehall influenced by hip hop and digital production techniques such as sampling.",
-        "exampleSentence": "He wrote the word ragga on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ragga",
-        "etymology": "Clipping of raggamuffin, variant of ragamuffin (“troublemaker”), influenced by reggae.",
-        "distractors": [
-            "raga",
-            "regga",
-            "rigga"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "buffo",
-        "definition": "A comic singer, particularly in comic opera.",
-        "exampleSentence": "Signor Bruschino was updated from a generic buffo character to an oily, scholarly-looking, suit-clad neurotic, excellently acted and sung by Marco Nistico.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "buffo",
-        "etymology": "From Italian buffo.",
-        "distractors": [
-            "bufo",
-            "baffo",
-            "beffo"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "wussy",
-        "definition": "Weak or timid.",
-        "exampleSentence": "There was enough food for a soccer team and we were going to grill it. Our meatfest included no girly utensils, no wussy plates. Just our hands, mouths, and incisors.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "wʊsi",
-        "etymology": "1960s: probably an alteration of pussy, perhaps a blend of wimp and pussy, or short for pussy-wussy (reduplication of pussy). Compare later wuss.",
-        "distractors": [
-            "wussey",
-            "wusy",
-            "wassy"
-        ],
-        "theme": "character"
-    },
-    {
-        "word": "oliva",
-        "definition": "Olivary body.",
-        "exampleSentence": "The medial part of the ventral lamina forms the most rostral pole of the oliva, the dorsal lamina the most caudal one.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "oliva",
-        "etymology": "Borrowed from Latin oliva (“olive”). Doublet of olive.",
-        "distractors": [
-            "olliva",
-            "olivva",
-            "olava"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "tazza",
-        "definition": "A shallow saucer-like dish, mounted either on a stem and foot or on a foot alone.",
-        "exampleSentence": "He wrote the word tazza on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "tazza",
-        "etymology": "From Italian tazza. Doublet of tass.",
-        "distractors": [
-            "taza",
-            "tezza",
-            "tizza"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "myall",
-        "definition": "Any of various Australian acacias, especially the weeping myall, Acacia pendula, or the wood of such trees.",
-        "exampleSentence": "The durable, dark-colored wood of the coast myall or mountain brigalow (A. glaucescens) has been likened to that of English walnut.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "maɪɔːl",
-        "etymology": "Aboriginal, perhaps a transferred use of Etymology 1, above.",
-        "distractors": [
-            "myal",
-            "myell",
-            "myill"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ebbed",
-        "definition": "Having receded, or reduced in amount, intensity, or importance; diminished.",
-        "exampleSentence": "And the ebbed man, ne'er loved till ne'er worth love, Comes deared, by being lacked.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɛbd",
-        "distractors": [
-            "ebed",
-            "ebbad",
-            "ebbid"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "atajo",
-        "definition": "A train of mules or horses.",
-        "exampleSentence": "It could hardly be termed a cavalcade, as it consisted of an atajo of pack-mules, with some carretas drawn by oxen.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "atajo",
-        "distractors": [
-            "attajo",
-            "atajjo",
-            "atejo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "corro",
-        "definition": "Written communications, especially in a business setting.",
-        "exampleSentence": "I have read over the associated email corro and referral docs.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "corro",
-        "etymology": "From corr(espondence) + -o.",
-        "distractors": [
-            "coro",
-            "carro",
-            "cerro"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "narra",
-        "definition": "Any of the pantropical genus Pterocarpus of trees in the family Fabaceae, but especially Pterocarpus indicus.",
-        "exampleSentence": "He wrote the word narra on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "narra",
-        "distractors": [
-            "nara",
-            "nerra",
-            "nirra"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "ratee",
-        "definition": "One who receives a rating.",
-        "exampleSentence": "Or, to put it bluntly: users could assign a star rating and feedback to anyone they knew, positive or negative, and the ratee could do very little about it.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ratee",
-        "etymology": "From rate + -ee.",
-        "distractors": [
-            "rate",
-            "rattee",
-            "ratea"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sello",
-        "definition": "Sellotape.",
-        "exampleSentence": "Can you pass the sello? We need to get these presents wrapped up by tonight.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "sɛloʊ",
-        "etymology": "Clipping of sellotape.",
-        "distractors": [
-            "selo",
-            "sallo",
-            "sillo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lassi",
-        "definition": "A drink made with yogurt diluted with water and flavoured with salt or fruit juice.",
-        "exampleSentence": "Karam stirred his lassi as if trying to unchurn the yoghurt.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "læsi",
-        "etymology": "Borrowed from Hindustani लस्सी / لسی (lassī).",
-        "distractors": [
-            "lasi",
-            "lessi",
-            "lissi"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "snoof",
-        "definition": "Having lost the sense of smell.",
-        "exampleSentence": "… it means when a person lacks his sense of smell. I'm glad I'm not snoof.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "snoof",
-        "etymology": "Probably coined by Galsworthy (see quotations).",
-        "distractors": [
-            "snof",
-            "snaof",
-            "sneof"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "botty",
-        "definition": "A term of address for a bot (automated software process).",
-        "exampleSentence": "He wrote the word botty on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bɒti",
-        "distractors": [
-            "bottey",
-            "boty",
-            "batty"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "eensy",
-        "definition": "Very small.",
-        "exampleSentence": "I was there for a reason and there I had agreed to stay. Blooming heck. “What if we want popcorn? We can't eat popcorn in your bed,” I told him, sounding maybe an eensy bit desperate.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "iːn(t)si",
-        "etymology": "Shortened from eensy-weensy.",
-        "distractors": [
-            "eensey",
-            "ensy",
-            "eennsy"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "keech",
-        "definition": "A mass or lump of fat rolled up by the butcher.",
-        "exampleSentence": "He wrote the word keech on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "kiːt͡ʃ",
-        "etymology": "Compare dialectal English keech (“cake”), perhaps ultimately a back-formation from Middle English kechel (“small cake”).",
-        "distractors": [
-            "kech",
-            "keecch",
-            "keetch"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "geest",
-        "definition": "A type of slightly raised landscape, with sandy and gravelly soils, that occurs in the plains of Northern Germany, the Northern Netherlands and Denmark.",
-        "exampleSentence": "He wrote the word geest on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡiːst",
-        "etymology": "Borrowed from German Geest (from Low German güst (“dry, infertile”, adjective), from Middle Low German gēst (“dry, elevated”, literally “cracking, gaping, yawning”)) or Dutch geest (from Middle Dutch geest, from Old Dutch *gēst (“dry, infertile”)), in either case a substantivization of what was init",
-        "distractors": [
-            "gest",
-            "geesst",
-            "geast"
-        ],
-        "theme": "nature"
-    },
-    {
-        "word": "doeth",
-        "definition": "Third-person singular simple present indicative of do.",
-        "exampleSentence": "Be not hasty to go out of his sight: stand not in an evil thing; for he doeth whatsoever pleaseth him.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "duːɪθ",
-        "etymology": "Cognate with Dutch doet.",
-        "distractors": [
-            "doetth",
-            "daeth",
-            "deeth"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "okiya",
-        "definition": "The lodging-house of a geisha.",
-        "exampleSentence": "My advice to you is: work very hard, and never leave the okiya without permission.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "okiya",
-        "etymology": "Borrowed from Japanese 置屋.",
-        "distractors": [
-            "okkiya",
-            "okaya",
-            "okeya"
-        ],
-        "theme": "home"
-    },
-    {
-        "word": "tassa",
-        "definition": "A large Indian drum, traditionally played at weddings.",
-        "exampleSentence": "He was widely recognized as the finest tassa player in the area. Some may be skilled, but his was a gift.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "tassa",
-        "distractors": [
-            "tasa",
-            "tessa",
-            "tissa"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "yadda",
-        "definition": "One of a set of items which do not need to be specified; often used in conjunction with the catch phrase yadda yadda yadda.",
-        "exampleSentence": "So right or wrong, good move or bad, yadda or yadda, it's an intriguing development in this gifted player's life and basketball career.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "yadda",
-        "etymology": "See yada yada yada.",
-        "distractors": [
-            "yada",
-            "yedda",
-            "yidda"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "ginny",
-        "definition": "Affected by gin; resembling or characteristic of gin.",
-        "exampleSentence": "‘Oh, to hell with art!’ he cried. ‘Let's get ginny.’.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dʒɪni",
-        "distractors": [
-            "ginney",
-            "giny",
-            "ganny"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "somma",
-        "definition": "A volcanic caldera that has been partially filled by a new central cone.",
-        "exampleSentence": "Eventually, a renewed edifice may grow large enough even to bury its somma, or sommas, completely, leaving no clue in its shape to a history of former catastrophe(s).",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "sɑmə",
-        "etymology": "Named after Mount Somma, a stratovolcano in southern Italy with a summit caldera in which the upper cone of Mount Vesuvius has grown.",
-        "distractors": [
-            "soma",
-            "samma",
-            "semma"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "queep",
-        "definition": "To emit a \"queep\" sound.",
-        "exampleSentence": "The computer queeped softly and then said, “Ship's systems ....”.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "queep",
-        "distractors": [
-            "quep",
-            "queap",
-            "qaeep"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "noddy",
-        "definition": "Foolish, silly, stupid.",
-        "exampleSentence": "For that no man shulde se / Nor rede in any scrolles / Of theyr dronken nolles, / Nor of theyr noddy polles, ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "nɑdi",
-        "etymology": "Noun etymology 1 sense 1 is possibly from nod (“to incline the head up and down; to gradually fall asleep”) + -y (suffix forming diminutive nouns or familiar names); or a shortening of noddypoll, an obsolete alteration of hoddypoll (“fumbling, inept person”).",
-        "distractors": [
-            "noddey",
-            "nody",
-            "naddy"
-        ],
-        "theme": "character"
-    },
-    {
-        "word": "thizz",
-        "definition": "MDMA; Ecstasy.",
-        "exampleSentence": "\"We've got thizz!\" Alexis shot me a look to see if it was okay that she'd mentioned it.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "thizz",
-        "etymology": "Alteration of thing.",
-        "distractors": [
-            "thiz",
-            "thazz",
-            "thezz"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "erizo",
-        "definition": "A sea urchin (Echinoidea spp.).",
-        "exampleSentence": "The erizo, or water hedge-hog, is very like the armado, but not quite so large.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "erizo",
-        "etymology": "From Spanish erizo.",
-        "distractors": [
-            "errizo",
-            "erizzo",
-            "erazo"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "fissi",
-        "definition": "Sarotherodon caroli, a cichlid endemic to Lake Barombi Mbo in western Cameroon.",
-        "exampleSentence": "One species in particular, the fissi (Sarotherodon caroli), is close to the unga.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fissi",
-        "distractors": [
-            "fisi",
-            "fassi",
-            "fessi"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "drott",
-        "definition": "An earthmoving machine similar to a bulldozer, but with a front bucket that can be used for scooping and lifting soil, rather than merely pushing it.",
-        "exampleSentence": "The drivers of bulldozers, drotts, and other types of mechanical shovels worked long hours in appalling weather.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "drott",
-        "etymology": "From the name of the Drott Manufacturing Company, founded by Edward Drott in 1916.",
-        "distractors": [
-            "drot",
-            "dratt",
-            "drett"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "buffe",
-        "definition": "A piece of armor covering either the entire face, or the lower face together with a visor that covered the upper face, typically made of multiple lames that could be opened by being lowered (a falling buffe) or raised.",
-        "exampleSentence": "He wrote the word buffe on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bʌf",
-        "etymology": "From Old French buffe.",
-        "distractors": [
-            "bufe",
-            "baffe",
-            "beffe"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "asili",
-        "definition": "The central seed or \"germinating matrix\" of a culture.",
-        "exampleSentence": "Law, religion and worldview emerge from the chrysalis of the asili. In western culture, the asili is characterised by separation and universalism.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "asili",
-        "etymology": "From Swahili asili (“origin”); introduced in this sense by Marimba Ani.",
-        "distractors": [
-            "assili",
-            "asilli",
-            "asali"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "tween",
-        "definition": "A child, especially a girl, in the age range between middle childhood and adolescence, normally between eight and thirteen years of age.",
-        "exampleSentence": "America's tweens (ages eight to twelve) are a population of more than twenty million.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "twiːn",
-        "etymology": "Blend of teen + between in the sense of \"between childhood and adolescence\".",
-        "distractors": [
-            "twen",
-            "twean",
-            "twaen"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "priss",
-        "definition": "A prissy person.",
-        "exampleSentence": "He wrote the word priss on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɹɪs",
-        "etymology": "Back-formation from prissy (analyzed as priss + -y (“(manner)”)); noun attested 1923.",
-        "distractors": [
-            "pris",
-            "prass",
-            "press"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "swizz",
-        "definition": "A swindle, con.",
-        "exampleSentence": "That packet only had ten sweets in it; what a swizz.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "swizz",
-        "etymology": "Possible alteration of swindle, early 20th c.",
-        "distractors": [
-            "swiz",
-            "swazz",
-            "swezz"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lilly",
-        "definition": "A Lilly Pulitzer dress.",
-        "exampleSentence": "It angered Target customers who tried, and failed, to grab $40-ish “Lillys” during a sale that was meant to span several weeks and instead spanned mere hours.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "lɪli",
-        "distractors": [
-            "lilley",
-            "lily",
-            "lally"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "graaf",
-        "definition": "A Dutch earl or count.",
-        "exampleSentence": "And so the graafs mounted their huge steeds and fled, breaking through the enemy lines.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "graaf",
-        "etymology": "From Dutch graaf. Doublet of graf and grave.",
-        "distractors": [
-            "graf",
-            "greaf",
-            "griaf"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "fulla",
-        "definition": "Man, especially one of indigenous descent.",
-        "exampleSentence": "He wrote the word fulla on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fulla",
-        "etymology": "Corruption of fellow, 1970s.",
-        "distractors": [
-            "fula",
-            "falla",
-            "fella"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "bucca",
-        "definition": "A storm spirit in Cornish folklore, traditionally believed to inhabit mines and coastal communities.",
-        "exampleSentence": "He wrote the word bucca on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bʌkə",
-        "etymology": "Borrowed from Cornish bocka. Doublet of pooka and puck.",
-        "distractors": [
-            "buca",
-            "bacca",
-            "becca"
-        ],
-        "theme": "weather"
-    },
-    {
-        "word": "mazza",
-        "definition": "Madness; something that is mad; a crazy situation.",
-        "exampleSentence": "Must have thought I was one of the paigons / Left a trace and my yard got raided / It's a mazza / He was talking tough 'till I chased man down with a ladder.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "mazza",
-        "distractors": [
-            "maza",
-            "mezza",
-            "mizza"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "arroz",
-        "definition": "Any Spanish rice-based dish.",
-        "exampleSentence": "Reliable, traditional bar-restaurant for dishes of the sierra including … arrozes (rice dishes).",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "arroz",
-        "distractors": [
-            "aroz",
-            "arraz",
-            "arrez"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "rolls",
-        "definition": "Rolls-Royce automobile.",
-        "exampleSentence": "Steven was taking his time pulling the Rolls convertible around to the door.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹoʊlz",
-        "distractors": [
-            "rols",
-            "ralls",
-            "rells"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "pyree",
-        "definition": "An ancient Persian temple devoted to fire.",
-        "exampleSentence": "In Persia the temples of fire are called Pyrees; the most celebrated is that of Baalbec, the city of the sun.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pyree",
-        "etymology": "From Late Latin pyreum, from Ancient Greek πυρεῖον (pureîon).",
-        "distractors": [
-            "pyre",
-            "pyrree",
-            "pyrea"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "jerry",
-        "definition": "Jerry-built.",
-        "exampleSentence": "If a man builds a jerry-house, he has a jerry conscience; and there are a lot of consciences of that description going about.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "dʒɛɹi",
-        "etymology": "Short for jerry-built.",
-        "distractors": [
-            "jerrey",
-            "jery",
-            "jarry"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "arepa",
-        "definition": "A type of cornbread originating from the northern Andes and resembling a tortilla.",
-        "exampleSentence": "The menu darts among Latin American cuisines like arepas, empanadas (a duo) and … a gigantic Peruvian-style rotisserie chicken.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "arepa",
-        "etymology": "Borrowed from Spanish arepa.",
-        "distractors": [
-            "arrepa",
-            "areppa",
-            "arapa"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "asado",
-        "definition": "Any of various dishes made from grilled or barbecued meat originating in Latin American and Philippine cuisine.",
-        "exampleSentence": "On the weekends, the park is full of visitors who come to hike the trails, swim at the base of the waterfalls and enjoy the scenery while grilling up some asado and playing volleyball.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "asado",
-        "etymology": "Borrowed from Spanish asado (“grilled”), from Latin assātus (“roasted”), past participle of Latin assō (“to roast, broil”), from assus (“roasted”) + -ō, ultimately from Proto-Indo-European *h₂eHs-. Partially borrowed from Tagalog asado from the same origin.",
-        "distractors": [
-            "assado",
-            "asaddo",
-            "asedo"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "holla",
-        "definition": "To shout out or greet casually.",
-        "exampleSentence": "School days went by. I ran across Sly a couple a times, but I wasn't in no mood to talk. He could save all that philosophical bullshit he liked to holla. Didn't nobody need to tell me what was up.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hɑlə",
-        "distractors": [
-            "hola",
-            "halla",
-            "hella"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "annal",
-        "definition": "The record of a single event or item.",
-        "exampleSentence": "He wrote the word annal on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ænəl",
-        "etymology": "Back formation from annals, borrowed from Middle French, from Latin annales (“annals”), from annus (“year”).",
-        "distractors": [
-            "annel",
-            "anal",
-            "annil"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "thema",
-        "definition": "A subject or theme.",
-        "exampleSentence": "He wrote the word thema on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "thema",
-        "etymology": "Learned borrowing from Ancient Greek θέμᾰ (thémă). Doublet of theme.",
-        "distractors": [
-            "themma",
-            "thama",
-            "thima"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "pooer",
-        "definition": "Someone who poos.",
-        "exampleSentence": "If your babies are totally breastfed, they may poo anything from fifteen times a day to once a fortnight. If they are a frequent pooer, this will settle down within the first six weeks.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pooer",
-        "etymology": "From poo + -er.",
-        "distractors": [
-            "pooor",
-            "pooar",
-            "poer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "dommy",
-        "definition": "Dominating, dominant.",
-        "exampleSentence": "Rita said she thought she’d be a sub, but found in the scene she was ‘getting a bit dommy’.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɑmi",
-        "etymology": "From dom (“a dominant”) + -y.",
-        "distractors": [
-            "dommey",
-            "domy",
-            "dammy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ephod",
-        "definition": "A priestly apron, or breastplate, described in the Bible in Exodus 28: vi–xxx, which only the chief priest of ancient Israel was allowed to wear.",
-        "exampleSentence": "From this it appears that at least towards the close of the Exile, the Urim and Thummim were considered as something distinct from the ephod of the high priest and the gems with which it was adorned.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "iːfɒd",
-        "etymology": "Borrowed from Biblical Hebrew אֵפֹד (ʼēp̄ōḏ).",
-        "distractors": [
-            "epphod",
-            "efod",
-            "ephad"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "readd",
-        "definition": "To add again.",
-        "exampleSentence": "Please readd me to your contact list; my username has changed.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "readd",
-        "etymology": "From re- + add.",
-        "distractors": [
-            "read",
-            "reedd",
-            "raadd"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "imido",
-        "definition": "Of or pertaining to an imide.",
-        "exampleSentence": "Besides the imido xanthides, we synthesized two xanthogenamides.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "imido",
-        "distractors": [
-            "immido",
-            "imiddo",
-            "imado"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "gotch",
-        "definition": "Men's underwear.",
-        "exampleSentence": "Hilly howled as he lit the lamp and dove toward us clad in only his gotch.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "gotch",
-        "etymology": "From Ukrainian га́чі (háči), ґа́чі pl (gáči, “underwear”). Possibly back-formed from diminutive gotchies.",
-        "distractors": [
-            "gottch",
-            "goch",
-            "gatch"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "phrag",
-        "definition": "Phragmites australis, a monoculture reed grass.",
-        "exampleSentence": "\"Phrag is a monoculture that squeezes out all other species.\"",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɹæɡ",
-        "etymology": "Shortening of Phragmites, genus of Phragmites australis.",
-        "distractors": [
-            "frag",
-            "phreg",
-            "phrig"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "gaffa",
-        "definition": "Gaffer tape.",
-        "exampleSentence": "A body – a corpse – my own, I think – wrapped in tape, suspended in gaffa.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "gaffa",
-        "distractors": [
-            "gafa",
-            "geffa",
-            "giffa"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "speel",
-        "definition": "To lake, play, sport, take amusement.",
-        "exampleSentence": "It took a while to learn how to speel.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "speel",
-        "etymology": "Perhaps continuing Middle English spilen (“to revel, play”), from Old English spilian (“to revel, play”), from Proto-West Germanic *spilōn.",
-        "distractors": [
-            "spele",
-            "speal",
-            "spel"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "lappa",
-        "definition": "A cross-batted swipe.",
-        "exampleSentence": "When the ball bounced, the open stance was a good preliminary position from which to play the cross-batted swipe or lappa.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "lappa",
-        "etymology": "From English lap (“a stroke somewhere between a pull and a sweep”).",
-        "distractors": [
-            "lapa",
-            "leppa",
-            "lippa"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dreep",
-        "definition": "To lower oneself from a height and drop the remaining distance.",
-        "exampleSentence": "If ye could not do the next jump ye just dreeped down and ran along the ground and up the next one.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɹiːp",
-        "etymology": "From Scots dreep.",
-        "distractors": [
-            "drep",
-            "dreap",
-            "draep"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "okara",
-        "definition": "A food made from soybean pulp; a by-product of soy milk production.",
-        "exampleSentence": "Okara adds texture to soups, stews, casseroles, savory pancakes and baked goods, or it can be made into beanburgers.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "əʊkɑːɹə",
-        "etymology": "From Japanese 御(お)殻(から) (okara).",
-        "distractors": [
-            "okkara",
-            "okarra",
-            "okera"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "domme",
-        "definition": "A female dominant in a sadomasochistic relationship.",
-        "exampleSentence": "Something dommes know is that fear can be controlled — and even used to your advantage.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɑm",
-        "etymology": "Alteration of dom with the pseudo-French feminine inflection.",
-        "distractors": [
-            "dome",
-            "damme",
-            "demme"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fanne",
-        "definition": "A female science fiction fan.",
-        "exampleSentence": "Fannes — Pronounced the same as \"fans,\" but used in writing to mean fem fans.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fæn",
-        "etymology": "Pseudo-French feminine form of fan",
-        "distractors": [
-            "fane",
-            "fenne",
-            "finne"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "mooer",
-        "definition": "One who moos.",
-        "exampleSentence": "Rinzai says, \"I can do more than moo; I can call you a mooer.\"",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "mooer",
-        "etymology": "From moo + -er.",
-        "distractors": [
-            "mooor",
-            "mooar",
-            "moer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "bassy",
-        "definition": "Describing the reproduction of sound that overemphasizes low-frequency sounds.",
-        "exampleSentence": "The speakers were so bassy it was almost like being there.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bæsi",
-        "etymology": "From bass + -y.",
-        "distractors": [
-            "bassey",
-            "basy",
-            "bessy"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "viddy",
-        "definition": "A video or video recording.",
-        "exampleSentence": "Have you seen Holly in her latest viddy? She is hot.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "viddy",
-        "etymology": "From video (“video recording”) + -y.",
-        "distractors": [
-            "viddey",
-            "vidy",
-            "vaddy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "farro",
-        "definition": "Emmer wheat (Triticum turgidum).",
-        "exampleSentence": "All three farros are sold as a whole grain.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "fæɹoʊ",
-        "etymology": "Borrowed from Italian farro. Doublet of far.",
-        "distractors": [
-            "faro",
-            "ferro",
-            "firro"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "boofy",
-        "definition": "Of hair, puffy, or having extra volume, not necessarily desired; having such hair; see bouffant.",
-        "exampleSentence": "Steve trotted onto the field: a young footballer with a boofy, 1980s haircut.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bʊfi",
-        "etymology": "From bouffant + -y.",
-        "distractors": [
-            "boofey",
-            "bofy",
-            "booffy"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "meeja",
-        "definition": "Media.",
-        "exampleSentence": "He wrote the word meeja on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "meeja",
-        "etymology": "Lax pronunciation of media.",
-        "distractors": [
-            "meja",
-            "meejja",
-            "meaja"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "pobby",
-        "definition": "Pulpy, swollen.",
-        "exampleSentence": "There are, in India, ghosts who take the form of fat, cold, pobby corpses, and hide in trees near the roadside till a traveller passes.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɒbi",
-        "etymology": "From *pob [Term?] + -y.",
-        "distractors": [
-            "pobbey",
-            "poby",
-            "pabby"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "freep",
-        "definition": "To subject to a mass internet or email assault aimed at pushing a particular point of view.",
-        "exampleSentence": "Hearsay even got \"freeped.\" \"Freepers,\" followers of a rightist Web site called Free Republic, orchestrated a \"Freeper Call to Action.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "freep",
-        "etymology": "Back-formation from Freeper, from The Free Republic, a popular conservative forum.",
-        "distractors": [
-            "frep",
-            "freap",
-            "fraep"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "squee",
-        "definition": "To squeal with excitement or delight.",
-        "exampleSentence": "On Tuesday, Reddit user lern41 got the Reddit community squeeing when he posted a few photos of his pet cats, Artemis and Apollo.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "skwiː",
-        "distractors": [
-            "sque",
-            "squea",
-            "sqaee"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "unsee",
-        "definition": "To undo the act of seeing something; to erase the memory of having seen something, or otherwise reverse the effect of having seen something.",
-        "exampleSentence": "Once you’ve seen this you bear always the burden of its sight. And, as Laura says, you can’t unsee it.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "unsee",
-        "etymology": "From un- + see. Compare Middle English unseen, unsen (“to fail to see, be unable to see”).",
-        "distractors": [
-            "unse",
-            "unnsee",
-            "unsea"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "gloop",
-        "definition": "Any gooey, viscous substance.",
-        "exampleSentence": "Mr. Stink smiled, before letting the last sludge of his volcanic gloop slip down his throat.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡluːp",
-        "etymology": "Onomatopoeic; similar to glop or goop.",
-        "distractors": [
-            "glop",
-            "glaop",
-            "gleop"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tteok",
-        "definition": "A type of sweet cake from Korea, made from rice flour.",
-        "exampleSentence": "But my eye was immediately drawn to the add-on: country ham with tteok and honey.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "tʌk",
-        "etymology": "Borrowed from Korean 떡 (tteok).",
-        "distractors": [
-            "teok",
-            "ttaok",
-            "ttiok"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "huggy",
-        "definition": "Tending to hug; affectionate in a physical way.",
-        "exampleSentence": "Sonia is an affectionate but not very huggy woman.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hʌɡi",
-        "distractors": [
-            "huggey",
-            "hugy",
-            "haggy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "xyzzy",
-        "definition": "Used as a placeholder word or metasyntactic variable.",
-        "exampleSentence": "Perl doesn't care if you call your loop labels things like XYZZY or PLUGH.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "zɪzi",
-        "etymology": "From the seminal text adventure game Adventure (c.1975), where it served as a \"magic word\"; possibly originated as a mnemonic for the subscripts of the cross product in mathematics.",
-        "distractors": [
-            "xyzzey",
-            "xyzy",
-            "xzyzy"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "laith",
-        "definition": "Shed, barn.",
-        "exampleSentence": "He wrote the word laith on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "laith",
-        "etymology": "From Middle English lathe, from Old English hladan or Old English hleadan, or from or potentially reinforced by Old Norse hlaða (“barn, storehouse”), from Proto-Germanic *hlaþǭ (“loader”), from *hlaþaną (“to lade, load”).",
-        "distractors": [
-            "laitth",
-            "layth",
-            "leith"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "homee",
-        "definition": "Misspelling of homey.",
-        "exampleSentence": "He wrote the word homee on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "homee",
-        "distractors": [
-            "home",
-            "hommee",
-            "homea"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mafoo",
-        "definition": "In China, someone who looks after horses in a stable; a groom.",
-        "exampleSentence": "The mafoos held their charges miserably, as if sick with nerves.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "mɑːfuː",
-        "etymology": "From Mandarin 馬伕 /马伕 (mǎfū), from 馬 /马 (mǎ, “horse”) + 伕 (fū, “servant, labourer”).",
-        "distractors": [
-            "mafo",
-            "maffoo",
-            "mefoo"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "firee",
-        "definition": "A person who has been fired.",
-        "exampleSentence": "We got a helluva response - at least 30 calls from angry 'firees' as far away as Petaluma.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "firee",
-        "etymology": "From fire + -ee, by analogy with hiree.",
-        "distractors": [
-            "fire",
-            "firree",
-            "firea"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "odden",
-        "definition": "To make or become odd.",
-        "exampleSentence": "It was that he had to talk my mind without me there to odden up his thoughts.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "odden",
-        "etymology": "From odd + -en (verbal ending).",
-        "distractors": [
-            "oden",
-            "oddan",
-            "oddin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "doomy",
-        "definition": "Filled with doom and gloom: depressing or pessimistic.",
-        "exampleSentence": "Those children playing didn't look like doomy little criminals, once you knew their names.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "duːmi",
-        "etymology": "From doom + -y.",
-        "distractors": [
-            "doomey",
-            "domy",
-            "doommy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "enoki",
-        "definition": "An enoki mushroom (Flammulina velutipes).",
-        "exampleSentence": "Enokis have a delicate flavor and crunchy texture.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "enoki",
-        "etymology": "A shortening of enokitake, from Japanese 榎茸 (enokitake). Compare enoki mushroom, which is an partial calque of the Japanese.",
-        "distractors": [
-            "ennoki",
-            "enokki",
-            "enaki"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "sippy",
-        "definition": "A little sip; less than a serving of some particular drink.",
-        "exampleSentence": "Would you like a little water, Sue? SUE. Well, perhaps a sippy. (SUE squirts some water into a paper cup.).",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "sippy",
-        "distractors": [
-            "sippey",
-            "sipy",
-            "sappy"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "oopsy",
-        "definition": "A mistake; particularly when babies soil their pants.",
-        "exampleSentence": "I have made an oopsy.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "uːpsi",
-        "etymology": "From oops + -y (diminutive suffix). The verb is from the noun.",
-        "distractors": [
-            "oopsey",
-            "opsy",
-            "ooppsy"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "choon",
-        "definition": "A song or track, especially one that is catchy.",
-        "exampleSentence": "He wrote the word choon on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "choon",
-        "etymology": "Phonetic rendering of tune.",
-        "distractors": [
-            "chon",
-            "chaon",
-            "cheon"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cilly",
-        "definition": "Any predictable facet of the Enigma Machine cipher due to operator error or laziness, whose existence helped the Allies to break the code.",
-        "exampleSentence": "Answer c is a reference to a cilly, which was a three-character message key used in the German Enigma machine.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "cilly",
-        "etymology": "Uncertain; possibly a pun on silly and the letters CIL used as a cryptographic key.",
-        "distractors": [
-            "cilley",
-            "cily",
-            "cally"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "pozzy",
-        "definition": "Jam (“fruit conserve made from fruit boiled with sugar”).",
-        "exampleSentence": "‘Could you pinch a tin of pozzy out of stores?’.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɒzi",
-        "etymology": "Unclear, perhaps from a southern African language; from late 19thC, revived during World War I.",
-        "distractors": [
-            "pozzey",
-            "pozy",
-            "pazzy"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "isoko",
-        "definition": "A member of an ethnolinguistic group who inhabit the Isoko region of Delta State and Bayelsa State, Nigeria.",
-        "exampleSentence": "As far as I can tell it was due to the preaching of an African Christian, not an Isoko, who visited those parts on business during the war; ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "isoko",
-        "etymology": "Borrowed from Edo isoko (“outskirts, environs”), referring to the fact that some of the predecessors of the Isoko migrated from the Kingdom of Benin to modern-day Isokoland, and thus the name represented those who lived on the outskirts of the Benin Empire.",
-        "distractors": [
-            "issoko",
-            "isokko",
-            "isako"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "boose",
-        "definition": "A stall for an animal (usually a cow).",
-        "exampleSentence": "It especially used of the sweepings of cows' booses; and this leads me to remark that it is in the language connected with the farm that some of our good old English monosyllables are to be traced.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "silent-e",
-        "pronunciation": "buːs",
-        "etymology": "From Middle English bose, boose, from Old English *bōs (attested in bōsih, bōsig (“cow-stall”)), from Proto-West Germanic *bans, from Proto-Germanic *bansaz, *bandsaz, *bandstiz (“stall”), from Proto-Indo-European *bʰendʰ- (“to tie, bind”).",
-        "distractors": [
-            "bose",
-            "boosse",
-            "baose"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "thuya",
-        "definition": "Any member of the genus Thuya.",
-        "exampleSentence": "Thuya, Ara, or Sandrac-tree, is probably the Arbor vitæ of Theophrastus: it is similar in leaf to the juniper, and, besides producing the gum sandrac, the wood is invaluable ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "thuya",
-        "etymology": "From the genus name.",
-        "distractors": [
-            "thaya",
-            "theya",
-            "tuhya"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "otomi",
-        "definition": "A person belonging to the indigenous Otomi ethnic group of central Mexico.",
-        "exampleSentence": "He wrote the word otomi on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "oʊtəmiː",
-        "etymology": "Borrowed from Spanish otomí, from Classical Nahuatl otomih, plural of otomitl.",
-        "distractors": [
-            "ottomi",
-            "otommi",
-            "otami"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "obole",
-        "definition": "An obsolete French coin.",
-        "exampleSentence": "If a small ship arrives at Billingsgate it will give one obole as thelony custom.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "silent-e",
-        "pronunciation": "obole",
-        "etymology": "Borrowed from French obole. Doublet of obolus, obol, and pul.",
-        "distractors": [
-            "oboel",
-            "obbole",
-            "obolle"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "allee",
-        "definition": "A tree-lined avenue, often particularly one that is part of a landscaped garden.",
-        "exampleSentence": "He found her walking slowly up and down an allee of elms, through the leaves of which the bright September sunshine sifted down.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "allee",
-        "etymology": "From French allée (“path”).",
-        "distractors": [
-            "alee",
-            "alle",
-            "allea"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "biffo",
-        "definition": "Violence, fighting; a fight.",
-        "exampleSentence": "There was too much biffo going on at that club, so I left.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bɪfəʊ",
-        "etymology": "From biff + -o.",
-        "distractors": [
-            "bifo",
-            "baffo",
-            "beffo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "irrep",
-        "definition": "Clipping of irreducible representation.",
-        "exampleSentence": "The interesting aspect here is that U₃ is irreducible, even though all irreps over the complexes are one-dimensional because ℤ₄ is abelian.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "irrep",
-        "distractors": [
-            "irep",
-            "irrap",
-            "irrip"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "doogh",
-        "definition": "A savory Persian yogurt drink with a mint flavor.",
-        "exampleSentence": "For a counterpoint to its molar-tingling sweetness, you might try a glass of doogh, the Persian yogurt drink, bracingly tart with a high note of dill.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "duːɡ",
-        "etymology": "Borrowed from Iranian Persian دوغ (duġ), from Classical Persian دوغ (dōġ).",
-        "distractors": [
-            "dogh",
-            "dooggh",
-            "daogh"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "amala",
-        "definition": "A thick paste made from yam or cassava flour, eaten chiefly in Yoruba cuisine.",
-        "exampleSentence": "The amala, or fermented yam, is an acquired taste, arriving in a grayish steamed mound, wrapped in plastic; it's neither sweet nor sour.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "amala",
-        "etymology": "Borrowed from Yoruba àmàlà.",
-        "distractors": [
-            "ammala",
-            "amalla",
-            "amela"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "amero",
-        "definition": "A proposed unified currency of Canada, the United States, and Mexico.",
-        "exampleSentence": "The Amero would increase the GDP of the US by only roughly 15%.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "amero",
-        "etymology": "From America, perhaps modelled on euro; coined by Canadian politician Herb Grubel in 1999.",
-        "distractors": [
-            "ammero",
-            "amerro",
-            "amaro"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "akita",
-        "definition": "A large dog of a Japanese breed from the mountainous northern regions of Japan.",
-        "exampleSentence": "He wrote the word akita on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "akita",
-        "etymology": "Borrowed from Japanese 秋(あき)田(た) (Akita).",
-        "distractors": [
-            "akkita",
-            "akitta",
-            "akata"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "unixy",
-        "definition": "Characteristic or reminiscent of Unix operating systems.",
-        "exampleSentence": "On the other hand, since dotfiles are a Unixy concept, we're not that concerned.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "unixy",
-        "etymology": "From Unix + -y.",
-        "distractors": [
-            "unixey",
-            "unnixy",
-            "unixxy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "kaama",
-        "definition": "The hartebeest.",
-        "exampleSentence": "For, in the morning one of the Hottentots found at some distance from our station, the remains of a kaama or hartebeest, which had been devoured by a lion ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "kɑːmə",
-        "etymology": "Borrowed from Tswana kgama.",
-        "distractors": [
-            "kama",
-            "kaamma",
-            "keama"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "italo",
-        "definition": "Ellipsis of Italo disco.",
-        "exampleSentence": "During the late 1980s Italo began fading away and some groups moved into the Hi-NRG genre, which combined high-paced Italo and house.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "italo",
-        "distractors": [
-            "ittalo",
-            "itallo",
-            "itelo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "aillt",
-        "definition": "A member of a semi-servile class among the Cymry.",
-        "exampleSentence": "… but the laws and the Extents make us acquainted with another class, somewhat akin to the manorial serf of England, the aillt class.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "aɪlt",
-        "etymology": "Borrowed from Welsh aillt.",
-        "distractors": [
-            "ailt",
-            "aallt",
-            "aellt"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "anona",
-        "definition": "Custard apple.",
-        "exampleSentence": "He wrote the word anona on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "anona",
-        "distractors": [
-            "annona",
-            "anonna",
-            "anana"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "thons",
-        "definition": "Belonging to thon, their (singular). Gender-neutral third-person singular possessive adjective, coordinate with his and her.",
-        "exampleSentence": "I hope that each student will have learned thons algebra lesson perfectly this morning.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "thons",
-        "etymology": "From thon + -s.",
-        "distractors": [
-            "thonns",
-            "thans",
-            "thens"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "brocc",
-        "definition": "Clipping of broccoli.",
-        "exampleSentence": "He wrote the word brocc on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "brocc",
-        "distractors": [
-            "broc",
-            "bracc",
-            "brecc"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "veena",
-        "definition": "A plucked stringed instrument with five or seven steel strings stretched on a long fretted finger-board over two gourds, used mostly in Carnatic Indian classical music.",
-        "exampleSentence": "Shanmugavadivu continued to earn her income through her veena performances, and by introducing her daughters to the stage as soon as they were able.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "viːnə",
-        "etymology": "From Hindi वीणा (vīṇā), and its source, Sanskrit वीणा (vīṇā), which is related to Middle Persian wn' (win, “veena, lute”).",
-        "distractors": [
-            "vena",
-            "veenna",
-            "veana"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "draff",
-        "definition": "A byproduct from a grain distillery, often fed to pigs or cattle as part of their ration; often synonymous with brewer's spent grain, sometimes differentiated from it; usually differentiated from potale, at least in technical use, although broad, nontechnical use has often lumped all such byproducts together, especially in the past.",
-        "exampleSentence": "A crowd immersed in ordure, that appear'd draff of the human body.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɹæf",
-        "etymology": "From Middle English draf, likely from an unrecorded Old English *dræf, from Proto-Germanic *drabaz.",
-        "distractors": [
-            "draf",
-            "dreff",
-            "driff"
-        ],
-        "theme": "time"
-    },
-    {
         "word": "booer",
         "definition": "One who boos.",
         "exampleSentence": "The booers seemed to make up more than half of the crowd.",
@@ -2383,21 +141,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "cummy",
-        "definition": "Resembling or covered with semen.",
-        "exampleSentence": "I was licking and teasing her asshole while eating her cummy pussy when she rolled over ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "cummy",
-        "distractors": [
-            "cummey",
-            "cumy",
-            "cammy"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "sowth",
         "definition": "To hum or whistle a low tone.",
         "exampleSentence": "It took a while to learn how to sowth.",
@@ -2426,22 +169,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "thack"
         ],
         "theme": "sensory"
-    },
-    {
-        "word": "nooky",
-        "definition": "Like a nook; small and secluded or cosy.",
-        "exampleSentence": "… it may be a little seat in a nooky place, a spring under a tree, a bit of walk by the brookside or a vista amongst the trees.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "nooky",
-        "etymology": "From nook + -y.",
-        "distractors": [
-            "nookey",
-            "noky",
-            "nookky"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "thesp",
@@ -2959,21 +686,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "fitty",
-        "definition": "Properly; fitly.",
-        "exampleSentence": "… Cornish and Catholic, so that Miss Pascoe in the choir-loft of the church of the Immaculate Conception can admonish the organist: 'Do it fitty, my handsome.'",
-        "partOfSpeech": "adverb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fitty",
-        "distractors": [
-            "fittey",
-            "fity",
-            "fatty"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "lurry",
         "definition": "A confused heap; a throng or jumble, as of people or sounds.",
         "exampleSentence": "To turn prayer into a kind of lurry.",
@@ -3351,22 +1063,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "nature"
     },
     {
-        "word": "deech",
-        "definition": "To smear, daub, plaster, or impregnate, especially with dirt which becomes hard and ingrained.",
-        "exampleSentence": "The mud of Flanders clung to his boots and clothes. It was \"deeched\" into his skin, and round his eyes had left a stain so dark, it looked as if he had been painted for a theatrical make-up.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "deech",
-        "etymology": "From Middle English dechen, from Old English dēċan (“to smear, plaster, daub”), from Proto-West Germanic *dōkijan (“to apply with a rag or cloth, smear”), from *dōk (“cloth, rag”), from Proto-Germanic *dōkaz (“rag”); see duck (“canvas, cloth”). Cognate with Dutch doeken, German tuchen.",
-        "distractors": [
-            "dech",
-            "deecch",
-            "deetch"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "cloop",
         "definition": "A compression technology for Linux files stored on a read-only block device that allows files to be decompressed on the fly.",
         "exampleSentence": "Load a MyDSL extension (xchat.uci) to check that the cloop driver is working.",
@@ -3475,22 +1171,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "elogey",
             "ellogy",
             "eloggy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "methy",
-        "definition": "The burbot.",
-        "exampleSentence": "Our Loche or Methy is not a fashionable fish, ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "methy",
-        "etymology": "From Woods Cree mathay (“burbot”); compare Cree miyay.",
-        "distractors": [
-            "methey",
-            "metthy",
-            "mathy"
         ],
         "theme": "everyday"
     },
@@ -4247,22 +1927,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "unass",
-        "definition": "To get out of (a vehicle or building).",
-        "exampleSentence": "We “unassed” the barracks and slept outside on the lawn the remainder of the night.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "unass",
-        "etymology": "From un- + ass.",
-        "distractors": [
-            "unas",
-            "unnass",
-            "uness"
-        ],
-        "theme": "home"
-    },
-    {
         "word": "kottu",
         "definition": "A Sri Lankan dish made with roti, vegetables, eggs, meat, etc.",
         "exampleSentence": "String hopper kottu, or gossamer rice-flour noodles, are molded with vegetables into a pyramid.",
@@ -4622,21 +2286,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "wagga",
-        "definition": "A rug created from material scraps, small raw wool scraps and hessian bags.",
-        "exampleSentence": "Waggas were made by both men and women, and each gender had a distinct way of making them.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "wagga",
-        "distractors": [
-            "waga",
-            "wegga",
-            "wigga"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "revvy",
         "definition": "Easy to rev up fast.",
         "exampleSentence": "It was more revvy in nature, with a slightly peaky delivery when compared to its bigger sibling; maximum power of 144bhp did not arrive until 6,500rpm.",
@@ -4882,22 +2531,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "apop",
             "appoop",
             "apaop"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "wassy",
-        "definition": "Wanton, driven, hyperactive.",
-        "exampleSentence": "I still make man panic, true I’m way too wassy.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "wæsi",
-        "etymology": "From wass + -y.",
-        "distractors": [
-            "wassey",
-            "wasy",
-            "wessy"
         ],
         "theme": "everyday"
     },
@@ -6223,22 +3856,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "shath",
-        "definition": "A combination shower and bath.",
-        "exampleSentence": "“Do both. Like when I can't decide between a bath or a shower, I call it a \"shath.\"”.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "shath",
-        "etymology": "Blend of shower + bath.",
-        "distractors": [
-            "shatth",
-            "sheth",
-            "shith"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "reeat",
         "definition": "To eat again.",
         "exampleSentence": "Cecotrophs are formed from the remainder of the digestible material. These are full of nutrients and are passed to the outside to be reeaten by the rabbit.",
@@ -6568,22 +4185,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "abulia",
-        "definition": "Absence of willpower or decisiveness, especially as a symptom of mental illness.",
-        "exampleSentence": "His virginal modesty is a modern abulia.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "əbuliə",
-        "etymology": "From New Latin abūlia, from Ancient Greek ἀβουλία (aboulía, “irresolution”), from ἀ- (a-, “without”) + βουλή (boulḗ, “will”).",
-        "distractors": [
-            "abbulia",
-            "abullia",
-            "abalia"
-        ],
-        "theme": "health"
-    },
-    {
         "word": "abuser",
         "definition": "One who abuses someone or something.",
         "exampleSentence": "Can you use the word abuser in a sentence?",
@@ -6817,22 +4418,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "adtiya"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "admass",
-        "definition": "That part of society that is influenced by mass media advertising.",
-        "exampleSentence": "Can you use the word admass in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "admass",
-        "etymology": "From ad + mass, coined by British novelist J. B. Priestley.",
-        "distractors": [
-            "damass",
-            "amdass",
-            "adamss"
-        ],
-        "theme": "society"
     },
     {
         "word": "adnexa",
@@ -7072,22 +4657,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "alluim"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "allure",
-        "definition": "The power to attract, entice; the quality causing attraction.",
-        "exampleSentence": "Can you use the word allure in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "silent-e",
-        "pronunciation": "əlʊɚ",
-        "etymology": "From Middle English aluren, from Old French aleurer, alurer, from a (“to, towards”) (Latin ad) + leurre (“lure”). Compare lure.",
-        "distractors": [
-            "lalure",
-            "alulre",
-            "allrue"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "alnico",
@@ -8043,22 +5612,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "bettor",
-        "definition": "A person who makes a bet, such as a wager on the outcome of a game of chance or a sporting event.",
-        "exampleSentence": "Can you use the word bettor in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "bɛtɚ",
-        "etymology": "From bet + -or.",
-        "distractors": [
-            "ebttor",
-            "btetor",
-            "betotr"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "bigeye",
         "definition": "Any fish in the taxonomic family Priacanthidae, which have large eyes.",
         "exampleSentence": "The relatively large eyes may enable the bigeye to feed at lower light intensity than other tunas.",
@@ -8298,37 +5851,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "bootee",
-        "definition": "A soft, woolen shoe, usually knitted, for a baby or small pet.",
-        "exampleSentence": "Take off the baby's bootees before you put her in the crib.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "buːti",
-        "etymology": "From boot + -ee (diminutive suffix).",
-        "distractors": [
-            "botee",
-            "boote",
-            "boottee"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "bootie",
-        "definition": "A soldier.",
-        "exampleSentence": "… and buried where he fell, was disinterred by a 'Bootie' who wanted to photograph him for his album.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bootie",
-        "distractors": [
-            "booty",
-            "botie",
-            "boottie"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "bouffe",
         "definition": "A comic opera.",
         "exampleSentence": "Born as a French satiric form with the bouffes of Jacques Offenbach in the 1850s, it moved on, like most Parisian fashions, to Vienna….",
@@ -8388,22 +5910,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "bubbley",
             "bubly",
             "babbly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bugger",
-        "definition": "A heretic.",
-        "exampleSentence": "What is that little bugger up to now?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "bʌɡəɹ",
-        "etymology": "From Middle English bougre (“heretic”), from Old French bougre, from Medieval Latin Bulgarus (“Bulgar”), from Old Church Slavonic блъгаринъ (blŭgarinŭ, “Bulgarian”), used in designation of heretics (especially the Bogomils, who arose around the 10th century AD in the First Bulgarian Empire), to whom",
-        "distractors": [
-            "buggor",
-            "buggar",
-            "buger"
         ],
         "theme": "everyday"
     },
@@ -8596,22 +6102,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "cenola"
         ],
         "theme": "feelings"
-    },
-    {
-        "word": "caress",
-        "definition": "An act of endearment; any act or expression of affection; an embracing, or touching, with tenderness.",
-        "exampleSentence": "And he wooed her with his soft caresses, / Wooed her with his smile of sunshine, ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "kəɹɛs",
-        "etymology": "From French caresse, from Italian carezza (“dear”), from Latin cārus (“dear”), from Proto-Indo-European *keh₂-, akin to Sanskrit काम (kāma, “love”). Doublet of karezza.",
-        "distractors": [
-            "cares",
-            "carress",
-            "ceress"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "casaba",
@@ -8837,22 +6327,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "coffin",
-        "definition": "A closed box in which the body of a dead person is placed for burial.",
-        "exampleSentence": "Of the paste a coffin I will rear.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "kɔfɪn",
-        "etymology": "From Middle English coffyn, from Old Northern French cofin (“sarcophagus\", earlier \"basket, coffer”), from Latin cophinus (“basket”), a loanword from Ancient Greek κόφινος (kóphinos, “a basket”). Doublet of coffer.",
-        "distractors": [
-            "cofin",
-            "caffin",
-            "ceffin"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "collie",
         "definition": "Any of various breeds of dog originating in Scotland and England as sheepdogs.",
         "exampleSentence": "Can you use the word collie in a sentence?",
@@ -8962,38 +6436,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "coker"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "coolie",
-        "definition": "An unskilled Asian worker, usually of Chinese or Indian descent; a labourer; a porter. Coolies were frequently transported to other countries in the 19th and early 20th centuries as indentured labourers.",
-        "exampleSentence": "Even a coolie would have been better.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "kuːli",
-        "etymology": "From Hindustani क़ुली / قلی (qulī, “hired laborer”), possibly from Ottoman Turkish قول (kul, “servant”). Another theory says that it is named after Gujarati કોળી (koḷī), a Gujarati tribe or caste. Other forms occur in Bengali কুলি (kuli) and Tamil கூலி (kūli, “daily hire”).",
-        "distractors": [
-            "cooly",
-            "colie",
-            "coollie"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "cooter",
-        "definition": "A freshwater turtle of the eastern United States of the genus Pseudemys.",
-        "exampleSentence": "Can you use the word cooter in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "kutɚ",
-        "etymology": "Borrowed from Gullah cootuh (“turtle”), from an African language, e.g. Bambara kuta (“turtle”). Attested in English from the 19th century.",
-        "distractors": [
-            "ocoter",
-            "cotoer",
-            "cooetr"
-        ],
-        "theme": "animals"
     },
     {
         "word": "cootie",
@@ -9488,22 +6930,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "doofus",
-        "definition": "A person with poor judgment and taste; a foolish or silly person.",
-        "exampleSentence": "Can you use the word doofus in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "duːfəs",
-        "etymology": "Perhaps an alteration of earlier goofus (first attested in the 1920s), due to influence from Scots doof (“simpleton”). Scots doof is derived from Low German doof (“deaf\", with a secondary sense of \"idiotic, stupid”). The Low Saxon word is cognate with English deaf.",
-        "distractors": [
-            "dofus",
-            "dooffus",
-            "daofus"
-        ],
-        "theme": "food"
-    },
-    {
         "word": "dorado",
         "definition": "A mahi-mahi or dolphinfish (Coryphaena hippurus), fish with a dorsal fin that runs the length of the body, also known for iridescent coloration.",
         "exampleSentence": "Can you use the word dorado in a sentence?",
@@ -9931,22 +7357,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "erraser"
         ],
         "theme": "people"
-    },
-    {
-        "word": "eryngo",
-        "definition": "The root of sea holly, Eryngium maritimum, formerly candied and taken as confectionery and held to have aphrodisiac properties.",
-        "exampleSentence": "Can you use the word eryngo in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "iːɹɪŋɡəʊ",
-        "etymology": "Ultimately from Latin ēryngion, from Ancient Greek ἠρύγγιον (ērúngion), from ἤρυγγος (ḗrungos).",
-        "distractors": [
-            "erryngo",
-            "erynngo",
-            "eyrngo"
-        ],
-        "theme": "plants"
     },
     {
         "word": "eschar",
@@ -10630,22 +8040,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "home"
     },
     {
-        "word": "geezer",
-        "definition": "A male person.",
-        "exampleSentence": "He'd flirt and boat, but never wrote / A note to his old geezer.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡizɚ",
-        "etymology": "From guiser. Compare also German Low German Kieser (“an obstinate person; brute; savage”).",
-        "distractors": [
-            "geezor",
-            "geezar",
-            "gezer"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "genipa",
         "definition": "Any plant of the genus Genipa.",
         "exampleSentence": "Can you use the word genipa in a sentence?",
@@ -10659,22 +8053,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "geinpa"
         ],
         "theme": "plants"
-    },
-    {
-        "word": "gharry",
-        "definition": "A wheeled cart or carriage, usually horsedrawn.",
-        "exampleSentence": "He thought of Rosa McFee, the Eurasian girl he had seduced in Mandalay in 1913. The way he used to sneak down to the house in a gharry with the shutters down ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "ɡæɹi",
-        "etymology": "Borrowed from Hindi गाड़ी (gāṛī) / Urdu گاڑی (gāṛī, “wheeled cart, carriage; car, truck, bus”), from Sauraseni Prakrit 𑀕𑀟𑁆𑀟 (gaḍḍa), 𑀕𑀟𑁆𑀟𑀻 (gaḍḍī), from Ashokan Prakrit *𑀕𑀸𑀟𑁆𑀟- (*gāḍḍa-).",
-        "distractors": [
-            "gharrey",
-            "ghary",
-            "gherry"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "gidgee",
@@ -10755,22 +8133,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "goatee",
-        "definition": "A beard trimmed to grow only at the center of the chin.",
-        "exampleSentence": "The terrorist, as he called himself, was old and bald, with a narrow, snow-white wisp of a goatee hanging limply from his chin.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡoʊtiː",
-        "etymology": "From goat + -ee (diminutive suffix), referring to the tuft of hair on the chin of many domestic goats.",
-        "distractors": [
-            "goate",
-            "goattee",
-            "goatea"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "gomuti",
         "definition": "A black, fibrous substance resembling horsehair, obtained from the leafstalks of palms of species Metroxylon sagu and Arenga pinnata (syn. Arenga saccharifera, of the Indian islands, and used for making cordage.",
         "exampleSentence": "Can you use the word gomuti in a sentence?",
@@ -10816,6 +8178,22 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "googgle"
         ],
         "theme": "communication"
+    },
+    {
+        "word": "googly",
+        "definition": "A ball, bowled by a leg-break bowler, that spins from off to leg (to a right-handed batsman), unlike a normal leg-break delivery.",
+        "exampleSentence": "His weakness in batting is against googly.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɡʉːɡli",
+        "etymology": "Unknown; perhaps derived from googie (“an egg, in reference to the unusual direction of bounce”). Though the delivery was perfected and made famous by English cricketer Bernard Bosanquet, circa 1900, the term is recorded earlier in Australian English (1896).",
+        "distractors": [
+            "googley",
+            "gogly",
+            "googgly"
+        ],
+        "theme": "body"
     },
     {
         "word": "gooney",
@@ -11880,22 +9258,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "jewess",
-        "definition": "A female Jew.",
-        "exampleSentence": "You really are a high-class Jewess, lemme tell ya.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "jewess",
-        "etymology": "From Middle English Jewesse, from Old French juiesse, juise; equivalent to Jew + -ess.",
-        "distractors": [
-            "jewes",
-            "jewwess",
-            "jawess"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "jiggle",
         "definition": "A relatively weak shaking movement.",
         "exampleSentence": "Give the key a jiggle and see if it opens.",
@@ -12783,22 +10145,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "plants"
     },
     {
-        "word": "macaca",
-        "definition": "Any of a group of Old World monkeys of the genus Macaca; a macaque.",
-        "exampleSentence": "Can you use the word macaca in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "məkɑːkə",
-        "etymology": "From the genus name Macaca, from Portuguese macaca, feminine of macaco (“monkey”). Doublet of macaque and macaco.",
-        "distractors": [
-            "amcaca",
-            "mcaaca",
-            "maacca"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "macule",
         "definition": "A blur or an appearance of a double impression, as when the paper slips a little during printing.",
         "exampleSentence": "Can you use the word macule in a sentence?",
@@ -13467,22 +10813,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "mutinny"
         ],
         "theme": "society"
-    },
-    {
-        "word": "mutton",
-        "definition": "The meat of sheep used as food; especially, that of adults.",
-        "exampleSentence": "Mutton, eaten with caraway seed, is eaten as an aphrodisiac among Arabs.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "mʌt(ə)n",
-        "etymology": "From Middle English motoun, moton, from Old French mouton (“sheep”), from Vulgar Latin moltō, from Gaulish *multon-, from Proto-Celtic *moltos (“ram, wether”). Doublet of mouton.",
-        "distractors": [
-            "muton",
-            "matton",
-            "metton"
-        ],
-        "theme": "animals"
     },
     {
         "word": "muumuu",
@@ -15461,22 +12791,6 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "robber",
-        "definition": "A person who robs.",
-        "exampleSentence": "I remember as a boy in my native land the bad name the common magpie (Pica caudata) had as a destroyer of chickens, and a robber of nests.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "ɹɑbɚ",
-        "etymology": "Inherited from Middle English robbour, robbere, either directly taken from or from a calque of Old French robeor. Equivalent to rob + -er.",
-        "distractors": [
-            "robbor",
-            "robbar",
-            "rober"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "romani",
         "definition": "A member of the Roma, a nomadic people with origins in India.",
         "exampleSentence": "The Romani have long been discriminated against.",
@@ -15827,5 +13141,2707 @@ export const TIER_2_PIPELINE_F_WORDS: SpellingWord[] = [
             "semara"
         ],
         "theme": "plants"
+    },
+    {
+        "word": "samosa",
+        "definition": "A South Asian snack consisting of a deep-fried triangular turnover filled with vegetables (especially potatoes) or meat.",
+        "exampleSentence": "Can you use the word samosa in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "səmoʊsə",
+        "etymology": "Borrowed from Hindustani سموسہ (samosa) / समोसा (samosā), from Classical Persian سنبوسه (sanbōsa), from Middle Persian *sambōsag. Doublet of sambusa, sambusak, sambuseh, sambuusa, and samsa.",
+        "distractors": [
+            "asmosa",
+            "smaosa",
+            "saomsa"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "sanity",
+        "definition": "The condition of being sane.",
+        "exampleSentence": "Can you use the word sanity in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sænəti",
+        "etymology": "From Middle English sanite, sanyte, sanytee, from Middle French sanité, from Latin sānitās, from sānus (“healthy”) + -itās (“-ity”). By surface analysis, sane + -ity.",
+        "distractors": [
+            "sanitey",
+            "sannity",
+            "sanitty"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sannup",
+        "definition": "A male Native American, especially a married one; a brave.",
+        "exampleSentence": "Or rather, he obliged Miguen to do so, for the limping sannup could not pursue the quarry.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sannup",
+        "etymology": "From Penobscot senabe (“man”); compare Abenaki sanôba (“man”).",
+        "distractors": [
+            "sanup",
+            "sennup",
+            "sinnup"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sapota",
+        "definition": "The tropical fruit from the sapodilla tree, Manilkara zapota. The fruit is 4–8 cm in diameter, has a fuzzy brown skin with very sweet earthy-brown flesh.",
+        "exampleSentence": "Can you use the word sapota in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sapota",
+        "etymology": "Latinization of Nahuatl tzapocuahuitl (“Manilkara zapota, sapodilla”)",
+        "distractors": [
+            "aspota",
+            "spaota",
+            "saopta"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "sapper",
+        "definition": "A combat engineer; an engineer or a soldier engaged in attacking, destroying, and circumventing or building fortifications, bridges, and roads; a military engineer active in a combat zone.",
+        "exampleSentence": "A vast minefield trapped Ukrainian troops for weeks as infantry sappers slowly cleared an assault route on foot.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sæpɚ",
+        "etymology": "Borrowed from Middle French sappeur (French sapeur). By surface analysis, sap + -er.",
+        "distractors": [
+            "sappor",
+            "sappar",
+            "saper"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "sateen",
+        "definition": "A type of cotton cloth with a shiny surface and dull back, woven using the technique that, when applied to silk or nylon, results in cloth called satin.",
+        "exampleSentence": "The elaboration of her sateen costume (somewhat dirty and torn now) showed that she was an optimate.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sətiːn",
+        "etymology": "A 19th century variant of satin, perhaps influenced by velveteen.",
+        "distractors": [
+            "saten",
+            "satteen",
+            "satean"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "satori",
+        "definition": "A sudden inexpressible feeling of spiritual awakening or enlightenment, the result of meditation and study.",
+        "exampleSentence": "It was as if Neal Cassady … was in a state of satori, as totally into this very moment, Now, as a being can get.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sətɔɹi",
+        "etymology": "Borrowed from Japanese 悟り (satori, “understanding; (Buddhism) enlightenment, satori”), from 悟る (satoru, “to perceive; to comprehend, understand; to come to enlightenment”), from Middle Chinese 悟 (nguH, “to become aware, apprehend, realize; to awaken”) (modern Mandarin 悟 (wù)), used to translate Pali",
+        "distractors": [
+            "sattori",
+            "satorri",
+            "setori"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "saxony",
+        "definition": "A fine soft woollen fabric.",
+        "exampleSentence": "Can you use the word saxony in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sæksəni",
+        "etymology": "From Middle English Saxonie, from Latin Saxōnia, from Saxō (stem Saxōn-) + -ia. By surface analysis, Saxon + -y.",
+        "distractors": [
+            "asxony",
+            "sxaony",
+            "saoxny"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "schist",
+        "definition": "Any of a variety of coarse-grained crystalline metamorphic rocks with a foliated structure that allows easy division into slabs or slates.",
+        "exampleSentence": "Millions of years ago the mica schists surrounding the old Brandberg West Mine became folded and concertinaed by enormous horizontal pressures.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʃɪst",
+        "etymology": "From French schiste, from Latin schistos lapis (“the stone that is easy to split”), from Ancient Greek σχιστός (skhistós, “splittable”), from σχίζω (skhízō, “to split”).",
+        "distractors": [
+            "schisst",
+            "schast",
+            "schest"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "schorl",
+        "definition": "The most common variety of tourmaline.",
+        "exampleSentence": "Can you use the word schorl in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "ʃɔː(ɹ)l",
+        "etymology": "From German Schörl, probably from Swedish skör (“brittle”).",
+        "distractors": [
+            "cshorl",
+            "shcorl",
+            "scohrl"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "scilla",
+        "definition": "A plant of the genus Scilla; a squill.",
+        "exampleSentence": "Can you use the word scilla in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sɪlə",
+        "etymology": "Borrowed from Latin scilla, from Ancient Greek σκίλλα (skílla). Doublet of squill.",
+        "distractors": [
+            "scila",
+            "scalla",
+            "scella"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "scruff",
+        "definition": "The loose skin at the back of the neck of some animals.",
+        "exampleSentence": "He grabbed his unruly child by the scruff of the neck, and took him home.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skɹʌf",
+        "etymology": "1790, from earlier (1787) scuft and dialect scuff, influenced by scruff (“crust”). Related to North Frisian skuft (“back of the neck of a horse”) and Dutch schoft (“withers (of a horse)”), from Proto-Germanic.",
+        "distractors": [
+            "scruf",
+            "scraff",
+            "screff"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "scythe",
+        "definition": "An instrument for mowing grass, grain, etc. by hand, composed of a long, curving blade with a sharp concave edge, fastened to a long handle called a snath.",
+        "exampleSentence": "And nothing 'gainst Time's scythe can make defence.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "saɪð",
+        "etymology": "From Middle English sythe, sithe, from Old English sīþe, sīgþe, sigdi (“sickle”), from Proto-West Germanic *sigiþi, from Proto-Germanic *sigiþiz, *sigiþō, derived from *seg- (“saw”), from Proto-Indo-European *sek- (“to cut”).",
+        "distractors": [
+            "scytthe",
+            "sycthe",
+            "sctyhe"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "seller",
+        "definition": "Someone who sells; a vendor; a clerk.",
+        "exampleSentence": "Alisha was a seller of fine books.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sɛlɚ",
+        "etymology": "From Middle English seller, sellere, (also siller, sullar, sullere), from Old English *sellere, *syllere, equivalent to sell + -er (agent noun) (sense 1) and sell + -er (patient) (sense 2). Cognate with Danish sælger, Swedish säljare, Icelandic seljari (“a seller; dealer”).",
+        "distractors": [
+            "sellor",
+            "sellar",
+            "seler"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sendee",
+        "definition": "A person to whom something is sent.",
+        "exampleSentence": "Can you use the word sendee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sendee",
+        "etymology": "From send + -ee.",
+        "distractors": [
+            "esndee",
+            "snedee",
+            "sednee"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sennit",
+        "definition": "Braided cord or fabric of such small stuff as plaited rope yarns.",
+        "exampleSentence": "In the 19th century British sailors wore sennit or sennet hats. Originally made by the sailors themselves they could be waterproofed with tar.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sennit",
+        "etymology": "Perhaps from French coussinet, diminutive of coussin (“cushion”) because it is used to protect cables from fraying",
+        "distractors": [
+            "senit",
+            "sannit",
+            "sinnit"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "seseli",
+        "definition": "Any plant of the genus Seseli.",
+        "exampleSentence": "Can you use the word seseli in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "seseli",
+        "distractors": [
+            "esseli",
+            "sseeli",
+            "seesli"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "shammy",
+        "definition": "Chamois leather.",
+        "exampleSentence": "Can you use the word shammy in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "shammy",
+        "etymology": "From chamois with an initial sh to represent the sound /ʃ/ in English.",
+        "distractors": [
+            "hsammy",
+            "sahmmy",
+            "shmamy"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "shanny",
+        "definition": "A fish, the prickleback.",
+        "exampleSentence": "Can you use the word shanny in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "shanny",
+        "distractors": [
+            "hsanny",
+            "sahnny",
+            "shnany"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "sherry",
+        "definition": "A fortified wine produced in Jerez de la Frontera in Spain, or a similar wine produced elsewhere.",
+        "exampleSentence": "Can you use the word sherry in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "ʃɛɹi",
+        "etymology": "Back-formation of earlier sherris (interpreted as a plural), from Spanish (vino de) Xeres (“wine of Xeres”), Xeres being the former spelling of Jerez (pronounced /ʃeˈɾes/ in early modern Andalusian Spanish).",
+        "distractors": [
+            "sherrey",
+            "shery",
+            "sharry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "shinny",
+        "definition": "An informal game of pickup hockey played with minimal equipment: skates, sticks and a puck or ball.",
+        "exampleSentence": "In shinny, everyone wins. Though rules are scaled back, the game is not loosened beyond all form, and the driving competitive element remains.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʃɪni",
+        "etymology": "Variation of shinty.",
+        "distractors": [
+            "shinney",
+            "shiny",
+            "shanny"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "silica",
+        "definition": "Silicon dioxide.",
+        "exampleSentence": "Its Blair County property was sited at the foot of ganister-covered Dunnings Mountain to compete with the Mount Union plants making silica bricks for the steel industry.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sɪlɪkə",
+        "etymology": "From New Latin silica, from Latin silex (“hard stone, flint”), on model of alumina, soda.",
+        "distractors": [
+            "sillica",
+            "silicca",
+            "salica"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "simile",
+        "definition": "A figure of speech in which one thing is explicitly compared to another, using e.g. like or as.",
+        "exampleSentence": "My father is a quiet man / With sober, steady ways; / For simile, a folded fan; / His nights are like his days.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "sɪməli",
+        "etymology": "From Latin simile (“comparison, likeness, parallel”) (first attested 1393), originally from simile, neuter form of similis (“like, similar, resembling”). Compare English similar.",
+        "distractors": [
+            "simiel",
+            "simmile",
+            "simille"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "simmer",
+        "definition": "A fan of the video game series The Sims.",
+        "exampleSentence": "Can you use the word simmer in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "simmer",
+        "etymology": "From Sim + -er.",
+        "distractors": [
+            "ismmer",
+            "smimer",
+            "simemr"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "simony",
+        "definition": "The buying or selling of spiritual or sacred things, such as ecclesiastical offices, pardons, or consecrated objects.",
+        "exampleSentence": "He openly practiced simony; in other words, he sold benefices.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "saɪməni",
+        "etymology": "From Middle English simonie, symonye, from Old French simonie, from Late Latin simonia, named after Simon Magus (Hebrew שִׁמְעוֹן (Šimʻôn, “Simon”)), with reference to Acts 8:18–20.",
+        "distractors": [
+            "simoney",
+            "simmony",
+            "simonny"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "simoom",
+        "definition": "A hot, dry, suffocating, dust-laden wind of the desert, particularly of Arabia, Syria, and neighboring countries, generated by the extreme heat of the parched deserts or sandy plains.",
+        "exampleSentence": "Stephen's heart had withered up like a flower of the desert that feels the simoom coming from afar.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sɪmuːm",
+        "etymology": "From Arabic سَمُوم (samūm, “hot wind”), from سَمَّ (samma, “to poison”).",
+        "distractors": [
+            "simom",
+            "simmoom",
+            "samoom"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "sinner",
+        "definition": "A person who, by one particular action, has sinned.",
+        "exampleSentence": "Are you a sinner or a saint?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sɪnɚ",
+        "etymology": "From Middle English synnere, equivalent to sin + -er. Compare Saterland Frisian Säänder (“sinner”), West Frisian sûnder (“sinner”), Dutch zondaar (“sinner”), German Low German Sünder, Sünner (“sinner”), German Sünder (“sinner”), Danish synder (“sinner”), Swedish syndare (“sinner”), Icelandic syndari",
+        "distractors": [
+            "sinnor",
+            "sinnar",
+            "siner"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sipper",
+        "definition": "One who sips.",
+        "exampleSentence": "Can you use the word sipper in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sipper",
+        "etymology": "From sip + -er.",
+        "distractors": [
+            "ispper",
+            "spiper",
+            "sipepr"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sirrah",
+        "definition": "A term of address to an inferior male or more commonly a child. A modern-day equivalent would be \"little man\".",
+        "exampleSentence": "Can you use the word sirrah in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "sɪɹə",
+        "etymology": "An extended form of sir; the source of the final vowel is unclear. See also siree.",
+        "distractors": [
+            "sirah",
+            "sarrah",
+            "serrah"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sissoo",
+        "definition": "A leguminous tree (Dalbergia sissoo) of northern India.",
+        "exampleSentence": "There was a huge tree near Minoti's house. It was a Sissoo tree.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sissoo",
+        "etymology": "From Hindi [Term?] / Urdu [Term?]. Doublet of shisham.",
+        "distractors": [
+            "sisoo",
+            "sisso",
+            "sassoo"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "sizzle",
+        "definition": "The sound of water boiling on a hot surface.",
+        "exampleSentence": "Her performance had a lot of sizzle.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sɪzəl",
+        "etymology": "Probably a derivative of Middle English sissen (“to hiss; buzz; hum”), equivalent to siss + -le (frequentative suffix).",
+        "distractors": [
+            "sizzel",
+            "sizle",
+            "sazzle"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "skiing",
+        "definition": "A group of sports using skis as primary equipment.",
+        "exampleSentence": "Editor John Torinus could enlighten us on wineology, crosscountry skiing, sailing and the joys and pains of being an editor.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skiɪŋ",
+        "distractors": [
+            "sking",
+            "skiinng",
+            "skaing"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "skilly",
+        "definition": "Skillygalee.",
+        "exampleSentence": "Can you use the word skilly in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skɪli",
+        "distractors": [
+            "ksilly",
+            "siklly",
+            "sklily"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "skinny",
+        "definition": "The details or facts; especially, those obtained by gossip or rumor.",
+        "exampleSentence": "She called to get the skinny on the latest goings-on in the club.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skɪni",
+        "etymology": "From Middle English skinny (“resembling skin”), equivalent to skin + -y. The meaning associated with lack of fat or muscle possibly derives from the phrase skin and bones; the meaning associated with nudity refers to the exposed skin.",
+        "distractors": [
+            "skinney",
+            "skiny",
+            "skanny"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "skivvy",
+        "definition": "A female domestic servant, especially one employed for menial work.",
+        "exampleSentence": "I put my wetsuit and skivvy on a tree to dry, and laid out my other gear on some grass.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skɪvi",
+        "distractors": [
+            "skivvey",
+            "skivy",
+            "skavvy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sleigh",
+        "definition": "A vehicle, generally pulled by an animal, which moves over snow or ice on runners, used for transporting persons or goods. (contrast \"sled\", which is smaller).",
+        "exampleSentence": "Can you use the word sleigh in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sleɪ",
+        "etymology": "From Modern Dutch slee, from Middle Dutch slede, ultimately from Proto-Germanic *slidô. Doublet of sled and further related to slide.",
+        "distractors": [
+            "sleiggh",
+            "sliegh",
+            "slaigh"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "sleuth",
+        "definition": "Slowness; laziness, sloth.",
+        "exampleSentence": "If these dainty adventurers weren’t being chased by a sleuth of bears or bogeys, they were being captured by Gypsies or thieves.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sluːθ",
+        "etymology": "From Old English slǣwþ, corresponding to slow + -th.",
+        "distractors": [
+            "sleutth",
+            "slauth",
+            "sliuth"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "smithy",
+        "definition": "The location where a smith (particularly a blacksmith) works, a forge.",
+        "exampleSentence": "Traditionally a village smithy was a busy place because the smith's work was so necessary.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "smɪði",
+        "etymology": "From Middle English smythy, from Old Norse smiðja, from Proto-Germanic *smiþjǭ. Cognate with Old English smiþþe (whence the obsolete modern doublet smithe). See the Proto-Germanic entry for further cognates.",
+        "distractors": [
+            "smithey",
+            "smitthy",
+            "smathy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sneeze",
+        "definition": "An act of sneezing.",
+        "exampleSentence": "Can you use the word sneeze in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "sniːz",
+        "etymology": "From Middle English snesen (“to sneeze”), alteration of earlier fnesen (“to sneeze”), from Old English fnēosan (“to sneeze, snort”), from Proto-West Germanic *fneusan, from Proto-Germanic *fneusaną, from Proto-Indo-European *pnew- (“to breathe, pant, snort, sneeze”).",
+        "distractors": [
+            "sneze",
+            "sneezze",
+            "sneaze"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "snooze",
+        "definition": "A brief period of sleep; a nap.",
+        "exampleSentence": "Can you use the word snooze in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "snuːz",
+        "etymology": "Unknown, attested since 18th century. Compare Dutch snoezelen (“to snooze”) or Swedish snusa (“to snore lightly”). Confer also Ancient Greek νυστάζω (nustázō, “to doze, drowse”) and Russian сон (son, “sleep, dream”).",
+        "distractors": [
+            "snoze",
+            "snoozze",
+            "snaoze"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "soffit",
+        "definition": "The visible underside of an arch, balcony, beam, cornice, staircase, vault or any other architectural element.",
+        "exampleSentence": "The elevation of the pipe soffit is 10.4 meters above mean sea level.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sɑfɪt",
+        "etymology": "From French soffite, from Italian soffitto, from Vulgar Latin *suffīctus, perfect passive participle of Latin suffīgō (“to fasten or fix onto”).",
+        "distractors": [
+            "sofit",
+            "saffit",
+            "seffit"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sonata",
+        "definition": "A musical composition for one or a few instruments, one of which is frequently a piano, in three or four movements that vary in key and tempo.",
+        "exampleSentence": "Can you use the word sonata in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sənɑːtə",
+        "etymology": "From Italian sonata, from the feminine past participle of sonare (modern suonare), from Latin sonāre (“to make sound”). Doublet of sounded.",
+        "distractors": [
+            "osnata",
+            "snoata",
+            "soanta"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "sooner",
+        "definition": "A native or resident of the American state of Oklahoma.",
+        "exampleSentence": "Some skunk of a Sooner, sneaking in ahead of the Run, had set the blaze to keep the Boomers off, saving the land for himself.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sooner",
+        "distractors": [
+            "soonor",
+            "soonar",
+            "soner"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "spathe",
+        "definition": "A large bract that envelops or subtends a whole inflorescence, typically a spadix.",
+        "exampleSentence": "Can you use the word spathe in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "speɪð",
+        "etymology": "From Latin spatha, from Ancient Greek σπάθη (spáthē, “blade”). Doublet of epee, spatha, and spade.",
+        "distractors": [
+            "psathe",
+            "sapthe",
+            "sptahe"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "stella",
+        "definition": "A serving of Stella Artois, a brand of beer.",
+        "exampleSentence": "I'm going to have a few Stellas tonight.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɛlə",
+        "etymology": "From Latin stēlla (“star”).",
+        "distractors": [
+            "stela",
+            "stalla",
+            "stilla"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "steppe",
+        "definition": "The grasslands of Eastern Europe and Asia.",
+        "exampleSentence": "Nevertheless be it remarked, that even a Russian steppe has tumuli and gold ornaments ….",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɛp",
+        "etymology": "From German Steppe or French steppe, in turn from Russian степь (stepʹ, “flat grassy plain”). There is no generally accepted earlier etymology, but there is a speculative Old East Slavic reconstruction *сътепь (sŭtepĭ, “trampled place, flat, bare”), related to топот (topot), топтать (toptatĭ).",
+        "distractors": [
+            "stepe",
+            "stappe",
+            "stippe"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sthene",
+        "definition": "A kilonewton. Used with the tonne as the unit of mass.",
+        "exampleSentence": "Can you use the word sthene in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "sθin",
+        "etymology": "From Ancient Greek σθένος (sthénos, “strength”).",
+        "distractors": [
+            "tshene",
+            "shtene",
+            "stehne"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stroll",
+        "definition": "A wandering on foot; an idle and leisurely walk; a ramble; a saunter.",
+        "exampleSentence": "Can you use the word stroll in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɹoʊl",
+        "etymology": "Borrowed from German strollen, a variant of Alemannic German strolchen, from Strolch (“vagabond; rascal”).",
+        "distractors": [
+            "tsroll",
+            "srtoll",
+            "storll"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "succus",
+        "definition": "The expressed juice or sap of a plant, often for medicinal use.",
+        "exampleSentence": "Can you use the word succus in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sʌkəs",
+        "etymology": "Borrowed from Latin succus (“juice”).",
+        "distractors": [
+            "usccus",
+            "scucus",
+            "sucucs"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "suffix",
+        "definition": "A morpheme added at the end of a word to modify the word's meaning.",
+        "exampleSentence": "Can you use the word suffix in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sʌfɪks",
+        "etymology": "Borrowed from Latin suffīxus (“suffix”), from sub- (“under”) + fīxus (perfect passive participle of fīgere (“to fasten, fix”)), equivalent to sub- + -fix.",
+        "distractors": [
+            "sufix",
+            "saffix",
+            "seffix"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "sulpha",
+        "definition": "A sulphanilamide.",
+        "exampleSentence": "Can you use the word sulpha in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sulpha",
+        "distractors": [
+            "uslpha",
+            "slupha",
+            "suplha"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sunnah",
+        "definition": "(An example of) Muhammad's way of life, as recorded in the hadiths, especially when viewed as a model for Muslims to emulate.",
+        "exampleSentence": "Can you use the word sunnah in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sunnah",
+        "etymology": "Borrowed from Arabic سُنَّة (sunna, “habit, custom”).",
+        "distractors": [
+            "usnnah",
+            "snunah",
+            "sunanh"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sussex",
+        "definition": "A British breed of dual-purpose chicken, reared both for its meat and for its eggs.",
+        "exampleSentence": "Can you use the word sussex in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "sʌsɪks",
+        "etymology": "Inherited from Old English Sūþseaxan (literally “South Saxons”), which stood for both Sussex and its people. The town in New Brunswick may have been named after Sussex, New Jersey. The civil parish is named after the town.",
+        "distractors": [
+            "susex",
+            "sassex",
+            "sessex"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "suttee",
+        "definition": "The traditional custom of a Hindu woman giving herself up to be cremated on her husband’s funeral pyre as a sign of her devotion.",
+        "exampleSentence": "Can you use the word suttee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "suttee",
+        "etymology": "From Sanskrit सती (satī́, “good and virtuous or faithful wife”), from सत् (sát, “true, good, right etc.”). In English usage since 1786. Doublet of sin.",
+        "distractors": [
+            "usttee",
+            "stutee",
+            "sutete"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "swatch",
+        "definition": "A piece, pattern, or sample, generally of cloth or a similar material.",
+        "exampleSentence": "Can you use the word swatch in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "swɔt͡ʃ",
+        "etymology": "From earlier Northern England dialectal swache (“the counterfoil or counterstock of a tally”) (1512); further etymology unknown. Cognate with Scots swach, swatch. Compare English swath, swathe. Compare also Old English swæcc (“taste; flavour; odour; fragrance”).",
+        "distractors": [
+            "swattch",
+            "swach",
+            "swetch"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "swathe",
+        "definition": "A bandage; a band.",
+        "exampleSentence": "Can you use the word swathe in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "swɑð",
+        "etymology": "From Middle English swathe, swath, from Old English swaþu, swæþ (“bandage”), probably akin to Old English swaþul, sweþel (“a swathe, wrap, band, bandage”).",
+        "distractors": [
+            "wsathe",
+            "sawthe",
+            "swtahe"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "swoosh",
+        "definition": "A swooshing movement or sound.",
+        "exampleSentence": "Even TV announcers at the last Winter Olympics were spotted with a swoosh on their jackets.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "swʊʃ",
+        "etymology": "From imitation of the sound.",
+        "distractors": [
+            "swosh",
+            "swoossh",
+            "swaosh"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "tahini",
+        "definition": "A paste made from ground sesame seeds, and used to make hummus, baba ghanoush etc.",
+        "exampleSentence": "Can you use the word tahini in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɑːhiːni",
+        "etymology": "From Arabic طَحِينَة (ṭaḥīna), from the root ط ح ن (ṭ-ḥ-n) related to grinding. Final -i most probably from North Levantine dialects or from Greek ταχίνι (tachíni).",
+        "distractors": [
+            "athini",
+            "thaini",
+            "taihni"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tannin",
+        "definition": "Tannic acid or any of its derivatives.",
+        "exampleSentence": "Can you use the word tannin in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tænɪn",
+        "etymology": "From French tannin, from Latin tannum (“oak bark”), from Gaulish *tannos (“oak”). Related to tan. By surface analysis, tann- + -in.",
+        "distractors": [
+            "atnnin",
+            "tnanin",
+            "taninn"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tannoy",
+        "definition": "A public address system.",
+        "exampleSentence": "Although the supermarket tannoy was bravely broadcasting Rigoletto, its meat counter was thick with wurst and its wine shelves loaded with Liebfraumilch.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "diphthongs",
+        "pronunciation": "tænɔɪ",
+        "etymology": "A genericised trademark of Tannoy Ltd, a manufacturer of public address systems. \"Tannoy\" is a syllabic abbreviation of tantalum alloy, which was the material used in a type of electrolytic rectifier developed by the company.",
+        "distractors": [
+            "tannoey",
+            "tanoy",
+            "tannoi"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "tappan",
+        "definition": "An emergent tropical rainforest tree, Koompassia excelsa, family Fabaceae, of Southeast Asia.",
+        "exampleSentence": "Can you use the word tappan in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tappan",
+        "etymology": "From Malay tapang.",
+        "distractors": [
+            "atppan",
+            "tpapan",
+            "tapapn"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "tappet",
+        "definition": "A lever or projection which is moved by some other piece, as a cam, or intended to tap or touch something else, in order to produce change or regulate motion.",
+        "exampleSentence": "Can you use the word tappet in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tappet",
+        "etymology": "From tap + -et, possibly influenced by homophony with \"tap it.\"",
+        "distractors": [
+            "atppet",
+            "tpapet",
+            "tapept"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "tariff",
+        "definition": "A system of government-imposed duties levied on imported or exported goods; a list of such duties, or the duties themselves.",
+        "exampleSentence": "There is a tariff in every carriage, and most of them also have taxometers.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tæɹəf",
+        "etymology": "From Italian tariffa (“arithmetical table; list of customs duties”), from Arabic تَعْرِيف (taʕrīf, “notification, explanation”).",
+        "distractors": [
+            "tarif",
+            "tarriff",
+            "teriff"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "tatter",
+        "definition": "A shred of torn cloth; an individual item of torn and ragged clothing.",
+        "exampleSentence": "You can’t – you shan’t – you don’t – you won’t – you thing of rag and tatter, O!",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tætə(ɹ)",
+        "etymology": "From Middle English tater, from Old Norse tǫturr, from Proto-Germanic *tat(t)uraz (“tuft, patch”). Cognate with Icelandic tötur (“rag, tatter”).",
+        "distractors": [
+            "tattor",
+            "tattar",
+            "tater"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "teepee",
+        "definition": "A cone-shaped tent traditionally used by many native peoples of the Great Plains of North America.",
+        "exampleSentence": "Can you use the word teepee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tiːpi",
+        "etymology": "From the Lakota word thípi (/ˈtʰipi/), which consists of two elements: the verb thí (“to dwell”), and pi, a pluralising enclitic (a suffix-like ending that marks the subject of the verb as plural), which means they dwell.",
+        "distractors": [
+            "etepee",
+            "tepeee",
+            "teeepe"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "teeter",
+        "definition": "A teeter-totter or seesaw.",
+        "exampleSentence": "Can you use the word teeter in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "titəɹ",
+        "etymology": "Alteration of titter.",
+        "distractors": [
+            "eteter",
+            "teteer",
+            "teeetr"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "teredo",
+        "definition": "A mollusc of the genus Teredo, especially of species Teredo navalis.",
+        "exampleSentence": "Meet fell Teredo, as he mines the keel / With beaked head, and break his lips of steel ….",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "teredo",
+        "etymology": "From Latin terēdō (“woodworm”), from Ancient Greek τερηδών (terēdṓn, “wood-worm”). Compare Ancient Greek: τέρην (térēn, “smooth, gentle”).",
+        "distractors": [
+            "terredo",
+            "tereddo",
+            "taredo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "teresa",
+        "definition": "A type of light lady's kerchief in the late eighteenth century.",
+        "exampleSentence": "A black teresa, thrown round her shoulders, set off the dazzling whiteness of a neck, rounded by the hands of the graces.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "teresa",
+        "etymology": "Probably named after the Empress Maria Theresa (1717–1780).",
+        "distractors": [
+            "terresa",
+            "teressa",
+            "taresa"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "tetany",
+        "definition": "A condition characterized by painful muscular spasms, caused by faulty calcium metabolism.",
+        "exampleSentence": "Can you use the word tetany in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɛtəni",
+        "etymology": "Borrowed from French tétanie, from New Latin tetania.",
+        "distractors": [
+            "ettany",
+            "tteany",
+            "teatny"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tether",
+        "definition": "A rope, cable etc. that holds something in place whilst allowing some movement.",
+        "exampleSentence": "We suffer the weather / We bind and we tether / This nation together.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tɛðəɹ",
+        "etymology": "From Middle English tether, teder, from Old English *tēoder and/or Old Norse tjóðr ( > Danish tøjr, Swedish tjuder); both from Proto-Germanic *teudrą (“rope; cord; shaft”), of uncertain origin.",
+        "distractors": [
+            "tethor",
+            "tethar",
+            "tetther"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "theism",
+        "definition": "A morbid condition resulting from excessive consumption of tea.",
+        "exampleSentence": "\"Theism\" belongs to that genus of disease in which morphinism, caffeinism, and vanillaism belong.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tiːɪzəm",
+        "etymology": "Borrowing from New Latin thea (“tea”, noun) + English -ism.",
+        "distractors": [
+            "theissm",
+            "thiesm",
+            "thaism"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "theist",
+        "definition": "One who believes in the existence of a god or gods.",
+        "exampleSentence": "… and I call him a theist who believes in any God.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "θiːɪst",
+        "etymology": "From Ancient Greek θεός (theós, “god”) + -ist.",
+        "distractors": [
+            "theisst",
+            "thiest",
+            "thaist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "things",
+        "definition": "One's clothes, furniture, luggage, or possessions collectively; stuff.",
+        "exampleSentence": "Can you use the word things in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "θɪŋz",
+        "distractors": [
+            "thinngs",
+            "thangs",
+            "thengs"
+        ],
+        "theme": "travel"
+    },
+    {
+        "word": "thirty",
+        "definition": "A rack of thirty beers.",
+        "exampleSentence": "Can you use the word thirty in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "θɝti",
+        "etymology": "From Middle English thirty, metathetic alternant of Middle English thriti, þrittiȝ, from Old English þrītiġ (“thirty”), from Proto-Germanic *þrīz tigiwiz (“thirty”, literally “three tens”), equivalent to three + -ty.",
+        "distractors": [
+            "htirty",
+            "tihrty",
+            "thrity"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "thrips",
+        "definition": "Any of the many small insects of the order Thysanoptera, especially those that attack useful plants.",
+        "exampleSentence": "The turnrows and margins of the fields should be cultivated often enough to prevent the growth of weeds, many forms of which harbor the onion thrips.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "thrips",
+        "etymology": "Borrowed from Ancient Greek θρίψ (thríps, “wood-worm”).",
+        "distractors": [
+            "thripps",
+            "thraps",
+            "threps"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "thwack",
+        "definition": "An act of hitting hard, especially with a flat implement or a stick; a whack; also, a powerful stroke involved in such hitting; a blow, a strike.",
+        "exampleSentence": "Can you use the word thwack in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "θwæk",
+        "etymology": "The verb is probably: * partly onomatopoeic, from the sound of something being beaten (compare whack); and * partly derived from Late Middle English twakken, twake (“to hit (someone) with something; to pat; to stroke”), probably from Middle English thakken, thakke (“to dab; to pat; to stroke”) [and",
+        "distractors": [
+            "thwak",
+            "thwacck",
+            "thweck"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "thwart",
+        "definition": "A seat across a boat on which a rower may sit.",
+        "exampleSentence": "Can you use the word thwart in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "θwɔɹt",
+        "etymology": "The adjective is derived from Early Middle English thwert, thwerte, thuart, thurt, thurte, thwart, thwarte, twart, twarte, twhart, twhert, twort, þuert, þwerrt, þwert, þwerte, ðwert (“crosswise, transverse; counter, opposing; contrary, obstinate”), borrowed from Old Norse þvert (“across, athwart”),",
+        "distractors": [
+            "thwarrt",
+            "thwert",
+            "thwirt"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "thymol",
+        "definition": "A monoterpene phenol, C₁₀H₁₃OH, found in the oil extracted from thyme; used as in perfume, as an antiseptic and fungicide, and in embalming.",
+        "exampleSentence": "Can you use the word thymol in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "θaɪmɒl",
+        "etymology": "From French thymol.",
+        "distractors": [
+            "htymol",
+            "tyhmol",
+            "thmyol"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "thyrse",
+        "definition": "A type of inflorescence; a compact panicle having an obscured main axis and cymose subaxes.",
+        "exampleSentence": "The example of the thyrse of Eugenia leads us to understand several inflorescences which resemble also racemes or panicles; such are the thyrses of the Lilac.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "thyrse",
+        "etymology": "From Middle French thyrse, from Latin thyrsus, from Ancient Greek θύρσος (thúrsos). Doublet of thyrsus, torse, and torso.",
+        "distractors": [
+            "thyrrse",
+            "tyhrse",
+            "thryse"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tiffin",
+        "definition": "A (light) midday meal or snack; luncheon.",
+        "exampleSentence": "He took his tiffin from home and ate the food two hours later in school.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɪfɪn",
+        "etymology": "Apparently from English tiffing, present participle of tiff (“to take a small drink, to sip”) (slang).",
+        "distractors": [
+            "tifin",
+            "taffin",
+            "teffin"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "tinner",
+        "definition": "A tinsmith.",
+        "exampleSentence": "Can you use the word tinner in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tinner",
+        "etymology": "From tin + -er.",
+        "distractors": [
+            "tinnor",
+            "tinnar",
+            "tiner"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tippet",
+        "definition": "A shoulder covering, typically the fur of a fox, with long ends that dangle in front.",
+        "exampleSentence": "The school constituency…provded “tippets” of straw to repair the thatch.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɪpɪt",
+        "etymology": "From Middle English tippet, Old English tæppet, from Latin tapete (“cloth”).",
+        "distractors": [
+            "tipet",
+            "tappet",
+            "teppet"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "tipple",
+        "definition": "An area near the entrance of mines which is used to load and unload coal.",
+        "exampleSentence": "But not a drop to drink … Love Islanders are limited to two tipples a day.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɪpəl",
+        "etymology": "Unknown but possibly from a Scandinavian source (see Norwegian tipla), or from tip + -le.",
+        "distractors": [
+            "tippel",
+            "tiple",
+            "tapple"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tither",
+        "definition": "A very anxious, excited, or distressed state.",
+        "exampleSentence": "You know, in the story of the Good Samaritan. So I was in a little bit of a tither about it. But I said to myself —.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tɪðɚ",
+        "etymology": "Probably a variant of dither, pronunciation perhaps influenced by titter.",
+        "distractors": [
+            "tithor",
+            "tithar",
+            "titther"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "titter",
+        "definition": "A nervous or somewhat repressed giggle.",
+        "exampleSentence": "Can you use the word titter in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tɪtɚ",
+        "etymology": "First attested in the 1610s. Probably from Middle English *titeren, *titren (attested in Middle English titering (“hesitation, vacillation”)), probably a frequentative of Middle English titten (“to waver”), related to Old Norse titra (“to shake, shiver, quiver”), dialectal Swedish tittra (“to snicke",
+        "distractors": [
+            "tittor",
+            "tittar",
+            "titer"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tittle",
+        "definition": "Any small dot, stroke, or diacritical mark, especially if part of a letter, or of a letter-like abbreviation; in particular, the dots over the Latin letters i and j.",
+        "exampleSentence": "(the page calls both \"a superscript sign (hooklike)\" and also a diacritical abbreviation of \"er\" (er) \"tittles\").",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɪtəl",
+        "etymology": "From Middle English tytle, titel, titele, from Anglo-Norman titil, titule and Medieval Latin titulus (“small stroke, diacritical mark, accent”), from Latin titulus (“title”). Doublet of tilde, titer/titre, title, titlo, and titulus.",
+        "distractors": [
+            "tittel",
+            "title",
+            "tattle"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "tivoli",
+        "definition": "A game resembling bagatelle, played on a special oblong board or table with a curved upper end, a set of numbered compartments at the lower end, side alleys, and the surface studded with pins and sometimes furnished with numbered depressions or cups.",
+        "exampleSentence": "Can you use the word tivoli in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɪvəli",
+        "etymology": "From Italian Tivoli, from Latin Tībur.",
+        "distractors": [
+            "itvoli",
+            "tvioli",
+            "tiovli"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "toffee",
+        "definition": "A fan or member of Everton F.C..",
+        "exampleSentence": "Can you use the word toffee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "toffee",
+        "etymology": "In reference to two toffee shops that were located in Everton village at the time the club was founded.",
+        "distractors": [
+            "otffee",
+            "tfofee",
+            "tofefe"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tootle",
+        "definition": "A soft toot sound.",
+        "exampleSentence": "On weekends you can take a short tootle over to itsy-bitsy Pelican Island on a free ferry ….",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tuːtəl",
+        "etymology": "From toot + -le, frequentative.",
+        "distractors": [
+            "tootel",
+            "totle",
+            "toottle"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "torero",
+        "definition": "A bullfighter.",
+        "exampleSentence": "Can you use the word torero in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "torero",
+        "etymology": "Borrowed from Spanish torero.",
+        "distractors": [
+            "otrero",
+            "troero",
+            "toerro"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "totara",
+        "definition": "Podocarpus totara, a podocarp tree endemic to New Zealand.",
+        "exampleSentence": "Can you use the word totara in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "totara",
+        "etymology": "Borrowed from Māori tōtara, from Proto-Polynesian *tara (“barb, prong”), from Proto-Oceanic *tala, referring to its mature leaves which resemble spines of the spot-fin porcupinefish (Diodon hystrix).",
+        "distractors": [
+            "ottara",
+            "ttoara",
+            "toatra"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "towhee",
+        "definition": "Any of several species of birds of the genera Pipilo and Melozone.",
+        "exampleSentence": "Can you use the word towhee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "toʊhiː",
+        "etymology": "Imitative of the call of the eastern towhee, Pipilo erythrophthalmus.",
+        "distractors": [
+            "otwhee",
+            "twohee",
+            "tohwee"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "toyota",
+        "definition": "A car of the brand Toyota.",
+        "exampleSentence": "Can you use the word toyota in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "diphthongs",
+        "pronunciation": "tɔɪoʊtə",
+        "etymology": "Borrowed from Japanese トヨタ (Toyota), from the name of the Toyoda family. The spelling was changed to Toyota because of a belief that it sounded better, or because トヨタ takes eight strokes to write, and 8 is considered lucky.",
+        "distractors": [
+            "otyota",
+            "tyoota",
+            "tooyta"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "troops",
+        "definition": "Military personnel in uniform.",
+        "exampleSentence": "There were 10,000 troops in Iraq.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɹuːps",
+        "distractors": [
+            "trops",
+            "troopps",
+            "traops"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "tubule",
+        "definition": "A small pipe or fistular body; a little tube.",
+        "exampleSentence": "Can you use the word tubule in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "tubjul",
+        "etymology": "Learned borrowing from Latin tubulus, diminutive of tubus.",
+        "distractors": [
+            "tubuel",
+            "tubbule",
+            "tubulle"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "tuffet",
+        "definition": "A clump of grass or similar vegetation; a small grass-covered mound.",
+        "exampleSentence": "Little Miss Muffet, She sat on a tuffet, Eating of curds and whey; There came a little spider, Who sat down beside her, And frighted Miss Muffet away.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tuffet",
+        "etymology": "From Old French touffel, diminutive of touffe (“tuft”). Regarding etymological and semantic uncertainty, see Wikipedia at Little Miss Muffet § Tuffet and §§ Uncertain meaning.",
+        "distractors": [
+            "tufet",
+            "taffet",
+            "teffet"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "tugger",
+        "definition": "Agent noun of tug; one who tugs.",
+        "exampleSentence": "Can you use the word tugger in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tugger",
+        "etymology": "From tug + -er.",
+        "distractors": [
+            "utgger",
+            "tguger",
+            "tugegr"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "tuille",
+        "definition": "An armor plate hanging down from the breastplate or fauld to cover the thigh, either below or as part of a tasse. (Possibly ahistorical, see etymology.).",
+        "exampleSentence": "Can you use the word tuille in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "twiːl",
+        "etymology": "From Middle English toile, from Anglo-Norman toille, tuille, taken to be variants of Old French tieulle (modern French tuile, from Latin tēgula, and thus a doublet of tile and tuile.",
+        "distractors": [
+            "utille",
+            "tiulle",
+            "tulile"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "tunica",
+        "definition": "An extinct group of linguistically and culturally related Native American tribes in the Mississippi River Valley.",
+        "exampleSentence": "Can you use the word tunica in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tunica",
+        "distractors": [
+            "utnica",
+            "tnuica",
+            "tuinca"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "turaco",
+        "definition": "Any of the birds of the family Musophagidae in the Musophagiformes order with vivid colouring and prominent crest.",
+        "exampleSentence": "Can you use the word turaco in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "turaco",
+        "etymology": "Compare French touraco.",
+        "distractors": [
+            "utraco",
+            "truaco",
+            "tuarco"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "tureen",
+        "definition": "A broad, deep serving dish used for serving soup or stew.",
+        "exampleSentence": "The large covered soup tureen, as well as the 15 inch round plate on which it sat, was rimmed by gold leaf, and was decorated with an ornate nineteenth century English scene.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "təɹin",
+        "etymology": "From earlier terrene (thus pronunciations with /tj/, /t͡ʃ/ are spelling pronunciations), borrowed from French terrine. Doublet of terrine.",
+        "distractors": [
+            "turen",
+            "turreen",
+            "turean"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "tussle",
+        "definition": "A physical fight or struggle.",
+        "exampleSentence": "Can you use the word tussle in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tʌsəl",
+        "etymology": "Related to tousle.",
+        "distractors": [
+            "tussel",
+            "tusle",
+            "tassle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tuxedo",
+        "definition": "A typically black formal jacket worn by men.",
+        "exampleSentence": "Can you use the word tuxedo in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "tʌksidoʊ",
+        "etymology": "From Tuxedo Park, New York, US, where the fashion is often said to have originated, the village in turn likely from an Eastern Algonquian language (Munsee), from Lenape, tucsedo or p'tuxseepu, (\"crooked water\" or \"crooked river\").",
+        "distractors": [
+            "tuxxedo",
+            "tuxeddo",
+            "taxedo"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "tycoon",
+        "definition": "A wealthy and powerful business person.",
+        "exampleSentence": "Chairman Yu is a tycoon who owns multiple hotel chains.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "taɪkuːn",
+        "etymology": "Borrowed from Japanese 大君(たいくん) (taikun, “great lord, prince”), a title for the shōgun. Related to taipan, from Cantonese 大班 (daai⁶ baan¹). The game sense was derived from the use of tycoon in titles of games in which one plays a tycoon (e.g., RollerCoaster Tycoon).",
+        "distractors": [
+            "tycon",
+            "tyccoon",
+            "tycaon"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "typhon",
+        "definition": "A violent whirlwind; a typhoon.",
+        "exampleSentence": "Can you use the word typhon in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "taɪfən",
+        "etymology": "Perhaps from Ancient Greek Τυφῶν (Tuphôn, “Typhon, father of the winds”); see typhoon.",
+        "distractors": [
+            "typphon",
+            "tyfon",
+            "typhan"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "typhus",
+        "definition": "Any of several similar diseases, characterised by high recurrent fever, caused by Rickettsia bacteria. Not to be confused with typhoid fever.",
+        "exampleSentence": "Typhoid and typhus have similar names and symptoms, but are different diseases.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "taɪfəs",
+        "etymology": "From New Latin typhus, from Ancient Greek τῦφος (tûphos, “fever, stupor”), from τύφω (túphō, “to smoke”), from Proto-Indo-European *dʰewbʰ-, extended form of *dʰew- (“scatter like dust”).",
+        "distractors": [
+            "typphus",
+            "tyfus",
+            "typhas"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "uakari",
+        "definition": "Any of several arboreal monkeys, of the genus Cacajao, from the Amazon basin.",
+        "exampleSentence": "Can you use the word uakari in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "wɑkɑːri",
+        "etymology": "Borrowed from Brazilian Portuguese uacari, borrowed from Nheengatu wakarí, possibly from Old Tupi akaka'i.",
+        "distractors": [
+            "aukari",
+            "ukaari",
+            "uaakri"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ubiety",
+        "definition": "The state of existing in a specific point in space, thereness.",
+        "exampleSentence": "Swain refers to this \"history of Australian Aboriginal being\" as a \"hermeneutics of ubiety,\" that is, a hermeneutics of whereness or of being in a definite place.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ubiety",
+        "etymology": "From Latin ubi (“where”) + -iety.",
+        "distractors": [
+            "ubietey",
+            "ubbiety",
+            "ubietty"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "ulitis",
+        "definition": "Inflammation of the gums.",
+        "exampleSentence": "The bark is used as a gargle for odontopathy, ulitis, and ulemorrhagia.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "greek-roots",
+        "pronunciation": "ulitis",
+        "etymology": "From Ancient Greek οὖλον (oûlon, “gum”) + -itis (“inflammation”).",
+        "distractors": [
+            "ullitis",
+            "ulittis",
+            "ulatis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ullage",
+        "definition": "In a wine bottle, the empty space between the cork and the top of the wine.",
+        "exampleSentence": "The dry ullage will be obtained in the same manner, the dry inches being used instead of the wet.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "ʌlɪd͡ʒ",
+        "etymology": "From Middle English ulage, from Anglo-Norman ulliage, from *ullier (“to fill a partially empty cask”), from Old French oel (“bunghole”, literally “eye”), from Latin oculus (“eye”). See French ouillage.",
+        "distractors": [
+            "ulage",
+            "ullagge",
+            "ullege"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "ultima",
+        "definition": "The final syllable of a word.",
+        "exampleSentence": "Can you use the word ultima in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʌltɪmə",
+        "etymology": "From the Latin feminine of ultimus (“last”).",
+        "distractors": [
+            "lutima",
+            "utlima",
+            "ulitma"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "uracil",
+        "definition": "One of the bases of RNA, pairing with adenine.",
+        "exampleSentence": "We did have some success with uracil when we would preincorporate the uracil into a mutant of E. coli that had a uracil requirement and then feed this cellular content from E. coli.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "jʊərəsɪl",
+        "etymology": "From uro- + ac(etic) + -ile. Coined in 1885 by the German chemist Robert Behrend, who was attempting to synthesize derivatives of uric acid.",
+        "distractors": [
+            "urracil",
+            "uraccil",
+            "urecil"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uranyl",
+        "definition": "The divalent radical UO₂²⁺, conveniently regarded as a residue of many uranium compounds.",
+        "exampleSentence": "Can you use the word uranyl in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "uranyl",
+        "etymology": "From uranium + -yl.",
+        "distractors": [
+            "ruanyl",
+            "uarnyl",
+            "urnayl"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "usurer",
+        "definition": "A person who loans money to others and charges interest, particularly at an exorbitant, exploitative, or illegal rate.",
+        "exampleSentence": "\"You can go to the Carpetbag usurers if you want money.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "juːʒəɹəɹ",
+        "etymology": "Anglo-Norman, from Old French usurier, Latin ūsūra (“interest”).",
+        "distractors": [
+            "usuror",
+            "usurar",
+            "ussurer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "uterus",
+        "definition": "A reproductive organ of therian mammals in which the young are conceived and develop until birth.",
+        "exampleSentence": "Can you use the word uterus in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "juːtəɹəs",
+        "distractors": [
+            "tuerus",
+            "uetrus",
+            "utreus"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "vagary",
+        "definition": "An erratic, unpredictable occurrence or action.",
+        "exampleSentence": "Can you use the word vagary in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "vəɡɛɚi",
+        "etymology": "From Italian vagare (“wander”) and/or its source Latin vagārī (“to wander”), from Latin vagus (“wandering”). Later apparently reinterpreted in English as vague + -ery but without changing the spelling.",
+        "distractors": [
+            "vagarey",
+            "vagery",
+            "vagairy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "valley",
+        "definition": "An elongated depression cast between hills or mountains, often with a river flowing through it.",
+        "exampleSentence": "The Indus River valley was the site of an ancient civilization.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "væli",
+        "etymology": "From Middle English valeye, valey, from Anglo-Norman valey, Old French valee (compare French vallée), from Latin vallēs/vallis. Doublet of vlei and vly. Displaced native dene, from dene and partially displaced native dale, from dæl.",
+        "distractors": [
+            "vally",
+            "valleey",
+            "valey"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "vassal",
+        "definition": "The grantee of a fief, a subordinate granted use of a superior's land and its income in exchange for vows of fidelity and homage and (typically) military service.",
+        "exampleSentence": "Can you use the word vassal in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "væsəl",
+        "etymology": "From Middle English vassal, from Old French vassal, from Medieval Latin vassallus (“manservant, domestic, retainer”), from Latin vassus (“servant”), from Gaulish *wassos (“young man, squire”), from Proto-Celtic *wastos (“servant”) (compare Old Irish foss and Welsh gwas).",
+        "distractors": [
+            "vassel",
+            "vasal",
+            "vessal"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "vendee",
+        "definition": "The person to whom something is sold; a purchaser.",
+        "exampleSentence": "Can you use the word vendee in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "vendee",
+        "etymology": "From vend + -ee.",
+        "distractors": [
+            "evndee",
+            "vnedee",
+            "vednee"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "venule",
+        "definition": "A small vein, especially one that connects capillaries to a larger vein.",
+        "exampleSentence": "Can you use the word venule in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "venule",
+        "distractors": [
+            "evnule",
+            "vneule",
+            "veunle"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "vesica",
+        "definition": "A bladder, especially the urinary bladder or the gall bladder.",
+        "exampleSentence": "Can you use the word vesica in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "vɛsɪkə",
+        "etymology": "Learned borrowing from Latin vēsīca (“bladder”).",
+        "distractors": [
+            "evsica",
+            "vseica",
+            "veisca"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "vinery",
+        "definition": "A vineyard.",
+        "exampleSentence": "Can you use the word vinery in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "vinery",
+        "etymology": "From vine + -ery.",
+        "distractors": [
+            "ivnery",
+            "vniery",
+            "vienry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "virino",
+        "definition": "A hypothetical infectious particle, consisting of nucleic acids in a protective coat of host cell proteins, once theorized to be the cause of scrapie and other degenerative diseases of the central nervous system.",
+        "exampleSentence": "Can you use the word virino in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "virino",
+        "distractors": [
+            "ivrino",
+            "vriino",
+            "viirno"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "waddle",
+        "definition": "A squat, swaying gait.",
+        "exampleSentence": "Can you use the word waddle in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɑdəl",
+        "etymology": "From Middle English wadelen, frequentative form of waden, equivalent to wade + -le. Compare Saterland Frisian wuttelje (“to waddle”), Old High German wadalōn (“to roam; wander”), Middle High German wadelen, wedelen (“to wander; rove”), German wedeln (“to waggle”).",
+        "distractors": [
+            "waddel",
+            "wadle",
+            "weddle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "waffle",
+        "definition": "A flat pastry pressed with a grid pattern, often eaten hot with butter and/or honey or syrup.",
+        "exampleSentence": "The brunch was waffles with strawberries and whipped cream.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɑfl̩",
+        "etymology": "The noun is borrowed from Dutch wafel (“waffle; wafer”), from Middle Dutch wafel, wafele, wavel, from Old Dutch *wāvila, from Proto-Germanic *wēbilǭ, *wēbilō, possibly related to Proto-Indo-European *webʰ- (“to braid, weave”) (whence Dutch weven (“to weave”) and English weave; compare, from the same",
+        "distractors": [
+            "waffel",
+            "wafle",
+            "weffle"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "waggle",
+        "definition": "An instance of waggling.",
+        "exampleSentence": "Give the cable a waggle to let it come out quicker.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "waɡəl",
+        "etymology": "From Middle English wagelen (attested in wagelyng), possibly a borrowing of Middle Low German wagelen; equivalent to wag + -le (“(frequentative)”).",
+        "distractors": [
+            "waggel",
+            "wagle",
+            "weggle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "waller",
+        "definition": "The place where animals make their bed.",
+        "exampleSentence": "Can you use the word waller in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "waller",
+        "etymology": "From wallow or wallower.",
+        "distractors": [
+            "awller",
+            "wlaler",
+            "walelr"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "wallet",
+        "definition": "A small case, often flat and often made of leather, for keeping money (especially paper money), credit cards, etc.",
+        "exampleSentence": "Can you use the word wallet in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɑlət",
+        "etymology": "From Middle English walet (“a bag, knapsack”), of uncertain origin. Possibly from an assumed Old Northern French *walet (“a roll; bag; a knapsack”), from Proto-Germanic *wal- (“to roll”). More at walk, well, wallow.",
+        "distractors": [
+            "walet",
+            "wellet",
+            "willet"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "wampee",
+        "definition": "A tree, Clausena lansium, cultivated in China and the East Indies.",
+        "exampleSentence": "… bulrushes, nut grass, corn grass, switch grass, and the wampees (Pontederia and Peltandra).",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɑmpiː",
+        "etymology": "Borrowed from Cantonese 黃皮 /黄皮 (wong⁴ pei⁴⁻², “wampee”, literally “yellow skin”).",
+        "distractors": [
+            "wampe",
+            "wammpee",
+            "wampea"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "watusi",
+        "definition": "A popular African-inspired dance of the 1960s, fueled by the success of the song The Wah-Watusi by The Orlons in 1962.",
+        "exampleSentence": "Can you use the word watusi in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "watusi",
+        "distractors": [
+            "wattusi",
+            "watussi",
+            "wetusi"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "weekly",
+        "definition": "A publication that is published once a week.",
+        "exampleSentence": "Can you use the word weekly in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wiːkli",
+        "etymology": "From Middle English wykely (adverb), equivalent to week + -ly (adverbial suffix) or week + -ly (adjectival suffix).",
+        "distractors": [
+            "ewekly",
+            "wekely",
+            "weelky"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "weevil",
+        "definition": "Any of many tens of thousands of species of herbivorous beetles, ranging in size from tiny to large, in the superfamily Curculionoidea, the most characteristic species having the head projecting in a distinctive snout with the mouthparts at the tip.",
+        "exampleSentence": "But you accuse other men of villainy with too easy a tongue, you weevil. I have never wanted you in this matter, and I have said so.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wiːvɪl",
+        "etymology": "From Middle English wevel, from Old English wifel (“beetle”), from Proto-West Germanic *wibil, from Proto-Germanic *wibilaz, from Proto-Indo-European *webʰel-, from *(h₁)webʰ- (“to wave, to weave”), said to be from the woven appearance of a weevil’s larval case, + *-el-, *-l̥- (diminutive or attribu",
+        "distractors": [
+            "wevil",
+            "weevvil",
+            "weavil"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "whinny",
+        "definition": "A gentle neigh.",
+        "exampleSentence": "When my wife and I heard a plaintive whinny from our laundry room the other day, we knew that our old dryer had cycled its last load.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɪni",
+        "etymology": "From Middle English whynyen, whinien, akin to Middle English whinen (“to whine”).",
+        "distractors": [
+            "whinney",
+            "whiny",
+            "winny"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "wiccan",
+        "definition": "A follower of Wicca.",
+        "exampleSentence": "Can you use the word wiccan in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɪkən",
+        "etymology": "From Wicca + -an.",
+        "distractors": [
+            "iwccan",
+            "wcican",
+            "wicacn"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "wicopy",
+        "definition": "Any of several trees, such as the leatherwood/moosewood (of the genus Dirca), the whitewood, or the American basswood/linden (of the genus Tilia).",
+        "exampleSentence": "Can you use the word wicopy in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wicopy",
+        "etymology": "From an Algonquian term for \"stringy bark\"; compare Abenaki wigebi (“stringy inner bark (used as cordage)”), Ojibwe wiigob (“inner bark of a basswood”).",
+        "distractors": [
+            "iwcopy",
+            "wciopy",
+            "wiocpy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "wiggle",
+        "definition": "A rapid movement in alternating opposite directions, not necessarily regular.",
+        "exampleSentence": "Can you use the word wiggle in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɪɡəl",
+        "etymology": "From Middle English wiglen, probably from Middle Dutch wigelen (“to wiggle”) and perhaps Middle Low German wigelen, frequentative of wiegen (“to rock”), from wiege (“cradle”). See wain, and Dutch wieg (“cradle”). Cognate to Dutch wiggelen (“to wiggle”).",
+        "distractors": [
+            "wiggel",
+            "wigle",
+            "waggle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "willet",
+        "definition": "Tringa semipalmata (or formerly Catoptrophorus semipalmatus), a large shorebird in the family Scolopacidae.",
+        "exampleSentence": "Can you use the word willet in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "willet",
+        "etymology": "Onomatopoeic, from the bird's cry (\"pill-will-willet\").",
+        "distractors": [
+            "iwllet",
+            "wlilet",
+            "wilelt"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "wittol",
+        "definition": "A man who knows and tolerates his wife's infidelity with another man or men; a mari complaisant.",
+        "exampleSentence": "To see … a wittol wink at his wife's honesty, and too perspicuous in all other affairs ….",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɪtəl",
+        "etymology": "From Middle English witewold; likely a blend of witen (“to know”) + cockewold (“cuckold”), equivalent to wit + cuckold.",
+        "distractors": [
+            "witol",
+            "wattol",
+            "wettol"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "wobbly",
+        "definition": "A member of the Industrial Workers of the World, a militant, radical labor union.",
+        "exampleSentence": "I drew myself up taller. I gave a beautiful account of my career with the Wobblies.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɒb(ə)li",
+        "distractors": [
+            "wobbley",
+            "wobly",
+            "wabbly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "woofer",
+        "definition": "A loudspeaker that produces low-frequency sound.",
+        "exampleSentence": "Can you use the word woofer in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wʊfɚ",
+        "etymology": "From woof + -er.",
+        "distractors": [
+            "owofer",
+            "wofoer",
+            "wooefr"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "wooing",
+        "definition": "A courting; the process by which somebody is wooed.",
+        "exampleSentence": "\"Sweet soul! I know his appetite,\" said Mrs. Mallowe. \"Did he, oh did he, begin his wooing?\"",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wooing",
+        "distractors": [
+            "woing",
+            "wooinng",
+            "wooyng"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "woolen",
+        "definition": "An item of clothing made from wool.",
+        "exampleSentence": "Put all the woolens in this basket.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wʊlən",
+        "etymology": "From Middle English wollen, wullen, from Old English wyllen, from Proto-Germanic *wullīnaz (“woollen”), equivalent to wool + -en.",
+        "distractors": [
+            "wolen",
+            "woollen",
+            "waolen"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "xeroma",
+        "definition": "Dryness of the eye.",
+        "exampleSentence": "Can you use the word xeroma in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "xeroma",
+        "etymology": "From xer- + -oma.",
+        "distractors": [
+            "exroma",
+            "xreoma",
+            "xeorma"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "yakima",
+        "definition": "A member of the Shahaptian Yakima tribe.",
+        "exampleSentence": "Can you use the word yakima in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "jækɪmɑ",
+        "distractors": [
+            "aykima",
+            "ykaima",
+            "yaikma"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "yarrow",
+        "definition": "Any of several pungent Eurasian and North American herbs, of the genus Achillea, used in traditional herbal medicine.",
+        "exampleSentence": "The Yarrow, where-with-all he stops the wound-made gore:",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "jæɹoʊ",
+        "etymology": "From Middle English ȝarowe, yarowe, yarwe, from Old English ġearwe, from Proto-West Germanic *garwā (“yarrow, yarrow-like herbs”), perhaps derived from *garu (“prepared, ready (of food)”), as the plant was used medicinally for digestion. Cognate with Dutch gerw (“yarrow”) and German (Schaf-)garbe.",
+        "distractors": [
+            "yarow",
+            "yarrou",
+            "yerrow"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "yautia",
+        "definition": "An edible plant commonly found in the Caribbean: Xanthosoma sagittifolium, new cocoyam.",
+        "exampleSentence": "Can you use the word yautia in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "diphthongs",
+        "pronunciation": "yautia",
+        "etymology": "Via Spanish, from Taíno [Term?] or more broadly some Arawak language.",
+        "distractors": [
+            "ayutia",
+            "yuatia",
+            "yatuia"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "yearly",
+        "definition": "Something that is published once a year.",
+        "exampleSentence": "Can you use the word yearly in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "jɪɹli",
+        "etymology": "From Middle English yeerly, yerely, from Old English ġēarlīċ, ġērlīċ (“yearly, of the year, annual”), equivalent to year + -ly (adjectival suffix) or -ly (adverbial suffix).",
+        "distractors": [
+            "eyarly",
+            "yaerly",
+            "yeraly"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "yeller",
+        "definition": "Someone who yells.",
+        "exampleSentence": "Can you use the word yeller in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "jɛlɚ",
+        "etymology": "From yell + -er.",
+        "distractors": [
+            "eyller",
+            "yleler",
+            "yelelr"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "yemeni",
+        "definition": "A native or inhabitant of Yemen or of Yemeni descent.",
+        "exampleSentence": "Fellow Yemenis make up a small percentage of the new owners.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "jɛməni",
+        "etymology": "From Yemen + -i.",
+        "distractors": [
+            "yemmeni",
+            "yemenni",
+            "yameni"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "yuppie",
+        "definition": "A young upwardly mobile urban professional person with an affluent lifestyle.",
+        "exampleSentence": "Can you use the word yuppie in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "jʌpi",
+        "etymology": "Originally an acronym for young upwardly mobile professional or young urban professional, + -ie (suffix forming noun signifying person associated with suffixed noun).",
+        "distractors": [
+            "uyppie",
+            "ypupie",
+            "yupipe"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "zapper",
+        "definition": "A remote control for a television.",
+        "exampleSentence": "The news is starting on the other channel; hand me the zapper.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "zæpə(ɹ)",
+        "etymology": "From zap + -er.",
+        "distractors": [
+            "zappor",
+            "zappar",
+            "zaper"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "zimmer",
+        "definition": "Ellipsis of Zimmer frame.",
+        "exampleSentence": "As the day passes away, and body clocks begin to stutter, there are also physical assaults with Zimmers locked in combat like the horns of fighting stags.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "zimmer",
+        "distractors": [
+            "zimmor",
+            "zimmar",
+            "zimer"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "zipper",
+        "definition": "A zip fastener.",
+        "exampleSentence": "He got his T-shirt stuck in the zipper of his jacket.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "zɪpɚ",
+        "etymology": "1925, zip + -er. The trade name was registered in 1925 by B.F. Goodrich for “boots made of rubber and fabric,” claiming use of the name since June 1923. No longer a registered trademark.",
+        "distractors": [
+            "zippor",
+            "zippar",
+            "ziper"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "zonula",
+        "definition": "Any of several small belt-like regions.",
+        "exampleSentence": "The zonula originates by a small number of delicate fibres from the vitreous lamella.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "zonula",
+        "etymology": "Borrowed from Latin zōnula (“small belt or girdle”).",
+        "distractors": [
+            "zonnula",
+            "zonulla",
+            "zanula"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "zonule",
+        "definition": "A little zone, or girdle; a zonula.",
+        "exampleSentence": "The rim of a small-sized lens along with zonule is clearly seen through the fully dilated pupil.",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "zonule",
+        "etymology": "Parallel with zonula, with zona + -ula being homologous to zone + -ule.",
+        "distractors": [
+            "zonuel",
+            "zonnule",
+            "zonulle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "zygoma",
+        "definition": "The cheekbone.",
+        "exampleSentence": "Can you use the word zygoma in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "zygoma",
+        "etymology": "From Ancient Greek ζύγωμα (zúgōma), from ζυγόν (zugón, “yoke”).",
+        "distractors": [
+            "yzgoma",
+            "zgyoma",
+            "zyogma"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "adduce",
+        "definition": "To bring forward or offer, as an argument, passage, or consideration which bears on a statement or case; to cite; to allege.",
+        "exampleSentence": "Reasons … were adduced on both sides.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "əd(j)uːs",
+        "etymology": "From Middle English adducen, from Latin addūcere, adductum (“to lead or bring to”), from ad- + dūcere (“to lead”). See duke, and compare adduct.",
+        "distractors": [
+            "aduce",
+            "adducce",
+            "addace"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "aerify",
+        "definition": "To mix with air.",
+        "exampleSentence": "She would aerify every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "ɛːɹɪfaɪ",
+        "etymology": "From aer- + -ify.",
+        "distractors": [
+            "earify",
+            "areify",
+            "aeirfy"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "allege",
+        "definition": "To state under oath, to plead.",
+        "exampleSentence": "The agency alleged that my credit history had problems.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "əlɛd͡ʒ",
+        "etymology": "From Middle English aleggen, perhaps from Old French alleguer, or from Anglo-Norman aleger, the form perhaps from Old French esligier (“to acquit”), from Medieval Latin *exlītigāre (“to clear at law”), from Latin ex (“out”) + lītigō (“sue at law”), but the meaning from Old French alleguer, from Lati",
+        "distractors": [
+            "alege",
+            "allegge",
+            "allage"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "allude",
+        "definition": "To refer to something indirectly or by suggestion; to invoke it by implication rather than mention.",
+        "exampleSentence": "These speeches . . . do seem to allude unto such ministerial garments as were then in use.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "əlud",
+        "etymology": "From Middle French alluder, from Latin alludere (“to play with or allude”), from ad + ludere (“to play”).",
+        "distractors": [
+            "alude",
+            "alludde",
+            "allade"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "anneal",
+        "definition": "To subject to great heat and then (often slow) cooling, and sometimes reheating and further cooling, for the purpose of rendering less brittle; to temper; to toughen.",
+        "exampleSentence": "She would anneal every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "əniːl",
+        "etymology": "From Middle English anelen, onelen, from Old English onǣlan (“to burn, ignite, set fire to, consume, heat, enlighten, incite, inflame, inspire, kindle”), from Proto-Germanic *ana (“on”) + Proto-Germanic *ailijaną (“to burn”), from Proto-Indo-European *h₂eydʰ- (“to burn”).",
+        "distractors": [
+            "anneel",
+            "aneal",
+            "annaal"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "appose",
+        "definition": "To place next or to or near to; to juxtapose.",
+        "exampleSentence": "The nymph herself did then appose, / For food and beverage, to him all best meat.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "əpəʊz",
+        "etymology": "Coined based on Latin appōnō, by analogy with compose, suppose etc.",
+        "distractors": [
+            "apose",
+            "apposse",
+            "appase"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "assoil",
+        "definition": "To absolve or release (someone) from blame or sin; to forgive, to pardon.",
+        "exampleSentence": "She would assoil every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "diphthongs",
+        "pronunciation": "əsɔɪl",
+        "etymology": "From Middle English assoilen (“to absolve or release from blame or sin”), from Anglo-Norman as(s)oiler, as(s)oilier, and Old French as(s)oille [and other forms], the present subjunctive, and as(s)oil, the present indicative, of as(s)oldre, as(s)oudre (“to absolve from blame”) (modern French absoudre",
+        "distractors": [
+            "asoil",
+            "assoyl",
+            "assail"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "attorn",
+        "definition": "To transfer one's obligations from one person to another person.",
+        "exampleSentence": "She would attorn every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "attorn",
+        "etymology": "From Middle English attournen, from Old French atorner (“designate”), from a- (“to”) + torner (“turn”).",
+        "distractors": [
+            "tatorn",
+            "atotrn",
+            "attron"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "attune",
+        "definition": "To bring into musical accord.",
+        "exampleSentence": "By meditating, I try to attune myself to the greater cosmos.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "ət(j)un",
+        "etymology": "From ad- + tune.",
+        "distractors": [
+            "atune",
+            "attunne",
+            "attane"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "basify",
+        "definition": "To make more basic (less acidic).",
+        "exampleSentence": "She would basify every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "basify",
+        "etymology": "From base + -ify.",
+        "distractors": [
+            "absify",
+            "bsaify",
+            "baisfy"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "beseem",
+        "definition": "Generally with a qualifying word such as ill or well: to appear, look, or seem (a certain way for someone or something).",
+        "exampleSentence": "She would beseem every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "bəsim",
+        "etymology": "From Middle English bisemen (“to beseem”) [and other forms], from be-, bi- (prefix forming transitive verbs with a completive, figurative, or intensifying sense) + semen (“to seem; to be or see as appropriate; to be visible or apparent; to regard”).",
+        "distractors": [
+            "besem",
+            "besseem",
+            "beseam"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "bollix",
+        "definition": "To confuse.",
+        "exampleSentence": "She would bollix every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "bɒlɪks",
+        "etymology": "Alteration of bollocks.",
+        "distractors": [
+            "obllix",
+            "blolix",
+            "bolilx"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cajole",
+        "definition": "To persuade someone to do something which they are reluctant to do, especially by flattery or promises; to coax.",
+        "exampleSentence": "Ith eloquent arts he had cajoled a young girl into a secret marriage.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "kəd͡ʒoʊl",
+        "etymology": "Borrowed from French cajoler, probably a blend of Middle French cageoler (“chatter like a jay”) (from gajole, dialectal diminutive of geai (“jaybird”)) + Old French gaioler (“entice into a cage”), which is from Medieval Latin gabiola, from Late Latin caveola (whence English caveola), diminutive of L",
+        "distractors": [
+            "cajoel",
+            "cajjole",
+            "cajolle"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "commix",
+        "definition": "To mix separate things together.",
+        "exampleSentence": "She would commix every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "commix",
+        "etymology": "From Middle English commixt, commixte, commyxt (past participle), from Latin commixtus, past participle of commisceō, with the -t later re-analyzed as the past participial ending; equivalent to com- + mix, modelled on Latin commisceō.",
+        "distractors": [
+            "comix",
+            "cammix",
+            "cemmix"
+        ],
+        "theme": "actions"
     }
 ];

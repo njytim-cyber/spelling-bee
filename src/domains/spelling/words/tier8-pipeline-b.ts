@@ -14,182 +14,6 @@ import type { SpellingWord } from './types';
 
 export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
     {
-        "word": "squirrelliness",
-        "definition": "(of a person) Eccentricity.",
-        "exampleSentence": "The fifth-graders are in the gymnasium, working off some of their squirrelliness.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "squirrelliness",
-        "etymology": "From squirrelly + -ness.",
-        "distractors": [
-            "squirrelliniss",
-            "squirelliness",
-            "squirreliness"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "materialization",
-        "definition": "The conversion of something into a physical form.",
-        "exampleSentence": "\"But I went under nicely and I am glad there were some fine materializations.\"",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "materialization",
-        "etymology": "From material + -ization and materialize + -ation.",
-        "distractors": [
-            "materializasion",
-            "matterialization",
-            "materrialization"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nationalisation",
-        "definition": "The act or process of making or becoming a nation.",
-        "exampleSentence": "He wrote the word nationalisation on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nationalisation",
-        "etymology": "From French nationalisation. By surface analysis, nationalise + -ation.",
-        "distractors": [
-            "nationalisasion",
-            "nattionalisation",
-            "nationnalisation"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "prognostication",
-        "definition": "A statement about or prior knowledge of the future.",
-        "exampleSentence": "He wrote the word prognostication on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "prognostication",
-        "etymology": "From Old French pronosticacion, from Medieval Latin prognosticatio.",
-        "distractors": [
-            "rpognostication",
-            "porgnostication",
-            "prgonostication"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "synchronization",
-        "definition": "The state or property of being synchronized.",
-        "exampleSentence": "The generator went off line when it lost synchronization with the power line.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "synchronization",
-        "etymology": "From synchronize + -ation.",
-        "distractors": [
-            "synchronizasion",
-            "synnchronization",
-            "synchronnization"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "confessionalism",
-        "definition": "A belief in the importance of full and unambiguous assent to the whole of a religious teaching.",
-        "exampleSentence": "Her rendition of \"Dry Land\" from her first album, Back to the Night, was a poetic fusion of music and lyrics that achieved an intimate tone too often sacrificed to confessionalism by other singers.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "confessionalism",
-        "etymology": "From confessional + -ism.",
-        "distractors": [
-            "confesionalism",
-            "connfessionalism",
-            "confessionnalism"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "frenchification",
-        "definition": "The act or process of making French or more French-like, especially in informal contexts.",
-        "exampleSentence": "The Frenchification of the shopping district is complete: every shop has been redone in a Haussmannian style and baguettes, wine, and accordion music are inescapable.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "frenchification",
-        "etymology": "From Frenchify + -ation, from French + -ify.",
-        "distractors": [
-            "frenchificasion",
-            "frennchification",
-            "frenchiffication"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "constructionist",
-        "definition": "An advocate of constructionism.",
-        "exampleSentence": "He wrote the word constructionist on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "constructionist",
-        "etymology": "From construction + -ist.",
-        "distractors": [
-            "connstructionist",
-            "construcctionist",
-            "constructionnist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "professorialism",
-        "definition": "The manners or habits of a professor.",
-        "exampleSentence": "The frigid professorialism of Kant's philosophy robbed it of all dynamic principle .",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "professorialism",
-        "etymology": "From professorial + -ism.",
-        "distractors": [
-            "profesorialism",
-            "proffessorialism",
-            "professorrialism"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "closehandedness",
-        "definition": "Parsimony.",
-        "exampleSentence": "I have (saith he) long been of that mind that N. E. is guilty of great unthankfulness for the Gospel, & strait-heartedness, & closehandedness toward the Ministers.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "closehandedness",
-        "etymology": "From closehanded + -ness.",
-        "distractors": [
-            "closehandedniss",
-            "closehandednes",
-            "clossehandedness"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "southernization",
-        "definition": "The process of southernizing.",
-        "exampleSentence": "He wrote the word southernization on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "southernization",
-        "etymology": "From southern + -ization.",
-        "distractors": [
-            "southernizasion",
-            "soutthernization",
-            "southerrnization"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "prescriptionist",
         "definition": "One who advocates a prescriptionist approach.",
         "exampleSentence": "The exercise prescriptionist must be aware of these various causes when assessing posture.",
@@ -491,21 +315,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "lihgtsomely"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "kneecapping",
-        "definition": "The act of injuring the knees of (a person), usually by shooting at the knees; often a punishment carried out by criminals or terrorists.",
-        "exampleSentence": "Five kneecappings have been reported this month.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "kneecapping",
-        "distractors": [
-            "knecapping",
-            "kneecaping",
-            "kneeccapping"
-        ],
-        "theme": "people"
     },
     {
         "word": "relightable",
@@ -886,22 +695,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "enecphalogram"
         ],
         "theme": "body"
-    },
-    {
-        "word": "exhibitionist",
-        "definition": "One who attempts to draw attention to themselves by their behavior.",
-        "exampleSentence": "My teacher explained what an exhibitionist is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "exhibitionist",
-        "etymology": "From exhibition + -ist.",
-        "distractors": [
-            "xehibitionist",
-            "ehxibitionist",
-            "exihbitionist"
-        ],
-        "theme": "art"
     },
     {
         "word": "expansiveness",
@@ -3849,22 +3642,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "countercurrent",
-        "definition": "A current that flows against the prevailing one.",
-        "exampleSentence": "The book had an entire chapter about the countercurrent.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "countercurrent",
-        "etymology": "From counter- + current.",
-        "distractors": [
-            "ocuntercurrent",
-            "cuontercurrent",
-            "conutercurrent"
-        ],
-        "theme": "water"
-    },
-    {
         "word": "deliberateness",
         "definition": "The state or property of being deliberate.",
         "exampleSentence": "Of course, Lasker ensured that there was nothing neutral about the commission … Its members, chosen with exquisite deliberateness, were all Laskerʼs friends, associates, and sympathizers.",
@@ -4448,22 +4225,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "imsanthropical",
             "msianthropical",
             "miasnthropical"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "progestational",
-        "definition": "Describing the phase of the menstrual cycle before gestation and after ovulation, during which progesterone is secreted.",
-        "exampleSentence": "The progestational weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "progestational",
-        "etymology": "From pro- + gestational.",
-        "distractors": [
-            "rpogestational",
-            "porgestational",
-            "prgoestational"
         ],
         "theme": "everyday"
     },
@@ -5056,22 +4817,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "apotemnophilia",
-        "definition": "A psychological disorder characterized by the intense and long-standing desire for amputation of a specific limb.",
-        "exampleSentence": "News of the Weird has reported several times on people with apotemnophilia, or body integrity identity disorder--the consuming desire to have one or more healthy limbs removed.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "apotemnophilia",
-        "etymology": "Coined in a paper in 1977 by J. Money et al. in the Journal of Sex Research,http://www.jstor.org/pss/3811894, from Ancient Greek ἀπό (apó, “away”) + τέμνω (témnō, “cut”) + -philia.",
-        "distractors": [
-            "appotemnophilia",
-            "apottemnophilia",
-            "apotemmnophilia"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "miscomputation",
         "definition": "The incorrect performance of a computation.",
         "exampleSentence": "His miscomputation of the amount of tax he owed increased his tax bill.",
@@ -5228,22 +4973,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "nonprograming",
             "nonnprogramming",
             "nonproggramming"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sensualization",
-        "definition": "The process of making sensual.",
-        "exampleSentence": "The book had an entire chapter about the sensualization.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "sensualization",
-        "etymology": "From sensual + -ization.",
-        "distractors": [
-            "sensualizasion",
-            "sennsualization",
-            "sensuallization"
         ],
         "theme": "everyday"
     },
@@ -5657,22 +5386,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "preoperationel",
             "preopperational",
             "preoperrational"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "flirtationship",
-        "definition": "Flirtation.",
-        "exampleSentence": "You may have a flirtationship with your best friend's brother, a coworker, or the baristo with the nice forearms who makes your latte….",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "flirtationship",
-        "etymology": "From flirtation + -ship and/or Blend of flirtation + relationship.",
-        "distractors": [
-            "flirrtationship",
-            "flirtattionship",
-            "flirtationnship"
         ],
         "theme": "everyday"
     },
@@ -7336,22 +7049,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "deniggerization",
-        "definition": "The act or process of deniggerizing; the amelioration of the dehumanization resulting from institutionalized discrimination and negative stereotypes that have been put on blacks and other groups.",
-        "exampleSentence": "At one point he called his campaign the \"deniggerization” of North Carolina.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "deniggerization",
-        "etymology": "From de- + niggerization.",
-        "distractors": [
-            "deniggerizasion",
-            "denigerization",
-            "denniggerization"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "disassimilation",
         "definition": "Catabolism.",
         "exampleSentence": "Judging from the autobiographical texts of these three authors, Natives often mixed assimilation with a degree of disassimilation.",
@@ -7366,22 +7063,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "dissassimilation"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "despecification",
-        "definition": "The act of generalizing, or making less specific.",
-        "exampleSentence": "… Brooten's despecification of the term \"tribade\" and her tendency to understand it as if it were a generic designation for a woman possessed of a lifelong homoerotic orientation.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "despecification",
-        "etymology": "From de- + specification.",
-        "distractors": [
-            "despecificasion",
-            "desspecification",
-            "despeccification"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "antirevisionist",
@@ -7621,22 +7302,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "mathemmaticality"
         ],
         "theme": "society"
-    },
-    {
-        "word": "tiktokification",
-        "definition": "The process of becoming more like TikTok.",
-        "exampleSentence": "Even before Zuckerberg doubled down on it Wednesday, the increasing TikTokification of Instagram was stirring users’ ire.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "tiktokification",
-        "etymology": "From TikTok + -ification.",
-        "distractors": [
-            "tiktokificasion",
-            "tikktokification",
-            "tiktokkification"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "micronationhood",
@@ -8946,22 +8611,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "counterrevolutionary",
-        "definition": "In opposition to a revolution.",
-        "exampleSentence": "The counterrevolutionary colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "counterrevolutionary",
-        "etymology": "From counter- + revolutionary. Originally applied to thinkers who opposed themselves to the 1789 French Revolution.",
-        "distractors": [
-            "ocunterrevolutionary",
-            "cuonterrevolutionary",
-            "conuterrevolutionary"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "gnomically",
         "definition": "In a gnomic manner.",
         "exampleSentence": "\"The only thing he could say, rather gnomically, was, 'It'll do very well in Japan.'\" - Loach's love of misery, The Week, 1 September 2007, 629, 10.",
@@ -9072,22 +8721,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "spehrically"
         ],
         "theme": "travel"
-    },
-    {
-        "word": "anthophobia",
-        "definition": "Fear of flowers.",
-        "exampleSentence": "He must be gaga to have forgotten what she said the last time about her strange anthophobia (somehow stemming from that debauche à trois thirty years ago). Roses she never liked anyway.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "anthophobia",
-        "etymology": "From antho- + -phobia.",
-        "distractors": [
-            "annthophobia",
-            "anthopphobia",
-            "anthophobbia"
-        ],
-        "theme": "feelings"
     },
     {
         "word": "rhytiphobia",
@@ -10759,22 +10392,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "pseudoreform",
-        "definition": "Supposed reform that does not bring about significant change.",
-        "exampleSentence": "Many reforms are actually pseudoreforms; the state prosecutes those among its own personnel guilty of wanton brutality and violence without addressing the structural roots of this type of behavior.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "pseudoreform",
-        "etymology": "From pseudo- + reform.",
-        "distractors": [
-            "pseuddoreform",
-            "pseudorreform",
-            "pseudorefform"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "fightability",
         "definition": "Capability in combat.",
         "exampleSentence": "It incorporates a massive investment in digitization in its on-board systems, all aimed at improving the reliability, fightability, and operational capability of the tank.",
@@ -10949,21 +10566,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "russophrennia"
         ],
         "theme": "mind"
-    },
-    {
-        "word": "psychodectic",
-        "definition": "Destructive to the soul; soul-destroying.",
-        "exampleSentence": "He will find America too sane in its practical business views of life and its wanton lack of psychodectic perspective.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "psychodectic",
-        "distractors": [
-            "psycchodectic",
-            "psychoddectic",
-            "psychodecctic"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "psychoethics",
@@ -11960,22 +11562,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "contrafagotto",
-        "definition": "Contrabassoon.",
-        "exampleSentence": "My teacher explained what a contrafagotto is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "contrafagotto",
-        "etymology": "From Italian contrafagotto.",
-        "distractors": [
-            "ocntrafagotto",
-            "cnotrafagotto",
-            "cotnrafagotto"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "conventioneer",
         "definition": "A person attending a convention.",
         "exampleSentence": "… the zitfaced prom king, the booze-whacked conventioneer or the randy trucker plying some local bimbo with sloe gin fizzes.",
@@ -12019,22 +11605,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "ocsmographist",
             "csomographist",
             "comsographist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "counteraction",
-        "definition": "An act of retaliation; a counterattack.",
-        "exampleSentence": "My teacher explained what a counteraction is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "counteraction",
-        "etymology": "From counter- + action.",
-        "distractors": [
-            "ocunteraction",
-            "cuonteraction",
-            "conuteraction"
         ],
         "theme": "everyday"
     },
@@ -13515,22 +13085,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "latcobacillus"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "lecherousness",
-        "definition": "The property of being lecherous.",
-        "exampleSentence": "My teacher explained what a lecherousness is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "lecherousness",
-        "etymology": "From lecherous + -ness.",
-        "distractors": [
-            "elcherousness",
-            "lceherousness",
-            "lehcerousness"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "leisureliness",
@@ -15233,22 +14787,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "salaciousness",
-        "definition": "The state or characteristic of being salacious.",
-        "exampleSentence": "… he began a tale which cannot be retold here, but which delighted the boys as much by its salaciousness as by its vivacity.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "salaciousness",
-        "etymology": "From salacious + -ness.",
-        "distractors": [
-            "salaciousniss",
-            "salaciousnes",
-            "sallaciousness"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "salmonellosis",
         "definition": "Any of several diseases caused by infection with Salmonella bacteria.",
         "exampleSentence": "My teacher explained what a salmonellosis is during our lesson.",
@@ -15713,22 +15251,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "theoterrorism",
-        "definition": "Terrorism from religious motives.",
-        "exampleSentence": "My teacher explained what a theoterrorism is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "theoterrorism",
-        "etymology": "From theo- + terrorism.",
-        "distractors": [
-            "hteoterrorism",
-            "tehoterrorism",
-            "thoeterrorism"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "thermocautery",
         "definition": "Cauterization by means of heat.",
         "exampleSentence": "My teacher explained what a thermocautery is during our lesson.",
@@ -15918,5 +15440,485 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "trbialization"
         ],
         "theme": "everyday"
+    },
+    {
+        "word": "trisaccharide",
+        "definition": "An oligosaccharide consisting of three monosaccharide units joined together.",
+        "exampleSentence": "My teacher explained what a trisaccharide is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "trisaccharide",
+        "etymology": "From tri- + saccharide.",
+        "distractors": [
+            "rtisaccharide",
+            "tirsaccharide",
+            "trsiaccharide"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "trophotropism",
+        "definition": "The movements of the organs in a growing plant, as towards nutrient substances, induced by the chemical nature of its surroundings.",
+        "exampleSentence": "My teacher explained what a trophotropism is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "trophotropism",
+        "etymology": "From tropho- + -tropy + -ism.",
+        "distractors": [
+            "rtophotropism",
+            "torphotropism",
+            "trpohotropism"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "unboundedness",
+        "definition": "The condition of being unbounded.",
+        "exampleSentence": "My teacher explained what an unboundedness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unboundedness",
+        "etymology": "From unbounded + -ness.",
+        "distractors": [
+            "nuboundedness",
+            "ubnoundedness",
+            "unobundedness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncertainness",
+        "definition": "The quality of being uncertain.",
+        "exampleSentence": "My teacher explained what an uncertainness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "uncertainness",
+        "etymology": "From Middle English uncerteynnes; equivalent to uncertain + -ness.",
+        "distractors": [
+            "nucertainness",
+            "ucnertainness",
+            "unecrtainness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncloudedness",
+        "definition": "The quality of not being clouded.",
+        "exampleSentence": "My teacher explained what an uncloudedness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "uncloudedness",
+        "etymology": "From unclouded + -ness.",
+        "distractors": [
+            "uncloudedniss",
+            "uncloudednes",
+            "unncloudedness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underclassman",
+        "definition": "A freshman or sophomore in a high school or college or equivalent.",
+        "exampleSentence": "My teacher explained what an underclassman is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "underclassman",
+        "etymology": "From under- + classman.",
+        "distractors": [
+            "nuderclassman",
+            "udnerclassman",
+            "unedrclassman"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "underclothing",
+        "definition": "Clothing worn next to the skin; underwear.",
+        "exampleSentence": "She came in now, but to the closet; from it she took a simple skirt and blouse. Picking up her underclothing she departed, obviously to dress somewhere else.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "underclothing",
+        "etymology": "From under- + clothing.",
+        "distractors": [
+            "unnderclothing",
+            "underrclothing",
+            "underclotthing"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "undutifulness",
+        "definition": "The state or condition of being undutiful.",
+        "exampleSentence": "\"Since that young Marsden came to the station, your undutifulness has been past bearing.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "undutifulness",
+        "etymology": "From undutiful + -ness.",
+        "distractors": [
+            "undutifulniss",
+            "undutifulnes",
+            "unndutifulness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "unhealthiness",
+        "definition": "The state of being unhealthy.",
+        "exampleSentence": "He looked elegant and vulnerable, his eyes edging away from contact and set into a face of exquisite unhealthiness.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unhealthiness",
+        "etymology": "From unhealthy + -ness.",
+        "distractors": [
+            "unhealthiniss",
+            "unhealthines",
+            "unnhealthiness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "unhurriedness",
+        "definition": "The quality of being unhurried.",
+        "exampleSentence": "My teacher explained what an unhurriedness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unhurriedness",
+        "etymology": "From unhurried + -ness.",
+        "distractors": [
+            "nuhurriedness",
+            "uhnurriedness",
+            "unuhrriedness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unmentionable",
+        "definition": "Something not to be discussed in polite society.",
+        "exampleSentence": "I'm a lesbian female, 20 years old and my most outstanding features are my pierced unmentionable and my eyes.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unmentionable",
+        "etymology": "From un- + mentionable.",
+        "distractors": [
+            "unmentionible",
+            "unmentionabel",
+            "unnmentionable"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "unmindfulness",
+        "definition": "The quality of being unmindful.",
+        "exampleSentence": "My teacher explained what an unmindfulness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unmindfulness",
+        "etymology": "From unmindful + -ness.",
+        "distractors": [
+            "numindfulness",
+            "umnindfulness",
+            "unimndfulness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unnaturalness",
+        "definition": "The state of being unnatural.",
+        "exampleSentence": "However, the American sensibility was less caught up in Angst and unnaturalness; it rejected the antibeauty implication of the Europeans.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unnaturalness",
+        "etymology": "From Middle English unnaturelnesse, equivalent to unnatural + -ness.",
+        "distractors": [
+            "unnaturalniss",
+            "unaturalness",
+            "unnaturalnes"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "unwillingness",
+        "definition": "The property of being unwilling.",
+        "exampleSentence": "My teacher explained what an unwillingness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "unwillingness",
+        "etymology": "From unwilling + -ness.",
+        "distractors": [
+            "nuwillingness",
+            "uwnillingness",
+            "uniwllingness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "valuelessness",
+        "definition": "Lack of value; the state or condition of being valueless.",
+        "exampleSentence": "My teacher explained what a valuelessness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "valuelessness",
+        "etymology": "From valueless + -ness.",
+        "distractors": [
+            "avluelessness",
+            "vlauelessness",
+            "vaulelessness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "variolization",
+        "definition": "Variolation: inoculation against smallpox using material from a smallpox lesion.",
+        "exampleSentence": "My teacher explained what a variolization is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "variolization",
+        "etymology": "From variola + -ization.",
+        "distractors": [
+            "avriolization",
+            "vraiolization",
+            "vairolization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "venerableness",
+        "definition": "The condition of being venerable.",
+        "exampleSentence": "My teacher explained what a venerableness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "venerableness",
+        "etymology": "From venerable + -ness.",
+        "distractors": [
+            "evnerableness",
+            "vneerableness",
+            "veenrableness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "violoncellist",
+        "definition": "A person who plays the violoncello.",
+        "exampleSentence": "My teacher explained what a violoncellist is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "violoncellist",
+        "etymology": "From violoncello + -ist.",
+        "distractors": [
+            "ivoloncellist",
+            "voiloncellist",
+            "vilooncellist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "vulcanization",
+        "definition": "A process by which rubber is hardened using heat and sulphur.",
+        "exampleSentence": "My teacher explained what a vulcanization is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "vulcanization",
+        "etymology": "From vulcanize + -ation.",
+        "distractors": [
+            "uvlcanization",
+            "vlucanization",
+            "vuclanization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "waterlessness",
+        "definition": "Absence of water.",
+        "exampleSentence": "My teacher explained what a waterlessness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "waterlessness",
+        "etymology": "From waterless + -ness.",
+        "distractors": [
+            "awterlessness",
+            "wtaerlessness",
+            "waetrlessness"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "weatherliness",
+        "definition": "The quality of being weatherly.",
+        "exampleSentence": "My teacher explained what a weatherliness is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "weatherliness",
+        "etymology": "From weatherly + -ness.",
+        "distractors": [
+            "ewatherliness",
+            "waetherliness",
+            "wetaherliness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "wonderfulness",
+        "definition": "The state of being wonderful.",
+        "exampleSentence": "Ow could Pierre … fail to acknowledge the existence of that all-controlling and all-permeating wonderfulness … denominated The Finger of God?",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "wonderfulness",
+        "etymology": "From Middle English wonderfulnesse, equivalent to wonderful + -ness.",
+        "distractors": [
+            "wonderfulniss",
+            "wonderfulnes",
+            "wonnderfulness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "woolgathering",
+        "definition": "The gathering of fragments of wool torn from sheep by bushes, etc.",
+        "exampleSentence": "My teacher explained what a woolgathering is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "woolgathering",
+        "etymology": "From wool + gathering.",
+        "distractors": [
+            "wolgathering",
+            "woollgathering",
+            "woolgatthering"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "xanthomatosis",
+        "definition": "A disorder in which excess lipid accumulates in the body and produces xanthomas.",
+        "exampleSentence": "My teacher explained what a xanthomatosis is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "xanthomatosis",
+        "etymology": "From xanthoma + -osis. By surface analysis, xanth- + -omatosis.",
+        "distractors": [
+            "axnthomatosis",
+            "xnathomatosis",
+            "xatnhomatosis"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "collateralize",
+        "definition": "To secure a loan or other contract by using collateral.",
+        "exampleSentence": "We need to collateralize this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "collateralize",
+        "etymology": "From collateral + -ize.",
+        "distractors": [
+            "ocllateralize",
+            "clolateralize",
+            "colalteralize"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "demythologize",
+        "definition": "To remove the mythological elements of.",
+        "exampleSentence": "Archaeological evidence has demythologized some parts of the Bible.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "demythologize",
+        "etymology": "From de- + mythologize.",
+        "distractors": [
+            "demythologise",
+            "demmythologize",
+            "demytthologize"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "derequisition",
+        "definition": "To return or release (something previously requisitioned).",
+        "exampleSentence": "We need to derequisition this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "derequisition",
+        "etymology": "From de- + requisition.",
+        "distractors": [
+            "edrequisition",
+            "dreequisition",
+            "deerquisition"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "immaterialize",
+        "definition": "To render immaterial or incorporeal.",
+        "exampleSentence": "We need to immaterialize this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "immaterialize",
+        "etymology": "From immaterial + -ize. Compare French immatérialiser.",
+        "distractors": [
+            "mimaterialize",
+            "imamterialize",
+            "immtaerialize"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "occidentalize",
+        "definition": "To convert or adapt to Western culture.",
+        "exampleSentence": "We need to occidentalize this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "occidentalize",
+        "etymology": "From occidental + -ize.",
+        "distractors": [
+            "cocidentalize",
+            "ocicdentalize",
+            "occdientalize"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "overemphasize",
+        "definition": "To place too much emphasis on; to overstate the importance of.",
+        "exampleSentence": "We need to overemphasize this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "overemphasize",
+        "etymology": "From over- + emphasize.",
+        "distractors": [
+            "voeremphasize",
+            "oevremphasize",
+            "ovreemphasize"
+        ],
+        "theme": "quantity"
     }
 ];

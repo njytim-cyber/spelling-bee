@@ -317,22 +317,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "fragmentation",
-        "definition": "The act of fragmenting or something fragmented; disintegration.",
-        "exampleSentence": "My teacher explained what a fragmentation is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "fɹæɡmənteɪt͡ʃən",
-        "etymology": "From fragment + -ation.",
-        "distractors": [
-            "rfagmentation",
-            "fargmentation",
-            "frgamentation"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "interrogation",
         "definition": "The act of interrogating or questioning; examination by questions; inquiry.",
         "exampleSentence": "There is no interrogation in his eyes / Or in the hands, quiet over the horse's neck, / And the eyes watchful, waiting, perceiving, indifferent.",
@@ -2875,22 +2859,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "opisthobranch",
-        "definition": "Placed behind the heart.",
-        "exampleSentence": "For example, the antitumour depsipeptide kahalalide F was isolated from the opisthobranch mollusc Elysia rufescens, and is used by both the mollusc and its dietary alga Bryopsis spp.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "ɵpɪsθəbɹæŋk",
-        "etymology": "From opistho- + branchia.",
-        "distractors": [
-            "oppisthobranch",
-            "opissthobranch",
-            "opisthobbranch"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "picturization",
         "definition": "The representation of something as a picture, or the adaptation of something into a picture, especially a motion picture.",
         "exampleSentence": "My teacher explained what a picturization is during our lesson.",
@@ -3749,22 +3717,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "dehymmenization"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "unbullshitable",
-        "definition": "Able to see through bullshit; not able to be fooled.",
-        "exampleSentence": "He was every inch the cop now, unbullshitable eyes trained on Kate's face.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ʌnbʊlʃɪtəbəl",
-        "etymology": "From un- + bullshit + -able.",
-        "distractors": [
-            "unbullshitible",
-            "unbullshitabel",
-            "unbulshitable"
-        ],
-        "theme": "sensory"
     },
     {
         "word": "belorussianism",
@@ -4852,22 +4804,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "dasyphylous"
         ],
         "theme": "plants"
-    },
-    {
-        "word": "almightiness",
-        "definition": "The state or quality of being almighty.",
-        "exampleSentence": "They rejoice in his almightiness and infinite wisdom, they exult in his supremacy and absolute sovereignty, and are ravished in a view of his universal government, because it is absolutely perfect.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ɔːlmaɪtinəs",
-        "etymology": "From almighty + -ness.",
-        "distractors": [
-            "almightiniss",
-            "almightines",
-            "allmightiness"
-        ],
-        "theme": "society"
     },
     {
         "word": "mephitically",
@@ -8588,22 +8524,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "thickalicious",
-        "definition": "Of a woman: extremely curvy and attractive.",
-        "exampleSentence": "Man, you know what happened. I took that white thickalicious nurse and turned her inside out.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "θɪkəlɪʃəs",
-        "etymology": "From thick (“curvy and voluptuous, and especially having large hips”) + -a- + -licious.",
-        "distractors": [
-            "thickalicous",
-            "thickalicius",
-            "thickaliceous"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "dictionaryese",
         "definition": "The style of language used in dictionary definitions, characterized by dry, straightforward, and occasionally awkward phrasing.",
         "exampleSentence": "If I were defining \"hella\" without using substitutability, I would probably come up with something long-winded and full of dictionaryese, like \"to an excessive degree.\"",
@@ -8872,22 +8792,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "caceptableness",
             "acecptableness",
             "accpetableness"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "accountantship",
-        "definition": "The office or employment of an accountant.",
-        "exampleSentence": "The book had an entire chapter about the accountantship.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "əkaʊntəntʃɪp",
-        "etymology": "From accountant + -ship.",
-        "distractors": [
-            "cacountantship",
-            "acocuntantship",
-            "accuontantship"
         ],
         "theme": "everyday"
     },
@@ -9818,22 +9722,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "slaughterhouse",
-        "definition": "A place where animals are slaughtered.",
-        "exampleSentence": "The smaller shells make a complete slaughterhouse of the bridge, and the splinters scythe through anyone out on deck.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "sloːtə(ɹ)haʊs",
-        "etymology": "From slaughter + house.",
-        "distractors": [
-            "slaugghterhouse",
-            "slaughterrhouse",
-            "slaughterhousse"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "supererogation",
         "definition": "An act of doing more than is required.",
         "exampleSentence": "And, therefore, it was thought a matter of supererogation to withdraw the nails and open the windows.",
@@ -10530,22 +10418,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "colocalizasion",
             "collocalization",
             "coloccalization"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "adulterousness",
-        "definition": "A state of being adulterous.",
-        "exampleSentence": "It is, however, apparent that Joyce made this adulterousness or pseudo-adulterousness a persistent and structurally significant element in his novel ….",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ədʌltəɹəsnəs",
-        "etymology": "From adulterous + -ness.",
-        "distractors": [
-            "adulterousniss",
-            "adulterousnes",
-            "addulterousness"
         ],
         "theme": "society"
     },
@@ -13135,22 +13007,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "enshittification",
-        "definition": "The phenomenon of online platforms gradually degrading the quality of their services, often by promoting advertisements, recurring payments, and sponsored content, in order to increase profits.",
-        "exampleSentence": "Both switching costs and network effects tend to lead to enshittification because platform providers see early adopters as an investment in future profits.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ɪnʃɪtɪfɪkeɪʃən",
-        "etymology": "From en- + shittification (“becoming shitty”). Coined by Canadian-British-American blogger, journalist, and science fiction author Cory Doctorow in 2022 as a designation for a particular phenomenon affecting online platforms.",
-        "distractors": [
-            "enshittificasion",
-            "enshitification",
-            "ennshittification"
-        ],
-        "theme": "feelings"
-    },
-    {
         "word": "testaceotheology",
         "definition": "The \"theology of shellfish\", or the study of divine or spiritual significance attributed to shellfish, such as clams, oysters, and other mollusks.",
         "exampleSentence": "Chemnitz was a promoter of a form of natural theology known as testaceotheology or the use of molluscs for preaching.",
@@ -13695,9 +13551,9 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "deleuzoguattarian",
-        "definition": "Relating to, or characteristic of the works of Gilles Deleuze and Félix Guattari.",
-        "exampleSentence": "Nick Land's essay \"Kant, Capital, and the Prohibition of Incest\" is a great example of a Deleuzoguattarian critique of capital.",
-        "partOfSpeech": "adjective",
+        "definition": "A supporter of the ideas of Gilles Deleuze and Félix Guattari.",
+        "exampleSentence": "Within the rhizomes of the net, the Deleuzoguattarians form their own subculture: the techno-nomads.",
+        "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "prefixes",
         "pronunciation": "dəluːzəʊɡwətɑːɹiən",
@@ -15303,22 +15159,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "brotherfucker",
-        "definition": "Motherfucker (generic term of abuse).",
-        "exampleSentence": "My teacher explained what a brotherfucker is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "brotherfucker",
-        "etymology": "Compound of brother + fucker, after motherfucker.",
-        "distractors": [
-            "brotherfuckor",
-            "brotherfuckar",
-            "brottherfucker"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "minisatellite",
         "definition": "A short series of bases that reoccurs many times in a genome.",
         "exampleSentence": "Meanwhile, other members of ESA’s Proba minisatellite family – each smaller than a cubic metre – will be looking downwards, attempting to capture views of the Moon’s shadow as it crosses Earth.",
@@ -15555,22 +15395,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "ulsterisasion",
             "ullsterisation",
             "ulsterrisation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "spermatophagy",
-        "definition": "Phagocytosis of sperm cells.",
-        "exampleSentence": "The degree of carnivory/spermatophagy and preferences for food depend on the food choices available to a carabid.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "spermatophagy",
-        "etymology": "From spermato- + -phagy.",
-        "distractors": [
-            "spermatophagey",
-            "sperrmatophagy",
-            "spermattophagy"
         ],
         "theme": "everyday"
     },
@@ -15970,6 +15794,182 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "nonacompanied",
             "nonnaccompanied",
             "nonaccommpanied"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "squirrelliness",
+        "definition": "(of a person) Eccentricity.",
+        "exampleSentence": "The fifth-graders are in the gymnasium, working off some of their squirrelliness.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "squirrelliness",
+        "etymology": "From squirrelly + -ness.",
+        "distractors": [
+            "squirrelliniss",
+            "squirelliness",
+            "squirreliness"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "materialization",
+        "definition": "The conversion of something into a physical form.",
+        "exampleSentence": "\"But I went under nicely and I am glad there were some fine materializations.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "materialization",
+        "etymology": "From material + -ization and materialize + -ation.",
+        "distractors": [
+            "materializasion",
+            "matterialization",
+            "materrialization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nationalisation",
+        "definition": "The act or process of making or becoming a nation.",
+        "exampleSentence": "He wrote the word nationalisation on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "nationalisation",
+        "etymology": "From French nationalisation. By surface analysis, nationalise + -ation.",
+        "distractors": [
+            "nationalisasion",
+            "nattionalisation",
+            "nationnalisation"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "prognostication",
+        "definition": "A statement about or prior knowledge of the future.",
+        "exampleSentence": "He wrote the word prognostication on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "prognostication",
+        "etymology": "From Old French pronosticacion, from Medieval Latin prognosticatio.",
+        "distractors": [
+            "rpognostication",
+            "porgnostication",
+            "prgonostication"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "synchronization",
+        "definition": "The state or property of being synchronized.",
+        "exampleSentence": "The generator went off line when it lost synchronization with the power line.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "synchronization",
+        "etymology": "From synchronize + -ation.",
+        "distractors": [
+            "synchronizasion",
+            "synnchronization",
+            "synchronnization"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "confessionalism",
+        "definition": "A belief in the importance of full and unambiguous assent to the whole of a religious teaching.",
+        "exampleSentence": "Her rendition of \"Dry Land\" from her first album, Back to the Night, was a poetic fusion of music and lyrics that achieved an intimate tone too often sacrificed to confessionalism by other singers.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "confessionalism",
+        "etymology": "From confessional + -ism.",
+        "distractors": [
+            "confesionalism",
+            "connfessionalism",
+            "confessionnalism"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "frenchification",
+        "definition": "The act or process of making French or more French-like, especially in informal contexts.",
+        "exampleSentence": "The Frenchification of the shopping district is complete: every shop has been redone in a Haussmannian style and baguettes, wine, and accordion music are inescapable.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "frenchification",
+        "etymology": "From Frenchify + -ation, from French + -ify.",
+        "distractors": [
+            "frenchificasion",
+            "frennchification",
+            "frenchiffication"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "constructionist",
+        "definition": "An advocate of constructionism.",
+        "exampleSentence": "He wrote the word constructionist on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "constructionist",
+        "etymology": "From construction + -ist.",
+        "distractors": [
+            "connstructionist",
+            "construcctionist",
+            "constructionnist"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "professorialism",
+        "definition": "The manners or habits of a professor.",
+        "exampleSentence": "The frigid professorialism of Kant's philosophy robbed it of all dynamic principle .",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "professorialism",
+        "etymology": "From professorial + -ism.",
+        "distractors": [
+            "profesorialism",
+            "proffessorialism",
+            "professorrialism"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "closehandedness",
+        "definition": "Parsimony.",
+        "exampleSentence": "I have (saith he) long been of that mind that N. E. is guilty of great unthankfulness for the Gospel, & strait-heartedness, & closehandedness toward the Ministers.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "closehandedness",
+        "etymology": "From closehanded + -ness.",
+        "distractors": [
+            "closehandedniss",
+            "closehandednes",
+            "clossehandedness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "southernization",
+        "definition": "The process of southernizing.",
+        "exampleSentence": "He wrote the word southernization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "southernization",
+        "etymology": "From southern + -ization.",
+        "distractors": [
+            "southernizasion",
+            "soutthernization",
+            "southerrnization"
         ],
         "theme": "everyday"
     }

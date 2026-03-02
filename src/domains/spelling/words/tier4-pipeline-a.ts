@@ -1293,22 +1293,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "wretched",
-        "definition": "Characterized by or feeling deep affliction or distress; very miserable.",
-        "exampleSentence": "I felt wretched after my wife died.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "ɹɛt͡ʃəd",
-        "etymology": "From Middle English wrecched (“(adjective) characterized by or suffering hardship or misfortune, miserable, unfortunate, unhappy; indigent, poor; of low economic or social status, lowly; (noun) miserable person”) [and other forms], from wrecche (“characterized by or suffering hardship or misfortune,",
-        "distractors": [
-            "wrettched",
-            "retched",
-            "wreched"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "daylight",
         "definition": "To expose to daylight.",
         "exampleSentence": "The instructions said to daylight gently and carefully.",
@@ -1323,22 +1307,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "dayligght"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "shithole",
-        "definition": "A wretched or despicable person.",
-        "exampleSentence": "Why are we having all these people from shithole countries come here?",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "ʃɪthoʊl",
-        "etymology": "Compound of shit + hole.",
-        "distractors": [
-            "shithoel",
-            "shitthole",
-            "shitholle"
-        ],
-        "theme": "people"
     },
     {
         "word": "homotopy",
@@ -2072,22 +2040,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "determinned"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "impregnate",
-        "definition": "Impregnated (all senses).",
-        "exampleSentence": "The impregnate colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "ɪmprɛɡnət",
-        "etymology": "The adjective is first attested in 1540, the verb in 1605; borrowed from Medieval Latin impraegnātus, perfect passive participle of Latin impraegnō, see -ate (verb-forming suffix) and -ate (adjective-forming suffix).",
-        "distractors": [
-            "immpregnate",
-            "impreggnate",
-            "impregnatte"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "pursuivant",
@@ -4415,22 +4367,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "nature"
     },
     {
-        "word": "shitkicker",
-        "definition": "A workboot.",
-        "exampleSentence": "I have a shitkicker of a headache.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "ʃɪtkɪkə(ɹ)",
-        "etymology": "From shit + kicker.",
-        "distractors": [
-            "shitkickor",
-            "shitkickar",
-            "shittkicker"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "survivance",
         "definition": "Survival as a Native American or First Nations person practicing indigenous culture and resisting white European-American hegemony.",
         "exampleSentence": "His son had the survivance of the stadtholdership.",
@@ -5882,22 +5818,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "episodic",
-        "definition": "Relating to an episode.",
-        "exampleSentence": "I just read five attempts at episodic novels — has nobody heard of a plot anymore?",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "ɛpɪsɑdɪk",
-        "etymology": "From episode + -ic. Compare French épisodique.",
-        "distractors": [
-            "eppisodic",
-            "epissodic",
-            "episoddic"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "everyday",
         "definition": "Appropriate for ordinary use, rather than for special occasions.",
         "exampleSentence": "This was an everyday and everynight scene a couple of decades ago.",
@@ -6008,22 +5928,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "oraccular"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "pathetic",
-        "definition": "Arousing pity, sympathy, or compassion; exciting pathos.",
-        "exampleSentence": "You can't even run two miles? That’s pathetic.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "pəθɛtɪk",
-        "etymology": "From Middle French pathétique, from Latin patheticus, from Ancient Greek παθητικός (pathētikós, “subject to feeling, capable of feeling, impassioned”), from παθητός (pathētós, “one who has suffered, subject to suffering”), from πάσχω (páskhō, “to suffer”).",
-        "distractors": [
-            "patthetic",
-            "pathettic",
-            "pethetic"
-        ],
-        "theme": "feelings"
     },
     {
         "word": "terrific",
@@ -9328,22 +9232,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "shithouse",
-        "definition": "An outhouse, an outbuilding used as a lavatory.",
-        "exampleSentence": "You will be less amused when I ask you when you will take your turn cleaning out this shithouse.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "ʃɪthaʊs",
-        "etymology": "From shit + house. Compare Middle Low German schîthûs, German Scheißhaus, Swedish skithus, Icelandic skíthús.",
-        "distractors": [
-            "shitthouse",
-            "shithousse",
-            "shithowse"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "agistment",
         "definition": "The taking in by anyone of other people's livestock to graze at a certain rate.",
         "exampleSentence": "Learning about the agistment was the best part of the day.",
@@ -9408,22 +9296,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "holocaust",
-        "definition": "To sacrifice (chiefly an animal) to be completely burned.",
-        "exampleSentence": "I at once holocausted / My clothes to stamp out the infection—infection.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "hɑləkɔst",
-        "etymology": "The noun is derived from Middle English holocaust (“burnt offering”) [and other forms], from Anglo-Norman holocauste, Old French holocauste, olocauste (modern French holocaust), from Late Latin holocaustum, from Ancient Greek ὁλόκαυστον (holókauston), the neuter form of ὁλόκαυστος (holókaustos, “who",
-        "distractors": [
-            "hollocaust",
-            "holoccaust",
-            "holocausst"
-        ],
-        "theme": "animals"
-    },
-    {
         "word": "laryngeal",
         "definition": "An anatomical part (such as a nerve or artery) that supplies or is associated with the larynx.",
         "exampleSentence": "Finally, it should be noted that laryngeals not adjacent to syllabics were apparently deleted by three different rules.",
@@ -9486,22 +9358,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "spacetimme"
         ],
         "theme": "time"
-    },
-    {
-        "word": "pigfucker",
-        "definition": "Term of abuse.",
-        "exampleSentence": "Learning about the pigfucker was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "pɪɡfʌkɚ",
-        "etymology": "From pig + fucker.",
-        "distractors": [
-            "pigfuckor",
-            "pigfuckar",
-            "piggfucker"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "importune",
@@ -9582,22 +9438,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "magisstral"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "shirtless",
-        "definition": "Without a shirt.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully shirtless.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "ʃɝtləs",
-        "etymology": "From shirt + -less.",
-        "distractors": [
-            "shirtles",
-            "shirrtless",
-            "shartless"
-        ],
-        "theme": "clothing"
     },
     {
         "word": "conformal",
@@ -12231,22 +12071,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "abortion",
-        "definition": "A spontaneous abortion; a miscarriage.",
-        "exampleSentence": "The abortion was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "əbɔɹʃn̩",
-        "etymology": "From Latin abortiōnem (“miscarriage, abortion”), from aborior (“to miscarry”). Equivalent to abort + -ion. Displaced native Old English ǣwyrp (literally “throwing out, rejection”).",
-        "distractors": [
-            "aborsion",
-            "abbortion",
-            "aborrtion"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "acceptor",
         "definition": "One who accepts.",
         "exampleSentence": "The acceptor was one of our vocabulary words this week.",
@@ -12676,22 +12500,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "cairllon"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "casanova",
-        "definition": "A man considered romantic and gallant, especially one who gives amorous attentions to women.",
-        "exampleSentence": "The casanova was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "kæsənoʊvə",
-        "etymology": "Eponym from Giacomo Casanova (1725-1798), Venetian writer and adventurer.",
-        "distractors": [
-            "acsanova",
-            "csaanova",
-            "caasnova"
-        ],
-        "theme": "people"
     },
     {
         "word": "category",
@@ -15058,22 +14866,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "immodest",
-        "definition": "Without customary restraint or modesty of expression; shameless.",
-        "exampleSentence": "The old house had an immodest appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "ɪmɑdəst",
-        "etymology": "From im- + modest.",
-        "distractors": [
-            "mimodest",
-            "imomdest",
-            "immdoest"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "ironical",
         "definition": "Characterized by or constituting (any kind of) irony.",
         "exampleSentence": "His tone was cold and ironical; its bitterness but reflecting the terrible disappointment he had suffered.",
@@ -15373,22 +15165,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "formalley",
             "formaly",
             "forrmally"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "insanely",
-        "definition": "In an insane manner; not sanely.",
-        "exampleSentence": "That ramp is insanely difficult to jump.",
-        "partOfSpeech": "adverb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "ɪnseɪnli",
-        "etymology": "From insane + -ly.",
-        "distractors": [
-            "insaneley",
-            "innsanely",
-            "insannely"
         ],
         "theme": "everyday"
     },
@@ -15964,5 +15740,229 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "lerrikin"
         ],
         "theme": "everyday"
+    },
+    {
+        "word": "callaloo",
+        "definition": "Any of various tropical plants grown in the Americas, especially of the genera Amaranthus and Xanthosoma, cultivated for their edible leaves.",
+        "exampleSentence": "But a little callaloo soup and a few mouthfuls of stewed goat, saw me much improved.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "kæləluː",
+        "etymology": "From American Spanish calalú. Compare Sranan Tongo krarun, Dutch klaroen.",
+        "distractors": [
+            "calaloo",
+            "callalo",
+            "callalloo"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "gigawatt",
+        "definition": "One thousand million (10⁹) watts, an amount of power large enough to power such things as a midsize town or several small ones. (Consuming 1 gigawatt during a duration of 1 hour consumes 1 gigawatt-hour of energy.).",
+        "exampleSentence": "The gigawatt was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "ɡɪɡəwɒt",
+        "etymology": "From giga- + watt.",
+        "distractors": [
+            "gigawat",
+            "giggawatt",
+            "gigawwatt"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "babymoon",
+        "definition": "A period of calm spent together by a newborn baby and its parents.",
+        "exampleSentence": "Humidity and flying will worsen your sausage-like legs, so a trip to the Caribbean rain forest is not an ideal babymoon destination.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "beɪbimuːn",
+        "etymology": "Blend of baby + honeymoon.",
+        "distractors": [
+            "babymon",
+            "babbymoon",
+            "babymmoon"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "foofaraw",
+        "definition": "Overly excessive or flashy ornamentation or decoration.",
+        "exampleSentence": "Yes, there’s a romance at the center of the episode, though it’s just as much of a red herring as the layers of futuristic foofaraw.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "fufəɹɔ",
+        "etymology": "First attested in the 1930s, of uncertain origin. Perhaps related to French fanfaron (“boasting”).",
+        "distractors": [
+            "fofaraw",
+            "fooffaraw",
+            "foofarraw"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "cadillac",
+        "definition": "An automobile of this marque. Often used as an example of a luxury car or luxuriousness in general.",
+        "exampleSentence": "The cadillac was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "kædəlæk",
+        "etymology": "From French Cadillac, from Occitan Cadilhac. Most places or objects named Cadillac are named for Antoine Laumet de La Mothe, sieur de Cadillac, a French explorer who founded the eponymous city in Maine and later the city of Detroit, Michigan.",
+        "distractors": [
+            "cadilac",
+            "caddillac",
+            "cedillac"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "caughten",
+        "definition": "Plural simple past of catch.",
+        "exampleSentence": "The instructions said to caughten gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "kʰɒtən",
+        "etymology": "From caught + -en (preterite plural suffix), and caught + -en (strong declension past participle suffix).",
+        "distractors": [
+            "caugghten",
+            "cauten",
+            "cawghten"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "resupply",
+        "definition": "The act of supplying again.",
+        "exampleSentence": "A resupply gives you the chance to refill your fuel bottle as well as your food bag.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "prefixes",
+        "pronunciation": "ɹiːsəplaɪ",
+        "etymology": "From re- + supply.",
+        "distractors": [
+            "resuppley",
+            "resuply",
+            "ressupply"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "actional",
+        "definition": "Of, pertaining to, or depicting action, especially physical action.",
+        "exampleSentence": "There is his view discussed earlier, for instance, that the actional realm is inimical to human purpose.",
+        "partOfSpeech": "adjective",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "ækʃənəl",
+        "etymology": "From action + -al.",
+        "distractors": [
+            "actionel",
+            "acctional",
+            "actionnal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overcall",
+        "definition": "To call a bet after another player has already called.",
+        "exampleSentence": "The instructions said to overcall gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 5,
+        "pattern": "prefixes",
+        "pronunciation": "əʊvəkɔːl",
+        "etymology": "From over- + call.",
+        "distractors": [
+            "overcal",
+            "ovvercall",
+            "overrcall"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "filipina",
+        "definition": "A female citizen or inhabitant of the Philippines, or descendant of such.",
+        "exampleSentence": "Recently, the police station at Nei-Hu district arrested about ten Filipina domestics and nursing workers who ran away from their employers.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "fɪlɪpiːnə",
+        "etymology": "Borrowed from Spanish filipina f (feminine form of filipino).",
+        "distractors": [
+            "fillipina",
+            "filippina",
+            "filipinna"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "pinewood",
+        "definition": "The wood of a pine.",
+        "exampleSentence": "The pinewood was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "paɪnwʊd",
+        "etymology": "From pine + wood.",
+        "distractors": [
+            "pinewod",
+            "pinnewood",
+            "pinewwood"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "expeller",
+        "definition": "Someone or something that expels.",
+        "exampleSentence": "The latter, for example, are overheard dismissing the former as mere “quantoids”—as if quantitative methods turn those who deploy them into machinelike expellers of numeric waste.",
+        "partOfSpeech": "noun",
+        "difficulty": 5,
+        "pattern": "suffixes",
+        "pronunciation": "ɪkspɛlɚ",
+        "etymology": "From expel + -er.",
+        "distractors": [
+            "expellor",
+            "expellar",
+            "expeler"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "bebother",
+        "definition": "To bring trouble upon.",
+        "exampleSentence": "‘Confusticate and bebother these dwarves!’ he said aloud.",
+        "partOfSpeech": "verb",
+        "difficulty": 5,
+        "pattern": "suffixes",
+        "pronunciation": "bəbɑðɚ",
+        "etymology": "From be- (“thoroughly”) + bother.",
+        "distractors": [
+            "bebothor",
+            "bebothar",
+            "bebbother"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "droughty",
+        "definition": "Lacking rain.",
+        "exampleSentence": "The old house had a droughty appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 5,
+        "pattern": "multisyllable",
+        "pronunciation": "dɹaʊti",
+        "etymology": "From drought + -y.",
+        "distractors": [
+            "droughtey",
+            "drougghty",
+            "drouty"
+        ],
+        "theme": "weather"
     }
 ];

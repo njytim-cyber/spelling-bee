@@ -172,7 +172,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'foks',
         etymology: 'Old English: fox',
-        distractors: ['fux', 'foxe', 'vox'],
+        distractors: ['focs', 'foxe', 'vox'],
         theme: 'animals',
     },
     {
@@ -232,7 +232,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'web',
         etymology: 'Old English: webb (woven fabric)',
-        distractors: ['webe', 'wab', 'wib'],
+        distractors: ['webe', 'wob', 'wib'],
         theme: 'animals',
     },
     {
@@ -436,7 +436,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'gum',
         etymology: 'Old French: gomme, from Latin: gummi, from Greek: kommi',
-        distractors: ['gom', 'kum', 'gam'],
+        distractors: ['gom', 'gim', 'gam'],
         theme: 'food',
     },
     {
@@ -847,7 +847,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'jab',
         etymology: 'Scottish variant of job (to poke)',
-        distractors: ['jap', 'jeb', 'jabe'],
+        distractors: ['jub', 'jeb', 'jabe'],
         theme: 'actions',
     },
     {
@@ -907,7 +907,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'mob',
         etymology: 'Latin: mobile vulgus (fickle crowd)',
-        distractors: ['mib', 'nob', 'mod'],
+        distractors: ['mib', 'mab', 'mod'],
         theme: 'people',
     },
     {
@@ -1282,7 +1282,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'wig',
         etymology: 'Short for periwig, from French: perruque',
-        distractors: ['wog', 'weg', 'wige'],
+        distractors: ['wug', 'weg', 'wige'],
         theme: 'clothing',
     },
     {
@@ -1294,7 +1294,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'fig',
         etymology: 'Old French: figue, from Latin: ficus',
-        distractors: ['fog', 'fige', 'feg'],
+        distractors: ['fog', 'fige', 'fug'],
         theme: 'food',
     },
     {
@@ -1318,7 +1318,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'kog',
         etymology: 'Middle English: cogge',
-        distractors: ['cug', 'cig', 'cok'],
+        distractors: ['cug', 'cig', 'cag'],
         theme: 'body',
     },
     {
@@ -1633,7 +1633,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'tot',
         etymology: 'Unknown origin, possibly Scandinavian',
-        distractors: ['tut', 'tit', 'tote'],
+        distractors: ['tut', 'tat', 'tote'],
         theme: 'people',
     },
     {
@@ -1645,7 +1645,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'cvc',
         pronunciation: 'nub',
         etymology: 'Middle Low German: knubbe (knob)',
-        distractors: ['nab', 'nob', 'nup'],
+        distractors: ['nab', 'neb', 'nup'],
         theme: 'quantity',
     },
     {
@@ -2275,7 +2275,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'blends',
         pronunciation: 'skunk',
         etymology: 'Algonquian: segankw',
-        distractors: ['skonk', 'skunke', 'skank'],
+        distractors: ['skonk', 'skunke', 'skenk'],
         theme: 'animals',
     },
     {
@@ -2943,18 +2943,6 @@ export const TIER_1_WORDS: SpellingWord[] = [
         etymology: 'Old English: clif',
         distractors: ['cleff', 'cliffe', 'clif'],
         theme: 'earth',
-    },
-    {
-        word: 'spunk',
-        definition: 'Being brave and full of spirit.',
-        exampleSentence: 'That little puppy has a lot of spunk.',
-        partOfSpeech: 'noun',
-        difficulty: 2,
-        pattern: 'blends',
-        pronunciation: 'spunk',
-        etymology: 'Scottish Gaelic: spong (tinder), from Latin: spongia',
-        distractors: ['sponk', 'spunke', 'spank'],
-        theme: 'character',
     },
     {
         word: 'blimp',
@@ -3628,7 +3616,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'wyt',
         etymology: 'Old English: hwit',
-        distractors: ['whide', 'whiti', 'whit'],
+        distractors: ['whide', 'whiti', 'wite'],
         theme: 'sensory',
     },
     {
@@ -3760,7 +3748,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'dich',
         etymology: 'Old English: dic (dike)',
-        distractors: ['ditche', 'bitch', 'detch'],
+        distractors: ['ditche', 'dich', 'detch'],
         theme: 'travel',
     },
     {
@@ -5275,18 +5263,6 @@ export const TIER_1_WORDS: SpellingWord[] = [
     // ADDITIONAL BLENDS WORDS (35 words, #436-#470)
     // ─────────────────────────────────────────────
     {
-        word: 'scat',
-        definition: 'To go away quickly.',
-        exampleSentence: 'The cat heard a noise and began to scat.',
-        partOfSpeech: 'verb',
-        difficulty: 1,
-        pattern: 'blends',
-        pronunciation: 'skat',
-        etymology: 'Old Norse: skata, or Greek: skor (dung)',
-        distractors: ['skat', 'scet', 'scate'],
-        theme: 'actions',
-    },
-    {
         word: 'scan',
         definition: 'To look at something carefully.',
         exampleSentence: 'She had to scan the page for her name.',
@@ -6127,7 +6103,7 @@ export const TIER_1_WORDS: SpellingWord[] = [
         pattern: 'digraphs',
         pronunciation: 'thik-en',
         etymology: 'Old English: thiccian (to make thick)',
-        distractors: ['ficken', 'thiccken', 'thickken'],
+        distractors: ['thiken', 'thiccken', 'thickken'],
         theme: 'actions',
     },
     {

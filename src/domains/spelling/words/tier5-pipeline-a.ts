@@ -1803,22 +1803,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "food"
     },
     {
-        "word": "pyrethrum",
-        "definition": "Any of several daisy-like perennial African plants of the genus Tanacetum, especially Tanacetum cinerariifolium.",
-        "exampleSentence": "A common beverage credited with aphrodisiac virtue was old wine containing the pungent root of the plant pyrethrum or pellitory.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "paɪɹiθɹəm",
-        "etymology": "From Old English pyretre, from (and later reformed after) Latin pyrethrum (in Pliny), from Hellenistic Ancient Greek πύρεθρον (púrethron).",
-        "distractors": [
-            "pyrrethrum",
-            "pyretthrum",
-            "pyrathrum"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "quotation",
         "definition": "A fragment of a human expression that is repeated by somebody else, for example from literature or a famous speech.",
         "exampleSentence": "Let's get a quotation for repairing the roof before we decide whether it's worth doing.",
@@ -2039,22 +2023,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "vibrasion",
             "vibbration",
             "vibrattion"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dissipate",
-        "definition": "To drive away, disperse.",
-        "exampleSentence": "The vast wealth … was in three years dissipated.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "dɪsɪpeɪt",
-        "etymology": "The verb is first attested in 1425, in Middle English, the adjective from 1606 to 1765; from Middle English dissipaten, from Latin dissipātus, perfect passive participle of dissipō (see -ate (verb-forming suffix) and -ate (adjective-forming suffix)), also written dissupō (“to scatter, disperse, demo",
-        "distractors": [
-            "disipate",
-            "dissippate",
-            "dissipatte"
         ],
         "theme": "everyday"
     },
@@ -2650,22 +2618,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "episcopate",
-        "definition": "Bishops seen as a group.",
-        "exampleSentence": "Bishop Smith's episcopate ran for more than 30 years.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "ɪpɪskəpət",
-        "etymology": "From Late Latin episcopatus, from Latin episcopus, from Ancient Greek ἐπίσκοπος (epískopos, “watching over”).",
-        "distractors": [
-            "eppiscopate",
-            "episscopate",
-            "episcoppate"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "graduation",
         "definition": "The action or process of graduating and receiving a diploma for completing a course of study (such as from an educational institution).",
         "exampleSentence": "The graduation ball was the students' chance to say goodbye to each other.",
@@ -2904,22 +2856,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "corresponnd"
         ],
         "theme": "character"
-    },
-    {
-        "word": "eviscerate",
-        "definition": "To disembowel; to remove the viscera.",
-        "exampleSentence": "Desecrate me / Tear me limb from limb / Eviscerate me / Chew me to death.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "ɪvɪsəɹeɪt",
-        "etymology": "From Latin ēviscerātus, past participle of ēviscerāre (“to disembowel”), from e- (“out”) + viscera (“bowels”).",
-        "distractors": [
-            "evviscerate",
-            "evisscerate",
-            "eviscerrate"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "generalize",
@@ -4951,21 +4887,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "scallywag",
-        "definition": "A disreputable fellow, a good-for-nothing, a scapegrace, a blackguard.",
-        "exampleSentence": "But Maore, a cheerful scallywag with a taste for the limelight, was made of more daring stuff.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "skælɪwæɡ",
-        "distractors": [
-            "scalywag",
-            "scallywwag",
-            "scellywag"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "secession",
         "definition": "The act of seceding.",
         "exampleSentence": "That year, secession was enacted on account of unreasonable policies.",
@@ -5861,22 +5782,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "philander",
-        "definition": "A South American opossum, bare-tailed woolly opossum, of species Caluromys philander (syn. Didelphis philander).",
-        "exampleSentence": "Learning about the philander was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "fɪlændəɹ",
-        "etymology": "From the given name Philander, used as a name for flirtatious characters in several 18th century stories, from Ancient Greek Φίλανδρος (Phílandros), name of the mythological son of the nymph Acacallis and the god Apollo.",
-        "distractors": [
-            "philandor",
-            "philandar",
-            "phillander"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "nightmare",
         "definition": "To experience a nightmare.",
         "exampleSentence": "Every night, Liesel would nightmare.",
@@ -5939,22 +5844,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "metalloyd"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "hillbilly",
-        "definition": "To emphasize one's rural or humble upbringing; to use unsophisticated charm.",
-        "exampleSentence": "Hillbillying troubadors, the bohemians of a new world, not cafe society but more like the poor white origins of an Elvis Presley.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "hɪlbɪli",
-        "etymology": "From hill + billy (“fellow”). Compare Scots chapman billie (“travelling salesman”).",
-        "distractors": [
-            "hillbilley",
-            "hilbilly",
-            "hillbily"
-        ],
-        "theme": "character"
     },
     {
         "word": "underfoot",
@@ -6304,21 +6193,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "septenarey",
             "septenery",
             "septenairy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "slimeball",
-        "definition": "A round lump made up of or coated with slime or a slime-like substance such as mucus.",
-        "exampleSentence": "Even slimeballs were entitled to representation, though.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "slaɪmbɔl",
-        "distractors": [
-            "slimebal",
-            "slimmeball",
-            "slimebball"
         ],
         "theme": "everyday"
     },
@@ -7089,22 +6963,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "dookreeper"
         ],
         "theme": "people"
-    },
-    {
-        "word": "enticement",
-        "definition": "The act or practice of enticing, of alluring or tempting.",
-        "exampleSentence": "None but those who have experienced them can conceive of the enticements of science.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "ɪntaɪsmənt",
-        "etymology": "From Old French enticement.",
-        "distractors": [
-            "enticemant",
-            "ennticement",
-            "enticcement"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "exhaustion",
@@ -8240,22 +8098,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "suggestive",
-        "definition": "Tending to suggest or imply.",
-        "exampleSentence": "The suggestive colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "sə(ɡ)d͡ʒɛstɪv",
-        "etymology": "From suggest + -ive.",
-        "distractors": [
-            "sugestive",
-            "suggesstive",
-            "suggestivve"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "telescopic",
         "definition": "Pertaining to, or carried out by means of, a telescope.",
         "exampleSentence": "The telescopic colors of the sunset were beautiful.",
@@ -8716,22 +8558,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "cockalorum",
-        "definition": "A menial yet self-important person; a person who makes empty boasts.",
-        "exampleSentence": "We played cockalorum from one side of the street to the other.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "kɒkəlɔːɹəm",
-        "etymology": "Possibly English cock (“rooster”), with -a- and Latin -lorum suffixed as a fanciful elaboration; or from a Dutch onomatopoeic dialect term kockeloeren (“the cry of a rooster; cock-a-doodle-doo”), hence the modern Dutch verb koekeloeren (“to crow”).",
-        "distractors": [
-            "cocckalorum",
-            "cockallorum",
-            "cockalorrum"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "mithridate",
         "definition": "Any of various historical medicines, typically an electuary compounded with various poison, believed to derive from Mithridates VI and to serve as a universal antidote.",
         "exampleSentence": "She wrote about the mithridate in her school report.",
@@ -8762,22 +8588,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "heterrarchy"
         ],
         "theme": "society"
-    },
-    {
-        "word": "omnisexual",
-        "definition": "Being attracted to all genders (sometimes distinguished from pansexual by saying omnisexual attraction may still take account of gender or prefer particular genders).",
-        "exampleSentence": "To be a virgin in high school wasn't, even in the omnisexual milieu of the Pioneer Valley, such a social black spot.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "ɑmnɪsɛkʃuəl",
-        "etymology": "From omni- + -sexual.",
-        "distractors": [
-            "omnisexuel",
-            "ommnisexual",
-            "omnissexual"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "castellate",
@@ -10041,22 +9851,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "bedfellow",
-        "definition": "One with whom one shares a bed.",
-        "exampleSentence": "Therefore, grave mistresses of fate, I pray / That I may never live to see the day / When Zeus takes me for his bedfellow;",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "bɛdfɛloʊ",
-        "etymology": "From Middle English bedfelawe, equivalent to bed + fellow.",
-        "distractors": [
-            "bedfelow",
-            "beddfellow",
-            "bedfellou"
-        ],
-        "theme": "home"
-    },
-    {
         "word": "bethlehem",
         "definition": "A lunatic asylum.",
         "exampleSentence": "The priests and deacons assigned to the service wash their feet and hands, usually near the 'Bethlehem'.",
@@ -10934,38 +10728,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "feungreek"
         ],
         "theme": "plants"
-    },
-    {
-        "word": "flagellum",
-        "definition": "In protists, a long, whiplike membrane-enclosed organelle used for locomotion or feeding.",
-        "exampleSentence": "Learning about the flagellum was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "fləd͡ʒɛləm",
-        "etymology": "From Latin flagellum (“whip”), diminutive of flagrum.",
-        "distractors": [
-            "lfagellum",
-            "falgellum",
-            "flgaellum"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "fragility",
-        "definition": "The condition or quality of being fragile; brittleness; frangibility.",
-        "exampleSentence": "Learning about the fragility was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "fɹəd͡ʒɪlɪti",
-        "etymology": "Borrowed from Middle French fragilité, from Latin fragilitās. Doublet of frailty. Morphologically fragile + -ity.",
-        "distractors": [
-            "rfagility",
-            "fargility",
-            "frgaility"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "funiculus",
@@ -12198,22 +11960,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "seduction",
-        "definition": "The act of seducing.",
-        "exampleSentence": "Seduction is the fine art of manipulating people based on physical attraction and desire. Step 1: Be attractive. Step 2: Don't be unattractive.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "sɪdʌkʃn̩",
-        "etymology": "Borrowed from Middle French séduction, from Latin sēductiō, from sēdūcō. Equivalent to seduce + -tion.",
-        "distractors": [
-            "seducsion",
-            "sedduction",
-            "seducction"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "seniority",
         "definition": "A measure of the amount of time a person has been a member of an organization, as compared to other members, and with an eye towards awarding privileges to those who have been members longer.",
         "exampleSentence": "It's an old-fashioned company, with parking spaces and other perks doled out on the basis of seniority.",
@@ -12308,22 +12054,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "spotligght"
         ],
         "theme": "sensory"
-    },
-    {
-        "word": "stupidity",
-        "definition": "The property of being stupid.",
-        "exampleSentence": "Learning about the stupidity was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "stupɪdɪti",
-        "etymology": "From Latin stupiditātem, accusative of Latin stupiditās, equivalent to stupid + -ity.",
-        "distractors": [
-            "stupiditey",
-            "stuppidity",
-            "stupiddity"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "surrogate",
@@ -12965,22 +12695,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "slaughter",
-        "definition": "To butcher animals, generally for food.",
-        "exampleSentence": "Hurriedly he snatched up others, one or two at a time, until he had slaughtered thirty of Hrothgar's doughtiest earls.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "slɔtɚ",
-        "etymology": "From Middle English slaughter, from Old Norse *slahtr, later sláttr, from Proto-Germanic *slahtrą, from Proto-Germanic *slahaną. Equivalent to slay + -ter (as in laughter). Eventually derived from Proto-Indo-European *slak- (“to hit, strike, throw”).",
-        "distractors": [
-            "slaughtor",
-            "slaughtar",
-            "slaugghter"
-        ],
-        "theme": "food"
-    },
-    {
         "word": "summarize",
         "definition": "To prepare a summary of (something).",
         "exampleSentence": "Jim was asked to summarize the document by Wednesday.",
@@ -13027,22 +12741,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "terrorrize"
         ],
         "theme": "people"
-    },
-    {
-        "word": "titillate",
-        "definition": "To stimulate or excite sensually.",
-        "exampleSentence": "The dancer titillated her audience with gyrations and suggestive movements.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "tɪtɪleɪt",
-        "etymology": "From Latin tītillātus, from tītillāre (“to tickle”).",
-        "distractors": [
-            "titilate",
-            "tittillate",
-            "titillatte"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "tyrannize",
@@ -13221,22 +12919,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "anorectic",
-        "definition": "Characterised by a lack of appetite, especially as suffering from anorexia nervosa.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully anorectic.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "ænəɹɛktɪk",
-        "etymology": "Borrowed from Ancient Greek ἀνόρεκτος (anórektos, “without appetite”), from ἀν- (an-, “without”) + ὀρέγω (orégō, “to desire”). By surface analysis, an- + orectic.",
-        "distractors": [
-            "annorectic",
-            "anorrectic",
-            "anorecctic"
-        ],
-        "theme": "food"
-    },
-    {
         "word": "apostolic",
         "definition": "Pertaining to apostles or their practice or teaching; pertaining to the apostles (of early Christianity) or their teachings.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully apostolic.",
@@ -13377,22 +13059,6 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "bicamerel",
             "biccameral",
             "bicammeral"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bodacious",
-        "definition": "Audacious and unrestrained.",
-        "exampleSentence": "You, sir, are a bodacious scoundrel.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "boʊdeɪʃəs",
-        "etymology": "Southern American slang, implied by bodaciously, 1837, either from bodyaciously (“bodily, totally, root and branch”, antebellum South Carolina) or a blend of bold and audacious.",
-        "distractors": [
-            "bodacous",
-            "bodacius",
-            "bodaceous"
         ],
         "theme": "everyday"
     },
@@ -15981,5 +15647,340 @@ export const TIER_5_PIPELINE_A_WORDS: SpellingWord[] = [
             "cecoethic"
         ],
         "theme": "everyday"
+    },
+    {
+        "word": "pecunious",
+        "definition": "With money, wealthy; financially independent.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully pecunious.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "latin-roots",
+        "pronunciation": "pɪkjuːniəs",
+        "etymology": "Ultimately from Latin pecūnia (“money”).",
+        "distractors": [
+            "pecunous",
+            "pecunius",
+            "pecuneous"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "ocularium",
+        "definition": "A slit in a helmet through which the wearer could see.",
+        "exampleSentence": "… A CLOSED HELMET, with blued surface; the skull-piece has a high roped comb, a deep visor pierced with the ocularium, bevor with annular piercings ….",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "ɑkjəlɛɹiəm",
+        "etymology": "From Latin oculārium.",
+        "distractors": [
+            "occularium",
+            "ocullarium",
+            "ocularrium"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "connivent",
+        "definition": "Forbearing to see; intentionally inattentive.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully connivent.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "kənaɪvənt",
+        "etymology": "From Latin connīvēns.",
+        "distractors": [
+            "connivant",
+            "conivent",
+            "connivvent"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "musketoon",
+        "definition": "A firearm, similar to a musket but with a shorter barrel and a large bore.",
+        "exampleSentence": "And d'Artagnan set the example. Then, turning toward Planchet, he made him a sign to uncock his musketoon. The Englishmen, convinced of these peaceful proceedings, sheathed their swords grumblingly.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "mʌskɪtuːn",
+        "etymology": "From musket + -oon, after French mousqueton. Compare Italian moschettone.",
+        "distractors": [
+            "musketon",
+            "mussketoon",
+            "muskettoon"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "impletion",
+        "definition": "An act of filling; the state of being full.",
+        "exampleSentence": "The greater the impletion of the artery during systole, the longer is the interval between the primary expansion and the acme of distension, and the bolder the curve which indicates it.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "latin-roots",
+        "pronunciation": "ɪmpliːʃən",
+        "etymology": "From Late Latin implētiō (past participle of Latin impleō (“I fill up”) + -iō); see also implement.",
+        "distractors": [
+            "implesion",
+            "immpletion",
+            "implettion"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "weaponeer",
+        "definition": "Someone who makes weapons, especially nuclear weapons.",
+        "exampleSentence": "Von Neumann, who believed that mathematics grew best when nourished by ‘a certain contact with the strivings and problems of the world,’ became a great friend of the weaponeers.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "suffixes",
+        "pronunciation": "wɛpənɪə",
+        "etymology": "From weapon + -eer.",
+        "distractors": [
+            "weaponeor",
+            "weaponear",
+            "weaponer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "memoriter",
+        "definition": "That is or has been recited from memory; that has been learned by heart.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully memoriter.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "suffixes",
+        "pronunciation": "məmoɹɪtəɹ",
+        "etymology": "Borrowed from Latin memoriter.",
+        "distractors": [
+            "memoritor",
+            "memoritar",
+            "memmoriter"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "monitress",
+        "definition": "A female mentor or advisor; a female observer.",
+        "exampleSentence": "Miss Mitchell would certainly be most relieved to have a monitress who was capable of organising the juniors at games.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "mɒnɪtɹɪs",
+        "etymology": "From monitor + -ess.",
+        "distractors": [
+            "monitres",
+            "monnitress",
+            "monittress"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fortition",
+        "definition": "A sound change in which a consonant becomes more fortis.",
+        "exampleSentence": "No rotation; no appointment by lot; no mode of election operating in the spirit of fortition or rotation, can be generally good in a government conversant in extensive objects.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "latin-roots",
+        "pronunciation": "fɔɹtɪʃən",
+        "etymology": "From fortis + -ition; compare lenition.",
+        "distractors": [
+            "fortision",
+            "forrtition",
+            "fortittion"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "numeronym",
+        "definition": "A number-based word.",
+        "exampleSentence": "Is the numeronym a11y accessible?",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "numəɹənɪm",
+        "etymology": "From numero- + -nym.",
+        "distractors": [
+            "nummeronym",
+            "numerronym",
+            "numeronnym"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "prothetic",
+        "definition": "Of, relating to, or involving prothesis.",
+        "exampleSentence": "Basque does not allow word-initial r-, adding a prothetic vowel in Latin and Romance loans (e.g. Bq. errege 'king' << Lat. regem).",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "pɹɑθɛtɪk",
+        "etymology": "From Ancient Greek προθετικός (prothetikós).",
+        "distractors": [
+            "protthetic",
+            "prothettic",
+            "prathetic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "knobstick",
+        "definition": "A stick with a rounded knob at the end.",
+        "exampleSentence": "The mill agents, it was rumored, supplied the knobsticks with beer and whiskey, fearing to let them walk the streets.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "nɒbstɪk",
+        "etymology": "From knob + stick.",
+        "distractors": [
+            "knobstik",
+            "knobbstick",
+            "knobsticck"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "obligable",
+        "definition": "Acknowledging, or complying with, obligation; trustworthy.",
+        "exampleSentence": "The main difference between people seems to be, that one man can come under obligations on which you can rely, — is obligable; and another is not.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "suffixes",
+        "pronunciation": "ɒblɪɡəbəl",
+        "etymology": "From oblige + -able.",
+        "distractors": [
+            "obligible",
+            "obligabel",
+            "obbligable"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "riparious",
+        "definition": "Growing or living along the banks of rivers.",
+        "exampleSentence": "Beside these , other aquatic and riparious beetles, such as members of the families Dytiscidae and Gyrinidae, never have been colonized by nematodes.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "latin-roots",
+        "pronunciation": "rɪpɛɹiəs",
+        "etymology": "Latin riparius.",
+        "distractors": [
+            "riparous",
+            "riparius",
+            "ripareous"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "overswell",
+        "definition": "To swell or rise above (something, especially the rim of a container, the sides of something hollow, etc.).",
+        "exampleSentence": "He promised to overswell as soon as he got home.",
+        "partOfSpeech": "verb",
+        "difficulty": 6,
+        "pattern": "prefixes",
+        "pronunciation": "oʊvɚswɛl",
+        "etymology": "From over- + swell.",
+        "distractors": [
+            "overswel",
+            "ovverswell",
+            "overrswell"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "electress",
+        "definition": "A woman who can vote in an election.",
+        "exampleSentence": "I often wish I were, not a butterfly nor a bird—nothing so ridiculous—but an Electress!",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "ɪlɛktɹɪs",
+        "etymology": "From elector + -ess.",
+        "distractors": [
+            "electres",
+            "ellectress",
+            "elecctress"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "prelusory",
+        "definition": "Introductory; prelusive.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully prelusory.",
+        "partOfSpeech": "adjective",
+        "difficulty": 6,
+        "pattern": "prefixes",
+        "pronunciation": "pɹɪluːzəɹi",
+        "distractors": [
+            "prelusorey",
+            "prelusery",
+            "prellusory"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "demersion",
+        "definition": "The act of plunging into a fluid; a drowning.",
+        "exampleSentence": "Learning about the demersion was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "latin-roots",
+        "pronunciation": "dimɜː(ɹ)ʒən",
+        "etymology": "Latin demersio.",
+        "distractors": [
+            "demertion",
+            "demmersion",
+            "demerrsion"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "garreteer",
+        "definition": "One who lives in a garret.",
+        "exampleSentence": "Learning about the garreteer was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "suffixes",
+        "pronunciation": "ɡæɹətɪə(ɹ)",
+        "etymology": "From garret + -eer.",
+        "distractors": [
+            "garreteor",
+            "garretear",
+            "gareteer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "assuetude",
+        "definition": "Accustomedness; habit.",
+        "exampleSentence": "Learning about the assuetude was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "multisyllable",
+        "pronunciation": "æswɪtjuːd",
+        "etymology": "From Latin assuetudo, from assuetus (“accustomed”).",
+        "distractors": [
+            "asuetude",
+            "assuettude",
+            "assuetudde"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disseizin",
+        "definition": "The act of disseizing; an act of unlawful dispossessing, especially of someone's lands.",
+        "exampleSentence": "Why should the disseizin of his soul have seemed shameful to him?",
+        "partOfSpeech": "noun",
+        "difficulty": 6,
+        "pattern": "prefixes",
+        "pronunciation": "dɪsiːzɪn",
+        "etymology": "From Middle English disseisen, from Anglo-Norman disseisine; equivalent to dis- + seizin.",
+        "distractors": [
+            "diseizin",
+            "disseizzin",
+            "dissiezin"
+        ],
+        "theme": "people"
     }
 ];

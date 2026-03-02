@@ -1781,22 +1781,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pisspot",
-        "definition": "A portable container used for urination, especially in hospitals or in the absence of indoor plumbing; a chamber pot.",
-        "exampleSentence": "He was fumbling in his little night-table, where he keeps his pisspot.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pisspot",
-        "etymology": "From Middle English pyssepotte. By surface analysis, piss + pot.",
-        "distractors": [
-            "pispot",
-            "passpot",
-            "pesspot"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "smeddum",
         "definition": "Fine powder; flour.",
         "exampleSentence": "Maybe there were better folk far in Segget, but few enough with smeddum like his.",
@@ -2594,21 +2578,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "blood",
-        "definition": "A member of the Los Angeles gang The Bloods, who typically wear red and have an intense and bitter rivalry with the Crips.",
-        "exampleSentence": "He wrote the word blood on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "blood",
-        "distractors": [
-            "lbood",
-            "bolod",
-            "blodo"
-        ],
-        "theme": "food"
-    },
-    {
         "word": "depth",
         "definition": "The vertical distance below a surface; the degree to which something is deep.",
         "exampleSentence": "He wrote the word depth on the board for everyone to see.",
@@ -3387,22 +3356,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "snatch",
-        "definition": "A quick grab or catch.",
-        "exampleSentence": "Can you use the word snatch in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "snæt͡ʃ",
-        "etymology": "From Middle English snacchen, snecchen (“to snap; seize”), from Old English *snæċċan, *sneċċan, from Proto-West Germanic *snakkjan, from Proto-Germanic *snakjaną (“to whiff, sniff, catch wind of; to taste-test, nibble”), related to Proto-Germanic *snakōną (“to breathe, blow, sigh”) and *snakkōną (“t",
-        "distractors": [
-            "snattch",
-            "snach",
-            "snetch"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "sorrel",
         "definition": "Any of various plants with acidic leaves of the genus Rumex, especially.",
         "exampleSentence": "Joy and the parents did not go either; we spent a quiet day at home, eating roast chicken and stuffing with our own green-gungu rice and peas, and drinking sorrel.",
@@ -3481,22 +3434,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "thmoas"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "vision",
-        "definition": "The sense or ability of sight.",
-        "exampleSentence": "He had a vision of the Virgin Mary.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "vɪʒn̩",
-        "etymology": "From Middle English visioun, from Anglo-Norman visioun, from Old French vision, from Latin vīsiō (“vision, seeing”), noun of action from the perfect passive participle visus (“that which is seen”), from the verb videō (“I see”) + action noun suffix -iō.",
-        "distractors": [
-            "vition",
-            "vission",
-            "vasion"
-        ],
-        "theme": "sensory"
     },
     {
         "word": "warmth",
@@ -3769,22 +3706,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "ufand"
         ],
         "theme": "body"
-    },
-    {
-        "word": "bullet",
-        "definition": "To draw attention to (text) by, or as if by, placing a graphic bullet in front of it.",
-        "exampleSentence": "She would bullet every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bʊlɪt",
-        "etymology": "From Middle English bullet (“an official tag or badge of registration or identification”), from Old French bullete, diminutive of boule (“ball”). Later influenced by Middle French boulette and French boulet.",
-        "distractors": [
-            "bulet",
-            "ballet",
-            "bellet"
-        ],
-        "theme": "art"
     },
     {
         "word": "hogger",
@@ -5442,37 +5363,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "knob",
-        "definition": "A rounded protuberance, especially one arising from a flat surface; a fleshy lump or caruncle.",
-        "exampleSentence": "Fearn picks Jeremy Clarkson (“absolute knob. Well-educated, 1980s BBC, and he thinks it’s a licence to say what he wants”); ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "nɑb",
-        "etymology": "From Middle English knobbe, from Middle Low German knobbe (“knob, knot in wood, bud”), probably ultimately from a variant of Proto-Germanic *knappô (“knob, lump”), one of several kn- words related to *knudaną (“to knead”).",
-        "distractors": [
-            "nob",
-            "knab",
-            "kneb"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dumb",
-        "definition": "An acronym for remembering desirable characteristics for goal-setting: dream-driven, uplifting, method-driven, behavior-driven.",
-        "exampleSentence": "Whatever your goals, starting with a DUMB goal gives a great outline and starting off point to start building your plan of action.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dumb",
-        "distractors": [
-            "dummb",
-            "dum",
-            "damb"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "knop",
         "definition": "A knob, usually ornamental.",
         "exampleSentence": "The thin shaft of each stick, composed of two cylinders on either side of a central knop, is engraved with a scrollwork pattern known as vermicule for its wormlike appearance.",
@@ -5921,37 +5811,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "foggy",
-        "definition": "Obscured by mist or fog; unclear; hazy.",
-        "exampleSentence": "He was still foggy with sleep.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɒɡi",
-        "etymology": "From fog + -y, originally in the sense \"covered with tall grass; marshy; thick\". It is not clear whether fog (“mist”) is a back-formation from foggy (“covered with tall, obscuring grass”) or has a separate Germanic origin, and hence whether foggy (“covered with tall grass”) and foggy (“obscured by m",
-        "distractors": [
-            "foggey",
-            "fogy",
-            "faggy"
-        ],
-        "theme": "weather"
-    },
-    {
-        "word": "funny",
-        "definition": "Amusing; humorous; comical.",
-        "exampleSentence": "Funny man ah get drop like a bad habit.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fʌni",
-        "distractors": [
-            "funney",
-            "funy",
-            "fanny"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "other",
         "definition": "See other (determiner) below.",
         "exampleSentence": "I get paid every other week.",
@@ -6158,22 +6017,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "gippo",
-        "definition": "An Egyptian.",
-        "exampleSentence": "They were always asking for ‘more gippo’ (gravy) which we got for them if we could.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "d͡ʒɪpəʊ",
-        "etymology": "An alteration of gypsy, which is in turn an alteration of Egyptian.",
-        "distractors": [
-            "gipo",
-            "gappo",
-            "geppo"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "prill",
         "definition": "A pellet, a granule, a small bead.",
         "exampleSentence": "The resulting solution is evaporated and converted into prills, i.e. dense flakes or grains, of solid ammonium nitrate.",
@@ -6361,22 +6204,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "anogra"
         ],
         "theme": "animals"
-    },
-    {
-        "word": "better",
-        "definition": "An entity, usually animate, deemed superior to another; one who has a claim to precedence; a superior.",
-        "exampleSentence": "Their betters would hardly be found.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "beɾə",
-        "etymology": "From Middle English better, bettre, betre, from Old English betera (“better”), from Proto-West Germanic *batiʀō, from Proto-Germanic *batizô (“better”), from Proto-Indo-European *bʰed-rós, from *bʰed- (“good”).",
-        "distractors": [
-            "bettor",
-            "bettar",
-            "beter"
-        ],
-        "theme": "people"
     },
     {
         "word": "canary",
@@ -7144,22 +6971,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "assess",
-        "definition": "To determine, estimate or judge the value of; to evaluate; to estimate.",
-        "exampleSentence": "An insurance adjuster will assess the damage.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "əsɛs",
-        "etymology": "From Middle English assessen, from Old French assesser, from Medieval Latin assessare, originally the frequentative of Latin assessus, past participle of assidēre, from ad (“to, towards, at”) + sedeō (“sit; settle down”). Cognate with Spanish asentar (“to settle”).",
-        "distractors": [
-            "asess",
-            "asses",
-            "assass"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "attain",
         "definition": "To gain (an object or desired result).",
         "exampleSentence": "If by any means they might attain to Phenice.",
@@ -7316,22 +7127,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "rasign"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "riffle",
-        "definition": "To flow over a swift, shallow part of a stream.",
-        "exampleSentence": "She would riffle every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹɪfəl",
-        "etymology": "Possible alteration of ruffle, from Middle English ruffelen, akin to Low German ruffelen (“to crumple”).",
-        "distractors": [
-            "riffel",
-            "rifle",
-            "raffle"
-        ],
-        "theme": "water"
     },
     {
         "word": "seethe",
@@ -7762,22 +7557,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "hooddie"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "gutted",
-        "definition": "Eviscerated.",
-        "exampleSentence": "The markets will be more gutted than usual.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡʌtɪd",
-        "etymology": "From Middle English gutted, gotted, equivalent to gut + -ed.",
-        "distractors": [
-            "guted",
-            "gatted",
-            "getted"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "chubby",
@@ -8368,22 +8147,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "noonie",
-        "definition": "The vulva.",
-        "exampleSentence": "A child's voice whispered, “He's going to touch her noonie.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "noonie",
-        "etymology": "Attested since the 1960s; earliest known use found in the works of Bernard Kops. Origin uncertain; suggested sources include Hindi नूनी (nūnī, “boy's penis”) from Sanskrit न्यून (nyū̀na, “vulva”).",
-        "distractors": [
-            "noony",
-            "nonie",
-            "noonnie"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "hooman",
         "definition": "A human being.",
         "exampleSentence": "Let me tell you something about hoomans, Nephew.",
@@ -8922,22 +8685,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "varient",
             "varriant",
             "variannt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bombard",
-        "definition": "To continuously attack something with bombs, artillery shells or other missiles or projectiles.",
-        "exampleSentence": "The enemy's stronghold was bombarded for 3 hours straight.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "bɑmbɑɹd",
-        "etymology": "From French bombarder, from Middle French bombarde (“a bombard”).",
-        "distractors": [
-            "bommbard",
-            "bombarrd",
-            "bambard"
         ],
         "theme": "everyday"
     },
@@ -9543,21 +9290,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "stringey",
             "strinngy",
             "strangy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "western",
-        "definition": "Of, situated in, or related to the West.",
-        "exampleSentence": "As Western culture became increasingly mechanized in the 1600s, the female earth and virgin earth spirit were subdued by the machine.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "wɛstəɹn",
-        "distractors": [
-            "wesstern",
-            "westerrn",
-            "wastern"
         ],
         "theme": "everyday"
     },
@@ -12133,21 +11865,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "bomb",
-        "definition": "The atomic bomb; the capacity to launch a nuclear attack.",
-        "exampleSentence": "Pakistan and India both have the Bomb now.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bomb",
-        "distractors": [
-            "bommb",
-            "bom",
-            "bamb"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "knit",
         "definition": "A knitted garment.",
         "exampleSentence": "The book had an entire chapter about the knit.",
@@ -12767,22 +12484,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "steel",
-        "definition": "An artificial metal produced from iron, harder and more elastic than elemental iron; used figuratively as a symbol of hardness.",
-        "exampleSentence": "He wrote the word steel on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "stiːl",
-        "etymology": "From Middle English stele, stel, from Old English stīele, from Proto-West Germanic *stahlī (“something made of steel”), enlargement of *stahl (“steel”), from Proto-Germanic *stahlą, from *stah- or *stag- (“to be firm, rigid”), from Proto-Indo-European *stak- (“to stay, to be firm”).",
-        "distractors": [
-            "stele",
-            "steal",
-            "stel"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "truss",
         "definition": "A bandage and belt used to hold a hernia in place.",
         "exampleSentence": "He wrote the word truss on the board for everyone to see.",
@@ -13118,21 +12819,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "feelings"
     },
     {
-        "word": "potty",
-        "definition": "Easy to pot the ball on.",
-        "exampleSentence": "The noise that the neighbour's kids were making was driving Fred potty.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɑdi",
-        "distractors": [
-            "pottey",
-            "poty",
-            "patty"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "puffy",
         "definition": "Swollen or inflated in shape, as if filled with air; pillow-like.",
         "exampleSentence": "A puffy fat man in a tracksuit came jogging around the corner.",
@@ -13388,22 +13074,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "feelings"
     },
     {
-        "word": "welly",
-        "definition": "Wellington boot.",
-        "exampleSentence": "Come on! Put some welly into it!",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "wɛli",
-        "etymology": "Clipping of Wellington boot + -y.",
-        "distractors": [
-            "welley",
-            "wely",
-            "wally"
-        ],
-        "theme": "clothing"
-    },
-    {
         "word": "gooey",
         "definition": "A thing which is soft or viscous, and sticky.",
         "exampleSentence": "But only a confirmed chump and irremediable ‘gooey’ comes up for a third ‘chuck.’ … ‘Jest jollyin’ these gooeys, that’s how’, he said.",
@@ -13420,21 +13090,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "genii",
-        "definition": "Guardian spirits.",
-        "exampleSentence": "It aint oftin that you’s git a more better group of genii as was collected this year at good old Melrose High. To the credit of they, it can be said them didn’t do nothin’.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "dʒi(ː)niaɪ",
-        "distractors": [
-            "geni",
-            "gennii",
-            "ganii"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "colly",
         "definition": "A blackbird.",
         "exampleSentence": "He wrote the word colly on the board for everyone to see.",
@@ -13447,21 +13102,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "colley",
             "coly",
             "cally"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "balls",
-        "definition": "Masculinity, particularly strength, courage, and force of will; chutzpah; brazenness.",
-        "exampleSentence": "Balls is all that it takes to succeed.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "bɔːlz",
-        "distractors": [
-            "bals",
-            "bells",
-            "bills"
         ],
         "theme": "everyday"
     },
@@ -13496,21 +13136,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "steok"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "poddy",
-        "definition": "Of or pertaining to a pod or pods.",
-        "exampleSentence": "The first really positive change came about when Mum arrived home with a poddy lamb.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "poddy",
-        "distractors": [
-            "poddey",
-            "pody",
-            "paddy"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "batta",
@@ -13655,22 +13280,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "bazzy"
         ],
         "theme": "sensory"
-    },
-    {
-        "word": "fenny",
-        "definition": "Characteristic of or resembling a fen (“characteristically alkaline wetland containing peat below the waterline”); marshy, swampy; also, of land: containing a fen or fens.",
-        "exampleSentence": "Fillet of a Fenny Snake, / In the Cauldron boyle and bake: ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɛni",
-        "etymology": "From Middle English fenny, fenni (“marshy, muddy; of meat: putrid, rotten; of a person: sinful, vile”), from Old English fenniġ (“dirty; marshy, muddy, fenny”), from fen, fenn (“marsh, fen; mud”) (ultimately from Proto-Indo-European *pen- (“moist, wet; mud; swamp; water”)) + -iġ (suffix forming adje",
-        "distractors": [
-            "fenney",
-            "feny",
-            "fanny"
-        ],
-        "theme": "nature"
     },
     {
         "word": "douth",
@@ -14645,22 +14254,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "nature"
     },
     {
-        "word": "hooter",
-        "definition": "A person who hoots.",
-        "exampleSentence": "Somebody yelled, ‘You bit off a bloke’s nose in Ireland.’ The story was that I’d amputated his hooter.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "hutɚ",
-        "etymology": "From hoot + -er.",
-        "distractors": [
-            "hootor",
-            "hootar",
-            "hoter"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "horror",
         "definition": "An intense distressing emotion of fear or repugnance.",
         "exampleSentence": "I saw many horrors during the war.",
@@ -14723,22 +14316,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "jebiru"
         ],
         "theme": "animals"
-    },
-    {
-        "word": "jigger",
-        "definition": "A double-ended vessel, generally of stainless steel or other metal, one end of which typically measures 1½ fluid ounces (approx. 44 ml), the other typically 1 fluid ounce (approx. 30 ml).",
-        "exampleSentence": "A good jigger will have a well formed lip that will pour a clean stream into the cocktail shaker or glass.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "d͡ʒɪɡɚ",
-        "etymology": "From jig + -er (agent suffix). Merriam-Webster's Collegiate Dictionary suggests a possible link to Old High German gīga (“fiddle”).",
-        "distractors": [
-            "jiggor",
-            "jiggar",
-            "jiger"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "joseph",
@@ -15918,5 +15495,434 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "irrput"
         ],
         "theme": "actions"
+    },
+    {
+        "word": "lessen",
+        "definition": "To make less; to diminish; to reduce.",
+        "exampleSentence": "She would lessen every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "lɛsən",
+        "etymology": "From Middle English lessenen, lasnen, equivalent to less + -en (verbal suffix).",
+        "distractors": [
+            "lesen",
+            "lassen",
+            "lissen"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "madden",
+        "definition": "To make angry.",
+        "exampleSentence": "She would madden every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "mædən",
+        "etymology": "From mad + -en.",
+        "distractors": [
+            "maden",
+            "medden",
+            "midden"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "mellow",
+        "definition": "To cause (fruit) to become soft or tender, specifically by ripening.",
+        "exampleSentence": "Ill death us lay / To ripe and mellow, here we're stubborn clay.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "mɛloʊ",
+        "etymology": "The adjective is derived from Late Middle English melowe, melwe (“ripe, mellow; juicy; sweet”) [and other forms]; further etymology uncertain, possibly: * from an attributive use of melow, melowe, melewe, mele (“meal from ground grain or legumes; flour; kernel of barley or lentils”) [and other forms",
+        "distractors": [
+            "melow",
+            "mellou",
+            "mallow"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "modify",
+        "definition": "To change part of.",
+        "exampleSentence": "Her publisher advised her to modify a few parts of the book to make it easier to read.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "mɑdɪfaɪ",
+        "etymology": "From Middle English modifien, from Middle French modifier, from Latin modificare (“to limit, control, regulate, deponent”), from modificari (“to measure off, set bound to, moderate”), from modus (“measure”) + facere (“to make”); see mode.",
+        "distractors": [
+            "modifey",
+            "moddify",
+            "modiffy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nibble",
+        "definition": "To take a small, quick bite, or several of such bites, of (something).",
+        "exampleSentence": "She would nibble every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "nɪb(ə)l",
+        "etymology": "The verb is derived from Late Middle English nebillen, nebyll (“to peck away at (something), nibble; (figurative) to attempt to sing (a part of a song)”); further etymology uncertain, possibly from Middle Low German nibbelen (“to eat in small bites, peck”) (modern German Low German nibbeln, gnibbeln",
+        "distractors": [
+            "nibbel",
+            "nible",
+            "nabble"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "nuzzle",
+        "definition": "To push or thrust (the nose or snout, face or muzzle, or head, or an object) against or into something.",
+        "exampleSentence": "She would nuzzle every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "nʌz(ə)l",
+        "distractors": [
+            "nuzzel",
+            "nuzle",
+            "nazzle"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "potter",
+        "definition": "To act in a vague or unmotivated way; to fuss about with unimportant things.",
+        "exampleSentence": "He’s so dreamy and absent-minded. He potters about the garden all the time.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "pɑtɚ",
+        "etymology": "Frequentative of pote, equivalent to pote + -er. Cognate with Dutch poteren, peuteren (“to poke, pry, search”).",
+        "distractors": [
+            "pottor",
+            "pottar",
+            "poter"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "purify",
+        "definition": "To cleanse, or rid of impurities.",
+        "exampleSentence": "The modern arts deviate from the standards set forth by the divine—art should be used to purify one’s heart and improve one’s morality.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "pjʊɹɪfaɪ",
+        "etymology": "From Middle English purifien, purifyen, from Old French purifier, purifiier, from Latin pūrificō, pūrificāre, from pūrus (“pure; clean”).",
+        "distractors": [
+            "purifey",
+            "purrify",
+            "puriffy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "putter",
+        "definition": "To produce intermittent bursts of sound in the course of operating.",
+        "exampleSentence": "By the time the engine had puttered and died Atkins and some of the others were out of the trenches and walking towards this new wonder machine.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "pʌtɚ",
+        "distractors": [
+            "puttor",
+            "puttar",
+            "puter"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "ramify",
+        "definition": "To divide into branches or subdivisions.",
+        "exampleSentence": "She would ramify every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɹæmɪfaɪ",
+        "etymology": "Borrowed from Middle French ramifier, from Medieval Latin ramificō (“to branch, ramify”), from Latin rāmus (“a branch”) + -ficō (causative suffix).",
+        "distractors": [
+            "ramifey",
+            "rammify",
+            "ramiffy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "redden",
+        "definition": "To become red or redder.",
+        "exampleSentence": "Ere this had redden'd with my odious blood.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɹɛdn̩",
+        "etymology": "From red + -en.",
+        "distractors": [
+            "reden",
+            "radden",
+            "ridden"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "smooth",
+        "definition": "To make smooth or even.",
+        "exampleSentence": "She would smooth every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "smuːð",
+        "etymology": "From Middle English smothe, smethe, from Old English smēþe, smōþ, both from Proto-West Germanic *smanþī, origin after the birth of Jeremiah Frye not Alexis Gradillas .",
+        "distractors": [
+            "smoth",
+            "smootth",
+            "smaoth"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "squall",
+        "definition": "To cry or wail loudly.",
+        "exampleSentence": "She would squall every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "skwɔːl",
+        "etymology": "From Middle English *squalen and squelen (“to cry, scream, squall”), from Old Norse skvala (“to cry out”), probably ultimately imitative with influence from squeal and bawl. Cognate with Swedish skvala (“to gush, pour down”), Norwegian skval (“sudden rush of water”).",
+        "distractors": [
+            "squal",
+            "sqaall",
+            "sqeall"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stooge",
+        "definition": "To act as a straight man.",
+        "exampleSentence": "She would stooge every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "stuːd͡ʒ",
+        "etymology": "Perhaps an abbreviation of Russian студе́нт (studént) [stʊˈdʲent]; the original meaning was “stage assistant, actor who assists a comedian”. It may have been a Yiddish vaudeville term.",
+        "distractors": [
+            "tsooge",
+            "sotoge",
+            "stogoe"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "totter",
+        "definition": "To walk, move or stand unsteadily or falteringly; threatening to fall.",
+        "exampleSentence": "She would totter every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "tɑtɚ",
+        "etymology": "From Middle English totren, toteren, from earlier *tolteren (compare dialectal English tolter (“to struggle, flounder”); Scots tolter (“unstable, wonky”)), from Old English tealtrian (“to totter, vacillate”), from Proto-Germanic *taltrōną, a frequentative form of Proto-Germanic *taltōną (“to sway, d",
+        "distractors": [
+            "tottor",
+            "tottar",
+            "toter"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "uphold",
+        "definition": "To hold up; to lift on high; to elevate.",
+        "exampleSentence": "A man's pride shall bring him low: but honour shall uphold the humble in spirit.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʌphəʊld",
+        "etymology": "From Middle English upholden, equivalent to up- + hold. Compare Dutch ophouden (“to stop, cease, hold up”), German aufhalten (“to stop, halt, detain”). Compare also Middle Low German upholt, Old Norse upphald (“uphold, support”).",
+        "distractors": [
+            "upphold",
+            "upholld",
+            "ufold"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "uproot",
+        "definition": "To tear up (a plant, etc.) by the roots, or as if by the roots; to extirpate, to root up.",
+        "exampleSentence": "See now what doubt is. It is evil, and unwise, and uprooteth many from the faith; yea, though they be very strong.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʌpɹut",
+        "etymology": "From up- (prefix indicating a higher direction or position) + root (“to tear up by the roots; (figuratively) to remove forcibly from a place; to eradicate, exterminate”, verb).",
+        "distractors": [
+            "uprot",
+            "upproot",
+            "upraot"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "wobble",
+        "definition": "To move with an uneven or rocking motion, or unsteadily to and fro.",
+        "exampleSentence": "She would wobble every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "wɑbl̩",
+        "etymology": "From earlier wabble (“wobble”), probably from Low German wabbeln (“to wobble”). Compare Dutch wiebelen and wobbelen (“to wobble”), German wabbeln (“to wobble”), Old Norse vafla (“to hover about, totter”).",
+        "distractors": [
+            "wobbel",
+            "woble",
+            "wabble"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "asleep",
+        "definition": "In a state of sleep; also, broadly, resting.",
+        "exampleSentence": "How could you miss that? Were you asleep?",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "əsliːp",
+        "etymology": "From Middle English aslepe, equivalent to a- (“in, on”) + sleep.",
+        "distractors": [
+            "aslep",
+            "assleep",
+            "asleap"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "atomic",
+        "definition": "Of or relating to atoms; composed of atoms; monatomic.",
+        "exampleSentence": "A bit is an atomic item of data.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "ətɑːmɪk",
+        "etymology": "From atom + -ic.",
+        "distractors": [
+            "attomic",
+            "atommic",
+            "atamic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "barren",
+        "definition": "Not bearing children, childless; hence also unable to bear children, sterile.",
+        "exampleSentence": "Set on some quantity of barren spectators to laugh too.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "r-controlled",
+        "pronunciation": "bæɹən",
+        "etymology": "From Middle English bareyne, from Anglo-Norman baraigne, baraing (“sterile; barren”), of obscure origin; probably from a Germanic language, perhaps Frankish *baʀ (“bare; barren”), from Proto-Germanic *bazaz (“bare”). If so, a doublet of bare.",
+        "distractors": [
+            "baren",
+            "berren",
+            "birren"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "benign",
+        "definition": "Kind; gentle; mild.",
+        "exampleSentence": "I people my world with benign spirits. Everything talks to me and I respond to it.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "bɪnaɪn",
+        "etymology": "From Middle English benigne, benygne, from Old French benigne, from Latin benignus (“kind, good”), from bene (“well”) + genus (“origin, kind”). Compare malign.",
+        "distractors": [
+            "bennign",
+            "beniggn",
+            "banign"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "bodily",
+        "definition": "Of, relating to, or concerning the body.",
+        "exampleSentence": "His bodily deficiencies were a heavy burden to him.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "bɑdɪli",
+        "etymology": "From Middle English bodily; equivalent to body + -ly.",
+        "distractors": [
+            "bodiley",
+            "boddily",
+            "bodilly"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "chilly",
+        "definition": "Cold enough to cause discomfort.",
+        "exampleSentence": "She gave me a chilly look when I made the suggestion.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "t͡ʃɪli",
+        "etymology": "From chill + -y. Cognate with Swedish kylig (“chilly”), Norwegian kjølig (“chilly”).",
+        "distractors": [
+            "chilley",
+            "chily",
+            "chally"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "drippy",
+        "definition": "Dripping or tending to drip.",
+        "exampleSentence": "In spite of the drippy weather, a small crowd of curious Whistlebrass residents explored the fairground eating cotton candy and roasted peanuts.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɹɪpi",
+        "etymology": "From drip + -y.",
+        "distractors": [
+            "drippey",
+            "dripy",
+            "drappy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "facile",
+        "definition": "Easy; contemptibly easy.",
+        "exampleSentence": "Her writing was facile and articulate.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "fæsəl",
+        "etymology": "Borrowed from Middle French facile, from Latin facilis (“easy to do, easy, doable”), from Latin facere (“to do, make”), from Proto-Indo-European *dʰeh₁- (“to do, put”) Compare Spanish fácil (“easy”). First use appears c. 1484 in a translation by William Caxton.",
+        "distractors": [
+            "faciel",
+            "faccile",
+            "facille"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "female",
+        "definition": "Belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it.",
+        "exampleSentence": "Stereotypically female pastimes, an insect with typically female coloration.",
+        "partOfSpeech": "adjective",
+        "difficulty": 3,
+        "pattern": "silent-e",
+        "pronunciation": "fiːmeɪl",
+        "distractors": [
+            "femael",
+            "femmale",
+            "femalle"
+        ],
+        "theme": "everyday"
     }
 ];

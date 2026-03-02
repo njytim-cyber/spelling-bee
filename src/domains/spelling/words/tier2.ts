@@ -536,7 +536,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pattern: 'silent-e',
         pronunciation: 'spays',
         etymology: 'Old French: espace, from Latin: spatium',
-        distractors: ['spaci', 'spac', 'spece'],
+        distractors: ['spaci', 'spase', 'spece'],
         theme: 'academic',
     },
     {
@@ -812,7 +812,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pattern: 'silent-e',
         pronunciation: 'dohm',
         etymology: 'Latin: domus (house)',
-        distractors: ['dime', 'tome', 'domme'],
+        distractors: ['dime', 'tome', 'doam'],
         theme: 'home',
     },
     {
@@ -860,7 +860,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pattern: 'silent-e',
         pronunciation: 'spyke',
         etymology: 'Middle English: spik, possibly from Old Norse: spik (nail)',
-        distractors: ['speke', 'spoke', 'spik'],
+        distractors: ['speke', 'spoke', 'spyk'],
         theme: 'actions',
     },
     {
@@ -3548,7 +3548,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pattern: 'diphthongs',
         pronunciation: 'koyn',
         etymology: 'Old French: coin (wedge, corner), from Latin: cuneus',
-        distractors: ['coim', 'coon', 'coine'],
+        distractors: ['coim', 'coan', 'coine'],
         theme: 'money',
     },
     {
@@ -4244,7 +4244,7 @@ export const TIER_2_WORDS: SpellingWord[] = [
         pattern: 'diphthongs',
         pronunciation: 'foyl',
         etymology: 'Old French: foil (leaf), from Latin: folium',
-        distractors: ['fool', 'fiol', 'foile'],
+        distractors: ['foal', 'fiol', 'foile'],
         theme: 'home',
     },
     {

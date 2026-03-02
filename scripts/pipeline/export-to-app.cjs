@@ -438,140 +438,433 @@ function classifyPattern(word, difficulty) {
 // ── Age-appropriate word filter ──────────────────────────────────────────────
 // Words must be appropriate for their tier's grade level.
 
-/** Words that should never appear in a kids' spelling app regardless of tier */
+// ── Master profanity list ─────────────────────────────────────────────────────
+// Loaded from merged Google + profane-words + dsojevic lists (2694 entries)
+// PLUS our custom additions for edge cases those lists miss.
+
+const PROFANITY_LIST_PATH = path.join(__dirname, 'profanity-master.txt');
+const masterProfanityWords = fs.existsSync(PROFANITY_LIST_PATH)
+    ? fs.readFileSync(PROFANITY_LIST_PATH, 'utf8').split('\n').map(l => l.trim().toLowerCase()).filter(Boolean)
+    : [];
+
+/** Full exact-match blocklist: master profanity list + custom additions */
 const WORD_BLOCKLIST = new Set([
-    // Profanity / vulgarity
-    'shit', 'shitty', 'shitten', 'shitter', 'shitting',
-    'fuck', 'fucker', 'fucking', 'fucked', 'fuckwit', 'fuckbunny',
-    'ass', 'asses', 'asshole', 'arsehole', 'arse',
-    'bitch', 'bitchy', 'bitches',
-    'bastard', 'bastards',
-    'damn', 'damned', 'damnation',
-    'cunt', 'cunts', 'cunty',
-    'dick', 'dicks', 'dickhead', 'dicklicker',
-    'cock', 'cocks', 'cocksucker',
-    'piss', 'pissy', 'pissed',
-    'whore', 'whores', 'whoremaster', 'whoremonger',
-    'slut', 'slutty', 'sluts',
-    'rape', 'rapist', 'raped', 'raping',
-    'faggot', 'faggots', 'faggotry', 'fagling', 'faggify',
-    'nigger', 'niggers',
-    'retard', 'retards', 'retarded',
-    'boob', 'boobs', 'booby',
-    'butt', 'butts', 'butthole',
-    'crap', 'crappy', 'crapper',
-    'poop', 'poopy', 'pooper',
-    'pee', 'peeing',
-    'titjob', 'handjob', 'blowjob',
-    'orgasm', 'orgasmic',
-    'erection', 'boner',
-    'hooker', 'pimp', 'pimps',
-    'stoner', 'pothead', 'crackhead', 'cokehead', 'junkie',
-    'murder', 'murderer', 'murderess',
-    'kill', 'killer', 'killers',
-    'suicide', 'suicidal',
-    'catshit', 'bullshit', 'horseshit', 'batshit',
-    'stiffy', 'hornball', 'horny',
-    'lolicon', 'shotacon',
-    'twincest', 'incest', 'incestuous',
-    'fungasm', 'snoregasm',
-    'decunt', 'dicking',
-    'speedball', 'speedballer',
-    'callboy', 'callgirl',
-    'sheepshagger', 'shittimwood',
-    'ithyphallic', 'ithyphallus',
-    'peash', 'fuckbunny', 'yiffy',
-    // Drug slang
-    'sherm', 'sherms',
-    // Ambiguous / sensitive short words
-    'trans', 'rort', 'rorts', 'rorting',
-    // Offensive slang / derogatory
-    'fembrained', 'hiptard', 'tardish', 'libtard', 'contard',
-    'poofybutt', 'druggie', 'crackwhore',
-    'kike', 'kikes', 'spic', 'spics', 'chink', 'chinks', 'chinky',
-    'wetback', 'beaner', 'gook', 'gooks', 'wop', 'wops',
-    // Internet slang / not real words for a spelling app
-    'tweetheart', 'fanboyism', 'lulz', 'copypasta', 'clickbait',
-    'twerking', 'selfie', 'emoji', 'hashtag',
-    'ghit', 'ghits', 'vlog', 'vlogger', 'vlogging',
-    // Foreign organization/cultural terms too niche for spelling
-    'tong',
-    // Words with offensive substrings that regex wouldn't catch
-    'psychobitch', 'nutjob', 'asshat', 'asswipe', 'dumbass',
-    'dipshit', 'jackass', 'smartass', 'badass', 'kickass',
-    'hardass', 'fatass', 'lameass',
-    // Mild profanity still inappropriate for a kids' app
-    'hell', 'hellish', 'hells',
-    // Disease/pox terms inappropriate for young kids
+    ...masterProfanityWords,
+    // Additional words not in standard profanity lists but inappropriate for a kids' app
+    'hell', 'hellish', 'hells', 'damn', 'damned', 'damnation',
+    'kill', 'killer', 'killers', 'murder', 'murderer', 'murderess',
+    'suicide', 'suicidal', 'rape', 'rapist', 'raped', 'raping',
+    'hooker', 'stoner', 'pothead', 'crackhead', 'cokehead', 'junkie', 'druggie',
     'poxy', 'syphilitic', 'gonorrheal',
-    // Violent compound words
     'jackbooted', 'switchblade', 'gunfight', 'bloodbath',
-    // Sexual / inappropriate compound words
-    'gangbang', 'gangbanging', 'gangbanger', 'gangbanged',
-    'circlejerk', 'clusterfuck', 'motherfucker', 'motherfucking',
-    'wanker', 'wanking', 'tosser', 'tossing',
-    'rimjob', 'footjob', 'cumshot', 'creampie',
-    'cuckold', 'dominatrix', 'fetish', 'bondage',
-    'stripper', 'stripclub', 'lapdance',
-    'pornstar', 'camgirl', 'camboy',
-    // Masturbation / sexual acts
-    'onanism', 'onanist', 'onanistic', 'masturbate', 'masturbation', 'masturbatory',
-    'ejaculate', 'ejaculation', 'circumcise', 'circumcision',
-    'sodomy', 'sodomite', 'sodomize', 'sodomized',
-    'fornicate', 'fornication', 'fornicator',
-    'defloration', 'deflower', 'deflowering',
-    'voluptuousness', 'voluptuous',
-    // Medical/surgical terms too graphic for kids
-    'ovariectomize', 'ovariectomy', 'orchidectomy', 'orchiectomy',
-    'hysterectomy', 'vasectomy', 'castrate', 'castration',
-    // Scatological
-    'bedwetter', 'bedwetting',
-    // Misc offensive
-    'redskin', 'redskins', 'halfbreed',
-    'wigger', 'wiggers',
-    // Words with sexual double meanings / connotations
-    'threesome', 'foursome', 'orgy', 'harem',
-    'erogenous', 'nympho', 'nymphomania', 'nymphomaniac',
-    // Archaic/obsolete words inappropriate for a spelling app
-    'firk', 'firking',
-    // Proper nouns / demonyms that aren't spelling words
-    'tajik', 'tajiks',
-    // Racial/political terms inappropriate for a kids' app
     'segregationist', 'segregationalist', 'segregationalism',
     'supremacist', 'supremacism',
-    // Political/ideological compound words
     'neofascist', 'neofascism', 'neofascistic',
     'neonazi', 'neonazism',
     'antilesbian', 'antigay', 'antitransgender',
     'profascist', 'profascism',
-    // Medical jargon too niche for spelling practice
+    'trans', 'rort', 'rorts', 'rorting',
+    'tweetheart', 'fanboyism', 'lulz', 'copypasta', 'clickbait',
+    'twerking', 'selfie', 'emoji', 'hashtag',
+    'ghit', 'ghits', 'vlog', 'vlogger', 'vlogging',
+    'tong',
     'drusenoid', 'panleukopenia', 'monoxenic',
-    // Fake compound words
-    'highschoolboy', 'highschoolgirl',
-    // Cooking jargon that isn't standard English
-    'encasserole',
-    // Missed by prior audit — sexual/vulgar compound words
-    'boof', 'boofing', 'boofed',
-    'brojob', 'painal',
-    'pedicant', 'pedicator',
-    'assfaggot',
-    'slutdom', 'slutface', 'sluthood', 'slutness', 'slutting', 'sluttification',
-    'cuntslut', 'manslag',
-    'cyberslut', 'superslut',
-    'rubberist',
-    'looner',
-    'mislest',
-    'tarty',
-    'gixy',
-    // Drug slang
+    'highschoolboy', 'highschoolgirl', 'encasserole',
+    'firk', 'firking',
+    'tajik', 'tajiks',
     'tik', 'meth',
-    // Political/racial slang not appropriate for kids
     'karen', 'becky',
-    // Pop culture / trademark words
-    'minecraft', 'minecrafter', 'minecraftian',
-    'hogwartsian',
-    // Words where definition contains "promiscuous" as primary meaning
+    'minecraft', 'minecrafter', 'minecraftian', 'hogwartsian', 'fortnite', 'pokemon',
+    'holocaust',
     'promiscuity', 'promiscuously',
+    'midget', 'negro', 'negroid', 'mulatto',
+    'concubine', 'concubinage',
+    'strumpet', 'trollop', 'harlot', 'harlotry',
+    'ecstasy', // drug name
+    'crack', // drug name
+    'bong', // drug paraphernalia
+    'wench',
+    'molester', 'molestation',
+    'necrophilia', 'necrophiliac', 'necrosadistic',
+    'sadomasochism', 'sadomasochist',
+    'fetishism', 'fetishist', 'fetishistic',
+    'phalloplastician',
+    'molestability',
+    // Compounds/derivatives caught by child safety audit
+    'cockal', 'cockup', 'cockly', 'cockalorum', 'macock', 'cocket', 'recock', 'decock', 'uncock',
+    'titsy', 'arsey', 'arsed', 'arsedine',
+    'cracky',
+    'dicky', 'dicker', 'dickerer', 'dickering',
+    'pisspot',
+    'nibong',
+    'spicen',
+    'mishit',
+    'booby',
+    'incestuous',
+    // British slang still inappropriate
+    'wanker', 'wanking', 'wank', 'tosser',
+    'bollocks', 'knobhead', 'bellend',
+    'shagging', 'shag', 'shagged',
+    // Second audit round — compound words still getting through
+    'assholeness', 'incestually', 'fornicatrix', 'fornicatress',
+    'incestophobe', 'incestophobic',
+    'pedophilic', 'pedophilia', 'pedophile', 'paedophilic', 'paedophilia', 'paedophile',
+    'helluv', 'asshoe',
+    'cockshy', 'cocklet', 'cockspur', 'cockfish', 'turncock',
+    'cocking', 'cocked',
+    'wenchdom',
+    'crapware',
+    'bedrape',
+    'boofy',
+    'unass',
+    'methy', 'metho',
+    'admass',
+    'damning',
+    // Cock-compound words (the bird/gun meanings are real but too risky for kids)
+    'cockeyed', 'cockswain',
+    // Other words caught in second audit
+    'orthophemistic', // its example quotes "cunt"
+    'ovariectomize',  // its example quotes "castrated"
+    'asexualization',  // its example discusses sex offenders
+    'molestability',   // discusses child molestation
+    'necrosadistic',
+    // Third audit round — words with inappropriate primary definitions
+    'suifuel',       // "causes suicidal ideation"
+    'trapes',        // "slattern; sluttish"
+    'brodie',        // "a suicidal leap"
+    'drilldo',       // sex toy
+    'hitachi',       // sex toy (brand name)
+    'wozzles',       // "a blowjob"
+    'boobage',       // "bosom; women's breasts"
+    'lynchee',       // "victim of a lynching"
+    'puputan',       // "suicidal march"
+    'unpissed',      // "not pissed"
+    'pisseth',       // "of piss"
+    'subspace',      // BDSM term
+    'topspace',      // BDSM term
+    'humiliatrix',   // BDSM term
+    'algolagniac',   // "a sadomasochist"
+    'suicidally',
+    'buggeree',      // "person who is sodomized"
+    'wankerish',     // "like a wanker"
+    'phimosis',      // foreskin condition
+    'overdoser', 'overdose', 'overdosed', 'overdosing',
+    'megadose',      // drug-related excess dosing
+    // Vulgar slang / compound words
+    'cockshy', 'cockfish', 'cocklet', 'cockspur', 'cockswain',
+    // Too-niche words with "cock" meaning rooster
+    'coq',
+    // Words with inappropriate primary definitions (audit round 4)
+    'adulterer', 'adulteress', 'adultery', 'adulterous', 'adulterously',
+    'dixiecrat',    // definition references "white power"
+    'anaclisis',    // definition references "libidinal attachment"
+    'vibe',         // dictionary definition: "to stimulate with a vibrator"
+    'chanticleer',  // definition: "a domestic rooster or cock"
+    'colloidally',  // example contains "piss"
+    'pisshole',     // profanity compound
+    'breville',     // example contains "bollocks"
+    'dom',          // BDSM term (domination), example about dominatrix
+    'domming',      // BDSM term
+    // ── Deep scan round 5: inappropriate for children's spelling app ──
+    // Bathroom / body
+    'pee', 'wee', 'poo', 'poop', 'fart', 'farting', 'burp', 'burping',
+    'booty', 'groin', 'buttock', 'buttocks', 'crotch', 'bra', 'booger', 'boogers',
+    'snot', 'snotty', 'potty', 'anus', 'rectum', 'urethra',
+    // Insults / name-calling
+    'stupid', 'stupider', 'stupidest', 'stupidity', 'stupidly',
+    'idiot', 'idiotic', 'idiots', 'idiocy',
+    'ugly', 'uglier', 'ugliest', 'ugliness',
+    'fat', 'fatty', 'fatso', 'fatness',
+    'loser', 'losers',
+    'moron', 'moronic', 'morons',
+    'dork', 'dorky', 'dorks',
+    'weirdo', 'weirdos',
+    'freak', 'freaky', 'freaks', 'freakish',
+    // British slang insults
+    'git', 'gits',
+    'bonk', 'bonking', 'bonked',
+    'berk', 'berks',
+    'prat', 'prats', 'pratt',
+    'numpty', 'numptys',
+    'pillock', 'pillocks',
+    'wally', 'wallies',
+    'naff', 'naffing',
+    'plonker', 'plonkers',
+    'minger', 'minging',
+    'chav', 'chavs', 'chavvy',
+    // Weapons / violence
+    'gun', 'guns', 'gunfire', 'gunman', 'gunmen', 'gunshot', 'gunshots',
+    'rifle', 'rifles',
+    'pistol', 'pistols',
+    'bullet', 'bullets',
+    'dagger', 'daggers',
+    'stab', 'stabbed', 'stabbing', 'stabs',
+    'gore', 'gory', 'gored',
+    'shoot', 'shooting', 'shooter', 'shootout',
+    'slaughter', 'slaughtered', 'slaughtering', 'slaughterhouse',
+    'slain', 'slay', 'slaying', 'slayer',
+    'blood', 'bloody', 'bloodied', 'bloodshed', 'bloodbath', 'bloodthirsty',
+    'bomb', 'bombs', 'bombing', 'bomber', 'bombard',
+    'weapon', 'weapons', 'weaponry', 'weaponize',
+    // Alcohol
+    'beer', 'beers',
+    'wine', 'wines', 'winery',
+    'gin', 'gins',
+    'ale', 'ales', 'alehouse',
+    'vodka', 'whiskey', 'whisky', 'rum', 'bourbon', 'tequila', 'brandy',
+    'tavern', 'taverns',
+    'pub', 'pubs',
+    // Death / morbid (too heavy for young children)
+    'dead', 'deadly', 'deadlier', 'deadliest',
+    'die', 'dies', 'died',
+    'dying',
+    'corpse', 'corpses',
+    'coffin', 'coffins',
+    'morgue', 'morgues',
+    'satan', 'satanic', 'satanism', 'satanist',
+    'demon', 'demons', 'demonic', 'demonize',
+    'devil', 'devilish', 'devils', 'deviltry', 'devilry',
+    // Crime
+    'kidnap', 'kidnapped', 'kidnapping', 'kidnapper',
+    'hostage', 'hostages',
+    'jail', 'jails', 'jailed', 'jailer',
+    'prison', 'prisons', 'prisoner', 'prisoners',
+    'rob', 'robbed', 'robbing', 'robber', 'robbery',
+    // Romance / adult relationships (too mature for K-1st)
+    'lover', 'lovers',
+    // Heavy social topics (not for a spelling app)
+    'racism', 'racist', 'racists',
+    'bigot', 'bigots', 'bigotry', 'bigoted',
+    'sexism', 'sexist',
+    // Thief / stealing
+    'thief', 'thieves', 'steal', 'stealing', 'stolen',
+    // Physical punishment / BDSM double meanings
+    'gimp', 'gimps', 'gimpy',
+    'spanking', 'spank', 'spanked',
+    'flogging', 'flog', 'flogged', 'flogger',
+    // Body / anatomical (too young for K-1st)
+    'bowel', 'bowels',
+    'constipation', 'constipated',
+    // Sexually suggestive / objectifying
+    'curvaceous', 'voluptuous', 'voluptuously', 'voluptuousness',
+    'seductive', 'seductively', 'seductress',
+    'sensual', 'sensually', 'sensuality',
+    // Sexual orientation / identity terms (not for a spelling app)
+    'lesbian', 'lesbians', 'lesbianism',
+    'bisexual', 'bisexuals', 'bisexuality',
+    'pansexual', 'pansexuals', 'pansexuality',
+    'homosexual', 'homosexuals', 'homosexuality',
+    'heterosexual', 'heterosexuals', 'heterosexuality',
+    'queer', 'queers', 'queered', 'queering',
+    'transgender', 'transsexual',
+    // Gambling
+    'gamble', 'gambler', 'gamblers', 'gambling',
+    'casino', 'casinos',
+    'wager', 'wagers', 'wagering',
+    'betting', 'bettor', 'bettors',
+    'roulette',
+    'blackjack',
+    // Politically charged / controversial
+    'abortion', 'abortions', 'abortionist',
+    'infidel', 'infidels',
+    'blasphemy', 'blasphemous', 'blaspheme',
+    // Body-shaming
+    'obese', 'obesity',
+    // Sleazy / negative descriptors
+    'sleazy', 'trashy', 'filthy',
+    'submissive', 'submissively', 'submissiveness',
+    // Mental health slurs
+    'psycho', 'psychos',
+    'maniac', 'maniacs', 'maniacal',
+    'lunatic', 'lunatics',
+    'madman', 'madwoman', 'madmen',
+    'deranged', 'demented',
+    'insane', 'insanely', 'insanity',
+    // Terrorism / extremism
+    'jihadist', 'jihadists', 'jihad', 'jihadi',
+    'extremist', 'extremists', 'extremism',
+    'radicalize', 'radicalized', 'radicalization',
+    'insurgent', 'insurgents', 'insurgency',
+    'militia', 'militias', 'militiaman',
+    // ── Deep scan round 6: third pass ──
+    // Euphemisms / slang
+    'screwed',
+    // Gross / bodily
+    'belch', 'belching', 'belched',
+    'gag', 'gagging', 'gagged',   // definition is about restraining speech
+    'retching', 'retch', 'retched',
+    // Predatory / creepy
+    'pervert', 'perverted', 'perversion', 'perverts',
+    'stalker', 'stalkers', 'stalking',
+    // Excretory / bathroom
+    'dung', 'dungy',
+    'manure', 'manured', 'manuring',
+    'urinal', 'urinals',
+    'cesspool', 'cesspools',
+    // ── Deep scan round 7: sexually suggestive content (zero tolerance) ──
+    // Explicitly sexual words
+    'autoerotica', 'autoerotic', 'autoeroticism',
+    'foreplay', 'foreplaying',
+    'hoyay',                     // "homoerotic subtext"
+    'paramour', 'paramours',     // "illicit lover"
+    'homoeroticism', 'homoerotic',
+    'cybersexually', 'cybersex',
+    'psychosexually', 'psychosexual',
+    'pansexually',
+    'sensualism', 'sensualist', 'sensualistic',
+    'sensualization', 'sensualize',
+    'voluptuary', 'voluptuaries',
+    // Suggestive body / appearance words
+    'busty', 'buxom',
+    'sultry',                    // "sensual, passionate"
+    'wanton', 'wantons', 'wantonly', 'wantonness',  // "sexually immoral"
+    'nubile',                    // "sexually attractive young woman"
+    'risque', 'risqué',
+    'racy',
+    'coquettish', 'coquette', 'coquetry',
+    'flirtatious', 'flirtatiously', 'flirtatiousness',
+    // Words with "sensual pleasure" definitions
+    'pandemos',
+    // Romantic/sexual acts
+    'caress', 'caressed', 'caressing', 'caresses',
+    'fondle', 'fondled', 'fondling', 'fondles',
+    'ravish', 'ravished', 'ravishing',  // "to seize and carry off / to rape"
+    'deflower', 'deflowered', 'deflowering',
+    // Undressing
+    'undress', 'undressed', 'undressing',
+    'disrobe', 'disrobed', 'disrobing',
+    'topless',
+    'scantily',
+    'shirtless',
+    // Intimate garments
+    'garter', 'garters',
+    'negligee', 'negligees',
+    'thong', 'thongs',
+    'panty', 'panties',
+    // Innuendo-heavy words whose primary dictionary defs are sexual
+    'climax',                    // primary Wiktionary def is sexual
+    'mating',                    // animal reproduction
+    'breeding',                  // animal reproduction context
+    'conjugal',                  // "of marriage / sexual relations"
+    'consummation', 'consummate', // "first sexual act after marriage"
+    // Additional sexually suggestive words
+    'boudoir', 'boudoirs',
+    'burlesque', 'burlesques',
+    'seductress', 'seductresses',
+    'seduction', 'seductions',
+    'temptress', 'temptresses',
+    'concubine', 'concubines',
+    'concubinage',
+    'mistress', 'mistresses',   // primary def is sexual/extramarital
+    'dominatrix',
+    'gimp',                     // BDSM connotation
+    'corset', 'corsets',        // fetishwear association
+    'striptease', 'stripteaser',
+    'suggestive', 'suggestively',
+    'titillate', 'titillating', 'titillation',
+    'lascivious', 'lasciviousness',
+    'licentious', 'licentiousness',
+    'lecherous', 'lecherously', 'lechery',
+    'prurient', 'prurience',
+    'salacious', 'salaciously', 'salaciousness',
+    'lewd', 'lewdly', 'lewdness',
+    'lurid', 'luridly',
+    'indecent', 'indecently', 'indecency',
+    'obscene', 'obscenely', 'obscenity', 'obscenities',
+    'debauch', 'debauched', 'debauchery', 'debaucheries',
+    'smut', 'smutty', 'smuttier', 'smuttiest',
+    'bawdy', 'bawdier', 'bawdiest', 'bawdily', 'bawdiness',
+    'randy', 'randier', 'randiest',  // British slang: sexually aroused
+    'horny', 'horniness',
+    'kinky', 'kinkier', 'kinkiest',
+    'saucy', 'saucier', 'sauciest',  // British: sexually suggestive
+    'raunchy', 'raunchier', 'raunchiest', 'raunchiness',
+    'steamy', 'steamier', 'steamiest',
+    'amorous', 'amorously', 'amorousness',
+    'aphrodisiac', 'aphrodisiacs',
+    'erogenous',
+    'orgasmic',
+    'voyeurism', 'voyeuristic',
+    'exhibitionism', 'exhibitionist', 'exhibitionistic',
+    'hedonism', 'hedonist', 'hedonistic',
+    'philanderer', 'philandering', 'philanderers',
+    'lothario', 'lotharios',
+    'casanova', 'casanovas',
+    'gigolo', 'gigolos',
+    'courtesan', 'courtesans',
+    'geisha', 'geishas',          // too sexualized in Western context
+    'hussy', 'hussies',
+    'minx', 'minxes',
+    'vamp', 'vamps', 'vampish',   // "seductive woman"
+    'siren', 'sirens',            // Wiktionary: "dangerously seductive woman"
+    // ── Deep scan round 8: additional sexually suggestive catches ──
+    'bodaciously',                  // "buxom" in example
+    'thickalicious',                // "curvy and voluptuous" slang
+    'girlie',                       // def: "magazine containing nude photographs"
+    'strippery',                    // "resembling a stripper"
+    'libertine', 'libertines', 'libertinism', 'libertinage',
+    'roue', 'roué', 'roués',       // "debauched person"
+    'profligate', 'profligacy',     // "dissolute/sexually immoral"
+    'womanizer', 'womanizers', 'womanizing',
+    'manizer',
+    'playboy', 'playgirl',
+    'pinup', 'pin-up', 'pinups',
+    'centerfold', 'centerfolds',
+    'hottie', 'hotties',
+    'foxy', 'foxier', 'foxiest',   // "sexually attractive"
+    'bombshell', 'bombshells',      // "sexually attractive woman"
+    'stunner', 'stunners',          // "very attractive person"
+    'hunk', 'hunky', 'hunkier',    // "sexually attractive man"
+    'stud', 'studly',              // "sexually attractive man"
+    'beefcake', 'beefcakes',
+    'nightie', 'nighties',         // intimate garment
+    'teddy', 'teddies',            // when used as intimate garment
+    'miniskirt', 'miniskirts',     // too appearance-focused
+    'bedfellow', 'bedfellows',
+    'bedmate', 'bedmates',
+    'curvaceous', 'curvier', 'curviest',
+    'buxom',                        // "large-breasted woman"
+    'bodacious',                    // modern slang: "sexually attractive"
+    'alluring', 'alluringly',       // "sexually attractive"
+    'allure', 'allurement',
+    // ── Round 9: additional catches from grep scan ──
+    'dykon', 'dykons',             // "dyke + icon" — lesbian celebrity
+    'carnalist', 'carnalists',     // "sensualist, hedonist" — carnal root
+    'sensualist', 'sensualists',   // already blocked some variants but belt-and-suspenders
+    'sensuality',
+]);
+
+/**
+ * Profane root stems — if a word CONTAINS any of these as a substring,
+ * it's blocked (catches compound derivatives like "ratfuck", "fagboy", etc.)
+ * Only includes roots where substring matching is safe (won't false-positive common words).
+ */
+const PROFANE_ROOTS = [
+    'fuck', 'shit', 'cunt', 'nigger', 'nigga', 'faggot', 'kike',
+    'wetback', 'beaner', 'gook',
+    'whore', 'slut', 'bitch',
+    'blowjob', 'handjob', 'rimjob', 'footjob', 'titjob',
+    'cocksucker', 'motherfuck', 'clusterfuck',
+    'gangbang', 'circlejerk',
+    'cumshot', 'creampie',
+    'masturbat', 'ejaculat',
+    'pornograph', 'porn',
+    // Additional roots to catch compound derivatives
+    'fag',   // catches fagboy, faglet, newfag, furfag, fagdom, etc.
+    'piss',  // catches pisshole, pissed, etc.
+    'tiktok', // trademark
+    'badass', // catches badassery
+];
+
+/**
+ * Words that are safe despite containing a PROFANE_ROOT substring.
+ * These are legitimate English words where the substring is coincidental.
+ */
+const PROFANE_ROOT_ALLOWLIST = new Set([
+    // Words containing "fag" that are legitimate
+    'fagot',   // bundle of sticks (archaic but real) — actually, block this too for safety
+    // Words containing "porn" — none that are safe
+    // Words containing "shit" — none that are safe for kids
 ]);
 
 /** Demonym/proper-noun-like words, foreign words, and too-niche terms for a spelling app */
@@ -655,14 +948,156 @@ const CONTENT_BLOCKLIST_PATTERNS = [
     /\bAIDS\b/, /\bHIV\b/, /\bSTD\b/, /\bsyphilis/i, /\bgonorrhea/i,
     // Witchcraft / occult (avoid for young kids)
     /\bwitchcraft/i, /\bsorcery/i, /\boccult\b/i, /\bsatanic/i,
+
+    // Additional patterns caught by child safety audit
+    /\bsperm\b/i, /\bsemen\b/i, /\bovulat/i, /\bimpregnate/i,
+    /\berectile/i, /\bpenile\b/i, /\bscrot/i, /\bvulva/i, /\bclitor/i,
+    /\bterroris/i, /\bdecapitat/i, /\bbeheading/i,
+    /\bnecrophil/i, /\bmolest/i,
+    /\beugenics?\b/i, /\baryan\b/i,
+    /\blascivious/i, /\blicentious/i, /\blecher/i, /\blibidino/i,
+    /\bsalacious/i, /\bprurient/i, /\baphrodisiac/i,
+    /\bbawdy\b/i, /\bsmut/i, /\brisqu[eé]/i,
+    /\bseduc/i, /\btitillat/i,
+    /\banorexi/i, /\bbulimi/i,
+    /\bself[- ]harm/i,
+    /\bswastika/i, /\bneo-?nazi/i,
+    /\bethnic cleans/i,
+    /\bmass murder/i, /\bserial killer/i,
+    /\bdismember/i, /\beviscerat/i, /\bmutilat/i,
+    /\bbondage\b/i, /\bfetish\b/i,
+    /\bconcubin/i, /\bharlot/i, /\bstrumpet/i, /\btrollop/i,
+    /\bpsychedelic/i, /\bhallucino/i,
+    /\bopioid/i, /\bopiate/i,
+    // Profanity / inappropriate words quoted in example sentences
+    /\bcunt\b/i,
+    /\bincest/i, /\bpedophil/i, /\bpaedophil/i,
+    /\bcastrat/i,
+    /\basshole/i,
+    // Additional patterns from audit round 4
+    /\bvibrator\b/i, /\bpiss\b/i, /\bpissed\b/i, /\bpissing\b/i,
+    /\bwhite power\b/i, /\blibidinal\b/i,
+    /\bfornicator\b/i, /\badulter(?:er|ess|y|ous|ies)\b/i,
+    /\bcock[- ]?fight/i,  // cock-fighting in definitions
+    /\bsuicid/i,          // catches suicide, suicidal
+    /\bbollocks\b/i,      // British profanity
+    /\bdominatrix\b/i,    // BDSM term
+    /\bcarnal/i,          // sexual connotation (catches carnalist, carnality too)
+    /\bdomming\b/i,       // BDSM term
+    // ── Deep scan round 7: sexually suggestive definition patterns ──
+    /\bsensual/i,         // catches sensual, sensuality, sensualist, sensualism (NOT consensual — \b prevents)
+    /\bsensuous(?:ly|ness)?\b/i,  // often used in sexual context
+    /\barousing\b/i,      // sexually arousing
+    /\bseductiv/i,        // seductive, seductively, seductiveness
+    /\bsexually attractive/i,
+    /\bsexual pleasure/i,
+    /\bsensual pleasure/i,
+    /\billicit lover/i,
+    /\billicit affair/i,
+    /\bextramarital/i,    // extramarital affair
+    /\badulterous/i,
+    /\bhomoerotic/i,
+    /\bautoerot/i,
+    /\bsexual desire/i,
+    /\bsexual relat/i,    // sexual relation(s/ship)
+    /\bsexual intercourse/i,
+    /\bconjugal/i,        // "conjugal rights" = sexual
+    /\bconsummat/i,        // "consummate the marriage" = sexual
+    /\bdeflower/i,        // "take virginity"
+    /\bvirgin(?:ity|al)?\b/i,
+    /\bchastity\b/i,
+    /\bconcupiscen/i,     // "strong sexual desire"
+    /\bcupidity\b/i,      // sometimes sexual desire
+    /\bdespoil/i,         // "to rape or ravish"
+    /\bravish/i,          // "to rape"
+    /\bdebauche/i,        // sexual excess
+    /\bdissipat/i,        // dissolute lifestyle context
+    /\bwanton(?:ly|ness)?\b/i,  // sexually immoral
+    /\bimmodest/i,        // "lacking modesty" - often sexual
+    /\bvoluptu/i,         // voluptuous, voluptuary
+    /\bnubile\b/i,        // "sexually attractive young woman"
+    /\bcoquett/i,         // flirtatious in sexual way
+    /\bflirtat/i,         // flirtatious, flirtatiously
+    /\bfondle/i,          // sexual touching
+    /\bcaress(?:ed|ing|es)?\b/i, // intimate touching
+    /\bundress/i,         // removing clothes
+    /\bdisrob/i,          // removing clothes
+    /\bscantily\b/i,      // scantily clad
+    /\bnegligee/i,        // intimate garment
+    /\bboudoir/i,         // bedroom/sexual context
+    /\bstrip(?:ping|ped)?\s+(?:naked|down|off)/i,  // stripping
+    /\bstrip\s*tease/i,
+    /\bstripteas/i,
+    /\bpole danc/i,       // pole dancing
+    /\blap danc/i,        // lap dance
+    /\bburlesque\b/i,     // striptease show
+    /\bpeep show/i,
+    // ── Round 8: additional patterns for suggestive example sentences ──
+    /\bnaked masseu/i,     // "naked masseur/masseuse"
+    /\bseminude/i,        // "seminude photographs"
+    /\bnude photograph/i,
+    /\bnude photo/i,
+    /\bgag ball/i,        // BDSM item
+    /\bspanking skirt/i,  // BDSM item
+    /\bpleasures? of the flesh/i,  // sexual euphemism
+    /\bturned .{1,20} inside out/i,  // sexual euphemism
+    /\bbuxom\b/i,         // "large-breasted"
+    /\bcurvy and (?:voluptuous|attractive)/i,
+    /\bcurvy and sexy/i,
+    /\bsexy\b/i,          // directly sexual
+    /\bsexier\b/i,
+    /\bsexiest\b/i,
+    /\bsexiness\b/i,
+    /\bhot (?:babe|chick|girl|woman|guy|man|bod)/i,
+    /\bstripper\b/i,      // exotic dancer
+    /\bexotic danc/i,
+    /\bpinup\b/i,
+    /\bpin-up\b/i,
+    /\bcenterfold\b/i,
+    /\bplayboy\b/i,
+    /\bplaygirl\b/i,
+    /\bbeefcake\b/i,
+    /\bhottie\b/i,
+    /\bsemin?al fluid/i,
+    /\blibertine\b/i,     // "sexually immoral person"
+    /\bdissolute\b/i,     // "sexually/morally immoral"
+    /\bprofligat/i,       // "dissolute"
+    /\bwomaniz/i,         // womanizer, womanizing
+    /\bphilander/i,       // philanderer, philandering
+    /\bcourtesan\b/i,
+    /\bconcubin/i,
+    /\ballur(?:e|ing|ingly|ement)\b/i,
+    /\bbodacious\b/i,     // modern slang: sexually attractive
 ];
 
 function isInappropriate(word, definition, example) {
-    if (WORD_BLOCKLIST.has(word.toLowerCase())) return true;
-    if (DEMONYM_BLOCKLIST.has(word.toLowerCase())) return true;
+    const w = word.toLowerCase();
+
+    // 1. Exact match against master blocklist (2694+ words)
+    if (WORD_BLOCKLIST.has(w)) return true;
+    if (DEMONYM_BLOCKLIST.has(w)) return true;
+
+    // 2. Substring match: catch compound derivatives (ratfuck, fagboy, etc.)
+    if (!PROFANE_ROOT_ALLOWLIST.has(w)) {
+        for (const root of PROFANE_ROOTS) {
+            if (w.includes(root)) return true;
+        }
+    }
+
+    // 3. Check definition + example text for content patterns
     const text = (definition || '') + ' ' + (example || '');
     for (const pattern of CONTENT_BLOCKLIST_PATTERNS) {
         if (pattern.test(text)) return true;
+    }
+    return false;
+}
+
+/** Check if a distractor is inappropriate (exact match or contains profane root) */
+function isDistractorInappropriate(distractor) {
+    const d = distractor.toLowerCase();
+    if (WORD_BLOCKLIST.has(d)) return true;
+    for (const root of PROFANE_ROOTS) {
+        if (d.includes(root)) return true;
     }
     return false;
 }
@@ -714,6 +1149,7 @@ function validateDistractors(word, distractors) {
         d !== word &&
         d.length > 0 &&
         !COMMON_WORDS.has(d.toLowerCase()) &&
+        !isDistractorInappropriate(d) &&
         d.length >= Math.max(2, word.length - 3) &&
         d.length <= word.length + 3
     );
@@ -1016,6 +1452,16 @@ function main() {
         fs.writeFileSync(filepath, content);
         console.log('  Wrote ' + filename + ' (' + tierWords.length + ' words)');
     }
+
+    // Delete ALL old pipeline chunk files before writing new ones
+    // (prevents stale chunks from previous exports with more chunks lingering)
+    const oldPipelineFiles = fs.readdirSync(WORDS_DIR).filter(f =>
+        /^tier\d+-pipeline(-[a-z])?\.ts$/.test(f)
+    );
+    for (const f of oldPipelineFiles) {
+        fs.unlinkSync(path.join(WORDS_DIR, f));
+    }
+    console.log('\n  Cleaned ' + oldPipelineFiles.length + ' old pipeline files');
 
     for (const [t, ws] of Object.entries(byTier)) {
         if (tier && parseInt(t) !== tier) continue;

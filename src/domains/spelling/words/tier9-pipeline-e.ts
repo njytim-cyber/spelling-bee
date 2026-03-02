@@ -14,3756 +14,6 @@ import type { SpellingWord } from './types';
 
 export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
-        "word": "metabarcoding",
-        "definition": "A method of DNA barcoding that uses universal PCR primers to identify DNA from a mixture of organisms.",
-        "exampleSentence": "We developed and tested a DNA metabarcoding protocol that utilises the standard cytochrome c oxidase subunit I (COI) barcoding fragment to detect freshwater macroinvertebrate taxa.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "metabarcoding",
-        "etymology": "From meta- + barcoding.",
-        "distractors": [
-            "mettabarcoding",
-            "metabbarcoding",
-            "metabarrcoding"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "wedelolactone",
-        "definition": "A coumestan found in Eclipta alba and in Wedelia calendulacea.",
-        "exampleSentence": "We investigated the anti-hyperlipidemic effect and the underlying mechanism of wedelolactone, a plant-derived coumestan, in HepG2 cells and high-fat diet (HFD)−induced hyperlipidemic hamsters.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "wedelolactone",
-        "distractors": [
-            "weddelolactone",
-            "wedellolactone",
-            "wedelollactone"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "quasigeodesic",
-        "definition": "Of a map f: textbf R→Y, having constants K>0 and C>0 such that 1/Kd(x,y)-C<d(f(x),f(y))<Kd(x,y)+C.",
-        "exampleSentence": "We prove Calegari's conjecture that every quasigeodesic flow on a closed hyperbolic 3-manifold has closed orbits..",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "quasigeodesic",
-        "etymology": "From quasi- + geodesic.",
-        "distractors": [
-            "quassigeodesic",
-            "quasiggeodesic",
-            "quasigeoddesic"
-        ],
-        "theme": "travel"
-    },
-    {
-        "word": "intersequence",
-        "definition": "Between sequences.",
-        "exampleSentence": "Secondly, we found intra- and intersequence reproducibility of resting CBF in the motor cortex to be reasonably good, as was reproducibility of CBF during finger tapping.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "intersequence",
-        "etymology": "From inter- + sequence.",
-        "distractors": [
-            "intersequance",
-            "inntersequence",
-            "interrsequence"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ketogluconate",
-        "definition": "Any salt or ester of ketogluconic acid.",
-        "exampleSentence": "Therefore, the lack of detectable expression suggested that gluconate and ketogluconate could not be formed.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "ketogluconate",
-        "etymology": "From ketogluconic acid + -ate (“salt or ester”).",
-        "distractors": [
-            "kettogluconate",
-            "ketoggluconate",
-            "ketoglucconate"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "intracochlear",
-        "definition": "Within the cochlea.",
-        "exampleSentence": "We used the extracochlear electrode MP1 as the reference electrode and an intracochlear electrode as the recording electrode, the latter offset by two positions from the probe electrode.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intracochlear",
-        "etymology": "From intra- + cochlear.",
-        "distractors": [
-            "intracochleer",
-            "inntracochlear",
-            "intraccochlear"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "extracochlear",
-        "definition": "Outside the cochlea.",
-        "exampleSentence": "We used the extracochlear electrode MP1 as the reference electrode and an intracochlear electrode as the recording electrode, the latter offset by two positions from the probe electrode.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "extracochlear",
-        "etymology": "From extra- + cochlear.",
-        "distractors": [
-            "extracochleer",
-            "exxtracochlear",
-            "extraccochlear"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "curculigoside",
-        "definition": "Any of a class of natural phenols found in Curculigo orchioides, with possible use in treating Alzheimer’s disease.",
-        "exampleSentence": "In our study, the administration of curculigoside significantly reduced the accumulation of Aβ and enhanced learning performance.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "curculigoside",
-        "distractors": [
-            "currculigoside",
-            "curculligoside",
-            "curculiggoside"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "aloesaponarin",
-        "definition": "Any of a small group of anthraquinone derivatives that occur in the roots of Aloe saponaria.",
-        "exampleSentence": "It could be converted into two shunt products (DMAC 5 and aloesaponarin II 6 ) in the actVI-ORF1-deficient mutant strain.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "aloesaponarin",
-        "etymology": "Aloe saponaria + -in",
-        "distractors": [
-            "alloesaponarin",
-            "aloessaponarin",
-            "aloesapponarin"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "alvinocaridid",
-        "definition": "Any shrimp of the family Alvinocarididae that inhabit deep-sea hydrothermal vents.",
-        "exampleSentence": "Partial 16S sequences are only available for 10 alvinocaridid species (Table 4 ).",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "alvinocaridid",
-        "distractors": [
-            "allvinocaridid",
-            "alvinnocaridid",
-            "alvinoccaridid"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "bioprotectant",
-        "definition": "A biological or biochemical protectant.",
-        "exampleSentence": "There are therefore evidences that trehalose produced by plants does not primarily act as a bioprotectant.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bioprotectant",
-        "etymology": "From bio- + protectant.",
-        "distractors": [
-            "bioprotectent",
-            "biopprotectant",
-            "bioprottectant"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "polyglutamate",
-        "definition": "A polymer formed from glutamate residues.",
-        "exampleSentence": "My teacher explained what a polyglutamate is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "polyglutamate",
-        "etymology": "From poly- + glutamate.",
-        "distractors": [
-            "pollyglutamate",
-            "polygglutamate",
-            "polygluttamate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "chondrotinase",
-        "definition": "Misspelling of chondroitinase.",
-        "exampleSentence": "My teacher explained what a chondrotinase is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "chondrotinase",
-        "distractors": [
-            "chonndrotinase",
-            "chondrottinase",
-            "chondrotinnase"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "palatogenesis",
-        "definition": "The formation of the palate.",
-        "exampleSentence": "Much of our understanding derives from the study of mice with targeted mutations, finding key transcription factors, growth factors and receptors required for normal palatogenesis.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "palatogenesis",
-        "etymology": "From palato- + -genesis.",
-        "distractors": [
-            "pallatogenesis",
-            "palattogenesis",
-            "palatoggenesis"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "magnetosensor",
-        "definition": "The supposed organ of magnetoception.",
-        "exampleSentence": "My teacher explained what a magnetosensor is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "magnetosensor",
-        "etymology": "From magneto- + sensor.",
-        "distractors": [
-            "magnetosenser",
-            "maggnetosensor",
-            "magnettosensor"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "monstersaurid",
-        "definition": "Any varanoid lizard of the clade Monstersauria.",
-        "exampleSentence": "Although present in most closely related anguids, this character is absent in platynotans with the exception of all shinisaurids, the monstersaurid Primaderma and the mosasaurid Dolichosaurus.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "monstersaurid",
-        "distractors": [
-            "monnstersaurid",
-            "monsterrsaurid",
-            "monstersaurrid"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "statoacoustic",
-        "definition": "Relating to both balance/equilibrium and hearing.",
-        "exampleSentence": "By in situ hybridization, expression of all 3 microRNAs is robust in immature hair cells of both auditory and vestibular organs and is present in the statoacoustic ganglion.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "statoacoustic",
-        "distractors": [
-            "stattoacoustic",
-            "statoaccoustic",
-            "statoacousstic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "schwebeablaut",
-        "definition": "To undergo the above process.",
-        "exampleSentence": "We need to schwebeablaut this before the deadline.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "schwebeablaut",
-        "etymology": "Borrowed from German Schwebeablaut (“floating ablaut”), from schweben (“float, hover”).",
-        "distractors": [
-            "schwebbeablaut",
-            "schwebeabblaut",
-            "schwebeeblaut"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intraexaminer",
-        "definition": "By or of an individual examiner.",
-        "exampleSentence": "Regarding bite-wing radiographs assessment of intraexaminer agreement was tested and retested in 30 randomly selected cases with a 2-month interval.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intraexaminer",
-        "etymology": "From intra- + examiner.",
-        "distractors": [
-            "intraexaminor",
-            "intraexaminar",
-            "inntraexaminer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "infoanarchist",
-        "definition": "A person who opposes intellectual property and copyright.",
-        "exampleSentence": "Infoanarchists have emerged as part of the broader copyright social conflict and copyright debate.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "infoanarchist",
-        "etymology": "From info + anarchist, coined in 2000 in an article in Time magazine about Ian Clarke.",
-        "distractors": [
-            "innfoanarchist",
-            "infoannarchist",
-            "infoanarrchist"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "dansylglycine",
-        "definition": "A fluorescent amino acid conjugate N-{[5-(dimethylamino)-1-naphthyl]sulfonyl}glycine.",
-        "exampleSentence": "Results show significant decrease in dansylglycine fluorescence (in HSA-Dansylglycine complex)with increasing concentrations of 4-PBA and Palmitic acid (Fig 4 ).",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "dansylglycine",
-        "distractors": [
-            "dannsylglycine",
-            "dansyllglycine",
-            "dansylglyccine"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "petropolitics",
-        "definition": "The politics associated with the export of oil.",
-        "exampleSentence": "It is the world’s largest buyer of oil, which gives China substantial sway over petropolitics.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "petropolitics",
-        "etymology": "From petro- + politics.",
-        "distractors": [
-            "pettropolitics",
-            "petroppolitics",
-            "petropollitics"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unselectivity",
-        "definition": "The quality of being unselective.",
-        "exampleSentence": "Pharmacological approaches often bear the burden of unselectivity.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "unselectivity",
-        "etymology": "From un- + selectivity.",
-        "distractors": [
-            "unselectivitey",
-            "unnselectivity",
-            "unsellectivity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "polyclonality",
-        "definition": "The condition of being polyclonal.",
-        "exampleSentence": "Plasma cells detected in Hashimoto’s thyroiditis show polyclonality with staining for IgG, IgM, and IgA heavy chains and kappa and lamda light chains.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "polyclonality",
-        "etymology": "From polyclonal + -ity.",
-        "distractors": [
-            "polyclonalitey",
-            "pollyclonality",
-            "polycclonality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cuckservative",
-        "definition": "A weak-willed political conservative politician who is willing to capitulate to left-wing political stances.",
-        "exampleSentence": "Nothing captured the alt-right mentality better than cuckservative, with its taunt that moderation is unmanly and certain conservative males are cuckolds.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "cuckservative",
-        "etymology": "Blend of cuck + conservative. A neologism created by Internet users seeking to berate conservatives.",
-        "distractors": [
-            "cucckservative",
-            "cuckserrvative",
-            "cuckservattive"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "heterodisomic",
-        "definition": "Relating to heterodisomy.",
-        "exampleSentence": "In heterodisomic UPD, two distinct homologous chromosomes are received from one parent, indicating that an error took place during meiosis I.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "heterodisomic",
-        "etymology": "From hetero- + disomic.",
-        "distractors": [
-            "hetterodisomic",
-            "heterrodisomic",
-            "heteroddisomic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intermodality",
-        "definition": "Between modalities.",
-        "exampleSentence": "Interobserver agreement in subjective image quality grading and intermodality agreement between CCTA and ICA was determined by calculating κ statistics.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "intermodality",
-        "etymology": "From inter- + modality.",
-        "distractors": [
-            "intermodalitey",
-            "inntermodality",
-            "interrmodality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intraduodenal",
-        "definition": "Within the duodenum.",
-        "exampleSentence": "They have shown that intravenous or intraduodenal administration of obestatin stimulates pancreatic protein and trypsin output in anesthetized rats.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "intraduodenal",
-        "etymology": "From intra- + duodenal.",
-        "distractors": [
-            "intraduodenel",
-            "inntraduodenal",
-            "intradduodenal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mosquitogenic",
-        "definition": "Promoting the breeding of mosquitoes.",
-        "exampleSentence": "The entomological studies conducted in the area revealed high BI and CI and favourable mosquitogenic conditions.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "mosquitogenic",
-        "etymology": "From mosquito + -genic.",
-        "distractors": [
-            "mossquitogenic",
-            "mosquittogenic",
-            "mosquitoggenic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "distributedly",
-        "definition": "In a distributed fashion.",
-        "exampleSentence": "Graph filters are a generalization of classical time-invariant systems and represent linear transformations that can be implemented distributedly across the nodes of the graph.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "distributedly",
-        "etymology": "From distributed + -ly.",
-        "distractors": [
-            "distributedley",
-            "disstributedly",
-            "distribbutedly"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "explodability",
-        "definition": "The quality of being explodable.",
-        "exampleSentence": "We derive an integral condition for core-collapse supernova explosions and use it to construct a new diagnostic of explodability.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "explodability",
-        "etymology": "From explode + -ability.",
-        "distractors": [
-            "explodabilitey",
-            "exxplodability",
-            "exploddability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "leukocortical",
-        "definition": "Relating to the white matter of the brain.",
-        "exampleSentence": "Of these, 24 lesions involved the cortical grey matter and were hence defined as leukocortical lesions.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "leukocortical",
-        "etymology": "From leuko- + cortical.",
-        "distractors": [
-            "leukocorticel",
-            "leukkocortical",
-            "leukoccortical"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "oncoapoptotic",
-        "definition": "Relating to oncoapoptosis.",
-        "exampleSentence": "Dysregulation of oncoapoptotic genes, growth factors, receptors and their downstream signaling pathway components represent a central driving force in tumour development in different cancer.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "oncoapoptotic",
-        "etymology": "From onco- + apoptotic.",
-        "distractors": [
-            "onncoapoptotic",
-            "oncoappoptotic",
-            "oncoapopptotic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "talonavicular",
-        "definition": "Relating to the talus and the navicular bone.",
-        "exampleSentence": "Subtalar dislocation can be defined as simultaneous dislocation of both the talonavicular and the talocalcaneal joints without a major fracture of the talus.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "talonavicular",
-        "etymology": "From talo- + navicular.",
-        "distractors": [
-            "talonaviculer",
-            "tallonavicular",
-            "talonnavicular"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "nonresectable",
-        "definition": "Not resectable.",
-        "exampleSentence": "Patients with nonresectable locally advanced or metastatic disease received chemotherapy with or without radiotherapy.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "nonresectable",
-        "etymology": "From non- + resectable.",
-        "distractors": [
-            "nonresectible",
-            "nonresectabel",
-            "nonnresectable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mucoregulator",
-        "definition": "A regulator of the production of mucus.",
-        "exampleSentence": "The data presented in the current study disclosed a previously unknown role of 6-MP in airway epithelial cells as an efficacious mucoregulator.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "mucoregulator",
-        "etymology": "From muco- + regulator.",
-        "distractors": [
-            "mucoregulater",
-            "muccoregulator",
-            "mucorregulator"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nefrotoxicity",
-        "definition": "Misspelling of nephrotoxicity.",
-        "exampleSentence": "My teacher explained what a nefrotoxicity is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "nefrotoxicity",
-        "distractors": [
-            "nefrotoxicitey",
-            "neffrotoxicity",
-            "nefrottoxicity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nondysplastic",
-        "definition": "Not dysplastic.",
-        "exampleSentence": "The inner ear abnormalities, whether dysplastic or nondysplastic, can be isolated or can be part of a multiorgan syndrome.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "nondysplastic",
-        "etymology": "From non- + dysplastic.",
-        "distractors": [
-            "nonndysplastic",
-            "nondyssplastic",
-            "nondysplasstic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonotological",
-        "definition": "Not otological.",
-        "exampleSentence": "These temporal bone anomalies are accompanied by a wide range of hearing acuity, varying degrees of progression of hearing loss, and the presence or absence of related nonotological anomalies.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "nonotological",
-        "etymology": "From non- + otological.",
-        "distractors": [
-            "nonotologicel",
-            "nonnotological",
-            "nonottological"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "monomicrobial",
-        "definition": "Associated with a single species of microorganism.",
-        "exampleSentence": "Type I NF describes polymicrobial infections, whereas type II NF has a monomicrobial pathogenesis.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "monomicrobial",
-        "etymology": "From mono- + microbial.",
-        "distractors": [
-            "monomicrobiel",
-            "monnomicrobial",
-            "monommicrobial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "preproghrelin",
-        "definition": "A precursor of proghrelin.",
-        "exampleSentence": "A reproducible decrease in the plasma concentration of unacylated ghrelin was observed, which was consistent with a decrease in the stomach preproghrelin mRNA and stomach ghrelin expression.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "preproghrelin",
-        "etymology": "From pre- + proghrelin.",
-        "distractors": [
-            "prepproghrelin",
-            "preprogghrelin",
-            "preproghrellin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hypomelanotic",
-        "definition": "Exhibiting or relating to hypomelanosis.",
-        "exampleSentence": "In one patient, the normal skin presented with hypertrichosis while the hypomelanotic areas did not.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hypomelanotic",
-        "etymology": "From hypomelanosis + -ic.",
-        "distractors": [
-            "hyppomelanotic",
-            "hypommelanotic",
-            "hypomellanotic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intracultivar",
-        "definition": "Within a single cultivar.",
-        "exampleSentence": "WES in soybean has also been used to identify unwanted intracultivar genetic heterogeneity in the exome that may affect the plant’s phenotype (Haun et al. 2011).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intracultivar",
-        "etymology": "From intra- + cultivar.",
-        "distractors": [
-            "intracultiver",
-            "inntracultivar",
-            "intraccultivar"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multisequence",
-        "definition": "Of or relating to more than one sequence.",
-        "exampleSentence": "Multiplane, multisequence magnetic resonance imaging (MRI) of the abdomen with and without contrast revealed two intrahepatic portohepatic venous shunts, each associated with an aneurysm ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "multisequence",
-        "etymology": "From multi- + sequence.",
-        "distractors": [
-            "multisequance",
-            "mulltisequence",
-            "multissequence"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "monocaprylate",
-        "definition": "Any compound that contains a single caprylate group or ion.",
-        "exampleSentence": "Capryol 90 (propylene glycol monocaprylate) and Transcutol HP (purified diethylene glycol monoethyl ether) were kindly donated by Gattefosse.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "monocaprylate",
-        "etymology": "From mono- + caprylate. By surface analysis, mono- + capr- + -yl + -ate.",
-        "distractors": [
-            "monnocaprylate",
-            "monoccaprylate",
-            "monocapprylate"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "subnanokelvin",
-        "definition": "Having a temperature of less than a nanokelvin.",
-        "exampleSentence": "We provide examples, for a cold atom system, for which our thermometry protocol retains accuracy and precision at subnanokelvin temperatures.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "subnanokelvin",
-        "etymology": "From sub- + nanokelvin.",
-        "distractors": [
-            "subbnanokelvin",
-            "subnannokelvin",
-            "subnanokkelvin"
-        ],
-        "theme": "weather"
-    },
-    {
-        "word": "interparental",
-        "definition": "Between parents.",
-        "exampleSentence": "For instance, laxness, poor supervision, inconsistent discipline, and interparental conflict are negatively associated with child social skills development.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "interparental",
-        "etymology": "From inter- + parental.",
-        "distractors": [
-            "interparentel",
-            "innterparental",
-            "interrparental"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nanotexturing",
-        "definition": "The application of a nanotexture.",
-        "exampleSentence": "The epitaxial growth process for multi-junction cells requires planar geometries, thus making it challenging to apply any sort of traditional texturing or nanotexturing.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "nanotexturing",
-        "etymology": "From nano- + texturing.",
-        "distractors": [
-            "nannotexturing",
-            "nanottexturing",
-            "nanotexxturing"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "agrobacterial",
-        "definition": "Relating to agrobacteria.",
-        "exampleSentence": "Agrocin 84, having gained access to the A . tumefaciens C58 cytoplasm, is maturated into a toxic moiety (TM84) that inhibits agrobacterial growth.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "agrobacterial",
-        "etymology": "From agrobacterium + -al.",
-        "distractors": [
-            "agrobacteriel",
-            "aggrobacterial",
-            "agrobbacterial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antimitogenic",
-        "definition": "Inhibiting mitosis.",
-        "exampleSentence": "Besides, miR-335-5p was a pro-apoptotic and antimitogenic factor in the brain and induced cell cycle arrest in human cancer cells or suppressed cell proliferation in prostate cancer.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "antimitogenic",
-        "etymology": "From anti- + mitogenic.",
-        "distractors": [
-            "anntimitogenic",
-            "antimmitogenic",
-            "antimittogenic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fenbuconazole",
-        "definition": "A particular fungicide.",
-        "exampleSentence": "This study also showed that the orchard fungicide fenbuconazole, when combined with acetamiprid, was five times more toxic ….",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "fenbuconazole",
-        "distractors": [
-            "fenbuconazoel",
-            "fennbuconazole",
-            "fenbucconazole"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "colobronchial",
-        "definition": "Relating to the colon and the bronchi.",
-        "exampleSentence": "One of these is a case of colobronchial fistula.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "colobronchial",
-        "etymology": "From colo- + bronchial.",
-        "distractors": [
-            "colobronchiel",
-            "collobronchial",
-            "colobbronchial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "odontoclastic",
-        "definition": "Relating to odontoclasts.",
-        "exampleSentence": "External cervical resorption is the loss of dental hard tissue as a result of odontoclastic action; it usually begins on the cervical region of the root surface of the teeth.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "odontoclastic",
-        "etymology": "From odontoclast + -ic.",
-        "distractors": [
-            "oddontoclastic",
-            "odonntoclastic",
-            "odontocclastic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "osteoanabolic",
-        "definition": "That generates new bone.",
-        "exampleSentence": "Tetrapeptide (Forteo®) is a recombinant human parathyroid 1–34 (a PTH analogue) that has an osteoanabolic effect in intermittent injection.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "osteoanabolic",
-        "etymology": "From osteo- + anabolic.",
-        "distractors": [
-            "ossteoanabolic",
-            "osteoannabolic",
-            "osteoanabbolic"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "paraumbilical",
-        "definition": "Beyond, or near, the umbilicus.",
-        "exampleSentence": "A hyperpigmented scar lesion on the right side of the face; bilateral inguinal, paraumbilical hyperpigmented scar lesions; and paronychia of the thumbs were noted on admission (Fig. 1 ).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "paraumbilical",
-        "etymology": "From para- + umbilical.",
-        "distractors": [
-            "paraumbilicel",
-            "parraumbilical",
-            "paraummbilical"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "parapedicular",
-        "definition": "Beyond a pedicle.",
-        "exampleSentence": "Frequently used PVP approaches include the pedicular, parapedicular, anterolateral, and posterolateral approaches.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "parapedicular",
-        "etymology": "From para- + pedicular.",
-        "distractors": [
-            "parapediculer",
-            "parrapedicular",
-            "parappedicular"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "defasciculate",
-        "definition": "Of an axon, to separate from a fascicle.",
-        "exampleSentence": "The second is called \"parallel bypass\" where SNb defasciculates but continues to parallel the ISN. The third is termed the \"stall\" where SNb defasciculates and stops on its way to the muscle field.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "defasciculate",
-        "etymology": "From de- + fasciculate.",
-        "distractors": [
-            "deffasciculate",
-            "defassciculate",
-            "defascicculate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hysteroscopic",
-        "definition": "Relating to hysteroscopy.",
-        "exampleSentence": "Of these, eight had a normal hysteroscopic appearance whereas three had an abnormal appearance (hyperplasia, etc.).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hysteroscopic",
-        "etymology": "From hystero- + -scopic.",
-        "distractors": [
-            "hyssteroscopic",
-            "hysterroscopic",
-            "hysterosscopic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sclerocorneal",
-        "definition": "Related to the sclera and the cornea.",
-        "exampleSentence": "The Diaton tonometer measures the intrapalpebral IOP by exerting pressure on the peripheral cornea, outside the ablation, and on the sclerocorneal limbus.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "sclerocorneal",
-        "etymology": "From sclero- + corneal.",
-        "distractors": [
-            "sclerocorneel",
-            "sclerrocorneal",
-            "scleroccorneal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tapetoretinal",
-        "definition": "Relating to the tapetum and the retina.",
-        "exampleSentence": "In a handful of patients (5 out of 255) abnormal results were obtained and explained by coexisting diffuse or central tapetoretinal degeneration.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "tapetoretinal",
-        "etymology": "From tapeto- + retinal.",
-        "distractors": [
-            "tapetoretinel",
-            "tappetoretinal",
-            "tapettoretinal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rehabilitable",
-        "definition": "Able to be rehabilitated.",
-        "exampleSentence": "The patient with the latter carries an obvious stigma as the one less likely to be fully rehabilitable for social usefulness.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "rehabilitable",
-        "etymology": "From rehabilitate + -able.",
-        "distractors": [
-            "rehabilitible",
-            "rehabilitabel",
-            "rehhabilitable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "microsymbiont",
-        "definition": "A microscopic symbiont.",
-        "exampleSentence": "However, it is different from the other microsymbiont in that it can form an effective association with Parapiptadenia rigida .",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "microsymbiont",
-        "etymology": "From micro- + symbiont.",
-        "distractors": [
-            "miccrosymbiont",
-            "microssymbiont",
-            "microsymmbiont"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "postretrieval",
-        "definition": "After retrieval.",
-        "exampleSentence": "Thus, ventral mPFC may mediate postretrieval processing of recollected information rather than preretrieval processes relating to retrieval attempts (Rugg and Wilding 2000).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "postretrieval",
-        "etymology": "From post- + retrieval.",
-        "distractors": [
-            "postretrievel",
-            "posstretrieval",
-            "postrettrieval"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "recombinative",
-        "definition": "Relating to recombination.",
-        "exampleSentence": "In this context, vibrational bath engineering allows to promote ^() fast, directional charge transfer and to suppress recombinative losses.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "recombinative",
-        "distractors": [
-            "reccombinative",
-            "recommbinative",
-            "recombinnative"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antimyoclonic",
-        "definition": "Preventing myoclonus.",
-        "exampleSentence": "In addition, PER has shown broad-spectrum antiepileptic activity when administered orally in preclinical animal models, including antimyoclonic activity.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "antimyoclonic",
-        "etymology": "From anti- + myoclonic.",
-        "distractors": [
-            "anntimyoclonic",
-            "antimmyoclonic",
-            "antimyocclonic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hemiparalysis",
-        "definition": "Paralysis of half of the face or body.",
-        "exampleSentence": "One animal in the VP group developed cerebral infarction and showed symptoms of hemiparalysis, and was humanely euthanized by a lethal dose of pentobarbital sodium.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hemiparalysis",
-        "etymology": "From hemi- + paralysis.",
-        "distractors": [
-            "hemmiparalysis",
-            "hemipparalysis",
-            "hemiparralysis"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "adipogenicity",
-        "definition": "The quality of being adipogenic.",
-        "exampleSentence": "The iPSC-MSCs achieve robust osteogenicity and chondrogenicity, but have very limited adipogenicity.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "adipogenicity",
-        "etymology": "From adipogenic + -ity.",
-        "distractors": [
-            "adipogenicitey",
-            "addipogenicity",
-            "adippogenicity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reconquerable",
-        "definition": "Capable of being reconquered.",
-        "exampleSentence": "It is also what we have left of a possibility for transcendence, the discovery of new adventure, the conquest of a continuously reconquerable frontier.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "reconquerable",
-        "etymology": "From reconquer + -able.",
-        "distractors": [
-            "reconquerible",
-            "reconquerabel",
-            "recconquerable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "acrosyringium",
-        "definition": "An intraepidermal spiral duct in the eccrine gland.",
-        "exampleSentence": "Eccrine poroma is a benign adnexal tumour of the uppermost portion of the intraepidermal eccrine sweat gland duct and acrosyringium.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "acrosyringium",
-        "distractors": [
-            "accrosyringium",
-            "acrossyringium",
-            "acrosyrringium"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "superionicity",
-        "definition": "The quality of being superionic.",
-        "exampleSentence": "We find that the onset of superionicity can be reduced by about 100K when relatively small electric fields of ~50KV/cm are employed.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "superionicity",
-        "etymology": "From super- + ionic + -ity.",
-        "distractors": [
-            "superionicitey",
-            "supperionicity",
-            "superrionicity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hepatosomatic",
-        "definition": "Relating to the liver and the rest of the body, but especially to the ratio of their weights.",
-        "exampleSentence": "The administration of MUL enhanced the hepatosomatic index of MTX treated rats and brought this parameter back to values very similar to that observed in the control group.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hepatosomatic",
-        "etymology": "From hepato- + somatic.",
-        "distractors": [
-            "heppatosomatic",
-            "hepattosomatic",
-            "hepatossomatic"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "histiosarcoma",
-        "definition": "Histiocytic sarcoma.",
-        "exampleSentence": "My teacher explained what a histiosarcoma is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "histiosarcoma",
-        "etymology": "From histio- + sarcoma.",
-        "distractors": [
-            "hisstiosarcoma",
-            "histiossarcoma",
-            "histiosarrcoma"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ileocecectomy",
-        "definition": "Removal of the ileum and part of the colon.",
-        "exampleSentence": "Following laparoscopic ileocecectomy, pathology demonstrated haemorrhage, inflammation, oedema and full thickness necrosis of the caecal wall.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "ileocecectomy",
-        "etymology": "From ileo- + cecectomy.",
-        "distractors": [
-            "ileocecectomey",
-            "illeocecectomy",
-            "ileoccecectomy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reinvigorator",
-        "definition": "One who or that which reinvigorates.",
-        "exampleSentence": "What a shocking cough. I wish, my friend, the herb-doctor was here now; a box of his Omni-Balsamic Reinvigorator would do you good.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "reinvigorator",
-        "etymology": "From reinvigorate + -or.",
-        "distractors": [
-            "reinvigorater",
-            "reinnvigorator",
-            "reinviggorator"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "edrioasteroid",
-        "definition": "Any echinoderm of class Edrioasteroidea.",
-        "exampleSentence": "My teacher explained what an edrioasteroid is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "edrioasteroid",
-        "distractors": [
-            "eddrioasteroid",
-            "edrioassteroid",
-            "edrioasterroid"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "antihemolytic",
-        "definition": "Inhibiting hemolysis.",
-        "exampleSentence": "Therefore, the mechanisms of action of the antihemolytic effect of G. lucidum and that of the effect of Pb on the hepatic tissues were discussed.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "antihemolytic",
-        "etymology": "From anti- + hemolytic.",
-        "distractors": [
-            "anntihemolytic",
-            "antihhemolytic",
-            "antihemmolytic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonmesodermal",
-        "definition": "Not mesodermal.",
-        "exampleSentence": "Recent publications even state that they can differentiate into nonmesodermal cells such as hepatocytes, neurons, or astrocytes.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "nonmesodermal",
-        "etymology": "From non- + mesodermal.",
-        "distractors": [
-            "nonmesodermel",
-            "nonnmesodermal",
-            "nonmessodermal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hemicorporeal",
-        "definition": "Relating to one of the (left and right) sides of the body.",
-        "exampleSentence": "Left hemicorporeal seizures persisted despite anticonvulsant treatment.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "hemicorporeal",
-        "etymology": "From hemi- + corporeal.",
-        "distractors": [
-            "hemicorporeel",
-            "hemmicorporeal",
-            "hemiccorporeal"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "deuterotokous",
-        "definition": "Relating to deuterotoky.",
-        "exampleSentence": "In scale insects no examples of cyclic parthenogenesis are known and parthenogenesis can be thelytokous, deuterotokous or arrhenotokous.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "deuterotokous",
-        "distractors": [
-            "deuterotokus",
-            "deuterotokious",
-            "deutterotokous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonconclusive",
-        "definition": "Not conclusive.",
-        "exampleSentence": "The effects of several therapeutic regimens on migraine has also been investigated, leading to nonconclusive results.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "nonconclusive",
-        "etymology": "From non- + conclusive.",
-        "distractors": [
-            "nonnconclusive",
-            "nonconnclusive",
-            "nonconclussive"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "depolymerizer",
-        "definition": "That which depolymerizes.",
-        "exampleSentence": "To examine this potential role of microtubules, uncut cells were treated with thiabendazole, a depolymerizer of Dictyostelium microtubules.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "depolymerizer",
-        "etymology": "From depolymerize + -er.",
-        "distractors": [
-            "depolymerizor",
-            "depolymerizar",
-            "deppolymerizer"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "secretability",
-        "definition": "The quality of being secretable.",
-        "exampleSentence": "The secretability of R5-6 would be important for future in vivo gene transfer studies.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "secretability",
-        "etymology": "From secrete + -ability.",
-        "distractors": [
-            "secretabilitey",
-            "seccretability",
-            "secrettability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bifibacterial",
-        "definition": "Related to bifibacteria.",
-        "exampleSentence": "The vertical axis lists strains containing CRISPR spacers that target a bifibacterial prophage sequence.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "bifibacterial",
-        "distractors": [
-            "bifibacteriel",
-            "biffibacterial",
-            "bifibbacterial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "trioctylamine",
-        "definition": "The tertiary amine (CH₃-(CH₂)₇-)₃N.",
-        "exampleSentence": "Cell pellets were extracted at 4°C with 15% TCA containing 13 C, 15 N-ATP as the internal standard, and then neutralized with a mixture of trioctylamine and 1,1,2-trichlorotrifluoroethane.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "trioctylamine",
-        "distractors": [
-            "triocctylamine",
-            "trioctyllamine",
-            "trioctylammine"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyperinvasive",
-        "definition": "Highly invasive.",
-        "exampleSentence": "In contrast, isolates from carriers are genetically more heterogenous and relatively few belong to hyperinvasive clones.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "hyperinvasive",
-        "etymology": "From hyper- + invasive.",
-        "distractors": [
-            "hypperinvasive",
-            "hyperrinvasive",
-            "hyperinnvasive"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "biculturality",
-        "definition": "The quality of being bicultural.",
-        "exampleSentence": "The factor conflict refers to affective aspects of biculturality whereas the factor distance includes learning and performance aspects of acculturation (Benet-Martinez & Haritatos 2005).",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "biculturality",
-        "etymology": "From bicultural + -ity.",
-        "distractors": [
-            "biculturalitey",
-            "bicculturality",
-            "bicullturality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "entospletinib",
-        "definition": "A particular drug that is an inhibitor of the enzyme spleen tyrosine kinase (Syk).",
-        "exampleSentence": "Other tyrosine kinase inhibitors are evaluated as well, of which the Syk inhibitors, fostamatinib and entospletinib, might be of particular interest in the near future.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "entospletinib",
-        "distractors": [
-            "enntospletinib",
-            "entosspletinib",
-            "entosplettinib"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "parapneumonic",
-        "definition": "Relating to parapneumonia.",
-        "exampleSentence": "In a study conducted at a pediatric tertiary hospital in Spain, the most common cause of pneumococcal parapneumonic empyema was serotype 1 (42%) followed by serotypes 7F, 3, 19A and 5.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "parapneumonic",
-        "distractors": [
-            "parrapneumonic",
-            "parappneumonic",
-            "parapneummonic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "pelvicalyceal",
-        "definition": "Relating to the pelvis and calyx.",
-        "exampleSentence": "The finding of renal cell carcinoma arising in a kidney with the duplication of pelvicalyceal system and ureters, as in the present case, is uncommon.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "pelvicalyceal",
-        "etymology": "By surface analysis, pelvi- + calyc- + -e- + -al.",
-        "distractors": [
-            "pelvicalyceel",
-            "pellvicalyceal",
-            "pelviccalyceal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "vibroacoustic",
-        "definition": "Of or relating to a vibratory sound stimulus applied to the abdomen of a pregnant woman to induce FHR accelerations, which reliably predict the absence of fetal metabolic acidemia.",
-        "exampleSentence": "The experiment was performed on a group of 28 women with vibroacoustic therapy (30 Hz, 3 times per week, 5 minutes, 6 months of therapy).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "vibroacoustic",
-        "etymology": "From vibro- + acoustic.",
-        "distractors": [
-            "vibbroacoustic",
-            "vibroaccoustic",
-            "vibroacousstic"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "nonbacteremic",
-        "definition": "Not bacteremic.",
-        "exampleSentence": "One study in the US modeled a 54% reduction in nonbacteremic pneumococcal pneumonia in adults 65 years and older in states that had achieved over 80% vaccination coverage in children under two years.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "nonbacteremic",
-        "etymology": "From non- + bacteremic.",
-        "distractors": [
-            "nonnbacteremic",
-            "nonbaccteremic",
-            "nonbacterremic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "podocytopenia",
-        "definition": "An abnormal podocyte deficiency.",
-        "exampleSentence": "Glomerular diseases are often associated with foot process effacement and podocytopenia leading to severe proteinuria, and are closely linked to disaggregation and altered distribution of AFs.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "podocytopenia",
-        "etymology": "From podocyte + -penia.",
-        "distractors": [
-            "poddocytopenia",
-            "podoccytopenia",
-            "podocyttopenia"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "interdenticle",
-        "definition": "Between denticles.",
-        "exampleSentence": "The interdenticle grooves of the serrated carinae are quite shallow and slightly curve ventrally towards the central region of crown ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "interdenticle",
-        "etymology": "From inter- + denticle.",
-        "distractors": [
-            "interdenticel",
-            "innterdenticle",
-            "interrdenticle"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "laminarizator",
-        "definition": "A kind of diffuser, used to laminarize air.",
-        "exampleSentence": "Also a flow laminarizator was added to the duct that was located just before the solar collector.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "laminarizator",
-        "distractors": [
-            "laminarizater",
-            "lamminarizator",
-            "laminnarizator"
-        ],
-        "theme": "character"
-    },
-    {
-        "word": "bystandership",
-        "definition": "The role of being a bystander, not taking any active part.",
-        "exampleSentence": "For the most part, neither superiors nor fellow guards took action when they saw the abuse. Their passive bystandership allowed the evolution of increasing abuse.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bystandership",
-        "etymology": "From bystander + -ship.",
-        "distractors": [
-            "bysstandership",
-            "bystanndership",
-            "bystanderrship"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonsarcopenic",
-        "definition": "Not sarcopenic.",
-        "exampleSentence": "In conclusion, sarcopenic older women showed lower muscle function and higher cardiovascular risk due to increased PP levels compared with nonsarcopenic subjects.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "nonsarcopenic",
-        "etymology": "From non- + sarcopenic.",
-        "distractors": [
-            "nonnsarcopenic",
-            "nonsarrcopenic",
-            "nonsarcoppenic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonqualifying",
-        "definition": "That does not qualify.",
-        "exampleSentence": "Then the questionnaire was checked by our research staff in order to make sure the data were complete and to remove any nonqualifying questionnaires immediately.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "nonqualifying",
-        "etymology": "From non- + qualifying.",
-        "distractors": [
-            "nonnqualifying",
-            "nonquallifying",
-            "nonqualiffying"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antifumigatus",
-        "definition": "That acts against fungi of the species Aspergillus fumigatus.",
-        "exampleSentence": "Such as when α-1,3-glucan is injected alone into the mice, it stimulates the host immune response and consequently has an antifumigatus development role.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "antifumigatus",
-        "etymology": "From anti- + + Latin fumigatus.",
-        "distractors": [
-            "anntifumigatus",
-            "antiffumigatus",
-            "antifummigatus"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "hypoechogenic",
-        "definition": "Minimally echogenic, as is normal in some tissue types and unusual in others.",
-        "exampleSentence": "The ultrasound showed an ellipsoidal hypoechogenic area in the muscle ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hypoechogenic",
-        "etymology": "From hypo- + echogenic.",
-        "distractors": [
-            "hyppoechogenic",
-            "hypoecchogenic",
-            "hypoechoggenic"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "liquidogenous",
-        "definition": "That forms a liquid when in bulk.",
-        "exampleSentence": "There are liquidogenous and gasogenous molecules, which co-exist in proportions depending upon the temperature.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "liquidogenous",
-        "etymology": "From liquid + -genous.",
-        "distractors": [
-            "liquidogenus",
-            "liquidogenious",
-            "liqquidogenous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "strictosamide",
-        "definition": "A particular alkaloid.",
-        "exampleSentence": "Subsequent intramolecular cyclization of strictosidine yielded strictosamide, a penultimate precursor of CAM formation in C.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "strictosamide",
-        "distractors": [
-            "stricctosamide",
-            "strictossamide",
-            "strictosammide"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "uncentrifuged",
-        "definition": "Not having been centrifuged.",
-        "exampleSentence": "Obtained buccal epithelium and newly drawn, uncentrifuged blood collected in an EDTA tube were used for analysis of gene expression: a control GAPDH gene and Osteocalcin gene.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "uncentrifuged",
-        "etymology": "From un- + centrifuged.",
-        "distractors": [
-            "unncentrifuged",
-            "uncenntrifuged",
-            "uncentriffuged"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "neurosoftware",
-        "definition": "Computer software designed to assist people in training their mental faculties.",
-        "exampleSentence": "He estimates that in 2007 the market in the United States for so-called neurosoftware was $225 million.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "neurosoftware",
-        "etymology": "From neuro- + software.",
-        "distractors": [
-            "neurrosoftware",
-            "neurossoftware",
-            "neurosofftware"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "bloodhoundish",
-        "definition": "Like, pertaining to, or characteristic of a bloodhound or a detective; able and eager to follow the scent.",
-        "exampleSentence": "\"… a large portion of the pleasure this sport afforded him was derived from his unerring and bloodhoundish sense that this, of all topics, was the one which made me most truly uncomfortable.\"",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bloodhoundish",
-        "etymology": "From bloodhound + -ish.",
-        "distractors": [
-            "blodhoundish",
-            "blooddhoundish",
-            "bloodhounndish"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "precomplexing",
-        "definition": "Complexing prior to another process.",
-        "exampleSentence": "DNA and Lipofectin were incubated with medium for precomplexing in 2.5% of the final volume.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "precomplexing",
-        "etymology": "From pre- + complexing.",
-        "distractors": [
-            "preccomplexing",
-            "precommplexing",
-            "precomplexxing"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "autoregulator",
-        "definition": "Any protein that regulates its own expression.",
-        "exampleSentence": "LmrR was shown to be a transcriptional repressor of lmrCD expression and an autoregulator of its own expression.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "autoregulator",
-        "etymology": "From auto- + regulator.",
-        "distractors": [
-            "autoregulater",
-            "auttoregulator",
-            "autorregulator"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "overearnestly",
-        "definition": "In an overearnest manner.",
-        "exampleSentence": "At the other extreme, last year's Mordecai Richler: Leaving St. Urbain by Reinhold Kramer focused (rather overearnestly) on Richler's writing itself.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "overearnestly",
-        "etymology": "From overearnest + -ly.",
-        "distractors": [
-            "overearnestley",
-            "ovverearnestly",
-            "overrearnestly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "exopinacoderm",
-        "definition": "A surface of a sponge lined with exopinacocytes.",
-        "exampleSentence": "We identified three main sources of novel exopinacoderm during the processes of its regeneration and the restoration of functional peripheral parts of the aquiferous system in O.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "exopinacoderm",
-        "distractors": [
-            "exxopinacoderm",
-            "exoppinacoderm",
-            "exopinnacoderm"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intercuspidal",
-        "definition": "Between the cusps of the teeth.",
-        "exampleSentence": "The patient bites on a registration template in maximum intercuspidal position.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "intercuspidal",
-        "etymology": "From inter- + cuspidal.",
-        "distractors": [
-            "intercuspidel",
-            "inntercuspidal",
-            "interrcuspidal"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "secundigravid",
-        "definition": "A female during her second pregnancy.",
-        "exampleSentence": "As per the study protocol, all women were secundigravid having previously delivered an infant weighing greater than 4000g.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "secundigravid",
-        "distractors": [
-            "seccundigravid",
-            "secunndigravid",
-            "secundiggravid"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "overarchingly",
-        "definition": "In an overarching manner; predominantly.",
-        "exampleSentence": "Although short for a novel at slightly more than 200 pages, The Fallen feels broad and ambitious – but never overarchingly so, which is why it works so well.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "overarchingly",
-        "etymology": "From overarching + -ly.",
-        "distractors": [
-            "overarchingley",
-            "ovverarchingly",
-            "overrarchingly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "overimportant",
-        "definition": "Excessively important.",
-        "exampleSentence": "Durham is an excellent basketball announcer; he concentrates on the defense and coverages, and he always seems to have one eye on the shot clock, which is so overimportant in the pro game.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "overimportant",
-        "etymology": "From over- + important.",
-        "distractors": [
-            "overimportent",
-            "ovverimportant",
-            "overrimportant"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reinvolvement",
-        "definition": "The situation of becoming involved again.",
-        "exampleSentence": "Jeffery points out that among his neighbors are several ex-Roman Catholics who are leaning toward reinvolvement in the Church--but not on the old \"do as we tell you, unquestioningly\" terms.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "reinvolvement",
-        "etymology": "From re- + involvement.",
-        "distractors": [
-            "reinvolvemant",
-            "reinnvolvement",
-            "reinvollvement"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "metrizability",
-        "definition": "The quality of being metrizable.",
-        "exampleSentence": "In this paper we study the invariant metrizability and projective metrizability problems for the special case of the geodesic flow associated to the canonical connection of a Lie group.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "metrizability",
-        "etymology": "From metrize + -ability.",
-        "distractors": [
-            "metrizabilitey",
-            "mettrizability",
-            "metrizzability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tetrabrachion",
-        "definition": "A highly thermostable surface protein, of unusual structure, isolated from an archaebacterium.",
-        "exampleSentence": "The cytoplasmic (CD), tetramerization (TM) and stalk domains of the WT NA were replaced by an Ig-k secretion sequence, a 6xHis-tag, and a tetrabrachion domain for protein tetramerization.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "tetrabrachion",
-        "distractors": [
-            "tettrabrachion",
-            "tetrabbrachion",
-            "tetrabracchion"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reliquarylike",
-        "definition": "Resembling a reliquary.",
-        "exampleSentence": "Even armies at war recognized her importance and opened frontiers to allow these reliquarylike dolls to pass.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "reliquarylike",
-        "etymology": "From reliquary + -like.",
-        "distractors": [
-            "relliquarylike",
-            "reliqquarylike",
-            "reliquarrylike"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyperensemble",
-        "definition": "A group of related probability distributions.",
-        "exampleSentence": "In particular, we provide a bound on the spectral radius of the symmetric Bernoulli hyperensemble..",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hyperensemble",
-        "etymology": "From hyper- + ensemble.",
-        "distractors": [
-            "hyperensembel",
-            "hypperensemble",
-            "hyperrensemble"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "butyrolactone",
-        "definition": "Any lactone derived from a hydroxybutyric acid.",
-        "exampleSentence": "Novitzky noted that Rose had recently pleaded guilty to federal charges of distributing gamma butyrolactone, or GBL, a drug sometimes sold as a steroid adjunct, to minor league players.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "butyrolactone",
-        "distractors": [
-            "buttyrolactone",
-            "butyrrolactone",
-            "butyrollactone"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "agaricomycete",
-        "definition": "Any fungus of the class Agaricomycetes.",
-        "exampleSentence": "In addition to the conserved split point between dhc1 and dhc2, their organization within agaricomycete genomes with respect to the linked matA locus seems conserved.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "agaricomycete",
-        "distractors": [
-            "aggaricomycete",
-            "agarricomycete",
-            "agariccomycete"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "doctrinairely",
-        "definition": "In a doctrinaire way; according to some strict doctrine.",
-        "exampleSentence": "Although much of the Jones-Goury reconstruction of the original colouring of the Alhambra was doctrinairely conjectural, it guided those who tried to restore the place later ….",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "doctrinairely",
-        "etymology": "From doctrinaire + -ly.",
-        "distractors": [
-            "doctrinaireley",
-            "docctrinairely",
-            "doctrinnairely"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "periplasmatic",
-        "definition": "Relating to, or found within the periplasm.",
-        "exampleSentence": "Ten proteins were predicted to be extracellular, 17 proteins were predicted to be periplasmatic and 25 were predicted to be cytoplasmatic.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "periplasmatic",
-        "etymology": "From peri- + plasmatic.",
-        "distractors": [
-            "perriplasmatic",
-            "peripplasmatic",
-            "periplassmatic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "triaperturate",
-        "definition": "Having three apertures.",
-        "exampleSentence": "A few triaperturate pollen grains possibly belonging to Normapolles complex indicate that the vegetation from the Velaux region was probably composed of both gymnosperms (Coniferales) and angiosperms.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "triaperturate",
-        "etymology": "From tri- + aperturate.",
-        "distractors": [
-            "triapperturate",
-            "triaperrturate",
-            "triaperturrate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "promyeloblast",
-        "definition": "A structure that develops into a myeloblast.",
-        "exampleSentence": "MOLT-4 is a T lymphoblast, suspension cell line derived from an acute lymphoblastic leukemia while the HL-60 cell line is a promyeloblast derived from acute promyelocytic leukemia.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "promyeloblast",
-        "etymology": "From pro- + myeloblast.",
-        "distractors": [
-            "prommyeloblast",
-            "promyelloblast",
-            "promyelobblast"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tubovesicular",
-        "definition": "Misspelling of tubulovesicular.",
-        "exampleSentence": "In addition, malaria parasites can uptake nutrients from the environment through ion channels and tubovesicular membrane networks extending from the parasite vacuole membrane.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "tubovesicular",
-        "distractors": [
-            "tubovesiculer",
-            "tubbovesicular",
-            "tubovvesicular"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "micronecrosis",
-        "definition": "Microscopic necrosis.",
-        "exampleSentence": "Minimally elevated levels of serum cardiac troponin T (cTnT), a marker of cardiomyocyte micronecrosis, can be detected with high sensitivity cTnT (hs-cTnT) assays.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "greek-roots",
-        "pronunciation": "micronecrosis",
-        "etymology": "From micro- + necrosis.",
-        "distractors": [
-            "miccronecrosis",
-            "micronnecrosis",
-            "microneccrosis"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "subapocarpous",
-        "definition": "Having the carpels partially joined.",
-        "exampleSentence": "Apocarpous fruits are the ancestral state in Acronychia and subapocarpous and fully syncarpous fruits are derived.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "subapocarpous",
-        "etymology": "From sub- + apocarpous.",
-        "distractors": [
-            "subapocarpus",
-            "subapocarpious",
-            "subbapocarpous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "englishperson",
-        "definition": "Somebody with origins in England.",
-        "exampleSentence": "If Englishpersons are present, tea is called for; ….",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "englishperson",
-        "etymology": "From English + person.",
-        "distractors": [
-            "ennglishperson",
-            "englisshperson",
-            "englishperrson"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "epididymosome",
-        "definition": "A small, membranous vesicle, within the epididymal lumen, in which spermatozoa acquire membrane proteins.",
-        "exampleSentence": "Epididymosomes are mainly concerned with the transfer of various proteins that lack signal sequences to spermatozoa where the proteins are GPI anchored.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "epididymosome",
-        "etymology": "From epididymo- + -some.",
-        "distractors": [
-            "eppididymosome",
-            "epiddidymosome",
-            "epididdymosome"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "leukotoxicity",
-        "definition": "The quality of being leukotoxic.",
-        "exampleSentence": "My teacher explained what a leukotoxicity is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "leukotoxicity",
-        "etymology": "From leuko- + toxicity.",
-        "distractors": [
-            "leukotoxicitey",
-            "leukkotoxicity",
-            "leukottoxicity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "postauricular",
-        "definition": "Behind the (external) ear.",
-        "exampleSentence": "In addition, 0.5 ml of 1% lidocaine HCl was injected subcutaneously in the postauricular area for local anesthesia.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "postauricular",
-        "etymology": "From post- + auricular.",
-        "distractors": [
-            "postauriculer",
-            "posstauricular",
-            "postaurricular"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "genomospecies",
-        "definition": "A species characterised by its DNA alone.",
-        "exampleSentence": "This operon is present in only a limited number of strains belonging to genomospecies 1, and it has been acquired once during evolution by horizontal transfer.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "genomospecies",
-        "etymology": "From genome + -o- + species.",
-        "distractors": [
-            "gennomospecies",
-            "genommospecies",
-            "genomosspecies"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "syringopeptin",
-        "definition": "Any of a group of antimicrobial cyclic lipodepsipeptides produced by Pseudomonas syringae.",
-        "exampleSentence": "UMAF0158 and B728a contain orthologs of genes participating in the synthesis of syringopeptin and syringomycin.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "syringopeptin",
-        "distractors": [
-            "syrringopeptin",
-            "syrinngopeptin",
-            "syringoppeptin"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "homocarnosine",
-        "definition": "The amino acid (E)-N-(4-amino-1-hydroxybutylidene)-L-histidine.",
-        "exampleSentence": "Lutein concentrations correlated with lipid pathway metabolites, energy pathway metabolites, brain osmolytes, amino acid neurotransmitters, and the antioxidant homocarnosine.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "homocarnosine",
-        "etymology": "From homo- + carnosine.",
-        "distractors": [
-            "hommocarnosine",
-            "homoccarnosine",
-            "homocarrnosine"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hypoketonemic",
-        "definition": "Exhibiting hypoketonemia.",
-        "exampleSentence": "In other experiment, dexamethasone resulted in hyperglycemic and hypoketonemic effect lasting 4 to 6 days in ketotic cows.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hypoketonemic",
-        "etymology": "From hypoketonemia + -ic.",
-        "distractors": [
-            "hyppoketonemic",
-            "hypokketonemic",
-            "hypokettonemic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mesectodermal",
-        "definition": "Relating to the mesectoderm.",
-        "exampleSentence": "The cells then interdigitate to form a single-cell-wide strip that now occupies the ventral midline, the mesectodermal cells.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "mesectodermal",
-        "etymology": "From mesectoderm + -al.",
-        "distractors": [
-            "mesectodermel",
-            "messectodermal",
-            "mesecctodermal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "iridencleisis",
-        "definition": "A surgical procedure for glaucoma in which a portion of the iris is incised and incarcerated in a limbal incision.",
-        "exampleSentence": "… or leave it in the aperture of the cornea, so that it may be strangulated, and ultimately become adherent thereto, constituting what has been termed iridencleisis.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "iridencleisis",
-        "etymology": "From Ancient Greek ῑ̓́ρῐδος (ī́rĭdos), genitive of Ancient Greek ἶρις (îris) + Ancient Greek ἔγκλεισις (énkleisis). By surface analysis, irid- + en- + -cleisis.",
-        "distractors": [
-            "irridencleisis",
-            "iriddencleisis",
-            "iridenncleisis"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multiharmonic",
-        "definition": "Exhibiting multiple harmonics.",
-        "exampleSentence": "Distress calls structures included multiharmonic shallowly modulated calls (A), calls with sideband modulations (B, C), and some calls with nonlinear phenomena (D).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "multiharmonic",
-        "etymology": "From multi- + harmonic.",
-        "distractors": [
-            "mulltiharmonic",
-            "multihharmonic",
-            "multiharrmonic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bioactivating",
-        "definition": "That leads to bioactivation.",
-        "exampleSentence": "Here, we have demonstrated that the two naturally occurring human CYP4B1 isoforms, with/without insSer207, have no 4-IPO bioactivating ability.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bioactivating",
-        "etymology": "From bio- + activating.",
-        "distractors": [
-            "bioacctivating",
-            "bioactivvating",
-            "bioactivatting"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "polychaetotic",
-        "definition": "Relating to worms of the class Polychaeta.",
-        "exampleSentence": "Overall, this character diversification reflects the polychaetotic or oligochaetotic evolutionary tendencies within this group of F.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "polychaetotic",
-        "distractors": [
-            "pollychaetotic",
-            "polycchaetotic",
-            "polychaettotic"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "osmobalancing",
-        "definition": "The balancing of osmotic pressure.",
-        "exampleSentence": "All together, we can conclude that osmobalancing plays a crucial role in caspofungin adaptation.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "osmobalancing",
-        "etymology": "From osmo- + balancing.",
-        "distractors": [
-            "ossmobalancing",
-            "osmobbalancing",
-            "osmoballancing"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyperexcreted",
-        "definition": "Excessively excreted.",
-        "exampleSentence": "Cystine crystals are formed when several conditions are met besides levels of hyperexcreted cystine.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hyperexcreted",
-        "distractors": [
-            "hypperexcreted",
-            "hyperrexcreted",
-            "hyperexxcreted"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "microtrichial",
-        "definition": "Relating to the microtrichium.",
-        "exampleSentence": "We present evidence for all three and show that local microtrichial orientation is seldom determined by any one factor.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "microtrichial",
-        "distractors": [
-            "microtrichiel",
-            "miccrotrichial",
-            "microttrichial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "formicivorous",
-        "definition": "Feeding on ants.",
-        "exampleSentence": "Formicivorous mammals (those which feed mainly on ants) come in all shapes and sizes ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "formicivorous",
-        "etymology": "From Latin formīca (“ant”) + -vorous.",
-        "distractors": [
-            "formicivorus",
-            "formicivorious",
-            "forrmicivorous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "transfixingly",
-        "definition": "So as to transfix.",
-        "exampleSentence": "If “Manhattan” shoots unusual subject matter in a familiar style, Cinemax’s “The Knick,” returning on Friday, takes a much-visited genre, the medical drama, and renders it transfixingly new.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "transfixingly",
-        "etymology": "From transfixing + -ly.",
-        "distractors": [
-            "transfixingley",
-            "trannsfixingly",
-            "transfixxingly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lurbinectedin",
-        "definition": "A particular drug used to inhibit the growth of ovarian cancer.",
-        "exampleSentence": "On the other hand, other antitumor drugs such as trabectedin, lurbinectedin and mitomycin C bind to the minor groove.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "lurbinectedin",
-        "distractors": [
-            "lurrbinectedin",
-            "lurbinnectedin",
-            "lurbinecctedin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "semiconserved",
-        "definition": "Partially conserved.",
-        "exampleSentence": "Residue identities are marked with an asterisk, conserved substitutions are marked with a colon, and semiconserved substitutions are marked with a period.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "semiconserved",
-        "etymology": "From semi- + conserved.",
-        "distractors": [
-            "semmiconserved",
-            "semicconserved",
-            "semiconnserved"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyposensitive",
-        "definition": "Having abnormally low sensitivity.",
-        "exampleSentence": "Compared to controls, larval EcR mutants were hyposensitive to both thermal (Fig 2A) and mechanical (Fig 3A) stimulation.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "hyposensitive",
-        "etymology": "From hypo- + sensitive.",
-        "distractors": [
-            "hypposensitive",
-            "hypossensitive",
-            "hyposennsitive"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "chloroformist",
-        "definition": "One who uses chloroform as an anaesthetic.",
-        "exampleSentence": "But his whole account of the correspondence between the chloroformist, by profession, and our colleague is erroneous.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "chloroformist",
-        "etymology": "From chloroform + -ist.",
-        "distractors": [
-            "chlorroformist",
-            "chlorofformist",
-            "chloroforrmist"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "monosegmental",
-        "definition": "Consisting of a single segment.",
-        "exampleSentence": "The phonological evidence is also equivocal: some fact suggest that affricatives are monosegmental, whereas other facts suggest that they are bisegmental.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "monosegmental",
-        "etymology": "From mono- + segmental.",
-        "distractors": [
-            "monosegmentel",
-            "monnosegmental",
-            "monossegmental"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multimembrane",
-        "definition": "Having or relating to more than one membrane.",
-        "exampleSentence": "Here, we observed multimembrane structures inside cytoplasmic lipid droplets, which suggests the formation of autolipophagossomes in thymic LLMC.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "multimembrane",
-        "etymology": "From multi- + membrane.",
-        "distractors": [
-            "mulltimembrane",
-            "multimmembrane",
-            "multimemmbrane"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "metapolitefsi",
-        "definition": "A transitional period in modern Greek history after the fall of the military junta of 1967–74, leading to elections and democracy.",
-        "exampleSentence": "In the event, metapolitefsi came to stand for far more wide-ranging transformations than those to the political system, drastic though these were.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "metapolitefsi",
-        "etymology": "Borrowed from Greek μεταπολίτευση (metapolítefsi, “regime change”).",
-        "distractors": [
-            "mettapolitefsi",
-            "metappolitefsi",
-            "metapollitefsi"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "neuromarketer",
-        "definition": "One who works in the field of neuromarketing.",
-        "exampleSentence": "The practice has come under attack, especially by academics who accuse neuromarketers of selling junk science.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "neuromarketer",
-        "etymology": "From neuro- + marketer.",
-        "distractors": [
-            "neuromarketor",
-            "neuromarketar",
-            "neurromarketer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "neuropolitics",
-        "definition": "An academic discipline regarding the intersection of neuroscience and politics.",
-        "exampleSentence": "Many political parties and campaigns are loath to talk about their forays into neuropolitics, with many disavowing them or saying they did not believe the research was widely used.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "neuropolitics",
-        "etymology": "From neuro- + politics.",
-        "distractors": [
-            "neurropolitics",
-            "neuroppolitics",
-            "neuropollitics"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "neuroresearch",
-        "definition": "Neurological research.",
-        "exampleSentence": "Most neuroresearch vendors now take great pains to emphasize their adherence to scientific and industry standards, transparency and ethics.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "neuroresearch",
-        "etymology": "From neuro- + research.",
-        "distractors": [
-            "neurroresearch",
-            "neurorresearch",
-            "neuroressearch"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "microsoftware",
-        "definition": "Software for a microcomputer.",
-        "exampleSentence": "These data were analyzed with Excel microsoftware and plotted.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "microsoftware",
-        "etymology": "From micro- + software.",
-        "distractors": [
-            "miccrosoftware",
-            "microssoftware",
-            "microsofftware"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antimigratory",
-        "definition": "Inhibiting migration.",
-        "exampleSentence": "Based on these observations it is clear that C-10 showed a significant reduction in cell viability and also showed antiangiogenic and antimigratory effects compared to positive controls.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "antimigratory",
-        "etymology": "From anti- + migratory.",
-        "distractors": [
-            "antimigratorey",
-            "antimigratery",
-            "anntimigratory"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "polystability",
-        "definition": "The quality of being polystable.",
-        "exampleSentence": "As a main tool for our analysis, we determine the stabilizers, and we establish the polystability of all the mentioned forms and tensors (including the generic ones).",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "polystability",
-        "etymology": "From poly- + stability.",
-        "distractors": [
-            "polystabilitey",
-            "pollystability",
-            "polysstability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "functoriality",
-        "definition": "The quality of being functorial.",
-        "exampleSentence": "Our techniques depend on a careful investigation of the functoriality of traces in symmetric monoidal (infinity,n)-categories, which is of independent interest..",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "functoriality",
-        "etymology": "From functorial + -ity.",
-        "distractors": [
-            "functorialitey",
-            "funnctoriality",
-            "functorriality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "diatomivorous",
-        "definition": "Feeding on diatoms.",
-        "exampleSentence": "In the disturbed zone, introgression was less frequent and slender body shape was associated with diatomivorous behaviour, smaller size (juvenile characteristics) and greater gut vacuity.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "diatomivorous",
-        "etymology": "From diatom + -vorous.",
-        "distractors": [
-            "diatomivorus",
-            "diatomivorious",
-            "diattomivorous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "noncrescentic",
-        "definition": "Not crescentic.",
-        "exampleSentence": "Some specimens of Brachylophosaurus (holotype CMN 8893) have a noncrescentic posterior margin of the quadratojugal and the interpreted presence of a paraquadratic foramen ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "noncrescentic",
-        "etymology": "From non- + crescentic.",
-        "distractors": [
-            "nonncrescentic",
-            "noncresscentic",
-            "noncrescenntic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reverberantly",
-        "definition": "In a reverberant manner.",
-        "exampleSentence": "And then a man started singing in a low baritone, as reverberantly as the instruments around him.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "reverberantly",
-        "etymology": "From reverberant + -ly.",
-        "distractors": [
-            "reverberantley",
-            "revverberantly",
-            "reverrberantly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multiwormhole",
-        "definition": "Involving more than one wormhole.",
-        "exampleSentence": "The construction of stationary axisymmetric multiwormhole solutions to gravitating field theories admitting toroidal reductions to three-dimensional gravitating sigma models is reviewed.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "multiwormhole",
-        "etymology": "From multi- + wormhole.",
-        "distractors": [
-            "multiwormhoel",
-            "mulltiwormhole",
-            "multiwwormhole"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "choripetalous",
-        "definition": "Having separate, unconnected petals; polypetalous.",
-        "exampleSentence": "In dicotyledons that do not form a calyx, like the buttercups, the corollas are always choripetalous.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "choripetalous",
-        "etymology": "From Ancient Greek χωρίς (khōrís, “separately”) + petalous.",
-        "distractors": [
-            "choripetalus",
-            "choripetalious",
-            "chorripetalous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unitriangular",
-        "definition": "Of a matrix: such that the entries on the main diagonal of a (upper or lower) triangular matrix are all 1.",
-        "exampleSentence": "In this paper we study distortion of various well-known embeddings of finitely generated torsion-free nilpotent groups G into unitriangular groups UT#95;n(#92;mathbb#123;Z#125;).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "unitriangular",
-        "etymology": "From uni- + triangular.",
-        "distractors": [
-            "unitrianguler",
-            "unnitriangular",
-            "unittriangular"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "technidilaton",
-        "definition": "A dilaton described using the technicolor model.",
-        "exampleSentence": "Then the technidilaton is a naturally light composite Higgs out of the strongly coupled conformal dynamics, with its couplings even weaker than the SM Higgs.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "technidilaton",
-        "etymology": "From techni- + dilaton.",
-        "distractors": [
-            "tecchnidilaton",
-            "techniddilaton",
-            "technidillaton"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyperfeminist",
-        "definition": "Extremely feminist.",
-        "exampleSentence": "The following is not the popular view of marriage in our hyperfeminist culture, nevertheless it is God's view.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "hyperfeminist",
-        "etymology": "From hyper- + feminist.",
-        "distractors": [
-            "hypperfeminist",
-            "hyperrfeminist",
-            "hyperfemminist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "digoxigenated",
-        "definition": "That has been reacted with digoxigenin.",
-        "exampleSentence": "Probes were labeled with digoxigenated dUTP (Dig-11dUTP) using the random priming method.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "digoxigenated",
-        "distractors": [
-            "diggoxigenated",
-            "digoxxigenated",
-            "digoxiggenated"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyainailourid",
-        "definition": "Any extinct mammal of the family Hyainailouridae.",
-        "exampleSentence": "Hyaenodontid pterygoids are generally less developed ventrally and posteriorly than hyainailourid pterygoids (Fig 5, Feature 12; Table 1 ).",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hyainailourid",
-        "distractors": [
-            "hyainnailourid",
-            "hyainaillourid",
-            "hyainailourrid"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "teratodontine",
-        "definition": "Any hyaenodont of the subfamily Teratodontinae.",
-        "exampleSentence": "My teacher explained what a teratodontine is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "teratodontine",
-        "distractors": [
-            "terratodontine",
-            "terattodontine",
-            "teratoddontine"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "transcondylar",
-        "definition": "Across a condyle.",
-        "exampleSentence": "The anteroposterior axis was perpendicular to the plane defined by the superoinferior axis and the transcondylar axis.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "transcondylar",
-        "etymology": "From trans- + condylar.",
-        "distractors": [
-            "transcondyler",
-            "trannscondylar",
-            "transconndylar"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "melanoregulin",
-        "definition": "A protein (and associated gene) that regulates the activity of melanosomes.",
-        "exampleSentence": "Two known binding partners of RDS fall into this category, calmodulin and melanoregulin, both of which are thought to regulate the fusogenic capability of RDS.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "melanoregulin",
-        "etymology": "From melano- + regulate + -in.",
-        "distractors": [
-            "mellanoregulin",
-            "melannoregulin",
-            "melanorregulin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intercriteria",
-        "definition": "Between criteria.",
-        "exampleSentence": "To calculate the objective indicator weight, criteria importance through intercriteria correlation (CRITIC) is selected from three usual methods.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intercriteria",
-        "etymology": "From inter- + criteria.",
-        "distractors": [
-            "inntercriteria",
-            "interrcriteria",
-            "intercritteria"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intertubercle",
-        "definition": "Between tubercles.",
-        "exampleSentence": "We were able to identify three morphological types of heterolateral interneuron interconnecting the AOTU-LUC of both sides through the intertubercle tract.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intertubercle",
-        "etymology": "From inter- + tubercle.",
-        "distractors": [
-            "intertubercel",
-            "inntertubercle",
-            "interrtubercle"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ventricularly",
-        "definition": "In a ventricular manner.",
-        "exampleSentence": "ECG of patient 6 showed ventricularly paced rhythm (ECG prior to pacemaker implant was not available).",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "ventricularly",
-        "etymology": "From ventricular + -ly.",
-        "distractors": [
-            "ventricularley",
-            "venntricularly",
-            "ventriccularly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "plurivacuolar",
-        "definition": "Having several vacuoles.",
-        "exampleSentence": "Under these conditions, the cultures contained only plurivacuolar adipocytes, with nil presence of fibroblasts (checked by microscope observation).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "plurivacuolar",
-        "etymology": "From pluri- + vacuolar.",
-        "distractors": [
-            "plurivacuoler",
-            "plurrivacuolar",
-            "plurivvacuolar"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "precystectomy",
-        "definition": "Prior to a cystectomy.",
-        "exampleSentence": "Our findings suggest that current precystectomy models for prediction of LN metastasis should be improved further.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "precystectomy",
-        "etymology": "From pre- + cystectomy.",
-        "distractors": [
-            "precystectomey",
-            "preccystectomy",
-            "precysstectomy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unmistakingly",
-        "definition": "Without any mistake or misunderstanding; unmistakably.",
-        "exampleSentence": "The writing was unmistakingly that of Liza Mary—the sentiment as unmistakingly that of Violet Rose. For a moment Miss Car'line twisted the note between fingers which no longer trembled.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "unmistakingly",
-        "etymology": "From unmistaking + -ly.",
-        "distractors": [
-            "unmistakingley",
-            "unnmistakingly",
-            "unmisstakingly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "constituently",
-        "definition": "In terms of the constituents of a mixture.",
-        "exampleSentence": "If you think of white nationalism as an ideology then fundamentally America constituently has to be a white majority country with white people in control, or it's not essentially America.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "constituently",
-        "etymology": "From constituent + -ly.",
-        "distractors": [
-            "constituentley",
-            "connstituently",
-            "constittuently"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "insectiferous",
-        "definition": "Containing or producing insects.",
-        "exampleSentence": "The doctor and myself slept in a long, deep, French dugout, with a heavy timbered roof, quite warm, and scarcely less insectiferous.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "insectiferous",
-        "etymology": "From insect + -i- + -ferous.",
-        "distractors": [
-            "insectiferus",
-            "insectiferious",
-            "innsectiferous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "instructorish",
-        "definition": "Characteristic of an instructor; didactic.",
-        "exampleSentence": "“Your mind can only be on one thing when you're going flying,” he said in a very instructorish tone, “and that's not what's happening in Washington.”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "instructorish",
-        "etymology": "From instructor + -ish.",
-        "distractors": [
-            "innstructorish",
-            "instrucctorish",
-            "instructorrish"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "noncentrality",
-        "definition": "The condition of being noncentral.",
-        "exampleSentence": "Given the power under a certain significance level, we can also calculate the noncentrality parameter τ 2, which indicates the amount of difference that a test could detect.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "noncentrality",
-        "etymology": "From non- + centrality.",
-        "distractors": [
-            "noncentralitey",
-            "nonncentrality",
-            "noncenntrality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "remuscularize",
-        "definition": "To muscularize again.",
-        "exampleSentence": "The first results of transplantation of human ESC-CMs in a large animal model of non-human primates are promising since hESC-CMs showed to remuscularize the heart.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "remuscularize",
-        "etymology": "From re- + muscularize.",
-        "distractors": [
-            "remuscularise",
-            "remmuscularize",
-            "remusscularize"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "eosinopoiesis",
-        "definition": "The production of eosinophils.",
-        "exampleSentence": "There is no evidence in the literature that correlates P2Y12R and modulation of adhesion molecule expression or eosinopoiesis.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "eosinopoiesis",
-        "etymology": "From eosin + -o- + -poiesis.",
-        "distractors": [
-            "eossinopoiesis",
-            "eosinnopoiesis",
-            "eosinoppoiesis"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unbearability",
-        "definition": "The quality of being unbearable.",
-        "exampleSentence": "My teacher explained what an unbearability is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "unbearability",
-        "etymology": "From un- + bear + -ability.",
-        "distractors": [
-            "unbearabilitey",
-            "unnbearability",
-            "unbearrability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "leakproofness",
-        "definition": "The quality of being leakproof.",
-        "exampleSentence": "This means, of course, from 50 to 80 per cent. less friction, and as the maximum compression is obtained owing to the leakproofness, an increase in power is said to result from their use.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "leakproofness",
-        "etymology": "From leakproof + -ness.",
-        "distractors": [
-            "leakproofniss",
-            "leakprofness",
-            "leakproofnes"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rearraignment",
-        "definition": "Arraignment again.",
-        "exampleSentence": "If an offender recidivates during pretrial release, then he is detained after rearraignment under the 64 policies in Table 1 and the status quo policy.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "rearraignment",
-        "etymology": "From re- + arraignment.",
-        "distractors": [
-            "rearraignmant",
-            "rearaignment",
-            "rearraiggnment"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "oryzacystatin",
-        "definition": "A cysteine proteinase inhibitor of rice.",
-        "exampleSentence": "A 53% mortality rate was found for Leptinotarsa decemlineata larvae reared with transgenic potato leaves overexpressing oryzacystatin I.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "oryzacystatin",
-        "etymology": "From translingual Oryza + cystatin.",
-        "distractors": [
-            "orryzacystatin",
-            "oryzzacystatin",
-            "oryzaccystatin"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "hyperinflamed",
-        "definition": "Highly inflamed.",
-        "exampleSentence": "Depletion of Treg cells (i.e. loss of their suppressive function) is not only linked with a hyperinflamed CNS, but it is also associated with decreased retention/development of T RM cells.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "hyperinflamed",
-        "etymology": "From hyper- + inflamed.",
-        "distractors": [
-            "hypperinflamed",
-            "hyperrinflamed",
-            "hyperinnflamed"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tangentialize",
-        "definition": "To make tangential; to bring or drive away from its natural course.",
-        "exampleSentence": "\"… they're trying to get from start to finish, I will sort of tangentialize the conversation so people look at the journey in different ways, or with different possibilities.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "tangentialize",
-        "etymology": "From tangential + -ize.",
-        "distractors": [
-            "tangentialise",
-            "tanngentialize",
-            "tangenntialize"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "elastofluidic",
-        "definition": "Pertaining to a combination of elastic and fluidic properties.",
-        "exampleSentence": "An elephant's trunk was a marvel of elastofluidic engineering – a tool both supple and strong, sensitive and expressive.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "elastofluidic",
-        "etymology": "From elasto- + fluidic.",
-        "distractors": [
-            "ellastofluidic",
-            "elasstofluidic",
-            "elastoffluidic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "boyfriendhood",
-        "definition": "The state, quality, or condition of a boyfriend.",
-        "exampleSentence": "This made me think how glad I was that I was free from the responsibilities of fatherhood; for the moment even free from the responsibilities of boyfriendhood.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "boyfriendhood",
-        "etymology": "From boyfriend + -hood.",
-        "distractors": [
-            "boyfriendhod",
-            "boyffriendhood",
-            "boyfrienndhood"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "exopinacocyte",
-        "definition": "A type of cell that forms the external epithelium lining the canals of poriferans.",
-        "exampleSentence": "The surface part of an exopinacocyte is polygonal in shape and covered with a mucous layer of self-secreted glycocalyx.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "exopinacocyte",
-        "etymology": "From exo- + pinacocyte.",
-        "distractors": [
-            "exxopinacocyte",
-            "exoppinacocyte",
-            "exopinnacocyte"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "faciobrachial",
-        "definition": "Relating to the face and arm.",
-        "exampleSentence": "Seven patients (17.1%) presented with faciobrachial dystonic seizures (FBDS), and all patients had anti-LGI1 antibodies.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "faciobrachial",
-        "etymology": "From facio- + brachial.",
-        "distractors": [
-            "faciobrachiel",
-            "facciobrachial",
-            "faciobbrachial"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "noncontacting",
-        "definition": "Not making contact.",
-        "exampleSentence": "We have shown that fast sampling is possible using noncontacting laser probing, and we have presented a working preliminary configuration for the sensor.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "noncontacting",
-        "etymology": "From non- + contacting.",
-        "distractors": [
-            "nonncontacting",
-            "nonconntacting",
-            "noncontaccting"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "subsubproblem",
-        "definition": "A subproblem of a subproblem.",
-        "exampleSentence": "In contrast, dynamic programming applies when the subproblems overlap—that is, when subproblems share subsubproblems.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "subsubproblem",
-        "etymology": "From sub- + subproblem.",
-        "distractors": [
-            "subbsubproblem",
-            "subsubbproblem",
-            "subsubprobblem"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sedimentarily",
-        "definition": "As, or in terms of, sediment.",
-        "exampleSentence": "Humus may accumulate both sedimentarily and sedentarily.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "sedimentarily",
-        "etymology": "From sedimentary + -ly.",
-        "distractors": [
-            "sedimentariley",
-            "seddimentarily",
-            "sedimmentarily"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "declericalize",
-        "definition": "To remove clerical influence (from).",
-        "exampleSentence": "We need to declericalize this before the deadline.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "declericalize",
-        "etymology": "From de- + clerical + -ize.",
-        "distractors": [
-            "declericalise",
-            "decclericalize",
-            "declerricalize"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "deindividuate",
-        "definition": "To view as a group rather than as an individual; to remove societal norms that shape individual behavior; to remove or reduce individually identifying information.",
-        "exampleSentence": "\"Although the work ethic is valued positively in our society, the “workaholic” stereotype deindividuates all members of a group, those who conform as well as those who rebel.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "deindividuate",
-        "etymology": "From de- + individuate.",
-        "distractors": [
-            "deinndividuate",
-            "deindivviduate",
-            "deindividduate"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "departiculate",
-        "definition": "To remove particles.",
-        "exampleSentence": "Atomically, the system departiculates as the energy of the system moves into balanced equilibrium.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "departiculate",
-        "etymology": "From de- + particulate.",
-        "distractors": [
-            "depparticulate",
-            "deparrticulate",
-            "departicculate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lepidosaurian",
-        "definition": "Any member of the Lepidosauria.",
-        "exampleSentence": "Additionally, some 143 studies utilized vertebrates as study organisms, with 30% evaluating lepidosaurians (i.e., snakes, lizards, amphisbaenians, Tuatara), whereas another 30% assessed amphibians.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "lepidosaurian",
-        "distractors": [
-            "leppidosaurian",
-            "lepiddosaurian",
-            "lepidossaurian"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "meniscotibial",
-        "definition": "Relating to the coronary ligament of the knee.",
-        "exampleSentence": "The meniscotibial ligament was identified and transected under a stereomicroscope.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "meniscotibial",
-        "etymology": "From menisco- + tibial.",
-        "distractors": [
-            "meniscotibiel",
-            "menniscotibial",
-            "menisscotibial"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "dorsotemporal",
-        "definition": "Dorsal to the temples.",
-        "exampleSentence": "The stapedial artery then passes rostrolateral to the paroccipital process and ventral to the dorsotemporal process of the parietal bone.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "dorsotemporal",
-        "etymology": "From dorso- + temporal.",
-        "distractors": [
-            "dorsotemporel",
-            "dorrsotemporal",
-            "dorsottemporal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "metapostnotum",
-        "definition": "The postnotum of a hymenopteran that is situated between the metathorax and the abdominal tergite.",
-        "exampleSentence": "The latter character system suggests another interpretation of the metapostnotum delimitation.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "metapostnotum",
-        "etymology": "From meta- + postnotum.",
-        "distractors": [
-            "mettapostnotum",
-            "metappostnotum",
-            "metaposstnotum"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "glaciofluvial",
-        "definition": "Pertaining to water flowing on, in, or against glaciers or ice sheets.",
-        "exampleSentence": "Trends in dominance of glaciofluvial deposits or of till and lacustrine deposits can be recognized.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "glaciofluvial",
-        "etymology": "From glacio- + fluvial.",
-        "distractors": [
-            "glaciofluviel",
-            "glacciofluvial",
-            "glacioffluvial"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "heterogeneric",
-        "definition": "Of different genera.",
-        "exampleSentence": "Many congeneric spider species had optima in more open canopy while species that had their optima in more closed canopy were mostly heterogeneric.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "heterogeneric",
-        "etymology": "From hetero- + generic.",
-        "distractors": [
-            "hetterogeneric",
-            "heterrogeneric",
-            "heteroggeneric"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multipuncture",
-        "definition": "Involving more than one puncture.",
-        "exampleSentence": "This study evaluated the utility of a new simulator system for multipuncture radiofrequency ablation.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "multipuncture",
-        "etymology": "From multi- + puncture.",
-        "distractors": [
-            "multipuncter",
-            "mulltipuncture",
-            "multippuncture"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "repudiatingly",
-        "definition": "In a repudiating manner.",
-        "exampleSentence": "I fondled this thought sentimentally, and each time I still hoped for a possible succour I whispered repudiatingly: \"You fool, you have already begun to die.\".",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "repudiatingly",
-        "etymology": "From repudiating + -ly.",
-        "distractors": [
-            "repudiatingley",
-            "reppudiatingly",
-            "repuddiatingly"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "electricality",
-        "definition": "The quality of being like electricity.",
-        "exampleSentence": "The shrill electricality of the scene is certainly appropriate to its content.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "electricality",
-        "etymology": "From electrical + -ity.",
-        "distractors": [
-            "electricalitey",
-            "ellectricality",
-            "elecctricality"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "undiscovering",
-        "definition": "Not making discoveries.",
-        "exampleSentence": "Like many another man of latent gifts, he underwent the discipline of purely wasted years undiscovering and undiscovered ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "undiscovering",
-        "distractors": [
-            "unndiscovering",
-            "undisscovering",
-            "undiscovvering"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fingerpainter",
-        "definition": "One who fingerpaints.",
-        "exampleSentence": "The 45-year-old makes pictures of city street life on his cell phone and is among a group of digital fingerpainters who are using emerging technologies to create art.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "fingerpainter",
-        "etymology": "From finger + painter.",
-        "distractors": [
-            "fingerpaintor",
-            "fingerpaintar",
-            "finngerpainter"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "cyberoptimism",
-        "definition": "The belief that computer technology and the Internet will have positive effects on society.",
-        "exampleSentence": "My teacher explained what a cyberoptimism is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "cyberoptimism",
-        "etymology": "From cyber- + optimism.",
-        "distractors": [
-            "cybberoptimism",
-            "cyberroptimism",
-            "cyberopptimism"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "molestability",
-        "definition": "The state or condition of being molestable.",
-        "exampleSentence": "In constantly declaring that children are molestable we are making them into bodies that draw attention to their molestability.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "molestability",
-        "etymology": "From molest + -ability.",
-        "distractors": [
-            "molestabilitey",
-            "mollestability",
-            "molesstability"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "heterovalvate",
-        "definition": "Having different (top and bottom) valves.",
-        "exampleSentence": "Filaments up to 32 cells long were observed, capped with live heterovalvate end-cells where each possessed one of the initial valves.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "heterovalvate",
-        "etymology": "From hetero- + valvate.",
-        "distractors": [
-            "hetterovalvate",
-            "heterrovalvate",
-            "heterovvalvate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "metabosensory",
-        "definition": "Relating to the detection of changes in metabolism or to the presence of metabolites.",
-        "exampleSentence": "Evoked metabosensitive activities Group III myelinated and group IV unmyelinated afferents act primarily as mechano- and metabosensory nerve endings respectively.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "metabosensory",
-        "etymology": "From metabo- + sensory.",
-        "distractors": [
-            "metabosensorey",
-            "metabosensery",
-            "mettabosensory"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intrasynaptic",
-        "definition": "Within a synapse.",
-        "exampleSentence": "First, we demonstrate the presence of small postsynaptic vesicles and characterize their size and intrasynaptic localization.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "intrasynaptic",
-        "etymology": "From intra- + synaptic.",
-        "distractors": [
-            "inntrasynaptic",
-            "intrassynaptic",
-            "intrasynnaptic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "transgingival",
-        "definition": "Through or across the gums.",
-        "exampleSentence": "In clinical practice, it shall be develop and implement suitably effective coating strategies on definitive prosthetic transgingival abutments or on zirconia crowns.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "transgingival",
-        "etymology": "From trans- + gingival.",
-        "distractors": [
-            "transgingivel",
-            "trannsgingival",
-            "transginngival"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "plenitudinous",
-        "definition": "Characterised by plenitude; abundant.",
-        "exampleSentence": "Our view relies on a plenitudinous metaphysics to which we are antecedently sympathetic, and adds to it one bold hypothesis.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "plenitudinous",
-        "etymology": "From plenitude + -in- + -ous.",
-        "distractors": [
-            "plenitudinus",
-            "plenitudinious",
-            "plennitudinous"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "eliminability",
-        "definition": "The condition of being eliminable.",
-        "exampleSentence": "In light of this, it should be clear why there was no room for Russell’s ideas about the eliminability of sets in the history I aimed to write.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "eliminability",
-        "distractors": [
-            "eliminabilitey",
-            "elliminability",
-            "elimminability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "coextensivity",
-        "definition": "The condition of being coextensive.",
-        "exampleSentence": "Notice that the suggested rationale for the above coextensivity claim is not given by a broadly behaviourist account of belief, but an interpretationist account of mental states.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "coextensivity",
-        "etymology": "From co- + extensivity.",
-        "distractors": [
-            "coextensivitey",
-            "coexxtensivity",
-            "coextennsivity"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "conjunctivism",
-        "definition": "The theory that the grounding conditions for social facts are conjunctive.",
-        "exampleSentence": "The first thing to note is that S4 sounds dangerously close to conjunctivism.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "conjunctivism",
-        "etymology": "From conjunctive + -ism.",
-        "distractors": [
-            "connjunctivism",
-            "conjunnctivism",
-            "conjunctivvism"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "conjunctivist",
-        "definition": "Relating to conjunctivism.",
-        "exampleSentence": "However, just because an analysis comes out being more conjunctivist than desired, it does not mean it is thereby identical to the forms of conjunctivism that Johnston rejects.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "conjunctivist",
-        "etymology": "From conjunctive + -ist.",
-        "distractors": [
-            "connjunctivist",
-            "conjunnctivist",
-            "conjunctivvist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonactualized",
-        "definition": "Not actualized.",
-        "exampleSentence": "Some nonactualized possible communities should be included among those communities whose relevant alternatives constitute the relevant union set.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "nonactualized",
-        "etymology": "From non- + actualized.",
-        "distractors": [
-            "nonnactualized",
-            "nonacctualized",
-            "nonactuallized"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "peribacteroid",
-        "definition": "Surrounding a bacteroid or bacterium.",
-        "exampleSentence": "The peribacteroid space widened locally and bacteroids' cytoplasm became heterogeneous (Fig 5E ).",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "peribacteroid",
-        "etymology": "From peri- + bacteroid.",
-        "distractors": [
-            "perribacteroid",
-            "peribbacteroid",
-            "peribaccteroid"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "remasturbated",
-        "definition": "Remastered.",
-        "exampleSentence": "Yeah... and release the originals on DVD... not the remasturbated versions.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "remasturbated",
-        "distractors": [
-            "remmasturbated",
-            "remassturbated",
-            "remasturrbated"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "chauffeurship",
-        "definition": "The condition of being, or employment as, a chauffeur.",
-        "exampleSentence": "We are climbing in an auto under Molly's efficient chauffeurship.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "chauffeurship",
-        "etymology": "From chauffeur + -ship.",
-        "distractors": [
-            "chaufeurship",
-            "chauffeurrship",
-            "chawffeurship"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "discruciating",
-        "definition": "Present participle and gerund of discruciate.",
-        "exampleSentence": "To single Hearts doubling is discruciating: such tempers must swear to dissemble, and prove but hypocritical Hypocrites.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "discruciating",
-        "distractors": [
-            "disscruciating",
-            "discrucciating",
-            "discruciatting"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "covariability",
-        "definition": "The quality of being covariable.",
-        "exampleSentence": "Multiple correspondence analyses showed covariability in multiple signs and symptoms, with severity being the strongest factor corresponding across outcomes.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "covariability",
-        "etymology": "From co- + variability.",
-        "distractors": [
-            "covariabilitey",
-            "covvariability",
-            "covarriability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "linguaculture",
-        "definition": "A culture with its associated language.",
-        "exampleSentence": "The central research question in this article is: What role does Chinese linguaculture play in English teaching in China?",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "linguaculture",
-        "distractors": [
-            "linguaculter",
-            "linnguaculture",
-            "linguacculture"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "escapological",
-        "definition": "Of, or related to escapology.",
-        "exampleSentence": "His office was already showing signs of his success even on that first meeting, with photographs on the walls showing his various escapological achievements.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "escapological",
-        "etymology": "From escapology + -ical.",
-        "distractors": [
-            "escapologicel",
-            "esscapological",
-            "escappological"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "simplificator",
-        "definition": "One who simplifies.",
-        "exampleSentence": "Yet this is the supposition of simplificators, who from the impulse of a faulty cerebral conformation, must needs disbelieve, because theology would otherwise afford them no intellectual exercise.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "simplificator",
-        "distractors": [
-            "simplificater",
-            "simmplificator",
-            "simplifficator"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "uninhabitedly",
-        "definition": "In an uninhabited fashion; without inhabitants.",
-        "exampleSentence": "The procuratorial palace of Aquincum was declining uninhabitedly from the end of the IIIrd century on.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "uninhabitedly",
-        "etymology": "From uninhabited + -ly.",
-        "distractors": [
-            "uninhabitedley",
-            "unninhabitedly",
-            "uninnhabitedly"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "persnicketily",
-        "definition": "With a great attention to details and precision; in a persnickety fashion.",
-        "exampleSentence": "Claudee Cremer, you amaze me with your absolutely persnicketily perfect work.",
-        "partOfSpeech": "adverb",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "persnicketily",
-        "etymology": "From persnickety + -ly.",
-        "distractors": [
-            "persnicketiley",
-            "perrsnicketily",
-            "persniccketily"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "protumorgenic",
-        "definition": "Misspelling of protumorigenic.",
-        "exampleSentence": "The DHA treatment also inhibited the expression of protumorgenic factors including VEGF and telomerase catalytic subunit.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "protumorgenic",
-        "distractors": [
-            "prottumorgenic",
-            "protummorgenic",
-            "protumorrgenic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "gargantuanism",
-        "definition": "The state or condition of being gargantuan.",
-        "exampleSentence": "For some writers, the flowering of chamber music around 1910 represents a reaction against the gargantuanism cultivated so vigorously in the previous century.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "gargantuanism",
-        "etymology": "From gargantuan + -ism.",
-        "distractors": [
-            "garrgantuanism",
-            "garganntuanism",
-            "gargantuannism"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "bisdesmosidic",
-        "definition": "Pertaining to a saponin with two sugar chains.",
-        "exampleSentence": "As a result of further studies, ester triterpenoid saponosides with a bisdesmosidic structure were isolated from S.virgaurea.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bisdesmosidic",
-        "etymology": "From bis- + -desmosidic.",
-        "distractors": [
-            "bissdesmosidic",
-            "bisdessmosidic",
-            "bisdesmossidic"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "cyclonerodiol",
-        "definition": "The antifungal agent (1R,2S,3R)-3-[(2R)-2-hydroxy-6-methylhept-5-en-2-yl]-1,2-dimethylcyclopentan-1-ol.",
-        "exampleSentence": "My teacher explained what a cyclonerodiol is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "cyclonerodiol",
-        "distractors": [
-            "cycclonerodiol",
-            "cyclonnerodiol",
-            "cyclonerrodiol"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bioneogenesis",
-        "definition": "The neogenesis of biochemically active compouds.",
-        "exampleSentence": "CHL inhibits the protein synthesis that impacts among other protein expression the bioneogenesis of enzymes such as esterases, whereas AMP targets the bacterial cell wall synthesis.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "bioneogenesis",
-        "etymology": "From bio- + neogenesis.",
-        "distractors": [
-            "bionneogenesis",
-            "bioneoggenesis",
-            "bioneogennesis"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "glycoinositol",
         "definition": "Inositol and another carbohydrate.",
         "exampleSentence": "My teacher explained what a glycoinositol is during our lesson.",
@@ -4666,22 +916,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "paleoallgology"
         ],
         "theme": "earth"
-    },
-    {
-        "word": "heterospermic",
-        "definition": "Containing a mixture of semen from two or more male animals.",
-        "exampleSentence": "After 48 hours, female animals were artificially inseminated with a heterospermic pool of semen from male animals of the same line to randomize male effect.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "heterospermic",
-        "etymology": "From hetero- + spermic.",
-        "distractors": [
-            "hetterospermic",
-            "heterrospermic",
-            "heterosspermic"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "prosurfactant",
@@ -7550,22 +3784,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "transnigerian",
-        "definition": "Crossing or spanning the Niger (river or valley).",
-        "exampleSentence": "His explorations in search of an improved route to the Gulf of Guinea from the valley of the Niger resulted in a scheme for the Transnigerian Railway between the Bandama and Niger rivers.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "transnigerian",
-        "etymology": "From trans- + Nigerian.",
-        "distractors": [
-            "trannsnigerian",
-            "transniggerian",
-            "transnigerrian"
-        ],
-        "theme": "nature"
-    },
-    {
         "word": "globalitarian",
         "definition": "Totalitarian at a global scale.",
         "exampleSentence": "It cannot put up any resistance to the globalitarian tyranny because it is itself an integral part of it.",
@@ -7784,22 +4002,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "underinnstruct"
         ],
         "theme": "people"
-    },
-    {
-        "word": "sesquizygotic",
-        "definition": "Describing twins which are semi-identical, formed from one egg that is fertilized by two separate sperm.",
-        "exampleSentence": "Gabbett said that while there might be other, unreported, cases of sesquizygotic twins, it remains a very unusual phenomenon.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "sesquizygotic",
-        "etymology": "From sesqui- + zygotic.",
-        "distractors": [
-            "sessquizygotic",
-            "sesquizzygotic",
-            "sesquizyggotic"
-        ],
-        "theme": "food"
     },
     {
         "word": "quadriradiate",
@@ -11202,22 +7404,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "granddaddiest",
-        "definition": "Biggest and most impressive; most significant.",
-        "exampleSentence": "I’ve heard of this asshole. Ivaylo, The Emperor. The granddaddiest of the Vrykolakas.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "granddaddiest",
-        "etymology": "From granddaddy + -est.",
-        "distractors": [
-            "grandaddiest",
-            "granddadiest",
-            "grannddaddiest"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "precomprehend",
         "definition": "To comprehend in advance.",
         "exampleSentence": "Thus, beyond Trakl's immediate experience of 'horror', we already precomprehend the profound sense of anguish that was ripping him apart.",
@@ -11385,22 +7571,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "lussutrombopag",
             "lusuttrombopag",
             "lusutrommbopag"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "swordmistress",
-        "definition": "A female expert or consummate swordfighter.",
-        "exampleSentence": "My teacher explained what a swordmistress is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "swordmistress",
-        "etymology": "From sword + mistress.",
-        "distractors": [
-            "swordmistres",
-            "sworrdmistress",
-            "swordmisstress"
         ],
         "theme": "everyday"
     },
@@ -14078,22 +10248,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "counterexample",
-        "definition": "An example that counters a general rule; an exception to a general rule; a specific instance of the falsity of (and falsifiability of) any proposed universal applicability of a rule or statement.",
-        "exampleSentence": "The book had an entire chapter about the counterexample.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "counterexample",
-        "etymology": "From counter- + example.",
-        "distractors": [
-            "ocunterexample",
-            "cuonterexample",
-            "conuterexample"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "coxsackievirus",
         "definition": "Any of many enteroviruses that cause disease mostly in children.",
         "exampleSentence": "The book had an entire chapter about the coxsackievirus.",
@@ -15850,5 +12004,3864 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "schlocckmeister"
         ],
         "theme": "art"
+    },
+    {
+        "word": "schoolmistress",
+        "definition": "A woman in charge of a school.",
+        "exampleSentence": "The book had an entire chapter about the schoolmistress.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "schoolmistress",
+        "etymology": "From school + mistress.",
+        "distractors": [
+            "cshoolmistress",
+            "shcoolmistress",
+            "scoholmistress"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "secundigravida",
+        "definition": "A woman who is pregnant for the second time.",
+        "exampleSentence": "The book had an entire chapter about the secundigravida.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "secundigravida",
+        "distractors": [
+            "escundigravida",
+            "sceundigravida",
+            "seucndigravida"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sentimentalist",
+        "definition": "A person who is sentimental.",
+        "exampleSentence": "But Flay, for all his longing to return to his birthplace was no sentimentalist in exile. His thoughts when they turned to the castle were by no means in the nature of reveries.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "sentimentalist",
+        "etymology": "From sentimental + -ist.",
+        "distractors": [
+            "senntimentalist",
+            "sentimmentalist",
+            "sentimenntalist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "servomechanism",
+        "definition": "A mechanical device for controlling large amounts of power by means of smaller amounts of power and correcting the performance of the device using feedback.",
+        "exampleSentence": "The book had an entire chapter about the servomechanism.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "servomechanism",
+        "etymology": "From servo- + mechanism.",
+        "distractors": [
+            "esrvomechanism",
+            "srevomechanism",
+            "sevromechanism"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "sociobiologist",
+        "definition": "A biologist whose speciality is sociobiology.",
+        "exampleSentence": "The book had an entire chapter about the sociobiologist.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "sociobiologist",
+        "etymology": "From socio- + biologist.",
+        "distractors": [
+            "osciobiologist",
+            "scoiobiologist",
+            "soicobiologist"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "speechlessness",
+        "definition": "The state of being speechless.",
+        "exampleSentence": "It was her virtue to be tall, pale, characterless and effaced by partial speechlessness.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "speechlessness",
+        "etymology": "From speechless + -ness.",
+        "distractors": [
+            "speechlessniss",
+            "spechlessness",
+            "speechlesness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "sporotrichosis",
+        "definition": "A disease caused by infection with the fungus Sporothrix schenckii, sometimes acquired from roses.",
+        "exampleSentence": "Rose bushes can carry an organism that causes sporotrichosis, a fungal infection.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "greek-roots",
+        "pronunciation": "sporotrichosis",
+        "etymology": "From sporotrich- + -osis, from a former genus Sporotrichum whose species have since been reclassified into other genera, including Sporothrix and others.",
+        "distractors": [
+            "sporrotrichosis",
+            "sporottrichosis",
+            "sporotricchosis"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "streptodornase",
+        "definition": "Streptococcal deoxyribonuclease.",
+        "exampleSentence": "The book had an entire chapter about the streptodornase.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "streptodornase",
+        "etymology": "Contraction, removing various letters from the full phrase.",
+        "distractors": [
+            "tsreptodornase",
+            "srteptodornase",
+            "sterptodornase"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "strikebreaking",
+        "definition": "Activity intended to disrupt or end a strike without an agreement by workers.",
+        "exampleSentence": "The Government dared not hire men to care for its 50,000 head for fear of being accused of strikebreaking.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "strikebreaking",
+        "etymology": "From strike + breaking or strikebreak + -ing.",
+        "distractors": [
+            "strikkebreaking",
+            "strikebbreaking",
+            "strikebreakking"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "superabundance",
+        "definition": "An extreme abundance; abundance to a vast degree that seems almost excessive.",
+        "exampleSentence": "After millenniums of austerity and poverty, the age of limitless “superabundance” was at hand.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "superabundance",
+        "etymology": "From super- + abundance.",
+        "distractors": [
+            "superabundence",
+            "supperabundance",
+            "superrabundance"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "superstructure",
+        "definition": "Any structure built above the top full deck (FM 55-501).",
+        "exampleSentence": "The superstructure evolves more slowly and is more resistant to change than the economic infrastructure, especially in the modern industrial age of advanced capitalism.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "superstructure",
+        "etymology": "From super- + structure.",
+        "distractors": [
+            "superstructer",
+            "supperstructure",
+            "superrstructure"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "thriftlessness",
+        "definition": "The property of being thriftless.",
+        "exampleSentence": "His habits of thriftlessness have made him accustomed to yielding to impulses.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "thriftlessness",
+        "etymology": "From thriftless + -ness.",
+        "distractors": [
+            "thriftlessniss",
+            "thriftlesness",
+            "thriftlessnes"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "transvestitism",
+        "definition": "Transvestism.",
+        "exampleSentence": "And if you factor in transvestitism, things get really stirred up.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "transvestitism",
+        "etymology": "From transvestite + -ism.",
+        "distractors": [
+            "trannsvestitism",
+            "transvesstitism",
+            "transvestittism"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "trinitarianism",
+        "definition": "The monotheistic Christian doctrine that defines God as three divine persons or hypostases: the Father, the Son (Jesus Christ), and the Holy Spirit.",
+        "exampleSentence": "The book had an entire chapter about the trinitarianism.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "trinitarianism",
+        "etymology": "From trinitarian + -ism.",
+        "distractors": [
+            "rtinitarianism",
+            "tirnitarianism",
+            "trniitarianism"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "trombiculiasis",
+        "definition": "Trombiculosis.",
+        "exampleSentence": "The book had an entire chapter about the trombiculiasis.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "trombiculiasis",
+        "etymology": "From translingual Trombiculidae + -iasis.",
+        "distractors": [
+            "rtombiculiasis",
+            "tormbiculiasis",
+            "trmobiculiasis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "turbogenerator",
+        "definition": "A turbine directly connected to an electric generator in order to generate power.",
+        "exampleSentence": "The book had an entire chapter about the turbogenerator.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "turbogenerator",
+        "etymology": "From turbo- + generator.",
+        "distractors": [
+            "utrbogenerator",
+            "trubogenerator",
+            "tubrogenerator"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ultramontanism",
+        "definition": "A Roman Catholic philosophy that emphasises the prerogatives and powers of the Pope.",
+        "exampleSentence": "The book had an entire chapter about the ultramontanism.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "ultramontanism",
+        "etymology": "From ultramontane + -ism, after French ultramontanisme.",
+        "distractors": [
+            "ulltramontanism",
+            "ultrammontanism",
+            "ultramonntanism"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "unadaptability",
+        "definition": "The condition of being unadaptable.",
+        "exampleSentence": "The book had an entire chapter about the unadaptability.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unadaptability",
+        "etymology": "From un- + adaptability.",
+        "distractors": [
+            "nuadaptability",
+            "uandaptability",
+            "undaaptability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncongeniality",
+        "definition": "The quality of being uncongenial.",
+        "exampleSentence": "The book had an entire chapter about the uncongeniality.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "uncongeniality",
+        "etymology": "From un- + congeniality.",
+        "distractors": [
+            "nucongeniality",
+            "ucnongeniality",
+            "unocngeniality"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undersecretary",
+        "definition": "An administrator immediately subordinate to a head of a government department or to a member of a cabinet.",
+        "exampleSentence": "The book had an entire chapter about the undersecretary.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "undersecretary",
+        "etymology": "From under- + secretary.",
+        "distractors": [
+            "nudersecretary",
+            "udnersecretary",
+            "unedrsecretary"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "understructure",
+        "definition": "The supporting structure underneath something, such as a vehicle or bridge.",
+        "exampleSentence": "The book had an entire chapter about the understructure.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "understructure",
+        "etymology": "From under- + structure.",
+        "distractors": [
+            "understructer",
+            "unnderstructure",
+            "underrstructure"
+        ],
+        "theme": "travel"
+    },
+    {
+        "word": "undesirability",
+        "definition": "The property of being undesirable.",
+        "exampleSentence": "India is merely the geopsychic site for a cluster of undesirabilities that continue to be illicitly desired.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undesirability",
+        "etymology": "From un- + desirability.",
+        "distractors": [
+            "undesirabilitey",
+            "unndesirability",
+            "undessirability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uninsurability",
+        "definition": "The quality of being uninsurable.",
+        "exampleSentence": "The book had an entire chapter about the uninsurability.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "uninsurability",
+        "etymology": "From un- + insurability.",
+        "distractors": [
+            "nuinsurability",
+            "uinnsurability",
+            "unnisurability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "utilitarianism",
+        "definition": "A system of ethics based on the premise that something's value may be measured by its usefulness.",
+        "exampleSentence": "The book had an entire chapter about the utilitarianism.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "utilitarianism",
+        "etymology": "From utilitarian + -ism.",
+        "distractors": [
+            "tuilitarianism",
+            "uitlitarianism",
+            "utliitarianism"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "vespertilionid",
+        "definition": "Any of very many bats of the family Vespertilionidae.",
+        "exampleSentence": "The book had an entire chapter about the vespertilionid.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "vespertilionid",
+        "distractors": [
+            "evspertilionid",
+            "vsepertilionid",
+            "vepsertilionid"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "watercolourist",
+        "definition": "An artist who paints watercolours.",
+        "exampleSentence": "Jim's aunt is an avid watercolourist.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "watercolourist",
+        "etymology": "From watercolour + -ist.",
+        "distractors": [
+            "wattercolourist",
+            "waterrcolourist",
+            "watercollourist"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "xenotransplant",
+        "definition": "An instance of xenotransplantation.",
+        "exampleSentence": "The book had an entire chapter about the xenotransplant.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "xenotransplant",
+        "etymology": "From xeno- + transplant.",
+        "distractors": [
+            "xenotransplent",
+            "xennotransplant",
+            "xenottransplant"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "actinomycetous",
+        "definition": "Of or relating to actinomycetes.",
+        "exampleSentence": "The actinomycetous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "actinomycetous",
+        "distractors": [
+            "catinomycetous",
+            "atcinomycetous",
+            "acitnomycetous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "adrenocortical",
+        "definition": "Relating to the adrenal cortex.",
+        "exampleSentence": "The adrenocortical weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "adrenocortical",
+        "etymology": "From adreno- + cortical.",
+        "distractors": [
+            "darenocortical",
+            "ardenocortical",
+            "adernocortical"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "agrobiological",
+        "definition": "Of or pertaining to agrobiology.",
+        "exampleSentence": "The agrobiological weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "agrobiological",
+        "etymology": "From agrobiology + -ical.",
+        "distractors": [
+            "garobiological",
+            "argobiological",
+            "agorbiological"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "antiadrenergic",
+        "definition": "Preventing or counteracting the effects of adrenaline.",
+        "exampleSentence": "The antiadrenergic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "antiadrenergic",
+        "etymology": "From anti- + adrenergic. By surface analysis, anti- + adren- + -ergic.",
+        "distractors": [
+            "natiadrenergic",
+            "atniadrenergic",
+            "anitadrenergic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "archaeological",
+        "definition": "Relating to the science or research of archaeology.",
+        "exampleSentence": "The remains of 62 people were dug up at the previously unknown archaeological site near Garforth.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "archaeological",
+        "etymology": "From archaeology + -ical.",
+        "distractors": [
+            "archaeologicel",
+            "arrchaeological",
+            "archaeollogical"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "archiepiscopal",
+        "definition": "Of or relating to an archbishop or an archbishopric.",
+        "exampleSentence": "In 960 or 961, the notorious Dunstan entered our archiepiscopal chair, which he occupied till death called him to another world in 968.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "archiepiscopal",
+        "etymology": "Ultimately from Ancient Greek ἀρχιεπίσκοπος (arkhiepískopos), from ἀρχι- (arkhi-, “chief”) + ἐπίσκοπος (epískopos, “bishop”); see also Latin archiepiscopālis.",
+        "distractors": [
+            "archiepiscopel",
+            "arrchiepiscopal",
+            "archieppiscopal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "aristocratical",
+        "definition": "Aristocratic.",
+        "exampleSentence": "The aristocratical weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "aristocratical",
+        "etymology": "From aristocrat + -ical.",
+        "distractors": [
+            "raistocratical",
+            "airstocratical",
+            "arsitocratical"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "artiodactylous",
+        "definition": "Even-toed; belonging to the Artiodactyla.",
+        "exampleSentence": "The artiodactylous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "artiodactylous",
+        "distractors": [
+            "ratiodactylous",
+            "atriodactylous",
+            "aritodactylous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bacteriostatic",
+        "definition": "Of or relating to bacteriostasis or a bacteriostat; inhibiting the growth of bacteria without destroying them.",
+        "exampleSentence": "All these compounds were bacteriostatic, affecting the bacterial metabolism and preventing its multiplication in the host, thereby permitting natural body defences to succeed against the invader.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "bacteriostatic",
+        "etymology": "From bacterio- + -static.",
+        "distractors": [
+            "baccteriostatic",
+            "bacterriostatic",
+            "bacteriosstatic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "basidiosporous",
+        "definition": "Relating to, or producing, basidiospores.",
+        "exampleSentence": "The basidiosporous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "basidiosporous",
+        "distractors": [
+            "absidiosporous",
+            "bsaidiosporous",
+            "baisdiosporous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bibliomaniacal",
+        "definition": "Having, or pertaining to, a passion for books.",
+        "exampleSentence": "The small local library was not enough to satisfy our bibliomaniacal thirst.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "bibliomaniacal",
+        "etymology": "From bibliomaniac + -al.",
+        "distractors": [
+            "bibliomaniacel",
+            "bibbliomaniacal",
+            "bibliommaniacal"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "bioluminescent",
+        "definition": "Exhibiting bioluminescence.",
+        "exampleSentence": "The bioluminescent weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "bioluminescent",
+        "etymology": "From bio- + luminescent.",
+        "distractors": [
+            "iboluminescent",
+            "boiluminescent",
+            "bilouminescent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "brachydactylic",
+        "definition": "Relating to brachydactyly.",
+        "exampleSentence": "The brachydactylic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "brachydactylic",
+        "etymology": "From brachy- + dactylic.",
+        "distractors": [
+            "rbachydactylic",
+            "barchydactylic",
+            "brcahydactylic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "campylotropous",
+        "definition": "Having the ovules and seeds so curved, or bent down upon themselves, that the ends of the embryo are brought close together; curved in such a way.",
+        "exampleSentence": "The campylotropous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "campylotropous",
+        "etymology": "Ancient Greek [Term?] curved + a turning.",
+        "distractors": [
+            "campylotropus",
+            "campylotropious",
+            "cammpylotropous"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "catachrestical",
+        "definition": "Catachrestic.",
+        "exampleSentence": "The catachrestical weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "catachrestical",
+        "distractors": [
+            "catachresticel",
+            "cattachrestical",
+            "catacchrestical"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "chemoreceptive",
+        "definition": "Able to respond to a chemical stimulus.",
+        "exampleSentence": "The chemoreceptive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "chemoreceptive",
+        "etymology": "From chemo- + receptive.",
+        "distractors": [
+            "hcemoreceptive",
+            "cehmoreceptive",
+            "chmeoreceptive"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "christological",
+        "definition": "Of or pertaining to Christology.",
+        "exampleSentence": "The christological weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "christological",
+        "etymology": "From Christology + -ical.",
+        "distractors": [
+            "hcristological",
+            "crhistological",
+            "chirstological"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "comprehendible",
+        "definition": "Comprehensible, understandable; able to be comprehended.",
+        "exampleSentence": "I thought the whole explicable, comprehendible through books.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "comprehendible",
+        "etymology": "From comprehend + -ible.",
+        "distractors": [
+            "comprehendable",
+            "comprehendibel",
+            "commprehendible"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "craniometrical",
+        "definition": "Relating to craniometry; craniometric.",
+        "exampleSentence": "The craniometrical weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "craniometrical",
+        "etymology": "From craniometry + -ical.",
+        "distractors": [
+            "rcaniometrical",
+            "carniometrical",
+            "crnaiometrical"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "criminological",
+        "definition": "Of or pertaining to criminology.",
+        "exampleSentence": "The criminological weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "criminological",
+        "etymology": "From criminology + -ical.",
+        "distractors": [
+            "rciminological",
+            "cirminological",
+            "crmiinological"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cyanobacterial",
+        "definition": "Of or pertaining to the cyanobacteria.",
+        "exampleSentence": "The cyanobacterial weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "cyanobacterial",
+        "etymology": "From cyanobacteria + -al.",
+        "distractors": [
+            "ycanobacterial",
+            "caynobacterial",
+            "cynaobacterial"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dextrorotatory",
+        "definition": "That rotates the plane of polarized light to the right, or clockwise. Notation: (+) or formerly lowercase d-.",
+        "exampleSentence": "Dexibuprofen is the active dextrorotatory enantiomer of ibuprofen.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "dextrorotatory",
+        "etymology": "From dextro- + rotatory.",
+        "distractors": [
+            "dextrorotatorey",
+            "dextrorotatery",
+            "dexxtrorotatory"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "diagonalizable",
+        "definition": "Able to be diagonalized.",
+        "exampleSentence": "The diagonalizable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "diagonalizable",
+        "etymology": "From diagonalize + -able.",
+        "distractors": [
+            "idagonalizable",
+            "daigonalizable",
+            "digaonalizable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dicotyledonous",
+        "definition": "Of or pertaining to the dicotyledons.",
+        "exampleSentence": "The dicotyledonous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "dicotyledonous",
+        "etymology": "From dicotyledon + -ous.",
+        "distractors": [
+            "idcotyledonous",
+            "dciotyledonous",
+            "dioctyledonous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dolichocranial",
+        "definition": "Having a relatively long skull.",
+        "exampleSentence": "The dolichocranial weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "dolichocranial",
+        "etymology": "From dolicho- + cranial.",
+        "distractors": [
+            "odlichocranial",
+            "dloichocranial",
+            "doilchocranial"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "electroneutral",
+        "definition": "Having no net electric charge.",
+        "exampleSentence": "The electroneutral weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "electroneutral",
+        "etymology": "From electro- + neutral.",
+        "distractors": [
+            "leectroneutral",
+            "eelctroneutral",
+            "elcetroneutral"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "extinguishable",
+        "definition": "Able to be extinguished.",
+        "exampleSentence": "The extinguishable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "extinguishable",
+        "etymology": "From extinguish + -able.",
+        "distractors": [
+            "xetinguishable",
+            "etxinguishable",
+            "exitnguishable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gastroduodenal",
+        "definition": "Relating to, or connecting the stomach and the duodenum.",
+        "exampleSentence": "The gastroduodenal weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "gastroduodenal",
+        "etymology": "From gastro- + duodenal.",
+        "distractors": [
+            "agstroduodenal",
+            "gsatroduodenal",
+            "gatsroduodenal"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "geosynchronous",
+        "definition": "Refers to the orbit of a satellite whose rate of revolution is matched to the rotation period of the Earth. A special case is the geostationary orbit, which is circular and equatorial, so that the satellite appears to be fixed over a particular point on Earth's surface.",
+        "exampleSentence": "The geosynchronous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "geosynchronous",
+        "etymology": "From geo- + synchronous.",
+        "distractors": [
+            "egosynchronous",
+            "goesynchronous",
+            "gesoynchronous"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "gerontological",
+        "definition": "Of or pertaining to gerontology.",
+        "exampleSentence": "The gerontological weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "gerontological",
+        "etymology": "From gerontology + -ical.",
+        "distractors": [
+            "egrontological",
+            "greontological",
+            "georntological"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "haematopoietic",
+        "definition": "Of or pertaining to haematopoiesis.",
+        "exampleSentence": "The haematopoietic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "haematopoietic",
+        "etymology": "From haemato- + poietic.",
+        "distractors": [
+            "ahematopoietic",
+            "heamatopoietic",
+            "hameatopoietic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hemimetabolous",
+        "definition": "Exhibiting hemimetabolism.",
+        "exampleSentence": "The hemimetabolous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "hemimetabolous",
+        "distractors": [
+            "ehmimetabolous",
+            "hmeimetabolous",
+            "heimmetabolous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hemingwayesque",
+        "definition": "Reminiscent of Ernest Hemingway (1899–1961), American writer and journalist, or the understated quality of his prose or the themes he wrote about, including war, wilderness, love, and loss.",
+        "exampleSentence": "White contrasted the spare, \"chastened\" Hemingwayesque school of straight writing with gay writers like Proust (and Edmund White too) who were \"free to indulge in ornament.\"",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "french-origin",
+        "pronunciation": "hemingwayesque",
+        "etymology": "From Hemingway + -esque.",
+        "distractors": [
+            "hemmingwayesque",
+            "heminngwayesque",
+            "hemingwayessque"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "holometabolous",
+        "definition": "Pertaining to, or undergoing, holometabolism; going through complete metamorphosis.",
+        "exampleSentence": "The holometabolous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "holometabolous",
+        "distractors": [
+            "ohlometabolous",
+            "hloometabolous",
+            "hoolmetabolous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hypersensitive",
+        "definition": "Highly or abnormally sensitive to some substances or agents, especially to some allergen.",
+        "exampleSentence": "The hypersensitive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "hypersensitive",
+        "etymology": "From hyper- + sensitive. Doublet of supersensitive.",
+        "distractors": [
+            "yhpersensitive",
+            "hpyersensitive",
+            "hyeprsensitive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "incapacitating",
+        "definition": "To make incapable (of doing something).",
+        "exampleSentence": "The incapacitating weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "incapacitating",
+        "distractors": [
+            "nicapacitating",
+            "icnapacitating",
+            "inacpacitating"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inconsiderable",
+        "definition": "Too unimportant to be worthy of attention.",
+        "exampleSentence": "It is not inconsiderable to me that all the above can simultaneously exist.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "inconsiderable",
+        "etymology": "From Middle French inconsidérable. By surface analysis, in- + considerable.",
+        "distractors": [
+            "inconsiderible",
+            "inconsiderabel",
+            "innconsiderable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "individualized",
+        "definition": "Tailored to an individual.",
+        "exampleSentence": "The individualized weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "individualized",
+        "distractors": [
+            "nidividualized",
+            "idnividualized",
+            "inidvidualized"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "industrialised",
+        "definition": "Having undergone industrialisation.",
+        "exampleSentence": "The completely-industrialised outskirts of Newcastle gradually give place to rural surroundings, and the Tyne becomes a moorland river with a boulder-strewn bed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "industrialised",
+        "etymology": "From industrialise + -ed.",
+        "distractors": [
+            "inndustrialised",
+            "indusstrialised",
+            "industriallised"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "industrialized",
+        "definition": "Having undergone industrialization.",
+        "exampleSentence": "The industrialized weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "industrialized",
+        "etymology": "From industrialize + -ed.",
+        "distractors": [
+            "nidustrialized",
+            "idnustrialized",
+            "inudstrialized"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inexterminable",
+        "definition": "Impossible to exterminate.",
+        "exampleSentence": "Duelling has become a fashionable vice in our country, and it is therefore to be feared , inexterminable.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "inexterminable",
+        "etymology": "From Latin inexterminabilis. See in- (“not”) + exterminable.",
+        "distractors": [
+            "inexterminible",
+            "inexterminabel",
+            "innexterminable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "interdependent",
+        "definition": "Mutually dependent; reliant on one another.",
+        "exampleSentence": "All life on our planet exists only because we are enmeshed within a complex web of interdependent ecological and social systems.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "interdependent",
+        "etymology": "From inter- + dependent.",
+        "distractors": [
+            "interdependant",
+            "innterdependent",
+            "interrdependent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intermolecular",
+        "definition": "From one molecule to another; between molecules.",
+        "exampleSentence": "The intermolecular weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "intermolecular",
+        "etymology": "From inter- + molecular.",
+        "distractors": [
+            "nitermolecular",
+            "itnermolecular",
+            "inetrmolecular"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "interplanetary",
+        "definition": "Existing or occurring between planets.",
+        "exampleSentence": "Humans are just beginning to explore interplanetary travel.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "interplanetary",
+        "etymology": "From inter- + planetary.",
+        "distractors": [
+            "interplanetarey",
+            "interplanetery",
+            "interplanetairy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "interpretative",
+        "definition": "Marked by interpretation.",
+        "exampleSentence": "The interpretative weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "interpretative",
+        "distractors": [
+            "niterpretative",
+            "itnerpretative",
+            "inetrpretative"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intervertebral",
+        "definition": "Between the vertebrae.",
+        "exampleSentence": "The intervertebral weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "intervertebral",
+        "etymology": "From inter- + vertebral.",
+        "distractors": [
+            "nitervertebral",
+            "itnervertebral",
+            "inetrvertebral"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intracutaneous",
+        "definition": "Within the layers of the skin; intradermal.",
+        "exampleSentence": "The intracutaneous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "intracutaneous",
+        "etymology": "From intra- + cutaneous.",
+        "distractors": [
+            "nitracutaneous",
+            "itnracutaneous",
+            "inrtacutaneous"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "intramolecular",
+        "definition": "Between different parts of the same molecule.",
+        "exampleSentence": "The intramolecular weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "intramolecular",
+        "etymology": "From intra- + molecular.",
+        "distractors": [
+            "nitramolecular",
+            "itnramolecular",
+            "inrtamolecular"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intrapulmonary",
+        "definition": "Within the material of the lungs.",
+        "exampleSentence": "The intrapulmonary weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "intrapulmonary",
+        "etymology": "From intra- + pulmonary.",
+        "distractors": [
+            "nitrapulmonary",
+            "itnrapulmonary",
+            "inrtapulmonary"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "macromolecular",
+        "definition": "Of or relating to a macromolecule.",
+        "exampleSentence": "The macromolecular weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "macromolecular",
+        "etymology": "From macro- + molecular.",
+        "distractors": [
+            "amcromolecular",
+            "mcaromolecular",
+            "marcomolecular"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "megakaryocytic",
+        "definition": "Of, pertaining to, or containing megakaryocytes.",
+        "exampleSentence": "The megakaryocytic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "megakaryocytic",
+        "etymology": "From megakaryocyte + -ic.",
+        "distractors": [
+            "emgakaryocytic",
+            "mgeakaryocytic",
+            "meagkaryocytic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "megalomaniacal",
+        "definition": "Megalomaniac.",
+        "exampleSentence": "The megalomaniacal weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "megalomaniacal",
+        "distractors": [
+            "emgalomaniacal",
+            "mgealomaniacal",
+            "meaglomaniacal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "monocarboxylic",
+        "definition": "Having a single carboxyl or carboxylic acid group.",
+        "exampleSentence": "The monocarboxylic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "monocarboxylic",
+        "etymology": "From mono- + carboxylic.",
+        "distractors": [
+            "omnocarboxylic",
+            "mnoocarboxylic",
+            "mooncarboxylic"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "neuroendocrine",
+        "definition": "Pertaining to the nervous system and endocrine system together.",
+        "exampleSentence": "The neuroendocrine weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "neuroendocrine",
+        "etymology": "From neuro- + endocrine.",
+        "distractors": [
+            "neurroendocrine",
+            "neuroenndocrine",
+            "neuroendoccrine"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "noncombinative",
+        "definition": "Not pertaining to, resulting from, or involving combination.",
+        "exampleSentence": "The noncombinative weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "noncombinative",
+        "etymology": "From non- + combinative.",
+        "distractors": [
+            "onncombinative",
+            "nnocombinative",
+            "nocnombinative"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "noncombustible",
+        "definition": "That will not readily ignite and burn.",
+        "exampleSentence": "The noncombustible weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "noncombustible",
+        "etymology": "From non- + combustible.",
+        "distractors": [
+            "onncombustible",
+            "nnocombustible",
+            "nocnombustible"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "noncompetitive",
+        "definition": "That does not involve competition or rivalry.",
+        "exampleSentence": "The noncompetitive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "noncompetitive",
+        "etymology": "From non- + competitive.",
+        "distractors": [
+            "onncompetitive",
+            "nnocompetitive",
+            "nocnompetitive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "noncontentious",
+        "definition": "Not contentious.",
+        "exampleSentence": "The noncontentious weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "noncontentious",
+        "etymology": "From non- + contentious.",
+        "distractors": [
+            "onncontentious",
+            "nnocontentious",
+            "nocnontentious"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonexploratory",
+        "definition": "Not exploratory.",
+        "exampleSentence": "The nonexploratory weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonexploratory",
+        "etymology": "From non- + exploratory.",
+        "distractors": [
+            "onnexploratory",
+            "nnoexploratory",
+            "noenxploratory"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "noninheritable",
+        "definition": "Not inheritable.",
+        "exampleSentence": "The noninheritable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "noninheritable",
+        "etymology": "From non- + inheritable.",
+        "distractors": [
+            "onninheritable",
+            "nnoinheritable",
+            "noinnheritable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonmechanistic",
+        "definition": "Not mechanistic.",
+        "exampleSentence": "The nonmechanistic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonmechanistic",
+        "etymology": "From non- + mechanistic.",
+        "distractors": [
+            "onnmechanistic",
+            "nnomechanistic",
+            "nomnechanistic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonparticulate",
+        "definition": "Not particulate.",
+        "exampleSentence": "The nonparticulate weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonparticulate",
+        "etymology": "From non- + particulate.",
+        "distractors": [
+            "onnparticulate",
+            "nnoparticulate",
+            "nopnarticulate"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonproprietary",
+        "definition": "Lacking proprietary value; not private or privileged information; not owned by anyone (not anyone's property, whether intellectual property or otherwise).",
+        "exampleSentence": "The nonproprietary weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonproprietary",
+        "etymology": "From non- + proprietary.",
+        "distractors": [
+            "onnproprietary",
+            "nnoproprietary",
+            "nopnroprietary"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "nonprotractile",
+        "definition": "Not protractile.",
+        "exampleSentence": "The nonprotractile weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonprotractile",
+        "etymology": "From non- + protractile.",
+        "distractors": [
+            "onnprotractile",
+            "nnoprotractile",
+            "nopnrotractile"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonradioactive",
+        "definition": "Not radioactive; not generating radioactivity.",
+        "exampleSentence": "The nonradioactive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonradioactive",
+        "etymology": "From non- + radioactive.",
+        "distractors": [
+            "onnradioactive",
+            "nnoradioactive",
+            "nornadioactive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonresidential",
+        "definition": "Not used as a residence, generally referring to a building or property used for business or other commercial purposes.",
+        "exampleSentence": "The nonresidential weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonresidential",
+        "etymology": "From non- + residential.",
+        "distractors": [
+            "nonresidentiel",
+            "nonnresidential",
+            "nonressidential"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "nonrestrictive",
+        "definition": "Not restrictive; not imposing restrictions.",
+        "exampleSentence": "The nonrestrictive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonrestrictive",
+        "etymology": "From non- + restrictive.",
+        "distractors": [
+            "onnrestrictive",
+            "nnorestrictive",
+            "nornestrictive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonretractable",
+        "definition": "Not retractable.",
+        "exampleSentence": "The nonretractable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonretractable",
+        "etymology": "From non- + retractable.",
+        "distractors": [
+            "nonretractible",
+            "nonretractabel",
+            "nonnretractable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonsignificant",
+        "definition": "Not significant.",
+        "exampleSentence": "The nonsignificant weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonsignificant",
+        "etymology": "From non- + significant.",
+        "distractors": [
+            "onnsignificant",
+            "nnosignificant",
+            "nosnignificant"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonsubmersible",
+        "definition": "Not submersible.",
+        "exampleSentence": "The nonsubmersible weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonsubmersible",
+        "etymology": "From non- + submersible.",
+        "distractors": [
+            "onnsubmersible",
+            "nnosubmersible",
+            "nosnubmersible"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonsynchronous",
+        "definition": "Not synchronous.",
+        "exampleSentence": "The nonsynchronous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonsynchronous",
+        "etymology": "From non- + synchronous.",
+        "distractors": [
+            "nonsynchronus",
+            "nonsynchronious",
+            "nonnsynchronous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nontelescoping",
+        "definition": "Not telescoping.",
+        "exampleSentence": "The nontelescoping weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nontelescoping",
+        "etymology": "From non- + telescoping.",
+        "distractors": [
+            "nonntelescoping",
+            "nontellescoping",
+            "nontelesscoping"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "oversubscribed",
+        "definition": "Having insufficient capacity to meet the demand of those who are interested.",
+        "exampleSentence": "QBE Insurance Group will sell about $115 million of new shares to its retail investors, after scaling back the oversubscribed purchase plan.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "oversubscribed",
+        "distractors": [
+            "ovversubscribed",
+            "overrsubscribed",
+            "oversubbscribed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "oversuspicious",
+        "definition": "Excessively suspicious; having a level of suspicion that is not warranted by circumstances.",
+        "exampleSentence": "The oversuspicious weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "oversuspicious",
+        "etymology": "From over- + suspicious.",
+        "distractors": [
+            "voersuspicious",
+            "oevrsuspicious",
+            "ovresuspicious"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "polemoniaceous",
+        "definition": "Of or relating to the plant family Polemoniaceae.",
+        "exampleSentence": "The polemoniaceous weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "polemoniaceous",
+        "etymology": "From translingual Polemoniaceae + -ous.",
+        "distractors": [
+            "oplemoniaceous",
+            "ploemoniaceous",
+            "poelmoniaceous"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "postganglionic",
+        "definition": "Located distal or posterior to a ganglion.",
+        "exampleSentence": "The postganglionic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "postganglionic",
+        "etymology": "From post- + ganglionic.",
+        "distractors": [
+            "opstganglionic",
+            "psotganglionic",
+            "potsganglionic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "postindustrial",
+        "definition": "Describing the economy of a nation in which manufacturing industry becomes less important and the service and information industries become more important.",
+        "exampleSentence": "The postindustrial weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "postindustrial",
+        "etymology": "From post- + industrial.",
+        "distractors": [
+            "postindustriel",
+            "posstindustrial",
+            "postinndustrial"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "postmenopausal",
+        "definition": "Subsequent to the menopause.",
+        "exampleSentence": "The postmenopausal weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "postmenopausal",
+        "etymology": "From post- + menopausal.",
+        "distractors": [
+            "opstmenopausal",
+            "psotmenopausal",
+            "potsmenopausal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "presymptomatic",
+        "definition": "Relating to the early stages of a disease, before all symptoms have developed and when therefore accurate diagnosis is not possible.",
+        "exampleSentence": "The presymptomatic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "presymptomatic",
+        "etymology": "From pre- + symptomatic.",
+        "distractors": [
+            "rpesymptomatic",
+            "persymptomatic",
+            "prseymptomatic"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "proprioceptive",
+        "definition": "Of or pertaining to proprioception.",
+        "exampleSentence": "T’s becoming clear, as our understanding of it improves, that improving or maintaining our proprioceptive ability is key to our quality of life as we age.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "proprioceptive",
+        "etymology": "Coined by English neurophysiologist Charles Sherrington in 1906, originally in the spelling proprio-ceptive, from proprius + clipped receptive.",
+        "distractors": [
+            "propprioceptive",
+            "propriocceptive",
+            "propriocepptive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "protogeometric",
+        "definition": "Of or relating to a style of Ancient Greek pottery led by Athens and produced between roughly 1030 and 900 BCE, decorated with purely abstract elements, often with broad horizontal bands about the neck and belly and concentric circles applied with compass and multiple brush.",
+        "exampleSentence": "The protogeometric weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "protogeometric",
+        "etymology": "From proto- + geometric.",
+        "distractors": [
+            "rpotogeometric",
+            "portogeometric",
+            "prtoogeometric"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "pyroelectrical",
+        "definition": "Of, pertaining to or produced by pyroelectricity.",
+        "exampleSentence": "The pyroelectrical weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "pyroelectrical",
+        "etymology": "From pyro- + electrical.",
+        "distractors": [
+            "yproelectrical",
+            "pryoelectrical",
+            "pyorelectrical"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "quinquefoliate",
+        "definition": "Having five leaves or leaflets.",
+        "exampleSentence": "The quinquefoliate weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "quinquefoliate",
+        "etymology": "From quinque- + foliate.",
+        "distractors": [
+            "uqinquefoliate",
+            "qiunquefoliate",
+            "quniquefoliate"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "radiosensitive",
+        "definition": "Having a certain amount of radiosensitivity.",
+        "exampleSentence": "The radiosensitive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "radiosensitive",
+        "etymology": "From radio- + sensitive.",
+        "distractors": [
+            "ardiosensitive",
+            "rdaiosensitive",
+            "raidosensitive"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "reconstructive",
+        "definition": "Which reconstructs.",
+        "exampleSentence": "The reconstructive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "reconstructive",
+        "etymology": "From reconstruct + -ive.",
+        "distractors": [
+            "erconstructive",
+            "rceonstructive",
+            "reocnstructive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "rembrandtesque",
+        "definition": "Resembling the effects and/or techniques of the Dutch painter Rembrandt van Rijn (1609-69), especially in chiaroscuro.",
+        "exampleSentence": "He turned upon the cool shadows within, and amidst spots and blurs of colour regarded the giant child amidst that Rembrandtesque gloom ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "french-origin",
+        "pronunciation": "rembrandtesque",
+        "etymology": "From Rembrandt + -esque.",
+        "distractors": [
+            "remmbrandtesque",
+            "rembranndtesque",
+            "rembrandtessque"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "salamandriform",
+        "definition": "Having the shape of a salamander.",
+        "exampleSentence": "The salamandriform weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "salamandriform",
+        "etymology": "From salamander + -form.",
+        "distractors": [
+            "aslamandriform",
+            "slaamandriform",
+            "saalmandriform"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "scapulohumeral",
+        "definition": "Of or relating to the scapulohumerus.",
+        "exampleSentence": "The scapulohumeral weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "scapulohumeral",
+        "etymology": "From scapulo- + humeral.",
+        "distractors": [
+            "csapulohumeral",
+            "sacpulohumeral",
+            "scpaulohumeral"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "semiconducting",
+        "definition": "That has the characteristics of a semiconductor.",
+        "exampleSentence": "The semiconducting weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "semiconducting",
+        "etymology": "From semi- + conducting.",
+        "distractors": [
+            "esmiconducting",
+            "smeiconducting",
+            "seimconducting"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "semiconductive",
+        "definition": "Semiconducting.",
+        "exampleSentence": "The semiconductive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "semiconductive",
+        "etymology": "From semi- + conductive.",
+        "distractors": [
+            "esmiconductive",
+            "smeiconductive",
+            "seimconductive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "spaciotemporal",
+        "definition": "Misspelling of spatiotemporal.",
+        "exampleSentence": "The ego is recognized as having a spaciotemporal position, from which other spaciotemporal points can be accessed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "spaciotemporal",
+        "distractors": [
+            "spaciotemporel",
+            "spacciotemporal",
+            "spaciottemporal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "spiritualistic",
+        "definition": "Of, pertaining to, or characteristic of spiritualism.",
+        "exampleSentence": "The spiritualistic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "spiritualistic",
+        "etymology": "From spiritual + -istic.",
+        "distractors": [
+            "psiritualistic",
+            "sipritualistic",
+            "spriitualistic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stoichiometric",
+        "definition": "Of, or relating to stoichiometry.",
+        "exampleSentence": "The stoichiometric weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "stoichiometric",
+        "etymology": "From Ancient Greek στοιχεῖον (stoikheîon, “element”) + -metric.",
+        "distractors": [
+            "tsoichiometric",
+            "sotichiometric",
+            "stiochiometric"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "substantiative",
+        "definition": "Serving to substantiate something.",
+        "exampleSentence": "The substantiative weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "substantiative",
+        "distractors": [
+            "usbstantiative",
+            "sbustantiative",
+            "susbtantiative"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "superpatriotic",
+        "definition": "Extremely patriotic.",
+        "exampleSentence": "The superpatriotic weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "superpatriotic",
+        "etymology": "From super- + patriotic.",
+        "distractors": [
+            "usperpatriotic",
+            "spuerpatriotic",
+            "sueprpatriotic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "supersaturated",
+        "definition": "More concentrated than is normally possible.",
+        "exampleSentence": "The supersaturated weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "supersaturated",
+        "etymology": "From super- + saturated.",
+        "distractors": [
+            "uspersaturated",
+            "spuersaturated",
+            "sueprsaturated"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "supersensitive",
+        "definition": "Extremely sensitive.",
+        "exampleSentence": "The supersensitive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "supersensitive",
+        "etymology": "From super- + sensitive. Doublet of hypersensitive.",
+        "distractors": [
+            "uspersensitive",
+            "spuersensitive",
+            "sueprsensitive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "transcutaneous",
+        "definition": "Penetrating, entering, passing through, or shining through the intact skin (as by light waves or sound waves); in contrast to percutaneous meaning through a disruption in the skin.",
+        "exampleSentence": "Transcutaneous measurement of oxygen is a helpful monitoring procedure.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "transcutaneous",
+        "etymology": "From trans- + cutaneous.",
+        "distractors": [
+            "transcutanous",
+            "transcutaneus",
+            "transcutanious"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "transistorized",
+        "definition": "Built using solid state components such as transistors.",
+        "exampleSentence": "The transistorized weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "transistorized",
+        "distractors": [
+            "rtansistorized",
+            "tarnsistorized",
+            "trnasistorized"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "transplacental",
+        "definition": "Through or across the placenta.",
+        "exampleSentence": "The transplacental weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "transplacental",
+        "etymology": "From trans- + placental.",
+        "distractors": [
+            "rtansplacental",
+            "tarnsplacental",
+            "trnasplacental"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "transplantable",
+        "definition": "Able to be transplanted.",
+        "exampleSentence": "The transplantable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "transplantable",
+        "etymology": "From transplant + -able.",
+        "distractors": [
+            "rtansplantable",
+            "tarnsplantable",
+            "trnasplantable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncomprehended",
+        "definition": "Not comprehended; not understood.",
+        "exampleSentence": "The uncomprehended weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "uncomprehended",
+        "etymology": "From un- + comprehended.",
+        "distractors": [
+            "nucomprehended",
+            "ucnomprehended",
+            "unocmprehended"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncompromising",
+        "definition": "Inflexible and unwilling to negotiate or make concessions.",
+        "exampleSentence": "“Her work is uncompromising and written in plain language, scraped clean,” Anders Olsson of the Swedish Academy said on Thursday as he announced her accolade.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "uncompromising",
+        "etymology": "From un- + compromising.",
+        "distractors": [
+            "unncompromising",
+            "uncommpromising",
+            "uncomprommising"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "unconsolidated",
+        "definition": "Not consolidated.",
+        "exampleSentence": "The unconsolidated weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unconsolidated",
+        "etymology": "From un- + consolidated.",
+        "distractors": [
+            "unnconsolidated",
+            "unconnsolidated",
+            "unconsollidated"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncultivatable",
+        "definition": "Uncultivable.",
+        "exampleSentence": "The uncultivatable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "uncultivatable",
+        "etymology": "From un- + cultivatable.",
+        "distractors": [
+            "nucultivatable",
+            "ucnultivatable",
+            "unucltivatable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undecomposable",
+        "definition": "Unable to be decomposed.",
+        "exampleSentence": "The undecomposable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undecomposable",
+        "etymology": "From un- + decomposable.",
+        "distractors": [
+            "undecomposible",
+            "undecomposabel",
+            "unndecomposable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undernourished",
+        "definition": "Provided with insufficient nourishment to sustain proper health and growth.",
+        "exampleSentence": "The undernourished weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "undernourished",
+        "etymology": "From under- + nourished.",
+        "distractors": [
+            "nudernourished",
+            "udnernourished",
+            "unedrnourished"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "underpopulated",
+        "definition": "Having an insufficient population for economic viability.",
+        "exampleSentence": "The underpopulated weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "underpopulated",
+        "etymology": "From under- + populated.",
+        "distractors": [
+            "nuderpopulated",
+            "udnerpopulated",
+            "unedrpopulated"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "understandable",
+        "definition": "Capable of being understood; comprehensible.",
+        "exampleSentence": "The understandable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "understandable",
+        "etymology": "From Middle English understondable, equivalent to understand + -able.",
+        "distractors": [
+            "nuderstandable",
+            "udnerstandable",
+            "unedrstandable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undeterminable",
+        "definition": "Not possible to determine.",
+        "exampleSentence": "The undeterminable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undeterminable",
+        "etymology": "From un- + determine + -able.",
+        "distractors": [
+            "nudeterminable",
+            "udneterminable",
+            "unedterminable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undiscoverable",
+        "definition": "Unable to be discovered; hidden perfectly.",
+        "exampleSentence": "The undiscoverable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undiscoverable",
+        "etymology": "From un- + discoverable.",
+        "distractors": [
+            "nudiscoverable",
+            "udniscoverable",
+            "unidscoverable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unenterprising",
+        "definition": "Lacking the property of being enterprising.",
+        "exampleSentence": "The unenterprising weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unenterprising",
+        "etymology": "From un- + enterprising.",
+        "distractors": [
+            "nuenterprising",
+            "uennterprising",
+            "unneterprising"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unidentifiable",
+        "definition": "Difficult, if not impossible, to identify or name.",
+        "exampleSentence": "The unidentifiable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unidentifiable",
+        "etymology": "From un- + identifiable.",
+        "distractors": [
+            "nuidentifiable",
+            "uindentifiable",
+            "undientifiable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unincorporated",
+        "definition": "Not organized as a corporation.",
+        "exampleSentence": "No fireworks are allowed in Penryn, an unincorporated part of Placer County.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unincorporated",
+        "etymology": "From un- + incorporated.",
+        "distractors": [
+            "unnincorporated",
+            "uninncorporated",
+            "unincorrporated"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "unmerchantable",
+        "definition": "Not merchantable; not fit for market; being of a kind, quality, or quantity that is not salable.",
+        "exampleSentence": "The unmerchantable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unmerchantable",
+        "etymology": "From un- + merchantable.",
+        "distractors": [
+            "numerchantable",
+            "umnerchantable",
+            "unemrchantable"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "unpresidential",
+        "definition": "Inappropriate for a president.",
+        "exampleSentence": "The unpresidential weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unpresidential",
+        "etymology": "From un- + presidential.",
+        "distractors": [
+            "nupresidential",
+            "upnresidential",
+            "unrpesidential"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unreciprocated",
+        "definition": "Not reciprocated.",
+        "exampleSentence": "His small gifts went unreciprocated.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unreciprocated",
+        "etymology": "From un- + reciprocated.",
+        "distractors": [
+            "unnreciprocated",
+            "unrecciprocated",
+            "unrecipprocated"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unreconcilable",
+        "definition": "Irreconcilable.",
+        "exampleSentence": "But yet let me lament … that our stars, / Unreconcilable, should divide / Our equalness to this.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unreconcilable",
+        "etymology": "From un- + reconcilable.",
+        "distractors": [
+            "unreconcilible",
+            "unreconcilabel",
+            "unnreconcilable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unremunerative",
+        "definition": "Not remunerative.",
+        "exampleSentence": "Such a comparatively unremunerative occupation as that of carrying a few score head of cattle six times a year from Port Zodiac to Port Marivelles was not worth a ship-owner's thought ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unremunerative",
+        "etymology": "From un- + remunerative.",
+        "distractors": [
+            "unnremunerative",
+            "unremmunerative",
+            "unremunnerative"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unreproducible",
+        "definition": "That cannot be reproduced.",
+        "exampleSentence": "The unreproducible weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unreproducible",
+        "etymology": "From un- + reproducible.",
+        "distractors": [
+            "nureproducible",
+            "urneproducible",
+            "unerproducible"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unsynchronised",
+        "definition": "Not synchronised.",
+        "exampleSentence": "The unsynchronised weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unsynchronised",
+        "etymology": "From un- + synchronised.",
+        "distractors": [
+            "nusynchronised",
+            "usnynchronised",
+            "unysnchronised"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "untransferable",
+        "definition": "Not transferable; that cannot be transferred.",
+        "exampleSentence": "The untransferable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "untransferable",
+        "etymology": "From un- + transferable.",
+        "distractors": [
+            "nutransferable",
+            "utnransferable",
+            "unrtansferable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "untransmutable",
+        "definition": "Not transmutable.",
+        "exampleSentence": "The untransmutable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "untransmutable",
+        "etymology": "From un- + transmutable.",
+        "distractors": [
+            "nutransmutable",
+            "utnransmutable",
+            "unrtansmutable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unvanquishable",
+        "definition": "That cannot be vanquished; undefeatable, inconquerable.",
+        "exampleSentence": "The unvanquishable weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unvanquishable",
+        "etymology": "From un- + vanquishable.",
+        "distractors": [
+            "unvanquishible",
+            "unvanquishabel",
+            "unnvanquishable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disbelievingly",
+        "definition": "In a disbelieving manner.",
+        "exampleSentence": "\"How much do you want?\" I looked at him disbelievingly.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "disbelievingly",
+        "etymology": "From disbelieving + -ly.",
+        "distractors": [
+            "disbelievingley",
+            "dissbelievingly",
+            "disbellievingly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disconsolately",
+        "definition": "In a cheerless, dreary manner; in a manner which suggests that one is beyond consolation.",
+        "exampleSentence": "From the bank the lamb looked at her, then faced round to the hut, and, baaing disconsolately, trotted a few paces back.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "disconsolately",
+        "etymology": "From disconsolate + -ly.",
+        "distractors": [
+            "disconsolateley",
+            "dissconsolately",
+            "disconnsolately"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inconsequently",
+        "definition": "In an inconsequential way, or a way that suggests a lack of consequence.",
+        "exampleSentence": "Columbus smiled at the compliment and snapped inconsequently at a fly.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "inconsequently",
+        "etymology": "From inconsequent + -ly.",
+        "distractors": [
+            "inconsequentley",
+            "innconsequently",
+            "inconnsequently"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intransitively",
+        "definition": "In an intransitive manner; without an object following.",
+        "exampleSentence": "The verb 'die' is used intransitively.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "intransitively",
+        "etymology": "From intransitive + -ly.",
+        "distractors": [
+            "intransitiveley",
+            "inntransitively",
+            "intrannsitively"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "multifariously",
+        "definition": "In a multifarious manner.",
+        "exampleSentence": "Do you know the reason? It is because we Russians are too richly and multifariously gifted to be able at once to find the proper mode of expression.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "multifariously",
+        "etymology": "From multifarious + -ly.",
+        "distractors": [
+            "multifariousley",
+            "mulltifariously",
+            "multiffariously"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "obstreperously",
+        "definition": "In an obstreperous manner.",
+        "exampleSentence": "The liquor soon mounted into their heads, as it generally does even with the arrantest topers newly landed from sea, and they began capering about most obstreperously.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "obstreperously",
+        "etymology": "From obstreperous + -ly.",
+        "distractors": [
+            "obstreperousley",
+            "obbstreperously",
+            "obstrepperously"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ostentatiously",
+        "definition": "In an ostentatious manner; extravagantly or flamboyantly.",
+        "exampleSentence": "\"You working with Fisheye?\" Ng says, lighting up cig. The smoke swirls in the air ostentatiously.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "ostentatiously",
+        "etymology": "From ostentatious + -ly.",
+        "distractors": [
+            "ostentatiousley",
+            "osstentatiously",
+            "ostenntatiously"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "subconsciously",
+        "definition": "Below the level of conscious awareness.",
+        "exampleSentence": "Sophia broke down here. Even at this moment she was subconsciously comparing her rendering of the part of the forlorn bride with Miss Marie Lohr's.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "subconsciously",
+        "etymology": "From subconscious + -ly.",
+        "distractors": [
+            "subconsciousley",
+            "subbconsciously",
+            "subconnsciously"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "subcutaneously",
+        "definition": "Under the cutaneous layer of the skin.",
+        "exampleSentence": "In addition, 0.5 ml of 1% lidocaine HCl was injected subcutaneously in the postauricular area for local anesthesia.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "subcutaneously",
+        "etymology": "From subcutaneous + -ly.",
+        "distractors": [
+            "subcutaneousley",
+            "subbcutaneously",
+            "subcuttaneously"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "understandably",
+        "definition": "For reasons that are easy to understand or sympathise with.",
+        "exampleSentence": "Understandably, he was too embarrassed to speak.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "understandably",
+        "etymology": "From understandable + -ly.",
+        "distractors": [
+            "understandabley",
+            "unnderstandably",
+            "underrstandably"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "unproductively",
+        "definition": "In an unproductive manner.",
+        "exampleSentence": "He did not come however. Anne sometimes fancied she discerned him at a distance, but he never came. The anxious interval wore away unproductively.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unproductively",
+        "etymology": "From unproductive + -ly.",
+        "distractors": [
+            "unproductiveley",
+            "unnproductively",
+            "unprodductively"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unrecognizably",
+        "definition": "Beyond recognition.",
+        "exampleSentence": "The world is unrecognizably different since Plato's time.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unrecognizably",
+        "etymology": "From unrecognizable + -ly.",
+        "distractors": [
+            "unrecognizabley",
+            "unnrecognizably",
+            "unreccognizably"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unscrupulously",
+        "definition": "In an unscrupulous manner.",
+        "exampleSentence": "His acquaintances were passed without greeting; while, as for his confidential friends, them he pointedly, unscrupulously, and with a kind of fierceness, cut dead.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "unscrupulously",
+        "etymology": "From unscrupulous + -ly.",
+        "distractors": [
+            "unscrupulousley",
+            "unnscrupulously",
+            "unscruppulously"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gebrauchsmusik",
+        "definition": "Music composed for a specific, identifiable purpose, not just for its own sake.",
+        "exampleSentence": "Copland's own criticism of Gebrauchsmusik as a “contaminated” musical style can also be read as a rebuke of its ties to musical styles associated with the culture industry.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "gebrauchsmusik",
+        "etymology": "Borrowed from German Gebrauchsmusik (literally “utility music”).",
+        "distractors": [
+            "gebbrauchsmusik",
+            "gebraucchsmusik",
+            "gebrauchsmussik"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "christocentric",
+        "definition": "Concentrating on the teaching of Jesus Christ.",
+        "exampleSentence": "De Profundis is full of religiosity, whether it be Christocentric aesthetics, moral injunction, or just the usual self-castigation/reformation stuff of the Born Again variety.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "christocentric",
+        "etymology": "From Christo- + -centric.",
+        "distractors": [
+            "chrisstocentric",
+            "christoccentric",
+            "christocenntric"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cryptoporticus",
+        "definition": "A vaulted corridor or arcade at, or just below ground level; normally lit by openings in the upper part of the vault. Also a roofed promenade that is enclosed with side walls that have windows or openings instead of columns.",
+        "exampleSentence": "The close walkes, which were called cryptoporticus were not of choice but of necessitie, when extremitie of weather would not let them walke abroad.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "cryptoporticus",
+        "etymology": "Borrowed from Latin cryptoporticus.",
+        "distractors": [
+            "crypptoporticus",
+            "cryptopporticus",
+            "cryptoporrticus"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "falsifiability",
+        "definition": "The quality of being falsifiable.",
+        "exampleSentence": "These ideas have many virtues, but falsifiability is not one of them.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "falsifiability",
+        "etymology": "From falsifiable + -ity.",
+        "distractors": [
+            "falsifiabilitey",
+            "fallsifiability",
+            "falsiffiability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "plesiochronous",
+        "definition": "Almost, but not quite, synchronous.",
+        "exampleSentence": "The DS-3 standard uses bit stuffing to allow the clocks of its tributaries to be plesiochronous.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "plesiochronous",
+        "etymology": "From plesio- + chrono- + -ous from Ancient Greek πλησίον (plēsíon, “near”) + χρόνος (khrónos, “time”).",
+        "distractors": [
+            "plesiochronus",
+            "plesiochronious",
+            "plessiochronous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "precompetitive",
+        "definition": "Describing the early stages of the development of a commercial product, during which competitors collaborate.",
+        "exampleSentence": "The precompetitive weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "precompetitive",
+        "etymology": "From pre- + competitive.",
+        "distractors": [
+            "preccompetitive",
+            "precommpetitive",
+            "precompettitive"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "microcontinent",
+        "definition": "A fragment of continental crust that has cleaved off its parent tectonic plate.",
+        "exampleSentence": "Seychelles can first be considered to have existed 62 mya when the Seychelles microcontinent split from India as a result of intense activity in the Carlsberg ridge which started 64 mya….",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "microcontinent",
+        "etymology": "From micro- + continent.",
+        "distractors": [
+            "microcontinant",
+            "miccrocontinent",
+            "microccontinent"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "translatorship",
+        "definition": "The role or office of a translator.",
+        "exampleSentence": "The two offices were bestowed on me by Government, and with the Persian Translatorship gave me an income of ten guineas a day.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "translatorship",
+        "etymology": "From translator + -ship.",
+        "distractors": [
+            "trannslatorship",
+            "translattorship",
+            "translatorrship"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "paleoichnology",
+        "definition": "A branch of ichnology concerned with the study of trace fossils preserved in ancient rocks.",
+        "exampleSentence": "Paleoichnology is their historic equivalent—the study of ichnological evidence of animals of the past.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "greek-roots",
+        "pronunciation": "paleoichnology",
+        "etymology": "From paleo- + ichnology.",
+        "distractors": [
+            "paleoichnologey",
+            "palleoichnology",
+            "paleoicchnology"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "complementizer",
+        "definition": "A subordinating conjunction that can convert a clause into a complement clause, i.e. one that completes a grammatical construction in the predicate and that describes or is identified with the subject or object.",
+        "exampleSentence": "The book had an entire chapter about the complementizer.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "complementizer",
+        "etymology": "From complementize + -er.",
+        "distractors": [
+            "complementizor",
+            "complementizar",
+            "commplementizer"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "distinguishing",
+        "definition": "That serves to distinguish.",
+        "exampleSentence": "The distinguishing feature of an acronym is that it is pronounced as if it were a single word, in the manner of NATO and NASA.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "distinguishing",
+        "distractors": [
+            "disstinguishing",
+            "distinnguishing",
+            "distinguisshing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intimidatingly",
+        "definition": "In an intimidating manner.",
+        "exampleSentence": "He stared intimidatingly at John. John, feeling threatened, ran off.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "intimidatingly",
+        "etymology": "From intimidating + -ly.",
+        "distractors": [
+            "intimidatingley",
+            "inntimidatingly",
+            "intimmidatingly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "preadolescence",
+        "definition": "The period between childhood and adolescence, between the ages of about 9 and 11 for girls, and 10 and 12 for boys.",
+        "exampleSentence": "Jojo gains what Pop’s lost of his bearing. First, a brace across his thighs, all the bowlegged softness of his preadolescence dissolved to a granite stance.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "preadolescence",
+        "etymology": "From pre- + adolescence.",
+        "distractors": [
+            "preadolescance",
+            "preaddolescence",
+            "preadollescence"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "autostereogram",
+        "definition": "A single-image stereogram, designed to trick the human eye and brain into seeing a three-dimensional scene in a two-dimensional image.",
+        "exampleSentence": "To see a random dot autostereogram correctly, draw the eyes (and face) towards, say, within one inch of the image, and then slowly pull away, until the central 3D shape coalesces into view.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "autostereogram",
+        "etymology": "From auto- + stereogram.",
+        "distractors": [
+            "auttostereogram",
+            "autosstereogram",
+            "autosterreogram"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "electroplating",
+        "definition": "A process of coating the surfaces of a metal object with a layer of a different metal through electrochemical means, usually to exploit different properties of the materials.",
+        "exampleSentence": "The book had an entire chapter about the electroplating.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "electroplating",
+        "distractors": [
+            "ellectroplating",
+            "elecctroplating",
+            "electropplating"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disinteresting",
+        "definition": "Uninteresting; dull.",
+        "exampleSentence": "The disinteresting weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "disinteresting",
+        "distractors": [
+            "dissinteresting",
+            "disinnteresting",
+            "disinterresting"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "microparasitic",
+        "definition": "Of or pertaining to microparasites.",
+        "exampleSentence": "Malaria is a microparasitic disease.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "microparasitic",
+        "etymology": "From micro- + parasitic.",
+        "distractors": [
+            "miccroparasitic",
+            "micropparasitic",
+            "microparrasitic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "microexplosive",
+        "definition": "Of or pertaining to microexplosions.",
+        "exampleSentence": "The two metals were joined using microexplosive techniques.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "microexplosive",
+        "etymology": "From micro- + explosive.",
+        "distractors": [
+            "miccroexplosive",
+            "microexxplosive",
+            "microexplossive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "arboricultural",
+        "definition": "Of or pertaining to the care, planting and maintenance of trees.",
+        "exampleSentence": "His arboricultural knowledge stood him in good stead when he planted the olive grove.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "arboricultural",
+        "etymology": "From arboriculture + -al.",
+        "distractors": [
+            "arboriculturel",
+            "arrboricultural",
+            "arborricultural"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "newfoundlander",
+        "definition": "A native or inhabitant of the island of Newfoundland, Newfoundland and Labrador, Canada.",
+        "exampleSentence": "… but so close lay the boats that even single hooks snarled, and Harvey found himself in hot argument with a gentle, hairy Newfoundlander on one side and a howling Portuguese on the other.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "newfoundlander",
+        "etymology": "From Newfoundland + -er.",
+        "distractors": [
+            "newfoundlandor",
+            "newfoundlandar",
+            "newwfoundlander"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "unprosecutable",
+        "definition": "Not able to be successfully prosecuted.",
+        "exampleSentence": "Military prosecutors said al-Kahtani would be unprosecutable because of what was done to him during interrogation.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unprosecutable",
+        "etymology": "From un- + prosecutable.",
+        "distractors": [
+            "unprosecutible",
+            "unprosecutabel",
+            "unnprosecutable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "protectability",
+        "definition": "The ability to receive protection.",
+        "exampleSentence": "“Meta” may be a perfectly fine trademark, and perhaps it is even the best trademark that they could have found from a legal protectability and risk-management standpoint.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "protectability",
+        "etymology": "From protect + -ability.",
+        "distractors": [
+            "protectabilitey",
+            "prottectability",
+            "protecctability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "incrementalism",
+        "definition": "Any method of achieving a goal by means of a series of gradual increments, or small steps.",
+        "exampleSentence": "And after a summer of extreme heat and wild weather, she evidently worries that incrementalism will not be enough to address a climate crisis that is crying out for revolution.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "incrementalism",
+        "etymology": "From incremental + -ism.",
+        "distractors": [
+            "inncrementalism",
+            "incremmentalism",
+            "incremenntalism"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "underpublished",
+        "definition": "Having few publications on the subject.",
+        "exampleSentence": "\"German Air-Dropped Weapons to 1945\" addresses the underpublished area of aircraft armament by comprehensively covering the Luftwaffe's development of weapons ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "underpublished",
+        "etymology": "From under- + published.",
+        "distractors": [
+            "unnderpublished",
+            "underrpublished",
+            "underpubblished"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "eutaxiological",
+        "definition": "That asserts that order must have a planned cause.",
+        "exampleSentence": "This eutaxiological definition of miracles also has the advantage of being consistent with all the findings and postulates of modern science . . .",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "eutaxiological",
+        "distractors": [
+            "eutaxiologicel",
+            "euttaxiological",
+            "eutaxxiological"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "misdescriptive",
+        "definition": "In United States trademark law, tending to mislead consumers about the qualities of the product represented by the mark.",
+        "exampleSentence": "\"Superhealth Yogurt\" would be a misdescriptive trademark for a yogurt that was very high in fat.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "misdescriptive",
+        "etymology": "From mis- + descriptive.",
+        "distractors": [
+            "missdescriptive",
+            "misdesscriptive",
+            "misdescripptive"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "experienceable",
+        "definition": "Capable of being experienced.",
+        "exampleSentence": "The color green is experienceable by any person with normally functioning vision.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "experienceable",
+        "etymology": "From experience + -able.",
+        "distractors": [
+            "experienceible",
+            "experienceabel",
+            "exxperienceable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "undocumentable",
+        "definition": "Not supportable with documentary evidence.",
+        "exampleSentence": "These hearsay claims are intrinsically undocumentable.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undocumentable",
+        "etymology": "From un- + documentable.",
+        "distractors": [
+            "undocumentible",
+            "undocumentabel",
+            "unndocumentable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "indestructibly",
+        "definition": "In a way or to an extent that is indestructible.",
+        "exampleSentence": "That is a fact; it cannot be changed — it is written indestructibly on the record of events.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "indestructibly",
+        "etymology": "From indestructible + -ly.",
+        "distractors": [
+            "indestructibley",
+            "inndestructibly",
+            "indesstructibly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fingerpainting",
+        "definition": "A painting made with fingerpaint.",
+        "exampleSentence": "When redecorating offices for our clients Richard and Stephanie, we spied their daughter's stunning black and white photographs, as well as her fingerpaintings from kindergarten.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "fingerpainting",
+        "distractors": [
+            "finngerpainting",
+            "fingerrpainting",
+            "fingerpainnting"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sabermetrician",
+        "definition": "A baseball statistician; one who studies sabermetrics.",
+        "exampleSentence": "You could count on one hand the number of “sabermetricians” inside of baseball, and none of them appears to have had much effect.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "sabermetrician",
+        "distractors": [
+            "sabermetrition",
+            "sabbermetrician",
+            "saberrmetrician"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "premeditatedly",
+        "definition": "In a premeditated manner.",
+        "exampleSentence": "It was not the fact that I had premeditatedly killed. He was frightened now by the knowledge that I didn’t care that he knew of my crime.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "premeditatedly",
+        "etymology": "From premeditated + -ly.",
+        "distractors": [
+            "premeditatedley",
+            "premmeditatedly",
+            "premedditatedly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underexploited",
+        "definition": "Not exploited to any great extent; not used to full advantage.",
+        "exampleSentence": "The region's mineral resources are currently underexploited.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "underexploited",
+        "etymology": "From under- + exploited.",
+        "distractors": [
+            "unnderexploited",
+            "underrexploited",
+            "underexxploited"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "astragyromancy",
+        "definition": "Divination by dice.",
+        "exampleSentence": "Known as astragalomancy or astragyromancy, this method is supposed, righdy or wrongly, to make clear to man the designs of providence, the will of the gods, the decrees of fate.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "astragyromancy",
+        "etymology": "Possibly a joining of astragalomancy and gyromancy (spinning of the dice).",
+        "distractors": [
+            "astragyromency",
+            "astragyromancey",
+            "asstragyromancy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "submetacentric",
+        "definition": "(of a chromosome) having the centromere between one end and the middle, and thus having a long arm, and a short arm.",
+        "exampleSentence": "Human chromosome 2 is submetacentric.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "submetacentric",
+        "etymology": "From sub- + metacentric.",
+        "distractors": [
+            "subbmetacentric",
+            "submettacentric",
+            "submetaccentric"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "underdiagnosed",
+        "definition": "Diagnosed less frequently than its occurrence.",
+        "exampleSentence": "Mood disorders, such as anxiety disorders and major depression, are often described as underdiagnosed and undertreated, in part because people with the disorders often do not seek treatment.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "underdiagnosed",
+        "etymology": "From under- + diagnosed.",
+        "distractors": [
+            "unnderdiagnosed",
+            "underrdiagnosed",
+            "underdiaggnosed"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "undiminishable",
+        "definition": "Unable to be diminished.",
+        "exampleSentence": "The purest literary talent appears at one time great, at another time small, but character is of a stellar and undiminishable greatness.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "undiminishable",
+        "etymology": "From un- + diminishable.",
+        "distractors": [
+            "undiminishible",
+            "undiminishabel",
+            "unndiminishable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "margaritomancy",
+        "definition": "Divination by pearls.",
+        "exampleSentence": "In ancient times, a form of margaritomancy was used to determine the guilt or innocence of a man or woman suspected of committing a crime.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "margaritomancy",
+        "etymology": "Latin margarita (“pearl”).",
+        "distractors": [
+            "margaritomency",
+            "margaritomancey",
+            "marrgaritomancy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bouleversement",
+        "definition": "Complete overthrow; reversal; turmoil.",
+        "exampleSentence": "This is a bouleversement of Plato.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "bouleversement",
+        "etymology": "Borrowed from French bouleversement.",
+        "distractors": [
+            "bouleversemant",
+            "boulleversement",
+            "boulevversement"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "christofascist",
+        "definition": "A Christofascist person; a Christian fanatic or fundamentalist.",
+        "exampleSentence": "The anti-balaka movement consists largely of Christofascists.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "christofascist",
+        "etymology": "From Christo- + fascist, analyzable as Christ + -o- + fascist.",
+        "distractors": [
+            "chrisstofascist",
+            "christoffascist",
+            "christofasscist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "contestability",
+        "definition": "The property of being contestable or debatable.",
+        "exampleSentence": "Because of the popularity of the sitting candidate, the contestability of the seat was poor.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "contestability",
+        "etymology": "From contest + -ability.",
+        "distractors": [
+            "contestabilitey",
+            "conntestability",
+            "contesstability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disintegrating",
+        "definition": "That causes disintegration.",
+        "exampleSentence": "\"By means of the purple disintegrating rays, the site to be used later for agricultural purposes is treated exactly as is the canal proper.\"",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "disintegrating",
+        "distractors": [
+            "dissintegrating",
+            "disinntegrating",
+            "disinteggrating"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonconsecutive",
+        "definition": "Not consecutive.",
+        "exampleSentence": "Mr. Cleveland’s victory set the precedent for a two-term, nonconsecutive presidency, and until today, his was the only success story.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "nonconsecutive",
+        "etymology": "From non- + consecutive.",
+        "distractors": [
+            "nonnconsecutive",
+            "nonconnsecutive",
+            "nonconseccutive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "carcinogenesis",
+        "definition": "The creation of cancer cells.",
+        "exampleSentence": "Whether they are involved in carcinogenesis by induction of a heritable lesion would depend, I believe, on their ability either to mispair or to misrepair.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "carcinogenesis",
+        "etymology": "From carcino- + -genesis.",
+        "distractors": [
+            "carrcinogenesis",
+            "carcinnogenesis",
+            "carcinoggenesis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nontransparent",
+        "definition": "Not transparent; lacking transparence; opaque.",
+        "exampleSentence": "We remember that Kevin Corbett said last month that nontransparent ’crazed’ windows would be replaced when rail cars were overhauled.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nontransparent",
+        "etymology": "From non- + transparent.",
+        "distractors": [
+            "nontransparant",
+            "nonntransparent",
+            "nontrannsparent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "confirmability",
+        "definition": "The state or property of being capable of being confirmed.",
+        "exampleSentence": "Nothing seems more natural than to approach confirmability via confirmation.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "confirmability",
+        "etymology": "From confirm + -ability.",
+        "distractors": [
+            "confirmabilitey",
+            "connfirmability",
+            "confirrmability"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "interlocutrice",
+        "definition": "A female interlocutor.",
+        "exampleSentence": "I have forbidden Adèle to talk to me about her presents, and she is bursting with repletion; have the goodness to serve her as auditress and interlocutrice:",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "interlocutrice",
+        "etymology": "From French interlocutrice.",
+        "distractors": [
+            "innterlocutrice",
+            "interrlocutrice",
+            "interloccutrice"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "uncontradicted",
+        "definition": "Not contradicted; without contradiction; unquestioned.",
+        "exampleSentence": "\"Add to these, my lady,\" replied the traveller, laughing, \"the privilege of telling my own stories after dinner uncontradicted.\"",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "uncontradicted",
+        "etymology": "From un- + contradicted.",
+        "distractors": [
+            "unncontradicted",
+            "unconntradicted",
+            "uncontraddicted"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mispronouncing",
+        "definition": "Mispronunciation.",
+        "exampleSentence": "The book had an entire chapter about the mispronouncing.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "mispronouncing",
+        "distractors": [
+            "misspronouncing",
+            "mispronnouncing",
+            "mispronounncing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "parasequential",
+        "definition": "Not in the intended order.",
+        "exampleSentence": "The request stream is parasequential, so we have some latency delay.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "parasequential",
+        "etymology": "From para- + sequential.",
+        "distractors": [
+            "parasequentiel",
+            "parrasequential",
+            "parassequential"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mononucleotide",
+        "definition": "A single nucleotide.",
+        "exampleSentence": "Sinclair also takes 1 gram of NMN, or nicotinamide mononucleotide, which in the body turns into NAD+, or nicotinamide adenine dinucleotide.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "mononucleotide",
+        "etymology": "From mono- + nucleotide.",
+        "distractors": [
+            "monnonucleotide",
+            "mononnucleotide",
+            "mononuccleotide"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "asynchronously",
+        "definition": "In an asynchronous manner.",
+        "exampleSentence": "These allow scripts to specify functions that should be invoked asynchronously when certain events occur.",
+        "partOfSpeech": "adverb",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "asynchronously",
+        "etymology": "From asynchronous + -ly.",
+        "distractors": [
+            "asynchronousley",
+            "assynchronously",
+            "asynnchronously"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hyperlipidemic",
+        "definition": "Of, pertaining to, or suffering from hyperlipidemia.",
+        "exampleSentence": "We investigated the anti-hyperlipidemic effect and the underlying mechanism of wedelolactone, a plant-derived coumestan, in HepG2 cells and high-fat diet (HFD)−induced hyperlipidemic hamsters.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "hyperlipidemic",
+        "etymology": "From hyper- + lipidemic.",
+        "distractors": [
+            "hypperlipidemic",
+            "hyperrlipidemic",
+            "hyperlippidemic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "extraembryonic",
+        "definition": "Inside the womb, but outside the embryo.",
+        "exampleSentence": "The clockwise beating of cilia results in a net flow of extraembryonic fluid leftwards ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "extraembryonic",
+        "etymology": "From extra- + embryonic.",
+        "distractors": [
+            "exxtraembryonic",
+            "extraemmbryonic",
+            "extraembryonnic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "achromotrichia",
+        "definition": "The absence (or loss) of pigmentation in the hair.",
+        "exampleSentence": "Severe achromotrichia (graying) and alopecia (loss of hair) were produced in weanling and adult black mice ….",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "achromotrichia",
+        "etymology": "From a- + chromo- + trich- + -ia.",
+        "distractors": [
+            "acchromotrichia",
+            "achrommotrichia",
+            "achromottrichia"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "predeterminate",
+        "definition": "Determined beforehand.",
+        "exampleSentence": "The predeterminate weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "predeterminate",
+        "distractors": [
+            "preddeterminate",
+            "predetterminate",
+            "predeterrminate"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "omnilinguality",
+        "definition": "The ability to speak or understand many languages.",
+        "exampleSentence": "The book had an entire chapter about the omnilinguality.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "omnilinguality",
+        "etymology": "From omnilingual + -ity.",
+        "distractors": [
+            "omnilingualitey",
+            "ommnilinguality",
+            "omnillinguality"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "contracyclical",
+        "definition": "Tending to counteract the effects of the business cycle.",
+        "exampleSentence": "The government cut taxes during the recession as a contracyclical measure.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "contracyclical",
+        "etymology": "From contra- + cyclical.",
+        "distractors": [
+            "contracyclicel",
+            "conntracyclical",
+            "contraccyclical"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "tracheomalacia",
+        "definition": "A condition in which the cartilaginous tissue in trachea is soft, such that the trachea partly collapses during respiration.",
+        "exampleSentence": "Tracheomalacia usually presents in the 1st year of life: 60% by the age of 3 months.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "tracheomalacia",
+        "etymology": "From tracheo- + malacia.",
+        "distractors": [
+            "traccheomalacia",
+            "tracheommalacia",
+            "tracheomallacia"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "ultrastructure",
+        "definition": "The fine, detailed structure of a biological specimen that can only be observed by electron microscopy.",
+        "exampleSentence": "The mucus film has a mesh-like ultrastructure that can trap particles as small as 0.1 μm.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "ultrastructure",
+        "etymology": "From ultra- + structure.",
+        "distractors": [
+            "ultrastructer",
+            "ulltrastructure",
+            "ultrasstructure"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "distensibility",
+        "definition": "Capability of swelling or stretching.",
+        "exampleSentence": "The major issue here is simply one of comparative size of the penetrating object (hand, wrist, forearm) to the size and distensibility of that which is being penetrated.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "distensibility",
+        "distractors": [
+            "distensibilitey",
+            "disstensibility",
+            "distennsibility"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "quintagenarian",
+        "definition": "One who is between the ages of 50 and 59, inclusive.",
+        "exampleSentence": "That would be bad enough, God knows! but what is it to finding yourself in an infernal \"fix,\" at a dinner-table, with a literary quintagenarian at your elbow ….",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "quintagenarian",
+        "distractors": [
+            "quinntagenarian",
+            "quintaggenarian",
+            "quintagennarian"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "manufacturable",
+        "definition": "Capable of being manufactured.",
+        "exampleSentence": "The re-engineered design was much more manufacturable with cost about half that of the first approved design.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "manufacturable",
+        "etymology": "From manufacture + -able.",
+        "distractors": [
+            "manufacturible",
+            "manufacturabel",
+            "mannufacturable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "superwonderful",
+        "definition": "Exceptionally wonderful.",
+        "exampleSentence": "\"You sound superwonderful,\" Mary Anne said, politely, perhaps, given her taste, when the disc had ended.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "superwonderful",
+        "etymology": "From super- + wonderful.",
+        "distractors": [
+            "superwonderfull",
+            "supperwonderful",
+            "superrwonderful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "exhaustibility",
+        "definition": "The property of being exhaustible.",
+        "exampleSentence": "We must accept the exhaustibility of our supply of oil.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "exhaustibility",
+        "distractors": [
+            "exhaustibilitey",
+            "exxhaustibility",
+            "exhausstibility"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unquantifiable",
+        "definition": "Incapable of being quantified or precisely defined mathematically.",
+        "exampleSentence": "The value of being loved is unquantifiable.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "unquantifiable",
+        "etymology": "From un- + quantifiable.",
+        "distractors": [
+            "unquantifiible",
+            "unquantifiabel",
+            "unnquantifiable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "omnibenevolent",
+        "definition": "All-loving, or infinitely good, usually in reference to a deity or supernatural being, for example, God.",
+        "exampleSentence": "Any omnibenevolent being would will the complete and immediate nonexistence of evil.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "omnibenevolent",
+        "etymology": "From omni- (“all”) + benevolent (“good-willed”).",
+        "distractors": [
+            "omnibenevolant",
+            "ommnibenevolent",
+            "omnibbenevolent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "kremlinologist",
+        "definition": "A person involved in Kremlinology.",
+        "exampleSentence": "The book had an entire chapter about the kremlinologist.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "suffixes",
+        "pronunciation": "kremlinologist",
+        "etymology": "From Kremlin + -ologist.",
+        "distractors": [
+            "kremmlinologist",
+            "kremlinnologist",
+            "kremlinollogist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "fashionability",
+        "definition": "Fashionableness.",
+        "exampleSentence": "It is as uncomfortable for us to wear stilettos as it would be for you. It's just that some women don't see an inability to walk as a problem in the pursuit of (misguided) fashionability.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "fashionability",
+        "etymology": "From fashionable + -ity.",
+        "distractors": [
+            "fashionabilitey",
+            "fasshionability",
+            "fashionnability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inconsequentia",
+        "definition": "Trivia; items or facts of little or no importance.",
+        "exampleSentence": "The life had been lived and chronicled, and what remained was a happy retirement filled with those inconsequentia which made life pleasant.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "inconsequentia",
+        "distractors": [
+            "innconsequentia",
+            "inconnsequentia",
+            "inconseqquentia"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "subfemtosecond",
+        "definition": "Of or pertaining to time spans of less than a femtosecond.",
+        "exampleSentence": "The subfemtosecond weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "subfemtosecond",
+        "etymology": "From sub- + femtosecond.",
+        "distractors": [
+            "subbfemtosecond",
+            "subfemmtosecond",
+            "subfemtossecond"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "skeletogenesis",
+        "definition": "The process of skeleton formation.",
+        "exampleSentence": "The book had an entire chapter about the skeletogenesis.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "skeletogenesis",
+        "etymology": "From skeleto- + -genesis.",
+        "distractors": [
+            "skelletogenesis",
+            "skelettogenesis",
+            "skeletoggenesis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "transliterator",
+        "definition": "One who transliterates.",
+        "exampleSentence": "The transliterator’s first dilemma, then, is “Hanukkah” vs. “Chanuka,” or convenience for the reader vs. faithfulness to the original.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "transliterator",
+        "etymology": "From transliterate + -or.",
+        "distractors": [
+            "transliterater",
+            "trannsliterator",
+            "translitterator"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "interfactorial",
+        "definition": "Between two or more factors.",
+        "exampleSentence": "The interfactorial weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "interfactorial",
+        "etymology": "From inter- + factorial.",
+        "distractors": [
+            "interfactoriel",
+            "innterfactorial",
+            "interrfactorial"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "paleointensity",
+        "definition": "The intensity of geomagnetism at a given location at a particular time in the geologic past.",
+        "exampleSentence": "Paleointensity cannot be predicted by theory or from numerical simulation, since the mechanisms involved in the geodynamo are not sufficiently constrained.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "paleointensity",
+        "etymology": "From paleo- + intensity.",
+        "distractors": [
+            "paleointensitey",
+            "palleointensity",
+            "paleoinntensity"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "proteoliposome",
+        "definition": "A liposome into which one or more proteins have been inserted, usually by artificial means.",
+        "exampleSentence": "The loading of proteins into a proteoliposome is accomplished by adding the chemicals to the buffer at the time the protein is added.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "multisyllable",
+        "pronunciation": "proteoliposome",
+        "etymology": "From proteo- + liposome.",
+        "distractors": [
+            "protteoliposome",
+            "proteolliposome",
+            "proteolipposome"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "ultraexclusive",
+        "definition": "Particularly exclusive.",
+        "exampleSentence": "The home the president was using was located in the ultraexclusive ski-in, ski-out Deer Valley community known as Snow Haven.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "latin-roots",
+        "pronunciation": "ultraexclusive",
+        "etymology": "From ultra- + exclusive.",
+        "distractors": [
+            "ulltraexclusive",
+            "ultraexxclusive",
+            "ultraexclussive"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "counterdefense",
+        "definition": "A defensive response to another organism's defense, such as of a parasite or pathogen.",
+        "exampleSentence": "The book had an entire chapter about the counterdefense.",
+        "partOfSpeech": "noun",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "counterdefense",
+        "etymology": "From counter- + defense.",
+        "distractors": [
+            "counnterdefense",
+            "counterrdefense",
+            "counterdeffense"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonpolymerized",
+        "definition": "Not polymerized; not having undergone polymerization.",
+        "exampleSentence": "Polymerized and nonpolymerized tubulin concentrations were measured by separating the two and analyzing each fraction by CLC binding.",
+        "partOfSpeech": "adjective",
+        "difficulty": 8,
+        "pattern": "prefixes",
+        "pronunciation": "nonpolymerized",
+        "etymology": "From non- + polymerized.",
+        "distractors": [
+            "nonnpolymerized",
+            "nonpollymerized",
+            "nonpolymmerized"
+        ],
+        "theme": "everyday"
     }
 ];

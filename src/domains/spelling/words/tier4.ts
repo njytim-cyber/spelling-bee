@@ -4313,18 +4313,6 @@ export const TIER_4_WORDS: SpellingWord[] = [
         theme: 'communication',
     },
     {
-        word: 'voyeur',
-        definition: 'A person who enjoys watching others without being noticed.',
-        exampleSentence: 'The novel explored the life of a voyeur who spied on his neighbors.',
-        partOfSpeech: 'noun',
-        difficulty: 8,
-        pattern: 'french-origin',
-        pronunciation: 'voy-UR',
-        etymology: 'French: voyeur (one who sees), from voir (to see)',
-        distractors: ['voyuer', 'voyeure', 'voyaur'],
-        theme: 'people',
-    },
-    {
         word: 'chalet',
         definition: 'A wooden house or cottage with a sloping roof, typical of alpine areas.',
         exampleSentence: 'The family rented a cozy chalet in the Swiss mountains.',

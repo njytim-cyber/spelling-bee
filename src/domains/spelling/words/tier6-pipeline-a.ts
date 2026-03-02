@@ -268,22 +268,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "penetration",
-        "definition": "The act of penetrating something.",
-        "exampleSentence": "Any penetration, however slight, is sufficient to complete the offense.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "pɛnətɹeɪʃən",
-        "etymology": "From Middle English penetracioun, from Old French penetracïon, and its source, Latin penetrātiō, from the participle stem of penetrō (“pierce”, verb). Morphologically penetrate + -ion.",
-        "distractors": [
-            "penetrasion",
-            "pennetration",
-            "penettration"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "realization",
         "definition": "An act of figuring out or becoming aware.",
         "exampleSentence": "The realization of the plan took several years.",
@@ -1497,22 +1481,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "shenanigans",
-        "definition": "Mischievous play, especially by children.",
-        "exampleSentence": "You should learn to spot their shenanigans and avoid being fooled.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "ʃɪnænɪɡənz",
-        "etymology": "From shenanigan + -s.",
-        "distractors": [
-            "shennanigans",
-            "shenannigans",
-            "shenaniggans"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "objectivism",
         "definition": "The state of being objective; objectivity.",
         "exampleSentence": "But for some, objectivism stuck. Perhaps her most significant early follower was Alan Greenspan, later to serve as chairman of the US Federal Reserve for 19 years.",
@@ -2132,22 +2100,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "alloccation"
         ],
         "theme": "money"
-    },
-    {
-        "word": "allurement",
-        "definition": "Attractiveness; appeal, charisma.",
-        "exampleSentence": "He read the letter aloud. Sophia listened with the studied air of one for whom, even in these days, a title possessed some surreptitious allurement.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "əlʊɚmənt",
-        "etymology": "From allure + -ment.",
-        "distractors": [
-            "alluremant",
-            "alurement",
-            "allurrement"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "alteration",
@@ -5536,22 +5488,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "armageddon",
-        "definition": "The scene of a decisive conflict on a great scale.",
-        "exampleSentence": "In comparison to Nixon-Mao, terrorism and armageddon, Anna Nicole Smith may seem lightweight, but it could prove an inspired choice.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "ɑɹməɡɛdn̩",
-        "etymology": "A generalization of Armageddon.",
-        "distractors": [
-            "armagedon",
-            "arrmageddon",
-            "armaggeddon"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "astuteness",
         "definition": "The quality of being astute.",
         "exampleSentence": "And this arose not so much from his greater virtue, nor even his superior style, but from his astuteness in understanding that his frame is best served by custom tailoring.",
@@ -5820,22 +5756,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "idlatation",
             "dliatation",
             "dialtation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "domination",
-        "definition": "Control by means of superior ability, influence, position, or resources; prevailing force.",
-        "exampleSentence": "She wrote about the domination in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "dɑːməneɪʃən",
-        "etymology": "From Middle English domynacion, from Old French dominacion, from Latin dominātiō (“rule, dominion”), from dominor (“domineer; rule”); see dominate.",
-        "distractors": [
-            "dominasion",
-            "dommination",
-            "dominnation"
         ],
         "theme": "everyday"
     },
@@ -7577,22 +7497,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pathetical",
-        "definition": "Arousing sympathy; pathetic.",
-        "exampleSentence": "The pathetical colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "pəθɛtɪkl̩",
-        "etymology": "From Late Latin patheticus + -al.",
-        "distractors": [
-            "patheticel",
-            "patthetical",
-            "pathettical"
-        ],
-        "theme": "feelings"
-    },
-    {
         "word": "infixation",
         "definition": "Word formation involving an infix or infixes; adding an infix to a word.",
         "exampleSentence": "As we have just seen, the encoding is quite versatile. In fact, it is not even limited to describing reduplicative patterns alone but can also handle infixations, circumfixations and truncations.",
@@ -8069,22 +7973,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "divesstiture"
         ],
         "theme": "money"
-    },
-    {
-        "word": "enchantress",
-        "definition": "A woman, especially an attractive one, skilled at using magic; an alluring witch.",
-        "exampleSentence": "She was the enchantress of men’s hearts.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "ɪnt͡ʃæntɹɪs",
-        "etymology": "From Middle English enchaunteresse, from Old French enchanteresse; equivalent to enchanter + -ess.",
-        "distractors": [
-            "enchantres",
-            "ennchantress",
-            "enchanntress"
-        ],
-        "theme": "people"
     },
     {
         "word": "generalship",
@@ -8612,21 +8500,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "weather"
     },
     {
-        "word": "transsexual",
-        "definition": "A transsexual person.",
-        "exampleSentence": "When a man is a woman trapped in a man's body, and has a little operation, he is a transsexual.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "tɹænzsɛkʃuəl",
-        "distractors": [
-            "transsexuel",
-            "transexual",
-            "trannssexual"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "ultramarine",
         "definition": "In full ultramarine blue: a brilliant blue pigment traditionally made from ground-up lapis lazuli, and now usually either extracted from mineral deposits or made synthetically.",
         "exampleSentence": "The atmosphere beneath is languorous, and is so tinged with azure that what artists call the middle distance partakes also of that hue, while the horizon beyond is of the deepest ultramarine.",
@@ -9085,22 +8958,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "appocalyptic",
             "apoccalyptic",
             "apocallyptic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "blasphemous",
-        "definition": "Lacking piety or respect for the sacred; resembling blasphemy.",
-        "exampleSentence": "His taking the name of God in vain was considered blasphemous.",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "blæsfəməs",
-        "etymology": "From Latin blasphēmus (“blaspheming”), from Ancient Greek βλάσφημος (blásphēmos, “uttering ill-omened words”), equivalent to blaspheme + -ous.",
-        "distractors": [
-            "blasphemus",
-            "blasphemious",
-            "blassphemous"
         ],
         "theme": "everyday"
     },
@@ -12814,22 +12671,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "identitarian",
-        "definition": "Based on a notion of group identity; relating to the ideology of identitarianism.",
-        "exampleSentence": "\"The revolution in the Vendée, where peasants and noblemen had risen against the identitarian terrorists of Paris\" (p. 117).",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "aɪdɛntɪtɛəɹiən",
-        "etymology": "From identity + -arian, coined 1943 by Erik von Kuehnelt-Leddihn, from the 1970s onward reinforced by French identitaire, especially after the use of the term ensembliste-identitaire by Cornelius Castoriadis.",
-        "distractors": [
-            "iddentitarian",
-            "idenntitarian",
-            "identittarian"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "subalternate",
         "definition": "Succeeding by turns; successive.",
         "exampleSentence": "The subalternate surface made it hard to walk across.",
@@ -13851,22 +13692,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "oroggraphy"
         ],
         "theme": "academic"
-    },
-    {
-        "word": "ovulation",
-        "definition": "The release of an ovum from an ovary.",
-        "exampleSentence": "Learning about the ovulation was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "ɑvjəleɪʃ(ə)n",
-        "etymology": "From ovulate + -ion.",
-        "distractors": [
-            "voulation",
-            "ouvlation",
-            "ovluation"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "oxidation",
@@ -15275,22 +15100,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "badassery",
-        "definition": "The behaviour or quality of a badass; belligerence, audaciousness, etc.",
-        "exampleSentence": "Learning about the badassery was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "bædæsəɹi",
-        "etymology": "From badass + -ery.",
-        "distractors": [
-            "badasserey",
-            "badassary",
-            "badassory"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "mussolini",
         "definition": "Of or pertaining to Benito Mussolini.",
         "exampleSentence": "He is the very model of a very stable genius / Of all the U.S. Presidents he is the Mussoliniest.",
@@ -15958,5 +15767,197 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "alloccution"
         ],
         "theme": "language"
+    },
+    {
+        "word": "altazimuth",
+        "definition": "A telescope or surveying instrument that has a mount permitting both horizontal and vertical rotation.",
+        "exampleSentence": "She wrote about the altazimuth in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "æltæzɪməθ",
+        "etymology": "Blend of altitude + azimuth.",
+        "distractors": [
+            "latazimuth",
+            "atlazimuth",
+            "alatzimuth"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "analphabet",
+        "definition": "A person who does not know the letters of the alphabet; a partly or wholly illiterate person.",
+        "exampleSentence": "She wrote about the analphabet in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "ənælfəbɛt",
+        "etymology": "From Late Latin analphabetus (“unable to read and write; illiterate”), from Ancient Greek ἀναλφάβητος (analphábētos, “illiterate”), from ἀν- (an-, “un-”) + ἀλφάβητος (alphábētos, “alphabet”); analysable as an- + alphabet.",
+        "distractors": [
+            "annalphabet",
+            "anallphabet",
+            "analphabbet"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "anesthesia",
+        "definition": "An artificial method of preventing sensation, used to eliminate pain without causing loss of vital functions, by the administration of one or more agents which block pain impulses before transmitted to the brain.",
+        "exampleSentence": "In addition, 0.5 ml of 1% lidocaine HCl was injected subcutaneously in the postauricular area for local anesthesia.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "ænəsθiʒə",
+        "etymology": "Sense of “insensibility” attested since 1679, from New Latin anaesthēsia, from Ancient Greek ἀναισθησία (anaisthēsía, “without sensation”), from ἀν- (an-, “not”) and αἴσθησις (aísthēsis, “sensation”). By surface analysis, an- + -esthesia. Sense of “state induced by an agent” attested since 1846.",
+        "distractors": [
+            "annesthesia",
+            "anessthesia",
+            "anesthessia"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "anthericum",
+        "definition": "Any member of the genus Anthericum of rhizomatous perennial plants in the family Asparagaceae.",
+        "exampleSentence": "She wrote about the anthericum in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "ænθɛɹɪkəm",
+        "etymology": "From the genus name.",
+        "distractors": [
+            "nathericum",
+            "atnhericum",
+            "anhtericum"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "antimatter",
+        "definition": "Matter that is composed of the antiparticles of those that constitute normal matter.",
+        "exampleSentence": "She wrote about the antimatter in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "prefixes",
+        "pronunciation": "æntimætɚ",
+        "etymology": "From anti- + matter. Coined by British physicist Arthur Schuster in 1898 to describe matter that resists gravity in a jocular article in Nature titled \"Potential Matter.—A Holiday Dream\", but not used in a modern sense until the 1940s.",
+        "distractors": [
+            "natimatter",
+            "atnimatter",
+            "anitmatter"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "apothecary",
+        "definition": "A glass jar of the sort once used for storing medicine.",
+        "exampleSentence": "She wrote about the apothecary in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "əpɑθəkɛəɹi",
+        "etymology": "From Old French apotecaire (whence French apothicaire), from Medieval Latin apothecarius (“storekeeper”), from Latin apotheca (“(originally) repository, storehouse, warehouse; (later) shop, store”), from Ancient Greek ἀποθήκη (apothḗkē, “a repository, storehouse”), from ἀπό (apó, “away”) + τίθημι (t",
+        "distractors": [
+            "apothecarey",
+            "apothecery",
+            "apothecairy"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "arithmetic",
+        "definition": "The mathematics of numbers (integers, rational numbers, real numbers, or complex numbers) under the operations of addition, subtraction, multiplication, and division.",
+        "exampleSentence": "She wrote about the arithmetic in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "əɹɪθmətɪk",
+        "etymology": "From Middle English arsmetike, from Old French arismetique, from Latin arithmētica, from Ancient Greek ἀριθμητική (τέχνη) (arithmētikḗ (tékhnē), “(art of) counting”), feminine of ἀριθμητικός (arithmētikós, “arithmetical”), from ἀριθμός (arithmós, “number, counting”), from Proto-Indo-European *h₂ri-d",
+        "distractors": [
+            "raithmetic",
+            "airthmetic",
+            "artihmetic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "armillaria",
+        "definition": "Any of the genus Armillaria of parasitic fungi; a honey fungus.",
+        "exampleSentence": "She wrote about the armillaria in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "ɑɹməlɛɹiə",
+        "etymology": "From the genus name.",
+        "distractors": [
+            "ramillaria",
+            "amrillaria",
+            "arimllaria"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "babysitter",
+        "definition": "A person who cares for one or more babies or children for a short period of time in place of their legal guardians.",
+        "exampleSentence": "My neighbor is sometimes a babysitter for other mothers’ children.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "suffixes",
+        "pronunciation": "beɪbisɪtɚ",
+        "etymology": "From baby + sitter.",
+        "distractors": [
+            "babysittor",
+            "babysittar",
+            "babysiter"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "banderilla",
+        "definition": "A decorated barbed stick used in bullfighting to stick into the bulls' shoulders.",
+        "exampleSentence": "She wrote about the banderilla in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "bændəɹiːjə",
+        "etymology": "Borrowed from Spanish banderilla, from bandera (“banner”) + -illa (“diminutive suffix”).",
+        "distractors": [
+            "abnderilla",
+            "bnaderilla",
+            "badnerilla"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "barramundi",
+        "definition": "A diadromous fish of species Lates calcarifer, of the Centropomidae family, order Perciformes, widely distributed in the Indo-West Pacific; a popular food fish.",
+        "exampleSentence": "She wrote about the barramundi in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "bæɹəmʌndi",
+        "etymology": "Likely from a Pama-Nyungan language. Said to be from a language spoken in the Rockhampton area in Queensland, but this cannot be confirmed.",
+        "distractors": [
+            "abrramundi",
+            "braramundi",
+            "bararmundi"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "bathymetry",
+        "definition": "The measurement of the depths of the seas and oceans.",
+        "exampleSentence": "She wrote about the bathymetry in her school report.",
+        "partOfSpeech": "noun",
+        "difficulty": 7,
+        "pattern": "multisyllable",
+        "pronunciation": "bəθɪmətɹi",
+        "etymology": "From bathy- + -metry.",
+        "distractors": [
+            "abthymetry",
+            "btahymetry",
+            "bahtymetry"
+        ],
+        "theme": "everyday"
     }
 ];

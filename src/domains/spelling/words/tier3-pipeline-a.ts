@@ -412,22 +412,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "penetrate",
-        "definition": "To enter into; to make way into the interior of; to pierce.",
-        "exampleSentence": "He promised to penetrate as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "pɛnɪtɹeɪt",
-        "etymology": "From Latin penētrātus, perfect passive participle of penētrō (“to put, set, or place within, enter, pierce, penetrate”) (see -ate (verb-forming suffix)), from penes (“within, with”) by analogy to intrō (“to go in, enter”). Compare French pénétrer.",
-        "distractors": [
-            "pennetrate",
-            "penettrate",
-            "penetratte"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "technical",
         "definition": "Specifically related to a particular discipline.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully technical.",
@@ -1148,22 +1132,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "shooter",
-        "definition": "Someone who shoots something; a gunner, archer, etc.",
-        "exampleSentence": "The shooter put a bullet clean through her head.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ʃuːtə(ɹ)",
-        "etymology": "From Middle English schoter, schuter, schotter, scheter, schetare, scheotere, from Old English sċēotere (“shooter”), equivalent to shoot + -er. Compare Dutch schieter, schutter (“shooter”), German Schießer (“shooter”), Swedish skjutare, West Frisian sjitter (“shooter”).",
-        "distractors": [
-            "shootor",
-            "shootar",
-            "shoter"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "station",
         "definition": "A regular stopping place for ground transportation.",
         "exampleSentence": "The next station is Esperanza.",
@@ -1401,22 +1369,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "taolkit"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "frigger",
-        "definition": "Someone who leaps or moves about; a clown.",
-        "exampleSentence": "Great Bolloxinians frigger beats allarmes, / By unctious poyson in her Cunt infus’d.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "fɹɪɡə",
-        "etymology": "From frig + -er.",
-        "distractors": [
-            "friggor",
-            "friggar",
-            "friger"
-        ],
-        "theme": "people"
     },
     {
         "word": "dogpile",
@@ -1849,22 +1801,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "initiatte"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "modulate",
-        "definition": "To change the pitch, intensity or tone of one's voice or of a musical instrument.",
-        "exampleSentence": "\"Can you tell?\" she asked, in a trembling but well modulated and sensual voice.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "mɑd͡ʒəleɪt",
-        "etymology": "From Latin modulor (“to measure, regulate, modulate”) + -ate (verb-forming suffix), from modulus (“measure”); see modulus. Compare module. By surface analysis, modul(e) + -ate.",
-        "distractors": [
-            "moddulate",
-            "modullate",
-            "modulatte"
-        ],
-        "theme": "art"
     },
     {
         "word": "suppress",
@@ -2711,22 +2647,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "episode",
-        "definition": "An incident, action, or time period standing out by itself, but more or less connected with a complete series of events.",
-        "exampleSentence": "I can't wait till next week’s episode.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "ɛpəsoʊd",
-        "etymology": "From French épisode, from New Latin *epīsodium, from Ancient Greek ἐπεισόδιον (epeisódion, “a parenthetic addition, episode”), neuter of ἐπεισόδιος (epeisódios, “following upon the entrance, coming in besides, adventitious”), from ἐπί (epí, “on”) + εἰς (eis, “into”) + ὁδός (hodós, “way”).",
-        "distractors": [
-            "eppisode",
-            "epissode",
-            "episodde"
-        ],
-        "theme": "language"
-    },
-    {
         "word": "essence",
         "definition": "The inherent nature of a thing or idea.",
         "exampleSentence": "The essence of Addison’s humour is irony.",
@@ -3525,22 +3445,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pissant",
-        "definition": "An insignificant person.",
-        "exampleSentence": "Their manager is a real pissant about break times.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɪsænt",
-        "etymology": "From piss + ant, because of the urine-like smell of anthills. Compare pismire.",
-        "distractors": [
-            "pissent",
-            "pisant",
-            "pissannt"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "flannel",
         "definition": "To rub with a flannel.",
         "exampleSentence": "I got a little cross and asked him to stop flannelling and to tell me what was holding me back. Were my annual assessments below par? Was there something I had done – or not done?",
@@ -3555,22 +3459,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "flanel"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "dudette",
-        "definition": "A girl or woman, especially a masculine one.",
-        "exampleSentence": "The dudettes met their horses that morning.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "french-origin",
-        "pronunciation": "d(j)uːdɛt",
-        "etymology": "From dude + -ette.",
-        "distractors": [
-            "dudete",
-            "duddette",
-            "dadette"
-        ],
-        "theme": "people"
     },
     {
         "word": "paddock",
@@ -6358,22 +6246,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "ecstasy",
-        "definition": "Intense pleasure.",
-        "exampleSentence": "Come, let us leave him; in his ireful mood / Our words will but increase his ecstasy.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɛkstəsi",
-        "etymology": "From Old French estaise (“ecstasy, rapture”), from Latin ecstasis, from Ancient Greek ἔκστασις (ékstasis), from ἐξίστημι (exístēmi, “I displace”), from ἐκ (ek, “out”) and ἵστημι (hístēmi, “I stand”).",
-        "distractors": [
-            "ecstasey",
-            "eccstasy",
-            "ecstassy"
-        ],
-        "theme": "feelings"
-    },
-    {
         "word": "erasure",
         "definition": "The action of erasing; deletion; obliteration.",
         "exampleSentence": "There were several erasures on the paper.",
@@ -6981,22 +6853,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "truffle",
-        "definition": "Any of various edible fungi, of the genus Tuber, that grow in the soil in southern Europe; the earthnut.",
-        "exampleSentence": "In ancient times, the Romans imported truffles, credited with marked aphrodisiac virtue, from Libya as well as Greece.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "tɹʌfl̩",
-        "etymology": "Borrowed from French trufle, a variant of truffe (whence also Danish and Norwegian trøffel, Swedish tryffel, German Trüffel), from Old Occitan trufa, a metathesis of Late Latin tufera (plural), from Latin tūber (“truffle”).",
-        "distractors": [
-            "truffel",
-            "trufle",
-            "traffle"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "vacuity",
         "definition": "Emptiness.",
         "exampleSentence": "To find so sensible a breach or vacuity in the course of the passions, by means of this breach in the connexion of ideas….",
@@ -7461,38 +7317,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "character"
     },
     {
-        "word": "dubious",
-        "definition": "Arousing doubt; questionable; open to suspicion.",
-        "exampleSentence": "They were renowned as people of dubious morals.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dubiəs",
-        "etymology": "Latin dubiusbor. English dubious From Latin dubius; like doubt, from Latin duo (cognate to English two), implying “two alternatives” (yes or no, true or false, etc.).",
-        "distractors": [
-            "dubous",
-            "dubius",
-            "dubeous"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "idiotic",
-        "definition": "Pertaining to or resembling an idiot; characterised with behaviour resembling idiocy.",
-        "exampleSentence": "Everyone else shifted uncomfortably as this guy continued his derisive laughter and proclaimed my quest the most idiotic thing he'd heard in his life.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɪdiɑtɪk",
-        "etymology": "From idiot + -ic.",
-        "distractors": [
-            "iddiotic",
-            "idiottic",
-            "idaotic"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "igneous",
         "definition": "Pertaining to or having the nature of fire; containing fire; resembling fire.",
         "exampleSentence": "The stone had an igneous appearance.",
@@ -7683,22 +7507,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "tharmal"
         ],
         "theme": "weather"
-    },
-    {
-        "word": "toothed",
-        "definition": "Having teeth.",
-        "exampleSentence": "The sperm whale is a toothed whale.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "tuːθt",
-        "etymology": "From tooth + -ed.",
-        "distractors": [
-            "tothed",
-            "tootthed",
-            "taothed"
-        ],
-        "theme": "body"
     },
     {
         "word": "typical",
@@ -8766,22 +8574,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "lifefful"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "cumhole",
-        "definition": "An orifice where semen is deposited, especially the anus of a homosexual man.",
-        "exampleSentence": "Why doesn't Barbie have a cumhole!?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "kʌmhoʊl",
-        "etymology": "From cum + hole.",
-        "distractors": [
-            "cumhoel",
-            "cummhole",
-            "cumholle"
-        ],
-        "theme": "people"
     },
     {
         "word": "gripple",
@@ -10300,22 +10092,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "roulette",
-        "definition": "A game of chance in which a small ball is made to move round rapidly on a circle divided off into numbered (usually red and black) spaces. When the ball stops, it indicates the result of a variety of wagers permitted by the game.",
-        "exampleSentence": "They would all rather take their chances with the existing policy-making roulette rather than follow process discipline.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "french-origin",
-        "pronunciation": "ɹuːlɛt",
-        "etymology": "Borrowed from French roulette (“roulette, little wheel”). The sense \"situation with a random chance of incurring serious harm\" may be abstracted from Russian roulette.",
-        "distractors": [
-            "roulete",
-            "roullette",
-            "rowlette"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "sandarac",
         "definition": "Realgar; red sulphide of arsenic.",
         "exampleSentence": "Sandarach is procured from common juniper; and incense from a juniper with yellow fruit.",
@@ -10645,22 +10421,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "allienate",
             "aliennate",
             "alienatte"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "aspirate",
-        "definition": "To remove a liquid or gas by means of suction.",
-        "exampleSentence": "The autopsy found that the casualty had aspirated in her sleep.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "æspəɹət",
-        "etymology": "Learned borrowing from Latin aspīrātus.",
-        "distractors": [
-            "asspirate",
-            "aspirrate",
-            "aspiratte"
         ],
         "theme": "everyday"
     },
@@ -11874,22 +11634,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "virginal",
-        "definition": "Being or resembling a virgin.",
-        "exampleSentence": "The old house had a virginal appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "vɜː(ɹ)d͡ʒɪnəl",
-        "etymology": "From Middle English virginal, from Middle French virginal, from Latin virginālis. The musical instrument is probably so called from being played by young girls.",
-        "distractors": [
-            "ivrginal",
-            "vriginal",
-            "vigrinal"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "vitreous",
         "definition": "Of or resembling glass; glassy.",
         "exampleSentence": "The old house had a vitreous appearance.",
@@ -12097,22 +11841,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "castrato",
-        "definition": "Castrated; especially castrated prepubescently.",
-        "exampleSentence": "Nowadays, either women or countertenors take the castrato roles.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "kæstɹɑːtəʊ",
-        "etymology": "From Italian castrato, from Latin castrō (“to castrate”), likely from caedō (“to cut”).",
-        "distractors": [
-            "casstrato",
-            "castratto",
-            "cestrato"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "offshore",
         "definition": "An area of or portion of sea away from the shore.",
         "exampleSentence": "The Nationalists see that they have nothing to gain—in fact, a lot to lose—by hanging onto the offshores as military bases.",
@@ -12223,22 +11951,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "vanusian"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "cornhole",
-        "definition": "A small room connected to a threshing floor.",
-        "exampleSentence": "Cornhole, the indigenous pastime of Cincinnati's west side, is basically a democratized version of horseshoes.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "kɔɹnhoʊl",
-        "etymology": "From corn + hole. (anus): From the old-fashioned practice of using dried corncobs instead of toilet paper in outdoor privies.",
-        "distractors": [
-            "cornhoel",
-            "corrnhole",
-            "cornholle"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "asbestos",
@@ -13287,22 +12999,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "overlassh"
         ],
         "theme": "actions"
-    },
-    {
-        "word": "hepatize",
-        "definition": "To impregnate with sulphureted hydrogen gas (formerly called hepatic gas).",
-        "exampleSentence": "On the right … were two wells of hepatized water.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "hɛpətaɪz",
-        "etymology": "Ancient Greek [Term?] to be like the liver, to be liver-coloured: compare English hepatite, and (for sense 2) French hépatiser.",
-        "distractors": [
-            "hepatise",
-            "heppatize",
-            "hepattize"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "hyblaean",
@@ -14444,22 +14140,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
-        "word": "blight",
-        "definition": "A diseased condition suffered by a plant; specifically, a complete and rapid chlorosis, browning, then death of plant tissues such as floral organs, leaves, branches, or twigs, especially one caused by a fungus; a mildew, a rust, a smut.",
-        "exampleSentence": "He saw her image in the blight and blackness all around him, not irradiating but deepening the gloom.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "blaɪt",
-        "etymology": "The etymology of the noun is uncertain; suggested derivations include the following: * possibly related to Middle English blichening (“mildew or rust on grain, blight”), possibly related to Middle English bliken (“to gleam, shine; to turn pale”), from Old English blīcan (“to shine, sparkle”) (whence",
-        "distractors": [
-            "blite",
-            "bligght",
-            "blit"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "eighth",
         "definition": "The person or thing in the eighth position.",
         "exampleSentence": "Can you use the word eighth in a sentence?",
@@ -14490,22 +14170,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "naguht"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "wretch",
-        "definition": "An unhappy, unfortunate, or miserable person.",
-        "exampleSentence": "The poor wretch, who lay motionless a long time, just began to recover his senses as a stage-coach came by.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹɛt͡ʃ",
-        "etymology": "From Middle English wrecche, from Old English wreċċa (“exile, outcast”), from Proto-Germanic *wrakjô (“exile, fugitive, warrior”), from Proto-Indo-European *wreg- (“to track, follow”). Doublet of garçon.",
-        "distractors": [
-            "wrettch",
-            "retch",
-            "wrech"
-        ],
-        "theme": "people"
     },
     {
         "word": "alight",
@@ -15269,22 +14933,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "character"
     },
     {
-        "word": "crappie",
-        "definition": "A member of either of two species of North American sunfish of the genus Pomoxis, both with silvery-white with black speckles and prized as gamefish.",
-        "exampleSentence": "If it's crappies you like, they're biting in 45-degree water.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "kɹɒpi",
-        "etymology": "Borrowed from French crapet, crapet-soleil (“sunfish”).",
-        "distractors": [
-            "crappy",
-            "crapie",
-            "crappei"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "crudity",
         "definition": "The state of being crude.",
         "exampleSentence": "Veteran GOP ad maker Jim Innocenzi had no qualms about the coded crudity, calling it “hilarious.”.",
@@ -15361,22 +15009,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "deaddeye",
             "deedeye",
             "daadeye"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "decency",
-        "definition": "The quality of being decent; propriety.",
-        "exampleSentence": "Immodest words admit of no defence, / For want of decency is want of sense.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "diːsənsi",
-        "etymology": "From Latin decentia, from decens. Equivalent to decent + -cy. Compare French décence.",
-        "distractors": [
-            "decancy",
-            "decencey",
-            "deccency"
         ],
         "theme": "everyday"
     },
@@ -15938,5 +15570,372 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "innfancy"
         ],
         "theme": "language"
+    },
+    {
+        "word": "jehovah",
+        "definition": "A Jehovah's Witness.",
+        "exampleSentence": "I've never had Jehovahs at my door, but the other day two Mormons came to my door.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "d͡ʒəhoʊvə",
+        "etymology": "Transliteration of Hebrew יְהֹוָה (yəhōwā), the Masoretic vocalization of the Biblical Hebrew יהוה (variously pronounced).",
+        "distractors": [
+            "jehhovah",
+            "jehovvah",
+            "jahovah"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "jugular",
+        "definition": "Ellipsis of jugular vein.",
+        "exampleSentence": "It was vicious; he went for the jugular.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "d͡ʒʌɡjəlɚ",
+        "etymology": "Late 16th century borrowing from Late Latin jugulāris, from jugulum (“the collarbone; the hollow part of the neck above the collarbone; the throat”) + -āris (“-ar, -ary”, adjectival suffix); equivalent to jugulum + -ar.",
+        "distractors": [
+            "juguler",
+            "juggular",
+            "jugullar"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "juniper",
+        "definition": "Any shrub or tree of the genus Juniperus of the cypress family, which is characterized by pointed, needle-like leaves and aromatic berry-like cones.",
+        "exampleSentence": "On the mountains a few junipers and piñons are found, and cactuses, agave, and yuccas, low, fleshy plants with bayonets and thorns.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "d͡ʒunɪpɚ",
+        "etymology": "From Late Middle English junyper, juniperus, from Latin iūniperus (“juniper-tree”).",
+        "distractors": [
+            "junipor",
+            "junipar",
+            "junniper"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "lazarus",
+        "definition": "A person who was dead and has been resurrected; a dead person who could potentially be resurrected.",
+        "exampleSentence": "And do you not think, that all these poor Lazaruses, that you have persecuted, and do persecute, that when they die, they will not be carried into Abraham's bosom?",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "læzəɹəs",
+        "etymology": "From Late Latin Lazarus, from Koine Greek Λᾱ́ζᾱρος (Lā́zāros), the given name of Biblical characters found in Luke 16 and John 12, from Biblical Hebrew אֶלְעָזָר ('El'azár), a given name shared by various figures in the Hebrew Bible and literally meaning \"God has helped\". Doublet of Eleazar.",
+        "distractors": [
+            "lazzarus",
+            "lazarrus",
+            "lezarus"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "letters",
+        "definition": "Literature (school subject).",
+        "exampleSentence": "He read widely throughout these days, for his father had a taste for modern letters, and new books lay littered about the rooms.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "lɛtɚz",
+        "distractors": [
+            "leters",
+            "letterrs",
+            "latters"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "looking",
+        "definition": "The act of one who looks; a glance.",
+        "exampleSentence": "A complicated interplay of lookings and viewings is in play. The staging and performance of the photograph, then, is as much the subject of the photograph as the ostensible subjects ….",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "lʊkɪŋ",
+        "etymology": "From Middle English lokynge, lokinge, from Old English lōcung (attested in Old English þurhlōcung), equivalent to look + -ing.",
+        "distractors": [
+            "loking",
+            "lookking",
+            "lookinng"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "lunette",
+        "definition": "A small opening in a vaulted roof of a circular or crescent shape.",
+        "exampleSentence": "Sticking out of a crescent-shaped sand ridge of a type known as a lunette were some human bones.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "french-origin",
+        "pronunciation": "luːnɛt",
+        "etymology": "Unadapted borrowing from French lunette, diminutive of lune (“moon”).",
+        "distractors": [
+            "lunete",
+            "lunnette",
+            "lanette"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "macadam",
+        "definition": "The surface of a road consisting of layers of crushed stone (usually tar-coated for modern traffic).",
+        "exampleSentence": "This narrow-gauge line had suffered the same fate as that between Schull and Skibbereen, with the track taken up except where it runs through one of the town streets and is embedded in the macadam.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "məkædəm",
+        "etymology": "Named after Scottish engineer John Loudon McAdam (1756–1836), who invented the process of macadamization. Used for describing road surfaces originally constructed using the McAdam method, but now sometimes used for any road or street.",
+        "distractors": [
+            "maccadam",
+            "macaddam",
+            "mecadam"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "magenta",
+        "definition": "A color which is close to the equal mixture of red and blue which is an additive secondary color but a subtractive primary color evoked by the combination of red and light blue.",
+        "exampleSentence": "Mrs Dibble's face blazed with a magenta uprush of blood at that ultimatum and she screamed, \"You dare try to do me out of my gin too! You dare!\"",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "məd͡ʒɛntə",
+        "etymology": "Borrowed from French magenta, from Italian Magenta, sometime after the colour was named after the town to celebrate the Franco-Italian victory at the Battle of Magenta in 1859; possibly in reference to the colour of the uniforms worn by Zouave French troops there.",
+        "distractors": [
+            "maggenta",
+            "magennta",
+            "megenta"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "marabou",
+        "definition": "Leptoptilos crumeniferus, a large wading bird native to Africa, with a naked head and neck adapted for scavenging.",
+        "exampleSentence": "Madimarian , a Marabou, killed me a bullock; I give him one bottle of powder.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "mæɹəbuː",
+        "etymology": "From French marabou, an older spelling of marabout.",
+        "distractors": [
+            "marrabou",
+            "marabbou",
+            "marabow"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "menorah",
+        "definition": "A holy candelabrum with seven branches used in the Temple of Jerusalem.",
+        "exampleSentence": "My father brings home a big brass antique menorah, shaped like an archway, heavy, on a pedestal, on a round base.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "mɪnɔːɹə",
+        "etymology": "Borrowed from Hebrew מְנוֹרָה (m'norá). From the same Proto-Semitic root *nūr- (“light”) as minaret.",
+        "distractors": [
+            "mennorah",
+            "menorrah",
+            "manorah"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mimicry",
+        "definition": "An act or ability to simulate or effect the appearance, characteristics, or behavior of someone or something else.",
+        "exampleSentence": "They say that mimicry is the sincerest form of flattery, but I still think I'm being mocked when he acts just like me.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "mɪmɪkɹi",
+        "etymology": "From mimic + -ry.",
+        "distractors": [
+            "mimicrey",
+            "mimmicry",
+            "mimiccry"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "minimum",
+        "definition": "The lowest limit.",
+        "exampleSentence": "Please keep noise to a minimum after 11 o'clock.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "mɪnəməm",
+        "etymology": "Learned borrowing from Latin minimum, neuter form of minimus (“least, smallest”).",
+        "distractors": [
+            "minnimum",
+            "minimmum",
+            "manimum"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "miracle",
+        "definition": "An event that appears inexplicable by the laws of nature and so is held to be supernatural in origin.",
+        "exampleSentence": "Many religious beliefs are based on miracles.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "miɹəkəl",
+        "etymology": "From Middle English miracle, from Old French miracle, from Latin mīrāculum (“object of wonder”), from mīror (“to wonder at”), from mīrus (“wonderful”), from Proto-Indo-European *(s)meyh₂- (“to smile, to be astonished”). Doublet of milagro and miraculum.",
+        "distractors": [
+            "miracel",
+            "mirracle",
+            "miraccle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "narthex",
+        "definition": "A western vestibule leading to the nave in some Christian churches.",
+        "exampleSentence": "We were in the antechamber, called the narthex, which runs across the front of any Byzantine church ….",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "nɑɹθɛks",
+        "etymology": "From Ancient Greek νάρθηξ (nárthēx, “giant fennel”), later ‘casket’ (modern Greek νάρθηκας (nárthikas)), a Pre-Greek word, as suggested by the suffix. See also νάρδος (nárdos, “nard”).",
+        "distractors": [
+            "narrthex",
+            "nerthex",
+            "nirthex"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "niagara",
+        "definition": "A flood, torrent, or outpouring, especially one of massive proportions.",
+        "exampleSentence": "It was useless to try and drown that Niagara of sound.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "naɪæɡ(ə)ɹə",
+        "etymology": "From an Iroquoian language; compare Mohawk ohnyá:kara' (“neck of land”). The name of the tribe which resided in the area was recorded on early maps as Onguiarahronon or Niagagarega.",
+        "distractors": [
+            "niaggara",
+            "niagarra",
+            "naagara"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "nirvana",
+        "definition": "Complete cessation of dukkha; a blissful state attained through realization of sunyata; enlightened experience.",
+        "exampleSentence": "Though we don’t all reach nirvana when we swim, swimming may well be that last refuge from connectivity — and, for some, the only way to find the solitary self.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "nɪɹvɑnə",
+        "etymology": "Borrowed from Sanskrit निर्वाण (nirvāṇa, “blown or put out, extinguished”), from निस् (nis, “out”) + वा (vā, “to blow”), the second part cognate with Russian ве́тер (véter, “wind”), weather, vent and wind.",
+        "distractors": [
+            "nirrvana",
+            "nirvanna",
+            "narvana"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "obelisk",
+        "definition": "A tall, square, tapered, stone monolith topped with a pyramidal point, frequently used as a monument.",
+        "exampleSentence": "The Washington Monument is often described as an obelisk, and sometimes even as a \"true obelisk,\" even though it is not. A true obelisk is a monolith, a pylon formed out of a single piece of stone.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɔbəlɪsk",
+        "etymology": "From Middle French obelisque, from Latin obeliscus (“obelisk”), from Ancient Greek ὀβελίσκος (obelískos), diminutive of ὀβελός (obelós, “needle”). Compare obelus.",
+        "distractors": [
+            "obbelisk",
+            "obellisk",
+            "obelissk"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "obloquy",
+        "definition": "Abusive language.",
+        "exampleSentence": "The Territory suffered in consequence, and once more a storm of obloquy was cast upon her.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɒbləkwi",
+        "etymology": "From Late Latin obloquium (“contradiction”), from Latin obloquor (“speak against, contradict”).",
+        "distractors": [
+            "obloquey",
+            "obbloquy",
+            "obloqquy"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "oldness",
+        "definition": "The state of being old; age.",
+        "exampleSentence": "This policy and reverence of age makes the world bitter to the best of our times; keeps our fortunes from us till our oldness cannot relish them.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "əʊldnəs",
+        "etymology": "From Middle English oldnesse, from Old English ealdnes, ealdnyss (“oldness; age”), equivalent to old + -ness.",
+        "distractors": [
+            "oldniss",
+            "oldnes",
+            "olldness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "pabulum",
+        "definition": "Food or fodder, particularly that taken in by plants or animals.",
+        "exampleSentence": "But the rescheduling of the directors' meeting for 7.30 a.m., and the trotting-out of such tawdry pabulums?",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "pæbjʊləm",
+        "etymology": "Borrowed from Latin pābulum (“food, nourishment; fodder or pasture for animals; nourishment for the mind, food for thought”), from pā(scō) (“to nourish”) + -bulum (suffix denoting an instrument), or directly from Proto-Indo-European *peh₂-dʰlom (*peh₂- (“to protect, shepherd”) + *-dʰlom, variant of",
+        "distractors": [
+            "pabbulum",
+            "pabullum",
+            "pebulum"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "parable",
+        "definition": "A short narrative illustrating a lesson (usually religious/moral) by comparison or analogy.",
+        "exampleSentence": "Catholic homilies normally draw on at least one Biblical lecture, often parables.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "pæɹəbəl",
+        "etymology": "From Middle English parable, from Old French parable, parabole, from Late Latin parabola, from Ancient Greek παραβολή (parabolḗ, “comparison”). Doublet of parabola, parole, and palaver.",
+        "distractors": [
+            "parible",
+            "parabel",
+            "parrable"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "paragon",
+        "definition": "A person of preeminent qualities, who acts as a pattern or model for others.",
+        "exampleSentence": "Philoclea, who indeed had no paragon but her sister.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "pæɹəɡɔn",
+        "etymology": "From Anglo-Norman paragone, peragone, Middle French paragon, from Italian paragone (“comparison”) or Spanish parangón, from Byzantine Greek παρακόνη (parakónē, “whetstone”), from Ancient Greek παρακονάω (parakonáō, “I sharpen, whet”), from παρά (pará) + ἀκόνη (akónē, “whetstone”) (from Proto-Indo-Eu",
+        "distractors": [
+            "parragon",
+            "paraggon",
+            "peragon"
+        ],
+        "theme": "people"
     }
 ];

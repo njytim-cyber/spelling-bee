@@ -14,885 +14,6 @@ import type { SpellingWord } from './types';
 
 export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
     {
-        "word": "nonmolestation",
-        "definition": "Absence of molestation.",
-        "exampleSentence": "The book had an entire chapter about the nonmolestation.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nonmolestation",
-        "etymology": "From non- + molestation.",
-        "distractors": [
-            "nonmolestasion",
-            "nonnmolestation",
-            "nonmollestation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antisubversion",
-        "definition": "Opposing or countering political subversion.",
-        "exampleSentence": "\"President Fujimori will support a two-tiered antisubversion plan,\" read a secret August 1990 memo from the United States Embassy in Lima, citing a former intelligence officer as its source.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "antisubversion",
-        "etymology": "From anti- + subversion.",
-        "distractors": [
-            "antisubvertion",
-            "anntisubversion",
-            "antissubversion"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "accountantlike",
-        "definition": "Resembling or characteristic of an accountant.",
-        "exampleSentence": "A dutiful, almost accountantlike rendering by Lois Martin, violist; Chris Finckel, cellist; and Aleck Karis, pianist, did not make things any clearer.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "accountantlike",
-        "etymology": "From accountant + -like.",
-        "distractors": [
-            "acountantlike",
-            "accounntantlike",
-            "accountanntlike"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "neurogeography",
-        "definition": "The mapping of the structure of the nervous system.",
-        "exampleSentence": "Perhaps it's neurogeography: an attempt to reveal not the collective mind of the nation but its nervous system.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "neurogeography",
-        "etymology": "From neuro- + geography.",
-        "distractors": [
-            "neurogeographey",
-            "neurrogeography",
-            "neuroggeography"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "counterthought",
-        "definition": "A thought that counters or opposes another thought.",
-        "exampleSentence": "His thoughts and their counterthoughts are bent and curled, snail-like, inside the whorls of fiction.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "counterthought",
-        "etymology": "From counter- + thought.",
-        "distractors": [
-            "counnterthought",
-            "counterrthought",
-            "counterthougght"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "uneconomically",
-        "definition": "In a manner that is not economical.",
-        "exampleSentence": "So he went, uneconomically but expectantly, to the emergency room.",
-        "partOfSpeech": "adverb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "uneconomically",
-        "etymology": "From uneconomical + -ly or un- + economically.",
-        "distractors": [
-            "uneconomicalley",
-            "uneconomicaly",
-            "unneconomically"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "miscommunicate",
-        "definition": "To communicate incorrectly.",
-        "exampleSentence": "Global problems arise from how humans have undervalued each other and miscommunicated with each other.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "miscommunicate",
-        "etymology": "From mis- + communicate.",
-        "distractors": [
-            "miscomunicate",
-            "misscommunicate",
-            "miscommunnicate"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "hotbloodedness",
-        "definition": "The quality of being hotblooded; passionate rashness.",
-        "exampleSentence": "So enthralled is the composer with Italian hotbloodedness that no opportunity is allowed to pass.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "hotbloodedness",
-        "etymology": "From hotblooded + -ness.",
-        "distractors": [
-            "hotbloodedniss",
-            "hotblodedness",
-            "hotbloodednes"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "metafictionist",
-        "definition": "A writer of metafiction.",
-        "exampleSentence": "As a maker of such writing, he descends from a long line traceable from Whitman and Melville to the modernists and Mackey’s idol, Baraka, to the metafictionists John Barth and William Gass.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "metafictionist",
-        "etymology": "From metafiction + -ist.",
-        "distractors": [
-            "mettafictionist",
-            "metaffictionist",
-            "metaficctionist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unordinariness",
-        "definition": "The quality of being unordinary.",
-        "exampleSentence": "Pavel Gershenzon, a ballet historian, told RIA Novosti: “In recent years the administration of the Bolshoi Theater has twice shown its artistic freedom, boldness, unordinariness in making decisions.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "unordinariness",
-        "etymology": "From unordinary + -ness.",
-        "distractors": [
-            "unordinariniss",
-            "unordinarines",
-            "unnordinariness"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "semifunctional",
-        "definition": "Partly functional.",
-        "exampleSentence": "Apparently, Horsley is a semifunctional bisexual.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "semifunctional",
-        "etymology": "From semi- + functional.",
-        "distractors": [
-            "semifunctionel",
-            "semmifunctional",
-            "semiffunctional"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "misconjugation",
-        "definition": "Incorrect conjugation.",
-        "exampleSentence": "It was worse with French, which was taught by a very strict pedagogue of the old school who corrected the misconjugation of verbs with a rap across the knuckles.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "misconjugation",
-        "etymology": "From mis- + conjugation.",
-        "distractors": [
-            "misconjugasion",
-            "missconjugation",
-            "misconnjugation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "overenthusiasm",
-        "definition": "Excessive enthusiasm.",
-        "exampleSentence": "Paik Hong-yul, president of the Korea Aerospace Research Institute, which oversees South Korea’s space program, said Mr. Ko had made “mistakes out of his overenthusiasm in training.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "overenthusiasm",
-        "etymology": "From over- + enthusiasm.",
-        "distractors": [
-            "ovverenthusiasm",
-            "overrenthusiasm",
-            "overennthusiasm"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "inscriptionist",
-        "definition": "One who inscribes; a writer of inscriptions.",
-        "exampleSentence": "The book had an entire chapter about the inscriptionist.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "inscriptionist",
-        "etymology": "From inscription + -ist.",
-        "distractors": [
-            "innscriptionist",
-            "inscripptionist",
-            "inscriptionnist"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "overprogrammed",
-        "definition": "Given a programme or schedule of too many activities.",
-        "exampleSentence": "“The one nice thing about being the most overprogrammed middle-school kid in America was that doing nothing felt like a special treat,” Winerip writes.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "overprogrammed",
-        "distractors": [
-            "overprogramed",
-            "ovverprogrammed",
-            "overrprogrammed"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "uncivilization",
-        "definition": "The quality of not being civilized.",
-        "exampleSentence": "The park is not just a place of lost civilizations, but vanished uncivilization, a Manhattan scarcely marked by human hands.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "uncivilization",
-        "etymology": "From un- + civilization.",
-        "distractors": [
-            "uncivilizasion",
-            "unncivilization",
-            "uncivvilization"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "classicization",
-        "definition": "The process or result of classicizing.",
-        "exampleSentence": "The book had an entire chapter about the classicization.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "classicization",
-        "etymology": "From classicize + -ation.",
-        "distractors": [
-            "classicizasion",
-            "clasicization",
-            "classiccization"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "minicollection",
-        "definition": "A small collection.",
-        "exampleSentence": "The Institute of Museum and Library Services is paying to pack and ship the works; it will also sponsor a Web site — www.vogel50x50.org — about the minicollections.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "minicollection",
-        "etymology": "From mini- + collection.",
-        "distractors": [
-            "minicollecsion",
-            "minicolection",
-            "minnicollection"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "superregulator",
-        "definition": "A major regulatory body.",
-        "exampleSentence": "Robert K. Steel leans forward, speaking in a rapid, excitable burst about the powers that a superregulator might wield over Wall Street one day.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "superregulator",
-        "etymology": "From super- + regulator.",
-        "distractors": [
-            "superregulater",
-            "superegulator",
-            "supperregulator"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "overdecoration",
-        "definition": "Excessive decoration.",
-        "exampleSentence": "Cleanliness and light are present: Art Deco streamlining replaces Edwardian overdecoration.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "overdecoration",
-        "etymology": "From over- + decoration.",
-        "distractors": [
-            "overdecorasion",
-            "ovverdecoration",
-            "overrdecoration"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "softheadedness",
-        "definition": "The quality of being softheaded.",
-        "exampleSentence": "Tell me: How did it come to pass that virtue — a quality that for most of history has generally been deemed, well, a virtue — became a mark of liberal softheadedness?",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "softheadedness",
-        "etymology": "From softheaded + -ness.",
-        "distractors": [
-            "softheadedniss",
-            "softheadednes",
-            "sofftheadedness"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antikidnapping",
-        "definition": "Preventing or countering kidnapping.",
-        "exampleSentence": "The antikidnapping weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "antikidnapping",
-        "etymology": "From anti- + kidnapping.",
-        "distractors": [
-            "antikidnaping",
-            "anntikidnapping",
-            "antikkidnapping"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "interracialism",
-        "definition": "The mixing of races or ethnicities.",
-        "exampleSentence": "But Central Point, which had been a visibly mixed-race community since the 19th century, was home to a secret but paradoxically open interracialism.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "interracialism",
-        "etymology": "From interracial + -ism.",
-        "distractors": [
-            "interacialism",
-            "innterracialism",
-            "interraccialism"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unnavigability",
-        "definition": "The quality of being unnavigable.",
-        "exampleSentence": "“Gossip Girl,” which has its season finale on Monday, explores the unnavigability of friendship.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "unnavigability",
-        "etymology": "From un- + navigability.",
-        "distractors": [
-            "unnavigabilitey",
-            "unavigability",
-            "unnavvigability"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyperauthentic",
-        "definition": "Very highly authentic.",
-        "exampleSentence": "Isn’t this hyperauthentic narrative of Vietnamese victimhood just the sort of thing calculated to tug at the heartstrings — and wallets — of liberal American readers?",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "hyperauthentic",
-        "etymology": "From hyper- + authentic.",
-        "distractors": [
-            "hypperauthentic",
-            "hyperrauthentic",
-            "hyperautthentic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "antiearthquake",
-        "definition": "Preventing damage from earthquakes.",
-        "exampleSentence": "The earthquake sent tremors down to Tokyo, 190 miles south, where high-rise buildings with the most advanced antiearthquake technology swayed for a couple of minutes.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "antiearthquake",
-        "etymology": "From anti- + earthquake.",
-        "distractors": [
-            "anntiearthquake",
-            "antiearrthquake",
-            "antiearthquakke"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "polysomnograph",
-        "definition": "Polysomnogram.",
-        "exampleSentence": "Researchers had 700 children spend a night in a sleep lab where they were evaluated using a polysomnograph, an instrument that measures sleep quality and breathing function.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "polysomnograph",
-        "etymology": "From poly- + somno- + -graph.",
-        "distractors": [
-            "pollysomnograph",
-            "polyssomnograph",
-            "polysommnograph"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonconnotative",
-        "definition": "Not connotative.",
-        "exampleSentence": "We will use the name, as the ancient Hebrews did, simply as a nonconnotative proper name referring to that individual who in fact was, and is, the God of Abraham, Isaac, and Jacob.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nonconnotative",
-        "etymology": "From non- + connotative.",
-        "distractors": [
-            "nonconotative",
-            "nonnconnotative",
-            "nonconnottative"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "recolorization",
-        "definition": "The process or result of recolorizing.",
-        "exampleSentence": "ASHES OF TIME REDUX The Hong Kong stylist Wong Kar-wai has retrofitted his 1994 martial arts fantasia with a digital recolorization, some re-editing and a new score featuring Yo-Yo Ma.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "recolorization",
-        "etymology": "From re- + colorization.",
-        "distractors": [
-            "recolorizasion",
-            "reccolorization",
-            "recollorization"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "premiumization",
-        "definition": "The move towards more expensive premium products.",
-        "exampleSentence": "“The pace of premiumization has slowed,” he said.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "premiumization",
-        "etymology": "From premium + -ization.",
-        "distractors": [
-            "premiumizasion",
-            "premmiumization",
-            "premiummization"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "conservational",
-        "definition": "Of or pertaining to conservation.",
-        "exampleSentence": "The volunteers were thanked for their conservational efforts in tidying up the park.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "conservational",
-        "etymology": "From conservation + -al.",
-        "distractors": [
-            "conservationel",
-            "connservational",
-            "conserrvational"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "connoisseurial",
-        "definition": "Of or pertaining to connoisseurs.",
-        "exampleSentence": "Finished drawings sometimes were kept as prototypes for paintings and as objects of connoisseurial delectation, but generally they served as the underlying, invisible foundation for paintings.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "connoisseurial",
-        "etymology": "From connoisseur + -ial.",
-        "distractors": [
-            "connoisseuriel",
-            "conoisseurial",
-            "connoiseurial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "uneventfulness",
-        "definition": "The quality of being uneventful.",
-        "exampleSentence": "But maybe the uneventfulness was merely par for the course.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "uneventfulness",
-        "etymology": "From uneventful + -ness.",
-        "distractors": [
-            "uneventfulniss",
-            "uneventfulnes",
-            "unneventfulness"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "macrocondition",
-        "definition": "A macroscale condition.",
-        "exampleSentence": "These are macroconditions that you are asking about.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "macrocondition",
-        "etymology": "From macro- + condition.",
-        "distractors": [
-            "macrocondision",
-            "maccrocondition",
-            "macroccondition"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "islamification",
-        "definition": "Conversion of a region or a society to Islam.",
-        "exampleSentence": "The ghettoization and Islamification of certain urban areas is also perceived as a disturbing problem.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "islamification",
-        "etymology": "From Islam + -ification.",
-        "distractors": [
-            "islamificasion",
-            "isslamification",
-            "islammification"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "governmentless",
-        "definition": "Without a government.",
-        "exampleSentence": "In the past few months, a new axis of conflict has opened up in Somalia, an essentially governmentless nation ripped apart by rival clans since 1991.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "governmentless",
-        "etymology": "From government + -less.",
-        "distractors": [
-            "governmentles",
-            "govvernmentless",
-            "goverrnmentless"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "disinfectation",
-        "definition": "Disinfection.",
-        "exampleSentence": "The use of DDT for disinfectation of louse-infested communities is a primary control measure in epidemic situations.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "disinfectation",
-        "etymology": "From disinfect + -ation.",
-        "distractors": [
-            "disinfectasion",
-            "dissinfectation",
-            "disinnfectation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "multitherapist",
-        "definition": "Involving more than one therapist.",
-        "exampleSentence": "A more intricate triadic relationship was advanced 15 years ago in a multitherapist project headed by Bieber.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "multitherapist",
-        "etymology": "From multi- + therapist.",
-        "distractors": [
-            "mulltitherapist",
-            "multittherapist",
-            "multitherrapist"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "antihomeopathy",
-        "definition": "Opposing homeopathy.",
-        "exampleSentence": "That attitude outrages antihomeopathy activists like Barrett, who believe that druggists as health professionals have a moral obligation to their customers.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "antihomeopathy",
-        "etymology": "From anti- + homeopathy.",
-        "distractors": [
-            "antihomeopathey",
-            "anntihomeopathy",
-            "antihhomeopathy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reaccentuation",
-        "definition": "The process or result of reaccentuating.",
-        "exampleSentence": "The dance text of “Fille,” as happens with all ballets, underwent a few reaccentuations and adjustments during Ashton’s lifetime.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "reaccentuation",
-        "etymology": "From re- + accentuation.",
-        "distractors": [
-            "reaccentuasion",
-            "reacentuation",
-            "reaccenntuation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "constitutioned",
-        "definition": "Having a constitution of a specified kind.",
-        "exampleSentence": "In providing the acorns, as I formerly hinted, great care is necessary to see that they are of such a quality as to insure a healthy and strong-constitutioned class of plants.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "constitutioned",
-        "etymology": "From constitution + -ed.",
-        "distractors": [
-            "connstitutioned",
-            "constittutioned",
-            "constituttioned"
-        ],
-        "theme": "character"
-    },
-    {
-        "word": "overaccelerate",
-        "definition": "To accelerate too much.",
-        "exampleSentence": "At the same time, all that virtual togetherness may overaccelerate a courtship.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "overaccelerate",
-        "etymology": "From over- + accelerate.",
-        "distractors": [
-            "overacelerate",
-            "ovveraccelerate",
-            "overraccelerate"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "pretransaction",
-        "definition": "Prior to a transaction.",
-        "exampleSentence": "Ms. Belling recommends that prospective borrowers pay close attention during pretransaction financial counseling, which is compulsory for anyone seeking a reverse mortgage.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "pretransaction",
-        "etymology": "From pre- + transaction.",
-        "distractors": [
-            "pretransacsion",
-            "prettransaction",
-            "pretrannsaction"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nonillustrious",
-        "definition": "Not illustrious.",
-        "exampleSentence": "“So why was this nonillustrious title held all of these years for me?” Mr. Paterson asked.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nonillustrious",
-        "etymology": "From non- + illustrious.",
-        "distractors": [
-            "nonillustrous",
-            "nonillustrius",
-            "nonillustreous"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "intrafactional",
-        "definition": "Within a single faction.",
-        "exampleSentence": "Even with the nuance, the vote was a momentous step for a church that has been mired in intrafactional warfare over homosexuality for more than a decade.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "intrafactional",
-        "etymology": "From intra- + factional.",
-        "distractors": [
-            "intrafactionel",
-            "inntrafactional",
-            "intraffactional"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "semicontrolled",
-        "definition": "Under a certain amount of control.",
-        "exampleSentence": "The mower leaves the base and maneuvers in a semicontrolled pattern until all the grass is mowed.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "semicontrolled",
-        "etymology": "From semi- + controlled.",
-        "distractors": [
-            "semicontroled",
-            "semmicontrolled",
-            "semiccontrolled"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "antiregulation",
-        "definition": "Opposing regulation.",
-        "exampleSentence": "She touched on all those issues on Tuesday in her first speech as a candidate, sounding a strong antitax, antiregulation and antispending message.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "antiregulation",
-        "etymology": "From anti- + regulation.",
-        "distractors": [
-            "antiregulasion",
-            "anntiregulation",
-            "antirregulation"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "moisturization",
-        "definition": "The act or process of moisturizing.",
-        "exampleSentence": "Mr. Hammer agreed that stearic acid in a body wash should be “helpful for moisturization and lipid replacement.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "moisturization",
-        "etymology": "From moisturize + -ation or moisture + -ization.",
-        "distractors": [
-            "moisturizasion",
-            "moissturization",
-            "moisturrization"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "superauthentic",
-        "definition": "Very authentic.",
-        "exampleSentence": "The outfit there, led by a man named Angelino who insisted on drinking wine while training, is superauthentic and super-romantic.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "superauthentic",
-        "etymology": "From super- + authentic.",
-        "distractors": [
-            "supperauthentic",
-            "superrauthentic",
-            "superautthentic"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "posteverything",
-        "definition": "After every style, belief, or attitude; thoroughly modern.",
-        "exampleSentence": "However, formalism is not the flavor of the month in these posteverything times.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "posteverything",
-        "etymology": "From post- + everything.",
-        "distractors": [
-            "possteverything",
-            "postevverything",
-            "posteverrything"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "intraosseously",
-        "definition": "Within the interior of the bone.",
-        "exampleSentence": "The injection was given intraosseously, because with a junkie with this kind of circulatory damage we really would not be able to find a good vein within an adequate time frame.",
-        "partOfSpeech": "adverb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "intraosseously",
-        "etymology": "From intraosseous + -ly.",
-        "distractors": [
-            "intraosseousley",
-            "intraoseously",
-            "inntraosseously"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "noncultivation",
-        "definition": "Absence of cultivation; failure to cultivate.",
-        "exampleSentence": "The trees in the two former sections have a more nearly dormant period of growth during the early winter than those in the latter, in which case the effect of noncultivation is not so marked.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "noncultivation",
-        "etymology": "From non- + cultivation.",
-        "distractors": [
-            "noncultivasion",
-            "nonncultivation",
-            "nonculltivation"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "demotivational",
-        "definition": "Tending or intended to demotivate.",
-        "exampleSentence": "But could a demotivational process have begun in prelinguistic times and what we see today be a continuation of that?",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "demotivational",
-        "etymology": "From de- + motivational.",
-        "distractors": [
-            "demotivationel",
-            "demmotivational",
-            "demottivational"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cryptographist",
-        "definition": "A cryptographer.",
-        "exampleSentence": "Good cryptographists are rare indeed; and thus their services, although seldom required, are necessarily well requited.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "cryptographist",
-        "etymology": "From cryptograph + -ist.",
-        "distractors": [
-            "crypptographist",
-            "cryptoggraphist",
-            "cryptograpphist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "choreographist",
-        "definition": "A choreographer.",
-        "exampleSentence": "A dancer turned choreographist, she has founded, fostered, directed and held together the Sadler's Wells Company.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "choreographist",
-        "etymology": "From choreograph + -ist.",
-        "distractors": [
-            "chorreographist",
-            "choreoggraphist",
-            "choreograpphist"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "stratigraphist",
         "definition": "A stratigrapher.",
         "exampleSentence": "The study of the geological features' of this district presents many problems of exceeding interest both to the stratigraphist and petrologist.",
@@ -2525,22 +1646,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "abboriginalness"
         ],
         "theme": "society"
-    },
-    {
-        "word": "consarcination",
-        "definition": "A patching together; patchwork.",
-        "exampleSentence": "I don't know if there was any great depravity or moral turpitude in the action, supposing it to be true, for argument sake, if the consarcination of their conjugality is taken into account.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "consarcination",
-        "etymology": "From Latin consarcinare, consarcinatum (“to patch together”).",
-        "distractors": [
-            "consarcinasion",
-            "connsarcination",
-            "consarrcination"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "phanerocodonic",
@@ -9985,22 +9090,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "overrestrained",
-        "definition": "Excessively restrained.",
-        "exampleSentence": "The patient felt unable to tolerate his alternately seductive and passive, overrestrained behavior.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "overrestrained",
-        "etymology": "From over- + restrained.",
-        "distractors": [
-            "overestrained",
-            "ovverrestrained",
-            "overresstrained"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "juxtacapillary",
         "definition": "Adjacent to a capillary.",
         "exampleSentence": "The juxtacapillary weather made everyone want to stay inside.",
@@ -10697,22 +9786,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "scheherazadean",
-        "definition": "Of or relating to the fictional storyteller Scheherazade.",
-        "exampleSentence": "Instead of following the Scheherazadean strategy of delaying death, such suicidal narratives are a means of hastening the narrator's end.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "scheherazadean",
-        "etymology": "From Scheherazade + -ean.",
-        "distractors": [
-            "schehherazadean",
-            "scheherrazadean",
-            "scheherazzadean"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "planktophagous",
         "definition": "Consuming plankton.",
         "exampleSentence": "Certain planktophagous fishes, such as certain Pomacentridae and Nasidae, feed during the day.",
@@ -11124,21 +10197,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "sonofabitching",
-        "definition": "Awful; terrible.",
-        "exampleSentence": "This does it. I am going to get out of the sonofabitching sheep business.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "sonofabitching",
-        "distractors": [
-            "sonnofabitching",
-            "sonoffabitching",
-            "sonofabbitching"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "unchildishness",
         "definition": "The quality of being unchildish.",
         "exampleSentence": "Your unchildishness is something your husband has always loved in you.",
@@ -11471,22 +10529,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "unsadistically",
-        "definition": "Not sadistically.",
-        "exampleSentence": "He preserves them unsadistically, with no voluptuous delight.",
-        "partOfSpeech": "adverb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "unsadistically",
-        "etymology": "From un- + sadistic + -ally.",
-        "distractors": [
-            "unsadisticalley",
-            "unsadisticaly",
-            "unnsadistically"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "noncomputation",
         "definition": "Absence of computation; failure to compute something.",
         "exampleSentence": "By a noncomputation of Turing machine M on input w we mean any string (over the alphabet used to represent computations) that does not represent a valid ….",
@@ -11579,21 +10621,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "nonirreparible",
             "nonirreparabel",
             "nonireparable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "epistolization",
-        "definition": "The writing of an epistle.",
-        "exampleSentence": "His letter, written a week after his defeat, and expressing a desire for peace, is a rich specimen of Maori epistolization.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "epistolization",
-        "distractors": [
-            "epistolizasion",
-            "eppistolization",
-            "episstolization"
         ],
         "theme": "everyday"
     },
@@ -11756,22 +10783,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "loonyttarianism"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "epistolophobia",
-        "definition": "An abnormal or irrational fear of correspondence, especially the receiving or writing of letters or messages.",
-        "exampleSentence": "Elsewhere, from Ancient Greek, we have \"epistolophobia\" (the fear of receiving correspondence).",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "greek-roots",
-        "pronunciation": "epistolophobia",
-        "etymology": "From Ancient Greek ἐπιστολή (epistolḗ, “message, letter”) + φόβος (phóbos, “fear”) + -ia.",
-        "distractors": [
-            "eppistolophobia",
-            "episstolophobia",
-            "epistollophobia"
-        ],
-        "theme": "feelings"
     },
     {
         "word": "aquapharyngeal",
@@ -13538,22 +12549,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "investigatress",
-        "definition": "A female investigator.",
-        "exampleSentence": "He also seduces a pretty insurance investigatress into connivance with him, and I was pretty glad about that, too.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "investigatress",
-        "etymology": "From investigator + -ess.",
-        "distractors": [
-            "investigatres",
-            "innvestigatress",
-            "invesstigatress"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "photoevaporate",
         "definition": "To ionise gas and cause it to disperse.",
         "exampleSentence": "High-mass stars rapidly (~ 10⁵ yr) photoevaporate the outer (r > 5 AU) portions of their disks ….",
@@ -14094,22 +13089,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "gobbledygooker",
-        "definition": "A person who uses gobbledygook.",
-        "exampleSentence": "The book had an entire chapter about the gobbledygooker.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "gobbledygooker",
-        "etymology": "From gobbledygook + -er.",
-        "distractors": [
-            "gobbledygookor",
-            "gobbledygookar",
-            "gobledygooker"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "ammonitologist",
         "definition": "A paleobiologist or researcher specializing in the study of ammonites.",
         "exampleSentence": "Arkell was a Jurassic ammonitologist with immense personal experience.",
@@ -14459,22 +13438,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "bougainnvillean"
         ],
         "theme": "people"
-    },
-    {
-        "word": "alliaceousness",
-        "definition": "The quality of being alliaceous; garlickiness or onioniness.",
-        "exampleSentence": "There is, for example, the hamburg-steak, of which the alliaceousness can seduce all but saints and the worst of dyspeptics.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "alliaceousness",
-        "etymology": "From alliaceous + -ness.",
-        "distractors": [
-            "alliaceousniss",
-            "aliaceousness",
-            "alliaceousnes"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "irreciprocally",
@@ -15175,22 +14138,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "counterirritant",
-        "definition": "Any substance used to cause inflammation in one part of the body with the goal of lessening inflammation elsewhere.",
-        "exampleSentence": "He wrote the word counterirritant on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "counterirritant",
-        "etymology": "From counter- + irritant.",
-        "distractors": [
-            "ocunterirritant",
-            "cuonterirritant",
-            "conuterirritant"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "crossopterygian",
         "definition": "One of the Crossopterygii.",
         "exampleSentence": "He wrote the word crossopterygian on the board for everyone to see.",
@@ -15652,21 +14599,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "gossipmongering",
-        "definition": "The behaviour of a gossipmonger; the spreading of salacious rumours.",
-        "exampleSentence": "He wrote the word gossipmongering on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "gossipmongering",
-        "distractors": [
-            "ogssipmongering",
-            "gsosipmongering",
-            "gosispmongering"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "hexachlorophene",
         "definition": "A polyhalogenated compound, 2,2'-methylenebis(3,4,6-trichlorophenol)-3,4,6-trichloro-2-[(2,3,5-trichloro-6-hydroxyphenyl)methyl]phenol, once used as a disinfectant.",
         "exampleSentence": "He wrote the word hexachlorophene on the board for everyone to see.",
@@ -15886,6 +14818,1074 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "niconsideration",
             "icnonsideration",
             "inocnsideration"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "indetermination",
+        "definition": "Lack of determination; an unsettled or wavering state, as of the mind.",
+        "exampleSentence": "He wrote the word indetermination on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "indetermination",
+        "etymology": "From in- + determination.",
+        "distractors": [
+            "nidetermination",
+            "idnetermination",
+            "inedtermination"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "industriousness",
+        "definition": "The quality of being industrious.",
+        "exampleSentence": "He wrote the word industriousness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "industriousness",
+        "etymology": "From industrious + -ness.",
+        "distractors": [
+            "nidustriousness",
+            "idnustriousness",
+            "inudstriousness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ineffectiveness",
+        "definition": "The condition of being ineffective.",
+        "exampleSentence": "These diplomatic setbacks partly explain England’s military ineffectiveness in the 1370s, but equally important were lack of leadership, lack of money, and dissension over strategy.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "ineffectiveness",
+        "etymology": "From ineffective + -ness.",
+        "distractors": [
+            "ineffectiveniss",
+            "inefectiveness",
+            "ineffectivenes"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ineffectualness",
+        "definition": "Inefficacy.",
+        "exampleSentence": "He wrote the word ineffectualness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "ineffectualness",
+        "etymology": "From ineffectual + -ness.",
+        "distractors": [
+            "ineffectualniss",
+            "inefectualness",
+            "ineffectualnes"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inopportuneness",
+        "definition": "The quality of being inopportune.",
+        "exampleSentence": "He wrote the word inopportuneness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "inopportuneness",
+        "etymology": "From inopportune + -ness.",
+        "distractors": [
+            "niopportuneness",
+            "ionpportuneness",
+            "inpoportuneness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inquisitiveness",
+        "definition": "The quality of being inquisitive; curiosity.",
+        "exampleSentence": "He wrote the word inquisitiveness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "inquisitiveness",
+        "etymology": "From inquisitive + -ness.",
+        "distractors": [
+            "niquisitiveness",
+            "iqnuisitiveness",
+            "inuqisitiveness"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "insensitiveness",
+        "definition": "Quality of being insensitive.",
+        "exampleSentence": "He wrote the word insensitiveness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "insensitiveness",
+        "etymology": "From insensitive + -ness.",
+        "distractors": [
+            "nisensitiveness",
+            "isnensitiveness",
+            "inesnsitiveness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "insurrectionist",
+        "definition": "A person who provokes or takes part in an insurrection.",
+        "exampleSentence": "He wrote the word insurrectionist on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "insurrectionist",
+        "etymology": "From insurrection + -ist.",
+        "distractors": [
+            "nisurrectionist",
+            "isnurrectionist",
+            "inusrrectionist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "interestingness",
+        "definition": "The state or quality of being interesting.",
+        "exampleSentence": "The interestingness or real life relevance of anomalies is a key feature of anomaly detection.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "interestingness",
+        "etymology": "From interesting + -ness.",
+        "distractors": [
+            "interestingniss",
+            "interestingnes",
+            "innterestingness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "internalization",
+        "definition": "The process of internalizing something.",
+        "exampleSentence": "He wrote the word internalization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "internalization",
+        "etymology": "From internal + -ization.",
+        "distractors": [
+            "niternalization",
+            "itnernalization",
+            "inetrnalization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "interreflection",
+        "definition": "The illumination of an object by reflected light from other objects that are not light sources.",
+        "exampleSentence": "He wrote the word interreflection on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "interreflection",
+        "etymology": "From inter- + reflection.",
+        "distractors": [
+            "niterreflection",
+            "itnerreflection",
+            "inetrreflection"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "irresistibility",
+        "definition": "The quality of being irresistible.",
+        "exampleSentence": "He wrote the word irresistibility on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "irresistibility",
+        "etymology": "From irresistible + -ity.",
+        "distractors": [
+            "riresistibility",
+            "irersistibility",
+            "irrseistibility"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "irreversibility",
+        "definition": "The quality of being irreversible; the lack of an ability to be reversed.",
+        "exampleSentence": "He wrote the word irreversibility on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "irreversibility",
+        "etymology": "From irreversible + -ity or ir- + reversibility.",
+        "distractors": [
+            "rireversibility",
+            "irerversibility",
+            "irrveersibility"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "keratoacanthoma",
+        "definition": "A common low-grade malignancy of the skin.",
+        "exampleSentence": "He wrote the word keratoacanthoma on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "keratoacanthoma",
+        "etymology": "From kerato- + acanthoma.",
+        "distractors": [
+            "ekratoacanthoma",
+            "kreatoacanthoma",
+            "keartoacanthoma"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "kindheartedness",
+        "definition": "The quality of being kindhearted.",
+        "exampleSentence": "He wrote the word kindheartedness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "kindheartedness",
+        "etymology": "From kindhearted + -ness.",
+        "distractors": [
+            "ikndheartedness",
+            "knidheartedness",
+            "kidnheartedness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "lymphocytopenia",
+        "definition": "An abnormally low level of lymphocytes in the blood.",
+        "exampleSentence": "He wrote the word lymphocytopenia on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "lymphocytopenia",
+        "etymology": "From lymphocyte + -o- + -penia.",
+        "distractors": [
+            "ylmphocytopenia",
+            "lmyphocytopenia",
+            "lypmhocytopenia"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "lymphogranuloma",
+        "definition": "Lymphogranuloma venereum.",
+        "exampleSentence": "He wrote the word lymphogranuloma on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "lymphogranuloma",
+        "distractors": [
+            "ylmphogranuloma",
+            "lmyphogranuloma",
+            "lypmhogranuloma"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "magnanimousness",
+        "definition": "The quality of being magnanimous.",
+        "exampleSentence": "I was astounded by her magnanimousness: she had clearly forgiven him for everything that had happened.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "magnanimousness",
+        "etymology": "From magnanimous + -ness.",
+        "distractors": [
+            "magnanimousniss",
+            "magnanimousnes",
+            "maggnanimousness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "marriageability",
+        "definition": "The condition of being marriageable.",
+        "exampleSentence": "Three years might make a big difference to a woman's marriageability.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "marriageability",
+        "etymology": "From marriage + -ability.",
+        "distractors": [
+            "marriageabilitey",
+            "mariageability",
+            "marriaggeability"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "memorialization",
+        "definition": "The act or process of memorializing or creating a memorial.",
+        "exampleSentence": "He wrote the word memorialization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "memorialization",
+        "etymology": "From memorialize + -ation.",
+        "distractors": [
+            "emmorialization",
+            "mmeorialization",
+            "meomrialization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "meritoriousness",
+        "definition": "The property of being meritorious.",
+        "exampleSentence": "He wrote the word meritoriousness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "meritoriousness",
+        "etymology": "From meritorious + -ness.",
+        "distractors": [
+            "emritoriousness",
+            "mreitoriousness",
+            "meirtoriousness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "metamathematics",
+        "definition": "A branch of mathematics dealing with mathematical systems and their nature.",
+        "exampleSentence": "He wrote the word metamathematics on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "metamathematics",
+        "etymology": "From meta- + mathematics.",
+        "distractors": [
+            "emtamathematics",
+            "mteamathematics",
+            "meatmathematics"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "microphotometer",
+        "definition": "Any of various photometers used either to measure the variation of densities over small areas, or to measure accurately small changes in illumination.",
+        "exampleSentence": "He wrote the word microphotometer on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "microphotometer",
+        "etymology": "From micro- + photometer.",
+        "distractors": [
+            "imcrophotometer",
+            "mcirophotometer",
+            "mircophotometer"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "milliequivalent",
+        "definition": "One thousandth of an equivalent.",
+        "exampleSentence": "He wrote the word milliequivalent on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "milliequivalent",
+        "etymology": "From milli- + equivalent.",
+        "distractors": [
+            "imlliequivalent",
+            "mliliequivalent",
+            "mililequivalent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "miniaturization",
+        "definition": "The act or process of miniaturizing or making smaller.",
+        "exampleSentence": "He wrote the word miniaturization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "miniaturization",
+        "etymology": "From miniature + -ization.",
+        "distractors": [
+            "imniaturization",
+            "mniiaturization",
+            "miinaturization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "misapprehension",
+        "definition": "A failure to understand something; an illusion, misconception or misunderstanding.",
+        "exampleSentence": "They had thought it obsolete, but, were relieved of this misapprehension by Yule’s friend Major Trotter.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "misapprehension",
+        "etymology": "From mis- + apprehension.",
+        "distractors": [
+            "misapprehention",
+            "misaprehension",
+            "missapprehension"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "morphophonemics",
+        "definition": "Morphophonology.",
+        "exampleSentence": "He wrote the word morphophonemics on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "morphophonemics",
+        "etymology": "From morpho- + phonemics.",
+        "distractors": [
+            "omrphophonemics",
+            "mrophophonemics",
+            "moprhophonemics"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mythologization",
+        "definition": "The act or process of mythologizing.",
+        "exampleSentence": "But that doesn’t mean that the series is bad, just peculiar, a solemn mythologization — and mystification — of surfing as unearthly pleasure and life-sapping addiction.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "mythologization",
+        "etymology": "From mythologize + -ation.",
+        "distractors": [
+            "mythologizasion",
+            "mytthologization",
+            "mythollogization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nephrosclerosis",
+        "definition": "Arteriosclerosis of the renal arteries.",
+        "exampleSentence": "He wrote the word nephrosclerosis on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "nephrosclerosis",
+        "etymology": "From nephro- (“kidney”) + sclerosis (“hard”).",
+        "distractors": [
+            "enphrosclerosis",
+            "npehrosclerosis",
+            "nehprosclerosis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "neurohypophysis",
+        "definition": "The posterior lobe of the pituitary gland, responsible for the release of oxytocin and antidiuretic hormone (ADH), also called vasopressin.",
+        "exampleSentence": "He wrote the word neurohypophysis on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "neurohypophysis",
+        "etymology": "From neuro- + hypophysis.",
+        "distractors": [
+            "enurohypophysis",
+            "nuerohypophysis",
+            "neruohypophysis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "norethandrolone",
+        "definition": "The anabolic steroid 17α-ethyl-19-nortestosterone.",
+        "exampleSentence": "He wrote the word norethandrolone on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "norethandrolone",
+        "etymology": "From nor- + eth- + andro(sten)olone.",
+        "distractors": [
+            "onrethandrolone",
+            "nroethandrolone",
+            "noerthandrolone"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nucleosynthesis",
+        "definition": "Any of several processes that lead to the synthesis of heavier atomic nuclei.",
+        "exampleSentence": "He wrote the word nucleosynthesis on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "nucleosynthesis",
+        "etymology": "From nucleo- + synthesis.",
+        "distractors": [
+            "uncleosynthesis",
+            "nculeosynthesis",
+            "nulceosynthesis"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "oligosaccharide",
+        "definition": "A polysaccharide of low molecular weight, being a polymer of between three and eight monosaccharide units.",
+        "exampleSentence": "He wrote the word oligosaccharide on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "oligosaccharide",
+        "etymology": "From oligo- + saccharide.",
+        "distractors": [
+            "loigosaccharide",
+            "oilgosaccharide",
+            "olgiosaccharide"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "organophosphate",
+        "definition": "Any ester of phosphoric acid or its derivatives, especially one used as an insecticide or herbicide.",
+        "exampleSentence": "Like other nerve agents, they are organophosphate compounds, but the chemicals used to make novichoks, and their final structures, are considered classified in the UK, the US and other countries.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "organophosphate",
+        "etymology": "From organo- + phosphate.",
+        "distractors": [
+            "orrganophosphate",
+            "organnophosphate",
+            "organopphosphate"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overbearingness",
+        "definition": "Quality of being overbearing.",
+        "exampleSentence": "He wrote the word overbearingness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "overbearingness",
+        "etymology": "From overbearing + -ness.",
+        "distractors": [
+            "voerbearingness",
+            "oevrbearingness",
+            "ovrebearingness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overutilization",
+        "definition": "Excessive utilization; overuse.",
+        "exampleSentence": "He wrote the word overutilization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "overutilization",
+        "etymology": "From over- + utilization.",
+        "distractors": [
+            "voerutilization",
+            "oevrutilization",
+            "ovreutilization"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "oxyphenbutazone",
+        "definition": "A metabolite of phenylbutazone.",
+        "exampleSentence": "He wrote the word oxyphenbutazone on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "oxyphenbutazone",
+        "distractors": [
+            "xoyphenbutazone",
+            "oyxphenbutazone",
+            "oxpyhenbutazone"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "painstakingness",
+        "definition": "The state or characteristic of being painstaking; the giving of careful attention to details.",
+        "exampleSentence": "The painstakingness of Heller the craftsman comes through most strongly in these descriptions of the hard work he puts into his novels.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "painstakingness",
+        "etymology": "From painstaking + -ness.",
+        "distractors": [
+            "painstakingniss",
+            "painstakingnes",
+            "painnstakingness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "palaeogeography",
+        "definition": "The study of historical geography — of the (chiefly physical, but sometimes political/cultural) geography of the world in the geologic past.",
+        "exampleSentence": "He wrote the word palaeogeography on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "palaeogeography",
+        "etymology": "From palaeo- + geography.",
+        "distractors": [
+            "aplaeogeography",
+            "plaaeogeography",
+            "paaleogeography"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "paleocerebellum",
+        "definition": "Spinocerebellum.",
+        "exampleSentence": "He wrote the word paleocerebellum on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "paleocerebellum",
+        "etymology": "From paleo- + cerebellum.",
+        "distractors": [
+            "apleocerebellum",
+            "plaeocerebellum",
+            "paelocerebellum"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "paleoencephalon",
+        "definition": "The most ancient part of the brain.",
+        "exampleSentence": "He wrote the word paleoencephalon on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "paleoencephalon",
+        "etymology": "From paleo- + encephalon.",
+        "distractors": [
+            "apleoencephalon",
+            "plaeoencephalon",
+            "paeloencephalon"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "paleornithology",
+        "definition": "The branch of paleontology that deals with fossil birds.",
+        "exampleSentence": "He wrote the word paleornithology on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "paleornithology",
+        "etymology": "From paleo- + ornithology.",
+        "distractors": [
+            "apleornithology",
+            "plaeornithology",
+            "paelornithology"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "panencephalitis",
+        "definition": "Any disease characterised by widespread encephalitis.",
+        "exampleSentence": "He wrote the word panencephalitis on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "panencephalitis",
+        "etymology": "From pan- + encephalitis.",
+        "distractors": [
+            "apnencephalitis",
+            "pnaencephalitis",
+            "paenncephalitis"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "phenazopyridine",
+        "definition": "A chemical used as an analgesic for the urinary tract.",
+        "exampleSentence": "He wrote the word phenazopyridine on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "phenazopyridine",
+        "distractors": [
+            "hpenazopyridine",
+            "pehnazopyridine",
+            "phneazopyridine"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "phosphocreatine",
+        "definition": "A phosphorylated derivative of creatine that is used in muscles to store chemical energy.",
+        "exampleSentence": "He wrote the word phosphocreatine on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "phosphocreatine",
+        "etymology": "From phospho- + creatine.",
+        "distractors": [
+            "hposphocreatine",
+            "pohsphocreatine",
+            "phsophocreatine"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "photocoagulator",
+        "definition": "An instrument containing a laser, or a xenon flash lamp, which is used in photocoagulation.",
+        "exampleSentence": "He wrote the word photocoagulator on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "photocoagulator",
+        "etymology": "From photo- + coagulator.",
+        "distractors": [
+            "hpotocoagulator",
+            "pohtocoagulator",
+            "phtoocoagulator"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "photojournalist",
+        "definition": "A journalist who uses photojournalism.",
+        "exampleSentence": "“It’s a way of feeling alive, even when everything around you is falling apart,” Vasilkan, a skateboarder from Odesa, told French photojournalist Robin Tutenges.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "photojournalist",
+        "etymology": "From photo- + journalist.",
+        "distractors": [
+            "phottojournalist",
+            "photojjournalist",
+            "photojourrnalist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "photomicrograph",
+        "definition": "A photograph taken using a microscope.",
+        "exampleSentence": "He wrote the word photomicrograph on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "photomicrograph",
+        "etymology": "From photo- + micrograph.",
+        "distractors": [
+            "hpotomicrograph",
+            "pohtomicrograph",
+            "phtoomicrograph"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "plainclothesman",
+        "definition": "A police officer (especially a detective) who wears civilian clothes when on duty.",
+        "exampleSentence": "He wrote the word plainclothesman on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "plainclothesman",
+        "etymology": "From plainclothes + -man.",
+        "distractors": [
+            "lpainclothesman",
+            "palinclothesman",
+            "plianclothesman"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "practicableness",
+        "definition": "Practicability.",
+        "exampleSentence": "He wrote the word practicableness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "practicableness",
+        "etymology": "From practicable + -ness.",
+        "distractors": [
+            "rpacticableness",
+            "parcticableness",
+            "prcaticableness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "preachification",
+        "definition": "Preaching.",
+        "exampleSentence": "He wrote the word preachification on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "preachification",
+        "distractors": [
+            "preachificasion",
+            "preacchification",
+            "preachiffication"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "prechlorination",
+        "definition": "Chlorination (typically of water) before some other process.",
+        "exampleSentence": "He wrote the word prechlorination on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "prechlorination",
+        "etymology": "From pre- + chlorination.",
+        "distractors": [
+            "rpechlorination",
+            "perchlorination",
+            "prcehlorination"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "precipitateness",
+        "definition": "The state of being precipitate; hastiness.",
+        "exampleSentence": "At Khenchela, Ben Boulaid's men showed similar precipitateness.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "precipitateness",
+        "etymology": "From precipitate + -ness.",
+        "distractors": [
+            "precipitateniss",
+            "precipitatenes",
+            "preccipitateness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "preservationist",
+        "definition": "A person who advocates for the preservation of natural or man-made landmarks.",
+        "exampleSentence": "He wrote the word preservationist on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "preservationist",
+        "etymology": "From preservation + -ist.",
+        "distractors": [
+            "rpeservationist",
+            "perservationist",
+            "prseervationist"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "progressiveness",
+        "definition": "The quality of being progressive.",
+        "exampleSentence": "He wrote the word progressiveness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "progressiveness",
+        "etymology": "From progressive + -ness.",
+        "distractors": [
+            "rpogressiveness",
+            "porgressiveness",
+            "prgoressiveness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "punctiliousness",
+        "definition": "The act or state of being punctilious; strict attention to detail.",
+        "exampleSentence": "Marian rose with great dignity, and addressed the chair and the ladies and gentlemen with true parliamentary punctiliousness.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "punctiliousness",
+        "etymology": "From punctilious + -ness.",
+        "distractors": [
+            "punctiliousniss",
+            "punctiliousnes",
+            "punnctiliousness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "reapportionment",
+        "definition": "The act of reapportioning; a second or subsequent apportionment.",
+        "exampleSentence": "He wrote the word reapportionment on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "reapportionment",
+        "etymology": "c. 1930 reapportion + -ment",
+        "distractors": [
+            "erapportionment",
+            "raepportionment",
+            "repaportionment"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "redetermination",
+        "definition": "The process of determining again.",
+        "exampleSentence": "He wrote the word redetermination on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "redetermination",
+        "etymology": "From re- + determination.",
+        "distractors": [
+            "erdetermination",
+            "rdeetermination",
+            "reedtermination"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "reharmonization",
+        "definition": "The process of reharmonizing a musical work; a musical work made by reharmonizing another work.",
+        "exampleSentence": "He wrote the word reharmonization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "reharmonization",
+        "etymology": "From re- + harmonization.",
+        "distractors": [
+            "erharmonization",
+            "rhearmonization",
+            "reahrmonization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "rhinotracheitis",
+        "definition": "Inflammation of the nose and trachea.",
+        "exampleSentence": "He wrote the word rhinotracheitis on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "greek-roots",
+        "pronunciation": "rhinotracheitis",
+        "etymology": "From rhino- + tracheitis.",
+        "distractors": [
+            "hrinotracheitis",
+            "rihnotracheitis",
+            "rhniotracheitis"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "roentgenography",
+        "definition": "Radiography; The production of roentgenograms.",
+        "exampleSentence": "He wrote the word roentgenography on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "roentgenography",
+        "etymology": "Named after Wilhelm Röntgen, + -graphy.",
+        "distractors": [
+            "orentgenography",
+            "reontgenography",
+            "ronetgenography"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "romanticization",
+        "definition": "The act or process of romanticizing.",
+        "exampleSentence": "He wrote the word romanticization on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "romanticization",
+        "etymology": "From romantic + -ization.",
+        "distractors": [
+            "romanticizasion",
+            "rommanticization",
+            "romannticization"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "schistosomiasis",
+        "definition": "Any of various diseases of humans caused by parasitic blood flukes of the genus Schistosoma.",
+        "exampleSentence": "Investigation of Egyptian mummies has revealed calcified eggs in liver and kidney tissues, proving the presence of schistosomiasis in ancient Egypt.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "schistosomiasis",
+        "etymology": "From schistosome + -iasis. From scientific name Schistosoma + Ancient Greek -σις (-sis, nouns of action).",
+        "distractors": [
+            "schisstosomiasis",
+            "schistossomiasis",
+            "schistosommiasis"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "serviceableness",
+        "definition": "The state or condition of being serviceable.",
+        "exampleSentence": "The Tʻu-mên river flows close to the borders of Manchuria and its opening will probably increase the serviceableness of Possiet, which is near its mouth.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "serviceableness",
+        "etymology": "From serviceable + -ness.",
+        "distractors": [
+            "serviceableniss",
+            "serviceablenes",
+            "serrviceableness"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "streptobacillus",
+        "definition": "Any bacterium of the genus Streptobacillus.",
+        "exampleSentence": "He wrote the word streptobacillus on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "streptobacillus",
+        "etymology": "From the genus name.",
+        "distractors": [
+            "tsreptobacillus",
+            "srteptobacillus",
+            "sterptobacillus"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "subordinateness",
+        "definition": "The property or condition of being subordinate.",
+        "exampleSentence": "He wrote the word subordinateness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "subordinateness",
+        "etymology": "From subordinate + -ness.",
+        "distractors": [
+            "usbordinateness",
+            "sbuordinateness",
+            "suobrdinateness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "subservientness",
+        "definition": "The quality of being subservient.",
+        "exampleSentence": "He wrote the word subservientness on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "subservientness",
+        "etymology": "From subservient + -ness.",
+        "distractors": [
+            "usbservientness",
+            "sbuservientness",
+            "susbervientness"
         ],
         "theme": "everyday"
     }
