@@ -19,6 +19,7 @@ export default defineConfig({
       registerType: 'prompt',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB — tier chunks are large
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -31,9 +32,9 @@ export default defineConfig({
             options: { cacheName: 'google-fonts-webfonts', expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
           {
-            urlPattern: /words-tier[345].*\.js$/,
+            urlPattern: /(words-tier|tier\d+-pipeline).*\.js$/,
             handler: 'CacheFirst',
-            options: { cacheName: 'word-packs', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } },
+            options: { cacheName: 'word-packs', expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
         ],
       },
@@ -58,6 +59,10 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('firebase/app') || id.includes('firebase/auth') || id.includes('firebase/firestore')) return 'firebase';
           if (id.includes('framer-motion')) return 'framer-motion';
+          // Group lazy-loaded word tiers into per-tier chunks
+          for (let t = 1; t <= 9; t++) {
+            if (id.includes(`/words/tier${t}-pipeline`)) return `tier${t}-pipeline`;
+          }
           if (id.includes('/words/tier3')) return 'words-tier3';
           if (id.includes('/words/tier4')) return 'words-tier4';
           if (id.includes('/words/tier5') && !id.includes('tier5-')) return 'words-tier5';

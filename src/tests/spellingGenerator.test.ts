@@ -146,7 +146,7 @@ describe('spellingGenerator.ts', () => {
             }
 
             expect(failures).toEqual([]);
-        });
+        }, 120_000);
 
         it('generated items always have 3 unique options', async () => {
             await ensureAllTiers();
@@ -162,7 +162,7 @@ describe('spellingGenerator.ts', () => {
             }
 
             expect(failures).toEqual([]);
-        });
+        }, 120_000);
     });
 
 });

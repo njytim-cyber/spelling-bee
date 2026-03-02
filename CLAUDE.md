@@ -33,7 +33,7 @@ src/
 │   ├── spellingCategories.ts   # Category/band/group definitions
 │   ├── spellingGenerator.ts    # Word selection + distractor generation
 │   ├── spellingAchievements.ts # Achievement definitions
-│   └── words/                  # Word bank (2900+ words across 5 tiers)
+│   └── words/                  # Word bank (100K target across 10 tiers)
 │       ├── registry.ts         # Lazy-loading tier registry
 │       ├── index.ts            # Lookup utilities (wordsByPattern, getWordMap, etc.)
 │       └── tier[1-5].ts        # Word data files (tier 3-5 lazy-loaded)
@@ -64,15 +64,26 @@ src/
 ### Word Bank Structure
 Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, difficulty (1-10), pattern, pronunciation, optional etymology/source.
 
-| Tier | Grade | Difficulty | Patterns | Count |
-|------|-------|-----------|----------|-------|
-| 1 | K-1st | 1-2 | cvc, blends, digraphs | 510 |
-| 2 | 2nd-3rd | 3-4 | silent-e, vowel-teams, r-controlled, diphthongs | 505 |
-| 3 | 4th-5th | 5-6 | prefixes, suffixes, compound, multisyllable, irregular | 505 |
-| 4 | 6th-8th | 7-8 | latin-roots, greek-roots, french-origin + above | 504 |
-| 5 | Competition | 9-10 | All patterns, etymology required | 481 |
-| Scripps | National Bee | 8-10 | Competition words with full etymology | 259 |
-| State | State Bee | 8-10 | State competition words | 96 |
+**Target: 100,000 words across 10 tiers** (matching competitor scale).
+
+| Tier | Grade | Difficulty | Patterns | DB Supply | Target |
+|------|-------|-----------|----------|-----------|--------|
+| 1 | Pre-K / K | 1-2 | cvc, blends, digraphs, sight words | 22,531 | 20,000 |
+| 2 | 1st-2nd | 3 | silent-e, vowel-teams | 20,166 | 18,000 |
+| 3 | 2nd-3rd | 4 | r-controlled, diphthongs | 21,193 | 15,000 |
+| 4 | 3rd-4th | 5 | prefixes, suffixes, multisyllable | 19,417 | 13,000 |
+| 5 | 4th-5th | 6 | compound, irregular, latin-roots | 17,828 | 10,000 |
+| 6 | 6th-7th | 7 | latin-roots, greek-roots, french-origin | 14,903 | 8,000 |
+| 7 | 7th-8th | 8 | Advanced roots, etymology required | 12,709 | 6,000 |
+| 8 | 9th-10th | 9 | All patterns, etymology required | 7,271 | 5,000 |
+| 9 | Competition | 10 | Competition words, full etymology | 414* | 3,000 |
+| 10 | Championship | 10 | Scripps/state-level, full etymology | 414* | 2,000 |
+
+*Tiers 9-10 share the diff-10 pool (currently 414). ~4,600 more diff-10 words need enrichment from the 566K DB.
+
+**Current state**: ~2,900 hand-curated + ~2,353 pipeline words in app. Pipeline DB has **566,664 words** (2.7GB Wiktionary dump + WordNet 3.1), with **137,749 fully enriched** (definition + example + distractors). Of those, **~127K pass quality filters** — more than enough for 100K without generating any new data.
+
+**Pipeline**: `scripts/pipeline/export-to-app.cjs` — SQLite → quality filters → TypeScript files. 11 rounds of quality iteration completed. ~25 content rejection rules, 200+ word blocklist, per-tier obscurity gates. No generated example sentences — all examples are real Wiktionary citations.
 
 ### CSS Conventions
 - Two font families: `chalk` (display) and `ui` (interface)
@@ -134,6 +145,36 @@ Tests live in `src/tests/`. Run with `npx vitest run`. Key test areas:
 - Leitner spaced repetition
 - Daily challenge seeding
 - Word registry loading
+
+## Word Bank Expansion (Active Goal)
+**Target: 100,000 words across 10 tiers** — matching competitor scale while maintaining Principle 1 quality standards.
+
+### Pipeline Architecture
+- **Source DB**: `scripts/output/words.db` — 566,664 words from Wiktionary (2.7GB kaikki.org dump) + WordNet 3.1
+- **Enriched pool**: 137,749 words with definition + example + distractors (ready for export)
+- **IPA coverage**: 85,939 words with Wiktionary IPA pronunciations
+- **Export script**: `scripts/pipeline/export-to-app.cjs` — 11 rounds of quality iteration
+- **Registry**: `src/domains/spelling/words/registry.ts` — lazy-loading with chunked pipeline files
+
+### Quality Rules (Principle 1 still applies)
+- Every word must have accurate: definition, example sentence, part of speech, difficulty, pattern, pronunciation, distractors, theme
+- Etymology required for difficulty 8+ (competition words)
+- IPA pronunciation required for tiers 1-4; word-as-fallback OK for tiers 5+
+- Distractors must never contain the correct spelling
+- No duplicates across hand-curated and pipeline files
+- ~25 content rejection rules (archaic language, inappropriate content, broken references, etc.)
+- 200+ word blocklist + 90+ content pattern blocklist
+- Per-tier obscurity gates (tier 1: senseCount >= 5, tier 2: >= 3, tier 3: >= 2)
+- Difficulty 10 = genuinely championship-obscure; don't inflate easy words
+
+### Scaling from 5 to 10 Tiers
+The current app uses 5 tiers (difficulty 1-2, 3-4, 5-6, 7-8, 9-10). Expanding to 10 tiers means each difficulty level gets its own tier, allowing finer-grained progression. This requires:
+1. Update `GradeLevel` type and `GradeConfig` to support tiers 1-10
+2. Update `SpellingCategory` union with tier-6 through tier-10
+3. Update band system to map to 10 tiers instead of 5
+4. Update registry lazy-loading for tiers 6-10
+5. Update export script tier mapping (difficulty → tier is now 1:1)
+6. Update UI (grade picker, progression display)
 
 ## Pre-push Hook
 `npm run verify` runs automatically before every `git push`. It runs lint, type-check, tests, and build — blocks push on failure.

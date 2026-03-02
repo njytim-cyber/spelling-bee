@@ -218,8 +218,8 @@ function rebuildLoadedWords(): void {
         loadedWords = [...baseWords];
     } else {
         loadedWords = baseWords.map(w => {
+            if (!Object.hasOwn(ukOverrides!, w.word)) return w;
             const override = ukOverrides![w.word];
-            if (!override) return w;
             return {
                 ...w,
                 word: override.word,
@@ -235,29 +235,80 @@ function rebuildLoadedWords(): void {
 // ── Tier loading ─────────────────────────────────────────────────────────────
 
 const tierImporters: Record<number, () => Promise<{ default?: SpellingWord[]; [key: string]: unknown }>> = {
-    3: () => import('./tier3'),
-    4: () => import('./tier4'),
-    5: () => import('./tier5'),
+    3: () => Promise.all([import('./tier3'), import('./tier3-pipeline')]).then(
+        ([core, pipeline]) => ({ TIER_3_WORDS: [...core.TIER_3_WORDS, ...pipeline.TIER_3_PIPELINE_WORDS] }),
+    ),
+    4: () => Promise.all([import('./tier4'), import('./tier4-pipeline')]).then(
+        ([core, pipeline]) => ({ TIER_4_WORDS: [...core.TIER_4_WORDS, ...pipeline.TIER_4_PIPELINE_WORDS] }),
+    ),
+    5: () => Promise.all([import('./tier5'), import('./tier5-expansion'), import('./tier5-pipeline')]).then(
+        ([core, exp, pipeline]) => ({ TIER_5_WORDS: [...core.TIER_5_WORDS, ...exp.TIER_5_EXPANSION_WORDS, ...pipeline.TIER_5_PIPELINE_WORDS] }),
+    ),
+    // Tiers 6-9: pipeline-only (no hand-curated core files)
+    6: () => import('./tier6-pipeline').then(m => ({ TIER_6_WORDS: m.TIER_6_PIPELINE_WORDS })),
+    7: () => import('./tier7-pipeline').then(m => ({ TIER_7_WORDS: m.TIER_7_PIPELINE_WORDS })),
+    8: () => import('./tier8-pipeline').then(m => ({ TIER_8_WORDS: m.TIER_8_PIPELINE_WORDS })),
+    9: () => import('./tier9-pipeline').then(m => ({ TIER_9_WORDS: m.TIER_9_PIPELINE_WORDS })),
 };
 
+/** Pipeline expansion importers for tiers 1-2 (lazy-loaded separately from core). */
+const pipelineImporters: Record<number, () => Promise<SpellingWord[]>> = {
+    1: () => import('./tier1-pipeline').then(m => m.TIER_1_PIPELINE_WORDS),
+    2: () => import('./tier2-pipeline').then(m => m.TIER_2_PIPELINE_WORDS),
+};
+const loadedPipeline = new Set<number>();
+
 /**
- * Ensure all word tiers (1-5) are loaded.
+ * Load pipeline expansion words for tiers 1-2.
+ * These are lazy-loaded to keep initial bundle small.
+ * Safe to call multiple times — no-ops if already loaded.
+ */
+export async function ensurePipelineWords(): Promise<void> {
+    const missing = [1, 2].filter(t => !loadedPipeline.has(t));
+    if (missing.length === 0) return;
+
+    const modules = await Promise.all(missing.map(t => pipelineImporters[t]()));
+    const existing = new Set(baseWords.map(w => w.word));
+    const newWords: SpellingWord[] = [];
+
+    for (let i = 0; i < missing.length; i++) {
+        const words = modules[i];
+        const unique = words.filter(w => !existing.has(w.word));
+        newWords.push(...unique);
+        for (const w of unique) existing.add(w.word);
+        loadedPipeline.add(missing[i]);
+    }
+
+    if (newWords.length > 0) {
+        baseWords = [...baseWords, ...newWords];
+        rebuildLoadedWords();
+        version++;
+    }
+}
+
+/**
+ * Ensure all word tiers (1-9) are loaded, including pipeline expansions.
  * Returns immediately if already loaded. Safe to call multiple times.
  * Loads all missing tiers in parallel for maximum speed.
  */
 export async function ensureAllTiers(): Promise<void> {
-    const allTiers = [1, 2, 3, 4, 5];
+    const allTiers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const missing = allTiers.filter(t => !loadedTiers.has(t));
-    if (missing.length === 0) return;
+    const pipelineMissing = [1, 2].filter(t => !loadedPipeline.has(t));
 
-    // Load all missing tiers in parallel
-    const modules = await Promise.all(
-        missing.map(async (t) => {
-            const importer = tierImporters[t];
-            if (!importer) return null;
-            return importer();
-        }),
-    );
+    if (missing.length === 0 && pipelineMissing.length === 0) return;
+
+    // Load all missing tiers + pipeline expansions in parallel
+    const [modules, pipelineModules] = await Promise.all([
+        Promise.all(
+            missing.map(async (t) => {
+                const importer = tierImporters[t];
+                if (!importer) return null;
+                return importer();
+            }),
+        ),
+        Promise.all(pipelineMissing.map(t => pipelineImporters[t]())),
+    ]);
 
     const newWords: SpellingWord[] = [];
     for (let i = 0; i < missing.length; i++) {
@@ -268,6 +319,11 @@ export async function ensureAllTiers(): Promise<void> {
         const words = tierKey ? (mod[tierKey] as SpellingWord[]) : [];
         newWords.push(...words);
         loadedTiers.add(missing[i]);
+    }
+
+    for (let i = 0; i < pipelineMissing.length; i++) {
+        newWords.push(...pipelineModules[i]);
+        loadedPipeline.add(pipelineMissing[i]);
     }
 
     if (newWords.length > 0) {

@@ -1,0 +1,6 @@
+# Test batch - new words only
+chiropodist
+diastole
+ephemeron
+ophthalmology
+zymurgy

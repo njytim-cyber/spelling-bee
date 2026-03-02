@@ -27,14 +27,14 @@ describe('wordRegistry.ts', () => {
         expect(unique.size / words.length).toBeGreaterThan(0.9);
     });
 
-    it('ensureAllTiers loads tiers 3-5', async () => {
+    it('ensureAllTiers loads tiers 3-9', async () => {
         const wordsBefore = getLoadedWords().length;
         await ensureAllTiers();
-        expect(getLoadedTiers().has(3)).toBe(true);
-        expect(getLoadedTiers().has(4)).toBe(true);
-        expect(getLoadedTiers().has(5)).toBe(true);
+        for (let t = 3; t <= 9; t++) {
+            expect(getLoadedTiers().has(t)).toBe(true);
+        }
         expect(getLoadedWords().length).toBeGreaterThan(wordsBefore);
-    });
+    }, 60_000);
 
     it('version increments after tier load', async () => {
         // ensureAllTiers was already called — version should be > 0
@@ -63,5 +63,5 @@ describe('wordRegistry.ts', () => {
             expect(w.difficulty).toBeGreaterThanOrEqual(1);
             expect(w.difficulty).toBeLessThanOrEqual(10);
         }
-    });
+    }, 60_000);
 });

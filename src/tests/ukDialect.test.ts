@@ -20,7 +20,7 @@ describe('UK dialect support', () => {
         await loadCompetitionPack('state-bee');
         versionBeforeDialect = getRegistryVersion();
         usWordCount = getLoadedWords().length;
-    });
+    }, 60_000);
 
     it('starts in en-US dialect', () => {
         expect(getDialect()).toBe('en-US');
