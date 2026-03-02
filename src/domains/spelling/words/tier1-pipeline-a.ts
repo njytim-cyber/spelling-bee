@@ -81,7 +81,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A close quarters combat system, see LINE (combat system) on Wikipedia.Wikipedia.",
         "exampleSentence": "The book had an entire chapter about the line.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "line",
         "distractors": [
@@ -128,7 +128,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To cause to rise; to lift or elevate.",
         "exampleSentence": "It took a while to learn how to raise.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "french-origin",
         "pronunciation": "ɹeɪz",
         "etymology": "From Middle English reysen, raisen, reisen, from Old Norse reisa (“to raise”), from Proto-Germanic *raisijaną, *raizijaną (“to raise”), causative form of Proto-Germanic *rīsaną (“to rise”), from Proto-Indo-European *h₁rey- (“to rise, arise”).",
@@ -144,7 +144,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To place something over or upon, as to conceal or protect.",
         "exampleSentence": "Ten dollars should cover lunch.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kʌvɚ",
         "distractors": [
@@ -159,7 +159,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To assign a duty or responsibility to; to order.",
         "exampleSentence": "She would charge every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "t͡ʃɑɹd͡ʒ",
         "distractors": [
@@ -174,7 +174,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To remove obstructions, impediments or other unwanted items from.",
         "exampleSentence": "It took a while to learn how to clear.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "klɪə",
         "etymology": "From Middle English clere, from Anglo-Norman cler, from Old French cler (Modern French clair), from Latin clarus.",
@@ -190,7 +190,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To go after; to pursue; to move behind in the same path or direction, especially with the intent of catching.",
         "exampleSentence": "O had I but followed the Arts.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɑloʊ",
         "etymology": "From Middle English folwen, folȝen, folgen, from Old English folgian (“to follow, pursue”), from Proto-West Germanic *folgēn, from Proto-Germanic *fulgāną (“to follow”).",
@@ -206,7 +206,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To produce an air current.",
         "exampleSentence": "There let the pealing organ blow,.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bloʊ",
         "etymology": "From Middle English blowen, from Old English blāwan (“to blow, breathe, inflate, sound”), from Proto-West Germanic *blāan, from Proto-Germanic *blēaną (“to blow”) (compare German blähen), from Proto-Indo-European *bʰleh₁- (“to swell, blow up”) (compare Latin flō (“to blow”) and Old Armenian բեղուն (",
@@ -222,7 +222,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To determine (something which was exposed to doubt or question); to resolve conclusively; to set or fix (a time, an order of succession, etc).",
         "exampleSentence": "She would settle every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "sɛtəl",
         "etymology": "From a merger of two verbs: * Middle English setlen, from Old English setlan (“to settle, seat, put to rest”), from Old English setl (“seat”) (compare Dutch zetelen (“to be established, settle”)) and * Middle English sahtlen, seihtlen (“to reconcile, calm, subside”), from Old English sahtlian, ġeseh",
@@ -238,7 +238,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To delete or cross out; to scratch or eliminate.",
         "exampleSentence": "She would strike every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "stɹaɪk",
         "etymology": "From Middle English stryken, from Old English strīcan, from Proto-West Germanic *strīkan, from Proto-Germanic *strīkaną, from Proto-Indo-European *streyg- (“to stroke, rub, press”). Cognate with Dutch strijken, German streichen, Danish stryge, Icelandic strýkja, strýkva.",
@@ -270,7 +270,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Something from which other things extend; a foundation.",
         "exampleSentence": "The logarithm to base 2 of 8 is 3.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "beɪs",
         "etymology": "From Middle English base, bas, baas, from Old French base, from Latin basis, from Ancient Greek βάσις (básis). Doublet of basis and bass.",
@@ -298,27 +298,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "reduce",
-        "definition": "To bring down the size, quantity, quality, value or intensity of something; to diminish, to lower.",
-        "exampleSentence": "She would reduce every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹɪd(j)us",
-        "etymology": "From Middle English reducen, from Old French reduire, from Latin redūcō (“reduce”); from re- (“back”) + dūcō (“lead”). See duke, and compare with redoubt.",
-        "distractors": [
-            "redduce",
-            "reducce",
-            "raduce"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "soft",
         "definition": "Easily giving way under pressure.",
         "exampleSentence": "There was a soft breeze blowing.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sɔft",
         "etymology": "From Middle English softe, from Old English sōfte, alteration of earlier sēfte (“soft”), from Proto-West Germanic *samft(ī) (“level, even, smooth, soft, gentle”) (compare *sōmiz (“agreeable, fitting”)), from Proto-Indo-European *semptio-, *semtio-, from *sem- (“one, whole”).",
@@ -334,7 +318,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A heavy, pliable, inelastic metal element, having a bright, bluish color, but easily tarnished; both malleable and ductile, though with little tenacity. It is easily fusible, forms alloys with other metals, and is an ingredient of solder and type metal. Atomic number 82, symbol Pb (from Latin plumbum).",
         "exampleSentence": "You must remember to wear your leads.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "lɛd",
         "etymology": "From Middle English led, leed, from Old English lēad (“lead”), from Proto-West Germanic *laud (“lead”), possibly borrowed from Proto-Celtic *ɸloudom, from Proto-Indo-European *plewd- (“to flow”).",
@@ -350,7 +334,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A land area free of woodland, cities, and towns; an area of open country.",
         "exampleSentence": "A crop circle was made in a corn field.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fild",
         "etymology": "From Middle English feeld, feld, from Old English feld, from Proto-West Germanic *felþu, from Proto-Germanic *felþuz (“field”), ultimately from Proto-Indo-European *pleh₂- (“field, plain”) or *pleth₂- (“flat”) (with schwebeablaut).",
@@ -366,7 +350,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A store or supply.",
         "exampleSentence": "Let's be no stoics, nor no stocks.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "stɑk",
         "etymology": "From Middle English stok, from Old English stocc, from Proto-West Germanic *stokk, from Proto-Germanic *stukkaz (“tree-trunk”). Modern senses are mostly referring either to the trunk from which the tree grows (figuratively, its origin and/or support/foundation), or to a piece of wood, stick, or rod.",
@@ -378,27 +362,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "extend",
-        "definition": "To increase in extent.",
-        "exampleSentence": "She would extend every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɛkstɛnd",
-        "etymology": "From Middle English extenden, from Anglo-Norman extendre, estendre, from Latin extendō (“I stretch out”).",
-        "distractors": [
-            "exxtend",
-            "extennd",
-            "extand"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "form",
         "definition": "The shape or visible structure of a thing or person.",
         "exampleSentence": "The book had an entire chapter about the form.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "fɔɹm",
         "etymology": "From Middle English forme (“shape, figure, manner, bench, frame, seat, condition, agreement, etc.”), borrowed from Old French forme, from Latin fōrma (“shape, figure, image, outline, plan, mold, frame, case, etc., manner, sort, kind, etc.”).",
@@ -414,7 +382,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Used to remember how to use a fire extinguisher: pull the pin, aim at the base (of the fire), squeeze the handle/trigger, sweep from side to side.",
         "exampleSentence": "The book had an entire chapter about the pass.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "pass",
         "distractors": [
@@ -461,7 +429,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To put clothes (or, formerly, armour) on (oneself or someone, a doll, a mannequin, etc.); to clothe.",
         "exampleSentence": "He was dressed in the latest fashions.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "dɹɛs",
         "distractors": [
@@ -476,7 +444,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To become or remain attached; to adhere.",
         "exampleSentence": "It took a while to learn how to stick.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "stɪk",
         "etymology": "From Middle English stiken (“to stick, pierce, stab, remain embedded, be fastened”), from Old English stician (“to pierce, stab, remain embedded, be fastened”), from Proto-West Germanic *stikkōn, from Proto-Germanic *stikkōną (“to pierce, prick, be sharp”), from Proto-Indo-European *(s)tig-, *(s)tey",
@@ -492,7 +460,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To come or go back (to a place or person).",
         "exampleSentence": "She would return every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɹɪtɝn",
         "etymology": "From Middle English returnen, retornen, from Anglo-Norman returner, from Old French retourner, retorner, from Medieval Latin retornare (“to turn back”), from re- + tornare (“to turn”). By surface analysis, re- + turn. Compare beturn.",
@@ -504,33 +472,18 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "overset",
-        "definition": "To knock over or overturn (someone or something); to capsize, to upset.",
-        "exampleSentence": "So this is the creature who oversets the household and suborns servants and clergymen ….",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "oʊvəɹsɛt",
-        "distractors": [
-            "ovverset",
-            "overrset",
-            "ovarset"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "blowoff",
-        "definition": "Something that is blown off.",
-        "exampleSentence": "White grifters call it the blowoff.",
+        "word": "position",
+        "definition": "A place or location.",
+        "exampleSentence": "My position on this issue is unchanged.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "blowoff",
-        "etymology": "Deverbal from blow off.",
+        "pronunciation": "pəzɪʃn̩",
+        "etymology": "From Middle English posicioun, from Old French posicion, from Latin positiō (“a putting, position”), from positus (“placed, situated”), past participle of pōnō (“to place”); see ponent. Compare apposition, composition, deposition; see pose.",
         "distractors": [
-            "blowof",
-            "blowwoff",
-            "blouoff"
+            "posision",
+            "possition",
+            "posittion"
         ],
         "theme": "everyday"
     },
@@ -555,7 +508,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A boundary; a border or frontier.",
         "exampleSentence": "The book had an entire chapter about the mark.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "mɑɹk",
         "etymology": "From Middle English mark, merk, merke, from Old English mearc (“mark, sign, line of division; standard; boundary, limit, term, border; defined area, district, province”), from Proto-West Germanic *marku, from Proto-Germanic *markō (“boundary; boundary marker”), from Proto-Indo-European *mórǵs (“edge",
@@ -571,7 +524,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The act or result of rolling, or state of being rolled.",
         "exampleSentence": "The book had an entire chapter about the roll.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɹoʊl",
         "etymology": "From Middle English rollen, partly from Old French roller, roler, röeler, röoler, from Medieval Latin rotulāre (“to roll; to revolve”), from Latin rotula (“a little wheel”), diminutive of rota (“a wheel”); partly from Anglo-Latin rollāre, from the same ultimate source.",
@@ -587,7 +540,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To propel oneself rapidly upward, downward and/or in any horizontal direction such that momentum causes the body to become airborne.",
         "exampleSentence": "The sudden sharp sound made me jump.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "d͡ʒʌmp",
         "etymology": "From Middle English jumpen (“to walk quickly, run, jump”), probably of Middle Low German or North Germanic origin, ultimately from Proto-Germanic *gumpōną ~ *gumbōną (“to hop, skip, bounce”), an iterative verb. The OED suggests an imitative origin. Related to jumble.",
@@ -603,7 +556,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Arrangement, disposition, or sequence.",
         "exampleSentence": "His inability to follow orders.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɔɹdɚ",
         "etymology": "From Middle English ordre, from Old French ordre, ordne, ordene (“order, rank”), from Latin ōrdinem, accusative of ōrdō (“row, rank, regular arrangement”, literally “row of threads in a loom”), from Proto-Italic *ordō (“to arrange”), probably ultimately from Proto-Indo-European *h₂or-d-, from *h₂er-",
@@ -619,7 +572,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To be a formal servant for (a god or deity); to worship in an official capacity.",
         "exampleSentence": "It took a while to learn how to serve.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "sɝv",
         "etymology": "From Middle English serven, from Old French servir, from Latin serviō (“be a slave; serve”), from Latin servus (“slave; servant”), which perhaps derives from Etruscan (compare Etruscan proper names 𐌔𐌄𐌓𐌅𐌉 (servi), 𐌔𐌄𐌓𐌅𐌄 (serve)), or from Proto-Indo-European *ser- (“watch over, protect”).",
@@ -635,7 +588,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To make physical contact with; to bring the hand, finger or other part of the body into contact with.",
         "exampleSentence": "It took a while to learn how to touch.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "tʌt͡ʃ",
         "etymology": "From Middle English touchen, tochen, from Old French tochier (“to touch”) (whence Modern French toucher; compare French doublet toquer (“to offend, bother, harass”)), from Vulgar Latin *tuccō (“to knock, strike, offend”), from Frankish *tukkōn (“to knock, strike, touch”), from Proto-Germanic *tukkōn",
@@ -710,27 +663,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "pound",
-        "definition": "A unit of weight in various measurement systems.",
-        "exampleSentence": "He wrote the word pound on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "paʊnd",
-        "etymology": "From Middle English pound, from Old English pund (“a pound, weight”), from Proto-West Germanic *pund, from Proto-Germanic *pundą (“pound, weight”), an early borrowing from Latin pondō (“by weight”), ablative form of pondus (“weight”), from Proto-Indo-European *(s)pend- (“to pull, stretch”).",
-        "distractors": [
-            "pounnd",
-            "pownd",
-            "paund"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "press",
         "definition": "To exert weight or force against, to act upon with force or weight; to exert pressure upon.",
         "exampleSentence": "It took a while to learn how to press.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "pɹɛs",
         "etymology": "From Middle English pressen (“to crowd, thring, press”), from Old French presser (“to press”) (Modern French presser) from Latin pressāre, from pressus, past participle of premere \"to press\".",
@@ -758,70 +695,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "rough",
-        "definition": "Not smooth; uneven.",
-        "exampleSentence": "Being a teenager nowadays can be rough.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹʌf",
-        "etymology": "From Middle English rough, roughe, roȝe, row, rou, ru, ruȝ, ruh, from Old English rūg, rūh, from Proto-Germanic *rūhaz.",
-        "distractors": [
-            "ruff",
-            "rouggh",
-            "rowgh"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "quarter",
-        "definition": "Each of four equal parts into which something can be divided; a fourth part.",
-        "exampleSentence": "We got help form every quarter.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "k(w)ɔɹtɚ",
-        "etymology": "From Middle English quarter, from Anglo-Norman quarter, from Latin quartarius, from quartus. Compare Spanish cuarto (“room, quarters; quarter”). Doublet of quartier.",
-        "distractors": [
-            "quartor",
-            "quartar",
-            "quarrter"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "section",
-        "definition": "A cutting; a part cut out from the rest of something.",
-        "exampleSentence": "The horn section is the group of symphonic musicians who play the French horn.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "sɛkʃən",
-        "etymology": "From Middle English seccioun, from Old French section, from Latin sectiō (“cutting, cutting off, excision, amputation of diseased parts of the body, etc.”), from sectus, past participle of secāre (“to cut”). More at saw.",
-        "distractors": [
-            "secsion",
-            "secction",
-            "saction"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "balling",
-        "definition": "Aggregation into clumps or balls;.",
-        "exampleSentence": "What manner of man assists a woman with the balling of her yarn?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "balling",
-        "etymology": "By surface analysis, ball + -ing.",
-        "distractors": [
-            "baling",
-            "ballinng",
-            "belling"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "how",
         "definition": "To what degree or extent.",
         "exampleSentence": "How soon can I see the doctor?",
@@ -842,7 +715,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A strip of material wrapped around things to hold them together.",
         "exampleSentence": "The book had an entire chapter about the band.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bænd",
         "etymology": "Inherited from Middle English band (also bond), from Old English beand, bænd, bend (“bond, chain, fetter, band, ribbon, ornament, chaplet, crown”), from Proto-Germanic *bandą, *bandiz (“band, fetter”), from Proto-Indo-European *bʰendʰ- (“to tie, bind”).",
@@ -873,7 +746,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Hall class, a class of steam locomotive used on the GWR.",
         "exampleSentence": "The book had an entire chapter about the hall.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "hall",
         "etymology": "* As an English, Scottish, Irish, German, Norwegian, Danish, Swedish surname: all from the noun hall. The name was likely reinforced by similar sounding words such as Swedish häll (“rock slab”). * As a Chinese surname, variant Romanization of 何, 賀 /贺 (hè), see He.",
@@ -937,7 +810,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To make a pack of; to arrange closely and securely in a pack; hence, to place and arrange compactly as in a pack.",
         "exampleSentence": "Poor Stella must pack off to town.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "pæk",
         "etymology": "From Middle English pakken, from the noun (see above). Compare Middle Dutch packen (“to pack”), Middle Low German packen (“to pack”).",
@@ -953,7 +826,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Having a low temperature.",
         "exampleSentence": "She was so cold she was shivering.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "koʊld",
         "etymology": "From Middle English cold, from Anglian Old English cald. The West Saxon form, ċeald (“cold”), survived as early Middle English cheald, cheld, or chald.",
@@ -969,7 +842,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Especially, being of the wild type: being of an unbroken ancestral line of undomesticated animals, as opposed to being feral, being an undomesticated animal whose ancestors were domesticated.",
         "exampleSentence": "The wild weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "waɪld",
         "etymology": "From Middle English wild, wilde, from Old English wilde, from Proto-West Germanic *wilþī, from Proto-Germanic *wilþijaz, from Proto-Indo-European *h₂welh₁- (“hair, wool, grass, ear (of corn), forest”).",
@@ -1001,7 +874,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A part of a larger whole, usually in such a form that it is able to be separated from other parts.",
         "exampleSentence": "He wrote the word piece on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "piːs",
         "etymology": "From Middle English pece, peece, peice, from Old French piece, from Late Latin petia, pettia, possibly from Gaulish *pettyā, from Proto-Celtic *kʷezdis (“piece, portion, quota”). Compare Welsh peth, Breton pez (“thing”), Irish cuid.",
@@ -1017,7 +890,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To collide with something destructively; to fall or come down violently.",
         "exampleSentence": "It took a while to learn how to crash.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kɹæʃ",
         "etymology": "From Middle English crasshen, crasschen, craschen (“to break into pieces”), of uncertain origin. Perhaps from a variant of earlier *crasken, from crasen (“to break”) + -k (formative suffix); or from earlier *craskien, *craksien, a variant of craken (“to crack, break open”) (for form development comp",
@@ -1033,7 +906,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To propose or express one's willingness (to do something).",
         "exampleSentence": "She offered to help with her homework.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɔfɚ",
         "etymology": "From Middle English offren, offrien. In the religious senses inherited from Old English offrian (“to offer, sacrifice, bring an oblation”); otherwise from Old French ofrir.",
@@ -1045,75 +918,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "shift",
-        "definition": "To move from one place to another; to redistribute.",
-        "exampleSentence": "How can I shift a grass stain?",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ʃɪft",
-        "etymology": "The noun is from Middle English schyft, shyffte. Cognate with German Schicht (“layer, shift”). The verb is from Middle English schiften, from Old English sċiftan (“to divide, separate into shares; appoint, ordain; arrange, organise”), from Proto-Germanic *skiftijaną, *skiptijaną, from earlier *skipa",
-        "distractors": [
-            "shifft",
-            "shaft",
-            "sheft"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "strip",
-        "definition": "To remove or take away, often in strips or stripes.",
-        "exampleSentence": "It took a while to learn how to strip.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "stɹɪp",
-        "etymology": "From Middle English strepen, strippen, from Old English strīepan (“plunder”), from Proto-Germanic *strēpōną, from Proto-Indo-European *(s)ter(h₁)- (“to be stiff; be rigid; exert”). Probably related to German Strafe (“deprivation, fine, punishment”).",
-        "distractors": [
-            "strap",
-            "strep",
-            "stirp"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "swing",
-        "definition": "To rotate about an off-centre fixed point.",
-        "exampleSentence": "It took a while to learn how to swing.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "swɪŋ",
-        "etymology": "From Middle English swyngen, from Old English swingan, from Proto-West Germanic *swingan, from Proto-Germanic *swinganą (compare Low German swingen, German schwingen, Dutch zwingen, Swedish svinga), from Proto-Indo-European *swenk-, *sweng- (compare Scottish Gaelic seang (“thin”)). Related to swink.",
-        "distractors": [
-            "swinng",
-            "swang",
-            "sweng"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "yield",
-        "definition": "To give as a result or outcome; to produce or render.",
-        "exampleSentence": "I'll make him yield the crown.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "jiːld",
-        "etymology": "Verb from Middle English yielden, yelden, ȝelden (“to yield, pay”), from Old English ġieldan (“to pay”), from Proto-West Germanic *geldan, from Proto-Germanic *geldaną (“to pay”), from Proto-Indo-European *gʰeldʰ- (“to pay”).",
-        "distractors": [
-            "yielld",
-            "yeild",
-            "yaeld"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "loose",
         "definition": "Not fixed in place tightly or firmly.",
         "exampleSentence": "This wheelbarrow has a loose wheel.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "luːs",
         "distractors": [
@@ -1128,7 +937,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A drawing or diagram conveying information.",
         "exampleSentence": "The muslin was of a pretty figure.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "fɪɡjɚ",
         "etymology": "From Middle English figure, borrowed from Old French figure, from Latin figūra (“form, shape, form of a word, a figure of speech, Late Latin a sketch, drawing”), from fingō (“to form, shape, mold, fashion”), from Proto-Indo-European *dʰeyǵʰ- (“to mold, shape, form, knead”).",
@@ -1140,43 +949,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "direct",
-        "definition": "To manage, control, steer.",
-        "exampleSentence": "He directed me to the left-hand road.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "daɪɹɛkt",
-        "etymology": "Borrowed from Latin dīrēctus, perfect passive participle of dīrigō (“straighten, direct”), from dis- (“asunder, in pieces, apart, in two”) + regō (“make straight, rule”). Compare dress. Doublet of derecho.",
-        "distractors": [
-            "dirrect",
-            "direcct",
-            "darect"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "render",
-        "definition": "To cause to become.",
-        "exampleSentence": "They had to render the estate.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɛndɚ",
-        "etymology": "From Middle English renderen, rendren, from Old French rendre (“render, give back”), from Late Latin rendere, from Latin reddere (“make, give back”).",
-        "distractors": [
-            "rendor",
-            "rendar",
-            "rennder"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "broken",
         "definition": "Fragmented; in separate pieces.",
         "exampleSentence": "I think my doorbell is broken.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bɹoʊkɪn",
         "etymology": "From Middle English broken, from Old English brocen, ġebrocen, from Proto-Germanic *brukanaz, past participle of Proto-Germanic *brekaną (“to break”). Cognate with Dutch gebroken (“broken”), German Low German broken (“broken”), German gebrochen (“broken”). Morphologically broke + -n.",
@@ -1184,38 +961,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "brokken",
             "braken",
             "breken"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "separate",
-        "definition": "To divide (a thing) into separate parts.",
-        "exampleSentence": "The instructions said to separate gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "sɛpɹət",
-        "etymology": "From Middle English separaten (“to separate”), from separat (“separated”) + -en, from Latin sēparātus, perfect passive participle of sēparō (“to separate”) (see -ate (verb-forming suffix)), from sē- (“apart”) + parō (“prepare”), ultimately from Proto-Indo-European *per- (“produce, procure, bring for",
-        "distractors": [
-            "sepparate",
-            "separrate",
-            "separatte"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "holdback",
-        "definition": "A restraint; a device or part of a device that operates to restrain.",
-        "exampleSentence": "Holdback can also be seen as protecting solute-free water against invading solute.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "holdback",
-        "etymology": "From hold + back.",
-        "distractors": [
-            "holdbak",
-            "holldback",
-            "holdbacck"
         ],
         "theme": "everyday"
     },
@@ -1256,7 +1001,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A solid or hollow sphere, or roughly spherical mass.",
         "exampleSentence": "The book had an entire chapter about the ball.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bɔːl",
         "etymology": "From Middle English bal, ball, balle, from an unattested Old English *beall, *bealla (“round object, ball”) or Old Norse bǫllr (“a ball”), both from Proto-Germanic *balluz, *ballô (“ball”), from Proto-Indo-European *bʰol-n- (“ball, bubble”), from Proto-Indo-European *bʰel- (“to blow, inflate, swell”",
@@ -1272,7 +1017,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A placeholder or conventional name for any man, particularly a younger, lower-class man.",
         "exampleSentence": "When he went home on leave he rioted on a large scale—pompously. Jack ashore—with a difference—in externals only.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "d͡ʒæk",
         "etymology": "From Middle English Jackin, Jankyn, a popular pet form of John; rarely also an anglicized form of French Jacques (equivalent of Jacob and James). It can be also used as nickname for Jacob. Though the name was originally a pet form, it has become more of an independent name.",
@@ -1288,7 +1033,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An act of lifting or raising.",
         "exampleSentence": "Take the lift to the fourth floor.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "lɪft",
         "etymology": "From Middle English liften, lyften, from Old Norse lypta (“to lift, air”, literally “to raise in the air”), from Proto-Germanic *luftijaną (“to raise in the air”), related to *luftuz (“roof, air”), perhaps from Proto-Indo-European *lewp- (“to peel, break off, damage”) or from a root meaning roof (se",
@@ -1304,7 +1049,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A regulation, law, guideline.",
         "exampleSentence": "My rule is to rise at six o'clock.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "ɹuːl",
         "etymology": "From Middle English reule, rewle, rule, borrowed from Old French riule, reule, from Latin regula (“straight stick, bar, ruler, pattern”), from regō (“to keep straight, direct, govern, rule”), ultimately from Proto-Indo-European *h₃réǵeti (“to straighten; right”), from the root *h₃reǵ-; see regent.",
@@ -1332,22 +1077,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "hook",
-        "definition": "To attach a hook to.",
-        "exampleSentence": "She's only here to try to hook a husband.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "hʊk",
-        "etymology": "From Middle English hoke, from Old English hōc, from Proto-West Germanic *hōk, from Proto-Germanic *hōkaz, variant of *hakô (“hook”), probably ultimately from Proto-Indo-European *kog-, *keg-, *keng- (“peg, hook, claw”).",
-        "distractors": [
-            "hok",
-            "haok",
-            "heok"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "show",
         "definition": "To display, to have somebody see (something).",
         "exampleSentence": "(dialectal) show me the salt please.",
@@ -1362,22 +1091,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "shew"
         ],
         "theme": "people"
-    },
-    {
-        "word": "dull",
-        "definition": "Lacking the ability to cut easily; not sharp.",
-        "exampleSentence": "The dull weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "dʌl",
-        "etymology": "From Middle English dull, dul (also dyll, dill, dwal), from Old English dol (“dull, foolish, erring, heretical; foolish, silly; presumptuous”), from Proto-West Germanic *dol, from Proto-Germanic *dulaz, from earlier *dwulaz, a variant of *dwalaz (“stunned, mad, foolish, misled”), from Proto-Indo-Eur",
-        "distractors": [
-            "dul",
-            "dall",
-            "dell"
-        ],
-        "theme": "actions"
     },
     {
         "word": "easy",
@@ -1430,7 +1143,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Lacking in force (usually strength) or ability.",
         "exampleSentence": "The weak weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "wik",
         "etymology": "From Middle English weyk, wayk, weik, waik, from Old Norse veikr (“weak”), from Proto-Germanic *waikwaz (“weak, yielded, pliant, bendsome”), from Proto-Indo-European *weyk- (“to bend, wind”).",
@@ -1440,22 +1153,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "wiak"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "frame",
-        "definition": "The structural elements of a building or other constructed object.",
-        "exampleSentence": "He wrote the word frame on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fɹeɪm",
-        "etymology": "From Middle English frame (“profit, benefit, advantage; a structure composed according to a plan”), from the verb (above) and also from Old Norse frami (“advantage, fame, bravery, efficiency, privilege, honor”); and frame (“a framework or structure of any kind”) which is of uncertain origin.",
-        "distractors": [
-            "framme",
-            "freme",
-            "frime"
-        ],
-        "theme": "home"
     },
     {
         "word": "stand",
@@ -1474,27 +1171,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pitch",
-        "definition": "To throw (the ball) toward a batter at home plate.",
-        "exampleSentence": "It took a while to learn how to pitch.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "pɪt͡ʃ",
-        "etymology": "From Middle English picchen, pycchen (“to thrust in, fasten, settle”), from Old English *piċċan, from Proto-West Germanic *pikkijan, a variant of Proto-West Germanic *pikkōn (“to pick, peck”), whence Middle English pikken, picken (“to pick, pierce”), modern English pick.",
-        "distractors": [
-            "pittch",
-            "pich",
-            "patch"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "dirty",
         "definition": "Unclean; covered with or containing unpleasant substances such as dirt or grime.",
         "exampleSentence": "The old flag was a dirty white.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "dɝti",
         "etymology": "From Middle English dirti, alteration of earlier dritti, equivalent to dirt + -y. Cognate with Middle Low German drēterich (“dirty”). See also drite.",
@@ -1510,7 +1191,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Newly produced or obtained; recent.",
         "exampleSentence": "He followed the fresh hoofprints to find the deer.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɹɛʃ",
         "etymology": "From Middle English fressh, from Old English fersċ (“fresh, pure, sweet”), from Proto-West Germanic *frisk (“fresh”), from Proto-Germanic *friskaz (“fresh”), from Proto-Indo-European *preysk- (“fresh”). The verb is from Middle English freshen (“to freshen”), from the adjective.",
@@ -1520,102 +1201,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "frish"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "stroke",
-        "definition": "An act of hitting; a blow, a hit.",
-        "exampleSentence": "Can you use the word stroke in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "stɹoʊk",
-        "etymology": "The noun is derived from Middle English strok, stroke (“blow from a weapon, cut”), from Old English strāc, from Proto-West Germanic *straik, from Proto-Germanic *straikaz (“stroke”), from Proto-Indo-European *streyg- (“to rub, stroke; to shear; to strike”). Sense 3.6.2.",
-        "distractors": [
-            "strokke",
-            "strake",
-            "streke"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dreich",
-        "definition": "Extending for a long distance or time, especially when tedious or wearisome; long-drawn-out, protracted; also, of speech or writing: unnecessarily verbose; long-winded.",
-        "exampleSentence": "So Alec showed her the letter, 'twas long and dreich and went on and on; ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɹik",
-        "etymology": "The adjective is borrowed from Scots dreich (“hard to bear, dreary, tedious, wearisome; interminable, long-winded; dull, uninteresting; slow, tardy; doleful, gloomy; baffling, difficult; difficult to reach, inaccessible”), from Middle English dregh, dri, drie (“burdensome; depressing, dismal; large,",
-        "distractors": [
-            "dreicch",
-            "dreitch",
-            "driech"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "bolter",
-        "definition": "A person or thing that bolts, or runs suddenly.",
-        "exampleSentence": "Evidence is accumulating that bolters are plants which have changed their long-day habit to that of short-day.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "boʊltɚ",
-        "etymology": "From bolt + -er.",
-        "distractors": [
-            "boltor",
-            "boltar",
-            "bollter"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "withdraw",
-        "definition": "To draw or pull (something) away or back from its original position or situation.",
-        "exampleSentence": "The instructions said to withdraw gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "wɪðdɹɔ",
-        "etymology": "From Middle English withdrawen, withdrauen (“to depart, leave, move away; (reflexive) to go away; (reflexive) to leave someone’s service; (often reflexive) to draw back or retreat (from a battlefield or dangerous place), withdraw; to abandon, desert; to go, go forth; to move; of the sea",
-        "distractors": [
-            "witthdraw",
-            "withdrau",
-            "wathdraw"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "boardsman",
-        "definition": "A member (especially male) of a board (governing body).",
-        "exampleSentence": "Learning about the boardsman was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "boardsman",
-        "etymology": "From board + -s- + man.",
-        "distractors": [
-            "boarrdsman",
-            "baardsman",
-            "beardsman"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "loc",
-        "definition": "Correspondence, usually a letter, sent to a periodical commenting on either the contents of a previous issue or an earlier letter of comment.",
-        "exampleSentence": "Available for Trade, LoC, Contribution, goodwill (rarely) or even money.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "loc",
-        "etymology": "Abbreviation of letter of comment.",
-        "distractors": [
-            "lac",
-            "lec",
-            "lco"
-        ],
-        "theme": "language"
     },
     {
         "word": "body",
@@ -1637,7 +1222,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A collection of sheets of paper bound together to hinge at one edge, containing printed or written material, pictures, etc.",
         "exampleSentence": "I have three copies of his first book.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bʊk",
         "distractors": [
@@ -1648,27 +1233,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "bull",
-        "definition": "Specifically, one that is uncastrated.",
-        "exampleSentence": "You never waited until the train stopped to get off. The railroad bulls were waiting at the stops searching for freeloaders.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bʊl",
-        "etymology": "From Middle English bole, bul, bule, from a conflation of Old English bula (“bull, steer”) and Old Norse boli, both from Proto-Germanic *bulô (“bull”), from Proto-Indo-European *bʰl̥no-, from *bʰel- (“to blow, swell up”).",
-        "distractors": [
-            "bul",
-            "ball",
-            "bell"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "card",
         "definition": "A playing card.",
         "exampleSentence": "The book had an entire chapter about the card.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "kɑɹd",
         "etymology": "From Middle English carde (“playing card”), from Old French carte, from Latin charta, from Ancient Greek χάρτης (khártēs, “paper, papyrus”). Doublet of carte and chart.",
@@ -1684,7 +1253,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A biological structure found in many animals that is used for locomotion and that is frequently a separate organ at the terminal part of the leg.",
         "exampleSentence": "The book had an entire chapter about the foot.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "fʊt̚",
         "etymology": "From Middle English fot, fote, foot, from Old English fōt, from Proto-West Germanic *fōt, from Proto-Germanic *fōts, from Proto-Indo-European *pṓds. Doublet of pes, pie (“Spanish unit of length”), and pous.",
@@ -1716,7 +1285,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The part of Earth which is not covered by oceans or other bodies of water.",
         "exampleSentence": "They come from a faraway land.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɫeə̯nd",
         "distractors": [
@@ -1731,7 +1300,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Each of a series of men stationed at specific places along a postroad, with responsibility for relaying letters and dispatches of the monarch (and later others) along the route.",
         "exampleSentence": "And then in post he came from Mantua.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "poʊst",
         "etymology": "Borrowed from Middle French poste, from Italian posta (“stopping-place for coaches”), feminine of posto (“placed, situated”).",
@@ -1741,54 +1310,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "pest"
         ],
         "theme": "travel"
-    },
-    {
-        "word": "sign",
-        "definition": "A visible fact that shows that something exists or may happen.",
-        "exampleSentence": "Sorry, I don't know sign very well.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "saɪn",
-        "etymology": "From Middle English signe, sygne, syng, seine, sine, syne, from Old English seġn (“sign; mark; token”) and Old French signe, seing (“sign; mark; signature”); both from Latin signum (“a mark; sign; token”); root uncertain. Doublet of signum. Partially displaced native token.",
-        "distractors": [
-            "siggn",
-            "sagn",
-            "segn"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "know",
-        "definition": "To perceive the truth or factuality of; to be certain of; to be certain that.",
-        "exampleSentence": "To know a person's face or figure.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "noʊ",
-        "etymology": "From Middle English knowen, from Old English cnāwan (“to know, perceive, recognise”), from Proto-West Germanic *knāan, from Proto-Germanic *knēaną (“to know”), from Proto-Indo-European *ǵneh₃- (“to know”).",
-        "distractors": [
-            "now",
-            "knou",
-            "knaw"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "rack",
-        "definition": "To clarify, and thereby deter further fermentation of, beer, wine or cider by draining or siphoning it from the dregs.",
-        "exampleSentence": "The Darwin administrator, J.C. Archer, with great ceremony, turned on the flow to rack the precious golden stuff into casks.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "ɹæk",
-        "etymology": "From Middle English rakken.",
-        "distractors": [
-            "rak",
-            "racck",
-            "reck"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "read",
@@ -1811,7 +1332,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To help (somebody) to survive, or rescue (somebody or something) from harm.",
         "exampleSentence": "Jesus Christ came to save sinners.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "seɪv",
         "distractors": [
@@ -1874,7 +1395,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An enclosed space; a courtyard; an uncovered area shut in by the walls of a building, or by different buildings; also, a space opening from a street and nearly surrounded by houses; a blind alley.",
         "exampleSentence": "The girls were playing in the court.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kɔɹt",
         "etymology": "From Middle English court, from Old French cort, curt, from Late Latin cōrs, contracted from Latin cohors. Doublet of cohort. A court (noun sense 4.2) assembled to hear the testimony of Charles Lindbergh. The room is also a court (noun sense 4.1).",
@@ -1886,43 +1407,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "home"
     },
     {
-        "word": "draft",
-        "definition": "A current of air, usually coming into a room or vehicle.",
-        "exampleSentence": "He left the country to avoid the draft.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɹæft",
-        "etymology": "A phonetic spelling of draught (compare laughter), from Middle English draught, draght (“that which is pulled; that which is drawn up, a design”), from Old English *dreaht, *dræht, from Proto-West Germanic *drahti, *drahtu, from Proto-Germanic *drahtuz (“a pulling, drawing”).",
-        "distractors": [
-            "drafft",
-            "dreft",
-            "drift"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "grain",
-        "definition": "The harvested seeds of various grass food crops eg: wheat, corn, barley.",
-        "exampleSentence": "He wrote the word grain on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡɹeɪn",
-        "etymology": "From Middle English greyn, grayn, grein, from Old French grain, grein, from Latin grānum (“seed”), from Proto-Indo-European *ǵr̥h₂nóm (“grain”). Doublet of corn, gram, granum, and grao.",
-        "distractors": [
-            "grayn",
-            "grein",
-            "griin"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "issue",
         "definition": "A Monacan Indian; a member of a Mestee group originating in Amherst County, Virginia.",
         "exampleSentence": "He wrote the word issue on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɪʃ(j)u",
         "etymology": "From Free (“not enslaved”) Issue (“progeny”), \"an antiquated designation for descendants of enslaved people who were freed before the Civil War\", later applied to Monacans because Virginia laws for a time required births to be registered as either \"White\" or \"Colored\", erasing Indians, and clerks la",
@@ -1934,27 +1423,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "score",
-        "definition": "The total number of goals, points, runs, etc. earned by a participant in a game.",
-        "exampleSentence": "Some words have scores of meanings.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "skoɹ",
-        "etymology": "From Middle English score, skore, schore, from Old English scoru (“notch; tally; score”), from Old Norse skor, from Proto-Germanic *skurō (“incision; tear; rift”), which is related to *skeraną (“to cut”), ultimately from Proto-Indo-European *(s)ker- (“cut”).",
-        "distractors": [
-            "scorre",
-            "scare",
-            "scere"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "track",
         "definition": "A mark left by something that has passed along.",
         "exampleSentence": "The athletes ran round the track.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "tɹæk",
         "etymology": "From Middle English trak, tracke, from Old French trac (“track of horses, trail, trace”), of uncertain origin.",
@@ -1962,22 +1435,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "trak",
             "tracck",
             "treck"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "union",
-        "definition": "The 0-10-2 locomotive wheel arrangement.",
-        "exampleSentence": "He wrote the word union on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "juːnjən",
-        "etymology": "(locomotive): Derived from the name of the only U.S. company to use that configuration.",
-        "distractors": [
-            "nuion",
-            "uinon",
-            "unoin"
         ],
         "theme": "everyday"
     },
@@ -1998,75 +1455,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "bluey",
-        "definition": "The metal lead.",
-        "exampleSentence": "‘Doc’ … shouldered his bluey and whistled up his lame fox-terrier before formally wishing them all well.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bluːi",
-        "etymology": "From blue + -y.",
-        "distractors": [
-            "bluy",
-            "blueey",
-            "blaey"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "medium",
-        "definition": "The material of the surrounding environment, e.g. solid, liquid, gas, vacuum, or a specific substance such as a solvent.",
-        "exampleSentence": "Cavalry … is divided into mediums, heavies, and light cavalry.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "miːdiəm",
-        "etymology": "Borrowed from Latin medium, neuter of medius (“middle”), from Proto-Italic *meðjos, from Proto-Indo-European *médʰyos (“between”). Compare middle. Doublet of mid, medio, media, and meson.",
-        "distractors": [
-            "meddium",
-            "madium",
-            "midium"
-        ],
-        "theme": "nature"
-    },
-    {
-        "word": "relief",
-        "definition": "A method of sculpture or other artwork in which shapes or figures protrude from a flat background.",
-        "exampleSentence": "Can you use the word relief in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪliːf",
-        "etymology": "From Italian rilievo, from rilevare (“to raise”), from Latin relevō (“to raise”).",
-        "distractors": [
-            "rellief",
-            "releif",
-            "ralief"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "strain",
-        "definition": "The act of straining, or the state of being strained.",
-        "exampleSentence": "Can you use the word strain in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "stɹeɪn",
-        "etymology": "From Middle English straynen, streinen, streynen, from Old French estreindre (whence French étreindre (“to grip”)), from Latin stringō (“to draw tight together, to tie”).",
-        "distractors": [
-            "strayn",
-            "strein",
-            "striin"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "accept",
         "definition": "To receive, especially with a consent, with favour, or with approval.",
         "exampleSentence": "She would accept every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "əksɛpt",
         "etymology": "First attested about 1380. From Middle English accepten, borrowed from Old French accepter, or directly from Latin acceptō, acceptāre (“receive”), frequentative of accipiō, formed from ad- + capiō (“to take”). Displaced native Old English onfōn.",
@@ -2078,59 +1471,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "retire",
-        "definition": "To stop working on a permanent basis, usually because of old age or illness.",
-        "exampleSentence": "She would retire every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹətaɪɹ",
-        "etymology": "From Middle French retirer (“draw back”), from Old French retirer, built from re- (“back”) + tirer (“draw, pull”), the latter from Vulgar Latin *tīrāre, of highly uncertain origin.",
-        "distractors": [
-            "rettire",
-            "retirre",
-            "ratire"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "suffer",
-        "definition": "To undergo hardship.",
-        "exampleSentence": "She would suffer every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sʌfɚ",
-        "etymology": "From Middle English suffren, from Anglo-Norman suffrir, from Latin sufferre (“to offer, hold up, bear, suffer”), from sub- (“up, under”) + ferō (“I carry”), from Proto-Indo-European *bʰer- (“to bear, carry”). Displaced native Old English þrōwian.",
-        "distractors": [
-            "suffor",
-            "suffar",
-            "sufer"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tumble",
-        "definition": "To fall end over end; to roll over and over.",
-        "exampleSentence": "Share prices tumbled after the revelation about the company's impending failure.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tʌmbl̩",
-        "etymology": "From Middle English tumblen (“to fall over and over again, tumble”), frequentative of Middle English tumben (“to fall, leap, dance”), from Old English tumbian, from Proto-Germanic *tūmōną (“to turn, rotate”).",
-        "distractors": [
-            "tumbel",
-            "tummble",
-            "tamble"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "secret",
         "definition": "Being or kept hidden.",
         "exampleSentence": "We went down a secret passage.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "siːkɹɪt",
         "etymology": "From Middle English secrette, from Old French secret, from Latin sēcrētus (“separated, hidden”), from ptp of sēcernō (“separate, to set aside, sunder out”), from cernō, from Proto-Indo-European *krey-. Displaced Old English dēagol (“secret”).",
@@ -2142,27 +1487,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "carrier",
-        "definition": "A person or object that carries someone or something else.",
-        "exampleSentence": "The air which is but … a carrier of the sounds.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kæɹɪə",
-        "etymology": "From Middle English cariere, partly from carien + -ere, after Anglo-Norman carier, cariour, and partly directly from Anglo-Norman. By surface analysis, carry + -er.",
-        "distractors": [
-            "carrior",
-            "carriar",
-            "carier"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "control",
         "definition": "An influence or authority over something.",
         "exampleSentence": "The government has complete control over the situation.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kəntɹoʊl",
         "etymology": "From Middle English controllen, from Old French contrerole, from Medieval Latin contrārotulum (“a counter-roll or register used to verify accounts”), from Latin contrā (“against, opposite”) + Medieval Latin rotulus, Latin rotula (“roll, a little wheel”), diminutive of rota (“a wheel”).",
@@ -2190,180 +1519,19 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "connect",
-        "definition": "To join (to another object): to attach, or to be intended to attach or capable of attaching, to another object.",
-        "exampleSentence": "I think this piece connects to that piece over there.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kənɛkt",
-        "etymology": "From Latin connectere (“fasten together”), from con- (“together”) + nectere (“bind”), which is cognate with English knot and English knit.",
-        "distractors": [
-            "conect",
-            "connecct",
-            "cannect"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "relieve",
-        "definition": "To ease (a person, person's thoughts etc.) from mental distress; to stop (someone) feeling anxious or worried, to alleviate the distress of.",
-        "exampleSentence": "I was greatly relieved by the jury's verdict.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹɪliːv",
-        "etymology": "From Late Middle English releven, from Old French relever, specifically from the conjugated forms such as (jeo) relieve (“I lift up”), and its source, Latin relevo (“to lift up, lighten, relieve, alleviate”), combined form of re- (“back”) + levo (“to lift”). Doublet of relevate.",
-        "distractors": [
-            "releive",
-            "rellieve",
-            "relievve"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "clicker",
-        "definition": "The remote-control device used to change settings on a television set, VCR, or other electronic equipment.",
-        "exampleSentence": "Let Clickers bark on the whole Day.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "klɪkɚ",
-        "etymology": "From click + -er.",
-        "distractors": [
-            "clickor",
-            "clickar",
-            "cliccker"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "grabble",
-        "definition": "To search with one's hands and fingers; to attempt to grasp something.",
-        "exampleSentence": "“Come here, boys, and let your gorgeous auntie grabble her hairy little monkeys!”.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɡɹæbl̩",
-        "etymology": "From grab + -le.",
-        "distractors": [
-            "grabbel",
-            "grable",
-            "grebble"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cheeser",
-        "definition": "Someone who makes or sells cheese.",
-        "exampleSentence": "Oh, Brian, you are such a cheeser!",
+        "word": "operation",
+        "definition": "The method by which a device performs its function.",
+        "exampleSentence": "We run our operation from a storefront.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "t͡ʃizɚ",
-        "etymology": "From Middle English cheser; equivalent to cheese + -er. The smile is said to resemble the uniform white coloration of cheese, or possibly related to the phrase say cheese.",
+        "pronunciation": "ɑpəɹeɪʃən",
         "distractors": [
-            "cheesor",
-            "cheesar",
-            "cheser"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "exchange",
-        "definition": "An act of exchanging or trading.",
-        "exampleSentence": "The exchange was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɛkst͡ʃeɪnd͡ʒ",
-        "etymology": "From Middle English eschaunge, borrowed from Anglo-Norman eschaunge, from Old French eschange (whence modern French échange), from the verb eschanger, from Vulgar Latin *excambiāre (from Latin ex with Late Latin cambiō). Spelling later changed on the basis of ex-, with pronunciation following.",
-        "distractors": [
-            "exxchange",
-            "exchannge",
-            "exchenge"
+            "operasion",
+            "opperation",
+            "operration"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "dissolve",
-        "definition": "To terminate a union of multiple members actively, as by disbanding.",
-        "exampleSentence": "Make interpretations and dissolve doubts.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪzɑlv",
-        "etymology": "Recorded since c. 1374 (displacing Old English toliesan) as Middle English dissolven, from Latin dissolvere (“to loosen up, break apart”) but with the sense from Anglo-Norman dissoldre (variant of Old French dissoudre), itself from dis- (“apart”) + solvere (“to loose, loosen”).",
-        "distractors": [
-            "disolve",
-            "dissollve",
-            "dassolve"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "positive",
-        "definition": "Included, present, characterized by affirmation.",
-        "exampleSentence": "He has a positive outlook on life.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "pɑzɪtɪv",
-        "etymology": "From Old French positif, from Latin positivus, from the past participle stem of ponere (“to place”). Compare posit.",
-        "distractors": [
-            "possitive",
-            "posittive",
-            "positivve"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "vinculum",
-        "definition": "A bond or tie that unifies.",
-        "exampleSentence": "The vinculum was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "vɪŋkjələm",
-        "etymology": "From Latin vinculum (“bond, link”), from vinciō (“bind, fetter, tie”) + -ulum.",
-        "distractors": [
-            "vinnculum",
-            "vincullum",
-            "vanculum"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "blowable",
-        "definition": "Capable of being blown or blown away; that can be subjected to blowing.",
-        "exampleSentence": "The old house had a blowable appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "blowable",
-        "etymology": "From blow + -able.",
-        "distractors": [
-            "blowible",
-            "blowabel",
-            "blowwable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "screwback",
-        "definition": "The period of screw rotation during injection molding when the plastic can flow into the mold.",
-        "exampleSentence": "Ball Bearing armature and spindle thrust, three jaw screwback chuck.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "screwback",
-        "etymology": "From screw + back.",
-        "distractors": [
-            "screwbak",
-            "screwwback",
-            "screwbacck"
-        ],
-        "theme": "language"
     },
     {
         "word": "box",
@@ -2433,7 +1601,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An institution where one can place and borrow money and take care of financial affairs.",
         "exampleSentence": "The book had an entire chapter about the bank.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bæŋk",
         "distractors": [
@@ -2448,7 +1616,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A stroke; a blow.",
         "exampleSentence": "The book had an entire chapter about the beat.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "biːt",
         "etymology": "From Middle English beten, from Old English bēatan (“to beat, pound, strike, lash, dash, thrust, hurt, injure”), from Proto-West Germanic *bautan, from Proto-Germanic *bautaną (“to push, strike”).",
@@ -2464,7 +1632,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A telephone utility; a Baby Bell.",
         "exampleSentence": "The book had an entire chapter about the bell.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bɛl",
         "distractors": [
@@ -2479,7 +1647,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Any of various bladed or pointed hand weapons, originally designating an Anglo-Saxon sword, and later a weapon of infantry, especially in the 14th and 15th centuries, commonly consisting of a broad, heavy, double-edged, hook-shaped blade, with a short pike at the back and another at the top, attached to the end of a long staff.",
         "exampleSentence": "France had no infantry that dared to face the English bows and bills.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bɪɫ",
         "etymology": "From Middle English bill, bille, bil, from Old English bil, bill (“a hooked point; curved weapon; two-edged sword”), from Proto-Germanic *bilją (“axe; sword; blade”), from Proto-Indo-European *bʰeyH- (“to strike; beat”).",
@@ -2491,74 +1659,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "bond",
-        "definition": "A document constituting evidence of a long-term debt, by which the bond issuer (the borrower) is obliged to pay interest when due, and repay the principal at maturity, as specified on the face of the bond certificate. The rights of the holder are specified in the bond indenture, which contains the legal terms and conditions under which the bond was issued. Bonds are available in two forms: registered bonds, and bearer bonds.",
-        "exampleSentence": "You could rely on him. His word was his bond.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bɑnd",
-        "etymology": "From Middle English bond, a variant of band, from Old English beand, bænd, bend (“bond, chain, fetter, band, ribbon, ornament, chaplet, crown”), from Proto-Germanic *bandaz, *bandiz (“band, fetter”). Cognate with Dutch band, German Band, Swedish band. Doublet of Bund. Related to bind.",
-        "distractors": [
-            "bonnd",
-            "band",
-            "bend"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "core",
-        "definition": "The central part of a fruit, containing the kernels or seeds.",
-        "exampleSentence": "The book had an entire chapter about the core.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "kɔɹ",
-        "etymology": "From Middle English core, kore, coor (“apple-core, pith”), of obscure and uncertain origin. Possibly of native English origin, from Old English *cor, related to Old English *coruc, *corc (diminutive) (> Middle English cork, crok (“core of an apple or other fruit, heart of an onion”)) and Old English",
-        "distractors": [
-            "corre",
-            "care",
-            "cere"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "hood",
-        "definition": "A head covering placed on falcons to inhibit their vision.",
-        "exampleSentence": "Like many captains, I was just as glad to leave engineering to the engineers. Looking under the ship's hood wasn't what interested me.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "hʊ̈d",
-        "etymology": "From Middle English hood, hod, from Old English hōd, from Proto-West Germanic *hōd, from Old English hōd, from Proto-Germanic *hōdaz, from Proto-Indo-European *kadʰ- (“to cover”).",
-        "distractors": [
-            "hod",
-            "haod",
-            "heod"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "host",
-        "definition": "One which receives or entertains a guest, socially, commercially, or officially.",
-        "exampleSentence": "A good host is always considerate of the guest’s needs.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "hoʊst",
-        "distractors": [
-            "hosst",
-            "hast",
-            "hest"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "mate",
         "definition": "A fellow, comrade, colleague, partner or someone with whom something is shared, e.g. shipmate, classmate.",
         "exampleSentence": "The book had an entire chapter about the mate.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "meɪt",
         "etymology": "From Middle English mate, a borrowing from Middle Low German mate (“messmate”) (replacing Middle English mett, mette (“table companion, mate, partner”), from Old English ġemetta (“sharer of food, table-guest”)), from Old Saxon gimato, derived from Proto-Germanic *gamatjô, itself from *ga- (“together",
@@ -2570,43 +1675,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "rise",
-        "definition": "The process of or an action or instance of moving upwards or becoming greater.",
-        "exampleSentence": "The book had an entire chapter about the rise.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹaɪz",
-        "etymology": "From Middle English risen, from Old English rīsan, from Proto-West Germanic *rīsan, from Proto-Germanic *rīsaną (“to rise”), from Proto-Indo-European *h₁rey- (“to arise, rise”). According to Kroonen (2013), from Proto-Indo-European *h₃er- (“to rise, spring”). See also raise.",
-        "distractors": [
-            "rize",
-            "risse",
-            "rase"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tone",
-        "definition": "A specific pitch.",
-        "exampleSentence": "Children often read with a tone.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "toʊn",
-        "etymology": "From Middle English ton, tone, from Latin tonus (“sound, tone”) (possibly through Old French ton), from Ancient Greek τόνος (tónos, “strain, tension, pitch”), from τείνω (teínō, “I stretch”). Doublet of tune, ton, tonos, and tonus.",
-        "distractors": [
-            "tonne",
-            "tane",
-            "tene"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "view",
         "definition": "Visual perception.",
         "exampleSentence": "That video got a million views.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "vjuː",
         "etymology": "From Middle English vewe, from Anglo-Norman vewe, from Old French veue f (French vue f), feminine past participle of veoir (“to see”) (French voir). Cognate with Italian vedere, as well as Portuguese and Spanish ver. Doublet of veduta and vista.",
@@ -2650,27 +1723,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "bare",
-        "definition": "Minimal; that is or are just sufficient.",
-        "exampleSentence": "The bare weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "bɛɚ",
-        "etymology": "From Middle English bare, bar, from Old English bær (“bare, naked, open”), from Proto-West Germanic *baʀ, from Proto-Germanic *bazaz (“bare, naked”), from Proto-Indo-European *bʰosós, from *bʰos- (“bare, barefoot”).",
-        "distractors": [
-            "barre",
-            "bere",
-            "bire"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "fair",
         "definition": "Beautiful, of a pleasing appearance, with a pure and fresh quality.",
         "exampleSentence": "He must be given a fair trial.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "fɛɚ",
         "etymology": "From Middle English fayr, feir, fager, from Old English fæġer (“beautiful”), from Proto-West Germanic *fagr, from Proto-Germanic *fagraz (“suitable, fitting, nice”), from Proto-Indo-European *peh₂ḱ- (“to fasten, place”).",
@@ -2686,7 +1743,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An acronym for remembering desirable characteristics for goal-setting: frequently discussed, ambitious, specific, transparent.",
         "exampleSentence": "The fast weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "fast",
         "etymology": "Abbreviation. Coined in recognition of the word fast, e.g. (medical sense) describing the need for speedy diagnosis and treatment.",
@@ -2696,22 +1753,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "fats"
         ],
         "theme": "character"
-    },
-    {
-        "word": "flash",
-        "definition": "A pool of water, in some areas especially one that is marshy, and/or one formed by subsidence of the ground due to mining. (Compare flush (“marsh; pool”).).",
-        "exampleSentence": "Their hearts lie lumpish as a Log that lies in a flash of water seven years together.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "flæʃ",
-        "etymology": "From Middle English flashe, flaske, also found as flosche and flushe (whence modern English flosh and flush), used in Middle and modern English for bodies of water with varying emphasis on them being \"pools\" or \"marshes\".",
-        "distractors": [
-            "flassh",
-            "flesh",
-            "flish"
-        ],
-        "theme": "nature"
     },
     {
         "word": "floor",
@@ -2734,7 +1775,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Ability to influence; strength or energy of body or mind; active power; vigour; might; capacity of exercising an influence or producing an effect.",
         "exampleSentence": "Is Lucius general of the forces?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "foɹs",
         "etymology": "From Middle English force, fors, forse, from Old French force, from Late Latin fortia, a noun derived from the neuter plural of Latin fortis (“strong”), ultimately from Proto-Indo-European *bʰerǵʰ- (“to rise, high, hill”).",
@@ -2750,7 +1791,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The foremost side of something or the end that faces the direction it normally moves.",
         "exampleSentence": "He wrote the word front on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɹʌnt",
         "etymology": "From Middle English front, frunt, frount, from Old French front, frunt, from Latin frōns, frontem (“forehead”). Doublet of frons.",
@@ -2766,7 +1807,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A person who, or thing that, protects or watches over something.",
         "exampleSentence": "He wrote the word guard on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɡɑɹd",
         "etymology": "From Middle English garde, from early Middle French or late Old French guarde (“a guardian, warden, keeper”) (whence modern French garde), from the verb guarder. Doublet of garda, which is from Irish.",
@@ -2814,7 +1855,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Mental effort to acquire knowledge or learning.",
         "exampleSentence": "The proper study of mankind is man.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "stʌdi",
         "etymology": "Inherited from Middle English studie, from Old French estudie (Modern French étude), borrowed from Latin studium (“zeal, dedication, study”), from Proto-Indo-European *(s)tewd- (“to push, to hit”). Doublet of etude and studio.",
@@ -2826,59 +1867,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "title",
-        "definition": "The name of a film, musical piece, painting, or other work of art.",
-        "exampleSentence": "He wrote the word title on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "taɪtl̩",
-        "etymology": "From Middle English title, titel, from Old English titul (“title, heading, superscription”), from Latin titulus (“title, inscription”). Doublet of tilde, titer/titre, titlo, tittle, and titulus.",
-        "distractors": [
-            "titel",
-            "tittle",
-            "tatle"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "apply",
-        "definition": "To lay or place; to put.",
-        "exampleSentence": "It took a while to learn how to apply.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "əplaɪ",
-        "etymology": "From Middle English aplien, applien, from Old French applier, (French appliquer), from Latin applicō (“join, fix, or attach to”); from ad + plicō (“fold, twist together”). See applicant, ply.",
-        "distractors": [
-            "appley",
-            "aply",
-            "appyl"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "blast",
-        "definition": "To make an impression on, by making a loud blast or din.",
-        "exampleSentence": "It took a while to learn how to blast.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "blæst",
-        "etymology": "From Middle English blasten, blesten, from Old English blǣstan (“to blow, blast”), from Proto-West Germanic *blēstijan, from Proto-Germanic *blēstijaną. Possibly related to Middle High German blesten (“to stand out, plop, splash”).",
-        "distractors": [
-            "blasst",
-            "blest",
-            "blist"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "build",
         "definition": "To form (something) by combining materials or parts.",
         "exampleSentence": "This code won’t build any more. Have you made any changes?",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bɪld",
         "distractors": [
@@ -2889,27 +1882,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "smash",
-        "definition": "To break (something brittle) violently.",
-        "exampleSentence": "It took a while to learn how to smash.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "smæʃ",
-        "etymology": "Uncertain, probably of onomatopoeic origin. Compare Swedish smask (“to smack with the lips”), dialectal Swedish smaska (“to smack, kiss”), Danish smaske (“to smack with the lips”), Low German smaksen (“to smack with the lips, kiss”).",
-        "distractors": [
-            "smassh",
-            "smesh",
-            "smish"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "waste",
         "definition": "To devastate; to destroy.",
         "exampleSentence": "It took a while to learn how to waste.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "weɪst",
         "etymology": "From Middle English wasten (“to waste, lay waste”), from Anglo-Norman, Old Northern French waster (“to waste, devastate”) (compare also the variant gaster and French gâter from a related Old French word); the Anglo-Norman form waster was either from Frankish *wōstijan (“to waste”), from Proto-Indo-E",
@@ -2919,22 +1896,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "wiste"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "minor",
-        "definition": "Lesser, smaller in importance, size, degree, seriousness, or significance compared to another option, particularly.",
-        "exampleSentence": "The minor mode of D is tender.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "maɪnəɹ",
-        "etymology": "From Middle English minor, menor, menour, etc., from Latin minor (“lesser; young; young person”) both directly and via Norman and Middle French menor, menour, etc. Doublet of minus but not mini-. Cognate with minister, minify, Minorca, Menshevik, and possibly minnow.",
-        "distractors": [
-            "miner",
-            "minnor",
-            "manor"
-        ],
-        "theme": "academic"
     },
     {
         "word": "small",
@@ -2965,22 +1926,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "swet",
             "sweat",
             "swaet"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "badly",
-        "definition": "In a bad manner.",
-        "exampleSentence": "Look at these split ends! You badly need a haircut!",
-        "partOfSpeech": "adverb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bædli",
-        "etymology": "From Middle English badly, baddely, baddeliche, equivalent to bad + -ly.",
-        "distractors": [
-            "badley",
-            "baddly",
-            "bedly"
         ],
         "theme": "everyday"
     },
@@ -3017,27 +1962,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "edward",
-        "definition": "A gold coin produced in the reign of King Edward.",
-        "exampleSentence": "It is indeed the same golden Edward, with three holes in it, with which I presented my Mary on her birthday, in her eighteenth year, to buy a new suit for the holidays.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɛdwɚd",
-        "etymology": "From Middle English Edward, from Old English Ēadweard, from Proto-West Germanic *Audawardu, from Proto-Germanic *Audawarduz, corresponding to ed (“wealth, riches”) + ward (“ward, guard”).",
-        "distractors": [
-            "eddward",
-            "edwarrd",
-            "edwerd"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "master",
         "definition": "Someone who has control over something or someone.",
         "exampleSentence": "She has a master in psychology.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "mæstɚ",
         "etymology": "From Middle English maister, mayster, meister (noun) and maistren (verb), from Old English mǣster, mæġster, mæġester, mæġister, magister (“master”), from Latin magister (“chief, teacher, leader”), from Old Latin magester, from Proto-Indo-European *méǵh₂s (as in magnus (“great”), also cognate of Engl",
@@ -3047,37 +1976,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "masster"
         ],
         "theme": "people"
-    },
-    {
-        "word": "review",
-        "definition": "A second or subsequent reading of a text or artifact in an attempt to gain new insights.",
-        "exampleSentence": "Can you use the word review in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪvjuː",
-        "etymology": "From Middle English revewe, reveue, from Old French reveüe, revue (Modern French: revue), feminine form of reveü, past participle of reveoir (French: revoir), from Latin revideō, from re- +videō (“see, observe”) (English: video). Equivalent to re- + view. Compare retrospect. Doublet of revue.",
-        "distractors": [
-            "revview",
-            "reveiw",
-            "raview"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "runner",
-        "definition": "Short for Bow Street Runner.",
-        "exampleSentence": "Can you use the word runner in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "runner",
-        "distractors": [
-            "urnner",
-            "rnuner",
-            "runenr"
-        ],
-        "theme": "time"
     },
     {
         "word": "second",
@@ -3100,7 +1998,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The act of spreading.",
         "exampleSentence": "Can you use the word spread in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "spɹɛd",
         "etymology": "From Middle English spreden, from Old English sprǣdan (“to spread, expand”), from Proto-Germanic *spraidijaną (“to spread”), from Proto-Indo-European *(s)per- (“to strew, sow, sprinkle”).",
@@ -3112,27 +2010,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "string",
-        "definition": "A long, thin and flexible structure made from threads twisted together.",
-        "exampleSentence": "The string of his tongue was loosed.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "stɹɪŋ",
-        "etymology": "From Middle English string, streng, strynge, from Old English strenġ, from Proto-West Germanic *strangi, from Proto-Germanic *strangiz (“string”), from Proto-Indo-European *strengʰ- (“rope, cord, strand; to tighten”).",
-        "distractors": [
-            "strinng",
-            "strang",
-            "streng"
-        ],
-        "theme": "time"
-    },
-    {
         "word": "answer",
         "definition": "To make a reply or response to.",
         "exampleSentence": "She would answer every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ænsɚ",
         "etymology": "From Middle English answeren, andswaren, answerien, from Old English andswarian, answarien (“to answer, to respond, to deny an allegation under oath”), from Proto-Germanic *andaswarōną, *andaswarjaną (“to answer, to give a response, to rebut”), from *anda- (“against”) + *swarjaną, *swarōną (“to swea",
@@ -3142,54 +2024,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "annswer"
         ],
         "theme": "communication"
-    },
-    {
-        "word": "engage",
-        "definition": "To engross or hold the attention of; to keep busy or occupied.",
-        "exampleSentence": "She would engage every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɪnɡeɪd͡ʒ",
-        "etymology": "From Middle English engagen, from Old French engagier (“to pledge, engage”), from Frankish *anwadjōn (“to pledge”), from Proto-Germanic *an-, *andi- + Proto-Germanic *wadjōną (“to pledge, secure”), from Proto-Germanic *wadją (“pledge, guarantee”), from Proto-Indo-European *wedʰ- (“to pledge, redeem",
-        "distractors": [
-            "enngage",
-            "engagge",
-            "engege"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "freeze",
-        "definition": "Especially of a liquid, to become solid due to low temperature.",
-        "exampleSentence": "She would freeze every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "fɹiːz",
-        "etymology": "From Middle English fresen, from Old English frēosan (“to freeze”), from Proto-West Germanic *freusan, from Proto-Germanic *freusaną (“to freeze”), from Proto-Indo-European *prews- (“to freeze; frost”).",
-        "distractors": [
-            "freze",
-            "freezze",
-            "freaze"
-        ],
-        "theme": "weather"
-    },
-    {
-        "word": "submit",
-        "definition": "To yield or give way to another.",
-        "exampleSentence": "I was submitted to a binding pledge.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "səbmɪt",
-        "etymology": "From Middle English submitten, borrowed from Latin submittere, infinitive of submittō (“place under, yield”), from sub (“under, from below, up”) + mitto (“to send”). Compare upsend.",
-        "distractors": [
-            "subbmit",
-            "sabmit",
-            "sebmit"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "should",
@@ -3208,37 +2042,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "dobber",
-        "definition": "A member of the working class in Scotland or Ireland who is seen as undereducated, with poor taste, especially in clothes, and poor social skills.",
-        "exampleSentence": "Nikki is such a dobber, she told the teacher that I hit Karen in the playground.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dobber",
-        "distractors": [
-            "dobbor",
-            "dobbar",
-            "dober"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "dinger",
-        "definition": "A bell or chime.",
-        "exampleSentence": "The starting pitcher gave up three dingers.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɪŋ(ɡ)ə(ɹ)",
-        "etymology": "From ding + -er.",
-        "distractors": [
-            "dingor",
-            "dingar",
-            "dinnger"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "picture",
         "definition": "A representation of anything (as a person, a landscape, a building) upon canvas, paper, or other surface, by drawing, painting, printing, photography, etc.",
         "exampleSentence": "I took a picture of the church.",
@@ -3255,59 +2058,75 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "nature"
     },
     {
-        "word": "clumper",
-        "definition": "Something that forms clumps.",
-        "exampleSentence": "Men state that they much prefer the old 'clumper' boot for comfort.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "klʌmpɚ",
-        "etymology": "From clump + -er.",
-        "distractors": [
-            "clumpor",
-            "clumpar",
-            "clummper"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "folkism",
-        "definition": "An ideology that emphasizes racial or ethnic identity, especially when combined with nationalism.",
-        "exampleSentence": "Once one accepts the concept of folkism in man's thought, this leads to a consideration of folkism in religion.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "folkism",
-        "etymology": "From folk + -ism.",
-        "distractors": [
-            "follkism",
-            "folkissm",
-            "falkism"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "maintain",
-        "definition": "To keep up; to preserve; to uphold (a state, condition etc.).",
-        "exampleSentence": "The instructions said to maintain gently and carefully.",
+        "word": "address",
+        "definition": "To prepare oneself.",
+        "exampleSentence": "Let us address to tend on Hector's heels.",
         "partOfSpeech": "verb",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "meɪnteɪn",
-        "etymology": "From Middle English mayntenen, from Old French maintenir, from Late Latin manūteneō, manūtenēre (“I support”), from Latin manū (“with/in/by the hand”, ablative of manus) + tenēre (“to hold”).",
+        "pronunciation": "ədɹɛs",
+        "etymology": "From Middle English adressen (“to raise erect, adorn”), from Old French adrecier (“to straighten, address”) (modern French adresser), from Proto-Romance *addīrēctiāre, from ad- (“to; towards”) + *dīrēctiāre (“to guide; to direct”), from Latin dīrēctus (“straight; right”), from dīrigō (“to lay straig",
         "distractors": [
-            "mainntain",
-            "mayntain",
-            "meintain"
+            "adress",
+            "addres",
+            "addrass"
         ],
-        "theme": "society"
+        "theme": "everyday"
+    },
+    {
+        "word": "natural",
+        "definition": "Existing in the nature of a person or thing; innate, not acquired or learned.",
+        "exampleSentence": "Whom should he follow but his naturall king.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "næt͡ʃ(ə)ɹəl",
+        "etymology": "Inherited from Middle English natural, borrowed from Old French natural, naturel, from Latin nātūrālis, from nātus, the perfect participle of nāscor (“be born”, verb). Displaced native Old English ġecynde. By surface analysis, natur(e) + -al.",
+        "distractors": [
+            "naturel",
+            "nattural",
+            "naturral"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "continue",
+        "definition": "To proceed with (doing an activity); to prolong (an activity).",
+        "exampleSentence": "When will the concert continue?",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kəntɪnju",
+        "etymology": "From Middle English continuen, from Old French continuer, from Latin continuāre. Displaced native Middle English thurghwonen, from Old English þurhwunian.",
+        "distractors": [
+            "conntinue",
+            "continnue",
+            "cantinue"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "introduce",
+        "definition": "To cause (someone) to be acquainted (with someone else).",
+        "exampleSentence": "Let me introduce you to my friends.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɪntɹədus",
+        "etymology": "From Middle English introducen, from Old French introduire, from Latin intrōdūcō, ultimately from Proto-Indo-European *h₁énteros (“inner, what is inside”) and *dewk-.",
+        "distractors": [
+            "inntroduce",
+            "introdduce",
+            "introducce"
+        ],
+        "theme": "people"
     },
     {
         "word": "air",
         "definition": "The substance constituting Earth's atmosphere: a gaseous mixture of nitrogen, oxygen, and various trace gases.",
         "exampleSentence": "My teacher explained what an air is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɛɹ",
         "etymology": "From Middle English aire, from Old French air, from Latin āēr, from Ancient Greek ἀήρ (aḗr). Displaced native Old English lyft. More at lift, loft.",
@@ -3323,7 +2142,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A weapon made of a curved piece of wood or other flexible material whose ends are connected by a string, used for shooting arrows.",
         "exampleSentence": "My teacher explained what a bow is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "boʊ",
         "etymology": "From Middle English bowe, from Old English boga, Proto-West Germanic *bogō, from Proto-Germanic *bugô.",
@@ -3339,7 +2158,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Clipping of Capricorn.",
         "exampleSentence": "My teacher explained what a cap is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "cap",
         "etymology": "Clipping of Capricorn.",
@@ -3355,7 +2174,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A knot; a fastening.",
         "exampleSentence": "My teacher explained what a tie is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "taɪ",
         "etymology": "From Middle English teye (“cord, chain”), from Old English tēag, tēah (“cord, chain”), from Proto-West Germanic *taugu, from Proto-Germanic *taugō, ultimately from Proto-Indo-European *dewk-. Compare Danish tov, Icelandic taug.",
@@ -3371,7 +2190,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To touch or grasp with the lips; to kiss; to lap the lips against (something).",
         "exampleSentence": "We need to lip this before the deadline.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "lɪp",
         "etymology": "From Middle English lippe, from Old English lippa, lippe (“lip”), from Proto-West Germanic *lippjō (“lip”), from Proto-Germanic *lepô, from Proto-Indo-European *leb- (“to hang loosely, droop, sag”).",
@@ -3403,7 +2222,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The act of biting.",
         "exampleSentence": "That song is a bite of my song!",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "baɪt",
         "etymology": "From Middle English biten, from Old English bītan (“bite”), from Proto-West Germanic *bītan, from Proto-Germanic *bītaną (“bite”), from Proto-Indo-European *bʰeyd- (“split”).",
@@ -3411,37 +2230,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "bight",
             "bitte",
             "bate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bowl",
-        "definition": "A roughly hemispherical container used to hold, mix or present food, such as salad, fruit or soup, or other items.",
-        "exampleSentence": "The book had an entire chapter about the bowl.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bɐʉl",
-        "etymology": "From Middle English bolle, from Old English bolla, bolle (“bowl, cup, pot, beaker, measure”), from Proto-West Germanic *bollā, from Proto-Germanic *bullǭ (“ball, round vessel, bowl”).",
-        "distractors": [
-            "bowwl",
-            "boul",
-            "bawl"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "cast",
-        "definition": "An act of throwing.",
-        "exampleSentence": "A plaster cast was made from his face.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kæst",
-        "distractors": [
-            "casst",
-            "cest",
-            "cist"
         ],
         "theme": "everyday"
     },
@@ -3462,59 +2250,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "gray",
-        "definition": "In the International System of Units, the derived unit of absorbed dose of radiation (radiation absorbed by a patient); one joule of energy absorbed per kilogram of the patient's mass.",
-        "exampleSentence": "The book had an entire chapter about the gray.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "gray",
-        "etymology": "Named after English physicist Louis Harold Gray (1905–1965).",
-        "distractors": [
-            "rgay",
-            "gary",
-            "grya"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "link",
-        "definition": "A connection between places, people, events, things, or ideas.",
-        "exampleSentence": "A by-N-link is composed of N lanes.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "lɪŋk",
-        "etymology": "From Middle English linke, lenke, from a merger of Old English hlenċe, hlenċa (“ring; chainlink”) and Old Norse *hlenkr, hlekkr (“ring; chain”); both from Proto-Germanic *hlankiz (“ring; bond; fettle; fetter”), from Proto-Germanic *hlankaz (“bendsome, flexible”), from Proto-Indo-European *kleng-, *k",
-        "distractors": [
-            "linnk",
-            "lank",
-            "lenk"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "mass",
-        "definition": "The principal liturgical service of the Church, encompassing both a scripture service (Liturgy of the Word) and a eucharistic service (Liturgy of the Eucharist), which includes the consecration and oblation (offering) of the host and wine.",
-        "exampleSentence": "The book had an entire chapter about the mass.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mæs",
-        "etymology": "From Middle English messe, from Old English mæsse and Old French messe, both from Late Latin missa, from Latin mittō (“to send, dismiss”), compare French messe.",
-        "distractors": [
-            "amss",
-            "msas",
-            "mmass"
-        ],
-        "theme": "language"
-    },
-    {
         "word": "pick",
         "definition": "A tool used for digging; a pickaxe.",
         "exampleSentence": "France and Russia have the pick of our stables.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "pɪk",
         "etymology": "From Middle English piken, picken, pikken, from Old English *piccian, *pīcian (attested in pīcung (“a pricking”)), and pīcan, pȳcan (“to pick, prick, pluck”), both from Proto-West Germanic *pikkōn, from Proto-Germanic *pikkōną (“to pick, peck, prick, knock”), from Proto-Indo-European *bew-, *bu- (“t",
@@ -3526,27 +2266,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "sack",
-        "definition": "A bag; especially a large bag of strong, coarse material for storage and handling of various commodities, such as potatoes, coal, coffee; or, a bag with handles used at a supermarket, a grocery sack; or, a small bag for small items, a satchel.",
-        "exampleSentence": "The boss is gonna give her the sack today.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "sæk",
-        "etymology": "From Middle English sak, sek, sach, zech (“bag, sackcloth”), from Old English sacc (“sack, bag”) and sæċċ (“sackcloth, sacking”); both from Proto-West Germanic *sakku, from late Proto-Germanic *sakkuz (“sack”), borrowed from Latin saccus (“large bag”), from Ancient Greek σάκκος (sákkos, “bag of coar",
-        "distractors": [
-            "sak",
-            "sacck",
-            "seck"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "seat",
         "definition": "An automobile from Sociedad Española de Automóviles de Turismo.",
         "exampleSentence": "The book had an entire chapter about the seat.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "seɪæt",
         "distractors": [
@@ -3555,22 +2279,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "seta"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "yard",
-        "definition": "A unit of length equal to 3 feet in the US customary and British imperial systems of measurement, equal to precisely 0.9144 m since 1959 (US) or 1963 (UK).",
-        "exampleSentence": "Loues her by the foot. Dum. He may not by the yard.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "jɑɹd",
-        "etymology": "From Middle English ȝerde, yerd, ȝerd, from Old English ġierd (“branch; rod, staff; measuring stick; yardland”), from Proto-West Germanic *gaʀd, from Proto-Germanic *gazdaz. Cognate with Dutch gard (“twig”), German Gerte and probably related to Latin hasta (“spear”).",
-        "distractors": [
-            "yarrd",
-            "yerd",
-            "yird"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "miss",
@@ -3609,7 +2317,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Unconstrained.",
         "exampleSentence": "The free weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɹi",
         "etymology": "From Middle English free, fre, freo, from Old English frēo (“free”), from Proto-West Germanic *frī, from Proto-Germanic *frijaz (“beloved, not in bondage”), from Proto-Indo-European *priHós (“pleased, loved”), from *preyH- (“to please, love”). Related to friend.",
@@ -3705,7 +2413,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Of a somewhat high temperature, often but not always connoting that the high temperature is pleasant rather than uncomfortable.",
         "exampleSentence": "The warm weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "wɔɹm",
         "etymology": "From Middle English warm, werm, from Old English wearm, from Proto-West Germanic *warm, from Proto-Germanic *warmaz, either from Proto-Indo-European *wór-mo-s, from *wer- (“to burn”), or Proto-Indo-European *gʷʰor-mo-s, from the root *gʷʰer- (“warm, hot”).",
@@ -3721,7 +2429,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To add; to subject to addition.",
         "exampleSentence": "I am doing a lot of writing here, plussing the script, adding sequences.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "plʌs",
         "etymology": "Borrowed from Latin plūs (“more”).",
@@ -3733,26 +2441,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "diff",
-        "definition": "Clipping of difference.",
-        "exampleSentence": "The book had an entire chapter about the diff.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "dɪf",
-        "distractors": [
-            "dif",
-            "daff",
-            "deff"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "board",
         "definition": "A relatively long, wide and thin piece of any material, usually wood or similar, often for use in construction or furniture-making.",
         "exampleSentence": "He wrote the word board on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bɔɹd",
         "etymology": "A wooden board Board (duplicate bridge) From Middle English bord, from Old English bord, from Proto-West Germanic *bord, from Proto-Germanic *burdą (“board; plank; table”), from Proto-Indo-European *bʰerdʰ- (“to cut”). The senses \"food\" and \"council\" are by metonymy from the sense \"table.\"",
@@ -3764,59 +2457,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "brace",
-        "definition": "Armor for the arm; vambrace.",
-        "exampleSentence": "To score a 'brace' means that you have scored two goals in a game.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɹeɪs",
-        "etymology": "From Middle English brace, from Old French brace (“arm”), from Latin bracchia, the nominative and accusative plural of bracchium (“arm”).",
-        "distractors": [
-            "bracce",
-            "brece",
-            "brice"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "brush",
-        "definition": "An implement consisting of multiple more or less flexible bristles or other filaments attached to a handle, used for any of various purposes including cleaning, painting, and arranging hair.",
-        "exampleSentence": "She gave her hair a quick brush.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɹʌʃ",
-        "etymology": "From Middle English brusshe, from Old French broisse (Modern French brosse), from Vulgar Latin *brustia, from Frankish *bursti, from Proto-Germanic *burstiz (“bristle”), or also Vulgar Latin *bruscia, from Proto-Germanic *bruskaz (“tuft, thicket, underbrush”), which could be from Proto-Indo-European",
-        "distractors": [
-            "brussh",
-            "brash",
-            "bresh"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "grade",
-        "definition": "Performance on a test or other evaluation(s), expressed by a number, letter, or other symbol; a score.",
-        "exampleSentence": "He got a good grade on the test.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡɹeɪd",
-        "etymology": "Borrowed from Middle French grade (“a grade, degree”), from Latin gradus (“a step, pace, degree”), from Proto-Italic *graðus, from Proto-Indo-European *gʰradʰ-, *gʰredʰ- (“to walk, go”). Doublet of gradus.",
-        "distractors": [
-            "gradde",
-            "grede",
-            "gride"
-        ],
-        "theme": "language"
-    },
-    {
         "word": "model",
         "definition": "A person who serves as a human template for artwork or fashion.",
         "exampleSentence": "He wrote the word model on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "mɑdl̩",
         "etymology": "From Middle French modelle, from Old Italian modello, from Vulgar Latin *modellus, diminutive form of modulus (“measure, standard”), diminutive of modus (“measure”); see mode, and compare module, modulus, mould, mold.",
@@ -3826,22 +2471,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "moddel"
         ],
         "theme": "people"
-    },
-    {
-        "word": "range",
-        "definition": "A line or series of mountains, buildings, etc.",
-        "exampleSentence": "He wrote the word range on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "ɹeɪnd͡ʒ",
-        "etymology": "From Middle English rengen, from Old French rengier (“to range, to rank, to order,”), from the noun renc, reng, ranc, rang (“a rank, row”), from Frankish *hring, from Proto-Germanic *hringaz (“ring, circle, curve”). Doublet of ring.",
-        "distractors": [
-            "rannge",
-            "renge",
-            "ringe"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "young",
@@ -3864,7 +2493,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To go or come into an enclosed or partially enclosed space.",
         "exampleSentence": "It took a while to learn how to enter.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɛntɚ",
         "etymology": "From Middle English entren, from Old French entrer, from Latin intrō (“enter”, verb), from intrā (“inside”). Has been spelled as \"enter\" for several centuries even in the United Kingdom, although British English and the English of many Commonwealth Countries (e.g.",
@@ -3876,27 +2505,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "flick",
-        "definition": "To move or hit (something) with a short, quick motion.",
-        "exampleSentence": "It took a while to learn how to flick.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "flɪk",
-        "etymology": "From Middle English flykke (“light blow or stroke”). Later uses apparently interpreted as a back-formation from flicker. The use of flick to mean a film or movie derives from the fact that early films had a low frame rate, thus causing the film to \"flick\" rapidly when projected onto a screen.",
-        "distractors": [
-            "flik",
-            "flicck",
-            "flack"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "prove",
         "definition": "To demonstrate that something is true or viable; to give proof for; to bear out; to testify.",
         "exampleSentence": "It took a while to learn how to prove.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "pɹuːv",
         "etymology": "From Middle English proven, from Old English prōfian (“to esteem, regard as, evince, try, prove”) and Old French prover (“to prove”), both from Latin probō (“test, try, examine, approve, show to be good or fit, prove”, verb), from probus (“good, worthy, excellent”), from Proto-Indo-European *pro-bʰu",
@@ -3912,7 +2525,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To cause (something) to move rapidly in opposite directions alternatingly.",
         "exampleSentence": "It took a while to learn how to shake.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ʃeɪk",
         "etymology": "From Middle English schaken, from Old English sċeacan, sċacan (“to shake”), from Proto-West Germanic *skakan, from Proto-Germanic *skakaną (“to shake, swing, escape”), from Proto-Indo-European *(s)keg-, *(s)kek- (“to jump, move”).",
@@ -3922,101 +2535,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "shike"
         ],
         "theme": "actions"
-    },
-    {
-        "word": "sweep",
-        "definition": "To clean (a surface) by means of a stroking motion of a broom or brush.",
-        "exampleSentence": "It took a while to learn how to sweep.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "swiːp",
-        "etymology": "From Middle English swepen, from Proto-West Germanic *swaipijan (unattested in Old English), from Proto-Germanic *swaipijaną. Cognate with Early Modern West Frisian swiepe (“whip, cleanse, sweep”), from Old Frisian swēpa, suepa (“sweep”).",
-        "distractors": [
-            "swep",
-            "sweap",
-            "swaep"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "tease",
-        "definition": "To separate the fibres of (a fibrous material).",
-        "exampleSentence": "My favorite fantasy is being tied down and teased and teased.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "tiːz",
-        "etymology": "From Middle English tesen, from Old English tǣsan (“to tease”), from Proto-West Germanic *taisijan (“to separate, tug, shred”).",
-        "distractors": [
-            "teasse",
-            "teese",
-            "taase"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tough",
-        "definition": "Strong and resilient; sturdy.",
-        "exampleSentence": "He had a reputation as a tough negotiator.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tʌf",
-        "etymology": "From Middle English tough, towgh, tou, toȝ, from Old English tōh (“tough, tenacious, holding fast together; pliant; sticky, glutinous, clammy”), from Proto-West Germanic *tą̄h(ī), from Proto-Germanic *tanhuz (“fitting; clinging; tenacious; tough”), from Proto-Indo-European *denḱ- (“to bite”).",
-        "distractors": [
-            "tuff",
-            "touggh",
-            "towgh"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "wrong",
-        "definition": "Incorrect or untrue.",
-        "exampleSentence": "Something is wrong with my cellphone.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɔŋ",
-        "etymology": "From Middle English wrong, from Old English wrang (“wrong, twisted, uneven”), from Old Norse rangr, vrangr (“crooked, wrong”), from Proto-Germanic *wrangaz (“crooked, twisted, turned awry”), from Proto-Indo-European *werḱ-, *wrengʰ- (“to twist, weave, tie together”), from *wer- (“to turn, bend”).",
-        "distractors": [
-            "wronng",
-            "rong",
-            "wrang"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tawny",
-        "definition": "A light brown to brownish orange colour.",
-        "exampleSentence": "Despise not my discolour'd look: / This tawny from the sun I took.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɔni",
-        "etymology": "From Middle English tauni, tawne (“brownish-orange colour; cloth of this colour; sweet beverage of this colour”) [and other forms], from Anglo-Norman tawné, and Old French tané, tanné, tanney (“tan colour; cloth of this colour”), from tané (verb): see further at etymology 1. Sense 2.",
-        "distractors": [
-            "tawney",
-            "tawwny",
-            "tauny"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "cobby",
-        "definition": "Compact with short bushy leaves.",
-        "exampleSentence": "By this standard, Tracy Kidder's book is not too cobby.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɒbi",
-        "distractors": [
-            "cobbey",
-            "coby",
-            "cabby"
-        ],
-        "theme": "plants"
     },
     {
         "word": "attack",
@@ -4039,7 +2557,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A construction spanning a waterway, ravine, or valley from a height, allowing for the passage of vehicles, pedestrians, trains, etc.",
         "exampleSentence": "Can you use the word bridge in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bɹɪd͡ʒ",
         "etymology": "From Middle English brigge, from Old English brycġ (“bridge”), from Proto-Germanic *brugjō, *brugjǭ (“bridge”), from Proto-Indo-European *bʰerw-, *bʰrēw- (“wooden flooring, decking, bridge”).",
@@ -4049,22 +2567,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "bradge"
         ],
         "theme": "nature"
-    },
-    {
-        "word": "collar",
-        "definition": "The part of an upper garment (shirt, jacket, etc.) that fits around the neck and throat, especially if sewn from a separate piece of fabric.",
-        "exampleSentence": "Make sure your dog has a collar holding an identification tag.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɑləɹ",
-        "etymology": "From Middle English coler, borrowed from Old French coler (Modern French collier), from Late Latin collāre, from Latin collāris, from collum (“neck”). Cognate with Gothic 𐌷𐌰𐌻𐍃 (hals, “neck”), Old English heals (“neck”). Compare Spanish cuello (“neck”). More at halse. Doublet of collet.",
-        "distractors": [
-            "coller",
-            "colar",
-            "callar"
-        ],
-        "theme": "clothing"
     },
     {
         "word": "course",
@@ -4087,7 +2589,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Reliance on the truth of something said or done; faith; trust.",
         "exampleSentence": "Can you use the word credit in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kɹɛdɪt",
         "etymology": "Borrowed from Middle French crédit (“belief, trust”), from Latin crēditum (“a loan, credit”), neuter of crēditus, past participle of crēdere (“to believe”). The verb is from the noun. Doublet of shraddha, creed.",
@@ -4103,7 +2605,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An end; the end of anything.",
         "exampleSentence": "The car's finish was so shiny and new.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɪnɪʃ",
         "etymology": "From Middle English finishen, finisshen, finischen, from Old French finiss-, stem of some of the conjugated forms of finir, from Latin fīnīre, from fīnis (“end, limit, border, boundary”), possibly from Proto-Indo-European *dʰeygʷ- (“to stick, set up”) or from Proto-Indo-European *bʰeyd- (“to split”)",
@@ -4115,43 +2617,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "muller",
-        "definition": "A stone with a flat grinding surface, which is held in the hand and rubbed on a slab to grind paint pigments, medicinal powders, etc.",
-        "exampleSentence": "The muller provides, in addition, a useful means of comparing the important property of the rate of strength development of pigments.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "mʌləɹ",
-        "etymology": "The noun is derived from Late Middle English molour, moler; further origin uncertain, possibly: * from mull (“(Northern England) something reduced to fine particles”, noun) or mull (“(chiefly Northern England) to grind to powder, crumble, powder, pulverize”, verb) + -er (suffix forming agent nouns)",
-        "distractors": [
-            "mullor",
-            "mullar",
-            "muler"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "pickup",
-        "definition": "In a record player, an electromagnetic component that converts the needle vibrations into an electrical signal.",
-        "exampleSentence": "This microphone has very weak pickup.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pɪkʌp",
-        "etymology": "From pick + up.",
-        "distractors": [
-            "picckup",
-            "packup",
-            "peckup"
-        ],
-        "theme": "communication"
-    },
-    {
         "word": "pocket",
         "definition": "A bag stitched to an item of clothing, used for carrying small items.",
         "exampleSentence": "I paid for it out of my own pocket.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "pɑkɪt",
         "etymology": "From Middle English pocket (“bag, sack”), from Anglo-Norman poket, Old Northern French poquet, poquete, diminutive of poque, poke (“bag, sack”) (compare modern Norman pouquette and modern French pochette from Old French pochete, from puche), from Frankish *pokō (“pouch”), from Proto-Germanic *pukkô,",
@@ -4163,43 +2633,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "shadow",
-        "definition": "A dark image projected onto a surface where light (or other radiation) is blocked by the shade of an object.",
-        "exampleSentence": "Can you use the word shadow in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ʃædoʊ",
-        "etymology": "From Middle English schadowe, schadewe, schadwe (also schade > shade), from Old English sċeaduwe, sċeadwe, oblique form of sċeadu (“shadow, shade; darkness; protection”), from Proto-West Germanic *skadu, from Proto-Germanic *skadwaz (“shade, shadow”), from Proto-Indo-European *(s)ḱeh₃- (“darkness”).",
-        "distractors": [
-            "shaddow",
-            "shadou",
-            "shedow"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "source",
-        "definition": "The person, place, or thing from which something (information, goods, etc.) comes or is acquired.",
-        "exampleSentence": "The main sources of the Euphrates River are the Karasu and Murat Rivers.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɔɹs",
-        "etymology": "From Middle English sours, from Old French sorse (“rise, beginning, spring, source”), from sors, past participle of sordre, sourdre, from Latin surgō (“to rise”), which is composed of sub- (“up from below”) + regō (“lead, rule”), ultimately from Proto-Indo-European *h₃réǵeti (“to straighten; right”)",
-        "distractors": [
-            "sourrce",
-            "sowrce",
-            "saurce"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "system",
         "definition": "A group or set of related things that operate together as a complex whole.",
         "exampleSentence": "Can you use the word system in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "sɪstəm",
         "etymology": "Partly borrowed from Middle French sisteme, systeme, partly directly from its etymon Late Latin systēma (“harmony; musical scale; set of celestial objects; set of troops; system”), from Ancient Greek σύστημα (sústēma, “musical scale; organized body; whole made of several parts or members”), from σῠν",
@@ -4211,196 +2649,84 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "absorb",
-        "definition": "To include so that it no longer has separate existence; to overwhelm; to cause to disappear as if by swallowing up; to incorporate; to assimilate; to take in and use up.",
-        "exampleSentence": "She would absorb every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "æbsɔɹb",
-        "etymology": "From Middle French absorber, from Old French assorbir, from Latin absorbeō (“swallow up”), from ab- (“from”) + sorbeō (“suck in, swallow”), ultimately from Proto-Indo-European *srebʰ- (“to sip”). Compare French absorber.",
-        "distractors": [
-            "abbsorb",
-            "absorrb",
-            "absarb"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "assume",
-        "definition": "To authenticate by means of belief; to surmise; to suppose to be true, especially without proof.",
-        "exampleSentence": "She would assume every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "əsjuːm",
-        "etymology": "From Latin assūmō (“accept, take”), from ad- (“to, towards, at”) + sūmō (“take up, assume”).",
-        "distractors": [
-            "asume",
-            "assumme",
-            "assame"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "gather",
-        "definition": "To collect normally separate things.",
-        "exampleSentence": "She would gather every morning before school.",
+        "word": "breathe",
+        "definition": "To draw air into (inhale), and expel air from (exhale), the lungs in order to extract oxygen and excrete waste gases.",
+        "exampleSentence": "Try not to breathe too much smoke.",
         "partOfSpeech": "verb",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ɡæðɚ",
-        "etymology": "From Middle English gaderen, from Old English gaderian (“to gather, assemble”), from Proto-West Germanic *gadurōn (“to bring together, unite, gather”), from Proto-Indo-European *gʰedʰ- (“to unite, assemble, keep”).",
+        "pronunciation": "bɹið",
+        "etymology": "From Middle English brethen (“to breathe, blow, exhale, odour”), derived from Middle English breth (“breath”). Eclipsed Middle English ethien and orðiæn, from Old English ēþian and orþian (“to breathe”); as well as Middle English anden, onden, from Old Norse anda (“to breathe”). More at breath.",
         "distractors": [
-            "gathor",
-            "gathar",
-            "gatther"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "puddle",
-        "definition": "To form a puddle.",
-        "exampleSentence": "She would puddle every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "pʌdl̩",
-        "etymology": "From Middle English podel, diminutive of Old English pudd (“ditch”), from Proto-Germanic *puddaz (compare Low German Pudel (“puddle”), Middle High German podel (“quagmire, mudhole”), Hunsrik Puttel, dialectal German Pfudel (“puddle”), German pudeln (“to splash about”)), ultimately imitative.",
-        "distractors": [
-            "puddel",
-            "pudle",
-            "paddle"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ruffle",
-        "definition": "To make a ruffle in; to curl or flute, as an edge of fabric.",
-        "exampleSentence": "They would ruffle with jurors.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹʌfəl",
-        "etymology": "From Middle English ruffelen, perhaps from Old Norse hrufla (“to graze, scratch”) or Middle Low German ruffelen (“to wrinkle, curl”). Further origin unknown. Related to Middle Dutch ruyffelen, German Low German ruffeln. See English ruff.",
-        "distractors": [
-            "ruffel",
-            "rufle",
-            "raffle"
+            "breatthe",
+            "breethe",
+            "braathe"
         ],
         "theme": "art"
     },
     {
-        "word": "casual",
-        "definition": "Happening by chance.",
-        "exampleSentence": "They only had casual meetings.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kæʒ(u)əl",
-        "etymology": "From Middle French casuel, from Late Latin cāsuālis (“happening by chance”), from Latin cāsus (“event”) (English case), from cadere (“to fall”) (whence English cadence).",
-        "distractors": [
-            "casuel",
-            "cassual",
-            "cesual"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "blivet",
-        "definition": "Anything overfull.",
-        "exampleSentence": "Can you use the word blivet in a sentence?",
+        "word": "business",
+        "definition": "A specific commercial enterprise or establishment.",
+        "exampleSentence": "Business has been slow lately.",
         "partOfSpeech": "noun",
         "difficulty": 1,
         "pattern": "blends",
-        "pronunciation": "blivet",
-        "etymology": "Unknown; seems to have been coined by American soldiers in World War Two.",
+        "pronunciation": "bɪznɪs",
+        "etymology": "From Middle English busines, busynes, businesse, bisynes, from Old English bisiġnes (“business, busyness”), equivalent to busy + -ness. Doublet of busyness. Sense 17 (something very good, top quality), possibly derives from \"the bee's knees\"",
         "distractors": [
-            "blivvet",
-            "blavet",
-            "blevet"
+            "businiss",
+            "busines",
+            "bussiness"
         ],
         "theme": "everyday"
     },
     {
-        "word": "ligger",
-        "definition": "The horizontal timber of a scaffolding; a ledger.",
-        "exampleSentence": "Peaches Geldof may be a top showbiz ligger – but now she’s got a group of her own.",
+        "word": "security",
+        "definition": "The condition of not being threatened, especially physically, psychologically, emotionally, or financially.",
+        "exampleSentence": "The security was one of our vocabulary words this week.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "lɪɡɚ",
-        "etymology": "Inherited from Middle English liggere; equivalent to lig + -er. Doublet of ledger. Many senses (especially sense 5) are likely formed anew from lig rather than continuations of the preceding senses.",
+        "pronunciation": "səkjɔɹɪti",
+        "etymology": "From secure + -ity, from Middle English securite, from Middle French securité (modern sécurité), from Latin sēcūritās, from Latin sēcūrus (“safe, secure”), from sē- (“without”) + cūra (“care”); see cure. Similar to Latin sine cūrā (“without care, carefree”), which led to English sinecure.",
         "distractors": [
-            "liggor",
-            "liggar",
-            "liger"
+            "securitey",
+            "seccurity",
+            "securrity"
         ],
         "theme": "everyday"
     },
     {
-        "word": "seadog",
-        "definition": "A sailor accustomed to the sea.",
-        "exampleSentence": "Can you use the word seadog in a sentence?",
+        "word": "strength",
+        "definition": "The quality or degree of being strong.",
+        "exampleSentence": "He had the strength of ten men.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "seadog",
-        "etymology": "From sea + dog.",
+        "pronunciation": "st̠͡ɹ̠ɛŋkθ",
+        "etymology": "From Middle English strengthe, from Old English strengþu (“strength”), from Proto-West Germanic *strangiþu (“strongness; strength”), equivalent to strong + -th (abstract nominal suffix).",
         "distractors": [
-            "seaddog",
-            "seedog",
-            "saadog"
+            "strenngth",
+            "strangth",
+            "stringth"
         ],
-        "theme": "water"
+        "theme": "academic"
     },
     {
-        "word": "stound",
-        "definition": "A tide, season.",
-        "exampleSentence": "Can you use the word stound in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "staʊnd",
-        "etymology": "From Middle English stond, stounde, stound (“hour, time, season, moment”), from Old English stund (“a period of time, while, hour, occasion”), from Proto-West Germanic *stundu, from Proto-Germanic *stundō (“point in time, hour”), from Proto-Indo-European *stut- (“prop”), from Proto-Indo-European *st",
-        "distractors": [
-            "stounnd",
-            "stownd",
-            "staund"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "unspin",
-        "definition": "To unravel (something spun, knit, or woven).",
-        "exampleSentence": "But you, you must unspin fate, go back to find Robin!",
+        "word": "consider",
+        "definition": "To think about seriously.",
+        "exampleSentence": "The instructions said to consider gently and carefully.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "unspin",
-        "etymology": "From un- + spin.",
-        "distractors": [
-            "unnspin",
-            "unspan",
-            "unspen"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "measure",
-        "definition": "Moderation, temperance.",
-        "exampleSentence": "Honesty is the true measure of a man.",
-        "partOfSpeech": "noun",
         "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "mɛʒɚ",
-        "etymology": "From Middle English mesure, from Old French mesure, from Latin mēnsūra (“a measure”), mētior (“to measure”, supine stem in mēns-) + -tūra. Largely displaced native Old English metan (\"to measure\" whence modern mete) and ġemet (“a measure”). See also -ure.",
+        "pattern": "blends",
+        "pronunciation": "kənsɪdɚ",
+        "etymology": "From Middle English consideren, from Middle French considerer, from Latin considerare.",
         "distractors": [
-            "measer",
-            "meassure",
-            "measurre"
+            "considor",
+            "considar",
+            "connsider"
         ],
-        "theme": "everyday"
+        "theme": "mind"
     },
     {
         "word": "contract",
@@ -4419,75 +2745,27 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "transfer",
-        "definition": "To move or pass from one place, person or thing to another.",
-        "exampleSentence": "The title to land is transferred by deed.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɹænsfɚ",
-        "etymology": "From Latin trānsferō (“I bear across”). Distant doublet of translate. See also collate and confer, delate and defer, as well as prelate and prefer among others.",
-        "distractors": [
-            "transfor",
-            "transfar",
-            "trannsfer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "pointing",
-        "definition": "The action of the verb to point.",
-        "exampleSentence": "The pointing was one of our vocabulary words this week.",
+        "word": "character",
+        "definition": "A being involved in the action of a story; a persona.",
+        "exampleSentence": "That bloke is such a character.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "pɔɪntɪŋ",
-        "etymology": "From point + -ing.",
+        "pronunciation": "kæɹɪktə",
+        "etymology": "From Middle English caracter, from Old French caractere, from Latin character, from Ancient Greek χαρακτήρ (kharaktḗr, “type, nature, character”), from χαράσσω (kharássō, “I engrave”). Doublet of charakter.",
         "distractors": [
-            "poinnting",
-            "pointinng",
-            "poynting"
+            "charactor",
+            "charactar",
+            "charracter"
         ],
-        "theme": "language"
-    },
-    {
-        "word": "grayling",
-        "definition": "Any freshwater fish of the genus Thymallus or specifically Thymallus thymallus, of the salmon family, having a large dorsal fin.",
-        "exampleSentence": "“This morning,” he said, “We will fish, Turner. We will cast for trout so that we may catch grayling.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "grayling",
-        "etymology": "From Middle English greylyng, equivalent to gray + -ling.",
-        "distractors": [
-            "graylling",
-            "graylinng",
-            "grailing"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "trundler",
-        "definition": "A person who trundles (something or someone).",
-        "exampleSentence": "At length a friendly trundler of a Bath-chair … came to my assistance,.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "trundler",
-        "etymology": "From trundle + -er.",
-        "distractors": [
-            "trundlor",
-            "trundlar",
-            "trunndler"
-        ],
-        "theme": "people"
+        "theme": "art"
     },
     {
         "word": "lee",
         "definition": "A protected cove or harbor, out of the wind.",
         "exampleSentence": "Desiring me to take shelter in his lee.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "liː",
         "etymology": "From Middle English lee, from Old English hlēo, hlēow (“shelter, protection”), from Proto-West Germanic *hlaiw (whence also Proto-Slavic *xlěvъ), from Proto-Germanic *hlaiwaz (compare German Lee (“lee”), Swedish lä, Danish læ, Norwegian le, Old Norse hlé, Dutch lij), from Proto-Indo-European *ḱley-",
@@ -4515,43 +2793,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "tew",
-        "definition": "To tow along, as a vessel.",
-        "exampleSentence": "We need to tew this before the deadline.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "tjuː",
-        "etymology": "From Middle English tewen, a variant of tawen (“to taw, prepare”). More at taw.",
-        "distractors": [
-            "taw",
-            "tiw",
-            "twe"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bass",
-        "definition": "The fibrous inner bark of the linden or lime tree, used for making mats.",
-        "exampleSentence": "The book had an entire chapter about the bass.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bæs",
-        "etymology": "A corruption of bast.",
-        "distractors": [
-            "bas",
-            "bess",
-            "biss"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "camp",
         "definition": "An outdoor place acting as temporary accommodation in tents or other simple structures.",
         "exampleSentence": "The book had an entire chapter about the camp.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "kæmp",
         "etymology": "From Middle English kampe (“battlefield, open space”), from Old English camp (“battle, contest, battlefield, open space”), from Proto-West Germanic *kamp (“open field where military exercises are held, level plain”), from Latin campus (“open field, level plain”), from Proto-Indo-European *kh₂emp- (“",
@@ -4563,58 +2809,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "flux",
-        "definition": "The act of flowing; a continuous moving on or passing by, as of a flowing stream.",
-        "exampleSentence": "The schedule is in flux at the moment.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "flʌks",
-        "etymology": "From Old French flux, from Latin fluxus (“flow”).",
-        "distractors": [
-            "flax",
-            "flex",
-            "fulx"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "ford",
-        "definition": "A make of car, named for Henry Ford, or a car (or other vehicle) of this make.",
-        "exampleSentence": "It's a girl, my Lord, in a flatbed Ford slowin' down to take a look at me.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "fɔɹd",
-        "distractors": [
-            "forrd",
-            "fard",
-            "ferd"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hack",
-        "definition": "A tool for chopping.",
-        "exampleSentence": "Look you what hacks are on his helmet !",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "hæk",
-        "etymology": "From Middle English hacken, hakken, from Old English *haccian (“to hack”), from Proto-West Germanic *hakkōn, from Proto-Germanic *hakkōną (“to chop; hoe; hew”), from Proto-Indo-European *keg-, *keng- (“to be sharp; peg; hook; handle”).",
-        "distractors": [
-            "hak",
-            "hacck",
-            "heck"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "hole",
         "definition": "A hollow place or cavity; an excavation; a pit; a dent; a depression; a fissure.",
         "exampleSentence": "I have found a hole in your argument.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "hɐʉl",
         "etymology": "Inherited from Middle English hole, hol, from Old English hol (“orifice, hollow place, cavity”), from Proto-West Germanic *hol, from Proto-Germanic *hulą (“hollow space, cavity”), noun derivative of Proto-Germanic *hulaz (“hollow”), which is of uncertain ultimate origin. Related to hollow.",
@@ -4626,27 +2825,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "hunt",
-        "definition": "The act of hunting.",
-        "exampleSentence": "The book had an entire chapter about the hunt.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "hʌnt",
-        "etymology": "From Middle English hunten, from Old English huntian (“to hunt”), from Proto-West Germanic *huntōn (“to hunt, capture”), possibly from Proto-Indo-European *ḱent- (“to catch, seize”).",
-        "distractors": [
-            "uhnt",
-            "hnut",
-            "hutn"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "loss",
         "definition": "The result of no longer possessing an object, a function, or a characteristic due to external causes or misplacement.",
         "exampleSentence": "The battle was won, but losses were great.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "lɔs",
         "etymology": "From Middle English los, from Old English los (“damage, destruction, loss”), from Proto-West Germanic *los, from Proto-Germanic *lusą (“dissolution, break-up, loss”), from Proto-Indo-European *lews- (“to cut, sunder, separate, loose, lose”).",
@@ -4658,59 +2841,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "mile",
-        "definition": "The international mile: a unit of length precisely equal to 1.609344 kilometers established by treaty among Anglophone nations in 1959, divided into 5,280 feet or 1,760 yards.",
-        "exampleSentence": "The book had an entire chapter about the mile.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "maɪ̯l",
-        "etymology": "From Middle English myle, mile, from Old English mīl, from Proto-West Germanic *mīliju, a borrowing of Latin mīlia, mīllia, plural of mīle, mīlle (“mile”) (literally ‘thousand’ but used as a short form of mīlle passūs (“a thousand paces”)).",
-        "distractors": [
-            "miel",
-            "mille",
-            "male"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "mold",
-        "definition": "A hollow form or matrix for shaping a fluid or plastic substance.",
-        "exampleSentence": "The book had an entire chapter about the mold.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "moʊld",
-        "etymology": "From Middle English molde (“mold, cast”), from Old French modle, mole, from Latin modulus, from Latin modus. Doublet of module, modulus, and model.",
-        "distractors": [
-            "molld",
-            "mald",
-            "meld"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "node",
-        "definition": "A knot, knob, protuberance or swelling.",
-        "exampleSentence": "The book had an entire chapter about the node.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "noʊd",
-        "etymology": "From Middle English node, borrowed from Latin nōdus. Doublet of knot, knout, and nodus.",
-        "distractors": [
-            "onde",
-            "ndoe",
-            "noed"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "nose",
         "definition": "A protuberance on the face housing the nostrils, which are used to breathe or smell.",
         "exampleSentence": "A successful reporter has a nose for news.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "noʊ̯z",
         "etymology": "From Middle English nose, from Old English nosu, from Proto-West Germanic *nosu, variant of *nasō, old dual from Proto-Indo-European *néh₂s- ~ *nh₂es- (“nose, nostril”).",
@@ -4722,43 +2857,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "pile",
-        "definition": "Hair, especially when very fine or short; the fine underfur of certain animals. (Formerly countable, now treated as a collective singular.).",
-        "exampleSentence": "The book had an entire chapter about the pile.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "paɪl",
-        "etymology": "From Middle English pile, partly from Anglo-Norman pil (a variant of peil, poil (“hair”)) and partly from its source, Latin pilus (“hair”). Doublet of pilus.",
-        "distractors": [
-            "piel",
-            "pille",
-            "pale"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "puff",
-        "definition": "A sharp exhalation of a small amount of breath through the mouth.",
-        "exampleSentence": "The book had an entire chapter about the puff.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pʌf",
-        "etymology": "From Middle English puff, puf, from Old English pyf (“a blast of wind, puff”), from Proto-West Germanic *puf(f)- (“to blow, puff”), of imitative origin. Cognate with Dutch puf (“puff, wind, fart”), Middle Low German puf, pof (“puff”).",
-        "distractors": [
-            "puf",
-            "paff",
-            "peff"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "skin",
         "definition": "The outer protective layer of the body of any animal, including of a human.",
         "exampleSentence": "Do you eat the skin on custard?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "skɪn",
         "etymology": "From Middle English skyn, skinn, from Old English scinn, from Old Norse skinn (“animal hide”), from Proto-Germanic *skinþą, from Proto-Indo-European *sken- (“to split off”), nasal variant of *skeh₁i-d- (“to cut”). Partially displaced native Old English hȳd (“skin, hide”), from which derives hide.",
@@ -4770,26 +2873,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "slug",
-        "definition": "A special-purpose security of the State and Local Government Series.",
-        "exampleSentence": "The book had an entire chapter about the slug.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slug",
-        "distractors": [
-            "lsug",
-            "sulg",
-            "slgu"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "wall",
         "definition": "A rampart of earth, stones etc. built up for defensive purposes.",
         "exampleSentence": "The town wall was surrounded by a moat.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "wɔl",
         "etymology": "From Middle English wal, from Old English weall (“wall, dike, earthwork, rampart, dam, rocky shore, cliff”), from Proto-West Germanic *wall (“wall, rampart, entrenchment”), from Latin vallum (“wall, rampart, entrenchment, palisade”), from Proto-Indo-European *welH- (“to turn, wind, roll”).",
@@ -4805,7 +2893,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The process or an instance of washing or being washed by water or other liquid.",
         "exampleSentence": "I could hear the wash of the wave.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "wɑʃ",
         "etymology": "From Middle English wasshen, waschen, weschen, from Old English wascan, from Proto-West Germanic *waskan, from Proto-Germanic *waskaną, *watskaną (“to wash, get wet”), from Proto-Indo-European *wed- (“wet; water”).",
@@ -4821,7 +2909,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The direction opposite to that of the earth's rotation, specifically 270°.",
         "exampleSentence": "The book had an entire chapter about the west.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "wɛst",
         "etymology": "From Middle English west, from Old English west, from Proto-West Germanic *westr (“western”), from Proto-Germanic *westrą (“west”), from Proto-Germanic *westraz (“west”), from Proto-Indo-European *wek(ʷ)speros (“evening”).",
@@ -4837,7 +2925,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Real or perceived movement of atmospheric air usually caused by convection or differences in air pressure.",
         "exampleSentence": "The winds in Chicago are fierce.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "wɪnd",
         "etymology": "From Middle English wynd, wind, from Old English wind (“wind”), from Proto-West Germanic *wind, from Proto-Germanic *windaz, from Proto-Indo-European *h₂wéh₁n̥tos (“wind”), from earlier *h₂wéh₁n̥ts (“wind”), derived from the present participle of *h₂weh₁- (“to blow”).",
@@ -4847,22 +2935,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "wend"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "wood",
-        "definition": "The substance making up the central part of the trunk and branches of a tree. Used as a material for construction, to manufacture various items, etc. or as fuel.",
-        "exampleSentence": "We need more wood for the fire.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "wʊd",
-        "etymology": "From Middle English wode, from Old English wudu, widu (“wood, forest, grove; tree; timber”), from Proto-West Germanic *widu, from Proto-Germanic *widuz (“wood”), from Proto-Indo-European *h₁weydʰh₁- (“to separate”). The spelling developed as it did in wool.",
-        "distractors": [
-            "wod",
-            "waod",
-            "weod"
-        ],
-        "theme": "plants"
     },
     {
         "word": "help",
@@ -4885,7 +2957,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To strike or hit with the foot or other extremity of the leg.",
         "exampleSentence": "She was kicked from the IRC server for flooding.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "kɪk",
         "etymology": "From Middle English kyken (“to strike out with the foot”), from Old Norse kikna (“to sink at the knees”) and keikja (“to bend backwards”) (compare Old Norse keikr (“bent backwards, the belly jutting forward”)), from Proto-Germanic *kaikaz (“bent backwards”), of uncertain origin.",
@@ -4901,7 +2973,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To transfer goods or provide services in exchange for money.",
         "exampleSentence": "This old stock will never sell.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sɛl",
         "etymology": "From Middle English sellen, from Old English sellan (“give; give up for money”), from Proto-West Germanic *salljan, from Proto-Germanic *saljaną, from Proto-Indo-European *selh₁-.",
@@ -4933,7 +3005,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Of a blue hue.",
         "exampleSentence": "He was wearing a blue t-shirt.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bluː",
         "etymology": "From Middle English blewe, from Anglo-Norman blew (“blue”), from Middle French bleu, from Old French blöe, bleve, blef (“blue”), from Frankish *blāu (“blue”) (perhaps through a Late Latin blāvus, blāvius (“blue”) attested from Isidore of Seville), from Proto-Germanic *blēwaz (“blue, dark blue”), fro",
@@ -4941,22 +3013,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "blae",
             "blee",
             "bule"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "foul",
-        "definition": "Covered with, or containing unclean matter; dirty.",
-        "exampleSentence": "This foul food is making me retch.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "faʊl",
-        "etymology": "Inherited from Middle English foul, from Old English fūl (“foul, dirty, unclean, impure, vile, corrupt, rotten, stinking, guilty”), from Proto-West Germanic *fūl, from Proto-Germanic *fūlaz (“foul, rotten”), from Proto-Indo-European *puH- (“to rot”).",
-        "distractors": [
-            "fowl",
-            "faul",
-            "feul"
         ],
         "theme": "everyday"
     },
@@ -4975,38 +3031,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "jest"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "huck",
-        "definition": "To throw or chuck.",
-        "exampleSentence": "He was so angry that he hucked the book at my face.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "hʌk",
-        "etymology": "Unknown. Perhaps a variant of chuck or hoick.",
-        "distractors": [
-            "huk",
-            "hucck",
-            "hack"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "ooch",
-        "definition": "To move or slide (oneself or someone, or something) by a small amount.",
-        "exampleSentence": "Then my little white-haired mother Jean Eagle ooched in for her hug.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "ut͡ʃ",
-        "etymology": "The verb is possibly a variant of scooch or scoot, or an onomatopoeia representing the movement. The noun is possibly derived from the verb.",
-        "distractors": [
-            "och",
-            "oocch",
-            "ootch"
-        ],
-        "theme": "people"
     },
     {
         "word": "class",
@@ -5029,7 +3053,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Charming, pleasing qualities.",
         "exampleSentence": "He wrote the word grace on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɡɹeɪs",
         "etymology": "From Middle English grace, from Old French grace (modern French grâce), from Latin grātia (“kindness, favour, esteem”), from grātus (“pleasing”), from Proto-Indo-European *gʷerH- (“to praise, welcome”); compare grateful.",
@@ -5061,7 +3085,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A tool for finding whether a surface is level, or for creating a horizontal or vertical line of reference.",
         "exampleSentence": "He wrote the word level on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "lɛvl̩",
         "distractors": [
@@ -5088,36 +3112,20 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "panel",
-        "definition": "A (usually) rectangular section of a surface, or of a covering or of a wall, fence etc.",
-        "exampleSentence": "He wrote the word panel on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pænəl",
-        "etymology": "From Middle English panel (“piece of cloth, saddle pad, pane of glass, piece of ice, part, division, jury list, jury members”), from Anglo-Norman panel, panelle (“piece of cloth, saddle cushion”), from Vulgar Latin *pannellus, diminutive of Latin pannus (“cloth, rag, garment”), from Proto-Indo-Europ",
-        "distractors": [
-            "panle",
-            "panal",
-            "pannel"
-        ],
-        "theme": "home"
-    },
-    {
-        "word": "sheet",
-        "definition": "A thin bed cloth used as a covering for a mattress or as a layer over the sleeper.",
-        "exampleSentence": "He wrote the word sheet on the board for everyone to see.",
+        "word": "night",
+        "definition": "The time when the Sun is below the horizon when the sky is dark.",
+        "exampleSentence": "He wrote the word night on the board for everyone to see.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ʃit",
-        "etymology": "From Middle English schete; partly from Old English sċīete (“a sheet, a piece of linen cloth”); partly from Old English sċēata (“a corner, angle; the lower corner of a sail, sheet”); and Old English sċēat (“a corner, angle”); all from Proto-Germanic *skautijǭ, *skautaz (“corner, wedge, lap”), from P",
+        "pronunciation": "naɪt",
+        "etymology": "From Middle English nighte, night, nyght, niȝt, naht, from Old English niht, from Proto-West Germanic *naht (“night”), from Proto-Germanic *nahts (“night”), from Proto-Indo-European *nókʷts (“night”).",
         "distractors": [
-            "shet",
-            "sheat",
-            "shaet"
+            "nite",
+            "nigght",
+            "nit"
         ],
-        "theme": "home"
+        "theme": "sensory"
     },
     {
         "word": "world",
@@ -5139,7 +3147,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To allow to enter; to grant entrance (to), whether into a place, into the mind, or into consideration.",
         "exampleSentence": "The argument or fact is admitted.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ədmɪt",
         "etymology": "From Middle English admitten, amitten, borrowed from Old French admettre, amettre (“to admit”), from Latin admittō (“to allow entrance, inlet”, literally “to send to”), from ad- + mittere (“to send”).",
@@ -5149,22 +3157,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "admet"
         ],
         "theme": "mind"
-    },
-    {
-        "word": "burst",
-        "definition": "To break from internal pressure.",
-        "exampleSentence": "It took a while to learn how to burst.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɝst",
-        "etymology": "From Middle English bresten, bersten, from Old English berstan, from Proto-West Germanic *brestan, from Proto-Germanic *brestaną, from Proto-Indo-European *bʰres- (“to burst, break, crack, split, separate”), enlargement of *bʰreHi- (“to snip, split”).",
-        "distractors": [
-            "burrst",
-            "barst",
-            "berst"
-        ],
-        "theme": "actions"
     },
     {
         "word": "cross",
@@ -5183,59 +3175,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "crush",
-        "definition": "To press between two hard objects; to squeeze so as to alter the natural shape or integrity, or to force together into a mass.",
-        "exampleSentence": "It took a while to learn how to crush.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹʌʃ",
-        "etymology": "From Middle English cruschen (“to crush, smash, squeeze, squash”), from Old French croissir (“to crush”), from Late Latin *crusciō (“to crush”), from Frankish *krustijan (“to crush, squeeze, squash”), from Proto-Germanic *kreustaną (“to crush, grind, strike, smash”).",
-        "distractors": [
-            "crussh",
-            "crash",
-            "cresh"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "erupt",
-        "definition": "To eject something violently (such as lava or water, as from a volcano or geyser).",
-        "exampleSentence": "It took a while to learn how to erupt.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɪɹʌpt",
-        "etymology": "From Latin eruptus, past participle of ērumpō (“to break out (of), to burst out (from)”), from e (“out”) + rumpō (“to break”).",
-        "distractors": [
-            "errupt",
-            "eruppt",
-            "erapt"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "heave",
-        "definition": "To lift with difficulty; to raise with some effort; to lift (a heavy thing).",
-        "exampleSentence": "It took a while to learn how to heave.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "hiːv",
-        "etymology": "From Middle English heven, hebben, from Old English hebban, from Proto-West Germanic *habbjan, from Proto-Germanic *habjaną (“to take up, lift”), from Proto-Indo-European *kh₂pyéti, from the root *kap-. See also have.",
-        "distractors": [
-            "heavve",
-            "heeve",
-            "haave"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "relax",
         "definition": "To make something loose.",
         "exampleSentence": "It took a while to learn how to relax.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɹɪlæks",
         "etymology": "From Middle English relaxen, from Old French relaxer, from Latin relaxāre (“relax, loosen, open”), from re- (“back”) + laxāre (“loosen”), from laxus (“loose, free”). By surface analysis, re- + lax (“open, free, loose”).",
@@ -5247,27 +3191,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "slack",
-        "definition": "To slacken.",
-        "exampleSentence": "I can't afford to slack. This job is all I have!",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slæk",
-        "etymology": "From Middle English slakken, slaken, from Old English slacian, from Proto-Germanic *slakōną (“to slack, slacken”).",
-        "distractors": [
-            "slak",
-            "slacck",
-            "sleck"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "visit",
         "definition": "To habitually go to (someone in distress, sickness etc.) to comfort them. (Now generally merged into later senses, below.).",
         "exampleSentence": "It took a while to learn how to visit.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "vɪzɪt",
         "etymology": "From Middle English visiten, from Old French visiter, from Latin vīsitō, frequentative of vīsō (“behold, survey”), from videō (“see”). Cognate with Old Saxon wīsōn (“to visit, afflict”), archaic German weisen (“to visit, afflict”).",
@@ -5295,43 +3223,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "focal",
-        "definition": "One of two lines perpendicular to the axis of a cone such that the cosine of the angle between the line and the axis is equal to the ratio of the cosines o the semiangles of the cone.",
-        "exampleSentence": "He wrote the word focal on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "foʊkl̩",
-        "etymology": "Learned borrowing from New Latin focālis. By surface analysis, focus + -al.",
-        "distractors": [
-            "focel",
-            "foccal",
-            "facal"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "swack",
-        "definition": "A sharp blow.",
-        "exampleSentence": "But just then, they heard a swack and a man cried, “Ouch!”.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "swæk",
-        "etymology": "Considered dialect by Wright, but now widespread. Scottish National Dictionary proposes an origin in Old Scots (Middle English) swak (\"to throw violently\"). Compare Scots swak, swack (“to throw with violent force, dash\", also \"a hard blow or whack”).",
-        "distractors": [
-            "swak",
-            "swacck",
-            "sweck"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "family",
         "definition": "A group of people who are closely related to one another (by blood, marriage or adoption); kin; in particular, a set of parents and their children; an immediate family.",
         "exampleSentence": "I have a lot of family in Australia.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "fæm(ə)li",
         "etymology": "From Late Middle English famylye, from Latin familia (“a household”). Displaced native Old English hīred. Doublet of familia.",
@@ -5347,7 +3243,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A title given to priests.",
         "exampleSentence": "Father Thomas was a good priest.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "father",
         "distractors": [
@@ -5358,75 +3254,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "hammer",
-        "definition": "Someone connected with West Ham Football Club, as a fan, player, coach etc.",
-        "exampleSentence": "Can you use the word hammer in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "hammer",
-        "etymology": "Shortened West Ham + -er, with a pun on hammer.",
-        "distractors": [
-            "ahmmer",
-            "hmamer",
-            "hamemr"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "jumper",
-        "definition": "Someone or something that jumps, e.g. a participant in a jumping event in track or skiing.",
-        "exampleSentence": "Significantly more cervical spine injuries were seen in fallers as opposed to jumpers.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒʌmpɚ",
-        "etymology": "From jump + -er.",
-        "distractors": [
-            "jumpor",
-            "jumpar",
-            "jummper"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "mantle",
-        "definition": "A piece of clothing somewhat like an open robe or cloak, especially that worn by Orthodox bishops.",
-        "exampleSentence": "Can you use the word mantle in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "mæntəl",
-        "etymology": "From Middle English mantel, from Old English mæntel, mentel (“sleeveless cloak”), from Proto-West Germanic *mantel; later reinforced by Anglo-Norman mantel, both from Latin mantellum (“covering, cloak”) (French manteau), diminutive of mantum (Spanish manto), probably from Gaulish *mantos, *mantalos",
-        "distractors": [
-            "mantel",
-            "manntle",
-            "mentle"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "reader",
-        "definition": "A person who reads.",
-        "exampleSentence": "Can you use the word reader in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹidɚ",
-        "etymology": "From Middle English reder, redar, redere, redare, from Old English rēdere, rǣdere (“a reader; scholar; diviner”), from Proto-West Germanic *rādāri, equivalent to read + -er. Cognate with Saterland Frisian Räider (“advisor”), Dutch rader (“advisor”), German Rater (“advisor”).",
-        "distractors": [
-            "reador",
-            "readar",
-            "readder"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "record",
         "definition": "An item of information put into a temporary or permanent physical medium.",
         "exampleSentence": "Can you use the word record in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɹɛkɚd",
         "etymology": "From Middle English recorde, borrowed from Old French record, from recorder. See record (verb).",
@@ -5436,22 +3268,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "racord"
         ],
         "theme": "time"
-    },
-    {
-        "word": "screen",
-        "definition": "A physical divider intended to block an area from view, or provide shelter from something dangerous.",
-        "exampleSentence": "Can you use the word screen in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "skɹiːn",
-        "etymology": "From Middle English scren, screne (“windscreen, firescreen”), from Anglo-Norman escren (“firescreen, the tester of a bed”), Old French escren, escrein, escran (modern French écran (“screen”)), from Middle Dutch scherm, from Old Dutch skirm, from Proto-West Germanic *skirmi, from Proto-Germanic *skir",
-        "distractors": [
-            "scren",
-            "screan",
-            "scraen"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "speech",
@@ -5474,7 +3290,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The soul of a person or other creature.",
         "exampleSentence": "He has seen spirits roam the house.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "spɪɹɪt",
         "etymology": "From Middle English spirit, from Old French espirit (“spirit”), from Latin spīritus (“breath; spirit”), from Proto-Indo-European *(s)peys- (“to blow, breathe”). Compare inspire, respire, transpire, all ultimately from Latin spīrō (“I breathe, blow, respire”).",
@@ -5490,7 +3306,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A polygon with four straight sides of equal length and four right angles; an equilateral rectangle; a regular quadrilateral.",
         "exampleSentence": "We live not on the square with such as these.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "skwɛɹ",
         "etymology": "From Middle English square, sqware, squyre; from Old French esquarre, esquerre, (modern French équerre), from Vulgar Latin *exquadra, from Latin ex- + quadro, from quadrus (compare English quad and quadra). Doublet of squad and squadra.",
@@ -5502,27 +3318,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "turner",
-        "definition": "An acrobat or gymnast, especially (historical) a member of the German Turnvereine, German-American gymnastic clubs that also served as nationalist political groups.",
-        "exampleSentence": "Can you use the word turner in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɝnɚ",
-        "etymology": "From German Turner (“gymnast”).",
-        "distractors": [
-            "utrner",
-            "truner",
-            "tunrer"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "window",
         "definition": "An opening, usually covered by one or more panes of clear glass, to allow light and air from outside to enter a building or vehicle.",
         "exampleSentence": "She opened the window to let some air in.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "wɪndoʊ",
         "etymology": "From Middle English wyndowe, wyndown, from Old Norse vindauga (“window”, literally “wind-eye; wind-hole”), equivalent to wind + eye. Cognate with Scots windae and windock, Faroese vindeyga, Norwegian Bokmål vindu, Norwegian Nynorsk vindauge, Danish vindue, archaic Swedish vindöga, Elfdalian windog.",
@@ -5534,107 +3334,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "ascend",
-        "definition": "To move upward, to fly, to soar.",
-        "exampleSentence": "She would ascend every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "əsɛnd",
-        "etymology": "From Middle English ascenden, borrowed from Old French ascendre, from Latin ascendō (“to go up, climb up to”), from ad (“to”) + scandō (“to climb”); see scan. Unrelated to accede other than common ad prefix.",
-        "distractors": [
-            "asscend",
-            "ascennd",
-            "ascand"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "digest",
-        "definition": "To distribute or arrange methodically; to work over and classify; to reduce to portions for ready use or application.",
-        "exampleSentence": "She would digest every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "daɪd͡ʒɛst",
-        "etymology": "From Middle English digesten, from Latin dīgestus, past participle of dīgerō (“carry apart”), from dī- (for dis- (“apart”)) + gerō (“I carry”), influenced by Middle French digestion.",
-        "distractors": [
-            "diggest",
-            "digesst",
-            "dagest"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "excite",
-        "definition": "To stir the emotions of; to cause to feel excitement.",
-        "exampleSentence": "She would excite every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɪksaɪt",
-        "etymology": "From Middle English exciten, from Old French exciter, from Latin excitō (“to call out, call forth, arouse, wake up, stimulate”), frequentative of excieō (“to call out, arouse, excite”), from ex (“out”) + cieō (“to call, summon”). See cite and compare to accite, concite, incite.",
-        "distractors": [
-            "excight",
-            "exxcite",
-            "excitte"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "plunge",
-        "definition": "To thrust into liquid, or into any penetrable substance; to immerse.",
-        "exampleSentence": "She would plunge every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "plʌnd͡ʒ",
-        "etymology": "From Middle English plungen, ploungen, Anglo-Norman plungier, from Old French plongier, (Modern French plonger), from unattested Late Latin frequentative *plumbicō (“to throw a leaded line”), from plumbum (“lead”). Compare plumb, plounce.",
-        "distractors": [
-            "plunnge",
-            "plange",
-            "plenge"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "remove",
-        "definition": "To delete.",
-        "exampleSentence": "She would remove every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹɪmuːv",
-        "etymology": "From Middle English removen, from Anglo-Norman remover, removeir, from Old French remouvoir, from Latin removēre, from re- + movēre (“to move”), equivalent to re- + move. Displaced native Old English āfierran.",
-        "distractors": [
-            "remmove",
-            "removve",
-            "ramove"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "thrust",
-        "definition": "To make advance with force.",
-        "exampleSentence": "She would thrust every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "θɹʌst",
-        "etymology": "From Middle English þrusten, from Old Norse þrysta, from Proto-Germanic *þrustijaną, possibly from Proto-Indo-European *trewd-.",
-        "distractors": [
-            "thrusst",
-            "thrast",
-            "threst"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "little",
         "definition": "Small in size.",
         "exampleSentence": "I feel better after my little sleep.",
         "partOfSpeech": "adjective",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "lɪɾɫ̩",
         "etymology": "From Middle English litel, from Old English lyttel, lȳtel, from Proto-West Germanic *lūtil, from Proto-Germanic *lūtilaz (“tending to stoop, crouched, little”), from Proto-Indo-European *lewd- (“to bend, bent, small”), equivalent to lout + -le.",
@@ -5644,165 +3348,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "lattle"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "tender",
-        "definition": "Sensitive or painful to the touch.",
-        "exampleSentence": "Be careful: that area is tender.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɛndɚ",
-        "etymology": "From Middle English tender, tendere, from Anglo-Norman tender, Old French tendre, from Latin tener, tenerum (“soft, delicate”).",
-        "distractors": [
-            "tendor",
-            "tendar",
-            "tennder"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "raisin",
-        "definition": "Of fruit: to dry out; to become like raisins.",
-        "exampleSentence": "My raisined heart is shrinking.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹeɪzən",
-        "etymology": "From Middle English raysyn, borrowed from Anglo-Norman reysin (“grape, raisin”), from Late Latin racīmus, from Latin racēmus. Possibly a distant cognate of Persian رز (raz, “vine”). Doublet of raceme.",
-        "distractors": [
-            "raissin",
-            "raysin",
-            "reisin"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "runout",
-        "definition": "Something that has been run out.",
-        "exampleSentence": "The landslide had a long runout.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹʌnaʊt",
-        "etymology": "Deverbal from run out.",
-        "distractors": [
-            "runnout",
-            "runowt",
-            "ranout"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "bogger",
-        "definition": "Someone associated with or who works in a bog.",
-        "exampleSentence": "So what if you kissed some bogan mole in the bogger at some 3rd-rate bar?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bogger",
-        "etymology": "From various senses of bog + -er.",
-        "distractors": [
-            "boggor",
-            "boggar",
-            "boger"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "stabby",
-        "definition": "Having one or more sharp points.",
-        "exampleSentence": "I don’t get mad, I get stabby.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stæbi",
-        "etymology": "From stab + -y.",
-        "distractors": [
-            "stabbey",
-            "staby",
-            "stebby"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "slashy",
-        "definition": "Involving lots of cutting with blades, or swordwork.",
-        "exampleSentence": "The grounds were slashy, there being a heavy shower in the afternoon. Play with barefoot was difficult.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slæʃi",
-        "etymology": "From slash + -y.",
-        "distractors": [
-            "slashey",
-            "slasshy",
-            "sleshy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "webber",
-        "definition": "An animal that creates webs, such as a spider.",
-        "exampleSentence": "Can you use the word webber in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "webber",
-        "etymology": "From Middle English webbere, webber; equivalent to web + -er.",
-        "distractors": [
-            "webbor",
-            "webbar",
-            "weber"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "mulley",
-        "definition": "A hornless or polled animal.",
-        "exampleSentence": "Can you use the word mulley in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "mulley",
-        "distractors": [
-            "mully",
-            "mulleey",
-            "muley"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "buzzie",
-        "definition": "A hand-held pneumatic drill used in mining.",
-        "exampleSentence": "Can you use the word buzzie in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bʌzi",
-        "etymology": "From buzz + -ie.",
-        "distractors": [
-            "buzzy",
-            "buzie",
-            "buzzei"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "floater",
-        "definition": "A person who physically floats in a gas or liquid.",
-        "exampleSentence": "He left a floater in the toilet.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "floʊtəɹ",
-        "etymology": "From float + -er (suffix forming agent nouns). Compare Old English flota (“boat, ship\", also \"sailor, pirate”, literally “floater”), whence Middle English flote (“a fleet of ships\", also, \"a float, flotation device”).",
-        "distractors": [
-            "floator",
-            "floatar",
-            "floatter"
-        ],
-        "theme": "people"
     },
     {
         "word": "program",
@@ -5837,122 +3382,43 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "cupcake",
-        "definition": "To flirt; to talk or act amorously or intimately.",
-        "exampleSentence": "I love baking cupcakes, but I was starting to feel cupcaked-out.",
+        "word": "remember",
+        "definition": "To recall from one's memory; to have an image in one's memory.",
+        "exampleSentence": "The instructions said to remember gently and carefully.",
         "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "kʌpkeɪk",
-        "etymology": "From cup + cake.",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɹɪmɛmbɚ",
+        "etymology": "From Middle English remembren, from Old French remembrer (“to remember”), from Late Latin rememorari (“to remember again”), from re- + memor (“mindful”), from Proto-Indo-European *mer-, *(s)mer- (“to think about, be mindful, remember”).",
         "distractors": [
-            "cuppcake",
-            "cupcakke",
-            "capcake"
+            "remembor",
+            "remembar",
+            "remmember"
         ],
-        "theme": "everyday"
+        "theme": "mind"
     },
     {
-        "word": "tabling",
-        "definition": "A forming into (graphic) tables; a display in tabular form.",
-        "exampleSentence": "On the luffs and after leaches of jibs the tabling ought to be 3 inches, on the foot 1 inches.",
+        "word": "condition",
+        "definition": "A state or quality.",
+        "exampleSentence": "Aging is a condition over which we are powerless.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "tabling",
+        "pronunciation": "kəndɪʃ(ə)n",
+        "etymology": "From Middle English condicioun, from Old French condicion (French condition), from Latin condicio. Unetymological change in spelling due to confusion with conditio.",
         "distractors": [
-            "tabbling",
-            "tablinng",
-            "tebling"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "advanced",
-        "definition": "At or close to the state of the art.",
-        "exampleSentence": "The option can be found under advanced settings.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ədvænst",
-        "etymology": "From advance + -ed.",
-        "distractors": [
-            "addvanced",
-            "advannced",
-            "advenced"
+            "condision",
+            "conndition",
+            "condittion"
         ],
         "theme": "society"
-    },
-    {
-        "word": "ghosting",
-        "definition": "The practice of hiding prisoners from inspection from (possibly hostile) outside inspectors.",
-        "exampleSentence": "They probed participants’ experiences with ghosting from the perspective of both the ghoster and the ghostee.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ghosting",
-        "etymology": "From ghost + -ing.",
-        "distractors": [
-            "ghossting",
-            "ghostinng",
-            "ghasting"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mainline",
-        "definition": "An airline's main operating unit, as opposed to codeshares or regional subsidiaries.",
-        "exampleSentence": "8. ...Qe7! is the mainline and Black unpins with Nc6-d8-e6 ….",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "meɪnlaɪn",
-        "etymology": "From main + line.",
-        "distractors": [
-            "mainnline",
-            "mainlinne",
-            "maynline"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hardhead",
-        "definition": "One who is practical or hardheaded.",
-        "exampleSentence": "Both play at hardhead till they break their brains.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "hɑɹdhɛd",
-        "etymology": "From hard + head.",
-        "distractors": [
-            "hardheed",
-            "harrdhead",
-            "herdhead"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "stickman",
-        "definition": "A simple drawing of a man with lines to represent limbs and torso.",
-        "exampleSentence": "Stick candy is made by a stick puller or stickman, who pulls the hard candy after it has been boiled; ….",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stickman",
-        "etymology": "From stick + -man.",
-        "distractors": [
-            "sticckman",
-            "stackman",
-            "steckman"
-        ],
-        "theme": "people"
     },
     {
         "word": "bay",
         "definition": "A tree or shrub of species Laurus nobilis (family Lauraceae), having dark green leaves and berries.",
         "exampleSentence": "My teacher explained what a bay is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "beɪ",
         "etymology": "From Middle English baye, baie, from Old English beġ (“berry”), as in beġbēam (“berry-tree”), conflated with Old French baie, from Latin bāca (“berry”).",
@@ -5980,22 +3446,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "pad",
-        "definition": "A flattened mass of anything soft, to sit or lie on.",
-        "exampleSentence": "It is a general practice to pad down a condenser mike with as much as a 20-30 dB pad.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pæd",
-        "etymology": "1554, \"bundle of straw to lie on\". Unknown, and unclear all senses have common etymology. For sense \"ends of a digit\", cf. Low German or West Flemish pad (“sole of the foot”), perhaps ultimately from Proto-Indo-European *pent- (“to pass”), which would make it related to both path and find.",
-        "distractors": [
-            "ped",
-            "pid",
-            "pda"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "ray",
         "definition": "Any of the superorder Batoidea of marine fish with flat bodies, large wing-like fins, and whip-like tails.",
         "exampleSentence": "My teacher explained what a ray is during our lesson.",
@@ -6016,7 +3466,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The rigging of a sailing ship or other such craft.",
         "exampleSentence": "Every rig at the truckstop had custom-made mud-flaps.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɹɪɡ",
         "etymology": "From Early Modern English rygge, probably of North Germanic origin. Compare Norwegian rigge (“to bind up; wrap around; rig; equip”), Swedish dialectal rigga (“to rig a horse”), Faroese rigga (“to rig; to equip and fit; to make s.th. function”).",
@@ -6032,7 +3482,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A line of objects, often regularly spaced, such as seats in a theatre, vegetable plants in a garden, etc.",
         "exampleSentence": "My teacher explained what a row is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɹoʊ",
         "etymology": "From Middle English rewe, rowe, rawe, from Old English rǣw, rāw, probably from Proto-Germanic *raiwō, *raigwō, *raih- (“row, streak, line”), from Proto-Indo-European *reyk- (“to carve, scratch, etch”).",
@@ -6048,7 +3498,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To rest in a horizontal position on a surface.",
         "exampleSentence": "We need to lie this before the deadline.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "laɪ̯",
         "etymology": "From Middle English lien, liggen, from Old English liċġan, from Proto-West Germanic *liggjan, from Proto-Germanic *ligjaną, from Proto-Indo-European *legʰ-.",
@@ -6076,91 +3526,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "sim",
-        "definition": "Any of the characters in the video game The Sims, which simulates aspects of a human social environment.",
-        "exampleSentence": "My teacher explained what a sim is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "sɪm",
-        "etymology": "From the title of The Sims, which most likely came from clipping of simulation, as The Sims, SimCity, and related franchises are simulation games; compare sim (“simulator, simulation”).",
-        "distractors": [
-            "sam",
-            "sem",
-            "smi"
-        ],
-        "theme": "nature"
-    },
-    {
-        "word": "beam",
-        "definition": "Any large piece of timber or iron long in proportion to its thickness, and prepared for use.",
-        "exampleSentence": "This ship has more beam than that one.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "biːm",
-        "etymology": "From Middle English beem, from Old English bēam (“tree, cross, gallows, column, pillar, wood, beam, splint, post, stock, rafter, piece of wood”), from Proto-West Germanic *baum, from Proto-Germanic *baumaz (“tree, beam, balk”), from Proto-Indo-European *bʰew- (“to grow, swell”).",
-        "distractors": [
-            "beem",
-            "baam",
-            "biam"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "belt",
-        "definition": "A band worn around the waist to hold clothing to one's body (usually pants), hold weapons (such as a gun or sword), or serve as a decorative piece of clothing.",
-        "exampleSentence": "The book had an entire chapter about the belt.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bɛlt",
-        "etymology": "From Middle English belt, from Old English belt (“belt, girdle”), from Proto-West Germanic *baltī̆, from Proto-Germanic *baltijaz (“girdle, belt”), from Latin balteus (“belt, sword-belt”), of Etruscan origin.",
-        "distractors": [
-            "bellt",
-            "balt",
-            "bilt"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "bolt",
-        "definition": "A (usually) metal fastener consisting of a cylindrical body that is threaded, with a larger head on one end. It can be inserted into an unthreaded hole up to the head, with a nut then threaded on the other end; a heavy machine screw.",
-        "exampleSentence": "He had seen lightning bolts yesterday night.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "boʊlt",
-        "etymology": "From Middle English bolt, from Old English bolt, from Proto-West Germanic *bolt, from Proto-Germanic *bultaz, perhaps from Proto-Indo-European *bʰeld- (“to knock, strike”). Compare Lithuanian beldu (“I knock”), baldas (“pole for striking”).",
-        "distractors": [
-            "bollt",
-            "balt",
-            "belt"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "boot",
-        "definition": "A heavy shoe that covers part of the leg.",
-        "exampleSentence": "He was useless so he got the boot.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "but",
-        "etymology": "From Middle English boote, bote (“shoe”), from Old French bote (“a high, thick shoe”). Of obscure origin, but probably related to Old French bot (“club-foot”), bot (“fat, short, blunt”), from Old Frankish *butt, from Proto-Germanic *buttaz, *butaz (“cut off, short, numb, blunt”), from Proto-Indo-Eur",
-        "distractors": [
-            "bot",
-            "baot",
-            "beot"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "cell",
         "definition": "A single-room dwelling for a hermit.",
         "exampleSentence": "The book had an entire chapter about the cell.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sɛl",
         "etymology": "From Middle English celle, selle, from Old English cell (attested in inflected forms), from Latin cella (“chamber, small room, compartment”), later reinforced by Old French cel, sele, Old French cele.",
@@ -6176,7 +3546,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A heavy object, often a kind of stick, intended for use as a bludgeoning weapon or a plaything.",
         "exampleSentence": "I've got only one club in my hand.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "klʌb",
         "etymology": "Inherited from Middle English clubbe, from Old Norse klubba, klumba (“cudgel”), from Proto-Germanic *klumpô (“clip, clasp; clump, lump; log, block”). Cognate with English clump, cloud, Latin globus, glomus; and perhaps related to Middle Low German kolve (“bulb”), German Kolben (“butt, bulb, club”).",
@@ -6188,90 +3558,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "character"
     },
     {
-        "word": "dock",
-        "definition": "Any of the genus Rumex of coarse weedy plants with small green flowers related to buckwheat, especially bitter dock (Rumex obtusifolius), and used as potherbs and in folk medicine, especially in curing nettle rash.",
-        "exampleSentence": "The book had an entire chapter about the dock.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "dɑk",
-        "etymology": "From Middle English dokke, from Old English docce, from Proto-West Germanic *dokkā, from Proto-Germanic *dukkǭ (compare Old Danish dokke (“water-dock”), West Flemish dokke, dokkebladeren (“coltsfoot, butterbur”)), from Proto-Indo-European *dʰew- (“dark”) (compare Latvian duga (“scum, slime on water”",
-        "distractors": [
-            "dok",
-            "docck",
-            "dack"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "flow",
-        "definition": "Movement in people or things characterized with a continuous motion, involving either a non solid mass or a multitude.",
-        "exampleSentence": "The room was small, but it had good symmetry and flow.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "floʊ",
-        "etymology": "From Middle English flowe, from the verb (see below). The psychology sense “state of focus” was coined by Mihaly Csikszentmihalyi in 1975.",
-        "distractors": [
-            "flou",
-            "flaw",
-            "flew"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "fold",
-        "definition": "An act of folding.",
-        "exampleSentence": "Give the bedsheets a fold before putting them in the cupboard.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "foʊld",
-        "etymology": "The verb is from Middle English folden, from Old English fealdan, from Proto-West Germanic *falþan, from Proto-Germanic *falþaną (“to fold”), from Proto-Indo-European *pel- (“to fold”). The noun is from Middle English folde, falde, itself derived from the verb.",
-        "distractors": [
-            "folld",
-            "fald",
-            "feld"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "glow",
-        "definition": "A state of heat and light being emitted by a hot object.",
-        "exampleSentence": "He had a bright red glow on his face.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡloʊ",
-        "etymology": "The verb is derived from Middle English glouen, glowen (“to give off heat and light without flame; of a thing: to be heated until red hot; to be brightly coloured; to shine brightly; (figurative) to be filled with emotion; of the face, etc.: to turn red, flush; etc.",
-        "distractors": [
-            "glou",
-            "glaw",
-            "glew"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "grey",
-        "definition": "A member of the Royal Scots Greys, a cavalry regiment of the British Army from 1707 to 1971.",
-        "exampleSentence": "The book had an entire chapter about the grey.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "grey",
-        "distractors": [
-            "rgey",
-            "gery",
-            "grye"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "heat",
         "definition": "Thermal energy.",
         "exampleSentence": "The book had an entire chapter about the heat.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "hit",
         "etymology": "From Middle English hete, from Old English hǣtu, from Proto-West Germanic *haitī, from Proto-Germanic *haitį̄ (“heat”), from Proto-Indo-European *keHy- (“heat; hot”). Cognate with Scots hete (“heat”), Saterland Frisian Hatte (“heat”), Old High German heizī (“heat”).",
@@ -6287,7 +3578,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Somebody who possesses great bravery and carries out extraordinary or noble deeds.",
         "exampleSentence": "Every cancer victim is a true hero.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "hɪɹoʊ",
         "etymology": "From Middle English heroes, from Old French heroes, from Latin hērōs (“hero”), from Ancient Greek ἥρως (hḗrōs, “demi-god, hero”), possibly from Proto-Indo-European *ser- (“to watch over, protect”); if so, related to Latin servo (“protect”).",
@@ -6331,27 +3622,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "peak",
-        "definition": "A point; the sharp end or top of anything that terminates in a point; as, the peak, or front, of a cap.",
-        "exampleSentence": "The book had an entire chapter about the peak.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "piːk",
-        "etymology": "From earlier peake, peek, peke, from Middle English pek (in place names), itself an alteration of pike, pyke, pyk (“a sharp point, pike”), from Old English pīc, piic (“a pike, needle, pin, peak, pinnacle”), from Proto-West Germanic *pīk, from Proto-Germanic *pīkaz (“peak”).",
-        "distractors": [
-            "peek",
-            "paak",
-            "piak"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "pull",
         "definition": "An act of pulling (applying force toward oneself).",
         "exampleSentence": "In weights the favourite had the pull.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "pʊl",
         "etymology": "Verb from Middle English pullen, from Old English pullian (“to pull, draw, tug, pluck off”), of uncertain ultimate origin.",
@@ -6383,7 +3658,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The naturally occurring aggregate of solid mineral matter that constitutes a significant part of the earth's crust.",
         "exampleSentence": "The book had an entire chapter about the rock.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "ɹɑk",
         "etymology": "Inherited from Middle English rocke, rokke (“rock formation”), from Old English *rocc (“rock”), as in Old English stānrocc (“high stone rock, peak, obelisk”), and also later from Anglo-Norman roque, (compare Modern French roc, roche, rocher), from Medieval Latin rocca (attested 767), of uncertain or",
@@ -6395,107 +3670,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
-        "word": "slot",
-        "definition": "A narrow depression, perforation, or aperture; especially, one for the reception of a piece fitting or sliding into it.",
-        "exampleSentence": "The book had an entire chapter about the slot.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slɑt",
-        "etymology": "From Middle English slot, from Old French esclot, likely from Old Norse slóð (“track”). As a gambling machine, via clipping of slot machine. Compare sleuth.",
-        "distractors": [
-            "slat",
-            "slet",
-            "solt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tang",
-        "definition": "A refreshingly sharp aroma or flavor.",
-        "exampleSentence": "Wine or cider has a tang of the cask.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "tæŋ",
-        "etymology": "From Middle English tange, variant of tonge (“tongs, fang”), from Old Norse tangi (“pointed metal tool”), perhaps related to Old Norse tunga (“tongue”). But see also Middle Dutch tanger (“sharp, tart, pinching”).",
-        "distractors": [
-            "tanng",
-            "teng",
-            "ting"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "ward",
-        "definition": "The action of a watchman; monitoring, surveillance (usually in phrases keep ward etc.).",
-        "exampleSentence": "I must attend his majesty's command, to whom I am now in ward.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "wɔɹd",
-        "etymology": "From Middle English ward, warde, from Old English weard (“watching, ward, protection, guardianship; advance post; waiting for, lurking, ambuscade”), from Proto-West Germanic *wardu, from Proto-Germanic *wardō (“protection, attention, keeping”), an extension of the stem *wara- (“attentive”) (English",
-        "distractors": [
-            "warrd",
-            "werd",
-            "wird"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cite",
-        "definition": "To quote; to repeat, as a passage from a book, or the words of another.",
-        "exampleSentence": "Until then, the Sunak administration remains a study in ineffectuality on multiple fronts, leading Goldsmith to cite, not unreasonably, “a kind of paralysis”.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "saɪt",
-        "etymology": "From Old French citer, from Latin citare (“to cause to move, excite, summon”), frequentative of ciēre (“to rouse, excite, call”). Sense 4 is the original one.",
-        "distractors": [
-            "cight",
-            "citte",
-            "cate"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "deny",
-        "definition": "To disallow or reject.",
-        "exampleSentence": "I deny that I was at the party.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "dənaɪ",
-        "etymology": "From Middle English denyen, from Old French denoier (“to deny, to repudiate”) (French dénier), from Latin denegare (“to deny, to refuse”), from de- (“away”) and negare (“to refuse”), the latter ultimately from Proto-Indo-European *né (“no, not”). Doublet of denegate.",
-        "distractors": [
-            "deney",
-            "denny",
-            "dany"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "pure",
-        "definition": "Free of flaws or imperfections; unsullied.",
-        "exampleSentence": "A guinea is pure gold if it has in it no alloy.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "pjʊɹ",
-        "etymology": "From Middle English pure, pur, from Old French pur, from Latin pūrus (“clean, free from dirt or filth, unmixed, plain”), from Proto-Indo-European *pewH- (“to cleanse, purify”).",
-        "distractors": [
-            "per",
-            "purre",
-            "pare"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "sick",
         "definition": "In poor health; ill.",
         "exampleSentence": "She was sick all day with the flu.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "sɪk",
         "etymology": "From Middle English sik, sike, seek, seke, seok, from Old English sēoc (“sick, ill”), from Proto-West Germanic *seuk, from Proto-Germanic *seukaz, from Proto-Indo-European *sewg- (“to be troubled or grieved”).",
@@ -6505,22 +3684,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "sack"
         ],
         "theme": "health"
-    },
-    {
-        "word": "wide",
-        "definition": "Having a large physical extent from side to side.",
-        "exampleSentence": "The wide weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "waɪd",
-        "etymology": "From Middle English wid, wyd, from Old English wīd (“wide, vast, broad, long; distant, far”), from Proto-Germanic *wīdaz, from Proto-Indo-European *h₁weydʰh₁- (“to divide, separate”), a dissimilated univerbation from *dwi- (“apart, asunder, in two”) + *dʰeh₁- (“to do, put, place”).",
-        "distractors": [
-            "widde",
-            "wade",
-            "wede"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "only",
@@ -6539,75 +3702,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "edit",
-        "definition": "A change to the text of a document.",
-        "exampleSentence": "The book had an entire chapter about the edit.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɛdɪt",
-        "etymology": "Back-formation from editor, influenced by French éditer (“edit, publish”) and Latin editus.",
-        "distractors": [
-            "eddit",
-            "edat",
-            "edet"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rash",
-        "definition": "To forcefully move or push (someone or something) in a certain direction.",
-        "exampleSentence": "… the rain rashed down - the road was battered, As with the force of billows shattered; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "ɹæʃ",
-        "etymology": "From Late Middle English rashen, rassh (“to hasten, hurry, rush”) [and other forms], from Old English ræscan (“to move rapidly; to flicker; to flash; to glitter; to quiver”); see further at etymology 1.",
-        "distractors": [
-            "rassh",
-            "resh",
-            "rish"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "glim",
-        "definition": "Brightness; splendour.",
-        "exampleSentence": "'Sure enough, they left their glim here,' said the fellow from the window.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡlɪm",
-        "etymology": "From Middle English glim, glimme (“radiance; shining brightness”), of uncertain further origin. Perhaps from Old English gleomu (“splendor”) and/or Old Norse *glim, *glima, both apparently from Proto-Germanic *glimō, from Proto-Indo-European *ǵʰley- (“to gleam, shimmer, glow”).",
-        "distractors": [
-            "glam",
-            "glem",
-            "gilm"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bench",
-        "definition": "A long seat with or without a back, found for example in parks and schools.",
-        "exampleSentence": "Injuries have shortened the bench.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "bɛnt͡ʃ",
-        "etymology": "From Middle English bench, benk, bynk, from Old English benċ (“bench”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz (“bench”), from Proto-Indo-European *bʰeg-.",
-        "distractors": [
-            "bennch",
-            "banch",
-            "binch"
-        ],
-        "theme": "time"
-    },
-    {
         "word": "black",
         "definition": "The colour/color perceived in the absence of light, but also when no light is reflected, but rather absorbed.",
         "exampleSentence": "At this point black makes a disastrous move.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "blæk",
         "etymology": "From Middle English blak, black, blake, from Old English blæc (“black, dark\", also \"ink”), from Proto-West Germanic *blak, from Proto-Germanic *blakaz (“burnt”), possibly from Proto-Indo-European *bʰleg- (“to burn, shine”).",
@@ -6619,27 +3718,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "brass",
-        "definition": "A memorial or sepulchral tablet usually made of brass or latten: a monumental brass.",
-        "exampleSentence": "The brass is not going to like this.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɹæs",
-        "etymology": "From Middle English bras, bres, from Old English bræs (“brass, bronze”), of uncertain origin. Perhaps representing a backformation from Proto-Germanic *brasnaz (“brazen”), from or related to *brasō (“fire, pyre”).",
-        "distractors": [
-            "bras",
-            "bress",
-            "briss"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "color",
         "definition": "The spectral composition of visible light.",
         "exampleSentence": "What color are your bf's eyes?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "kʰɐɫɐ",
         "etymology": "From Middle English colour, color, borrowed from Anglo-Norman colur, from Old French colour, color, from Latin color. Doublet of couleur. Displaced English blee, Middle English blee (“color”), from Old English blēo.",
@@ -6651,27 +3734,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "error",
-        "definition": "The state, quality, or condition of being wrong.",
-        "exampleSentence": "There was a large error in the accounts.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɛɹəɹ",
-        "etymology": "From Middle English errour, from Anglo-Norman errour, borrowed from Old French error, from Latin error (“wandering about”, noun), derived from the verb errō (“to wander, to err”). Cognate with Gothic 𐌰𐌹𐍂𐌶𐌴𐌹 (airzei, “error”), Gothic 𐌰𐌹𐍂𐌶𐌾𐌰𐌽 (airzjan, “to lead astray”). More at err.",
-        "distractors": [
-            "errer",
-            "eror",
-            "errar"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "fault",
         "definition": "Culpability; the responsibility for a blameworthy event.",
         "exampleSentence": "He wrote the word fault on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "fɔlt",
         "etymology": "From Middle English faute, faulte, from Anglo-Norman faute, Old French faute, from Vulgar Latin *fallita (“shortcoming”), feminine of *fallitus, in place of Latin falsus, perfect passive participle of fallō (“deceive”).",
@@ -6683,27 +3750,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "flush",
-        "definition": "A groundwater-fed marsh or peaty mire (which may be acidic or basic, nutrient-rich or poor); (originally especially Scotland and Northern England) a (marshy) pool or seep, as in a field.",
-        "exampleSentence": "For this point onwards the land slopes gently until it becomes quite low lying, that is, tends to become a \"flush\" or bog.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "flʌʃ",
-        "etymology": "Various similar terms are found in dialectal English and Scots as flash and flosh (older Scots flosche), and the variation goes back to Middle English flushe, flosche, flashe, flaske.",
-        "distractors": [
-            "flussh",
-            "flash",
-            "flesh"
-        ],
-        "theme": "nature"
-    },
-    {
         "word": "focus",
         "definition": "A point at which reflected or refracted rays of light converge.",
         "exampleSentence": "My studies are my main focus right now.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "foʊkəs",
         "etymology": "Borrowed from Latin focus (“hearth, fireplace”); see there for more. Related to fuel. Kepler introduced the term into mathematics and the sciences in describing elliptical orbits of planets (quote from Nicholas Mee) : \"One of the interesting properties of an ellipse is that if there were a light bul",
@@ -6719,7 +3770,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A player for the San Francisco Giants.",
         "exampleSentence": "He wrote the word giant on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "giant",
         "distractors": [
@@ -6746,27 +3797,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
-        "word": "hitch",
-        "definition": "A sudden pull.",
-        "exampleSentence": "He wrote the word hitch on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "digraphs",
-        "pronunciation": "hɪt͡ʃ",
-        "etymology": "Probably from Middle English hicchen, hytchen, icchen (“to move; to move as with a jerk”), of obscure origin. Lacks cognates in other languages. Compare itch, hike.",
-        "distractors": [
-            "hittch",
-            "hich",
-            "hatch"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "paper",
         "definition": "A sheet material typically used for writing on or printing on (or as a non-waterproof container), usually made by draining cellulose fibres from a suspension in water.",
         "exampleSentence": "He wrote the word paper on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "peɪ̯pəɹ",
         "etymology": "From Middle English paper, from Anglo-Norman paper, from Old Catalan paper, borrowed from Latin papȳrus (and given the Catalan suffix -er), from Ancient Greek πάπυρος (pápuros).",
@@ -6782,7 +3817,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The cost required to gain possession of something.",
         "exampleSentence": "Her price is far above rubies.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "pɹaɪs",
         "etymology": "From Middle English price (“price, prize, value, excellence”), borrowed from Old French pris, preis, from Latin pretium (“worth, price, money spent, wages, reward”); compare praise, precious, appraise, appreciate, depreciate, etc.",
@@ -6794,43 +3829,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "money"
     },
     {
-        "word": "slide",
-        "definition": "An item of play equipment that children can climb up and then slide down again.",
-        "exampleSentence": "The long, red slide was great fun for the kids.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slaɪd",
-        "etymology": "From Middle English sliden, from Old English slīdan (“to slide”), from Proto-West Germanic *slīdan, from Proto-Germanic *slīdaną (“to slide, glide”), from Proto-Indo-European *sléydʰ-e-ti, from *sleydʰ- (“slippery”).",
-        "distractors": [
-            "slidde",
-            "slade",
-            "slede"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "stall",
-        "definition": "A compartment for a single animal in a stable or cattle shed.",
-        "exampleSentence": "Some Asatruar kindreds call their indoor altars stalls and their outdoor altars harrows.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stɔl",
-        "etymology": "From Middle English stall, stalle, from Old English steall (“standing place, position”), from Proto-Germanic *stallaz, from Proto-Indo-European *stel- (“to place, put, post, stand”). Cognate with French étal, Italian stallo, German Stall, Swedish stall.",
-        "distractors": [
-            "stal",
-            "stell",
-            "still"
-        ],
-        "theme": "animals"
-    },
-    {
         "word": "stuff",
         "definition": "Miscellaneous items or objects; (with possessive) personal effects.",
         "exampleSentence": "We are such stuff / As dreams are made on.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "stʌf",
         "etymology": "From Middle English stuf, stuffe, borrowed from Medieval Latin stuffa and its etymon Old French estofe, estoffe, estuf, estuffe, stoffe, from estoffer, estofer (“to provide what is necessary, equip, stuff”), borrowed from Old High German stoffōn, from Proto-West Germanic *stoppōn (“to clog up, block",
@@ -6846,7 +3849,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Something designed to fool, dupe, outsmart, mislead or swindle.",
         "exampleSentence": "He wrote the word trick on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "tɹɪk",
         "etymology": "From Middle English trikke, from Old Northern French trique (related to Old French trichier (“to defraud, act dishonestly, conceal, deceive, cheat”); > modern French tricher), itself possibly from Middle High German trechen (“to launch a shot at, play a trick on”), or one of its derivatives (e.g.",
@@ -6856,22 +3859,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "track"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "adopt",
-        "definition": "To take voluntarily (a child of other parents) to be in the place of, or as, one's own child.",
-        "exampleSentence": "It took a while to learn how to adopt.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ədɑpt",
-        "etymology": "From Middle French adopter, from Latin adoptō; ad + optō (“to choose, desire”), equivalent to ad- + opt.",
-        "distractors": [
-            "addopt",
-            "adoppt",
-            "adapt"
-        ],
-        "theme": "people"
     },
     {
         "word": "agree",
@@ -6890,139 +3877,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "arise",
-        "definition": "To come up from a lower to a higher position.",
-        "exampleSentence": "It took a while to learn how to arise.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "əɹaɪz",
-        "etymology": "From Middle English arisen, from Old English ārīsan (“to arise, get up; rise; spring from, originate; spring up, ascend”), from Proto-Germanic *uzrīsaną (“to rise up, arise”), equivalent to a- + rise.",
-        "distractors": [
-            "arize",
-            "arrise",
-            "arisse"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "douse",
-        "definition": "To plunge suddenly into water; to duck; to immerse.",
-        "exampleSentence": "It took a while to learn how to douse.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "daʊs",
-        "etymology": "Probably of North Germanic origin, related to Swedish dunsa (“to plumb down, fall clumsily”), Danish dunse (“to thump”). Compare Old English dwǣsċan (“to extinguish”) and douse below.",
-        "distractors": [
-            "dousse",
-            "dowse",
-            "dause"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "forge",
-        "definition": "To move forward heavily and slowly (originally as a ship); to advance gradually but steadily; to proceed towards a goal in the face of resistance or difficulty.",
-        "exampleSentence": "Let's forge past that runner on the inside.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fɔɹd͡ʒ",
-        "etymology": "Make way, move ahead, most likely an alteration of force, but perhaps from forge (n.), via notion of steady hammering at something. Originally nautical, in reference to vessels.",
-        "distractors": [
-            "forrge",
-            "farge",
-            "ferge"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "grant",
-        "definition": "To give (permission or wish).",
-        "exampleSentence": "It took a while to learn how to grant.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡɹænt",
-        "etymology": "From Middle English granten, graunten, grantien, grauntien, from Anglo-Norman granter, graunter, from Old French granter, graunter, graanter, greanter (“to promise, assure, guarantee, confirm, ratify”), from a merger of Old French garantir, guarantir (“to guarantee, assure, vouch for”) (see English",
-        "distractors": [
-            "grent",
-            "grannt",
-            "grint"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "purge",
-        "definition": "To clean thoroughly; to rid of impurities; to cleanse.",
-        "exampleSentence": "It took a while to learn how to purge.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pɜɹd͡ʒ",
-        "etymology": "From Middle English purgen, from Old French purgier, from Latin pūrgō (“I make pure, I cleanse”), from pūrus (“clean, pure”) + agō (“I make, I do”).",
-        "distractors": [
-            "purrge",
-            "parge",
-            "perge"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "refer",
-        "definition": "To direct the attention of.",
-        "exampleSentence": "It took a while to learn how to refer.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪfɜː",
-        "etymology": "From Middle English referren, from Old French referer, from Latin referre. The noun (used in journalism) is from the verb. Doublet of relate. See also infer, collate and confer, delate and defer, as well as prelate and prefer among others.",
-        "distractors": [
-            "refor",
-            "refar",
-            "reffer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "remit",
-        "definition": "To transmit or send (e.g. money in payment); to supply.",
-        "exampleSentence": "The Pris’ner was remitted to the Guard.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹimɪt",
-        "etymology": "From Middle English remitten, from Latin remittere (“to send, send back”). Compare Old French remettre, remetre, remitter.",
-        "distractors": [
-            "remmit",
-            "ramit",
-            "rimit"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "troll",
-        "definition": "To move (something, especially a round object) by, or as if by, rolling; to bowl, to roll, to trundle.",
-        "exampleSentence": "It took a while to learn how to troll.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɹɑl",
-        "etymology": "The verb is derived from Middle English trollen (“to go about, wander; to move (something) to and fro, rock; to roll; to turn”) [and other forms], of uncertain origin; perhaps in part from Old French troller (“to run here and there; to walk aimlessly, ramble, stroll; (hunting) to wander about lookin",
-        "distractors": [
-            "trol",
-            "trall",
-            "trell"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "watch",
         "definition": "To look at, see, or view for a period of time.",
         "exampleSentence": "Watch your head; watch your step.",
         "partOfSpeech": "verb",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "digraphs",
         "pronunciation": "wɑt͡ʃ",
         "etymology": "From Middle English wacchen, from Old English wæċċan, from Proto-West Germanic *wakkjan, from Proto-Germanic *wakjaną.",
@@ -7034,27 +3893,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "waver",
-        "definition": "To swing or wave, especially in the air, wind, etc.; to flutter.",
-        "exampleSentence": "It took a while to learn how to waver.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "weɪvəɹ",
-        "etymology": "The verb is derived from Middle English waveren (“to move back and forth, swing; to move unsteadily, totter; to shake, tremble; to wander; (figurative) to be changeable or unstable; to deviate”), and then possibly: * from Old English (compare Old English wǣfre (“flickering, quivering, wavering; acti",
-        "distractors": [
-            "wavor",
-            "wavar",
-            "wavver"
-        ],
-        "theme": "weather"
-    },
-    {
         "word": "alive",
         "definition": "Having life; living; not dead.",
         "exampleSentence": "DANGER: OVERHEAD CATENARY—WIRE IS ALIVE.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "əlaɪv",
         "etymology": "From Middle English alive, alife, olive, olife, on live, on life, from Old English on līfe (“alive”, literally “in life\" or \"in (the) body”), from on (“on, in”) + līfe, dative singular of līf (“life”). In this sense, replaced Old English cwic (whence English quick). Equivalent to a- + life.",
@@ -7070,7 +3913,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Of considerable or relatively great size or extent.",
         "exampleSentence": "Some large jests he will make.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "lɑɹd͡ʒ",
         "etymology": "From Middle English large, from Old French large, from Latin larga, feminine of largus (“abundant, plentiful, copious, large, much”), of uncertain ultimate origin; see there for more.",
@@ -7080,22 +3923,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "lirge"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "uncut",
-        "definition": "Not cut or ground to the desired shape.",
-        "exampleSentence": "Monroe had apparently not finished it, for the pages were uncut beyond the third chapter.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "uncut",
-        "etymology": "From Middle English unkut, uncutte, unkyt, unkutt, equivalent to un- + cut.",
-        "distractors": [
-            "unncut",
-            "uncat",
-            "uncet"
-        ],
-        "theme": "actions"
     },
     {
         "word": "about",
@@ -7117,7 +3944,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "At or towards the front; in the direction one is facing or moving.",
         "exampleSentence": "The island was directly ahead.",
         "partOfSpeech": "adverb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "əhɛd",
         "etymology": "From a- + head. Perhaps originally a nautical term, \"beyond the head (of a ship)\", then drifting into more general English usage where it is used to describe something as being \"in front of\".",
@@ -7125,38 +3952,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "aheed",
             "ahhead",
             "ahaad"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "skill",
-        "definition": "To set apart; separate.",
-        "exampleSentence": "It took a while to learn how to skill.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "skɪɫ",
-        "etymology": "From Middle English skilen (also schillen), partly from Old English scilian (“to separate, part, divide off”); and partly from Old Norse skilja (“to divide, separate”); both from Proto-Germanic *skilōną, *skiljaną (“to divide, limit”), from Proto-Indo-European *(s)kelH- (“to split, cut”).",
-        "distractors": [
-            "skil",
-            "skall",
-            "skell"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "bleed",
-        "definition": "An incident of bleeding, as in haemophilia.",
-        "exampleSentence": "When taking off at high altitude or at near-maximum weight, the bleeds have to be turned off temporarily, as they decrease engine power somewhat.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bliːd",
-        "etymology": "From Middle English bleden, from Old English blēdan (“to bleed”), from Proto-West Germanic *blōdijan, from Proto-Germanic *blōþijaną (“to bleed”), from *blōþą (“blood”).",
-        "distractors": [
-            "blead",
-            "bled",
-            "blaed"
         ],
         "theme": "everyday"
     },
@@ -7177,42 +3972,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "stale",
-        "definition": "A live bird to lure birds of prey or others of its kind into a trap.",
-        "exampleSentence": "Had he none else to make a stale but me?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "steɪl",
-        "etymology": "From Middle English stale (“bird used as a decoy”), probably from uncommon Anglo-Norman estale (“pigeon used to lure hawks”), ultimately from Proto-Germanic, probably *standaną (“to stand”). Compare Old English stælhran (“decoy reindeer”) and Northumbrian stællo (“catching fish”).",
-        "distractors": [
-            "stael",
-            "stalle",
-            "stele"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "goods",
-        "definition": "That which is produced, then traded, bought or sold, then finally consumed.",
-        "exampleSentence": "The Colonel's horse is good goods.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɡʊdz",
-        "distractors": [
-            "gods",
-            "goodds",
-            "gaods"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "heads",
         "definition": "That part of older sailing ships forward of the forecastle and around the beak, used by the crew as their lavatory; still used as the word for toilets on a ship.",
         "exampleSentence": "He wrote the word heads on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "hɛdz",
         "etymology": "Plural of head.",
@@ -7222,164 +3986,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "haads"
         ],
         "theme": "water"
-    },
-    {
-        "word": "jurat",
-        "definition": "A sworn statement concerning where, when, and before whom an oath has been made.",
-        "exampleSentence": "Guernsey and Jersey have twelve jurats each, and Alderney six.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒʊəɹæt",
-        "etymology": "From Medieval Latin iūrātus (“sworn [man]”) or iūrātum (“[that which is] sworn”), from Latin iūrō (“I swear an oath”). As a medieval office, via French jurat, via Occitan juré.",
-        "distractors": [
-            "jurrat",
-            "jarat",
-            "jerat"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "footy",
-        "definition": "Football (association football) (soccer in US, Canada, Australia, New Zealand).",
-        "exampleSentence": "He wrote the word footy on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "fʊti",
-        "distractors": [
-            "footey",
-            "foty",
-            "footty"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "compo",
-        "definition": "Workers' compensation.",
-        "exampleSentence": "Sometimes supplies of food might be a little short in certain areas but attempts were made to ensure that all men had some rations, compo and fresh, available to them.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɒmpəʊ",
-        "distractors": [
-            "commpo",
-            "campo",
-            "cempo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "chops",
-        "definition": "Jaws, lips, mouth.",
-        "exampleSentence": "Although he did not know all of the ins and outs of the newsroom, he had the writing chops to become a regular contributor.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "t͡ʃɑps",
-        "etymology": "From the plural of chop (“jaw, side of a harbour”). The jazz slang sense “musical ability” is a reference to the use of the lips to blow instruments.",
-        "distractors": [
-            "chopps",
-            "chaps",
-            "cheps"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "hydro",
-        "definition": "Clipping of hydropower (“hydroelectric power”).",
-        "exampleSentence": "She was having trouble paying the hydro.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "haɪdro",
-        "etymology": "From prefix hydro-, from Ancient Greek ὕδωρ (húdōr, “water”). By surface analysis, hydr- (“water”) + -o-. Canadian sense \"electricity\" from the fact that hydroelectricity is the prevalent source of electricity in much of Canada and many electric companies have the word \"Hydro\" in their names.",
-        "distractors": [
-            "hyddro",
-            "hdyro",
-            "hydor"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "clepe",
-        "definition": "To give a call; cry out; appeal.",
-        "exampleSentence": "It took a while to learn how to clepe.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kliːp",
-        "etymology": "From Middle English clepen, clepien, from Old English cleopian, clipian (“to speak, cry out, call, summon, invoke, cry to, implore”), from Proto-Germanic *klipōną (“to ring, sound”), from Proto-Indo-European *gal- (“to sound”).",
-        "distractors": [
-            "cleppe",
-            "clape",
-            "clipe"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "skite",
-        "definition": "To skim or slide along a surface.",
-        "exampleSentence": "It took a while to learn how to skite.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "skaɪt",
-        "etymology": "From Middle English skyt, skytte, skytt, from Old Norse skítr (“dung, faeces”), from Proto-Germanic *skītaz, *skitiz. Cognate with Old English sċite (“dung”). Doublet of shit and shite.",
-        "distractors": [
-            "skight",
-            "skitte",
-            "skate"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "pavon",
-        "definition": "A small triangular flag, especially one attached to a knight's lance; a pennon.",
-        "exampleSentence": "The pavon shape was popular in the fourteenth century.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pavon",
-        "etymology": "From Latin pavo (“peacock”).",
-        "distractors": [
-            "pavvon",
-            "pevon",
-            "pivon"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "wooze",
-        "definition": "To soak hides in wooze.",
-        "exampleSentence": "It took a while to learn how to wooze.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "wooze",
-        "etymology": "From Middle English wosen, from Old English wōsan, variant of wēsan. Doublet of ooze.",
-        "distractors": [
-            "woze",
-            "woozze",
-            "waoze"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "beaver",
-        "definition": "A native or resident of the American state of Oregon.",
-        "exampleSentence": "Can you use the word beaver in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "beaver",
-        "etymology": "* As an English surname, capitalization of beaver. This sense is also translated from several Native American names such as Cheyenne homa'e and Creek Echaswvlke of the same meaning. Doublet of Bieber and Bever. * Also as an English surname, from the placename Belvoir in Leicestershire.",
-        "distractors": [
-            "ebaver",
-            "baever",
-            "bevaer"
-        ],
-        "theme": "people"
     },
     {
         "word": "bottom",
@@ -7394,70 +4000,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "botom",
             "battom",
             "bettom"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "buffer",
-        "definition": "A solution used to stabilize the pH (acidity) of a liquid, such as by resisting a change in pH when an acid or alkali is added.",
-        "exampleSentence": "I keep a savings buffer of three months' worth of living expenses.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bʌfɚ",
-        "etymology": "Agent noun from obsolete verb buff (“make a dull sound when struck”) (mid-16c.), from Old French buffe (“blow”).",
-        "distractors": [
-            "buffor",
-            "buffar",
-            "bufer"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "button",
-        "definition": "A knob or disc that is passed through a loop or (buttonhole), serving as a fastener.",
-        "exampleSentence": "Can you use the word button in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bʌt(ə)n",
-        "etymology": "From Middle English boton, botoun, from Old French boton (Modern French bouton), from Old French bouter, boter (“to push; thrust”), ultimately from a Germanic language. Doublet of bouton, Biden, and beat. More at butt.",
-        "distractors": [
-            "buton",
-            "batton",
-            "betton"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "degree",
-        "definition": "A stage of proficiency or qualification in a course of study, now especially an award bestowed by a university/college, as a certification of academic achievement. (In the United States, can include secondary schools.).",
-        "exampleSentence": "Can you use the word degree in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪɡɹiː",
-        "etymology": "From Middle English degre, borrowed from Old French degré (French: degré), itself from Latin gradus, with the prefix de-.",
-        "distractors": [
-            "degre",
-            "deggree",
-            "degrea"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "design",
-        "definition": "A specification of an object or process, referring to requirements to be satisfied and thus conditions to be met for them to solve a problem.",
-        "exampleSentence": "Can you use the word design in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪzaɪn",
-        "etymology": "From Middle English designen, from Old French designer, from Latin designō (“I mark out, point out, describe, design, contrive”), from de- (or dis-) + signō (“I mark”), from signum (“mark”). Doublet of designate.",
-        "distractors": [
-            "dessign",
-            "desiggn",
-            "dasign"
         ],
         "theme": "everyday"
     },
@@ -7478,22 +4020,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "factor",
-        "definition": "A doer, maker; a person who does things for another person or organization.",
-        "exampleSentence": "3 is a factor of 12, as are 2, 4 and 6.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fæktɚ",
-        "etymology": "From Middle French facteur, from Latin factor (“a doer, maker, performer”), from factus (“done or made”), perfect passive participle of faciō (“do, make”).",
-        "distractors": [
-            "facter",
-            "facctor",
-            "fector"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "fellow",
         "definition": "A companion; a comrade.",
         "exampleSentence": "To be without fellow to have no fellows.",
@@ -7510,27 +4036,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "fusion",
-        "definition": "The act of merging separate things, or the result thereof.",
-        "exampleSentence": "Below the temperature of fusion of the solid phase, the growth rate of the solid/ liquid interface at low undercooling is affected mainly by undercooling.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "fjuːʒən",
-        "etymology": "First appears c. 1555, in a translation by Richard Eden. From Middle French fusion, from Latin fūsiōnem (the accusative of fūsiō), from fusus, past participle of fundō (“I pour, I melt”) (see also found). Doublet of foison.",
-        "distractors": [
-            "fution",
-            "fussion",
-            "fasion"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "george",
         "definition": "A coin bearing King George's profile.",
         "exampleSentence": "Take the Georges, Pew, and don’t stand here squalling.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "dʒɔː(ɹ)dʒ",
         "etymology": "Name of an early saint, from Middle English George, from Latin Geōrgius, from Ancient Greek Γεώργῐος (Geṓrgĭos), from γεωργός (geōrgós, “farmer, earth worker”), from γῆ (gê, “earth”) (combining form γεω- (geō-)) + ἔργον (érgon, “work”) Doublet of Jorge and Geevarghese.",
@@ -7542,43 +4052,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "growth",
-        "definition": "An increase in size, number, value, or strength.",
-        "exampleSentence": "Struggle, disappointment, and criticism all contribute to a person's growth.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɡɹoʊθ",
-        "etymology": "From grow + -th (abstract nominal suffix). Compare Old Frisian grēd (\"meadow, pasture\"; > North Frisian greyde (“growth, pasture”)), Middle High German gruote, gruot (“greens, fresh growth, shoot”), Old Norse gróðr (\"growth, crop\"; > Faroese grøði, Danish grøde (“fruits”), Swedish gröda (“crop, harv",
-        "distractors": [
-            "growwth",
-            "grouth",
-            "grawth"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "header",
-        "definition": "The upper portion of a page (or other) layout.",
-        "exampleSentence": "This wall has four header courses.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "hɛdɚ",
-        "etymology": "From head + -er.",
-        "distractors": [
-            "heador",
-            "headar",
-            "headder"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "notice",
         "definition": "The act of observing; perception.",
         "exampleSentence": "I always read the death notices in the paper.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "noʊtɪs",
         "etymology": "Borrowed from Middle French notice, from the Latin nōtitia. Doublet of notitia.",
@@ -7594,7 +4072,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A ceremonial duty or service, particularly.",
         "exampleSentence": "Can you use the word office in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "silent-e",
         "pronunciation": "ɔfɪs",
         "etymology": "From Middle English office, from Old French office, from Latin officium (“personal, official, or moral duty; official position; function; ceremony, esp.",
@@ -7606,59 +4084,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "period",
-        "definition": "A length of time.",
-        "exampleSentence": "I have math class in second period.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pɪɚiəd",
-        "etymology": "From Middle English periode, from Middle French periode, from Medieval Latin periodus, from Ancient Greek περίοδος (períodos, “circuit, orbit, a recurring interval of time, path around”), from περι- (peri-, “around”) + ὁδός (hodós, “way”).",
-        "distractors": [
-            "perriod",
-            "pariod",
-            "piriod"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "porter",
-        "definition": "A person in control of the entrance to a building.",
-        "exampleSentence": "‘Here, Pat, give us a g.p., like a good fellow.’ The curate brought him a glass of plain porter. The man drank it at a gulp and asked for a caraway seed.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pɔɹtɚ",
-        "etymology": "From Middle English porter, portere, portare, borrowed from Anglo-Norman portour and Old French portier, from Late Latin portarius (“gatekeeper”), from Latin porta (“gate”).",
-        "distractors": [
-            "portor",
-            "portar",
-            "porrter"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "regard",
-        "definition": "A steady look, a gaze.",
-        "exampleSentence": "He is held in great regard in Whitehall.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪɡɑɹd",
-        "etymology": "From Middle English regard, regarde, reguard, from Anglo-Norman reguard, from regarder, reguarder. Attested in Middle English starting around the mid 14th century. Piecewise doublet of reward; compare also guard, ward, guardian, and so on.",
-        "distractors": [
-            "reggard",
-            "regarrd",
-            "ragard"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "report",
         "definition": "A piece of information describing, or an account of certain events given or presented to someone, with the most common adpositions being by (referring to creator of the report) and on (referring to the subject).",
         "exampleSentence": "… a pistol-shot, flash and report, came from the hedge-side.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɹɪpoɹt",
         "etymology": "From Middle English reporten, from Anglo-Norman reporter, from Latin reportāre (“to carry back, return, remit, refer”), from re- + portāre.",
@@ -7668,37 +4098,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "raport"
         ],
         "theme": "people"
-    },
-    {
-        "word": "rocker",
-        "definition": "A curved piece of wood attached to the bottom of a rocking chair or cradle that enables it to rock back and forth.",
-        "exampleSentence": "Can you use the word rocker in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɑkɚ",
-        "etymology": "From Middle English rokker, rockere, rokkere, equivalent to rock + -er.",
-        "distractors": [
-            "rockor",
-            "rockar",
-            "roccker"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "roller",
-        "definition": "A Rolls-Royce car.",
-        "exampleSentence": "Only I thought private eyes were supposed to be discreet; you could hardly call yourself that when you drive a Roller.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "roller",
-        "distractors": [
-            "rollor",
-            "rollar",
-            "roler"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "school",
@@ -7717,298 +4116,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "series",
-        "definition": "A number of things that follow on one after the other or are connected one after the other.",
-        "exampleSentence": "Can you use the word series in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɪɹiz",
-        "etymology": "Attested from the 1610s; borrowed from Latin seriēs, from serere (“to join together, bind”), ultimately from Proto-Indo-European *ser- (“to bind, put together, to line up”). Related to desert, insert, sermon, and sorcerer.",
-        "distractors": [
-            "serries",
-            "sereis",
-            "saries"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "sphere",
-        "definition": "A surface in three dimensions consisting of all points equidistant from a center. .",
-        "exampleSentence": "Of celestial bodies, first the sun, / A mighty sphere, he framed.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "sfɪɚ",
-        "etymology": "From Middle English spere, from Old French sphere, from Late Latin sphēra, earlier Latin sphaera (“ball, globe, celestial sphere”), from Ancient Greek σφαῖρα (sphaîra, “ball, globe”), of unknown origin. Not related to superficially similar Persian سپهر (sepehr, “sky”) .",
-        "distractors": [
-            "spherre",
-            "sfere",
-            "sphare"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "switch",
-        "definition": "Ellipsis of Nintendo Switch.",
-        "exampleSentence": "Super Bomberman R was a launch title on the Switch.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "switch",
-        "distractors": [
-            "swittch",
-            "swich",
-            "swatch"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "teaser",
-        "definition": "One who teases or pokes fun.",
-        "exampleSentence": "Can you use the word teaser in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tiːzɚ",
-        "etymology": "From tease + -er.",
-        "distractors": [
-            "teasor",
-            "teasar",
-            "teasser"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "appear",
-        "definition": "To come or be in sight; to be in view; to become visible.",
-        "exampleSentence": "She would appear every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "əpɪɹ",
-        "etymology": "From Middle English apperen, aperen, borrowed from Old French aparoir (French apparoir), from Latin appāreō (“I appear”), from ad (“to”) + pāreō (“I come forth, I become visible”), ultimately from Proto-Indo-European *peh₂-s- (“watch, see”), s-present of *peh₂- (“protect”).",
-        "distractors": [
-            "appeer",
-            "apear",
-            "appaar"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "arouse",
-        "definition": "To stimulate or induce (feelings); pique.",
-        "exampleSentence": "She would arouse every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "əɹaʊz",
-        "etymology": "From a- + rouse.",
-        "distractors": [
-            "arrouse",
-            "arousse",
-            "arowse"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "convey",
-        "definition": "To move (something) from one place to another.",
-        "exampleSentence": "She would convey every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kənveɪ",
-        "etymology": "From Middle English conveien, from Old French conveier (French convoyer), from Vulgar Latin *convio, from Classical Latin via (“way”). Compare convoy.",
-        "distractors": [
-            "convy",
-            "conveey",
-            "connvey"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "dampen",
-        "definition": "To make damp or moist; to make moderately wet.",
-        "exampleSentence": "We won't let the bad news dampen our spirits.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dæmpən",
-        "etymology": "From damp + -en.",
-        "distractors": [
-            "dammpen",
-            "dempen",
-            "dimpen"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "deaden",
-        "definition": "To render less lively; to diminish; to muffle.",
-        "exampleSentence": "Routine can deaden one’s enthusiasm.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɛdən",
-        "etymology": "From dead + -en. Compare Dutch doden (“to kill”), West Frisian deadzje (“to kill”).",
-        "distractors": [
-            "deadden",
-            "deeden",
-            "daaden"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "defend",
-        "definition": "To ward off attacks against; to fight to protect; to guard.",
-        "exampleSentence": "The teams strategy was to defend but score runs as well for the first 20 overs.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɪfɛnd",
-        "etymology": "From Middle English defenden, from Old French defendre, deffendre (Modern French défendre), from Latin dēfendō (“to ward off”), from Proto-Italic *fendō, ultimately from Proto-Indo-European *gʷʰen-. Displaced native Old English bewerian.",
-        "distractors": [
-            "deffend",
-            "defennd",
-            "dafend"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "endure",
-        "definition": "To continue or carry on, despite obstacles or hardships; to persist.",
-        "exampleSentence": "She would endure every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɪnd(j)ʊɹ",
-        "etymology": "▲ Proto-Indo-European *h₁en- Proto-Indo-European *h₁en- Proto-Indo-European *h₁én Proto-Italic *en Proto-Italic *en- Latin in- Proto-Italic *dūros Latin dūrūs Proto-Indo-European *-h₂ Proto-Indo-European *-éh₂ Proto-Indo-European *-yéti Proto-Indo-European *-eh₂yéti Proto-Italic *-āō Latin -ō Latin",
-        "distractors": [
-            "ender",
-            "enndure",
-            "endurre"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "expand",
-        "definition": "To change (something) from a smaller form or size to a larger one; to spread out or lay open.",
-        "exampleSentence": "She would expand every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɪkspænd",
-        "etymology": "Recorded in Middle English since 1422 (as expanden, expaunden), from Anglo-Norman espaundre, from Latin expandere (“to spread out”), itself from ex- (“out, outwards”) + pandō (“to spread”). Doublet of spawn.",
-        "distractors": [
-            "exxpand",
-            "expannd",
-            "expend"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "fiddle",
-        "definition": "To play the fiddle or violin, particularly in a folk or country style.",
-        "exampleSentence": "She would fiddle every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "fɪdl̩",
-        "etymology": "From Middle English fithele, from Old English *fiþele, from Proto-West Germanic *fiþulā, from Proto-Germanic *fiþulǭ (“fiddle”), of uncertain etymology.",
-        "distractors": [
-            "fiddel",
-            "fidle",
-            "faddle"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "loosen",
-        "definition": "To make loose.",
-        "exampleSentence": "She would loosen every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "luːsn̩",
-        "etymology": "From loose + -en.",
-        "distractors": [
-            "losen",
-            "loossen",
-            "laosen"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "recall",
-        "definition": "To withdraw, retract (one's words etc.); to revoke (an order).",
-        "exampleSentence": "She was recalled to London for the trial.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɪkɔl",
-        "etymology": "From re- + call, probably modelled on Latin revocāre, French rappeler, English withcall.",
-        "distractors": [
-            "recal",
-            "reccall",
-            "racall"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reject",
-        "definition": "To refuse to accept; to forswear.",
-        "exampleSentence": "She even rejected my improved offer.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪd͡ʒɛkt",
-        "etymology": "From Late Middle English rejecten, from Latin rēiectus, past participle of reicere (“to throw back”), from re- (“back”) + iacere (“to throw”). Displaced native Old English āweorpan (literally “to throw out”).",
-        "distractors": [
-            "rejject",
-            "rejecct",
-            "raject"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "soften",
-        "definition": "To make something soft or softer.",
-        "exampleSentence": "She would soften every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɔf(t)ən",
-        "etymology": "From Middle English softenen, softnen, equivalent to soft + -en.",
-        "distractors": [
-            "sofften",
-            "saften",
-            "seften"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "splash",
-        "definition": "To hit or agitate liquid so that part of it separates from the principal liquid mass.",
-        "exampleSentence": "She would splash every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "splæʃ",
-        "etymology": "Probably an alteration of plash (compare spatter, spill for the initial s-).",
-        "distractors": [
-            "splassh",
-            "splesh",
-            "splish"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "double",
         "definition": "Made up of two matching or complementary elements.",
         "exampleSentence": "Give me a double serving of mashed potatoes.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "dʌbəl",
         "etymology": "From Middle English double, from Old French doble, double, from Latin duplus (“twofold”). Doublet of doppio and duple.",
@@ -8020,43 +4132,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "frozen",
-        "definition": "Having undergone the process of freezing; in ice form.",
-        "exampleSentence": "The mammoth has been frozen for ten thousand years.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fɹoʊzn̩",
-        "etymology": "From Middle English frozen, frosen, ifrozen, variant of froren, ifroren (\"frozen\"; > see frorn), past participle of Middle English fresen, freosen (“to freeze”). By surface analysis, freeze + -n.",
-        "distractors": [
-            "frozzen",
-            "frazen",
-            "frezen"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "gentle",
-        "definition": "Tender and amiable; of a considerate or kindly disposition.",
-        "exampleSentence": "We had a gentle swim in the lake.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒɛntl̩",
-        "etymology": "From Middle English gentil (“courteous, noble”), from Old French gentil (“high-born, noble”), from Latin gentilis (“of the same family or clan”), from gens (“[Roman] clan”). Doublet of gentile, genteel, and jaunty.",
-        "distractors": [
-            "gentel",
-            "genntle",
-            "gantle"
-        ],
-        "theme": "character"
-    },
-    {
         "word": "honest",
         "definition": "Scrupulous with regard to telling the truth; not given to swindling, lying, or fraud; upright.",
         "exampleSentence": "Wives may be merry, and yet honest too.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɑnɪst",
         "etymology": "From Middle English honest, honeste (“honourable, appropriate, excellent”), from Old French honeste, from Latin honestus, from honor. For the verb, see Latin honestāre (“to clothe or adorn with honour”), and compare French honester. Displaced native Old English sōþfæst (literally “truth-firm”).",
@@ -8064,245 +4144,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "honnest",
             "honesst",
             "hanest"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "liquid",
-        "definition": "Flowing freely like water; fluid; not solid and not gaseous; composed of particles that move freely among each other on the slightest pressure.",
-        "exampleSentence": "/l/ and /r/ are liquid consonants.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "lɪkwɪd",
-        "etymology": "From Middle English liquide, from Old French liquide, from Latin liquidus (“fluid, liquid, moist”), from liqueō (“to be liquid, be fluid”). Doublet of liquidus.",
-        "distractors": [
-            "liqquid",
-            "laquid",
-            "lequid"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "sweaty",
-        "definition": "Covered in sweat.",
-        "exampleSentence": "Watch out for that sweaty team.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "swɛɾi",
-        "etymology": "From Middle English swety, equivalent to sweat + -y.",
-        "distractors": [
-            "sweatey",
-            "sweatty",
-            "sweety"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sacker",
-        "definition": "A person who sacks or plunders.",
-        "exampleSentence": "Know a grocery sacker with a pension like that?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sacker",
-        "etymology": "From sack + -er.",
-        "distractors": [
-            "sackor",
-            "sackar",
-            "saccker"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "heeler",
-        "definition": "A gamecock that strikes well with its heels or spurs.",
-        "exampleSentence": "The army of hungry heelers who do their bidding.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "heeler",
-        "etymology": "From heel + -er.",
-        "distractors": [
-            "heelor",
-            "heelar",
-            "heler"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tabula",
-        "definition": "A plate or frame on which a title or inscription is carved.",
-        "exampleSentence": "On the tabula of the mind she tried to write the word.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tabula",
-        "etymology": "From Latin tabula. Doublet of table and tavla.",
-        "distractors": [
-            "tabbula",
-            "tabulla",
-            "tebula"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "luster",
-        "definition": "To have luster, to gleam, to shine.",
-        "exampleSentence": "She would luster every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "lʌstɚ",
-        "etymology": "From Middle French lustre, from Old Italian lustro, from Old Italian lustrare (“brighten”), from Latin lūstrō (“to purify, to brighten”), from Latin lūstrum (“purification ritual”).",
-        "distractors": [
-            "lustor",
-            "lustar",
-            "lusster"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "crypto",
-        "definition": "Clipping of cryptocurrency.",
-        "exampleSentence": "The CIA is also very into crypto (which makes sense, as they are the home of spy versus spy), ….",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹɪptoʊ",
-        "etymology": "All senses trace back to clippings of words derived from the prefix crypto-, developed at various times in the 20th and 21st centuries. During the 2010s and 2020s, the \"cryptocurrency\" sense has become the dominant sense.",
-        "distractors": [
-            "cryppto",
-            "cyrpto",
-            "crpyto"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "carded",
-        "definition": "Involving the disentangling of fibers with a carding device.",
-        "exampleSentence": "Becoming a carded pro rodeo photographer is no easy task.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "carded",
-        "etymology": "From card + -ed. Piecewise doublet of charted.",
-        "distractors": [
-            "carrded",
-            "cerded",
-            "cirded"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cycler",
-        "definition": "Anything with a cyclic (repetitious) behaviour. Something that cycles between different states.",
-        "exampleSentence": "We took samples from the tubes in the cycler at regular intervals.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "cycler",
-        "etymology": "From cycle + -er. Piecewise doublet of wheeler.",
-        "distractors": [
-            "cyclor",
-            "cyclar",
-            "cyccler"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "oncome",
-        "definition": "Advent, arrival, approach; onset.",
-        "exampleSentence": "I see the dawn or rather I feel the oncome of it.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "oncome",
-        "etymology": "From Middle English oncome (“an attack”), equivalent to on- + come. Compare Old English ancuman (“to arrive, come upon, happen”). More at ancome, income.",
-        "distractors": [
-            "onncome",
-            "oncomme",
-            "oncame"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tribar",
-        "definition": "A flag consisting of three stripes.",
-        "exampleSentence": "Several workers were moving a concrete tribar near a 7600-volt power line.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tribar",
-        "etymology": "From tri- + bar.",
-        "distractors": [
-            "triber",
-            "tribbar",
-            "trabar"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "threap",
-        "definition": "To contradict.",
-        "exampleSentence": "He threaped me down that it was so.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "θɹiːp",
-        "etymology": "From Middle English threpen (“to scold”), from Old English þrēapian (“to reprove, reprehend, punish, blame”), from Proto-West Germanic *þraupōn, from Proto-Germanic *þraupōną (“to punish”), from Proto-Germanic *þrawō (“torment, punishment”), from Proto-Germanic *þrawjaną (“to torment, injure, exhaus",
-        "distractors": [
-            "threep",
-            "thraap",
-            "thriap"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "jetter",
-        "definition": "A self-confident person full of braggadocio.",
-        "exampleSentence": "The jetter was upon us and it was a piston-powered engine.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒɛtə(ɹ)",
-        "etymology": "From jet + -er.",
-        "distractors": [
-            "jettor",
-            "jettar",
-            "jeter"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "podder",
-        "definition": "One who collects pods or pulse.",
-        "exampleSentence": "It is too, cultivated as a podder crop in the beginning.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "podder",
-        "etymology": "From pod + -er.",
-        "distractors": [
-            "poddor",
-            "poddar",
-            "poder"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "naggle",
-        "definition": "To toss the head or cause to toss the head.",
-        "exampleSentence": "But I knew the doctor's words naggled in the back of his mind.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "næɡəl",
-        "distractors": [
-            "naggel",
-            "nagle",
-            "neggle"
         ],
         "theme": "everyday"
     },
@@ -8322,20 +4163,20 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "water"
     },
     {
-        "word": "culture",
-        "definition": "The arts, customs, lifestyles, background, and habits that characterize humankind, or a particular society or nation.",
-        "exampleSentence": "I'm headed to the lab to make sure my cell culture hasn't died.",
+        "word": "command",
+        "definition": "An order to do something.",
+        "exampleSentence": "He's got good command tonight.",
         "partOfSpeech": "noun",
         "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "kʌlt͡ʃɚ",
-        "etymology": "From Middle French culture (“cultivation; culture”), from Latin cultūra (“cultivation; culture”), from cultus, perfect passive participle of colō (“till, cultivate, to grow, worship”) (related to colōnus and colōnia), from Proto-Indo-European *kʷel- (“to move; to turn (around)”).",
+        "pattern": "blends",
+        "pronunciation": "kəmænd",
+        "etymology": "From Middle English commanden, commaunden, comaunden, comanden, from Old French comander, from Late Latin commandāre, from Latin commendāre. Ultimately from Latin com- + mandō (whence ultimately also commend (a doublet), mandate, and recommend), from manus + -dō.",
         "distractors": [
-            "culter",
-            "cullture",
-            "culturre"
+            "comand",
+            "commannd",
+            "cammand"
         ],
-        "theme": "society"
+        "theme": "everyday"
     },
     {
         "word": "respect",
@@ -8354,82 +4195,20 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "turnout",
-        "definition": "The act of coming forth.",
-        "exampleSentence": "Duties include feeding and turnout of horses.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɜː(ɹ)naʊt",
-        "etymology": "Deverbal from turn out.",
-        "distractors": [
-            "turrnout",
-            "turnowt",
-            "tarnout"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "decline",
-        "definition": "To move downwards, to fall, to drop.",
-        "exampleSentence": "Could I decline this dreadful hour?",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "dɪklaɪn",
-        "etymology": "From Middle English declinen, and ultimately Latin declīnō (“to bend, turn aside, deflect, inflect, decline”, from dē- (“down”) + clīnō (“to bend, to incline”)), from Proto-Indo-European *ḱley- (English lean).",
-        "distractors": [
-            "deccline",
-            "declinne",
-            "dacline"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "resolve",
-        "definition": "To find a solution to (a problem).",
-        "exampleSentence": "He was resolved by an unexpected event.",
+        "word": "process",
+        "definition": "To perform a particular process on a thing.",
+        "exampleSentence": "I didn't know she had a criminal record. That will take me a while to process.",
         "partOfSpeech": "verb",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ɹɪzɑlv",
-        "etymology": "From Middle English resolven, from Old French resolver, a learned borrowing of Latin resolvō (“loosen, thaw, melt, resolve”), equivalent to re- + solve. Piecewise doublet of re-solve.",
+        "pronunciation": "pɹɑsɛs",
+        "etymology": "From Middle English proces, from Old French procés (“journey”), from Latin prōcessus (“course, progression”), nominalization of prōcēdō (“proceed, advance”).",
         "distractors": [
-            "ressolve",
-            "resollve",
-            "rasolve"
+            "proces",
+            "proccess",
+            "pracess"
         ],
-        "theme": "everyday"
-    },
-    {
-        "word": "engaged",
-        "definition": "Having agreed to marry a particular person (one's fiancé or fiancée) or each other.",
-        "exampleSentence": "I tried calling, but she (or her phone) was engaged.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɪnɡeɪd͡ʒd",
-        "distractors": [
-            "enngaged",
-            "engagged",
-            "engeged"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "limited",
-        "definition": "With certain (often specified) limits placed upon it.",
-        "exampleSentence": "I have a limited understanding of quantum physics.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "lɪmɪtɪd",
-        "distractors": [
-            "limmited",
-            "limitted",
-            "lamited"
-        ],
-        "theme": "everyday"
+        "theme": "art"
     },
     {
         "word": "special",
@@ -8448,291 +4227,68 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "plumper",
-        "definition": "One who plumps or swells out something else.",
-        "exampleSentence": "I'll open my mouth with as much care as Mrs Bridget Button, who wears cork plumpers in each cheek and never hazards more than six words for fear of showing them.",
+        "word": "interest",
+        "definition": "The price paid for obtaining, or price received for providing, money or goods in a credit transaction, calculated as a fraction of the amount or value of what was borrowed.",
+        "exampleSentence": "Lexicography is one of my interests.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "plʌmpɚ",
-        "etymology": "From plump + -er.",
+        "pronunciation": "ɪntɹɛst",
+        "etymology": "From Middle English interest, from Old French interesse and interest (French intérêt), from Medieval Latin interesse, from Latin interesse.",
         "distractors": [
-            "plumpor",
-            "plumpar",
-            "plummper"
+            "innterest",
+            "interrest",
+            "interesst"
         ],
-        "theme": "people"
+        "theme": "money"
     },
     {
-        "word": "adjoint",
-        "definition": "The transpose of the cofactor matrix of a given square matrix.",
-        "exampleSentence": "Mayors and their adjoints were often simple cultivateurs like the majority of the community.",
+        "word": "pressure",
+        "definition": "A pressing; a force applied to a surface.",
+        "exampleSentence": "My people's pressures are grievous.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "æd͡ʒɔɪnt",
-        "etymology": "From French adjoindre (“to join”), from late 19th C; see also adjoin. Doublet of adjunct. In the case of category theory (which brings together concepts from numerous fields), the term is often confounded with adjunct and the relationship is called an adjunction.",
-        "distractors": [
-            "addjoint",
-            "adjoinnt",
-            "adjoynt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mudlark",
-        "definition": "A pig; pork.",
-        "exampleSentence": "She removes only what the water ‘delivers’ to her – items she can see lying on the surface. Unlike some other mudlarks, she does not dig for finds.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "mʌdlɑːk",
-        "etymology": "From mud + lark.",
-        "distractors": [
-            "muddlark",
-            "mudlarrk",
-            "madlark"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "layback",
-        "definition": "A spin in which the head and shoulders are dropped backwards and the back arched downwards toward the ice; also called a layback spin.",
-        "exampleSentence": "Mirai Nagasu, like Zhang a promising 14-year-old, showed equally astonishing flexibility on a layback spin Wednesday, leaning so far that the back of her head nearly touched her backside.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "layback",
-        "etymology": "From lay + back (presumably from confusion between lay and lie).",
-        "distractors": [
-            "laybak",
-            "laybback",
-            "laybacck"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "smearer",
-        "definition": "Someone who spreads a substance across a surface.",
-        "exampleSentence": "He made his living as a housepainter when he first came to this country and says even now, “I was a good one—not a smearer.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "smearer",
-        "etymology": "From smear + -er.",
-        "distractors": [
-            "smearor",
-            "smearar",
-            "smearrer"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "tearout",
-        "definition": "The shearing of metal by a bolt, pin, rivet, or similar fastener due to stress.",
-        "exampleSentence": "The plan is to have the tearout done by next week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tearout",
-        "etymology": "Deverbal from tear out.",
-        "distractors": [
-            "tearrout",
-            "teerout",
-            "tearowt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "conflict",
-        "definition": "A clash or disagreement, often violent, between two or more opposing groups or individuals.",
-        "exampleSentence": "The conflict between the government and the rebels began three years ago.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɑnflɪkt",
-        "etymology": "From Latin conflictus, past participle of confligere (“to strike together”), from com- (“together”) (a form of con-) + fligere (“to strike”).",
-        "distractors": [
-            "connflict",
-            "conflicct",
-            "canflict"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "judgment",
-        "definition": "The act of judging.",
-        "exampleSentence": "She in my judgment was as fair as you.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒʌd͡ʒmənt",
-        "etymology": "From Middle English juggement, borrowed from Old French jugement, from Late Latin iūdicāmentum, from Latin iūdicō. Partially displaced doom. By surface analysis, judge + -ment.",
-        "distractors": [
-            "judgmant",
-            "juddgment",
-            "judgmennt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "response",
-        "definition": "An answer or reply, or something in the nature of an answer or reply.",
-        "exampleSentence": "The response was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɪspɑns",
-        "etymology": "From Middle English respounse, respons, from Old French respons, respuns, responce, ultimately from the Latin respōnsum, a nominal use of the neuter form of respōnsus, the perfect passive participle of respondeō, from re (“again”) + spondeō (“promise”). Doublet of responsum.",
-        "distractors": [
-            "ersponse",
-            "rseponse",
-            "repsonse"
-        ],
-        "theme": "communication"
-    },
-    {
-        "word": "variance",
-        "definition": "The act of varying or the state of being variable.",
-        "exampleSentence": "But here, again, is the old variance between nature and fortune: each seems to delight in marring the work of the other.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "væɹiəns",
-        "etymology": "From Middle English variance, variaunce, equivalent to vary + -ance, from Old French variance or directly from Anglo-Latin variaunce, veriaunce, wariaunce; all from Latin variantia.",
-        "distractors": [
-            "varience",
-            "varriance",
-            "variannce"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "condense",
-        "definition": "To concentrate toward the essence by making more close, compact, or dense, thereby decreasing size or volume.",
-        "exampleSentence": "An abridged dictionary can be further condensed to pocket size.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kəndɛns",
-        "etymology": "Borrowed from Middle French condenser, from Latin condēnsō.",
-        "distractors": [
-            "conndense",
-            "condennse",
-            "candense"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "inscribe",
-        "definition": "To write or cut (words) onto (something, especially a hard surface, or a book to be given to another person); to engrave.",
-        "exampleSentence": "The instructions said to inscribe gently and carefully.",
-        "partOfSpeech": "verb",
         "difficulty": 2,
         "pattern": "silent-e",
-        "pronunciation": "ɪnskɹaɪb",
-        "etymology": "Borrowed from Latin īnscrībō, from in- (“upon”) and scrībō (“to write”).",
+        "pronunciation": "pɹɛʃɚ",
+        "etymology": "From Latin pressūra.",
         "distractors": [
-            "innscribe",
-            "inscribbe",
-            "inscrabe"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "platform",
-        "definition": "To furnish with or shape into a platform.",
-        "exampleSentence": "The instructions said to platform gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "plætfɔɹm",
-        "etymology": "From Middle French plateforme (“a flat form”), from plate (“flat”) (from Old French plat, from Ancient Greek πλατύς (platús, “flat”)) + forme (“form”) (from Latin fōrma (“shape; figure; form”)); compare flatscape.",
-        "distractors": [
-            "plattform",
-            "platforrm",
-            "pletform"
+            "presser",
+            "presure",
+            "pressurre"
         ],
         "theme": "everyday"
     },
     {
-        "word": "lunchbox",
-        "definition": "A container for transporting meals, especially lunch.",
-        "exampleSentence": "Jack was carrying his lunchbox with him.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "lʌntʃbɒks",
-        "etymology": "From lunch + box.",
-        "distractors": [
-            "lunnchbox",
-            "lanchbox",
-            "lenchbox"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "drawdown",
-        "definition": "The act of reduction or depletion (including through withdrawal or utilization).",
-        "exampleSentence": "The government initiated a drawdown of forces in the border region.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "drawdown",
-        "etymology": "From draw + down.",
-        "distractors": [
-            "drawwdown",
-            "drawdowwn",
-            "drawdoun"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "backshot",
-        "definition": "A shot that sends something backwards, such as a shot that sends the ball behind the player making it.",
-        "exampleSentence": "The backshot was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "backshot",
-        "etymology": "From back + shot.",
-        "distractors": [
-            "bacckshot",
-            "beckshot",
-            "bickshot"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "runround",
-        "definition": "A felon or whitlow.",
-        "exampleSentence": "We are moving away from the normal type of runround.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "runround",
-        "distractors": [
-            "runnround",
-            "runrounnd",
-            "runrownd"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "postshot",
-        "definition": "After a shot is taken (as in golf, snooker, etc.).",
-        "exampleSentence": "After a postshot round of beers, the mechanical bull started up.",
+        "word": "innocent",
+        "definition": "Free from guilt, sin, or immorality.",
+        "exampleSentence": "The old house had an innocent appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "postshot",
-        "etymology": "From post- + shot.",
+        "pronunciation": "ɪnəsənt",
+        "etymology": "From Middle English innocent, from Old French innocent, inocent, borrowed from Latin innocēns (“harmless, inoffensive”), from in- (“not”) + nocēns, present participle of noceō (“to hurt”). By surface analysis, in- (“not”) + nocent (“harmful; guilty”). Displaced native Old English unsċyldiġ.",
         "distractors": [
-            "posstshot",
-            "pastshot",
-            "pestshot"
+            "innocant",
+            "inocent",
+            "innoccent"
         ],
-        "theme": "everyday"
+        "theme": "feelings"
+    },
+    {
+        "word": "national",
+        "definition": "Pertaining to a nation or country, especially as a whole; affecting, shared by, or existing throughout all of a nation.",
+        "exampleSentence": "Import tariffs were raised for the national interest.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "næʃənəl",
+        "etymology": "From Middle French national, corresponding to nation + -al.",
+        "distractors": [
+            "nationel",
+            "nattional",
+            "nationnal"
+        ],
+        "theme": "society"
     },
     {
         "word": "don",
@@ -8766,27 +4322,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "nip",
-        "definition": "A Japanese person.",
-        "exampleSentence": "My teacher explained what a nip is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "nɪp",
-        "etymology": "Clipping of Nipponese, derived from Nippon, from Japanese 日本 (Nippon).",
-        "distractors": [
-            "inp",
-            "npi",
-            "nnip"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "rap",
         "definition": "Recognized air picture.",
         "exampleSentence": "My teacher explained what a rap is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "rap",
         "distractors": [
@@ -8845,42 +4385,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "vee",
-        "definition": "The name of the Latin script letter V/v.",
-        "exampleSentence": "My teacher explained what a vee is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "viː",
-        "distractors": [
-            "ve",
-            "vea",
-            "vae"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "dep",
-        "definition": "Clipping of deposit.",
-        "exampleSentence": "Don't worry too much if they don’t give us everything we need in their rog answers; we'll fill the gaps in dep.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "dep",
-        "etymology": "*Abbreviation of several English terms that begin with \"dep\" *Clipping of several English terms that begin with \"dep\"",
-        "distractors": [
-            "dap",
-            "dip",
-            "dpe"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "area",
         "definition": "A measure of the extent of a surface; it is measured in square units.",
         "exampleSentence": "The plans are a bit vague in that area.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɛɹiə",
         "etymology": "Learned borrowing from Latin ārea.",
@@ -8890,22 +4399,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "araa"
         ],
         "theme": "academic"
-    },
-    {
-        "word": "axis",
-        "definition": "An imaginary line around which an object spins (an axis of rotation) or is symmetrically arranged (an axis of symmetry).",
-        "exampleSentence": "The book had an entire chapter about the axis.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "æksɪs",
-        "etymology": "Borrowed from Latin axis (“axle, axis”) in the 16th century. Via Latin cognate with ala, aisle, atelier. Via Proto-Indo-European *h₂eḱs- cognate with inherited English axle and borrowed axo-, axon.",
-        "distractors": [
-            "axxis",
-            "axas",
-            "axes"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "baby",
@@ -8924,154 +4417,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "bend",
-        "definition": "Any of the various knots which join the ends of two lines.",
-        "exampleSentence": "The book had an entire chapter about the bend.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bɛnd",
-        "etymology": "From Middle English benden, from Old English bendan (“to bind or bend (a bow), fetter, restrain”), from Proto-West Germanic *bandijan, from Proto-Germanic *bandijaną (“to bend”), from Proto-Indo-European *bʰendʰ- (“to bind, tie”).",
-        "distractors": [
-            "bennd",
-            "band",
-            "bind"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bulb",
-        "definition": "The bulb-shaped underground portion of a plant such as a tulip, consisting of a shortened stem and many fleshy scale leaves, from which the rest of the plant may be regrown.",
-        "exampleSentence": "The plants which grow in the earth from seed or bulbs.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bʌlb",
-        "etymology": "Ancient Greek βολβός (bolbós)bor. Latin bulbusder. English bulb Inherited from Middle English bulb, bolbe, from Latin bulbus (“bulb, onion”), from Ancient Greek βολβός (bolbós, “plant with round swelling on underground stem”).",
-        "distractors": [
-            "bullb",
-            "balb",
-            "belb"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "bunk",
-        "definition": "One of a series of berths or beds placed in tiers.",
-        "exampleSentence": "Don’t leave your bunk unlocked.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bʌŋk",
-        "etymology": "Sense of sleeping berth possibly from Scottish English bunker (“seat, bench”), origin is uncertain but possibly Scandinavian. Compare Old Swedish bunke (“boards used to protect the cargo of a ship”). See also boarding, flooring and compare bunch.",
-        "distractors": [
-            "bunnk",
-            "bank",
-            "benk"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "crow",
-        "definition": "A member of a Native American tribe of southern Montana.",
-        "exampleSentence": "The book had an entire chapter about the crow.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹoʊ",
-        "etymology": "From French gens de corbeaux, calque of Dakota apsáaloke (“crow people”). Compare Crow Apsáalooke.",
-        "distractors": [
-            "rcow",
-            "corw",
-            "crwo"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "dash",
-        "definition": "Any of the following symbols: ‒ (figure dash), – (en dash), — (em dash), or ― (horizontal bar).",
-        "exampleSentence": "The book had an entire chapter about the dash.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "dæʃ",
-        "etymology": "From Middle English daschen, dassen, from Danish daske (“to slap, strike”), related to Swedish daska (“to smack, slap, spank”), of obscure origin. Compare German tatschen (“to grope, paw”), Old English dwǣsċan (“to quell, put out, destroy, extinguish”). See also dush.",
-        "distractors": [
-            "dassh",
-            "desh",
-            "dish"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dish",
-        "definition": "A vessel such as a plate for holding or serving food, often flat with a depressed region in the middle.",
-        "exampleSentence": "It's your turn to wash the dishes.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "dɪʃ",
-        "etymology": "From Middle English dissh, disch, from Old English disċ (“plate; bowl; dish”), from Proto-West Germanic *disk (“table; dish”) (whence also Proto-Slavic *dъska, whence Bulgarian дъска́ (dǎská), Polish deska, Russian доска́ (doská)), Russian чан (čan)) from Latin discus.",
-        "distractors": [
-            "dissh",
-            "dash",
-            "desh"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "echo",
-        "definition": "A reflected sound that is heard again by its initial observer.",
-        "exampleSentence": "The book had an entire chapter about the echo.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "ɛkoʊ",
-        "etymology": "From Middle English eccho, ecco, ekko, from Medieval Latin ēccō, from Latin ēchō, from Ancient Greek ἠχώ (ēkhṓ), from ἠχή (ēkhḗ, “sound”). Possibly from the same Proto-Indo-European root as sough.",
-        "distractors": [
-            "eccho",
-            "etcho",
-            "ecoh"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "edge",
-        "definition": "Explain, demonstrate, guide, enable; an educating method.",
-        "exampleSentence": "The book had an entire chapter about the edge.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "edge",
-        "distractors": [
-            "dege",
-            "egde",
-            "edeg"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "gall",
-        "definition": "A blister or tumor-like growth found on the surface of plants, caused by various pathogens, especially the burrowing of insect larvae into the living tissues, such as that of the common oak gall wasp (Cynips quercusfolii).",
-        "exampleSentence": "The book had an entire chapter about the gall.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɡɔːl",
-        "etymology": "From Middle English galle, from Old French galle, from Latin galla (“oak-apple”).",
-        "distractors": [
-            "agll",
-            "glal",
-            "ggall"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "hair",
         "definition": "A pigmented filament of keratin which grows from a follicle on the skin of humans and other mammals.",
         "exampleSentence": "The book had an entire chapter about the hair.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "hɛ(ə)ɹ",
         "etymology": "From Middle English her, heer, hær, from Old English hǣr, from Proto-West Germanic *hār, from Proto-Germanic *hērą (“hair”), from Proto-Indo-European *kes- (“to scrape, comb”).",
@@ -9083,43 +4433,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "limb",
-        "definition": "A major appendage of human or animal, used for locomotion (such as an arm, leg or wing).",
-        "exampleSentence": "That little limb of the devil has cheated the gallows.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "lɪm",
-        "etymology": "From Middle English lyme, lim, from Old English lim (“limb, branch”), from Proto-West Germanic *limu, from Proto-Germanic *limuz (“branch, limb”). Cognate with Old Norse limr (“limb”). The spelling with the silent unetymological -b first arose in the late 1500s. Compare crumb.",
-        "distractors": [
-            "limmb",
-            "lim",
-            "lamb"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "lime",
-        "definition": "Any inorganic material containing calcium, usually calcium oxide (quicklime) or calcium hydroxide (slaked lime).",
-        "exampleSentence": "Like the lime which foolish birds are caught with.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "laɪm",
-        "etymology": "From Middle English lyme, lym, lime, from Old English līm, from Proto-West Germanic *līm, from Proto-Germanic *līmaz, from Proto-Indo-European *h₂leyH- (“to smear”). Cognate with Saterland Frisian Liem (“glue”), Dutch lijm, German Leim (“glue”), Danish lim (from Old Norse lím), Latin limus (“mud”).",
-        "distractors": [
-            "limme",
-            "lame",
-            "leme"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "lock",
         "definition": "Something used for fastening, which can only be opened with a key or combination.",
         "exampleSentence": "Brian thinks she's a lock to get a scholarship somewhere.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "lɑk",
         "etymology": "From Middle English lok, from Old English loc, from Proto-West Germanic *lok, from Proto-Germanic *luką from Proto-Indo-European *lewg- (“to bend; turn”).",
@@ -9150,7 +4468,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A thing or group of things in a disagreeable, disorganised, or dirty state; hence a bad situation.",
         "exampleSentence": "There was dog mess all along the street.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "mɛs",
         "etymology": "Perhaps a corruption of Middle English mesh (“mash”), compare muss, or derived from Etymology 2 \"mixed foods, as for animals\". Compare also Old English mes (“dung, excrement”).",
@@ -9162,75 +4480,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "mint",
-        "definition": "A building or institution where money (originally, only coins) is produced under government licence.",
-        "exampleSentence": "The book had an entire chapter about the mint.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mɪnt",
-        "etymology": "From Middle English mynt, münet (“money, coin”), from Old English mynet (“coin”), from late Proto-West Germanic *munit, from Latin monēta (“place for making coins, coined money”), from the temple of Juno Moneta (named for Monēta mother of the Muses), where coins were made.",
-        "distractors": [
-            "minnt",
-            "mant",
-            "ment"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "mode",
-        "definition": "One of several common scales in modern Western music, one of which corresponds to the modern major scale and one to the natural minor scale.",
-        "exampleSentence": "In insert mode, characters typed are directly inserted into the buffer.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "moʊd",
-        "etymology": "From Old French mode (masculine), from Latin modus (“measure, due measure, rhythm, melody”). Doublet of modus.",
-        "distractors": [
-            "modde",
-            "made",
-            "mede"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "mole",
-        "definition": "In the International System of Units, the base unit of amount of substance; the amount of substance of a system which contains exactly 6.02214076×10²³ elementary entities (atoms, ions, molecules, etc.). Symbol: mol. The number of atoms is known as Avogadro’s number.",
-        "exampleSentence": "The book had an entire chapter about the mole.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "mol",
-        "etymology": "Calqued from German Mol; spelled as if it had come directly from molecule or Latin moles (the ultimate source of Mol and molecule in any event).",
-        "distractors": [
-            "omle",
-            "mloe",
-            "moel"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "pace",
-        "definition": "A step taken with the foot.",
-        "exampleSentence": "The book had an entire chapter about the pace.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "peɪs",
-        "etymology": "From Middle English pase, from Anglo-Norman pas, Old French pas, and their source, Latin passus. Doublet of pas and fathom; compare also pass. Cognate with Spanish pasear.",
-        "distractors": [
-            "pacce",
-            "pece",
-            "pice"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "page",
         "definition": "A serving boy; a youth attending a person of high degree, especially at courts, often as a position of honor and education.",
         "exampleSentence": "The book had an entire chapter about the page.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "peɪd͡ʒ",
         "etymology": "From Old French page, possibly via Italian paggio, from Medieval Latin pagius (“servant”), probably from Ancient Greek παιδίον (paidíon, “boy, lad”), from παῖς (paîs, “child”); some sources consider this unlikely and suggest instead Latin pagus (“countryside”), in sense of \"boy from the rural region",
@@ -9246,7 +4500,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A tract of ground kept in its natural state, about or adjacent to a residence, such as for the preservation of game, for walking, riding, or the like.",
         "exampleSentence": "The book had an entire chapter about the park.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "pʰɑɹk",
         "etymology": "From Middle English park, from Old French parc (“livestock pen”), from Medieval Latin parcus, parricus, from Frankish *parrik (“enclosure, pen, fence”).",
@@ -9262,7 +4516,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A large group of people distinguished from others on the basis of a common heritage.",
         "exampleSentence": "The book had an entire chapter about the race.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "ɹeɪs",
         "etymology": "1560s, via Middle French race from Italian razza (early 14th century), of uncertain origin. Partially displaced native Middle English kinde (“kind, type, sort, race, nature”), whence English kind.",
@@ -9274,27 +4528,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "reel",
-        "definition": "A shaky or unsteady gait.",
-        "exampleSentence": "The book had an entire chapter about the reel.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹiːl",
-        "etymology": "From Middle English reel, reele, from Old English rēol, hrēol, from Proto-West Germanic *hrehul, from Proto-Germanic *hrehulaz, *hrahilaz, from Proto-Indo-European *krek- (“to weave, beat”). Cognate with Icelandic ræl, hræll.",
-        "distractors": [
-            "rele",
-            "real",
-            "rel"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "ruin",
         "definition": "The remains of a destroyed or dilapidated construction, such as a house or castle.",
         "exampleSentence": "The book had an entire chapter about the ruin.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ɹuːɪn",
         "etymology": "From Middle English ruyne, ruine, from Old French ruine, from Latin ruīna (“overthrow, ruin”), from ruō (“I fall down, tumble, sink in ruin, rush”).",
@@ -9306,27 +4544,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "home"
     },
     {
-        "word": "span",
-        "definition": "The full width of an open hand from the end of the thumb to the end of the little finger used as an informal unit of length.",
-        "exampleSentence": "The book had an entire chapter about the span.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "spæn",
-        "etymology": "From Middle English spanne, from Old English spann, from Proto-Germanic *spannō (“span, handbreadth”), from Proto-Indo-European *(s)pend- (“to stretch”). Cognate with Dutch span, spanne, German Spanne.",
-        "distractors": [
-            "spen",
-            "spin",
-            "sapn"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "suit",
         "definition": "A set of clothes to be worn together, now especially a man's matching jacket and trousers (also business suit or lounge suit), or a similar outfit for a woman.",
         "exampleSentence": "You had an army / Of suits behind you.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sut",
         "etymology": "From Middle English sute, borrowed from Anglo-Norman suite and Old French sieute, siute (modern suite), originally a participle adjective from Vulgar Latin *sequita (for secūta), from Latin sequi (“to follow”), because the component garments \"follow each other\", i.e. are worn together.",
@@ -9338,27 +4560,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "tack",
-        "definition": "A small nail with a flat head.",
-        "exampleSentence": "Pay all taxes and subscribe tacks.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "tæk",
-        "etymology": "From Middle English tak, takke (“hook; staple; nail”), from Old Northern French taque (“nail, pin, peg”), from Frankish *takkō, from Proto-Germanic *takkô (“tip; point; protrusion; prong; tine; jag; spike; twig”), of unknown origin, but possibly from Proto-Indo-European *dHgʰ-n-, from the root *déHg",
-        "distractors": [
-            "tak",
-            "tacck",
-            "teck"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "test",
         "definition": "A Test match.",
         "exampleSentence": "The book had an entire chapter about the test.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "test",
         "etymology": "The river is first attested 877 as Terstan. The name is of Brythonic origin, possibly related to Welsh trais (“violence, battle”).",
@@ -9374,7 +4580,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A grouping based on shared characteristics; a class.",
         "exampleSentence": "The headline was set in bold type.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "taɪp",
         "etymology": "From Middle English type (“symbol, figure, emblem”), from Latin typus, from Ancient Greek τύπος (túpos, “mark, impression, type”), from τύπτω (túptō, “I strike, beat”).",
@@ -9390,7 +4596,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Oneness, singularity, seen as a component of a whole number; a magnitude of one.",
         "exampleSentence": "The centimetre is a unit of length.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "juːnɪt",
         "etymology": "Formerly unite, a later form of unity; see unity.",
@@ -9400,22 +4606,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "unet"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "melt",
-        "definition": "To change (or to be changed) from a solid state to a liquid state, usually by a gradual heat.",
-        "exampleSentence": "I melted butter to make a cake.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mɛlt",
-        "etymology": "From Middle English melten, from a merger of Old English meltan (intransitive) and mieltan (transitive), both meaning “to melt, digest,” from Proto-West Germanic *meltan and *maltijan, from Proto-Germanic *meltaną and *maltijaną, both from Proto-Indo-European *(s)meld- (“melt”).",
-        "distractors": [
-            "mellt",
-            "malt",
-            "milt"
-        ],
-        "theme": "society"
     },
     {
         "word": "wish",
@@ -9482,27 +4672,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "grim",
-        "definition": "Dismal and gloomy, cold and forbidding.",
-        "exampleSentence": "It's been a grim start to the year.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡɹɪm",
-        "etymology": "From Middle English grim, from Old English grimm, from Proto-West Germanic *grimm, from Proto-Germanic *grimmaz, from Proto-Indo-European *gʰrem- (“to resound, thunder, grumble, roar”).",
-        "distractors": [
-            "gram",
-            "grem",
-            "girm"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "near",
         "definition": "Physically close.",
         "exampleSentence": "The near weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "nɪɚ",
         "etymology": "From Middle English nere, ner, from Old English nēar (“nearer”, comparative of nēah (“nigh”), the superlative would become next), influenced by Old Norse nær (“near”), both originating from Proto-Germanic *nēhwiz (“nearer”), comparative of the adverb *nēhw (“near”), from the adjective *nēhwaz, ultim",
@@ -9514,27 +4688,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "neat",
-        "definition": "Clean, tidy; free from dirt or impurities.",
-        "exampleSentence": "The front room was neat and carefully arranged for the guests.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "niːt",
-        "etymology": "From Middle English nete, net, nette, from Anglo-Norman neit (“good, desirable, clean”), a variant of Old French net, nette (“clean, clear, pure”), from Latin nitidus (“gleaming”), derived from nitēre (“to shine”). Doublet of net and nitid. Cognate with German nett (“nice, kind”). Compare also nait.",
-        "distractors": [
-            "neet",
-            "naat",
-            "niat"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "slow",
         "definition": "Taking a long time to move or go a short distance, or to perform an action; not quick in motion; proceeding at a low speed.",
         "exampleSentence": "He that is slow to wrath is of great understanding.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "sloʊ",
         "etymology": "From Middle English slow, slaw, from Old English slāw (“sluggish, inert, slothful, late, tardy, torpid, slow”), from Proto-West Germanic *slaiw, from Proto-Germanic *slaiwaz (“blunt, dull, faint, weak, slack”), possibly from Proto-Indo-European *sleyH-u- (“bad”).",
@@ -9566,7 +4724,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An operation in which data is transmitted.",
         "exampleSentence": "The send of the sea was driving the boat's head round to starboard.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sɛnd",
         "etymology": "From Middle English senden, from Old English sendan (“to send, cause to go”), from Proto-West Germanic *sandijan, from Proto-Germanic *sandijaną, from Proto-Indo-European *sont-eye- (“to cause to go”), causative of *sent- (“to walk, travel”). The noun derives from the verb.",
@@ -9582,7 +4740,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To crown king, to make (a person) king.",
         "exampleSentence": "I was about to make a move that would corner a piece that she was trying to get kinged, but I slid my checker back….",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "kɪŋ",
         "etymology": "From Middle English king, kyng, from Old English cyng, cyning (“king”), from Proto-West Germanic *kuning, from Proto-Germanic *kuningaz, *kunungaz (“king”), equivalent to kin + -ing. Doublet of cyning and knez.",
@@ -9594,122 +4752,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "hung",
-        "definition": "Suspended by hanging.",
-        "exampleSentence": "The hung weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "hʌŋ",
-        "distractors": [
-            "hunng",
-            "hang",
-            "heng"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "leer",
-        "definition": "Empty; unoccupied; clear.",
-        "exampleSentence": "The leer weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "lɪə",
-        "etymology": "From Middle English lere, from Old English ġelǣr, *lǣre (“empty, void, empty-handed”), from Proto-Germanic *lēziz, *lēzijaz (“empty”), from Proto-Indo-European *les- (“to collect, pick”). Cognate with Dutch laar (“a clearing in the woods”), German leer (“empty”).",
-        "distractors": [
-            "leor",
-            "lear",
-            "ler"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "cobb",
-        "definition": "A sea-cob or gull.",
-        "exampleSentence": "His colour is nearly that of a grif or cobb, the produce of a mulatto and negro.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kɒb",
-        "etymology": "Variant spelling of cob.",
-        "distractors": [
-            "cob",
-            "cabb",
-            "cebb"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "cram",
-        "definition": "The act of cramming (forcing or stuffing something).",
-        "exampleSentence": "Shut up, and don't tell crams.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹæm",
-        "etymology": "From Middle English crammen, from Old English crammian (“to cram; stuff”), from Proto-West Germanic *krammōn, from Proto-Germanic *krammōną, a secondary verb derived from *krimmaną (“to stuff”), from Proto-Indo-European *ger- (“to assemble; collect; gather”).",
-        "distractors": [
-            "crem",
-            "crim",
-            "carm"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "pogo",
-        "definition": "To use a pogo stick.",
-        "exampleSentence": "Just short of their objectives, the missiles pogoed, climbing steeply, then diving into their targets.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pəʊɡəʊ",
-        "etymology": "From pogo stick.",
-        "distractors": [
-            "poggo",
-            "pago",
-            "pego"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "thig",
-        "definition": "To solicit or receive, usually by begging; ask as alms.",
-        "exampleSentence": "This is not second clothing. This cloth is not thigged.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "thig",
-        "etymology": "From Middle English thiggen, from Old English þiċġan (“to take, receive, accept; ingest; eat or drink, consume, partake of”), from Proto-West Germanic *þiggjan, from Proto-Germanic *þigjaną (“to accept, receive, beg”), from Proto-Indo-European *tek- (“to receive”).",
-        "distractors": [
-            "thag",
-            "theg",
-            "tihg"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bink",
-        "definition": "A table or similar surface for laying out items.",
-        "exampleSentence": "Sitting here in the park bink, Alane - yet no aa that alane.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bink",
-        "etymology": "From Middle English bink, binke, variants of Middle English benk, benke, from Old English benc (“bench”), from Proto-West Germanic *banki, from Proto-Germanic *bankiz. More at bench.",
-        "distractors": [
-            "binnk",
-            "bank",
-            "benk"
-        ],
-        "theme": "home"
-    },
-    {
         "word": "agent",
         "definition": "One who exerts power, or has the power to act.",
         "exampleSentence": "He wrote the word agent on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "eɪd͡ʒənt",
         "etymology": "From Latin agēns, present active participle of agere (“to drive, lead, conduct, manage, perform, do”).",
@@ -9717,86 +4764,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "agant",
             "aggent",
             "agennt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cable",
-        "definition": "A strong, large-diameter wire or rope, or something resembling such a rope.",
-        "exampleSentence": "I tried to watch the movie last night but my cable was out.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "keɪbəl",
-        "etymology": "Recorded since c.1205 as Middle English cable, from Old Northern French cable, from Late Latin capulum (“lasso, rope, halter”), from Latin capiō (“to take, seize”).",
-        "distractors": [
-            "cible",
-            "cabel",
-            "cabble"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "canon",
-        "definition": "A generally accepted principle; a rule.",
-        "exampleSentence": "He wrote the word canon on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kænən",
-        "etymology": "From Middle English canoun, from Old French canon and Old English canon, both from Latin canōn, from Ancient Greek κανών (kanṓn, “measuring rod, standard”), akin to κάννα (kánna, “reed”), from Semitic (compare Hebrew קָנֶה (qane, “reed”) and Arabic قَنَاة (qanāh, “reed”)). Doublet of qanun.",
-        "distractors": [
-            "cannon",
-            "cenon",
-            "cinon"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "caper",
-        "definition": "The pungent grayish green flower bud of the European and Oriental caper (Capparis spinosa), which is pickled and eaten.",
-        "exampleSentence": "He wrote the word caper on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "keɪpɚ",
-        "etymology": "From Latin capparis, from Ancient Greek κάππαρις (kápparis).",
-        "distractors": [
-            "acper",
-            "cpaer",
-            "caepr"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "cycle",
-        "definition": "An interval of space or time in which one set of events or phenomena is completed.",
-        "exampleSentence": "Put the washing in on a warm cycle.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "saɪkəl",
-        "etymology": "From Middle English cicle (“fixed length period of years”), from Late Latin cyclus, from Ancient Greek κύκλος (kúklos, “circle”), from Proto-Hellenic *kúklos, *kʷókʷlos, from Proto-Indo-European *kʷékʷlos (“circle, wheel”).",
-        "distractors": [
-            "cycel",
-            "cyccle",
-            "ccyle"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "entry",
-        "definition": "The act of entering.",
-        "exampleSentence": "He wrote the word entry on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɛntɹi",
-        "etymology": "Inherited from Middle English entre, from Old French entree (feminine past participle of the verb entrer, Modern French entrée). From Latin intrō. Doublet of entrada and entrée.",
-        "distractors": [
-            "entrey",
-            "enntry",
-            "entyr"
         ],
         "theme": "everyday"
     },
@@ -9815,214 +4782,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "ferst"
         ],
         "theme": "people"
-    },
-    {
-        "word": "flood",
-        "definition": "An overflow of a large amount of water (usually disastrous) from a lake or other body of water due to excessive rainfall or other input of water.",
-        "exampleSentence": "He wrote the word flood on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "flʌd",
-        "etymology": "From Middle English flod, from Old English flōd, from Proto-West Germanic *flōdu, from Proto-Germanic *flōduz, from *plew- (“to flow”). Cognate with Scots flude, fluid, Saterland Frisian Floud, Dutch vloed, German Flut, Danish flod, Icelandic flóð, and Gothic 𐍆𐌻𐍉𐌳𐌿𐍃 (flōdus).",
-        "distractors": [
-            "flod",
-            "flaod",
-            "fleod"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "guide",
-        "definition": "Someone who guides, especially someone hired to show people around a place or an institution and offer information and explanation, or to lead them through dangerous terrain.",
-        "exampleSentence": "He will be our guide, even unto death.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɡaɪd",
-        "etymology": "c. 1325–75. From Middle English guide, from the Old French guide, from Old Occitan guida, from guidar, from Frankish *wītan (“to show the way, lead”), from Proto-Germanic *wītaną (“to see, know; go, depart”), from Proto-Indo-European *weyd- (“to see, know”).",
-        "distractors": [
-            "guidde",
-            "gaide",
-            "geide"
-        ],
-        "theme": "nature"
-    },
-    {
-        "word": "habit",
-        "definition": "A long piece of clothing worn by monks and nuns.",
-        "exampleSentence": "He wrote the word habit on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "hæbɪt",
-        "etymology": "From Middle English habiten, from Old French habiter, from Latin habitāre (“to dwell, abide, keep”), frequentative of habeō (“I have, hold, keep”); see have.",
-        "distractors": [
-            "habbit",
-            "hebit",
-            "hibit"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "jones",
-        "definition": "An addiction or intense craving.",
-        "exampleSentence": "He wrote the word jones on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "d͡ʒoʊnz",
-        "etymology": "Ed Boland, in The New York Times, March 2002, attributes the term to heroin addicts who frequented Great Jones Alley in New York City, off Great Jones Street between Broadway and Lafayette Street, although the slang term has obviously been around much longer.",
-        "distractors": [
-            "jonnes",
-            "janes",
-            "jenes"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lewis",
-        "definition": "A cramp iron inserted into a cavity in order to lift heavy stones; used as a symbol of strength in Freemasonry.",
-        "exampleSentence": "After the preeming period, the lads are put either to the gig-machines, or to the lewises in the cutting or shearing-room.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "luːɪs",
-        "etymology": "From Middle English lewis, of uncertain origin. Possibly from Old French lous, plural of lou, loup (“the name of a kind of siege engine”, literally “wolf”); or related to clevis.",
-        "distractors": [
-            "lewwis",
-            "lawis",
-            "liwis"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "limit",
-        "definition": "A restriction; a bound beyond which one may not go.",
-        "exampleSentence": "Two drinks is my limit tonight.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "lɪmɪt",
-        "etymology": "From Middle English limit, from Old French limit, from Latin līmes (“a cross-path or balk between fields, hence a boundary, boundary line or wall, any path or road, border, limit”). Displaced native Old English ġemǣre. Doublet of limes.",
-        "distractors": [
-            "limmit",
-            "lamit",
-            "lemit"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "organ",
-        "definition": "The larger part of an organism, composed of tissues that perform similar functions.",
-        "exampleSentence": "He wrote the word organ on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɔɹɡən",
-        "etymology": "From Middle English organe, from Old French organe, from Latin organum, from Ancient Greek ὄργανον (órganon, “an instrument, implement, tool, also an organ of sense or apprehension, an organ of the body, also a musical instrument, an organ”), from Proto-Indo-European *werǵ-.",
-        "distractors": [
-            "orrgan",
-            "orgen",
-            "orgin"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "pilot",
-        "definition": "A person who steers a ship, a helmsman.",
-        "exampleSentence": "We would like to run a pilot in your facility before rolling out the program citywide.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "paɪlət",
-        "etymology": "From Middle French pilot, pillot, from Italian pilota, piloto, older also pedotta, pedot(t)o (the form in pil- is probably influenced by pileggiare (“to sail, navigate”)); ultimately from unattested Byzantine Greek *πηδώτης (*pēdṓtēs, “helmsman”), from Ancient Greek πηδόν (pēdón, “blade of an oar, o",
-        "distractors": [
-            "pillot",
-            "palot",
-            "pelot"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "ridge",
-        "definition": "The back of any animal; especially the upper or projecting part of the back of a quadruped.",
-        "exampleSentence": "He wrote the word ridge on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪd͡ʒ",
-        "etymology": "From Middle English rigge, rygge, (also rig, ryg, rug), from Old English hryċġ (“back, spine, ridge, elevated surface”), from Proto-West Germanic *hrugi, from Proto-Germanic *hrugjaz (“back”), from Proto-Indo-European *(s)krewk-, *(s)ker- (“to turn, bend”).",
-        "distractors": [
-            "rige",
-            "riddge",
-            "radge"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "rupee",
-        "definition": "The common name for the monetary currencies used in modern India, Mauritius, Nepal, Pakistan, the Seychelles, or Sri Lanka.",
-        "exampleSentence": "In the fifth and sixth standard I obtained scholarships of rupees four and ten respectively, an achievement for which I have to thank good luck more than my merit.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹupi",
-        "etymology": "Coined by Sher Shah Suri, the Sultan of the Suri Empire 1540–1545 as Hindustani रुपीया / رُوپِییَہ (rūpīya), variant of रुपया / رُوپَیَہ (rūpaya, “rupee”), from Sanskrit रूप्यक (rūpyaka, “silver coin”), from रूप्य (rūpya, “wrought gold or silver; stamped coin; beautiful, well-shaped; impressed, stam",
-        "distractors": [
-            "rupe",
-            "ruppee",
-            "rupea"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "slice",
-        "definition": "That which is thin and broad.",
-        "exampleSentence": "Jim was munching on a slice of toast.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slaɪs",
-        "etymology": "From Middle English sclise, sklise, from Old French esclice, esclis (“a piece split off”), deverbal of esclicer, esclicier (“to splinter, split up”), from Frankish *slitjan (“to split up”), from Proto-Germanic *slitjaną, from Proto-Germanic *slītaną (“to split, tear apart”), from Proto-Indo-European",
-        "distractors": [
-            "slicce",
-            "slace",
-            "slece"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "smack",
-        "definition": "A small sailing vessel, commonly rigged as a sloop, used chiefly in the coasting and fishing trade and often called a fishing smack.",
-        "exampleSentence": "But without Union reinforcement, as many men as could be packed into a mere fishing smack could take the fort, Meigs wrote to Washington.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "smæk",
-        "etymology": "From Middle Low German smack (Low German Schmacke, Schmaake (“small ship”)) or Dutch smak, perhaps ultimately related to smakken, imitative of the sails' noise.",
-        "distractors": [
-            "smak",
-            "smacck",
-            "smeck"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "snake",
-        "definition": "Any of the suborder Serpentes of legless reptile with long, thin bodies and fork-shaped tongues.",
-        "exampleSentence": "He wrote the word snake on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sneɪk",
-        "etymology": "From Middle English snake, from Old English snaca (“snake, serpent, reptile”), from Proto-West Germanic *snakō (“slider, snake”), from *snakan (“to creep, slide”), related to Old High German snahhan (“to sneak, slide”). Compare also Proto-Germanic *snēkô (“creeper, crawler”).",
-        "distractors": [
-            "snakke",
-            "sneke",
-            "snike"
-        ],
-        "theme": "animals"
     },
     {
         "word": "staff",
@@ -10061,7 +4820,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An item of furniture with a flat top surface raised above the ground, usually on one or more legs.",
         "exampleSentence": "He wrote the word table on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "tʰeɪb(ə)ɫ",
         "etymology": "Inherited from Middle English table, tabel, tabil, tabul, from Old English tabele, tabul, tablu, tabule, tabula (“board”); also as tæfl, tæfel, an early Germanic borrowing of Latin tabula (“tablet, board, plank, chart”).",
@@ -10077,7 +4836,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "An occasion on which a person or thing is tested to find out how well they perform or how suitable they are.",
         "exampleSentence": "He wrote the word trial on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "tɹaɪəl",
         "etymology": "From Middle English trial, triall, from Anglo-Norman trial, triel, from trier (“to pick out, cull”) + -al. More at English try.",
@@ -10109,7 +4868,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Disturbance or disruption.",
         "exampleSentence": "He wrote the word upset on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ʌpsɛt",
         "etymology": "From Middle English upset (“the act of setting up; establishment”), from Middle English upsetten, corresponding to up- + set. Cognate with Middle Low German upset (“setup; arrangement”).",
@@ -10117,22 +4876,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "uppset",
             "upsat",
             "upsit"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "value",
-        "definition": "The quality that renders something desirable or valuable; worth.",
-        "exampleSentence": "He wrote the word value on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "vælju",
-        "etymology": "From Middle English valew, value, from Old French value, feminine past participle of valoir, from Latin valēre (“be strong, be worth”), from Proto-Italic *walēō, from Proto-Indo-European *h₂welh₁- (“to be strong”).",
-        "distractors": [
-            "vallue",
-            "velue",
-            "vilue"
         ],
         "theme": "everyday"
     },
@@ -10152,59 +4895,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "weather"
     },
     {
-        "word": "weber",
-        "definition": "In the International System of Units, the derived unit of magnetic flux; the flux linking a circuit of one turn that produces an electromotive force of one volt when reduced uniformly to zero in one second. Symbol: Wb.",
-        "exampleSentence": "He wrote the word weber on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "wɛbɚ",
-        "etymology": "Named after the German physicist Wilhelm Eduard Weber",
-        "distractors": [
-            "ewber",
-            "wbeer",
-            "weebr"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "youth",
-        "definition": "The quality or state of being young.",
-        "exampleSentence": "He wrote the word youth on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "digraphs",
-        "pronunciation": "juːθ",
-        "etymology": "From Middle English youthe, youghte, ȝouþe, from Old English ġeoguþ (“the state of being young; youth”), from Proto-West Germanic *juwunþa, from Proto-Germanic *jugunþō, *jugunþiz (“youth”), corresponding to young + -th (abstract nominal suffix).",
-        "distractors": [
-            "youtth",
-            "yowth",
-            "yauth"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "lapse",
-        "definition": "To fall away gradually; to subside.",
-        "exampleSentence": "It took a while to learn how to lapse.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "læps",
-        "etymology": "From Middle French laps, from Latin lāpsus, from lābī (“to slip”). Doublet of lapsus.",
-        "distractors": [
-            "lappse",
-            "lepse",
-            "lipse"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "learn",
         "definition": "To acquire, or attempt to acquire knowledge or an ability to do something.",
         "exampleSentence": "That'll learn him to bust my tomater.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "lɝn",
         "etymology": "From Middle English lernen (“to learn\", also, \"to teach\"”), from Old English leornian (“to learn\", rarely also, \"to teach”), from Proto-West Germanic *liʀnōn, from Proto-Germanic *lizaną, from Proto-Indo-European *(le-)lóys-e, stative from the root *leys- (“track, furrow, trace, trail”).",
@@ -10220,7 +4915,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To place (a seed or plant) in soil or other substrate in order that it may live and grow.",
         "exampleSentence": "It took a while to learn how to plant.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "plænt",
         "etymology": "From Middle English plante, from Old English plante (“young tree or shrub, herb newly planted”), from Proto-West Germanic *plantu, from Latin planta (“sprout, shoot, cutting”). Broader sense of \"any vegetable life, vegetation generally\" is from Old French plante.",
@@ -10232,90 +4927,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "plants"
     },
     {
-        "word": "spell",
-        "definition": "To write or say the letters that form a word or part of a word.",
-        "exampleSentence": "It took a while to learn how to spell.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "spɛl",
-        "etymology": "From Middle English spellen, from Anglo-Norman espeler, espeleir, Old French espeller, espeler (compare Modern French épeler), from Frankish *spelōn, merged with native Old English spellian (“to tell, speak”), both eventually from Proto-Germanic *spellōną (“to speak”). Related with etymology 1.",
-        "distractors": [
-            "spel",
-            "spall",
-            "spill"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "swell",
-        "definition": "To become bigger, especially due to being engorged.",
-        "exampleSentence": "It took a while to learn how to swell.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "swɛl",
-        "etymology": "From Middle English swellen, from Old English swellan (“to swell”), from Proto-West Germanic *swellan, from Proto-Germanic *swellaną (“to swell”), of unknown origin.",
-        "distractors": [
-            "swel",
-            "swall",
-            "swill"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tempt",
-        "definition": "To provoke someone to do wrong, especially by promising a reward; to entice.",
-        "exampleSentence": "It took a while to learn how to tempt.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɛmpt",
-        "etymology": "From Middle English tempten, from Old French tempter (French: tenter), from Latin temptare, from tentare (“to handle, touch, try, test, tempt”), frequentative of tendere (“to stretch”). Displaced native English costning (“temptation”).",
-        "distractors": [
-            "temmpt",
-            "tampt",
-            "timpt"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "tread",
-        "definition": "To step or walk (on or across something); to trample.",
-        "exampleSentence": "It took a while to learn how to tread.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɹɛd",
-        "etymology": "From Middle English treden, from Old English tredan, from Proto-West Germanic *tredan, from Proto-Germanic *trudaną.",
-        "distractors": [
-            "treed",
-            "traad",
-            "triad"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "unite",
-        "definition": "To bring together as one.",
-        "exampleSentence": "If we want to win, we will need to unite.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "junaɪt",
-        "distractors": [
-            "unight",
-            "unnite",
-            "unitte"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "worry",
         "definition": "To be troubled; to give way to mental anxiety or doubt.",
         "exampleSentence": "It took a while to learn how to worry.",
         "partOfSpeech": "verb",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "wʌɹi",
         "etymology": "From Middle English worien, werien, wirien, wirwen, wyryȝen (“to choke, strangle”), from Old English wyrġan, from Proto-Germanic *wurgijaną, from Proto-Indo-European *werǵʰ- (“bind, squeeze”). Cognate with Dutch worgen, wurgen, German würgen.",
@@ -10327,27 +4943,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "acute",
-        "definition": "Brief, quick, short.",
-        "exampleSentence": "Eagles have very acute vision.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "əkjut",
-        "etymology": "From Late Middle English acute (“of a disease or fever: starting suddenly and lasting for a short time; of a humour: irritating, sharp”), from Latin acūta, from acūtus (“sharp, sharpened”), perfect passive participle of acuō (“to make pointed, sharpen, whet”), from acus (“needle, pin”).",
-        "distractors": [
-            "accute",
-            "acutte",
-            "acate"
-        ],
-        "theme": "time"
-    },
-    {
         "word": "awful",
         "definition": "Exceedingly great; usually applied intensively.",
         "exampleSentence": "The smell of my socks is awful.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɔːfl̩",
         "etymology": "From Middle English agheful, awfull, auful, aȝefull, equivalent to awe + -ful. Compare Old English eġeful, eġefull (“terrifying; awful”). The “very bad” sense is a pejorative semantic shift from the original sense of “awe-inspiring”.",
@@ -10359,59 +4959,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "civil",
-        "definition": "Having to do with people and government office as opposed to the military or religion.",
-        "exampleSentence": "It was very civil of him to stop the argument.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɪvəl",
-        "etymology": "From Middle English cyvyl, civil, borrowed from Old French civil, from Latin cīvīlis (“relating to a citizen”), from cīvis (“citizen”). Cognate with Old English hīwen (“household”), hīrǣden (“family”). More at hind; hird.",
-        "distractors": [
-            "civvil",
-            "cavil",
-            "cevil"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "crude",
-        "definition": "In a natural, untreated state.",
-        "exampleSentence": "Her mete was very crude,.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹuːd",
-        "etymology": "From Middle English crude, borrowed from Latin crūdus (“raw, bloody, uncooked, undigested, crude”). Doublet of crudo, from Italian. Cognate with Old English hrēaw (“raw, uncooked”) via Proto-Indo-European *krewh₂- (“raw blood”); more at raw.",
-        "distractors": [
-            "crudde",
-            "crade",
-            "crede"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "polar",
-        "definition": "Of, relating to, measured from, or referred to a geographic pole (the North Pole or South Pole); within the Arctic or Antarctic circles.",
-        "exampleSentence": "After all, to go into outer space is not so much worse, if at all, than a polar expedition.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "poʊləɹ",
-        "etymology": "From Late Latin polāris, equivalent to pole + -ar.",
-        "distractors": [
-            "poler",
-            "pollar",
-            "palar"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "quick",
         "definition": "Moving with speed, rapidity or swiftness, or capable of doing so; rapid; fast.",
         "exampleSentence": "My father is old but he still has a quick wit.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "kwɪk",
         "etymology": "From Middle English quik, quic (“living, alive, active”), from Old English cwic (“alive”), from Proto-West Germanic *kwiku (“alive, lively quick”), from Proto-Germanic *kwikwaz (“alive, lively, quick”), from Proto-Indo-European *gʷih₃wós (“alive”), from *gʷeyh₃- (“to live”), *gʷeyh₃w- (“to live”).",
@@ -10427,7 +4979,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Being more than what is necessary, or what must be used or reserved; not wanted, or not used; superfluous.",
         "exampleSentence": "We could rent out the spare room.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "spɛɚ",
         "etymology": "From Middle English spare, spar, from Old English spær (“sparing, scant”), from Proto-Germanic *sparaz, from Proto-Indo-European *sph₁rós, from the root *speh₁-.",
@@ -10439,91 +4991,27 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "brick",
-        "definition": "To build, line, or form with bricks.",
-        "exampleSentence": "My VCR was bricked during the lightning storm.",
+        "word": "might",
+        "definition": "Used to indicate a desired past action that was not done.",
+        "exampleSentence": "I thought that I might go the next day.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɹɪk",
-        "etymology": "From Late Middle English brik, bryke, bricke, from Middle Low German and Middle Dutch bricke (\"cracked or broken brick; tile-stone\"; modern Dutch brik), ultimately related to Proto-West Germanic *brekan (“to break”), whence also Old French briche and French brique (“brick”).",
-        "distractors": [
-            "brik",
-            "bricck",
-            "brack"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "admin",
-        "definition": "Administration, or administrative work.",
-        "exampleSentence": "He wrote the word admin on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ædmɪn",
-        "etymology": "Clipping of administrator or administration.",
-        "distractors": [
-            "addmin",
-            "adman",
-            "admen"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hyper",
-        "definition": "Clipping of hyperextension.",
-        "exampleSentence": "Would it be cute for a hyper to be like \"hey, sorry my room is so... damp. i do my best to keep it clean.\" i think that's kinda cute, personally.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "haɪpəɹ",
-        "etymology": "Shortenings, all ultimately from the prefix hyper-.",
-        "distractors": [
-            "hypor",
-            "hypar",
-            "hypper"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "garth",
-        "definition": "A grassy quadrangle surrounded by cloisters.",
-        "exampleSentence": "A clapper clapping in a garth / To scare the fowl from fruit.",
-        "partOfSpeech": "noun",
         "difficulty": 2,
-        "pattern": "digraphs",
-        "pronunciation": "ɡɑː(ɹ)θ",
-        "etymology": "Inherited from Middle English garth, from Old Norse garðr, from Proto-Germanic *gardaz, thus cognate with Old English ġeard, whence the English doublet yard.",
+        "pattern": "blends",
+        "pronunciation": "mɐɪt",
+        "etymology": "From Old English meahte and mihte, inflections of magan, whence English may.",
         "distractors": [
-            "garrth",
-            "gerth",
-            "girth"
+            "mite",
+            "migght",
+            "mit"
         ],
-        "theme": "everyday"
-    },
-    {
-        "word": "scope",
-        "definition": "To perform a cursory investigation of; scope out.",
-        "exampleSentence": "“Let's scope the scene.” The gang advanced, searching for humanity.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "greek-roots",
-        "pronunciation": "skoʊp",
-        "etymology": "From Italian scopo (“purpose”), from Latin scopus (“target”), from Ancient Greek σκοπός (skopós), from σκέπτομαι (sképtomai), from Proto-Indo-European *speḱ-. Etymologically related to skeptic and spectrum.",
-        "distractors": [
-            "scoppe",
-            "scape",
-            "scepe"
-        ],
-        "theme": "art"
+        "theme": "time"
     },
     {
         "word": "lines",
         "definition": "Words spoken by the actors.",
         "exampleSentence": "If you don't behave I'll give you lines.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "laɪnz",
         "distractors": [
@@ -10532,210 +5020,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "lenes"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "betty",
-        "definition": "A short bar used by thieves to wrench doors open; a jimmy.",
-        "exampleSentence": "A pie-size betty is traditional, but if you like, assemble the recipe in individual ovenproof ramekins.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɛti",
-        "etymology": "From Betty (nickname for “Elizabeth”). In thieves’ cant a tool for wrenching locked doors is also called a Bess (from “Elizabeth”) or a Jenny. The “attractive woman” sense may relate to the character Betty Rubble in the cartoon The Flintstones.",
-        "distractors": [
-            "bettey",
-            "bety",
-            "batty"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "nitro",
-        "definition": "The univalent NO₂ functional group.",
-        "exampleSentence": "You need to find the smartest routes and optimize the nitro boost to win.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "naɪtɹəʊ",
-        "distractors": [
-            "nittro",
-            "natro",
-            "netro"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "beans",
-        "definition": "Pills; drugs in pill form.",
-        "exampleSentence": "He told me he reached beans. I hope he’ll be okay.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "biːnz",
-        "distractors": [
-            "beanns",
-            "beens",
-            "baans"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "skulk",
-        "definition": "A group of foxes.",
-        "exampleSentence": "A group of foxes is called a skulk.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "skʌlk",
-        "etymology": "From Middle English sculke, skulke, skulken, of North Germanic origin; compare Danish skulke (“shirk”), Swedish skolka (“play truant”).",
-        "distractors": [
-            "skullk",
-            "skalk",
-            "skelk"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "ravin",
-        "definition": "Property obtained or seized by force or violence; booty, plunder, spoils.",
-        "exampleSentence": "Tho' Nature, red in tooth and claw / With ravine, shriek'd against his creed.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹæv(ə)n",
-        "etymology": "The noun is derived from Middle English ravin, ravine, raven (“rapine, robbery; rape; force, violence; greed, rapacity; stolen goods, booty, plunder; prey, quarry; pursuit of prey; predatoriness, voracity”), from Anglo-Norman ravein, raveine, ravine (“rapine, robbery; rape; force, violence; greed, r",
-        "distractors": [
-            "ravvin",
-            "revin",
-            "rivin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "neven",
-        "definition": "To give as a name to; name; call (someone something).",
-        "exampleSentence": "It took a while to learn how to neven.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "neven",
-        "etymology": "From Middle English nevenen, nevnen, nemmen, nempnen, nemnen, from Old English nemnan, nemnian (“to name, call, give a name to a person or thing; use such and such a name or title in speaking of a person or thing; enumerate; address, speak to; nominate; call upon the name of, address by name, invoke",
-        "distractors": [
-            "nevven",
-            "naven",
-            "niven"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "beken",
-        "definition": "To make known; reveal.",
-        "exampleSentence": "It took a while to learn how to beken.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɪkɛn",
-        "etymology": "From Middle English bekennen, bikennen, equivalent to be- + ken (“to perceive”). Cognate with Dutch bekennen (“to acknowledge, confess”), German bekennen (“to admit, confess”), Swedish bekänna (“to profess, confess”).",
-        "distractors": [
-            "bekken",
-            "baken",
-            "biken"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "toppy",
-        "definition": "Top-heavy.",
-        "exampleSentence": "‘If I don't soon have something sensible to work on I'll go toppy.’.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɒpi",
-        "distractors": [
-            "toppey",
-            "topy",
-            "tappy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "scrow",
-        "definition": "The sky, the heavens.",
-        "exampleSentence": "He wrote the word scrow on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "skrəʊ",
-        "etymology": "From Middle English scrowe, from Old French escroe (“register, note; bit of parchment; piece”), from Frankish *skrōda (“piece”), from Proto-Germanic *skraudō, derivative of Proto-Germanic *skraudaną (“to shred”).",
-        "distractors": [
-            "scrou",
-            "scraw",
-            "screw"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ahiya",
-        "definition": "Respectful honorific used before a name for the eldest brother.",
-        "exampleSentence": "He wrote the word ahiya on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ʔɐhɪɐ",
-        "etymology": "From Hokkien 阿兄 (á-hiaⁿ).",
-        "distractors": [
-            "ahhiya",
-            "ahaya",
-            "aheya"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "decap",
-        "definition": "To remove a cap.",
-        "exampleSentence": "In October 1985 ARDC successfully decapped the AIF and was operating under the RDTE appropriation .",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "diːkæp",
-        "etymology": "From de- + cap.",
-        "distractors": [
-            "deccap",
-            "dacap",
-            "dicap"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "shoti",
-        "definition": "The youngest brother.",
-        "exampleSentence": "‘SAY HI TO SEVI’ ❤️ LOOK: A week after Kryz and Slater Young's second child was born, the couple finally has a name for their shoti. Say hi to Sevi, skyfam! ❤️.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ʃotɪ",
-        "etymology": "Borrowed from Hokkien 小弟 (sió-tǐ, “younger brother; youngest brother”).",
-        "distractors": [
-            "shotti",
-            "shati",
-            "sheti"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "boogy",
-        "definition": "A black person.",
-        "exampleSentence": "He wrote the word boogy on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "boogy",
-        "distractors": [
-            "boogey",
-            "bogy",
-            "booggy"
-        ],
-        "theme": "people"
     },
     {
         "word": "access",
@@ -10754,219 +5038,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "branch",
-        "definition": "The woody part of a tree arising from the trunk and usually dividing.",
-        "exampleSentence": "Can you use the word branch in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɹænt͡ʃ",
-        "etymology": "From Middle English branche, braunche, bronche, from Old French branche, branke, from Late Latin branca (“footprint”, later also “paw, claw”) (whence Middle High German pranke, German Pranke (“paw”)), of unknown origin.",
-        "distractors": [
-            "brannch",
-            "brench",
-            "brinch"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "cannon",
-        "definition": "A complete assembly, consisting of an artillery tube and a breech mechanism, firing mechanism or base cap, which is a component of a gun, howitzer or mortar, which may include muzzle appendages.",
-        "exampleSentence": "He’s got a cannon out in right.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kænən",
-        "etymology": "Attested from around 1400 as Middle English canon, canoun, from Old French canon, from Italian cannone, from Latin canna, from Ancient Greek κάννα (kánna, “reed”), from Akkadian 𒄀 (qanû, “reed”), from Sumerian 𒄀𒈾 (gi.na). Doublet of canyon. This spelling was not fixed until about 1800.",
-        "distractors": [
-            "canon",
-            "cennon",
-            "cinnon"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "canvas",
-        "definition": "A type of coarse cloth, woven from hemp, useful for making sails and tents or as a surface for paintings.",
-        "exampleSentence": "Can you use the word canvas in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kænvəs",
-        "etymology": "From Middle English canevas, from Anglo-Norman, from Old Northern French canevas (compare Old French chanevas, chenevas) from a root derived from Latin cannabis, from Ancient Greek κάνναβις (kánnabis).",
-        "distractors": [
-            "cannvas",
-            "cenvas",
-            "cinvas"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "circus",
-        "definition": "A traveling company of performers that may include acrobats, clowns, trained animals, and other novelty acts, that gives shows usually in a circular tent.",
-        "exampleSentence": "The circus will be in town next week.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɝkəs",
-        "etymology": "From Middle English circus, circo, from Latin circus (“ring, circle”), from Ancient Greek κρίκος (kríkos), κίρκος (kírkos, “ring”), from Proto-Indo-European *(s)ker- (“to bend, turn”). Doublet of cirque.",
-        "distractors": [
-            "cirrcus",
-            "carcus",
-            "cercus"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "colony",
-        "definition": "A geographical area under the remote control of a country; especially to extract resources or exploit labor from that area.",
-        "exampleSentence": "Can you use the word colony in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɔləni",
-        "etymology": "From Middle English colane, colonye, from Latin colōnia (“colony”), from colōnus (“farmer; colonist”), from colō (“till, cultivate, worship”), from earlier *quelō, from Proto-Indo-European *kʷel- (“to move; to turn (around)”). Doublet of Cologne, Colonia, and Köln.",
-        "distractors": [
-            "coloney",
-            "collony",
-            "colonny"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "corona",
-        "definition": "A pale lager beer produced by Mexican brewery Grupo Modelo, commonly served with a wedge of lime or lemon in the neck of the bottle.",
-        "exampleSentence": "Can you use the word corona in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "corona",
-        "etymology": "All ultimately from Latin corōna (“crown”). * (Corona, California): From Spanish corona (“crown, wreath”), chosen to play upon a unique feature of the city, the one-mile diameter drive that circled the center of the town.",
-        "distractors": [
-            "corrona",
-            "coronna",
-            "carona"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cutter",
-        "definition": "A person or device that cuts (in various senses).",
-        "exampleSentence": "The Cutters and Eye-teeth have usually but one Root.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kʌtɚ",
-        "etymology": "From Middle English cutter, cuttere, kutter. By surface analysis, cut + -er.",
-        "distractors": [
-            "cuttor",
-            "cuttar",
-            "cuter"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "effect",
-        "definition": "The result or outcome of a cause.",
-        "exampleSentence": "Can you use the word effect in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɪfɛkt",
-        "etymology": "Of the noun: from Middle English effect, from Old French effect (modern French effet), from Latin effectus (“an effect, tendency, purpose”), from efficiō (“accomplish, complete, effect”); see effect as a verb. Displaced Old English fremming, fremednes from fremman.",
-        "distractors": [
-            "efect",
-            "effecct",
-            "effact"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "feeder",
-        "definition": "One who feeds, or gives food to another.",
-        "exampleSentence": "Can you use the word feeder in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "fidɚ",
-        "etymology": "From Middle English feedere, federe, fedare, equivalent to feed + -er.",
-        "distractors": [
-            "feedor",
-            "feedar",
-            "feder"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "fringe",
-        "definition": "A decorative border.",
-        "exampleSentence": "Can you use the word fringe in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fɹɪnd͡ʒ",
-        "etymology": "From Middle English frenge, from Old French frenge, from Vulgar Latin *frimbia, a metathesis of Latin fimbriae (“fibers, threads, fringe”, plural), of uncertain origin. Compare German Franse and Danish frynse.",
-        "distractors": [
-            "frinnge",
-            "frange",
-            "frenge"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "humour",
-        "definition": "The quality of being amusing, comical, funny.",
-        "exampleSentence": "Can you use the word humour in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "hjuːmɚ",
-        "etymology": "From Middle English humour, from Old French humor, humour, from Latin hūmor, correctly ūmor (“liquid”), from hūmeō, correctly ūmeō (“to be moist”). The h in these words, which was silent in late Classical Latin, is folk etymological, due to the erroneous association with the word humus (“soil”).",
-        "distractors": [
-            "hummour",
-            "humowr",
-            "hamour"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "margin",
-        "definition": "The edge of the paper, typically left blank when printing but sometimes used for annotations etc.",
-        "exampleSentence": "Can you use the word margin in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "mɑːɹd͡ʒ(ə)n",
-        "etymology": "From Middle English margyn, from Latin marginem (possibly via Old French margin), accusative of margō (“edge, brink, border, margin”). Doublet of marge and margo.",
-        "distractors": [
-            "marrgin",
-            "mergin",
-            "mirgin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "matrix",
-        "definition": "The cavity or mold in which anything is formed.",
-        "exampleSentence": "Diode matrix is the most fundamental of all ROM structure.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "mæɪtɹɪks",
-        "etymology": "From Middle English matris, matrice, matrix, from Old French matrice (“pregnant animal”), or from Latin mātrīx (“dam, womb”), both ultimately from māter (“mother”). Doublet of mother from Indo-European ancestor. Slang usage coined with the 1999 sci-fi action film The Matrix.",
-        "distractors": [
-            "mattrix",
-            "metrix",
-            "mitrix"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "matter",
         "definition": "Anything with mass and volume.",
         "exampleSentence": "Can you use the word matter in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "mætɚ",
         "etymology": "From Middle English matere, mater, from Anglo-Norman matere, materie, from Old French materie, matiere, from Latin materia (“wood”), from mater (“mother”), in which case cognate with Old Armenian մայր (mayr, “cedar”) and մայրի (mayri, “forest”). Doublet of Madeira, mata, mater, matrix, and mother.",
@@ -10976,22 +5052,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "mater"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "miller",
-        "definition": "A person who owns or operates a mill, especially a flourmill.",
-        "exampleSentence": "Constable's father, a wealthy miller, operated the mill at Flatford, which still stands 1 mile south of the village.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "mɪlɚ",
-        "etymology": "From Middle English myllere, mellere, from earlier mylnere, possibly from an Old English *mylnere, from Proto-West Germanic *mulīnārī (“miller”), equivalent to mill + -er; cf. also Late Latin molīnārius (“miller”).",
-        "distractors": [
-            "millor",
-            "millar",
-            "miler"
-        ],
-        "theme": "people"
     },
     {
         "word": "minute",
@@ -11026,117 +5086,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "morgan",
-        "definition": "A horse of a compact breed from Vermont; named for Justin Morgan, owner of the stud from which the breed originated.",
-        "exampleSentence": "Can you use the word morgan in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "mɔɹɡən",
-        "distractors": [
-            "omrgan",
-            "mrogan",
-            "mogran"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "offset",
-        "definition": "Anything that acts as counterbalance; a compensating equivalent.",
-        "exampleSentence": "Today's victory was an offset to yesterday's defeat.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɔfsɛt",
-        "etymology": "From off- + set, used to construct the noun form of the verb to set off. Compare Middle English ofsetten (“to encumber, harass, beset, besiege”), from Old English ofsettan (“to press, oppress, overwhelm, crush”).",
-        "distractors": [
-            "ofset",
-            "offsat",
-            "offsit"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "origin",
-        "definition": "The beginning of something.",
-        "exampleSentence": "The custom has its origin in ancient Greece.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɔɹɪd͡ʒɪn",
-        "etymology": "From Middle English origine, origyne, from Old French origine, orine, ourine, from Latin orīgō (“beginning, source, birth, origin”), from orior (“to rise”); see orient. Doublet of origo.",
-        "distractors": [
-            "orrigin",
-            "origgin",
-            "oragin"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "picket",
-        "definition": "A stake driven into the ground.",
-        "exampleSentence": "Can you use the word picket in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "pɪkɪt",
-        "etymology": "From French piquet, from piquer (“to pierce”).",
-        "distractors": [
-            "piccket",
-            "packet",
-            "pecket"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rubber",
-        "definition": "Pliable material derived from the sap of the rubber tree; a hydrocarbon biopolymer of isoprene.",
-        "exampleSentence": "Can you use the word rubber in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹʌbɚ",
-        "etymology": "From rub + -er. The sense of the substance comes from its ability to function as an eraser, displacing earlier caoutchouc. The senses not pertaining to rubbing or erasing are secondarily derived from the name of the substance.",
-        "distractors": [
-            "rubbor",
-            "rubbar",
-            "ruber"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "rubric",
-        "definition": "A heading in a book highlighted in red.",
-        "exampleSentence": "Can you use the word rubric in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹuːbɹɪk",
-        "etymology": "From Middle English rubriche, rubrike, from Old French rubrique, from Latin rūbrīca (“red ochre”), the substance used to make red letters, from ruber (“red”), from Proto-Indo-European *h₁rewdʰ-.",
-        "distractors": [
-            "rubbric",
-            "rabric",
-            "rebric"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "saddle",
-        "definition": "A seat for a rider, typically made of leather and raised in the front and rear, placed on the back of a horse or other animal, and secured by a strap around the animal's body.",
-        "exampleSentence": "Can you use the word saddle in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "sæd(ə)l",
-        "etymology": "From Middle English sadel, from Old English sadol, from Proto-West Germanic *sadul, from Proto-Germanic *sadulaz (“saddle”).",
-        "distractors": [
-            "saddel",
-            "sadle",
-            "seddle"
-        ],
-        "theme": "animals"
-    },
-    {
         "word": "safety",
         "definition": "The condition or feeling of being safe; security; certainty.",
         "exampleSentence": "That was a poor safety from Higgins.",
@@ -11153,43 +5102,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "sector",
-        "definition": "A section.",
-        "exampleSentence": "Can you use the word sector in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɛktəɹ",
-        "etymology": "Borrowed from Latin sector.",
-        "distractors": [
-            "secter",
-            "secctor",
-            "sactor"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "spiral",
-        "definition": "A curve that is the locus of a point that rotates about a fixed point while continuously increasing its distance from that point.",
-        "exampleSentence": "My beloved friends and family who sustained and grounded me as I fell into the rabbit hole of this project or down the spiral of new parenthood.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "spaɪɹəl",
-        "etymology": "From Middle French spirale, from Medieval Latin spiralis, from Latin spīra, from Ancient Greek σπεῖρα (speîra, “wreath, coil, twist”).",
-        "distractors": [
-            "spirel",
-            "spirral",
-            "sparal"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "spring",
         "definition": "An act of springing: a leap, a jump.",
         "exampleSentence": "Can you use the word spring in a sentence?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "spɹɪŋ",
         "etymology": "From Middle English spryng (“a wellspring, tide, branch, sunrise, kind of dance or blow, ulcer, snare, flock”); partly from Old English spring (“wellspring, ulcer”), from Proto-West Germanic *spring, from Proto-Germanic *springaz (“a wellspring, fount”); and partly from Old English spryng (“a jump”)",
@@ -11201,107 +5118,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "topper",
-        "definition": "Something that is on top.",
-        "exampleSentence": "In his latest standup set, his topper is a callback to the dog bowl story.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɑpɚ",
-        "etymology": "From Middle English toppor, equivalent to top + -er.",
-        "distractors": [
-            "toppor",
-            "toppar",
-            "toper"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "trough",
-        "definition": "A long, narrow container, open on top, for feeding or watering animals.",
-        "exampleSentence": "The troughs were filled with leaves and needed clearing.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɹɔθ",
-        "etymology": "From Middle English trogh, from Old English troh, trog (“a trough, tub, basin, vessel for containing liquids or other materials”), from Proto-West Germanic *trog, from Proto-Germanic *trugą, *trugaz, from Proto-Indo-European *drukós, enlargement of *dóru (“tree”).",
-        "distractors": [
-            "truff",
-            "trouggh",
-            "trowgh"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "volume",
-        "definition": "A three-dimensional measure of space that comprises a length, a width and a height. It is measured in units of cubic centimeters in metric, cubic inches or cubic feet in English measurement.",
-        "exampleSentence": "Volume can be measured in decibels.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "vɑljum",
-        "etymology": "From Middle English volume, from Old French volume, from Latin volūmen (“book, roll”), from volvō (“roll, turn about”).",
-        "distractors": [
-            "vollume",
-            "volumme",
-            "valume"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "walker",
-        "definition": "The agent noun of to walk: a person who walks or a thing which walks, especially a pedestrian or a participant in a walking race.",
-        "exampleSentence": "Can you use the word walker in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "wɔkɚ",
-        "etymology": "From Middle English walkere (“one who walks, traveller”), equivalent to walk + -er.",
-        "distractors": [
-            "walkor",
-            "walkar",
-            "wallker"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "adhere",
-        "definition": "To stick fast or cleave, as a glutinous substance does; to become joined or united.",
-        "exampleSentence": "She would adhere every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ædhɪɹ",
-        "etymology": "From Middle English *adheren (suggested by Middle English adherande (“adhering, adherent”, present participle)), from Latin adhaerēre, adhaesum: ad (“to”) + haerēre (“to stick”). Compare French adhérer.",
-        "distractors": [
-            "addhere",
-            "adherre",
-            "adhare"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "assure",
-        "definition": "To make sure and secure; ensure.",
-        "exampleSentence": "She would assure every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "əʃʊɹ",
-        "etymology": "From Old French asseurer (Modern French assurer), from Latin ad- + securus (“secure”). Cognate with Spanish asegurar. Doublet of assecure.",
-        "distractors": [
-            "asser",
-            "asure",
-            "assurre"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "belong",
         "definition": "To have its proper place.",
         "exampleSentence": "You don’t belong here — get out.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "bɪlɔŋ",
         "etymology": "From Middle English belongen, bilongen, from Middle English be- + longen (“to be fitting, be suitable”), from Old English langian (“to pertain to, suit”), equivalent to be- + long (“to belong”).",
@@ -11309,22 +5130,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "bellong",
             "belonng",
             "balong"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "betray",
-        "definition": "To deliver into the hands of an enemy by treachery or fraud, in violation of trust; to give up treacherously or faithlessly.",
-        "exampleSentence": "She would betray every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɪtɹeɪ",
-        "etymology": "From Middle English betrayen, bitrayen (“to commit an act of treason against”), equivalent to be- + tray (“to betray”).",
-        "distractors": [
-            "betraey",
-            "bettray",
-            "betrai"
         ],
         "theme": "everyday"
     },
@@ -11345,59 +5150,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "clinch",
-        "definition": "To bend and hammer the point of (a nail) so it cannot be removed.",
-        "exampleSentence": "She would clinch every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "klɪnt͡ʃ",
-        "etymology": "16th-century alteration of clench.",
-        "distractors": [
-            "clinnch",
-            "clanch",
-            "clench"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "commit",
-        "definition": "To give in trust; to put into charge or keeping; to entrust; to consign; used with to or formerly unto.",
-        "exampleSentence": "She would commit every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kəmɪt",
-        "etymology": "Inherited from Middle English committen, itself borrowed from Latin committō (“to bring together, join, compare, commit (a wrong), incur, give in charge, etc.”), from com- (“together”) + mittō (“to send”). See mission.",
-        "distractors": [
-            "comit",
-            "cammit",
-            "cemmit"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cradle",
-        "definition": "To contain in or as if in a cradle.",
-        "exampleSentence": "She would cradle every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹeɪdəl",
-        "etymology": "From Middle English cradel, credel, from Old English cradol, from Proto-West Germanic *kradul, from Proto-Germanic *kradulaz, from Proto-Germanic *kradô (“(wicker) basket”). Related to cart.",
-        "distractors": [
-            "cradel",
-            "craddle",
-            "credle"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "create",
         "definition": "To bring into existence; (sometimes in particular:).",
         "exampleSentence": "She would create every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "kɹiːeɪt",
         "etymology": "From Middle English createn, from Latin creātus, the perfect passive participle of creō, see -ate (verb-forming suffix). In this sense, mostly displaced Old English wyrċan (whence Modern English work) and ġesċieppan (whence Modern English shape).",
@@ -11407,53 +5164,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "craate"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "demand",
-        "definition": "To request forcefully.",
-        "exampleSentence": "She would demand every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɪmænd",
-        "distractors": [
-            "demmand",
-            "demannd",
-            "damand"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "depart",
-        "definition": "To set out on a journey.",
-        "exampleSentence": "The glory is departed from Israel.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɪpɑɹt",
-        "etymology": "From Old French departir, from Late Latin departiō (“to divide”), from dē- (“away from”) + partiō (“part, divide”).",
-        "distractors": [
-            "deppart",
-            "deparrt",
-            "dapart"
-        ],
-        "theme": "travel"
-    },
-    {
-        "word": "divide",
-        "definition": "To split or separate (something) into two or more parts.",
-        "exampleSentence": "She would divide every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "dɪvaɪd",
-        "etymology": "From Middle English dividen, from Latin dīvidere (“to divide”). Displaced native Old English tōdǣlan.",
-        "distractors": [
-            "divvide",
-            "dividde",
-            "davide"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "excuse",
@@ -11476,7 +5186,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To predict or believe that something will happen.",
         "exampleSentence": "We are expecting our third in June.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "ɪkspɛkt",
         "etymology": "From Latin expectāre, infinitive form of exspectō (“look out for, await, expect”), from ex (“out”) + spectō (“look at”), frequentative of speciō (“see”).",
@@ -11492,7 +5202,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To touch; to feel or hold with the hand(s).",
         "exampleSentence": "She would handle every morning before school.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "hændl̩",
         "etymology": "From Middle English handlen, from Old English handlian (“to handle, feel, deal with, discuss”), from Proto-West Germanic *handulōn, from Proto-Germanic *handulōną (“to take, grip, feel”), equivalent to hand + -le.",
@@ -11504,315 +5214,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "inject",
-        "definition": "To push or pump (something, especially fluids) into a cavity or passage.",
-        "exampleSentence": "She would inject every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɪnd͡ʒɛkt",
-        "etymology": "From Latin iniectus, injectus, participle of iniciō, injiciō (“I throw in”), from in- + iaciō (“I throw”).",
-        "distractors": [
-            "innject",
-            "injecct",
-            "injact"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "launch",
-        "definition": "To throw (a projectile such as a lance, dart or ball); to hurl; to propel with force.",
-        "exampleSentence": "She would launch every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "lɔnt͡ʃ",
-        "etymology": "From Middle English launchen (“to throw as a lance”), Old French lanchier, another form (Old Northern French/Norman variant, compare Jèrriais lanchi) of lancier, French lancer, from lance.",
-        "distractors": [
-            "launnch",
-            "lawnch",
-            "leunch"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "mature",
-        "definition": "To proceed toward maturity: full development or completion (either of concrete or of abstract things, e.g. plans, judgments, qualities).",
-        "exampleSentence": "She would mature every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "mət͡ʃʊ(ə)ɹ",
-        "etymology": "From Middle English maturen, from Middle French maturer (“to mature”), from Latin mātūrō.",
-        "distractors": [
-            "mater",
-            "matture",
-            "maturre"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "oppose",
-        "definition": "To attempt to stop the progression of; to resist or antagonize by physical means, or by arguments, etc.; to contend against.",
-        "exampleSentence": "There is still time to oppose this plan.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "əpoʊz",
-        "etymology": "From Middle English opposen, from Old French opposer, from Latin ob (“before, against”) + Medieval Latin pono (“to put”), taking the place of Latin opponere (“to oppose”).",
-        "distractors": [
-            "opose",
-            "opposse",
-            "oppase"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "quench",
-        "definition": "To satisfy, especially a literal or figurative thirst.",
-        "exampleSentence": "She would quench every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kwɛnt͡ʃ",
-        "etymology": "From Middle English quenchen, from Old English cwenċan, from Proto-Germanic *kwankijaną.",
-        "distractors": [
-            "quennch",
-            "qaench",
-            "qeench"
-        ],
-        "theme": "feelings"
-    },
-    {
-        "word": "reckon",
-        "definition": "To count; to enumerate; to number; also, to compute; to calculate.",
-        "exampleSentence": "I reckon he won't try that again.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɛkən",
-        "etymology": "From Middle English rekenen, from Old English recenian (“to pay; arrange, dispose, reckon”) and ġerecenian (“to explain, recount, relate”); both from Proto-West Germanic *rekanōn (“to count, explain”), from Proto-West Germanic *rekan (“swift, ready, prompt”), from Proto-Indo-European *h₃reǵ- (“to ma",
-        "distractors": [
-            "recckon",
-            "rackon",
-            "rickon"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "redeem",
-        "definition": "To recover ownership of something by buying it back.",
-        "exampleSentence": "She would redeem every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɪdiːm",
-        "etymology": "From Middle English redemen, modified from Old French redimer, from Latin redimō (“release; obviate; atone for”), itself from red- (“back; again”) + emō (“buy; gain, take, procure”).",
-        "distractors": [
-            "redem",
-            "reddeem",
-            "redeam"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "refine",
-        "definition": "To purify; reduce to a fine, unmixed, or pure state; to free from impurities.",
-        "exampleSentence": "She would refine every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹɪfaɪn",
-        "etymology": "From re- + fine.",
-        "distractors": [
-            "reffine",
-            "refinne",
-            "rafine"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "reform",
-        "definition": "To put into a new and improved form or condition; to restore to a former good state, or bring from bad to good; to change from worse to better.",
-        "exampleSentence": "She would reform every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹiːfɔɹm",
-        "etymology": "From Middle English reformen, from Old French reformer, from Latin reformo, reformare. As a noun since 1660s, from French réforme.",
-        "distractors": [
-            "refform",
-            "reforrm",
-            "raform"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "refuse",
-        "definition": "To decline (a request or demand).",
-        "exampleSentence": "My request for a pay rise was refused.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹɪfjuːz",
-        "etymology": "From Middle English refusen, from Old French refuser, from Vulgar Latin *refūsāre, a blend of Classical Latin refūtāre (whence also refute) and recūsāre (whence also recuse).",
-        "distractors": [
-            "reffuse",
-            "refusse",
-            "rafuse"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "repose",
-        "definition": "To lay (someone, or part of their body) down to rest.",
-        "exampleSentence": "She would repose every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹəpoʊz",
-        "etymology": "The verb is derived from Middle English reposen (“to rest”), from Anglo-Norman reposer, reposir, and Middle French reposer, from Old French reposer, repauser (“to become calm; to be peaceful; to rest; to be immobile; to lie or be placed; to cease, stop; to neglect”) (modern French reposer), from Lat",
-        "distractors": [
-            "reppose",
-            "reposse",
-            "rapose"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "resist",
-        "definition": "To attempt to counter the actions or effects of.",
-        "exampleSentence": "She would resist every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹɪzɪst",
-        "etymology": "From Middle English resisten, from Middle French resister and Old French resistre, and their source, Latin resistere, from re- + sistere (“cause to stand”).",
-        "distractors": [
-            "ressist",
-            "resisst",
-            "rasist"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "riddle",
-        "definition": "To put something through a riddle or sieve; to sieve; to sift.",
-        "exampleSentence": "Your argument is riddled with errors.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɪdl̩",
-        "etymology": "From Middle English riddil, ridelle (“sieve”), from Old English hriddel (“sieve”), alteration of earlier hridder, hrīder, from Proto-West Germanic *hrīdrā, from Proto-Germanic *hrīdrą, *hrīdrǭ (“sieve”), from Proto-Germanic *hrid- (“to shake”), from Proto-Indo-European *krey-.",
-        "distractors": [
-            "riddel",
-            "ridle",
-            "raddle"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "rotate",
-        "definition": "To spin, turn, or revolve.",
-        "exampleSentence": "She would rotate every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹoʊteɪt",
-        "etymology": "Borrowed from Latin rotātus, perfect passive participle of rotō (“revolve”) (see -ate (verb-forming suffix) and -ate (adjective-forming suffix)), from rota (“wheel”) + -ō (verb-forming suffix).",
-        "distractors": [
-            "rottate",
-            "rotatte",
-            "ratate"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "salute",
-        "definition": "To make a gesture in honor of (someone or something).",
-        "exampleSentence": "She would salute every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "səlut",
-        "etymology": "Borrowed from Latin salūtō (“to greet; to wish health to”), from salūs (“greeting, good health”), related to salvus (“safe”).",
-        "distractors": [
-            "sallute",
-            "salutte",
-            "selute"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "scrape",
-        "definition": "To draw (an object, especially a sharp or angular one), along (something) while exerting pressure.",
-        "exampleSentence": "She would scrape every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "skɹeɪp",
-        "etymology": "From Middle English scrapen, from Old Norse skrapa (“to scrape, scratch”) and Old English scrapian (“to scrape, scratch”), both from Proto-Germanic *skrapōną, *skrepaną (“to scrape, scratch”), from Proto-Indo-European *skrebʰ- (“to engrave”).",
-        "distractors": [
-            "scrappe",
-            "screpe",
-            "scripe"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "secure",
-        "definition": "To make safe; to relieve from apprehensions of, or exposure to, danger; to guard; to protect.",
-        "exampleSentence": "She would secure every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "səkjʊɹ",
-        "etymology": "Borrowed from Latin sēcūrus (“of persons, free from care, quiet, easy; in a bad sense, careless, reckless; of things, tranquil, also free from danger, safe, secure”), from sē- (“without”) + cūra (“care”); see cure. Doublet of sure and the now obsolete or dialectal sicker (“certain, safe”).",
-        "distractors": [
-            "secer",
-            "seccure",
-            "securre"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "subdue",
-        "definition": "To overcome, quieten, or bring under control.",
-        "exampleSentence": "She would subdue every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "səbdu",
-        "etymology": "From Middle English subdewen, subduen, sodewen, from Old French souduire, from Latin subdūcō (“to draw away”), perhaps influenced by subdō (“to subdue, subject”).",
-        "distractors": [
-            "subbdue",
-            "sabdue",
-            "sebdue"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "survey",
-        "definition": "To inspect, or take a view of; to view with attention, as from a high place; to overlook.",
-        "exampleSentence": "All the Tenants Leases and Copies are surveyed.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɝveɪ",
-        "etymology": "From Middle English surveyen, from Old French sourveoir, surveer (“to oversee”), from sour-, sur- (“over”) + veoir, veeir (“to see”), from Latin videre. See sur- and vision. Related to supervision.",
-        "distractors": [
-            "survy",
-            "surveey",
-            "surrvey"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "travel",
         "definition": "To be on a journey, often for pleasure or business and with luggage; to go from one place to another.",
         "exampleSentence": "Soundwaves can travel through water.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "tɹævəl",
         "etymology": "From Middle English travelen (“to make a laborious journey, travel”) from Middle Scots travailen (“to toil, work, travel”), alteration of Middle English travaillen (“to toil, work”), from Old French travailler (“to trouble, suffer, be worn out”).",
@@ -11824,91 +5230,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "money"
     },
     {
-        "word": "trench",
-        "definition": "To invade, especially with regard to the rights or the exclusive authority of another; to encroach.",
-        "exampleSentence": "She would trench every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɹɛnt͡ʃ",
-        "etymology": "Borrowed into Middle English from Old French trenche. Doublet of tranche and traunch. Possible doublet of English: truncate",
-        "distractors": [
-            "trennch",
-            "tranch",
-            "trinch"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "unbend",
-        "definition": "To remove a bend so as to make, or allow to become, straight.",
-        "exampleSentence": "You do unbend your noble strength.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ʌnbɛnd",
-        "etymology": "From Middle English unbenden, equivalent to un- + bend.",
-        "distractors": [
-            "unnbend",
-            "unbennd",
-            "unband"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "decent",
-        "definition": "Appropriate; suitable for the circumstances.",
-        "exampleSentence": "Are you decent? May I come in?",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "diːs(ə)nt",
-        "etymology": "Borrowed from Middle French décent, or its source, Latin decēns, present participle of decet (“it is fitting or suitable”), from Proto-Indo-European *deḱ- (“to take, accept, to receive, greet, be suitable”) (compare Ancient Greek δοκέω (dokéō, “I appear, seem, think”), δέχομαι (dékhomai, “I accept”)",
-        "distractors": [
-            "decant",
-            "deccent",
-            "decennt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "formal",
-        "definition": "In accordance with established forms.",
-        "exampleSentence": "I'd like to make a formal complaint.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "fɔɹməl",
-        "etymology": "From Middle English formel, borrowed from Old French formel, from Latin fōrmālis, from fōrma (“form”); equivalent to form + -al.",
-        "distractors": [
-            "formel",
-            "forrmal",
-            "farmal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "golden",
-        "definition": "Made of, or relating to, gold.",
-        "exampleSentence": "The Renaissance was a golden era.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɡoʊldən",
-        "etymology": "From Middle English golden, a restored form (due to the noun gold) of earlier Middle English gulden, gylden, gilden (\"golden\"; > English gilden), from Old English gylden (“golden”), from Proto-West Germanic *gulþīn, from Proto-Germanic *gulþīnaz (“golden, made of gold”), equivalent to gold + -en.",
-        "distractors": [
-            "gollden",
-            "galden",
-            "gelden"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "living",
         "definition": "Having life; alive.",
         "exampleSentence": "Hunanese is a living language.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "lɪvɪŋ",
         "etymology": "From Middle English livynge, libbyng, livinde, livand, livende, libbinde, libbende, from Old English lifiġende, lifiende, libbende, from Proto-West Germanic *libbjandī, from Proto-Germanic *libjandz (“living”), present participle of Proto-Germanic *libjaną (“to live”), equivalent to live + -ing.",
@@ -11924,7 +5250,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Being extroverted or outgoing.",
         "exampleSentence": "Unemployment is a social problem.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "soʊʃəl",
         "etymology": "From Middle French social, from Latin sociālis (“of or belonging to a companion or companionship or association, social”), from socius (“a companion, fellow, partner, associate, ally”), from sequor (“follow”). Cognate with English seg (“man, companion, fellow”). More at seg.",
@@ -11932,54 +5258,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "sociel",
             "soccial",
             "sacial"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "steady",
-        "definition": "Firm in standing or position; not tottering or shaking; fixed; firm.",
-        "exampleSentence": "Hold the ladder steady while I go up.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "stɛdi",
-        "etymology": "From Middle English stedy, studi, stidiȝ, perhaps continuing Old English stæþþiġ, ġestæþþiġ (“steadfast, stable, firm, staid”), equivalent to stead + -y; or calquing Middle Low German or Middle Dutch stēdig.",
-        "distractors": [
-            "steadey",
-            "steaddy",
-            "steedy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "verbal",
-        "definition": "Of or relating to words.",
-        "exampleSentence": "It was not a verbal remark, but a proceeding in dumb-show.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "vɜːbəl",
-        "etymology": "From Old French verbal, from Late Latin verbālis (“belonging to a word”). Equivalent to verb + -al.",
-        "distractors": [
-            "verbel",
-            "verrbal",
-            "varbal"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "yellow",
-        "definition": "Of a yellow hue.",
-        "exampleSentence": "He had a yellow laptop in his bag.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "jɛloʊ",
-        "etymology": "From Middle English yelwe, yelou, from Old English ġeolwe, oblique form of Old English ġeolu, from Proto-West Germanic *gelu, from Proto-Germanic *gelwaz, from Proto-Indo-European *ǵʰelh₃wós, from *ǵʰelh₃- (“gleam, yellow”).",
-        "distractors": [
-            "yelow",
-            "yellou",
-            "yallow"
         ],
         "theme": "everyday"
     },
@@ -12000,74 +5278,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "communication"
     },
     {
-        "word": "bishop",
-        "definition": "To act as a bishop, to perform the duties of a bishop, especially to confirm another's membership in the church.",
-        "exampleSentence": "She would bishop every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "bɪʃəp",
-        "etymology": "From Middle English bischop, bishop, bisshop, biscop, from Old English bisċop (“bishop”), from Proto-West Germanic *biskop, from Vulgar Latin (e)biscopus, from classical Latin episcopus (“overseer, supervisor”), from Ancient Greek ἐπίσκοπος (epískopos, “overseer”), from ἐπί (epí, “over”) + σκοπός (s",
-        "distractors": [
-            "bisshop",
-            "bashop",
-            "beshop"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "random",
-        "definition": "A roving motion; course without definite direction; lack of rule or method; chance.",
-        "exampleSentence": "The party was boring. It was full of randoms.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɹændəm",
-        "etymology": "From earlier randon, from Middle English randoun, raundon, from Old French randon, from randir (“to run, gallop”) (whence French randonnée (“long walk, hike”)), from Frankish *randiju (“a run, race”) or Old Norse rend (“a run, race”), both from Proto-Germanic *randijō, from *rinnaną (“run”, verb), f",
-        "distractors": [
-            "ranndom",
-            "rendom",
-            "rindom"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "noodle",
-        "definition": "To play (a musical instrument or passage of music) or to sing (a passage of music) in an improvisatory or lighthearted manner; also, to play (a series of ornamental notes) on an instrument.",
-        "exampleSentence": "He noodled over the problem for a day or two before making a decision.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "nudəl",
-        "etymology": "The origin of the verb is uncertain; it is possibly derived: * from noodle (“to hum or sing (a tune) at a low pitch or volume”) (Shetland) (see etymology 3); or * from German nudeln (“to make music or sing listlessly; to make music or sing at a low pitch or volume, or in an improvisatory manner”) (L",
-        "distractors": [
-            "noodel",
-            "nodle",
-            "nooddle"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "earing",
-        "definition": "A line used to fasten the upper corners of a sail to the yard or gaff.",
-        "exampleSentence": "Gustave. (Gets up.) What? I believe you are wearing my earings yet!",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "ɪəɹɪŋ",
-        "distractors": [
-            "earring",
-            "earinng",
-            "eering"
-        ],
-        "theme": "water"
-    },
-    {
         "word": "picked",
         "definition": "Having a pick, or a particular number/type of pick.",
         "exampleSentence": "Why then I suck my teeth and catechize / My picked man of countries:",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "blends",
         "pronunciation": "pɪkt",
         "distractors": [
@@ -12078,304 +5293,36 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "baller",
-        "definition": "A kitchenware utensil for cutting ball-shaped pieces of foods.",
-        "exampleSentence": "Did you see that car? He’s such a baller.",
+        "word": "example",
+        "definition": "Something that is representative of all such things in a group.",
+        "exampleSentence": "…hang him, hee'le be made an example.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "bɔːlɚ",
-        "etymology": "From ball + -er. The sense referring to extravagance comes from NBA b-ballers being wealthy.",
+        "pronunciation": "ɪɡzæmpəl",
+        "etymology": "From Middle English example, exaumple, from Old French example, essaumple, from Latin exemplum (“sample, pattern, specimen, copy for imitation, etc.”, literally “what is taken out”); see exempt. Doublet of exemplum and sample.",
         "distractors": [
-            "ballor",
-            "ballar",
-            "baler"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "westie",
-        "definition": "A West Highland White Terrier.",
-        "exampleSentence": "Westies may be small in stature but they have huge personalities.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "westie",
-        "etymology": "From west + -ie.",
-        "distractors": [
-            "westy",
-            "wesstie",
-            "westei"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bussed",
-        "definition": "Having or involving transportation by bus.",
-        "exampleSentence": "If δ≤max{R_A, C_A}, the bussed array is R_A/ C_A-reconfigurable.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bʌst",
-        "distractors": [
-            "bused",
-            "bassed",
-            "bessed"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "betake",
-        "definition": "To take over to; take across (to); deliver.",
-        "exampleSentence": "She would betake every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "bɪteɪk",
-        "etymology": "From Middle English bitaken, equivalent to be- + take. Cognate with Danish betage (“to take, deprive, cut off”), Swedish beta (“to take, deprive, cut off”).",
-        "distractors": [
-            "bettake",
-            "betakke",
-            "batake"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "woodie",
-        "definition": "An early station wagon or estate car whose rear bodywork is made of wood, often associated with Southern California surfing culture.",
-        "exampleSentence": "She raised her brows. “You got a woodie; I got a wettie. Doesn't mean mine was for yours.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "wʊdi",
-        "etymology": "From wood + -ie.",
-        "distractors": [
-            "woody",
-            "wodie",
-            "wooddie"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "malkin",
-        "definition": "A (stereotypical name for a) lower-class or uncultured woman; a kitchenmaid; a slattern.",
-        "exampleSentence": "Can you use the word malkin in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "mɔːlkɪn",
-        "etymology": "From Malde, an early form of Maude or Matilda + -kin (diminutive ending). Compare grimalkin.",
-        "distractors": [
-            "mallkin",
-            "melkin",
-            "milkin"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "whites",
-        "definition": "A set of white clothes, especially as a uniform.",
-        "exampleSentence": "He walked somewhat mincingly, thin, in soiled whites, his brief-case under his arm.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "(h)waɪts",
-        "distractors": [
-            "whittes",
-            "wites",
-            "whates"
+            "exampel",
+            "exxample",
+            "exammple"
         ],
         "theme": "quantity"
     },
     {
-        "word": "dieted",
-        "definition": "Having been on a specialized diet that limits caloric intake.",
-        "exampleSentence": "Then I say ye are a dieted horse for heaven.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dieted",
-        "distractors": [
-            "dietted",
-            "deited",
-            "daeted"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lapper",
-        "definition": "One who laps liquid, who takes liquid in with the tongue.",
-        "exampleSentence": "Can you use the word lapper in a sentence?",
+        "word": "feeling",
+        "definition": "Sensation, particularly through the skin.",
+        "exampleSentence": "The house gave me a feeling of dread.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "lapper",
-        "etymology": "From lap + -er.",
+        "pronunciation": "fiːlɪŋ",
+        "etymology": "From Middle English felynge, equivalent to feel + -ing.",
         "distractors": [
-            "lappor",
-            "lappar",
-            "laper"
+            "feling",
+            "feelling",
+            "feelinng"
         ],
         "theme": "body"
-    },
-    {
-        "word": "cobbed",
-        "definition": "Broken, cut or trimmed into pieces of a convenient size, or formed into small blocks; cobbled.",
-        "exampleSentence": "A fluidized freezing process can be used for both cut corn and cobbed corn.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "cobbed",
-        "distractors": [
-            "cobed",
-            "cabbed",
-            "cebbed"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "goldie",
-        "definition": "Something which is golden in color.",
-        "exampleSentence": "Outdoor ponds provide the perfect environment for goldies and Koi.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "goldie",
-        "etymology": "From gold + -ie.",
-        "distractors": [
-            "goldy",
-            "golldie",
-            "goldei"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "sindon",
-        "definition": "A fine thin linen muslin or cambric cloth.",
-        "exampleSentence": "There were found in it a Book, and a Letter; Both … wrapped in Sindons of Linnen.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "sɪndən",
-        "etymology": "From Latin sindōn (possibly by way of Old French syndone and sindone), from Ancient Greek σινδών (sindṓn), from Late Egyptian šndy(t), from earlier šnḏwt (“kilt”).",
-        "distractors": [
-            "sinndon",
-            "sandon",
-            "sendon"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "rollup",
-        "definition": "A kind of food made by wrapping ingredients in another food, e.g. fajitas.",
-        "exampleSentence": "Can you use the word rollup in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "rollup",
-        "etymology": "Deverbal from roll up.",
-        "distractors": [
-            "rolup",
-            "rallup",
-            "rellup"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "decern",
-        "definition": "To decide or determine (a matter disputed or doubtful), with simple object, with infinitive or object clause, or intransitive.",
-        "exampleSentence": "She would decern every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "dɪsɝn",
-        "etymology": "First attested in late Middle English circa 1425; from the French décerner, from the Latin dēcernō (“I decide, pronounce a decision”), from dē (“of, from, away from”) + cernō (“I separate, distinguish”), whence the English cern.",
-        "distractors": [
-            "deccern",
-            "decerrn",
-            "dacern"
-        ],
-        "theme": "language"
-    },
-    {
-        "word": "derank",
-        "definition": "To inflect into a form that cannot be used in independent declarative clauses.",
-        "exampleSentence": "The young man comes to the foreground, deranking the debilitating illness to the background.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "derank",
-        "etymology": "From de- + rank.",
-        "distractors": [
-            "derrank",
-            "derannk",
-            "darank"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bearing",
-        "definition": "A mechanical device that supports another part or reduces friction.",
-        "exampleSentence": "That has no bearing on this issue.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɛɹɪŋ",
-        "etymology": "From Middle English bering, beringe, berynge, equivalent to bear + -ing.",
-        "distractors": [
-            "bearring",
-            "bearinng",
-            "beering"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "crystal",
-        "definition": "A solid composed of an array of atoms or molecules possessing long-range order and arranged in a pattern which is periodic in three dimensions.",
-        "exampleSentence": "He tells me he's been shooting crystal, which I already pretty much know because he does not bother to keep his sleeves rolled down over the needle tracks.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɹɪstəl",
-        "etymology": "From Middle English crystal, cristal, criȝstall, from Old English cristalla (“crystal”), a borrowing from Latin crystallum (“crystal, ice”) (later reinforced from Anglo-Norman cristall and Middle French cristal, from Latin crystallum), from Ancient Greek κρύσταλλος (krústallos, “clear ice”), from κρ",
-        "distractors": [
-            "crystel",
-            "crysstal",
-            "crystil"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "descent",
-        "definition": "An instance of descending; act of coming down.",
-        "exampleSentence": "Our guide was of Welsh descent.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dəsɛnt",
-        "etymology": "From Middle English and Anglo-Norman descente, from Anglo-Norman descendre (“to descend”); see descend. Compare ascent, ascend. Doublet of desant.",
-        "distractors": [
-            "descant",
-            "desscent",
-            "descennt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "display",
-        "definition": "A show or spectacle.",
-        "exampleSentence": "The trapeze artist put on an amazing acrobatic display.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪspleɪ",
-        "etymology": "From Middle English displayen, from Anglo-Norman despleier and Old French despleier, desploiier, from Medieval Latin displicare (“to unfold, display”), from Latin dis- (“apart”) + plicāre (“to fold”). Doublet of deploy.",
-        "distractors": [
-            "displaey",
-            "dissplay",
-            "displai"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "hearing",
@@ -12394,66 +5341,18 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "impulse",
-        "definition": "A thrust; a push; a sudden force that impels.",
-        "exampleSentence": "The impulse to learn drove me to study night and day.",
+        "word": "meeting",
+        "definition": "The act of persons or things that meet.",
+        "exampleSentence": "We need to have a meeting about that soon.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ɪmpʌls",
-        "etymology": "Borrowed from Middle French impulser, from Latin impulsus. For spelling, as in pulse, the -e (on -lse) is so the end is pronounced /ls/, rather than /lz/ as in pulls, and does not change the vowel (‘u’). Compare else, false, convulse.",
+        "pronunciation": "mitɪŋ",
+        "etymology": "From Middle English meeting, meting, from Old English mēting, ġemēting (“meeting, assembly, association, society”), equivalent to meet + -ing. Cognate with West Frisian moeting (“meeting, encounter”), Dutch ontmoeting (“meeting, encounter”), Middle Low German mö̂tinge (“meeting”).",
         "distractors": [
-            "immpulse",
-            "impullse",
-            "impalse"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "nucleus",
-        "definition": "The core, central part of something, around which other elements are assembled.",
-        "exampleSentence": "This collection will form the nucleus of a new library.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "nuːkliəs",
-        "etymology": "Learned borrowing from Latin nucleus (“kernel, core”). The earliest uses refer to the head of a comet and the kernel of a seed, both recorded in Lexicon Technicum in 1704. The sense in atomic physics was coined by British scientist Michael Faraday in 1844 in a theoretical meaning.",
-        "distractors": [
-            "nuccleus",
-            "nacleus",
-            "necleus"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "product",
-        "definition": "Anything that is produced; a result.",
-        "exampleSentence": "I got some product here — you buying?",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "pɹɑdəkt",
-        "etymology": "From Middle English product, from Latin prōductus, perfect participle of prōdūcō, first attested in English in the mathematics sense.",
-        "distractors": [
-            "prodduct",
-            "producct",
-            "praduct"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "reverse",
-        "definition": "The opposite of something.",
-        "exampleSentence": "Division is the reverse of multiplication.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɹɪvɝs",
-        "etymology": "From Middle English revers, from Anglo-Norman revers, Middle French revers, and their source, Latin reversus, perfect passive participle of reversō, from re- + versō. Doublet of revers.",
-        "distractors": [
-            "revverse",
-            "reverrse",
-            "raverse"
+            "meting",
+            "meetting",
+            "meetinng"
         ],
         "theme": "everyday"
     },
@@ -12462,7 +5361,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A distressing or dangerous situation.",
         "exampleSentence": "My old car has engine trouble.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "tɹabəl",
         "etymology": "Verb is from Middle English troublen, trouble, borrowed from Old French troubler, trobler, trubler, metathetic variants of tourbler, torbler, turbler, from Vulgar Latin *turbulō, from Latin turbula (“disorderly group, a little crowd or people”), diminutive of turba (“stir; crowd”).",
@@ -12490,134 +5389,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "upgrade",
-        "definition": "An upward grade or slope.",
-        "exampleSentence": "The three dots next to each gadget show how many upgrades have been purchased.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "ʌpɡɹeɪd",
-        "etymology": "From up- + grade.",
-        "distractors": [
-            "uppgrade",
-            "upgradde",
-            "upgrede"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "compose",
-        "definition": "To make something by merging parts.",
-        "exampleSentence": "A church is composed of its members.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "kəmpoʊz",
-        "etymology": "From Middle English composen, from Old French composer (“to compose, compound, adjust, settle”), from com- + poser, as an adaptation of Latin componere (“to put together, compose”), from com- (“together”) + ponere (“to put, place”).",
-        "distractors": [
-            "commpose",
-            "composse",
-            "campose"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "consume",
-        "definition": "To use up.",
-        "exampleSentence": "The building was consumed by fire.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "kənsum",
-        "etymology": "From Middle English consumen, from Old French consumer, from Latin cōnsūmere, cōnsūmō, from con- (“with, together”) + sūmō (“take; consume”), from sub- + emō (“to buy, take”), ultimately from Proto-Indo-European *h₁em- (“to take, distribute”), possibly related to the root *nem- (“to take or give one",
-        "distractors": [
-            "connsume",
-            "consumme",
-            "cansume"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "contain",
-        "definition": "To hold inside.",
-        "exampleSentence": "Most of the meals they offer contain meat.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kənteɪn",
-        "etymology": "From Middle English, borrowed from Old French contenir, from Latin continēre (“to hold or keep together, comprise, contain”), combined form of con- (“together”) + teneō (“to hold”).",
-        "distractors": [
-            "conntain",
-            "contayn",
-            "cantain"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "contend",
-        "definition": "To be in opposition; to contest; to dispute; to vie; to quarrel; to fight.",
-        "exampleSentence": "For never two such kingdoms did contend without much fall of blood.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kəntɛnd",
-        "etymology": "From Middle English contenden, borrowed from Old French contendre, from Latin contendere (“to stretch out, extend, strive after, contend”), from com- (“together”) + tendere (“to stretch”); see tend, and compare attend, extend, intend, subtend.",
-        "distractors": [
-            "conntend",
-            "contennd",
-            "cantend"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "deflate",
-        "definition": "To remove air or some other gas from within an elastic container, e.g. a balloon or tyre.",
-        "exampleSentence": "Never had a problem, guess I've never had to deflate multiple files!",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "diːfleɪt",
-        "etymology": "From de- + (in)flate. Coined in 1891, in reference to balloons. Equivalent to Latin dē- (“away, from”) + Latin flō (“blow”) + -ate (verb-forming suffix).",
-        "distractors": [
-            "defflate",
-            "deflatte",
-            "daflate"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "incline",
-        "definition": "To bend or move (something) out of a given plane or direction, often the horizontal or vertical.",
-        "exampleSentence": "He inclines to believe anything he reads in the newspapers.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "ɪnklaɪn",
-        "etymology": "From Middle English enclinen, from Old French encliner (modern incliner), from Latin inclīnō (“incline, tilt”), from in- + clīnō (compare -cline), from Proto-Indo-European *ḱley- (English lean).",
-        "distractors": [
-            "inncline",
-            "inclinne",
-            "inclane"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "plaster",
-        "definition": "To cover or coat something with plaster; to render.",
-        "exampleSentence": "Her face was plastered with mud.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "plæstɚ",
-        "etymology": "From Middle English plaster, plastre, from Old English plaster, from late Latin plastrum, shortened from Classical Latin emplastrum (“a plaster, bandage”); later reinforced by Anglo-Norman plastre. The verb is from Middle English plastren, from the noun.",
-        "distractors": [
-            "plastor",
-            "plastar",
-            "plasster"
-        ],
-        "theme": "clothing"
-    },
-    {
         "word": "pretend",
         "definition": "To speak or behave so as to give a false or simulated appearance.",
         "exampleSentence": "You don't have to pretend to like the soup.",
@@ -12634,210 +5405,36 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "suspend",
-        "definition": "To halt something temporarily.",
-        "exampleSentence": "The meeting was suspended for lunch.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "səspɛnd",
-        "etymology": "From Old French sospendre, from Latin suspendere.",
-        "distractors": [
-            "susspend",
-            "suspennd",
-            "saspend"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "awkward",
-        "definition": "Lacking dexterity in the use of the hands, or of instruments.",
-        "exampleSentence": "An awkward silence had fallen.",
+        "word": "general",
+        "definition": "Including or involving every part or member of a given or implied entity, whole, etc.; common to all, universal.",
+        "exampleSentence": "For these successes he obtained the rank of Field-Marshal General.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ɔkwɚd",
-        "etymology": "From awk (“odd, clumsy”) + -ward. Compare Middle English aukeward (“in the wrong direction”).",
+        "pronunciation": "d͡ʒɛn(ə)ɹəl",
+        "etymology": "From Middle English general, in turn from Anglo-Norman general, generall, Middle French general, and their source, Latin generālis, from genus (“class, kind”) + -ālis (“-al”); thus morphologically parallel with, and a doublet of, generic.",
         "distractors": [
-            "awwkward",
-            "awkwarrd",
-            "awkwerd"
+            "generel",
+            "genneral",
+            "generral"
         ],
         "theme": "everyday"
     },
     {
-        "word": "unsound",
-        "definition": "Not whole, not solid, defective.",
-        "exampleSentence": "You would not like Nietzsche, sir. He is fundamentally unsound.",
+        "word": "serious",
+        "definition": "Without humor or expression of happiness; grave in manner or disposition.",
+        "exampleSentence": "He says he wants to buy the team, but is he serious?",
         "partOfSpeech": "adjective",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ʌnsaʊnd",
-        "etymology": "From un- + sound.",
+        "pronunciation": "sɪɚiəs",
+        "etymology": "From Middle English seryows, from Old French serieux, from Medieval Latin sēriōsus, an extension of Latin sērius (“grave, earnest, serious”), from Proto-Indo-European *swer- (“heavy”). Cognate with German schwer (“heavy, difficult, severe”), Old English swǣr (“heavy, grave, grievous”).",
         "distractors": [
-            "unnsound",
-            "unsounnd",
-            "unsownd"
+            "serous",
+            "serius",
+            "sereous"
         ],
-        "theme": "everyday"
-    },
-    {
-        "word": "shortie",
-        "definition": "Something or someone that is shorter than normal.",
-        "exampleSentence": "They got a shortie at the start of the third.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "shortie",
-        "etymology": "From short + -ie.",
-        "distractors": [
-            "shorty",
-            "shorrtie",
-            "shortei"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "burnout",
-        "definition": "The experience of long-term exhaustion and diminished interest, especially in one's career.",
-        "exampleSentence": "There’s no way we can hire that guy. He’s a total burnout—he can't do the work.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɜː(ɹ)naʊt",
-        "etymology": "Deverbal from burn out.",
-        "distractors": [
-            "burrnout",
-            "burnowt",
-            "barnout"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "glazing",
-        "definition": "The act or process of glazing or an instance thereof.",
-        "exampleSentence": "Before new glazier's putty can be applied, the various bits of old glazing must be scraped off.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɡleɪzɪŋ",
-        "etymology": "Inherited from Middle English glasynge; equivalent to glaze + -ing.",
-        "distractors": [
-            "glazzing",
-            "glazinng",
-            "glezing"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "briefed",
-        "definition": "Wearing briefs.",
-        "exampleSentence": "All sorties made good their briefed takeoff time.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɹiːft",
-        "distractors": [
-            "brieffed",
-            "breifed",
-            "braefed"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "clouted",
-        "definition": "Clotted; coagulated.",
-        "exampleSentence": "I've seen her skim the clouted cream, And press from spongy curds the milky stream.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "clouted",
-        "distractors": [
-            "cloutted",
-            "clowted",
-            "clauted"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ringman",
-        "definition": "A male entertainer who works in the ring of a circus.",
-        "exampleSentence": "And when a man shooteth, the might of his shoote lyeth on the foremost finger, and on the ringman.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ringman",
-        "etymology": "From ring + -man.",
-        "distractors": [
-            "rinngman",
-            "rangman",
-            "rengman"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "setdown",
-        "definition": "The act of setting down something or someone.",
-        "exampleSentence": "Setdown areas in a factory for materials unloaded from incoming vehicles.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "setdown",
-        "etymology": "* Deverbal from set down. * (buttocks): See set as US regional form of sit, and see sit down.",
-        "distractors": [
-            "settdown",
-            "setdowwn",
-            "setdoun"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "biocode",
-        "definition": "A unified taxonomic system, such as the BioCode.",
-        "exampleSentence": "The most valuable innovation of the new API 20C was the development of the biocode system.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "biocode",
-        "etymology": "From bio- + code.",
-        "distractors": [
-            "bioccode",
-            "biocodde",
-            "baocode"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "kickout",
-        "definition": "A rapid turn performed by shifting one's weight to the rear of the surfboard.",
-        "exampleSentence": "The kickout was fumbled and Barrett lost his chance to try for the goal.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kickout",
-        "etymology": "Deverbal from kick out.",
-        "distractors": [
-            "kicckout",
-            "kickowt",
-            "kackout"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "chestnut",
-        "definition": "An edible nut (technically a fruit) of the Spanish chestnut or sweet chestnut tree (Castanea sativa); also (chiefly preceded by a descriptive word), a nut from a related shrub or tree; or a similar nut from an unrelated plant.",
-        "exampleSentence": "An owl cried among the silent Spanish chestnuts on the slope outside.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "t͡ʃɛs(t)nʌt",
-        "etymology": "The noun is a contraction of chest(en) (“(obsolete) chestnut tree; fruit of this tree, chestnut”) + nut.",
-        "distractors": [
-            "chesstnut",
-            "chastnut",
-            "chistnut"
-        ],
-        "theme": "plants"
+        "theme": "character"
     },
     {
         "word": "distance",
@@ -12872,327 +5469,107 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "presence",
-        "definition": "The fact or condition of being present, or of being within sight or call, or at hand.",
-        "exampleSentence": "Bob never said anything about it in my presence.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "pɹɛz(ə)ns",
-        "etymology": "Through Old French presence, from Latin praesentia (“a being present”), from praesentem. Displaced native Old English andweardnes.",
-        "distractors": [
-            "presance",
-            "pressence",
-            "presennce"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "standard",
-        "definition": "A level of quality or attainment.",
-        "exampleSentence": "I finished my twelfth standard with less than stellar marks.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stændəɹd",
-        "etymology": "From Middle English standard, from Old French estandart (“gathering place, battle flag”), from Frankish *standahard (literally “stand firm, stand hard”), equivalent to stand + -ard.",
-        "distractors": [
-            "stanndard",
-            "standarrd",
-            "stendard"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "disperse",
-        "definition": "To scatter in different directions.",
-        "exampleSentence": "The Jews are dispersed among all nations.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪspɝs",
-        "etymology": "From Middle French disperser, from Latin dispersus, past participle of dispergō (“to scatter abroad, disperse”), from dis- (“apart”) + spargō (“to scatter”); see sparse.",
-        "distractors": [
-            "dissperse",
-            "disperrse",
-            "dasperse"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fracture",
-        "definition": "To break, or cause something to break.",
-        "exampleSentence": "The instructions said to fracture gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "fɹækt͡ʃə",
-        "etymology": "From Middle English fracture, from Old French fracture, from Latin frāctūra (“a breach, fracture, cleft”), from frangere (“to break”), past participle frāctus, ultimately from Proto-Indo-European *bʰreg-, whence also English break. See fraction. Doublet of fraktur.",
-        "distractors": [
-            "rfacture",
-            "farcture",
-            "frcature"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "preserve",
-        "definition": "To protect; to keep from harm or injury.",
-        "exampleSentence": "The instructions said to preserve gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "pɹəzɝv",
-        "etymology": "From Middle English preserven, from Old French preserver, from Medieval Latin prēservāre (“keep, preserve”), from Late Latin praeservāre (“guard beforehand”), from prae (“before”, adverb) + servāre (“maintain, keep”).",
-        "distractors": [
-            "presserve",
-            "preserrve",
-            "praserve"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "detached",
-        "definition": "Not physically attached; separated from something to which it could connect.",
-        "exampleSentence": "\"That field is their football ground and the detached house is their library and recreation room.\"",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɪtæt͡ʃt",
-        "distractors": [
-            "dettached",
-            "detacched",
-            "detatched"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "profound",
-        "definition": "Descending far below the surface; opening or reaching to great depth; deep.",
-        "exampleSentence": "The old house had a profound appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "pɹəfaʊnd",
-        "etymology": "From Middle English profound, profounde, from Anglo-Norman profound, from Old French profont, profonde, from Latin profundus (“deep, profound”), from prō + fundus (“bottom; foundation”).",
-        "distractors": [
-            "proffound",
-            "profounnd",
-            "profownd"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "munchkin",
-        "definition": "A domestic cat breed with short legs.",
-        "exampleSentence": "Munchkins are in fact one of the Healthiest ^() of the registered cat breeds.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "munchkin",
-        "distractors": [
-            "munnchkin",
-            "manchkin",
-            "menchkin"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "blueline",
-        "definition": "To create the bluelines for material that is about to be printed.",
-        "exampleSentence": "The instructions said to blueline gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "blueline",
-        "etymology": "From blue + line.",
-        "distractors": [
-            "bluelline",
-            "bluelinne",
-            "blaeline"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "stacking",
-        "definition": "The act by which something is stacked.",
-        "exampleSentence": "The stacking was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stacking",
-        "distractors": [
-            "staccking",
-            "stackinng",
-            "stecking"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mounture",
-        "definition": "The angle at which a gun is raised for firing.",
-        "exampleSentence": "The mounture was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "mounture",
-        "etymology": "From Middle English mounture, from Old French mounteure; equivalent to mount + -ure.",
-        "distractors": [
-            "mounter",
-            "mounnture",
-            "mounturre"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "sprinkly",
-        "definition": "Light, tending to sprinkle or fall down softly.",
-        "exampleSentence": "The rain had tapered off to a sprinkly drizzle, Portland's most prevalent weather condition.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "sprinkly",
-        "etymology": "From sprinkle + -y.",
-        "distractors": [
-            "sprinkley",
-            "sprinnkly",
-            "sprankly"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "turnback",
-        "definition": "Part of a garment that is turned back.",
-        "exampleSentence": "Most basketmakers make their turnbacks in a particular section of the weaving on the sides or in the middle of the basket.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "turnback",
-        "etymology": "Deverbal from turn back.",
-        "distractors": [
-            "turnbak",
-            "turrnback",
-            "turnbacck"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "contrude",
-        "definition": "To crowd or push together.",
-        "exampleSentence": "The instructions said to contrude gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "kʌntɹuːd",
-        "etymology": "From Latin contrudo.",
-        "distractors": [
-            "conntrude",
-            "contrudde",
-            "cantrude"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "soundage",
-        "definition": "The production of a sound.",
-        "exampleSentence": "Then we heard the soundage of a whistle in the wind .",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "soundage",
-        "etymology": "From sound + -age.",
-        "distractors": [
-            "sounndage",
-            "soundagge",
-            "sowndage"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "backstep",
-        "definition": "A step backwards.",
-        "exampleSentence": "There are also times when a player needs to enlist the aid of the backstep while on the baseline.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "backstep",
-        "etymology": "From back + step.",
-        "distractors": [
-            "bacckstep",
-            "beckstep",
-            "bickstep"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "backwing",
-        "definition": "An act of backwinging.",
-        "exampleSentence": "With a disgusted backwing, I let myself down, hard.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "backwing",
-        "distractors": [
-            "bacckwing",
-            "backwinng",
-            "beckwing"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ban",
-        "definition": "A unit measuring information or entropy based on base-ten logarithms, rather than the base-two logarithms that define the bit.",
-        "exampleSentence": "My teacher explained what a ban is during our lesson.",
+        "word": "question",
+        "definition": "A worded or expressed sentence, phrase, or only a word on its own, which asks for information, a reply, or a response; an interrogative.",
+        "exampleSentence": "The story is true beyond question.",
         "partOfSpeech": "noun",
         "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bæn",
-        "etymology": "From Banburismus; coined by Alan Turing.",
+        "pattern": "blends",
+        "pronunciation": "kwɛstʃən",
+        "etymology": "From Middle English questioun, from Anglo-Norman questiun, from Old French question, from Latin quaestiōnem, accusative of quaestiō (“a seeking, investigation, inquiry, question”), from quaerere (“to seek, ask, inquire”), of uncertain origin, but possibly from Proto-Italic *kʷaizeō, from Proto-Indo-",
         "distractors": [
-            "abn",
-            "bna",
-            "bban"
+            "quession",
+            "quesstion",
+            "qaestion"
         ],
         "theme": "language"
     },
     {
-        "word": "ear",
-        "definition": "The organ of hearing, consisting of the pinna or auricle, auditory canal, eardrum, malleus, incus, stapes and cochlea.",
-        "exampleSentence": "My teacher explained what an ear is during our lesson.",
-        "partOfSpeech": "noun",
+        "word": "together",
+        "definition": "At the same time, in the same place; in close association or proximity.",
+        "exampleSentence": "He put all the parts together.",
+        "partOfSpeech": "adverb",
         "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɪɹ",
-        "etymology": "From Middle English ere, eare, from Old English ēare (“ear”), from Proto-West Germanic *auʀā, from the voiced Verner alternant of Proto-Germanic *ausô (“ear”) (compare Scots ear, West Frisian ear, Dutch oor, German Ohr, Swedish öra, Danish øre), from Proto-Indo-European *h₂ṓws (compare Old Irish áu,",
+        "pattern": "blends",
+        "pronunciation": "tʊɡɛðɚ",
+        "etymology": "From Late Middle English together, from earlier togedere, togadere, from Old English tōgædere (“together”), from Proto-West Germanic *tōgadura, *tegadura, from Proto-Germanic *tō (“to”) + *gadar (“together”), from Proto-Indo-European *gʰedʰ- (“to unite, keep”), equivalent to to-₂ + gather.",
         "distractors": [
-            "eer",
-            "eir",
-            "era"
+            "togethor",
+            "togethar",
+            "toggether"
         ],
-        "theme": "water"
+        "theme": "actions"
     },
     {
-        "word": "gem",
-        "definition": "A native or resident of the American state of Idaho.",
-        "exampleSentence": "My teacher explained what a gem is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "d͡ʒɛm",
-        "etymology": "From Gem State.",
+        "word": "overwalk",
+        "definition": "To walk over or upon.",
+        "exampleSentence": "\"I used to tell her not to overwalk herself this weather,\" said Clym, with distress.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "overwalk",
+        "etymology": "From over- + walk.",
         "distractors": [
-            "egm",
-            "gme",
-            "ggem"
+            "ovverwalk",
+            "overrwalk",
+            "overwallk"
         ],
-        "theme": "people"
+        "theme": "actions"
+    },
+    {
+        "word": "attention",
+        "definition": "Mental focus.",
+        "exampleSentence": "The company will now come to attention.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ətɛnʃn̩",
+        "etymology": "From Middle English attencioun, borrowed from Latin attentio, attentionis, from attendere, past participle attentus (“to attend, give heed to”); see attend. Equivalent to attend + -tion.",
+        "distractors": [
+            "attension",
+            "atention",
+            "attenntion"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "president",
+        "definition": "An honorific for the head of state of a republic.",
+        "exampleSentence": "Learning about the president was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "president",
+        "etymology": "From president.",
+        "distractors": [
+            "presidant",
+            "pressident",
+            "presiddent"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "brilliant",
+        "definition": "Shining brightly.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully brilliant.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɹɪljənt",
+        "etymology": "Borrowed from French brillant (late 17th century), present participle of the verb briller, from Italian brillare, possibly from Latin berillus, beryllus (“a beryl, gem, eyeglass”), from Ancient Greek βήρυλλος (bḗrullos, “beryl”).",
+        "distractors": [
+            "brillient",
+            "briliant",
+            "brilliannt"
+        ],
+        "theme": "everyday"
     },
     {
         "word": "hip",
         "definition": "The outward-projecting parts of the pelvis and top of the femur and the overlying tissue.",
         "exampleSentence": "In all bridges preference will be given to designs having struts for hip verticals.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "hɪp",
         "etymology": "From Middle English hipe, hupe, from Old English hype, from Proto-Germanic *hupiz (compare Dutch heup, Low German Huop, German Hüfte), from Proto-Indo-European *ḱewb- (compare Welsh cysgu (“to sleep”), Latin cubāre (“to lie”), Ancient Greek κύβος (kúbos, “hollow in the hips”), Albanian sup (“shoulde",
@@ -13204,42 +5581,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "mil",
-        "definition": "An angular mil, a unit of angular measurement equal to ¹⁄₆₄₀₀ of a complete circle. At 1000 metres one mil subtends about one metre (0.98 m). Also ¹⁄₆₀₀₀ and ¹⁄₆₃₀₀ are used in other countries.",
-        "exampleSentence": "For this task, I prefer the plastic sheeting that is 10 mils thick.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mɪl",
-        "etymology": "Ultimately from Latin millesimum. The clippings come by way of the clipped words (e.g., millilitre, millimetre, milliradian).",
-        "distractors": [
-            "mal",
-            "mel",
-            "mli"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "pip",
-        "definition": "One of a series of very short, electronically produced tones, used, for example, to count down the final few seconds before a given time or to indicate that a caller using a payphone needs to make further payment to continue the call.",
-        "exampleSentence": "I could clearly hear the frequent cataclysms of the upstairs lavatory, and my day began with the pips for the morning news in Charlotte Lawless's kitchen.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pɪp",
-        "distractors": [
-            "pap",
-            "pep",
-            "ppi"
-        ],
-        "theme": "money"
-    },
-    {
         "word": "sin",
         "definition": "A violation of divine will or religious law.",
         "exampleSentence": "As a Christian, I think this is a sin against God.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "sɪn",
         "etymology": "From Middle English sinne, synne, sunne, zen, from Old English synn (“sin”), from Proto-West Germanic *sunnju, from Proto-Germanic *sunjō (“truth, excuse”) and *sundī, *sundijō (“sin”), from , from *h₁sónts (\"being, true\", implying a verdict of \"truly guilty\" against an accusation or charge), from *",
@@ -13255,7 +5601,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The tea plant (Camellia sinensis); (countable) a variety of this plant.",
         "exampleSentence": "Darjeeling tea is grown in India.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "ti",
         "etymology": "First appears c. 1655, in the writings of Álvaro Semedo. From Dutch thee, from Hokkien 茶 (tê) (Amoy dialect), from Old Chinese, ultimately from Proto-Sino-Tibetan *s-la (“leaf, tea”).",
@@ -13271,7 +5617,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "Something to play with, especially as intended for use by a child.",
         "exampleSentence": "My teacher explained what a toy is during our lesson.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "tɔɪ",
         "etymology": "Inherited from Middle English toye (“amorous play, piece of fun or entertainment”), probably from Middle Dutch toy, tuyg (“tools, apparatus, utensil, ornament”) as in Dutch speel-tuig (“play-thing, toy”), from Old Dutch *tiug, from Proto-West Germanic *tiugī̆, *teug, from Proto-Germanic *teugą (“stu",
@@ -13303,7 +5649,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To knock, shake, or strike sharply, especially causing a quivering or vibrating movement.",
         "exampleSentence": "We need to jar this before the deadline.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "d͡ʒɑɹ",
         "etymology": "From earlier jar, jur, jarre, jurre, of uncertain origin. Possibly from earlier *char, *chur, *charre, *churre (now spelt chirr, churr (“to make a sound”); compare also nightjar and its variant nightchurr), from Middle English *chirren, *cherren, *churren (“to sound, cry, murmur, complain”), from Ol",
@@ -13331,22 +5677,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "toe",
-        "definition": "To furnish (a stocking, etc.) with a toe.",
-        "exampleSentence": "We need to toe this before the deadline.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "toʊ",
-        "etymology": "From Middle English to, from Old English tā, (Mercian) tāhe, from Proto-West Germanic *taihā, from Proto-Germanic *taihwǭ, from *tīhwaną (“to show, announce”), from Proto-Indo-European *deyḱ- (“to show”).",
-        "distractors": [
-            "tae",
-            "tee",
-            "teo"
-        ],
-        "theme": "body"
-    },
-    {
         "word": "far",
         "definition": "To, from or over a great distance in space, time or other extent.",
         "exampleSentence": "I saw a tiny figure far below me.",
@@ -13361,21 +5691,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "fra"
         ],
         "theme": "time"
-    },
-    {
-        "word": "bio",
-        "definition": "Clipping of biography.",
-        "exampleSentence": "I've got a bio exam in the morning.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "baɪoʊ",
-        "distractors": [
-            "bao",
-            "beo",
-            "boi"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "sam",
@@ -13394,85 +5709,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rez",
-        "definition": "Clipping of reservation or reserve (semiautonomous Indigenous territory).",
-        "exampleSentence": "James Stanford, ‘The rez accent knows no borders’: Native American ethnic identity expressed through English prosody, Cambridge University Press, Published online.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹɛz",
-        "distractors": [
-            "raz",
-            "riz",
-            "rze"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rax",
-        "definition": "To stretch; stretch out.",
-        "exampleSentence": "Shoeless, he stood naked on his toes, his arms raxed upwards.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹæks",
-        "etymology": "From Middle English raxen, rasken (“to stretch oneself”), from Old English raxan, racsan (“to stretch oneself after sleep”), probably alteration, with formative s, of Old English rǣċan, ræċċan, reċċan (“to stretch, extend”), from Proto-Germanic *rakjaną (“to stretch”), from Proto-Indo-European *reǵ-",
-        "distractors": [
-            "rex",
-            "rix",
-            "rxa"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "alto",
-        "definition": "A musical part or section higher than tenor and lower than soprano, formerly the part that performed a countermelody above the tenor or main melody.",
-        "exampleSentence": "The book had an entire chapter about the alto.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "æltoʊ",
-        "etymology": "Borrowed from Italian alto (“high”). Doublet of old.",
-        "distractors": [
-            "lato",
-            "atlo",
-            "alot"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "bang",
-        "definition": "A sudden percussive noise.",
-        "exampleSentence": "Tiffany has long hair and bangs.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "bæŋ",
-        "etymology": "From Middle English *bangen, from Old English *bangian or borrowed from Old Norse banga (“to pound, hammer”); both from Proto-Germanic *bangōną (“to beat, pound”), from Proto-Indo-European *bʰen- (“to beat, hit, injure”).",
-        "distractors": [
-            "banng",
-            "beng",
-            "bing"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "boom",
-        "definition": "A spar extending the foot of a sail; a spar rigged outboard from a ship's side to which boats are secured in harbour.",
-        "exampleSentence": "I went out on the timber boom and made a few casts, but with little success.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "bum",
-        "etymology": "Borrowed from Dutch boom (“tree; pole”). Doublet of beam.",
-        "distractors": [
-            "bom",
-            "baom",
-            "beom"
-        ],
-        "theme": "water"
-    },
-    {
         "word": "boss",
         "definition": "A lump-like mass of rock, especially one projecting through a stratum of different rock.",
         "exampleSentence": "Boss, a short trough for holding water, when tiling the roof.",
@@ -13489,139 +5725,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
-        "word": "buck",
-        "definition": "A male deer, antelope, sheep, goat, rabbit, hare, and sometimes the male of other animals such as the hamster, ferret, salmonid, shad and kangaroo.",
-        "exampleSentence": "Corporations will do anything to make a buck.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "bʌk",
-        "etymology": "From Middle English bukke, bucke, buc, from Old English buc, bucc, bucca (“he-goat, stag”), from Proto-West Germanic *bukk, *bukkō, from Proto-Germanic *bukkaz, *bukkô (“buck”), from Proto-Indo-European *bʰuǵ- (“ram”). Doublet of puck (“billy goat”).",
-        "distractors": [
-            "buk",
-            "bucck",
-            "back"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "buff",
-        "definition": "A member of the Buffs (Royal East Kent Regiment).",
-        "exampleSentence": "The book had an entire chapter about the buff.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "buff",
-        "etymology": "From the colour of their facings.",
-        "distractors": [
-            "ubff",
-            "bfuf",
-            "bbuff"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "burr",
-        "definition": "A sharp, pointy object, such as a sliver or splinter.",
-        "exampleSentence": "The book had an entire chapter about the burr.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "bɝ",
-        "etymology": "From Middle English burre, perhaps related to Old English byrst (“bristle”). Cognate with Danish burre, borre (“burdock, burr”), Swedish borre (“sea-urchin”).",
-        "distractors": [
-            "bur",
-            "barr",
-            "berr"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "cage",
-        "definition": "An enclosure made of bars, normally to hold animals.",
-        "exampleSentence": "The tigers are in a cage to protect the public.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "keɪd͡ʒ",
-        "etymology": "From Middle English cage, from Old French cage, from Latin cavea. Doublet of cadge and cavea and related to jail.",
-        "distractors": [
-            "cagge",
-            "cege",
-            "cige"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "cant",
-        "definition": "An argot, the jargon of a particular class or subgroup.",
-        "exampleSentence": "He had the look of a prince, but the cant of a fishmonger.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kænt",
-        "etymology": "From Latin cantō probably via Old Northern French canter (“sing, tell”). Doublet of chant.",
-        "distractors": [
-            "cent",
-            "cannt",
-            "cint"
-        ],
-        "theme": "academic"
-    },
-    {
-        "word": "cork",
-        "definition": "The dead protective tissue between the bark and cambium in woody plants, with suberin deposits making it impervious to gasses and water.",
-        "exampleSentence": "Because cork is porous, it expands and contracts with changes in humidity.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kɔɹk",
-        "etymology": "From Middle English cork (“oak bark, cork”), from Middle Dutch curc (“cork (material or object)”), either from Spanish corcho (“cork (material or object)”) (also corcha or corche) or from Old Spanish alcorque (“cork sole”). Doublet of cortex.",
-        "distractors": [
-            "corrk",
-            "cark",
-            "cerk"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "crib",
-        "definition": "A baby’s bed with high, often slatted, often moveable sides, suitable for a child who has outgrown a cradle or bassinet.",
-        "exampleSentence": "“May we play crib, Mrs. Radford?” he asked.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "kɹɪb",
-        "etymology": "From Middle English crib, cribbe, from Old English crib, cryb, cribb, crybb (“couch, bed; manger, stall”), from Proto-West Germanic *kribbjā, from Proto-Germanic *kribjǭ (“crib, wickerwork”), from Proto-Indo-European *grebʰ-, *gerbʰ- (“bunch, bundle, tuft, clump”), from *ger- (“to turn, twist”).",
-        "distractors": [
-            "crab",
-            "creb",
-            "cirb"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "cult",
-        "definition": "The veneration, devotion, and religious rites given to a deity (especially in a historical polytheistic context), or (in a Christian context) to a saint; a subset of worship.",
-        "exampleSentence": "The book had an entire chapter about the cult.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kʌlt",
-        "etymology": "Derived from French culte, from Latin cultus (“care, adoration; cult”), from colō (“cultivate; protect”).",
-        "distractors": [
-            "cullt",
-            "calt",
-            "celt"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "door",
         "definition": "A portal of entry into a building, room, or vehicle, typically consisting of a rigid plane movable on a hinge. It may have a handle to help open and close, a latch to hold it closed, and a lock that ensures it cannot be opened without a key.",
         "exampleSentence": "His house is three doors down.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "cvc",
         "pronunciation": "doɹ",
         "etymology": "From Middle English dore, dor, from Old English duru (“door”), dor (“gate”), from Proto-West Germanic *dur, from Proto-Germanic *durz, from Proto-Indo-European *dʰwṓr, from *dʰwer- (“doorway, door, gate”).",
@@ -13633,58 +5741,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "dove",
-        "definition": "A pigeon, especially one smaller in size and white-colored; a bird (often arbitrarily called either a pigeon or a dove or both) of more than 300 species of the family Columbidae.",
-        "exampleSentence": "The book had an entire chapter about the dove.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "dʌv",
-        "distractors": [
-            "dovve",
-            "dave",
-            "deve"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "duet",
-        "definition": "A musical composition in two parts, each performed by a single voice (singer, instrument or univoce ensemble).",
-        "exampleSentence": "The book had an entire chapter about the duet.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "djuɛt",
-        "etymology": "From Italian duetto (“short musical composition for two voices”), diminutive of due (“two”).",
-        "distractors": [
-            "daet",
-            "deet",
-            "deut"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "ease",
-        "definition": "Lack of difficulty; the ability to do something easily.",
-        "exampleSentence": "We took our ease on the patio.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "iz",
-        "etymology": "From Middle English ese, eise, aise, from Anglo-Norman ese (“ease”), from Old French eise, aise (“elbow room; opportunity”), of uncertain and obscure origin. Apparently related to Provençal ais, Italian agio and asio, Sicilian aciu and Portuguese azo.",
-        "distractors": [
-            "easse",
-            "eese",
-            "eise"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "east",
         "definition": "The direction of the earth's rotation, specifically 90°.",
         "exampleSentence": "We live in the east of the country.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "iːst",
         "etymology": "From Middle English est, from Old English ēast, from Proto-West Germanic *austr, from Proto-Germanic *austrą, from Proto-Germanic *austraz, from Proto-Indo-European *h₂éwsteros (“east”).",
@@ -13700,7 +5761,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A thin layer of some substance; a pellicle; a membranous covering, causing opacity.",
         "exampleSentence": "The book had an entire chapter about the film.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "fɪlm",
         "etymology": "From Middle English filme, from Old English filmen (“film, membrane, thin skin, foreskin”), from Proto-West Germanic *filmīn-, from Proto-Germanic *filmīn- (“thin skin, membrane”) (compare Proto-Germanic *felma- (“skin, hide”)), from Proto-Indo-European *pél-mo- (“membrane”), from *pel- (“to cover,",
@@ -13716,7 +5777,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A member of the Goldi or Nanai people.",
         "exampleSentence": "The book had an entire chapter about the gold.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "gold",
         "distractors": [
@@ -13725,22 +5786,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "godl"
         ],
         "theme": "people"
-    },
-    {
-        "word": "hint",
-        "definition": "An implicit suggestion that avoids a direct statement.",
-        "exampleSentence": "He gave me a hint that my breath smelt.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "hɪnt",
-        "etymology": "From Middle English hinten, hynten, variant of henten (“to lay hold of, catch”), from Old English hentan (“to seize, grasp”), from Proto-West Germanic *hantijan, from Proto-Germanic *hantijaną. Doublet of hent. Related also to hunt.",
-        "distractors": [
-            "hinnt",
-            "hant",
-            "hent"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "idea",
@@ -13763,7 +5808,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "A new recruit at Royal Military Academy Sandhurst.",
         "exampleSentence": "This is the sound of a John. A John. He wants to wait.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "d͡ʒɑn",
         "etymology": "From Middle English John, Johan, Johannes, from Anglo-Norman Jehan, Johan, and also Old English Iohannes, both from Late Latin Iōhannēs, variant of Latin Iōannēs, from Koine Greek Ἰωάννης (Iōánnēs), from Biblical Hebrew יוֹחָנָן (Yôḥānān), perhaps contracted from a former יְהוֹחָנָן (Yəhōḥānān, “God",
@@ -13773,22 +5818,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "jehn"
         ],
         "theme": "society"
-    },
-    {
-        "word": "leak",
-        "definition": "A crack, crevice, fissure, or hole which admits water or other fluid, or lets it escape.",
-        "exampleSentence": "The babies' diapers had big leaks.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "liːk",
-        "etymology": "From Middle English leken (“to let water in or out”), from Old English *lecan (“to leak”), Middle Dutch leken (“to leak, drip”) or Old Norse leka (“to leak, drip”); all from Proto-Germanic *lekaną (“to leak, drain”), from Proto-Indo-European *leg-, *leǵ- (“to leak”).",
-        "distractors": [
-            "leek",
-            "laak",
-            "liak"
-        ],
-        "theme": "water"
     },
     {
         "word": "left",
@@ -13807,91 +5836,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "lens",
-        "definition": "An object, usually made of glass, that focuses or defocuses the light that passes through it.",
-        "exampleSentence": "No film should be revised based on the lenses we now are, either voluntarily, or being forced to peer through.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "lɛnz",
-        "etymology": "Borrowed from Latin lēns (“lentil”), with Medieval Latin later taking on the sense of “lens”, a semantic loan from Arabic عَدْسَة (ʕadsa, “lentil; optic lens”).",
-        "distractors": [
-            "lenns",
-            "lans",
-            "lins"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "ling",
-        "definition": "Any of various varieties of heather or broom.",
-        "exampleSentence": "Partridges, enjoying their last weeks of security, rose whirring and clattering from among the ling.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "lɪŋ",
-        "etymology": "From Middle English lyng, from Old Norse lyng.",
-        "distractors": [
-            "linng",
-            "lang",
-            "leng"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mail",
-        "definition": "Armour consisting of metal rings linked together.",
-        "exampleSentence": "The book had an entire chapter about the mail.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "meɪl",
-        "etymology": "From Middle English mayle (“mail armor”), borrowed from Old French maille (“loop, stitch”), from Vulgar Latin *macla, from Latin macula (“blemish, mesh”), probably from Proto-Indo-European *smh₁-tleh₂, from *smeh₁- (“smear, rub”). Compare maillot.",
-        "distractors": [
-            "mayl",
-            "meil",
-            "miil"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mesh",
-        "definition": "A structure made of connected strands of metal, fiber, or other flexible/ductile material, with evenly spaced openings between them.",
-        "exampleSentence": "The book had an entire chapter about the mesh.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "mɛʃ",
-        "etymology": "From Middle English mesche, from Old English masc (“net”) (perhaps influenced in form by related Old English mæscre (“mesh, spot”)), from the related Proto-Germanic *maskwǭ and *maskrǭ respectively, from Proto-Indo-European *mezg- (“to knit, twist, plait”).",
-        "distractors": [
-            "messh",
-            "mash",
-            "mish"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mill",
-        "definition": "A grinding apparatus for substances such as grains, seeds, etc. (Some are small and simple, and some are large and complex.).",
-        "exampleSentence": "The book had an entire chapter about the mill.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "mɪɫ",
-        "etymology": "From Middle English mylne, mille, from Old English mylen, from Proto-West Germanic *mulīnu (“mill”), from Late Latin molīna, molīnum, molīnus (“mill”), from Latin molō (“grind, mill”, verb), closely allied to Proto-Germanic *muljaną (“to crush, grind”) (see English millstone).",
-        "distractors": [
-            "mil",
-            "mall",
-            "mell"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "neck",
         "definition": "The part of the body connecting the head and the trunk found in humans and some animals.",
         "exampleSentence": "The book had an entire chapter about the neck.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "nɛk",
         "etymology": "From Middle English nekke, nakke, from Old English hnecca, *hnæcca (“neck, nape”), from Proto-Germanic *hnakkô (“nape, neck”), from Proto-Indo-European *knog-, *kneg- (“back of the head, nape, neck”).",
@@ -13903,27 +5852,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "nest",
-        "definition": "A structure built by a bird as a place to incubate eggs and rear young.",
-        "exampleSentence": "I am aspiring to leave the nest.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "nɛst",
-        "etymology": "From Middle English nest, nist, nyst, from Old English nest, from Proto-West Germanic *nest, from Proto-Germanic *nestą, from Proto-Indo-European *nisdós (“nest”), literally \"where [the bird] sits down\", a compound of *ni (“down”) (whence also English nether) + the zero-grade of the root *sed- (“to",
-        "distractors": [
-            "nesst",
-            "nast",
-            "nist"
-        ],
-        "theme": "animals"
-    },
-    {
         "word": "news",
         "definition": "New information of interest.",
         "exampleSentence": "Is there any news about the storm?",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "nuːz",
         "etymology": "From Middle English newes, newys (“new things”), equivalent to new (noun) + -s (plural suffix). Compare Saterland Frisian Näis (“news”), East Frisian näjs (“news”), West Frisian nijs (“news”), Dutch nieuws (“news”), German Low German Neeis (“new things; news”), though, unlike the English word, those",
@@ -13935,122 +5868,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "money"
     },
     {
-        "word": "para",
-        "definition": "A woman who has given birth or brought pregnancies to viable gestational age a certain number of times, indicated by the number prepended to this word.",
-        "exampleSentence": "The book had an entire chapter about the para.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pæɹə",
-        "etymology": "Clipping of words such as primipara and multipara.",
-        "distractors": [
-            "apra",
-            "praa",
-            "paar"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "pike",
-        "definition": "A very long spear used two-handed by infantry soldiers for thrusting (not throwing), both for attacks on enemy foot soldiers and as a countermeasure against cavalry assaults.",
-        "exampleSentence": "Scafell Pike is the highest mountain in England.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "paɪk",
-        "etymology": "From Middle English pyke, pyk, pik, pike (“pike; sharp point, iron tip of a staff or spear, pointed toe of an item of footwear; sharp tool; mountain, peak”), from Old English pīc (“pointed object, pick axe”), and Middle French pique (“long thrusting weapon”), from Old French pic (“sharp point, spike",
-        "distractors": [
-            "pikke",
-            "pake",
-            "peke"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "pill",
-        "definition": "A small, usually round or cylindrical object designed for easy swallowing, usually containing some sort of medication.",
-        "exampleSentence": "Jane went on the pill when she left for college.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "pɪl",
-        "etymology": "* From Middle English pille (also pillem), a borrowing from Middle Low German pille or Middle Dutch pille (whence Dutch pil), probably from Latin pila, pilula. * (persuade or convince): Generalized from red pill.",
-        "distractors": [
-            "pil",
-            "pall",
-            "pell"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "poll",
-        "definition": "A disreputable woman.",
-        "exampleSentence": "The book had an entire chapter about the poll.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "pɑl",
-        "etymology": "From Polly, by rhyming with Molly, from Mary.",
-        "distractors": [
-            "opll",
-            "plol",
-            "ppoll"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "pony",
-        "definition": "An athletic shoe or other piece of athletic gear of an American-based brand of that name.",
-        "exampleSentence": "The book had an entire chapter about the pony.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pony",
-        "distractors": [
-            "opny",
-            "pnoy",
-            "poyn"
-        ],
-        "theme": "clothing"
-    },
-    {
-        "word": "pulp",
-        "definition": "A mixture of wood, cellulose and/or rags and water ground up to make paper.",
-        "exampleSentence": "The hard-hitting, action packed, thud and blunder adventure fantasy was a commodity during that somber decade: Americans paid money to forget their troubles, and the pulps were willing to sell.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pʌlp",
-        "etymology": "From Middle English pulpe, from Latin pulpa.",
-        "distractors": [
-            "pullp",
-            "palp",
-            "pelp"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "punk",
-        "definition": "Any material used as tinder for lighting fires, such as agaric, dried wood, or touchwood, but especially wood altered by certain fungi.",
-        "exampleSentence": "He made him a little smoldering pocket of punk to light the fuses and waited.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pʌŋk",
-        "etymology": "Unclear; first attested circa 1680 in writings about Native American practices, probably from Unami punkw (“dust”), though it has also been suggested it could be an alteration of spunk (“tinder”) (compare funk (“rotten wood”)).",
-        "distractors": [
-            "punnk",
-            "pank",
-            "penk"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "push",
         "definition": "A short, directed application of force; an act of pushing.",
         "exampleSentence": "The book had an entire chapter about the push.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "digraphs",
         "pronunciation": "pʊʃ",
         "etymology": "From Middle English pushen, poshen, posson, borrowed from Middle French pousser (Modern French pousser) from Old French poulser, from Latin pulsare (“to beat, strike”), frequentative of pellere (past participle pulsus). Doublet of pulsate and pulse (verb).",
@@ -14062,74 +5884,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "rail",
-        "definition": "A horizontal bar extending between supports and used for support or as a barrier; a railing.",
-        "exampleSentence": "The book had an entire chapter about the rail.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹeɪ(ə)l",
-        "etymology": "From Middle English rail, rayl, *reȝel, *reȝol (found in reȝolsticke (“a ruler”)), partly from Old English regol (“a ruler, straight bar”) and partly from Old French reille; both from Latin regula (“rule, bar”), from regō (“to rule, to guide, to govern”); see regular.",
-        "distractors": [
-            "rayl",
-            "reil",
-            "riil"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rank",
-        "definition": "A row of people or things organized in a grid pattern, often soldiers.",
-        "exampleSentence": "The fancy hotel was of the first rank.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹæŋk",
-        "etymology": "From Middle English rank (“line, row”), from Old French ranc, rang, reng (“line, row, rank”) (Modern French rang), from Frankish *hring (“ring”), from Proto-Germanic *hringaz (“something bent or curved”).",
-        "distractors": [
-            "rannk",
-            "renk",
-            "rink"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "rear",
-        "definition": "The back or hindmost part; that which is behind, or last in order.",
-        "exampleSentence": "The book had an entire chapter about the rear.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹɪɹ",
-        "etymology": "From Middle English rere, from Anglo-Norman rere, ultimately from Latin retro. Compare arrear. Doublet of retro.",
-        "distractors": [
-            "reer",
-            "raar",
-            "riar"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ross",
-        "definition": "The rough, scaly surface on the bark of trees.",
-        "exampleSentence": "The book had an entire chapter about the ross.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "ross",
-        "distractors": [
-            "orss",
-            "rsos",
-            "rross"
-        ],
-        "theme": "plants"
-    },
-    {
         "word": "size",
         "definition": "The dimensions or magnitude of a thing; how big something is.",
         "exampleSentence": "The book had an entire chapter about the size.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "saɪz",
         "etymology": "Attested since the 14th century, originally meant a “law or regulation that determines the amount to be paid”, from Middle English syse, sise (“regulation, control, limit”), from Old French cise, sise, aphetism of assise (“assize”), from the verb asseoir (“to sit down”), from Latin assidēre, compose",
@@ -14145,7 +5904,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "The spirit or essence of a person usually thought to consist of one's thoughts and personality, often believed to live on after the person's death.",
         "exampleSentence": "Fifty souls were lost when the ship sank.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "soʊl",
         "etymology": "From Middle English soule, sowle, saule, sawle, from Old English sāwol (“soul, life, spirit, being”), from Proto-West Germanic *saiwalu, from Proto-Germanic *saiwalō (“soul”), of an uncertain ultimate origin (see there for further information).",
@@ -14173,27 +5932,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "communication"
     },
     {
-        "word": "tank",
-        "definition": "A closed container for liquids or gases.",
-        "exampleSentence": "The propane is stored in these tanks.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "tæŋk",
-        "etymology": "From Portuguese tanque (“tank, liquid container”), from an Indo-Aryan language, likely Gujarati ટાંકી (ṭā̃kī, “cistern”) or Marathi टांकी (ṭāṅkī). Compare the Arabic verb اِسْتَنْقَعَ (istanqaʕa, “to become stagnant, to stagnate”).",
-        "distractors": [
-            "tannk",
-            "tenk",
-            "tink"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "tape",
         "definition": "Flexible material in a roll with a sticky surface on one or both sides; adhesive tape.",
         "exampleSentence": "His pass was right on the tape.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "teɪ̯p",
         "etymology": "From Middle English tape, tappe, from Old English tæppa, tæppe (“ribbon, tape”); further origin unclear. Probably akin to Old Frisian tapia (“to pull, rip, tear”), Middle Low German tappen, tāpen (“to grab, pull, rip, tear, snatch”), Middle High German zāfen, zāven (“to pull, tear”).",
@@ -14205,106 +5948,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "tier",
-        "definition": "A row or range, especially one at a higher or lower level than another.",
-        "exampleSentence": "At various points during the (too frequent, mostly boring, school play-tier) dialogue.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "tɪɚ",
-        "etymology": "From Middle French tier, from Old French tire (“rank, sequence, order, kind”), probably from tirer (“to draw, draw out”).",
-        "distractors": [
-            "tior",
-            "tiar",
-            "teir"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tilt",
-        "definition": "A slope or inclination.",
-        "exampleSentence": "To go on tilt.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "tɪlt",
-        "etymology": "From Middle English tilte, from Old English *tyltan, *tieltan (“to be unsteady”), related to the adjective tealt (“unsteady”), from Proto-West Germanic *talt, ultimately from Proto-Indo-European *del-, *dul- (“to shake, hesitate”), see also Dutch touteren (“to tremble”), North Frisian talt, tolt (“u",
-        "distractors": [
-            "tillt",
-            "talt",
-            "telt"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "trio",
-        "definition": "A group of three people or things.",
-        "exampleSentence": "I'm cooking crab cakes with arugula and mayonnaise, griddled lamb with rosemary potatoes and buttered spinach, then a trio of desserts.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "tɹioʊ",
-        "distractors": [
-            "trao",
-            "treo",
-            "tiro"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "tube",
-        "definition": "Anything that is hollow and cylindrical in shape.",
-        "exampleSentence": "The book had an entire chapter about the tube.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "tuːb",
-        "etymology": "From Middle French tube, from Latin tubus (“tube, pipe”), related to tuba (“long trumpet; war-trumpet”), of obscure ultimate origin, but possibly connected to tībia (“shinbone, reed-pipe”); see there. Doublet of tubus.",
-        "distractors": [
-            "tubbe",
-            "tabe",
-            "tebe"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "vein",
-        "definition": "A blood vessel that transports blood from the capillaries back to the heart.",
-        "exampleSentence": "The play is in a satirical vein.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "veɪn",
-        "etymology": "From Middle English veyne, borrowed from Anglo-Norman veine, from Latin vēna (“a blood-vessel; vein; artery”) of uncertain origin. See vēna for more. Doublet of vena. Displaced native edre, from ǣdre (whence edder).",
-        "distractors": [
-            "vien",
-            "vain",
-            "viin"
-        ],
-        "theme": "body"
-    },
-    {
-        "word": "vent",
-        "definition": "An opening through which gases, especially air, can pass.",
-        "exampleSentence": "The book had an entire chapter about the vent.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "vɛnt",
-        "etymology": "Partly from Middle French vent, from Latin ventus and partly from French éventer. Cognate with French vent and Spanish viento (“wind”) and ventana (“window”). Doublet of wind.",
-        "distractors": [
-            "vant",
-            "vennt",
-            "vint"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "vote",
         "definition": "A person from Votia or of Votic descent.",
         "exampleSentence": "The book had an entire chapter about the vote.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "silent-e",
         "pronunciation": "vote",
         "etymology": "From German Wote, ultimately from Votic vadʹdʹa, vadʹdʹalain (“Votian”). Compare Estonian vadjalane.",
@@ -14312,38 +5960,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "ovte",
             "vtoe",
             "voet"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "wolf",
-        "definition": "Canis lupus; the largest wild member of the canine subfamily.",
-        "exampleSentence": "They toiled hard to keep the wolf from the door.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "wʊlf",
-        "etymology": "Inherited from Middle English wolf, from Old English wulf, ƿulf, from Proto-West Germanic *wulf, from Proto-Germanic *wulfaz, from Proto-Indo-European *wĺ̥kʷos.",
-        "distractors": [
-            "wollf",
-            "walf",
-            "welf"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bail",
-        "definition": "To secure the release of an arrested person by providing bail.",
-        "exampleSentence": "Ne none there was to reskue her, ne none to baile.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "beɪl",
-        "etymology": "From Middle English baille, from the Old French verb bailler (“to deliver or hand over”) and noun bail (“lease”), from Latin bāiulāre (“carry or bear”), from baiulus (“porter; steward”) (English: bailiff).",
-        "distractors": [
-            "bayl",
-            "beil",
-            "biil"
         ],
         "theme": "people"
     },
@@ -14367,7 +5983,7 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "definition": "To create or recite a list.",
         "exampleSentence": "He raised his eyes and saw / The tree that shone white-listed thro' the gloom.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "lɪst",
         "etymology": "From Middle English lī̆st, lī̆ste (“band, stripe; hem, selvage; border, edge, rim; list, specification; barriers enclosing area for jousting, etc.",
@@ -14379,27 +5995,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "mask",
-        "definition": "To cover (the face or something else), in order to conceal the identity or protect against injury; to cover with a mask or visor.",
-        "exampleSentence": "They must all be masked and vizarded.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mæsk",
-        "etymology": "Borrowed from Middle French masque (“a covering to hide or protect the face”), from Italian maschera (“mask, disguise”), from (a byform of, see it for more) Medieval Latin masca, mascha, a borrowing of Proto-West Germanic *maskā, from which English mesh and mask (“mesh”) (below at Etymology 2) are i",
-        "distractors": [
-            "massk",
-            "mesk",
-            "misk"
-        ],
-        "theme": "health"
-    },
-    {
         "word": "pair",
         "definition": "To group into one or more sets of two.",
         "exampleSentence": "The wedding guests were paired boy/girl and groom's party/bride's party.",
         "partOfSpeech": "verb",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "pɛ(ə)ɹ",
         "etymology": "From Middle English paire, from Old French paire, from Latin paria (“equals”), neuter plural of par (“pair”). Related to pār (“equal”, adjective). Compare Saterland Frisian Poor (“pair”), West Frisian pear (“pair”), Dutch paar (“pair”), German Paar (“pair”), Italian paio (“pair”)",
@@ -14411,58 +6011,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "peck",
-        "definition": "To lurch forward; especially, of a horse, to stumble after hitting the ground with the toe instead of the flat of the foot.",
-        "exampleSentence": "Anyhow, one of them fell, another one pecked badly, and Jerry disengaged himself from the group to scuttle up the short strip of meadow to win by a length.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "pɛk",
-        "etymology": "Variant of pick (“to throw”).",
-        "distractors": [
-            "pek",
-            "pecck",
-            "pack"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "ping",
-        "definition": "To make a high-pitched, short and somewhat sharp sound.",
-        "exampleSentence": "Bob has two kids, but he really pings.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "pɪŋ",
-        "etymology": "Partly onomatopoeic, and partly continuing Middle English pingen (“to push, shove, pierce, stab, prod, goad, urge, feel remorse, incite”), from Old English pyngan (“to prick”), in turn likely from pungere. Compare English pang.",
-        "distractors": [
-            "pinng",
-            "pang",
-            "peng"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "aged",
-        "definition": "Having the age of.",
-        "exampleSentence": "The aged weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "eɪdʒɪd",
-        "distractors": [
-            "agged",
-            "agad",
-            "agid"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "busy",
         "definition": "Crowded with business or activities; having a great deal going on.",
         "exampleSentence": "He is busy with piano practice.",
         "partOfSpeech": "adjective",
-        "difficulty": 1,
+        "difficulty": 2,
         "pattern": "cvc",
         "pronunciation": "bɪzi",
         "etymology": "From Middle English bisy, busie, from Old English bisiġ (“busy, occupied, diligent”), from Proto-West Germanic *bisīg (“diligent; zealous; busy”). Cognate with Saterland Frisian biesich (“active, diligent, hard-working, industrious”), Dutch bezig (“busy”), Low German besig (“busy”).",
@@ -14472,22 +6025,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "basy"
         ],
         "theme": "money"
-    },
-    {
-        "word": "keen",
-        "definition": "Often with a prepositional phrase, or with to and an infinitive: showing a quick and ardent responsiveness or willingness; eager, enthusiastic, interested.",
-        "exampleSentence": "She’s keen to learn another language.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "kin",
-        "etymology": "From Middle English kene (“bold, brave, sharp”), from Old English cēne (“keen, fierce, bold, brave, warlike, powerful; learned, clever, wise”), from Proto-Germanic *kōniz (“knowledgeable, skilful, experienced, clever, capable”), from Proto-Indo-European *ǵneh₃- (“to know”).",
-        "distractors": [
-            "ken",
-            "kean",
-            "kaen"
-        ],
-        "theme": "language"
     },
     {
         "word": "nice",
@@ -14506,22 +6043,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pale",
-        "definition": "Light in color.",
-        "exampleSentence": "He is but a pale shadow of his former self.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "peɪl",
-        "etymology": "From Middle English pale, from Old French pale, from Latin pallidus (“pale, pallid”), from palleō (“I am pale; I grow pale; I fade”), from Proto-Indo-European *pelito-, from *pelH- (“gray”). Doublet of pallid. Displaced native Old English blāc.",
-        "distractors": [
-            "pael",
-            "palle",
-            "pele"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "poor",
         "definition": "With no or few possessions or money, particularly in relation to contemporaries who do have them.",
         "exampleSentence": "Blessed are the poor in spirit.",
@@ -14536,37 +6057,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "paor"
         ],
         "theme": "money"
-    },
-    {
-        "word": "rude",
-        "definition": "Lacking in refinement or civility; bad-mannered; discourteous.",
-        "exampleSentence": "The rude weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "ɹud",
-        "etymology": "From Middle English rude, from Old French rude, ruide, from Latin rudis (“rough, raw, rude, wild, untilled”).",
-        "distractors": [
-            "rudde",
-            "rade",
-            "rede"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "tied",
-        "definition": "Closely associated or connected.",
-        "exampleSentence": "As a couple, they are strongly tied to one another.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "tʰɑe̯d",
-        "distractors": [
-            "teid",
-            "taed",
-            "teed"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "over",
@@ -14584,398 +6074,19 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "travel"
     },
     {
-        "word": "dual",
-        "definition": "Of an item that is one of a pair, the other item in the pair.",
-        "exampleSentence": "The octahedron is the dual of the cube.",
+        "word": "birth",
+        "definition": "The process of childbearing; the beginning of life; the emergence of a human baby or other viviparous animal offspring from the mother's body into the environment.",
+        "exampleSentence": "That poets are far rarer births than kings.",
         "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "dul",
-        "distractors": [
-            "duel",
-            "daal",
-            "deal"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "lash",
-        "definition": "Remiss, lax.",
-        "exampleSentence": "The lash weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "digraphs",
-        "pronunciation": "læʃ",
-        "etymology": "From Old French lasche (French lâche).",
-        "distractors": [
-            "lassh",
-            "lesh",
-            "lish"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "kerf",
-        "definition": "The act of cutting or carving something; a stroke or slice.",
-        "exampleSentence": "Sebastian, still not alone, is seated on the white-and-cinder-grey trunk of a felled tree. … A Camberwell Beauty skims past and settles on the kerf, fanning its velvety wings.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kɜː(ɹ)f",
-        "etymology": "From Middle English kerf, kirf, kyrf, from Old English cyrf (“an act of cutting, a cutting off; a cutting instrument”), from Proto-West Germanic *kurbi, from Proto-Germanic *kurbiz (“a cut; notch; clipping”), from Proto-Indo-European *gerbʰ- (“to scratch”).",
-        "distractors": [
-            "kerrf",
-            "karf",
-            "kirf"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "monk",
-        "definition": "To be a monk.",
-        "exampleSentence": "Good people, if you're ever short of a job, don't take up monking for a living.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mʌŋk",
-        "etymology": "From Middle English monk, from Old English munuc, from Proto-West Germanic *munik, from Late Latin monicus, variant of monachus, from Ancient Greek μοναχός (monakhós, “single, solitary”), from μόνος (mónos, “alone”).",
-        "distractors": [
-            "monnk",
-            "mank",
-            "menk"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nano",
-        "definition": "Clipping of nanotechnology.",
-        "exampleSentence": "The Czech government is actively supporting the nano industry through the participation of ministries and universities in research and development programs.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "nænəʊ",
-        "etymology": "From nano-, from Latin nānus, from Ancient Greek νᾶνος (nânos).",
-        "distractors": [
-            "nanno",
-            "neno",
-            "nino"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "slob",
-        "definition": "To move slowly or cumbersomely.",
-        "exampleSentence": "You've been SLOBBED! Hit the showers and try again.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "slɒb",
-        "etymology": "From Irish slaba. Compare slobber, which is of Germanic origin.",
-        "distractors": [
-            "slab",
-            "sleb",
-            "solb"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "gaff",
-        "definition": "To use a gaff, especially to land a fish.",
-        "exampleSentence": "You will be using gaffed cards: a double faced card.",
-        "partOfSpeech": "verb",
         "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "ɡæf",
-        "etymology": "From Middle English gaffe, from Old French gaffe, from Old Occitan gaf (“hook”), derivative of gafar (“to seize”), from 𐌲𐌹𐌱𐌰𐌽 (giban, “to give”). Doublet of gaffe. Etymology 1 sense 5 apparently derives from the idea that the garment tricks or deceives others about the wearer's genitalia.",
+        "pattern": "digraphs",
+        "pronunciation": "bɜːθ",
         "distractors": [
-            "gaf",
-            "geff",
-            "giff"
+            "birrth",
+            "barth",
+            "berth"
         ],
         "theme": "animals"
-    },
-    {
-        "word": "comp",
-        "definition": "To accompany, in music.",
-        "exampleSentence": "He comped lightly and then played a short phrase to begin his solo.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "kɒmp",
-        "distractors": [
-            "commp",
-            "camp",
-            "cemp"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "juke",
-        "definition": "To deceive or outmaneuver someone using a feint, especially in American football or soccer.",
-        "exampleSentence": "Veteran pilots “juked” their bombers to throw off the gunners' aim.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "silent-e",
-        "pronunciation": "d͡ʒuːk",
-        "etymology": "Uncertain. Perhaps from Scots jouk, jowk, juke (“to elude, cheat; duck, skulk; bob, dodge”), palatalized variants of Scots deuk, douk, dowk (“to duck”). More at duck (verb).",
-        "distractors": [
-            "jukke",
-            "jake",
-            "jeke"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "mort",
-        "definition": "Death; especially, the death of game in hunting.",
-        "exampleSentence": "The book had an entire chapter about the mort.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mɔɹt",
-        "etymology": "From Middle English mort, from Old French mort (“death”).",
-        "distractors": [
-            "morrt",
-            "mart",
-            "mert"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fond",
-        "definition": "The background design in lace-making.",
-        "exampleSentence": "He used the fond to make a classic French pan sauce.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "fɑnd",
-        "etymology": "From French, ultimately from Latin fundus. Doublet of fund and fundus.",
-        "distractors": [
-            "fonnd",
-            "fand",
-            "fend"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "puny",
-        "definition": "An inferior person; a subordinate; also, an insignificant person.",
-        "exampleSentence": "The book had an entire chapter about the puny.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "pjuni",
-        "distractors": [
-            "puney",
-            "punny",
-            "pany"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "coop",
-        "definition": "To keep in a coop.",
-        "exampleSentence": "This cynicism may lead to an increased number of job actions and deviance, such as the \"blue flu\" or \"cooping.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "kup",
-        "etymology": "From Middle English cǒupe, cupe, from Old English cȳpe (“basket, cask”) or possibly from Middle Dutch cûpe (compare modern Dutch kuip, Saterland Frisian kupe, Middle Low German kûpe), from Old Saxon *kûpa, côpa (“cask”) (compare Middle Low German kôpe, Old High German chôfa, chuofa, Middle High Germ",
-        "distractors": [
-            "cop",
-            "caop",
-            "ceop"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "fuzz",
-        "definition": "To make fuzzy.",
-        "exampleSentence": "Or maybe my mind was just fuzzed with the drink.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "fʌz",
-        "etymology": "Uncertain. Some dictionaries suggest a Germanic source; compare Low German fussig (“loose; spongy”), Dutch voos (“unsound; rotten”). Others, such as Webster's New College Dictionary, suggest a back-formation from fuzzy.",
-        "distractors": [
-            "fuz",
-            "fazz",
-            "fezz"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "meta",
-        "definition": "Clipping of metagame.",
-        "exampleSentence": "I don't think the character will be part of the meta even with the recent buffs.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mɛtə",
-        "etymology": "Adjective etymology 1 sense 1 is a back-formation from meta- (prefix). Adjective etymology 1 sense 2 is derived from noun etymology 1 sense 1. The noun senses are clippings of various terms beginning with meta (prefix).",
-        "distractors": [
-            "metta",
-            "mata",
-            "mita"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bags",
-        "definition": "A large quantity.",
-        "exampleSentence": "No need to rush: there's bags of time.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "bæɡz",
-        "distractors": [
-            "baggs",
-            "begs",
-            "bigs"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "rump",
-        "definition": "To turn one's back on, to show one's (clothed) backside to, as a sign of disrespect.",
-        "exampleSentence": "So he held Jody and she drank half and then he rumped her up on his shoulder and patted her, the way his mom did.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹʌmp",
-        "etymology": "From Middle English rumpe, from Old Norse rumpr (“rump”), from Middle Low German rump (“the bulk or trunk of a body, trunk of a tree”), ultimately from Proto-Germanic *rumpō (“trunk of a tree, log”).",
-        "distractors": [
-            "rummp",
-            "ramp",
-            "remp"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "comm",
-        "definition": "Clipping of communication.",
-        "exampleSentence": "My comm was set on silent mode—nothing in or out except emergency transmissions.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "cvc",
-        "pronunciation": "comm",
-        "distractors": [
-            "com",
-            "camm",
-            "cemm"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "stot",
-        "definition": "To bounce, rebound or ricochet.",
-        "exampleSentence": "‘I've plenty of money in my bank – and I have my cheque book here – could one of you cash a cheque for five pounds? – I promise it won't stot.’.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "blends",
-        "pronunciation": "stɑt",
-        "etymology": "Likely derived from Middle Dutch stoten (“to push”) or Middle Low German stôten, from Old Saxon stōtan, from Proto-West Germanic *stautan, from Proto-Germanic *stautaną (“to push, jolt, bump”), from Proto-Indo-European *(s)tewd-, from *(s)tew- (“to push, hit”).",
-        "distractors": [
-            "stat",
-            "stet",
-            "sott"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "yerk",
-        "definition": "To stab (someone or something).",
-        "exampleSentence": "Their wounded steeds … / Yerk out their armed heels at their dead masters.",
-        "partOfSpeech": "verb",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "jɜː(ɹ)k",
-        "etymology": "From Middle English ȝerken (“to move suddenly, excite, bind tightly, attack”), from Old English ġearcian (“to prepare, make ready”), compare ġearc (“active, quick”), from Proto-Germanic *garwakōną (“to prepare”), from Proto-Indo-European *gʰrebʰ- (“to grab, take”).",
-        "distractors": [
-            "yerrk",
-            "yark",
-            "yirk"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "mozy",
-        "definition": "Shaggy; hairy.",
-        "exampleSentence": "Mozy, adj., ' muggy,' as applied to weather, warm and damp ;",
-        "partOfSpeech": "adjective",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "mozy",
-        "distractors": [
-            "mozey",
-            "mozzy",
-            "mazy"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "rouf",
-        "definition": "The number four.",
-        "exampleSentence": "The book had an entire chapter about the rouf.",
-        "partOfSpeech": "noun",
-        "difficulty": 1,
-        "pattern": "cvc",
-        "pronunciation": "ɹɔːf",
-        "etymology": "Backslang for four.",
-        "distractors": [
-            "rowf",
-            "rauf",
-            "reuf"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "basin",
-        "definition": "A wide bowl for washing, sometimes affixed to a wall.",
-        "exampleSentence": "They have a good basin of coffee or cocoa for breakfast ….",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "beɪs(ə)n",
-        "etymology": "From Middle English basyn, from Old French bacin, from Vulgar Latin *baccinum (“wide bowl”).",
-        "distractors": [
-            "bassin",
-            "besin",
-            "bisin"
-        ],
-        "theme": "home"
-    },
-    {
-        "word": "baton",
-        "definition": "A staff or truncheon, used for various purposes.",
-        "exampleSentence": "He wrote the word baton on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bətɑn",
-        "etymology": "From French bâton. Doublet of baston.",
-        "distractors": [
-            "batton",
-            "beton",
-            "biton"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "beard",
-        "definition": "Facial hair on the chin, cheeks, jaw and neck.",
-        "exampleSentence": "He wrote the word beard on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "bɪɹd",
-        "etymology": "From Middle English berd, bard, bærd, from Old English beard, from Proto-West Germanic *bard, from Proto-Germanic *bardaz, from Proto-Indo-European *bʰardʰeh₂, *bʰh₂erdʰeh₂.",
-        "distractors": [
-            "bearrd",
-            "beerd",
-            "baard"
-        ],
-        "theme": "body"
     },
     {
         "word": "cause",
@@ -15010,75 +6121,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "cheat",
-        "definition": "An act of deception or fraud; that which is the means of fraud or deception.",
-        "exampleSentence": "He wrote the word cheat on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "t͡ʃiːt",
-        "etymology": "Inherited from Middle English chete, an aphetic form of eschete (“the reversion of property to the state”), from Old French eschet, escheit, escheoit (“that which falls to one”), from the past participle of escheoir (“to fall”) (modern French échoir), from Vulgar Latin *excadēre, from Latin ex- + ca",
-        "distractors": [
-            "cheet",
-            "chaat",
-            "chiat"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "colon",
-        "definition": "Part of the large intestine; the final segment of the digestive system, after (distal to) the ileum and before (proximal to) the rectum. (Because the colon is the largest part of the large intestine (constituting most of it), it is often treated as synonymous therewith in broad or casual usage.).",
-        "exampleSentence": "Colorectal cancer refers to colon cancer, which starts in the colon, and rectal cancer, which starts in the rectum.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "koʊlən",
-        "etymology": "From Latin cŏlon (“large intestine”), from Ancient Greek κόλον (kólon, “the large intestine, also food, meat, fodder”).",
-        "distractors": [
-            "collon",
-            "calon",
-            "celon"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "curse",
-        "definition": "A supernatural detriment or hindrance; a bane.",
-        "exampleSentence": "He wrote the word curse on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɝs",
-        "etymology": "From Middle English curse, kors, cors, curs, from Old English cors, curs (“curse”), of unknown origin.",
-        "distractors": [
-            "currse",
-            "carse",
-            "cerse"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "curve",
-        "definition": "A gentle bend, such as in a road.",
-        "exampleSentence": "He wrote the word curve on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɜːv",
-        "etymology": "Attested since the 1690s, from Latin curvus (“bent, curved”), ultimately from Proto-Indo-European *(s)ker- (“to bend, curve, turn”) + *-wós. Doublet of curb, shrink, carcer, and cancer.",
-        "distractors": [
-            "currve",
-            "carve",
-            "cerve"
-        ],
-        "theme": "character"
-    },
-    {
         "word": "drink",
         "definition": "A beverage.",
         "exampleSentence": "He wrote the word drink on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "dɹɪŋk",
         "etymology": "From Middle English drink, drinke (also as drinche, drunch), from Old English drynċ, from Proto-Germanic *drunkiz, *drankiz.",
@@ -15088,38 +6135,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "drenk"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "drone",
-        "definition": "A male ant, bee, or wasp, which does not work but can fertilize the queen.",
-        "exampleSentence": "One team member launched a camera drone over the Third Pole.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "dɹoʊn",
-        "etymology": "From Middle English drane, from Old English drān, from Proto-West Germanic *drānu, from Proto-Germanic *drēniz, *drēnuz, *drenô (“an insect, drone”), from Proto-Indo-European *dʰreh₁n- (“bee, drone, hornet”).",
-        "distractors": [
-            "dronne",
-            "drane",
-            "drene"
-        ],
-        "theme": "animals"
-    },
-    {
-        "word": "elbow",
-        "definition": "The joint between the upper arm and the forearm.",
-        "exampleSentence": "Up to the elbowes naked were there Armes.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɛlboʊ",
-        "etymology": "From Middle English elbowe (“elbow”), from Old English elboga, elnboga (“elbow”), from Proto-Germanic *alinabugô (“elbow”), equivalent to ell + bow.",
-        "distractors": [
-            "ellbow",
-            "elbou",
-            "elbaw"
-        ],
-        "theme": "body"
     },
     {
         "word": "favor",
@@ -15138,38 +6153,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "fiber",
-        "definition": "A single elongated piece of a given material, roughly round in cross-section, often twisted with other fibers to form thread.",
-        "exampleSentence": "He wrote the word fiber on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "faɪbɚ",
-        "etymology": "From French fibre, from Old French fibre, from Latin fibra.",
-        "distractors": [
-            "fibor",
-            "fibar",
-            "fibber"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "homer",
-        "definition": "A former Hebrew unit of dry volume, about equal to 230 L or 6+¹⁄₂ US bushels.",
-        "exampleSentence": "He wrote the word homer on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "hoʊmɚ",
-        "etymology": "From Hebrew חומר / חֹמֶר (khómer, “clay, heap, large unit of volume”).",
-        "distractors": [
-            "homor",
-            "homar",
-            "hommer"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "horse",
         "definition": "A poker variant consisting of five different poker variants, with the rules changing from one variant to the next after every hand.",
         "exampleSentence": "He wrote the word horse on the board for everyone to see.",
@@ -15186,106 +6169,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
     {
-        "word": "index",
-        "definition": "An alphabetical listing of items and their location.",
-        "exampleSentence": "He isn't able to find the index of the book.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɪndɛks",
-        "etymology": "From Latin index (“a discoverer, informer, spy; of things, an indicator, the forefinger, a title, superscription”), from indicō (“point out, show”); see indicate.",
-        "distractors": [
-            "inndex",
-            "indax",
-            "indix"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "layer",
-        "definition": "A single thickness of some material covering a surface.",
-        "exampleSentence": "I find seven-layer cake a bit too rich.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "leɪɚ",
-        "etymology": "Appears at first glance to be from Middle English leyer, leyare (“a layer of stones or bricks”), equivalent to lay + -er. In which case, ultimately identical to etymology 2 below. For the pronunciation compare prayer.",
-        "distractors": [
-            "layor",
-            "layar",
-            "laier"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "lemon",
-        "definition": "A yellowish citrus fruit.",
-        "exampleSentence": "He didn’t realise until he’d paid for it that the car was a lemon.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "lɛmən",
-        "etymology": "Arabic ليمونbor. Old French lymonbor. Middle English lymon English lemon Inherited from Middle English lymon, from Old French lymon (“citrus”), from Arabic لَيْمُون (laymūn) or Persian لیمون (limon), from Persian لیمو (limu), from Sanskrit निम्बू (nimbū, “lime”), ultimately from Proto-Malayo-Polynes",
-        "distractors": [
-            "lemmon",
-            "lamon",
-            "limon"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "logic",
-        "definition": "A method of human thought that involves thinking in a linear, step-by-step manner about how a problem can be solved. Logic is the basis of many principles including the scientific method.",
-        "exampleSentence": "It's hard to work out his system of logic.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "lɑd͡ʒɪk",
-        "etymology": "From Middle English logik, from Old French logike, from Latin logica, from Ancient Greek λογική (logikḗ, “logic”), from feminine of λογικός (logikós, “of or pertaining to speech or reason or reasoning, rational, reasonable”), from λόγος (lógos, “speech, reason”).",
-        "distractors": [
-            "loggic",
-            "lagic",
-            "legic"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "mason",
-        "definition": "A Freemason.",
-        "exampleSentence": "He wrote the word mason on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "meɪsən",
-        "distractors": [
-            "amson",
-            "msaon",
-            "maosn"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mercy",
-        "definition": "Relenting; forbearance to cause or allow harm to another.",
-        "exampleSentence": "Mercy is one of his many virtues.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "mɝsi",
-        "etymology": "From Middle English mercy, merci, from Anglo-Norman merci (compare continental Old French merci, mercit), from Latin mercēs (“wages, fee, price”), from merx (“wares, merchandise”). Displaced native Old English mildheortnes (literally \"mildheartedness\").",
-        "distractors": [
-            "mercey",
-            "merrcy",
-            "marcy"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "music",
         "definition": "A series of sounds organized in time, usually employing some combination of harmony, melody, rhythm, tempo, etc., often to convey a mood.",
         "exampleSentence": "I keep listening to this music because it’s a masterpiece.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "mjuzɪk",
         "etymology": "From Middle English musik, musike, borrowed from Anglo-Norman musik, musike, Old French musique, and their source Latin mūsica, from Ancient Greek μουσική (mousikḗ), from Ancient Greek Μοῦσα (Moûsa, “Muse”), an Ancient Greek deity of the arts. By surface analysis, muse + -ic (“pertaining to”).",
@@ -15297,84 +6185,19 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "octet",
-        "definition": "A group or set of eight of something.",
-        "exampleSentence": "He wrote the word octet on the board for everyone to see.",
+        "word": "scott",
+        "definition": "The Scott catalogue of postage stamps.",
+        "exampleSentence": "He wrote the word scott on the board for everyone to see.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "ɒktɛt",
-        "etymology": "From oct- (“eight”) + -et.",
+        "pronunciation": "skɒt",
         "distractors": [
-            "occtet",
-            "octat",
-            "octit"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "olive",
-        "definition": "A tree of species Olea europaea cultivated since ancient times in the Mediterranean for its fruit and the oil obtained from it.",
-        "exampleSentence": "He wrote the word olive on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "ɑlɪv",
-        "etymology": "From Middle English olyve, from Old French olive (“olive, olive tree”), from Latin olīva (“olive”), itself either from Etruscan *𐌄𐌋𐌄𐌉𐌅𐌀 (*eleiva), Pre-Classical Greek *ἐλαίϝα (*elaíwa) (compare Mycenaean Greek 𐀁𐀨𐀷 (e-ra-wa), Ancient Greek ἐλαία (elaía)), or the same source as those two.",
-        "distractors": [
-            "ollive",
-            "olivve",
-            "olave"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "orbit",
-        "definition": "An elliptical movement of an object about a celestial object or Lagrange point, especially a periodic elliptical revolution.",
-        "exampleSentence": "All right, I'll play one more orbit but then I'm leaving!",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɔɹbɪt",
-        "etymology": "Inherited from Middle English orbite, orbita, from Latin orbita (“course, track, impression, mark”).",
-        "distractors": [
-            "orrbit",
-            "orbat",
-            "orbet"
+            "csott",
+            "soctt",
+            "sctot"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "roach",
-        "definition": "Sail material that forms a concave curve rather than straight leech (aft edge) of a sail to increase the sail area over that of a simple triangular sail.",
-        "exampleSentence": "He wrote the word roach on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "digraphs",
-        "pronunciation": "ɹoʊt͡ʃ",
-        "etymology": "Apparently from extended or figurative use of roach (“Cyprinidae”), above. Compare the adjective roached (“styled so that the mane stands up from the neck”).",
-        "distractors": [
-            "orach",
-            "raoch",
-            "rocah"
-        ],
-        "theme": "water"
-    },
-    {
-        "word": "sable",
-        "definition": "A small carnivorous mammal of the Old World that resembles a weasel, Martes zibellina, from cold regions in Eurasia and the North Pacific islands, valued for its dark brown fur.",
-        "exampleSentence": "He wrote the word sable on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "seɪbəl",
-        "etymology": "Attested since 1275, from Middle English sable, from Old French sable and martre sable (“sable marten”), in reference to the animal or its fur; from Medieval Latin sabelum, from Middle Low German sabel (compare Middle Dutch sabel, Middle High German zobel); ultimately from a Slavic word (compare Rus",
-        "distractors": [
-            "sible",
-            "sabel",
-            "sabble"
-        ],
-        "theme": "animals"
     },
     {
         "word": "screw",
@@ -15409,116 +6232,35 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "food"
     },
     {
-        "word": "sling",
-        "definition": "An instrument for throwing stones or other missiles, consisting of a short strap with two strings fastened to its ends, or with a string fastened to one end and a light stick to the other.",
-        "exampleSentence": "He wrote the word sling on the board for everyone to see.",
+        "word": "smell",
+        "definition": "A sensation, pleasant or unpleasant, detected by inhaling air (or, the case of water-breathing animals, water) carrying airborne molecules of a substance.",
+        "exampleSentence": "He wrote the word smell on the board for everyone to see.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "slɪŋ",
-        "etymology": "From Middle English slynge (noun), slyngen (verb), probably from Old Norse slyngja, slyngva (“to hurl”), from Proto-Germanic *slingwaną (“to worm, twist”) or compare Old English slingan (“to wind, twist”), from the same source.",
+        "pronunciation": "smɛl",
         "distractors": [
-            "slinng",
-            "slang",
-            "sleng"
+            "smel",
+            "small",
+            "smill"
         ],
-        "theme": "art"
+        "theme": "water"
     },
     {
-        "word": "stack",
-        "definition": "A large pile of hay, grain, straw, or the like, larger at the bottom than the top, sometimes covered with thatch.",
-        "exampleSentence": "They paid him a stack of money to keep quiet.",
+        "word": "truth",
+        "definition": "An entry posted on the Truth Social platform.",
+        "exampleSentence": "He wrote the word truth on the board for everyone to see.",
         "partOfSpeech": "noun",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
-        "pronunciation": "stæk",
-        "etymology": "From Middle English stack, stacke, stakke, stak, from Old Norse stakkr (“a barn; haystack; heap; pile”), from Proto-Germanic *stakkaz (“a barn; rick; haystack”). The data structure sense is a calque of Dutch stapel, introduced by Edsger W. Dijkstra.",
+        "pronunciation": "truth",
+        "etymology": "From the name of the platform, Truth Social.",
         "distractors": [
-            "stak",
-            "stacck",
-            "steck"
+            "trutth",
+            "trath",
+            "treth"
         ],
-        "theme": "quantity"
-    },
-    {
-        "word": "stake",
-        "definition": "A piece of wood or other material, usually long and slender, pointed at one end so as to be easily driven into the ground as a marker or a support or stay.",
-        "exampleSentence": "A sharpened stake strong Dryas found.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "steɪk",
-        "etymology": "From Middle English stake, from Old English staca (“pin, tack, stake”), from Proto-West Germanic *stakō, from Proto-Germanic *stakô (“stake”), from Proto-Indo-European *stog-, *steg- (“stake”).",
-        "distractors": [
-            "stakke",
-            "steke",
-            "stike"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "stalk",
-        "definition": "The stem or main axis of a plant.",
-        "exampleSentence": "A stalk of wheat, rye, or oats; the stalks of maize or hemp.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "stɔk",
-        "etymology": "From Middle English stalke, stelke, stalk, perhaps from Old English *stealc, *stielc, *stealuc, from Proto-West Germanic *staluk, *stalik, from Proto-Germanic *stalukaz, *stalikaz, diminutive of Proto-Germanic *stalô, *staluz (“support, stem, stalk”), from Proto-Indo-European *stel- (“to place, stan",
-        "distractors": [
-            "stallk",
-            "stelk",
-            "stilk"
-        ],
-        "theme": "plants"
-    },
-    {
-        "word": "tenor",
-        "definition": "A musical range or section higher than bass and lower than alto.",
-        "exampleSentence": "He wrote the word tenor on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɛnə(ɹ)",
-        "etymology": "From Middle English tenour, from Anglo-Norman tenour, from Old French tenor (“substance, contents, meaning, sense; tenor part in music”), from Latin tenor (“course, continuance; holder”), from teneō (“I hold”).",
-        "distractors": [
-            "tener",
-            "tennor",
-            "tanor"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "valve",
-        "definition": "A device that controls the flow of a gas or fluid through a space, such as a pipe, manifold, or plenum.",
-        "exampleSentence": "An oil refinery has an impressively vast number and variety of valves.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "vælv",
-        "etymology": "From Middle English valve, from Latin valva (“double door, valve”). Doublet of valva.",
-        "distractors": [
-            "vallve",
-            "velve",
-            "vilve"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "wagon",
-        "definition": "A heavier four-wheeled (normally horse-drawn) vehicle designed to carry goods (or sometimes people).",
-        "exampleSentence": "He wrote the word wagon on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "wæɡən",
-        "etymology": "Borrowed from Middle Dutch wagen, from Old Dutch *wagan, from Proto-West Germanic *wagn, from Proto-Germanic *wagnaz (“wagon”), from Proto-Indo-European *weǵʰ- (“to transport”). Generally displaced native cognate wain, from Old English wæġn, of which it is a doublet. Related also to way, weigh.",
-        "distractors": [
-            "waggon",
-            "wegon",
-            "wigon"
-        ],
-        "theme": "animals"
+        "theme": "society"
     },
     {
         "word": "words",
@@ -15534,54 +6276,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "werds"
         ],
         "theme": "feelings"
-    },
-    {
-        "word": "alter",
-        "definition": "To change the form or structure of.",
-        "exampleSentence": "No power in Venice can alter a decree.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɔltəɹ",
-        "etymology": "From Old French alterer (French altérer), from Medieval Latin alterāre (“to make other”), from Latin alter (“the other”), from al- (seen in alius (“other”), alienus (“of another”), etc.; see alias, alien, etc.) + compar. suffix -ter.",
-        "distractors": [
-            "altor",
-            "altar",
-            "allter"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "crank",
-        "definition": "To turn by means of a crank.",
-        "exampleSentence": "It took a while to learn how to crank.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɹæŋk",
-        "etymology": "From Middle English crank, cronk, from a shortening of Old English crancstæf (“weaving tool, crank”, literally “bent or crooked staff”), the first element ultimately related to Etymology 1 above.",
-        "distractors": [
-            "crannk",
-            "crenk",
-            "crink"
-        ],
-        "theme": "actions"
-    },
-    {
-        "word": "crawl",
-        "definition": "To creep; to move slowly on hands and knees, or by dragging the body along the ground.",
-        "exampleSentence": "It took a while to learn how to crawl.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kɹɔl",
-        "etymology": "From Middle English crawlen, crewlen, creulen, crallen, *cravelen, from Old Norse krafla (compare Danish kravle (“to crawl, creep”), Swedish kravla, kräla (“to creep, crawl”)), from Proto-Germanic *krablōną (compare Saterland Frisian krabbelje, Dutch krabbelen, German Low German krabbeln, German kra",
-        "distractors": [
-            "crawwl",
-            "craul",
-            "crewl"
-        ],
-        "theme": "body"
     },
     {
         "word": "empty",
@@ -15600,86 +6294,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "evoke",
-        "definition": "To call out; to draw out or bring forth.",
-        "exampleSentence": "Being here evokes long forgotten memories.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "ɪvoʊk",
-        "etymology": "From French évoquer, from Latin ēvocō (“to call out, summon”), from ex (“out”) and vocō (“call”). Akin to voice.",
-        "distractors": [
-            "evvoke",
-            "evokke",
-            "evake"
-        ],
-        "theme": "art"
-    },
-    {
-        "word": "grate",
-        "definition": "To shred (things, usually foodstuffs), by rubbing across a grater.",
-        "exampleSentence": "It took a while to learn how to grate.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɡɹeɪt",
-        "etymology": "From Middle English graten, from Old French grater (“to scrape”) ( > French gratter), from Frankish *krattōn, from Proto-Germanic *krattōną. Cognate with Old High German krazzon ( > German kratzen (“to scrawl”) > Danish kradse), Icelandic krassa (“to scrawl”) and Danish kratte.",
-        "distractors": [
-            "gratte",
-            "grete",
-            "grite"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hover",
-        "definition": "To keep (something, such as an aircraft) in a stationary state in the air.",
-        "exampleSentence": "It took a while to learn how to hover.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "hɑvɚ",
-        "etymology": "The verb is derived from Middle English hoveren (“to float in the air, hover; to stay”), probably from hoven (“hover; of a bird: to fly high in the air, soar”) (which it displaced) + -er- (frequentative suffix).",
-        "distractors": [
-            "hovor",
-            "hovar",
-            "hovver"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "imply",
-        "definition": "To have as a necessary consequence; to lead to (something) as a consequence.",
-        "exampleSentence": "Correlation does not imply causation.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɪmplaɪ",
-        "etymology": "From Middle English implien, emplien, borrowed from Old French emplier, from Latin implicare (“to infold, involve”), from in (“in”) + plicare (“to fold”). Doublet of employ and implicate.",
-        "distractors": [
-            "impley",
-            "immply",
-            "impyl"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "infer",
-        "definition": "To introduce (something) as a reasoned conclusion; to conclude by reasoning or deduction, as from premises or evidence.",
-        "exampleSentence": "It took a while to learn how to infer.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "ɪnfɜː",
-        "etymology": "From Latin inferō, from Latin in- (“in, at, on; into”) + Latin ferō (“bear, carry; suffer”) (cognate to Old English beran, whence English bear), from Proto-Italic *ferō, from Proto-Indo-European *bʰéreti (“to bear, carry”), from the root *bʰer-.",
-        "distractors": [
-            "infor",
-            "infar",
-            "innfer"
-        ],
-        "theme": "mind"
-    },
-    {
         "word": "judge",
         "definition": "To sit in judgment on; to pass sentence on (a person or matter).",
         "exampleSentence": "He was judged to die for his crimes.",
@@ -15694,22 +6308,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "jadge"
         ],
         "theme": "people"
-    },
-    {
-        "word": "label",
-        "definition": "To put a label (a ticket or sign) on (something).",
-        "exampleSentence": "It took a while to learn how to label.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "leɪbəl",
-        "etymology": "From Middle English label (“narrow band, strip of cloth”), from Old French label, lambel (Modern French lambeau), from Frankish *lappā (“torn piece of cloth”), from Proto-Germanic *lappǭ, *lappô (“cloth stuff, rag, scraps, flap, dewlap, lobe, rabbit ear”), from Proto-Indo-European *leb- (“blade”).",
-        "distractors": [
-            "lable",
-            "labal",
-            "labbel"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "lower",
@@ -15728,43 +6326,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "quest",
-        "definition": "To seek or pursue a goal; to undertake a mission or job.",
-        "exampleSentence": "Next day we quested in search of our caravan, and after some pains recovered it.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "kwɛst",
-        "etymology": "From Middle English quest, queste; partly from Anglo-Norman queste, Old French queste (“acquisition, search, hunt”), and partly from their source, Latin quaesta (“tribute, tax, inquiry, search”), noun use of quaesita, the feminine past participle of quaerere (“to ask, seek”).",
-        "distractors": [
-            "quesst",
-            "qaest",
-            "qeest"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "slash",
-        "definition": "To cut with a swift broad stroke of an edged weapon.",
-        "exampleSentence": "It took a while to learn how to slash.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "slæʃ",
-        "etymology": "Late Middle English, originally a verb of uncertain etymology. Perhaps of imitative origin, or possibly from Old French esclachier (“to break in pieces”), a variant of esclater, which is likely a Germanic borrowing, from Frankish *slaitan (“to slit, tear”).",
-        "distractors": [
-            "slassh",
-            "slesh",
-            "slish"
-        ],
-        "theme": "actions"
-    },
-    {
         "word": "speak",
         "definition": "To communicate with one's voice, to say words out loud.",
         "exampleSentence": "It took a while to learn how to speak.",
         "partOfSpeech": "verb",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "spik",
         "etymology": "From Middle English speken (“to speak”), from Old English specan (“to speak”). This is usually taken to be an irregular alteration of earlier sprecan (“to speak”), from Proto-West Germanic *sprekan, from Proto-Germanic *sprekaną (“to speak, make a sound”), from Proto-Indo-European *spreg- (“to make",
@@ -15774,22 +6340,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "spiak"
         ],
         "theme": "communication"
-    },
-    {
-        "word": "surge",
-        "definition": "To rush, flood, or increase suddenly.",
-        "exampleSentence": "It took a while to learn how to surge.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "sɝd͡ʒ",
-        "etymology": "From Middle English surgen, possibly from Middle French sourgir, from Old French surgir (“to rise, ride near the shore, arrive, land”), from Old Catalan surgir, from Latin surgō, contraction of surrigō, subrigō (“lift up, raise, erect; intransitive rise, arise, get up, spring up, grow, etc.",
-        "distractors": [
-            "surrge",
-            "sarge",
-            "serge"
-        ],
-        "theme": "water"
     },
     {
         "word": "swear",
@@ -15808,58 +6358,11 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "trail",
-        "definition": "To follow behind (someone or something); to tail (someone or something).",
-        "exampleSentence": "His new film was trailed on TV last night.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "tɹeɪl",
-        "etymology": "From Middle English trailen, from Old French trailler (“to tow; pick up the scent of a quarry”), from Vulgar Latin *tragulāre (“to drag”), from Latin tragula (“dragnet, javelin thrown by a strap”), probably related to Latin trahere (“to pull, drag along”).",
-        "distractors": [
-            "trayl",
-            "treil",
-            "triil"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "twang",
-        "definition": "To produce or cause to produce a sharp vibrating sound, like a tense string pulled and suddenly let go.",
-        "exampleSentence": "It took a while to learn how to twang.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "twæŋ",
-        "etymology": "Onomatopoeic. Compare Middle English twengen (“to pinch, tweak”) (whence modern English twinge), from Old English twenġan (“to pinch, twinge”); Middle English twingen (“to afflict, torment, oppress”), from Old Norse þvinga (“to weigh down, oppress”); Old English twingan (“to force, press”).",
-        "distractors": [
-            "wtang",
-            "tawng",
-            "twnag"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "wharf",
-        "definition": "To secure by a wharf.",
-        "exampleSentence": "It took a while to learn how to wharf.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "wɔɹf",
-        "distractors": [
-            "hwarf",
-            "wahrf",
-            "whraf"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "crazy",
         "definition": "Of unsound mind; insane; demented.",
         "exampleSentence": "Why is she so crazy about him?",
         "partOfSpeech": "adjective",
-        "difficulty": 2,
+        "difficulty": 1,
         "pattern": "blends",
         "pronunciation": "kɹeɪzi",
         "etymology": "From craze (“to crush”) + -y, akin to being \"crazed up\". Compare cracked up (“suffered a mental breakdown; be insane”).",
@@ -15869,22 +6372,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "crezy"
         ],
         "theme": "mind"
-    },
-    {
-        "word": "fluid",
-        "definition": "Of or relating to fluid.",
-        "exampleSentence": "Oh, Loki made sure of that. My mortal parents blamed him for the way I was, for being fluid.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "blends",
-        "pronunciation": "fluɪd",
-        "etymology": "From Middle English fluid, from Latin fluidus (“flowing; fluid”), from Latin fluō (“to flow”), from Proto-Indo-European *bʰleh₁- (“to swell; surge; overflow; run”). Akin to Ancient Greek φλύειν (phlúein, “to swell; overflow”).",
-        "distractors": [
-            "flaid",
-            "fleid",
-            "fulid"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "legal",
@@ -15903,19 +6390,9506 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "prime",
-        "definition": "First in importance, degree, or rank.",
-        "exampleSentence": "This is a prime location for a bookstore.",
+        "word": "ready",
+        "definition": "Prepared for immediate action or use.",
+        "exampleSentence": "The porridge is ready to serve.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɹɛdi",
+        "etymology": "From Middle English redy, redi, rædiȝ, iredi, ȝerǣdi, alteration ( + -y) of earlier irēd, irede, ȝerād (“ready, prepared”), from Old English rǣde, ġerǣde (also ġerȳde) (\"prepared, prompt, ready, ready for riding (horse), mounted (on a horse), skilled, simple, easy\"), from Proto-Germanic *garaidijaz,",
+        "distractors": [
+            "readey",
+            "readdy",
+            "reedy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "whole",
+        "definition": "Entire, undivided.",
+        "exampleSentence": "He is of whole mind, but the same cannot be said about his physical state.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "hoʊl",
+        "etymology": "From Middle English hol, hole (“healthy, unhurt, whole”), from Old English hāl (“healthy, safe”), from Proto-West Germanic *hail, from Proto-Germanic *hailaz (“whole, safe, sound”), from Proto-Indo-European *kéh₂ilos (“healthy, whole”).",
+        "distractors": [
+            "whoel",
+            "wholle",
+            "wole"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "along",
+        "definition": "In company; together.",
+        "exampleSentence": "Don't stop here. Just move along.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "əlɒŋ",
+        "etymology": "From Middle English, from Old English andlang, from prefix and- + lang (“long”). Doublet of endlong.",
+        "distractors": [
+            "allong",
+            "alonng",
+            "alang"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "breath",
+        "definition": "The act or process of breathing.",
+        "exampleSentence": "I took a deep breath and started the test.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɹɛθ",
+        "etymology": "From Middle English breeth, breth, from Old English brǣþ (“odor, scent, stink, exhalation, vapor”), from Proto-West Germanic *brāþi (“vapour, waft, exhalation, breath”) (compare German Brodem (“haze, vapor; breath”), of a different but related formation).",
+        "distractors": [
+            "breatth",
+            "breeth",
+            "braath"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cancer",
+        "definition": "Someone with a Cancer star sign.",
+        "exampleSentence": "‘All right, so what are Cancers apart from sad, then?’ Lizzie asked.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kænsɚ",
+        "etymology": "Learned borrowing from Latin cancer (“crab”), calque of Ancient Greek Καρκίνος (Karkínos, “crab”), calque of Akkadian 𒀀𒇻𒌅 (allutu, “crab”), from Sumerian 𒀯𒀠𒈜 (ᵐᵘˡAL.LUL, “crab; name of constellation”).",
+        "distractors": [
+            "cancor",
+            "cancar",
+            "canncer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "chance",
+        "definition": "An opportunity or possibility.",
+        "exampleSentence": "There is a 30 percent chance of rain tomorrow.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "t͡ʃʰæns",
+        "etymology": "From Middle English chance, cheance, chaunce, cheaunce, a borrowing from Old French cheance (“accident, chance, luck”), from Vulgar Latin *cadentia (“falling”), from Latin cadere (“to fall, to die, to happen, occur”). Doublet of cadence and cadenza.",
+        "distractors": [
+            "chence",
+            "channce",
+            "chince"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "couple",
+        "definition": "Two of the same kind connected or considered together.",
+        "exampleSentence": "Can you use the word couple in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kʌpəl",
+        "etymology": "From Middle English couple, from Old French couple, from Latin cōpula. Doublet of copula.",
+        "distractors": [
+            "coupel",
+            "coupple",
+            "cowple"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "damage",
+        "definition": "Injury or harm; the condition or measure of something not being intact.",
+        "exampleSentence": "Can you use the word damage in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "dæmɪd͡ʒ",
+        "etymology": "From Middle English damage, from Old French damage, from Vulgar Latin *damnāticum from Classical Latin damnum. Compare modern French dommage. Largely displaced native Middle English scath (whence unscathed). Cognate with Spanish daño.",
+        "distractors": [
+            "dammage",
+            "damagge",
+            "demage"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "driver",
+        "definition": "One who drives something.",
+        "exampleSentence": "Tipping your driver is optional but is much appreciated.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɹaɪvɚ",
+        "etymology": "From Middle English drivere, dryvere, dryvare, equivalent to drive + -er. Cognate with Saterland Frisian Drieuwer (“driver”), Dutch drijver (“driver”), German Low German Driever (“driver”), German Treiber (“driver”), Swedish drivare (“driver”).",
+        "distractors": [
+            "drivor",
+            "drivar",
+            "drivver"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "friend",
+        "definition": "A Quaker; a member of the Society of Friends. (See also Friends.).",
+        "exampleSentence": "Can you use the word friend in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "friend",
+        "etymology": "English surname, from the noun friend, or adaptations of it in other languages such as German Freund, Dutch Vriend, Slovene Prijatelj.",
+        "distractors": [
+            "rfiend",
+            "firend",
+            "freind"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "genius",
+        "definition": "Someone possessing extraordinary intelligence or skill; especially somebody who has demonstrated this by a creative or original work in science, music, art, etc.",
+        "exampleSentence": "She's a genius; she won a Nobel Prize at fifteen!",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "d͡ʒinjəs",
+        "etymology": "From Latin genius (“inborn nature; a tutelary deity of a person or place; wit, brilliance”), from gignō (“to beget, produce”), Old Latin genō, from the Proto-Indo-European root *ǵenh₁-. Doublet of genio. See also genus and genie.",
+        "distractors": [
+            "gennius",
+            "ganius",
+            "ginius"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "letter",
+        "definition": "A symbol in an alphabet.",
+        "exampleSentence": "I broke the letter of it to keep the sense.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɛtɚ",
+        "etymology": "From Middle English letter, lettre, from Old French letre, from Latin littera (“letter of the alphabet\"; in plural, \"epistle”). Displaced Old English bōcstæf (literally “book staff”) in sense 1 and ǣrendġewrit (literally “message writing”) in sense 2.",
+        "distractors": [
+            "lettor",
+            "lettar",
+            "leter"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "martin",
+        "definition": "Many of the various passerine birds of the family Hirundinidae, which also includes swallows, that catch insects whilst flying.",
+        "exampleSentence": "Roof-haunting martins warm their eggs: / In these, in those the life is stay’d.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɑɹtɪn",
+        "etymology": "From Middle French martin (French martinet).",
+        "distractors": [
+            "marrtin",
+            "mertin",
+            "mirtin"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "member",
+        "definition": "One who belongs to a group.",
+        "exampleSentence": "The I-beams were to become structural members of a pedestrian bridge.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɛmbɚ",
+        "etymology": "From Middle English membre, from Old French membre, from Latin membrum (“limb, body part”), from Proto-Italic *memzrom, from Proto-Indo-European *mḗms, *mēms-rom (“flesh”). Akin to Gothic 𐌼𐌹𐌼𐌶 (mimz, “meat, flesh”), Crimean Gothic menus.",
+        "distractors": [
+            "membor",
+            "membar",
+            "memmber"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "memory",
+        "definition": "The ability of the brain to record information or impressions with the facility of recalling them later, usually at will.",
+        "exampleSentence": "I have no memory of that event.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɛməɹi",
+        "etymology": "From Anglo-Norman memorie, Old French memoire etc., from Latin memoria (“the faculty of remembering, remembrance, memory, a historical account”), from memor (“mindful, remembering”), from Proto-Indo-European *(s)mer- (to remember), related to Ancient Greek μνήμη (mnḗmē, “memory”) μέρμερος (mérmeros,",
+        "distractors": [
+            "memorey",
+            "memery",
+            "memmory"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "mother",
+        "definition": "A title given to a nun or a priestess.",
+        "exampleSentence": "Mother Teresa Gertrude O’Sullivan, then Provincial, did not give higher education for Loreto nuns the same priority as had Mothers Gonzaga and Stanislaus.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "mother",
+        "distractors": [
+            "mothor",
+            "mothar",
+            "motther"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nature",
+        "definition": "The way things are, the totality of all things in the physical universe and their order, especially the physical world in contrast to spiritual realms and flora and fauna as distinct from human conventions, art, and technology.",
+        "exampleSentence": "Can you use the word nature in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "neɪ̯t͡ʃəɹ",
+        "etymology": "From Middle English nature, natur, from Old French nature, from Latin nātūra (“birth, origin, natural constitution or quality”), future participle from perfect passive participle (g)natus (“born”), from deponent verb (g)nasci (“to be born, originate”) + future participle suffix -urus.",
+        "distractors": [
+            "nater",
+            "natture",
+            "naturre"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "search",
+        "definition": "An attempt to find something.",
+        "exampleSentence": "Search is a hard problem for computers to solve efficiently.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɝt͡ʃ",
+        "etymology": "From Middle English serchen, borrowed from Anglo-Norman sercher, Old French cerchier, from Late Latin circō, circāre (“to circle; go around; search for”), from Latin circa, circus. Not related to German suchen, which is cognate with English seek.",
+        "distractors": [
+            "searrch",
+            "seerch",
+            "saarch"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "thomas",
+        "definition": "An infidel or doubter.",
+        "exampleSentence": "Can you use the word thomas in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɑməs",
+        "etymology": "Inherited from Middle English Thomas, from Latin Thōmās m (as in the Vulgate), from Ancient Greek Θωμᾶς m (Thōmâs), the Biblical Greek transcription of Aramaic תאומא or תאמא (“twin”), the nickname of one of the Twelve Apostles.",
+        "distractors": [
+            "htomas",
+            "tohmas",
+            "thmoas"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ticket",
+        "definition": "A pass entitling the holder to admission to a show, concert, sporting event, etc.",
+        "exampleSentence": "Can you use the word ticket in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɪkɪt",
+        "etymology": "Borrowed from Middle Scots tikkat, tikket, from Middle French etiquet m, estiquet m, and etiquette f, estiquette f (“a bill, note, label, ticket”), from Old French estechier, estichier, estequier (“to attach, stick”), (compare Picard estiquier (“to stick, pierce”)), from Frankish *stikkjan, *stekan",
+        "distractors": [
+            "ticcket",
+            "tacket",
+            "tecket"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "happen",
+        "definition": "To occur or take place.",
+        "exampleSentence": "Let me tell you how it happened.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "hæpən",
+        "etymology": "From Middle English happenen, hapnen, augmented from Middle English happen (“to come to pass, happen”), perhaps from Old English hæppan (“to move accidentally, slip”) and/or from Old Norse *happa, *heppa, from Proto-Germanic *hampijaną (“to fit in, be fitting”).",
+        "distractors": [
+            "hapen",
+            "heppen",
+            "hippen"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "always",
+        "definition": "At all times; throughout all time; since the beginning.",
+        "exampleSentence": "I thought I could always go back to work.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɔləs",
+        "etymology": "From Middle English alweyes, alwayes, alweys, a variant of Middle English alwey, alway (“always”), from Old English ealneġ, ealne weġ (“always, perpetually”, literally “all the way, all the while, continuously”), from ealne + weġ (accusative case), equivalent to alway + -s.",
+        "distractors": [
+            "allways",
+            "alwais",
+            "alweys"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "locked",
+        "definition": "Having undergone locking; secured by a lock.",
+        "exampleSentence": "You can't delete a locked computer file.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
         "pattern": "blends",
-        "pronunciation": "pɹaɪ̯m",
-        "etymology": "From Middle English prime, from Old French prime and its etymon, Latin prīmus (“first”), from earlier prīsmos < *prīsemos < Proto-Italic *priisemos, ultimately from Proto-Indo-European *per- (“beyond, before”). Doublet of primo and primus.",
+        "pronunciation": "lɑkt",
+        "etymology": "* (drunk): Perhaps from airlocked.",
         "distractors": [
-            "primme",
-            "prame",
-            "preme"
+            "loccked",
+            "lacked",
+            "lecked"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mission",
+        "definition": "A set of tasks that fulfills a purpose or duty; an assignment set by an employer, or by oneself.",
+        "exampleSentence": "Many cities across the Americas grew from Spanish missions.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪʃ(ə)n",
+        "etymology": "Learned borrowing from Latin missiō, missiōnem (“a sending, sending away, dispatching, discharging, release, remission, cessation”).",
+        "distractors": [
+            "mistion",
+            "mision",
+            "massion"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "running",
+        "definition": "The action of the verb to run.",
+        "exampleSentence": "I'm gonna go out and do my running.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹʌniŋ",
+        "etymology": "By surface analysis, run + -ing.",
+        "distractors": [
+            "runing",
+            "runninng",
+            "ranning"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "station",
+        "definition": "A regular stopping place for ground transportation.",
+        "exampleSentence": "The next station is Esperanza.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "steɪʃən",
+        "etymology": "From Middle English stacioun, borrowed from Anglo-Norman estation, from Latin statiōnem, accusative of statiō (“standing, post, job, position”), whence also Italian stazione. Doublet of stagione.",
+        "distractors": [
+            "stasion",
+            "stattion",
+            "stetion"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "believe",
+        "definition": "To accept as true, particularly without absolute certainty (i.e., as opposed to knowing).",
+        "exampleSentence": "I don't believe in making my bed.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "bɪliv",
+        "etymology": "From Middle English beleven, bileven, from Old English belīefan (“to believe”), from Proto-West Germanic *bilaubijan (“to believe”), equivalent to be- + leave (“to give leave or permission to, permit, allow, grant”).",
+        "distractors": [
+            "beleive",
+            "bellieve",
+            "believve"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nervous",
+        "definition": "Full of sinews.",
+        "exampleSentence": "Being in a crowd of strangers makes me nervous.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nɝːvəs",
+        "etymology": "From Middle English nervous (“composed of or incorporating nerves”), from Latin nervōsus (“nervous; sinewy; energetic, vigorous”), from nervus (“nerve; muscle; sinew, tendon; (figuratively) energy, power; nerve; force, strength, vigour”) (ultimately from Proto-Indo-European *snéh₁wr̥ (“sinew, tendon",
+        "distractors": [
+            "nervus",
+            "nervious",
+            "nerrvous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "through",
+        "definition": "By way of the interior.",
+        "exampleSentence": "The arrow went straight through.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "θɹu",
+        "etymology": "From Middle English thrugh, thruch, thruh, metathetic variants of thurgh, thurh, from Old English þurh, from Proto-Germanic *þurhw (“through”), from Proto-Indo-European *tr̥h₂kʷe, suffixed zero-grade from *terh₂- (“to pass through”) + *-kʷe (“and”).",
+        "distractors": [
+            "thruff",
+            "througgh",
+            "throwgh"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "monster",
+        "definition": "To make into a monster; to categorise as a monster; to demonise.",
+        "exampleSentence": "Are you monstering that event?",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɑnstɚ",
+        "etymology": "From Middle English monstre, from Old French monstre, mostre, moustre, from Latin mōnstrum.",
+        "distractors": [
+            "monstor",
+            "monstar",
+            "monnster"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hanging",
+        "definition": "Suspended.",
+        "exampleSentence": "The hanging vines made the house look older than it was.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hæŋɪŋ",
+        "etymology": "See the etymology of the corresponding lemma form.",
+        "distractors": [
+            "hannging",
+            "hanginng",
+            "henging"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "decision",
+        "definition": "The act of deciding.",
+        "exampleSentence": "It's a tough decision, but I'll take vanilla.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪsɪʒn̩",
+        "etymology": "Derived from Middle French, from Latin dēcīsiō, dēcīsiōnis, from dēcīdō (“to decide”).",
+        "distractors": [
+            "decition",
+            "deccision",
+            "decission"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "director",
+        "definition": "One who directs; the person in charge of managing a department or directorate (e.g., director of engineering), project, or production (as in a show or film, e.g., film director).",
+        "exampleSentence": "Francis Gurry is director of WIPO.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪɹɛktɚ",
+        "etymology": "Borrowed from Middle French directeur and its source Late Latin dīrēctor, dīrēctōrem, from Latin dīrēctus. By surface analysis, direct + -or.",
+        "distractors": [
+            "directer",
+            "dirrector",
+            "direcctor"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "pleasure",
+        "definition": "A state of being pleased or contented; gratification.",
+        "exampleSentence": "It was a pleasure to meet you.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "plɛʒɚ",
+        "etymology": "From Early Modern English pleasur, plesur, alteration (with ending accommodated to -ure) of Middle English plaisir (“pleasure”), from Old French plesir, plaisir (“to please”), infinitive used as a noun, conjugated form of plaisir or plaire, from Latin placeō (“to please, to seem good”), from the Pro",
+        "distractors": [
+            "pleaser",
+            "pleassure",
+            "pleasurre"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "practice",
+        "definition": "Repetition of an activity to improve a skill.",
+        "exampleSentence": "She ran a thriving medical practice.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "pɹæktɪs",
+        "etymology": "The noun is from Middle English practice, practique, practyse, from the verb; also compare Medieval Latin prāctica.",
+        "distractors": [
+            "pracctice",
+            "practicce",
+            "prectice"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "property",
+        "definition": "Something that is owned.",
+        "exampleSentence": "Charm is his most endearing property.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɑpɚti",
+        "etymology": "From Middle English propertee, properte, propirte, proprete, borrowed from Anglo-Norman and Old French propreté, proprieté (“propriety, fitness, property”), from Latin proprietās (“a peculiarity, one's peculiar nature or quality, right or fact of possession, property”), from proprius (“special, part",
+        "distractors": [
+            "propertey",
+            "propperty",
+            "properrty"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "complete",
+        "definition": "To finish; to make done; to reach the end.",
+        "exampleSentence": "The instructions said to complete gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "kəmpliːt",
+        "etymology": "From Middle English compleet (“full, complete”), borrowed from Old French complet or Latin completus, past participle of compleō (“I fill up, I complete”) (whence also complement, compliment), from com- + pleō (“I fill, I fulfill”) (whence also deplete, replete, plenty), ultimately from Proto-Indo-E",
+        "distractors": [
+            "commplete",
+            "complette",
+            "camplete"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "finished",
+        "definition": "Processed or perfected.",
+        "exampleSentence": "I won't be finished until just before lunch.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɪnɪʃt",
+        "distractors": [
+            "finnished",
+            "finisshed",
+            "fanished"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "involved",
+        "definition": "Complicated.",
+        "exampleSentence": "He got/was involved in a bar fight.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪnvɑlvd",
+        "etymology": "From involve + -ed.",
+        "distractors": [
+            "innvolved",
+            "invollved",
+            "invalved"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "personal",
+        "definition": "Pertaining to persons (human beings as opposed to things or animals).",
+        "exampleSentence": "The old house had a personal appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɜɹsənəl",
+        "etymology": "From Middle English personal, personele, from Anglo-Norman personel, personal, personell, Old French personal, personel, from Late Latin persōnālis (“of a person, personly”), equivalent to person + -al. Doublet of personnel.",
+        "distractors": [
+            "personel",
+            "perrsonal",
+            "personnal"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "downness",
+        "definition": "The property of being a down quark.",
+        "exampleSentence": "The upness and downness of vowel sounds affect us physically in different ways .",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "downness",
+        "etymology": "From down + -ness.",
+        "distractors": [
+            "downniss",
+            "downess",
+            "downnes"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "beginning",
+        "definition": "The act of doing that which begins anything; commencement of an action, state, or space of time; entrance into being or upon a course; the first act, effort, or state of a succession of acts or states.",
+        "exampleSentence": "What was the beginning of the dispute?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bᵻɡɪnɪŋ",
+        "etymology": "From Middle English biginning, beginninge, beginnunge, equivalent to begin + -ing.",
+        "distractors": [
+            "begining",
+            "begginning",
+            "beginninng"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "challenge",
+        "definition": "An antagonization or instigation intended to convince a person to perform an action they otherwise would not.",
+        "exampleSentence": "Learning about the challenge was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "t͡ʃælɪnd͡ʒ",
+        "etymology": "From Middle English chalenge, variant with palatalization of Middle English kalange (“an accusation, claim”), from Old French chalenge, chalonge, palatalized Central French variants of Old Northern French calenge, calonge (see Continental Norman calengier), from Latin calumnia (“a false accusation,",
+        "distractors": [
+            "chalenge",
+            "challennge",
+            "chellenge"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "situation",
+        "definition": "The combination of circumstances at a given moment; a state of affairs.",
+        "exampleSentence": "Learning about the situation was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪtjuːeɪʃən",
+        "etymology": "From Middle English situacioun, situacion, from Middle French situation, from Medieval Latin situatio (“position, situation”), from situare (“to locate, place”), from Latin situs (“a site”). By surface analysis, situate + -ion.",
+        "distractors": [
+            "situasion",
+            "sittuation",
+            "situattion"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "fantastic",
+        "definition": "Wonderful; marvelous; excellent; extraordinarily good or great (used especially as an intensifier).",
+        "exampleSentence": "He told fantastic stories of dragons and goblins.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fæntæstɪk",
+        "etymology": "Borrowed from Middle French fantastique, borrowed from Late Latin phantasticus, borrowed from Ancient Greek φᾰντᾰστῐκός (phăntăstĭkós, “imaginary, fantastic; fictional”), ultimately from Proto-Indo-European *bʰeh₂- (“to shine”). Equivalent to fantasy + -tic. Doublet of fantastique.",
+        "distractors": [
+            "fanntastic",
+            "fantasstic",
+            "fentastic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "important",
+        "definition": "Having relevant and crucial value; having import.",
+        "exampleSentence": "We thought it important for there to be a fire escape at the back of every building.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɪmpɔɹtənt",
+        "etymology": "From Middle English important, from Medieval Latin important-, importāns. By surface analysis, import (“to be important”) + -ant. Displaced native Old English heah and hefig.",
+        "distractors": [
+            "importent",
+            "immportant",
+            "imporrtant"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "christmas",
+        "definition": "To decorate (a place) with Christmas (“sprigs of holly and other evergreen plants used as Christmas decorations, or any Christmas decorations”).",
+        "exampleSentence": "I had done Christmas in so many ways that I was somewhat ‘Christmassed-out.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹɪsməs",
+        "etymology": "The proper noun is derived from Middle English Cristemasse, Criste-mas (“Christmas Day; season of Christmas; Christmas festivities”) [and other forms], from Old English Cristes mæsse (“Christmas”, literally “Christ’s mass”), from Crist (“Christ”) + -es (possessive marker) + mæsse (“a mass (celebrati",
+        "distractors": [
+            "chrisstmas",
+            "chrastmas",
+            "chrestmas"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underlive",
+        "definition": "To live under; live beneath (something); to fail to live up to (something).",
+        "exampleSentence": "The family farmer, if he is not too deeply in debt, underlives the corporation farmer and survives.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "underlive",
+        "etymology": "From under- + live.",
+        "distractors": [
+            "unnderlive",
+            "underrlive",
+            "underlivve"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "god",
+        "definition": "A being such as a monotheistic God: a single divine creator and ruler of the universe.",
+        "exampleSentence": "The Muéddin: God is great, there is no God but God.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "ɡɑd",
+        "distractors": [
+            "gad",
+            "ged",
+            "gdo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "oil",
+        "definition": "Liquid fat.",
+        "exampleSentence": "Oil is mostly found in Saudi Arabia and is transported all over the world.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɔl",
+        "etymology": "From Middle English oyle, oile (“olive oil”), borrowed from Anglo-Norman olie, from Latin oleum (“oil, olive oil”), from Ancient Greek ἔλαιον (élaion, “olive oil”), from ἐλαία (elaía, “olive”). Compare Proto-Slavic *lojь. More at olive. Doublet of oleum.",
+        "distractors": [
+            "oal",
+            "oel",
+            "oli"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "war",
+        "definition": "Organized, large-scale, armed conflict between countries or between national, ethnic, or other sizeable groups, usually but not always involving active engagement of military forces.",
+        "exampleSentence": "My teacher explained what a war is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "wɔɹ",
+        "etymology": "From Middle English werre, from Late Old English werre /wyrre (“armed conflict”), from Anglo-Norman and Old Northern French guerre /werre (compare modern French guerre), from Medieval Latin werra, from Frankish *werru (“confusion; quarrel”), from Proto-Indo-European *wers- (“to mix up, confuse, beat",
+        "distractors": [
+            "wer",
+            "wir",
+            "wra"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "tax",
+        "definition": "To impose and collect a tax from (a person or company).",
+        "exampleSentence": "Some think to tax the wealthy is the fairest.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "tæks",
+        "etymology": "From Middle English taxen, from Anglo-Norman taxer (“to impose a tax”), from Latin taxāre (“to handle, to censure, to appraise, to compute”).",
+        "distractors": [
+            "tex",
+            "tix",
+            "txa"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "due",
+        "definition": "Owed or owing.",
+        "exampleSentence": "He is due four weeks of back pay.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "dʒʉː",
+        "etymology": "From Middle English dewe, dew, due, from Old French deü (“due”), past participle of devoir (“to owe”), from Latin dēbēre (“to owe”), from dē- (“from”) + habeō (“to have”).",
+        "distractors": [
+            "dae",
+            "dee",
+            "deu"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "copy",
+        "definition": "The result of copying; an identical or nearly identical duplicate of an original.",
+        "exampleSentence": "The book had an entire chapter about the copy.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɑpi",
+        "etymology": "Middle English copy English copy From Middle English copy, copie, from Old French copie (“abundance, plenty; transcript, copy”), from Medieval Latin copia (“reproduction, transcript”), from Latin cōpia (“plenty, abundance”), from *coopia, from co- (“together”) + ops (“wealth, riches”).",
+        "distractors": [
+            "copey",
+            "coppy",
+            "capy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "crew",
+        "definition": "Any company of people; an assemblage; a throng.",
+        "exampleSentence": "The book had an entire chapter about the crew.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹu",
+        "etymology": "From Middle English crue, from Old French creue (“an increase, recruit, military reinforcement”), the feminine past participle of creistre (“grow”), from Latin crescere (“to arise, grow”).",
+        "distractors": [
+            "craw",
+            "criw",
+            "cerw"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "fact",
+        "definition": "Something actual as opposed to invented.",
+        "exampleSentence": "Gravity is a fact, not a theory.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fækt",
+        "etymology": "From Old French fact, from Latin factum (“an act, deed, feat, etc.”); also Medieval Latin for “state, condition, circumstance”; neuter of factus (“done or made”), perfect passive participle of faciō (“do, make”), ultimately from Proto-Indo-European *dʰeh₁- (“to put, place, set”).",
+        "distractors": [
+            "facct",
+            "fect",
+            "fict"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "file",
+        "definition": "A tool consisting of a strip or rod of hardened and coarse metal, used for removing sharp edges, shaping, and cutting, especially through metal; usually a hand tool.",
+        "exampleSentence": "Will is an old file, in spite of his smooth face.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "faɪl",
+        "etymology": "From Middle English file, fyle, from Old English fēl, fēol (“file”), from earlier fīil, from Proto-Germanic *finhlō, *finhilō (“file, rasp”), from Proto-Indo-European *peyḱ- (“to adorn, form”). Cognate with West Frisian file (“file”), Dutch vijl (“file”), German Feile (“file”).",
+        "distractors": [
+            "fiel",
+            "fille",
+            "fale"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "fish",
+        "definition": "A typically cold-blooded vertebrate animal that lives in water, moving with the help of fins and breathing with gills.",
+        "exampleSentence": "We have many fish in our aquarium.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "fɪʃ",
+        "etymology": "From Middle English fisch, from Old English fisċ (“fish”), from Proto-West Germanic *fisk, from Proto-Germanic *fiskaz (“fish”), from Proto-Indo-European *peysk- (“fish”).",
+        "distractors": [
+            "fissh",
+            "fash",
+            "fesh"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "gang",
+        "definition": "A number going in company; a number of friends or persons associated for a particular purpose.",
+        "exampleSentence": "The book had an entire chapter about the gang.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "ɡæŋ",
+        "etymology": "From Middle English gang, from Old English gang (“a journey; way; passage”), from Proto-West Germanic *gang, from Proto-Germanic *gangaz, from Proto-Indo-European *ǵʰongʰ-o-s, from *ǵʰengʰ- (“to step; stride”).",
+        "distractors": [
+            "ganng",
+            "geng",
+            "ging"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "gate",
+        "definition": "Gifted and talented education.",
+        "exampleSentence": "The book had an entire chapter about the gate.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɡeɪt",
+        "distractors": [
+            "agte",
+            "gtae",
+            "gaet"
         ],
         "theme": "academic"
+    },
+    {
+        "word": "hour",
+        "definition": "A unit of time of one twenty-fourth of a day (sixty minutes).",
+        "exampleSentence": "The book had an entire chapter about the hour.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "aʊɚ",
+        "etymology": "From Middle English houre, hour, oure, from Old French houre, from Latin hōra (“hour”), from Ancient Greek ὥρα (hṓra, “any time or period, whether of the year, month, or day”), from Proto-Indo-European *yóh₁r̥ (“year, season”). Akin to Old English ġēar (“year”). Doublet of hora and year.",
+        "distractors": [
+            "howr",
+            "haur",
+            "heur"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "joke",
+        "definition": "An amusing story.",
+        "exampleSentence": "Your effort at cleaning your room is a joke.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "d͡ʒoʊk",
+        "etymology": "From Latin iocus (“joke, jest, pastime”), from Proto-Italic *jokos (“word, (playful?) saying”), from Proto-Indo-European *yokos (“word, utterance”), from ultimate root Proto-Indo-European *yek- (“to speak, utter”) (of which distant cognates include Proto-Celtic *yextis (“language”) (Breton yezh (“la",
+        "distractors": [
+            "jokke",
+            "jake",
+            "jeke"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "kiss",
+        "definition": "A touch with the lips, usually to express love or affection, or as a greeting.",
+        "exampleSentence": "The book had an entire chapter about the kiss.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɪs",
+        "etymology": "From Middle English kis, kys, kus, forms of cos influenced by kissen, from Old English coss, from Proto-West Germanic *koss, from Proto-Germanic *kussaz.",
+        "distractors": [
+            "kis",
+            "kass",
+            "kess"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "look",
+        "definition": "The action of looking; an attempt to see.",
+        "exampleSentence": "The book had an entire chapter about the look.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "lʊk",
+        "etymology": "From Middle English loken, lokien, from Old English lōcian, from Proto-West Germanic *lōkōn. Further origin unknown, no certain cognates outside Germanic.",
+        "distractors": [
+            "lok",
+            "laok",
+            "leok"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "milk",
+        "definition": "A white liquid produced by the mammary glands of female mammals to nourish their young. From certain animals, especially cows, it is also called dairy milk and is a common food for humans as a beverage or used to produce various dairy products such as butter, cheese, and yogurt.",
+        "exampleSentence": "The book had an entire chapter about the milk.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "mɪlk",
+        "etymology": "From Middle English milk, mylk, melk, mulc, from Old English meolc, meoluc (“milk”), from Proto-West Germanic *meluk, from Proto-Germanic *meluks, from Proto-Indo-European *h₂melǵ-.",
+        "distractors": [
+            "millk",
+            "malk",
+            "melk"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "path",
+        "definition": "A trail for the use of, or worn by, pedestrians.",
+        "exampleSentence": "The paths of glory lead but to the grave.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "pʰäːθ",
+        "etymology": "From Middle English path, peth, from Old English pæþ (“path, track”), from Proto-West Germanic *paþ, from Proto-Germanic *paþaz (“path”).",
+        "distractors": [
+            "patth",
+            "peth",
+            "pith"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "rent",
+        "definition": "A payment made by a tenant at intervals in order to lease a property.",
+        "exampleSentence": "So bought an annual rent or two, / And liv'd, just as you see I do.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɹɛnt",
+        "etymology": "From Middle English rent, rente, from Old French rente, from Early Medieval Latin rendita, from Late Latin rendere, from Latin reddere.",
+        "distractors": [
+            "rant",
+            "rennt",
+            "rint"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "risk",
+        "definition": "The probability of a negative outcome to a decision or event.",
+        "exampleSentence": "Those stairs are a major risk.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɹɪsk",
+        "etymology": "From earlier risque, from Middle French risque, from Old Italian risco (“risk”) (modern Italian rischio) and rischiare (“to run into danger”). Displaced native Old English pleoh (“risk”) and plēon (“to risk”).",
+        "distractors": [
+            "rissk",
+            "rask",
+            "resk"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "room",
+        "definition": "An opportunity or scope (to do something).",
+        "exampleSentence": "Let Bianca take her sister's room.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "ɹum",
+        "distractors": [
+            "rom",
+            "raom",
+            "reom"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "snow",
+        "definition": "The partly frozen, crystalline state of water that falls from the atmosphere as precipitation in flakes; also, the falling of such flakes; and the accumulation of them on the ground or on objects as a white layer.",
+        "exampleSentence": "We have had several heavy snows this year.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "snoʊ̯",
+        "etymology": "The noun is derived from Middle English snaw, snou, snow (“snow; accumulation of snow; snowfall; snowstorm; whiteness”), from Old English snāw (“snow”), from Proto-West Germanic *snaiw (“snow”), from Proto-Germanic *snaiwaz (“snow”), from Proto-Indo-European *snóygʷʰos (“snow”), from *sneygʷʰ- (“to",
+        "distractors": [
+            "snou",
+            "snaw",
+            "snew"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "wake",
+        "definition": "The path left behind a ship on the surface of the water.",
+        "exampleSentence": "The player left the rest of the field trailing in her wake.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "weɪk",
+        "etymology": "Probably from Middle Low German or Middle Dutch wake, from or akin to Old Norse vǫk (“a hole in the ice”) ( > Danish våge, Icelandic vök), from Proto-Germanic *wakwō (“wetness”), from Proto-Indo-European *wegʷ- (“moist, wet”).",
+        "distractors": [
+            "wakke",
+            "weke",
+            "wike"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "year",
+        "definition": "A period of time akin to the time taken for the Earth to undergo a full cycle of seasons.",
+        "exampleSentence": "This Chinese year is the year of the Ox.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "jɪɹ",
+        "etymology": "From Middle English yeer, yere, from Old English ġēar (“year”), from Proto-West Germanic *jār, from Proto-Germanic *jērą (“year”), from Proto-Indo-European *yóh₁r̥ (“year, spring”). Doublet of hora and hour.",
+        "distractors": [
+            "yeer",
+            "yaar",
+            "yiar"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "nick",
+        "definition": "To make a nick or notch in; to cut or scratch in a minor way.",
+        "exampleSentence": "I nicked myself while I was shaving.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "nɪk",
+        "etymology": "The noun is derived from Late Middle English nik (“notch, tally; nock of an arrow”). Its further etymology is unknown; a connection with nock (“notch in a bow to hold the bowstring; notch at the rear of an arrow that fits the bowstring; cleft in the buttocks”) has not been clearly established.",
+        "distractors": [
+            "nik",
+            "nicck",
+            "nack"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "seem",
+        "definition": "To appear; to look outwardly; to be perceived as.",
+        "exampleSentence": "It seems a pity, but I can't see you this weekend.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "siːm",
+        "etymology": "From Middle English semen (“to seem, befit, be becoming”), from Old Norse sœma (“to conform to, beseem, befit”), from Proto-Germanic *sōmijaną (“to unite, fit”), from Proto-Indo-European *sem- (“one; whole”).",
+        "distractors": [
+            "sem",
+            "seam",
+            "saem"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tree",
+        "definition": "To chase (an animal or person) up a tree.",
+        "exampleSentence": "Black bears can tree their cubs for protection, but grizzly bears cannot.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɹiː",
+        "distractors": [
+            "tre",
+            "trea",
+            "trae"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "dear",
+        "definition": "High in price; expensive.",
+        "exampleSentence": "The dear weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "dɪə",
+        "etymology": "From Middle English dere, from Old English dīere (“of great value or excellence, expensive, beloved”), from Proto-West Germanic *diurī, from Proto-Germanic *diurijaz (“dear, precious, expensive”).",
+        "distractors": [
+            "deer",
+            "daar",
+            "diar"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "next",
+        "definition": "Nearest in place or position, having nothing similar intervening; adjoining.",
+        "exampleSentence": "The next weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "nɛkst",
+        "etymology": "From Middle English nexte, nexste, nixte, from Old English nīehsta, nīehste, etc., inflected forms of nīehst (“nearest, next”), superlative form of nēah (“nigh”) (the comparative would become near), corresponding to Proto-Germanic *nēhwist (“nearest, closest”); equivalent to nigh + -est.",
+        "distractors": [
+            "nexxt",
+            "naxt",
+            "nixt"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "safe",
+        "definition": "Not in danger; out of harm's reach.",
+        "exampleSentence": "The documents are safe inside the cabbinet.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "seɪf",
+        "etymology": "From Middle English sauf, safe, saf, saaf, from Old French sauf, saulf, salf (“safe”), from Latin salvus (“whole, safe”), from Proto-Italic *salwos, from Proto-Indo-European *solh₂- (“whole, every”). Displaced native Old English sicor (secure, sure).",
+        "distractors": [
+            "saffe",
+            "sefe",
+            "sife"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "same",
+        "definition": "Not different or other; not another or others; not different as regards self; selfsame; identical.",
+        "exampleSentence": "We were all going in the same direction.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "seɪm",
+        "etymology": "From Middle English same, from Old Norse samr (“same”) and/or Old English same, sama (“same”) in the phrase swā same (swā) (“in like manner, in the same way (as)”), both from Proto-Germanic *samaz (“same”), from Proto-Indo-European *somHós (“same”). Doublet of -some, some.",
+        "distractors": [
+            "samme",
+            "seme",
+            "sime"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "jake",
+        "definition": "A juvenile male turkey.",
+        "exampleSentence": "The book had an entire chapter about the jake.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "dʒeɪk",
+        "distractors": [
+            "jakke",
+            "jeke",
+            "jike"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "angel",
+        "definition": "An incorporeal and holy or semidivine messenger from a deity or other divine entity, traditionally depicted as a youthful, winged figure in flowing robes.",
+        "exampleSentence": "He wrote the word angel on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "eɪnd͡ʒl̩",
+        "etymology": "Two Baroque angels from southern Germany, from the mid-18th century From Middle English aungel, angel, from Old English anġel, either a modification of enġel after its etymon Latin angelus (through the intermediate of Proto-West Germanic *angil) or a reborrowing from the Latin, which is in turn from",
+        "distractors": [
+            "angle",
+            "angal",
+            "anngel"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "blind",
+        "definition": "A movable covering for a window to keep out light, made of cloth or of narrow slats that can block light or allow it to pass.",
+        "exampleSentence": "He wrote the word blind on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "blaɪnd",
+        "etymology": "From Middle English blynd, from Old English blind, from Proto-West Germanic *blind, from Proto-Germanic *blindaz.",
+        "distractors": [
+            "blinnd",
+            "bland",
+            "blend"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "child",
+        "definition": "A person who has not yet reached adulthood, whether natural (puberty), cultural (initiation), or legal (majority).",
+        "exampleSentence": "Go easy on him: he is but a child.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "tʃaɪld",
+        "etymology": "From Middle English child, from Old English ċild, from Proto-West Germanic *kilþ, *kelþ, from Proto-Germanic *kelþaz (“womb; fetus”), from Proto-Indo-European *ǵelt- (“womb”), perhaps from Proto-Indo-European *gel- (“to ball up, amass”).",
+        "distractors": [
+            "chilld",
+            "chald",
+            "cheld"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "enemy",
+        "definition": "Someone who is hostile to, feels hatred towards, opposes the interests of, or intends injury to someone else.",
+        "exampleSentence": "He wrote the word enemy on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɛnəmi",
+        "etymology": "From Middle English enemy, enemye, enmy, borrowed from Old French enemi, anemi (Modern French ennemi), from Latin inimīcus, from in- (“not”) + amīcus (“friend”).",
+        "distractors": [
+            "enemey",
+            "ennemy",
+            "enemmy"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "event",
+        "definition": "An occurrence; something that happens.",
+        "exampleSentence": "He wrote the word event on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ᵻvɛnt",
+        "etymology": "From Middle French event, from Latin ēventus (“an event, occurrence”), from ēveniō (“to happen, to fall out, to come out”), from ē (“out of, from”), short form of ex + veniō (“come”); related to venture, advent, convent, invent, convene, evene, etc.",
+        "distractors": [
+            "evant",
+            "evvent",
+            "evennt"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "faith",
+        "definition": "A trust or confidence in the intentions or abilities of a person, object, or ideal from prior empirical evidence.",
+        "exampleSentence": "I have faith in the goodness of my fellow man.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "feɪθ",
+        "etymology": "From Middle English faith (also fay), borrowed from Old French fei, feid, from Latin fidem. Displaced native Old English ġelēafa, which was also a word for belief. * Old French had [θ] as a final devoiced allophone of /ð/ from lenited Latin /d/; this eventually fell silent in the 12th century.",
+        "distractors": [
+            "faitth",
+            "fayth",
+            "feith"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "ghost",
+        "definition": "A disembodied soul; a soul or spirit of a deceased person; a spirit appearing after death.",
+        "exampleSentence": "He wrote the word ghost on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡoʊst",
+        "etymology": "The noun is derived from Middle English gost, from Old English gāst, gǣst (“breath, spirit, soul, ghost”) (compare modern English Holy Ghost), from Proto-West Germanic *gaist, from Proto-Germanic *gaistaz, from Proto-Indo-European *ǵʰéysdos, from *ǵʰéysd- (“anger, agitation”).",
+        "distractors": [
+            "ghosst",
+            "ghast",
+            "ghest"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "guest",
+        "definition": "A recipient of hospitality, especially someone staying by invitation at the house of another.",
+        "exampleSentence": "The guests were let in by the butler.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɛst",
+        "etymology": "From Middle English gest, from Old Norse gestr, which replaced or was merged with Old English ġiest, both from Proto-Germanic *gastiz, from Proto-Indo-European *gʰóstis (“stranger, guest, host, someone with whom one has reciprocal duties of hospitality”).",
+        "distractors": [
+            "guesst",
+            "gaest",
+            "geest"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "henry",
+        "definition": "Ellipsis of Henry hoover, a common brand of vacuum cleaner.",
+        "exampleSentence": "Grab the Henry and give it a once over, would you?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɛnɹi",
+        "etymology": "From Middle English Henry, from Old French (and Anglo-Norman) Henri, from Frankish *Haimrik, from Proto-Germanic *Haimarīks. Cognate with German Heinrich, Dutch Hendrik, Estonian Hendrik, and Old Norse Heimríkr (Danish Henrik).",
+        "distractors": [
+            "henrey",
+            "hennry",
+            "hanry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "major",
+        "definition": "Title for an army officer with the rank of major.",
+        "exampleSentence": "He wrote the word major on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "major",
+        "etymology": "* As an English surname of Norman origin, from the personal name Malgier, via Old French from the Germanic name *Madalgari. See Mauger. * As a Hungarian surname, shortened from majorosgazda (see Majoros), or borrowed from German Meyer.",
+        "distractors": [
+            "amjor",
+            "mjaor",
+            "maojr"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "quiet",
+        "definition": "The absence of sound; quietness.",
+        "exampleSentence": "We need a bit of quiet before we can start the show.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kwaɪɪt",
+        "etymology": "From Middle English quiete, from Old French quiet (adjective) and quiete (noun), from Latin quiētus, past participle of quiēscere (“to keep quiet, rest”), ultimately from Proto-Indo-European *kʷyeh₁- (“rest”). Doublet of coy, quit, quite, and quietus.",
+        "distractors": [
+            "queit",
+            "qaiet",
+            "qeiet"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "still",
+        "definition": "A period of calm or silence.",
+        "exampleSentence": "As the ground warms, to the first rays of light, / A birdsong shatters the still.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "stɪɫ",
+        "etymology": "From Middle English stille (“motionless, stationary”), from Old English stille (“still, quiet”), from Proto-West Germanic *stillī, from Proto-Indo-European *(s)telH- (“to be silent; to be still”).",
+        "distractors": [
+            "stil",
+            "stall",
+            "stell"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "video",
+        "definition": "Television, a television show, or a movie.",
+        "exampleSentence": "He wrote the word video on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "vɪdioʊ",
+        "distractors": [
+            "viddeo",
+            "vadeo",
+            "vedeo"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "woman",
+        "definition": "An adult female human.",
+        "exampleSentence": "He wrote the word woman on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "wʊmən",
+        "etymology": "From Middle English womman, from earlier wimman, wifman, from Old English wīfmann (“woman”, literally “female person”), a compound of wīf (“woman, female”, whence English wife) + mann (“person, human being”, whence English man).",
+        "distractors": [
+            "womman",
+            "waman",
+            "weman"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "works",
+        "definition": "A mechanism or machinery; the means by which something happens.",
+        "exampleSentence": "Why did Constantinople get the works?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɝks",
+        "distractors": [
+            "worrks",
+            "warks",
+            "werks"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bless",
+        "definition": "To make something holy by religious rite, sanctify.",
+        "exampleSentence": "It took a while to learn how to bless.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "blɛs",
+        "etymology": "From Middle English blessen, from Old English bletsian (“to consecrate (with blood)”), from Proto-West Germanic *blōdisōn (“to sprinkle, mark or hallow with blood”), from Proto-Germanic *blōþą (“blood”), of uncertain origin, possibly from Proto-Indo-European *bʰleh₃- (“to bloom”).",
+        "distractors": [
+            "bles",
+            "blass",
+            "bliss"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "guess",
+        "definition": "To reach a partly (or totally) unconfirmed conclusion; to engage in conjecture; to speculate.",
+        "exampleSentence": "You will never guess what happened next.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɡɛs",
+        "etymology": "From Middle English gessen (verb) and Middle English gesse (noun), probably of North Germanic origin, from Old Danish getse, gitse, getsa (“to guess”), from Old Norse *getsa, *gitsa, from Proto-Germanic *gitisōną (“to guess”), from Proto-Germanic *getaną (“to get”), from Proto-Indo-European *gʰed- (",
+        "distractors": [
+            "gues",
+            "gaess",
+            "geess"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "paint",
+        "definition": "To apply paint to.",
+        "exampleSentence": "It took a while to learn how to paint.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "peɪnt",
+        "etymology": "From Middle English peynten, from Old French peintier, paincter, itself from paint, the past participle of paindre, from Latin pingō (“to paint”) (perfect passive participle pictus).",
+        "distractors": [
+            "painnt",
+            "paynt",
+            "peint"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "shame",
+        "definition": "To cause to feel shame.",
+        "exampleSentence": "The politician was shamed into resigning.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʃeɪm",
+        "etymology": "From Middle English schamen, from Old English sċamian, from Proto-West Germanic *skamēn, from Proto-Germanic *skamāną.",
+        "distractors": [
+            "shamme",
+            "sheme",
+            "shime"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "alone",
+        "definition": "By oneself, solitary.",
+        "exampleSentence": "I can't ask for help because I am alone.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "əloʊn",
+        "etymology": "From Middle English allone, from earlier all oon (“alone”, literally “all one”), contracted from the Old English phrase eall ān (“completely alone”), equivalent to al- (“all”) + one.",
+        "distractors": [
+            "allone",
+            "alonne",
+            "alane"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "other",
+        "definition": "See other (determiner) below.",
+        "exampleSentence": "I get paid every other week.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "digraphs",
+        "pronunciation": "ʌðɚ",
+        "etymology": "From Middle English other, from Old English ōþer (“other, second”), from Proto-West Germanic *ą̄þar, *anþar, from Proto-Germanic *anþeraz (“other, second”), from Proto-Indo-European *h₂énteros (“other”).",
+        "distractors": [
+            "othor",
+            "othar",
+            "otther"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "silly",
+        "definition": "Laughable or amusing through foolishness or a foolish appearance.",
+        "exampleSentence": "They were laughing at a silly joke.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪli",
+        "etymology": "From Middle English seely, sēlī, from Old English sǣliġ, ġesǣliġ (“lucky, fortunate”), from Proto-West Germanic *sālīg, from *sāli; equivalent to seel (“happiness, bliss”) + -y. Doublet of Seelie. The semantic evolution is “lucky” to “innocent” to “naive” to “foolish”.",
+        "distractors": [
+            "silley",
+            "sily",
+            "sally"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "sorry",
+        "definition": "Regretful or apologetic for one's actions.",
+        "exampleSentence": "The storm left his garden in a sorry state.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "sɑɹi",
+        "etymology": "From Middle English sory, from Old English sāriġ (“feeling or expressing grief, sorry, grieved, sorrowful, sad, mournful, bitter”), from Proto-West Germanic *sairag, from Proto-Germanic *sairagaz (“sad”), from Proto-Indo-European *seh₂yro (“hard, rough, painful”).",
+        "distractors": [
+            "sorrey",
+            "sory",
+            "sarry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "truly",
+        "definition": "In accordance with the facts; truthfully, accurately.",
+        "exampleSentence": "You are truly silly.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɹuːli",
+        "etymology": "From Middle English truely, treuly, treuli, trewely, treoweliche, treowliche, from Old English trēowlīċe (“faithfully; truly”), equivalent to true + -ly. Cognate with Dutch trouwelijk, Middle Low German truwlike, German treulich, Swedish trolig, Icelandic trygglega.",
+        "distractors": [
+            "truley",
+            "trully",
+            "traly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "shall",
+        "definition": "Used before a verb to indicate the simple future tense in the first person singular or plural.",
+        "exampleSentence": "I'll hold that for you, shall I?",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ʃəl",
+        "etymology": "From Middle English schal (infinitive schulen), from Old English sċeal (infinitive sċulan (“should, must”)), from Proto-West Germanic *skulan, from Proto-Germanic *skal (infinitive *skulaną), from Proto-Indo-European *skel- (“to owe, be under obligation”).",
+        "distractors": [
+            "shal",
+            "shell",
+            "shill"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "castle",
+        "definition": "A large residential building or compound that is fortified and contains many defences; in previous ages often inhabited by a nobleman or king. Also, a house or mansion with some of the architectural features of medieval castles.",
+        "exampleSentence": "Nay, he was quite an adept, and was very effective as a change bowler, for in no time he demolished the castle of any batsman.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɑːsəl",
+        "etymology": "From Middle English castle, castel, from late Old English castel, castell (“a town, village”), borrowed from Late Latin castellum (“small camp, fort”), diminutive of Latin castrum (“camp, fort, citadel, stronghold”). Doublet of cashel, castell, castellum, and château.",
+        "distractors": [
+            "castel",
+            "casstle",
+            "cestle"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "coffee",
+        "definition": "A beverage made by infusing the beans of the coffee plant in hot water.",
+        "exampleSentence": "He and his friends used to order coffee whenever they went out.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɔfi",
+        "etymology": "Arabic قَهْوَة (qahwa)bor. Ottoman Turkish قهوه (kahve)bor. Italian caffèbor. Dutch koffiebor. English coffee Borrowed from Dutch koffie, from Italian caffè, from Ottoman Turkish قهوه (kahve), from Arabic قَهْوَة (qahwa).",
+        "distractors": [
+            "cofee",
+            "coffe",
+            "coffea"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "coming",
+        "definition": "The act of arriving; an arrival.",
+        "exampleSentence": "Can you use the word coming in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "kʌmɪŋ",
+        "etymology": "From Middle English coming, commyng, cumming, equivalent to come + -ing (gerundive ending).",
+        "distractors": [
+            "comming",
+            "cominng",
+            "caming"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "doctor",
+        "definition": "The title of an academic or medical doctor; used before or instead of the doctor's name.",
+        "exampleSentence": "The students asked to see Doctor Jones.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "doctor",
+        "distractors": [
+            "docter",
+            "docctor",
+            "dactor"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "engine",
+        "definition": "A large construction used in warfare, such as a battering ram, catapult etc.",
+        "exampleSentence": "Can you use the word engine in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɛnd͡ʒɪn",
+        "etymology": "From Middle English engyn, from Anglo-Norman engine, Old French engin (“skill, cleverness, war machine”), from Latin ingenium (“innate or natural quality, nature, genius, a genius, an invention, (in Late Latin) a war-engine, battering-ram”), related to ingignō (“to instil by birth, implant, produce",
+        "distractors": [
+            "enngine",
+            "enginne",
+            "engane"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "lesson",
+        "definition": "A section of learning or teaching into which a wider learning content is divided.",
+        "exampleSentence": "The accident was a good lesson to me.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɛsən",
+        "etymology": "From Middle English lessoun, from Old French leçon, from Latin lēctiō, lēctiōnem (“a reading”), from legō (“I read, I gather”). Doublet of lection.",
+        "distractors": [
+            "leson",
+            "lasson",
+            "lisson"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "middle",
+        "definition": "A centre, midpoint.",
+        "exampleSentence": "Can you use the word middle in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪdl̩",
+        "etymology": "From Middle English middel, from Old English middel (“middle, centre, waist”), from Proto-Germanic *midlą, *midilą, *medalą (“middle”), a diminutive of Proto-Germanic *midjō (“middle, midst”) (compare *midjaz (“mid, middle”, adjective)), from Proto-Indo-European *médʰyos (“between, in the middle, mi",
+        "distractors": [
+            "middel",
+            "midle",
+            "maddle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "people",
+        "definition": "Persons forming or belonging to a particular group, such as a nation, class, ethnic group, country, family, etc.",
+        "exampleSentence": "Moses said, \"Let my people go.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "pipəl",
+        "etymology": "From Middle English puple, peple, peeple, from Anglo-Norman people, from Old French pueple, peuple, pople, from Latin populus (“a people, nation”), from Old Latin populus, from earlier poplus, from even earlier poplos, from Proto-Italic *poplos (“army”) of unknown origin. Doublet of pueblo.",
+        "distractors": [
+            "peopel",
+            "peopple",
+            "paople"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "afford",
+        "definition": "To incur, stand, or bear without serious detriment, as an act which might under other circumstances be injurious; (usually after an expression of ability, as could, able, difficult) to be able or rich enough; to spare.",
+        "exampleSentence": "She would afford every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əfoɹd",
+        "etymology": "From Middle English afforthen, aforthen, avorthien, from earlier iforthen, iforthien, ȝeforthien, from Old English forþian, ġeforþian (“to further, accomplish, afford”), from Proto-Germanic *furþōną, from Proto-Germanic *furþą (“forth, forward”), equivalent to a- + forth.",
+        "distractors": [
+            "aford",
+            "afforrd",
+            "affard"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "arrest",
+        "definition": "To stop the motion of (a person, animal, or body part).",
+        "exampleSentence": "She would arrest every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əɹɛst",
+        "etymology": "From Middle English arest (noun) and aresten (verb), from Old French areste (noun) and arester (“to stay, stop”, verb), from Vulgar Latin *arrestō, from Latin ad- (“to”) + restō (“to stop, remain behind, stay back”), from re- (“back”) + stō (“to stand”), from Proto-Indo-European *steh₂- (“to stand”)",
+        "distractors": [
+            "arest",
+            "arresst",
+            "arrast"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "become",
+        "definition": "Begin to be; turn into (often with permanent states).",
+        "exampleSentence": "She would become every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "bɪkʌm",
+        "etymology": "A compound of the sources of be- + come. From Middle English becomen, bicumen, from Old English becuman (“to come (to), approach, arrive, enter, meet with, fall in with; happen, befall; befit”), from Proto-Germanic *bikwemaną (“to come around, come about, come across, come by”), equivalent to be- (“",
+        "distractors": [
+            "beccome",
+            "becomme",
+            "bacome"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "decide",
+        "definition": "To resolve (a contest, problem, dispute, etc.); to choose, determine, or settle.",
+        "exampleSentence": "She would decide every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "dɪsaɪd",
+        "etymology": "From Middle English deciden, from Old French decider, from Latin dēcīdere, infinitive of dēcīdō (“cut off, decide”), from dē (“down from”) + caedō (“cut”).",
+        "distractors": [
+            "deccide",
+            "decidde",
+            "dacide"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "forget",
+        "definition": "To lose remembrance of.",
+        "exampleSentence": "She would forget every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "fɚɡɛt",
+        "etymology": "From Middle English forgeten, forgiten, foryeten, forȝiten, from Old English forġietan (“to forget”) [influenced by Old Norse geta (\"to get, to guess\")], from Proto-West Germanic *fragetan (“to give up, forget”). Equivalent to for- + get.",
+        "distractors": [
+            "forrget",
+            "farget",
+            "ferget"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "prefer",
+        "definition": "To be in the habit of choosing something rather than something else; to favor; to like better.",
+        "exampleSentence": "I'd prefer it if you didn't do it.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɪfɝ",
+        "etymology": "From Middle English preferren, from Anglo-Norman preferer, from Latin praeferō. Displaced native Old English foresettan and foreberan. Doublet of prelate. See also infer, relate and refer, delate and defer, as well as collate and confer among others.",
+        "distractors": [
+            "prefor",
+            "prefar",
+            "preffer"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "regret",
+        "definition": "To feel sorry about (a thing that has or has not happened), afterthink: to wish that a thing had not happened, that something else had happened instead.",
+        "exampleSentence": "I regret that I have to do this, but I don't have a choice.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹɪɡɹɛt",
+        "etymology": "From Middle English regretten, regreten, from Old French regreter, regrater (“to lament”), from re- (intensive prefix) + *greter, *grater (“to weep”), from Frankish *grātan (“to weep, mourn, lament”), from Proto-Germanic *grētaną (“to weep”), from Proto-Indo-European *ǵʰreh₁d- (“to sound”); and Fran",
+        "distractors": [
+            "reggret",
+            "ragret",
+            "rigret"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "afraid",
+        "definition": "Impressed with fear or apprehension; in fear.",
+        "exampleSentence": "I am afraid I cannot help you in this matter.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "əfɹɛd",
+        "etymology": "From Middle English affrayed, affraied, past participle of afraien (“to affray”), from Anglo-Norman afrayer (“to terrify, disquiet, disturb”), from Old French effreer, esfreer (“to disturb, remove the peace from”), from es- (“out”) + freer (“to secure, secure the peace”), from Frankish *friþu (“secu",
+        "distractors": [
+            "affraid",
+            "afrayd",
+            "afreid"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "entire",
+        "definition": "Whole; complete.",
+        "exampleSentence": "Depp is the wound, that dints the parts entire.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɪntaɪɚ",
+        "etymology": "From Middle English entere, enter, borrowed from Anglo-Norman entier, from Latin integrum, accusative of integer (“whole”), from Proto-Italic *əntagros (“untouched”). Doublet of entier and integer.",
+        "distractors": [
+            "enntire",
+            "entirre",
+            "entare"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "forced",
+        "definition": "Obtained forcefully, not naturally.",
+        "exampleSentence": "The forced labor went on for 14 years.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɔɹst",
+        "distractors": [
+            "forrced",
+            "farced",
+            "ferced"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "future",
+        "definition": "Having to do with or occurring in the future.",
+        "exampleSentence": "Future generations will either laugh or cry at our stupidity.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "fjut͡ʃɚ",
+        "etymology": "From Middle English future, futur, from Old French futur, from Latin futūrus, irregular future active participle of sum (“I am”), from Proto-Indo-European *bʰuH- (“to become, be”). Cognate with Old English bēo (“I become, I will be, I am”). More at be.",
+        "distractors": [
+            "futer",
+            "futture",
+            "futurre"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "likely",
+        "definition": "Probable; having a greater-than-even chance of occurring.",
+        "exampleSentence": "Rain is likely later this afternoon.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "laɪkli",
+        "etymology": "From Middle English likely, likly, lykly, likliche, from Old English ġelīclīċ (“suitable”) and Old Norse líkligr (“likely”) (probably independent formations), equivalent to like + -ly (adjectival suffix).",
+        "distractors": [
+            "likeley",
+            "likkely",
+            "likelly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "inside",
+        "definition": "Within or towards the interior of something; within the scope or limits of something (a place), especially a building.",
+        "exampleSentence": "Are you laughing at us inside?",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "ɪnsaɪd",
+        "etymology": "From Middle English ynneside; equivalent to in- + side. Compare German Innenseite (“inside”), Danish inderside (“inside”), Swedish insida (“inside”), Dutch binnenzijde (“inside”), German Low German Binnensied, Binnersied (“inside”), Saterland Frisian Binnersiede (“inside”).",
+        "distractors": [
+            "innside",
+            "insidde",
+            "insade"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "rather",
+        "definition": "Used to specify a choice or preference; preferably, in preference to.",
+        "exampleSentence": "We had some rather worse news today.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹæðɚ",
+        "etymology": "From Middle English rather, from Old English hraþor, comparative of hraþe (“soon, early, fast”). More at rathe. Cognate with Dutch radder (“faster”), comparative of Dutch rad (“fast; quick”), German Low German radd, ratt (“rashly; quickly; hastily”), German gerade (“even; straight; direct”).",
+        "distractors": [
+            "rathor",
+            "rathar",
+            "ratther"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "really",
+        "definition": "In a way or manner that is real, not unreal.",
+        "exampleSentence": "But ma, I really, really want to go to the show!",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɹɪli",
+        "etymology": "From Middle English really, realy, rialliche, equivalent to real + -ly.",
+        "distractors": [
+            "realley",
+            "realy",
+            "reelly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "simply",
+        "definition": "In a simple way or state; considered in or by itself; without addition; alone.",
+        "exampleSentence": "I was simply asking a question.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪmpli",
+        "etymology": "From Middle English symply, symplely; equivalent to simple + -ly, with *-lely simplified to -ly by haplology.",
+        "distractors": [
+            "simpley",
+            "simmply",
+            "samply"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "lawyer",
+        "definition": "To practice law.",
+        "exampleSentence": "She would lawyer every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɔɪɚ",
+        "etymology": "From Middle English lawiere, lawier, lawer, equivalent to law + -yer.",
+        "distractors": [
+            "lawyor",
+            "lawyar",
+            "lawwyer"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "having",
+        "definition": "The act of possessing; ownership.",
+        "exampleSentence": "Can you use the word having in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "hævɪŋ",
+        "distractors": [
+            "havving",
+            "havinng",
+            "heving"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unmove",
+        "definition": "To move (something) back to its original place; undo or reverse the motion of.",
+        "exampleSentence": "You can use this shortcut to undelete a deleted (but not trashed) file or to unmove something.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "unmove",
+        "etymology": "From un- + move.",
+        "distractors": [
+            "unnmove",
+            "unmovve",
+            "unmave"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "morning",
+        "definition": "The early part of the day, especially from midnight to noon.",
+        "exampleSentence": "I'll see you tomorrow morning.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "mɔɹnɪŋ",
+        "etymology": "From Middle English morwenyng, from morwen + -ing. By surface analysis, morn + -ing. See also morrow (Middle English morwe).",
+        "distractors": [
+            "morrning",
+            "morninng",
+            "marning"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "silence",
+        "definition": "The absence of any sound.",
+        "exampleSentence": "When the motor stopped, the silence was almost deafening.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "saɪləns",
+        "etymology": "From Middle English silence, from Old French silence, from Latin silentium (“silence”), from silēns (“quiet, silent”, present participle of silēre) + -ium. Displaced native Old English swīġe and sālnes.",
+        "distractors": [
+            "silance",
+            "sillence",
+            "silennce"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "sitting",
+        "definition": "A period during which one is seated for a specific purpose.",
+        "exampleSentence": "The Queen had three sittings for her portrait.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪtɪŋ",
+        "etymology": "From Middle English sittyng, sittynge, equivalent to sit + -ing. Cognate with Dutch zitting (“a sitting, session”), German Sitzung (“a sitting, session”), Swedish sittning (“a sitting, session”).",
+        "distractors": [
+            "siting",
+            "sittinng",
+            "satting"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "stomach",
+        "definition": "An organ in animals that stores food in the process of digestion.",
+        "exampleSentence": "Why did you hit me in the stomach?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stɐmək",
+        "etymology": "From Middle English stomak, from Old French estomac, from Latin stomachus, from Ancient Greek στόμαχος (stómakhos), from στόμα (stóma, “mouth”). Largely displaced native Old English maga, whence Modern English maw.",
+        "distractors": [
+            "stommach",
+            "stomacch",
+            "stomatch"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "success",
+        "definition": "The achievement of one's aim or goal.",
+        "exampleSentence": "Scholastically, he was a success.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "səksɛs",
+        "etymology": "Learned borrowing from Latin successus, from succēdō (“succeed”), from sub- (“next to”) + cēdō (“go, move”). Partly displaced native Old English spēd, whence Modern English speed.",
+        "distractors": [
+            "sucess",
+            "succes",
+            "saccess"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "surgery",
+        "definition": "The act or process involving major incisions to remove, repair, or replace a part of a body; an instance of this process (a procedure).",
+        "exampleSentence": "Surgery is often necessary to prevent cancer from spreading.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɝd͡ʒəɹi",
+        "etymology": "From Middle English surgerie, from Old French surgerie, from Latin chirurgia, from Ancient Greek χειρουργία (kheirourgía), from χείρ (kheír, “hand”) + ἔργον (érgon, “work”). Doublet of chirurgy.",
+        "distractors": [
+            "surgerey",
+            "surgary",
+            "surgory"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "suggest",
+        "definition": "To imply but stop short of explicitly stating (something).",
+        "exampleSentence": "Are you suggesting that I killed my wife?",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sə(ɡ)d͡ʒɛst",
+        "etymology": "Coined based on Latin suggestus, perfect passive participle of suggerō (“bring up, bring under, lay beneath, furnish, supply, excite, advise, suggest”, verb), from sub (“from below, under”) + gerō (“bear, carry”, verb).",
+        "distractors": [
+            "sugest",
+            "suggesst",
+            "saggest"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "survive",
+        "definition": "Of a person, to continue to live; to remain alive.",
+        "exampleSentence": "He did not survive the accident.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "sɚvaɪv",
+        "etymology": "From Anglo-Norman survivre, Old French survivre, from Late Latin supervivere (“to outlive”), from Latin super (“over”) + vivere (“to live”), akin to vita (“life”). See vivid. Compare devive, revive.",
+        "distractors": [
+            "surrvive",
+            "survivve",
+            "sarvive"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "correct",
+        "definition": "Free from error; true; accurate.",
+        "exampleSentence": "We all agreed they'd made the correct decision.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kəɹɛkt",
+        "etymology": "Borrowed from French correct, from Latin correctus (“improved, amended, correct”), past participle of corrigere, conrigere (“to make straight, make right, make better, improve, correct”), from con- (“together”) + combining form of regō, regere (“I rule, make straight”).",
+        "distractors": [
+            "corect",
+            "correcct",
+            "carrect"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dressed",
+        "definition": "Having been subjected to a preparatory process or treatment; treated, prepared.",
+        "exampleSentence": "Hatted gentlemen and their long-dressed ladies rode on two-horse wagons.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɹɛst",
+        "distractors": [
+            "dresed",
+            "drassed",
+            "drissed"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "excited",
+        "definition": "Having great enthusiasm, passion and energy.",
+        "exampleSentence": "He was very excited about his promotion.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪksaɪtɪd",
+        "etymology": "From excite + -ed.",
+        "distractors": [
+            "exxcited",
+            "excitted",
+            "excated"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "forward",
+        "definition": "Situated toward or at the front of something.",
+        "exampleSentence": "The forward battalion took a hammering.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɔɹwəɹd",
+        "etymology": "From Middle English foreward, from Old English foreweard (“forward, inclined to the front, fore, early, former”), from Proto-Germanic *fura- (“fore-”), *warþaz (“turned”), equivalent to fore + -ward. Cognate with Dutch voorwaarts (“forward”), German vorwärts (“forward”).",
+        "distractors": [
+            "forrward",
+            "forwarrd",
+            "farward"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "private",
+        "definition": "Belonging or pertaining to an individual person, group of people, or entity that is not the state.",
+        "exampleSentence": "This book is her private journal.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "pʰɹaɪ̯vɪt",
+        "etymology": "From Middle English privat(e) (“individual, exclusive, private”), from Latin prīvātus (“bereaved, deprived, set apart from, release”), perfect passive participle of prīvō (“to bereave, deprive, release”) (see -ate (adjective-forming suffix) for more), from prīvus (“private, one's own, proper”), ulti",
+        "distractors": [
+            "privvate",
+            "privatte",
+            "pravate"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "oversit",
+        "definition": "To preside over, govern, rule; to control.",
+        "exampleSentence": "And he greatly reproaches those who 'forget or oversit the time of housel,' ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əʊvə(ɹ)sɪt",
+        "etymology": "From Middle English oversitten (“to gain possession of”), from Old English ofersittan (“to occupy, possess; forbear”), from Proto-West Germanic *ubarsittjan (“to sit over, occupy, preside over”), corresponding to over- + sit.",
+        "distractors": [
+            "ovversit",
+            "overrsit",
+            "ovarsit"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "outness",
+        "definition": "The quality of being out, or outside.",
+        "exampleSentence": "Distance means degree of outness of one thing from another; but it presupposes outness as a fact and a conception.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "outness",
+        "etymology": "* out + -ness. ** (philosophy): Possibly coined by George Berkeley for his 1709 Essay Towards a New Theory of Vision ** (sexuality): Popularised by Lynne Pearlman in her 1989 thesis Theorizing Lesbian Oppression and the Politics of Outness in the Case of Waterman v. National Life Assurance.",
+        "distractors": [
+            "outniss",
+            "outnes",
+            "outtness"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gameful",
+        "definition": "Full of game (prey for a hunter).",
+        "exampleSentence": "How does one conduct research on gameful L2TL?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡeɪmfʊl",
+        "etymology": "From Middle English gameful, gamful; equivalent to game + -ful.",
+        "distractors": [
+            "gamefull",
+            "gammeful",
+            "gamefful"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "mislook",
+        "definition": "To sin by looking.",
+        "exampleSentence": "To look for \"organic form\" or for active conflict ultimately resolved, \"all passion spent,\" is to mislook.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪslʊk",
+        "etymology": "From Middle English misloken, equivalent to mis- + look.",
+        "distractors": [
+            "mislok",
+            "misslook",
+            "maslook"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "audience",
+        "definition": "A group of people within hearing; specifically, a large gathering of people listening to or watching a performance, speech, etc.",
+        "exampleSentence": "She managed to get an audience with the Pope.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɔdiəns",
+        "etymology": "From Middle English audience, from Middle French audience, from Old French audience, from Latin audientia, from present participle audiēns (“hearing”), from verb audiō (“I hear”). Doublet of audiencia.",
+        "distractors": [
+            "audiance",
+            "auddience",
+            "audiennce"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "building",
+        "definition": "The act or process by which something is built; construction.",
+        "exampleSentence": "The building was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɪldɪŋ",
+        "etymology": "From Middle English byldynge, buyldyng, byldyng, buldynge, buldyng, boldyng, equivalent to build + -ing. Compare also related Middle English bold (“edifice, castle, mansion”), from Old English bold (“building, dwelling, house”).",
+        "distractors": [
+            "buillding",
+            "buildinng",
+            "bailding"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "marriage",
+        "definition": "The state of being married.",
+        "exampleSentence": "You should enter marriage for love.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mæɹɪd͡ʒ",
+        "etymology": "From Middle English mariage, from Old French mariage, from marier (“to marry”), from Latin marītō (“marry”, verb, literally “give in marriage”), from marītus (“lover”, “nuptial”), from mas (“male, masculine, of the male sex”). Equivalent to marry + -age. Doublet of maritage.",
+        "distractors": [
+            "mariage",
+            "marriagge",
+            "merriage"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "medicine",
+        "definition": "A substance which specifically promotes healing when ingested or consumed in some way; a pharmaceutical drug.",
+        "exampleSentence": "I have seen a medicine / That's able to breathe life into a stone.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mɛdɪsɪn",
+        "etymology": "From Middle English medicin, from Middle French medicine, from Old French medecine, from Latin medicīna (“the healing art, medicine, a physician's shop, a remedy, medicine”), feminine of medicīnus (“of or belonging to physic or surgery, or to a physician or surgeon”), from medicus (“a physician, sur",
+        "distractors": [
+            "meddicine",
+            "mediccine",
+            "medicinne"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "minister",
+        "definition": "A person who is trained to preach, to perform religious ceremonies, and to afford pastoral care at a Protestant church.",
+        "exampleSentence": "He was newly appointed to be Minister of the Interior.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪnəstɚ",
+        "etymology": "From Middle English ministre, from Old French ministre, from Latin minister (“an attendant, servant, assistant, a priest's assistant or other under official”), from minor (“less”) + -ter; see minor. Doublet of Minorite.",
+        "distractors": [
+            "ministor",
+            "ministar",
+            "minnister"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "painting",
+        "definition": "An illustration or artwork done with the use of paint.",
+        "exampleSentence": "The Mona Lisa is one of the most famous paintings.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "peɪnɪŋ",
+        "etymology": "By surface analysis, paint + -ing.",
+        "distractors": [
+            "painnting",
+            "paintinng",
+            "paynting"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "familiar",
+        "definition": "Known to one, or generally known; commonplace.",
+        "exampleSentence": "The old house had a familiar appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fəmɪljɚ",
+        "etymology": "From Middle English familiar, familier, from Latin familiāris (“pertaining to servants; pertaining to the household”). By surface analysis, family + -ar. Piecewise doublet of familial. Displaced native Old English hīwcūþ.",
+        "distractors": [
+            "familier",
+            "fammiliar",
+            "familliar"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "original",
+        "definition": "Relating to the origin or beginning; preceding all others.",
+        "exampleSentence": "Parker was one of the original bebop players.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əɹɪd͡ʒɪnəl",
+        "etymology": "From Middle English original, from Old French original, from Late Latin orīginālis (“primitive, original”), from Latin orīgō (“beginning, source, origin”); see origin.",
+        "distractors": [
+            "originel",
+            "orriginal",
+            "origginal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "supposed",
+        "definition": "Alleged; assumed.",
+        "exampleSentence": "Elvis is the supposed king of rock and roll.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "səpoʊzd",
+        "distractors": [
+            "suposed",
+            "suppossed",
+            "sapposed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "terrible",
+        "definition": "Dreadful; causing terror, alarm and fear; awesome.",
+        "exampleSentence": "The old house had a terrible appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɛɹəbl̩",
+        "distractors": [
+            "terrable",
+            "terribel",
+            "terible"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "drinking",
+        "definition": "Suitable to drink.",
+        "exampleSentence": "The old house had a drinking appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɹɪŋkɪŋ",
+        "etymology": "Inherited from Middle English [Term?]. By surface analysis, drink + -ing.",
+        "distractors": [
+            "drinnking",
+            "drinkinng",
+            "dranking"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "returned",
+        "definition": "Bent back; angled.",
+        "exampleSentence": "There are about thirty full-blooded returned men in this state whom I believe are not entitled to the old-age pension.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹɪtɝnd",
+        "distractors": [
+            "retturned",
+            "returrned",
+            "raturned"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "childism",
+        "definition": "Responding to children's particular lived experiences.",
+        "exampleSentence": "If nothing else, a project in childism would ask those who study ethics to reflect on whether they are considering the challenge of childhood.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "childism",
+        "etymology": "From child + -ism.",
+        "distractors": [
+            "chilldism",
+            "childissm",
+            "chaldism"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stayless",
+        "definition": "Without stays (the item of clothing).",
+        "exampleSentence": "The old house had a stayless appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stayless",
+        "etymology": "From stay + -less.",
+        "distractors": [
+            "stayles",
+            "staylless",
+            "stailess"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overwell",
+        "definition": "To overflow.",
+        "exampleSentence": "The instructions said to overwell gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "overwell",
+        "etymology": "From over- + well.",
+        "distractors": [
+            "overwel",
+            "ovverwell",
+            "overrwell"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "misclose",
+        "definition": "To cause or exhibit a misclose.",
+        "exampleSentence": "In some surveys angles of a traverse are known to misclose up to 5° (five degrees) but the traverse is adjusted.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mɪskləʊz",
+        "etymology": "From mis- + close.",
+        "distractors": [
+            "missclose",
+            "misclosse",
+            "masclose"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "commander",
+        "definition": "One who exercises control and direction of a military or naval organization.",
+        "exampleSentence": "Learning about the commander was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kəmændɚ",
+        "etymology": "From Middle English comaundour, commaunder, comaunder, borrowed from Old French comandeor, cumandeur, from comander. By surface analysis, command + -er. See command.",
+        "distractors": [
+            "commandor",
+            "commandar",
+            "comander"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "secretary",
+        "definition": "A person who keeps records, takes notes and handles general clerical work.",
+        "exampleSentence": "Ban Ki-Moon was a secretary general of the United Nations.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɛk(ɹ)ətɛɹi",
+        "etymology": "From Medieval Latin secrētārius (“one entrusted with secrets”), from Latin secrētus (“private, secret”), past participle of secernere (“to separate, set apart”), from se- (“apart”) + cernere (“to separate”).",
+        "distractors": [
+            "secretarey",
+            "secretery",
+            "secretairy"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "following",
+        "definition": "Coming next, either in sequence or in time.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully following.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɑloʊɪŋ",
+        "etymology": "By surface analysis, follow + -ing.",
+        "distractors": [
+            "folowing",
+            "followwing",
+            "followinng"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "underkeep",
+        "definition": "An underground reserve.",
+        "exampleSentence": "The earth was swallowing Abascar. \"The Underkeeps caved in.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "underkeep",
+        "etymology": "From under- + keep.",
+        "distractors": [
+            "underkep",
+            "unnderkeep",
+            "underrkeep"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underhead",
+        "definition": "A blockhead, or stupid person; a dunderhead.",
+        "exampleSentence": "Learning about the underhead was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʌndə(ɹ)hɛd",
+        "etymology": "From under- + head. Piecewise doublet of underchef and underchief.",
+        "distractors": [
+            "underheed",
+            "unnderhead",
+            "underrhead"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "bin",
+        "definition": "A box, frame, crib, or enclosed place, used as a storage container.",
+        "exampleSentence": "“She’s crazy,” I said. “She should be in a bin.”.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "bɪn",
+        "etymology": "From Middle English bynne, from Old English binn (“crib, manger”), from Late Latin benna or a Celtic language, possibly Proto-Brythonic *benn (“cart, carriage”) (whence Middle Welsh benn, Old Breton benn (“caisson”), modern Welsh ben), from Proto-Celtic *bend(n)ā (whence Gaulish benna).",
+        "distractors": [
+            "ban",
+            "ben",
+            "bni"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cow",
+        "definition": "An adult female of the species Bos taurus, especially one that has calved.",
+        "exampleSentence": "We saw lots of cows at the farm show, including some surprisingly gigantic bulls.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kʰæʊː",
+        "distractors": [
+            "cou",
+            "caw",
+            "cew"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "fur",
+        "definition": "A member of a Nilo-Saharan people of western Sudan.",
+        "exampleSentence": "My teacher explained what a fur is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fur",
+        "distractors": [
+            "ufr",
+            "fru",
+            "ffur"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "guy",
+        "definition": "An effigy of Guy Fawkes burned on Bonfire Night.",
+        "exampleSentence": "My teacher explained what a guy is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "ɡaɪ",
+        "etymology": "From Old French Gui, a form of Proto-Germanic *Wido, a short form of names beginning with the element *widuz (“wood”), such as Witold and Widukind. Cognate with Italian Guido and thus a doublet of Guido. More at wood.",
+        "distractors": [
+            "ugy",
+            "gyu",
+            "gguy"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "mum",
+        "definition": "A type of strong beer, originally made in Brunswick, Germany.",
+        "exampleSentence": "The clamorous crowd is hushed with mugs of mum.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "mʌm",
+        "etymology": "From German Mumme.",
+        "distractors": [
+            "mam",
+            "mem",
+            "mmu"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sea",
+        "definition": "A large body of salt water.",
+        "exampleSentence": "My teacher explained what a sea is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "siː",
+        "etymology": "Inherited from Middle English see, from Old English sǣ, from Proto-West Germanic *saiwi (“body of water”), from Proto-Germanic *saiwiz, itself either: * Derived from Proto-Indo-European *sh₂ey-wo- (“to be fierce, afflict”).",
+        "distractors": [
+            "see",
+            "saa",
+            "sia"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "sec",
+        "definition": "Second, ¹⁄₆₀ of a minute.",
+        "exampleSentence": "My teacher explained what a sec is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "sɛk",
+        "distractors": [
+            "sac",
+            "sic",
+            "sce"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "ice",
+        "definition": "To occupy a reserved electric car parking space (especially one equipped with a charger) with a traditional car equipped with an internal combustion engine.",
+        "exampleSentence": "We need to ice this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "aɪs",
+        "distractors": [
+            "cie",
+            "iec",
+            "icce"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tin",
+        "definition": "To place into a metal can (ie. a tin; be it tin, steel, aluminum) in order to preserve.",
+        "exampleSentence": "We need to tin this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "tɪn",
+        "etymology": "From Middle English tin, from Old English tin, from Proto-West Germanic *tin, from Proto-Germanic *tiną.",
+        "distractors": [
+            "itn",
+            "tni",
+            "ttin"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "new",
+        "definition": "Things that are new.",
+        "exampleSentence": "My teacher explained what a new is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "nju",
+        "etymology": "From Middle English newe, from Old English nīewe, from Proto-West Germanic *niwi, from Proto-Germanic *niwjaz, from Proto-Indo-European *néwyos (“new”), from *néwos. Compare also Old English nū (“now”). More at now. Doublet of nuevo and novuss.",
+        "distractors": [
+            "naw",
+            "niw",
+            "nwe"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "yes",
+        "definition": "To agree with, affirm, approve.",
+        "exampleSentence": "We need to yes this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "jɛs",
+        "etymology": "From Middle English yes, from Old English ġīese (“by all means, of course, yes”), derived from the same root as yea. Compare Faroese júsá (“yes, indeed, certainly”).",
+        "distractors": [
+            "yas",
+            "yis",
+            "yse"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sid",
+        "definition": "Sound Interface Device, a sound chip used in some early computers.",
+        "exampleSentence": "If the call to this function fails, you can assume the SID was invalid — even if it's a well-known SID.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɛs aɪ diː",
+        "distractors": [
+            "sad",
+            "sed",
+            "sdi"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "adam",
+        "definition": "The day or night before an eve; two days or nights before a holiday, most commonly Christmas.",
+        "exampleSentence": "The book had an entire chapter about the adam.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ædəm",
+        "etymology": "From Adam in Adam and Eve as opposed to eve.",
+        "distractors": [
+            "daam",
+            "aadm",
+            "adma"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "army",
+        "definition": "The fandom of the K-pop boy band BTS.",
+        "exampleSentence": "Entering the theater, I expected the room to be filled with ARMYs decked out in their BTS merchandise.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "army",
+        "etymology": "From an acronym/backronym based on army (\"Adorable Representative for MC Youth\"), suggesting a large, devoted fanbase.",
+        "distractors": [
+            "armey",
+            "arrmy",
+            "arym"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "best",
+        "definition": "The supreme effort one can make, or has made.",
+        "exampleSentence": "The book had an entire chapter about the best.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "bɛst",
+        "etymology": "From Middle English beste, best, from Old English betst, betest, from Proto-Germanic *batistaz. Cognates Cognate with Scots best (“best”), Cimbrian peste, péste (“best”), Dutch best (“best”), German beste (“best”), Yiddish בעסט (best, “best”), Danish bedst (“best”), Faroese bestur (“best”), Icelandi",
+        "distractors": [
+            "besst",
+            "bast",
+            "bist"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cash",
+        "definition": "The low-denomination coin of southern India until 1818.",
+        "exampleSentence": "There is a desperate shortage of hard cash.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "kæʃ",
+        "etymology": "Variant of earlier cass under influence from cash above, from Tamil காசு (kācu), ultimately from Sanskrit karsha (\"weight of 1/400 tulā, तुला\"). Extended to other similar forms of low-denomination coins in Southeast and East Asia following the example of cognate Portuguese cas, casse, caxa, caixa.",
+        "distractors": [
+            "acsh",
+            "csah",
+            "cahs"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "city",
+        "definition": "A large settlement, bigger than a town; sometimes with a specific legal definition, depending on the place.",
+        "exampleSentence": "São Paulo is the largest city in South America.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "sɪti",
+        "etymology": "Inherited from Middle English cite, derived from Old French cite, derived from Late Latin cīvitātem (“city”), in Classical Latin \"citizenry\", derived from cīvis (“fellow-citizen”), ultimately from Proto-Indo-European *ḱey- (“lie down; settle”).",
+        "distractors": [
+            "citey",
+            "citty",
+            "caty"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "code",
+        "definition": "A short textual designation, often with little relation to the item it represents.",
+        "exampleSentence": "I wrote some code to reformat text documents.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "koʊd",
+        "etymology": "From Middle English code (“system of law”), from Old French code (“system of law”), from Latin cōdex, later form of caudex (“the stock or stem of a tree, a board or tablet of wood smeared over with wax, on which the ancients originally wrote; hence, a book, a writing.”). Doublet of codex.",
+        "distractors": [
+            "codde",
+            "cade",
+            "cede"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "cost",
+        "definition": "Amount of money, time, etc. that is required or used.",
+        "exampleSentence": "We have to cut costs if we want to avoid bankruptcy.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɔst",
+        "etymology": "From Middle English cost, coust, from costen (“to cost”), from the same source as above.",
+        "distractors": [
+            "cosst",
+            "cast",
+            "cest"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "duty",
+        "definition": "That which one is morally or legally obligated to do.",
+        "exampleSentence": "The book had an entire chapter about the duty.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "djuːti",
+        "etymology": "From Middle English duete, from Middle English dewe + Middle English -te. Equivalent to due + -ty.",
+        "distractors": [
+            "dutey",
+            "dutty",
+            "daty"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "evil",
+        "definition": "Moral badness; wickedness; malevolence; the forces or behaviors that are the opposite or enemy of good.",
+        "exampleSentence": "The book had an entire chapter about the evil.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ivəl",
+        "etymology": "From Middle English yvel, evel, ivel, uvel, from Old English yfel, from Proto-West Germanic *ubil, from Proto-Germanic *ubilaz, from Proto-Indo-European *h₂up(h₁)élos, a deverbal derivative of *h₂wep(h₁)-, *h₂wop(h₁)- (“treat badly”). See -le for the supposed suffix.",
+        "distractors": [
+            "evvil",
+            "eval",
+            "evel"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fake",
+        "definition": "Something which is not genuine, or is presented fraudulently.",
+        "exampleSentence": "I suspect this passport is a fake.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "feɪ̯k",
+        "etymology": "The origin is not known with certainty, although first attested in 1775 C.E. in British criminals' slang.",
+        "distractors": [
+            "fakke",
+            "feke",
+            "fike"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fate",
+        "definition": "The presumed cause, force, principle, or divine will that predetermines events.",
+        "exampleSentence": "The book had an entire chapter about the fate.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "feɪt",
+        "etymology": "From Middle English fate, from Latin fāta (“prediction”), plural of fātum, from fātus (“spoken”), from for (“to speak”). In this sense, displaced native Old English wyrd, whence Modern English weird.",
+        "distractors": [
+            "fatte",
+            "fete",
+            "fite"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fear",
+        "definition": "A strong, unpleasant emotion or feeling caused by actual or perceived danger or threat.",
+        "exampleSentence": "Not everybody has the same fears.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fɪə",
+        "etymology": "From Middle English feer, fere, fer, from Old English fǣr, ġefǣr (“calamity, sudden danger, peril, sudden attack, terrible sight”), from Proto-Germanic *fērō, *fērą (“danger”), from Proto-Indo-European *per- (“to go through, carry forth, try”).",
+        "distractors": [
+            "feer",
+            "faar",
+            "fiar"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "fell",
+        "definition": "To make something fall; especially to chop down a tree.",
+        "exampleSentence": "The book had an entire chapter about the fell.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fɛl",
+        "etymology": "From Middle English fellen, from Old English fellan, fiellan (“to cause to fall, strike down, fell, cut down, throw down, defeat, destroy, kill, tumble, cause to stumble”), from Proto-West Germanic *fallijan, from Proto-Germanic *fallijaną (“to fell, to cause to fall”), causative of Proto-Germanic *",
+        "distractors": [
+            "fel",
+            "fall",
+            "fill"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "five",
+        "definition": "The digit/figure 5.",
+        "exampleSentence": "Can anyone here change a five?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "fäːv",
+        "etymology": "From Middle English five, vif, fif, from Old English fīf (“five”), from Proto-West Germanic *fimf (“five”), from Proto-Germanic *fimf (“five”), from Proto-Indo-European *pénkʷe.",
+        "distractors": [
+            "fivve",
+            "fave",
+            "feve"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gift",
+        "definition": "Something given to another voluntarily, without charge.",
+        "exampleSentence": "She had a gift for playing the flute.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɡɪft",
+        "etymology": "From Middle English gift (also yift, yifte, ȝift, ȝeft), partly from Old English ġift (“giving, consideration, dowry, wedding”) and Old Norse gipt (“gift, present, wedding”); both from Proto-Germanic *giftiz (“gift”). Equivalent to give + -t (etymologically yive + -t).",
+        "distractors": [
+            "gifft",
+            "gaft",
+            "geft"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hang",
+        "definition": "A percussion instrument invented and built by PANArt Hangbau AG, somewhat resembling a steelpan, consisting of two metal half shells with tuned notes on the top side that produces a mellow and ethereal sound.",
+        "exampleSentence": "Philip plays a Hang drum—a unique instrument that looks a little like two woks welded together.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "hæŋ",
+        "etymology": "Coined as a trademark, from Alemannic German Hang (“hand”), c. 2000.",
+        "distractors": [
+            "hanng",
+            "heng",
+            "hing"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "harm",
+        "definition": "Physical injury; hurt; damage.",
+        "exampleSentence": "No harm came to my possessions.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "hɑɹm",
+        "etymology": "From Middle English harm, herm, from Old English hearm, from Proto-West Germanic *harm, from Proto-Germanic *harmaz (“harm; shame; pain”).",
+        "distractors": [
+            "harrm",
+            "herm",
+            "hirm"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "lady",
+        "definition": "An aristocratic title for a woman.",
+        "exampleSentence": "How do you do, Lady Windermere?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "lady",
+        "distractors": [
+            "ladey",
+            "laddy",
+            "ledy"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "lord",
+        "definition": "A formal title of the lesser British nobility, used for a lord of the manor or Lord Proprietor.",
+        "exampleSentence": "How do you do, Lord Darlington?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "lɔɹd",
+        "etymology": "See lord. In reference to the God of the Jewish Tanakh and Christian Bible, originally a translation (attested from the late Old English form hlāford) of the Vulgate Latin Dominus (“master of a house; lord”), translating the New Testament and the Septuagint's Ancient Greek ὁ κύριος or Κύριος (ó kýri",
+        "distractors": [
+            "lorrd",
+            "lard",
+            "lerd"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "luck",
+        "definition": "Something that happens to someone by chance, a chance occurrence.",
+        "exampleSentence": "The raffle is just a matter of luck.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "lʌk",
+        "etymology": "From Middle English luk, lukke, related to Old Frisian luk (“luck”), West Frisian gelok (“luck”), Saterland Frisian Gluk (“luck”), Dutch geluk (“luck, happiness”), Low German luk (“luck”), German Glück (“luck, good fortune, happiness”), Danish lykke (“luck”), Swedish lycka (“luck”), Icelandic lukka",
+        "distractors": [
+            "luk",
+            "lucck",
+            "lack"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "male",
+        "definition": "A human member of the masculine sex or gender.",
+        "exampleSentence": "The book had an entire chapter about the male.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "meɪl",
+        "etymology": "Latin mās Proto-Indo-European *-lós Proto-Italic *-elos Latin -ulus Latin -culus Latin masculus Vulgar Latin masclus Old French maslebor.",
+        "distractors": [
+            "mael",
+            "malle",
+            "mele"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "meat",
+        "definition": "The flesh (muscle tissue) of an animal used as food, or a food designed to replicate its taste and texture (like plant-based meat).",
+        "exampleSentence": "The book had an entire chapter about the meat.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "mit",
+        "etymology": "From Middle English mete, from Old English mete (“food”), from Proto-West Germanic *mati, from Proto-Germanic *matiz (“food”), from Proto-Indo-European *meh₂d- (“to drip, ooze; grease, fat”).",
+        "distractors": [
+            "meet",
+            "maat",
+            "miat"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "must",
+        "definition": "Something that is mandatory, required or recommended.",
+        "exampleSentence": "If you're trekking all day, a map is a must.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "məst",
+        "etymology": "From Middle English moste (\"must\", literally, \"had to\", the past tense of Middle English moten (“to have to”)), from Old English mōste (“had to”), 1st & 3rd person singular past tense of mōtan (“to be allowed, be able to, have the opportunity to, be compelled to, must, may”), from Proto-Germanic *mō",
+        "distractors": [
+            "musst",
+            "mast",
+            "mest"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nine",
+        "definition": "The digit or figure 9.",
+        "exampleSentence": "They guaranteed that our Web site would have 99.99% uptime, or four nines.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "naɪn",
+        "etymology": "From Middle English nyne, nine, from Old English nigon (“nine”), from Proto-West Germanic *neun, from Proto-Germanic *newun (“nine”), from Proto-Indo-European *h₁néwn̥ (“nine”).",
+        "distractors": [
+            "ninne",
+            "nane",
+            "nene"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "past",
+        "definition": "The period of time that has already happened, in contrast to the present and the future.",
+        "exampleSentence": "The book had an entire chapter about the past.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "pæst",
+        "etymology": "From Middle English passed, past participle of passen (“to pass, to go by”), whence Modern English pass.",
+        "distractors": [
+            "passt",
+            "pest",
+            "pist"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "sake",
+        "definition": "Cause, interest or account.",
+        "exampleSentence": "The book had an entire chapter about the sake.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "seɪk",
+        "etymology": "From Middle English sake (“sake, cause”), from Old English sacu (“cause, lawsuit, legal action, complaint, issue, dispute”), from Proto-West Germanic *saku, from Proto-Germanic *sakō (“affair, thing, charge, accusation, matter”), from Proto-Indo-European *seh₂g- (“to investigate”).",
+        "distractors": [
+            "sakke",
+            "seke",
+            "sike"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "till",
+        "definition": "A cash register.",
+        "exampleSentence": "My count of my till was 30 dollars short.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "tɪl",
+        "etymology": "From Middle English tylle (“till”), possibly from Middle English tillen (“to draw”) from Old English *tyllan (“to draw, attract”) (as in betyllan (“to lure, decoy”) and fortyllan (“to draw away”); related to *tollian > Middle English tollen). Cognate with Albanian ndjell (“I lure, attract”).",
+        "distractors": [
+            "til",
+            "tall",
+            "tell"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tour",
+        "definition": "A journey through a particular building, estate, country, etc.",
+        "exampleSentence": "The book had an entire chapter about the tour.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "tʉːə",
+        "etymology": "From Old French tour, tourn, from the verb torner, tourner.",
+        "distractors": [
+            "towr",
+            "taur",
+            "teur"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "wear",
+        "definition": "Damage to the appearance and/or strength of an item caused by use over time.",
+        "exampleSentence": "The book had an entire chapter about the wear.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "wɛ(ə)ɹ",
+        "etymology": "Inherited from Middle English weren, werien, from Old English werian (“to clothe, cover over; put on, wear, use; stock (land)”), from Proto-West Germanic *waʀjan, from Proto-Germanic *wazjaną (“to clothe”), from Proto-Indo-European *wes- (“to dress, put on (clothes)”).",
+        "distractors": [
+            "weer",
+            "waar",
+            "wiar"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "will",
+        "definition": "A weak-side linebacker.",
+        "exampleSentence": "Will linebacker drops to turn-in, QB dropping dumps the ball off to HB.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "wɪl",
+        "etymology": "Clipping of William or, less often, other given names beginning with Wil-, such as Wilfred or Willard.",
+        "distractors": [
+            "wil",
+            "wall",
+            "well"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "felt",
+        "definition": "To make into felt or a feltlike substance; to cause to adhere and mat together.",
+        "exampleSentence": "To felt the cylinder of a steam engine.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fɛlt",
+        "etymology": "From Middle English felt, from Old English felt, from Proto-West Germanic *felt (compare Dutch vilt, German Filz, Danish filt, French feutre), from Proto-Indo-European *pilto, *pilso 'felt' (compare Latin pilleus (“felt”, adjective), Old Church Slavonic плъсть (plŭstĭ), Albanian plis, Ancient Greek",
+        "distractors": [
+            "fellt",
+            "falt",
+            "filt"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "half",
+        "definition": "Consisting of a half (½, 50%).",
+        "exampleSentence": "The half weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "hɐːf",
+        "etymology": "From Middle English half, halfe from Old English healf (“half”); as a noun, 'half', 'side', 'part', from Proto-West Germanic *halb, from Proto-Germanic *halbaz.",
+        "distractors": [
+            "hallf",
+            "helf",
+            "hilf"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "kind",
+        "definition": "Having a benevolent, courteous, friendly, generous, gentle, liberal, sympathetic, or warm-hearted nature or disposition, marked by consideration for – and service to – others.",
+        "exampleSentence": "The years have been kind to Richard Gere; he ages well.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "kaɪnd",
+        "etymology": "From Middle English kynde, kinde, from Old English cynde, ġecynde (“innate, natural, native”), from Old English cynd, ġecynd (“nature, kind”).",
+        "distractors": [
+            "kinnd",
+            "kand",
+            "kend"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "less",
+        "definition": "Lesser; smaller.",
+        "exampleSentence": "This he said, thinking that Alan would be pleased; but the Highlandman’s vanity was ready to startle at a less matter than that.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "lɛs",
+        "etymology": "Adverb From Middle English les, lesse, leasse, lasse, from Old English lǣs (“smaller, less”), from Proto-Germanic *laisiz, from Proto-Indo-European *leys- (“to shrink, grow thin, be gentle”). Cognate with Old Frisian lēs (“less”), Old Saxon lēs (“less”).",
+        "distractors": [
+            "les",
+            "lass",
+            "liss"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "loud",
+        "definition": "Of great intensity.",
+        "exampleSentence": "The loud weather made everyone want to stay inside.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "laʊd",
+        "etymology": "From Middle English loude, loud, lud, from Old English hlūd (“loud, noisy, sounding, sonorous”), from Proto-West Germanic *hlūd, from Proto-Germanic *hlūdaz, *hlūþaz (“heard”), from Proto-Indo-European *ḱlewtos (“heard, famous”), from Proto-Indo-European *ḱlew- (“to hear”). More at listen.",
+        "distractors": [
+            "lowd",
+            "laud",
+            "leud"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "paid",
+        "definition": "That is not free of charge; that costs money.",
+        "exampleSentence": "I thought his house would be nicer than this. I thought that motherf*cker was paid.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "peɪd",
+        "etymology": "From Middle English paid, payd, ipaid, ypayd, past participle of Middle English paien, payen (“to pay”), equivalent to pay + -ed.",
+        "distractors": [
+            "payd",
+            "peid",
+            "piid"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "used",
+        "definition": "That is or has or have been used.",
+        "exampleSentence": "The ground was littered with used syringes left behind by drug abusers.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "juzd",
+        "etymology": "From Middle English used, equivalent to use + -ed.",
+        "distractors": [
+            "ussed",
+            "usad",
+            "usid"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ever",
+        "definition": "Always, frequently, forever.",
+        "exampleSentence": "She ever opened the gift, excited to see what was inside.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "ɛvɚ",
+        "etymology": "From Middle English ever, from Old English ǣfre, originally a phrase whose first element undoubtedly consists of Old English ā (“ever, always”) + in (“in”) + an element possibly from feorh (“life, existence”) (dative fēore).",
+        "distractors": [
+            "evor",
+            "evar",
+            "evver"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "most",
+        "definition": "Forms the superlative of many adjectives.",
+        "exampleSentence": "Correctness is most important.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "moʊst",
+        "etymology": "From Middle English most, moste, from Old English mǣst, māst, from Proto-Germanic *maistaz, *maist. Cognate with Scots mast, maist (“most”), Saterland Frisian maast (“most”), West Frisian meast (“most”), Dutch meest (“most”), German meist (“most”), Danish and Swedish mest (“most”), Icelandic mestur",
+        "distractors": [
+            "mosst",
+            "mast",
+            "mest"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "done",
+        "definition": "Used in forming the perfective aspect; have.",
+        "exampleSentence": "I woke up and found out she done left.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "dʌn",
+        "etymology": "From Middle English don, idon, ydon, ȝedon, gedon, from Old English dōn, ġedōn, from Proto-West Germanic *dān, from Proto-Germanic *dēnaz (past participle of *dōną (“to do”)). Equivalent to do + -en (past participle ending).",
+        "distractors": [
+            "donne",
+            "dane",
+            "dene"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "seen",
+        "definition": "Understood; comprehended.",
+        "exampleSentence": "Justice must be seen to be done.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "sɪn",
+        "etymology": "Morphologically see + -n.",
+        "distractors": [
+            "sen",
+            "sean",
+            "saen"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "soon",
+        "definition": "Short in length of time from the present.",
+        "exampleSentence": "Hurry up, the wedding is soon to start!",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "sun",
+        "etymology": "From Middle English sone, from Old English sōna (“immediately, at once”), from Proto-West Germanic *sān(ō), from Proto-Germanic *sēna, *sēnô (“immediately, soon, then”), from *sa (demonstrative pronoun), from Proto-Indo-European *só (demonstrative pronoun).",
+        "distractors": [
+            "son",
+            "saon",
+            "seon"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "chef",
+        "definition": "To work as a chef; to prepare and cook food professionally.",
+        "exampleSentence": "He got cheffed in the A in the head.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʃɛf",
+        "etymology": "Unadapted borrowing from French chef (from the positions of chef d'office and chef de cuisine), from Old French chief (“head, leader”) (English chief), from Vulgar Latin capus (“head”) (from which also captain, chieftain), from Latin caput (“head”) (possibly related to English cap (“head covering”))",
+        "distractors": [
+            "chaf",
+            "chif",
+            "cehf"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "desk",
+        "definition": "To shut up, as in a desk; to treasure.",
+        "exampleSentence": "Each row of desked benches was stepped up a step from the other until the top row of desked benches seemed to hit its high ceiling.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "dɛsk",
+        "etymology": "From Middle English deske, desque, from Medieval Latin desca, modified from Old Italian desco, from Latin discus. Doublet of dais, disc, discus, dish, disk, and diskos. See also German Tisch, \"table\".",
+        "distractors": [
+            "dessk",
+            "dask",
+            "disk"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "david",
+        "definition": "A person or group considered unlikely to prevail; an underdog.",
+        "exampleSentence": "He wrote the word david on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "deɪvɪd",
+        "etymology": "From Middle English David, Davyd, Davyde, from Old English Dauid, David, from Late Latin Dāvīd, from Koine Greek Δαυῑ̈́δ (Dauī̈́d), from Biblical Hebrew דָּוִד (dāwiḏ, literally “beloved”).",
+        "distractors": [
+            "davvid",
+            "devid",
+            "divid"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "fancy",
+        "definition": "The imagination.",
+        "exampleSentence": "I had a fancy to learn to play the flute.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fænsi",
+        "etymology": "From Middle English fansy, fantsy, a contraction of fantasy, fantasye, fantasie, from Old French fantasie, from Medieval Latin fantasia, from Late Latin phantasia (“an idea, notion, fancy, phantasm”), from Ancient Greek φαντασία (phantasía), from φαντάζω (phantázō, “to render visible”), from φαντός",
+        "distractors": [
+            "fency",
+            "fancey",
+            "fanncy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "going",
+        "definition": "A departure.",
+        "exampleSentence": "The going was very difficult over the ice.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "digraphs",
+        "pronunciation": "ɡoʊɪŋ",
+        "etymology": "Verb form from Middle English goinge, goynge, gayng, variants of gonde, goonde, gaand, from Old English gānde, from Proto-Germanic *gēndz, present participle of Proto-Germanic *gēną, *gāną (“to go”), equivalent to go + -ing.",
+        "distractors": [
+            "goinng",
+            "goyng",
+            "gaing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "group",
+        "definition": "A number of things or persons being in some relation to one another.",
+        "exampleSentence": "Did you see the new jazz group?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɹuːp",
+        "etymology": "From French groupe (“cluster, group”), from Italian gruppo, groppo (“a knot, heap, group, bag (of money)”), from Vulgar Latin *cruppo, Renaissance Latin grupus, from Frankish *krupp, from Proto-Germanic *kruppaz (“lump, round mass, body, crop”), from Proto-Indo-European *grewb- (“to crumple, bend, c",
+        "distractors": [
+            "growp",
+            "graup",
+            "greup"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "hurry",
+        "definition": "A rushed action.",
+        "exampleSentence": "Why are you in such a big hurry?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hʌɹi",
+        "etymology": "From Middle English horien (“to rush, impel”), probably a variation of hurren (“to vibrate rapidly, buzz”), from Proto-Germanic *hurzaną (“to rush”) (compare Middle High German hurren (“to hasten”), Norwegian hurre (“to whirl around”)), from Proto-Indo-European *ḱers- (“to run”) (compare Latin currō",
+        "distractors": [
+            "hurrey",
+            "hury",
+            "harry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "kelly",
+        "definition": "Kelly green.",
+        "exampleSentence": "Heart's Desire—20 inch silk chiffon square—navy and shocking, grey and turquoise, brown and kelly, or green and violet, on white ground. $ 4.00 Matching contour belt ….",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kelly",
+        "etymology": "See kelly green.",
+        "distractors": [
+            "kelley",
+            "kely",
+            "kally"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "laugh",
+        "definition": "An expression of mirth particular to the human species; the sound heard in laughing; laughter.",
+        "exampleSentence": "He wrote the word laugh on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "laːf",
+        "etymology": "From Middle English laughen, laghen, from (Anglian) Old English hlæhhan, hlehhan, (West Saxon) hliehhan, from Proto-West Germanic *hlahhjan, from Proto-Germanic *hlahjaną.",
+        "distractors": [
+            "lauggh",
+            "lawgh",
+            "leugh"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "leave",
+        "definition": "The action of the batsman not attempting to play at the ball.",
+        "exampleSentence": "He made 45 leaves in his innings of 64.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "liːv",
+        "etymology": "From Middle English leven, from Old English lǣfan (“to leave”), from Proto-West Germanic *laibijan, from Proto-Germanic *laibijaną (“to let stay, leave”), causative of *lībaną (“to stay, remain”), from Proto-Indo-European *leyp- (“to stick; fat”).",
+        "distractors": [
+            "leavve",
+            "leeve",
+            "laave"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "means",
+        "definition": "An instrument or condition to achieve a result.",
+        "exampleSentence": "A car is a means of transport.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "miːnz",
+        "etymology": "From mean (“method or course of action used to achieve some result”). Compare French moyens, German Mittel.",
+        "distractors": [
+            "meanns",
+            "meens",
+            "maans"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "money",
+        "definition": "A generally accepted means of exchange.",
+        "exampleSentence": "I cannot take money that I did not work for.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "mʌni",
+        "etymology": "From Middle English moneye, moneie, money, borrowed from Anglo-Norman muneie (“money”), from Latin monēta (“money, a place for coining money, coin, mint”), from the name of the temple of Juno Moneta in Rome, where a mint was. In this sense, displaced native Old English feoh, whence English fee.",
+        "distractors": [
+            "mony",
+            "moneey",
+            "monney"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "phone",
+        "definition": "A device for transmitting conversations and other sounds in real time across distances, now often a small portable unit also capable of running software etc.",
+        "exampleSentence": "Daragh's on the phone at the moment. He'll call you when he's finished.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "foʊ̯n",
+        "distractors": [
+            "phonne",
+            "fone",
+            "phane"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "radio",
+        "definition": "The technology that allows for the transmission of sound or other signals by modulation of electromagnetic waves.",
+        "exampleSentence": "We heard a lovely song on the radio.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹeɪdioʊ",
+        "etymology": "Short for radiotelegraphy.",
+        "distractors": [
+            "raddio",
+            "redio",
+            "ridio"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "worst",
+        "definition": "Something or someone that is the worst.",
+        "exampleSentence": "The humorist helps people to explore and confront their worsts.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɜɹst",
+        "etymology": "From Middle English worste, wurste, warste, werste, wirste, from Old English wierrest, from Proto-Germanic *wirsistaz, superlative form of *ubilaz (“bad, evil”); compare worse.",
+        "distractors": [
+            "worrst",
+            "warst",
+            "werst"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "years",
+        "definition": "A very long time.",
+        "exampleSentence": "It took years for the bus to come.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "jɪɹz",
+        "distractors": [
+            "yearrs",
+            "yeers",
+            "yaars"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "blame",
+        "definition": "To assert or consider that someone is the cause of something negative; to place blame; to attribute responsibility (for something negative or for doing something negative).",
+        "exampleSentence": "It took a while to learn how to blame.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bleɪm",
+        "etymology": "From Middle English blamen, borrowed from Old French blasmer, from Late Latin blasphēmāre (“to reproach, to revile”), from Ancient Greek βλασφημέω (blasphēméō). Compare blaspheme, a doublet.",
+        "distractors": [
+            "blamme",
+            "bleme",
+            "blime"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "honor",
+        "definition": "To think of highly, to respect highly; to show respect for; to recognise the importance or spiritual value of.",
+        "exampleSentence": "I trusted you, but you have not honored your promise.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɑnɚ",
+        "etymology": "From Middle English honour, honor, honur, from Anglo-Norman honour, honur, from Old French honor, from Latin honor. Displaced Middle English menske (“honor, dignity among men”), from Old Norse menskr (“honor”). The verb is from Middle English honouren, honuren (“to honor”).",
+        "distractors": [
+            "honer",
+            "honnor",
+            "hanor"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "style",
+        "definition": "To design, fashion, make, or arrange in a certain way or form (style).",
+        "exampleSentence": "The pope is styled His or Your Holiness.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "staɪl",
+        "etymology": "The noun is derived from Middle English stile, stel, stele, stiel, stiele, stil, still, stille, styele, style, styill, styll, styyl (“writing tool, stylus; piece of written work; characteristic mode of expression, particularly one regarded as high quality; demeanour, manner, way of life; person's de",
+        "distractors": [
+            "styel",
+            "stylle",
+            "sytle"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "total",
+        "definition": "To add up; to calculate the sum of.",
+        "exampleSentence": "It took a while to learn how to total.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "toʊtl̩",
+        "etymology": "From Middle English total, from Old French total, from Medieval Latin tōtālis, from tōtus (“all, whole, entire”) + -ālis, the former element of unknown origin. Perhaps related to Oscan touto (“community, city-state”), Umbrian 𐌕𐌏𐌕𐌀𐌌 (totam, “tribe”, acc.",
+        "distractors": [
+            "totel",
+            "tottal",
+            "tatal"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "human",
+        "definition": "Of or belonging to the species Homo sapiens or its closest relatives.",
+        "exampleSentence": "To err is human; to forgive, divine.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hjuːmən",
+        "distractors": [
+            "humman",
+            "haman",
+            "heman"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "lucky",
+        "definition": "Favoured by luck; fortunate; having good success or good fortune.",
+        "exampleSentence": "The downed pilot is very lucky to be alive.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "lʌki",
+        "etymology": "From Middle English lukky, equivalent to luck + -y. Cognate with Scots lucky (“lucky”), West Frisian lokkich (“lucky, fortunate”), Dutch gelukkig (“lucky, fortunate, happy”).",
+        "distractors": [
+            "luckey",
+            "luccky",
+            "lacky"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "often",
+        "definition": "Frequently; many times on different occasions.",
+        "exampleSentence": "It can't be said too often / often enough.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɔfən",
+        "etymology": "From Middle English often, alteration (with final -n added due to analogy with Middle English selden (“seldom”)) of Middle English ofte, oft, from Old English oft (“often”), from Proto-Germanic *ufta, *uftō (“often”).",
+        "distractors": [
+            "offten",
+            "oftan",
+            "oftin"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "there",
+        "definition": "In or at a place or location (stated, implied or otherwise indicated) that is perceived to be away from, or at a relative distance from, the speaker (compare here).",
+        "exampleSentence": "And the rarest that e’er came there.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ðə(ɹ)",
+        "etymology": "From Middle English there, ther, thare, thar, thore, from Old English þēr, þǣr, þār (“there; at that place”), from Proto-West Germanic *þār, from Proto-Germanic *þar (“at that place; there”), from Proto-Indo-European *tó-r (“there”), from demonstrative pronominal base *to- (“the, that”) + adverbial",
+        "distractors": [
+            "therre",
+            "thare",
+            "thire"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "heavy",
+        "definition": "To make heavier.",
+        "exampleSentence": "The union was well known for the methods it used to heavy many businesses.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɛvi",
+        "etymology": "From Middle English hevy, heviȝ, from Old English hefiġ, hefeġ, hæfiġ (“heavy; important, grave, severe, serious; oppressive, grievous; slow, dull”), from Proto-West Germanic *habīg (“heavy, hefty, weighty”), from Proto-Germanic *habīgaz (“heavy, hefty, weighty”), from Proto-Indo-European *kap- (“to",
+        "distractors": [
+            "heavey",
+            "heavvy",
+            "heevy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "maybe",
+        "definition": "Something that is possibly true.",
+        "exampleSentence": "About your raise: it's a big maybe.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "mæɪbi",
+        "etymology": "From an ellipsis of Middle English it may be, equivalent to may + be. Compare mayhap.",
+        "distractors": [
+            "maybbe",
+            "maibe",
+            "meybe"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "based",
+        "definition": "Being derived from (usually followed by on or upon).",
+        "exampleSentence": "The company is based in New York.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "beɪst",
+        "etymology": "From base + -ed.",
+        "distractors": [
+            "bassed",
+            "besed",
+            "bised"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "battle",
+        "definition": "A contest, a struggle.",
+        "exampleSentence": "Can you use the word battle in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bætl̩",
+        "etymology": "From Middle English batel, batell, batelle, batayle, bataylle, borrowed from Old French bataille, from Late Latin battālia, variant of battuālia (“fighting and fencing exercises”) from Latin battuō (“to strike, hit, beat, fight”), of uncertain origin.",
+        "distractors": [
+            "battel",
+            "batle",
+            "bettle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "beauty",
+        "definition": "The quality of being (especially visually) attractive, pleasing, fine or good-looking; comeliness.",
+        "exampleSentence": "What a goal! That was a real beauty!",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bjuti",
+        "etymology": "From Middle English bewty, bewte, beaute, bealte, from Anglo-Norman and Old French beauté (early Old French spelling biauté), from Vulgar Latin *bellitātem (“beauty”), from Latin bellus (“beautiful, fair”); see beau.",
+        "distractors": [
+            "beautey",
+            "beautty",
+            "beeuty"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bottle",
+        "definition": "A container, typically made of glass or plastic and having a tapered neck, used primarily for holding liquids.",
+        "exampleSentence": "Beer is often sold in bottles.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɑtl̩",
+        "etymology": "From Middle English botel (“bottle, flask, wineskin”), from Old French boteille, from Late Latin butticula, diminutive of buttis (“cask”). Doublet of botija. Displaced native pinne and non-native Old English ampella. Broadly overtook Old English flasce.",
+        "distractors": [
+            "bottel",
+            "botle",
+            "battle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "client",
+        "definition": "A customer, a buyer or receiver of goods or services.",
+        "exampleSentence": "A third preliminary comment deals explicitly with the relations between clients and superpowers.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "klaɪənt",
+        "etymology": "From Middle English client, from Anglo-Norman clyent, Old French client, from Latin cliēns, akin to clinare (“to lean”).",
+        "distractors": [
+            "cliant",
+            "cliennt",
+            "cleint"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "daniel",
+        "definition": "The buttocks.",
+        "exampleSentence": "He'd pull the chair out from under some dignified dowager and catch her just before she went to fall on her daniel ….",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dænjəl",
+        "distractors": [
+            "danile",
+            "danial",
+            "danniel"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "french",
+        "definition": "The people of France; groups of French people.",
+        "exampleSentence": "He was drinking double gins with single Frenches in them.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɹɛnt͡ʃ",
+        "etymology": "Inherited from Middle English Frenche, Frensch, Frensc, Frenshe, Frenk, Franche, from Old English Frenċisċ (“Frankish, French”), from Proto-West Germanic *Frankisk (“Frankish”), equivalent to Frank + -ish (compare Frankish).",
+        "distractors": [
+            "frennch",
+            "franch",
+            "frinch"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "giving",
+        "definition": "The act of bestowing as a gift; a conferring or imparting.",
+        "exampleSentence": "His gains were sure, His givings rare.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɪvɪŋ",
+        "etymology": "By surface analysis, give + -ing.",
+        "distractors": [
+            "givving",
+            "givinng",
+            "gaving"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "making",
+        "definition": "The act of forming, causing, or constituting; workmanship; construction.",
+        "exampleSentence": "As a child, he didn’t seem like a genius in the making.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "meɪkɪŋ",
+        "etymology": "From Middle English making, from Old English macung (“making”), equivalent to make + -ing. Cognate with dated Dutch making (“making”), Old High German machunga.",
+        "distractors": [
+            "makking",
+            "makinng",
+            "meking"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pardon",
+        "definition": "Forgiveness for an offence.",
+        "exampleSentence": "… a step, that could not be taken with the least hope of ever obtaining pardon from or reconciliation with any of my friends; ….",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɑɹdn̩",
+        "etymology": "From Middle English pardonen, from Old French pardoner (modern French pardonner), from Late Latin perdonare, from per- + donare, possibly a calque (if not vice-versa) of a Germanic word represented by Frankish *firgeban (“to forgive, give up completely”), from *fir- + *geban.",
+        "distractors": [
+            "parrdon",
+            "perdon",
+            "pirdon"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "person",
+        "definition": "An individual who has been granted personhood; usually a human being.",
+        "exampleSentence": "No man can long put on a person and act a part.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "pʰɝsᵊn",
+        "etymology": "From Middle English persoun, personne et al., from Anglo-Norman parsone, persoun et al. (Old French persone (“human being”), French personne), and its source Latin persōna (“mask used by actor; role, part, character”), perhaps a loanword from Etruscan 𐌘𐌄𐌓𐌔𐌖 (φersu, “mask”).",
+        "distractors": [
+            "perrson",
+            "parson",
+            "pirson"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "planet",
+        "definition": "Each of the seven major bodies which move relative to the fixed stars in the night sky—the Moon, Mercury, Venus, the Sun, Mars, Jupiter and Saturn.",
+        "exampleSentence": "A Discovrse concerning a New Planet. Tending to prove, That 'tis probable our Earth is one of the Planets.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "plænət",
+        "etymology": "From Middle English planete, from Old French planete, from Latin planeta, planetes, from Ancient Greek πλανήτης (planḗtēs, “wanderer”) (itself an ellipsis of ἀστέρες πλανῆται (astéres planêtai, “wandering stars”)), from Ancient Greek πλανάω (planáō, “wander about, stray”), of unknown origin.",
+        "distractors": [
+            "plannet",
+            "plenet",
+            "plinet"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "season",
+        "definition": "Each of the four divisions of a year: spring, summer, autumn (fall) and winter.",
+        "exampleSentence": "Can you use the word season in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sizn̩",
+        "etymology": "From Middle English sesoun, seson (“time of the year”), from Old French seson, saison (“time of sowing, seeding”), from Latin satiō (“act of sowing, planting”) from satum, past participle of serō (“to sow, plant”) from Proto-Indo-European *seh₁- (“to sow, plant”).",
+        "distractors": [
+            "seasson",
+            "seeson",
+            "saason"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "signal",
+        "definition": "A sequence of states representing an encoded message in a communication channel.",
+        "exampleSentence": "My mobile phone can't get a signal in the railway station.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪɡnəl",
+        "etymology": "From Old French segnal, seignal or Medieval Latin signāle; noun use of the neuter of Late Latin signālis, from Latin signum; verb use from 1805, as a shortened from signalize (1650s).",
+        "distractors": [
+            "signel",
+            "siggnal",
+            "sagnal"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "sister",
+        "definition": "Title of respect for an adult female member of a religious order.",
+        "exampleSentence": "Could you say a prayer for me, Sister?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "sister",
+        "distractors": [
+            "sistor",
+            "sistar",
+            "sisster"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "theory",
+        "definition": "A description of an event or system that is considered to be accurate.",
+        "exampleSentence": "A theory is consistent if it has a model.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "θɪəɹi",
+        "etymology": "From Middle French théorie, from Late Latin theōria, from Ancient Greek θεωρία (theōría, “contemplation, divine perspective, speculation, a looking at, a seeking”), from θεωρέω (theōréō, “I look at, view, see, consider, examine”), from θεωρός (theōrós, “spectator”), from θέα (théa, “view, perspectiv",
+        "distractors": [
+            "theorey",
+            "theery",
+            "theorry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "listen",
+        "definition": "To use one's sense of hearing and auditory cognition in an intentional way; to make deliberate use of one's ears; to pay attention to or wait for a specific sound.",
+        "exampleSentence": "She would listen every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "lɪsən",
+        "etymology": "From Middle English listenen, listnen, alteration (due to Middle English listen (“to listen, give heed to”)) of Old English hlysnan (“to listen”), from Proto-Germanic *hlusnijaną, *hlusnōną (compare Middle High German lüsenen), from Proto-Germanic *hlusēną (compare Old High German hlosēn), from Prot",
+        "distractors": [
+            "lissten",
+            "lasten",
+            "lesten"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "please",
+        "definition": "To make happy or satisfy; to give pleasure to.",
+        "exampleSentence": "She would please every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "pliz",
+        "etymology": "From Middle English plesen, plaisen, borrowed from Old French plaise, conjugated form of plaisir or plaire, from Latin placeō (“to please, to seem good”), from the Proto-Indo-European *pleHk- (“pleasingness, permission”).",
+        "distractors": [
+            "pleasse",
+            "pleese",
+            "plaase"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "asleep",
+        "definition": "In a state of sleep; also, broadly, resting.",
+        "exampleSentence": "How could you miss that? Were you asleep?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əsliːp",
+        "etymology": "From Middle English aslepe, equivalent to a- (“in, on”) + sleep.",
+        "distractors": [
+            "aslep",
+            "assleep",
+            "asleap"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "female",
+        "definition": "Belonging to the sex which typically produces eggs (ova), or to the gender which is typically associated with it.",
+        "exampleSentence": "Stereotypically female pastimes, an insect with typically female coloration.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "fiːmeɪl",
+        "distractors": [
+            "femael",
+            "femmale",
+            "femalle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "filled",
+        "definition": "That is now full.",
+        "exampleSentence": "The whole building was filled with thick smoke.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɪld",
+        "distractors": [
+            "filed",
+            "falled",
+            "felled"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "moving",
+        "definition": "That moves or move.",
+        "exampleSentence": "'t was a moving letter, very moving!",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "muːvɪŋ",
+        "distractors": [
+            "movving",
+            "movinng",
+            "maving"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "ruined",
+        "definition": "In a state of ruin; dilapidated.",
+        "exampleSentence": "At the west end of the street is the ruined 13th-century hospice, known locally as Pilgrims' Rest.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹuɪnd",
+        "distractors": [
+            "ruinned",
+            "rained",
+            "reined"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "barely",
+        "definition": "By a small margin.",
+        "exampleSentence": "The plane is so far away now I can barely see it.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɛɹli",
+        "etymology": "From Middle English baarly, bareliche, barely, barly, from Old English bærlīċe, equivalent to bare + -ly. Compare Danish bare (“only, just”), Norwegian bare (“only, just”).",
+        "distractors": [
+            "bareley",
+            "barrely",
+            "barelly"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "beyond",
+        "definition": "Farther along or away.",
+        "exampleSentence": "Marvel release stirring new set images of Black Panther and we are BEYOND excited title.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bi(j)ɑnd",
+        "etymology": "From Middle English biyonde, from Old English beġeondan, from be- + ġeond; related to yonder.",
+        "distractors": [
+            "beyonnd",
+            "bayond",
+            "biyond"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "easily",
+        "definition": "Comfortably, without discomfort or anxiety.",
+        "exampleSentence": "This is easily the best meal I have eaten.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "izɪli",
+        "etymology": "From Middle English esiliche, equivalent to easy + -ly.",
+        "distractors": [
+            "easiley",
+            "eassily",
+            "easilly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hardly",
+        "definition": "Barely, only just, almost not.",
+        "exampleSentence": "Hardly did I arrive when he left.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɑɹdli",
+        "etymology": "From Middle English hardely, hardliche, from Old English heardlīċe (“boldly; hardily; without ease; in a way that causes pain; not easily; only by degrees”), equivalent to hard + -ly. Compare Dutch hardelijk, German härtlich.",
+        "distractors": [
+            "hardley",
+            "harrdly",
+            "herdly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "island",
+        "definition": "To surround with water; make into an island.",
+        "exampleSentence": "She would island every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "aɪlənd",
+        "etymology": "From earlier iland, from Middle English iland, yland, ylond, from Old English īeġland, from Proto-West Germanic *auwjuland, from Proto-Germanic *awjōlandą (from Proto-Germanic *awjō (“island, waterland, meadow”), from Proto-Indo-European *h₂ekʷeh₂) + *landą (“land”), equivalent to ey + land.",
+        "distractors": [
+            "issland",
+            "islannd",
+            "islend"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "before",
+        "definition": "Of before-and-after images: the one that shows the difference before a specified treatment.",
+        "exampleSentence": "We talk about all the befores. The stupid things we did. The funny things. The times she made us laugh.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "bɪfɔɹ",
+        "etymology": "Inherited from Middle English before /bifore, from Old English beforan, from be- + foran (“before”), from fore, from Proto-Germanic *furai, from Proto-Indo-European *per- (“front”). Cognate with Saterland Frisian befoar (“before”), German Low German bevör (“before”), German bevor (“before”).",
+        "distractors": [
+            "beffore",
+            "beforre",
+            "bafore"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "heaven",
+        "definition": "To transport to the abode of God, the gods, or the blessed.",
+        "exampleSentence": "She would heaven every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɛvən",
+        "etymology": "From a wide variety of Middle English forms including hevene, heven, hevin, and hewin (“heaven, sky”), from Old English heofon, heofone (“heaven, sky”), from Proto-West Germanic *hebn (“heaven, sky”), of uncertain origin.",
+        "distractors": [
+            "heavven",
+            "heeven",
+            "haaven"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "failed",
+        "definition": "Unsuccessful.",
+        "exampleSentence": "The government is unwilling to bail out the failed bank.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "feɪld",
+        "distractors": [
+            "failled",
+            "fayled",
+            "feiled"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disman",
+        "definition": "To deprive of men.",
+        "exampleSentence": "She would disman every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪsmæn",
+        "etymology": "From dis- + man.",
+        "distractors": [
+            "dissman",
+            "dasman",
+            "desman"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "themer",
+        "definition": "One who themes something.",
+        "exampleSentence": "The first of the themers is SPARRING PARTNER (“Opponent who helps train a boxer”) — which, as the revealer indicates, includes the word PAR twice.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "themer",
+        "etymology": "From theme + -er.",
+        "distractors": [
+            "themor",
+            "themar",
+            "themmer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "evening",
+        "definition": "The time of day between afternoon and night.",
+        "exampleSentence": "Toward evening, there was heavy rain.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ivnɪŋ",
+        "etymology": "From Middle English evening, evenyng, from Old English ǣfnung, from ǣfnian < ǣfen (from Proto-West Germanic *ābanþ, from Proto-Germanic *ēbanþs), corresponding to even + -ing.",
+        "distractors": [
+            "evvening",
+            "evenning",
+            "eveninng"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "finding",
+        "definition": "A result of research or an investigation.",
+        "exampleSentence": "They manufacture jewlers’ findings, morocco, plush and velvet jewelry cases, paper boxes, morocco boxes, jewelry cards, tags, etc.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "faɪndɪŋ",
+        "etymology": "From Middle English fyndyng, Old English findincge; equivalent to find + -ing.",
+        "distractors": [
+            "finnding",
+            "findinng",
+            "fanding"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "heading",
+        "definition": "The title or topic of a document, article, chapter, or of a section thereof.",
+        "exampleSentence": "Put the information under the \"Advantages\" heading.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɛdɪŋ",
+        "etymology": "From head + -ing.",
+        "distractors": [
+            "headding",
+            "headinng",
+            "heeding"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "keeping",
+        "definition": "Conformity or harmony.",
+        "exampleSentence": "His happiness is in his own keeping.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kiːpɪŋ",
+        "distractors": [
+            "keping",
+            "keepping",
+            "keepinng"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "mistake",
+        "definition": "A pitch which was intended to be pitched in a hard-to-hit location, but instead ends up in an easy-to-hit place.",
+        "exampleSentence": "He always did mistakes on purpose.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mɪsteɪk",
+        "etymology": "From Middle English mistaken, from Old Norse mistaka (“to take in error, to miscarry”); equivalent to mis- + take. Cognate with Icelandic mistaka (“to mistake”), Swedish missta (“to mistake”) (before apocope misstaga). The noun, which replaced earlier mistaking, is derived from the verb.",
+        "distractors": [
+            "misstake",
+            "mistakke",
+            "mastake"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "playing",
+        "definition": "An occasion on which something, such as a song or show, is played.",
+        "exampleSentence": "… the Nielsen figures show that average viewership across all playings fell by only 40 percent and that total viewership of the entire season’s episodes fell by only 20 percent.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "pleɪɪŋ",
+        "etymology": "From Middle English playing; equivalent to play + -ing.",
+        "distractors": [
+            "playinng",
+            "plaiing",
+            "pleying"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "problem",
+        "definition": "A difficulty that has to be resolved or dealt with.",
+        "exampleSentence": "She's leaving because she faced numerous problems to do with racism.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "pɹɑbləm",
+        "etymology": "From Middle English probleme, from Middle French probleme, from Latin problēma, from Ancient Greek πρόβλημα (próblēma, “anything thrown forward, hindrance, obstacle, anything projecting, a headland, promontory”), from προβάλλω (probállō, “to throw or lay something in front of someone, to put forward",
+        "distractors": [
+            "probblem",
+            "prablem",
+            "preblem"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "purpose",
+        "definition": "The end for which something is done, is made or exists.",
+        "exampleSentence": "What is the purpose of your visit?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "pɝpəs",
+        "etymology": "From Middle English purpos, from Old French purposer (“to propose”) (with conjugation altered based on poser), from Latin prō- (“forth”) + pōnere (“place, put”), hence Latin prōpōnō, prōpōnere.",
+        "distractors": [
+            "purrpose",
+            "purposse",
+            "parpose"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "telling",
+        "definition": "The act of narration.",
+        "exampleSentence": "\"One white man.\" said Bill, after a brief inspection. \"Out on his line, I s'pose, and there's no tellin' when he'll be back. So we won't wait. We'll just serve notice on him.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɛlɪŋ",
+        "etymology": "Gerund from the verb tell, from tell + -ing.",
+        "distractors": [
+            "teling",
+            "tellinng",
+            "talling"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "village",
+        "definition": "A rural habitation of size between a hamlet and a town.",
+        "exampleSentence": "There are 2 churches and 3 shops in our village.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "vɪlɪd͡ʒ",
+        "etymology": "From Middle English village, from Old French village, from Latin villāticus, ultimately from Latin villa (English villa). Broadly overtook Old English wic, þorp, and ham. The Philippine sense is due to its frequent use in the names of gated communities.",
+        "distractors": [
+            "vilage",
+            "villagge",
+            "vallage"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "warning",
+        "definition": "The action of the verb warn; an instance of warning someone.",
+        "exampleSentence": "The boss gave him a warning that he would be fired if he did not desist from his behaviour.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɔɹnɪŋ",
+        "distractors": [
+            "warrning",
+            "warninng",
+            "werning"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "wedding",
+        "definition": "A marriage ceremony; a ritual officially celebrating the beginning of a marriage.",
+        "exampleSentence": "The wedding of our three companies took place last week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɛdɪŋ",
+        "etymology": "From Middle English wedding, weddynge, from Old English weddung (“betrothal, espousal”), equivalent to wed + -ing. Cognate with Middle Dutch weddinghe.",
+        "distractors": [
+            "weding",
+            "weddinng",
+            "wadding"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "mention",
+        "definition": "To make a short reference to something.",
+        "exampleSentence": "I can illustrate this by mentioning the word lead. Now you have no way of knowing for sure which meaning I have in mind until I give it some context by using it in a sentence.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɛnʃən",
+        "etymology": "Inherited from Middle English mencioun, mention, from Old French mention, from Latin mentiōnem, accusative of mentiō (“a mention, calling to mind”).",
+        "distractors": [
+            "mension",
+            "menntion",
+            "mantion"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "learned",
+        "definition": "Having much learning, knowledgeable, erudite; highly educated.",
+        "exampleSentence": "My learned Brother Cresswell directed the jury to make the calculation ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɝnɪd",
+        "etymology": "From Middle English lerned, lernd, lernyd, equivalent to learn + -ed, which replaced the earlier lered (“taught”), from Old English (ġe)lǣred, past participle of lǣran (“to teach”).",
+        "distractors": [
+            "learrned",
+            "leerned",
+            "laarned"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "several",
+        "definition": "Separate, distinct; particular.",
+        "exampleSentence": "Each several ship a victory did gain.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɛv(ə)ɹəl",
+        "etymology": "From Anglo-Norman several, from Medieval Latin sēparālis, from Latin sēpar (“separate”). By surface analysis, sever + -al. Not related to severe or seven.",
+        "distractors": [
+            "severel",
+            "sevveral",
+            "severral"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "exactly",
+        "definition": "Without approximation; precisely.",
+        "exampleSentence": "The edge is not exactly straight.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɪɡzæk(t)li",
+        "etymology": "From exact + -ly.",
+        "distractors": [
+            "exactley",
+            "exxactly",
+            "exacctly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "finally",
+        "definition": "At the end or conclusion; ultimately.",
+        "exampleSentence": "The contest was long, but the Romans finally conquered.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "faɪnl̩i",
+        "etymology": "From Middle English finally, fynaly, fynally, fynaliche, fynalliche, equivalent to final + -ly.",
+        "distractors": [
+            "finalley",
+            "finaly",
+            "finnally"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "forever",
+        "definition": "For all time, for all eternity; for a lifetime; for an infinite amount of time.",
+        "exampleSentence": "We had to wait forever to get inside.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fəɹɛvɚ",
+        "etymology": "Univerbation of for ever, from Middle English for ever, for evere. By surface analysis, for + ever. First attested in the late 14c., and first attested in the late 17c. as one word. Noun first attested in 1858.",
+        "distractors": [
+            "forevor",
+            "forevar",
+            "forrever"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "country",
+        "definition": "From or in the countryside, connected with it, or typical of it.",
+        "exampleSentence": "Things around here are just a little more country than what he's used to.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kʌntɹi",
+        "etymology": "From Middle English contre, contree, contreie, from Old French contree, cuntrede, from Vulgar Latin *(terra) contrata (“(land) lying opposite; (land) spread before one”) (also in Medieval Latin as \"country, region\"), from Latin contrā (“against, opposite”) (whence contra-).",
+        "distractors": [
+            "countrey",
+            "counntry",
+            "cowntry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fortune",
+        "definition": "To provide (someone) with a fortune.",
+        "exampleSentence": "It fortuned one night that the Sultan purposed setting out on a journey next morning, ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "foɹt͡ʃun",
+        "etymology": "From Middle English fortune, from Old French fortune, from Latin fortuna (“fate, luck”). The plural form fortunae meant “possessions”, which also gave fortune the meaning of “riches”.",
+        "distractors": [
+            "forrtune",
+            "fortunne",
+            "fartune"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "without",
+        "definition": "Outside, externally.",
+        "exampleSentence": "Whose can be used with a following noun or without.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "wɪθaʊt",
+        "etymology": "From Middle English withoute, withouten, from Old English wiþūtan (literally “against the outside of”). Compare Dutch buiten (“outside of, without”), Danish uden (“without”), Swedish utan (“without”), Norwegian uten (“without”). By surface analysis, with- + out.",
+        "distractors": [
+            "witthout",
+            "withowt",
+            "wathout"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "kitchen",
+        "definition": "To do kitchen work; to prepare food.",
+        "exampleSentence": "This was seasoned with salt and sometimes kitchened with butter.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɪt͡ʃ(ə)n",
+        "etymology": "From Middle English kychyn, kytchen, kichene, küchen, from Old English cyċen, cyċene, from Proto-West Germanic *kukinā, a borrowing from Late Latin cocīna, from earlier coquīna (“kitchen; cuisine”), from coquō (“to cook”), from Proto-Indo-European *pekʷ- (“to cook, become ripe”).",
+        "distractors": [
+            "kittchen",
+            "kichen",
+            "katchen"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "seconds",
+        "definition": "A second helping of food for one person, or refill of coffee or other drink.",
+        "exampleSentence": "There is plenty of pie left, if you have room for seconds.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɛkəndz",
+        "distractors": [
+            "secconds",
+            "seconnds",
+            "saconds"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "allowed",
+        "definition": "Permitted, authorized.",
+        "exampleSentence": "Can she come? -She'll be allowed to go later.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əlaʊd",
+        "distractors": [
+            "alowed",
+            "allowwed",
+            "alloued"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "lifeful",
+        "definition": "Bestowing life; enlivening.",
+        "exampleSentence": "I regard it rather as a fundamentally normal, clean, lifeful instinct.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "laɪffʊl",
+        "etymology": "From life + -ful.",
+        "distractors": [
+            "lifefull",
+            "liffeful",
+            "lifefful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "beingly",
+        "definition": "Of or pertaining to (one's) being or existence.",
+        "exampleSentence": "Earlier Thomas quotes Proclus in his explanation thus: \"All beingly being is infinite, not according to multitude or magnitude, but according to power alone.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "beingly",
+        "etymology": "From being + -ly.",
+        "distractors": [
+            "beingley",
+            "beinngly",
+            "biengly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "premove",
+        "definition": "To make a premove.",
+        "exampleSentence": "Game 18 was another up-and-down affair. First, Esipenko dropped a full rook, which went unpunished as Sarana had probably premoved his reply.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "premove",
+        "etymology": "From pre- + move.",
+        "distractors": [
+            "premmove",
+            "premovve",
+            "pramove"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "american",
+        "definition": "A citizen or national of the United States of America.",
+        "exampleSentence": "The Americans believe that all creatures have souls.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əmɛɹɪkən",
+        "distractors": [
+            "ammerican",
+            "amerrican",
+            "americcan"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "evidence",
+        "definition": "Facts or observations presented in support of an assertion.",
+        "exampleSentence": "The evidence was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɛvɪdəns",
+        "etymology": "From Middle English evidence, from Old French [Term?], from Latin evidentia (“clearness, in Late Latin a proof”), from evidens (“clear, evident”); see evident.",
+        "distractors": [
+            "evidance",
+            "evvidence",
+            "eviddence"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "planning",
+        "definition": "The act of formulating of a course of action, or of drawing up plans.",
+        "exampleSentence": "My neighbours were going to build an extension but they didn't get planning.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "plænɪŋ",
+        "distractors": [
+            "planing",
+            "planninng",
+            "plenning"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "standing",
+        "definition": "Position or reputation in society or a profession.",
+        "exampleSentence": "He does not have much of a standing as a chemist.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stændɪŋ",
+        "etymology": "From Middle English standyng, stonding, stondung, from Old English *standung, equivalent to stand + -ing.",
+        "distractors": [
+            "stannding",
+            "standinng",
+            "stending"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "surprise",
+        "definition": "Something unexpected.",
+        "exampleSentence": "It came as a surprise when he succeed.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "sɚpɹaɪz",
+        "etymology": "From Middle English surprise, borrowed from Middle French surprise (“an overtake”), nominal use of the past participle of Old French sorprendre (“to overtake”), from sor- (“over”) + prendre (“to take”), from Latin super- + Latin prendere, contracted from prehendere (“to grasp, seize”).",
+        "distractors": [
+            "surprize",
+            "surrprise",
+            "surprisse"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "universe",
+        "definition": "The sum of everything that exists in the cosmos.",
+        "exampleSentence": "The universe was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "juːnəvɝs",
+        "etymology": "From Middle English universe, from Old French univers, from Latin universum (“all things, as a whole, the universe”), neuter of universus (“all together, whole, entire, collective, general, literally turned or combined into one”), from uni-, combining form of unus (“one”) + versus (“turned”), perfec",
+        "distractors": [
+            "unniverse",
+            "univverse",
+            "univerrse"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "criminal",
+        "definition": "Against the law; forbidden by law.",
+        "exampleSentence": "Printing such asinine opinions is criminal!",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹɪmɪnəl",
+        "etymology": "From Middle English cryminal, borrowed from Anglo-Norman criminal, from Late Latin criminalis, from Latin crimen (“crime”).",
+        "distractors": [
+            "criminel",
+            "crimminal",
+            "criminnal"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "military",
+        "definition": "Characteristic of members of the armed forces.",
+        "exampleSentence": "She was dishonorably discharged from all military duties.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪlətɛɹi",
+        "etymology": "From Middle English militari, from Old French militaire, from Latin mīlitāris, from mīles (“soldier”). Doublet of militaire.",
+        "distractors": [
+            "militarey",
+            "militery",
+            "militairy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pregnant",
+        "definition": "Carrying developing offspring within the body.",
+        "exampleSentence": "I became pregnant in July 2014.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɛɡnənt",
+        "etymology": "From Middle English preignant, from Old French preignant, pregnant, also prenant (compare archaic Modern French prégnant), and their source, Latin praegnāns (“pregnant”), probably from prae- (“pre-”) + *gnāscī, an archaic form of nāscī (“to be born”).",
+        "distractors": [
+            "pregnent",
+            "preggnant",
+            "pregnannt"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "prepared",
+        "definition": "Disposed, willing, ready (to do something).",
+        "exampleSentence": "Are you prepared to testify in court?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɪpɛɹd",
+        "etymology": "From prepare + -ed.",
+        "distractors": [
+            "preppared",
+            "preparred",
+            "prapared"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "romantic",
+        "definition": "Of a work of literature, a writer etc.: being like or having the characteristics of a romance, or poetic tale of a mythic or quasi-historical time; fantastic.",
+        "exampleSentence": "The old house had a romantic appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹoʊmæntɪk",
+        "etymology": "From romant + -ic, or borrowed from Late Latin romanticus (“(of a poem) having qualities of a romance”). Compare French romantique, which is borrowed from English.",
+        "distractors": [
+            "rommantic",
+            "romanntic",
+            "ramantic"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "ableness",
+        "definition": "Ability of body or mind.",
+        "exampleSentence": "The ableness was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "eɪbl̩nəs",
+        "etymology": "From Middle English abilnes; equivalent to able + -ness.",
+        "distractors": [
+            "ableniss",
+            "ablenes",
+            "abbleness"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "promised",
+        "definition": "Predicted; expected; anticipated.",
+        "exampleSentence": "The old house had a promised appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɑmɪst",
+        "distractors": [
+            "prommised",
+            "promissed",
+            "pramised"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overtalk",
+        "definition": "To talk too much.",
+        "exampleSentence": "… and he panted like a young faan in her fust race with the hounds, for he was overtalkin' his strength, and I feered he would die for sartin ef he didn't fetch up a bit and git rested; ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "overtalk",
+        "etymology": "From over- + talk.",
+        "distractors": [
+            "ovvertalk",
+            "overrtalk",
+            "overtallk"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "goodless",
+        "definition": "Without goods or property; destitute.",
+        "exampleSentence": "Punishment conceived as the logical nemesis of the criminal's principle is embedded in a goodless normative framework; that is its home.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡʊdləs",
+        "etymology": "From Middle English goodles (“poor, without goods or property”), from Old English gōdlēas (“without good, miserable, bad, evil”), equivalent to good + -less.",
+        "distractors": [
+            "godless",
+            "goodles",
+            "gooddless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "placeful",
+        "definition": "Forming a well-defined place; acting as an identifiable location.",
+        "exampleSentence": "The structure is shaped to mingle in unison with the placeful environment of a theological seminary.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "placeful",
+        "etymology": "From place + -ful.",
+        "distractors": [
+            "placefull",
+            "placceful",
+            "placefful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "truthism",
+        "definition": "A belief in the importance of truth and objective facts.",
+        "exampleSentence": "The truthism was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "truthism",
+        "etymology": "From truth + -ism.",
+        "distractors": [
+            "trutthism",
+            "truthissm",
+            "trathism"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "emergency",
+        "definition": "A situation which poses an immediate risk and which requires urgent attention.",
+        "exampleSentence": "Cardiac arrest is an emergency requiring medical attention.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪmɝd͡ʒənsi",
+        "etymology": "Borrowed from Medieval Latin emergentia, from Latin emergens, present participle of emergo (“to emerge, arise, come forth”), equivalent to emergent + -cy or emerge + -ency. Doublet of emergence.",
+        "distractors": [
+            "emergancy",
+            "emergencey",
+            "emmergency"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "insurance",
+        "definition": "A means of indemnity against a future occurrence of an uncertain event.",
+        "exampleSentence": "I only take insurance if the count is right.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪnʃʊɹəns",
+        "etymology": "From the older form ensurance, see also assurance. By surface analysis, insure + -ance.",
+        "distractors": [
+            "insurence",
+            "innsurance",
+            "insurrance"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "interview",
+        "definition": "To ask questions of (somebody); to have an interview.",
+        "exampleSentence": "He promised to interview as soon as he got home.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪn(t)ɚvju",
+        "etymology": "From Old French entreveue (French entrevue), feminine singular past participle of entrevëoir, from entre- + vëoir (“to see”). Equivalent to inter- + view.",
+        "distractors": [
+            "innterview",
+            "interrview",
+            "interveiw"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "concerned",
+        "definition": "Showing concern.",
+        "exampleSentence": "The people concerned have been punished.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kənsɝnd",
+        "distractors": [
+            "conncerned",
+            "concerrned",
+            "cancerned"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "screaming",
+        "definition": "Loud, sharp, and piercing to the ear.",
+        "exampleSentence": "Did you see that guy at the bar? Screaming!",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "skɹiːmɪŋ",
+        "distractors": [
+            "screamming",
+            "screaminng",
+            "screeming"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "listening",
+        "definition": "Of something or someone that listens.",
+        "exampleSentence": "Any listening person can tell she's lying.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɪsnɪŋ",
+        "etymology": "From Middle English listnynge, lustninde, from Old English hlysnende, equivalent to listen + -ing.",
+        "distractors": [
+            "lisstening",
+            "listenning",
+            "listeninng"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "threeness",
+        "definition": "The state of being three; triunity; trinity.",
+        "exampleSentence": "… This statement focuses more on God's oness than on his threeness.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "θɹiːnəs",
+        "etymology": "From three + -ness. Compare Middle English þrinnesse, þrimnesse, þremnesse, þrumnesse (“trinity”, literally “three-ness”), Old English þrīnes, þrinnes (“trinity”, literally “three-ness”).",
+        "distractors": [
+            "threeniss",
+            "threness",
+            "threenes"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "undercome",
+        "definition": "To come under; experience or suffer the effects of; be affected by; undergo.",
+        "exampleSentence": "A third order time domain approach based on the code SWAN has also been undercome ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "undercome",
+        "etymology": "From Middle English *undercomen, from Old English undercuman (“to come under, submit, assist”), from Proto-Germanic *under (“under”) + *kwemaną (“to come”), equivalent to under- + come.",
+        "distractors": [
+            "unndercome",
+            "underrcome",
+            "undercomme"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "motherful",
+        "definition": "Befitting a mother; motherly.",
+        "exampleSentence": "I am motherful and sisterful; you are brotherless.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "motherful",
+        "etymology": "From Middle English moderfull, equivalent to mother + -ful. Cognate with Scots moderfull (“pregnant”).",
+        "distractors": [
+            "motherfull",
+            "mottherful",
+            "motherrful"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "bam",
+        "definition": "An imposition; a cheat; a hoax.",
+        "exampleSentence": "To relieve the tedium he kept plying them with all manner of bams.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "bæm",
+        "etymology": "Perhaps from bamboozle.",
+        "distractors": [
+            "bem",
+            "bim",
+            "bma"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cam",
+        "definition": "A turning or sliding piece which imparts motion to a rod, lever or block brought into sliding or rolling contact with it.",
+        "exampleSentence": "My teacher explained what a cam is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kæm",
+        "distractors": [
+            "cem",
+            "cim",
+            "cma"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "doc",
+        "definition": "Any of several controlled designations of origin for wine, cheese, or other products.",
+        "exampleSentence": "My teacher explained what a doc is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "doc",
+        "distractors": [
+            "dac",
+            "dec",
+            "dco"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "fed",
+        "definition": "A federal government officer or official.",
+        "exampleSentence": "That corrupt fed was caught taking bribes from a mobster!",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "fɛd",
+        "etymology": "Clipping of federal.",
+        "distractors": [
+            "fad",
+            "fid",
+            "fde"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "jay",
+        "definition": "Any of the numerous species of birds belonging to several genera within the family Corvidae, including Garrulus, Cyanocitta, Aphelocoma, Perisoreus, Cyanocorax, Gymnorhinus, Cyanolyca, Ptilostomus, and Calocitta, allied to the crows, but smaller, more graceful in form, often handsomely coloured, usually having a crest, and often noisy.",
+        "exampleSentence": "My teacher explained what a jay is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "d͡ʒeɪ",
+        "etymology": "From Middle English jay, from Old French jai (\"jay\"; Modern French geai), either from Late Latin gaius (“jay”), or from Old French gai (“gay, merry”), so named due to its plumage, from Old Frankish *gāhi (“quick, impetuous”), from Proto-Germanic *ganhuz, *ganhwaz (“sudden”), cognate with Dutch gaai",
+        "distractors": [
+            "jaey",
+            "jai",
+            "jey"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "sir",
+        "definition": "A man of a higher rank or position.",
+        "exampleSentence": "Knowledge, sir, should be free to all!",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "sɜː(ɹ)",
+        "etymology": "From Middle English sir, unstressed form of sire, borrowed from Old French sire (“master, sir, lord”), from Latin senior (“older, elder”), from senex (“old”). Doublet of seigneur, seignior, senhor, senior, señor, senyor, signore, and sire.",
+        "distractors": [
+            "sar",
+            "ser",
+            "sri"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "son",
+        "definition": "Son cubano, a genre of music and dance blending Spanish and African elements that originated in Cuba during the late 19th century.",
+        "exampleSentence": "My teacher explained what a son is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "sʌn",
+        "etymology": "From Spanish son (literally “tone, sound”).",
+        "distractors": [
+            "osn",
+            "sno",
+            "sson"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "sub",
+        "definition": "Clipping of submarine sandwich: a sandwich made on a long bun.",
+        "exampleSentence": "With the score 4 to 1, they brought in subs.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "sʌb",
+        "etymology": "* Shortened form of any of various words beginning with sub-.",
+        "distractors": [
+            "sab",
+            "seb",
+            "sbu"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "tom",
+        "definition": "Ellipsis of Uncle Tom.",
+        "exampleSentence": "A two-dollar bill is sometimes referred to as a “deuce” or a “Tom.”.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "tɑm",
+        "etymology": "From Middle English Thomme. Hypocorism of Thomas. The dollar-bill sense is from the portrait of Thomas Jefferson featured on it.",
+        "distractors": [
+            "tam",
+            "tem",
+            "tmo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "yen",
+        "definition": "A strong desire, urge, or yearning.",
+        "exampleSentence": "My teacher explained what a yen is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "jɛn",
+        "etymology": "Origin uncertain, but probably from Cantonese 癮 /瘾 (jan⁵, “craving”) originally in reference to opium addiction, 煙癮 /烟瘾 (jin¹ jan⁵) or 菸癮 /烟瘾 (jin¹ jan⁵): 煙 /烟 (jin¹), 菸 /烟 (jin¹, “smoke, specifically opium”). Compare the later yen (“opium”) and yen-yen.",
+        "distractors": [
+            "yan",
+            "yin",
+            "yne"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "con",
+        "definition": "To study or examine carefully, especially in order to gain knowledge of; to learn, or learn by heart.",
+        "exampleSentence": "We need to con this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɑn",
+        "etymology": "Middle English connen English con Inherited from Middle English connen, inherited from Old English cunnan (“to know, know how”), inherited from Proto-West Germanic *kunnan (“recognize, know how”), inherited from Proto-Germanic *kunnaną (“to know, know how”), inherited from Proto-Indo-European *ǵneh₃",
+        "distractors": [
+            "can",
+            "cen",
+            "cno"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "cop",
+        "definition": "To capture or arrest someone.",
+        "exampleSentence": "No need to cop a 'tude with me, junior.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "kɑp",
+        "etymology": "Uncertain. Perhaps from Middle English *coppen, *copen, from Old English copian (“to plunder; pillage; steal”); or possibly from Middle French caper (“to capture”), from Latin capiō (“to seize, grasp”); or possibly from Dutch kapen (“to seize, hijack”), from Old Frisian kāpia (“to buy”), whence West",
+        "distractors": [
+            "cap",
+            "cep",
+            "cpo"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "too",
+        "definition": "Also, in addition marks a statement as equally valid as the preceding one.",
+        "exampleSentence": "They too agreed to help with the project.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "tu",
+        "etymology": "From Middle English to (“also, in addition to”), from Old English tō (“furthermore, also, besides”), adverbial use of preposition tō (“to, into”). The sense of \"in addition, also\" deriving from the original meaning of \"apart, separately\" (compare Old English prefix tō- (“apart”)).",
+        "distractors": [
+            "to",
+            "tao",
+            "teo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pay",
+        "definition": "Operable or accessible on deposit of coins.",
+        "exampleSentence": "He described the painting as quite pay.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "peɪ",
+        "etymology": "From Middle English payen, from Old French paiier (“pay”), from Medieval Latin pācāre (“to settle, satisfy”) from Latin pācāre (“to pacify”). In this sense, displaced native Old English ġield (“pay”) and ġieldan (“to pay”), whence Modern English yield.",
+        "distractors": [
+            "paey",
+            "pai",
+            "pey"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "won",
+        "definition": "To live, remain.",
+        "exampleSentence": "I long'd to leave this wand'ring pilgrimage, / And in my native soil again to won.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "wɒn",
+        "etymology": "From Old English wunian, from Proto-Germanic *wunāną, from Proto-Indo-European *wenh₁- (“to wish, love”). Cognate with Dutch wonen, German wohnen.",
+        "distractors": [
+            "wan",
+            "wen",
+            "wno"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "jew",
+        "definition": "To make (more) Jewish.",
+        "exampleSentence": "We need to jew this before the deadline.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "d͡ʒuː",
+        "etymology": "From Middle English Jew, Giu, Giw, Ju, from Old French juiu, Giu, gyu, from Latin iūdaeus (“Judean (i.e.",
+        "distractors": [
+            "jaw",
+            "jiw",
+            "jwe"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "joe",
+        "definition": "A male; a guy; a fellow.",
+        "exampleSentence": "Then Hapgood turned him into a joe — that is, he works for the British.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "d͡ʒoʊ",
+        "etymology": "From the proper name Joe.",
+        "distractors": [
+            "jae",
+            "jee",
+            "jeo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mad",
+        "definition": "To be or become mad.",
+        "exampleSentence": "This musick mads me, let it sound no more.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "mæːd",
+        "etymology": "From Middle English madden, from the adjective; compare Old English ġemǣdan.",
+        "distractors": [
+            "med",
+            "mid",
+            "mda"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nor",
+        "definition": "A binary operator composite of NOT OR; negation of OR function.",
+        "exampleSentence": "0 NOR 0 is 1; 1 NOR anything is 0.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "nor",
+        "etymology": "From nor. Reinterpreted as NOT + OR or negation + OR (see also NAND, formed analogically).",
+        "distractors": [
+            "ner",
+            "nar",
+            "nro"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "calm",
+        "definition": "The state of being calm; peacefulness; absence of worry, anger, fear or other strong negative emotion.",
+        "exampleSentence": "The wind ceased, and there was a great calm.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɑm",
+        "etymology": "From Middle English calm, calme, from Middle French calme, probably from Old Italian calma, of uncertain origin.",
+        "distractors": [
+            "callm",
+            "celm",
+            "cilm"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "dude",
+        "definition": "A man, generally a younger man.",
+        "exampleSentence": "Watch it, dude; you almost knocked me over.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "duːd",
+        "etymology": "Uncertain, though likely a clipping of doodle (“fool, simpleton, mindless person”), perhaps with reference to the fashionable “Yankee Doodle dandy” in the 18th-century lyrics of the song “Yankee Doodle”; the word is first attested in 1883 as a New York City slang term of contempt for a “fastidious m",
+        "distractors": [
+            "dudde",
+            "dade",
+            "dede"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "four",
+        "definition": "The digit or figure 4; an occurrence thereof.",
+        "exampleSentence": "The book had an entire chapter about the four.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "foː",
+        "etymology": "From Middle English four, from Old English fēower, from Proto-West Germanic *feuwar, from Proto-Germanic *fedwōr, from previous pre-Grimm *petwṓr, from Proto-Indo-European *kʷetwṓr, the neuter form of *kʷetwóres. Doublet of cuatro and quatre.",
+        "distractors": [
+            "fowr",
+            "faur",
+            "feur"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "hide",
+        "definition": "A unit of land and tax assessment of varying size, originally as intended to support one household with dependents.",
+        "exampleSentence": "The exact size of hides varied with soil quality, but each one generally encompassed 24 to 26 hectares.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "haɪd",
+        "etymology": "From Middle English hide, from Old English hīd, hȳd, hīġed, hīġid (“a measure of land”), for earlier *hīwid (“the amount of land needed to support one family”), a derivative of Proto-Germanic *hīwaz, *hīwō (“relative, fellow-lodger, family”), from Proto-Indo-European *ḱey- (“to lie with, store, be f",
+        "distractors": [
+            "hidde",
+            "hade",
+            "hede"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "mama",
+        "definition": "Mother, female parent.",
+        "exampleSentence": "All the flowers that you planted, mama, in the backyard / All died when you went away.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "mɑmə",
+        "etymology": "Originally from baby talk. Possibly influenced by Middle English mome (“mother, aunt”), from Old English *mōme, from Proto-West Germanic *mōmā, from Proto-Germanic *mōmǭ (“mother, aunt”), from Proto-Indo-European *méh₂-méh₂, reduplication of *méh₂- (“mother”), related to German Muhme (“aunt”), Latin",
+        "distractors": [
+            "mamma",
+            "mema",
+            "mima"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "mine",
+        "definition": "An excavation from which ore or solid minerals are taken, especially one consisting of underground tunnels.",
+        "exampleSentence": "The book had an entire chapter about the mine.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "maɪ̯n",
+        "etymology": "From Middle English, from Old French mine, from Late Latin mina, from Gaulish (compare to Welsh mwyn, Irish mianach (“ore”)), from Proto-Celtic *meinis (“ore, metal”).",
+        "distractors": [
+            "minne",
+            "mane",
+            "mene"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "none",
+        "definition": "A person without religious affiliation.",
+        "exampleSentence": "Both the religiously dis-identified (\"nones\") and the religiously committed report mystical experiences.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "nʌn",
+        "etymology": "From the first sense, since they respond “none” when asked about their religion; also a play on words on nun.",
+        "distractors": [
+            "nonne",
+            "nane",
+            "nene"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "paul",
+        "definition": "A small tent of various kinds.",
+        "exampleSentence": "The book had an entire chapter about the paul.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "pɔl",
+        "etymology": "From Hindi [Term?].",
+        "distractors": [
+            "apul",
+            "pual",
+            "palu"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "pray",
+        "definition": "To direct words, thoughts, or one's attention to a deity or any higher being, for the sake of adoration, thanks, petition for help, etc.",
+        "exampleSentence": "I know not how to pray your patience.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹeɪ",
+        "etymology": "From Middle English preien, from Anglo-Norman preier, from Old French preier, proier (French prier), from Latin precārī, from prex, precis (“a prayer, a request”), from Proto-Italic *preks, from Proto-Indo-European *preḱ- (“to ask, woo”). Displaced native Old English gebiddan.",
+        "distractors": [
+            "praey",
+            "prai",
+            "prey"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "born",
+        "definition": "Having from birth (or as if from birth) a certain quality or character; innate; inherited.",
+        "exampleSentence": "In the United States, information describing the operation of nuclear weapons is born secret.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "boɹn",
+        "etymology": "From Middle English born, boren, borne, iborne, from Old English boren, ġeboren, from Proto-West Germanic *boran, *gaboran, from Proto-Germanic *buranaz, past participle of Proto-Germanic *beraną (“to bear, carry”), equivalent to bear + -en.",
+        "distractors": [
+            "borrn",
+            "barn",
+            "bern"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "cute",
+        "definition": "Possessing physical features, behaviors, personality traits or other properties that are mainly attributed to infants and small or cuddly animals; e.g. fair, dainty, round, and soft physical features, disproportionately large eyes and head, playfulness, fragility, helplessness, curiosity or shyness, innocence, affectionate behavior.",
+        "exampleSentence": "Cute trick, but can you do it consistently?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "kjuːt",
+        "etymology": "Aphetic form of acute, originally meaning “keenly perceptive or discerning, shrewd” (1731). Meaning transferred to “pretty, fetching” by US students (slang) c. 1834. Meaning drifted further to describe the pleasing attraction to features usually possessed by the young.",
+        "distractors": [
+            "cutte",
+            "cate",
+            "cete"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "very",
+        "definition": "True, real, actual.",
+        "exampleSentence": "That's the very tool that I need.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "vɛɹi",
+        "etymology": "From Middle English verray, from Old French verai (“true”), from Early Medieval Latin vērāgus, from Classical Latin vērāx, derived from vērus, from Proto-Italic *wēros, from Proto-Indo-European *weh₁ros. Distantly cognate with the Old English wǣr (“true”).",
+        "distractors": [
+            "verey",
+            "vary",
+            "vory"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "many",
+        "definition": "A multitude; a great aggregate; a mass of people; the generality; the common herd.",
+        "exampleSentence": "I know that my mother cried a many of times from decisions I made.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "mɛni",
+        "etymology": "From Middle English many, mani, moni, from Old English maniġ, moniġ, maneġ (“many”), from Proto-West Germanic *manag, from Proto-Germanic *managaz (“many; much”), from Proto-Indo-European *menegʰ-, *mengʰ- (“many, sufficient”) or Proto-Indo-European *méǵh₂- (“big, great”).",
+        "distractors": [
+            "maney",
+            "manny",
+            "meny"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "tiny",
+        "definition": "A small child; an infant.",
+        "exampleSentence": "‘You know I loved your husband like a brother, and you know I've loved you and Sylvia ever since she was a tiny.’.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "taɪni",
+        "etymology": "From Middle English tine, tyne (“very small”) + -y. Perhaps from tine.",
+        "distractors": [
+            "tiney",
+            "tinny",
+            "tany"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "andy",
+        "definition": "A streamer on live streaming service Twitch.",
+        "exampleSentence": "The book had an entire chapter about the andy.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ændi",
+        "etymology": "Originates from the live streams of IRL streamer Ice Poseidon on the live streaming service Twitch in early 2017; comedian and actor Andy Milonakis frequently appeared on Ice Poseidon's streams before being supplemented by one Andy Martin, who was given the byname \"Mexican Andy\" to distinguish him f",
+        "distractors": [
+            "andey",
+            "anndy",
+            "anyd"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nope",
+        "definition": "A negative reply, no.",
+        "exampleSentence": "I'll take that as a nope, then.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "noʊp",
+        "etymology": "Representing no pronounced with the mouth snapped closed at the end. Luick instead claims it represents a realisation of no with final [ʔ], with a purported reduction of /p/ to [ʔ] in before syllabic liquids providing a model for the spelling of [ʔ] as -pe, but it is more parsimonious to assume that",
+        "distractors": [
+            "noppe",
+            "nape",
+            "nepe"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "lisa",
+        "definition": "Ellipsis of Apple Lisa.",
+        "exampleSentence": "Both Macs and Lisas, along with Imagewriter printers, are part of the convention network organized by Sytek of Mountain View, California.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "lisə",
+        "etymology": "Diminutive of Elisabeth in several European languages. The computer is named after Lisa Brennan-Jobs, officially explained as an acronym for “Locally Integrated Software Architecture”.",
+        "distractors": [
+            "lissa",
+            "lasa",
+            "lesa"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cops",
+        "definition": "The police, considered as a group entity.",
+        "exampleSentence": "\"Maybe he'll git the cops after you, Jack.\" \"I'll watch out fer dat, Nick, an' you must watch out too,\" answered Jack Sagger.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "kɑps",
+        "distractors": [
+            "copps",
+            "caps",
+            "ceps"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "being",
+        "definition": "A living creature.",
+        "exampleSentence": "He wrote the word being on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "digraphs",
+        "pronunciation": "biɪŋ",
+        "etymology": "Originated 1250–1300 from Middle English being; see be + -ing.",
+        "distractors": [
+            "beinng",
+            "bieng",
+            "baing"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "billy",
+        "definition": "A fellow, companion, comrade, mate; partner, brother.",
+        "exampleSentence": "In fact, distinguishing between billies and nannies isn't necessarily a sure thing.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɪli",
+        "etymology": "Of obscure origin. Perhaps a variant of bully (“companion, mate, comrade”). Compare Scots billie (“a comrade; companion”). Compare also Middle Low German billig (“equitable, reasonable, lawful, fitting, according to natural law, just”).",
+        "distractors": [
+            "billey",
+            "bily",
+            "bally"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "bread",
+        "definition": "A foodstuff made by baking dough made from cereals.",
+        "exampleSentence": "Give us this day our daily bread.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɹɛd",
+        "etymology": "From Middle English bred, breed, from Old English brēad (“fragment, bit, morsel, crumb\", also \"bread”), from Proto-West Germanic *braud, from Proto-Germanic *braudą (“bread”), from Proto-Indo-European *bʰerw-, *bʰrewh₁- (“to boil; to brew”), from *bʰer- (“to bear, carry”).",
+        "distractors": [
+            "breed",
+            "braad",
+            "briad"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "crime",
+        "definition": "A specific act committed in violation of the law, especially criminal law.",
+        "exampleSentence": "He wrote the word crime on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹaɪm",
+        "etymology": "From Middle English cryme, crime, from Old French crime, crimne, from Latin crīmen. Displaced native Old English firen.",
+        "distractors": [
+            "crimme",
+            "crame",
+            "creme"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "final",
+        "definition": "A final examination; a test or examination given at the end of a term or class; the test that concludes a class.",
+        "exampleSentence": "It was tough cramming for those midterms and finals, staying up 72 hours straight hepped up on caffeine and pizza.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "faɪn(ə)l",
+        "etymology": "From Middle English final, fynal, fynall, from Old French final, from Latin fīnālis (“of or relating to the end or to boundaries”), from fīnis (“end”); see fine. Replaced native English endly (“final”).",
+        "distractors": [
+            "finel",
+            "finnal",
+            "fanal"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "folks",
+        "definition": "Late 19th and early 20th century migrants to California from Iowa and other parts of the Midwestern United States.",
+        "exampleSentence": "McPherson's healing ministry, in fact. was at the core of her success, since so many of the Folks had come to Southern California in late middle or old age in the hope of regaining lost health.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "foʊks",
+        "etymology": "Coined by California historian Kevin Starr.",
+        "distractors": [
+            "follks",
+            "falks",
+            "felks"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "frank",
+        "definition": "One of the Franks, a Germanic federation that inhabited parts of what are now France, the Low Countries and Germany.",
+        "exampleSentence": "He wrote the word frank on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɹæŋk",
+        "etymology": "From Middle English Frank, partially from Old English Franca (“a Frank”); and partially from Old French Franc, and/or Latin Francus (“a Frank”), from Frankish *Franko (“a Frank”); both maybe from Proto-Germanic *frankô (“javelin”).",
+        "distractors": [
+            "rfank",
+            "farnk",
+            "frnak"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "haven",
+        "definition": "A harbour or anchorage protected from the sea.",
+        "exampleSentence": "And the stately ships go on / To their haven under the hill;",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "heɪvən",
+        "etymology": "From Middle English haven, havene, from Old English hæfen (“haven; harbour; port”), from Proto-West Germanic *habanu, from Proto-Germanic *habnō, *habanō (compare Dutch haven, German Hafen, Norwegian/Danish havn, Swedish hamn, French havre), from Proto-Germanic *habą (“sea”) (compare Old English hæf",
+        "distractors": [
+            "havven",
+            "heven",
+            "hiven"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "honey",
+        "definition": "A sweet, viscous, gold-colored fluid produced from plant nectar by bees, and often consumed by humans.",
+        "exampleSentence": "Honey, would you take out the trash?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hʌni",
+        "etymology": "From Middle English hony, honi, from Old English huniġ, from Proto-West Germanic *hunag, from Proto-Germanic *hunagą (compare Saterland Frisian Hunich, West Frisian hunich, German Low German Honnig, German Honig), from earlier *hunangą (compare North Frisian honning, hönning, West Frisian huning, Du",
+        "distractors": [
+            "hony",
+            "honeey",
+            "honney"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "local",
+        "definition": "A person who lives in or near a given place.",
+        "exampleSentence": "As they take me to my local down the street.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "loʊkl̩",
+        "etymology": "From Middle English local, from Late Latin locālis (“belonging to a place”), possibly also via Old French local; ultimately from Latin locus (“a place”).",
+        "distractors": [
+            "locel",
+            "loccal",
+            "lacal"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "month",
+        "definition": "A period into which a year is divided, historically based on the phases of the moon.",
+        "exampleSentence": "We went on holiday for two months.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "mʌnθ",
+        "distractors": [
+            "monnth",
+            "manth",
+            "menth"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "ocean",
+        "definition": "One of the large bodies of water separating the continents.",
+        "exampleSentence": "He wrote the word ocean on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "oʊʃən",
+        "etymology": "From Middle English *ocean, occean, occian, occyan, from Old French occean (later reborrowed or reinforced by Middle French ocean), from Latin Ōceanus, originally from Ancient Greek Ὠκεανός (Ōkeanós, “Oceanus”, a water deity). Displaced native Old English gārseċġ.",
+        "distractors": [
+            "occean",
+            "oceen",
+            "ocaan"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "owner",
+        "definition": "One who owns something.",
+        "exampleSentence": "The police recovered the stolen car and returned it to its owner.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "oʊnɚ",
+        "etymology": "From own + -er.",
+        "distractors": [
+            "ownor",
+            "ownar",
+            "owwner"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "seven",
+        "definition": "The digit/figure 7 or an occurrence thereof.",
+        "exampleSentence": "He wrote three sevens on the paper.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɛvən",
+        "etymology": "From Middle English seven, from Old English seofon (“seven”), from Proto-West Germanic *sebun (“seven”), from Proto-Germanic *sebun (“seven”), from Proto-Indo-European *septḿ̥ (“seven”).",
+        "distractors": [
+            "sevven",
+            "saven",
+            "siven"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "times",
+        "definition": "The circumstances of a certain time.",
+        "exampleSentence": "He wrote the word times on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "taɪmz",
+        "etymology": "Multiplication sense from the idea that something is repeated or added together a given number of times.",
+        "distractors": [
+            "timmes",
+            "tames",
+            "temes"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "today",
+        "definition": "The current day or date.",
+        "exampleSentence": "Today is the day we'll fix this once and for all.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "tədeɪ",
+        "etymology": "From Middle English today, to-daie, todæig, from Old English tōdæġ, tō dæġe (“today”, literally “on [the/this] day, [this] day forward”), equivalent to to + day.",
+        "distractors": [
+            "todaey",
+            "todday",
+            "todai"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "truck",
+        "definition": "A small wheel or roller, specifically the wheel of a gun carriage.",
+        "exampleSentence": "We rented a truck big enough to carry the whole load in one trip.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɹʌk",
+        "etymology": "Perhaps a shortening of truckle, related to Latin trochus (“iron hoop, wheel”) from Ancient Greek τροχός (trokhós).",
+        "distractors": [
+            "truk",
+            "trucck",
+            "track"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "exist",
+        "definition": "To be; have existence; have being or reality.",
+        "exampleSentence": "Various relationships may exist between character and glyph: ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɛɡzɪst",
+        "etymology": "From French exister, from Latin existō, exsistō (“I am, I exist, appear, arise”), from ex (“out”) + sistere (“to set, place”) (related to stare (“to stand, to be stood”)), ultimately from Proto-Indo-European *stísteh₂ti, from the root *steh₂- (“stand”); see stand.",
+        "distractors": [
+            "exxist",
+            "exisst",
+            "exast"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "harry",
+        "definition": "To plunder, pillage, assault.",
+        "exampleSentence": "It took a while to learn how to harry.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hæɹi",
+        "etymology": "From Middle English herien, harien, from Old English herġian, from Proto-West Germanic *harjōn, from Proto-Germanic *harjōną, from *harjaz (“army”), from Proto-Indo-European *koryos, from *ker- (“army”).",
+        "distractors": [
+            "harrey",
+            "hary",
+            "herry"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "queen",
+        "definition": "To act the part of a queen; to behave imperiously; to queen it.",
+        "exampleSentence": "The nucleus should not be queened by a queen from any of the parent colonies.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kwiːn",
+        "etymology": "From Middle English quene, queen, cwen, from Old English cwēn (“queen”), from Proto-West Germanic *kwāni, from Proto-Germanic *kwēniz (“woman”), from Proto-Indo-European *gʷénh₂s (“woman”).",
+        "distractors": [
+            "quen",
+            "quean",
+            "qaeen"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "aware",
+        "definition": "Vigilant or on one's guard against danger or difficulty.",
+        "exampleSentence": "Stay aware! Don't let your guard down.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "əwɛɚ",
+        "etymology": "From Middle English aware, iwar, iware, ywar, from Old English ġewær (“aware”), from Proto-West Germanic *gawar, from Proto-Germanic *waraz (“aware, cautious”), from Proto-Indo-European *worós (“attentive”), from *wer- (“to heed; watch out”).",
+        "distractors": [
+            "awware",
+            "awarre",
+            "awere"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "given",
+        "definition": "Already arranged.",
+        "exampleSentence": "No more than three people can be in that space at a given time.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɪvn̩",
+        "etymology": "Morphologically give + -n.",
+        "distractors": [
+            "givven",
+            "gaven",
+            "geven"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "saved",
+        "definition": "Rescued from the consequences of sin.",
+        "exampleSentence": "A penny saved is a penny earned.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "seɪvd",
+        "distractors": [
+            "savved",
+            "seved",
+            "sived"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stuck",
+        "definition": "Unable to move.",
+        "exampleSentence": "Can you shift this gate? I think it’s stuck.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stʌk",
+        "distractors": [
+            "stuk",
+            "stucck",
+            "stack"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "taken",
+        "definition": "Infatuated; fond of or attracted to.",
+        "exampleSentence": "I can't ask her out, she's taken.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "teɪkn̩",
+        "etymology": "From Middle English taken, takenn, from Old English tacen, *ġetacen, from Old Norse tekinn, from Proto-Germanic *tēkanaz, past participle of Proto-Germanic *tēkaną (“to take; grasp; touch”). Cognate with Scots takin, tane, Danish tagen, Swedish tagen, Icelandic tekin. Morphologically take + -n.",
+        "distractors": [
+            "takken",
+            "teken",
+            "tiken"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tired",
+        "definition": "In need of some rest or sleep.",
+        "exampleSentence": "A tired attempt at a smile worked its way across Akechi's lips, lopsided and faint.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "taɪ̯ɚd",
+        "distractors": [
+            "tirred",
+            "tared",
+            "tered"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "usual",
+        "definition": "Most commonly occurring; typical.",
+        "exampleSentence": "It is becoming more usual these days to rear children as bilingual.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "juʒuəl",
+        "etymology": "From Middle English usual, from Old French usuel, from Latin ūsuālis (“for use, fit for use, also of common use, customary, common, ordinary, usual”), from ūsus (“use, habit, custom”), from the past participle stem of ūtī (“to use”), possibly ultimately from Proto-Indo-European *h₃eyt- (“to take alo",
+        "distractors": [
+            "usuel",
+            "ussual",
+            "usaal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "weird",
+        "definition": "Having an unusually strange character or behaviour.",
+        "exampleSentence": "There are lots of weird people in this place.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wiɚd",
+        "etymology": "From Middle English werde, wierde, wirde, wyrede, wurde, from Old English wyrd (“fate”), from Proto-West Germanic *wurdi, from Proto-Germanic *wurdiz, from Proto-Indo-European *wert- (“to turn, wind”). Cognate with Icelandic urður (“fate”). Related to Old English weorþan (“to become”).",
+        "distractors": [
+            "weirrd",
+            "wierd",
+            "waird"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "never",
+        "definition": "At no time; on no occasion; in no circumstance.",
+        "exampleSentence": "The police say I stole the car, but I never did it.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "nɛvɚ",
+        "etymology": "From Middle English nevere, navere, nævere, from Old English nǣfre (“never”), equivalent to ne + ever.",
+        "distractors": [
+            "nevor",
+            "nevar",
+            "nevver"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "twice",
+        "definition": "Two times.",
+        "exampleSentence": "You should brush your teeth twice a day.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "twaɪs",
+        "etymology": "From earlier twise, from Middle English twies, twiȝes, from Old English twīġes (“twice”), from twīwa, twīġa (\"twice\"; whence Middle English twie (“twice”)) + -es (adverbial genitive ending).",
+        "distractors": [
+            "twicce",
+            "twace",
+            "twece"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "peace",
+        "definition": "To make peace; to put at peace; to be at peace.",
+        "exampleSentence": "Within every hood they have to be peacing with themselves. Then when you're living in peace with yourself, ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "pis",
+        "etymology": "From Middle English pees, pes, pais, borrowed from Anglo-Norman peis and Old French pais (“peace”), from Latin pāx (“peace”), from Proto-Indo-European *peh₂ḱ- (“to fasten, stick, place”), related to Latin pacīscor (“agree, stipulate”), Latin pangō (“fasten, fix”); see pact. Doublet of pax.",
+        "distractors": [
+            "peacce",
+            "peece",
+            "paace"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "happy",
+        "definition": "Often followed by up: to become happy; to brighten up, to cheer up.",
+        "exampleSentence": "People really didn't want their Party Motivators in their photos, anonymous dancers, happying up the place. It spooked them.",
+        "partOfSpeech": "verb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "hæpi",
+        "etymology": "From Middle English happy (“fortunate, happy”), perhaps an alteration of Middle English happyn, happen (“fortunate, happy”), possibly related to or from Old Norse heppinn (“fortunate, happy”); and potentially assimilated to be equivalent to hap (“chance, luck, fortune”) + -y.",
+        "distractors": [
+            "happey",
+            "hapy",
+            "heppy"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "super",
+        "definition": "Clipping of superhive.",
+        "exampleSentence": "The question is: when is the best time to super?",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "supɚ",
+        "etymology": "Abbreviation by shortening.",
+        "distractors": [
+            "supor",
+            "supar",
+            "supper"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "miles",
+        "definition": "A great distance in space or time.",
+        "exampleSentence": "He wrote the word miles on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "maɪlz",
+        "distractors": [
+            "milles",
+            "males",
+            "meles"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "doors",
+        "definition": "Opening time.",
+        "exampleSentence": "Doors are at six, the show's at seven.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɔɹz",
+        "distractors": [
+            "dors",
+            "doorrs",
+            "daors"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "books",
+        "definition": "Accounting records.",
+        "exampleSentence": "We still have to do this month's books.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bʊks",
+        "distractors": [
+            "boks",
+            "bookks",
+            "baoks"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "named",
+        "definition": "Having a name.",
+        "exampleSentence": "The county contains various named streams and several unnamed ones.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "neɪmd",
+        "distractors": [
+            "nammed",
+            "nemed",
+            "nimed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "unget",
+        "definition": "To cause to be unbegotten or unborn, or as if unbegotten or unborn.",
+        "exampleSentence": "It took a while to learn how to unget.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "digraphs",
+        "pronunciation": "ʌnɡɛt",
+        "etymology": "From un- + get; compare unbeget, Middle English ungeten (“unbegotten; not won; not captured”).",
+        "distractors": [
+            "unnget",
+            "ungat",
+            "ungit"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "boring",
+        "definition": "The act or process of boring holes; such practice as an area of expertise in manufacturing.",
+        "exampleSentence": "Can you use the word boring in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "boɹɪŋ",
+        "etymology": "From Middle English boryng (“making a hole”); equivalent to bore + -ing.",
+        "distractors": [
+            "borring",
+            "borinng",
+            "baring"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "camera",
+        "definition": "A device for taking still or moving pictures or photographs.",
+        "exampleSentence": "I'm talking about the way the camera flies up above the skater when you leap into the air. No one had done it before.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kæməɹə",
+        "etymology": "Learned borrowing from Latin camera (“chamber or bedchamber”), from Ancient Greek καμάρα (kamára, “anything with an arched cover, a covered carriage or boat, a vaulted chamber, a vault”), of Old Iranian origin, from Proto-Iranian *kamarā- (“something curved”), from *kamárati, from Proto-Indo-Iranian",
+        "distractors": [
+            "cammera",
+            "camerra",
+            "cemera"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "career",
+        "definition": "One’s calling in life; one's working occupation or profession, especially when pursued seriously and/or over a long period of time.",
+        "exampleSentence": "Can you use the word career in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kəɹɪɹ",
+        "etymology": "Mid 16th century, from French carrière (“road; racecourse”), from Italian carriera, from Old Occitan carreira, from Late Latin carrāria based on Latin carrus (“wheeled vehicle”), ultimately from Proto-Indo-European *ḱr̥sós, from *ḱers- (“to run”); alternatively, from Middle French carriere, from Old",
+        "distractors": [
+            "careor",
+            "carear",
+            "carer"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "cheese",
+        "definition": "A dairy product made from curdled or cultured milk.",
+        "exampleSentence": "He had a gloating expression on his face, and was perseveringly rolling a large cheese along the middle of the road.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "t͡ʃiz",
+        "etymology": "Latin cāseusbor. Proto-Germanic *kāsijaz Proto-West Germanic *kāsī Old English ċīese Middle English chese English cheese From Middle English chese, from Anglian Old English ċīese, from Proto-West Germanic *kāsī, borrowed from Latin cāseus. Doublet of queso.",
+        "distractors": [
+            "chese",
+            "cheesse",
+            "chease"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "christ",
+        "definition": "A figure or other artistic depiction of Jesus Christ.",
+        "exampleSentence": "Can you use the word christ in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹaɪst",
+        "etymology": "From Middle English Crist, from Old English Crist, from Latin Chrīst(us), from Ancient Greek Χρῑστός (Khrīstós), proper noun use of χρῑστός (khrīstós, “[the] anointed [one]”), a semantic loan of Hebrew מָשִׁיחַ (māšīaḥ, “anointed”) or the Aramaic equivalent (whence ultimately also English messiah, a",
+        "distractors": [
+            "hcrist",
+            "crhist",
+            "chirst"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "closer",
+        "definition": "Someone or something that closes.",
+        "exampleSentence": "They brought their closer in for the ninth.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kloʊzɚ",
+        "etymology": "From Middle English closere, equivalent to close (verb) + -er.",
+        "distractors": [
+            "closor",
+            "closar",
+            "closser"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "dinner",
+        "definition": "The main meal of the day, often eaten in the evening.",
+        "exampleSentence": "I had some friends to dinner two nights ago.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪnɚ",
+        "etymology": "From Middle English dyner, from Old French disner (“lunch”, but originally “breakfast”), (modern French dîner), from Vulgar Latin *disiūnō, *disiūnāre from Latin dis- + iēiūnō (“to break the fast”).",
+        "distractors": [
+            "dinnor",
+            "dinnar",
+            "diner"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "forest",
+        "definition": "A dense uncultivated tract of trees and undergrowth, larger than woods.",
+        "exampleSentence": "Can you use the word forest in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fɔɹəst",
+        "etymology": "Inherited from Middle English forest, from Old French forest, from Early Medieval Latin forestis. The Latin could be: * from foris (“outside”), as in forestis (silva) \"(wood) outside,\" * or from Frankish or Proto-West Germanic *furhisti (“forest, fir-grove, wooded land”), equivalent to fir + hurst.",
+        "distractors": [
+            "forrest",
+            "foresst",
+            "farest"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "german",
+        "definition": "An elaborate round dance, often with a waltz movement.",
+        "exampleSentence": "Through the years, though, the german was replaced by new and more popular dances, but in many instances the name stayed on.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "d͡ʒɝmən",
+        "etymology": "From German (“of Germany”).",
+        "distractors": [
+            "gerrman",
+            "garman",
+            "girman"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "hiding",
+        "definition": "A state of concealment.",
+        "exampleSentence": "After the leaked scandalous stories about his personal life, the celebrity remained in hiding for a few weeks.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "haɪdɪŋ",
+        "etymology": "See hide (Etymology 1)",
+        "distractors": [
+            "hidding",
+            "hidinng",
+            "hading"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "leader",
+        "definition": "Any person who leads or directs.",
+        "exampleSentence": "Can you use the word leader in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lidɚ",
+        "etymology": "From Middle English leder, ledere, from Old English lǣdere (“leader”), from Proto-West Germanic *laidijārī (“leader”), equivalent to lead + -er.",
+        "distractors": [
+            "leador",
+            "leadar",
+            "leadder"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "plenty",
+        "definition": "A more-than-adequate amount; plenitude.",
+        "exampleSentence": "We are lucky to live in a land of peace and plenty.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "plɛnti",
+        "etymology": "From Middle English plentie, plentee, plente, from Anglo-Norman plenté, from Old French plenté, from Latin plenitatem, accusative of plenitas (“fullness”), from plenus (“complete, full”), from Proto-Indo-European *pl̥h₁nós (“full”), from which English full also comes, via Proto-Germanic.",
+        "distractors": [
+            "plentey",
+            "plennty",
+            "planty"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "priest",
+        "definition": "A religious clergyman (clergywoman, clergyperson) who is trained to perform services or sacrifices at a church or temple.",
+        "exampleSentence": "Can you use the word priest in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹiːst",
+        "etymology": "From Middle English prest, preest, from Old English prēost (“priest”), from Late Latin presbyter, from Ancient Greek πρεσβύτερος (presbúteros), from πρέσβυς (présbus, “elder, older”). Reinforced in Middle English by Old French prestre, also from Latin presbyter. Doublet of presbyter and prester.",
+        "distractors": [
+            "priesst",
+            "preist",
+            "praest"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "public",
+        "definition": "Chiefly preceded by the: members of the community or the people in general, regardless of membership of any particular group.",
+        "exampleSentence": "Members of the public may not proceed beyond this point.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pʌblɪk",
+        "etymology": "The adjective and noun are derived from Late Middle English publik, publike (“(adjective) generally observable, public; relating to the general public or public affairs; (noun) a generally observable place or situation”), from Anglo-Norman public, publik, publique, Middle French public, publique, an",
+        "distractors": [
+            "pubblic",
+            "pablic",
+            "peblic"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "seeing",
+        "definition": "The act or fact of perceiving something with the eyes; eyesight.",
+        "exampleSentence": "To such perceivings we give names like these: seeings, hearings, smellings, chillings and burnings, pleasures and pains, desires ….",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "siːɪŋ",
+        "etymology": "From see + -ing.",
+        "distractors": [
+            "seing",
+            "seeinng",
+            "seieng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "simple",
+        "definition": "A herbal preparation made from one plant, as opposed to something made from more than one plant.",
+        "exampleSentence": "I know there are some simples, which in operation are moistening and some drying.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪmpəl",
+        "etymology": "Inherited from Middle English symple, simple, from Old French simple, from Latin simplex (“simple”, literally “onefold”) (as opposed to duplex (“double”, literally “twofold”)), from semel (“the same”) + plicō (“I fold”). See same and fold. Compare single, singular, simultaneous, etc.",
+        "distractors": [
+            "simpel",
+            "simmple",
+            "sample"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "single",
+        "definition": "A 45 RPM vinyl record with one song on side A and one on side B.",
+        "exampleSentence": "I don't have any singles, so you'll have to make change.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪŋɡəl",
+        "etymology": "From Middle English single, sengle, from Old French sengle, saingle, sangle, from Latin singulus, a diminutive derived from Proto-Indo-European *sem- (“one”). Akin to Latin simplex (“simple”). See simple, and compare singular.",
+        "distractors": [
+            "singel",
+            "sinngle",
+            "sangle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "summer",
+        "definition": "One of four seasons, traditionally the second, marked by the longest and typically hottest days of the year due to the inclination of the Earth and thermal lag. Typically regarded as spanning either the period between the summer solstice to the autumnal equinox, or the months of June, July, and August in the Northern Hemisphere and the months of December, January and February in the Southern Hemisphere.",
+        "exampleSentence": "He was barely eighteen summers old.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sʌmɚ",
+        "etymology": "From Middle English somer, sumer, from Old English sumor (“summer”), from Proto-West Germanic *sumar, from Proto-Germanic *sumaraz (“summer”), from Proto-Indo-European *sm̥-h₂-ó-, oblique of *semh₂- (“summer, year”).",
+        "distractors": [
+            "summor",
+            "summar",
+            "sumer"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "sunday",
+        "definition": "The first day of the week in many religious traditions, and the seventh day of the week in systems using the ISO 8601 standard; the Christian Sabbath; the Lord's Day; it follows Saturday and precedes Monday.",
+        "exampleSentence": "Every day is like Sunday / Every day is silent and grey.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sʌndeɪ",
+        "etymology": "From Middle English Sonday, from Old English sunnandæġ, from Proto-West Germanic *Sunnōn dag (literally “day of the Sun”), equivalent to sun + day, as a calque (interpretātiō germānica) of Latin diēs Sōlis; declared the \"venerable day of the sun\" by Roman Emperor Constantine on March 7, 321 C.E.",
+        "distractors": [
+            "sundaey",
+            "sunnday",
+            "sundai"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "thanks",
+        "definition": "An expression of appreciation or gratitude.",
+        "exampleSentence": "After all I’ve done, a simple acknowledgment is the thanks I get?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "θæŋks",
+        "etymology": "From Middle English thanks, thankes, from Old English þancas (“thanks”), from Proto-Germanic *þankōs, nominative plural of *þankaz (“thought, gratitude”), from Proto-Indo-European *teng- (“to think, feel”). More at thank.",
+        "distractors": [
+            "thannks",
+            "thenks",
+            "thinks"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "victim",
+        "definition": "One that is harmed—killed, injured, subjected to oppression, deceit, or otherwise adversely affected—by someone or something, especially another person or event, force, or condition; in particular.",
+        "exampleSentence": "Can you use the word victim in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "vɪktɪm",
+        "etymology": "From Middle French victime, from Latin victima (“sacrificial animal”).",
+        "distractors": [
+            "vicctim",
+            "vactim",
+            "vectim"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "except",
+        "definition": "To exclude; to specify as being an exception.",
+        "exampleSentence": "She would except every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪksɛpt",
+        "etymology": "Borrowed from Middle French excepter, from Latin exceptus.",
+        "distractors": [
+            "exxcept",
+            "exceppt",
+            "excapt"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "remind",
+        "definition": "To cause one to experience a memory (of someone or something); to bring to the notice or consideration (of a person).",
+        "exampleSentence": "His eyes were green and every cat I see to this day reminds me of the exact contour of his face.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹəmaɪnd",
+        "etymology": "From mid 17th century, equivalent to re- + mind (“to remember”). Probably suggested by obsolete rememorate with the same sense. Displaced Old English myndgian.",
+        "distractors": [
+            "remmind",
+            "reminnd",
+            "ramind"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "crying",
+        "definition": "That cries.",
+        "exampleSentence": "The crying child on the street was evidently lost.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɹaɪ̯ɪŋ",
+        "etymology": "From cry + -ing.",
+        "distractors": [
+            "cryinng",
+            "cryang",
+            "cryeng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "guilty",
+        "definition": "Responsible for a dishonest act.",
+        "exampleSentence": "Do you have a guilty conscience?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɪlti",
+        "etymology": "From Middle English gilty, gulty, from Old English gyltiġ (“offending, guilty”); equivalent to guilt + -y.",
+        "distractors": [
+            "guiltey",
+            "guillty",
+            "gailty"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "hungry",
+        "definition": "Affected by hunger; having the physical need for food.",
+        "exampleSentence": "The students are hungry to learn.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hʌŋɡɹi",
+        "etymology": "From Middle English hungry, from Old English hungriġ, from Proto-West Germanic *hungrug, from Proto-Germanic *hungrugaz (“hungry”); equivalent to hunger + -y.",
+        "distractors": [
+            "hungrey",
+            "hunngry",
+            "hangry"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "pretty",
+        "definition": "Pleasant to the sight or other senses; attractive, especially of women or children.",
+        "exampleSentence": "\"What did you do to your hair?\" The answer could be worth a pretty penny for L'Oreal.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "pɹɪti",
+        "etymology": "From Middle English prety, preti, praty, prati, from Old English prættiġ (“tricky, crafty, sly, cunning, wily, astute”), from Proto-West Germanic *prattug, from Proto-Germanic *prattugaz (“boastful, sly, slick, deceitful, tricky, cunning”), corresponding to prat (“trick”) + -y. Doublet of pratty.",
+        "distractors": [
+            "prettey",
+            "prety",
+            "pratty"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "signed",
+        "definition": "Having a signature; endorsed.",
+        "exampleSentence": "The signed check could be cashed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "saɪnd",
+        "distractors": [
+            "siggned",
+            "sagned",
+            "segned"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "trying",
+        "definition": "Difficult to endure; arduous.",
+        "exampleSentence": "Tryin’ times, what the world is talkin’ about / You got confusion all over the land, yeah.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "tɹaɪɪŋ",
+        "etymology": "From try + -ing.",
+        "distractors": [
+            "tryinng",
+            "tryang",
+            "tryeng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "across",
+        "definition": "From one side to the other.",
+        "exampleSentence": "If we sail off at noon, when will we be across?",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əkɹɒs",
+        "etymology": "From Middle English acros, from early Middle English a-croiz, a-creoyz, from Anglo-Norman an (“in, on”) + croiz (“in the form of a cross”). More at cross. By surface analysis, a- + cross.",
+        "distractors": [
+            "acros",
+            "accross",
+            "acrass"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "anyway",
+        "definition": "Regardless; anyhow.",
+        "exampleSentence": "I don't think that's true. I haven't found any evidence, anyway.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "ɛniweɪ",
+        "etymology": "From any + way.",
+        "distractors": [
+            "anywaey",
+            "annyway",
+            "anywway"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "indeed",
+        "definition": "Truly; in fact; actually.",
+        "exampleSentence": "Indeed, he made several misplays.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪndid",
+        "etymology": "From Middle English indede, univerbation of the phrase in dede (“in sooth, in fact”). Cognate with Saterland Frisian innerdoat, innedoat (“indeed”), West Frisian yndied (“indeed”), Dutch inderdaad (“indeed”), German in der Tat (“indeed”). By surface analysis, in + deed.",
+        "distractors": [
+            "indead",
+            "inded",
+            "inndeed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nearly",
+        "definition": "In close approximation; almost, virtually.",
+        "exampleSentence": "I nearly didn't go to work yesterday.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nɪɹli",
+        "etymology": "From near + -ly. Cognate with Scots nerelie, neirlie (“nearly”). Compare also English nearling, nearlings.",
+        "distractors": [
+            "nearley",
+            "nearrly",
+            "neerly"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "slowly",
+        "definition": "At a slow pace.",
+        "exampleSentence": "When bond yields rise slowly over time, it’s not a problem for pensions deploying LDI strategies, and actually helps their finances.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sloʊli",
+        "etymology": "From Middle English slowly, slowli, slouli, slowliche, from Old English slāwlīċe (“slowly; sluggishly”), equivalent to slow + -ly. Compare Old Norse slæliga, sljóliga.",
+        "distractors": [
+            "slowley",
+            "slowwly",
+            "slouly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "prince",
+        "definition": "To behave or act like a prince.",
+        "exampleSentence": "She would prince every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹɪns",
+        "etymology": "From Middle English prince, from Anglo-Norman prince, from Latin prīnceps (“first head”), from prīmus (“first”) + capiō (“seize, take”). Cognate with Old English fruma (“prince, ruler”). Doublet of princeps and principe.",
+        "distractors": [
+            "prinnce",
+            "prance",
+            "prence"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cannot",
+        "definition": "Can not; be unable to (whether due to physical inability, logical impossibility, etc).",
+        "exampleSentence": "I cannot open the window. It is stuck.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kæ(n)nɑt",
+        "etymology": "From can + not.",
+        "distractors": [
+            "canot",
+            "cennot",
+            "cinnot"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "others",
+        "definition": "Other people.",
+        "exampleSentence": "Can you use the word others in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʌðɚz",
+        "distractors": [
+            "otthers",
+            "otherrs",
+            "othars"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "points",
+        "definition": "Movable rails which can be used to switch a train from one railway track to another.",
+        "exampleSentence": "In my concentrated week at Stratford I found that, although as a theatregoer for decades I could not help marking what the old actors called 'points' now and again, ….",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɔɪnts",
+        "distractors": [
+            "poinnts",
+            "poynts",
+            "paints"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "horses",
+        "definition": "Horsepower.",
+        "exampleSentence": "I got four hundred horses tucked under the hood.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hoɹsɪz",
+        "distractors": [
+            "horrses",
+            "harses",
+            "herses"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonhit",
+        "definition": "A song, etc. that fails to become a hit.",
+        "exampleSentence": "Can you use the word nonhit in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nonhit",
+        "etymology": "From non- + hit.",
+        "distractors": [
+            "nonnhit",
+            "nanhit",
+            "nenhit"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "worder",
+        "definition": "Someone who words something a certain way; a turner of phrases.",
+        "exampleSentence": "Can you use the word worder in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "worder",
+        "etymology": "From word + -er.",
+        "distractors": [
+            "wordor",
+            "wordar",
+            "worrder"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "missay",
+        "definition": "To speak ill of (someone).",
+        "exampleSentence": "The worde gone out she backe againe would call, / As her repenting so to have missayd ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "missay",
+        "etymology": "From Middle English misseien, misseyen, misseggen, equivalent to mis- + say. Cognate with Middle Dutch misseggen (“to missay”).",
+        "distractors": [
+            "missaey",
+            "misay",
+            "missai"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "unbody",
+        "definition": "To leave the body; to be disembodied.",
+        "exampleSentence": "She would unbody every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʌnbɒdi",
+        "etymology": "From un- + body.",
+        "distractors": [
+            "unbodey",
+            "unnbody",
+            "unboddy"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "outcut",
+        "definition": "To cut out.",
+        "exampleSentence": "They're guaranteed to outcut and outlast any plier made.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "outcut",
+        "etymology": "From out- + cut.",
+        "distractors": [
+            "outtcut",
+            "oatcut",
+            "oetcut"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "unstay",
+        "definition": "To undo the establishment of; disestablish; dissolve; divest.",
+        "exampleSentence": "Staying on a mount that is trying to unstay you is a historic procedure of the livestock business.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "unstay",
+        "etymology": "From un- + stay.",
+        "distractors": [
+            "unstaey",
+            "unnstay",
+            "unstai"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "outlot",
+        "definition": "A plot of undeveloped land, sometimes without access to public roads, designated by a developer on a plat for future construction or noted for its unsuitability to be designated a full lot.",
+        "exampleSentence": "A Panda Express restaurant is planned for the outlot in front of the former Kmart building on W. Bluemound Road in the Town of Brookfield.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "aʊtlɒt",
+        "etymology": "From out- + lot.",
+        "distractors": [
+            "outtlot",
+            "oatlot",
+            "oetlot"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "dayful",
+        "definition": "The amount (of something) that fills or is produced in a day.",
+        "exampleSentence": "I began asking my mom to write things down for me as I created poetry by the mouthful and the dayful.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dayful",
+        "etymology": "From day + -ful.",
+        "distractors": [
+            "dayfull",
+            "dayfful",
+            "daiful"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "misput",
+        "definition": "To put badly or wrongly.",
+        "exampleSentence": "She would misput every morning before school.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "misput",
+        "etymology": "From mis- + put.",
+        "distractors": [
+            "missput",
+            "masput",
+            "mesput"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ancient",
+        "definition": "A person who is very old.",
+        "exampleSentence": "Junius and Andronicus … in Christianity … were his ancients.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "eɪnʃənt",
+        "etymology": "From Middle English auncyen, from Old French ancien, from Vulgar Latin *anteānus, composed of Latin ante (“before”) + -ānus (adjective-forming suffix). The non-etymological /t/ is by analogy with the common ending -ent.",
+        "distractors": [
+            "anciant",
+            "anncient",
+            "anciennt"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "chinese",
+        "definition": "A person from China or of Chinese descent.",
+        "exampleSentence": "Want to go to the Chinese after work?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "t͡ʃaɪniz",
+        "etymology": "From China + -ese under influence of Portuguese chinês, replacing older Chinish. Doublet of chinois. In its orientalist sense of \"generically exotic, backwards, or poorly organized\", sometimes a deliberate marketing strategy to increase sales, as with the German Chinese checkers.",
+        "distractors": [
+            "chinnese",
+            "chinesse",
+            "chanese"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "darling",
+        "definition": "Often used as an affectionate term of address: a person who is very dear to one.",
+        "exampleSentence": "Pass the wine, would you, darling?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɑɹlɪŋ",
+        "etymology": "The noun is derived from Middle English dereling, derelyng (“beloved person; beloved of God, devout Christian”), from Old English dīerling, dēorling (“favourite, darling; minion”), from Proto-West Germanic *diuriling, from Proto-Germanic *diurijalingaz, from *diurijaz (“beloved, dear; expensive”) (f",
+        "distractors": [
+            "darrling",
+            "darlinng",
+            "derling"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "driving",
+        "definition": "The action of the verb to drive in any sense.",
+        "exampleSentence": "There is no such being as a golfer uninterested in his driving.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɹaɪvɪŋ",
+        "etymology": "From Middle English driving, drivinge, equivalent to drive + -ing. Compare Dutch drijving, German Treibung.",
+        "distractors": [
+            "drivving",
+            "drivinng",
+            "draving"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "holding",
+        "definition": "Something that one owns, especially stocks and bonds.",
+        "exampleSentence": "This has no holding,.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "həʉɫdɪŋ",
+        "distractors": [
+            "hollding",
+            "holdinng",
+            "halding"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "letters",
+        "definition": "Literature (school subject).",
+        "exampleSentence": "He read widely throughout these days, for his father had a taste for modern letters, and new books lay littered about the rooms.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lɛtɚz",
+        "distractors": [
+            "leters",
+            "letterrs",
+            "latters"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "looking",
+        "definition": "The act of one who looks; a glance.",
+        "exampleSentence": "A complicated interplay of lookings and viewings is in play. The staging and performance of the photograph, then, is as much the subject of the photograph as the ostensible subjects ….",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "lʊkɪŋ",
+        "etymology": "From Middle English lokynge, lokinge, from Old English lōcung (attested in Old English þurhlōcung), equivalent to look + -ing.",
+        "distractors": [
+            "loking",
+            "lookking",
+            "lookinng"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "meaning",
+        "definition": "The denotation, referent, or idea connected with a word, expression, or symbol.",
+        "exampleSentence": "It was their meaning to take what they needed by strong hand.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "minɪŋ",
+        "etymology": "From Middle English mening, menyng, equivalent to mean + -ing. Cognate with Scots mening (“intent, purpose, sense, meaning”), West Frisian miening (“opinion, mind”), Dutch mening (“view, opinion, judgement”), German Meinung (“opinion, view, mind, idea”), Danish and Swedish mening (“meaning, sense, s",
+        "distractors": [
+            "meanning",
+            "meaninng",
+            "meening"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "numbers",
+        "definition": "Many individuals as a group.",
+        "exampleSentence": "Numbers of people have visited the fair.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nʌmbɚz",
+        "distractors": [
+            "nummbers",
+            "numberrs",
+            "nambers"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "outside",
+        "definition": "The part of something that faces out; the outer surface.",
+        "exampleSentence": "It may last a week at the outside.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "aʊtsaɪd",
+        "etymology": "From out + side.",
+        "distractors": [
+            "outtside",
+            "outsidde",
+            "oatside"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "patient",
+        "definition": "A person or animal that receives health care from a doctor, nurse, dentist, allied health practitioner, or other person educated in health care.",
+        "exampleSentence": "The subject of a passive verb is usually a patient.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "peɪʃənt",
+        "etymology": "From Middle English pacient, from Middle French patient, from Old French pacient, from Latin patiens, present participle of patior (“to suffer, endure”), from Proto-Indo-European *peh₁- (“to hate, hurt”).",
+        "distractors": [
+            "patiant",
+            "pattient",
+            "patiennt"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "russian",
+        "definition": "A citizen of Russia.",
+        "exampleSentence": "“I believe the Russians – the inhumane behavior of Russia does not justify it to get the fruits of the international community,” Wyden told CNN.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹʌʃ(ə)n",
+        "etymology": "From Medieval Latin (11th century) Russiānus, from Russia, a Latinization of the Old East Slavic Русь (Rusĭ)) + -ānus (“of or pertaining to”). Attested in English (both as a noun and as an adjective) from the 16th century. By surface analysis, Russia + -an. Piecewise doublet of Rossiyan.",
+        "distractors": [
+            "rusian",
+            "rassian",
+            "ressian"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "science",
+        "definition": "A particular discipline or branch of knowledge that is natural, measurable or consisting of systematic principles rather than intuition or technical skill.",
+        "exampleSentence": "Shakespeare's deep and accurate science in mental philosophy.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "saɪəns",
+        "etymology": "From Middle English science, scyence, borrowed from Old French science, escience, from Latin scientia (“knowledge”), from sciens, the present participle stem of scire (“to know”).",
+        "distractors": [
+            "sciance",
+            "sciennce",
+            "sceince"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "showing",
+        "definition": "An occasion when something is shown.",
+        "exampleSentence": "He made a poor showing at his first time at bat.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʃoʊɪŋ",
+        "etymology": "From Middle English schewyng, schewinge, from Old English sċēawung (“a looking at, contemplation, consideration; respect, regard; survey, examination; a show, appearance, pretense”), from Proto-West Germanic *skauwungu, from Proto-Germanic *skawwungō, equivalent to show + -ing.",
+        "distractors": [
+            "showwing",
+            "showinng",
+            "shouing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "spanish",
+        "definition": "People of Spain, collectively.",
+        "exampleSentence": "The Spanish are not the only ones selling their goods along the wharves and the inner streets.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "spænɪʃ",
+        "etymology": "From Middle English Spainish, Spanish, equivalent to Spain + -ish.",
+        "distractors": [
+            "spannish",
+            "spanissh",
+            "spenish"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "student",
+        "definition": "A person who studies or learns about a particular subject.",
+        "exampleSentence": "She is a student of human interactions.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stjuːdn̩t",
+        "etymology": "From Middle English student, studient, from Old French estudiant, estudiente, from Latin studēns, present participle of studeō (“dedicate oneself to, study”). Equivalent to study + -ent.",
+        "distractors": [
+            "studant",
+            "studdent",
+            "studennt"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "teacher",
+        "definition": "A person who teaches, especially one employed in a school; preceptor.",
+        "exampleSentence": "But if the last two years are a teacher, look for the bombastic tweets to resume before sunrise.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tit͡ʃɚ",
+        "etymology": "From Middle English techere, equivalent to teach + -er. More at teach.",
+        "distractors": [
+            "teachor",
+            "teachar",
+            "teaccher"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "wearing",
+        "definition": "The mechanical process of eroding or grinding.",
+        "exampleSentence": "Give me my nightly wearing and adieu.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɛɹɪŋ",
+        "distractors": [
+            "wearring",
+            "wearinng",
+            "weering"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "divorce",
+        "definition": "To legally dissolve a marriage between two people.",
+        "exampleSentence": "A ship captain can marry couples, but cannot divorce them.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪvɔɹs",
+        "etymology": "Derived from Old French divorce, from Latin dīvortium, from dīvertere (“to turn aside”), from dī- (“apart”) + vertere (“to turn”); see verse.",
+        "distractors": [
+            "divvorce",
+            "divorrce",
+            "davorce"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "imagine",
+        "definition": "To form a mental image of something; to envision or create something in one's mind.",
+        "exampleSentence": "Imagine that we were siblings.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɪmæd͡ʒɪn",
+        "etymology": "From Middle English ymagynen, from Middle French imaginer, from Latin imāginor, from imāginem, the accusative singular of imāgō (“a copy, likeness, image”).",
+        "distractors": [
+            "immagine",
+            "imaggine",
+            "imaginne"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "journey",
+        "definition": "To travel, to make a trip or voyage.",
+        "exampleSentence": "The arrangement for certain long-distance trains to call at suburban stations (saving passengers the trouble of journeying to the termini), which proved popular last year, is being extended.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "d͡ʒɝni",
+        "etymology": "From Middle English journe, from Old French jornee, from Vulgar Latin *diurnāta, from Late Latin diurnum, from Latin diurnus, from diēs (“day”). Displaced native Old English fær and Old English faru.",
+        "distractors": [
+            "journy",
+            "journeey",
+            "jourrney"
+        ],
+        "theme": "travel"
+    },
+    {
+        "word": "amazing",
+        "definition": "Causing wonder and amazement; very surprising.",
+        "exampleSentence": "“I didn’t think I would be a fan of the swaddling, but the swaddling’s pretty amazing,” she says.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əmeɪzɪŋ",
+        "etymology": "From amaze + -ing, from Old English āmasian.",
+        "distractors": [
+            "ammazing",
+            "amazzing",
+            "amazinng"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "english",
+        "definition": "Of or pertaining to England.",
+        "exampleSentence": "Honest, honest, English is just a language of confusions.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪŋ(ɡ)lɪʃ",
+        "etymology": "From Middle English Englisch, English, Inglis, from Old English Englisċ (“of the Angles; English”), from Engle (“the Angles”), a Germanic tribe + -isċ; equivalent to Engle + -ish.",
+        "distractors": [
+            "ennglish",
+            "englissh",
+            "englash"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "married",
+        "definition": "In a state of marriage; having a wife or a husband.",
+        "exampleSentence": "My mom got married to her childhood sweetheart.",
+        "partOfSpeech": "adjective",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "mæɹɪd",
+        "etymology": "From Middle English maried, imaried, mariet, past participle of Middle English marien (“to marry”), equivalent to marry + -ed.",
+        "distractors": [
+            "maried",
+            "marreid",
+            "merried"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "missing",
+        "definition": "Not able to be located; gone, misplaced.",
+        "exampleSentence": "Joe went missing last year. He had all teeth missing when he was finally found.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪsɪŋ",
+        "etymology": "By surface analysis, miss + -ing.",
+        "distractors": [
+            "mising",
+            "missinng",
+            "massing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "present",
+        "definition": "Relating to now, for the time being; current.",
+        "exampleSentence": "To find a god so present to my prayer.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɹizɛnt",
+        "etymology": "From Middle English present, from Old French present, from Latin praesent-, praesens, present participle of praeesse (“to be present”), from Latin prae- (“pre-”) + esse (“to be”).",
+        "distractors": [
+            "presant",
+            "pressent",
+            "presennt"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "willing",
+        "definition": "Ready to do something, particularly something that requires change or effort; not objecting.",
+        "exampleSentence": "If my boyfriend isn't willing to change his drinking habits, I will split up with him.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wɪlɪŋ",
+        "etymology": "* (adjective): Old English willende, present participle of willan * (noun): Old English willung, from willian By surface analysis, will + -ing.",
+        "distractors": [
+            "wiling",
+            "willinng",
+            "walling"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "worried",
+        "definition": "Thinking about unpleasant things that have happened or that might happen; feeling afraid and unhappy.",
+        "exampleSentence": "She was worried about her son who had been sent off to fight in the war.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wʌɹid",
+        "distractors": [
+            "woried",
+            "worreid",
+            "warried"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "besides",
+        "definition": "Also; in addition.",
+        "exampleSentence": "I have been to Spain but nowhere besides.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɪsaɪdz",
+        "etymology": "From Middle English bisides (also bisiden), extension of biside, equivalent to beside + -s (adverbial suffix).",
+        "distractors": [
+            "bessides",
+            "besiddes",
+            "basides"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "instead",
+        "definition": "In the place of something (usually mentioned earlier); as a substitute or alternative.",
+        "exampleSentence": "I was going to go shopping, but I went dancing instead.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪnstɛd",
+        "etymology": "From in + stead, from Middle English ine (“in”) + stede (“stead”). Related to German statt.",
+        "distractors": [
+            "insteed",
+            "innstead",
+            "instaad"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "somehow",
+        "definition": "In one way or another; in a way not yet known or explained; by some means.",
+        "exampleSentence": "This problem has to be tackled somehow.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sʌmhaʊ",
+        "etymology": "From some + how.",
+        "distractors": [
+            "sommehow",
+            "somehhow",
+            "somehou"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "because",
+        "definition": "On account, for sake [with of].",
+        "exampleSentence": "My life is ruined because of you!",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "bɪkəz",
+        "etymology": "From Middle English bi cause, from bi (“by”) + cause, modelled on Old French par cause.",
+        "distractors": [
+            "beccause",
+            "becausse",
+            "becawse"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "strange",
+        "definition": "Sex outside of one's current relationship.",
+        "exampleSentence": "All he has to do is walk into a bar, and he can get some Strange.'” “Oh yeah, Tom,” I mutter, “that's exactly how it was, every Saturday night. Nothing but Strange. Up here too.”.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stɹeɪnd͡ʒ",
+        "etymology": "From Middle English straunge, strange, stronge, from Old French estrange, from Latin extrāneus (“that which is on the outside”). Doublet of extraneous and estrange. Cognate with French étrange (“strange, foreign”) and Spanish extraño (“strange, foreign”).",
+        "distractors": [
+            "strannge",
+            "strenge",
+            "stringe"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "kidding",
+        "definition": "The action of the verb kid.",
+        "exampleSentence": "Attended kiddings allow owners to remove the kids from their dams prior to suckling and ingestion of colostrum.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kɪdɪŋ",
+        "distractors": [
+            "kiding",
+            "kiddinng",
+            "kadding"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "changes",
+        "definition": "Ellipsis of chord changes.",
+        "exampleSentence": "Jazz musicians do that as they play the changes, improvising their way through a sequence of chords that gives stability, shape, and direction to the tune they play.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "t͡ʃeɪnd͡ʒɪz",
+        "distractors": [
+            "channges",
+            "chenges",
+            "chinges"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "ringing",
+        "definition": "Loud and clear.",
+        "exampleSentence": "They declare ringing confirmation for their theories even in the face of feeble data.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹɪŋɪŋ",
+        "distractors": [
+            "rinnging",
+            "ringinng",
+            "ranging"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "tickets",
+        "definition": "A single ticket.",
+        "exampleSentence": "Did you get tickets to the game tonight?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɪkɪts",
+        "distractors": [
+            "ticckets",
+            "ticketts",
+            "tackets"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "awesome",
+        "definition": "Clipping of awesomeness (“the quality, state, or essence of being awesome”).",
+        "exampleSentence": "“Or as I like to think of it, the wusses versus the awesomes.”.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ɔsəm",
+        "etymology": "From awe + -some; compare earlier awful and Middle English eiful (“inducing fright or terror, terrible”), from Old English eġeful (“fearful; inspiring awe”). The oldest meaning of awesome is of “something which inspires awe”, but the word is now also a common colloquial expression.",
+        "distractors": [
+            "awwesome",
+            "awessome",
+            "awesomme"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "nongame",
+        "definition": "Not a game, or unrelated to a game.",
+        "exampleSentence": "The Monday night team in particular is so annoying with all the nongame chatter, you would think it was a talk show rather than a football game.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "nongame",
+        "etymology": "From non- + game.",
+        "distractors": [
+            "nonngame",
+            "nongamme",
+            "nangame"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonwork",
+        "definition": "That which is not work (employment or occupation).",
+        "exampleSentence": "“People tweet me all the time about nonwork things,” she said.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nonwork",
+        "etymology": "From non- + work.",
+        "distractors": [
+            "nonnwork",
+            "nonworrk",
+            "nanwork"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonback",
+        "definition": "Not back; not produced at the back of the mouth.",
+        "exampleSentence": "Therefore these facts are doubly anomalous, since they have not only gemination after a nonback vowel but also after a vowel that is stressed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nonback",
+        "etymology": "From non- + back.",
+        "distractors": [
+            "nonbak",
+            "nonnback",
+            "nonbacck"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "unhouse",
+        "definition": "To displace one from one's housing or shelter.",
+        "exampleSentence": "When a rock band began to unhouse its instruments on a riser beneath the bell tower, ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "unhouse",
+        "etymology": "From un- + house.",
+        "distractors": [
+            "unnhouse",
+            "unhousse",
+            "unhowse"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "outroom",
+        "definition": "An outer room.",
+        "exampleSentence": "Then he took her by the hand and led her round the house to the outroom, which he unlocked with great ceremony.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "outroom",
+        "distractors": [
+            "outrom",
+            "outtroom",
+            "oatroom"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "wantful",
+        "definition": "Full of want or lack; lacking; poor.",
+        "exampleSentence": "Nor rank, nor wealth, I ask, but let me be Above contempt, and wantful poverty.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wantful",
+        "etymology": "From want + -ful. Compare wishful, wistful, etc.",
+        "distractors": [
+            "wantfull",
+            "wanntful",
+            "wentful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "nonplay",
+        "definition": "Any work that is not a play.",
+        "exampleSentence": "This standard prevents injury during nonplay activities of children and adults.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nonplay",
+        "etymology": "From non- + play.",
+        "distractors": [
+            "nonplaey",
+            "nonnplay",
+            "nonplai"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mislove",
+        "definition": "Inadequate, imperfect, or misdirected love.",
+        "exampleSentence": "Our worship, in fact our daily relationship of a life offered to God, converts our misloves of money into proper love.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mislove",
+        "etymology": "From mis- + love.",
+        "distractors": [
+            "misslove",
+            "mislovve",
+            "maslove"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "mismove",
+        "definition": "To move wrongly, incorrectly, or in error.",
+        "exampleSentence": "She could card silks accurately, and even pick up with the needle's eye the fine end in the broken cocoon, and wind it ofl and reel it with a hand that never wavered or mismoved.”.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "mɪsmuːv",
+        "etymology": "From mis- + move.",
+        "distractors": [
+            "missmove",
+            "mismovve",
+            "masmove"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "wowless",
+        "definition": "Free of wows.",
+        "exampleSentence": "This damping device results in absolutely uniform and “wowless” rotation of the synchronous turntable.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "wowless",
+        "etymology": "From wow + -less.",
+        "distractors": [
+            "wowles",
+            "wowwless",
+            "wouless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mispart",
+        "definition": "To part or divide badly.",
+        "exampleSentence": "Tom's hair was misparted and stood out in places.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mispart",
+        "etymology": "From mis- + part.",
+        "distractors": [
+            "misspart",
+            "misparrt",
+            "maspart"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bodyful",
+        "definition": "Full of body; rich or substantive.",
+        "exampleSentence": "You'll come out with beautiful, bodyful hair.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bodyful",
+        "etymology": "From body + -ful.",
+        "distractors": [
+            "bodyfull",
+            "boddyful",
+            "bodyfful"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "lookful",
+        "definition": "Looking carefully; observant.",
+        "exampleSentence": "His girls on this occasion look no more lookful than those in the average musical show.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "lookful",
+        "etymology": "From look + -ful.",
+        "distractors": [
+            "lookfull",
+            "lokful",
+            "lookkful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mismeet",
+        "definition": "To come together but fail to properly communicate or connect in positive ways.",
+        "exampleSentence": "Perhaps more than any other it illustrates both the meeting and the mismeeting of religion and psychology.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mismeet",
+        "etymology": "From mis- + meet.",
+        "distractors": [
+            "mismet",
+            "missmeet",
+            "mismeat"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "misopen",
+        "definition": "To open what one should not open.",
+        "exampleSentence": "Tensely, Michael removed pieces of cork from a misopened bottle.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "misopen",
+        "etymology": "From mis- + open.",
+        "distractors": [
+            "missopen",
+            "misoppen",
+            "masopen"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "mistalk",
+        "definition": "To speak badly; to stutter, garble one's words, mispronounce words, substitute incorrect words, or make other such errors.",
+        "exampleSentence": "I don't aim to mistalk ye. I jest want to tell ye how it was.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mistalk",
+        "etymology": "From mis- + talk.",
+        "distractors": [
+            "misstalk",
+            "mistallk",
+            "mastalk"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "outcase",
+        "definition": "An outer case.",
+        "exampleSentence": "A silver Minute Pendulum watch with a silver outcase and a coat-of-arms engraven on it.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "outcase",
+        "distractors": [
+            "outtcase",
+            "outcasse",
+            "oatcase"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "accident",
+        "definition": "An unexpected event with negative consequences occurring without the intention of the one suffering the consequences, and (in the strict sense) not directly caused by humans.",
+        "exampleSentence": "To die by an accident such as an act of God.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "æksədənt",
+        "etymology": "First attested in the late 14th century. From Middle English accident, from Old French accident, from Latin accidēns, present active participle of accidō (“happen”); from ad (“to”) + cadō (“fall”). See cadence, case. In the sense “unintended pregnancy”, first attested in 1932.",
+        "distractors": [
+            "accidant",
+            "acident",
+            "acciddent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bathroom",
+        "definition": "A room containing a shower or bathtub, and (typically but not necessarily) a toilet.",
+        "exampleSentence": "The bathroom was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bæθɹum",
+        "distractors": [
+            "bathrom",
+            "batthroom",
+            "bethroom"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "birthday",
+        "definition": "The anniversary of the day on which someone is born.",
+        "exampleSentence": "The birthday was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɝθdeɪ",
+        "etymology": "From Middle English birthdai, birtheday, from Old English ġebyrddæġ (“birthday”), influenced by Old Norse burðr, equivalent to birth + day.",
+        "distractors": [
+            "birthdaey",
+            "birrthday",
+            "birthdai"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "computer",
+        "definition": "A person employed to perform computations; one who computes.",
+        "exampleSentence": "The computer was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "kəmpjutɚ",
+        "etymology": "From compute + -er. Doublet of cantore, counter, and kontor. First sense first appears c. 1613 in the works of the poet Richard Brathwait. Second sense first appears c. 1897 in the magazine Engineering.",
+        "distractors": [
+            "computor",
+            "computar",
+            "commputer"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "football",
+        "definition": "A sport played on foot in which teams attempt to get a ball into a goal or zone defended by the other team.",
+        "exampleSentence": "The football was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "fʊtbɔl",
+        "etymology": "From Middle English fotbal, footbal, equivalent to foot + ball, because the ball was primarily manipulated with the feet in early versions of the game (though some modern varieties involve more handling than kicking).",
+        "distractors": [
+            "fotball",
+            "footbal",
+            "foottball"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "hospital",
+        "definition": "A large medical facility, usually in a building with multiple floors, where seriously ill or injured patients are given extensive medical or surgical treatment.",
+        "exampleSentence": "Luckily an ambulance arrived quickly and he was rushed to hospital.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɑspɪtl̩",
+        "etymology": "From Middle English hospital, hospitall, from Old French hospital (Modern French hôpital), from Late Latin hospitālis, hospitāle (“hospice, shelter, guesthouse”), from noun use of Latin hospitālis (“hospitable”), from hospes (“host, guest”). Doublet of hotel and hostel.",
+        "distractors": [
+            "hospitel",
+            "hosspital",
+            "hospittal"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "japanese",
+        "definition": "A person living in or originating from Japan, or of Japanese ancestry.",
+        "exampleSentence": "Let’s go out to eat. I’m in the mood for Japanese.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "d͡ʒæpəniːz",
+        "etymology": "Hokkien 日本 /Ji̍t-púnbor. Malay Jepangbor. Portuguese Japãobor. ▲ Malay Jepangbor. Dutch Japanbor. English Japan Proto-Indo-European *-iskos Proto-Germanic *-iskaz Proto-West Germanic *-iskbor. Late Latin -iscus ▲ Vulgar Latin -iscus Latin -ēnsis Old French -eisbor.",
+        "distractors": [
+            "jappanese",
+            "japannese",
+            "japanesse"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "mountain",
+        "definition": "A steam locomotive of the 4-8-2 wheel arrangement.",
+        "exampleSentence": "The mountain was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mountain",
+        "distractors": [
+            "omuntain",
+            "muontain",
+            "monutain"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "possible",
+        "definition": "A possible choice, notably someone being considered for a position.",
+        "exampleSentence": "Jones is a possible for the new opening in sales.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɑsəbəl",
+        "etymology": "From Middle English possible, from Old French possible, from Latin possibilis (“possible”), from posse, possum (“to be able”); see power. Displaced Middle English acumendlic (“possible”), from Old English ācumendlīċ (“possible”).",
+        "distractors": [
+            "possable",
+            "possibel",
+            "posible"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "research",
+        "definition": "Diligent inquiry or examination to seek or revise facts, principles, theories, applications, etc. (that are currently available, or that are familiar to one's self).",
+        "exampleSentence": "The research station that houses Wang and his team is outside Lijiang, a city of about 1.2 million people.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹisɝt͡ʃ",
+        "etymology": "Early Modern French rechercher (“to examine closely”), from Old French recerchier (“to seek, to look for”), by surface analysis, re- + search.",
+        "distractors": [
+            "ressearch",
+            "researrch",
+            "reseerch"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "shouting",
+        "definition": "An instance of loud or highly audible acclamation, clamor, crying or uproar.",
+        "exampleSentence": "The shouting was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʃaʊtɪŋ",
+        "distractors": [
+            "hsouting",
+            "sohuting",
+            "shuoting"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "speaking",
+        "definition": "One's ability to communicate vocally in a given language.",
+        "exampleSentence": "I can read and understand most texts in German, but my speaking is awful.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "spikɪŋ",
+        "etymology": "From Middle English speking, spekynge, equivalent to speak + -ing.",
+        "distractors": [
+            "speakking",
+            "speakinng",
+            "speeking"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "tomorrow",
+        "definition": "The day after the present day.",
+        "exampleSentence": "Tomorrow will be sunny.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "təmɒɹəʊ",
+        "etymology": "From Middle English tomorwe, tomorwen, from Old English tō morgne (“tomorrow”, adverb), from tō (“at, on”) + morgne (dative of morgen (“morning”)), from Proto-Germanic *murganaz (“morning”), perhaps from Proto-Indo-European *mergʰ- (“to blink, to twinkle”), equivalent to to- + morrow.",
+        "distractors": [
+            "tomorow",
+            "tommorrow",
+            "tomorrou"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "training",
+        "definition": "Action of the verb to train.",
+        "exampleSentence": "The training was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "tɹeɪnɪŋ",
+        "distractors": [
+            "rtaining",
+            "tarining",
+            "trianing"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "exciting",
+        "definition": "Creating or producing excitement.",
+        "exampleSentence": "Some of the most exciting games ever played have ended in draws.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪksʌɪtɪŋ",
+        "distractors": [
+            "exxciting",
+            "excitting",
+            "excitinng"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "handsome",
+        "definition": "Having a pleasing appearance, good-looking, attractive, particularly.",
+        "exampleSentence": "The old house had a handsome appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "hænsəm",
+        "etymology": "From Middle English handsum, hondsom, equivalent to hand + -some. Compare Dutch handzaam, German Low German handsaam. The original sense was ‘easy to handle or use’, hence ‘suitable’ and ‘apt, clever’ (mid 16th century), giving rise to the current appreciatory senses (late 16th century).",
+        "distractors": [
+            "hanndsome",
+            "handsomme",
+            "hendsome"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "received",
+        "definition": "Generally accepted as correct or true.",
+        "exampleSentence": "The old house had a received appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹɪsiːvd",
+        "distractors": [
+            "erceived",
+            "rceeived",
+            "reecived"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "upstairs",
+        "definition": "Up the stairs; on or to a higher floor or level.",
+        "exampleSentence": "The woman upstairs told the people outside to stop reveling.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʌpstɛɹz",
+        "etymology": "From up- + stair + -s.",
+        "distractors": [
+            "uppstairs",
+            "upstairrs",
+            "upstayrs"
+        ],
+        "theme": "home"
+    },
+    {
+        "word": "whatever",
+        "definition": "At all; in any way; whatsoever.",
+        "exampleSentence": "There is no point whatever in going on with this discussion.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "wʌtɛvɚ",
+        "etymology": "From Middle English whatever. By surface analysis, what + ever.",
+        "distractors": [
+            "whatevor",
+            "whatevar",
+            "whattever"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "makeless",
+        "definition": "Matchless, without equal, peerless.",
+        "exampleSentence": "The old house had a makeless appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "meɪkləs",
+        "etymology": "From Middle English makeles, equivalent to make (“companion, mate, equal, peer”) + -less. Cognate with Danish mageløs (“matchless”), Swedish makalös (“incomparable, peerless, matchless”).",
+        "distractors": [
+            "makeles",
+            "makkeless",
+            "makelless"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "horrible",
+        "definition": "A thing that causes horror; a terrifying thing, particularly a prospective bad consequence asserted as likely to result from an act.",
+        "exampleSentence": "Many scholars have demonstrated these horribles and contemplated significant limitations on class actions.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hɔɹɪbəl",
+        "etymology": "First attested in Middle English (alternately as horrible and orrible) in 1303: from Old French horrible, orrible, orible, from Latin horribilis, from horr(ēre) (“tremble”) + -ibilis (“-ible”).",
+        "distractors": [
+            "horrable",
+            "horribel",
+            "horible"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "groaning",
+        "definition": "That groans.",
+        "exampleSentence": "The old house had a groaning appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɡɹoʊnɪŋ",
+        "etymology": "From Middle English gronynge (“groaning”), from Old English grānung; equivalent to groan + -ing. Conflated with Middle English gronende, present participle of gronen, from Old English grāniende, present participle of grānian (“to groan”). Analyzable as groan + -ing.",
+        "distractors": [
+            "groanning",
+            "groaninng",
+            "graaning"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "misthink",
+        "definition": "To think wrongly or badly (of).",
+        "exampleSentence": "The instructions said to misthink gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mɪsθɪŋk",
+        "etymology": "From mis- + think.",
+        "distractors": [
+            "missthink",
+            "misthinnk",
+            "masthink"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "nameable",
+        "definition": "Capable of being distinguished and named; able to be called by a specific name.",
+        "exampleSentence": "Mr. Hyde … gave an impression of deformity without any nameable malformation ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nameable",
+        "etymology": "From name + -able.",
+        "distractors": [
+            "nameible",
+            "nameabel",
+            "nammeable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sleepful",
+        "definition": "Very sleepy; strongly wanting or needing to sleep.",
+        "exampleSentence": "The old house had a sleepful appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sleepful",
+        "etymology": "From Middle English slepeful, slepful, equivalent to sleep + -ful.",
+        "distractors": [
+            "sleepfull",
+            "slepful",
+            "sleeppful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pointful",
+        "definition": "Having real substance; apposite, pertinent.",
+        "exampleSentence": "In my above album of things that seem to make life pointful and worthwhile, … this would constitute an exceptional entry.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɔɪntfəl",
+        "etymology": "From point + -ful.",
+        "distractors": [
+            "pointfull",
+            "poinntful",
+            "poyntful"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "talkable",
+        "definition": "Capable of being talked (to or about) (construed with a preposition).",
+        "exampleSentence": "But he always came back in good spirits, talkable and charming.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "talkable",
+        "etymology": "From talk + -able.",
+        "distractors": [
+            "talkible",
+            "talkabel",
+            "tallkable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "rechange",
+        "definition": "To re-exchange (goods, money etc.).",
+        "exampleSentence": "I have since I was borne, seene those laws of our neighbours the English-men changed and rechanged three or foure times….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɹiːtʃeɪndʒ",
+        "etymology": "From re- + change.",
+        "distractors": [
+            "recchange",
+            "rechannge",
+            "retchange"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "overdeal",
+        "definition": "To have too many dealings.",
+        "exampleSentence": "Extended family issues (Mom overdeals with his family and Dad underdeals with his family).",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əʊvə(ɹ)diːl",
+        "etymology": "From over- + deal (“amount, portion”).",
+        "distractors": [
+            "overdeel",
+            "ovverdeal",
+            "overrdeal"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "overhold",
+        "definition": "To overvalue; overestimate; hold or estimate at too dear a rate.",
+        "exampleSentence": "The instructions said to overhold gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "overhold",
+        "etymology": "From Middle English overholden, from Old English oferhealdan (“to overcome, overtake, hold over, delay to do, neglect”), from Proto-Germanic *uber (“over”) + *haldaną (“to hold”), equivalent to over- + hold.",
+        "distractors": [
+            "ovverhold",
+            "overrhold",
+            "overholld"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gameless",
+        "definition": "Without game (wild animals to be hunted as food).",
+        "exampleSentence": "The old house had a gameless appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "gameless",
+        "etymology": "From game + -less.",
+        "distractors": [
+            "gameles",
+            "gammeless",
+            "gamelless"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "overhope",
+        "definition": "Excessive hope or anticipation; presumption.",
+        "exampleSentence": "If the good turn out less than you hoped for, good though it be, yet because it is not so good, it seems to you more like a loss than a gain, by reason of the overhope.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "overhope",
+        "etymology": "From Middle English overhope, oferhope, equivalent to over- + hope.",
+        "distractors": [
+            "ovverhope",
+            "overrhope",
+            "overhoppe"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "stopless",
+        "definition": "Without a stop.",
+        "exampleSentence": "The old house had a stopless appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "stopless",
+        "etymology": "From stop + -less.",
+        "distractors": [
+            "stoples",
+            "stoppless",
+            "stapless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mispoint",
+        "definition": "To point wrongly.",
+        "exampleSentence": "The instructions said to mispoint gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mispoint",
+        "etymology": "From mis- + point.",
+        "distractors": [
+            "misspoint",
+            "mispoinnt",
+            "mispoynt"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "needment",
+        "definition": "Something needed or wanted.",
+        "exampleSentence": "The needment was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "needment",
+        "etymology": "From need + -ment.",
+        "distractors": [
+            "needmant",
+            "nedment",
+            "needdment"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "playless",
+        "definition": "Devoid of play (recreational activities).",
+        "exampleSentence": "Despite his repeated insistence that the theater should dispense with plays, his own work in the theater was far from playless.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "playless",
+        "etymology": "From play + -less.",
+        "distractors": [
+            "playles",
+            "playlless",
+            "plailess"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mineless",
+        "definition": "Without mines (places for digging minerals etc.).",
+        "exampleSentence": "But though there are caves there are no mines in Faroe, in which happy state we hope these mineless isles will remain so far as we are concerned.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "mineless",
+        "etymology": "From mine + -less.",
+        "distractors": [
+            "mineles",
+            "minneless",
+            "minelless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "antigame",
+        "definition": "A game which cannot be played in the conventional sense.",
+        "exampleSentence": "When capacity to respond to any aggression at a corresponding level of violence does not exist, the strategy of antigame is recommended.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "antigame",
+        "etymology": "From anti- + game.",
+        "distractors": [
+            "anntigame",
+            "antiggame",
+            "antigamme"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "storyful",
+        "definition": "Characteristic of a story; storylike.",
+        "exampleSentence": "The old house had a storyful appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "storyful",
+        "etymology": "From story + -ful.",
+        "distractors": [
+            "storyfull",
+            "storryful",
+            "storyfful"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "unfather",
+        "definition": "To cause someone to become less of a father.",
+        "exampleSentence": "More strongly still: \"Visitation unfathers men. This phenomenon gradually strangles the father-child relationship.\"",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "unfather",
+        "etymology": "From un- + father.",
+        "distractors": [
+            "unfathor",
+            "unfathar",
+            "unnfather"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "nonspeak",
+        "definition": "Speech that is intended to satisfy a needed response, yet lacking in any real pertinent information; speech about nothing, empty words; useless talk or babble.",
+        "exampleSentence": "Most of the action reports are carefully worded statements by ship's officers who have been trained in the art of nonspeak.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "nonspeak",
+        "etymology": "From non- + speak.",
+        "distractors": [
+            "nonnspeak",
+            "nonspeek",
+            "nanspeak"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "detective",
+        "definition": "A police officer tasked with collecting evidence and information in order to solve a crime; an investigator.",
+        "exampleSentence": "Learning about the detective was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "dɪtɛktɪv",
+        "etymology": "The adjective is from Classical Latin dētēct-, past participial stem of dētegō (“to detect”), + -ive. The noun is an ellipsis of detective policeman, detective officer, or a similar construction.",
+        "distractors": [
+            "dettective",
+            "detecctive",
+            "detectivve"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "gentleman",
+        "definition": "Any well-bred, well-mannered, or charming man.",
+        "exampleSentence": "Learning about the gentleman was the best part of the day.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "d͡ʒɛɾ̃ɫ̩mən",
+        "etymology": "From Middle English gentilman, morphologically gentle + man, partial calque of Old French gentilhome.",
+        "distractors": [
+            "genntleman",
+            "gentlemman",
+            "gantleman"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "happiness",
+        "definition": "The emotion of being happy; joy; elation.",
+        "exampleSentence": "She found happiness in the small things.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hæpinɪs",
+        "etymology": "From happy + -ness.",
+        "distractors": [
+            "happiniss",
+            "hapiness",
+            "happines"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "yesterday",
+        "definition": "The day immediately before today; one day ago.",
+        "exampleSentence": "The worker of today is different from that of yesterday.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "jɛstɹdeɪ",
+        "etymology": "From Middle English yesterday, yisterday, ȝesterdai, ȝisterdai, from Old English ġiestrandæġ, ġister dæġ, ġestor dæġ, ġeostran dæġ (“yesterday”), by surface analysis, yester- + day.",
+        "distractors": [
+            "yesterdaey",
+            "yessterday",
+            "yesterrday"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "apologize",
+        "definition": "To make an apology or excuse; to acknowledge some fault or offense, with expression of regret for it, by way of amends.",
+        "exampleSentence": "He promised to apologize as soon as he got home.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "əpɑləd͡ʒaɪz",
+        "etymology": "From apology + -ize, from ἀπολογία (apología, “a speech in defense”), from ἀπολογέομαι (apologéomai, “to speak in one’s defense”), from ἀπόλογος (apólogos, “an account, story”), compound of ἀπο- (apo-, “from, off”) and λόγος (lógos, “speech”); compare also ἀπολογίζομαι (apologízomai, “to render an a",
+        "distractors": [
+            "apologise",
+            "appologize",
+            "apollogize"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "breakfast",
+        "definition": "To eat the morning meal.",
+        "exampleSentence": "“Oh, he set off the moment he had breakfasted!…”.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɹeɪkfæst",
+        "etymology": "From Middle English brekefast, brekefaste, equivalent to break + fast (literally, \"to end the nightly fast\"), likely a variant of Old English fæstenbryċe, (literally, \"fast-breach\"). Cognate with Dutch breekvasten (“breakfast”).",
+        "distractors": [
+            "breakkfast",
+            "breakfasst",
+            "breekfast"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "according",
+        "definition": "Agreeing; in agreement or harmony; harmonious.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully according.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "əkɔɹdɪŋ",
+        "etymology": "From accord + -ing.",
+        "distractors": [
+            "acording",
+            "accorrding",
+            "accordinng"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "destroyed",
+        "definition": "Damaged beyond repair; ruined; wrecked; obliterated.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully destroyed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪstɹɔɪd",
+        "distractors": [
+            "desstroyed",
+            "destroied",
+            "dastroyed"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "difficult",
+        "definition": "Hard, not easy, requiring much effort.",
+        "exampleSentence": "Stop being difficult and eat your broccoli—you know it's good for you.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "dɪfɪkəlt",
+        "etymology": "From Middle English difficult (ca. 1400), a back-formation from difficulte (whence modern difficulty), from Old French difficulté, from Latin difficultas, from difficul, older form of difficilis (“hard to do, difficult”), from dis- + facilis (“easy”); see difficile.",
+        "distractors": [
+            "dificult",
+            "difficcult",
+            "difficullt"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "otherwise",
+        "definition": "Differently, in another way.",
+        "exampleSentence": "Could I do otherwise than smile?",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ʌðɚwaɪz",
+        "etymology": "From Middle English otherwise, othre wise, from Old English on ōþre wīsan (literally “in (on) other/different manner”); equivalent to other + -wise. Compare West Frisian yn oarwei (“otherwise”), Icelandic öðruvísi (“different”).",
+        "distractors": [
+            "otherwize",
+            "ottherwise",
+            "otherrwise"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "perfectly",
+        "definition": "With perfection.",
+        "exampleSentence": "Their performance was perfectly fine.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "pɝfɪk(t)li",
+        "etymology": "From perfect + -ly.",
+        "distractors": [
+            "perfectley",
+            "perrfectly",
+            "perfecctly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "seriously",
+        "definition": "In a serious or literal manner.",
+        "exampleSentence": "That was a seriously unpleasant thing to say.",
+        "partOfSpeech": "adverb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "sɪɹiəs li",
+        "etymology": "From Middle English seriously, sereously, ceryously, seryowslech (“earnestly”), equivalent to serious + -ly.",
+        "distractors": [
+            "seriousley",
+            "serriously",
+            "serioussly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "boyfriend",
+        "definition": "To be a boyfriend to (someone).",
+        "exampleSentence": "Rina is out boyfriending, God help us. The last one she brought back was terrible.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "bɔɪfɹɛnd",
+        "etymology": "From boy + friend.",
+        "distractors": [
+            "boyffriend",
+            "boyfriennd",
+            "boyfreind"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "something",
+        "definition": "Somewhat; to a degree.",
+        "exampleSentence": "He ran something across the field to catch the ball.",
+        "partOfSpeech": "adverb",
+        "difficulty": 1,
+        "pattern": "blends",
+        "pronunciation": "sɐm̥(p)θɪŋ",
+        "etymology": "From Middle English somþyng, some-thing, som thing, sum thinge, sum þinge, from Old English sum þing (literally “some thing”), equivalent to some + thing. Compare Old English āwiht (“something”, literally “some thing, any thing”), Swedish någonting (“something”, literally “some thing, any thing”).",
+        "distractors": [
+            "sommething",
+            "sometthing",
+            "somethinng"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "happening",
+        "definition": "Busy, lively; vibrant, dynamic; fashionable.",
+        "exampleSentence": "“…San Francisco is not exactly the most happening place, you know.”.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "hæpɪnɪŋ",
+        "etymology": "From Middle English *happenynge, *happnynge. By surface analysis, happen + -ing.",
+        "distractors": [
+            "hapening",
+            "happenning",
+            "happeninng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "expecting",
+        "definition": "Of a woman, female animal, or couple, in expectation of giving birth; pregnant.",
+        "exampleSentence": "When is the new couple expecting?",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɪkspɛktɪŋ",
+        "distractors": [
+            "exxpecting",
+            "expeccting",
+            "expectinng"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "moneyness",
+        "definition": "The degree to which a derivative security is in the money, because of the relationship of the price of the underlying security to a conversion price or exercise price.",
+        "exampleSentence": "As an option's expiration date approaches only its moneyness has value.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "moneyness",
+        "etymology": "From money + -ness.",
+        "distractors": [
+            "moneyniss",
+            "moneynes",
+            "monneyness"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "beingless",
+        "definition": "Devoid of being; nonexistent.",
+        "exampleSentence": "For that is all there is: material atoms moving mindlessly in the beingless void of space.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "beingless",
+        "etymology": "From being + -less.",
+        "distractors": [
+            "beingles",
+            "beinngless",
+            "biengless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underlook",
+        "definition": "To look up at from below; to inspect from underneath.",
+        "exampleSentence": "\"Do you remember Calkin's story about the quarrel he overheard—and underlooked?\"",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ʌndɚlʊk",
+        "etymology": "From Middle English underloken (“look up at? be suspicious of?”), equivalent to under- + look.",
+        "distractors": [
+            "underlok",
+            "unnderlook",
+            "underrlook"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "interwork",
+        "definition": "To work (two or more things) into and through each other.",
+        "exampleSentence": "He promised to interwork as soon as he got home.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "interwork",
+        "etymology": "From inter- + work.",
+        "distractors": [
+            "innterwork",
+            "interrwork",
+            "interworrk"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "overbreak",
+        "definition": "To cave in near the edge of an excavation.",
+        "exampleSentence": "He was never able to overbreak his rheumatism.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "overbreak",
+        "etymology": "From Middle English *overbreken, from Old English oferbrecan (“to transgress, violate”), equivalent to over- + break.",
+        "distractors": [
+            "ovverbreak",
+            "overrbreak",
+            "overbreek"
+        ],
+        "theme": "nature"
+    },
+    {
+        "word": "misnumber",
+        "definition": "To assign numbers nonsequentially where sequential numbering was due.",
+        "exampleSentence": "The pages in this report are misnumbered. There are two \"page 7\"s, and there is no \"page 6\"!",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "misnumber",
+        "etymology": "From mis- + number.",
+        "distractors": [
+            "misnumbor",
+            "misnumbar",
+            "missnumber"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "intermine",
+        "definition": "To intersect or penetrate with minerals.",
+        "exampleSentence": "These are preore faults intermined by intrusion.",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "intermine",
+        "etymology": "From inter- + mine.",
+        "distractors": [
+            "inntermine",
+            "interrmine",
+            "interminne"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "partyless",
+        "definition": "Without political parties.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully partyless.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "partyless",
+        "etymology": "From party + -less.",
+        "distractors": [
+            "partyles",
+            "parrtyless",
+            "partylless"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "antideath",
+        "definition": "Preventing death.",
+        "exampleSentence": "Everyone agreed that the dessert was wonderfully antideath.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "antideath",
+        "etymology": "From anti- + death.",
+        "distractors": [
+            "anntideath",
+            "antiddeath",
+            "antideatth"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "underfeel",
+        "definition": "To secretly gain knowledge from.",
+        "exampleSentence": "Then having done, added farther, that he had endeavoured to underfeel the fellow that was below, but he found him very obstinate, ….",
+        "partOfSpeech": "verb",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "underfeel",
+        "etymology": "From under- + feel.",
+        "distractors": [
+            "underfele",
+            "underfeal",
+            "underfel"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "momentful",
+        "definition": "Relating to or characteristic of a moment.",
+        "exampleSentence": "Take that momentful night when WMAL-TV made its baptism into the ether.",
+        "partOfSpeech": "adjective",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "momentful",
+        "etymology": "From moment + -ful.",
+        "distractors": [
+            "momentfull",
+            "mommentful",
+            "momenntful"
+        ],
+        "theme": "time"
+    },
+    {
+        "word": "are",
+        "definition": "An accepted (but deprecated and rarely used) metric unit of area equal to 100 square metres, or a former unit of approximately the same extent. Symbol: a.",
+        "exampleSentence": "My teacher explained what an are is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "silent-e",
+        "pronunciation": "ɛəɹ",
+        "etymology": "From French are.",
+        "distractors": [
+            "rae",
+            "aer",
+            "arre"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "ate",
+        "definition": "An elder sister.",
+        "exampleSentence": "My teacher explained what an ate is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "silent-e",
+        "pronunciation": "ʔɐte",
+        "etymology": "Borrowed from Tagalog ate (“elder sister”), from Hokkien 阿姊 (á-ché, “eldest sister”).",
+        "distractors": [
+            "tae",
+            "aet",
+            "atte"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "ben",
+        "definition": "A US$100 bill, which bears a portrait of Benjamin Franklin. Often used in the plural form to indicate large sums of money.",
+        "exampleSentence": "They were climbing the ben.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "bɛn",
+        "distractors": [
+            "ebn",
+            "bne",
+            "bben"
+        ],
+        "theme": "money"
+    },
+    {
+        "word": "fbi",
+        "definition": "Fixed-bit index.",
+        "exampleSentence": "My teacher explained what a fbi is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "blends",
+        "pronunciation": "ɛfbiːaɪ",
+        "distractors": [
+            "bfi",
+            "fib",
+            "ffbi"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "get",
+        "definition": "A member of the Getae.",
+        "exampleSentence": "My teacher explained what a get is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "get",
+        "distractors": [
+            "egt",
+            "gte",
+            "gget"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "han",
+        "definition": "Sorrowful resentment, as a part of the Korean cultural identity.",
+        "exampleSentence": "My teacher explained what a han is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "han",
+        "etymology": "From Korean 한(恨) (han), from Middle Chinese 恨 (MC honH).",
+        "distractors": [
+            "ahn",
+            "hna",
+            "hhan"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "lab",
+        "definition": "Diminutive of Labrador, a breed of dog.",
+        "exampleSentence": "My teacher explained what a lab is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "lab",
+        "distractors": [
+            "alb",
+            "lba",
+            "llab"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "lit",
+        "definition": "Clipping of literature.",
+        "exampleSentence": "Do we have any lit homework tonight?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "lɪt",
+        "etymology": "Short for literature.",
+        "distractors": [
+            "lat",
+            "let",
+            "lti"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mac",
+        "definition": "Used to address a man whose name is unknown.",
+        "exampleSentence": "Have you got a light, Mac?",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "mæk",
+        "etymology": "See macc for details.",
+        "distractors": [
+            "mec",
+            "mic",
+            "mca"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "meg",
+        "definition": "Clipping of megabyte.",
+        "exampleSentence": "My teacher explained what a meg is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "mɛɡ",
+        "distractors": [
+            "emg",
+            "mge",
+            "mmeg"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "men",
+        "definition": "(The) people, humanity, man(kind).",
+        "exampleSentence": "\"Muster up the men in the barracks at 0600,\" the lieutenant said to his sergeant.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "mɛn",
+        "etymology": "From Middle English men, from Old English menn (“people”), from Proto-Germanic *manniz, nominative plural of Proto-Germanic *mann- (“person”). Cognate with German Männer (“men”), Danish mænd (“men”), Swedish män (“men”). More at man.",
+        "distractors": [
+            "man",
+            "min",
+            "mne"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "mom",
+        "definition": "Used as a term of address for one's wife.",
+        "exampleSentence": "(spoken by the father) I don't share it with mom! Right, mom?",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "mɑm",
+        "etymology": "Clipping of momma.",
+        "distractors": [
+            "mam",
+            "mem",
+            "mmo"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "raj",
+        "definition": "A system of government where authority is exercised by a specific group.",
+        "exampleSentence": "My teacher explained what a raj is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "ɹɑd͡ʒ",
+        "etymology": "Proprialisation of raj (“(India) reign, rule”, noun), borrowed from Hindustani राज / راج (rāj, “reign, rule; empire, kingdom; country, state; royalty”), from Sanskrit राज्य (rājyá, “empire, kingdom, realm; kingship, royalty, sovereignty; country”), ultimately from Proto-Indo-European *h₃reǵ- (“to ri",
+        "distractors": [
+            "rej",
+            "rij",
+            "rja"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "say",
+        "definition": "A chance to speak; the right or power to influence or make a decision.",
+        "exampleSentence": "To have a say.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "seɪ",
+        "etymology": "From Middle English seyen, seien, seggen, from Old English seċġan (“to say, speak”), from Proto-West Germanic *saggjan, from Proto-Germanic *sagjaną (“to say”), from Proto-Indo-European *sokʷ-h₁-yé-, a suffixed o-grade form of *sekʷ- (“to say”).",
+        "distractors": [
+            "saey",
+            "sai",
+            "sey"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "see",
+        "definition": "A diocese or archdiocese: a region of a church, generally headed by a bishop or an archbishop.",
+        "exampleSentence": "My teacher explained what a see is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 1,
+        "pattern": "cvc",
+        "pronunciation": "si",
+        "etymology": "From Middle English se, see, from Old French sie (“seat, throne; town, capital; episcopal see”), from Latin sēdēs (“seat”), referring to the bishop's throne or chair (compare seat of power) in the cathedral; related to the Latin verb sedēre (“to sit”). Doublet of sedes.",
+        "distractors": [
+            "se",
+            "sea",
+            "sae"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "sis",
+        "definition": "Clipping of sister.",
+        "exampleSentence": "My sis is tying the knot. I want you to play for the reception.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "sɪs",
+        "distractors": [
+            "sas",
+            "ses",
+            "ssi"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "ted",
+        "definition": "A Teddy boy.",
+        "exampleSentence": "My teacher explained what a ted is during our lesson.",
+        "partOfSpeech": "noun",
+        "difficulty": 2,
+        "pattern": "cvc",
+        "pronunciation": "tɛd",
+        "etymology": "From a pet form of Edward, in reference to Edwardian styles affected by youths.",
+        "distractors": [
+            "etd",
+            "tde",
+            "tted"
+        ],
+        "theme": "people"
     }
 ];
