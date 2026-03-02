@@ -1246,7 +1246,24 @@ function main() {
 
         // Definition: Wiktionary > API > WordNet
         const definition = row.wikt_definition || row.api_definition || row.definition || '';
-        if (!definition || definition.length < 10) { reject('bad-definition'); continue; }
+        if (!definition || definition.length < 15) { reject('bad-definition'); continue; }
+
+        // Reject definitions that are just cross-references, not real definitions
+        if (/^(Ellipsis of|Clipping of|Alternative (form|spelling) of|Dated form of|Eye dialect of|Archaic form of|Obsolete (form|typography) of)\b/.test(definition)) {
+            reject('cross-reference-def'); continue;
+        }
+        // Reject misspelling entries
+        if (/^(Misspelling of|Deliberate misspelling of)\b/.test(definition)) {
+            reject('misspelling-def'); continue;
+        }
+        // Reject definitions with Wiktionary sense/etymology references
+        if (/\((?:noun |adjective |proper noun )*(?:etymology \d|sense \d|noun sense)/i.test(definition)) {
+            reject('wiktionary-artifact'); continue;
+        }
+        // Reject "Obsolete typography of X" anywhere in definition
+        if (/obsolete typography of/i.test(definition)) {
+            reject('obsolete-typography'); continue;
+        }
 
         // Clean example sentence — prefer wikt > api, fall back to generated template
         const rawExample = row.wikt_example || row.api_example || '';
@@ -1274,6 +1291,32 @@ function main() {
         const appTier = difficulty <= 2 ? 1 : Math.min(difficulty, 10) - 1;
         // Initial: 1=diff1-2, 2=diff3, 3=diff4, 4=diff5, 5=diff6, 6=diff7, 7=diff8, 8=diff9, 9=diff10
         // Tier 7 overflow → tier 8, tier 8 overflow → tier 9 (handled post-collection)
+
+        // Reject fabricated prefix/suffix words at low tiers (1-3)
+        if (appTier <= 3) {
+            const fabPrefixes = ['un', 'mis', 'non', 'out', 'over', 'under', 'pre', 're'];
+            const fabSuffixes = ['less', 'ful', 'ness', 'ly'];
+            let isFabricated = false;
+            // Prefix junk: "misfriend", "redrink", "nonmoney" with trivial definitions
+            for (const p of fabPrefixes) {
+                if (row.word.startsWith(p) && row.word.length > p.length + 2) {
+                    if (/^(Not |Without |Lacking |Opposite of |To .* (again|improperly|wrongly|incorrectly|badly|in error))\b/.test(definition)) {
+                        isFabricated = true; break;
+                    }
+                }
+            }
+            // Suffix junk: "gameless", "bloodful", "carness" with trivial definitions
+            if (!isFabricated) {
+                for (const s of fabSuffixes) {
+                    if (row.word.endsWith(s) && row.word.length > s.length + 2) {
+                        if (/^(Without |Lacking |Devoid of |Having no |Free from |Not having |Full of |Having |Characterized by |Abounding |Rich in |The state |The quality |The condition |The property |The act |In a .* manner)\b/.test(definition)) {
+                            if (row.sense_count <= 3) { isFabricated = true; break; }
+                        }
+                    }
+                }
+            }
+            if (isFabricated) { reject('fabricated-word'); continue; }
+        }
 
         // Reject rare/niche definitions for tier 1 (Pre-K/K) words
         // (e.g. "tire" defined as hawk behavior instead of common "become weary")
@@ -1308,11 +1351,18 @@ function main() {
 
         // Clean definition: capitalize, end with period, strip wiki artifacts
         let cleanDef = definition.trim();
-        cleanDef = cleanDef.replace(/\s*\([\w\s,]+\)\s*$/, ''); // strip trailing (disambiguation)
+        // Strip trailing (disambiguation) ONLY if remaining text is long enough
+        const withoutTrailingParen = cleanDef.replace(/\s*\([\w\s,]+\)\s*$/, '');
+        if (withoutTrailingParen.length >= 15) {
+            cleanDef = withoutTrailingParen;
+        }
         cleanDef = cleanDef.charAt(0).toUpperCase() + cleanDef.slice(1);
         if (!cleanDef.endsWith('.') && !cleanDef.endsWith('!') && !cleanDef.endsWith('?')) {
             cleanDef += '.';
         }
+
+        // Final definition length check after cleaning
+        if (cleanDef.length < 15) { reject('bad-definition'); continue; }
 
         // Etymology: clean or drop
         const etymology = cleanEtymology(row.wikt_etymology || row.etymology);

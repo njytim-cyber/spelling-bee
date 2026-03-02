@@ -14,611 +14,6 @@ import type { SpellingWord } from './types';
 
 export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
     {
-        "word": "commerce",
-        "definition": "The exchange or buying and selling of commodities; especially the exchange of merchandise, on a large scale, between different places or communities; extended trade or traffic.",
-        "exampleSentence": "Fifteen years of thought, observation, and commerce with the world had made him Bunyan wiser.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "kɑmɚs",
-        "etymology": "Borrowed from Middle French commerce, from Latin commercium. Doublet of comess.",
-        "distractors": [
-            "comerce",
-            "commerrce",
-            "cammerce"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "conquest",
-        "definition": "An act or instance of achieving victory through combat; the subjugation of an enemy.",
-        "exampleSentence": "The conquest was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "kɑnkwɛst",
-        "etymology": "From Middle English conquest, from Old French conqueste (French conquête).",
-        "distractors": [
-            "connquest",
-            "conquesst",
-            "canquest"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "coverage",
-        "definition": "An amount by which something or someone is covered.",
-        "exampleSentence": "Mobile phone coverage is poor in some areas.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "kʌv(ə)ɹɪdʒ",
-        "distractors": [
-            "covverage",
-            "coverrage",
-            "coveragge"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "currency",
-        "definition": "Money or other items used to facilitate transactions.",
-        "exampleSentence": "Wampum was used as a currency by Amerindians.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "kʌɹənsi",
-        "etymology": "Borrowed from Medieval Latin currentia, from Latin currēns, from currō. By surface analysis, current + -cy.",
-        "distractors": [
-            "currancy",
-            "currencey",
-            "curency"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "dealings",
-        "definition": "Relations with others.",
-        "exampleSentence": "I've had dealings with Jo in the past, and found her very stubborn.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "diːlɪŋ(ɡ)z",
-        "distractors": [
-            "deallings",
-            "dealinngs",
-            "deelings"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "delusion",
-        "definition": "A false belief that is resistant to confrontation with actual facts.",
-        "exampleSentence": "It is far better to grasp the universe as it really is than to persist in delusion, however satisfying and reassuring.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɪl(j)uːʒ(ə)n",
-        "etymology": "From Latin dēlūsiō.",
-        "distractors": [
-            "delution",
-            "dellusion",
-            "delussion"
-        ],
-        "theme": "mind"
-    },
-    {
-        "word": "detector",
-        "definition": "A device capable of registering a specific substance or physical phenomenon, and that optionally sounds an alarm or triggers a warning.",
-        "exampleSentence": "Smoke detectors are mandatory in public buildings.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "dɪtɛktə(ɹ)",
-        "etymology": "Borrowed from Latin dētēctor. Equals detect + -or (agent noun forming suffix).",
-        "distractors": [
-            "detecter",
-            "dettector",
-            "detecctor"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dominion",
-        "definition": "Power or the use of power; sovereignty over something; stewardship, supremacy.",
-        "exampleSentence": "The dominion was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dəmɪnjən",
-        "etymology": "From Middle English dominion, from Middle French dominion, from Latin dominium (“lordship, right of ownership”), from dominus (“lord”), from domus (“house”). See demain, demesne, domain, dominium.",
-        "distractors": [
-            "domminion",
-            "dominnion",
-            "daminion"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "duration",
-        "definition": "An amount of time or a particular time interval.",
-        "exampleSentence": "Rationing will last at least for the duration.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "dəɹeɪʃn̩",
-        "etymology": "From Middle English duracioun, from late Old French duracion, from Medieval Latin dūrātiō.",
-        "distractors": [
-            "durasion",
-            "durration",
-            "durattion"
-        ],
-        "theme": "time"
-    },
-    {
-        "word": "equation",
-        "definition": "The act or process of equating two or more things, or the state of those things being equal (that is, identical).",
-        "exampleSentence": "We need to bring the balance of power into equation.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɪkweɪʒən",
-        "etymology": "From Old French, from Latin aequātiō (“an equalizing”). Morphologically equate + -ion",
-        "distractors": [
-            "equasion",
-            "eqquation",
-            "equattion"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "fraction",
-        "definition": "A part of a whole, especially a comparatively small part.",
-        "exampleSentence": "Gasoline prices show the mill as a fraction, for example $3.59+⁹⁄₁₀.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɹækʃən",
-        "etymology": "Middle English fraccioun English fraction From Middle English fraccioun (“a breaking”), from Anglo-Norman, Old French fraccion, from Medieval Latin fractio (“a fragment, portion”), from earlier Latin fractio (“a breaking, a breaking into pieces”), from fractus, past participle of frangere (“to break",
-        "distractors": [
-            "fracsion",
-            "fracction",
-            "frection"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "fragment",
-        "definition": "A part broken off; a small, detached portion; an imperfect part, either physically or not.",
-        "exampleSentence": "The fragment was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɹæɡmənt",
-        "etymology": "From Late Middle English fragment, from Latin fragmentum (“a fragment, remnant”), from frangō (“to break”) + -mentum.",
-        "distractors": [
-            "fragmant",
-            "fraggment",
-            "fragmennt"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "friction",
-        "definition": "The rubbing of one object or surface against another.",
-        "exampleSentence": "The frictions should at first be very gentle, and performed with a view to restore heat, and not to force the blood towards the heart, which in drowned persons is already too much distended with it.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɹɪkʃən̩",
-        "etymology": "From Middle French friction and directly from Latin frictionem, nom. frictio (“a rubbing, rubbing down”).",
-        "distractors": [
-            "fricsion",
-            "fricction",
-            "fraction"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "frontier",
-        "definition": "The part of a country which borders or faces another country or unsettled region.",
-        "exampleSentence": "The frontier was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɹʌntɪɹ",
-        "etymology": "From Middle English frounter, from Old French fronter (whence Modern French frontière), from front.",
-        "distractors": [
-            "frontior",
-            "frontiar",
-            "fronntier"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "garrison",
-        "definition": "A permanent military post.",
-        "exampleSentence": "“I came down like a wolf on the fold, didn’t I ? Why didn’t I telephone ? Strategy, my dear boy, strategy. This is a surprise attack, and I’d no wish that the garrison, forewarned, should escape. …”.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "ɡæɹɪsən",
-        "etymology": "From Middle English garisoun, garysoun, from Old French garison, guarison, from guarir + -ison, ultimately of Germanic origin; thus a doublet of warison. Compare guard, ward; the modern meaning is influenced by (now obsolete) garnison.",
-        "distractors": [
-            "garison",
-            "garrisson",
-            "gerrison"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "goodwill",
-        "definition": "A favorably disposed attitude toward someone or something.",
-        "exampleSentence": "Buy from goodwills, garage sales, friends, and neighbors. Choose beautiful, functional, durable items made by craftspeople.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡʊdwɪl",
-        "etymology": "From Middle English *goodwille, good wille (“goodwill”), perhaps from Old English *gōdwille (“goodwill”); compare Old English gōdwillende (“well-pleased”); also Scots guidwilly, guidwillie (“displaying goodwill”), equivalent to good + will.",
-        "distractors": [
-            "godwill",
-            "goodwil",
-            "gooddwill"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "grinding",
-        "definition": "The action of grinding together or crushing into small particles; the sound of this action.",
-        "exampleSentence": "I really hate the grinding to get that 1% chance item.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡɹaɪndɪŋ",
-        "etymology": "Inherited from Middle English gryndynge. By surface analysis, grind + -ing.",
-        "distractors": [
-            "grinnding",
-            "grindinng",
-            "granding"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "guidance",
-        "definition": "The act or process of guiding.",
-        "exampleSentence": "The guidance was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡaɪdəns",
-        "etymology": "From guide + -ance. Displaced native Old English lādtēowdōm.",
-        "distractors": [
-            "guidence",
-            "guiddance",
-            "guidannce"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "handicap",
-        "definition": "Something that prevents, hampers, or hinders.",
-        "exampleSentence": "A handicap in chess often involves removal of the queen's rook.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "hændikæp",
-        "etymology": "From hand-in-cap, in reference to holding the game stakes in a cap.",
-        "distractors": [
-            "hanndicap",
-            "handiccap",
-            "hendicap"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hardship",
-        "definition": "Difficulty or trouble; hard times.",
-        "exampleSentence": "He has survived periods of financial hardship before.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "hɑɹdʃɪp",
-        "etymology": "From Middle English hardshipe, equivalent to hard + -ship.",
-        "distractors": [
-            "harrdship",
-            "herdship",
-            "hirdship"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "hardware",
-        "definition": "Fixtures, equipment, fasteners, tools, and devices used for general-purpose construction and repair of a structure or object. Also such equipment as sold as stock by a store of the same name, e.g. hardware store.",
-        "exampleSentence": "The designers have put their logo on the hardware of this bag here.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "hɑɹdwɛɹ",
-        "etymology": "From Middle English hardware; equivalent to hard + -ware; attested since the mid-15th century.",
-        "distractors": [
-            "harrdware",
-            "hardwarre",
-            "herdware"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "hastings",
-        "definition": "Early fruit or vegetables, especially peas.",
-        "exampleSentence": "The large white and green Hastings are tender , and not to be set till the cold is over , and then not very thick , for they spread much and mount high , and therefore require the help of tall Sticks.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "heɪstɪŋz",
-        "distractors": [
-            "hasstings",
-            "hastinngs",
-            "hestings"
-        ],
-        "theme": "food"
-    },
-    {
-        "word": "ignition",
-        "definition": "The act of igniting.",
-        "exampleSentence": "Put the key in the ignition and turn in right.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɪɡnɪʃən",
-        "etymology": "From French ignition.",
-        "distractors": [
-            "ignision",
-            "iggnition",
-            "ignittion"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "illinois",
-        "definition": "A member of the above-mentioned tribe.",
-        "exampleSentence": "The illinois was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "diphthongs",
-        "pronunciation": "ɪlənɔɪ",
-        "etymology": "From French Illinois, an adaptation of an Algonquian (perhaps Ojibwe) name derived from Miami ilenweewa (“he speaks the regular way”).",
-        "distractors": [
-            "lilinois",
-            "ililnois",
-            "illniois"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "leverage",
-        "definition": "A force compounded by means of a lever rotating around a pivot.",
-        "exampleSentence": "The leverage was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "lɛv(ə)ɹɪd͡ʒ",
-        "etymology": "From lever + -age. The verb likely comes from martial arts/judo usage, where one would \"use an opponent's leverage (i.e. their weight, height, centre of balance, etc.)\" against them in order to defeat them.",
-        "distractors": [
-            "levverage",
-            "leverrage",
-            "leveragge"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "marathon",
-        "definition": "Former name of Snickers (“chocolate bar brand”).",
-        "exampleSentence": "The marathon was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "mæɹəθɑn",
-        "etymology": "From Ancient Greek Μαραθών (Marathṓn). Doublet of marathon.",
-        "distractors": [
-            "amrathon",
-            "mraathon",
-            "maarthon"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "michigan",
-        "definition": "A deke consisting of lifting the puck with the stick and throwing it under the top corner of the goal, while skating behind the net.",
-        "exampleSentence": "The michigan was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mɪʃəɡɪn",
-        "etymology": "Borrowed from Ojibwe mishi-gami / ᒥᔑᑲᒥ (“giant lake”), referring to Lake Michigan.",
-        "distractors": [
-            "imchigan",
-            "mcihigan",
-            "mihcigan"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "minority",
-        "definition": "The state or condition of being smaller, inferior, or subordinate to something or someone else; lesserness.",
-        "exampleSentence": "Most people agreed, but a sizable minority were upset by the decision.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "maɪnoɹɪti",
-        "etymology": "From Late Middle English minoritie, from Middle French minorité, and its source Late Latin minōritās, from Latin minor. Morphologically minor + -ity.",
-        "distractors": [
-            "minoritey",
-            "minnority",
-            "minorrity"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "modeling",
-        "definition": "The art of sculpting models from clay etc. to create a representation of something.",
-        "exampleSentence": "The modeling was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "modeling",
-        "etymology": "From model + -ing.",
-        "distractors": [
-            "omdeling",
-            "mdoeling",
-            "moedling"
-        ],
-        "theme": "earth"
-    },
-    {
-        "word": "monopoly",
-        "definition": "A situation, by legal privilege or other agreement, in which solely one party (company, cartel etc.) exclusively provides a particular product or service, dominating that market and generally exerting powerful control over it.",
-        "exampleSentence": "A land monopoly renders its holder(s) nearly almighty in an agricultural society.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mənɑpəli",
-        "etymology": "From Latin monopōlium, from Ancient Greek μονοπώλιον (monopṓlion, “a right of exclusive sale”), from μόνος (mónos, “sole”) + πωλέω (pōléō, “I barter, sell”). By surface analysis, mono- + -poly.",
-        "distractors": [
-            "monopoley",
-            "monnopoly",
-            "monoppoly"
-        ],
-        "theme": "money"
-    },
-    {
-        "word": "monument",
-        "definition": "A structure built for commemorative or symbolic reasons, or as a memorial; a commemoration.",
-        "exampleSentence": "There is a monument on the town green to the soldiers who died in World War I.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mɑnjʊmənt",
-        "etymology": "From Middle English monument, from Old French monument, from Latin monumentum (“memorial, monument, tomb”), from monēre (“to remind”).",
-        "distractors": [
-            "monumant",
-            "monnument",
-            "monumment"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "mutation",
-        "definition": "Any alteration or change.",
-        "exampleSentence": "The mutation was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mjuteɪʃən",
-        "etymology": "Late 14th century as Middle English mutacioun, from Latin mūtātiō, both directly and via Old French mutacion.",
-        "distractors": [
-            "mutasion",
-            "muttation",
-            "mutattion"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "napoleon",
-        "definition": "The franc germinal: a 20-franc gold coin issued under Napoleon I of France.",
-        "exampleSentence": "Always an eloquent speaker, Polk became known as the Napoleon of the stump.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "nəpoʊliən",
-        "etymology": "Borrowed from French Napoléon (“given name, usually in reference to Napoleon Bonaparte”). In reference to coins, via French napoléon (“(slang) a coin that originally had the appearance of Napoleon's face in the obverse”). In reference to guns and possibly cards, in reference to Napoleon III.",
-        "distractors": [
-            "nappoleon",
-            "napolleon",
-            "nepoleon"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "nobility",
-        "definition": "A noble or privileged social class, historically accompanied by a hereditary title; aristocracy.",
-        "exampleSentence": "The castle was once home to the Scottish nobility.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "noʊbɪlɪti",
-        "etymology": "From Old French nobilité, from Latin nobilitas. Equivalent to noble + -ity.",
-        "distractors": [
-            "nobilitey",
-            "nobbility",
-            "nobillity"
-        ],
-        "theme": "society"
-    },
-    {
-        "word": "parallel",
-        "definition": "One of a set of parallel lines.",
-        "exampleSentence": "The parallel was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "paɹəlɛl",
-        "etymology": "From Middle French parallèle and its etymon Latin parallēlus, parallēlos. The verb is from the noun. By surface analysis, par- + all- + -el.",
-        "distractors": [
-            "parallle",
-            "parallal",
-            "paralel"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "particle",
-        "definition": "A very small piece of matter, a fragment; especially, the smallest possible part of something.",
-        "exampleSentence": "\"That doesn't make a particle of difference\", replied Charlotte. \"Not a particle.\"",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "pɑɹtɪkəl",
-        "etymology": "From Middle French particule, and its source, Latin particula (“small part, particle”), diminutive of pars (“part, piece”).",
-        "distractors": [
-            "particel",
-            "parrticle",
-            "particcle"
-        ],
-        "theme": "quantity"
-    },
-    {
-        "word": "pavement",
-        "definition": "A paved surface; a hard covering on the ground.",
-        "exampleSentence": "The pavement was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "peɪvm(ə)nt",
-        "etymology": "From Middle English pament, from Anglo-Norman pavement and reinforced by Middle French pavement; both from Latin pavīmentum (“paved surface or floor”), from pavīre (“to beat, to ram, to tread down”). Morphologically pave + -ment.",
-        "distractors": [
-            "pavemant",
-            "pavvement",
-            "pavemment"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "pentagon",
-        "definition": "A polygon with five sides and five angles.",
-        "exampleSentence": "Imagine a vast sheet of paper on which straight Lines, Triangles, Squares, Pentagons, Hexagons, and other figures, instead of remaining fixed in their places, move freely about, ….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɛntəɡɑn",
-        "etymology": "From Middle French pentagone, from Late Latin pentagōnum, from Ancient Greek πεντάγωνον (pentágōnon), noun use of the neuter of the adjective πεντάγωνος (pentágōnos, “five-angled”), from πέντε (pénte, “five”) + -γωνος (-gōnos, “angled”). Equivalent to penta- + -gon.",
-        "distractors": [
-            "penntagon",
-            "pentaggon",
-            "pantagon"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "pinpoint",
         "definition": "The point of a pin.",
         "exampleSentence": "What was once an astonishing, one-off discovery in 2005 may prove to be just a pinpoint in a global distribution of animals of which we previously knew nothing.",
@@ -1425,22 +820,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "restless",
-        "definition": "Not allowing or affording rest.",
-        "exampleSentence": "The night before his wedding was a restless one.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹɛstlɪs",
-        "etymology": "From Middle English restles, restelees, from Old English ræstlēas, equivalent to rest + -less.",
-        "distractors": [
-            "restles",
-            "resstless",
-            "rastless"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "retiring",
         "definition": "Introverted, liking privacy and seclusion.",
         "exampleSentence": "I don't really know him well, since he's so shy and retiring.",
@@ -1535,22 +914,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "unworthy",
-        "definition": "Not worthy; lacking value or merit; worthless.",
-        "exampleSentence": "The old house had an unworthy appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "ʌnwɝði",
-        "etymology": "From Middle English unworthy, equivalent to un- + worthy.",
-        "distractors": [
-            "nuworthy",
-            "uwnorthy",
-            "unowrthy"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "volcanic",
         "definition": "Of or pertaining to a volcano or volcanoes.",
         "exampleSentence": "Jo rose indignified, Vanessa following in her volcanic wake.",
@@ -1579,22 +942,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "likewize",
             "likkewise",
             "likewwise"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "severely",
-        "definition": "In a severe manner.",
-        "exampleSentence": "After the first day they left her severely alone, their plea to their husbands, her uncompromising independence.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "severely",
-        "etymology": "From severe + -ly.",
-        "distractors": [
-            "severeley",
-            "sevverely",
-            "severrely"
         ],
         "theme": "everyday"
     },
@@ -1804,22 +1151,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "sherlock",
-        "definition": "To deduce.",
-        "exampleSentence": "The thing software developers fear most is being \"sherlocked\".",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "ʃɜɹlɒk",
-        "etymology": "Supposedly from an Old English scir-locc (“bright-lock”). One of a group of surnames originally denoting hair colour, parallel to Blacklock, Harlock (Old English har (“grey”)), Silverlock. In the sense of “a detective”, from Sherlock Holmes.",
-        "distractors": [
-            "sherlok",
-            "sherrlock",
-            "sherlocck"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "tossable",
         "definition": "Suitable for being tossed or thrown.",
         "exampleSentence": "But both those cars are nippy, fun, willing, cinched-down, pretty tossable little cars.",
@@ -1832,22 +1163,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "tossible",
             "tossabel",
             "tosable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "bushment",
-        "definition": "An ambush.",
-        "exampleSentence": "The first day of August a bushement of Frenchemen came to the cawsey but a myle and halfe out of Caleys, where they brenned howses, toke many men prisonars, droffe away horses ….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "bushment",
-        "etymology": "Aphetic form of abushment, ambushment.",
-        "distractors": [
-            "bushmant",
-            "busshment",
-            "bushmennt"
         ],
         "theme": "everyday"
     },
@@ -2826,22 +2141,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "pointless",
-        "definition": "Having no point or sharp tip; terminating squarely or in a rounded end.",
-        "exampleSentence": "The sequel to the film was even more pointless than the original.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "diphthongs",
-        "pronunciation": "pɔɪntləs",
-        "etymology": "From Middle English pointles, poynteles, poyntlees. By surface analysis, point + -less.",
-        "distractors": [
-            "pointles",
-            "poinntless",
-            "poyntless"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "poisonous",
         "definition": "Containing sufficient poison to be dangerous to touch or ingest.",
         "exampleSentence": "These antivenins make living near poisonous spiders much safer.",
@@ -2906,22 +2205,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "reluctant",
-        "definition": "Not wanting to take some action; unwilling to do something.",
-        "exampleSentence": "She was reluctant to lend him the money.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹɪlʌktənt",
-        "etymology": "Learned borrowing from Latin reluctāns, present participle of reluctor (“to struggle against, oppose, resist”), from re- (“back”) + luctor (“to struggle”).",
-        "distractors": [
-            "reluctent",
-            "relluctant",
-            "relucctant"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "repulsive",
         "definition": "Tending to rouse aversion or to repulse; disgusting.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully repulsive.",
@@ -2981,22 +2264,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "worrldwide",
             "worldwidde",
             "warldwide"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "hereafter",
-        "definition": "From now on.",
-        "exampleSentence": "She should have died hereafter; / There would have been a time for such a word.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "hɪɹæftɚ",
-        "etymology": "From Old English hēræfter (“in the aftertime; later on”). By surface analysis, here + after.",
-        "distractors": [
-            "hereaftor",
-            "hereaftar",
-            "herreafter"
         ],
         "theme": "everyday"
     },
@@ -3080,22 +2347,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "punchless",
-        "definition": "Without punches.",
-        "exampleSentence": "The Knicks were punchless early, falling behind by 30-19 after the first quarter.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "punchless",
-        "etymology": "From punch + -less.",
-        "distractors": [
-            "punchles",
-            "punnchless",
-            "panchless"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "undermeal",
         "definition": "An afternoon meal or snack.",
         "exampleSentence": "In a narrower limit than the forty years' undermeal of the seven sleepers.",
@@ -3124,22 +2375,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "pitchible",
             "pitchabel",
             "pittchable"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "smackless",
-        "definition": "Lacking smack.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully smackless.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "smackless",
-        "etymology": "From smack + -less. Compare Middle English smakkeles, smechles (“savourless; lacking appeal or gusto”), West Frisian smakeleas (“tasteless”), Dutch smakeloos, smaakloos (“tasteless”), German geschmacklos (“tasteless”), Danish smagløs (“tasteless”), Swedish smaklös (“tasteless”), Icelandic smekklaus",
-        "distractors": [
-            "smackles",
-            "smacckless",
-            "smeckless"
         ],
         "theme": "everyday"
     },
@@ -3671,38 +2906,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "unconscious",
-        "definition": "Not awake; having no awareness (usually as the result of a head injury).",
-        "exampleSentence": "My sudden fright was an unconscious response.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ʌnkɑnʃəs",
-        "etymology": "From un- + conscious.",
-        "distractors": [
-            "unconscous",
-            "unconscius",
-            "unconsceous"
-        ],
-        "theme": "health"
-    },
-    {
-        "word": "unfortunate",
-        "definition": "Not favored by fortune.",
-        "exampleSentence": "Thus ended the life of one of the most unfortunate of small railway concerns.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "ʌnfɔɹt͡ʃənɪt",
-        "etymology": "From un- + fortunate, doublet of infortunate.",
-        "distractors": [
-            "unnfortunate",
-            "unforrtunate",
-            "unfortunnate"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "necessarily",
         "definition": "Inevitably; of necessity.",
         "exampleSentence": "But clever cities will not necessarily be better ones.",
@@ -3765,22 +2968,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "missingnes"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "subjectless",
-        "definition": "Lacking a subject (citizen).",
-        "exampleSentence": "The subjects without King can do nothing; the subjectless King can do something.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "subjectless",
-        "etymology": "From subject + -less.",
-        "distractors": [
-            "subjectles",
-            "subbjectless",
-            "subjecctless"
-        ],
-        "theme": "people"
     },
     {
         "word": "suspectless",
@@ -3847,22 +3034,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "somewhereness",
-        "definition": "The state or quality of being in, occurring in, or belonging to a specific place.",
-        "exampleSentence": "Comparing them is an ideal lesson in California wine somewhereness.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "somewhereness",
-        "etymology": "From somewhere + -ness.",
-        "distractors": [
-            "somewhereniss",
-            "somewherenes",
-            "sommewhereness"
-        ],
-        "theme": "society"
-    },
-    {
         "word": "bel",
         "definition": "A measure of relative power, defined as log₁₀(P ₁/P ₂), where P₁ and P₂ are the measured and reference power respectively.",
         "exampleSentence": "My teacher explained what a bel is during our lesson.",
@@ -3877,22 +3048,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "bbel"
         ],
         "theme": "people"
-    },
-    {
-        "word": "dag",
-        "definition": "Ellipsis of Dagwood sandwich.",
-        "exampleSentence": "My teacher explained what a dag is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dag",
-        "etymology": "Clipping of Dagwood.",
-        "distractors": [
-            "adg",
-            "dga",
-            "ddag"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "doe",
@@ -4420,38 +3575,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "aide",
-        "definition": "An assistant.",
-        "exampleSentence": "Weiner and his aides dismissed such talk as idle political insiderism ….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "eɪd",
-        "etymology": "Borrowed from French aide (\"aid; assistant\", as in aide-de-camp (“field assistant”)). More at aid.",
-        "distractors": [
-            "aidde",
-            "aade",
-            "aede"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "arab",
-        "definition": "Billion (sense 1); 1,000,000,000; or with Indian digit grouping, 1,00,00,00,000.",
-        "exampleSentence": "The book had an entire chapter about the arab.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "arab",
-        "etymology": "Borrowed from Hindi अरब (arab).",
-        "distractors": [
-            "raab",
-            "aarb",
-            "arba"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "atom",
         "definition": "The smallest possible amount of matter which still retains its identity as a chemical element, now known to consist of a nucleus surrounded by electrons.",
         "exampleSentence": "In a Venn diagram, an atom is depicted as an area circumscribed by lines but not cut by any line.",
@@ -4466,22 +3589,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "atem"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "bach",
-        "definition": "A bachelor.",
-        "exampleSentence": "Even before he began his chores he sunbathed naked against the east wall of the bach for half an hour.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "bæt͡ʃ",
-        "etymology": "Abbreviation of bachelor (or, in later senses, of bachelor pad).",
-        "distractors": [
-            "bacch",
-            "batch",
-            "bech"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "bash",
@@ -4963,7 +4070,7 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "lama",
-        "definition": "Lamé.",
+        "definition": "Lamé (fabric with silver or gold threads woven in).",
         "exampleSentence": "The book had an entire chapter about the lama.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -5742,22 +4849,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
     {
-        "word": "mega",
-        "definition": "Very large.",
-        "exampleSentence": "We had a mega time until Peter fell in the fish pond and cut his leg.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mɛɡə",
-        "etymology": "From the prefix mega-, from Ancient Greek μέγας (mégas, “great, large, mighty”).",
-        "distractors": [
-            "megga",
-            "maga",
-            "miga"
-        ],
-        "theme": "quantity"
-    },
-    {
         "word": "yuck",
         "definition": "Something disgusting.",
         "exampleSentence": "The book had an entire chapter about the yuck.",
@@ -5788,22 +4879,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "keki"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "chai",
-        "definition": "Ellipsis of masala chai, a beverage made with black teas, steamed milk and sweet spices, based loosely on Indian recipes.",
-        "exampleSentence": "We were drinking some chai — the ashram version — watered down, boring, no spices, lots of water, just a smidgen of tea and even less milk.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "t͡ʃaɪ",
-        "etymology": "From Hindustani चाय / چائے (cāy, “tea”), from Classical Persian چَای (čāy) (and Turkish çay, and cognates) from Sinitic 茶 (chá). Doublet of cha and tea; see that page for extended history.",
-        "distractors": [
-            "chay",
-            "chei",
-            "chii"
-        ],
-        "theme": "food"
     },
     {
         "word": "nana",
@@ -5934,22 +5009,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "paco",
-        "definition": "An alpaca.",
-        "exampleSentence": "Mr. Ratcliffe has sometimes found them to contain arsenic in an oxidized state, combined with ferric oxide, and once he met with a paco ore mainly composed of antimony ochre.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "pɑːkəʊ",
-        "etymology": "From Spanish paco.",
-        "distractors": [
-            "pacco",
-            "peco",
-            "pico"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "nets",
         "definition": "A training session before playing a cricket match for both bowlers and batsmen or even backups.",
         "exampleSentence": "The book had an entire chapter about the nets.",
@@ -6010,22 +5069,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "agnig"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "agony",
-        "definition": "Extreme pain.",
-        "exampleSentence": "He wrote the word agony on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "æɡəni",
-        "etymology": "14th century, via Old French and Latin from Ancient Greek ἀγωνία (agōnía, “emulation, competition, struggle”), from ἀγών (agṓn, “contest”). Specifically of the struggle that precedes death (mortal agony) from the 1540s. The sense of \"extreme pain\" from c. 1600.",
-        "distractors": [
-            "agoney",
-            "aggony",
-            "agonny"
-        ],
-        "theme": "health"
     },
     {
         "word": "alpha",
@@ -6090,21 +5133,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "blesh"
         ],
         "theme": "feelings"
-    },
-    {
-        "word": "brady",
-        "definition": "Bradycardia.",
-        "exampleSentence": "He wrote the word brady on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "brady",
-        "distractors": [
-            "rbady",
-            "bardy",
-            "brday"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "brawl",
@@ -6329,22 +5357,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "food"
     },
     {
-        "word": "disco",
-        "definition": "Clipping of discotheque (“nightclub for dancing”).",
-        "exampleSentence": "Burn down the disco / Hang the blessed DJ / Because the music that they constantly play / It says nothing to me about my life.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɪskoʊ",
-        "etymology": "From a shortening of discotheque, from French discothèque.",
-        "distractors": [
-            "dissco",
-            "dasco",
-            "desco"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "dixie",
         "definition": "A large iron pot, used in the army.",
         "exampleSentence": "And what those ‘dixies’ of hot tea signified no one knows who wasn't there to wait for them.",
@@ -6375,21 +5387,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "danor"
         ],
         "theme": "people"
-    },
-    {
-        "word": "doris",
-        "definition": "A sea slug.",
-        "exampleSentence": "He wrote the word doris on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "doris",
-        "distractors": [
-            "odris",
-            "drois",
-            "doirs"
-        ],
-        "theme": "water"
     },
     {
         "word": "dough",
@@ -6632,6 +5629,22 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
+        "word": "lefty",
+        "definition": "One who is left-handed.",
+        "exampleSentence": "I'll bet my lefty he won't show up for work today.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "lɛfti",
+        "etymology": "From left + -y (nominal suffix).",
+        "distractors": [
+            "leftey",
+            "leffty",
+            "lafty"
+        ],
+        "theme": "everyday"
+    },
+    {
         "word": "mango",
         "definition": "A tropical Asian fruit tree, Mangifera indica.",
         "exampleSentence": "He wrote the word mango on the board for everyone to see.",
@@ -6693,22 +5706,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "mixim"
         ],
         "theme": "society"
-    },
-    {
-        "word": "medic",
-        "definition": "A physician.",
-        "exampleSentence": "He wrote the word medic on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mɛdɪk",
-        "etymology": "Borrowed from Latin medicus m (“of or belonging to healing, curative, medical; as a noun, medicus, masculine, a physician, doctor, surgeon”), Late Latin medica f (“a female physician, midwife”), from mederi (“to heal”).",
-        "distractors": [
-            "emdic",
-            "mdeic",
-            "meidc"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "melon",
@@ -6899,22 +5896,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "padal"
         ],
         "theme": "body"
-    },
-    {
-        "word": "piles",
-        "definition": "Haemorrhoids.",
-        "exampleSentence": "Many women get piles when pregnant.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "paɪlz",
-        "etymology": "From Latin pila (“ball”).",
-        "distractors": [
-            "pilles",
-            "pales",
-            "peles"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "prank",
@@ -7490,6 +6471,22 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
+        "word": "grasp",
+        "definition": "To grip; to take hold, particularly with the hand.",
+        "exampleSentence": "I have never been able to grasp the concept of infinity.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɡɹæsp",
+        "etymology": "From Middle English graspen, grapsen, craspen (“to grope; feel around”), from Old English *grǣpsian, from Proto-West Germanic *graipisōn, from Proto-Germanic *graipisōną, from Proto-Indo-European *gʰrebʰ- (“to take, seize, rake”), the same ultimate source as grab.",
+        "distractors": [
+            "grassp",
+            "gresp",
+            "grisp"
+        ],
+        "theme": "body"
+    },
+    {
         "word": "laden",
         "definition": "To load or charge.",
         "exampleSentence": "The grass is smoothly cut; the trees are carefully pruned; the flowers, ladening the dreamy air with their perfume, are arranged in studied groups of exquisitely blended colors.",
@@ -7519,22 +6516,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "maurn"
         ],
         "theme": "feelings"
-    },
-    {
-        "word": "renew",
-        "definition": "To make (something) new again; to restore to freshness or original condition.",
-        "exampleSentence": "It took a while to learn how to renew.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɹənjuː",
-        "etymology": "From Middle English renewen, an alteration (possibly on analogy with Latin renovāre) of earlier anewen (“to renew”), from Old English nīewian (“to restore; renovate; renew”), equivalent to re- + new.",
-        "distractors": [
-            "rennew",
-            "ranew",
-            "rinew"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "rival",
@@ -7807,38 +6788,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "manly",
-        "definition": "Having the characteristics of a man.",
-        "exampleSentence": "Let's briefly put on manly readiness.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mænli",
-        "etymology": "From Middle English manli, manlich, manly, from Old English *manlīċ (suggested by adverb manlīċe (“in a way befitting a person; nobly, stately”)), from Proto-West Germanic *mannlīk, from Proto-Germanic *mannlīkaz, equivalent to man + -ly (adjectival suffix).",
-        "distractors": [
-            "manley",
-            "mannly",
-            "menly"
-        ],
-        "theme": "people"
-    },
-    {
-        "word": "needy",
-        "definition": "In need; poor.",
-        "exampleSentence": "Needy people want to give too, but have few material goods to offer.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "niːdi",
-        "etymology": "From Middle English nedy, nedi (“necessitous”), from Old English nēdiġ, *nīediġ (\"of need, obligated, compelled\"; found in the derivative nīediġnes (“obligation”)), from Proto-Germanic *naudigaz (“of need, forced, compelled”), equivalent to need + -y.",
-        "distractors": [
-            "needey",
-            "nedy",
-            "needdy"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "rural",
         "definition": "Relating to the countryside or to agriculture.",
         "exampleSentence": "Nothing could be more business-like than the construction of the stout dams, and nothing more gently rural than the limpid lakes, with the grand old forest trees marshalled round their margins … .",
@@ -7903,38 +6852,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "oddly",
-        "definition": "In a peculiar manner; strangely; unusually.",
-        "exampleSentence": "For December, it was oddly warm.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɑdli",
-        "etymology": "From Middle English oddely, odly, equivalent to odd + -ly.",
-        "distractors": [
-            "oddley",
-            "odly",
-            "oddyl"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "ivory",
-        "definition": "Made of ivory.",
-        "exampleSentence": "The walls and ceiling of this drawing-room in Montague Square are painted ivory.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "aɪv(ə)ɹi",
-        "etymology": "From Middle English yvory, ivorie, from Anglo-Norman ivurie, from Latin eboreus (“in or of ivory”) adjective of ebur (“ivory”) (genitive eboris), from Demotic Egyptian yb (“ivory, Elephantine”) (compare Coptic ⲓⲏⲃ (iēb, “Elephantine”)), from Egyptian ꜣbw (“elephant, ivory, Elephantine”), from Proto-",
-        "distractors": [
-            "ivorey",
-            "ivery",
-            "ivvory"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "known",
         "definition": "Any fact or situation which is known or familiar.",
         "exampleSentence": "You have to tell the knowns from the unknowns.",
@@ -7983,22 +6900,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "havoc",
-        "definition": "To pillage.",
-        "exampleSentence": "To tear and havoc more than she can eat.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "hævək",
-        "etymology": "From Middle English havok, havyk, from Old French havok in the phrase crier havok (“cry havoc”) a signal to soldiers to seize plunder, from Old French crier (“cry out, shout”) + havot (“pillaging, looting”), of obscure origin.",
-        "distractors": [
-            "havvoc",
-            "hevoc",
-            "hivoc"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "cyber",
         "definition": "Everything having to do with the Internet considered collectively.",
         "exampleSentence": "He wrote the word cyber on the board for everyone to see.",
@@ -8015,6 +6916,22 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "communication"
     },
     {
+        "word": "dolly",
+        "definition": "Pretty; attractive.",
+        "exampleSentence": "She minces past the brandy latch / to vada dolly dish for trade, silly / with oomph and taste to park.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɑli",
+        "etymology": "Disputed. Most scholars derive the term from doll + -y, as Etymology 1, above. Linguist Ian Hancock, however, suggests derivation from Italian dolce (“sweet”).",
+        "distractors": [
+            "dolley",
+            "doly",
+            "dally"
+        ],
+        "theme": "everyday"
+    },
+    {
         "word": "scoot",
         "definition": "A sideways shuffling or sliding motion.",
         "exampleSentence": "Instinctively, he lifted the chair a fraction, and gave it a little scoot away from her.",
@@ -8029,22 +6946,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "sceot"
         ],
         "theme": "actions"
-    },
-    {
-        "word": "nigel",
-        "definition": "An Englishman.",
-        "exampleSentence": "He's such a Nigel, hanging around in the library all day by himself.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "naɪd͡ʒəl",
-        "etymology": "English form of Latin Nigellus, from nigellus (“slightly black”), diminutive of niger (“(shining) black”), particularly used in the Middle Ages to Latinize Norman Néel and Irish Neil.",
-        "distractors": [
-            "nigle",
-            "nigal",
-            "niggel"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "bogus",
@@ -8200,21 +7101,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "addios",
             "adaos",
             "adeos"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "skins",
-        "definition": "The drums.",
-        "exampleSentence": "Two women sat whacking the skins with long whippy sticks, whining a song.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "skɪnz",
-        "distractors": [
-            "skinns",
-            "skans",
-            "skens"
         ],
         "theme": "everyday"
     },
@@ -8585,21 +7471,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "boiler",
-        "definition": "Ellipsis of Brompton boiler.",
-        "exampleSentence": "Our Patent Museum now forms a portion of \"The Boilers,\" but, although in them, it is not of them.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "boiler",
-        "distractors": [
-            "boilor",
-            "boilar",
-            "boiller"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "bonnet",
         "definition": "A type of hat, once worn by women or children, held in place by ribbons tied under the chin.",
         "exampleSentence": "People were reluctant to slam a bonnet shut in those days. One just did not slam bonnets and doors.",
@@ -8789,22 +7660,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "cesmos"
         ],
         "theme": "plants"
-    },
-    {
-        "word": "covert",
-        "definition": "A covering.",
-        "exampleSentence": "Can you use the word covert in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "koʊvɚt",
-        "etymology": "From Middle English covert, from Old French covert, past participle of covrir (“to cover”) (corresponding to Latin coopertus); cognate to cover. Not closely related to overt, despite what the most common pronunciation would suggest.",
-        "distractors": [
-            "ocvert",
-            "cvoert",
-            "coevrt"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "creeps",
@@ -9174,22 +8029,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "plants"
     },
     {
-        "word": "gender",
-        "definition": "Class; kind.",
-        "exampleSentence": "The gene is activated in both genders.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "d͡ʒɛndɚ",
-        "etymology": "From Middle English gendre, borrowed from Old French gendre, borrowed from Latin genere (“type, kind”). Doublet of genre and genus. The verb developed after the noun.",
-        "distractors": [
-            "gendor",
-            "gendar",
-            "gennder"
-        ],
-        "theme": "character"
-    },
-    {
         "word": "geneva",
         "definition": "Gin, especially jenever.",
         "exampleSentence": "Can you use the word geneva in a sentence?",
@@ -9348,22 +8187,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "jangle"
         ],
         "theme": "sensory"
-    },
-    {
-        "word": "joshua",
-        "definition": "A Joshua tree.",
-        "exampleSentence": "Can you use the word joshua in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "d͡ʒɑʃ(j)uə",
-        "etymology": "From Biblical Hebrew יְהוֹשֻׁעַ (Yehoshúa'), perhaps from הוֹשֵׁעַ (Hoshéa') with addition of יהוה (YHWH, “Yahweh”), thus meaning \"Yahweh is salvation\". See הוֹשִׁיעַ (hoshía', “to save”).",
-        "distractors": [
-            "ojshua",
-            "jsohua",
-            "johsua"
-        ],
-        "theme": "plants"
     },
     {
         "word": "keeper",
@@ -9697,22 +8520,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "ordaal"
         ],
         "theme": "water"
-    },
-    {
-        "word": "panama",
-        "definition": "A Panama hat.",
-        "exampleSentence": "Can you use the word panama in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "pænəmɑː",
-        "etymology": "Borrowed from Spanish Panamá, of unknown origin. Possibly from a Chibchan language such as Kuna, or another indigenous language of the region (such as Cueva, which is barely attested and is now extinct).",
-        "distractors": [
-            "apnama",
-            "pnaama",
-            "paanma"
-        ],
-        "theme": "clothing"
     },
     {
         "word": "parish",
@@ -10065,21 +8872,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "language"
     },
     {
-        "word": "shades",
-        "definition": "Sunglasses.",
-        "exampleSentence": "His shades are by some famous designer.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ʃeɪdz",
-        "distractors": [
-            "shaddes",
-            "shedes",
-            "shides"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "shorts",
         "definition": "Pants or trousers worn for sports or in warmer weather that do not go lower than the knees.",
         "exampleSentence": "Jessica hated covering her legs, so she usually wore shorts.",
@@ -10253,22 +9045,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "virmin"
         ],
         "theme": "quantity"
-    },
-    {
-        "word": "warner",
-        "definition": "One who warns.",
-        "exampleSentence": "And We had certainly sent Noah to his people, saying, \"Indeed, I am to you a clear warner\"",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "wɔː(ɹ)nə(ɹ)",
-        "etymology": "From warn + -er.",
-        "distractors": [
-            "warnor",
-            "warnar",
-            "warrner"
-        ],
-        "theme": "people"
     },
     {
         "word": "weaver",
@@ -10702,6 +9478,22 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
+        "word": "covert",
+        "definition": "Secret, surreptitious, concealed.",
+        "exampleSentence": "Whether of open war or covert guile.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "koʊvɚt",
+        "etymology": "From Middle English covert, from Old French covert, past participle of covrir (“to cover”) (corresponding to Latin coopertus); cognate to cover. Not closely related to overt, despite what the most common pronunciation would suggest.",
+        "distractors": [
+            "covvert",
+            "coverrt",
+            "cavert"
+        ],
+        "theme": "everyday"
+    },
+    {
         "word": "cranky",
         "definition": "Not in good working condition; defective, faulty.",
         "exampleSentence": "He got home from a long day at work tired and cranky.",
@@ -11019,38 +9811,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "travel"
     },
     {
-        "word": "calmly",
-        "definition": "In a calm manner; coolly.",
-        "exampleSentence": "She ran to the door and there beheld the ragged street urchin calmly playing his organ.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "kɑː(ɹ)mli",
-        "etymology": "From calm + -ly.",
-        "distractors": [
-            "calmley",
-            "callmly",
-            "celmly"
-        ],
-        "theme": "character"
-    },
-    {
-        "word": "humbly",
-        "definition": "In a humble manner.",
-        "exampleSentence": "The greatest difficulty is to do great things humbly.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "hʌmbli",
-        "etymology": "From Middle English humbely, humbliche, equivalent to humble + -ly. Displaced Old English ēaþmōdlīċe.",
-        "distractors": [
-            "humbley",
-            "hummbly",
-            "hambly"
-        ],
-        "theme": "character"
-    },
-    {
         "word": "scarce",
         "definition": "Scarcely, only just.",
         "exampleSentence": "Well, it's scarce the replacement then, is it?",
@@ -11067,21 +9827,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "fitted",
-        "definition": "A fitted cap.",
-        "exampleSentence": "Can you use the word fitted in a sentence?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "fɪtɪd",
-        "distractors": [
-            "fited",
-            "fatted",
-            "fetted"
-        ],
-        "theme": "clothing"
-    },
-    {
         "word": "rewind",
         "definition": "The act of rewinding.",
         "exampleSentence": "I meant to pause the picture, but hit the rewind by mistake.",
@@ -11096,6 +9841,22 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "rawind"
         ],
         "theme": "everyday"
+    },
+    {
+        "word": "gender",
+        "definition": "To assign a gender to (a person); to perceive as having a gender; to address using terms (pronouns, nouns, adjectives...) that express a certain gender.",
+        "exampleSentence": "In an interview, he even noted that he \"dressed, acted and thought like a man\" for years, but his coworkers continued to gender him as female (Shaver 1995, 2).",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "d͡ʒɛndɚ",
+        "etymology": "From Middle English gendre, borrowed from Old French gendre, borrowed from Latin genere (“type, kind”). Doublet of genre and genus. The verb developed after the noun.",
+        "distractors": [
+            "gendor",
+            "gendar",
+            "gennder"
+        ],
+        "theme": "people"
     },
     {
         "word": "vulcan",
@@ -11381,21 +10142,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "ponies",
-        "definition": "Horsepower.",
-        "exampleSentence": "My husband is forever throwing away money on the ponies.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ponies",
-        "distractors": [
-            "ponnies",
-            "poneis",
-            "panies"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "raving",
         "definition": "Talking wildly.",
         "exampleSentence": "She was not considered a raving beauty.",
@@ -11411,52 +10157,20 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rechew",
-        "definition": "To chew again.",
-        "exampleSentence": "She would rechew every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "rechew",
-        "etymology": "From re- + chew.",
-        "distractors": [
-            "recchew",
-            "retchew",
-            "rachew"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dudess",
-        "definition": "A cowgirl.",
-        "exampleSentence": "Can you use the word dudess in a sentence?",
+        "word": "reflow",
+        "definition": "A flowing back again.",
+        "exampleSentence": "Can you use the word reflow in a sentence?",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "vowel-teams",
-        "pronunciation": "d(j)uːdɛs",
-        "etymology": "From dude + -ess.",
+        "pronunciation": "reflow",
+        "etymology": "From re- + flow.",
         "distractors": [
-            "dudes",
-            "duddess",
-            "dadess"
+            "refflow",
+            "reflou",
+            "raflow"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "egoity",
-        "definition": "Personality.",
-        "exampleSentence": "This innocent imposture … by being mentioned in one of my papers, effectually recovered my egoity out of the hands of some gentlemen who endeavoured to wrest it from me.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "diphthongs",
-        "pronunciation": "egoity",
-        "etymology": "From ego + -ity.",
-        "distractors": [
-            "egoitey",
-            "eggoity",
-            "egoitty"
-        ],
-        "theme": "character"
     },
     {
         "word": "wolfly",
@@ -11553,22 +10267,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "shyfal"
         ],
         "theme": "feelings"
-    },
-    {
-        "word": "unwoke",
-        "definition": "Not having been woken.",
-        "exampleSentence": "Today’s culture war is being waged not between religion and secularism but between groups that the Catholic writer Matthew Schmitz has described as “the woke and the unwoke.”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "unwoke",
-        "etymology": "From un- + woke.",
-        "distractors": [
-            "unnwoke",
-            "unwokke",
-            "unwake"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "outsum",
@@ -11681,22 +10379,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rejerk",
-        "definition": "To jerk or haul again.",
-        "exampleSentence": "She would rejerk every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "rejerk",
-        "etymology": "From re- + jerk.",
-        "distractors": [
-            "rejjerk",
-            "rejerrk",
-            "rajerk"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "deeder",
         "definition": "One who establishes or executes a legal deed.",
         "exampleSentence": "Can you use the word deeder in a sentence?",
@@ -11727,22 +10409,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "oetcap"
         ],
         "theme": "clothing"
-    },
-    {
-        "word": "leafer",
-        "definition": "One who leafs.",
-        "exampleSentence": "… hurried leafers through bright picture books, not readers at all.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "leafer",
-        "etymology": "From leaf + -er.",
-        "distractors": [
-            "leafor",
-            "leafar",
-            "leaffer"
-        ],
-        "theme": "people"
     },
     {
         "word": "rebeam",
@@ -11899,22 +10565,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "bravory"
         ],
         "theme": "character"
-    },
-    {
-        "word": "bullock",
-        "definition": "A young bull.",
-        "exampleSentence": "And he brought the bullock for the sin offering: and Aaron and his sons laid their hands upon the head of the bullock for the sin offering.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "bʊlək",
-        "etymology": "From Middle English bullok, from Old English bulluc, from Proto-West Germanic *bulluk, corresponding to bull + -ock (diminutive suffix). Compare Old Dutch bullok (“bullock”).",
-        "distractors": [
-            "bullok",
-            "bulock",
-            "bullocck"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "caliber",
@@ -12140,22 +10790,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
     {
-        "word": "dickens",
-        "definition": "The devil.",
-        "exampleSentence": "Why the dickens did he do that?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɪkɪnz",
-        "etymology": "Origin: 1590–1600; apparently a fanciful use of the proper name Dicken, diminutive form of Dick.",
-        "distractors": [
-            "dicckens",
-            "dickenns",
-            "dackens"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "dictate",
         "definition": "An order or command.",
         "exampleSentence": "I must obey the dictates of my conscience.",
@@ -12183,22 +10817,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "doubbles",
             "dowbles",
             "daubles"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "dracula",
-        "definition": "Any vampire.",
-        "exampleSentence": "But he would have had to have been over 250 years old! Like a Dracula or something.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "dɹækjʊlə",
-        "etymology": "From the name Vlad III Dracula (also known as Vlad Țepeș (“Vlad the Impaler”)), from the name of his father Vlad II Dracul, who was given the name Dracul by the Order of the Dragon.",
-        "distractors": [
-            "draccula",
-            "draculla",
-            "drecula"
         ],
         "theme": "everyday"
     },
@@ -12616,22 +11234,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "persian",
-        "definition": "An Iranian.",
-        "exampleSentence": "There is of those Persians several lengths.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "pɝʒən",
-        "etymology": "From Middle English Persien, from Middle French persien, from Italian persiano, from Medieval Latin Persiānus, from Latin Persia, from Ancient Greek Περσίς (Persís), from Old Persian 𐎱𐎠𐎼𐎿 (p-a-r-s /⁠Pārsa⁠/, “Persia”) (compare Early Classical Persian پارس (pārs) or modern Iranian Persian فارس (f",
-        "distractors": [
-            "perrsian",
-            "parsian",
-            "pirsian"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "physics",
         "definition": "The branch of science concerned with the study of the properties and interactions of space, time, matter and energy.",
         "exampleSentence": "The physics of car crashes would not let Tom Cruise walk away like that.",
@@ -12646,22 +11248,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "fysics"
         ],
         "theme": "academic"
-    },
-    {
-        "word": "planner",
-        "definition": "One who plans.",
-        "exampleSentence": "Ms. Gunston is a planner for the county.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "plænɚ",
-        "etymology": "From plan + -er.",
-        "distractors": [
-            "plannor",
-            "plannar",
-            "planer"
-        ],
-        "theme": "people"
     },
     {
         "word": "premier",
@@ -12999,22 +11585,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "time"
     },
     {
-        "word": "swimmer",
-        "definition": "One who swims.",
-        "exampleSentence": "The swimmer who is an expert does not exhibit his muscular force by violent movements, but exhibits some power which is invisible and which shows itself in perfect grace and reposefulness.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "swɪmɚ",
-        "etymology": "From Middle English swimmere, equivalent to swim + -er. The dumplings are so called because they are often served in stew.",
-        "distractors": [
-            "swimmor",
-            "swimmar",
-            "swimer"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "symptom",
         "definition": "A perceived change in some function, sensation or appearance of a person that indicates a disease or disorder, such as fever, headache or rash; strictly, a symptom is felt or experienced by the patient, while a sign can be detected by an observer.",
         "exampleSentence": "Swollen breasts, morning sickness, and a missed period are classic symptoms of pregnancy.",
@@ -13238,22 +11808,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
     {
-        "word": "cluster",
-        "definition": "To collect (animals, people, objects, data points, etc) into clusters (noun noun sense 1).",
-        "exampleSentence": "The sea is clustered with islands.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "klʌstɚ",
-        "etymology": "The noun is derived from Middle English cluster (“bunch, cluster, spray; compact body or mass, ball”) [and other forms], from Old English cluster, clyster (“cluster, bunch, branch”), from Proto-Germanic *klas-, *klus- (“to clump, lump together”) (possibly from Proto-Indo-European *gel- (“to ball up;",
-        "distractors": [
-            "clustor",
-            "clustar",
-            "clusster"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "deceive",
         "definition": "To trick or mislead.",
         "exampleSentence": "It feels painful to begin seeing clearly, that you’ve been deceived by the very people and institutions you trusted to guide you.",
@@ -13412,22 +11966,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "abusivve"
         ],
         "theme": "people"
-    },
-    {
-        "word": "amusing",
-        "definition": "Entertaining.",
-        "exampleSentence": "The film has some amusing moments, but it is unlikely to make you laugh out loud.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "əmjuːzɪŋ",
-        "etymology": "By surface analysis, amuse + -ing.",
-        "distractors": [
-            "ammusing",
-            "amussing",
-            "amusinng"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "annoyed",
@@ -13661,22 +12199,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "stylish",
-        "definition": "Having style.",
-        "exampleSentence": "“… Did you ever see her? a smart, stylish girl they say, but not handsome. …”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "staɪlɪʃ",
-        "etymology": "From style + -ish.",
-        "distractors": [
-            "styllish",
-            "stylissh",
-            "stylash"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "unarmed",
         "definition": "Defenceless and lacking weapons.",
         "exampleSentence": "An unarmed jellyfish would never capture prey.",
@@ -13738,38 +12260,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "warldly"
         ],
         "theme": "people"
-    },
-    {
-        "word": "blindly",
-        "definition": "In a blind manner; without sight.",
-        "exampleSentence": "I stumbled blindly through the forest, branches whipping at my face.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "blaɪndli",
-        "etymology": "From Middle English blindly, blyndly, from Old English blindlīċe (“in a blind manner; blindly; rashly”), equivalent to blind + -ly. Cognate with Swedish blindligt (“blindly”), Icelandic blindlega (“blindly”).",
-        "distractors": [
-            "blindley",
-            "blinndly",
-            "blandly"
-        ],
-        "theme": "sensory"
-    },
-    {
-        "word": "largely",
-        "definition": "In a widespread or large manner.",
-        "exampleSentence": "They were largely successful in their efforts.",
-        "partOfSpeech": "adverb",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "lɑɹd͡ʒli",
-        "etymology": "From large + -ly.",
-        "distractors": [
-            "largeley",
-            "larrgely",
-            "largelly"
-        ],
-        "theme": "quantity"
     },
     {
         "word": "morally",
@@ -14008,21 +12498,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "guiding",
-        "definition": "Girl Guiding.",
-        "exampleSentence": "Daisy Gordon Low then established two Girl Guide troops in poor sections of central London. Her belief was growing that guiding could serve many beneficial ends.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡaɪdɪŋ",
-        "distractors": [
-            "guidding",
-            "guidinng",
-            "gaiding"
-        ],
-        "theme": "people"
-    },
-    {
         "word": "pumping",
         "definition": "The act by which something is pumped.",
         "exampleSentence": "Focus on the number of pumpings per day, not the time between pumpings.",
@@ -14053,22 +12528,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rescore",
-        "definition": "To score again; to assign new marks to.",
-        "exampleSentence": "The tests have to be rescored because of glaring mistakes made during grading.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "silent-e",
-        "pronunciation": "rescore",
-        "etymology": "From re- + score.",
-        "distractors": [
-            "resscore",
-            "rescorre",
-            "rascore"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "bigfoot",
         "definition": "To control or manage forcefully; to exercise authority over.",
         "exampleSentence": "Later, Dick Cheney was Bigfooting around the West Wing, looking for heads.",
@@ -14082,22 +12541,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "bagfoot"
         ],
         "theme": "society"
-    },
-    {
-        "word": "mapless",
-        "definition": "Without a map or maps.",
-        "exampleSentence": "According to Mercedes, this is a mapless system, instead using the data from the car's cameras and sensors to plot the road, making this easily scalable to any location.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "mæpləs",
-        "etymology": "From map + -less.",
-        "distractors": [
-            "maples",
-            "mappless",
-            "mepless"
-        ],
-        "theme": "travel"
     },
     {
         "word": "menuing",
@@ -14356,22 +12799,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "aceness",
-        "definition": "Excellence.",
-        "exampleSentence": "Tonight's show scales heights of theatrical aceness.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "eɪsnɛs",
-        "etymology": "From ace + -ness.",
-        "distractors": [
-            "aceniss",
-            "acenes",
-            "acceness"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "dataist",
         "definition": "One who works with data.",
         "exampleSentence": "If the Temeraire represents grounded theory (and other dataists) and at her last berth postmodernism waits, what about hermeneutics and critical theory?",
@@ -14416,22 +12843,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "outtlean",
             "outleen",
             "oatlean"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "eveless",
-        "definition": "Without Eve.",
-        "exampleSentence": "Adam himself bewildered and Eveless outside the garden; a Minotaur howling piteously in a labyrinth of money-worries.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "eveless",
-        "etymology": "From Eve + -less.",
-        "distractors": [
-            "eveles",
-            "evveless",
-            "evelless"
         ],
         "theme": "everyday"
     },
@@ -15309,22 +13720,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "macaroni",
-        "definition": "A macaroon.",
-        "exampleSentence": "Macaroni. It comes from Italy. It is a biscuit made of almonds, eggs, flower, and sugar.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "r-controlled",
-        "pronunciation": "mækəɹoʊni",
-        "etymology": "From French macaron. Doublet of macaron.",
-        "distractors": [
-            "maccaroni",
-            "macarroni",
-            "macaronni"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "magician",
         "definition": "A person who plays with or practices allegedly supernatural magic.",
         "exampleSentence": "The magician was one of our vocabulary words this week.",
@@ -15894,5 +14289,1587 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "shwocase"
         ],
         "theme": "everyday"
+    },
+    {
+        "word": "spectrum",
+        "definition": "A range; a continuous, infinite, one-dimensional set, possibly bounded by extremes.",
+        "exampleSentence": "The spectrum was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "spɛktɹəm",
+        "etymology": "From Latin spectrum (“appearance, image, apparition”), from speciō (“look at, view”). Doublet of specter. See also scope.",
+        "distractors": [
+            "specctrum",
+            "spactrum",
+            "spictrum"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "spoiling",
+        "definition": "Plunder; pillage.",
+        "exampleSentence": "The spoiling was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "diphthongs",
+        "pronunciation": "spoiling",
+        "distractors": [
+            "psoiling",
+            "sopiling",
+            "spioling"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "squirrel",
+        "definition": "Any of the rodents of the family Sciuridae.",
+        "exampleSentence": "He also said that minks, muskrats, foxes, coons, and wild mice were found there, but no squirrels.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "skwɪɹ(ə)l",
+        "etymology": "From Middle English squirel, squyrelle, from Anglo-Norman esquirel and Old French escurel (whence French écureuil), from Vulgar Latin *scūriolus, diminutive of *scūrius, variant of Latin sciūrus, from Ancient Greek σκίουρος (skíouros, “shadow-tail”, from σκιά (skiá, “shadow”) + οὐρά (ourá, “tail”)).",
+        "distractors": [
+            "squirrle",
+            "squirral",
+            "squirel"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "stirring",
+        "definition": "An occasion on which something stirs or is stirred.",
+        "exampleSentence": "The stirring was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "stɝɪŋ",
+        "etymology": "By surface analysis, stir + -ing.",
+        "distractors": [
+            "tsirring",
+            "sitrring",
+            "striring"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stocking",
+        "definition": "A soft garment, usually knit or woven, worn on the foot and lower leg under shoes or other footwear.",
+        "exampleSentence": "The stocking was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɑkɪŋ",
+        "etymology": "From stock (“cover with material”) + -ing. Corruption of old plural -en, i.e. stocken, now singular.",
+        "distractors": [
+            "stoccking",
+            "stockinng",
+            "stacking"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "striking",
+        "definition": "The act by which something strikes or is struck.",
+        "exampleSentence": "The striking was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɹaɪkɪŋ",
+        "distractors": [
+            "tsriking",
+            "srtiking",
+            "stirking"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stuffing",
+        "definition": "The matter used to stuff hollow objects such as pillows and saddles.",
+        "exampleSentence": "The stuffing was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "stʌfɪŋ",
+        "etymology": "By surface analysis, stuff + -ing.",
+        "distractors": [
+            "stufing",
+            "stuffinng",
+            "staffing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "subtitle",
+        "definition": "A heading below or after a title.",
+        "exampleSentence": "The subtitle was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "sʌbtaɪtəl",
+        "etymology": "From sub- + title.",
+        "distractors": [
+            "usbtitle",
+            "sbutitle",
+            "sutbitle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "swearing",
+        "definition": "The act of swearing, or making an oath.",
+        "exampleSentence": "No man is believed a jot the more for all the asseverations, damnings, and swearings he makes.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "swearing",
+        "etymology": "From Middle English sweryng; equivalent to swear + -ing.",
+        "distractors": [
+            "swearring",
+            "swearinng",
+            "sweering"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "syndrome",
+        "definition": "A recognizable pattern of signs, symptoms and/or behaviours, especially of a disease or medical or psychological condition.",
+        "exampleSentence": "The syndrome was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "sɪndɹoʊm",
+        "etymology": "Learned borrowing from New Latin syndrome, from Ancient Greek συνδρομή (sundromḗ, “concurrence of symptoms, concourse”), from σύνδρομος (súndromos, “running together”), from συν- (sun-, “with”) + δρόμος (drómos, “running, course”).",
+        "distractors": [
+            "synndrome",
+            "syndromme",
+            "syndrame"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "thatcher",
+        "definition": "A person who installs thatch as a roofing material.",
+        "exampleSentence": "The thatcher was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "θæt͡ʃɚ",
+        "etymology": "From thatch + -er.",
+        "distractors": [
+            "htatcher",
+            "tahtcher",
+            "thtacher"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "throttle",
+        "definition": "A valve that regulates the supply of fuel-air mixture to an internal combustion engine and thus controls its speed; a similar valve that controls the air supply to an engine.",
+        "exampleSentence": "From the cabin came that horrible song: \"Here's to the feet wot have walked the plank. ⁠Yo ho! for the dead man's throttle.\"",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "θɹɔtl̩",
+        "etymology": "From Middle English *throtel, diminutive of throte (“throat”), equivalent to throat + -le. Compare German Drossel (“throttle”). More at throat.",
+        "distractors": [
+            "throttel",
+            "throtle",
+            "thrattle"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "watering",
+        "definition": "An act of watering, i.e. pouring water on something, or diluting a liquid.",
+        "exampleSentence": "The watering was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "watering",
+        "distractors": [
+            "wattering",
+            "waterring",
+            "waterinng"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "yearbook",
+        "definition": "A reference book, published annually.",
+        "exampleSentence": "The yearbook was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "yearbook",
+        "etymology": "From year + book. Compare Saterland Frisian Jierbouk (“yearbook”), West Frisian jierboek (“yearbook”), Dutch jaarboek (“yearbook”), German Low German Johrbook (“yearbook”), German Jahrbuch (“yearbook”), Swedish årsbok (“yearbook”), Faroese árbók (“annal, record, yearbook”).",
+        "distractors": [
+            "yearbok",
+            "yearrbook",
+            "yeerbook"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "detonate",
+        "definition": "To explode, blow up.",
+        "exampleSentence": "The engineers detonated the dynamite and watched the old building collapse.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "dɛtəneɪt",
+        "etymology": "First attested in 1729; either borrowed from French détoner or directly from Latin dētonātus, perfect passive participle of dētonō (“to thunder down (strongly); (figuratively, of a person) to thunder, speak threateningly, to rage; to stop thundering”) (see -ate (verb-forming suffix)), from dē- (“off",
+        "distractors": [
+            "dettonate",
+            "detonnate",
+            "detonatte"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disclose",
+        "definition": "To open up; unfasten.",
+        "exampleSentence": "The instructions said to disclose gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "dɪskləʊz",
+        "etymology": "From Middle English disclosen, from Middle French desclos, from Old French desclore, itself from Vulgar Latin disclaudere, from Latin dis- + claudere (“to close, shut”) or as a variant of discludo, discludere (cf. disclude). By surface analysis, dis- + close.",
+        "distractors": [
+            "dissclose",
+            "disclosse",
+            "dasclose"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "distract",
+        "definition": "To divert the attention of.",
+        "exampleSentence": "The crowd was distracted by a helicopter hovering over the stadium when the only goal of the game was scored.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɪstɹækt",
+        "etymology": "Borrowed from Latin distractus, from distrahō (“to pull apart”), from dis- + trahō (“to pull”).",
+        "distractors": [
+            "disstract",
+            "distracct",
+            "dastract"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "frequent",
+        "definition": "To visit often.",
+        "exampleSentence": "The instructions said to frequent gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "fɹɪkwɛnt",
+        "etymology": "From Old French frequenter, from Latin frequentare (“to fill, crowd, visit often, do or use often, etc.”), from frequens (“frequent, crowded”).",
+        "distractors": [
+            "frequant",
+            "freqquent",
+            "frequennt"
+        ],
+        "theme": "travel"
+    },
+    {
+        "word": "headline",
+        "definition": "To give a headline to a page or section of a text.",
+        "exampleSentence": "Once again I take typewriter in hand to express my opinion on two very different issues. Good luck in deciding what to headline this letter.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "hɛdlaɪn",
+        "etymology": "From head + line.",
+        "distractors": [
+            "headdline",
+            "headlinne",
+            "heedline"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "perceive",
+        "definition": "To become aware of, through the physical senses, to see; to understand.",
+        "exampleSentence": "John was perceived to be a coward by his comrades.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "pɚsiv",
+        "etymology": "From Middle English perceyven, borrowed from Old French percevoir, perceveir, from Latin percipiō, past participle perceptus (“take hold of, obtain, receive, observe”), from per (“by, through”) + capiō (“to take”); see capable. Compare conceive, deceive, receive.",
+        "distractors": [
+            "percieve",
+            "perrceive",
+            "perceivve"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "reassure",
+        "definition": "To assure anew; to restore confidence to; to free from fear or self-doubt.",
+        "exampleSentence": "The boy's mother reassured him that there was no monster hiding under the bed.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "ɹiəʃʊɹ",
+        "etymology": "From Old French rasseürer (French rassurer), from re- + asseürer; as if re- + assure.",
+        "distractors": [
+            "reasser",
+            "reasure",
+            "reassurre"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "absorbed",
+        "definition": "Fully occupied with one's thoughts; engrossed.",
+        "exampleSentence": "The old house had an absorbed appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "æbsɔɹbd",
+        "etymology": "From absorb + -ed.",
+        "distractors": [
+            "abbsorbed",
+            "absorrbed",
+            "absarbed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "agitated",
+        "definition": "Angry, annoyed, bothered or worked up.",
+        "exampleSentence": "By quarter to six all this had me so awake and agitated that even the Balinese wind chimes that I hung up in the garden to relax me began to sound like Big Ben.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "æd͡ʒɪteɪtɪd",
+        "distractors": [
+            "aggitated",
+            "agittated",
+            "agitatted"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "apparent",
+        "definition": "Capable of being seen, or easily seen; open to view; visible to the eye; within sight or view.",
+        "exampleSentence": "Her disappointment was apparent to everyone.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "əpæɹənt",
+        "etymology": "From Middle English apparaunt, aparaunt, from Old French aparent, aparant, in turn from Latin appārēns, appārentis, present participle of appāreō.",
+        "distractors": [
+            "apparant",
+            "aparent",
+            "apparrent"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "attended",
+        "definition": "Having a person or people present; with someone in attendance.",
+        "exampleSentence": "An object in an attended spot is encoded by the winner neuron in the recognition map layer.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ətɛndɪd",
+        "distractors": [
+            "atended",
+            "attennded",
+            "attanded"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "awakened",
+        "definition": "Having been woken up.",
+        "exampleSentence": "The old house had an awakened appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "diphthongs",
+        "pronunciation": "əweɪkənd",
+        "distractors": [
+            "awwakened",
+            "awakkened",
+            "awakenned"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "biblical",
+        "definition": "Of or relating to the Bible.",
+        "exampleSentence": "The old house had a biblical appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "bɪblɪkəl",
+        "etymology": "From Medieval Latin biblicus + -al, equivalent to bible + -ical.",
+        "distractors": [
+            "biblicel",
+            "bibblical",
+            "bibliccal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bouncing",
+        "definition": "Healthy; vigorous.",
+        "exampleSentence": "The old house had a bouncing appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "baʊnsɪŋ",
+        "distractors": [
+            "bounncing",
+            "bouncinng",
+            "bowncing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "carefree",
+        "definition": "Without cares or worries; free of concern or worries; without difficulty.",
+        "exampleSentence": "You know: sometimes, baby, I'm so carefree / With a joy that's hard to hide.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "kɛɹfɹi",
+        "etymology": "From care + -free.",
+        "distractors": [
+            "carefre",
+            "carrefree",
+            "careffree"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cautious",
+        "definition": "Using or exercising caution; careful; tentative.",
+        "exampleSentence": "He took a few cautious steps toward the cave.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "kɔːʃəs",
+        "etymology": "From caution (“from Latin cautus”) + -ous.",
+        "distractors": [
+            "cautous",
+            "cautius",
+            "cauteous"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cellular",
+        "definition": "Of, relating to, consisting of, or resembling a cell or cells.",
+        "exampleSentence": "For man is born free but everywhere is in cellular underwear.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "sɛljulɚ",
+        "etymology": "From New Latin cellulāris, from cellula (“cell”) + -āris.",
+        "distractors": [
+            "celluler",
+            "celular",
+            "cellullar"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "cerebral",
+        "definition": "Of or relating to the brain, cerebrum, or cerebral cortex.",
+        "exampleSentence": "Certainly, “Capital” is a cerebral read and the dangers of the world Marx lived in are not all the same as ours.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "səɹibɹəl",
+        "etymology": "Borrowing from French cérébral, from Latin cerebrum (“a brain”); equivalent to cerebrum + -al.",
+        "distractors": [
+            "cerebrel",
+            "cerrebral",
+            "cerebbral"
+        ],
+        "theme": "body"
+    },
+    {
+        "word": "circular",
+        "definition": "Of or relating to a circle.",
+        "exampleSentence": "The old house had a circular appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "sɜːkjələ(ɹ)",
+        "etymology": "From Middle English circuler, circuleer, circulere, from Old French circulier (French circulaire), from Late Latin circularis, from Latin circulus, diminutive of circus (“ring”). By surface analysis, circle + -ar.",
+        "distractors": [
+            "circuler",
+            "cirrcular",
+            "circullar"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "clinical",
+        "definition": "Dealing with the practical management of patients, in practice at the point of care; as contrasted with other health care venues (see clinical medicine for more explanation).",
+        "exampleSentence": "We took a clinical approach to resolving conflicts.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "klɪnɪkəl",
+        "etymology": "From clinic + -al.",
+        "distractors": [
+            "clinicel",
+            "clinnical",
+            "cliniccal"
+        ],
+        "theme": "health"
+    },
+    {
+        "word": "damaging",
+        "definition": "Causing damage; harmful, injurious.",
+        "exampleSentence": "The old house had a damaging appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dæmɪd͡ʒɪŋ",
+        "etymology": "From damage + -ing.",
+        "distractors": [
+            "admaging",
+            "dmaaging",
+            "daamging"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dazzling",
+        "definition": "Extremely bright, especially so as to blind the eyes temporarily; bright to the degree that dazzles.",
+        "exampleSentence": "The old house had a dazzling appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dæzl̩ɪŋ",
+        "distractors": [
+            "dazling",
+            "dazzlinng",
+            "dezzling"
+        ],
+        "theme": "academic"
+    },
+    {
+        "word": "definite",
+        "definition": "Having distinct limits.",
+        "exampleSentence": "The old house had a definite appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "dɛfɪnɪt",
+        "etymology": "From Latin dēfīnītus, past participle of dēfīniō, whence also English define.",
+        "distractors": [
+            "definight",
+            "deffinite",
+            "definnite"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "departed",
+        "definition": "Having gone away.",
+        "exampleSentence": "The old house had a departed appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "dɪpɑɹtɪd",
+        "distractors": [
+            "depparted",
+            "deparrted",
+            "daparted"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "destined",
+        "definition": "Confined to a predetermined fate or destiny; certain.",
+        "exampleSentence": "He is sure he is destined for fame.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɛstɪnd",
+        "distractors": [
+            "desstined",
+            "destinned",
+            "dastined"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "detected",
+        "definition": "Having been noticed.",
+        "exampleSentence": "The detected submarine was tracked by sonar, it was easy once they knew where to look.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɪtɛktɪd",
+        "distractors": [
+            "dettected",
+            "deteccted",
+            "datected"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "diabetic",
+        "definition": "Of or pertaining to diabetes, especially diabetes mellitus.",
+        "exampleSentence": "The old house had a diabetic appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "daɪəbɛtɪk",
+        "etymology": "From diabetes + -ic. Doublet of diabatic.",
+        "distractors": [
+            "diabbetic",
+            "diabettic",
+            "daabetic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "disposed",
+        "definition": "Inclined, minded.",
+        "exampleSentence": "When he was disposed to pass into Achaia.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɪspoʊzd",
+        "distractors": [
+            "dissposed",
+            "dispossed",
+            "dasposed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "embedded",
+        "definition": "Part of; firmly, or securely surrounded; lodged solidly into; deep-rooted.",
+        "exampleSentence": "Near Maldonado I saw estuary shells of recent species embedded in clay, and raised above the level of a neighbouring fresh-water lake.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪmbɛdɪd",
+        "etymology": "From embed + -ed.",
+        "distractors": [
+            "embeded",
+            "emmbedded",
+            "embadded"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "emerging",
+        "definition": "Becoming prominent; emergent; rising.",
+        "exampleSentence": "The old house had an emerging appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "ɪmɝd͡ʒɪŋ",
+        "etymology": "By surface analysis, emerge + -ing.",
+        "distractors": [
+            "meerging",
+            "eemrging",
+            "emreging"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "employed",
+        "definition": "In a job; working.",
+        "exampleSentence": "You're just looking for a handout like every other—are you employed, Mr. Lebowski?",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "diphthongs",
+        "pronunciation": "ɪmplɔɪd",
+        "distractors": [
+            "emmployed",
+            "emploied",
+            "emplayed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "forensic",
+        "definition": "Relating to the use of science and technology in the investigation and establishment of facts or evidence in a court of law.",
+        "exampleSentence": "Mr. Philips’ incredulous sniff was a triumph of forensic skill.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "fəɹɛnzɪk",
+        "etymology": "From Latin forēnsis (“of the forum, public”) + -ic, from forum (“forum, marketplace”).",
+        "distractors": [
+            "forrensic",
+            "forennsic",
+            "farensic"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "galactic",
+        "definition": "Pertaining to the Milky Way Galaxy.",
+        "exampleSentence": "The old house had a galactic appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "galactic",
+        "etymology": "From galactic. Compare Galaxy.",
+        "distractors": [
+            "aglactic",
+            "glaactic",
+            "gaalctic"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "haunting",
+        "definition": "Remaining in the mind; not easily forgotten.",
+        "exampleSentence": "He had a haunting gaze.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "diphthongs",
+        "pronunciation": "haunting",
+        "distractors": [
+            "haunnting",
+            "hauntinng",
+            "hawnting"
+        ],
+        "theme": "mind"
+    },
+    {
+        "word": "historic",
+        "definition": "Very important; noteworthy: having importance or significance in history.",
+        "exampleSentence": "The historic tenses include the imperfect, the pluperfect, and the future perfect.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "hɪstɔɹɪk",
+        "etymology": "From Latin historicus (“historical”), from Ancient Greek ἱστορικός (historikós, “exact; historical”). Cognate with French historique. By surface analysis, history + -ic.",
+        "distractors": [
+            "hisstoric",
+            "historric",
+            "hastoric"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "horrific",
+        "definition": "Causing horror; horrifying.",
+        "exampleSentence": "The old house had a horrific appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "həɹɪfɪk",
+        "etymology": "Borrowed from Latin horrificus, from horreō (“to be afraid”) + -ficō (“to make”).",
+        "distractors": [
+            "horific",
+            "horriffic",
+            "harrific"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "impotent",
+        "definition": "Lacking physical strength or vigor; weak.",
+        "exampleSentence": "Technology without morality is barbarous; morality without technology is impotent.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪmpətənt",
+        "etymology": "From Old French impotent, from Latin impotēns, from in- (expresses negation) + potēns (“powerful”).",
+        "distractors": [
+            "impotant",
+            "immpotent",
+            "impottent"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "incoming",
+        "definition": "Coming (or about to come) in; arriving.",
+        "exampleSentence": "The old house had an incoming appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪnkʌmɪŋ",
+        "etymology": "From in (adverb) + coming (adjective).",
+        "distractors": [
+            "inncoming",
+            "incomming",
+            "incominng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "indebted",
+        "definition": "Obligated, especially financially.",
+        "exampleSentence": "One of China’s poorest and most indebted provinces has admitted defeat in trying to sort out its finances and is appealing to Beijing for help to avert default.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪndɛtɪd",
+        "distractors": [
+            "inndebted",
+            "indebbted",
+            "indabted"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "insolent",
+        "definition": "Insulting in manner or words, particularly in an arrogant or insubordinate manner.",
+        "exampleSentence": "The old house had an insolent appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪnsələnt",
+        "etymology": "From Middle English, from Old French, from Latin īnsolēns (“unaccustomed, unwanted, unusual, immoderate, excessive, arrogant, insolent”), from in- (privative prefix) + solēns, present participle of solēre (“to be accustomed, to be wont”).",
+        "distractors": [
+            "insolant",
+            "innsolent",
+            "insollent"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "juvenile",
+        "definition": "Young; not fully developed.",
+        "exampleSentence": "He indicated that Cheong should follow his actions, but Cheong was little tempted and chose not to engage in such a juvenile scene.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "d͡ʒuːvənaɪl",
+        "etymology": "Borrowed from Latin iuvenīlis (“youthful; juvenile”), from iuvenis (“young; a youth”) + -īlis (suffix forming adjectives indicating a relationship or a pertaining to).",
+        "distractors": [
+            "juveniel",
+            "juvvenile",
+            "juvennile"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "lonesome",
+        "definition": "Unhappy due to being alone; lonely.",
+        "exampleSentence": "The old house had a lonesome appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "silent-e",
+        "pronunciation": "loʊnsəm",
+        "etymology": "From lone + -some, mid-17th century.",
+        "distractors": [
+            "lonnesome",
+            "lonessome",
+            "lonesomme"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "matching",
+        "definition": "The same as another; sharing the same design.",
+        "exampleSentence": "The old house had a matching appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "mæt͡ʃɪŋ",
+        "distractors": [
+            "mattching",
+            "matchinng",
+            "maching"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "modified",
+        "definition": "Changed; altered.",
+        "exampleSentence": "As one of the largest producers of genetically modified (GM) seeds in the country, Monsanto has been vilified by activists who describe GM products as 'frankenfood.'",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "mɑdɪfaɪd",
+        "etymology": "From modify + -ed.",
+        "distractors": [
+            "moddified",
+            "modiffied",
+            "modifeid"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "overseas",
+        "definition": "Abroad, especially across the sea.",
+        "exampleSentence": "Overseas branches of the company are doing well.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "oʊvɚsiːz",
+        "etymology": "From earlier oversea, equivalent to oversea + -s. Compare West Frisian oerseesk, Dutch overzees, German Übersee, Danish oversøisk.",
+        "distractors": [
+            "ovverseas",
+            "overrseas",
+            "oversees"
+        ],
+        "theme": "water"
+    },
+    {
+        "word": "parental",
+        "definition": "Of or relating to a parent.",
+        "exampleSentence": "The old house had a parental appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "pəɹɛntəl",
+        "etymology": "From Middle French parental, from Latin parentālis, from parens (“parent”).",
+        "distractors": [
+            "aprental",
+            "praental",
+            "paerntal"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "pictured",
+        "definition": "Furnished with pictures.",
+        "exampleSentence": "The old house had a pictured appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "pictured",
+        "distractors": [
+            "ipctured",
+            "pcitured",
+            "pitcured"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "piercing",
+        "definition": "Appearing to look deeply into; penetrating.",
+        "exampleSentence": "The piercing noise of the children could be heard two blocks from the elementary school.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "pɪɹsɪŋ",
+        "etymology": "From pierce + -ing.",
+        "distractors": [
+            "pierrcing",
+            "piercinng",
+            "peircing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pleasing",
+        "definition": "Agreeable; giving pleasure, cheer, enjoyment or gratification.",
+        "exampleSentence": "These two designs were neat and handsome, by modern standards, and very pleasing in appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "plizɪŋ",
+        "etymology": "From Middle English plesynge, pleizinge, plesende (present participle), equivalent to please + -ing.",
+        "distractors": [
+            "pleassing",
+            "pleasinng",
+            "pleesing"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "probable",
+        "definition": "Likely or most likely to be true.",
+        "exampleSentence": "It's probable that it will rain tomorrow.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "pɹɑbəbl̩",
+        "etymology": "From Middle English probable, from Old French probable, from Latin probābilis (“that may be proved, credible”), from probāre (“to test, examine”); see probe, probity, prove. Compare recent doublet provable.",
+        "distractors": [
+            "probible",
+            "probabel",
+            "probbable"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "reckless",
+        "definition": "Careless or heedless; headstrong or rash.",
+        "exampleSentence": "The old house had a reckless appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɹɛkləs",
+        "etymology": "From Middle English rekles, reckeles, rekkeles, (also recheles), from Old English rēcelēas (“reckless, careless, negligent”), equivalent to reck + -less.",
+        "distractors": [
+            "erckless",
+            "rcekless",
+            "rekcless"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "regional",
+        "definition": "Of, or pertaining to, a specific region or district.",
+        "exampleSentence": "The old house had a regional appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɹiːd͡ʒənəl",
+        "etymology": "From Middle French régional, from Latin regiōnālis.",
+        "distractors": [
+            "regionel",
+            "reggional",
+            "regionnal"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "reserved",
+        "definition": "Slow to reveal emotion or opinions.",
+        "exampleSentence": "He was a quiet, reserved person.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "ɹɪzɝvd",
+        "distractors": [
+            "resserved",
+            "reserrved",
+            "raserved"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "resolved",
+        "definition": "Determined; fixed in one's purpose.",
+        "exampleSentence": "The old house had a resolved appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɹɪzɑlvd",
+        "distractors": [
+            "ersolved",
+            "rseolved",
+            "reoslved"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "reversed",
+        "definition": "Turned or changed to the contrary; inside out.",
+        "exampleSentence": "The old house had a reversed appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "reversed",
+        "distractors": [
+            "erversed",
+            "rveersed",
+            "reevrsed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "shameful",
+        "definition": "Causing or meriting shame or disgrace; disgraceful.",
+        "exampleSentence": "The old house had a shameful appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ʃeɪmfəl",
+        "etymology": "From Middle English schameful, schamfull, from Old English *sċeamfull, sċeomfull, equivalent to shame + -ful. Cognate with Danish skamfuld (“shameful, shamefast, ashamed”).",
+        "distractors": [
+            "shamefull",
+            "shammeful",
+            "shamefful"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "sizzling",
+        "definition": "Hot enough to make a hissing sound.",
+        "exampleSentence": "The old house had a sizzling appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "sizzling",
+        "distractors": [
+            "sizling",
+            "sizzlinng",
+            "sazzling"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "slippery",
+        "definition": "Of a surface, having low friction, often due to being covered in a non-viscous liquid, and therefore hard to grip, hard to stand on without falling, etc.",
+        "exampleSentence": "The old house had a slippery appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "slɪpəɹi",
+        "etymology": "From Middle English slipperie, an extended form ( + -y) of Middle English slipper, sliper (“slippery”), from Old English slipor (“slippery”), from Proto-Germanic *slipraz (“smooth, slippery”), equivalent to slip + -er.",
+        "distractors": [
+            "slipperey",
+            "slippary",
+            "slippory"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "soothing",
+        "definition": "Tending to soothe or mollify.",
+        "exampleSentence": "The old house had a soothing appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "suːðɪŋ",
+        "distractors": [
+            "sothing",
+            "sootthing",
+            "soothinng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "stinking",
+        "definition": "Having a pungent smell.",
+        "exampleSentence": "We don’t need your stinking sympathy.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "stɪŋkɪŋ",
+        "etymology": "From Middle English stynkynge, stinkinge, stinkinde, stinkende, stynkande, stynkand, from Old English stincende, from Proto-Germanic *stinkwandz (“stinking”), present participle of Proto-Germanic *stinkwaną (“to stink”), equivalent to stink + -ing.",
+        "distractors": [
+            "stinnking",
+            "stinkinng",
+            "stanking"
+        ],
+        "theme": "sensory"
+    },
+    {
+        "word": "suitable",
+        "definition": "Having sufficient or the required properties for a certain purpose or task; appropriate to a certain occasion.",
+        "exampleSentence": "Doctors told Matthew Parker’s family there was only a 1% chance of finding a suitable donor for Matthew because his body had rejected a previous transplant.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "sjutəbɫ̩",
+        "etymology": "From suit + -able.",
+        "distractors": [
+            "suitible",
+            "suitabel",
+            "suittable"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "sweeping",
+        "definition": "Wide, broad, affecting or touching upon many things.",
+        "exampleSentence": "The old house had a sweeping appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "swiːpɪŋ",
+        "etymology": "By surface analysis, sweep + -ing.",
+        "distractors": [
+            "sweping",
+            "sweepping",
+            "sweepinng"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "tempting",
+        "definition": "Attractive, appealing, enticing.",
+        "exampleSentence": "The old house had a tempting appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɛmptɪŋ",
+        "distractors": [
+            "etmpting",
+            "tmepting",
+            "tepmting"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "tripping",
+        "definition": "Quick; nimble; stepping lightly and quickly.",
+        "exampleSentence": "The old house had a tripping appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɹɪpɪŋ",
+        "distractors": [
+            "triping",
+            "trippinng",
+            "trapping"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "virtuous",
+        "definition": "Full of virtue; having excellent moral character.",
+        "exampleSentence": "Successful communities need strong, selfless leaders and a virtuous people.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "vɝt͡ʃuəs",
+        "etymology": "From Middle English vertuous, borrowed from Anglo-Norman vertuous, vertous, ultimately from Late Latin virtuōsus, from Latin virtūs. Doublet of virtuoso.",
+        "distractors": [
+            "virtuus",
+            "virtuious",
+            "virrtuous"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "slightly",
+        "definition": "Slenderly; delicately.",
+        "exampleSentence": "He was slightly built, but tall.",
+        "partOfSpeech": "adverb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "slaɪtli",
+        "etymology": "From slight + -ly.",
+        "distractors": [
+            "slightley",
+            "sligghtly",
+            "slitly"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "download",
+        "definition": "A file transfer to a given computer or device from a remote one through a network connection.",
+        "exampleSentence": "The download took longer than I expected.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "daʊnloʊd",
+        "etymology": "From down- + load. Verbal form first appears c. 1962 in the Wichita Falls (Texas) Times. Nominal form first appears c. 1977 in Scientific American.",
+        "distractors": [
+            "dowwnload",
+            "dounload",
+            "dawnload"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "bruising",
+        "definition": "A violent physical attack on a person.",
+        "exampleSentence": "You'd better shut up or you'll get a bruising.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "bɹuːzɪŋ",
+        "etymology": "From bruise + -ing.",
+        "distractors": [
+            "bruissing",
+            "bruisinng",
+            "braising"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "postcard",
+        "definition": "To send a postcard to someone.",
+        "exampleSentence": "The instructions said to postcard gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "poʊstkɑɹd",
+        "etymology": "From post + card.",
+        "distractors": [
+            "posstcard",
+            "postcarrd",
+            "pastcard"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "articles",
+        "definition": "Breeches; coat and waistcoat.",
+        "exampleSentence": "The articles was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "ɑɹtɪkəlz",
+        "distractors": [
+            "arrticles",
+            "articcles",
+            "artacles"
+        ],
+        "theme": "clothing"
+    },
+    {
+        "word": "charging",
+        "definition": "An act or process of charging (as of a battery).",
+        "exampleSentence": "Smith is called for charging, and the Nimrods will get the ball.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "t͡ʃɑɹd͡ʒɪŋ",
+        "distractors": [
+            "charrging",
+            "charginng",
+            "cherging"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "outswing",
+        "definition": "To swing outward.",
+        "exampleSentence": "The instructions said to outswing gently and carefully.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "outswing",
+        "etymology": "From out- + swing.",
+        "distractors": [
+            "outtswing",
+            "outswinng",
+            "oatswing"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "luncheon",
+        "definition": "To eat luncheon.",
+        "exampleSentence": "To soften him up, a group of his fellows luncheoned him at the Jonathan Club in Los Angeles.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "lʌn(t)ʃən",
+        "etymology": "From earlier lunching, of uncertain origin. Possibly related to lunch, q.v. It is unclear which came first. Possibly influenced by nuncheon (“light snack taken in the afternoon”). The \"sausage\" sense is probably a shortening of luncheon sausage or luncheon meat.",
+        "distractors": [
+            "lunncheon",
+            "lancheon",
+            "lencheon"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "detained",
+        "definition": "Delayed or held back; kept from proceeding.",
+        "exampleSentence": "The old house had a detained appearance.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɪteɪnd",
+        "distractors": [
+            "dettained",
+            "detainned",
+            "detayned"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "curtains",
+        "definition": "An end or death.",
+        "exampleSentence": "He called curtains on his double decade cricket career on Tuesday.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "kɜː(ɹ)tənz",
+        "distractors": [
+            "currtains",
+            "curtainns",
+            "curtayns"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "defended",
+        "definition": "Having defenses.",
+        "exampleSentence": "But only in less than 5% there was a court order in a defended case (Müller-Alten, 1984).",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɪfɛndɪd",
+        "etymology": "From defend + -ed.",
+        "distractors": [
+            "deffended",
+            "defennded",
+            "dafended"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "escaping",
+        "definition": "The act of one who escapes; an escape.",
+        "exampleSentence": "The faint, yet growing escapings of gas were in her nostrils as she slumped into a chair and began painfully to scrawl on the paper.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ɪskeɪpɪŋ",
+        "distractors": [
+            "esscaping",
+            "escapping",
+            "escapinng"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "trenches",
+        "definition": "The front line of any field of endeavor, as the line of scrimmage in American football, patrol duty for a policeman.",
+        "exampleSentence": "The trenches was one of our vocabulary words this week.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "tɹɛnt͡ʃɪz",
+        "distractors": [
+            "trennches",
+            "tranches",
+            "trinches"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "gangster",
+        "definition": "Characteristic of a gangster; (especially) admirable and audacious.",
+        "exampleSentence": "We put an end to our beef. We're all gangster now.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "ɡæŋ(k)stɚ",
+        "etymology": "From gang + -ster. First attested in 1884.",
+        "distractors": [
+            "gangstor",
+            "gangstar",
+            "ganngster"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "doorstep",
+        "definition": "To visit one household after another to solicit sales, charitable donations, political support, etc.",
+        "exampleSentence": "Surprisingly few people refused to talk, even those I doorstepped or telephoned out of the blue.",
+        "partOfSpeech": "verb",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "dɔː(ɹ)stɛp",
+        "etymology": "From door + step.",
+        "distractors": [
+            "dorstep",
+            "doorrstep",
+            "daorstep"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "markings",
+        "definition": "The pattern of colouration on a particular animal.",
+        "exampleSentence": "We can recognise each leopard by its markings.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "markings",
+        "distractors": [
+            "marrkings",
+            "markinngs",
+            "merkings"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "numbered",
+        "definition": "Containing numbers.",
+        "exampleSentence": "Our days on earth are numbered.",
+        "partOfSpeech": "adjective",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "nʌmbɚd",
+        "distractors": [
+            "nummbered",
+            "numberred",
+            "nambered"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "angelina",
+        "definition": "A young, inexperienced hobo (of either gender).",
+        "exampleSentence": "You'll like yourself better for it in the end, and when the next optimistic “Angelina” saunters in fresh from the rails looking for some work, he may benefit from your good conduct.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "vowel-teams",
+        "pronunciation": "ænd͡ʒəliːnə",
+        "distractors": [
+            "anngelina",
+            "angellina",
+            "angelinna"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "crackers",
+        "definition": "A kind of noisy leather pants or trousers.",
+        "exampleSentence": "Sheepskin trousers—which, from the sound they make at every movement of the wearer, are called ‘crackers’.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "crackers",
+        "etymology": "From cracker + -s. The South African sense is from their sound and its status as a plurale tantum by association with trousers.",
+        "distractors": [
+            "cracckers",
+            "crackerrs",
+            "creckers"
+        ],
+        "theme": "character"
+    },
+    {
+        "word": "armorist",
+        "definition": "A person skilled in the bearings of coats of arms, and all relating to their emblazonment.",
+        "exampleSentence": "Several others are in the College of Arms. He was the first Welsh armorist to produce armorials of marshalled coats….",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "armorist",
+        "etymology": "From armor + -ist.",
+        "distractors": [
+            "arrmorist",
+            "armorrist",
+            "armorisst"
+        ],
+        "theme": "people"
+    },
+    {
+        "word": "augustly",
+        "definition": "In an august or awe-inspiring manner.",
+        "exampleSentence": "He augustly began. Our First Ancestor At Kyǒnghŭng resided, And his royal work He augustly began.",
+        "partOfSpeech": "adverb",
+        "difficulty": 4,
+        "pattern": "diphthongs",
+        "pronunciation": "augustly",
+        "etymology": "From august + -ly.",
+        "distractors": [
+            "augustley",
+            "auggustly",
+            "augusstly"
+        ],
+        "theme": "feelings"
+    },
+    {
+        "word": "circling",
+        "definition": "A circular motion.",
+        "exampleSentence": "… one of these birds came wheeling and screaming round his head in a maze of untrackably swift circlings.",
+        "partOfSpeech": "noun",
+        "difficulty": 4,
+        "pattern": "r-controlled",
+        "pronunciation": "circling",
+        "distractors": [
+            "cirrcling",
+            "circlinng",
+            "carcling"
+        ],
+        "theme": "actions"
     }
 ];

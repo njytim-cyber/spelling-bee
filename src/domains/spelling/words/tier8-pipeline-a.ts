@@ -62,22 +62,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
     {
-        "word": "swack",
-        "definition": "A sharp blow.",
-        "exampleSentence": "But just then, they heard a swack and a man cried, “Ouch!”.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "swæk",
-        "etymology": "Considered dialect by Wright, but now widespread. Scottish National Dictionary proposes an origin in Old Scots (Middle English) swak (\"to throw violently\"). Compare Scots swak, swack (“to throw with violent force, dash\", also \"a hard blow or whack”).",
-        "distractors": [
-            "swak",
-            "swacck",
-            "sweck"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "bloodwood",
         "definition": "Certain eucalypts.",
         "exampleSentence": "I cut bloodwood saplings and shaped a new pair of shafts with an adze.",
@@ -90,22 +74,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "blodwood",
             "bloodwod",
             "blooddwood"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "threap",
-        "definition": "To contradict.",
-        "exampleSentence": "He threaped me down that it was so.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "θɹiːp",
-        "etymology": "From Middle English threpen (“to scold”), from Old English þrēapian (“to reprove, reprehend, punish, blame”), from Proto-West Germanic *þraupōn, from Proto-Germanic *þraupōną (“to punish”), from Proto-Germanic *þrawō (“torment, punishment”), from Proto-Germanic *þrawjaną (“to torment, injure, exhaus",
-        "distractors": [
-            "threep",
-            "thraap",
-            "thriap"
         ],
         "theme": "everyday"
     },
@@ -318,7 +286,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "sluff",
-        "definition": "Ignore, shrug.",
+        "definition": "Ignore, shrug (off).",
         "exampleSentence": "If either played another club, declarer would ruff on the board and sluff his diamond queen.",
         "partOfSpeech": "verb",
         "difficulty": 9,
@@ -701,18 +669,18 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "acapu",
-        "definition": "Genus Andira.",
-        "exampleSentence": "The chair was made of oak, the table of acapu.",
-        "partOfSpeech": "noun",
+        "word": "swack",
+        "definition": "To slap or hit.",
+        "exampleSentence": "Morgan was out of sight as usual, swacking away in the engine room.",
+        "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "multisyllable",
-        "pronunciation": "ɑkəpu",
-        "etymology": "From Brazilian Portuguese acapu, from Old Tupi.",
+        "pronunciation": "swæk",
+        "etymology": "Considered dialect by Wright, but now widespread. Scottish National Dictionary proposes an origin in Old Scots (Middle English) swak (\"to throw violently\"). Compare Scots swak, swack (“to throw with violent force, dash\", also \"a hard blow or whack”).",
         "distractors": [
-            "accapu",
-            "acappu",
-            "acepu"
+            "swak",
+            "swacck",
+            "sweck"
         ],
         "theme": "everyday"
     },
@@ -729,6 +697,22 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "infal",
             "innfall",
             "infell"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "threap",
+        "definition": "An altercation, quarrel, argument.",
+        "exampleSentence": "Can you use the word threap in a sentence?",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "θɹiːp",
+        "etymology": "From Middle English threp (“a rebuke”), from the verb (see below). Alternative etymology derives Middle English threp, from Old English *þrēap (“contention, strife”) (attested only as Old English þrēap, in the sense of \"troop, band\"), ultimately from the same Germanic origin below.",
+        "distractors": [
+            "threep",
+            "thraap",
+            "thriap"
         ],
         "theme": "everyday"
     },
@@ -3685,22 +3669,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "society"
     },
     {
-        "word": "denominative",
-        "definition": "Being a name.",
-        "exampleSentence": "The least denominative part of time is a second.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "di-nä-mə-nə-tiv",
-        "etymology": "From Late Latin dēnōminātīvus, a calque of Ancient Greek παρώνυμος (parṓnumos, “derivative”). It originally had the meaning “derived”, but in its grammatical sense, it has developed the meaning “from a noun”, perhaps a reinterpretation of the Latin morphemes that it consists of: the preposition dē (",
-        "distractors": [
-            "dennominative",
-            "denomminative",
-            "denominnative"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "heteronomous",
         "definition": "Arising from an external influence, force, or agency; not autonomous.",
         "exampleSentence": "The competitive necessity of economies of action mean that surveillance capitalists must use all means available to supplant autonomous action with heteronomous action.",
@@ -4321,22 +4289,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "food"
     },
     {
-        "word": "fley",
-        "definition": "To frighten.",
-        "exampleSentence": "The Jack O'Lanthron was among the reeds again last night, and some of my neighbours are sore fleyed.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "fleɪ",
-        "etymology": "From Middle English fleien, from Old English flēgan.",
-        "distractors": [
-            "fly",
-            "fleey",
-            "flay"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "ikat",
         "definition": "Traditional Indonesian decorative technique in which warp or weft threads, or both, are tie-dyed before weaving.",
         "exampleSentence": "Madeline Weinrib, for one, works with traditional artisans to update the hand-woven ikats she uses for her chic clutches.",
@@ -4367,21 +4319,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "hawf"
         ],
         "theme": "home"
-    },
-    {
-        "word": "mixy",
-        "definition": "Mixed; various.",
-        "exampleSentence": "My Bettina rather held back. She isn't one of the mixy kind.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "mɪksi",
-        "distractors": [
-            "mixey",
-            "mixxy",
-            "maxy"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "nizz",
@@ -4783,22 +4720,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rewet",
-        "definition": "To wet again.",
-        "exampleSentence": "It took a while to learn how to rewet.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "ɹiːwɛt",
-        "etymology": "From re- + wet.",
-        "distractors": [
-            "rewwet",
-            "rawet",
-            "riwet"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "scobs",
         "definition": "Raspings of wood, ivory, hartshorn, metals, or other hard substance.",
         "exampleSentence": "Dump your wet scobs in the trash barrel, replace your dust pan, hand broom and #10 can.",
@@ -5038,38 +4959,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "indice",
-        "definition": "Indication.",
-        "exampleSentence": "You know (without my flatt'ring you) too much / For me to be your indice.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "ɪndɪs",
-        "etymology": "From Old French indice, from Latin indicium, from index.",
-        "distractors": [
-            "inndice",
-            "indicce",
-            "indace"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "acknow",
-        "definition": "To recognize.",
-        "exampleSentence": "You will not be acknown, sir; why, 'tis wise.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "əknoʊ",
-        "etymology": "From Middle English aknowen, from Old English ācnāwan, oncnāwan (“to know, recognize”), equivalent to a- + know.",
-        "distractors": [
-            "accknow",
-            "acknou",
-            "acknaw"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "ranine",
         "definition": "A frog of the subfamily Raninae.",
         "exampleSentence": "The ranids consisted of ranines and the stock that gave rise to the mantellines.",
@@ -5100,22 +4989,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "braier"
         ],
         "theme": "body"
-    },
-    {
-        "word": "spavin",
-        "definition": "To cause (a horse or its leg) to have spavin (noun etymology 1 sense 1.2).",
-        "exampleSentence": "And oh! Onesiphorus, the old brown mare / Is spavining for love, as also we; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "spævɪn",
-        "etymology": "The noun is derived from Middle English spavein, spaveine (“swelling on horse’s leg causing lameness; disease causing lameness in horses”), from Old French espavain, a variant of esparvain, esprevain, esprevin (modern French éparvin, épervin).",
-        "distractors": [
-            "spavvin",
-            "spevin",
-            "spivin"
-        ],
-        "theme": "animals"
     },
     {
         "word": "zaffre",
@@ -5290,22 +5163,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "lambor",
             "lambar",
             "lammber"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "gurges",
-        "definition": "A whirlpool.",
-        "exampleSentence": "It was early—only ten p.m.—but already gurgeses of light and gales of sound frothed in unison to a familiar relentless heartbeat.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "ɡɝd͡ʒiz",
-        "etymology": "From Middle English gurges, from Latin gurges. Doublet of gorge and gour.",
-        "distractors": [
-            "gurrges",
-            "garges",
-            "gerges"
         ],
         "theme": "everyday"
     },
@@ -5612,22 +5469,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "ristem"
         ],
         "theme": "water"
-    },
-    {
-        "word": "sleeky",
-        "definition": "Sleek; slick.",
-        "exampleSentence": "Why, I thought he was a straight-haired, sleeky, canting snake of a man.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "sliːki",
-        "etymology": "From sleek + -y.",
-        "distractors": [
-            "sleekey",
-            "sleky",
-            "sleekky"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "redowa",
@@ -6314,22 +6155,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "academic"
     },
     {
-        "word": "conject",
-        "definition": "To conjecture.",
-        "exampleSentence": "These men …congested and conjected at a masse upon the church of England.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "kənd͡ʒɛkt",
-        "etymology": "From Latin conjectus.",
-        "distractors": [
-            "connject",
-            "conjecct",
-            "canject"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "decadal",
         "definition": "Of or related to the number ten.",
         "exampleSentence": "About the same time in a decadal sense, there was a rather unexpected discovery.",
@@ -6581,22 +6406,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "forrlive",
             "forlivve",
             "farlive"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "unbeing",
-        "definition": "Nonexistence.",
-        "exampleSentence": "The house is pale as though its life-blood were sucked and the Cabots reduced to unbeings.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "ʌnbiːɪŋ",
-        "etymology": "From Middle English unbeing, equivalent to un- + being.",
-        "distractors": [
-            "unnbeing",
-            "unbeinng",
-            "unbieng"
         ],
         "theme": "everyday"
     },
@@ -8513,22 +8322,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "mind"
     },
     {
-        "word": "abnormity",
-        "definition": "A monstrosity.",
-        "exampleSentence": "Learning about the abnormity was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "æbnɔɹmɪti",
-        "etymology": "From abnorm(al) + -ity, from Late Latin abnormitas, from Latin abnormis (“irregular, abnormal”), from ab + norm (“rule, pattern”). See also abnormous.",
-        "distractors": [
-            "abnormitey",
-            "abbnormity",
-            "abnorrmity"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "preterite",
         "definition": "Showing an action at a determined moment in the past.",
         "exampleSentence": "The Dravidian preterite tense is ordinarily formed, like the present, by annexing the pronominal signs to the preterite verbal participle.",
@@ -9166,22 +8959,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "prodition",
-        "definition": "Disclosure.",
-        "exampleSentence": "The ruin of the country, and the prodition of their captains.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹoʊdɪʃən",
-        "etymology": "From Latin proditio, from prodere (“to give forth, betray”). Compare Old French prodition.",
-        "distractors": [
-            "prodision",
-            "proddition",
-            "prodittion"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "reddition",
         "definition": "Restoration; restitution: surrender.",
         "exampleSentence": "Learning about the reddition was the best part of the day.",
@@ -9308,22 +9085,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "brexiter"
         ],
         "theme": "people"
-    },
-    {
-        "word": "hereforth",
-        "definition": "From now on.",
-        "exampleSentence": "Hereforth, it is argued that the risk sharing principle was the key institution of a successful economic policy in Germany 1933-1935.",
-        "partOfSpeech": "adverb",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "hɪɚ̯fɔɹθ",
-        "etymology": "From here + forth.",
-        "distractors": [
-            "herreforth",
-            "herefforth",
-            "hereforrth"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "crosshaul",
@@ -9545,22 +9306,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "rfitillary",
             "firtillary",
             "frtiillary"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "gemination",
-        "definition": "A doubling.",
-        "exampleSentence": "She wrote about the gemination in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "d͡ʒɛmɪneɪʃən",
-        "etymology": "Borrowed from Latin geminātiō, geminātiōnis (“a doubling”).",
-        "distractors": [
-            "geminasion",
-            "gemmination",
-            "geminnation"
         ],
         "theme": "everyday"
     },
@@ -10298,22 +10043,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "lubricious",
-        "definition": "Smooth and glassy; slippery.",
-        "exampleSentence": "Lubricious bank managers and building society chairmen who have never danced before throw off their jackets, confess to barren lives and worship Rick the giver of their sun and rain.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "lubɹɪʃəs",
-        "etymology": "Learned borrowing from Latin lūbricus (“slippery”). Doublet of lubricous.",
-        "distractors": [
-            "lubricous",
-            "lubricius",
-            "lubriceous"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "meridional",
         "definition": "Located in the south, southern; later especially, often pertaining to the southern parts of Europe.",
         "exampleSentence": "Offices that require heat … should be meridional.",
@@ -10856,22 +10585,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "multittrack"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "laboursome",
-        "definition": "Hard-working.",
-        "exampleSentence": "The laboursome colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "leɪbəɹsəm",
-        "etymology": "From labour + -some.",
-        "distractors": [
-            "labboursome",
-            "labourrsome",
-            "laboursomme"
-        ],
-        "theme": "sensory"
     },
     {
         "word": "individuum",
@@ -12069,22 +11782,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "patriarchatte"
         ],
         "theme": "society"
-    },
-    {
-        "word": "proscription",
-        "definition": "A prohibition.",
-        "exampleSentence": "He was wholly unopposed, for the boldest spirits had fallen in battle, or in the proscription ….",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹəskɹɪpʃən",
-        "etymology": "From Middle English proscripcion, from Latin prōscrīptiō, from prōscrībō (originally \"publish in writing\"), from prō- and scrībō (“write”).",
-        "distractors": [
-            "proscripsion",
-            "prosscription",
-            "proscripption"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "subjectivism",
@@ -13427,22 +13124,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "disassociation",
-        "definition": "Dissociation.",
-        "exampleSentence": "The book had an entire chapter about the disassociation.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "dɪsəsəʊ̯sieɪ̯ʃən",
-        "etymology": "From dis- + association.",
-        "distractors": [
-            "idsassociation",
-            "dsiassociation",
-            "diasssociation"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "electioneering",
         "definition": "Campaigning for elective office on behalf of oneself or another candidate.",
         "exampleSentence": "The book had an entire chapter about the electioneering.",
@@ -14110,22 +13791,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "ayle",
-        "definition": "A grandfather.",
-        "exampleSentence": "The Writ of Ayle was an ancient English writ which lay against a stranger who had dispossessed the demandant of land of which his grandfather died seized.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "aɪ̯l",
-        "etymology": "From Middle English ayel, aiel, from Old French aiol, aiel, from Vulgar Latin *aviolus, ultimately from Latin avus.",
-        "distractors": [
-            "ayel",
-            "aylle",
-            "alye"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "gyve",
         "definition": "A shackle or fetter, especially for the leg.",
         "exampleSentence": "Our gyves were removed and our possessions returned to us, except for my Banker’s Special.",
@@ -14318,24 +13983,8 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "nudi",
-        "definition": "A nudibranch.",
-        "exampleSentence": "… there is less enthusiasm for \"nudis\" sold in the seawater aquarium market.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "nuːdi",
-        "etymology": "Clipping of nudibranch, possibly with influence of the diminutive suffixes -y and -ie.",
-        "distractors": [
-            "nuddi",
-            "nadi",
-            "nedi"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "isot",
-        "definition": "Urfa biber.",
+        "definition": "Urfa biber (pepper variety).",
         "exampleSentence": "The best time to dry isot in Urfa is between September and November when the sun is less hot.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -14477,7 +14126,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "evar",
-        "definition": "Ever.",
+        "definition": "Ever (at any time).",
         "exampleSentence": "That was the best party evar!!1!!!1!",
         "partOfSpeech": "adverb",
         "difficulty": 9,
@@ -14649,22 +14298,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
     {
-        "word": "hiam",
-        "definition": "Hot and spicy.",
-        "exampleSentence": "At best, it was just so-so – nothing like what we would cook for ourselves at home. It was not “hiam” enough probably from the lack of ginger or ginger juice and there was insufficient wine.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "hjʌm(˦)",
-        "etymology": "Borrowed from Hokkien 薟／莶 (hiam, “spicy”).",
-        "distractors": [
-            "haam",
-            "heam",
-            "haim"
-        ],
-        "theme": "sensory"
-    },
-    {
         "word": "pegu",
         "definition": "A pony from the Burmese city of Bago.",
         "exampleSentence": "The road was flooded in some places and in others the rains had filled potholes with mud, and the horses – ponies rather, stout little Pegus from Burmah – stumbled into them and lost their footing.",
@@ -14678,22 +14311,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "pigu"
         ],
         "theme": "everyday"
-    },
-    {
-        "word": "gwop",
-        "definition": "Money, moola.",
-        "exampleSentence": "The book had an entire chapter about the gwop.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "ɡwɑp",
-        "etymology": "Unknown. May be a dialectal pronunciation of Spanish guapo used substantively, thus being a doublet of wop. Even in view of the attestation of English guapo in the money sense we are not sure since it may be a secondary interpretation, as is attested for buckaroo meaning buck (“dollar”).",
-        "distractors": [
-            "gwap",
-            "gwep",
-            "gowp"
-        ],
-        "theme": "money"
     },
     {
         "word": "zucc",
@@ -15286,22 +14903,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
     {
-        "word": "topee",
-        "definition": "A pith helmet.",
-        "exampleSentence": "I lent my topee to Camarião, who looked extremely odd in it.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "təʊpi",
-        "etymology": "From Hindi टोपी (ṭopī)/Urdu ٹوپی (ṭōpī).",
-        "distractors": [
-            "tope",
-            "toppee",
-            "topea"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "tsuga",
         "definition": "Any tree of genus Tsuga of conifers in the family Pinaceae, of which there are eight, nine, or ten species (depending on the authority), with four species occurring in North America and four to six in eastern Asia.",
         "exampleSentence": "He wrote the word tsuga on the board for everyone to see.",
@@ -15478,22 +15079,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "rimed",
-        "definition": "Covered in rime (etymology 1) or (generally) frost.",
-        "exampleSentence": "The rimed window permitted only shades of the traffic outside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "ɹaɪmd",
-        "etymology": "From rime (etymology 1) + -ed (suffix forming possessional adjectives, and past tense and past participle forms of regular verbs).",
-        "distractors": [
-            "rimmed",
-            "ramed",
-            "remed"
-        ],
-        "theme": "weather"
-    },
-    {
         "word": "slaty",
         "definition": "Resembling the rock slate.",
         "exampleSentence": "But snow had now begun to fall out of a forbiddingly slaty-grey sky, and this seemed to depress both engine and crew.",
@@ -15605,22 +15190,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "art"
     },
     {
-        "word": "songy",
-        "definition": "Song-like.",
-        "exampleSentence": "'Polyethylene' is in turn followed by 'Pearly', a songy song: minor key, big vocals, and a nice bridge section.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "sɔŋi",
-        "etymology": "From song + -y.",
-        "distractors": [
-            "songey",
-            "sonngy",
-            "sangy"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "oater",
         "definition": "A movie or television show about cowboy or frontier life; a western movie.",
         "exampleSentence": "He wrote the word oater on the board for everyone to see.",
@@ -15635,21 +15204,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "oatter"
         ],
         "theme": "communication"
-    },
-    {
-        "word": "regex",
-        "definition": "Clipping of regular expression.",
-        "exampleSentence": "To continue the history course from the previous section, Perl was one of the first general-purpose programming languages to bake regexes into its core functionality.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "ɹɛɡɛks",
-        "distractors": [
-            "reggex",
-            "ragex",
-            "rigex"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "utile",
@@ -15763,22 +15317,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "academic"
     },
     {
-        "word": "stufa",
-        "definition": "A fumarole.",
-        "exampleSentence": "At its source is the still active stufa known as Acqua Castiglione al mare, the water of which has a temperature of from 160° to 170°F.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "stuːfə",
-        "etymology": "Borrowed from Italian stufa (“stove”). Doublet of stove.",
-        "distractors": [
-            "stuffa",
-            "stafa",
-            "stefa"
-        ],
-        "theme": "everyday"
-    },
-    {
         "word": "dorty",
         "definition": "Dirty; unclean.",
         "exampleSentence": "Ees claes were dorty.",
@@ -15840,38 +15378,6 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
             "chepe"
         ],
         "theme": "food"
-    },
-    {
-        "word": "sello",
-        "definition": "Sellotape.",
-        "exampleSentence": "Can you pass the sello? We need to get these presents wrapped up by tonight.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "sɛloʊ",
-        "etymology": "Clipping of sellotape.",
-        "distractors": [
-            "selo",
-            "sallo",
-            "sillo"
-        ],
-        "theme": "everyday"
-    },
-    {
-        "word": "treyf",
-        "definition": "Nonkosher.",
-        "exampleSentence": "The casserole looked delicious, but Moishe wouldn't eat it because it was treyf.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "multisyllable",
-        "pronunciation": "tɹeɪf",
-        "etymology": "From Yiddish טרייף (treyf), from Hebrew טְרֵפָה (trefá).",
-        "distractors": [
-            "trayf",
-            "triyf",
-            "teryf"
-        ],
-        "theme": "everyday"
     },
     {
         "word": "balun",
@@ -15938,17 +15444,510 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
     {
-        "word": "strog",
-        "definition": "Clipping of stroganoff.",
-        "exampleSentence": "He wrote the word strog on the board for everyone to see.",
+        "word": "konak",
+        "definition": "A palace or other large official residence in Turkey or the Ottoman Empire.",
+        "exampleSentence": "It was a small pretty town with four minarets and one campanile and the Pasha's konak sprawling across the foothills.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
-        "pronunciation": "stroʊɡ",
+        "pronunciation": "kəʊnɑːk",
+        "etymology": "From Ottoman Turkish قوناق (konak, “mansion, station, inn”).",
         "distractors": [
-            "strag",
-            "streg",
-            "storg"
+            "konnak",
+            "kanak",
+            "kenak"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "hopak",
+        "definition": "A Ukrainian national dance in 2/4 time.",
+        "exampleSentence": "Somewhere an accordion was playing a jazz-inflected hopak.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "hoːpæk",
+        "etymology": "1925–30, from Ukrainian гопа́к (hopák), from the interjection гоп (hop). Compare Ukrainian го́пати (hópaty), го́пкати (hópkaty), гопцюва́ти (hopcjuváty), го́пки (hópky), and dated Ukrainian го́пи (hópy, “dance steps”), го́пка (hópka, “child (jocular)”).",
+        "distractors": [
+            "hoppak",
+            "hapak",
+            "hepak"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "suant",
+        "definition": "Smoothly; without difficulty.",
+        "exampleSentence": "Peter and his wife did not get on very \"suant\" together.",
+        "partOfSpeech": "adverb",
+        "difficulty": 9,
+        "pattern": "latin-roots",
+        "pronunciation": "sjuːənt",
+        "etymology": "From Middle English suant (“following”), from Anglo-Norman suant, from Old French suiant, sivant, present participle of sivre (“to follow”), from Latin sequor.",
+        "distractors": [
+            "suent",
+            "suannt",
+            "saant"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "teint",
+        "definition": "Colour, tinge; tint.",
+        "exampleSentence": "There was no rose-teint on his wasted cheek.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "teɪnt",
+        "etymology": "From French teint, teinte. See tint.",
+        "distractors": [
+            "teinnt",
+            "tient",
+            "taint"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "outen",
+        "definition": "To put out; extinguish.",
+        "exampleSentence": "When Susan said good-night and they outened the lights and headed to their respective rooms, Lettie found her most treasured book of poems.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "aʊtən",
+        "etymology": "From out + -en.",
+        "distractors": [
+            "outten",
+            "oaten",
+            "oeten"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fanne",
+        "definition": "A female science fiction fan.",
+        "exampleSentence": "Fannes — Pronounced the same as \"fans,\" but used in writing to mean fem fans.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "fæn",
+        "etymology": "Pseudo-French feminine form of fan",
+        "distractors": [
+            "fane",
+            "fenne",
+            "finne"
+        ],
+        "theme": "art"
+    },
+    {
+        "word": "wifty",
+        "definition": "Eccentric, silly, scatterbrained.",
+        "exampleSentence": "Jack, at nineteen, twenty, had an unambiguous understanding of what it meant to win, there was none of that theoretical, wifty new-age stuff for him; ….",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "wɪfti",
+        "etymology": "From *wift + -y. First element is of unknown origin.",
+        "distractors": [
+            "wiftey",
+            "wiffty",
+            "wafty"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "talaq",
+        "definition": "An Islamic divorce, sanctioned by the Qur'an.",
+        "exampleSentence": "The first option was to give talaq to Akhila. But given that he really loved her, and that they had four small children, he decided that was no answer.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "tælɑːk",
+        "etymology": "From Arabic طَلَاق (ṭalāq, “divorce”), from the root ط ل ق (ṭ l q).",
+        "distractors": [
+            "tallaq",
+            "telaq",
+            "tilaq"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "shmup",
+        "definition": "A shoot-'em-up, particularly a two-dimensional shooter themed around spaceship battles.",
+        "exampleSentence": "Highlights include the great-looking shmup Judgement Silversword.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "ʃmʌp",
+        "etymology": "Phonetic contraction of shoot-'em-up.",
+        "distractors": [
+            "shmap",
+            "shmep",
+            "shump"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "xyzzy",
+        "definition": "Used as a placeholder word or metasyntactic variable.",
+        "exampleSentence": "Perl doesn't care if you call your loop labels things like XYZZY or PLUGH.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "zɪzi",
+        "etymology": "From the seminal text adventure game Adventure (c.1975), where it served as a \"magic word\"; possibly originated as a mnemonic for the subscripts of the cross product in mathematics.",
+        "distractors": [
+            "xyzzey",
+            "xyzy",
+            "xzyzy"
+        ],
+        "theme": "language"
+    },
+    {
+        "word": "strim",
+        "definition": "To cut using a strimmer/string trimmer.",
+        "exampleSentence": "Videos showed a badger entering a sett less than two metres from where the contractors had been using petrol hedge-trimmers to strim brambles, the resident said.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "stɹɪm",
+        "etymology": "Back-formation from strimmer, originally a trademark.",
+        "distractors": [
+            "stram",
+            "strem",
+            "stirm"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "bokeh",
+        "definition": "A subjective aesthetic quality of out-of-focus areas of an image projected by a camera lens.",
+        "exampleSentence": "More expensive lenses usually go down to f/2.8, letting you shoot at faster shutter speeds and get great, creamy bokeh in your background.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "boʊkə",
+        "etymology": "From Japanese 暈(ぼ)け (boke, “blur”), the nominalized form of 暈(ぼ)ける (bokeru, “to blur”). The terminal -h, absent in the romanization boke, is a pronunciation guide so that it is not pronounced as /boʊk/ as it would be under standard English orthography.",
+        "distractors": [
+            "bokkeh",
+            "bakeh",
+            "bekeh"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "pozzy",
+        "definition": "Jam (“fruit conserve made from fruit boiled with sugar”).",
+        "exampleSentence": "‘Could you pinch a tin of pozzy out of stores?’.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "pɒzi",
+        "etymology": "Unclear, perhaps from a southern African language; from late 19thC, revived during World War I.",
+        "distractors": [
+            "pozzey",
+            "pozy",
+            "pazzy"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "meady",
+        "definition": "Of middling appearance, not particularly attractive.",
+        "exampleSentence": "This barbie & she’s moving meady, had to ask her like “what she’s on?”.",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "miːdi",
+        "etymology": "From mid + -y, sound shift as in eediot for idiot, though that one happened in Jamaican Creole, to be effective in the MLE accent, already.",
+        "distractors": [
+            "meadey",
+            "meaddy",
+            "meedy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "mutex",
+        "definition": "An object in a program that serves as a lock, used to negotiate mutual exclusion among threads.",
+        "exampleSentence": "The ability to set a maximum waiting time provides another reason why in some circumstances, you might prefer to use a mutex rather than a lock statement.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "mjuːtɛks",
+        "etymology": "Syllabic abbreviation of mutually exclusive or mutual exclusion.",
+        "distractors": [
+            "muttex",
+            "matex",
+            "metex"
+        ],
+        "theme": "communication"
+    },
+    {
+        "word": "doogh",
+        "definition": "A savory Persian yogurt drink with a mint flavor.",
+        "exampleSentence": "For a counterpoint to its molar-tingling sweetness, you might try a glass of doogh, the Persian yogurt drink, bracingly tart with a high note of dill.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "duːɡ",
+        "etymology": "Borrowed from Iranian Persian دوغ (duġ), from Classical Persian دوغ (dōġ).",
+        "distractors": [
+            "dogh",
+            "dooggh",
+            "daogh"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "moloi",
+        "definition": "A magician, witch, wizard, or other magic-user, especially in traditional tribal society.",
+        "exampleSentence": "He wrote the word moloi on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "məlɔɪ",
+        "etymology": "Borrowed from Tswana moloi, from loa (“to enchant”).",
+        "distractors": [
+            "molloi",
+            "moloy",
+            "maloi"
+        ],
+        "theme": "society"
+    },
+    {
+        "word": "raion",
+        "definition": "An administrative unit of some Eastern European and Asian states.",
+        "exampleSentence": "In 1923 Soviet Ukraine’s 102 povity were replaced by 53 larger okruhy (sing. okruha), and its 1,989 volosti by 706 raions.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "ɹaɪjɔn",
+        "etymology": "Borrowed from Russian райо́н (rajón), from French rayon. More recently influenced by the same name used in other post-Soviet states. Compare Ukrainian райо́н (rajón).",
+        "distractors": [
+            "rayon",
+            "reion",
+            "riion"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "fjeld",
+        "definition": "A rocky, barren plateau, especially in Scandinavia.",
+        "exampleSentence": "Almost every Norwegian farmer possesses some pasture-land high up in the fjeld, sometimes as much as twenty or thirty miles distant from his homestead.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "fjɛld",
+        "etymology": "Borrowed from Danish fjeld. Doublet of fell.",
+        "distractors": [
+            "fjelld",
+            "fjald",
+            "fjild"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "imped",
+        "definition": "A creature without feet.",
+        "exampleSentence": "Aristotle had divided the group into bipeds, quadrupeds and impeds.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "prefixes",
+        "pronunciation": "ɪmpɛd",
+        "etymology": "Coined on Latinate roots (im- + -ped) by Richard Owen in 1861 as a calque of Aristotle’s Ancient Greek ἀπούς (apoús).",
+        "distractors": [
+            "immped",
+            "impad",
+            "impid"
+        ],
+        "theme": "animals"
+    },
+    {
+        "word": "tepui",
+        "definition": "A type of table-top mountain or mesa found in the Guiana Highlands of South America, especially in Venezuela.",
+        "exampleSentence": "One of the most dominant landscape features in the Gran Sabana is a flight of planation surfaces rising from modern sea level to the summits of the high tepui (Briceño and Schubert 1990).",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "tɛpwi",
+        "etymology": "From Spanish tepuy, from Pemon tüpü (“rocky system, mountain, tepui”), though sometimes erroneously said to be from Pemon tapüi (“house”) in the sense of ‘house of the gods’. Perhaps ultimately related to Proto-Cariban *tôpu (“stone”), though the Pemon etymon is not a direct descendant.",
+        "distractors": [
+            "teppui",
+            "tapui",
+            "tipui"
+        ],
+        "theme": "earth"
+    },
+    {
+        "word": "shass",
+        "definition": "A heap of sheaves (straw).",
+        "exampleSentence": "She was speaking at the time lower than a whisper, so that I had to kneel beside her on the ground—she was lying on a shass ov straw—an' bend my face down to her's to hear her.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "ʃæs",
+        "distractors": [
+            "shas",
+            "shess",
+            "shiss"
+        ],
+        "theme": "quantity"
+    },
+    {
+        "word": "ketol",
+        "definition": "A hydroxyketone (e.g., an acyloin).",
+        "exampleSentence": "Consider the enolization (Scheme 3.26) of the methyl ester of acetoacetic acid, a reaction involving ketol-enol tautomerism.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "kitɑl",
+        "etymology": "Blend of ketone + indol.",
+        "distractors": [
+            "kettol",
+            "katol",
+            "kitol"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "wayed",
+        "definition": "Tame; broken in.",
+        "exampleSentence": "A horse that is not well wayed.",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "weɪd",
+        "etymology": "From way + -ed.",
+        "distractors": [
+            "waied",
+            "weyed",
+            "wiyed"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "walty",
+        "definition": "Liable to roll over; tippy.",
+        "exampleSentence": "This ship is so crank and walty.",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "wɔːlti",
+        "etymology": "Compare walt (“to roll”).",
+        "distractors": [
+            "waltey",
+            "wallty",
+            "welty"
+        ],
+        "theme": "actions"
+    },
+    {
+        "word": "lifen",
+        "definition": "To liven, to enliven.",
+        "exampleSentence": "It took a while to learn how to lifen.",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "laɪfən",
+        "etymology": "From life + -en.",
+        "distractors": [
+            "liffen",
+            "lafen",
+            "lefen"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "leasy",
+        "definition": "Flimsy; vague; deceptive.",
+        "exampleSentence": "The Sense it self be left both loose, and leasy.",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "liːzi",
+        "etymology": "From Old English [Term?] (“void, loose, false”). Compare leasing.",
+        "distractors": [
+            "leasey",
+            "leassy",
+            "leesy"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "dowle",
+        "definition": "Feathery or woolly down; filament of a feather.",
+        "exampleSentence": "He wrote the word dowle on the board for everyone to see.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "daʊl",
+        "etymology": "Compare Old French douille (“soft”), and English ductile.",
+        "distractors": [
+            "dowel",
+            "dowwle",
+            "doule"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "padar",
+        "definition": "Groats; coarse flour or meal.",
+        "exampleSentence": "Must needs have withal among it a certain mixture of Padar and Bran.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "pædə(ɹ)",
+        "distractors": [
+            "pader",
+            "paddar",
+            "pedar"
+        ],
+        "theme": "food"
+    },
+    {
+        "word": "shrag",
+        "definition": "To cut or lop; to trim or prune (something, such as a tree).",
+        "exampleSentence": "Twygges or boughes of trees cut off, or shragged, … Shragge vnder so that the sunne maye come to the ground, ….",
+        "partOfSpeech": "verb",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "ʃɹæɡ",
+        "distractors": [
+            "shreg",
+            "shrig",
+            "sharg"
+        ],
+        "theme": "plants"
+    },
+    {
+        "word": "snash",
+        "definition": "Verbal abuse; insolence; guff.",
+        "exampleSentence": "Don't take any snash from anybody.",
+        "partOfSpeech": "noun",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "snæʃ",
+        "distractors": [
+            "snassh",
+            "snesh",
+            "snish"
+        ],
+        "theme": "everyday"
+    },
+    {
+        "word": "upter",
+        "definition": "Useless, no good.",
+        "exampleSentence": "‘Where's your father hiding?’ She rubbed the rough-textured skin, trying to warm it. ‘If he thinks he's entertaining us, he's upter.’.",
+        "partOfSpeech": "adjective",
+        "difficulty": 9,
+        "pattern": "multisyllable",
+        "pronunciation": "ʌptə",
+        "etymology": "Abbreviation of up to putty.",
+        "distractors": [
+            "uptor",
+            "uptar",
+            "uppter"
         ],
         "theme": "everyday"
     }

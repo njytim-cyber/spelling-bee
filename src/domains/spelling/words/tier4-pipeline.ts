@@ -2,7 +2,7 @@
  * words/tier4-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 4.
- * Total: 8635 words across 9 chunks.
+ * Total: 8183 words across 9 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */
