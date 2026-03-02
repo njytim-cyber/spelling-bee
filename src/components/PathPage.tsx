@@ -12,6 +12,7 @@ import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '.
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
+import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -71,13 +72,21 @@ function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?
 
 // ── Tier group labels ───────────────────────────────────────────────────────
 
-const TIER_LABELS: Record<string, { label: string; grades: string; wordCount: number }> = {
-    'tier-1': { label: 'Seedling', grades: 'K \u2013 1st', wordCount: 510 },
-    'tier-2': { label: 'Sprout', grades: '2nd \u2013 3rd', wordCount: 505 },
-    'tier-3': { label: 'Growing', grades: '4th \u2013 5th', wordCount: 505 },
-    'tier-4': { label: 'Climbing', grades: '6th \u2013 8th', wordCount: 504 },
-    'tier-5': { label: 'Summit', grades: '8th+', wordCount: 512 },
+const TIER_META: Record<string, { label: string; grades: string; diffRange: [number, number] }> = {
+    'tier-1': { label: 'Seedling', grades: 'K \u2013 1st', diffRange: [1, 2] },
+    'tier-2': { label: 'Sprout', grades: '2nd \u2013 3rd', diffRange: [3, 4] },
+    'tier-3': { label: 'Growing', grades: '4th \u2013 5th', diffRange: [5, 6] },
+    'tier-4': { label: 'Climbing', grades: '6th \u2013 8th', diffRange: [7, 8] },
+    'tier-5': { label: 'Summit', grades: '8th+', diffRange: [9, 10] },
 };
+
+function getTierWordCounts(): Record<string, number> {
+    const counts: Record<string, number> = {};
+    for (const [tier, meta] of Object.entries(TIER_META)) {
+        counts[tier] = wordsByDifficulty(meta.diffRange[0] as 1, meta.diffRange[1] as 10).length;
+    }
+    return counts;
+}
 
 interface TierGroup {
     grade: string;
@@ -95,18 +104,18 @@ interface TierGroup {
     progress: number;
 }
 
-function groupByTier(phases: PhaseProgress[], currentPhaseIndex: number): TierGroup[] {
+function groupByTier(phases: PhaseProgress[], currentPhaseIndex: number, wordCounts: Record<string, number>): TierGroup[] {
     const groups = new Map<string, TierGroup>();
 
     phases.forEach((pp, i) => {
         const g = pp.phase.grade;
         if (!groups.has(g)) {
-            const info = TIER_LABELS[g] ?? { label: g, grades: '', wordCount: 0 };
+            const meta = TIER_META[g] ?? { label: g, grades: '' };
             groups.set(g, {
                 grade: g,
-                label: info.label,
-                grades: info.grades,
-                wordCount: info.wordCount,
+                label: meta.label,
+                grades: meta.grades,
+                wordCount: wordCounts[g] ?? 0,
                 phases: [],
                 isCurrent: false,
                 isComplete: true,
@@ -188,7 +197,7 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                         <span className={`text-[10px] ui ${
                             group.isLocked ? 'text-[rgb(var(--color-fg))]/30' : 'text-[rgb(var(--color-fg))]/40'
                         }`}>
-                            {group.wordCount} words
+                            {group.wordCount.toLocaleString()} words
                         </span>
                     </div>
                     <span className={`text-[10px] ui ${
@@ -292,9 +301,11 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
 // ── Main component ───────────────────────────────────────────────────────────
 
 export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
+    const registryVersion = getRegistryVersion();
     const curriculum = useMemo(() => evaluateCurriculum(records), [records]);
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount, hardestWordCount), [records, reviewDueCount, hardestWordCount]);
     const difficultyNudge = useMemo(() => getDifficultyNudge(records), [records]);
+    const tierWordCounts = useMemo(() => getTierWordCounts(), [registryVersion]);
 
     // Root mastery data
     const rootMasteryData = useMemo(() => computeRootMastery(records, WORD_ROOTS), [records]);
@@ -308,7 +319,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
     const [studyToolsTab, setStudyToolsTab] = useState<StudyTab | null>(null);
 
     // Accordion: expand the tier containing the current phase by default
-    const tierGroups = useMemo(() => groupByTier(curriculum.phases, curriculum.currentPhaseIndex), [curriculum]);
+    const tierGroups = useMemo(() => groupByTier(curriculum.phases, curriculum.currentPhaseIndex, tierWordCounts), [curriculum, tierWordCounts]);
     const currentTierGrade = curriculum.phases[curriculum.currentPhaseIndex]?.phase.grade ?? '';
     const [expandedTier, setExpandedTier] = useState<string | null>(currentTierGrade);
 
