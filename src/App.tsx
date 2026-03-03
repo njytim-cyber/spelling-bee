@@ -796,12 +796,6 @@ function AppInner() {
                   )}
                 </div>
               )}
-              {/* Level label — hidden in review/challenge modes */}
-              {levelConfig && questionType !== 'review' && questionType !== 'challenge' && (
-                <div className="mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40 font-medium">
-                  {levelConfig.label}
-                </div>
-              )}
             </div>}
 
             {/* ── Points earned floater ── */}
@@ -878,8 +872,6 @@ function AppInner() {
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
                     >
-                      {/* Eraser wipe on new question */}
-                      {!reducedMotion && <div key={'erase' + currentProblem.id} className="eraser-wipe" />}
                       <ProblemView
                         problem={currentProblem}
                         frozen={frozen}

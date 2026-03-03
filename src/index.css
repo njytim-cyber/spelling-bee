@@ -387,23 +387,6 @@
   animation: chalk-dust-fall 0.6s ease-out forwards;
 }
 
-/* ── Eraser wipe transition ── */
-@keyframes eraser-wipe {
-  0% { transform: translateX(-105%); }
-  40% { transform: translateX(0%); }
-  60% { transform: translateX(0%); }
-  100% { transform: translateX(105%); }
-}
-
-.eraser-wipe {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 80%, transparent 100%);
-  transform: translateX(-105%);
-  animation: eraser-wipe 0.4s ease-in-out forwards;
-  pointer-events: none;
-  z-index: 25;
-}
 
 /* ── Chalk write-in (letter-by-letter appear) ── */
 .chalk-write-in span {

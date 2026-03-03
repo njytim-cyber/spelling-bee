@@ -10,23 +10,17 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'levels' | 'topics' | 'compete' | 'origins';
+type Tab = 'levels' | 'topics' | 'origins';
 
 const LEVEL_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
 const ORIGIN_GROUPS: SpellingGroup[] = ['origins'];
 
-/** Competition word-list categories (swipe mode — same game, different word pool) */
-const COMP_WORD_IDS: SpellingCategory[] = ['wotc-one', 'wotc-two', 'wotc-three'];
-/** Competition game-mode categories (different UI entirely) */
-const COMP_MODE_IDS: SpellingCategory[] = ['bee', 'written-test'];
-
-const TABS: Tab[] = ['levels', 'topics', 'compete', 'origins'];
-const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', compete: 'Compete', origins: 'Origins' };
+const TABS: Tab[] = ['levels', 'topics', 'origins'];
+const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', origins: 'Origins' };
 const TAB_DESCRIPTIONS: Record<Tab, string> = {
     levels: 'Words by difficulty level',
     topics: 'Practice specific phonics patterns',
-    compete: 'Competition words & spelling bee modes',
     origins: 'Words grouped by language of origin',
 };
 const SWIPE_THRESHOLD = 50;
@@ -38,9 +32,6 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
     const levelGroups = useMemo(() => LEVEL_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const themeGroups = useMemo(() => THEME_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const originGroups = useMemo(() => ORIGIN_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
-
-    const compWords = useMemo(() => SPELLING_CATEGORIES.filter(t => COMP_WORD_IDS.includes(t.id)), []);
-    const compModes = useMemo(() => SPELLING_CATEGORIES.filter(t => COMP_MODE_IDS.includes(t.id)), []);
 
     const currentEntry = SPELLING_CATEGORIES.find(t => t.id === current);
 
@@ -90,34 +81,6 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                 </div>
             );
         });
-    }
-
-    function renderCompete() {
-        return (
-            <>
-                {/* Word lists — same swipe game, different word pools */}
-                <div className="mb-4">
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-0.5 px-1">
-                        Competition Words
-                    </div>
-                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Swipe-quiz with competition word lists</div>
-                    <div className="grid grid-cols-3 gap-2">
-                        {compWords.map(renderItem)}
-                    </div>
-                </div>
-
-                {/* Game modes — different UI experience */}
-                <div className="mb-3 last:mb-0">
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-widest mb-0.5 px-1">
-                        Practice Modes
-                    </div>
-                    <div className="text-[8px] ui text-[rgb(var(--color-fg))]/20 mb-2 px-1">Full spelling practice — type the word</div>
-                    <div className="grid grid-cols-3 gap-2">
-                        {compModes.map(renderItem)}
-                    </div>
-                </div>
-            </>
-        );
     }
 
     return (
@@ -194,7 +157,6 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mb-3 text-center">{TAB_DESCRIPTIONS[tab]}</div>
                                             {tab === 'levels' ? renderGrid(levelGroups)
                                                 : tab === 'topics' ? renderGrid(themeGroups)
-                                                : tab === 'compete' ? renderCompete()
                                                 : renderGrid(originGroups)}
                                         </motion.div>
                                     </AnimatePresence>
