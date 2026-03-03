@@ -909,14 +909,6 @@ function AppInner() {
               </div>
             )}
 
-            {/* ── Feedback flash overlay ── */}
-            {flash !== 'none' && (
-              <div
-                className={`absolute inset-0 pointer-events-none z-30 ${flash === 'correct' ? 'flash-correct' : 'flash-wrong'
-                  }`}
-              />
-            )}
-
             {/* ── Chalk dust on wrong answer ── */}
             {flash === 'wrong' && !reducedMotion && (
               <div key={'dust' + totalAnswered} className="chalk-dust" style={{ left: '50%', top: '45%' }}>
