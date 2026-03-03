@@ -109,11 +109,11 @@ const iDaily = I(<>
     <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
 </>);
 
-// CVC — "cat" letters c·a·t
+// CVC — three blocks (consonant-vowel-consonant)
 const iCvc = I(<>
-    <text x="4" y="16" fill="currentColor" stroke="none" fontSize="11" fontFamily="var(--font-chalk)">c</text>
-    <text x="10" y="16" fill="currentColor" stroke="none" fontSize="11" fontFamily="var(--font-chalk)">a</text>
-    <text x="16" y="16" fill="currentColor" stroke="none" fontSize="11" fontFamily="var(--font-chalk)">t</text>
+    <rect x="2" y="8" width="5" height="8" rx="1" />
+    <rect x="9.5" y="8" width="5" height="8" rx="1" fill="currentColor" stroke="none" />
+    <rect x="17" y="8" width="5" height="8" rx="1" />
 </>);
 
 // Blends — two arrows merging into one
@@ -124,28 +124,35 @@ const iBlends = I(<>
     <polyline points="17,8 21,12 17,16" />
 </>);
 
-// Digraphs — two letters linked: "sh"
+// Digraphs — two linked blocks (two letters, one sound)
 const iDigraphs = I(<>
-    <text x="3" y="16" fill="currentColor" stroke="none" fontSize="12" fontFamily="var(--font-chalk)">sh</text>
-    <path d="M17 8c2 0 3 1.5 3 3.5S19 15 17 15" {...S} strokeWidth={1.5} />
+    <rect x="3" y="8" width="7" height="8" rx="1" />
+    <rect x="10" y="8" width="7" height="8" rx="1" />
+    <path d="M17 12h3" />
+    <path d="M20 9v6" />
 </>);
 
-// Silent-e — letter "e" with a slash through it
+// Silent-e — speech bubble with X (silent sound)
 const iSilentE = I(<>
-    <text x="6" y="18" fill="currentColor" stroke="none" fontSize="16" fontFamily="var(--font-chalk)">e</text>
-    <line x1="5" y1="20" x2="19" y2="4" strokeWidth={2.5} />
+    <path d="M4 6h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-3l-3 3v-3H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" />
+    <line x1="8" y1="9" x2="12" y2="13" />
+    <line x1="12" y1="9" x2="8" y2="13" />
 </>);
 
-// Vowel teams — two letters holding hands: "ea"
+// Vowel teams — two circles linked (pair working together)
 const iVowelTeams = I(<>
-    <text x="2" y="16" fill="currentColor" stroke="none" fontSize="12" fontFamily="var(--font-chalk)">ea</text>
-    <path d="M9 5c1.5-1.5 3.5-1.5 5 0" />
+    <circle cx="9" cy="12" r="5" fill="currentColor" stroke="none" opacity="0.3" />
+    <circle cx="15" cy="12" r="5" fill="currentColor" stroke="none" opacity="0.3" />
+    <circle cx="9" cy="12" r="5" />
+    <circle cx="15" cy="12" r="5" />
 </>);
 
-// R-controlled — letter R with a lasso
+// R-controlled — magnet (R pulls vowel sound)
 const iRControlled = I(<>
-    <text x="6" y="18" fill="currentColor" stroke="none" fontSize="16" fontFamily="var(--font-chalk)" fontWeight="bold">R</text>
-    <path d="M18 6c2 2 2 5 0 7s-5 2-7 0" strokeDasharray="2 2" />
+    <path d="M5 4v8a7 7 0 0 0 14 0V4" />
+    <line x1="5" y1="4" x2="5" y2="8" strokeWidth={3} />
+    <line x1="19" y1="4" x2="19" y2="8" strokeWidth={3} />
+    <line x1="9" y1="10" x2="15" y2="10" strokeDasharray="2 2" />
 </>);
 
 // Diphthongs — sound wave rising and falling
@@ -465,34 +472,47 @@ const iEveryday = I(<>
     <polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" />
 </>);
 
-// Origin: Latin — pillar (reuse concept)
+// Origin: Latin — Roman column/pillar
 const iOriginLatin = I(<>
-    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">L</text>
-    <path d="M16 4v16 M13 4h6 M13 20h6" />
+    <line x1="12" y1="4" x2="12" y2="20" />
+    <line x1="8" y1="4" x2="16" y2="4" />
+    <line x1="8" y1="20" x2="16" y2="20" />
+    <line x1="9" y1="4" x2="10" y2="8" />
+    <line x1="15" y1="4" x2="14" y2="8" />
 </>);
 
-// Origin: Greek — alpha symbol
+// Origin: Greek — temple pediment (Parthenon front)
 const iOriginGreek = I(<>
-    <text x="4" y="18" fill="currentColor" stroke="none" fontSize="16" fontFamily="var(--font-chalk)" fontStyle="italic">&alpha;</text>
-    <path d="M16 6c2 0 3 2 3 5s-1 5-3 5" />
+    <path d="M4 20h16" />
+    <line x1="6" y1="20" x2="6" y2="11" />
+    <line x1="10" y1="20" x2="10" y2="11" />
+    <line x1="14" y1="20" x2="14" y2="11" />
+    <line x1="18" y1="20" x2="18" y2="11" />
+    <path d="M3 11h18L12 4Z" />
 </>);
 
-// Origin: French — fleur simplified
+// Origin: French — fleur-de-lis
 const iOriginFrench = I(<>
-    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">F</text>
-    <path d="M17 4c0 4-2 6-2 9 0 1.5 1 2.5 2.5 2.5" />
+    <path d="M12 22v-10" />
+    <path d="M12 4c0 3-4 5-4 8 0 1.5 1.5 2.5 3 2" />
+    <path d="M12 4c0 3 4 5 4 8 0 1.5-1.5 2.5-3 2" />
+    <path d="M8 18c-2 0-3 1-3 2h14c0-1-1-2-3-2" />
 </>);
 
-// Origin: German — gothic G
+// Origin: German — eagle silhouette (spread wings)
 const iOriginGerman = I(<>
-    <text x="5" y="18" fill="currentColor" stroke="none" fontSize="15" fontFamily="var(--font-chalk)" fontStyle="italic">G</text>
-    <path d="M18 8c-1-2-3-3-5-3s-4 2-4 4 2 3 4 3" />
+    <path d="M12 8v10" />
+    <path d="M12 8c-3-2-6-4-9-3 2 2 4 3 5 6" />
+    <path d="M12 8c3-2 6-4 9-3-2 2-4 3-5 6" />
+    <circle cx="12" cy="6" r="2" />
 </>);
 
-// Origin: Other — globe with question
+// Origin: Other — globe with meridians
 const iOriginOther = I(<>
     <circle cx="12" cy="12" r="9" />
-    <text x="8" y="16" fill="currentColor" stroke="none" fontSize="10" fontFamily="var(--font-chalk)">?</text>
+    <path d="M3 12h18" />
+    <path d="M12 3c-3 3-3 15 0 18" />
+    <path d="M12 3c3 3 3 15 0 18" />
 </>);
 
 // Review — circular arrow
@@ -504,7 +524,8 @@ const iReview = I(<>
 // Vocab — book with question mark
 const iVocab = I(<>
     <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v16H6.5a2.5 2.5 0 0 0 0 5H20" />
-    <text x="10" y="14" fill="currentColor" stroke="none" fontSize="10" fontFamily="var(--font-chalk)" fontWeight="bold">?</text>
+    <path d="M12 8v4" />
+    <circle cx="12" cy="14.5" r="0.5" fill="currentColor" stroke="none" />
 </>);
 
 // WOTC: One Bee — single bee
