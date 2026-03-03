@@ -114,7 +114,14 @@ export function usePronunciation(): UsePronunciationReturn {
 
         utterance.onstart = () => { if (mountedRef.current) setIsSpeaking(true); };
         utterance.onend = () => { if (mountedRef.current) setIsSpeaking(false); };
-        utterance.onerror = () => { if (mountedRef.current) { setIsSpeaking(false); setTtsFailed(true); } };
+        utterance.onerror = (e) => {
+            if (!mountedRef.current) return;
+            setIsSpeaking(false);
+            // "canceled" and "interrupted" are not real failures — they happen when
+            // a new speak() call cancels the previous one (e.g. auto-speak on load)
+            const reason = (e as SpeechSynthesisErrorEvent).error;
+            if (reason !== 'canceled' && reason !== 'interrupted') setTtsFailed(true);
+        };
 
         utteranceRef.current = utterance;
         speechSynthesis.speak(utterance);

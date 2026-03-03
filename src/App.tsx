@@ -9,7 +9,7 @@ import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
 import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
-import { getGradeConfig, SPELLING_CATEGORIES } from './domains/spelling/spellingCategories';
+import { getGradeConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { useReducedMotion } from './hooks/useReducedMotion';
@@ -692,19 +692,7 @@ function AppInner() {
                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">Words you missed come back for practice</div>
                   )}
                 </div>
-              ) : (
-                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-1 flex items-center gap-1.5">
-                  <span>{SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? questionType}</span>
-                  {reviewQueue.length > 0 && questionType !== 'vocab' && (
-                    <button
-                      onClick={() => setQuestionType('review' as SpellingCategory)}
-                      className="pointer-events-auto text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors"
-                    >
-                      · {reviewQueue.length} to review
-                    </button>
-                  )}
-                </div>
-              )}
+              ) : null}
               <ScoreCounter value={score} />
 
               {/* Shield count */}
