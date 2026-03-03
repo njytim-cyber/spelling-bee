@@ -5,6 +5,7 @@
  * Calls a Firebase Cloud Function to synthesize speech, caches results.
  */
 import { getFunctions, httpsCallable } from 'firebase/functions';
+import { STORAGE_KEYS } from '../config';
 
 // ── Voice catalog ────────────────────────────────────────────────────────────
 
@@ -57,11 +58,6 @@ export function voicesForDialect(dialect: string): CloudVoice[] {
  */
 export function initializeDefaultVoice(): void {
     if (typeof window === 'undefined') return;
-
-    const STORAGE_KEYS = {
-        ttsCloudVoice: 'spelling-bee-tts-cloud-voice',
-        ttsEngine: 'spelling-bee-tts-engine',
-    };
 
     const stored = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
     if (!stored) {
