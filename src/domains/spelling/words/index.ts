@@ -9,7 +9,7 @@
  * that are lazily built and auto-invalidated on tier/dialect changes.
  */
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
-import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme, getCachedByList } from './registry';
+import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme, getCachedByList, getCachedByDifficulty } from './registry';
 import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymologyParser';
 
 export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier, CompetitionList } from './types';
@@ -28,9 +28,9 @@ export function wordsByPattern(pattern: PhonicsPattern): SpellingWord[] {
     return getCachedByPattern(pattern);
 }
 
-/** Get words within a difficulty range (inclusive). */
+/** Get words within a difficulty range (inclusive). Uses cached index. */
 export function wordsByDifficulty(min: DifficultyTier, max: DifficultyTier): SpellingWord[] {
-    return getLoadedWords().filter(w => w.difficulty >= min && w.difficulty <= max);
+    return getCachedByDifficulty(min, max);
 }
 
 /** Get words matching BOTH a pattern AND a difficulty range. Uses cached index + filter. */

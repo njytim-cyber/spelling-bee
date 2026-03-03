@@ -10,16 +10,19 @@ interface SwipeTrailProps {
     streak: number;
     activeTrailId?: string;
     baseColor?: string; // e.g. from active chalk theme
+    active?: boolean;   // pause render loop when false (e.g. non-game tabs)
 }
 
 // Configurable constants
 const TRAIL_LIFETIME_MS = 350;
 const TRAIL_MAX_WIDTH = 18;
 
-export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, baseColor = '#ffffff' }: SwipeTrailProps) {
+export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, baseColor = '#ffffff', active = true }: SwipeTrailProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const pointsRef = useRef<TrailPoint[]>([]);
     const animationFrameRef = useRef<number>(0);
+    const activeRef = useRef(active);
+    useEffect(() => { activeRef.current = active; }, [active]);
 
     // Determine target color based on streak and unlocks
     const getTrailColor = useCallback(() => {
@@ -77,6 +80,14 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
 
         // Render loop
         const render = (time: DOMHighResTimeStamp) => {
+            // Skip rendering when inactive (saves CPU on non-game tabs)
+            if (!activeRef.current) {
+                pointsRef.current = [];
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animationFrameRef.current = requestAnimationFrame(render);
+                return;
+            }
+
             // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 

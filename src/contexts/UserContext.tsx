@@ -4,7 +4,7 @@
  * Consolidates user-related state (stats, cosmetics, auth) to reduce
  * prop drilling and stabilize component memoization.
  */
-import { createContext, useContext, useCallback } from 'react';
+import { createContext, useContext, useCallback, useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { useStats } from '../hooks/useStats';
 import { useLocalState } from '../hooks/useLocalState';
@@ -85,7 +85,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const onGradeChange = useCallback((g: GradeLevel) => setGrade(g), [setGrade]);
   const onDialectChange = useCallback((d: Dialect) => setDialect(d), [setDialect]);
 
-  const value: UserContextValue = {
+  const value = useMemo<UserContextValue>(() => ({
     stats,
     accuracy,
     recordSession,
@@ -110,7 +110,14 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     onGradeChange,
     dialect: dialect as string,
     onDialectChange,
-  };
+  }), [
+    stats, accuracy, recordSession, recordBeeResult, resetStats,
+    updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
+    activeCostume, onCostumeChange, activeTheme, onThemeChange,
+    activeTrailId, onTrailChange, user?.displayName, setDisplayName,
+    user?.isAnonymous, linkGoogle, sendEmailLink, grade, onGradeChange,
+    dialect, onDialectChange,
+  ]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

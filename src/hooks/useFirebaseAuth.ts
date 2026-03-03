@@ -149,7 +149,9 @@ export function useFirebaseAuth() {
             if (currentUser.isAnonymous) {
                 // Link anonymous account to Google
                 const result = await linkWithPopup(currentUser, provider);
-                const displayName = result.user.displayName || user?.displayName || randomName();
+                const rawName = result.user.displayName || user?.displayName || randomName();
+                // Sanitize Google display name the same way as manual entry
+                const displayName = rawName.replace(/<[^>]*>/g, '').replace(/[^\w\s\-_.!]/g, '').trim().slice(0, 20) || randomName();
                 localStorage.setItem(STORAGE_KEYS.displayName, displayName);
                 setUser(prev => prev ? { ...prev, displayName, isAnonymous: false } : null);
                 await setDoc(doc(db, 'users', currentUser.uid), {

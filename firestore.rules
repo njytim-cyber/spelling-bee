@@ -24,7 +24,7 @@ service cloud.firestore {
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
-                           'lastPingAt'
+                           'lastPingAt', '_statsVersion'
                          ])
                        : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
                            'displayName', 'totalXP', 'bestStreak', 'totalSolved',
@@ -36,7 +36,7 @@ service cloud.firestore {
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
-                           'lastPingAt'
+                           'lastPingAt', '_statsVersion'
                          ])
                       )
                    // String field constraints
@@ -159,10 +159,11 @@ service cloud.firestore {
                     && request.resource.data.roomCode.size() == 6
                     && request.resource.data.status == 'waiting';
 
-      // Participants can update (join, ready, submit answers, advance rounds)
+      // Participants can update; non-participants can only join (add themselves to players)
       allow update: if request.auth != null
                     && (request.auth.uid in resource.data.players
-                        || request.resource.data.keys().hasAny(['players']));
+                        || (resource.data.status == 'waiting'
+                            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['players'])));
 
       // Only host can delete
       allow delete: if request.auth != null

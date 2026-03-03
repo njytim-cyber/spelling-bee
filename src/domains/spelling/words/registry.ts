@@ -49,6 +49,7 @@ const cacheState = {
     byPattern: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
     byTheme: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
     byList: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
+    byDifficulty: { valid: false, data: null } as CacheState<Map<number, SpellingWord[]>>,
 };
 
 function invalidateCaches(): void {
@@ -56,6 +57,7 @@ function invalidateCaches(): void {
     cacheState.byPattern.valid = false;
     cacheState.byTheme.valid = false;
     cacheState.byList.valid = false;
+    cacheState.byDifficulty.valid = false;
 }
 
 function ensureWordMapCache(): Map<string, SpellingWord> {
@@ -151,6 +153,35 @@ function ensureListCache(): Map<string, SpellingWord[]> {
 
 export function getCachedByList(listId: string): SpellingWord[] {
     return ensureListCache().get(listId) ?? [];
+}
+
+/** Words grouped by difficulty value (1-10). Builds index lazily. */
+function ensureDifficultyCache(): Map<number, SpellingWord[]> {
+    if (cacheState.byDifficulty.valid && cacheState.byDifficulty.data) {
+        return cacheState.byDifficulty.data;
+    }
+
+    const map = new Map<number, SpellingWord[]>();
+    for (const w of loadedWords) {
+        let arr = map.get(w.difficulty);
+        if (!arr) { arr = []; map.set(w.difficulty, arr); }
+        arr.push(w);
+    }
+
+    cacheState.byDifficulty.data = map;
+    cacheState.byDifficulty.valid = true;
+    return map;
+}
+
+/** Words within a difficulty range [min, max]. O(1) per difficulty level via index. */
+export function getCachedByDifficulty(min: number, max: number): SpellingWord[] {
+    const cache = ensureDifficultyCache();
+    const result: SpellingWord[] = [];
+    for (let d = min; d <= max; d++) {
+        const arr = cache.get(d);
+        if (arr) result.push(...arr);
+    }
+    return result;
 }
 
 // ── Public getters ───────────────────────────────────────────────────────────

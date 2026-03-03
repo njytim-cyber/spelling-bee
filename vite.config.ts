@@ -19,6 +19,7 @@ export default defineConfig({
       registerType: 'prompt',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globIgnores: ['**/tier*-pipeline*.js', '**/words-tier*.js'],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB — tier chunks are large
         runtimeCaching: [
           {

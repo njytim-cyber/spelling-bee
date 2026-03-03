@@ -52,12 +52,12 @@ import { generateChallenge } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
 import type { WordRecord } from './hooks/useWordHistory';
 import { WORD_ROOTS } from './domains/spelling/words/roots';
-import { PathPage } from './components/PathPage';
-import { BeeSimPage } from './components/BeeSimPage';
-import { WrittenTestPage } from './components/WrittenTestPage';
+const PathPage = lazy(() => lazyRetry(() => import('./components/PathPage')).then(m => ({ default: m.PathPage })));
+const BeeSimPage = lazy(() => lazyRetry(() => import('./components/BeeSimPage')).then(m => ({ default: m.BeeSimPage })));
+const WrittenTestPage = lazy(() => lazyRetry(() => import('./components/WrittenTestPage')).then(m => ({ default: m.WrittenTestPage })));
 const GuidedSpellingPage = lazy(() => lazyRetry(() => import('./components/GuidedSpellingPage')).then(m => ({ default: m.GuidedSpellingPage })));
-import { MultiplayerLobby } from './components/MultiplayerLobby';
-import { MultiplayerMatch } from './components/MultiplayerMatch';
+const MultiplayerLobby = lazy(() => lazyRetry(() => import('./components/MultiplayerLobby')).then(m => ({ default: m.MultiplayerLobby })));
+const MultiplayerMatch = lazy(() => lazyRetry(() => import('./components/MultiplayerMatch')).then(m => ({ default: m.MultiplayerMatch })));
 import { useMultiplayerRoom } from './hooks/useMultiplayerRoom';
 import { useCustomLists } from './hooks/useCustomLists';
 import { CustomListsModal } from './components/CustomListsModal';
@@ -556,6 +556,12 @@ function AppInner() {
     setActiveTab(tab);
   }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary, showSummary, guidedMode]);
 
+  // Memoize BottomNav tabs to avoid new array each render
+  const navTabs = useMemo(
+    () => NAV_TABS.map(t => t.id === 'path' ? { ...t, badge: reviewQueue.length } : t),
+    [reviewQueue.length],
+  );
+
   // ── Tab swipe (non-game tabs only) ──
   const handleTabSwipe = useCallback((_: unknown, info: PanInfo) => {
     if (activeTab === 'game') return; // game uses horizontal swipe for answers
@@ -610,6 +616,7 @@ function AppInner() {
           streak={streak}
           activeTrailId={activeTrailId}
           baseColor={CHALK_THEMES.find(t => t.id === activeTheme)?.color}
+          active={activeTab === 'game'}
         />
 
         {/* ── Top-right controls (theme toggle) — game tab only, hidden during immersive sub-modes ── */}
@@ -1034,7 +1041,7 @@ function AppInner() {
           <BottomNav
             active={activeTab}
             onChange={handleTabChange}
-            tabs={NAV_TABS.map(t => t.id === 'path' ? { ...t, badge: reviewQueue.length } : t)}
+            tabs={navTabs}
           />
         )}
 
