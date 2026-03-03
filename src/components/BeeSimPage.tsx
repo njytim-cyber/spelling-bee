@@ -39,10 +39,10 @@ import type { CharacterStyle } from '../utils/characterStyles';
 import type { SpellingWord } from '../domains/spelling/words/types';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string; emoji: string }[] = [
-    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3', emoji: '🏫' },
-    { id: 'district', label: 'District', desc: 'Grades 2-5', emoji: '🏙️' },
-    { id: 'state', label: 'State', desc: 'Grades 4-8', emoji: '🗺️' },
-    { id: 'national', label: 'National', desc: 'Competition', emoji: '🏆' },
+    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3 · Easy words, generous timer', emoji: '🏫' },
+    { id: 'district', label: 'District', desc: 'Grades 2-5 · Moderate difficulty', emoji: '🏙️' },
+    { id: 'state', label: 'State', desc: 'Grades 4-8 · Tough words, faster pace', emoji: '🗺️' },
+    { id: 'national', label: 'National', desc: 'Competition level · Hardest words', emoji: '🏆' },
 ];
 
 /** Primary info buttons always visible; secondary hidden behind "More..." */
@@ -837,6 +837,11 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                             <DifficultyDots difficulty={m.word.difficulty} />
                                         </div>
                                     ))}
+                                    {missedWords.length > 5 && (
+                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center pt-1">
+                                            and {missedWords.length - 5} more
+                                        </div>
+                                    )}
                                 </div>
                             </motion.div>
                         )}
@@ -986,7 +991,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                         >
                             <button
                                 onClick={onChangeLevel}
-                                className="px-8 py-3 rounded-xl border-3 border-[var(--color-gold)]/60 bg-[var(--color-gold)]/20 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 hover:scale-105 transition-all"
+                                className="px-8 py-3 rounded-xl border-[3px] border-[var(--color-gold)]/60 bg-[var(--color-gold)]/20 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 hover:scale-105 transition-all"
                             >
                                 Play Again
                             </button>

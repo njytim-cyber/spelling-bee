@@ -26,6 +26,8 @@ interface UsePronunciationReturn {
     cancel: () => void;
     /** True when cloud TTS failed and browser fallback was used */
     usedFallback: boolean;
+    /** True when all TTS methods failed (both cloud and browser) */
+    ttsFailed: boolean;
 }
 
 const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
@@ -33,6 +35,7 @@ const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
 export function usePronunciation(): UsePronunciationReturn {
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [usedFallback, setUsedFallback] = useState(false);
+    const [ttsFailed, setTtsFailed] = useState(false);
     const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
     const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -94,7 +97,10 @@ export function usePronunciation(): UsePronunciationReturn {
 
     /** Speak using browser Web Speech API */
     const speakBrowser = useCallback((text: string) => {
-        if (!supported) return;
+        if (!supported) {
+            setTtsFailed(true);
+            return;
+        }
 
         speechSynthesis.cancel();
 
@@ -108,7 +114,7 @@ export function usePronunciation(): UsePronunciationReturn {
 
         utterance.onstart = () => { if (mountedRef.current) setIsSpeaking(true); };
         utterance.onend = () => { if (mountedRef.current) setIsSpeaking(false); };
-        utterance.onerror = () => { if (mountedRef.current) setIsSpeaking(false); };
+        utterance.onerror = () => { if (mountedRef.current) { setIsSpeaking(false); setTtsFailed(true); } };
 
         utteranceRef.current = utterance;
         speechSynthesis.speak(utterance);
@@ -117,6 +123,7 @@ export function usePronunciation(): UsePronunciationReturn {
     /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
     const speak = useCallback((text: string) => {
         setUsedFallback(false);
+        setTtsFailed(false);
         const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
         const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '1.0');
 
@@ -177,5 +184,5 @@ export function usePronunciation(): UsePronunciationReturn {
         speak(`${word}. ${letters}. ${word}`);
     }, [speak]);
 
-    return { speak, speakWord, speakWordNumber, speakLetters, isSpeaking, isSupported: supported, cancel, usedFallback };
+    return { speak, speakWord, speakWordNumber, speakLetters, isSpeaking, isSupported: supported, cancel, usedFallback, ttsFailed };
 }

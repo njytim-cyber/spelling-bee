@@ -28,7 +28,7 @@ export const OfflineBanner = memo(function OfflineBanner() {
                     exit={{ y: -40, opacity: 0 }}
                     className="fixed top-0 inset-x-0 z-[100] flex items-center justify-center py-1.5 bg-amber-600/90 text-white text-xs ui font-medium tracking-wide"
                 >
-                    📡 Offline — your progress is saved locally
+                    📡 Offline — progress saves locally and syncs when you're back
                 </motion.div>
             )}
         </AnimatePresence>

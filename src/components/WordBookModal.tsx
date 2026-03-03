@@ -198,13 +198,26 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
     return (
         <>
             {/* Search */}
-            <input
-                type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Search words..."
-                className="w-full mb-2 text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-2 text-[rgb(var(--color-fg))]/60 placeholder:text-[rgb(var(--color-fg))]/20 outline-none"
-            />
+            <div className="relative mb-2">
+                <input
+                    type="text"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    placeholder="Search words..."
+                    className="w-full text-xs ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-3 py-2 pr-8 text-[rgb(var(--color-fg))]/60 placeholder:text-[rgb(var(--color-fg))]/20 outline-none"
+                />
+                {search && (
+                    <button
+                        onClick={() => setSearch('')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                        aria-label="Clear search"
+                    >
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                )}
+            </div>
 
             {/* Summary + Print */}
             <div className="flex items-center justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
@@ -251,9 +264,9 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
                     onChange={e => setCategoryFilter(e.target.value || null)}
                     className="w-full mb-3 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
                 >
-                    <option value="" className="bg-[#1a1a2e] text-white">All categories</option>
+                    <option value="" className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">All categories</option>
                     {categories.map(c => (
-                        <option key={c} value={c} className="bg-[#1a1a2e] text-white">{c}</option>
+                        <option key={c} value={c} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">{c}</option>
                     ))}
                 </select>
             )}

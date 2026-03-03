@@ -6,6 +6,7 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { getDailyStreak, getTodayLabel } from '../utils/dailyTracking';
+import { createChallengeId } from '../utils/dailyChallenge';
 
 interface Props {
     correct: number;
@@ -16,20 +17,21 @@ interface Props {
 }
 
 const MODE_CONFIG = {
-    daily: { icon: '📅', title: 'Daily Complete!' },
-    review: { icon: '📖', title: 'Review Complete!' },
-    challenge: { icon: '🏆', title: 'Challenge Complete!' },
+    daily: { icon: '📅', title: 'Daily Complete!', exitLabel: 'Back to Play' },
+    review: { icon: '📖', title: 'Review Complete!', exitLabel: 'Back to Play' },
+    challenge: { icon: '🏆', title: 'Challenge Complete!', exitLabel: 'Back to Play' },
 };
 
 export const DailyChallengeComplete = memo(function DailyChallengeComplete({ correct, total, score, onExit, mode = 'daily' }: Props) {
     const streak = getDailyStreak();
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
     const dateLabel = getTodayLabel();
-    const { icon, title } = MODE_CONFIG[mode];
+    const { icon, title, exitLabel } = MODE_CONFIG[mode];
 
+    const challengeUrl = `${window.location.origin}?c=${createChallengeId()}`;
     const shareText = mode === 'daily'
-        ? `Spelling Bee Daily ${dateLabel} -- ${correct}/${total} (${pct}%)${streak > 1 ? ` | ${streak}-day streak` : ''}`
-        : `Spelling Bee ${title.replace('!', '')} -- ${correct}/${total} (${pct}%)`;
+        ? `🐝 Spelling Bee Daily ${dateLabel} — ${correct}/${total} (${pct}%)${streak > 1 ? ` | 🔥 ${streak}-day streak` : ''}\n\nCan you beat me? 👉 ${challengeUrl}`
+        : `🐝 Spelling Bee ${title.replace('!', '')} — ${correct}/${total} (${pct}%)\n\nCan you beat me? 👉 ${challengeUrl}`;
 
     const handleShare = async () => {
         if (navigator.share) {
@@ -73,7 +75,7 @@ export const DailyChallengeComplete = memo(function DailyChallengeComplete({ cor
                     onClick={onExit}
                     className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors"
                 >
-                    Done
+                    {exitLabel}
                 </button>
             </div>
         </motion.div>

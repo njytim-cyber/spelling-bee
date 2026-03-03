@@ -402,6 +402,117 @@
   animation: fire-glow 0.6s ease-in-out infinite;
 }
 
+/* ── Chalk dust particles (wrong answer) ── */
+@keyframes chalk-dust-fall {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(28px) translateX(var(--dust-dx)) scale(0.3); opacity: 0; }
+}
+
+.chalk-dust {
+  position: absolute;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.chalk-dust-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-chalk);
+  opacity: 0;
+  animation: chalk-dust-fall 0.6s ease-out forwards;
+}
+
+/* ── Eraser wipe transition ── */
+@keyframes eraser-wipe {
+  0% { transform: translateX(-105%); }
+  40% { transform: translateX(0%); }
+  60% { transform: translateX(0%); }
+  100% { transform: translateX(105%); }
+}
+
+.eraser-wipe {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 20%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 80%, transparent 100%);
+  transform: translateX(-105%);
+  animation: eraser-wipe 0.4s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* ── Chalk write-in (letter-by-letter appear) ── */
+.chalk-write-in span {
+  opacity: 0;
+  display: inline-block;
+  animation: chalk-letter-in 0.15s ease-out forwards;
+}
+
+@keyframes chalk-letter-in {
+  0% { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Chalk snap flash (milestone) ── */
+@keyframes chalk-snap {
+  0% { opacity: 0; }
+  15% { opacity: 0.35; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.chalk-snap {
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: chalk-snap 0.4s ease-out forwards;
+  pointer-events: none;
+  z-index: 39;
+}
+
+/* ── Scratch marks (wrong streak 3+) ── */
+@keyframes scratch-appear {
+  0% { opacity: 0; }
+  100% { opacity: 0.06; }
+}
+
+@keyframes scratch-fade {
+  0% { opacity: 0.06; }
+  100% { opacity: 0; }
+}
+
+.scratch-marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 12px,
+    var(--color-wrong) 12px,
+    var(--color-wrong) 13px
+  );
+  animation: scratch-appear 0.3s ease-out forwards;
+}
+
+.scratch-marks-fade {
+  animation: scratch-fade 0.5s ease-out forwards;
+}
+
+/* ── Gold star stamp (mastery) ── */
+@keyframes star-stamp {
+  0% { transform: scale(3) rotate(-15deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  70% { transform: scale(0.95) rotate(-1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.star-stamp {
+  animation: star-stamp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
 /* ── Scrollbars ── */
 * {
   scrollbar-width: thin;

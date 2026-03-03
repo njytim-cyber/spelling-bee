@@ -92,7 +92,7 @@ export const ActionButtons = memo(function ActionButtons({
                 {guidedMode && (
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
-                <span className="text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">{guidedMode ? 'Type' : 'MCQ'}</span>
+                <span className="w-7 text-center text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">{guidedMode ? 'Type' : 'MCQ'}</span>
             </motion.button>}
 
             {/* Stopwatch / timed mode */}

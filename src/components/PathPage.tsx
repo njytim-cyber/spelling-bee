@@ -224,11 +224,13 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                         className="overflow-hidden"
                     >
                         <div className="pl-4 pt-1.5 space-y-1.5">
-                            {group.phases.map(pp => {
+                            {group.phases.map((pp, phaseIdx) => {
                                 const isComplete = pp.unlocked && pp.masteredWords >= pp.phase.masteryGate && pp.accuracy >= pp.phase.accuracyGate;
                                 const isLocked = !pp.unlocked;
                                 const isCurrent = group.isCurrent && pp.index === group.phases.find(p =>
                                     p.unlocked && p.masteredWords < p.phase.masteryGate)?.index;
+                                // Find the previous phase to show its gate as unlock criteria
+                                const prevPhase = phaseIdx > 0 ? group.phases[phaseIdx - 1] : null;
 
                                 return (
                                     <div
@@ -257,7 +259,9 @@ function TierAccordion({ group, expanded, onToggle, onPractice }: {
                                             <span className={`text-[9px] ui ml-1.5 ${
                                                 isLocked ? 'text-[rgb(var(--color-fg))]/25' : 'text-[rgb(var(--color-fg))]/35'
                                             }`}>
-                                                {pp.phase.description}
+                                                {isLocked && prevPhase
+                                                    ? `Master ${prevPhase.phase.masteryGate} words at ${Math.round(prevPhase.phase.accuracyGate * 100)}%+ to unlock`
+                                                    : pp.phase.description}
                                             </span>
 
                                             {!isLocked && (

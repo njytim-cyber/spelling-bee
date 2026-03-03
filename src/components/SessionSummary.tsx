@@ -53,6 +53,8 @@ function buildShareText(
     ].join('\n');
 }
 
+const PERFECT_CELEBRATIONS = ['🏆 PERFECT', '💯 FLAWLESS', '✨ UNSTOPPABLE', '🎯 BULLSEYE', '👑 NAILED IT'];
+
 export const SessionSummary = memo(function SessionSummary({
     solved, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     hardMode, timedMode, onDrillHardest, hardestWordCount,
@@ -226,7 +228,7 @@ export const SessionSummary = memo(function SessionSummary({
                                 animate={{ scale: [0, 1.3, 1] }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
                             >
-                                🏆 PERFECT
+                                {PERFECT_CELEBRATIONS[solved % PERFECT_CELEBRATIONS.length]}
                             </motion.div>
                         ) : (
                             <h3 className="text-xl ui font-bold text-[var(--color-gold)] mb-4">
@@ -281,19 +283,23 @@ export const SessionSummary = memo(function SessionSummary({
                                 className="w-full py-2.5 rounded-xl border text-sm ui mb-3 bg-[var(--color-streak-fire)]/10 border-[var(--color-streak-fire)]/30 text-[var(--color-streak-fire)] active:bg-[var(--color-streak-fire)]/20"
                                 whileTap={{ scale: 0.95 }}
                             >
-                                Drill {hardestWordCount} Hardest Words
+                                Drill {hardestWordCount} Hardest {hardestWordCount === 1 ? 'Word' : 'Words'}
                             </motion.button>
                         )}
 
                         {/* Streak freeze purchase */}
-                        {onPurchaseFreeze && (totalXP ?? 0) >= 500 && (
+                        {onPurchaseFreeze && (totalXP ?? 0) >= 500 ? (
                             <button
                                 onClick={onPurchaseFreeze}
                                 className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[var(--color-gold)] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 transition-colors mb-3"
                             >
-                                Buy Streak Freeze (500 XP){(streakFreezes ?? 0) > 0 ? ` · ${streakFreezes} owned` : ''}
+                                ❄️ Streak Freeze · skip a day (500 XP){(streakFreezes ?? 0) > 0 ? ` · ${streakFreezes} owned` : ''}
                             </button>
-                        )}
+                        ) : onPurchaseFreeze ? (
+                            <div className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/20 border border-[rgb(var(--color-fg))]/5 text-center mb-3">
+                                ❄️ Streak Freeze · need {500 - (totalXP ?? 0)} more XP
+                            </div>
+                        ) : null}
 
                         <button
                             onClick={onDismiss}

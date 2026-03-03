@@ -19,6 +19,8 @@ interface Props {
     frozen: boolean;
     highlightCorrect?: boolean;
     showHints?: boolean;
+    /** Show directional swipe tutorial on the very first question */
+    showTutorial?: boolean;
     wrongAnswer?: boolean;
     onDismissWrong?: () => void;
     onSwipe: (dir: 'left' | 'right' | 'up' | 'down') => void;
@@ -99,10 +101,12 @@ const AnswerOption = memo(function AnswerOption({
     );
 });
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, wrongAnswer, onDismissWrong, onSwipe }: Props) {
+const DIR_HINTS = ['← swipe left', 'swipe down ↓', 'swipe right →'];
+
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
-    const { speak, isSupported: ttsSupported } = usePronunciation();
+    const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
     const { reducedMotion } = useReducedMotion();
     const [showEtymology, setShowEtymology] = useState(false);
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -197,21 +201,26 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 )}
                 {/* Rich metadata row: part of speech + pronunciation button */}
                 {(typeof p.meta?.['partOfSpeech'] === 'string' || ttsSupported) && (
-                    <div className="mt-2 flex items-center justify-center gap-2">
-                        {typeof p.meta?.['partOfSpeech'] === 'string' && (
-                            <span className="text-xs ui text-[rgb(var(--color-fg))]/40 italic">
-                                ({p.meta['partOfSpeech']})
-                            </span>
-                        )}
-                        {ttsSupported && typeof p.meta?.['word'] === 'string' && (
-                            <button
-                                type="button"
-                                onClick={handleSpeak}
-                                className="w-10 h-10 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
-                                aria-label="Hear pronunciation"
-                            >
-                                <IconSpeaker className="w-5 h-5" />
-                            </button>
+                    <div className="mt-2 flex flex-col items-center gap-1">
+                        <div className="flex items-center justify-center gap-2">
+                            {typeof p.meta?.['partOfSpeech'] === 'string' && (
+                                <span className="text-xs ui text-[rgb(var(--color-fg))]/40 italic">
+                                    ({p.meta['partOfSpeech']})
+                                </span>
+                            )}
+                            {ttsSupported && typeof p.meta?.['word'] === 'string' && (
+                                <button
+                                    type="button"
+                                    onClick={handleSpeak}
+                                    className="w-10 h-10 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
+                                    aria-label="Hear pronunciation"
+                                >
+                                    <IconSpeaker className="w-5 h-5" />
+                                </button>
+                            )}
+                        </div>
+                        {ttsFailed && (
+                            <span className="text-[9px] ui text-[var(--color-wrong)]/50">audio unavailable</span>
                         )}
                     </div>
                 )}
@@ -226,34 +235,50 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             {/* Answer options */}
             <div className="flex flex-col items-center gap-3 w-full max-w-[var(--content-w)]">
                 {p.options.map((opt, i) => (
-                    <AnswerOption
-                        key={`${opt}-${i}`}
-                        value={opt}
-                        label={p.optionLabels?.[i]}
-                        dir={DIRS[i]}
-                        glow={glows[i]}
-                        frozen={frozen}
-                        onSwipe={onSwipe}
-                        highlighted={highlightCorrect && i === p.correctIndex}
-                        correctFlash={frozen && i === p.correctIndex}
-                        reducedMotion={reducedMotion}
-                    />
+                    <div key={`${opt}-${i}`} className="w-full">
+                        <AnswerOption
+                            value={opt}
+                            label={p.optionLabels?.[i]}
+                            dir={DIRS[i]}
+                            glow={glows[i]}
+                            frozen={frozen}
+                            onSwipe={onSwipe}
+                            highlighted={highlightCorrect && i === p.correctIndex}
+                            correctFlash={frozen && i === p.correctIndex}
+                            reducedMotion={reducedMotion}
+                        />
+                        {showTutorial && !frozen && (
+                            <div className={`text-[9px] ui mt-0.5 ${
+                                highlightCorrect && i === p.correctIndex
+                                    ? 'text-[var(--color-gold)]/60 font-medium text-center'
+                                    : `text-[rgb(var(--color-fg))]/25 ${i === 0 ? 'text-left pl-2' : i === 2 ? 'text-right pr-2' : 'text-center'}`
+                            }`}>
+                                {highlightCorrect && i === p.correctIndex ? '↑ tap or swipe this one' : DIR_HINTS[i]}
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
 
             {/* Wrong-answer detail panel — tap to dismiss */}
             {frozen && wrongAnswer && onDismissWrong && (
                 <motion.div
-                    className="mt-4 w-full max-w-[var(--content-w)] rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
+                    className="mt-4 w-full max-w-[var(--content-w)] max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
                     initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
                 >
-                    {/* Correct word */}
+                    {/* Correct word — chalk write-in animation */}
                     <div className="text-center mb-2">
                         <span className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider">Correct spelling</span>
-                        <div className="text-lg chalk text-[var(--color-correct)] font-bold">
-                            {typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex])}
+                        <div className={`text-lg chalk text-[var(--color-correct)] font-bold ${reducedMotion ? '' : 'chalk-write-in'}`}>
+                            {(() => {
+                                const word = typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex]);
+                                if (reducedMotion) return word;
+                                return word.split('').map((ch, i) => (
+                                    <span key={i} style={{ animationDelay: `${i * 60}ms` }}>{ch}</span>
+                                ));
+                            })()}
                         </div>
                     </div>
 
@@ -306,20 +331,22 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     </div>
 
                     {/* Tap to continue */}
-                    <button
+                    <motion.button
                         type="button"
                         onClick={onDismissWrong}
-                        className="w-full mt-1 py-2 rounded-xl bg-[rgb(var(--color-fg))]/10 text-xs ui text-[rgb(var(--color-fg))]/50 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
+                        className="w-full mt-2 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/10 text-sm ui font-medium text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
+                        animate={reducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
+                        transition={reducedMotion ? {} : { duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                        tap to continue
-                    </button>
+                        Tap to continue →
+                    </motion.button>
                 </motion.div>
             )}
 
-            {/* Skip hint — only on the very first question */}
-            {showHints && !wrongAnswer && (
+            {/* Hints — swipe/tap instructions for early questions */}
+            {showHints && !wrongAnswer && !frozen && (
                 <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
-                    <span className="text-[10px] ui tracking-wider">swipe up to skip</span>
+                    <span className="text-[10px] ui tracking-wider">{showTutorial ? 'swipe or tap your answer · swipe ↑ to skip' : 'swipe ↑ to skip'}</span>
                 </div>
             )}
         </motion.div>

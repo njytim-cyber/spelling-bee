@@ -23,6 +23,12 @@ const COMP_MODE_IDS: SpellingCategory[] = ['bee', 'written-test'];
 
 const TABS: Tab[] = ['grades', 'topics', 'compete', 'origins'];
 const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', topics: 'Topics', compete: 'Compete', origins: 'Origins' };
+const TAB_DESCRIPTIONS: Record<Tab, string> = {
+    grades: 'Words by school grade level',
+    topics: 'Practice specific phonics patterns',
+    compete: 'Competition words & spelling bee modes',
+    origins: 'Words grouped by language of origin',
+};
 const SWIPE_THRESHOLD = 50;
 
 export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
@@ -185,6 +191,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             exit={{ opacity: 0, x: -30 }}
                                             transition={{ duration: 0.15 }}
                                         >
+                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mb-3 text-center">{TAB_DESCRIPTIONS[tab]}</div>
                                             {tab === 'grades' ? renderGrid(gradeGroups)
                                                 : tab === 'topics' ? renderGrid(themeGroups)
                                                 : tab === 'compete' ? renderCompete()

@@ -39,7 +39,7 @@ export function ReloadPrompt({ suppress = false }: ReloadPromptProps) {
                     initial={{ opacity: 0, y: 60 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 60 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                     className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[999] bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 flex items-center gap-3 shadow-lg backdrop-blur-sm"
                 >
                     <span className="text-xl">✨</span>

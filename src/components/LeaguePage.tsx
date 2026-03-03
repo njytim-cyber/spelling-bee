@@ -38,14 +38,19 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
     const [loading, setLoading] = useState(true);
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
     const [pingCooldown, setPingCooldown] = useState(false);
+    const [pingCountdown, setPingCountdown] = useState(0);
     const [pingSuccess, setPingSuccess] = useState('');
+    const [rankChange, setRankChange] = useState('');
+    const prevRankRef = useRef<number | null>(null);
     const pingSuccessTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const pingCooldownTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    const pingCountdownInterval = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
     // Clean up ping timers on unmount
     useEffect(() => () => {
         clearTimeout(pingSuccessTimer.current);
         clearTimeout(pingCooldownTimer.current);
+        clearInterval(pingCountdownInterval.current);
     }, []);
 
     const handleAction = useCallback(async (action: 'race' | 'ping') => {
@@ -77,7 +82,15 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             } catch {
                 setSelectedPlayer(null);
             }
-            // Match the 30s server-side rule cooldown
+            // Match the 30s server-side rule cooldown with visible countdown
+            setPingCountdown(30);
+            clearInterval(pingCountdownInterval.current);
+            pingCountdownInterval.current = setInterval(() => {
+                setPingCountdown(prev => {
+                    if (prev <= 1) { clearInterval(pingCountdownInterval.current); return 0; }
+                    return prev - 1;
+                });
+            }, 1000);
             pingCooldownTimer.current = setTimeout(() => setPingCooldown(false), 30000);
         }
     }, [selectedPlayer, pingCooldown, uid, displayName]);
@@ -131,6 +144,22 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
             .sort((a, b) => b.totalXP - a.totalXP)
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
+
+    // ── Rank change detection ──
+    const myRank = scoreBoard.find(e => e.isYou)?.rank ?? null;
+    useEffect(() => {
+        if (myRank === null || prevRankRef.current === null) {
+            prevRankRef.current = myRank;
+            return;
+        }
+        const diff = prevRankRef.current - myRank;
+        prevRankRef.current = myRank;
+        if (diff > 0) {
+            setRankChange(`📈 +${diff} rank${diff > 1 ? 's' : ''}! Now #${myRank}`);
+            const t = setTimeout(() => setRankChange(''), 3000);
+            return () => clearTimeout(t);
+        }
+    }, [myRank]);
 
     return (
         <div className="flex-1 flex flex-col items-center px-4 pt-[calc(env(safe-area-inset-top,16px)+40px)] pb-24 overflow-y-auto">
@@ -206,16 +235,19 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
             </div>
 
-            {/* Loading state */}
+            {/* Loading skeleton */}
             {loading && (
-                <div className="flex-1 flex items-center justify-center">
-                    <motion.div
-                        className="text-sm ui text-[rgb(var(--color-fg))]/30"
-                        animate={{ opacity: [0.3, 1, 0.3] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                        Loading...
-                    </motion.div>
+                <div className="w-full max-w-sm space-y-1">
+                    {[0, 1, 2, 3, 4].map(i => (
+                        <div key={i} className="flex items-center gap-3 py-3 px-3 rounded-xl animate-pulse">
+                            <div className="w-7 h-7 rounded-full bg-[rgb(var(--color-fg))]/8" />
+                            <div className="flex-1 space-y-1.5">
+                                <div className="h-3.5 w-24 rounded bg-[rgb(var(--color-fg))]/8" />
+                                <div className="h-2.5 w-16 rounded bg-[rgb(var(--color-fg))]/5" />
+                            </div>
+                            <div className="h-3.5 w-12 rounded bg-[rgb(var(--color-fg))]/8" />
+                        </div>
+                    ))}
                 </div>
             )}
 
@@ -343,9 +375,14 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                 </button>
                                 <button
                                     onClick={() => handleAction('ping')}
-                                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10 transition-colors"
+                                    disabled={pingCooldown}
+                                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border transition-colors ${
+                                        pingCooldown
+                                            ? 'border-[rgb(var(--color-fg))]/10 text-[rgb(var(--color-fg))]/25 cursor-not-allowed'
+                                            : 'border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10'
+                                    }`}
                                 >
-                                    <span>👋</span> Ping Player
+                                    <span>👋</span> {pingCooldown ? `Wait ${pingCountdown}s` : 'Ping Player'}
                                 </button>
                             </div>
                         </motion.div>
@@ -353,16 +390,17 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 )}
             </AnimatePresence>
 
-            {/* Ping success toast */}
+            {/* Ping success / rank change toast */}
             <AnimatePresence>
-                {pingSuccess && (
+                {(pingSuccess || rankChange) && (
                     <motion.div
+                        key={pingSuccess || rankChange}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 text-sm ui text-[var(--color-gold)]"
                     >
-                        {pingSuccess}
+                        {pingSuccess || rankChange}
                     </motion.div>
                 )}
             </AnimatePresence>

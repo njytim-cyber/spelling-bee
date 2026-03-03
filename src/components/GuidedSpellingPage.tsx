@@ -124,7 +124,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     const [sessionWordsCorrect, setSessionWordsCorrect] = useState(0);
     const [sessionTime, setSessionTime] = useState(0);
 
-    const { speak, speakWord, isSupported, cancel, usedFallback } = usePronunciation();
+    const { speak, speakWord, isSupported, cancel, usedFallback, ttsFailed } = usePronunciation();
     const wordRoots = useMemo(() => getRootsForWord(word.word), [word]);
 
     // Celebration text cycles through variety
@@ -338,7 +338,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                                 className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
                             >
                                 <ChevronLeft className="w-4 h-4" />
-                                Done
+                                Back to Play
                             </button>
                         </div>
                     </motion.div>
@@ -356,8 +356,13 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                             </button>
                         </div>
                         <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
-                            {!isSupported ? 'Audio not available' : usedFallback ? 'Using device voice' : 'Tap to hear again'}
+                            {ttsFailed ? 'Audio unavailable' : !isSupported ? 'Audio not available' : usedFallback ? 'Using device voice' : 'Tap to hear again'}
                         </p>
+                        {wordsAttempted === 0 && phase === 'typing' && (
+                            <div className="text-[10px] ui text-[var(--color-gold)]/50 text-center">
+                                Listen, then type the full spelling below
+                            </div>
+                        )}
 
                         {/* Definition hint + difficulty dots */}
                         <div className="w-full bg-[rgb(var(--color-fg))]/5 px-4 py-2.5 rounded-xl text-sm ui text-[rgb(var(--color-fg))]/50">

@@ -11,11 +11,14 @@ import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, synthesizeCloud } from '../services/cloudTts';
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
+import { GRADE_LEVELS, type GradeLevel } from '../domains/spelling/spellingCategories';
 
 interface Props {
     dialect: string;
     onDialectChange: (d: Dialect) => void;
     onClose: () => void;
+    grade?: string;
+    onGradeChange?: (g: GradeLevel) => void;
     seasonalTheme?: SeasonalTheme;
     onSeasonalThemeChange?: (theme: SeasonalTheme) => void;
     characterStyle?: CharacterStyle;
@@ -41,6 +44,8 @@ export const SettingsModal = memo(function SettingsModal({
     dialect,
     onDialectChange,
     onClose,
+    grade,
+    onGradeChange,
     seasonalTheme = 'auto',
     onSeasonalThemeChange,
     characterStyle = 'classic',
@@ -126,6 +131,29 @@ export const SettingsModal = memo(function SettingsModal({
                         ))}
                     </div>
                 </section>
+
+                {/* Grade Level */}
+                {onGradeChange && (
+                    <section className="mb-5">
+                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Grade Level</h4>
+                        <div className="flex flex-col gap-1.5">
+                            {GRADE_LEVELS.map(g => (
+                                <button
+                                    key={g.id}
+                                    onClick={() => onGradeChange(g.id)}
+                                    className={`px-3 py-2 rounded-xl border transition-colors text-left text-sm ui ${
+                                        grade === g.id
+                                            ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                            : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                    }`}
+                                >
+                                    <span className="font-medium">{g.label}</span>
+                                    <span className="text-[rgb(var(--color-fg))]/30 ml-1.5">{g.grades}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* Bee Sim Preferences */}
                 {(onSeasonalThemeChange || onCharacterStyleChange) && (

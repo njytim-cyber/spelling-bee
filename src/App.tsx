@@ -9,9 +9,10 @@ import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
 import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
-import { getGradeConfig } from './domains/spelling/spellingCategories';
+import { getGradeConfig, SPELLING_CATEGORIES } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
+import { useReducedMotion } from './hooks/useReducedMotion';
 import { OfflineBanner } from './components/OfflineBanner';
 import { ReloadPrompt } from './components/ReloadPrompt';
 import { UserProvider, useUser } from './contexts/UserContext';
@@ -123,10 +124,10 @@ function LoadingFallback() {
       {/* Animated bee */}
       <motion.div
         className="text-5xl"
-        animate={{ y: [-6, 6, -6], rotate: [-3, 3, -3] }}
+        animate={window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? {} : { y: [-6, 6, -6], rotate: [-3, 3, -3] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <span role="img" aria-label="bee">&#x1F41D;</span>
+        🐝
       </motion.div>
 
       {/* Letter tiles */}
@@ -193,6 +194,7 @@ function AppInner() {
   const [activeTab, setActiveTab] = useState<Tab>('game');
   const hardMode = false;
   const [timedMode, setTimedMode] = useState(false);
+  const { reducedMotion } = useReducedMotion();
 
   // ── Modals ──
   const {
@@ -242,6 +244,7 @@ function AppInner() {
     if (stored) return getGradeConfig(stored as GradeLevel).defaultCategory;
     return 'cvc';
   });
+  const prevCategoryRef = useRef(questionType);
 
   const setQuestionType = useCallback((type: QuestionType) => {
     if (type === 'custom') {
@@ -335,6 +338,7 @@ function AppInner() {
     frozen,
     milestone,
     speedBonus,
+    wrongStreak,
     handleSwipe,
     dismissWrongAnswer,
     timerProgress,
@@ -452,7 +456,7 @@ function AppInner() {
   const [unlocked, setUnlocked] = useState(() => loadUnlocked());
   const unlockedRef = useRef(unlocked);
   useEffect(() => { unlockedRef.current = unlocked; }, [unlocked]);
-  const [unlockToast, setUnlockToast] = useState('');
+  const [unlockToast, setUnlockToast] = useState<{ name: string; desc: string } | null>(null);
 
   // Restore achievements from Firestore on auth
   useEffect(() => {
@@ -488,8 +492,8 @@ function AppInner() {
       // Show toast for first new unlock
       const badge = EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === fresh[0]);
       if (badge) {
-        setUnlockToast(badge.name);
-        const t = setTimeout(() => setUnlockToast(''), 2500);
+        setUnlockToast({ name: badge.name, desc: badge.desc });
+        const t = setTimeout(() => setUnlockToast(null), 3500);
         return () => clearTimeout(t);
       }
     }
@@ -497,6 +501,42 @@ function AppInner() {
 
   // ── Personal best detection ──
   const showPB = usePersonalBest(bestStreak, stats.bestStreak);
+
+  // ── Streak near-miss detection (just missed 5/10/20/50) ──
+  const NEAR_MISS_THRESHOLDS = [5, 10, 20, 50];
+  const prevStreakRef = useRef(0);
+  const [nearMissText, setNearMissText] = useState('');
+  useEffect(() => {
+    const prev = prevStreakRef.current;
+    prevStreakRef.current = streak;
+    if (streak === 0 && prev > 0) {
+      const nextMilestone = NEAR_MISS_THRESHOLDS.find(m => prev >= m - 2 && prev < m);
+      if (nextMilestone) {
+        setNearMissText(`${prev}-streak! So close to ${nextMilestone}!`);
+        const t = setTimeout(() => setNearMissText(''), 2500);
+        return () => clearTimeout(t);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [streak]);
+
+  // ── Mastery graduation toast (word reached box 4) ──
+  const prevMasteredRef = useRef(masteredCount);
+  const [masteryToast, setMasteryToast] = useState('');
+  useEffect(() => {
+    const prev = prevMasteredRef.current;
+    prevMasteredRef.current = masteredCount;
+    if (masteredCount > prev && prev > 0) {
+      // Find the most recently mastered word
+      const mastered = Object.values(wordRecords)
+        .filter(r => r.box >= 4)
+        .sort((a, b) => b.lastCorrect - a.lastCorrect);
+      const word = mastered[0]?.word;
+      setMasteryToast(word ? `🎓 "${word}" mastered!` : '🎓 Word mastered!');
+      const t = setTimeout(() => setMasteryToast(''), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [masteredCount, wordRecords]);
 
   const pendingTabRef = useRef<Tab | null>(null);
   const handleTabChange = useCallback((tab: Tab) => {
@@ -612,14 +652,57 @@ function AppInner() {
               el.classList.add(flash === 'wrong' && !shieldBroken ? 'wrong-shake' : flash === 'correct' ? 'answer-bounce' : '');
             }
           }} className="flex-1 flex flex-col w-full min-h-0">
+            {/* ── Timer urgency bar — visible pulse when time is running out ── */}
+            {timedMode && timerProgress > 0.75 && !frozen && (
+              <motion.div
+                className="absolute top-0 left-0 right-0 h-1 z-20 bg-[var(--color-streak-fire)]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ width: `${(1 - timerProgress) * 100 * 4}%`, marginLeft: 'auto', marginRight: 'auto' }}
+              />
+            )}
             {/* ── Score (centered, pushed down from edge) — hidden in full-screen sub-modes ── */}
             {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
-              {/* Challenge header */}
-              {questionType === 'challenge' && (
+              {/* Mode / category label — always shows what the user is doing */}
+              {questionType === 'challenge' ? (
                 <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
                   <span>⚔️ Challenge</span>
                   <span className="text-[rgb(var(--color-fg))]/30">·</span>
-                  <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/10</span>
+                  <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
+                </div>
+              ) : questionType === 'daily' ? (
+                <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
+                  <span>📅 Daily Challenge</span>
+                  <span className="text-[rgb(var(--color-fg))]/30">·</span>
+                  <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
+                </div>
+              ) : questionType === 'review' ? (
+                <div className="flex flex-col items-center mb-2">
+                  <div className="text-xs ui text-[var(--color-gold)] flex items-center gap-2">
+                    <span>📖 Review</span>
+                    {(totalAnswered + problems.length) > 0 && (
+                      <>
+                        <span className="text-[rgb(var(--color-fg))]/30">·</span>
+                        <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
+                      </>
+                    )}
+                  </div>
+                  {totalAnswered === 0 && (
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">Words you missed come back for practice</div>
+                  )}
+                </div>
+              ) : (
+                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-1 flex items-center gap-1.5">
+                  <span>{SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? questionType}</span>
+                  {reviewQueue.length > 0 && questionType !== 'vocab' && (
+                    <button
+                      onClick={() => setQuestionType('review' as SpellingCategory)}
+                      className="pointer-events-auto text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors"
+                    >
+                      · {reviewQueue.length} to review
+                    </button>
+                  )}
                 </div>
               )}
               <ScoreCounter value={score} />
@@ -632,8 +715,9 @@ function AppInner() {
                 {milestone && `Milestone: ${milestone}`}
               </div>
               {stats.streakShields > 0 && streak > 0 && (
-                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1 flex items-center gap-0.5">
+                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1 flex items-center gap-0.5" title="Shields protect your streak from 1 wrong answer">
                   {'🛡️'.repeat(stats.streakShields)}
+                  <span className="ml-0.5 text-[8px]">{stats.streakShields === 1 ? 'shield' : 'shields'}</span>
                 </div>
               )}
 
@@ -710,8 +794,8 @@ function AppInner() {
                   )}
                 </div>
               )}
-              {/* Grade level label */}
-              {gradeConfig && (
+              {/* Grade level label — hidden in review/challenge modes */}
+              {gradeConfig && questionType !== 'review' && questionType !== 'challenge' && (
                 <div className="mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40 font-medium">
                   {gradeConfig.label} <span className="text-[rgb(var(--color-fg))]/20">{gradeConfig.grades}</span>
                 </div>
@@ -726,9 +810,9 @@ function AppInner() {
                   initial={{ opacity: 1, y: 0 }}
                   animate={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,16px)+100px)] z-30 text-lg ui text-[var(--color-gold)] pointer-events-none"
+                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,16px)+100px)] z-30 text-lg ui font-bold text-[var(--color-gold)] pointer-events-none"
                 >
-                  +{pointsFloater}
+                  +{pointsFloater} pts
                 </motion.div>
               )}
             </AnimatePresence>
@@ -746,7 +830,7 @@ function AppInner() {
               ) : (questionType === 'guided' || guidedMode) ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') setQuestionType(gradeConfig?.defaultCategory ?? 'cvc'); }}
+                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') { const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : gradeConfig?.defaultCategory ?? 'cvc'); } }}
                     onAnswer={(word, correct, ms, typed) => {
                       recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
                     }}
@@ -759,6 +843,20 @@ function AppInner() {
                 <WrittenTestPage
                   onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
                 />
+              ) : questionType === 'review' && reviewQueue.length === 0 && totalAnswered === 0 ? (
+                <div className="flex-1 flex flex-col items-center justify-center px-6 gap-3">
+                  <span className="text-4xl">📖</span>
+                  <h2 className="text-lg chalk text-[var(--color-chalk)]">All caught up!</h2>
+                  <p className="text-xs ui text-[rgb(var(--color-fg))]/40 text-center max-w-[260px]">
+                    No words are due for review. Words you get wrong are added here and come back on a schedule so you remember them.
+                  </p>
+                  <button
+                    onClick={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                    className="mt-2 px-5 py-2 rounded-xl text-sm ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                  >
+                    Back to Play
+                  </button>
+                </div>
               ) : dailyComplete ? (
                 <DailyChallengeComplete
                   correct={totalCorrect}
@@ -772,17 +870,20 @@ function AppInner() {
                   {currentProblem && (
                     <motion.div
                       key={currentProblem.id}
-                      className="flex-1 flex flex-col min-h-0"
+                      className="flex-1 flex flex-col min-h-0 relative"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
                     >
+                      {/* Eraser wipe on new question */}
+                      {!reducedMotion && <div key={'erase' + currentProblem.id} className="eraser-wipe" />}
                       <ProblemView
                         problem={currentProblem}
                         frozen={frozen}
                         highlightCorrect={isFirstQuestion}
                         showHints={totalCorrect < 4}
+                        showTutorial={isFirstQuestion}
                         wrongAnswer={flash === 'wrong' && !isFirstQuestion}
                         onDismissWrong={dismissWrongAnswer}
                         onSwipe={handleSwipe}
@@ -821,15 +922,41 @@ function AppInner() {
               />
             )}
 
-            {/* ── Streak milestone popup ── */}
-            {milestone && (
-              <div key={milestone + streak} className="milestone-pop absolute inset-0 flex items-center justify-center z-40 text-8xl">
-                {milestone}
+            {/* ── Chalk dust on wrong answer ── */}
+            {flash === 'wrong' && !reducedMotion && (
+              <div key={'dust' + totalAnswered} className="chalk-dust" style={{ left: '50%', top: '45%' }}>
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="chalk-dust-particle"
+                    style={{
+                      '--dust-dx': `${(i - 2) * 8}px`,
+                      left: `${(i - 2) * 6}px`,
+                      animationDelay: `${i * 0.05}s`,
+                    } as React.CSSProperties}
+                  />
+                ))}
               </div>
             )}
 
+            {/* ── Scratch marks on 3+ wrong streak ── */}
+            {wrongStreak >= 3 && !reducedMotion && (
+              <div key={'scratch' + wrongStreak} className="scratch-marks" />
+            )}
+
+            {/* ── Streak milestone popup ── */}
+            {milestone && !reducedMotion && (
+              <>
+              {/* Chalk snap flash before milestone */}
+              <div key={'snap' + streak} className="chalk-snap" />
+              <div key={milestone + streak} className="milestone-pop absolute inset-0 flex items-center justify-center z-40 text-8xl">
+                {milestone}
+              </div>
+              </>
+            )}
+
             {/* ── Speed bonus ── */}
-            {speedBonus && (
+            {speedBonus && !reducedMotion && (
               <div key={'speed' + score} className="speed-pop absolute left-1/2 -translate-x-1/2 top-[30%] z-40 text-sm ui text-[var(--color-gold)] whitespace-nowrap">
                 ⚡ SPEED BONUS +2
               </div>
@@ -839,12 +966,28 @@ function AppInner() {
             <AnimatePresence>
               {showPB && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
+                  initial={reducedMotion ? {} : { opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.5 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-[18%] z-40 text-lg ui font-bold text-[var(--color-gold)] whitespace-nowrap"
+                  exit={reducedMotion ? {} : { opacity: 0, scale: 0.5 }}
+                  className="absolute left-1/2 -translate-x-1/2 top-[18%] z-40 flex flex-col items-center z-40 whitespace-nowrap"
                 >
-                  🏆 NEW PERSONAL BEST!
+                  <span className="text-lg ui font-bold text-[var(--color-gold)]">🏆 NEW PERSONAL BEST!</span>
+                  <span className="text-xs ui text-[var(--color-gold)]/60">{streak}-streak</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* ── Streak near-miss ── */}
+            <AnimatePresence>
+              {nearMissText && (
+                <motion.div
+                  key={nearMissText}
+                  initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reducedMotion ? {} : { opacity: 0 }}
+                  className="absolute left-1/2 -translate-x-1/2 top-[22%] z-40 text-sm ui font-medium text-[var(--color-streak-fire)] whitespace-nowrap"
+                >
+                  {nearMissText}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -860,6 +1003,7 @@ function AppInner() {
               hardestWordCount={hardestWords.length}
               onDrillHardest={() => {
                 setDrillHardest(true);
+                prevCategoryRef.current = questionType;
                 setQuestionType('guided');
                 setActiveTab('game');
               }}
@@ -928,6 +1072,7 @@ function AppInner() {
           hardestWordCount={hardestWords.length}
           onDrillHardest={() => {
             setDrillHardest(true);
+            prevCategoryRef.current = questionType;
             setQuestionType('guided');
             setShowSummary(false);
             pendingTabRef.current = null;
@@ -941,9 +1086,10 @@ function AppInner() {
         <WeeklyRecap stats={stats} />
 
         {/* ── Toasts ── */}
-        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast || ''} subtitle="Achievement Unlocked!" toastKey={unlockToast || undefined} />
-        <Toast visible={shieldToast} icon="🛡️" title="Shield protected your streak" subtitle="Streak Saved!" />
+        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} />
+        <Toast visible={shieldToast} icon="🛡️" title="Shield saved your streak!" subtitle={`${stats.streakShields} shield${stats.streakShields !== 1 ? 's' : ''} left`} />
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
+        <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
 
         {/* ── Custom Lists Modal ── */}
         <AnimatePresence>

@@ -100,6 +100,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
         sendEmailLink,
         updateBadge,
         dialect,
+        grade,
+        onGradeChange,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -370,12 +372,20 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
+                                const unlockHint = !isAvailable
+                                    ? [
+                                        !rankOk && `Reach ${RANKS[t.minLevel - 1]?.name ?? 'next rank'}`,
+                                        !streakOk && `${t.minStreak}-streak needed`,
+                                        !solvedOk && `Solve ${t.minSolved} words`,
+                                    ].filter(Boolean).join(' · ')
+                                    : undefined;
                                 return (
                                     <button
                                         key={t.id}
                                         onClick={() => isAvailable && onThemeChange(t)}
                                         aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
+                                        title={unlockHint}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
@@ -395,12 +405,19 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {SWIPE_TRAILS.map(t => {
                                 const rankIdx = RANKS.findIndex(r => r.name === rank.name);
-                                const isUnlocked =
-                                    (!t.minLevel || rankIdx >= t.minLevel - 1) &&
-                                    (!t.minStreak || stats.bestStreak >= t.minStreak) &&
-                                    (!t.minSolved || stats.totalSolved >= t.minSolved);
+                                const rankOk = !t.minLevel || rankIdx >= t.minLevel - 1;
+                                const streakOk = !t.minStreak || stats.bestStreak >= t.minStreak;
+                                const solvedOk = !t.minSolved || stats.totalSolved >= t.minSolved;
+                                const isUnlocked = rankOk && streakOk && solvedOk;
 
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
+                                const unlockHint = !isUnlocked
+                                    ? [
+                                        !rankOk && `Reach ${RANKS[(t.minLevel ?? 1) - 1]?.name ?? 'next rank'}`,
+                                        !streakOk && `${t.minStreak}-streak needed`,
+                                        !solvedOk && `Solve ${t.minSolved} words`,
+                                    ].filter(Boolean).join(' · ')
+                                    : undefined;
 
                                 return (
                                     <button
@@ -408,6 +425,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                                         onClick={() => isUnlocked && onTrailChange(t.id)}
                                         aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!isUnlocked ? ', locked' : ''}`}
                                         aria-pressed={isActive}
+                                        title={unlockHint}
                                         className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all
                                             ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
                                                 isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
@@ -439,7 +457,11 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                             </button>
                         </div>
                     )}
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-3">tap unlocked badge to equip on leaderboard</div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-3">
+                        {[...unlocked].length === 0
+                            ? 'Earn achievements by building streaks, accuracy, and mastering words'
+                            : 'tap unlocked badge to equip on leaderboard'}
+                    </div>
                     <div className="grid grid-cols-4 gap-3 justify-items-center">
                         {CORE_ACHIEVEMENTS.map(a => {
                             const isUnlocked = unlocked.has(a.id);
@@ -639,6 +661,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                     <SettingsModal
                         dialect={dialect}
                         onDialectChange={onDialectChange}
+                        grade={grade}
+                        onGradeChange={onGradeChange}
                         onClose={() => setShowSettings(false)}
                     />
                 )}

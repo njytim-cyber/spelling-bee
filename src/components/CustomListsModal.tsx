@@ -23,6 +23,7 @@ export const CustomListsModal = memo(function CustomListsModal({
     const [newName, setNewName] = useState('');
     const [newWords, setNewWords] = useState('');
     const [viewList, setViewList] = useState<CustomWordList | null>(null);
+    const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
     const handleCreate = () => {
         const rawWords = newWords.split(/[,\n]+/).map(w => w.trim()).filter(w => w.length > 0);
@@ -64,7 +65,7 @@ export const CustomListsModal = memo(function CustomListsModal({
                                                     {list.name}
                                                 </button>
                                                 <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30">
-                                                    {list.words.length} words
+                                                    {list.words.length} {list.words.length === 1 ? 'word' : 'words'}
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-1 mb-2">
@@ -85,12 +86,29 @@ export const CustomListsModal = memo(function CustomListsModal({
                                                 >
                                                     Practice
                                                 </button>
-                                                <button
-                                                    onClick={() => onDelete(list.id)}
-                                                    className="px-3 py-1.5 rounded-lg text-[10px] ui text-[var(--color-wrong)]/60 hover:text-[var(--color-wrong)] hover:bg-[var(--color-wrong)]/10 transition-colors"
-                                                >
-                                                    Delete
-                                                </button>
+                                                {confirmDeleteId === list.id ? (
+                                                    <div className="flex gap-1">
+                                                        <button
+                                                            onClick={() => { onDelete(list.id); setConfirmDeleteId(null); }}
+                                                            className="px-2 py-1.5 rounded-lg text-[10px] ui text-white bg-[var(--color-wrong)]/80 hover:bg-[var(--color-wrong)] transition-colors"
+                                                        >
+                                                            Confirm
+                                                        </button>
+                                                        <button
+                                                            onClick={() => setConfirmDeleteId(null)}
+                                                            className="px-2 py-1.5 rounded-lg text-[10px] ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <button
+                                                        onClick={() => setConfirmDeleteId(list.id)}
+                                                        className="px-3 py-1.5 rounded-lg text-[10px] ui text-[var(--color-wrong)]/60 hover:text-[var(--color-wrong)] hover:bg-[var(--color-wrong)]/10 transition-colors"
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
                                     );

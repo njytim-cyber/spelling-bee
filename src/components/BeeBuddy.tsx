@@ -207,10 +207,10 @@ export const BeeBuddy = memo(function BeeBuddy({
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -6, scale: 0.8 }}
                         transition={{ duration: 0.25 }}
-                        className="absolute bottom-full mb-2 right-0 w-max max-w-[200px] text-right bg-[var(--color-surface)] border border-[rgb(var(--color-fg))]/15 rounded-xl px-3 py-1.5 text-[12px] ui text-[rgb(var(--color-fg))]/80 leading-snug"
+                        className="absolute bottom-8 right-full mr-1 w-max max-w-[180px] text-right bg-[var(--color-surface)] border border-[rgb(var(--color-fg))]/15 rounded-xl px-3 py-1.5 text-[12px] ui text-[rgb(var(--color-fg))]/80 leading-snug"
                     >
                         {currentMessage}
-                        <div className="absolute -bottom-1.5 right-4 w-3 h-3 bg-[var(--color-overlay)] border-b border-r border-[rgb(var(--color-fg))]/15 rotate-45" />
+                        <div className="absolute top-1/2 -translate-y-1/2 -right-1.5 w-3 h-3 bg-[var(--color-surface)] border-t border-r border-[rgb(var(--color-fg))]/15 rotate-45" />
                     </motion.div>
                 )}
             </AnimatePresence>
