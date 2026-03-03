@@ -2,7 +2,7 @@
  * words/tier6-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 6.
- * Total: 8000 words across 8 chunks.
+ * Total: 7985 words across 8 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */

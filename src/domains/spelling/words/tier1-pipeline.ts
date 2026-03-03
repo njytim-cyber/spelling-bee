@@ -2,7 +2,7 @@
  * words/tier1-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 1.
- * Total: 1321 words across 2 chunks.
+ * Total: 1305 words across 2 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */

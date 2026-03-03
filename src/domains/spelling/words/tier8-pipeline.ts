@@ -2,7 +2,7 @@
  * words/tier8-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 8.
- * Total: 5000 words across 5 chunks.
+ * Total: 4994 words across 5 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */
