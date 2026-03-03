@@ -2,7 +2,7 @@
  * words/tier6-pipeline-f.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -15130,22 +15130,6 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
             "tipworrthy"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "poofybutt",
-        "definition": "A term of endearment for a person who wears diapers.",
-        "exampleSentence": "Learning about the poofybutt was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "vowel-teams",
-        "pronunciation": "puːfibʌt",
-        "etymology": "From poofy (“puffy”) + butt, because modern disposable diapers are usually puffy.",
-        "distractors": [
-            "pofybutt",
-            "poofybut",
-            "pooffybutt"
-        ],
-        "theme": "people"
     },
 {
         "word": "blacklash",

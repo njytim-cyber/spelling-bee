@@ -2,7 +2,7 @@
  * words/tier5-pipeline-f.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -3001,22 +3001,6 @@ export const TIER_5_PIPELINE_F_WORDS: SpellingWord[] = [
             "taxarch"
         ],
         "theme": "time"
-    },
-{
-        "word": "skibidi",
-        "definition": "A nonsense word, sometimes used to form noun adjuncts for humorous effect.",
-        "exampleSentence": "Me in ohio when the gyatt walks by and i’m tryna rizz her up (this is a skibidi moment).",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "blends",
-        "pronunciation": "skɪbɪdi",
-        "etymology": "From skibidi, a nonlexical vocable used in scat singing. The jocular nonsense word is derived from the YouTube web series Skibidi Toilet (2023–present), which took the vocable from the song “Dom Dom Yes Yes” (2022) by Bulgarian singer Biser King.",
-        "distractors": [
-            "skibbidi",
-            "skibiddi",
-            "skabidi"
-        ],
-        "theme": "language"
     },
 {
         "word": "techbro",
@@ -13506,22 +13490,6 @@ export const TIER_5_PIPELINE_F_WORDS: SpellingWord[] = [
             "mirattion"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "outsuave",
-        "definition": "To exceed in suaveness.",
-        "exampleSentence": "Rains and Milland spend most of their time trying to outsuave each other, with O’Hara caught uncomfortably between them.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "aʊtswɑːv",
-        "etymology": "From out- + suave.",
-        "distractors": [
-            "outtsuave",
-            "outsuavve",
-            "oatsuave"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "maillard",

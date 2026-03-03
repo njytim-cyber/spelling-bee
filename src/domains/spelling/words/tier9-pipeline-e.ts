@@ -2,7 +2,7 @@
  * words/tier9-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 986 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2464,22 +2464,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "precollege",
-        "definition": "Occurring before, or in preparation for, college.",
-        "exampleSentence": "The precollege colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "precollege",
-        "etymology": "From pre- + college.",
-        "distractors": [
-            "precolege",
-            "preccollege",
-            "precollegge"
-        ],
-        "theme": "academic"
-    },
-{
         "word": "anchorless",
         "definition": "Lacking an anchor; adrift.",
         "exampleSentence": "\"Without God, this society would be anchorless.\"",
@@ -2700,22 +2684,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "auttomaking",
             "autommaking",
             "automakking"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "preconcert",
-        "definition": "Occurring before or in preparation for a concert.",
-        "exampleSentence": "Mr. Goebbels’s typically voracious settings represent, as one performer said in a preconcert discussion, “the accretions of centuries.”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "preconcert",
-        "etymology": "From pre- + concert.",
-        "distractors": [
-            "precconcert",
-            "preconncert",
-            "preconcerrt"
         ],
         "theme": "everyday"
     },
@@ -3242,22 +3210,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "requirible",
             "requirabel",
             "reqquirable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overmighty",
-        "definition": "Excessively mighty.",
-        "exampleSentence": "But \"woe to the people whose liberty depends on the continued forbearance of an overmighty protector.\"",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "prefixes",
-        "pronunciation": "overmighty",
-        "etymology": "From over- + mighty.",
-        "distractors": [
-            "overmightey",
-            "ovvermighty",
-            "overrmighty"
         ],
         "theme": "everyday"
     },
@@ -9729,22 +9681,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "nature"
     },
 {
-        "word": "overmanage",
-        "definition": "To manage excessively; to micromanage.",
-        "exampleSentence": "Most U.S. corporations today are overmanaged and underled. They need to develop their capacity to exercise leadership.",
-        "partOfSpeech": "verb",
-        "difficulty": 10,
-        "pattern": "prefixes",
-        "pronunciation": "overmanage",
-        "etymology": "From over- + manage.",
-        "distractors": [
-            "ovvermanage",
-            "overrmanage",
-            "overmannage"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "superscale",
         "definition": "Very large-scale.",
         "exampleSentence": "The superscale colors of the sunset were beautiful.",
@@ -10473,22 +10409,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "clickbaitey",
             "clicckbaity",
             "clickbaitty"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "ungoodness",
-        "definition": "The quality of being ungood, or bad; badness.",
-        "exampleSentence": "In this long list I find goodness the rule & ungoodness the exception.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "ungoodness",
-        "etymology": "From ungood + -ness.",
-        "distractors": [
-            "ungoodniss",
-            "ungodness",
-            "ungoodnes"
         ],
         "theme": "everyday"
     },
@@ -11449,22 +11369,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "cofreeness",
-        "definition": "The property of being cofree.",
-        "exampleSentence": "In this article, we explore the coalgebraic character of graphs and transfer coalgebraic concepts like cofreeness, simulations or Co-Birkhoff theorems to F-graphs.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "cofreeness",
-        "etymology": "From cofree + -ness.",
-        "distractors": [
-            "cofreeniss",
-            "cofreness",
-            "cofreenes"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "refragment",
         "definition": "To fragment again.",
         "exampleSentence": "Additionally, spheroids in suspension cultures can aggregate and refragment due to interactions with each other, the spin bar or the vessel surfaces.",
@@ -12165,22 +12069,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "heatedness",
-        "definition": "The quality of being heated.",
-        "exampleSentence": "I said some things I didn't mean in the heatedness of the debate.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "heatedness",
-        "etymology": "From heated + -ness.",
-        "distractors": [
-            "heatedniss",
-            "heatednes",
-            "heattedness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "extinctive",
         "definition": "Tending or serving to extinguish, or make extinct.",
         "exampleSentence": "Even with mild degrees of anxiety the ineffectiveness of the extinctive mechanism is striking.",
@@ -12354,22 +12242,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "illiqquidly"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overpowder",
-        "definition": "To use too much powder on.",
-        "exampleSentence": "They overpowder and overperfume themselves, and color their finger-nails too harsh a color.",
-        "partOfSpeech": "verb",
-        "difficulty": 10,
-        "pattern": "prefixes",
-        "pronunciation": "overpowder",
-        "etymology": "From over- + powder.",
-        "distractors": [
-            "overpowdor",
-            "overpowdar",
-            "ovverpowder"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "wrongthink",
@@ -13047,22 +12919,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "itinerence",
             "ittinerance",
             "itinnerance"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "noncentric",
-        "definition": "Not related to a centre.",
-        "exampleSentence": "The thermally stimulated currents measured in hexagonal and cubic BaTiO3, however, show that both materials exhibit noncentric macroscopic symmetry.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "noncentric",
-        "etymology": "From non- + centric.",
-        "distractors": [
-            "nonncentric",
-            "noncenntric",
-            "nancentric"
         ],
         "theme": "everyday"
     },
@@ -14347,22 +14203,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "fluishness",
-        "definition": "The quality of being fluish.",
-        "exampleSentence": "The day after I'd finished the screenplay, I felt fluish and heavy in the legs. The fluishness and heavy-leggedness increased.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "fluishness",
-        "etymology": "From fluish + -ness.",
-        "distractors": [
-            "fluishniss",
-            "fluishnes",
-            "fluisshness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "spreadover",
         "definition": "The variable arrangement of duties and breaks within overall work periods of fixed duration.",
         "exampleSentence": "The eight-hour day spreadover was imposed on the Scottish miners in December of last year following upon the most open and flagrant betrayal by the Miners' Federation ….",
@@ -15348,22 +15188,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "undispatch",
-        "definition": "To cancel a process of dispatching.",
-        "exampleSentence": "It reduces I/O latency, for selected eligible I/Os, to the point that z/OS no longer needs to undispatch the running task.",
-        "partOfSpeech": "verb",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "undispatch",
-        "etymology": "From un- + dispatch.",
-        "distractors": [
-            "unndispatch",
-            "undisspatch",
-            "undispattch"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "undragoned",
         "definition": "Without a dragon or dragons.",
         "exampleSentence": "After this there is a big battle: armies converging on the mountain and its now undragoned hoard.",
@@ -15506,22 +15330,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "marishness",
-        "definition": "The quality of being marish, or marshy.",
-        "exampleSentence": "She wrote about the marishness in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "marishness",
-        "etymology": "From marish + -ness.",
-        "distractors": [
-            "marishniss",
-            "marishnes",
-            "marrishness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overwinded",
         "definition": "Of a musical instrument: provided with too much air or wind.",
         "exampleSentence": "… the pressure of wind is too much, the tone being forced or overwinded; ….",
@@ -15582,22 +15390,6 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
             "postshowor",
             "postshowar",
             "posstshower"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "trepidness",
-        "definition": "The quality of being trepid; timidity.",
-        "exampleSentence": "After getting over my trepidness, I read the book, not once but every few years since then.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "greek-roots",
-        "pronunciation": "trepidness",
-        "etymology": "From trepid + -ness.",
-        "distractors": [
-            "trepidniss",
-            "trepidnes",
-            "treppidness"
         ],
         "theme": "everyday"
     },

@@ -2,7 +2,7 @@
  * words/tier3-pipeline-c.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 993 words.
+ * 976 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -485,22 +485,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "outswell",
-        "definition": "To exceed in swelling.",
-        "exampleSentence": "The instructions said to outswell gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outswell",
-        "etymology": "From out- + swell.",
-        "distractors": [
-            "outswel",
-            "outtswell",
-            "oatswell"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "saintism",
         "definition": "The character or quality of saints.",
         "exampleSentence": "The saintism was one of our vocabulary words this week.",
@@ -819,22 +803,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overgain",
-        "definition": "To gain too much.",
-        "exampleSentence": "The instructions said to overgain gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overgain",
-        "etymology": "From over- + gain.",
-        "distractors": [
-            "ovvergain",
-            "overrgain",
-            "overgayn"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "outbleed",
         "definition": "To bleed more than; to lose more blood than.",
         "exampleSentence": "And there is enough gore to outbleed “Ben-Hur.”.",
@@ -863,22 +831,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "missfetch",
             "misfettch",
             "misfech"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outskill",
-        "definition": "To surpass in skill.",
-        "exampleSentence": "Always one has to anticipate the others (or others') actions and try to outwit as well as outnerve and outskill the others.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outskill",
-        "etymology": "From out- + skill.",
-        "distractors": [
-            "outskil",
-            "outtskill",
-            "oatskill"
         ],
         "theme": "everyday"
     },
@@ -4286,22 +4238,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonscience",
-        "definition": "That which is not science, or a specific non-scientific field.",
-        "exampleSentence": "Relativists maintain that there are no fundamental differences between sciences and nonsciences.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "nonscience",
-        "etymology": "From non- + science.",
-        "distractors": [
-            "nonsciance",
-            "nonnscience",
-            "nonsciennce"
-        ],
-        "theme": "academic"
-    },
-{
         "word": "nongrowing",
         "definition": "That does not grow.",
         "exampleSentence": "The nongrowing colors of the sunset were beautiful.",
@@ -4779,22 +4715,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "hearinngless"
         ],
         "theme": "sensory"
-    },
-{
-        "word": "underrecord",
-        "definition": "To record inadequately.",
-        "exampleSentence": "When that occurs, the device does not measure the amount of methane that the second sensor would capture, and so it underrecords methane leakage rates.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "underrecord",
-        "etymology": "From under- + record.",
-        "distractors": [
-            "underecord",
-            "unnderrecord",
-            "underreccord"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "antispecial",
@@ -5932,21 +5852,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "daf",
             "dif",
             "dfe"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "fon",
-        "definition": "A chieftain or king of a region of Cameroon.",
-        "exampleSentence": "In the early 1900s, the Bafut fought several wars with the German colonizers and their allies, ending in 1907 with the exile of the fon of that time.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "cvc",
-        "pronunciation": "fɔːn",
-        "distractors": [
-            "fan",
-            "fen",
-            "fno"
         ],
         "theme": "everyday"
     },
@@ -7680,21 +7585,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "berg"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "bing",
-        "definition": "To search for (something) on the Internet using the Bing search engine.",
-        "exampleSentence": "“I’ve Googled it, Binged it, and Asked Jeeves. They all say the same thing, but I’m not convinced.”.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "digraphs",
-        "pronunciation": "bɪŋ",
-        "distractors": [
-            "binng",
-            "bang",
-            "beng"
-        ],
-        "theme": "communication"
     },
 {
         "word": "pots",
@@ -11242,22 +11132,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "google",
-        "definition": "An Internet search, such as one performed on the Google search engine.",
-        "exampleSentence": "The word oceanfront has 64,300,000 googles, so I think it must be a real word.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "ɡuːɡəl",
-        "etymology": "From Google (“search engine operated by Google LLC”).",
-        "distractors": [
-            "googel",
-            "gogle",
-            "googgle"
-        ],
-        "theme": "communication"
-    },
-{
         "word": "gramps",
         "definition": "Grandpa, grandfather.",
         "exampleSentence": "Hey gramps, get off the road!",
@@ -14190,22 +14064,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "travel"
     },
 {
-        "word": "outwoo",
-        "definition": "To surpass in wooing.",
-        "exampleSentence": "For the 2005 season, Pavano signed a four-year, $39.95 million deal with the Yankees, who outwooed the Red Sox, who responded by making their own recruiting misstep in the free agent Matt Clement.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outwoo",
-        "etymology": "From out- + woo.",
-        "distractors": [
-            "outwo",
-            "outtwoo",
-            "oatwoo"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "retent",
         "definition": "That which is retained.",
         "exampleSentence": "The retent, when known, stands before us as if reflected and inverted in a mirror, the nearest events in the past being this way the nearest as actually remembered.",
@@ -14366,22 +14224,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "outbow",
-        "definition": "To surpass in bowing.",
-        "exampleSentence": "His character and gloves are ever clean, / And then he can outbow the bowing dean.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "aʊtbaʊ",
-        "etymology": "From out- + bow.",
-        "distractors": [
-            "outtbow",
-            "outbou",
-            "oatbow"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "gregal",
         "definition": "Pertaining to, or like, a flock.",
         "exampleSentence": "But for this gregal conformity there is, as I have said, a cause and an excuse.",
@@ -14526,22 +14368,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonrat",
-        "definition": "That which is not a rat.",
-        "exampleSentence": "One day, we nonrats might be able to edit what we remember by taking a drug.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "multisyllable",
-        "pronunciation": "nonrat",
-        "etymology": "From non- + rat.",
-        "distractors": [
-            "nonnrat",
-            "nanrat",
-            "nenrat"
-        ],
-        "theme": "animals"
-    },
-{
         "word": "penful",
         "definition": "Enough to fill a pen.",
         "exampleSentence": "Can you use the word penful in a sentence?",
@@ -14556,22 +14382,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "panful"
         ],
         "theme": "actions"
-    },
-{
-        "word": "outrap",
-        "definition": "To surpass in rapping (speaking lyrics in rap music); to rap better than.",
-        "exampleSentence": "And on “The Jay Leno Show” his performance of “Run This Town” was swallowed whole by Mr. West, who outrapped him and outemoted him all at once.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outrap",
-        "etymology": "From out- + rap.",
-        "distractors": [
-            "outtrap",
-            "oatrap",
-            "oetrap"
-        ],
-        "theme": "art"
     },
 {
         "word": "dougie",
@@ -14619,22 +14429,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "paetly"
         ],
         "theme": "art"
-    },
-{
-        "word": "uncure",
-        "definition": "To undo the effects of curing; return (something) to an untreated state.",
-        "exampleSentence": "Placement at 4°C \"uncures\" the slides, making the cover-slips slide around, so always leave them out for at least one night (manufacturer recommends 80 h) prior to examining the slides.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "uncure",
-        "etymology": "From un- + cure.",
-        "distractors": [
-            "uncer",
-            "unncure",
-            "uncurre"
-        ],
-        "theme": "society"
     },
 {
         "word": "unwipe",
@@ -14747,38 +14541,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "unpelm"
         ],
         "theme": "plants"
-    },
-{
-        "word": "unfail",
-        "definition": "To undo or reverse the failure of; to return to an unfailed state.",
-        "exampleSentence": "Trying to Unfail the Homeless Individual – Wibke Schniedermann.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unfail",
-        "etymology": "From un- + fail.",
-        "distractors": [
-            "unnfail",
-            "unfayl",
-            "unfeil"
-        ],
-        "theme": "society"
-    },
-{
-        "word": "unmail",
-        "definition": "To undo the act of mailing; to recover from the postal system before delivery.",
-        "exampleSentence": "Was it even possible to unmail a letter? She might have to lie, might have to say the letter contained explosives, or some kind of poison. Something extremely illegal.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unmail",
-        "etymology": "From un- + mail.",
-        "distractors": [
-            "unnmail",
-            "unmayl",
-            "unmeil"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "mismix",
@@ -14941,22 +14703,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "undamn",
-        "definition": "To undo the damning of; to free from damnation.",
-        "exampleSentence": "At one point he had jestingly called himself a case worker for the potentially damnable. Now it appeared there might be case workers in Hell trying to undamn its souls.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "undamn",
-        "etymology": "From un- + damn.",
-        "distractors": [
-            "unndamn",
-            "undammn",
-            "undan"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unruth",
         "definition": "A lack of ruth; mercilessness, pitilessness.",
         "exampleSentence": "Whereat in a moment of cross unruth / He thought, \"All right if you want the truth!\"",
@@ -14969,22 +14715,6 @@ export const TIER_3_PIPELINE_C_WORDS: SpellingWord[] = [
             "unnruth",
             "unrutth",
             "unrath"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outspy",
-        "definition": "To surpass in spying.",
-        "exampleSentence": "Comrade Zelenko, as a spy, you are worthless! That girl could outspy you any day.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outspy",
-        "etymology": "From out- + spy.",
-        "distractors": [
-            "outspey",
-            "outtspy",
-            "oatspy"
         ],
         "theme": "everyday"
     },

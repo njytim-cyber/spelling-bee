@@ -2,7 +2,7 @@
  * words/tier4-pipeline-g.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 996 words.
+ * 974 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -413,22 +413,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "outfrown",
-        "definition": "To exceed in frowning.",
-        "exampleSentence": "All day, therefore, the Blues and the Buffs have been locked in contretemps, with Brown and Cameron striving to outfrown each other in statesmanship.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outfrown",
-        "etymology": "From out- + frown.",
-        "distractors": [
-            "outtfrown",
-            "outfrowwn",
-            "outfroun"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "outscold",
         "definition": "To scold more than.",
         "exampleSentence": "The instructions said to outscold gently and carefully.",
@@ -717,38 +701,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
 {
-        "word": "nonraven",
-        "definition": "That which is not a raven.",
-        "exampleSentence": "Similarly, there are various ways of gathering the data that something is a nonblack nonraven.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonraven",
-        "etymology": "From non- + raven.",
-        "distractors": [
-            "nonnraven",
-            "nonravven",
-            "nanraven"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nondepot",
-        "definition": "Not being or pertaining to a depot.",
-        "exampleSentence": "The old house had a nondepot appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nondepot",
-        "etymology": "From non- + depot.",
-        "distractors": [
-            "nonndepot",
-            "nondeppot",
-            "nandepot"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "tuckable",
         "definition": "Capable of being tucked.",
         "exampleSentence": "The old house had a tuckable appearance.",
@@ -1021,22 +973,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "money"
     },
 {
-        "word": "outblush",
-        "definition": "To exceed in blushing; to surpass in rosy colour.",
-        "exampleSentence": "The instructions said to outblush gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outblush",
-        "etymology": "From out- + blush.",
-        "distractors": [
-            "outtblush",
-            "outblussh",
-            "oatblush"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "untenant",
         "definition": "To remove a tenant from.",
         "exampleSentence": "These are the Ignorant Omniscients to make place for whom we are exhorted by modern sages to exclude our God and Untenant the Universe.",
@@ -1165,22 +1101,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unpreach",
-        "definition": "To undo or overthrow (something) by preaching; to revoke (something preached before).",
-        "exampleSentence": "The clergy their own principles denied: Unpreach'd their non-resisting cant, and pray'd / Their liberty and property's so dear.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "unpreach",
-        "etymology": "From un- + preach.",
-        "distractors": [
-            "unnpreach",
-            "unpreacch",
-            "unpreatch"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "stirious",
         "definition": "Resembling icicles.",
         "exampleSentence": "The old house had a stirious appearance.",
@@ -1275,22 +1195,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "decadisst"
         ],
         "theme": "art"
-    },
-{
-        "word": "outvenom",
-        "definition": "To exceed in venom.",
-        "exampleSentence": "The instructions said to outvenom gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outvenom",
-        "etymology": "From out- + venom.",
-        "distractors": [
-            "outtvenom",
-            "outvennom",
-            "oatvenom"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "shadeful",
@@ -2218,22 +2122,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "overedit",
-        "definition": "To edit something too much.",
-        "exampleSentence": "The quick cuts made the film almost overedited.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overedit",
-        "etymology": "From over- + edit.",
-        "distractors": [
-            "ovveredit",
-            "overredit",
-            "overeddit"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "antiguru",
         "definition": "Hostile to gurus, or to a specific guru.",
         "exampleSentence": "Paranoid behavior, too, is often seen in the manifestation of hostility toward such tales, when the listener thinks that he or she is being challenged by what sounds like an antiguru story.",
@@ -2712,22 +2600,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "outbloom",
-        "definition": "To surpass in blooms.",
-        "exampleSentence": "The instructions said to outbloom gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outbloom",
-        "etymology": "From out- + bloom.",
-        "distractors": [
-            "outblom",
-            "outtbloom",
-            "oatbloom"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "puffable",
         "definition": "Capable of being puffed.",
         "exampleSentence": "Rice is a puffable food.",
@@ -2742,22 +2614,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "pufable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overlime",
-        "definition": "To treat (soil) with too much lime.",
-        "exampleSentence": "Don't overlime acid soil, because availability of some nutrients may be decreased when the soil pH is too high.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overlime",
-        "etymology": "From over- + lime.",
-        "distractors": [
-            "ovverlime",
-            "overrlime",
-            "overlimme"
-        ],
-        "theme": "earth"
     },
 {
         "word": "overcone",
@@ -2820,22 +2676,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "unnracism",
             "unraccism",
             "unracissm"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unreject",
-        "definition": "To undo the rejection of; to accept back.",
-        "exampleSentence": "If you want to unreject an image, select it and set its rating to something other than rejected, be it unrated or one to five stars.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unreject",
-        "etymology": "From un- + reject.",
-        "distractors": [
-            "unnreject",
-            "unrejject",
-            "unrejecct"
         ],
         "theme": "everyday"
     },
@@ -2952,22 +2792,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nondisco",
-        "definition": "Not being or relating to disco music.",
-        "exampleSentence": "Then there's after-dinner dancing — useful for burning off the calories — to a group that plays eminently danceable, nondisco melodies.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nondisco",
-        "etymology": "From non- + disco.",
-        "distractors": [
-            "nonndisco",
-            "nondissco",
-            "nandisco"
-        ],
-        "theme": "art"
-    },
-{
         "word": "underawe",
         "definition": "To fail to inspire the intended degree of awe.",
         "exampleSentence": "Thurston Dart was a man suitably underawed by military reputations and he did not hesitate to engage in light-hearted banter with his Principal.",
@@ -2998,22 +2822,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "ovarbrew"
         ],
         "theme": "time"
-    },
-{
-        "word": "tealness",
-        "definition": "The condition of being teal.",
-        "exampleSentence": "I spun my head around the lobby. Looked normal. Bells on the door. Vinyl couch in all its tealness.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "tealness",
-        "etymology": "From teal + -ness.",
-        "distractors": [
-            "tealniss",
-            "tealnes",
-            "teallness"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "jockless",
@@ -3139,22 +2947,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "grimles",
             "grimmless",
             "gramless"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overfret",
-        "definition": "To fret excessively.",
-        "exampleSentence": "But now come down from your pedestal, and do not overfret yourself, because your hand, or your mind, or your soul, will not fulfil all that you would have it.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overfret",
-        "etymology": "From over- + fret. Compare Middle English overfreten, ovirfretyn (past participle).",
-        "distractors": [
-            "ovverfret",
-            "overrfret",
-            "ovarfret"
         ],
         "theme": "everyday"
     },
@@ -3346,38 +3138,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "clippsing",
             "clipsinng",
             "clapsing"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overtame",
-        "definition": "Excessively tame.",
-        "exampleSentence": "The already overtame beasts soon lost all fear of man ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overtame",
-        "etymology": "From over- + tame.",
-        "distractors": [
-            "ovvertame",
-            "overrtame",
-            "overtamme"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overidle",
-        "definition": "Excessively idle.",
-        "exampleSentence": "The Church of England is expected to be an overidle mother, who lets her children entirely alone, because those made her who had found the Church of Rome an overbusy mother.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overidle",
-        "etymology": "From over- + idle.",
-        "distractors": [
-            "overidel",
-            "ovveridle",
-            "overridle"
         ],
         "theme": "everyday"
     },
@@ -3651,22 +3411,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "nationed"
         ],
         "theme": "character"
-    },
-{
-        "word": "undeploy",
-        "definition": "To undo the deployment of; to revert to a state prior to deployment of.",
-        "exampleSentence": "This Manager application enables you to deploy, start, stop, or undeploy server-side Web applications.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "undeploy",
-        "etymology": "From un- + deploy.",
-        "distractors": [
-            "undeploey",
-            "unndeploy",
-            "undepploy"
-        ],
-        "theme": "society"
     },
 {
         "word": "stackful",
@@ -4481,22 +4225,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "overrosy",
-        "definition": "Excessively rosy (in various senses).",
-        "exampleSentence": "Overrosy cheeks or an overemphasized mouth tends to dwarf the eyes and destroy the balance of the face.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overrosy",
-        "etymology": "From over- + rosy.",
-        "distractors": [
-            "overrosey",
-            "overosy",
-            "ovverrosy"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "mannable",
         "definition": "Able to be staffed with a human crew.",
         "exampleSentence": "The old house had a mannable appearance.",
@@ -4698,22 +4426,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "unnderhum",
             "underrhum",
             "undarhum"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overcurl",
-        "definition": "To curl excessively.",
-        "exampleSentence": "I asked the hairdresser not to overcurl my hair like last time.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overcurl",
-        "etymology": "From over- + curl.",
-        "distractors": [
-            "ovvercurl",
-            "overrcurl",
-            "overcurrl"
         ],
         "theme": "everyday"
     },
@@ -14284,22 +13996,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "academic"
     },
 {
-        "word": "underbake",
-        "definition": "To bake insufficiently, or less than usual.",
-        "exampleSentence": "The cookies were underbaked.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "underbake",
-        "etymology": "From under- + bake.",
-        "distractors": [
-            "unnderbake",
-            "underrbake",
-            "underbakke"
-        ],
-        "theme": "food"
-    },
-{
         "word": "redefault",
         "definition": "A default on a mortgage which has already been modified due to borrower hardship.",
         "exampleSentence": "The rate of redefaults has been rising.",
@@ -15275,22 +14971,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "home"
     },
 {
-        "word": "swissness",
-        "definition": "The quality of being Swiss.",
-        "exampleSentence": "Now the banking sector’s reputation has been tainted, fears are that “Swissness” as a whole could lose its value-enhancing shine.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "swissness",
-        "etymology": "From Swiss + -ness.",
-        "distractors": [
-            "swissniss",
-            "swisness",
-            "swissnes"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "starbucks",
         "definition": "A coffee from Starbucks.",
         "exampleSentence": "I read it straight through while I drank three Starbucks.",
@@ -15447,22 +15127,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "anntitrend",
             "antittrend",
             "antitrennd"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "vocalness",
-        "definition": "The quality of being vocal; outspokenness.",
-        "exampleSentence": "I like what I'm seeing, in terms of the vocalness of certain people on our team, starting to hold people accountable and their teammates accountable.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "vocalness",
-        "etymology": "From vocal + -ness.",
-        "distractors": [
-            "vocalniss",
-            "vocalnes",
-            "voccalness"
         ],
         "theme": "everyday"
     },
@@ -15735,22 +15399,6 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
             "guildles",
             "guilldless",
             "gaildless"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "ruralness",
-        "definition": "The quality of being rural.",
-        "exampleSentence": "‘Yii, that day, I stole looks at Jjali while cowering in my ruralness because the god who gave her everything had just served her my man and my marriage too.’.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "ruralness",
-        "etymology": "From rural + -ness.",
-        "distractors": [
-            "ruralniss",
-            "ruralnes",
-            "rurralness"
         ],
         "theme": "everyday"
     },

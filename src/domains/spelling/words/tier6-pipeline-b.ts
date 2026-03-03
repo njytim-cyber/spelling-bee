@@ -2,7 +2,7 @@
  * words/tier6-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 999 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -12054,22 +12054,6 @@ export const TIER_6_PIPELINE_B_WORDS: SpellingWord[] = [
             "vitellairy"
         ],
         "theme": "animals"
-    },
-{
-        "word": "hectivity",
-        "definition": "A state of constant, frenzied, and typically stressful activity.",
-        "exampleSentence": "Out here on the Pacific, there's no rush, no tension, none of the \"hectivities\" of everyday life ashore.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "suffixes",
-        "pronunciation": "hɛktɪvɪti",
-        "etymology": "Blend of hectic + activity.",
-        "distractors": [
-            "hectivitey",
-            "hecctivity",
-            "hectivvity"
-        ],
-        "theme": "society"
     },
 {
         "word": "epithetic",

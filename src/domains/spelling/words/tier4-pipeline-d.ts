@@ -2,7 +2,7 @@
  * words/tier4-pipeline-d.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 989 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -779,22 +779,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "overthink",
-        "definition": "To think or analyze too much.",
-        "exampleSentence": "He promised to overthink as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overthink",
-        "etymology": "From over- + think.",
-        "distractors": [
-            "ovverthink",
-            "overrthink",
-            "overthinnk"
-        ],
-        "theme": "mind"
-    },
-{
         "word": "electrons",
         "definition": "The digital or electronic version of a document.",
         "exampleSentence": "Your presentation today was very informative. Could you email me the electrons?",
@@ -1348,22 +1332,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "academic"
     },
 {
-        "word": "unextinct",
-        "definition": "To make not extinct; especially, to return an extinct species to existence.",
-        "exampleSentence": "He promised to unextinct as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unextinct",
-        "etymology": "From un- + extinct (verb).",
-        "distractors": [
-            "unnextinct",
-            "unexxtinct",
-            "unextinnct"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "mosqueing",
         "definition": "The practice of visiting or attending a mosque.",
         "exampleSentence": "P.L. gave me an inferior dressing gown and Mary bought one that suits her fairness, otherwise no purchases. Next morning we did some mosqueing and souking ….",
@@ -1822,22 +1790,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
             "overscarrf"
         ],
         "theme": "clothing"
-    },
-{
-        "word": "outsnatch",
-        "definition": "To surpass in snatching.",
-        "exampleSentence": "He'd thought it through and decided that he needed a swift reaction team to outsnatch the snatchers.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outsnatch",
-        "etymology": "From out- + snatch.",
-        "distractors": [
-            "outtsnatch",
-            "outsnattch",
-            "outsnach"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "particled",
@@ -3620,22 +3572,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "money"
     },
 {
-        "word": "prenuclear",
-        "definition": "Occurring before the start of the nuclear age.",
-        "exampleSentence": "The prenuclear colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "prenuclear",
-        "etymology": "From pre- + nuclear.",
-        "distractors": [
-            "prenucleer",
-            "prennuclear",
-            "prenucclear"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "cookieless",
         "definition": "Without cookies (the food).",
         "exampleSentence": "Cookieless sessions enable you to take advantage of session state without relying on browser cookies.",
@@ -3794,22 +3730,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
             "recalable"
         ],
         "theme": "mind"
-    },
-{
-        "word": "nonsigning",
-        "definition": "Not signing (endorsing a document with one's name).",
-        "exampleSentence": "The nonsigning parties demanded changes to the final clause.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonsigning",
-        "etymology": "From non- + signing.",
-        "distractors": [
-            "nonnsigning",
-            "nonsiggning",
-            "nonsigninng"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "tissueless",
@@ -4370,22 +4290,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
             "anntimirror"
         ],
         "theme": "actions"
-    },
-{
-        "word": "unpositive",
-        "definition": "Not positive; negative.",
-        "exampleSentence": "… no nation is going to dare provoke an atomic war with us unless it is convinced that the first shock will do away with our power, to use a rather unpositive word, to retaliate.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unpositive",
-        "etymology": "From un- + positive.",
-        "distractors": [
-            "unnpositive",
-            "unpossitive",
-            "unposittive"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "cheerleader",
@@ -5167,22 +5071,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "plasticless",
-        "definition": "Without plastic.",
-        "exampleSentence": "I feel my humanity returns as I escape the plastic cocoon, and feel like I've entered a different, plastic-less city altogether.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "plasticless",
-        "etymology": "From plastic + -less.",
-        "distractors": [
-            "plasticles",
-            "plassticless",
-            "plasticcless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "underburden",
         "definition": "To give too light a burden; to assign less than a fair share.",
         "exampleSentence": "After five days of unsatisfactory work, we came to the conclusion that the furnace was underburdened.",
@@ -5261,22 +5149,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
             "constantivve"
         ],
         "theme": "society"
-    },
-{
-        "word": "laundryless",
-        "definition": "Without laundry.",
-        "exampleSentence": "Two bathing suits for each small guest proved an ample wardrobe, and we lived, during July in a laundryless world!",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "laundryless",
-        "etymology": "From laundry + -less.",
-        "distractors": [
-            "laundryles",
-            "launndryless",
-            "laundrylless"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "manipulation",
@@ -7087,22 +6959,6 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
             "npo"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "doy",
-        "definition": "A term of address to a young child.",
-        "exampleSentence": "Whear is thi' Daddy doy? Whear is thi' mam? / What are ta cryin for, poor little lamb?",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "cvc",
-        "pronunciation": "dɔɪ",
-        "etymology": "Possibly an alteration of joy.",
-        "distractors": [
-            "doey",
-            "doi",
-            "day"
-        ],
-        "theme": "people"
     },
 {
         "word": "yok",

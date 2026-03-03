@@ -2,7 +2,7 @@
  * words/tier7-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 996 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -12977,22 +12977,6 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "fervourless",
-        "definition": "Without fervour.",
-        "exampleSentence": "She had accepted her husband's faith after a fervourless girlhood from a mixture of reasons badly thought out.",
-        "partOfSpeech": "adjective",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "fəːvələs",
-        "etymology": "From fervour + -less.",
-        "distractors": [
-            "fervourles",
-            "ferrvourless",
-            "fervourrless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "craniotabes",
         "definition": "The medical finding of a softening or thinning of the skull.",
         "exampleSentence": "Palpate the scalp firmly above and behind the ears to detect craniotabes, a softening of the outer table of the skull.",
@@ -13960,22 +13944,6 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
             "monnachopsis",
             "monacchopsis",
             "monachoppsis"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "crinklebutt",
-        "definition": "A term of endearment for one who wears a diaper.",
-        "exampleSentence": "Crinklebutt + math question + incontinence = embarrassing moment.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "blends",
-        "pronunciation": "kɹɪŋkəlbʌt",
-        "etymology": "From crinkle (“to rustle, as stiff cloth when moved”) + butt, because many disposable adult diapers have a plastic backing which makes such a sound. Compare crinkler.",
-        "distractors": [
-            "crinklebut",
-            "crinnklebutt",
-            "crinklebbutt"
         ],
         "theme": "everyday"
     },

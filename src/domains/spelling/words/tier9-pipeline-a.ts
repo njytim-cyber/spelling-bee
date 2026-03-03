@@ -2,7 +2,7 @@
  * words/tier9-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -12860,22 +12860,6 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
             "pharissaical"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "preprandial",
-        "definition": "Occurring before a meal, especially dinner.",
-        "exampleSentence": "The standardized analysis of metabolic parameters in the preprandial and postprandial state may provide important functional clues for the diagnosis of metabolic disorders.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹipɹændiəl",
-        "etymology": "From pre- + prandial.",
-        "distractors": [
-            "preprandiel",
-            "prepprandial",
-            "prepranndial"
-        ],
-        "theme": "food"
     },
 {
         "word": "procrustean",

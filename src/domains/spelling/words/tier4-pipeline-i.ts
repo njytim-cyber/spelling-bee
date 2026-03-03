@@ -2,7 +2,7 @@
  * words/tier4-pipeline-i.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 183 words.
+ * 166 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -366,22 +366,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "language"
     },
 {
-        "word": "homeworkless",
-        "definition": "Without homework.",
-        "exampleSentence": "He's been sucking you away from the church of the homeworkless?",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "homeworkless",
-        "etymology": "From homework + -less.",
-        "distractors": [
-            "homeworkles",
-            "hommeworkless",
-            "homewworkless"
-        ],
-        "theme": "academic"
-    },
-{
         "word": "supercitizen",
         "definition": "A citizen who is remarkable by virtue of their status or community contributions etc.",
         "exampleSentence": "Tony is a supercitizen; he is animating citizenship for himself at a number of different levels with formal and informal support.",
@@ -396,22 +380,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "supercittizen"
         ],
         "theme": "people"
-    },
-{
-        "word": "underreplace",
-        "definition": "To replace insufficiently.",
-        "exampleSentence": "Therefore, even women with the highest increases due to child mortality severely underreplace their lost children.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "underreplace",
-        "etymology": "From under- + replace.",
-        "distractors": [
-            "undereplace",
-            "unnderreplace",
-            "underrepplace"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "friendshiply",
@@ -605,22 +573,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "overcreative",
-        "definition": "Excessively creative.",
-        "exampleSentence": "It's called Bell's Diner and the chef is called Chris Wicks. It's in Montpelier in Bristol. He's a very creative chef, but not overcreative.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "overcreative",
-        "etymology": "From over- + creative.",
-        "distractors": [
-            "ovvercreative",
-            "overrcreative",
-            "overcreattive"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonwandering",
         "definition": "Not wandering; not being a wandering set, wandering point, etc.",
         "exampleSentence": "The nonwandering surface made it hard to walk across.",
@@ -731,22 +683,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "prefinnancial"
         ],
         "theme": "money"
-    },
-{
-        "word": "admittedness",
-        "definition": "The quality of being admitted.",
-        "exampleSentence": "Loving the rosaries of frank admittedness, throes of sinking ships and snakes speaking English.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "admittedness",
-        "etymology": "From admitted + -ness.",
-        "distractors": [
-            "admittedniss",
-            "admitedness",
-            "admittednes"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "roommateless",
@@ -1019,22 +955,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "pretournament",
-        "definition": "Occurring before, or in preparation for, a tournament.",
-        "exampleSentence": "\"I think there's a lot of things I can learn from him,\" said Kim, who already has modeled his pretournament routine after Woods's.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "pretournament",
-        "etymology": "From pre- + tournament.",
-        "distractors": [
-            "pretournamant",
-            "prettournament",
-            "pretourrnament"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "interdistrict",
         "definition": "Between two or more districts.",
         "exampleSentence": "… the Wisconsin legislature passed a law providing incentives for transfers of schoolchildren in the metropolitan area, both intradistrict and interdistrict.",
@@ -1131,38 +1051,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nontelevision",
-        "definition": "That is not, or does not relate to, television.",
-        "exampleSentence": "Before the explosion of Internet news and gossip blogs, People and its competitors would have dominated the nontelevision Anna Nicole coverage.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "greek-roots",
-        "pronunciation": "nontelevision",
-        "etymology": "From non- + television.",
-        "distractors": [
-            "nontelevition",
-            "nonntelevision",
-            "nontellevision"
-        ],
-        "theme": "communication"
-    },
-{
-        "word": "undermaintain",
-        "definition": "To maintain inadequately; to allow to fall into disrepair.",
-        "exampleSentence": "For some years locomotives and coaches have been overworked and undermaintained to a degree without precedent in British railway history, and the leeway in maintenance now to be made up is very great.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "undermaintain",
-        "etymology": "From under- + maintain.",
-        "distractors": [
-            "unndermaintain",
-            "underrmaintain",
-            "undermainntain"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overrepresent",
         "definition": "To represent as being higher or greater than it is.",
         "exampleSentence": "Asian Americans are overrepresented in both elite universities like Harvard and also in community colleges.",
@@ -1223,22 +1111,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "nonmotorcycel",
             "nonnmotorcycle",
             "nonmottorcycle"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "champagneless",
-        "definition": "Without champagne.",
-        "exampleSentence": "But there were a number of flowerless, champagneless tables and at least three of them were occupied by unaffiliated diners.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "champagneless",
-        "etymology": "From champagne + -less.",
-        "distractors": [
-            "champagneles",
-            "chammpagneless",
-            "champaggneless"
         ],
         "theme": "everyday"
     },
@@ -1355,22 +1227,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "suspicionless",
-        "definition": "Without suspicion.",
-        "exampleSentence": "Another proposal is to allow suspicionless searches. In Israel, the police can search citizens and their belongings at any time without any particular cause or suspicion.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "suspicionless",
-        "etymology": "From suspicion + -less.",
-        "distractors": [
-            "suspicionles",
-            "susspicionless",
-            "suspiccionless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonretirement",
         "definition": "Not of or pertaining to retirement.",
         "exampleSentence": "The minimum investment for nonretirement accounts is $10,000; the minimum drops to $1,000 for Individual Retirement Accounts.",
@@ -1415,22 +1271,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "anticelebritey",
             "annticelebrity",
             "anticcelebrity"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "chocolateless",
-        "definition": "Without chocolate.",
-        "exampleSentence": "She had spent days toiling over her chocolateless chocolate cake.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "greek-roots",
-        "pronunciation": "chocolateless",
-        "etymology": "From chocolate + -less.",
-        "distractors": [
-            "chocolateles",
-            "choccolateless",
-            "chocollateless"
         ],
         "theme": "everyday"
     },
@@ -1511,22 +1351,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "overpromosion",
             "ovverpromotion",
             "overrpromotion"
-        ],
-        "theme": "quantity"
-    },
-{
-        "word": "overconnected",
-        "definition": "Excessively connected; having too many connections.",
-        "exampleSentence": "For the normally overconnected tourist, the first thing you notice in the Land of No Service is how quickly your hearing, smell and eyesight improve in an act of instant Darwinian evolution.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overconnected",
-        "etymology": "From over- + connected.",
-        "distractors": [
-            "overconected",
-            "ovverconnected",
-            "overrconnected"
         ],
         "theme": "quantity"
     },
@@ -1738,22 +1562,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "existenceless",
-        "definition": "Without existence.",
-        "exampleSentence": "Before this, she was almost existenceless, 'asleep'; following this, whatever her tribulations and complications, she has been firmly awake, and most passionately and gratefully back in the world.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "existenceless",
-        "etymology": "From existence + -less.",
-        "distractors": [
-            "existenceles",
-            "exxistenceless",
-            "exisstenceless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "disappearable",
         "definition": "That can be disappeared.",
         "exampleSentence": "Rabbits are magically disappearable.",
@@ -1847,22 +1655,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "antikknowledge"
         ],
         "theme": "mind"
-    },
-{
-        "word": "overreference",
-        "definition": "To reference too much or too often.",
-        "exampleSentence": "The concept of normalization has to be one of most overreferenced yet misunderstood concepts in programming.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "overreference",
-        "etymology": "From over- + reference.",
-        "distractors": [
-            "overreferance",
-            "overeference",
-            "ovverreference"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "underanalysis",
@@ -2201,22 +1993,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "overguarantee",
-        "definition": "To guarantee excessively.",
-        "exampleSentence": "This precautionary practice may result in a grave situation of overguaranteeing. Suretyship contracts or equivalent personal guarantees and real security are naturally frequent in banking practice.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overguarantee",
-        "etymology": "From over- + guarantee.",
-        "distractors": [
-            "overguarante",
-            "ovverguarantee",
-            "overrguarantee"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "superstandard",
         "definition": "Better than standard.",
         "exampleSentence": "A substandard-market customer who might have padded a claim is less likely to be maintained as a policyholder than a superstandard customer.",
@@ -2229,22 +2005,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "supperstandard",
             "superrstandard",
             "superstanndard"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overdesperate",
-        "definition": "Excessively desperate.",
-        "exampleSentence": "“Their choice of me,” he admitted, “made them seem naïve and a little overdesperate.”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overdesperate",
-        "etymology": "From over- + desperate.",
-        "distractors": [
-            "ovverdesperate",
-            "overrdesperate",
-            "overdessperate"
         ],
         "theme": "everyday"
     },
@@ -2583,22 +2343,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "precompetition",
-        "definition": "Occurring before or in anticipation of a competition.",
-        "exampleSentence": "“A lot of athletes experience precompetition anxieties in the first place,” Rosenfeld said.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "precompetition",
-        "etymology": "From pre- + competition.",
-        "distractors": [
-            "precompetision",
-            "preccompetition",
-            "precommpetition"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "conversationed",
         "definition": "Acquainted with manners and deportment; well-behaved.",
         "exampleSentence": "Till she be better conversationed, … I'll keep / As far from her as the gallows.",
@@ -2785,22 +2529,6 @@ export const TIER_4_PIPELINE_I_WORDS: SpellingWord[] = [
             "girlfriendible",
             "girlfriendabel",
             "girrlfriendable"
-        ],
-        "theme": "people"
-    },
-{
-        "word": "nonconversation",
-        "definition": "That which is not a conversation; especially a discussion that cannot be regarded as a conversation (because, for example, only one person is speaking).",
-        "exampleSentence": "He used no pyro or video backdrop, and the audience stood close enough to its hero that it could hold nonconversations with him.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonconversation",
-        "etymology": "From non- + conversation.",
-        "distractors": [
-            "nonconversasion",
-            "nonnconversation",
-            "nonconnversation"
         ],
         "theme": "people"
     },

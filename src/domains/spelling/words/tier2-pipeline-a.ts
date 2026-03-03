@@ -2,7 +2,7 @@
  * words/tier2-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 994 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -348,22 +348,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "extennsion"
         ],
         "theme": "time"
-    },
-{
-        "word": "loc",
-        "definition": "Correspondence, usually a letter, sent to a periodical commenting on either the contents of a previous issue or an earlier letter of comment.",
-        "exampleSentence": "Available for Trade, LoC, Contribution, goodwill (rarely) or even money.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "cvc",
-        "pronunciation": "loc",
-        "etymology": "Abbreviation of letter of comment.",
-        "distractors": [
-            "lac",
-            "lec",
-            "lco"
-        ],
-        "theme": "language"
     },
 {
         "word": "bull",
@@ -6566,22 +6550,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "officcial"
         ],
         "theme": "society"
-    },
-{
-        "word": "overpost",
-        "definition": "To post too much or too often.",
-        "exampleSentence": "You can overpost and wear out your welcome.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overpost",
-        "etymology": "From over- + post.",
-        "distractors": [
-            "ovverpost",
-            "overrpost",
-            "overposst"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "associate",
@@ -14996,22 +14964,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
 {
-        "word": "overwash",
-        "definition": "To wash too much or too often.",
-        "exampleSentence": "The instructions said to overwash gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overwash",
-        "etymology": "From over- + wash.",
-        "distractors": [
-            "ovverwash",
-            "overrwash",
-            "overwassh"
-        ],
-        "theme": "actions"
-    },
-{
         "word": "pageable",
         "definition": "Able to be contacted by pager.",
         "exampleSentence": "The days before physicians were pageable.",
@@ -15040,22 +14992,6 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
             "ovversend",
             "overrsend",
             "oversennd"
-        ],
-        "theme": "quantity"
-    },
-{
-        "word": "overlead",
-        "definition": "To lead excessively or too much.",
-        "exampleSentence": "The instructions said to overlead gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overlead",
-        "etymology": "From Middle English overleden, from Old English oferlǣdan (“to oppress, translate”), equivalent to over- + lead.",
-        "distractors": [
-            "overleed",
-            "ovverlead",
-            "overrlead"
         ],
         "theme": "quantity"
     },

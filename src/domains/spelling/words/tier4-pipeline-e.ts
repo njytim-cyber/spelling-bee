@@ -2,7 +2,7 @@
  * words/tier4-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 996 words.
+ * 993 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -10498,22 +10498,6 @@ export const TIER_4_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonkin",
-        "definition": "A person who is not one's relative.",
-        "exampleSentence": "Table 3b: The general frequency of friendly contacts with in the same matriline and with nonkins in the group of Macaca arctoides.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "nonkin",
-        "etymology": "From non- + kin.",
-        "distractors": [
-            "nonnkin",
-            "nankin",
-            "nenkin"
-        ],
-        "theme": "people"
-    },
-{
         "word": "lofter",
         "definition": "An obsolete golf club, the predecessor of the niblick.",
         "exampleSentence": "Can you use the word lofter in a sentence?",
@@ -11226,22 +11210,6 @@ export const TIER_4_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "home"
     },
 {
-        "word": "outsew",
-        "definition": "To surpass in sewing; to sew more or better than.",
-        "exampleSentence": "Honestly, I believe she is outsewing all the rest of us for every evening finds Frances stitching away.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outsew",
-        "etymology": "From out- + sew.",
-        "distractors": [
-            "outtsew",
-            "oatsew",
-            "oetsew"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "unache",
         "definition": "To relieve from pain; soothe.",
         "exampleSentence": "This last summer, though, though I hobbled round like a ninety-year-old, I felt I was on the mend; my leg would unstiffen and my back unache, and I'd be my old self.",
@@ -11397,22 +11365,6 @@ export const TIER_4_PIPELINE_E_WORDS: SpellingWord[] = [
             "voidley",
             "voiddly",
             "voydly"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "mispeg",
-        "definition": "To incorrectly ascribe a value or attribute to.",
-        "exampleSentence": "In addition, the activism by youth of various colors is mispegged under a single ethnic label, Latino.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "mispeg",
-        "etymology": "From mis- + peg.",
-        "distractors": [
-            "misspeg",
-            "maspeg",
-            "mespeg"
         ],
         "theme": "everyday"
     },

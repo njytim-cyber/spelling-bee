@@ -2,7 +2,7 @@
  * words/tier8-pipeline-c.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 993 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -1190,22 +1190,6 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "mazedness",
-        "definition": "The condition of being mazed; confusion; astonishment.",
-        "exampleSentence": "I knew not the cause of your mazedness, but 'twas all I could do to keep those stones going.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "suffixes",
-        "pronunciation": "meɪzɪdnɪs",
-        "etymology": "From Middle English mazednesse, mazidnesse; equivalent to mazed + -ness.",
-        "distractors": [
-            "mazedniss",
-            "mazednes",
-            "mazzedness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "terrenity",
         "definition": "Earthiness; worldliness.",
         "exampleSentence": "Learning about the terrenity was the best part of the day.",
@@ -1812,22 +1796,6 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
             "trummpster"
         ],
         "theme": "society"
-    },
-{
-        "word": "unappoint",
-        "definition": "To undo or reverse an appointment.",
-        "exampleSentence": "\"If Mazzilli appointed him,\" Costa e Silva retorted, \"he is going to unappoint him.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ʌnəpɔɪnt",
-        "etymology": "From un- + appoint. Compare Middle English disapoynten (“to unappoint”).",
-        "distractors": [
-            "unapoint",
-            "unnappoint",
-            "unappoinnt"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "complainy",
@@ -8283,22 +8251,6 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
 {
-        "word": "underreact",
-        "definition": "To react inadequately.",
-        "exampleSentence": "“Investors tend to underreact to positive fundamental change,” said Horacio Valeiras, chief investment officer of Nicholas-Applegate Capital Management.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "ʌndəɹɹiækt",
-        "etymology": "From under- + react.",
-        "distractors": [
-            "undereact",
-            "unnderreact",
-            "underreacct"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "healthsome",
         "definition": "Conducive to good health.",
         "exampleSentence": "‘It is not healthsome always to be eating meaty things.’.",
@@ -8759,22 +8711,6 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "nerfherder",
-        "definition": "A term of abuse.",
-        "exampleSentence": "Hey nerfherder, yeah you! I'm gonna need those for the B-wings!",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "suffixes",
-        "pronunciation": "nɝfhɝːdɚ",
-        "etymology": "Coined by American filmmaker George Lucas in the 1980 film The Empire Strikes Back.",
-        "distractors": [
-            "nerfherdor",
-            "nerfherdar",
-            "nerrfherder"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "sambadrome",
         "definition": "In Brazil, a building or place where samba schools parade during the period of Carnival.",
         "exampleSentence": "Empty sambadromes are like empty stadiums – there's not a lot happening.",
@@ -8997,22 +8933,6 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
             "rupophobbic"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "outswagger",
-        "definition": "To surpass in swaggering.",
-        "exampleSentence": "… the “New Amazon,” who word had it, could “outdrink, outswear, and outswagger the men.”.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "aʊ̯tswæɡɚ",
-        "etymology": "From out- + swagger.",
-        "distractors": [
-            "outswaggor",
-            "outswaggar",
-            "outswager"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "tragedeigh",

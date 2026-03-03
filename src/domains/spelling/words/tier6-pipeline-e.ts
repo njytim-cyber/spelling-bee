@@ -2,7 +2,7 @@
  * words/tier6-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -5944,22 +5944,6 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "uninvite",
-        "definition": "To cancel or withdraw an invitation.",
-        "exampleSentence": "The instructions said to uninvite gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "ʌnɪnvaɪt",
-        "etymology": "From un- + invite.",
-        "distractors": [
-            "uninvight",
-            "unninvite",
-            "uninnvite"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "obrogate",
         "definition": "To annul a law by enacting a new law, as opposed to repealing the former law.",
         "exampleSentence": "That a law is surrogated, when anything is added to the former law; that it is obrogated when anything in the former law is changed.",
@@ -9662,22 +9646,6 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
             "hammletic",
             "hamlettic",
             "hemletic"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "asswagon",
-        "definition": "A term of abuse.",
-        "exampleSentence": "Just last week some asswagon almost died trying to fight me off his tower.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "greek-roots",
-        "pronunciation": "æswæɡən",
-        "etymology": "Shitgibbon compound of ass + wagon.",
-        "distractors": [
-            "aswagon",
-            "asswaggon",
-            "asswegon"
         ],
         "theme": "everyday"
     },

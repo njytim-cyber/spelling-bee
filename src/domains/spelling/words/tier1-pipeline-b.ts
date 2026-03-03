@@ -2,7 +2,7 @@
  * words/tier1-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 313 words.
+ * 293 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -637,22 +637,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "lerry"
         ],
         "theme": "sensory"
-    },
-{
-        "word": "unend",
-        "definition": "To undo or reverse the end or ending of.",
-        "exampleSentence": "Rather, it interrupts every origin and end, every essence and form, unends every end.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "unend",
-        "etymology": "From un- (prefix denoting reversal) + end (verb).",
-        "distractors": [
-            "unnend",
-            "unennd",
-            "unand"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "steve",
@@ -1464,22 +1448,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "townly",
-        "definition": "Characteristic of a town or its inhabitants.",
-        "exampleSentence": "The city, although it has been so called certainly by anticipation, already begins to wear a townly aspect, and to exhibit the symptoms of a thriving community.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "suffixes",
-        "pronunciation": "townly",
-        "etymology": "From town + -ly.",
-        "distractors": [
-            "townley",
-            "towwnly",
-            "tounly"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "allism",
         "definition": "The rejection of creationism in all its forms (including intelligent design) and the assertion that evolution alone is responsible for the diversity of all living creatures.",
         "exampleSentence": "Let us call it Allism – since it is essentially the thesis that natural selection does it all.",
@@ -1622,21 +1590,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "unhame"
         ],
         "theme": "home"
-    },
-{
-        "word": "whying",
-        "definition": "The act of asking the question \"why?\".",
-        "exampleSentence": "Researchers are not encouraged to engage in whying and the subsequent casting off of rules and procedures adopted from non-substantiated fear through the use of very few sensational occurrences.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "digraphs",
-        "pronunciation": "whying",
-        "distractors": [
-            "whyinng",
-            "wying",
-            "whyang"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "doorer",
@@ -2257,22 +2210,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonface",
-        "definition": "That which is not a face (especially in computer face-recognition software).",
-        "exampleSentence": "As the computer amassed the information, it was able to discover relationships that were of great significance to almost all faces, but very few nonfaces.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "nonface",
-        "etymology": "From non- + face.",
-        "distractors": [
-            "nonnface",
-            "nonfacce",
-            "nanface"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonlove",
         "definition": "Absence of love.",
         "exampleSentence": "Nothing is intrinsically good except love; nothing is intrinsically bad except nonlove. One can never prescribe in advance what a Christian should do.",
@@ -2319,22 +2256,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "yessable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "nontime",
-        "definition": "That which is not time.",
-        "exampleSentence": "… how perception, taking sensation into consciousness, can take place in the nontime of the Now.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "silent-e",
-        "pronunciation": "nontime",
-        "etymology": "From non- + time.",
-        "distractors": [
-            "nonntime",
-            "nontimme",
-            "nantime"
-        ],
-        "theme": "time"
     },
 {
         "word": "preshot",
@@ -2385,22 +2306,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "tryless",
-        "definition": "With no tries scored.",
-        "exampleSentence": "It was a record fourth time England had posted a tryless victory in a World Cup game.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "suffixes",
-        "pronunciation": "tryless",
-        "etymology": "From try + -less.",
-        "distractors": [
-            "tryles",
-            "trylless",
-            "trylass"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "thingal",
         "definition": "Belonging or pertaining to a thing or things; real.",
         "exampleSentence": "Indeed he possessed no true aesthetic feeling at all; there is probably not a single word in all that he wrote which indicates any sense of what he would probably call \"thingal beauty\".",
@@ -2413,22 +2318,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "thingel",
             "thinngal",
             "thangal"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outnice",
-        "definition": "To surpass in apparently nice behaviour; to make oneself seem nicer than.",
-        "exampleSentence": "Still, it was almost as if the battle was to see which of them could outnice the other.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outnice",
-        "etymology": "From out- + nice.",
-        "distractors": [
-            "outtnice",
-            "outnicce",
-            "oatnice"
         ],
         "theme": "everyday"
     },
@@ -2687,38 +2576,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "thannker"
         ],
         "theme": "people"
-    },
-{
-        "word": "undrink",
-        "definition": "To undo the action of drinking.",
-        "exampleSentence": "A part of me wished it was possible to undrink the wine ….",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "undrink",
-        "etymology": "From un- + drink.",
-        "distractors": [
-            "unndrink",
-            "undrinnk",
-            "undrank"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outwill",
-        "definition": "To surpass in force of will.",
-        "exampleSentence": "Even if not, Somali resolve would have still remained strong enough during World War I to outwill the British.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outwill",
-        "etymology": "From out- + will.",
-        "distractors": [
-            "outwil",
-            "outtwill",
-            "oatwill"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "prelive",
@@ -3671,22 +3528,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overhelp",
-        "definition": "To supply with too much help.",
-        "exampleSentence": "Modify homework and independent projects to the child's instructional or independent level, so that parents are not forced to overhelp the child.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overhelp",
-        "etymology": "From over- + help.",
-        "distractors": [
-            "ovverhelp",
-            "overrhelp",
-            "overhellp"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "meanable",
         "definition": "Capable of being meant.",
         "exampleSentence": "Firstly, the writer, like the language, is subject to the situation, in that he or she must say something meanable.",
@@ -3719,38 +3560,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonblood",
-        "definition": "That which is not blood.",
-        "exampleSentence": "The nonblood was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "vowel-teams",
-        "pronunciation": "nonblood",
-        "etymology": "From non- + blood.",
-        "distractors": [
-            "nonblod",
-            "nonnblood",
-            "nanblood"
-        ],
-        "theme": "body"
-    },
-{
-        "word": "overshow",
-        "definition": "To show excessively or too much.",
-        "exampleSentence": "It is a grave mistake to overshow your stock, and one that the novice must always guard against.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overshow",
-        "etymology": "From over- + show.",
-        "distractors": [
-            "ovvershow",
-            "overrshow",
-            "overshou"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "feelness",
         "definition": "The state, condition, or quality of feeling; perception; sensitivity.",
         "exampleSentence": "Took reality further, beyond the realness, feelness of things.",
@@ -3767,22 +3576,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "overfeel",
-        "definition": "To feel excessively or to too great an extent.",
-        "exampleSentence": "Yet both tend to overfeel and are led more by their hearts than by their heads — more by sentiment than by reason.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overfeel",
-        "etymology": "From over- + feel.",
-        "distractors": [
-            "overfele",
-            "overfeal",
-            "overfel"
-        ],
-        "theme": "feelings"
-    },
-{
         "word": "behinded",
         "definition": "Having a behind (of a specific type).",
         "exampleSentence": "The old house had a behinded appearance.",
@@ -3797,22 +3590,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "bahinded"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "outcrazy",
-        "definition": "To surpass in craziness; to be more wild or erratic than.",
-        "exampleSentence": "So now Israel believes it must restore its deterrence by proving that it can outcrazy Hamas’s latest craziness.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outcrazy",
-        "etymology": "From out- + crazy.",
-        "distractors": [
-            "outcrazey",
-            "outtcrazy",
-            "outcrazzy"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "lookable",
@@ -3986,22 +3763,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "highles",
             "higghless",
             "haghless"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overmean",
-        "definition": "Excessively mean.",
-        "exampleSentence": "But the way she said it was as if I'd taken a dump on the floor and ruined the whole poetry class. Which I thought was a bit overmean on her part.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overmean",
-        "etymology": "From over- + mean.",
-        "distractors": [
-            "ovvermean",
-            "overrmean",
-            "overmeen"
         ],
         "theme": "everyday"
     },
@@ -4370,22 +4131,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overgreat",
-        "definition": "Excessively great.",
-        "exampleSentence": "Oligarchies … sometimes made men overgreat.",
-        "partOfSpeech": "adjective",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overgreat",
-        "etymology": "From Middle English overgrete; equivalent to over- + great.",
-        "distractors": [
-            "ovvergreat",
-            "overrgreat",
-            "overgreet"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "prettyism",
         "definition": "The affectation of a pretty style or manner.",
         "exampleSentence": "It is a fault , however , that the style is occasionally a little affected , and that a certain varnish of prettyism and pedantry is sometimes spread over conceptions of the most beautiful simplicity.",
@@ -4400,38 +4145,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "prattyism"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overtrust",
-        "definition": "To trust too much.",
-        "exampleSentence": "Some there are, that do so overtrust their leaders' eyes.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "əʊvə(ɹ)tɹʌst",
-        "etymology": "From over- + trust.",
-        "distractors": [
-            "ovvertrust",
-            "overrtrust",
-            "overtrusst"
-        ],
-        "theme": "quantity"
-    },
-{
-        "word": "outreason",
-        "definition": "To surpass in reasoning; to reason better than.",
-        "exampleSentence": "He promised to outreason as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outreason",
-        "etymology": "From out- + reason.",
-        "distractors": [
-            "outtreason",
-            "outreasson",
-            "outreeson"
-        ],
-        "theme": "mind"
     },
 {
         "word": "intermean",
@@ -4642,22 +4355,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "underdeal",
-        "definition": "To deal insufficiently or inadequately; have dealings which are below requirement or expectation.",
-        "exampleSentence": "Extended family issues (Mom overdeals with his family and Dad underdeals with his family.).",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "latin-roots",
-        "pronunciation": "underdeal",
-        "etymology": "From under- + deal.",
-        "distractors": [
-            "underdeel",
-            "unnderdeal",
-            "underrdeal"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "antiheart",
         "definition": "Pertaining to an autoimmune response affecting the heart.",
         "exampleSentence": "Titers of antiheart antibodies appeared to persist in patients with rheumatic recurrences.",
@@ -4844,22 +4541,6 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
             "missreason",
             "misreasson",
             "misreeson"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outplease",
-        "definition": "To surpass in pleasing.",
-        "exampleSentence": "Dr. Ed Wheat has sagely said, “Every physical union should be a contest to see which partner can outplease the other.”.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outplease",
-        "etymology": "From out- + please.",
-        "distractors": [
-            "outtplease",
-            "outpleasse",
-            "outpleese"
         ],
         "theme": "everyday"
     },

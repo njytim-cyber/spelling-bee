@@ -2,7 +2,7 @@
  * words/tier8-pipeline-d.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2980,22 +2980,6 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
             "interpretible",
             "interpretabel",
             "innterpretable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonproductive",
-        "definition": "Not productive.",
-        "exampleSentence": "After two hours of nonproductive bickering the hearing ended soon after Harry conceded \"Maybe I'm too old to be on this board.\"",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nɑnpɹədʌktɪv",
-        "etymology": "From non- + productive.",
-        "distractors": [
-            "nonnproductive",
-            "nonprodductive",
-            "nonproducctive"
         ],
         "theme": "everyday"
     },

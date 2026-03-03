@@ -2,7 +2,7 @@
  * words/tier3-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 999 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -15117,22 +15117,6 @@ export const TIER_3_PIPELINE_A_WORDS: SpellingWord[] = [
             "youttube",
             "youtubbe",
             "yowtube"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "misplot",
-        "definition": "To incorrectly mark the position of.",
-        "exampleSentence": "You did not misread the map, nor did you misplot your course.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "misplot",
-        "etymology": "From mis- + plot.",
-        "distractors": [
-            "missplot",
-            "masplot",
-            "mesplot"
         ],
         "theme": "everyday"
     },

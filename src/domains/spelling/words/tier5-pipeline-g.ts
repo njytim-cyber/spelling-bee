@@ -2,7 +2,7 @@
  * words/tier5-pipeline-g.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -3335,22 +3335,6 @@ export const TIER_5_PIPELINE_G_WORDS: SpellingWord[] = [
             "manhanndle"
         ],
         "theme": "actions"
-    },
-{
-        "word": "overstate",
-        "definition": "To state or claim too much.",
-        "exampleSentence": "He was suggested not to overstate at the interview.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚsteɪt",
-        "etymology": "From over- + state.",
-        "distractors": [
-            "ovverstate",
-            "overrstate",
-            "overstatte"
-        ],
-        "theme": "society"
     },
 {
         "word": "pollinate",
@@ -10279,22 +10263,6 @@ export const TIER_5_PIPELINE_G_WORDS: SpellingWord[] = [
             "asspectable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overfierce",
-        "definition": "Excessively fierce; overly ferocious.",
-        "exampleSentence": "Overfierce crane and wheels skidding; contactor adjustment and additional resistance required.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚfɪɹs",
-        "etymology": "From over- + fierce.",
-        "distractors": [
-            "ovverfierce",
-            "overrfierce",
-            "overfierrce"
-        ],
-        "theme": "character"
     },
 {
         "word": "corruptful",

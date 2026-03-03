@@ -2,7 +2,7 @@
  * words/tier4-pipeline-f.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 990 words.
+ * 982 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2702,22 +2702,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unabort",
-        "definition": "To undo an abortion (in various senses).",
-        "exampleSentence": "Well, she can't unabort that baby.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unabort",
-        "etymology": "From un- + abort.",
-        "distractors": [
-            "unnabort",
-            "unabbort",
-            "unaborrt"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "ravenly",
         "definition": "In a ravenlike manner.",
         "exampleSentence": "All rose to their feet as Tros entered; all eyed him curiously, each in turn acknowledging his stately bow but not one of them taking the trouble to return Pkauchios' ravenly solemn greeting.",
@@ -2875,22 +2859,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonswan",
-        "definition": "That which is not a swan.",
-        "exampleSentence": "This is not translated \"~s,\" rather, it asserts the existence of at least one nonswan, and thus becomes \"~Sa.\"",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "multisyllable",
-        "pronunciation": "nonswan",
-        "etymology": "From non- + swan.",
-        "distractors": [
-            "nonnswan",
-            "nanswan",
-            "nenswan"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "boxered",
         "definition": "Wearing a pair of boxer shorts.",
         "exampleSentence": "You going to get down to it? said the naked man to his still boxered opponent.",
@@ -2920,22 +2888,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
             "raiburn"
         ],
         "theme": "home"
-    },
-{
-        "word": "peaness",
-        "definition": "The property of being a pea comb.",
-        "exampleSentence": "A rose comb is therefore regarded as a single comb in which roseness is present but peaness is absent; and a pea comb is similarly a single one where peaness is present and roseness is absent.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "peaness",
-        "etymology": "From pea + -ness.",
-        "distractors": [
-            "peaniss",
-            "peanes",
-            "peanness"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "forumer",
@@ -2968,22 +2920,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
             "ownangs"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "oakness",
-        "definition": "The quality of being oak, or of being an oak tree.",
-        "exampleSentence": "The rational detective, of course, is not prepared to bow before oakness and elmness.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "oakness",
-        "etymology": "From oak + -ness.",
-        "distractors": [
-            "oakniss",
-            "oaknes",
-            "oakkness"
-        ],
-        "theme": "plants"
     },
 {
         "word": "yieldly",
@@ -3285,38 +3221,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
             "babbuism",
             "babuissm",
             "bebuism"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outbulk",
-        "definition": "To exceed in bulk.",
-        "exampleSentence": "In places the intrusions, indeed, outbulk the rocks among which they have been thrust.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outbulk",
-        "etymology": "From out- + bulk.",
-        "distractors": [
-            "outtbulk",
-            "outbullk",
-            "oatbulk"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outrave",
-        "definition": "To surpass in raving.",
-        "exampleSentence": "In rant it outraved what Lee himself was to achieve.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outrave",
-        "etymology": "From out- + rave.",
-        "distractors": [
-            "outtrave",
-            "outravve",
-            "oatrave"
         ],
         "theme": "everyday"
     },
@@ -4052,22 +3956,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
             "misstrim",
             "mastrim",
             "mestrim"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outsnob",
-        "definition": "To surpass in snobbery; to be snobbier than.",
-        "exampleSentence": "File the term in this clue — “What a zythophile loves” — under how to outsnob a self-described oenophile when you prefer BEER.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outsnob",
-        "etymology": "From out- + snob.",
-        "distractors": [
-            "outtsnob",
-            "oatsnob",
-            "oetsnob"
         ],
         "theme": "everyday"
     },
@@ -11246,22 +11134,6 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
             "motivatte"
         ],
         "theme": "people"
-    },
-{
-        "word": "overcrop",
-        "definition": "To cultivate land excessively and thus exhaust its fertility.",
-        "exampleSentence": "The instructions said to overcrop gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overcrop",
-        "etymology": "From over- + crop.",
-        "distractors": [
-            "voercrop",
-            "oevrcrop",
-            "ovrecrop"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "overhear",

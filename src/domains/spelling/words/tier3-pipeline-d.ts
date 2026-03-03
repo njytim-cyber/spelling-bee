@@ -2,7 +2,7 @@
  * words/tier3-pipeline-d.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 960 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2687,22 +2687,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonjunk",
-        "definition": "That is not junk (or junk mail, junk food, etc.); that has worth.",
-        "exampleSentence": "Head upstairs to check on the cooking dinner entree, pack nonjunk lunches.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "blends",
-        "pronunciation": "nonjunk",
-        "etymology": "From non- + junk.",
-        "distractors": [
-            "nonnjunk",
-            "nonjunnk",
-            "nanjunk"
-        ],
-        "theme": "food"
-    },
-{
         "word": "unvoted",
         "definition": "Not having been used to cast a vote.",
         "exampleSentence": "There shall also be a large box for the reception of the unvoted ballots.",
@@ -2749,22 +2733,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "reppayer"
         ],
         "theme": "people"
-    },
-{
-        "word": "nongoal",
-        "definition": "That which is not a goal (in various senses).",
-        "exampleSentence": "A disputed goal by the Sabres in Game 3, and a disputed nongoal by the Islanders in Game 4, began a kind of bad luck theme.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "suffixes",
-        "pronunciation": "nongoal",
-        "etymology": "From non- + goal.",
-        "distractors": [
-            "nongoel",
-            "nonngoal",
-            "nangoal"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "dozenal",
@@ -3134,22 +3102,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "language"
     },
 {
-        "word": "nondeer",
-        "definition": "That which is not a deer.",
-        "exampleSentence": "Infections with F. magna do not become patent in nondeer hosts….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "suffixes",
-        "pronunciation": "nondeer",
-        "etymology": "From non- + deer.",
-        "distractors": [
-            "nondeor",
-            "nondear",
-            "nonder"
-        ],
-        "theme": "animals"
-    },
-{
         "word": "antimob",
         "definition": "Opposing the actions of a mob.",
         "exampleSentence": "Some had been killed for the offense, one on the basis of a child's schoolyard report of her father's antimob comments at the dinner table.",
@@ -3406,22 +3358,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
 {
-        "word": "overink",
-        "definition": "To apply too much ink to.",
-        "exampleSentence": "Do not press the stamp hard into the pad, as this overinks the stamp and shortens the life of the pad by squeezing out the ink.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overink",
-        "etymology": "From over- + ink.",
-        "distractors": [
-            "ovverink",
-            "overrink",
-            "overinnk"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "tigerly",
         "definition": "Relating to or resembling a tiger.",
         "exampleSentence": "But my brain that had become tigerly was not as sharp as my human brain had been.",
@@ -3470,38 +3406,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonroot",
-        "definition": "That is not a root.",
-        "exampleSentence": "The frog model starts with one active particle at the root of a graph and #92;eta(v) dormant particles at all nonroot vertices v.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "nonroot",
-        "etymology": "From non- + root.",
-        "distractors": [
-            "nonrot",
-            "nonnroot",
-            "nanroot"
-        ],
-        "theme": "plants"
-    },
-{
-        "word": "unapply",
-        "definition": "To undo an apply operation; to remove (something previously applied).",
-        "exampleSentence": "To unapply the name from every formula in the worksheet, select only a single cell.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "unapply",
-        "etymology": "From un- + apply.",
-        "distractors": [
-            "unappley",
-            "unaply",
-            "unnapply"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overnap",
         "definition": "To take too many short sleeps.",
         "exampleSentence": "If you overnap in the daytime, you may have trouble sleeping at night.",
@@ -3531,22 +3435,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "rottable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "unwreck",
-        "definition": "To undo or reverse the wrecking of; (by extension) to repair; restore to good use; salvage.",
-        "exampleSentence": "Nelson tried to think fast how to unwreck their date.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unwreck",
-        "etymology": "From un- + wreck.",
-        "distractors": [
-            "unwrek",
-            "unnwreck",
-            "unwrecck"
-        ],
-        "theme": "actions"
     },
 {
         "word": "untrunk",
@@ -3693,22 +3581,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "unpatch",
-        "definition": "To undo the process of patching; to remove a patch from.",
-        "exampleSentence": "… to use these three commands, you have two options: change the defaults in Footnote, or use Debug to unpatch WordStar.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unpatch",
-        "etymology": "From un- + patch.",
-        "distractors": [
-            "unnpatch",
-            "unpattch",
-            "unpach"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "laneful",
         "definition": "A quantity that fills a lane.",
         "exampleSentence": "\"Muuh, muuh, moo, moo,\" the calls came thick and fast. They sounded like a whole laneful of heifers.",
@@ -3803,38 +3675,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "meskful"
         ],
         "theme": "quantity"
-    },
-{
-        "word": "unstamp",
-        "definition": "To undo the act of stamping something; to remove a stamp from.",
-        "exampleSentence": "If you gave a wrong number he would penalize you by marking an extra bag for Mangoloana which meant that you would have to fight to get him to unstamp that bag.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unstamp",
-        "etymology": "From un- + stamp.",
-        "distractors": [
-            "unnstamp",
-            "unstammp",
-            "unstemp"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unbrush",
-        "definition": "To undo the result of brushing.",
-        "exampleSentence": "Your hair is brushed very nicely, but just unbrush it a minute so that they can see the scar.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unbrush",
-        "etymology": "From un- + brush.",
-        "distractors": [
-            "unnbrush",
-            "unbrussh",
-            "unbrash"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "premail",
@@ -4044,22 +3884,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unslice",
-        "definition": "To undo the process of slicing.",
-        "exampleSentence": "If only sliced bread is available, you buy it, and it is both superfluous and impossible to try to unslice it; so you end up eating it, and enjoying the convenience.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unslice",
-        "etymology": "From un- + slice.",
-        "distractors": [
-            "unnslice",
-            "unslicce",
-            "unslace"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unsheet",
         "definition": "To remove a sheet or sheets from; to uncover.",
         "exampleSentence": "To unsheet the ghost, to identify the culprit, let's gather more clues.",
@@ -4120,22 +3944,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "misspour",
             "mispowr",
             "maspour"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unprint",
-        "definition": "Hypothetically, to undo the printing of.",
-        "exampleSentence": "We oppose erasure legislation as it has been presented to date on the simple, basic grounds that it is impossible to \"unprint\" a news story which has been printed; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unprint",
-        "etymology": "From un- + print.",
-        "distractors": [
-            "unnprint",
-            "unprinnt",
-            "unprant"
         ],
         "theme": "everyday"
     },
@@ -4332,22 +4140,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "outpipe",
-        "definition": "To surpass in piping; to pipe better than.",
-        "exampleSentence": "A bird that can outpipe the nightingale.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outpipe",
-        "etymology": "From out- + pipe.",
-        "distractors": [
-            "outtpipe",
-            "outpippe",
-            "oatpipe"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unbeard",
         "definition": "To remove one's beard; remove the beard of.",
         "exampleSentence": "He is calmed down only when the bearer of the beard “unbeards,” and acknowledges himself as Asher's old pal: ….",
@@ -4459,22 +4251,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "nontent",
-        "definition": "Online content or media that is boring, low-effort, meaningless, or otherwise valueless.",
-        "exampleSentence": "There are some classic pieces of nontent, including:",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "suffixes",
-        "pronunciation": "nɑntɛnt",
-        "etymology": "Blend of non- + content.",
-        "distractors": [
-            "nontant",
-            "nonntent",
-            "nontennt"
-        ],
-        "theme": "feelings"
-    },
-{
         "word": "mistrap",
         "definition": "To lose control while attempting to trap (something).",
         "exampleSentence": "This time the ball popped up to Elcock, who mistrapped the ball and knocked it over the line for a corner.",
@@ -4537,22 +4313,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "ovarmap"
         ],
         "theme": "travel"
-    },
-{
-        "word": "uncheat",
-        "definition": "To undo an act of cheating.",
-        "exampleSentence": "\"Build a time machine,\" she'd said. \"And go back, and uncheat.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "uncheat",
-        "etymology": "From un- + cheat.",
-        "distractors": [
-            "unncheat",
-            "uncheet",
-            "unchaat"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "prefame",
@@ -9244,22 +9004,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonpizza",
-        "definition": "That is not pizza or unrelated to pizza.",
-        "exampleSentence": "The old house had a nonpizza appearance.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonpizza",
-        "etymology": "From non- + pizza.",
-        "distractors": [
-            "nonpiza",
-            "nonnpizza",
-            "nanpizza"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "discrown",
         "definition": "To remove the crown from; thus, to deprive of royal status.",
         "exampleSentence": "The instructions said to discrown gently and carefully.",
@@ -9306,22 +9050,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "antidatta"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overwise",
-        "definition": "Excessively wise; too clever for one's own good.",
-        "exampleSentence": "“Perkins? Bless you, Perkins wouldn’t go a-nigh the place. No!” observed the young man, with considerable feeling; “he ain’t overwise, ain’t Perkins, but he ain’t such a fool as that.”.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overwise",
-        "etymology": "From Middle English overe-wyse, over wise, equivalent to over- + wise.",
-        "distractors": [
-            "overwize",
-            "ovverwise",
-            "overrwise"
-        ],
-        "theme": "character"
     },
 {
         "word": "lengthed",
@@ -9418,22 +9146,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "sorrowwly"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "nonchaos",
-        "definition": "That which is not chaos.",
-        "exampleSentence": "The nonchaos was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "digraphs",
-        "pronunciation": "nonchaos",
-        "etymology": "From non- + chaos.",
-        "distractors": [
-            "nonnchaos",
-            "nanchaos",
-            "nenchaos"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "superhip",
@@ -10026,22 +9738,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonimage",
-        "definition": "That which is not an image.",
-        "exampleSentence": "Like the noncharacter at the center of Who's Afraid of Virginia Woolf? the screen's nonimage and the man it effaces enable other forms of repression, ….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonimage",
-        "etymology": "From non- + image.",
-        "distractors": [
-            "nonnimage",
-            "nonimmage",
-            "nonimagge"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "combater",
         "definition": "One who combats.",
         "exampleSentence": "… in that great day of the Lord hee shall come to iudge the quicke and dead, bringing these Garlands in hand as the prises for the combaters ….",
@@ -10072,22 +9768,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "bishopply"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "outscent",
-        "definition": "To exceed in odour; to be more odorous than.",
-        "exampleSentence": "This he did to qualify the infamy of Garnet's death , and that the perfume of this new title might outscent the stench of his treason.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outscent",
-        "etymology": "From out- + scent.",
-        "distractors": [
-            "outscant",
-            "outtscent",
-            "outscennt"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "healless",
@@ -10200,22 +9880,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "dascoast"
         ],
         "theme": "water"
-    },
-{
-        "word": "undermix",
-        "definition": "To not mix enough; fail to mix adequately or thoroughly.",
-        "exampleSentence": "It is better to undermix than overmix. If you undermix, the floury spots will probably moisten up in baking.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "undermix",
-        "etymology": "From under- + mix.",
-        "distractors": [
-            "unndermix",
-            "underrmix",
-            "undarmix"
-        ],
-        "theme": "actions"
     },
 {
         "word": "blairist",
@@ -10490,22 +10154,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overhunt",
-        "definition": "To hunt (an animal, a piece of land, etc.) too much.",
-        "exampleSentence": "Steller's sea cow was overhunted and became extinct in the 18th century.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overhunt",
-        "etymology": "From over- + hunt.",
-        "distractors": [
-            "ovverhunt",
-            "overrhunt",
-            "overhunnt"
-        ],
-        "theme": "animals"
-    },
-{
         "word": "oversite",
         "definition": "Laid over the ground, or built above an existing site.",
         "exampleSentence": "The new station entrance on Cannon Street shortly after completion of the roof on September 12, and how it will look once opened and with oversite development in 2022.",
@@ -10518,38 +10166,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "oversight",
             "ovversite",
             "overrsite"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonlight",
-        "definition": "Something which is not light or lacks light (in various senses).",
-        "exampleSentence": "In the nonlight that prevailed there, Kimbrough's face under its strands of black hair looked even paler than it did outside.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "digraphs",
-        "pronunciation": "nonlight",
-        "etymology": "From non- + light.",
-        "distractors": [
-            "nonlite",
-            "nonnlight",
-            "nonligght"
-        ],
-        "theme": "sensory"
-    },
-{
-        "word": "nonvalue",
-        "definition": "That which is not a value (in various senses).",
-        "exampleSentence": "He needs to identify the crucial indispensable values to his life and distinguish them from lesser values and nonvalues.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonvalue",
-        "etymology": "From non- + value.",
-        "distractors": [
-            "nonnvalue",
-            "nonvallue",
-            "nanvalue"
         ],
         "theme": "everyday"
     },
@@ -10568,22 +10184,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "antimytth"
         ],
         "theme": "mind"
-    },
-{
-        "word": "overrise",
-        "definition": "To rise excessively.",
-        "exampleSentence": "Be careful not to overrise the dough—it might collapse upon being places in a hot oven; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overrise",
-        "etymology": "From over- + rise.",
-        "distractors": [
-            "overrize",
-            "overise",
-            "ovverrise"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "singerly",
@@ -10616,22 +10216,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "outthomer"
         ],
         "theme": "quantity"
-    },
-{
-        "word": "preblues",
-        "definition": "From the period before blues music.",
-        "exampleSentence": "Even among the (rapidly disappearing) survivors of his generation, Yank Rachell is nearly alone in his persistent use of traditional, even preblues forms.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "vowel-teams",
-        "pronunciation": "preblues",
-        "etymology": "From pre- + blues.",
-        "distractors": [
-            "prebblues",
-            "prablues",
-            "priblues"
-        ],
-        "theme": "art"
     },
 {
         "word": "warrened",
@@ -10906,22 +10490,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overdust",
-        "definition": "To dust with too much powder.",
-        "exampleSentence": "Learn to handle wet dough and avoid overdusting your work surface.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overdust",
-        "etymology": "From over- + dust.",
-        "distractors": [
-            "ovverdust",
-            "overrdust",
-            "overdusst"
-        ],
-        "theme": "earth"
-    },
-{
         "word": "faintful",
         "definition": "Displaying weakness, frailty, or faintness; fainting; dejected.",
         "exampleSentence": "The heights dizzied her, spiralling stone promising faintful vistas.",
@@ -11050,22 +10618,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "art"
     },
 {
-        "word": "outhumor",
-        "definition": "To surpass in humor; to be funnier than.",
-        "exampleSentence": "Charley Davis, says the Pittsburg Dispatch, tells a story about Mark Twain, in which the humorist was for once outhumored.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outhumor",
-        "etymology": "From out- + humor.",
-        "distractors": [
-            "outhumer",
-            "outthumor",
-            "outhummor"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unpurple",
         "definition": "To (cause to) cease to be purple.",
         "exampleSentence": "The instructions said to unpurple gently and carefully.",
@@ -11146,22 +10698,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overmelt",
-        "definition": "To melt too much.",
-        "exampleSentence": "Don't overmelt the cheese: it should just be softened a little.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overmelt",
-        "etymology": "From over- + melt.",
-        "distractors": [
-            "ovvermelt",
-            "overrmelt",
-            "overmellt"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "overknee",
         "definition": "Reaching above the knee.",
         "exampleSentence": "The old house had an overknee appearance.",
@@ -11194,22 +10730,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
 {
-        "word": "unlaunch",
-        "definition": "To undo or reverse the launching of.",
-        "exampleSentence": "They pay a $5 fee for the season, and the permit gives them the privilege of launching their boats and unlaunching them at one of these ramps.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unlaunch",
-        "etymology": "From un- + launch.",
-        "distractors": [
-            "unnlaunch",
-            "unlaunnch",
-            "unlawnch"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misstamp",
         "definition": "A stamp applied incorrectly.",
         "exampleSentence": "According to plaintiff, the misstamp \"could have been a factory error.\"",
@@ -11224,22 +10744,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "masstamp"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overrely",
-        "definition": "To rely too much (on something or someone); to be overly dependent (on) or expectant (about).",
-        "exampleSentence": "Practical experience suggests that there are circumstances in which managers have a tendency to overrely on tests.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overrely",
-        "etymology": "From over- + rely.",
-        "distractors": [
-            "overreley",
-            "overely",
-            "ovverrely"
-        ],
-        "theme": "people"
     },
 {
         "word": "nonscent",
@@ -11320,22 +10824,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "gossipply"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overwipe",
-        "definition": "To wipe too much.",
-        "exampleSentence": "Do not overwipe the plate because a light, even tone is desirable for drypoint.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overwipe",
-        "etymology": "From over- + wipe.",
-        "distractors": [
-            "ovverwipe",
-            "overrwipe",
-            "overwippe"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "flowerly",
@@ -11670,22 +11158,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "missplate",
             "misplatte",
             "masplate"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unbetray",
-        "definition": "Hypothetically, to undo the betrayal of.",
-        "exampleSentence": "You can't make someone unbetray your trust.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "unbetray",
-        "etymology": "From un- + betray.",
-        "distractors": [
-            "unbetraey",
-            "unnbetray",
-            "unbettray"
         ],
         "theme": "everyday"
     },
@@ -14416,22 +13888,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonmodern",
-        "definition": "Having characteristics of past times; not modern.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully nonmodern.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonmodern",
-        "etymology": "From non- + modern.",
-        "distractors": [
-            "onnmodern",
-            "nnomodern",
-            "nomnodern"
-        ],
-        "theme": "time"
-    },
-{
         "word": "notorious",
         "definition": "Of a person or entity: generally or widely known for something negative; infamous.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully notorious.",
@@ -15489,22 +14945,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "nonwriter",
-        "definition": "A person who is not a writer.",
-        "exampleSentence": "Plato (channeling the nonwriter Socrates) warned that this technology meant impoverishment ….",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonwriter",
-        "etymology": "From non- + writer.",
-        "distractors": [
-            "nonwritor",
-            "nonwritar",
-            "nonnwriter"
-        ],
-        "theme": "people"
-    },
-{
         "word": "flowerily",
         "definition": "In a flowery way.",
         "exampleSentence": "The Victorians were inclined to write flowerily.",
@@ -15665,22 +15105,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "nonsoccer",
-        "definition": "That is not soccer or not related to soccer.",
-        "exampleSentence": "A minute’s silence was held in Italy over the weekend at all nonsoccer sports events.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonsoccer",
-        "etymology": "From non- + soccer.",
-        "distractors": [
-            "nonsoccor",
-            "nonsoccar",
-            "nonsocer"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "crawlable",
         "definition": "Capable of being crawled.",
         "exampleSentence": "The crawlable Web made accessible by search engines does not represent the total extent of the Internet.",
@@ -15697,22 +15121,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "precrisis",
-        "definition": "Occurring before a period of crisis.",
-        "exampleSentence": "The World Bank has estimated that the Russian economy would contract 7.9 percent this year and not return to precrisis levels until at least 2012.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "precrisis",
-        "etymology": "From pre- + crisis.",
-        "distractors": [
-            "preccrisis",
-            "precrissis",
-            "pracrisis"
-        ],
-        "theme": "language"
-    },
-{
         "word": "beamingly",
         "definition": "In a beaming way, or while beaming.",
         "exampleSentence": "“Some pitchin’, Loo-tenant,” he panted beamingly, stepping back into shelter.",
@@ -15725,22 +15133,6 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
             "beamingley",
             "beammingly",
             "beaminngly"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "anticharm",
-        "definition": "The opposite of charm, or of charm as usually understood.",
-        "exampleSentence": "And yet, just as it made FunHouse look daring, that peculiar Bogosian anticharm managed to turn Talk Radio into an intriguingly nasty, itchy piece of work.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "multisyllable",
-        "pronunciation": "anticharm",
-        "etymology": "From anti- + charm.",
-        "distractors": [
-            "annticharm",
-            "anticcharm",
-            "anticharrm"
         ],
         "theme": "everyday"
     },

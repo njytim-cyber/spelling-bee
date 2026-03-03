@@ -2,7 +2,7 @@
  * words/tier9-pipeline-c.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -4892,22 +4892,6 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "food"
     },
 {
-        "word": "punkishness",
-        "definition": "The quality of being punkish.",
-        "exampleSentence": "In the case of Nikita then, her punkishness is used to \"explain\" her initial violence, just as her violence also explains punk.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "punkishness",
-        "etymology": "From punkish + -ness.",
-        "distractors": [
-            "punkishniss",
-            "punkishnes",
-            "punnkishness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "protologist",
         "definition": "A specialist in diseases of the colon and rectum.",
         "exampleSentence": "According to the International Rules of Zoological Nomenclature, Timberlake is the protologist.",
@@ -9156,22 +9140,6 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
             "rodentopphobia"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "nonrealizable",
-        "definition": "Not realizable.",
-        "exampleSentence": "It should be clear that the parallel structure makes the function nonrealizable, since it is not possible to pass a plane through an n-cube which will dichotomize the function.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "nonrealizable",
-        "etymology": "From non- + realizable.",
-        "distractors": [
-            "nonrealizible",
-            "nonrealizabel",
-            "nonnrealizable"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "metaschematic",

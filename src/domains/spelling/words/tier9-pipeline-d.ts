@@ -2,7 +2,7 @@
  * words/tier9-pipeline-d.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 997 words.
+ * 991 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -7205,22 +7205,6 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "prerhotic",
-        "definition": "Occurring before the letter ⟨r⟩ or before any one of the sounds that letter tends to represent (e.g., [r], [ɽ], [ɹ], [ɻ], [ʀ], [ʁ], etc.).",
-        "exampleSentence": "We turn now to the prerhotic context in (15)–(17).",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "prerhotic",
-        "etymology": "From pre- + rhotic.",
-        "distractors": [
-            "prerrhotic",
-            "prerhottic",
-            "prarhotic"
-        ],
-        "theme": "language"
-    },
-{
         "word": "palatally",
         "definition": "With reference to the palate.",
         "exampleSentence": "He ran palatally across the field to catch the ball.",
@@ -8835,38 +8819,6 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
             "spottedley",
             "spotedly",
             "spotteddly"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "blearness",
-        "definition": "The quality of being blear.",
-        "exampleSentence": "Learning about the blearness was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "blearness",
-        "etymology": "From blear + -ness.",
-        "distractors": [
-            "blearniss",
-            "blearnes",
-            "blearrness"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "uncondemn",
-        "definition": "To reverse the condemnation of; to condemn no longer.",
-        "exampleSentence": "“The building inspector,” Selma explained to James, “is going to uncondemn us next month. We think.”.",
-        "partOfSpeech": "verb",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "uncondemn",
-        "etymology": "From un- + condemn.",
-        "distractors": [
-            "unncondemn",
-            "unconndemn",
-            "uncondemmn"
         ],
         "theme": "everyday"
     },
@@ -11352,22 +11304,6 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "manfulness",
-        "definition": "The state of being manful.",
-        "exampleSentence": "He only sees his own weakness, and want of life, of spirit, of manfulness, of power.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "manfulness",
-        "etymology": "From Middle English manfulnesse; equivalent to manful + -ness.",
-        "distractors": [
-            "manfulniss",
-            "manfulnes",
-            "mannfulness"
-        ],
-        "theme": "society"
-    },
-{
         "word": "matchboard",
         "definition": "A type of wooden board that connects with others using a tongue and groove system.",
         "exampleSentence": "She wrote about the matchboard in her school report.",
@@ -11526,22 +11462,6 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
             "moedrnness"
         ],
         "theme": "time"
-    },
-{
-        "word": "modishness",
-        "definition": "The property of being modish.",
-        "exampleSentence": "She wrote about the modishness in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 10,
-        "pattern": "suffixes",
-        "pronunciation": "modishness",
-        "etymology": "From modish + -ness.",
-        "distractors": [
-            "omdishness",
-            "mdoishness",
-            "moidshness"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "monetarism",
@@ -14956,22 +14876,6 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
             "osiferous"
         ],
         "theme": "body"
-    },
-{
-        "word": "overmodest",
-        "definition": "Excessively modest.",
-        "exampleSentence": "The overmodest colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "prefixes",
-        "pronunciation": "overmodest",
-        "etymology": "From over- + modest.",
-        "distractors": [
-            "voermodest",
-            "oevrmodest",
-            "ovremodest"
-        ],
-        "theme": "character"
     },
 {
         "word": "periwigged",

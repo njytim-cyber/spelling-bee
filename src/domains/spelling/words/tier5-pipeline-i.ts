@@ -2,7 +2,7 @@
  * words/tier5-pipeline-i.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 996 words.
+ * 988 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -4668,22 +4668,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unmigrate",
-        "definition": "To reverse the process of migration; to switch back to an older system.",
-        "exampleSentence": "I could “unmigrate” the tapes, and that would take a while, but it wasn't that much of a nuisance and it helped keep the mainframe's disks free.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "unmigrate",
-        "etymology": "From un- + migrate.",
-        "distractors": [
-            "unnmigrate",
-            "unmiggrate",
-            "unmigratte"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "sandboxer",
         "definition": "One who plays in a sandbox.",
         "exampleSentence": "He had been \"probably the most avid sandboxer . . . and mudder too.\" He smacked his lips over food and dramatic play often contained many references to food; he chewed gum ardently.",
@@ -6299,22 +6283,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "partedness",
-        "definition": "The quality of being parted or separated.",
-        "exampleSentence": "She wrote about the partedness in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "suffixes",
-        "pronunciation": "partedness",
-        "etymology": "From parted + -ness.",
-        "distractors": [
-            "partedniss",
-            "partednes",
-            "parrtedness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "mispromote",
         "definition": "To promote incorrectly; to advertise or advocate for something other than the intended use.",
         "exampleSentence": "When companies misuse or mispromote TCM herbs, results can be disastrous.",
@@ -6583,21 +6551,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
             "unnleashable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "reborrowing",
-        "definition": "A word that passed from language A into language B and thence back into language A. Such words may have changed in meaning and/or form.",
-        "exampleSentence": "The borrower will usually argue that the accordion should be considered as a reborrowing of debt already repaid, and therefore should be a redraw of tranche A first.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "reborrowing",
-        "distractors": [
-            "reborowing",
-            "rebborrowing",
-            "reborrowwing"
-        ],
-        "theme": "language"
     },
 {
         "word": "descendible",
@@ -7314,22 +7267,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "underpromote",
-        "definition": "To promote inadequately.",
-        "exampleSentence": "It was a teen party sponsored by the hip-hop radio station Hot 97 (WQHT-FM), and maybe an underpromoted one: much of the room was empty.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "underpromote",
-        "etymology": "From under- + promote.",
-        "distractors": [
-            "unnderpromote",
-            "underrpromote",
-            "underprommote"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unconversion",
         "definition": "The state of being unconverted; impenitence.",
         "exampleSentence": "Once the conversion has taken place, there is no unconversion process.",
@@ -7390,22 +7327,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
             "attractionel",
             "atractional",
             "attracctional"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overdominant",
-        "definition": "Excessively dominant.",
-        "exampleSentence": "The overdominant surface made it hard to walk across.",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "overdominant",
-        "etymology": "From over- + dominant.",
-        "distractors": [
-            "overdominent",
-            "ovverdominant",
-            "overrdominant"
         ],
         "theme": "everyday"
     },
@@ -8062,22 +7983,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
             "settlementasion",
             "setlementation",
             "settlemmentation"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "transmissionless",
-        "definition": "Without transmission.",
-        "exampleSentence": "Attractive methods using transmissionless techniques to compensate for photon attenuation ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "transmissionless",
-        "etymology": "From transmission + -less.",
-        "distractors": [
-            "transmisionless",
-            "transmissionles",
-            "trannsmissionless"
         ],
         "theme": "everyday"
     },
@@ -12848,22 +12753,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
         "theme": "language"
     },
 {
-        "word": "unsee",
-        "definition": "To undo the act of seeing something; to erase the memory of having seen something, or otherwise reverse the effect of having seen something.",
-        "exampleSentence": "Once you’ve seen this you bear always the burden of its sight. And, as Laura says, you can’t unsee it.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "unsee",
-        "etymology": "From un- + see. Compare Middle English unseen, unsen (“to fail to see, be unable to see”).",
-        "distractors": [
-            "unse",
-            "unnsee",
-            "unsea"
-        ],
-        "theme": "mind"
-    },
-{
         "word": "glost",
         "definition": "Lead glazing used for pottery.",
         "exampleSentence": "If no decoration is applied, biscuit or glost firing is the final operation in manufacture.",
@@ -14139,22 +14028,6 @@ export const TIER_5_PIPELINE_I_WORDS: SpellingWord[] = [
             "kaack"
         ],
         "theme": "animals"
-    },
-{
-        "word": "ility",
-        "definition": "An abstract quality that good software should exhibit.",
-        "exampleSentence": "One reason to use software libraries is that the authors have had time to add ilities in addition to the basic functionality.",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "ility",
-        "etymology": "From the common suffix of various desirable qualities, e.g. testability, reliability.",
-        "distractors": [
-            "ilitey",
-            "illity",
-            "ilitty"
-        ],
-        "theme": "mind"
     },
 {
         "word": "lythe",

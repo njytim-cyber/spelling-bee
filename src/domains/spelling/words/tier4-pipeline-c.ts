@@ -2,7 +2,7 @@
  * words/tier4-pipeline-c.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 991 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -5244,22 +5244,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "outbake",
-        "definition": "To surpass in baking; to bake better than.",
-        "exampleSentence": "The two old ladies were always trying to outbake each other.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outbake",
-        "etymology": "From out- + bake.",
-        "distractors": [
-            "outtbake",
-            "outbakke",
-            "oatbake"
-        ],
-        "theme": "food"
-    },
-{
         "word": "outcurl",
         "definition": "To curl outward.",
         "exampleSentence": "As long as we're still shooting good numbers I am more than happy to accept a loss if they outcurl us.",
@@ -5369,22 +5353,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
             "cambful"
         ],
         "theme": "actions"
-    },
-{
-        "word": "mistest",
-        "definition": "To incorrectly test.",
-        "exampleSentence": "This is because they test at a very small, 0 to 1/8 inch, gage length and can mistest a wool with a tender section or break.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "mistest",
-        "etymology": "From mis- + test.",
-        "distractors": [
-            "misstest",
-            "mistesst",
-            "mastest"
-        ],
-        "theme": "academic"
     },
 {
         "word": "oakless",
@@ -11334,22 +11302,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unargued",
-        "definition": "Not argued; undebated.",
-        "exampleSentence": "No doubt a finite evaluative argument must make some unargued evaluative assumptions, just as finite factual arguments must make some unargued factual assumptions.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unargued",
-        "etymology": "From un- + argued.",
-        "distractors": [
-            "unnargued",
-            "unarrgued",
-            "unergued"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonjuror",
         "definition": "Someone who refuses to swear a particular oath, specifically a clergyman who refused to take the oath of allegiance to William and Mary in 1689.",
         "exampleSentence": "The character of a nonjuror which he maintained to the last is a sufficient evidence of his principles in Church and State ….",
@@ -11458,22 +11410,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
             "roamible",
             "roamabel",
             "roammable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unbanged",
-        "definition": "Not banged; not struck suddenly.",
-        "exampleSentence": "That is why, in spite of shabby dresses, unbanged hair, tremendous mouths, and large noses, some persons are purely delightful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "unbanged",
-        "etymology": "From un- + banged.",
-        "distractors": [
-            "unnbanged",
-            "unbannged",
-            "unbenged"
         ],
         "theme": "everyday"
     },
@@ -11844,22 +11780,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unnotify",
-        "definition": "To cancel (a notification).",
-        "exampleSentence": "The instructions said to unnotify gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unnotify",
-        "etymology": "From un- + notify.",
-        "distractors": [
-            "unnotifey",
-            "unotify",
-            "unnottify"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "czechism",
         "definition": "A word or idiom of the Czech language (that has been borrowed by another language).",
         "exampleSentence": "Examples include East Slavicisms in Polish Yiddish (and vice versa) and Czechisms in Polish and Eastern Yiddish dialects.",
@@ -11952,22 +11872,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
             "chapelor",
             "chapelar",
             "chappeler"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unrotate",
-        "definition": "To undo a rotation.",
-        "exampleSentence": "Hence it seems to me the first thing to do is to unrotate the bodies of the vertebræ, because rotation was the first thing that took place. Then correct the lateral curvature.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unrotate",
-        "etymology": "From un- + rotate.",
-        "distractors": [
-            "unnrotate",
-            "unrottate",
-            "unrotatte"
         ],
         "theme": "everyday"
     },
@@ -15654,22 +15558,6 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
             "pertinnent"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "preceding",
-        "definition": "Occurring before or in front of something else, in time, place, rank or sequence.",
-        "exampleSentence": "On the preceding Monday Shobana had gone on vacation.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹɪsiːdɪŋ",
-        "etymology": "From Middle English precedyng, precedenge, present participle of Middle English preceden (“to precede”), equivalent to precede + -ing.",
-        "distractors": [
-            "precceding",
-            "precedding",
-            "precedinng"
-        ],
-        "theme": "time"
     },
 {
         "word": "proactive",

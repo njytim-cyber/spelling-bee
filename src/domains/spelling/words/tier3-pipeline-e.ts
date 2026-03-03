@@ -2,7 +2,7 @@
  * words/tier3-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 511 words.
+ * 469 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -538,22 +538,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonobject",
-        "definition": "That which is not an object.",
-        "exampleSentence": "It should be clear, however, that this is not the basic distinction between three-dimensional spatially bound objects and nonobjects that the child uses to parse his or her experience.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonobject",
-        "etymology": "From non- + object.",
-        "distractors": [
-            "nonnobject",
-            "nonobbject",
-            "nonobjecct"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonwizard",
         "definition": "One who is not a wizard.",
         "exampleSentence": "But the badly behaved pet is neither canine nor feline, and the magic is of the nonwizard kind.",
@@ -583,38 +567,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "revealesst"
         ],
         "theme": "people"
-    },
-{
-        "word": "oversauce",
-        "definition": "To cover (food) with too much sauce.",
-        "exampleSentence": "I am not suggesting that we return to oversauced baked ziti with sausages, mozzarella-laden lasagna or spaghetti under three handball-size meatballs.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "oversauce",
-        "etymology": "From over- + sauce.",
-        "distractors": [
-            "ovversauce",
-            "overrsauce",
-            "oversaucce"
-        ],
-        "theme": "food"
-    },
-{
-        "word": "overchill",
-        "definition": "To chill too much.",
-        "exampleSentence": "If you dont have a profound understanding of where the hot spots are, you just overchill everything, Mr. Brouillette said.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overchill",
-        "etymology": "From over- + chill.",
-        "distractors": [
-            "overchil",
-            "ovverchill",
-            "overrchill"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "supersite",
@@ -647,38 +599,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "bulyable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overprime",
-        "definition": "To prime with too much fuel.",
-        "exampleSentence": "He promised to overprime as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overprime",
-        "etymology": "From over- + prime.",
-        "distractors": [
-            "ovverprime",
-            "overrprime",
-            "overprimme"
-        ],
-        "theme": "quantity"
-    },
-{
-        "word": "overroast",
-        "definition": "To roast too much.",
-        "exampleSentence": "But now cuppings at independent cafes like Joe attract connoisseurs who wouldn’t be caught dead sipping an overroasted blend and regularly travel to another borough for superior beans.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overroast",
-        "etymology": "From over- + roast.",
-        "distractors": [
-            "overoast",
-            "ovverroast",
-            "overroasst"
-        ],
-        "theme": "food"
     },
 {
         "word": "oversheet",
@@ -887,22 +807,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overgross",
-        "definition": "Excessively gross.",
-        "exampleSentence": "… and to say we may not have images and call them idols, when they represent Christ and his saints, be overgross opinions to enter into your learned head, whatsoever the unlearned would tattle.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "əʊvə(ɹ)ɡɹəʊs",
-        "etymology": "From over- + gross.",
-        "distractors": [
-            "overgros",
-            "ovvergross",
-            "overrgross"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unability",
         "definition": "Lack of ability; inability.",
         "exampleSentence": "Learning about the unability was the best part of the day.",
@@ -1014,22 +918,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "overprize",
-        "definition": "To prize excessively; to overvalue.",
-        "exampleSentence": "He promised to overprize as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overprize",
-        "etymology": "From over- + prize. See overpraise.",
-        "distractors": [
-            "overprise",
-            "ovverprize",
-            "overrprize"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overmount",
         "definition": "To tower over; to go or rise higher than.",
         "exampleSentence": "The pretty purple ground-nut, which, despising its name, overmounts the tallest shrubs.",
@@ -1058,22 +946,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "ovverdrown",
             "overrdrown",
             "overdrowwn"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outreckon",
-        "definition": "To surpass in reckoning or computation.",
-        "exampleSentence": "The Egyptian priests pretended an exact chronology for some myriads of years; and the Chaldeans and Assyrians far outreckon them.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outreckon",
-        "etymology": "From out- + reckon.",
-        "distractors": [
-            "outtreckon",
-            "outrecckon",
-            "oatreckon"
         ],
         "theme": "everyday"
     },
@@ -1285,22 +1157,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "oversteam",
-        "definition": "To steam too much.",
-        "exampleSentence": "Be careful not to oversteam as food will become soft and mushy, and remember to keep your pot covered throughout the process.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "oversteam",
-        "etymology": "From over- + steam.",
-        "distractors": [
-            "ovversteam",
-            "overrsteam",
-            "oversteem"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "misintend",
         "definition": "To intend, purpose, or direct amiss or wrongfully; mismean.",
         "exampleSentence": "He is now misintending: he has a false intention.",
@@ -1345,22 +1201,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "ruberism",
             "rubberrism",
             "rubberissm"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "underload",
-        "definition": "To load insufficiently.",
-        "exampleSentence": "He promised to underload as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "underload",
-        "etymology": "From under- + load.",
-        "distractors": [
-            "unnderload",
-            "underrload",
-            "undarload"
         ],
         "theme": "everyday"
     },
@@ -1525,22 +1365,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "money"
     },
 {
-        "word": "oversharp",
-        "definition": "Excessively sharp.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully oversharp.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "oversharp",
-        "etymology": "From over- + sharp.",
-        "distractors": [
-            "ovversharp",
-            "overrsharp",
-            "oversharrp"
-        ],
-        "theme": "sensory"
-    },
-{
         "word": "behalfism",
         "definition": "A policy of doing things on behalf of others.",
         "exampleSentence": "… I'm not positively discriminating in favour of black and Asian programme-makers. Behalfism, I call it, always doing something on behalf of others, always being representative.",
@@ -1664,22 +1488,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "lesbianley",
             "lessbianly",
             "lesbiannly"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overharsh",
-        "definition": "Excessively harsh.",
-        "exampleSentence": "Does that seem an overharsh judgment on a life spent ordering supersize cokes, buckets of fries and vats of gelato?",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overharsh",
-        "etymology": "From over- + harsh.",
-        "distractors": [
-            "ovverharsh",
-            "overrharsh",
-            "overharrsh"
         ],
         "theme": "everyday"
     },
@@ -1860,22 +1668,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overmerry",
-        "definition": "Excessively merry.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully overmerry.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overmerry",
-        "etymology": "From over- + merry.",
-        "distractors": [
-            "overmerrey",
-            "overmery",
-            "ovvermerry"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "outlaunch",
         "definition": "To launch more spacecraft than.",
         "exampleSentence": "But, he warned, the Soviet Union is also aware of the potential of space and has outlaunched the United States by five to one in the past 10 years.",
@@ -1890,38 +1682,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "outlawnch"
         ],
         "theme": "quantity"
-    },
-{
-        "word": "outdirect",
-        "definition": "To surpass in directing.",
-        "exampleSentence": "Do not try to outdirect the director. Mark all shot changes on the shot sheet.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outdirect",
-        "etymology": "From out- + direct.",
-        "distractors": [
-            "outtdirect",
-            "outdirrect",
-            "outdirecct"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outpunish",
-        "definition": "To surpass in punishing.",
-        "exampleSentence": "But if the threat is merely unpleasant rather than painful, the first person may increase the intensity of his or her negative acts too, trying as it were to outpunish the punisher.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outpunish",
-        "etymology": "From out- + punish.",
-        "distractors": [
-            "outtpunish",
-            "outpunnish",
-            "outpunissh"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "unholiday",
@@ -2237,22 +1997,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "crownmant",
             "crowwnment",
             "crownmennt"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unrequire",
-        "definition": "To cancel the requirement for; to make something that is required into something that is not required.",
-        "exampleSentence": "Being Auxorean, I unrequire artificial aids, but for you a booster.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "unrequire",
-        "etymology": "From un- + require.",
-        "distractors": [
-            "unnrequire",
-            "unreqquire",
-            "unrequirre"
         ],
         "theme": "everyday"
     },
@@ -2608,22 +2352,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "outpraise",
-        "definition": "To surpass in praising.",
-        "exampleSentence": "He promised to outpraise as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outpraise",
-        "etymology": "From out- + praise.",
-        "distractors": [
-            "outpraize",
-            "outtpraise",
-            "outpraisse"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonsaving",
         "definition": "That does not save money.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully nonsaving.",
@@ -2736,22 +2464,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unexpress",
-        "definition": "Hypothetically, to undo the expressing of.",
-        "exampleSentence": "For Barthes, the task of the novelist is to unexpress what has already been expressed, to deliberately play havoc with what is undeniably — and therefore frustratingly — true.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "unexpress",
-        "etymology": "From un- + express.",
-        "distractors": [
-            "unexpres",
-            "unnexpress",
-            "unexxpress"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unfeeding",
         "definition": "That does not feed (itself or others).",
         "exampleSentence": "And the wild-deer lay unfeeding on the grass of the forest glades.",
@@ -2799,22 +2511,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overrough",
-        "definition": "Excessively rough.",
-        "exampleSentence": "And as many of us want the shaking now badly enough, I can thank him for it, although it is administered by an overrough and contemptuous hand.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overrough",
-        "etymology": "From over- + rough.",
-        "distractors": [
-            "overruff",
-            "overough",
-            "ovverrough"
-        ],
-        "theme": "sensory"
-    },
-{
         "word": "preoutfit",
         "definition": "To outfit in advance.",
         "exampleSentence": "The integration facilities would preoutfit the common modules for multiple shipyards.",
@@ -2829,22 +2525,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "praoutfit"
         ],
         "theme": "clothing"
-    },
-{
-        "word": "overcivil",
-        "definition": "Excessively civil.",
-        "exampleSentence": "The peasants were not overcivil in their manners.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overcivil",
-        "etymology": "From over- + civil.",
-        "distractors": [
-            "ovvercivil",
-            "overrcivil",
-            "overcivvil"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "nonrescue",
@@ -3133,22 +2813,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "misrewarrd"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "unperform",
-        "definition": "To cease to perform; to undo or dismantle (a social or cultural practice) by refusing to take part.",
-        "exampleSentence": "Set against the ongoing legacy of minstrelsy, Banks argues against race as a meaningful category and brings to our attention strategies to unperform and dismantle it.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "unperform",
-        "etymology": "From un- + perform.",
-        "distractors": [
-            "unnperform",
-            "unperrform",
-            "unperforrm"
-        ],
-        "theme": "society"
     },
 {
         "word": "preinform",
@@ -4096,22 +3760,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
 {
-        "word": "presentity",
-        "definition": "An entity (usually a human) which provides information about its presence (whether it is available and willing to communicate through communication services).",
-        "exampleSentence": "Users of an instant messaging service are presentities that may show themselves as online, offline, or away.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "presentity",
-        "etymology": "Blend of presence + entity; first introduced in the Internet Engineering Task Force (IETC) RFC 2778.",
-        "distractors": [
-            "presentitey",
-            "pressentity",
-            "presenntity"
-        ],
-        "theme": "people"
-    },
-{
         "word": "precontact",
         "definition": "Before contact was established (especially with an indigenous people).",
         "exampleSentence": "The precontact colors of the sunset were beautiful.",
@@ -4271,22 +3919,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "undertreat",
-        "definition": "To treat insufficiently or not frequently enough.",
-        "exampleSentence": "They are extremely effective in reducing pain, which many medical studies suggest is widely undertreated in patients suffering serious illness.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "undertreat",
-        "etymology": "From under- + treat.",
-        "distractors": [
-            "unndertreat",
-            "underrtreat",
-            "undertreet"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "interjudge",
         "definition": "Between judges.",
         "exampleSentence": "The interjudge colors of the sunset were beautiful.",
@@ -4299,38 +3931,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "interjuge",
             "innterjudge",
             "interrjudge"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonreading",
-        "definition": "The act of not reading; a failure to read.",
-        "exampleSentence": "Then why, he was asked, did he write a book that seems to justify nonreading?",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "nonreading",
-        "etymology": "From non- + reading.",
-        "distractors": [
-            "nonnreading",
-            "nonreadding",
-            "nonreadinng"
-        ],
-        "theme": "language"
-    },
-{
-        "word": "preopening",
-        "definition": "Occurring before or in anticipation of an opening.",
-        "exampleSentence": "As for Smith, there is much preopening speculation that Grapes of Wrath will head for Broadway after its Chicago run.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "preopening",
-        "etymology": "From pre- + opening.",
-        "distractors": [
-            "preoppening",
-            "preopenning",
-            "preopeninng"
         ],
         "theme": "everyday"
     },
@@ -4397,22 +3997,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "underrtrick"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overreport",
-        "definition": "To report too much or too often.",
-        "exampleSentence": "Just as the rising tide of cancellations leads the Census Bureau to overreport sales in the short term, it leads the government to underreport inventories.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overreport",
-        "etymology": "From over- + report.",
-        "distractors": [
-            "overeport",
-            "ovverreport",
-            "overrepport"
-        ],
-        "theme": "communication"
     },
 {
         "word": "antifemale",
@@ -4604,38 +4188,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "superrwhite"
         ],
         "theme": "sensory"
-    },
-{
-        "word": "underreach",
-        "definition": "To reach insufficiently far; to underachieve.",
-        "exampleSentence": "If anything, she is underreaching with “Women From Antwerp in November, 2007,” which appears on a band of five relatively small screens.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "underreach",
-        "etymology": "From under- + reach.",
-        "distractors": [
-            "undereach",
-            "unnderreach",
-            "underreacch"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overmarket",
-        "definition": "To market excessively.",
-        "exampleSentence": "They really overmarket their products; the advertisements are everywhere.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overmarket",
-        "etymology": "From over- + market.",
-        "distractors": [
-            "ovvermarket",
-            "overrmarket",
-            "overmarrket"
-        ],
-        "theme": "money"
     },
 {
         "word": "mistelling",
@@ -5181,38 +4733,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "outprogram",
-        "definition": "To surpass in computer programming ability.",
-        "exampleSentence": "It's like trying to outprogram the greatest programmer of them all. No matter how sophisticated we get, he's light years ahead of us.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outprogram",
-        "etymology": "From out- + program.",
-        "distractors": [
-            "outtprogram",
-            "outproggram",
-            "oatprogram"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outsilence",
-        "definition": "To surpass in being silent.",
-        "exampleSentence": "Arthur stood. Silent. He was used to his own silence. He could outsilence anyone.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "outsilence",
-        "etymology": "From out- + silence.",
-        "distractors": [
-            "outsilance",
-            "outtsilence",
-            "outsillence"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "danielness",
         "definition": "The nature or characteristics of someone named Daniel.",
         "exampleSentence": "I'm gonna make her a Daniel doll and spend the weekend extolling the virtues of teamness and Danielness and Toe'kraness and Jackness to her.",
@@ -5435,22 +4955,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "oversumer"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "oversignal",
-        "definition": "To signal excessively.",
-        "exampleSentence": "Thus an employer who truly plans to stay around may have to \"oversignal\" with incentive systems that are too expensive for those who plan to cut and run ….",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "oversignal",
-        "etymology": "From over- + signal.",
-        "distractors": [
-            "oversignel",
-            "ovversignal",
-            "overrsignal"
-        ],
-        "theme": "communication"
     },
 {
         "word": "recordedly",
@@ -5852,22 +5356,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "overexpect",
-        "definition": "To expect too much.",
-        "exampleSentence": "If you overexpect from a tool, you are likely to forget the part that you have to play to make it work.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overexpect",
-        "etymology": "From over- + expect.",
-        "distractors": [
-            "ovverexpect",
-            "overrexpect",
-            "overexxpect"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "misrelease",
         "definition": "The act of misreleasing.",
         "exampleSentence": "Cleveland.com reporters received a tip about the Saturday misreleases.",
@@ -5916,38 +5404,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "academic"
     },
 {
-        "word": "presubject",
-        "definition": "Occurring before the subject in a sentence or expression.",
-        "exampleSentence": "These may occur in presubject position, prepredicate position, within the verb phrase, preceding equated attributives, and final to the clause.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "presubject",
-        "etymology": "From pre- + subject.",
-        "distractors": [
-            "pressubject",
-            "presubbject",
-            "presubjecct"
-        ],
-        "theme": "language"
-    },
-{
-        "word": "overschool",
-        "definition": "To school to excess; to give too much training.",
-        "exampleSentence": "It is impossible to overeducate, but it is very possible to overschool.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overschool",
-        "etymology": "From over- + school.",
-        "distractors": [
-            "overschol",
-            "ovverschool",
-            "overrschool"
-        ],
-        "theme": "academic"
-    },
-{
         "word": "missuggest",
         "definition": "To make a missuggestion; to suggest erroneously.",
         "exampleSentence": "In cases of such collateral circulation, celiac arteriograms may missuggest encasement of the arcades and GDA because of non-visualization of the arteries ( Fig. 11.30b ).",
@@ -5992,22 +5448,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "safetiniss",
             "safetines",
             "saffetiness"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "underblame",
-        "definition": "To blame insufficiently; to absolve.",
-        "exampleSentence": "But in respect to the emotional crippling of children it seems to me that women have been overblamed for the kinds of mothers they make, and underblamed for the failure of their marriages.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "underblame",
-        "etymology": "From under- + blame.",
-        "distractors": [
-            "unnderblame",
-            "underrblame",
-            "underblamme"
         ],
         "theme": "everyday"
     },
@@ -6086,21 +5526,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "medicallism"
         ],
         "theme": "health"
-    },
-{
-        "word": "overcommon",
-        "definition": "Excessively common; very frequently encountered.",
-        "exampleSentence": "… shall it be decried in a world where beauty is not overcommon ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overcommon",
-        "distractors": [
-            "overcomon",
-            "ovvercommon",
-            "overrcommon"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "foreignist",
@@ -6576,22 +6001,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "superacept",
             "supperaccept",
             "superraccept"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overplanned",
-        "definition": "Excessively planned.",
-        "exampleSentence": "This I defended to friends who gaped at the news by telling them that he was acting against the system, against the overplanned life of studying, choosing our majors, plotting out our meek life goals.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overplanned",
-        "etymology": "From over- + planned.",
-        "distractors": [
-            "overplaned",
-            "ovverplanned",
-            "overrplanned"
         ],
         "theme": "everyday"
     },
@@ -7204,22 +6613,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "communication"
     },
 {
-        "word": "overprogram",
-        "definition": "To include too much in a program, scheme or schedule.",
-        "exampleSentence": "\"It's important not to overprogram a meeting,\" says Jones. \"Especially at resorts, try to condense sessions into the morning and evening, leaving afternoons free.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overprogram",
-        "etymology": "From over- + program.",
-        "distractors": [
-            "ovverprogram",
-            "overrprogram",
-            "overproggram"
-        ],
-        "theme": "time"
-    },
-{
         "word": "projectedly",
         "definition": "According to a projection.",
         "exampleSentence": "The stream of emigration is now projectedly to flow into Canada; ….",
@@ -7280,22 +6673,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "outtstrength",
             "outstrenngth",
             "oatstrength"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "undersearch",
-        "definition": "To search insufficiently.",
-        "exampleSentence": "But people undersearch far more than they oversearch: We tend to explore situations less thoroughly than our own goals recommend!",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "undersearch",
-        "etymology": "From under- + search.",
-        "distractors": [
-            "unndersearch",
-            "underrsearch",
-            "undersearrch"
         ],
         "theme": "everyday"
     },
@@ -7489,22 +6866,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "misopperation"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "noninterview",
-        "definition": "A person who is not interviewed.",
-        "exampleSentence": "12 per cent of noninterviews were people who said they were too busy for the survey.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "noninterview",
-        "etymology": "From non- + interview.",
-        "distractors": [
-            "nonninterview",
-            "noninnterview",
-            "noninterrview"
-        ],
-        "theme": "people"
     },
 {
         "word": "antimedicine",
@@ -7779,22 +7140,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "undercorrect",
-        "definition": "To correct insufficiently.",
-        "exampleSentence": "It has long been known that, if range restriction is indirect rather than direct, this formula will undercorrect.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "undercorrect",
-        "etymology": "From under- + correct.",
-        "distractors": [
-            "undercorect",
-            "unndercorrect",
-            "underrcorrect"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "professoring",
         "definition": "Acting as a professor.",
         "exampleSentence": "As an occupation, especially when compared to others within organizations, university professoring is unusually free of constraints, opening out to a broad span of personal possibilities.",
@@ -7937,22 +7282,6 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
             "supperjealous"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "overcontract",
-        "definition": "To contract excessively.",
-        "exampleSentence": "Try to avoid overcontracting the lumbar muscle.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overcontract",
-        "etymology": "From over- + contract.",
-        "distractors": [
-            "ovvercontract",
-            "overrcontract",
-            "overconntract"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "entertainment",

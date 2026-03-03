@@ -2,7 +2,7 @@
  * words/tier3-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 994 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2157,22 +2157,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
 {
-        "word": "premature",
-        "definition": "Occurring before a state of readiness or maturity has arrived.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully premature.",
-        "partOfSpeech": "adjective",
-        "difficulty": 4,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹimətʊɹ",
-        "etymology": "From Latin praemātūrus, equivalent to pre- + mature. First use appears c. 1440 in a translation of Palladius's De Re Rustica.",
-        "distractors": [
-            "premater",
-            "premmature",
-            "prematture"
-        ],
-        "theme": "society"
-    },
-{
         "word": "processed",
         "definition": "That has completed a required process.",
         "exampleSentence": "Processed foods are of dubious nutritional value.",
@@ -3557,22 +3541,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "gde"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "xir",
-        "definition": "A humorous term of address to someone of equal or higher rank or position, usually when informing them of something.",
-        "exampleSentence": "My teacher explained what a xir is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 4,
-        "pattern": "cvc",
-        "pronunciation": "zɜɹ",
-        "etymology": "An adaptation of sir, warped to resemble the neopronoun xe; check Etymology 1 above.",
-        "distractors": [
-            "xar",
-            "xer",
-            "xri"
-        ],
-        "theme": "people"
     },
 {
         "word": "atom",
@@ -10269,22 +10237,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "feelings"
     },
 {
-        "word": "outsum",
-        "definition": "To exceed in number or quantity.",
-        "exampleSentence": "No one else cared for him; but he had an instinct that her great love for him outsummed all he could hope from others.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outsum",
-        "etymology": "From out- + sum.",
-        "distractors": [
-            "outtsum",
-            "oatsum",
-            "oetsum"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "reearn",
         "definition": "To earn back something one has lost.",
         "exampleSentence": "Well done! You have reearnt my respect!",
@@ -12815,22 +12767,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "overpet",
-        "definition": "To pet excessively.",
-        "exampleSentence": "Don't overpet the cat, or she may bite!",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "overpet",
-        "etymology": "From over- + pet.",
-        "distractors": [
-            "ovverpet",
-            "overrpet",
-            "ovarpet"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "outlean",
         "definition": "To lean outward.",
         "exampleSentence": "And so, between those populous rough hands / Raised in the sun, Duke Leopold outleant, / And took the patriot's oath.",
@@ -12911,22 +12847,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unroast",
-        "definition": "Hypothetically, to undo the roasting of; to uncook.",
-        "exampleSentence": "I also use it for sprouting wild rice, quinoa, and unroasting vegetables, and it's great for melding flavors when you make a lasagna or veggie burgers.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "unroast",
-        "etymology": "From un- + roast.",
-        "distractors": [
-            "unnroast",
-            "unroasst",
-            "unraast"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "deafism",
         "definition": "A stereotypy characteristic of deaf people.",
         "exampleSentence": "Therefore, errors of punctuation cannot be considered a type of deafism.",
@@ -12957,22 +12877,6 @@ export const TIER_3_PIPELINE_B_WORDS: SpellingWord[] = [
             "stunnter"
         ],
         "theme": "people"
-    },
-{
-        "word": "outwave",
-        "definition": "To surpass in waving; to wave more than.",
-        "exampleSentence": "Down in the courtyard the crowd cheered and waved back. Frog, beside herself with excitement, outsmiled and outwaved them all.",
-        "partOfSpeech": "verb",
-        "difficulty": 4,
-        "pattern": "prefixes",
-        "pronunciation": "outwave",
-        "etymology": "From out- + wave.",
-        "distractors": [
-            "outtwave",
-            "outwavve",
-            "oatwave"
-        ],
-        "theme": "water"
     },
 {
         "word": "unblade",

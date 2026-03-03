@@ -2,7 +2,7 @@
  * words/tier4-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -5743,22 +5743,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "unfold",
-        "definition": "To undo a folding.",
-        "exampleSentence": "She would unfold every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "ʌnfoʊld",
-        "etymology": "From Middle English unfolden, from Old English unfealdan (“to unfold”), equivalent to un- + fold.",
-        "distractors": [
-            "unnfold",
-            "unfolld",
-            "unfald"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unwind",
         "definition": "To separate (something that is wound up).",
         "exampleSentence": "Could you unwind about a foot of ribbon so I can finish the package?",
@@ -6823,22 +6807,6 @@ export const TIER_4_PIPELINE_A_WORDS: SpellingWord[] = [
             "waling"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "uncrisp",
-        "definition": "To become less or not crisp.",
-        "exampleSentence": "She saw his fingers uncrisp, then grip the shelf again.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "uncrisp",
-        "etymology": "From un- + crisp.",
-        "distractors": [
-            "unncrisp",
-            "uncrissp",
-            "uncrasp"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "aberdeen",

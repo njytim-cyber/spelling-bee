@@ -2,7 +2,7 @@
  * words/tier6-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -8549,22 +8549,6 @@ export const TIER_6_PIPELINE_A_WORDS: SpellingWord[] = [
             "ideollatry"
         ],
         "theme": "mind"
-    },
-{
-        "word": "overspeed",
-        "definition": "To travel excessively fast or beyond the permitted rate.",
-        "exampleSentence": "The device should be periodically tested by overspeeding the engine say once a month.",
-        "partOfSpeech": "verb",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚspid",
-        "etymology": "From over- + speed.",
-        "distractors": [
-            "overspead",
-            "oversped",
-            "ovverspeed"
-        ],
-        "theme": "travel"
     },
 {
         "word": "diaperfur",

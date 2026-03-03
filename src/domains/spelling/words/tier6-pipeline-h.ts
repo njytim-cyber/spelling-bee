@@ -2,7 +2,7 @@
  * words/tier6-pipeline-h.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 996 words.
+ * 994 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -28,22 +28,6 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
             "shacky"
         ],
         "theme": "society"
-    },
-{
-        "word": "uncomb",
-        "definition": "To reverse the effect of combing; to muss.",
-        "exampleSentence": "Her tangled hair would take a magician to uncomb.",
-        "partOfSpeech": "verb",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "uncomb",
-        "etymology": "From un- + comb.",
-        "distractors": [
-            "unncomb",
-            "uncommb",
-            "uncom"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "wooler",
@@ -8693,22 +8677,6 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
             "meulvi"
         ],
         "theme": "health"
-    },
-{
-        "word": "unhear",
-        "definition": "To reverse the process of hearing, so that (a sound, etc.) was never heard.",
-        "exampleSentence": "I wish I could unhear that terrible song!",
-        "partOfSpeech": "verb",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "unhear",
-        "etymology": "From un- + hear.",
-        "distractors": [
-            "unheer",
-            "unnhear",
-            "unhaar"
-        ],
-        "theme": "sensory"
     },
 {
         "word": "basser",

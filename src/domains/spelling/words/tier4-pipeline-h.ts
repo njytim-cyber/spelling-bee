@@ -2,7 +2,7 @@
  * words/tier4-pipeline-h.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 934 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -157,22 +157,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "plants"
     },
 {
-        "word": "overmoist",
-        "definition": "Excessively moist.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully overmoist.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overmoist",
-        "etymology": "From over- + moist.",
-        "distractors": [
-            "ovvermoist",
-            "overrmoist",
-            "overmoisst"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "declinous",
         "definition": "Declinate (bending downwards).",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully declinous.",
@@ -248,22 +232,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "missadjust",
             "misaddjust",
             "misadjusst"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "inventful",
-        "definition": "Full of invention; creative.",
-        "exampleSentence": "The genius of the French government appears powerful only in destruction, and inventful only in oppression.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "inventful",
-        "etymology": "From invent + -ful.",
-        "distractors": [
-            "inventfull",
-            "innventful",
-            "invenntful"
         ],
         "theme": "everyday"
     },
@@ -1098,22 +1066,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "hinduness",
-        "definition": "The quality of being Hindu.",
-        "exampleSentence": "What Param Poojya Guruji intended as the real nature of Hinduness was this fact of its being all-inclusive and all-pervasive.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "hinduness",
-        "etymology": "Calque of Hindi हिंदुत्व (hindutva) / Bengali হিন্দুত্ব (hindutto, literally “Hinduness”): Hindu + -ness.",
-        "distractors": [
-            "hinduniss",
-            "hindunes",
-            "hinnduness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "crampedly",
         "definition": "In a cramped manner; without much room.",
         "exampleSentence": "He ran crampedly across the field to catch the ball.",
@@ -1418,22 +1370,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
 {
-        "word": "overvivid",
-        "definition": "Excessively vivid.",
-        "exampleSentence": "No man, however, can always be wrong, and an overvivid imagination occasionally really portrays.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overvivid",
-        "etymology": "From over- + vivid.",
-        "distractors": [
-            "ovvervivid",
-            "overrvivid",
-            "overvivvid"
-        ],
-        "theme": "sensory"
-    },
-{
         "word": "prelitter",
         "definition": "To litter in (a place) in advance.",
         "exampleSentence": "When stores were prelittered with 140 marked handbills, the littering rate increased, but only to 5%.",
@@ -1625,22 +1561,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "dwarfness",
-        "definition": "The quality of being a dwarf, or unusually small specimen.",
-        "exampleSentence": "Learning about the dwarfness was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "dwarfness",
-        "etymology": "From dwarf + -ness.",
-        "distractors": [
-            "dwarfniss",
-            "dwarfnes",
-            "dwarrfness"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "rackingly",
         "definition": "So as to cause suffering.",
         "exampleSentence": "A rackingly painful disease that affects the joints and finally cripples, it is caused by an imbalance of uric acid in the system.",
@@ -1768,22 +1688,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonfinale",
-        "definition": "Not being or relating to a finale.",
-        "exampleSentence": "Last week, viewers cast 64 million votes, the most ever for a nonfinale episode.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonfinale",
-        "etymology": "From non- + finale.",
-        "distractors": [
-            "nonfinael",
-            "nonnfinale",
-            "nonfinnale"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "tweetless",
         "definition": "Without tweets.",
         "exampleSentence": "The senator has been tweetless since last weekend ….",
@@ -1862,22 +1766,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "leisurinng"
         ],
         "theme": "time"
-    },
-{
-        "word": "uncleanse",
-        "definition": "To reverse the cleansing of; make unclean.",
-        "exampleSentence": "And the prowling angers which seek to uncleanse The mighty volition, ….",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "uncleanse",
-        "etymology": "From un- + cleanse.",
-        "distractors": [
-            "unncleanse",
-            "uncleannse",
-            "uncleense"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "outparcel",
@@ -2261,22 +2149,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "sensory"
     },
 {
-        "word": "unrestore",
-        "definition": "To undo work that was done to restore something.",
-        "exampleSentence": "I had to take it to the shop and have them unrestore it. It had been kept too well.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unrestore",
-        "etymology": "From un- + restore.",
-        "distractors": [
-            "unnrestore",
-            "unresstore",
-            "unrestorre"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "rerestore",
         "definition": "To restore again.",
         "exampleSentence": "When they got rid of that, the museum personnel put it all back, but they did not make any attempt to rerestore what we had restored.",
@@ -2354,38 +2226,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "misaccusse"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "unprovoke",
-        "definition": "To undo or counter a provocation.",
-        "exampleSentence": "Then we'll just have to unprovoke him.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unprovoke",
-        "etymology": "From un- + provoke.",
-        "distractors": [
-            "unnprovoke",
-            "unprovvoke",
-            "unprovokke"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overspice",
-        "definition": "To add too much spice to (a dish).",
-        "exampleSentence": "I tend to overspice things, to go for big, peasant flavors.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overspice",
-        "etymology": "From over- + spice.",
-        "distractors": [
-            "ovverspice",
-            "overrspice",
-            "overspicce"
-        ],
-        "theme": "food"
     },
 {
         "word": "presermon",
@@ -2639,22 +2479,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "missabsorb",
             "misabbsorb",
             "misabsorrb"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "ravenness",
-        "definition": "The quality of being a raven.",
-        "exampleSentence": "Not only are shoes and ravens not exchangeable, but it is to say the least questionable whether we should regard ravenness as positively relevant to blackness on the evidence of the white shoe.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "ravenness",
-        "etymology": "From raven + -ness.",
-        "distractors": [
-            "ravenniss",
-            "raveness",
-            "ravennes"
         ],
         "theme": "everyday"
     },
@@ -2961,22 +2785,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "actions"
     },
 {
-        "word": "trumpness",
-        "definition": "The property of being like Donald Trump.",
-        "exampleSentence": "Indeed, the very Trumpness of his speech is the key to the President’s appeal.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "trumpness",
-        "etymology": "From Trump + -ness.",
-        "distractors": [
-            "trumpniss",
-            "trumpnes",
-            "trummpness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "mispaddle",
         "definition": "To paddle incorrectly.",
         "exampleSentence": "He promised to mispaddle as soon as he got home.",
@@ -3169,22 +2977,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unconvict",
-        "definition": "To undo or annul the conviction (judgement of guilt) against.",
-        "exampleSentence": "He promised to unconvict as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "unconvict",
-        "etymology": "From un- + convict.",
-        "distractors": [
-            "unnconvict",
-            "unconnvict",
-            "unconvicct"
-        ],
-        "theme": "feelings"
-    },
-{
         "word": "overmoody",
         "definition": "Proud or haughty.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully overmoody.",
@@ -3229,22 +3021,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "scarfible",
             "scarfabel",
             "scarrfable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overgrind",
-        "definition": "To grind excessively.",
-        "exampleSentence": "Using a coffee grinder or mortar and pestle, pulse or grind to the desired consistency, being careful not to overgrind the mixture into a paste or seed butter.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overgrind",
-        "etymology": "From over- + grind.",
-        "distractors": [
-            "ovvergrind",
-            "overrgrind",
-            "overgrinnd"
         ],
         "theme": "everyday"
     },
@@ -3662,22 +3438,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonpastry",
-        "definition": "That which is not pastry.",
-        "exampleSentence": "Learning about the nonpastry was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonpastry",
-        "etymology": "From non- + pastry.",
-        "distractors": [
-            "nonpastrey",
-            "nonnpastry",
-            "nonpasstry"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misthrust",
         "definition": "A thrust that did not go as intended.",
         "exampleSentence": "Just as he lunged near the bedstead, he made a misthrust.",
@@ -3806,22 +3566,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "veganness",
-        "definition": "The quality of being vegan.",
-        "exampleSentence": "Fairchildy adj. used to describe any relatively bland, tasteless food (from the veganness of the food prepared at Fairchild Co-op).",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "veganness",
-        "etymology": "From vegan + -ness.",
-        "distractors": [
-            "veganniss",
-            "veganess",
-            "vegannes"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "texturist",
         "definition": "One who discriminates based on the texture of a person's hair, typically when it is Afro-textured.",
         "exampleSentence": "… but if you were a colorist and texturist and couldn't get down with a sista who had tighter than 3B hair, you'd confirm she was a knockout.",
@@ -3852,21 +3596,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "brokable"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overflour",
-        "definition": "To put too much flour in or on.",
-        "exampleSentence": "He promised to overflour as soon as he got home.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overflour",
-        "distractors": [
-            "ovverflour",
-            "overrflour",
-            "overflowr"
-        ],
-        "theme": "food"
     },
 {
         "word": "antimerit",
@@ -4132,22 +3861,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "reppursuit",
             "repurrsuit",
             "rapursuit"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overjuicy",
-        "definition": "Excessively juicy.",
-        "exampleSentence": "Overjuicy pies need not run over. Suggestions: Before baking, insert 1½-inch pieces of uncooked macaroni in several of the slits in the top crust.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overjuicy",
-        "etymology": "From over- + juicy.",
-        "distractors": [
-            "overjuicey",
-            "ovverjuicy",
-            "overrjuicy"
         ],
         "theme": "everyday"
     },
@@ -4816,22 +4529,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "mutualniss",
             "mutualnes",
             "muttualness"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "orangeness",
-        "definition": "The quality of being orange in colour.",
-        "exampleSentence": "The shock was multiple: Not only was this immense, furry orangeness a painting, it was interactive; you could run your fingers through its color.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "orangeness",
-        "etymology": "From orange + -ness.",
-        "distractors": [
-            "orangeniss",
-            "orangenes",
-            "orrangeness"
         ],
         "theme": "everyday"
     },
@@ -6618,22 +6315,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "noncrystal",
-        "definition": "That which is not a crystal or made from crystal.",
-        "exampleSentence": "She wrote about the noncrystal in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "noncrystal",
-        "etymology": "From non- + crystal.",
-        "distractors": [
-            "noncrystel",
-            "nonncrystal",
-            "noncrysstal"
-        ],
-        "theme": "earth"
-    },
-{
         "word": "nonresting",
         "definition": "Not of or pertaining to resting.",
         "exampleSentence": "We compared nonresting energy expenditure in the two species.",
@@ -6937,22 +6618,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "brandyless",
-        "definition": "Without brandy.",
-        "exampleSentence": "He was roofless, dinnerless, breakfastless, supperless, penniless, friendless, all at once; and brandyless into the bargain.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "brandyless",
-        "etymology": "From brandy + -less.",
-        "distractors": [
-            "brandyles",
-            "branndyless",
-            "brandylless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misexpress",
         "definition": "To express incorrectly.",
         "exampleSentence": "I misexpressed myself when I said I didn't want to see you. I only meant that I was temporarily busy.",
@@ -6967,22 +6632,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "misexxpress"
         ],
         "theme": "language"
-    },
-{
-        "word": "outmeasure",
-        "definition": "To exceed in quantity or extent.",
-        "exampleSentence": "Down, downward they went, and yet further down—their descent at each step seeming to outmeasure their advance.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outmeasure",
-        "etymology": "From out- + measure.",
-        "distractors": [
-            "outmeaser",
-            "outtmeasure",
-            "outmeassure"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "nonarrival",
@@ -7015,22 +6664,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "turkeylless"
         ],
         "theme": "food"
-    },
-{
-        "word": "twelveness",
-        "definition": "The property of being twelve in number.",
-        "exampleSentence": "Even the proportions of everyday weights and measures were based on the natural twelveness evident in mathematics ….",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "twelveness",
-        "etymology": "From twelve + -ness.",
-        "distractors": [
-            "twelveniss",
-            "twelvenes",
-            "twellveness"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "basketless",
@@ -7432,38 +7065,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "frozenness",
-        "definition": "The quality of being frozen.",
-        "exampleSentence": "After all, as Mr. Urbach said, the exhibition is “about absolute stasis, silence, frozenness, as well as about the future of motion.”.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "frozenness",
-        "etymology": "From frozen + -ness.",
-        "distractors": [
-            "frozenniss",
-            "frozeness",
-            "frozennes"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overborrow",
-        "definition": "To borrow too much money.",
-        "exampleSentence": "I feel that Americans overborrow and overconsume.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overborrow",
-        "etymology": "From over- + borrow.",
-        "distractors": [
-            "overborow",
-            "ovverborrow",
-            "overrborrow"
-        ],
-        "theme": "money"
-    },
-{
         "word": "interunion",
         "definition": "Between unions.",
         "exampleSentence": "Mr. McElroy said this interunion battle showed the vibrancy and importance of organized labor.",
@@ -7544,22 +7145,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "goldenness",
-        "definition": "The quality of being golden.",
-        "exampleSentence": "The dim gray goldenness of the leaves above them seems to grow more ardent in color as they rise against the clear but not too intense blue of the sky.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "goldenness",
-        "etymology": "From golden + -ness.",
-        "distractors": [
-            "goldenniss",
-            "goldeness",
-            "goldennes"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonpoverty",
         "definition": "Not pertaining to or afflicted by poverty.",
         "exampleSentence": "In fact, the number of students testing above the cutoff in high-poverty districts increased by 121 percent this year, twice the increase in nonpoverty districts.",
@@ -7590,22 +7175,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "nonbarkinng"
         ],
         "theme": "plants"
-    },
-{
-        "word": "chosenness",
-        "definition": "The quality of being chosen.",
-        "exampleSentence": "“How scary is it, in a culture of chosenness, to be the anointed king who’s rejected?”.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "chosenness",
-        "etymology": "From chosen + -ness.",
-        "distractors": [
-            "chosenniss",
-            "choseness",
-            "chosennes"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "antiplague",
@@ -7654,22 +7223,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "braceletted"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "outachieve",
-        "definition": "To surpass in achievement; to achieve more than.",
-        "exampleSentence": "It is not an unreasonable argument, but the effective counter is that they have still managed to outachieve and outlast a generation, with ease and without burning out.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outachieve",
-        "etymology": "From out- + achieve.",
-        "distractors": [
-            "outacheive",
-            "outtachieve",
-            "outacchieve"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "antiworker",
@@ -7752,38 +7305,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "feelings"
     },
 {
-        "word": "oversorrow",
-        "definition": "To grieve or afflict excessively.",
-        "exampleSentence": "\" Ah, Sophia, how you overjoy me!\" \" Let Riberac take care that I shall not have oversorrowed myself.\"",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "oversorrow",
-        "etymology": "From over- + sorrow.",
-        "distractors": [
-            "oversorow",
-            "ovversorrow",
-            "overrsorrow"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "desertness",
-        "definition": "The condition of being deserted.",
-        "exampleSentence": "She wrote about the desertness in her school report.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "desertness",
-        "etymology": "From desert + -ness.",
-        "distractors": [
-            "desertniss",
-            "desertnes",
-            "dessertness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unambition",
         "definition": "The absence of ambition.",
         "exampleSentence": "Now indeed they are weak : now they profess unworldliness and unambition.",
@@ -7832,22 +7353,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "mortalness",
-        "definition": "The quality of being mortal; mortality.",
-        "exampleSentence": "… therefore, to him, Isabel wholly soared out of the realms of mortalness, and for him became transfigured in the highest heaven of uncorrupted Love.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "mortalness",
-        "etymology": "From mortal + -ness.",
-        "distractors": [
-            "mortalniss",
-            "mortalnes",
-            "morrtalness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misworship",
         "definition": "To worship (a deity, etc.) wrongly.",
         "exampleSentence": "The Israelites misworshipped the true God; the Syrians worshipped a false.",
@@ -7862,22 +7367,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "masworship"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "outromance",
-        "definition": "To exceed in romance; to be more romantic than.",
-        "exampleSentence": "Their real sufferings outromanced the fictions of many errant adventures.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "outromance",
-        "etymology": "From out- + romance.",
-        "distractors": [
-            "outromence",
-            "outtromance",
-            "outrommance"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "hammerable",
@@ -8070,22 +7559,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "smackinngly"
         ],
         "theme": "actions"
-    },
-{
-        "word": "objectness",
-        "definition": "The state of being an object.",
-        "exampleSentence": "Like much of the work, these are surrounded by painted frames that are part of the overall composition and underscore the objectness of the artwork.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "objectness",
-        "etymology": "From object + -ness.",
-        "distractors": [
-            "objectniss",
-            "objectnes",
-            "obbjectness"
-        ],
-        "theme": "society"
     },
 {
         "word": "degreeless",
@@ -8440,22 +7913,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonproduct",
-        "definition": "That which is not a product.",
-        "exampleSentence": "Find as many specific examples as you can of nonproducts which are being marketed (nonproducts such as a city, a museum, a police department, a school bond issue, a political candidate, and the like).",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonproduct",
-        "etymology": "From non- + product.",
-        "distractors": [
-            "nonnproduct",
-            "nonprodduct",
-            "nonproducct"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "antimakeup",
         "definition": "Opposing the wearing of makeup.",
         "exampleSentence": "It is not only to makeup which this argument objects (after all, there is also a Western feminist antimakeup discourse) but also to any improper exposure, including that of the head.",
@@ -8500,22 +7957,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "nonasault",
             "nonnassault",
             "nonassaullt"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "indianness",
-        "definition": "The quality of being Indian.",
-        "exampleSentence": "In this case, an Indian English dictionary, especially one that wanted to focus on, and promote itself on, its Indianness, might wish to include the new species.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "indianness",
-        "etymology": "From Indian + -ness.",
-        "distractors": [
-            "indianniss",
-            "indianess",
-            "indiannes"
         ],
         "theme": "everyday"
     },
@@ -8659,22 +8100,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "butterible",
             "butterabel",
             "buterable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overmature",
-        "definition": "Excessively mature.",
-        "exampleSentence": "Large logs from overmature trees may not be easy to sell in a market dominated by small-log mills.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overmature",
-        "etymology": "From over- + mature.",
-        "distractors": [
-            "overmater",
-            "ovvermature",
-            "overrmature"
         ],
         "theme": "everyday"
     },
@@ -8823,22 +8248,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "oversevere",
-        "definition": "Excessively severe.",
-        "exampleSentence": "\"I cannot help hoping that you are oversevere,\" said Miss Corbet.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "əʊvəsɪvɪɹ",
-        "etymology": "From over- + severe.",
-        "distractors": [
-            "ovversevere",
-            "overrsevere",
-            "oversevvere"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonsurface",
         "definition": "Not at or relating to the surface.",
         "exampleSentence": "The nonsurface colors of the sunset were beautiful.",
@@ -8933,22 +8342,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "strangerrly"
         ],
         "theme": "people"
-    },
-{
-        "word": "nonlecture",
-        "definition": "That which is not a lecture.",
-        "exampleSentence": "Simply because the teaching and learning are happening in a nonlecture situation does not mean that you should stop being an active learner.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonlecture",
-        "etymology": "From non- + lecture.",
-        "distractors": [
-            "nonlecter",
-            "nonnlecture",
-            "nonleccture"
-        ],
-        "theme": "academic"
     },
 {
         "word": "roommately",
@@ -9286,38 +8679,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "quantity"
     },
 {
-        "word": "overpunish",
-        "definition": "To punish excessively; to issue a punishment that is harsher than necessary.",
-        "exampleSentence": "The emphasis on prosecution and conviction as metrics of success leads police and prosecutors to overarrest, overprosecute, and overpunish low-level drug and other crimes in many cases.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overpunish",
-        "etymology": "From over- + punish.",
-        "distractors": [
-            "ovverpunish",
-            "overrpunish",
-            "overpunnish"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "hockeyless",
-        "definition": "Without hockey.",
-        "exampleSentence": "Halfway through last year, hockeyless, I lost it. Hell, the season on ice.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "hockeyless",
-        "etymology": "From hockey + -less.",
-        "distractors": [
-            "hockeyles",
-            "hocckeyless",
-            "hockeylless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overcancel",
         "definition": "To cancel too many or too forcefully.",
         "exampleSentence": "Don't overcancel our FDCs. Don't obliterate with felt-tipped markers.",
@@ -9489,22 +8850,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "underacter",
             "unnderactor",
             "underractor"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overclever",
-        "definition": "Excessively clever.",
-        "exampleSentence": "I know it's overclever and underwise in places.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overclever",
-        "etymology": "From over- + clever.",
-        "distractors": [
-            "overclevor",
-            "overclevar",
-            "ovverclever"
         ],
         "theme": "everyday"
     },
@@ -9728,22 +9073,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "nonnreverse",
             "nonrevverse",
             "nonreverrse"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonspecies",
-        "definition": "That which is not a species.",
-        "exampleSentence": "Either the bird will be downgraded to \"threatened\" status — which means it can be hunted — or it will be declared a nonspecies, as has already happened to all its taxonomic kissing cousins.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonspecies",
-        "etymology": "From non- + species.",
-        "distractors": [
-            "nonnspecies",
-            "nonspeccies",
-            "nonspeceis"
         ],
         "theme": "everyday"
     },
@@ -10114,38 +9443,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "oversilent",
-        "definition": "Excessively silent.",
-        "exampleSentence": "The house felt overlarge and oversilent with just the two of us, but I was relishing the peace of the kitchen.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "oversilent",
-        "etymology": "From over- + silent.",
-        "distractors": [
-            "oversilant",
-            "ovversilent",
-            "overrsilent"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "hatredless",
-        "definition": "Without hatred.",
-        "exampleSentence": "Just as in psychoanalysis, where the purpose is not a conflict-free inner life, the goal of 'good politics' is not to enable the emergence of a fearless, hatredless, and thus utopian society.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "hatredless",
-        "etymology": "From hatred + -less.",
-        "distractors": [
-            "hatredles",
-            "hattredless",
-            "hatreddless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nongravity",
         "definition": "Not using or not relating to gravity.",
         "exampleSentence": "Nongravity cantilevered walls derive lateral resistance through embedment of vertical wall elements and support retained soil with facing elements.",
@@ -10160,22 +9457,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "nongravvity"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "underargue",
-        "definition": "To argue inadequately.",
-        "exampleSentence": "Innovative ideas that are underargued — and we have seen that innovative ideas often will be underargued — have little chance of being accepted.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "underargue",
-        "etymology": "From under- + argue.",
-        "distractors": [
-            "unnderargue",
-            "underrargue",
-            "underarrgue"
-        ],
-        "theme": "communication"
     },
 {
         "word": "counterful",
@@ -10222,22 +9503,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "misrecovor",
             "misrecovar",
             "missrecover"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outmiracle",
-        "definition": "To surpass in miraculousness.",
-        "exampleSentence": "Why, to believe this seriously, is to outmiracle the prophecies and miracles themselves.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outmiracle",
-        "etymology": "From out- + miracle.",
-        "distractors": [
-            "outmiracel",
-            "outtmiracle",
-            "outmirracle"
         ],
         "theme": "everyday"
     },
@@ -10541,21 +9806,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "unterribley",
             "unteribly",
             "unnterribly"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overfreeze",
-        "definition": "To freeze excessively.",
-        "exampleSentence": "Letting the temperature … go too low … may overfreeze the fish and make them impossible to get out, besides hindering the brine circulation.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overfreeze",
-        "distractors": [
-            "overfreze",
-            "ovverfreeze",
-            "overrfreeze"
         ],
         "theme": "everyday"
     },
@@ -11784,22 +11034,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "overharvest",
-        "definition": "To harvest too much, especially at an unsustainably high level.",
-        "exampleSentence": "The fish in this area have been overharvested for years.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overharvest",
-        "etymology": "From over- + harvest.",
-        "distractors": [
-            "ovverharvest",
-            "overrharvest",
-            "overharrvest"
-        ],
-        "theme": "actions"
-    },
-{
         "word": "triggerable",
         "definition": "That may be triggered.",
         "exampleSentence": "We have little evidence that they can track mental states that are triggerable by distinct types of stimuli or influence distinct types of behavior.",
@@ -12040,22 +11274,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "dessertless",
-        "definition": "Without dessert.",
-        "exampleSentence": "The misbehaving child was sent to bed dessertless.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "dessertless",
-        "etymology": "From dessert + -less.",
-        "distractors": [
-            "desertless",
-            "dessertles",
-            "desserrtless"
-        ],
-        "theme": "food"
-    },
-{
         "word": "nonfighting",
         "definition": "Not taking part in fighting.",
         "exampleSentence": "Nonfighting members of the armed forces have important strategic and logistical roles.",
@@ -12168,22 +11386,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "libertyless",
-        "definition": "Without liberty.",
-        "exampleSentence": "… the suppression of private enterprise and the gradual drift towards a libertyless industrial feudalism.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "libertyless",
-        "etymology": "From liberty + -less.",
-        "distractors": [
-            "libertyles",
-            "libbertyless",
-            "liberrtyless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "shrinkingly",
         "definition": "In a shrinking manner; as if shrinking away.",
         "exampleSentence": "For half a century that faithful servant of Jehovah suffered, often shrinkingly, yet voluntarily, a constant martyrdom.",
@@ -12212,22 +11414,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "nonsurvivel",
             "nonnsurvival",
             "nonsurrvival"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonexercise",
-        "definition": "Not being or pertaining to exercise.",
-        "exampleSentence": "So does nonexercise activity, and so, according to a pivotal set of sweat studies done during World War II, does clothing, although not in the way one might predict.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonexercise",
-        "etymology": "From non- + exercise.",
-        "distractors": [
-            "nonexercize",
-            "nonnexercise",
-            "nonexxercise"
         ],
         "theme": "everyday"
     },
@@ -12488,22 +11674,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "removedness",
-        "definition": "The quality of being removed; distance.",
-        "exampleSentence": "I have eyes under my service which look upon his removedness.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "ɹɪmuːvɪdnɪs",
-        "etymology": "From removed + -ness.",
-        "distractors": [
-            "removedniss",
-            "removednes",
-            "remmovedness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "disgraduate",
         "definition": "To degrade; to reduce in rank.",
         "exampleSentence": "They decided to disgraduate before the sun went down.",
@@ -12566,22 +11736,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "primmariness"
         ],
         "theme": "society"
-    },
-{
-        "word": "clearedness",
-        "definition": "The quality of being cleared.",
-        "exampleSentence": "Imputed by his friends to the clearedness, by his foes to the searedness, of his conscience.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "clearedness",
-        "etymology": "From cleared + -ness.",
-        "distractors": [
-            "clearedniss",
-            "clearednes",
-            "clearredness"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "conceptible",
@@ -12807,22 +11961,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "garbageless",
-        "definition": "Without garbage.",
-        "exampleSentence": "Encourage a \"garbageless lunch\" program whereby students use reusable lunch bags and containers for lunch products rather than paper bags, plastic sandwich and snack bags, wax paper, and so on.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "garbageless",
-        "etymology": "From garbage + -less.",
-        "distractors": [
-            "garbageles",
-            "garrbageless",
-            "garbaggeless"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "overkingdom",
         "definition": "A unit composed of several kingdoms and presided over by an overking; an empire.",
         "exampleSentence": "The overkingdom of Airgialla comprising Armagh, Monaghan, parts of Louth, Fermanagh, and Tyrone, had ceased to be when the Book of Rights was compiled.",
@@ -12867,38 +12005,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "contentible",
             "contentabel",
             "conntentable"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overconcern",
-        "definition": "To concern excessively.",
-        "exampleSentence": "They decided to overconcern before the sun went down.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overconcern",
-        "etymology": "From over- + concern.",
-        "distractors": [
-            "ovverconcern",
-            "overrconcern",
-            "overconncern"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outengineer",
-        "definition": "To surpass in engineering.",
-        "exampleSentence": "We have outengineered the competition with this great new product.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "outengineer",
-        "etymology": "From out- + engineer.",
-        "distractors": [
-            "outengineor",
-            "outenginear",
-            "outenginer"
         ],
         "theme": "everyday"
     },
@@ -13158,22 +12264,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overimpress",
-        "definition": "To impress too much.",
-        "exampleSentence": "He wore his suit and best hat, but he didn't want to overimpress Cyril. The mine owner would know for sure something suspicious was underway if he did too much to make an impression on him.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overimpress",
-        "etymology": "From over- + impress.",
-        "distractors": [
-            "overimpres",
-            "ovverimpress",
-            "overrimpress"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "defeatingly",
         "definition": "So as to defeat, or frustrate progress.",
         "exampleSentence": "It seemed defeatingly solid, but the metal building attaching to the frame seemed rusty and fatigued. He pressed against it, and it seemed like it would give way easily.",
@@ -13346,22 +12436,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "anntiworship",
             "antiwworship",
             "antiworrship"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overfurious",
-        "definition": "Excessively furious.",
-        "exampleSentence": "But an overfurious blow of the hammer so injured the statue that he abandoned it as irrevocably spoiled.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "oʊvɚfjʊɹiəs",
-        "etymology": "From over- + furious.",
-        "distractors": [
-            "overfurous",
-            "overfurius",
-            "overfureous"
         ],
         "theme": "everyday"
     },
@@ -13619,22 +12693,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "oversimilar",
-        "definition": "Excessively similar.",
-        "exampleSentence": "On this first attempt, the variations do not entirely add up and some are oversimilar, but still a pattern is evident: starting from the stolid pace of the march, he animates the music by degrees ….",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "oversimilar",
-        "etymology": "From over- + similar.",
-        "distractors": [
-            "oversimiler",
-            "ovversimilar",
-            "overrsimilar"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misdocument",
         "definition": "To document incorrectly; to falsify or make an error in documentation.",
         "exampleSentence": "If you miss a line or misdocument a detail, this is a breach-of-contract responsibility.",
@@ -13807,22 +12865,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "causingniss",
             "causingnes",
             "caussingness"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "undetermine",
-        "definition": "To undo the determining of; to make uncertain.",
-        "exampleSentence": "In such cases, even the licence conferred by strict speaking is powerless to 'undetermine' the statement—to make any and every context seem admissible.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "undetermine",
-        "etymology": "From un- + determine.",
-        "distractors": [
-            "unndetermine",
-            "undettermine",
-            "undeterrmine"
         ],
         "theme": "everyday"
     },
@@ -14336,22 +13378,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overrequest",
-        "definition": "To request too much or too often.",
-        "exampleSentence": "That song has been overrequested on the radio.",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overrequest",
-        "etymology": "From over- + request.",
-        "distractors": [
-            "overequest",
-            "ovverrequest",
-            "overreqquest"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "cheeseburger",
         "definition": "A hamburger containing cheese (usually one or more slices of processed cheese).",
         "exampleSentence": "Neon in daylight is a / great pleasure, as Edwin Denby would / write, as are light bulbs in daylight. / I stop for a cheeseburger at JULIET'S / CORNER.",
@@ -14538,22 +13564,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "mannufactured",
             "manuffactured",
             "manufacctured"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overdelicate",
-        "definition": "Excessively delicate.",
-        "exampleSentence": "The overdelicate surface made it hard to walk across.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "overdelicate",
-        "etymology": "From Middle English overdelicat, equivalent to over- + delicate.",
-        "distractors": [
-            "voerdelicate",
-            "oevrdelicate",
-            "ovredelicate"
         ],
         "theme": "everyday"
     },
@@ -14794,22 +13804,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonscientist",
-        "definition": "A person who is not a scientist.",
-        "exampleSentence": "Our hope is to have written a book that allows nonscientists to understand Einstein's beautiful theories.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonscientist",
-        "etymology": "From non- + scientist.",
-        "distractors": [
-            "nonnscientist",
-            "nonscienntist",
-            "nonscientisst"
-        ],
-        "theme": "people"
-    },
-{
         "word": "unconference",
         "definition": "A conference that attempts to avoid the traditional drawbacks of conferences, such as high entry fees, excessive formality, and bias due to sponsors.",
         "exampleSentence": "Think of the Kalamazoo unconference, assuming that the official videotape tells it like it was.",
@@ -14902,22 +13896,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "mistresless",
             "mistressles",
             "misstressless"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "identityless",
-        "definition": "Without identity.",
-        "exampleSentence": "The identityless surface made it hard to walk across.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "suffixes",
-        "pronunciation": "identityless",
-        "etymology": "From identity + -less.",
-        "distractors": [
-            "identityles",
-            "iddentityless",
-            "idenntityless"
         ],
         "theme": "everyday"
     },
@@ -15066,22 +14044,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonstatement",
-        "definition": "That which is not a statement.",
-        "exampleSentence": "For each of the following, classify S as a statement or nonstatement.",
-        "partOfSpeech": "noun",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "nonstatement",
-        "etymology": "From non- + statement.",
-        "distractors": [
-            "nonstatemant",
-            "nonnstatement",
-            "nonstattement"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "nonbroadcast",
         "definition": "Not of or pertaining to broadcast.",
         "exampleSentence": "Closed-circuit television is a nonbroadcast system.",
@@ -15144,22 +14106,6 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
             "basemmentless"
         ],
         "theme": "home"
-    },
-{
-        "word": "overprecious",
-        "definition": "Excessively precious; contrived, artificial.",
-        "exampleSentence": "The ethos is all too easily misunderstood as an overprecious, bloodless, mindless civilization.",
-        "partOfSpeech": "adjective",
-        "difficulty": 5,
-        "pattern": "latin-roots",
-        "pronunciation": "overprecious",
-        "etymology": "From over- + precious.",
-        "distractors": [
-            "overprecous",
-            "overprecius",
-            "overpreceous"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "overspecific",

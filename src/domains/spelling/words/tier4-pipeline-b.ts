@@ -2,7 +2,7 @@
  * words/tier4-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -548,22 +548,6 @@ export const TIER_4_PIPELINE_B_WORDS: SpellingWord[] = [
             "remmound",
             "remounnd",
             "remownd"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unbreed",
-        "definition": "To undo breeding or its effects.",
-        "exampleSentence": "(No, I don't think the human species will unbreed itself out of existence.).",
-        "partOfSpeech": "verb",
-        "difficulty": 5,
-        "pattern": "prefixes",
-        "pronunciation": "unbreed",
-        "etymology": "From un- + breed.",
-        "distractors": [
-            "unbread",
-            "unbred",
-            "unnbreed"
         ],
         "theme": "everyday"
     },

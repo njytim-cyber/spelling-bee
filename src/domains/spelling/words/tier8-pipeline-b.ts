@@ -2,7 +2,7 @@
  * words/tier8-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -1512,22 +1512,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "ugliffy"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "unlive",
-        "definition": "To undo having lived (a period of time) (for example, by living it in reverse), so that it ceases to have happened.",
-        "exampleSentence": "I wish I could unlive the last ten years.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "ʌnlɪv",
-        "etymology": "From un- + live.",
-        "distractors": [
-            "unnlive",
-            "unlivve",
-            "unlave"
-        ],
-        "theme": "language"
     },
 {
         "word": "unthaw",
@@ -11721,22 +11705,6 @@ export const TIER_8_PIPELINE_B_WORDS: SpellingWord[] = [
             "misstaker"
         ],
         "theme": "people"
-    },
-{
-        "word": "halfness",
-        "definition": "The quality of being half; incompleteness.",
-        "exampleSentence": "As soon as there is any departure from simplicity, and attempt at halfness, or good for me that is not good for him, my neighbor feels the wrong.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "suffixes",
-        "pronunciation": "hæfnəs",
-        "etymology": "From half + -ness.",
-        "distractors": [
-            "halfniss",
-            "halfnes",
-            "hallfness"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "woulding",

@@ -2,7 +2,7 @@
  * words/tier6-pipeline-c.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 994 words.
+ * 992 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -1496,22 +1496,6 @@ export const TIER_6_PIPELINE_C_WORDS: SpellingWord[] = [
             "magnificentley",
             "maggnificently",
             "magnifficently"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overnourished",
-        "definition": "Excessively nourished.",
-        "exampleSentence": "Policemen who've grown uhhh, overnourished, by helping themselves to free meals at the expense of hapless carinderia owners.",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚnʌɹɪʃt",
-        "etymology": "From over- + nourished.",
-        "distractors": [
-            "ovvernourished",
-            "overrnourished",
-            "overnourrished"
         ],
         "theme": "everyday"
     },
@@ -8056,21 +8040,6 @@ export const TIER_6_PIPELINE_C_WORDS: SpellingWord[] = [
             "gyozza",
             "gyaza",
             "gyeza"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "botty",
-        "definition": "A term of address for a bot (automated software process).",
-        "exampleSentence": "He wrote the word botty on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 7,
-        "pattern": "multisyllable",
-        "pronunciation": "bɒti",
-        "distractors": [
-            "bottey",
-            "boty",
-            "batty"
         ],
         "theme": "everyday"
     },

@@ -2,7 +2,7 @@
  * words/tier6-pipeline-g.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -5151,22 +5151,6 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "prenuptial",
-        "definition": "Occurring before marriage; antenuptial.",
-        "exampleSentence": "The prenuptial colors of the sunset were beautiful.",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "latin-roots",
-        "pronunciation": "pɹinʌpʃəl",
-        "etymology": "From pre- + nuptial.",
-        "distractors": [
-            "rpenuptial",
-            "pernuptial",
-            "prneuptial"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "principled",
         "definition": "Based on, having, or manifesting principles.",
         "exampleSentence": "Governors had need be well principled.",
@@ -9071,22 +9055,6 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overshorten",
-        "definition": "To shorten too much; make excessively or inappropriately short.",
-        "exampleSentence": "This plant has only a certain capacity for daylight, and to overshorten the nights would injure it.",
-        "partOfSpeech": "verb",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚʃɔɹtən",
-        "etymology": "From over- + shorten.",
-        "distractors": [
-            "ovvershorten",
-            "overrshorten",
-            "overshorrten"
-        ],
-        "theme": "time"
-    },
-{
         "word": "steepleless",
         "definition": "Lacking a steeple.",
         "exampleSentence": "The humble village of Litchfield, with its steepleless meeting-house, stood on the opposite or east bank….",
@@ -10789,22 +10757,6 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
             "venomousniss",
             "venomousnes",
             "vennomousness"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overfruitful",
-        "definition": "Excessively fruitful.",
-        "exampleSentence": "The overfruitful surface made it hard to walk across.",
-        "partOfSpeech": "adjective",
-        "difficulty": 7,
-        "pattern": "prefixes",
-        "pronunciation": "əʊvə(ɹ)fɹuːtfəl",
-        "etymology": "From over- + fruitful.",
-        "distractors": [
-            "overfruitfull",
-            "ovverfruitful",
-            "overrfruitful"
         ],
         "theme": "everyday"
     },

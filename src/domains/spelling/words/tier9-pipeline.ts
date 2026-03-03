@@ -2,7 +2,7 @@
  * words/tier9-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 9.
- * Total: 4992 words across 5 chunks.
+ * Total: 4969 words across 5 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */

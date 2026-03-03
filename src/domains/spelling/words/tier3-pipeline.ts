@@ -2,7 +2,7 @@
  * words/tier3-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 3.
- * Total: 4502 words across 5 chunks.
+ * Total: 4398 words across 5 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */

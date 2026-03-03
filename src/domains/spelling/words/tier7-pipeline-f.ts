@@ -2,7 +2,7 @@
  * words/tier7-pipeline-f.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -12165,21 +12165,6 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
         "theme": "money"
     },
 {
-        "word": "dappa",
-        "definition": "A term used to insult those who are smartly dressed.",
-        "exampleSentence": "He wrote the word dappa on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "dappa",
-        "distractors": [
-            "dapa",
-            "deppa",
-            "dippa"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "enure",
         "definition": "To inure; to make accustomed or desensitized to something unpleasant due to constant exposure.",
         "exampleSentence": "It took a while to learn how to enure.",
@@ -12923,21 +12908,6 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
             "nancy"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "gynae",
-        "definition": "Short for gynaecology.",
-        "exampleSentence": "He wrote the word gynae on the board for everyone to see.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "multisyllable",
-        "pronunciation": "gynae",
-        "distractors": [
-            "gynnae",
-            "gynee",
-            "gynie"
-        ],
-        "theme": "time"
     },
 {
         "word": "wenny",
@@ -14218,22 +14188,6 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
             "splert"
         ],
         "theme": "feelings"
-    },
-{
-        "word": "uncook",
-        "definition": "To undo the act of cooking.",
-        "exampleSentence": "She would uncook every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "uncook",
-        "etymology": "From un- + cook.",
-        "distractors": [
-            "uncok",
-            "unncook",
-            "uncaok"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "assoon",

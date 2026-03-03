@@ -2,7 +2,7 @@
  * words/tier1-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 992 words.
+ * 985 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -6853,22 +6853,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "downness",
-        "definition": "The property of being a down quark.",
-        "exampleSentence": "The upness and downness of vowel sounds affect us physically in different ways .",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "downness",
-        "etymology": "From down + -ness.",
-        "distractors": [
-            "downniss",
-            "downess",
-            "downnes"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "beginning",
         "definition": "The act of doing that which begins anything; commencement of an action, state, or space of time; entrance into being or upon a course; the first act, effort, or state of a succession of acts or states.",
         "exampleSentence": "What was the beginning of the dispute?",
@@ -8486,22 +8470,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "ovversit",
             "overrsit",
             "ovarsit"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "outness",
-        "definition": "The quality of being out, or outside.",
-        "exampleSentence": "Distance means degree of outness of one thing from another; but it presupposes outness as a fact and a conception.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "outness",
-        "etymology": "* out + -ness. ** (philosophy): Possibly coined by George Berkeley for his 1709 Essay Towards a New Theory of Vision ** (sexuality): Popularised by Lynne Pearlman in her 1989 thesis Theorizing Lesbian Oppression and the Politics of Outness in the Case of Waterman v. National Life Assurance.",
-        "distractors": [
-            "outniss",
-            "outnes",
-            "outtness"
         ],
         "theme": "everyday"
     },
@@ -11202,22 +11170,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overtalk",
-        "definition": "To talk too much.",
-        "exampleSentence": "… and he panted like a young faan in her fust race with the hounds, for he was overtalkin' his strength, and I feered he would die for sartin ef he didn't fetch up a bit and git rested; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "overtalk",
-        "etymology": "From over- + talk.",
-        "distractors": [
-            "ovvertalk",
-            "overrtalk",
-            "overtallk"
-        ],
-        "theme": "quantity"
-    },
-{
         "word": "placeful",
         "definition": "Forming a well-defined place; acting as an identifiable location.",
         "exampleSentence": "The structure is shaped to mingle in unison with the placeful environment of a theological seminary.",
@@ -11916,22 +11868,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "tany"
         ],
         "theme": "people"
-    },
-{
-        "word": "andy",
-        "definition": "A streamer on live streaming service Twitch.",
-        "exampleSentence": "The book had an entire chapter about the andy.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "multisyllable",
-        "pronunciation": "ændi",
-        "etymology": "Originates from the live streams of IRL streamer Ice Poseidon on the live streaming service Twitch in early 2017; comedian and actor Andy Milonakis frequently appeared on Ice Poseidon's streams before being supplemented by one Andy Martin, who was given the byname \"Mexican Andy\" to distinguish him f",
-        "distractors": [
-            "andey",
-            "anndy",
-            "anyd"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "nope",
@@ -13157,22 +13093,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "body"
     },
 {
-        "word": "unstay",
-        "definition": "To undo the establishment of; disestablish; dissolve; divest.",
-        "exampleSentence": "Staying on a mount that is trying to unstay you is a historic procedure of the livestock business.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "unstay",
-        "etymology": "From un- + stay.",
-        "distractors": [
-            "unstaey",
-            "unnstay",
-            "unstai"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "outlot",
         "definition": "A plot of undeveloped land, sometimes without access to public roads, designated by a developer on a plat for future construction or noted for its unsuitability to be designated a full lot.",
         "exampleSentence": "A Panda Express restaurant is planned for the outlot in front of the former Kmart building on W. Bluemound Road in the Town of Brookfield.",
@@ -13757,22 +13677,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonwork",
-        "definition": "That which is not work (employment or occupation).",
-        "exampleSentence": "“People tweet me all the time about nonwork things,” she said.",
-        "partOfSpeech": "noun",
-        "difficulty": 2,
-        "pattern": "r-controlled",
-        "pronunciation": "nonwork",
-        "etymology": "From non- + work.",
-        "distractors": [
-            "nonnwork",
-            "nonworrk",
-            "nanwork"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "unhouse",
         "definition": "To displace one from one's housing or shelter.",
         "exampleSentence": "When a rock band began to unhouse its instruments on a riser beneath the bell tower, ….",
@@ -13851,22 +13755,6 @@ export const TIER_1_PIPELINE_A_WORDS: SpellingWord[] = [
             "mismeat"
         ],
         "theme": "communication"
-    },
-{
-        "word": "misopen",
-        "definition": "To open what one should not open.",
-        "exampleSentence": "Tensely, Michael removed pieces of cork from a misopened bottle.",
-        "partOfSpeech": "verb",
-        "difficulty": 2,
-        "pattern": "prefixes",
-        "pronunciation": "misopen",
-        "etymology": "From mis- + open.",
-        "distractors": [
-            "missopen",
-            "misoppen",
-            "masopen"
-        ],
-        "theme": "actions"
     },
 {
         "word": "accident",

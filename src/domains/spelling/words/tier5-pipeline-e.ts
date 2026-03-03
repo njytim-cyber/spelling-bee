@@ -2,7 +2,7 @@
  * words/tier5-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2787,21 +2787,6 @@ export const TIER_5_PIPELINE_E_WORDS: SpellingWord[] = [
             "vtabble"
         ],
         "theme": "mind"
-    },
-{
-        "word": "selbri",
-        "definition": "A word acting like a predicate, which is immediately preceded by one sumti (“argument”), x₁, and usually followed by one or more sumti (“arguments”): x₂, x₃... up to no further than x₅. It is analogous to a verb in natural languages (non-constructed languages).",
-        "exampleSentence": "A selbri together with its associated sumti (if any) forms a bridi (“sentence/predication”). A selbri without any sumti is called an observative bridi (“sentence/predication”).",
-        "partOfSpeech": "noun",
-        "difficulty": 6,
-        "pattern": "multisyllable",
-        "pronunciation": "sɛlbɹiː",
-        "distractors": [
-            "sellbri",
-            "salbri",
-            "silbri"
-        ],
-        "theme": "language"
     },
 {
         "word": "crosne",
@@ -11296,22 +11281,6 @@ export const TIER_5_PIPELINE_E_WORDS: SpellingWord[] = [
             "outplai"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "overuse",
-        "definition": "To use too much of (something); to use (it) too often.",
-        "exampleSentence": "Another group argues that the diagnosis is being overused and that many of the diagnosed cases are iatrogenic, or unintentionally shaped or caused by the practitioner.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "oʊvɚjuːz",
-        "etymology": "From over- + use.",
-        "distractors": [
-            "ovveruse",
-            "overruse",
-            "overusse"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "perjure",

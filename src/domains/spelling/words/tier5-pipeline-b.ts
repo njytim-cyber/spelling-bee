@@ -2,7 +2,7 @@
  * words/tier5-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 998 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -9577,22 +9577,6 @@ export const TIER_5_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unread",
-        "definition": "To undo the process of reading.",
-        "exampleSentence": "That book was terrible! I wish I could unread it.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "prefixes",
-        "pronunciation": "ʌnɹɛd",
-        "etymology": "From un- + read.",
-        "distractors": [
-            "unreed",
-            "unnread",
-            "unraad"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "iphone",
         "definition": "A smartphone of a series produced by Apple, which typically combine a camera phone, PDA, multimedia player, and wireless communication device.",
         "exampleSentence": "Can you use the word iphone in a sentence?",
@@ -14895,22 +14879,6 @@ export const TIER_5_PIPELINE_B_WORDS: SpellingWord[] = [
             "wokiesh"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "yassify",
-        "definition": "To apply several beauty filters to (a picture or video of someone), typically making the subject look more made-up, potentially more feminine, and often unrecognizable.",
-        "exampleSentence": "Corporations think changing their logo to the pride flag, temporarily yassifying them, will make us forget every single queerphobic scandal they continue to be involved in.",
-        "partOfSpeech": "verb",
-        "difficulty": 6,
-        "pattern": "latin-roots",
-        "pronunciation": "jɑːsɪfaɪ̯",
-        "etymology": "Back-formation from yassification, equivalent to yass + -ify. Popularized by the YassifyBot account on Twitter (which is not actually a bot) created on November 13, 2021 by a college student known online as \"Denver Adams\" who would repeatedly run images through FaceApp until they were virtually unre",
-        "distractors": [
-            "yassifey",
-            "yasify",
-            "yassiffy"
-        ],
-        "theme": "people"
     },
 {
         "word": "suckery",

@@ -2,7 +2,7 @@
  * words/tier9-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 998 words.
+ * 997 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -4558,22 +4558,6 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
             "mulltiplicative",
             "multipplicative",
             "multipliccative"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "oversolicitous",
-        "definition": "Excessively solicitous.",
-        "exampleSentence": "The oversolicitous weather made everyone want to stay inside.",
-        "partOfSpeech": "adjective",
-        "difficulty": 10,
-        "pattern": "latin-roots",
-        "pronunciation": "oʊvɚsəlɪsɪtəs",
-        "etymology": "From over- + solicitous.",
-        "distractors": [
-            "oversolicitus",
-            "oversolicitious",
-            "ovversolicitous"
         ],
         "theme": "everyday"
     },

@@ -2,7 +2,7 @@
  * words/tier8-pipeline-e.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 999 words.
+ * 991 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -2177,22 +2177,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "earth"
     },
 {
-        "word": "nonparty",
-        "definition": "Not a party (social gathering), or not related to parties or partying.",
-        "exampleSentence": "Subsequent albums of nonparty songs and metal-like ballads have not been nearly as successful, but 20-something truth-seekers are not made for stasis.",
-        "partOfSpeech": "adjective",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "nonparty",
-        "etymology": "From non- + party.",
-        "distractors": [
-            "nonpartey",
-            "nonnparty",
-            "nonparrty"
-        ],
-        "theme": "society"
-    },
-{
         "word": "hangable",
         "definition": "Able to be hung or suspended.",
         "exampleSentence": "Duench whips out bowls with expandable tops, hangable onion holders, portion control plates.",
@@ -3575,22 +3559,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "time"
     },
 {
-        "word": "outscout",
-        "definition": "To surpass in scouting, or reconnaissance.",
-        "exampleSentence": "The instructions said to outscout gently and carefully.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "outscout",
-        "etymology": "From out- + scout.",
-        "distractors": [
-            "outtscout",
-            "outscowt",
-            "oatscout"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "scentful",
         "definition": "Having a pleasant scent; odorous.",
         "exampleSentence": "The scentful osprey by the rock had fish'd.",
@@ -3970,22 +3938,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "bypaser"
         ],
         "theme": "people"
-    },
-{
-        "word": "overness",
-        "definition": "The quality of being over (finished, elapsed, concluded).",
-        "exampleSentence": "On what do this underness and overness of supply depend?",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "overness",
-        "etymology": "From over + -ness.",
-        "distractors": [
-            "overniss",
-            "overnes",
-            "ovverness"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "nerdfest",
@@ -5467,22 +5419,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "thereness",
-        "definition": "The quality of being there, or in some place; presence; existence.",
-        "exampleSentence": "Learning about the thereness was the best part of the day.",
-        "partOfSpeech": "noun",
-        "difficulty": 9,
-        "pattern": "suffixes",
-        "pronunciation": "thereness",
-        "etymology": "From there + -ness.",
-        "distractors": [
-            "htereness",
-            "tehreness",
-            "threeness"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "thumbhole",
         "definition": "A hole designed to receive a thumb.",
         "exampleSentence": "Learning about the thumbhole was the best part of the day.",
@@ -6685,22 +6621,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "auttostart",
             "autosstart",
             "autostarrt"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "undeclare",
-        "definition": "To reverse the process of declaring; to unsay.",
-        "exampleSentence": "The Constitution gives Congress the power to declare war; but does that include the power to undeclare it?",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "undeclare",
-        "etymology": "From un- + declare.",
-        "distractors": [
-            "unndeclare",
-            "undecclare",
-            "undeclarre"
         ],
         "theme": "everyday"
     },
@@ -8263,38 +8183,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "pedanticcs"
         ],
         "theme": "everyday"
-    },
-{
-        "word": "unconvert",
-        "definition": "To reverse the conversion of.",
-        "exampleSentence": "I never ‘unconverted’ from Islam because I didn’t feel it was a significant thing for me. In my mind there’s no god - that’s why I was able to convert and not feel the need to officially revert.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "unconvert",
-        "etymology": "From un- + convert.",
-        "distractors": [
-            "unnconvert",
-            "unconnvert",
-            "unconverrt"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "overswear",
-        "definition": "To swear excessively; to make too many oaths.",
-        "exampleSentence": "… early modern Catholic theologians needed to curb the tendency of overswearing in order to institutionalize and regulate the oath more firmly as a sacrament of power.",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "prefixes",
-        "pronunciation": "overswear",
-        "etymology": "From over- + swear.",
-        "distractors": [
-            "oversweer",
-            "ovverswear",
-            "overrswear"
-        ],
-        "theme": "quantity"
     },
 {
         "word": "prestiged",
@@ -10364,22 +10252,6 @@ export const TIER_8_PIPELINE_E_WORDS: SpellingWord[] = [
             "geospatiel",
             "geosspatial",
             "geospattial"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unregister",
-        "definition": "To undo the process of registration for.",
-        "exampleSentence": "To unregister a DLL and remove the corresponding entries from the registry, add the /u switch to the command….",
-        "partOfSpeech": "verb",
-        "difficulty": 9,
-        "pattern": "latin-roots",
-        "pronunciation": "unregister",
-        "etymology": "From un- + register.",
-        "distractors": [
-            "unregistor",
-            "unregistar",
-            "unnregister"
         ],
         "theme": "everyday"
     },

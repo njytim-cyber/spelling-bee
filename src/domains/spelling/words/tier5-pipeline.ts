@@ -2,7 +2,7 @@
  * words/tier5-pipeline.ts
  *
  * Barrel file — combines chunked pipeline files for tier 5.
- * Total: 9987 words across 10 chunks.
+ * Total: 9971 words across 10 chunks.
  *
  * DO NOT EDIT MANUALLY.
  */

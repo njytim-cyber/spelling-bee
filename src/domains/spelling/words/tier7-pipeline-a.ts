@@ -2,7 +2,7 @@
  * words/tier7-pipeline-a.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 1000 words.
+ * 996 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -249,22 +249,6 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
             "heigghten",
             "heiten",
             "hieghten"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "underwork",
-        "definition": "To require too little work from; to work insufficiently.",
-        "exampleSentence": "One mason may underwork another.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "latin-roots",
-        "pronunciation": "ʌndə(ɹ)wɜː(ɹ)k",
-        "etymology": "From under- + work.",
-        "distractors": [
-            "unnderwork",
-            "underrwork",
-            "underworrk"
         ],
         "theme": "everyday"
     },
@@ -4398,22 +4382,6 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "treeness",
-        "definition": "The essence of what it means to be a tree; the qualities that make a tree what it is.",
-        "exampleSentence": "Failing to statistically test for treeness, they reify the evolutionary trajectories assumed at the outset.",
-        "partOfSpeech": "noun",
-        "difficulty": 8,
-        "pattern": "suffixes",
-        "pronunciation": "tɹiːnɪs",
-        "etymology": "From tree + -ness.",
-        "distractors": [
-            "treeniss",
-            "treness",
-            "treenes"
-        ],
-        "theme": "plants"
-    },
-{
         "word": "slighten",
         "definition": "To make or become slight; make or become less pronounced, less noticeable, or less obvious.",
         "exampleSentence": "His smile slightened as if he knew they talked of him.",
@@ -8238,22 +8206,6 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
             "hingi"
         ],
         "theme": "food"
-    },
-{
-        "word": "unsin",
-        "definition": "To undo or annul a past sin.",
-        "exampleSentence": "It took a while to learn how to unsin.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "ʌnsɪn",
-        "etymology": "From un- + sin.",
-        "distractors": [
-            "unnsin",
-            "unsan",
-            "unsen"
-        ],
-        "theme": "time"
     },
 {
         "word": "cital",
@@ -13592,22 +13544,6 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
             "overrlock"
         ],
         "theme": "clothing"
-    },
-{
-        "word": "overwind",
-        "definition": "To wind (tighten a spring of) something excessively.",
-        "exampleSentence": "People also come in full of misgivings about \"overwinding\" their watches. \"You can't overwind a watch - you can only underwind it,\" said McKelvey.",
-        "partOfSpeech": "verb",
-        "difficulty": 8,
-        "pattern": "prefixes",
-        "pronunciation": "əʊvə(ɹ)waɪnd",
-        "etymology": "From over- + wind.",
-        "distractors": [
-            "ovverwind",
-            "overrwind",
-            "overwinnd"
-        ],
-        "theme": "weather"
     },
 {
         "word": "bayadere",

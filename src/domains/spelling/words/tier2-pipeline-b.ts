@@ -2,7 +2,7 @@
  * words/tier2-pipeline-b.ts
  *
  * Auto-generated from Wiktionary + WordNet pipeline.
- * 987 words.
+ * 964 words.
  *
  * Sources:
  * - Wiktionary via kaikki.org (CC-BY-SA 3.0)
@@ -6787,22 +6787,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "art"
     },
 {
-        "word": "facebook",
-        "definition": "A personal web profile on the social-networking site Facebook.",
-        "exampleSentence": "You might have a Facebook. So do I. And so does my mom and my grandma and all of her friends. But you know who doesn’t have a Facebook? Your kid’s friends.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "vowel-teams",
-        "pronunciation": "feɪsbʊk",
-        "etymology": "From facebook, earlier TheFacebook and Facemash.",
-        "distractors": [
-            "facebok",
-            "faccebook",
-            "facebbook"
-        ],
-        "theme": "society"
-    },
-{
         "word": "holidays",
         "definition": "(usually after possessive) holiday, vacation; time off work, especially if spent travelling away from home.",
         "exampleSentence": "Where will you be spending the holidays?",
@@ -6816,22 +6800,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "holidais"
         ],
         "theme": "time"
-    },
-{
-        "word": "outplant",
-        "definition": "To surpass in planting.",
-        "exampleSentence": "His father bragged that his son could outplant any laborer available for hire in the village.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "outplant",
-        "etymology": "From out- + plant.",
-        "distractors": [
-            "outplent",
-            "outtplant",
-            "outplannt"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "actional",
@@ -6944,22 +6912,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "bellonger"
         ],
         "theme": "people"
-    },
-{
-        "word": "nonspace",
-        "definition": "That which is not a social or physical space, or lacks the traditional attributes of spaces.",
-        "exampleSentence": "The nonspace was one of our vocabulary words this week.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "silent-e",
-        "pronunciation": "nonspace",
-        "etymology": "From non- + space.",
-        "distractors": [
-            "nonnspace",
-            "nonspacce",
-            "nanspace"
-        ],
-        "theme": "society"
     },
 {
         "word": "overwear",
@@ -7376,22 +7328,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "chayrful"
         ],
         "theme": "people"
-    },
-{
-        "word": "nightful",
-        "definition": "All that occurs or is done during a single night.",
-        "exampleSentence": "Some people are affected more by two glasses of beer than others by a nightful of Scotch and sodas.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "suffixes",
-        "pronunciation": "nightful",
-        "etymology": "From night + -ful.",
-        "distractors": [
-            "nightfull",
-            "nigghtful",
-            "nitful"
-        ],
-        "theme": "time"
     },
 {
         "word": "misclock",
@@ -8404,22 +8340,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "society"
     },
 {
-        "word": "overrelax",
-        "definition": "To relax excessively.",
-        "exampleSentence": "They may have diabetes, or be taking a medication that overrelaxes the muscular sphincter at the bottom of the esophagus.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overrelax",
-        "etymology": "From over- + relax.",
-        "distractors": [
-            "overelax",
-            "ovverrelax",
-            "overrellax"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "misground",
         "definition": "To found erroneously; to base on invalid grounds.",
         "exampleSentence": "He promised to misground as soon as he got home.",
@@ -8548,22 +8468,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "overshake",
-        "definition": "To shake too much.",
-        "exampleSentence": "Always shake hands at a job interview, but try not to overshake.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overshake",
-        "etymology": "From over- + shake.",
-        "distractors": [
-            "ovvershake",
-            "overrshake",
-            "overshakke"
-        ],
-        "theme": "actions"
-    },
-{
         "word": "blindable",
         "definition": "Of a clinical trial: able to be carried out with information withheld from experimenter and/or participants to avoid influencing the outcome.",
         "exampleSentence": "Blindable encryption also provides a useful way to make a given ciphertext unrecognizable.",
@@ -8642,22 +8546,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "interarrea"
         ],
         "theme": "home"
-    },
-{
-        "word": "overprove",
-        "definition": "To prove excessively or beyond what is asked or required.",
-        "exampleSentence": "I think many of his devices are, in fact, quite arbitrary; that he betrays a Germanic ponderousness at times and a tendency to overprove what is quite clear in the first place.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overprove",
-        "etymology": "From over- + prove.",
-        "distractors": [
-            "ovverprove",
-            "overrprove",
-            "overprovve"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "fieldable",
@@ -8867,22 +8755,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "animals"
     },
 {
-        "word": "underwarm",
-        "definition": "To warm insufficiently; To fail to provide with the expected or required amount of heat.",
-        "exampleSentence": "But the results of slight underwarming were not immediately obvious.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "latin-roots",
-        "pronunciation": "underwarm",
-        "etymology": "From under- + warm.",
-        "distractors": [
-            "unnderwarm",
-            "underrwarm",
-            "underwarrm"
-        ],
-        "theme": "sensory"
-    },
-{
         "word": "girlfriend",
         "definition": "A female partner in an unmarried romantic relationship.",
         "exampleSentence": "Mary always enjoyed hanging out with her girlfriend Jessica.",
@@ -9006,21 +8878,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "ccid"
         ],
         "theme": "quantity"
-    },
-{
-        "word": "dat",
-        "definition": "Digital Audio Tape, a digital data storage tape format using a dual-spooled cartridge and magnetic tape, used for digital audio and data storage.",
-        "exampleSentence": "My teacher explained what a dat is during our lesson.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "cvc",
-        "pronunciation": "dat",
-        "distractors": [
-            "adt",
-            "dta",
-            "ddat"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "deb",
@@ -10273,22 +10130,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "travel"
     },
 {
-        "word": "stan",
-        "definition": "An extremely obsessive fan of a person, group, character, or creative work, particularly one whose fixation is unhealthy or intrusive.",
-        "exampleSentence": "I know the in-depth detailed life of a stan because I am one. I'm one of those Lady Gaga fans, ….",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "blends",
-        "pronunciation": "stæn",
-        "etymology": "From Stan (“Stanley”), after the song \"Stan\" by Eminem (2000), a fictitious account of the rapper's encounter with an overly obsessive fan named Stan. Sometimes assumed to be a blend of stalker + fan, but perhaps simply chosen for the rhyme.",
-        "distractors": [
-            "sten",
-            "stin",
-            "satn"
-        ],
-        "theme": "people"
-    },
-{
         "word": "walt",
         "definition": "Someone who impersonates a veteran (retired member of the armed forces).",
         "exampleSentence": "The book had an entire chapter about the walt.",
@@ -11374,22 +11215,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "undry",
-        "definition": "To cause (something) to be not dry.",
-        "exampleSentence": "As we continued to \"undry the throat\" with a Cognac de guerre, Claudine suddenly interrupted.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "undry",
-        "etymology": "From un- + dry.",
-        "distractors": [
-            "undrey",
-            "unndry",
-            "undyr"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "wendy",
         "definition": "A wuss; someone who is particularly cowardly.",
         "exampleSentence": "He wrote the word wendy on the board for everyone to see.",
@@ -11561,22 +11386,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "dieggo",
             "deigo",
             "daego"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "unact",
-        "definition": "To undo the acting of; to reverse (an action).",
-        "exampleSentence": "… have been so busy acting their several parts in the past, and are in the present so busy trying to unact them ….",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "unact",
-        "etymology": "From un- + act.",
-        "distractors": [
-            "unnact",
-            "unacct",
-            "unect"
         ],
         "theme": "everyday"
     },
@@ -12812,38 +12621,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "nonart",
-        "definition": "That which is not art.",
-        "exampleSentence": "For archaeologists, distinguishing art from nonart is still quite a challenge.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "r-controlled",
-        "pronunciation": "nonart",
-        "etymology": "From non- + art.",
-        "distractors": [
-            "nonnart",
-            "nonarrt",
-            "nanart"
-        ],
-        "theme": "art"
-    },
-{
-        "word": "nonfan",
-        "definition": "A person who is not an admirer or aficionado of a particular event or sport.",
-        "exampleSentence": "Spectator rowdiness and movement during matches is considered part of the “modern era of tennis” and good for the game, attracting nonfans interested in the spectacle.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "multisyllable",
-        "pronunciation": "nonfan",
-        "etymology": "From non- + fan.",
-        "distractors": [
-            "nonnfan",
-            "nanfan",
-            "nenfan"
-        ],
-        "theme": "people"
-    },
-{
         "word": "nonfit",
         "definition": "Something that is not a fit.",
         "exampleSentence": "Cultural adaptation is required to avoid this nonfit.",
@@ -12892,22 +12669,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "character"
     },
 {
-        "word": "nonpig",
-        "definition": "That which is not a pig.",
-        "exampleSentence": "The idea of nonpigs, all things that are not pigs, includes everything conceivable except pigs.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "multisyllable",
-        "pronunciation": "nonpig",
-        "etymology": "From non- + pig.",
-        "distractors": [
-            "nonnpig",
-            "nanpig",
-            "nenpig"
-        ],
-        "theme": "animals"
-    },
-{
         "word": "armest",
         "definition": "Second-person singular simple present indicative of arm.",
         "exampleSentence": "She would armest every morning before school.",
@@ -12921,38 +12682,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "armast"
         ],
         "theme": "body"
-    },
-{
-        "word": "noncat",
-        "definition": "That which is not a cat.",
-        "exampleSentence": "… the observation that something is black would not suffice to identify it as a (black) cat since many noncats are also black.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "multisyllable",
-        "pronunciation": "noncat",
-        "etymology": "From non- + cat.",
-        "distractors": [
-            "nonncat",
-            "nancat",
-            "nencat"
-        ],
-        "theme": "animals"
-    },
-{
-        "word": "nondog",
-        "definition": "That which is not a dog.",
-        "exampleSentence": "Thus, for example, we can divide the class of mammals into dogs and nondogs.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "multisyllable",
-        "pronunciation": "nondog",
-        "etymology": "From non- + dog.",
-        "distractors": [
-            "nonndog",
-            "nandog",
-            "nendog"
-        ],
-        "theme": "animals"
     },
 {
         "word": "seemer",
@@ -13017,22 +12746,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "undete"
         ],
         "theme": "people"
-    },
-{
-        "word": "unvote",
-        "definition": "To reverse or annul by vote.",
-        "exampleSentence": "However, they made a shift to unvote the vote of redresses to the King, and the proceedings thereupon, as wholly unjustifiable; ….",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "unvote",
-        "etymology": "From un- + vote.",
-        "distractors": [
-            "unnvote",
-            "unvotte",
-            "unvate"
-        ],
-        "theme": "society"
     },
 {
         "word": "unwarm",
@@ -13307,22 +13020,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "everyday"
     },
 {
-        "word": "unfact",
-        "definition": "Something not factual; a falsehood or factoid.",
-        "exampleSentence": "To say that Indian philosophy has led away from the study of Nature, is to state an unfact and to ignore the history of Indian civilisation.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "unfact",
-        "etymology": "From un- + fact.",
-        "distractors": [
-            "unnfact",
-            "unfacct",
-            "unfect"
-        ],
-        "theme": "everyday"
-    },
-{
         "word": "songly",
         "definition": "Of, resembling, pertaining to, or expressed in song; songful; musical.",
         "exampleSentence": "“… Remember him singing on the very first day of our journey? Not the songliest of songs, but a song nonetheless.”.",
@@ -13369,22 +13066,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "unrein"
         ],
         "theme": "society"
-    },
-{
-        "word": "unbite",
-        "definition": "To undo the biting of.",
-        "exampleSentence": "She would unbite every morning before school.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "unbite",
-        "etymology": "From un- + bite.",
-        "distractors": [
-            "unbight",
-            "unnbite",
-            "unbitte"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "refoot",
@@ -13494,22 +13175,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "untre",
             "unntree",
             "untrea"
-        ],
-        "theme": "everyday"
-    },
-{
-        "word": "nonact",
-        "definition": "That which is not an act or deed.",
-        "exampleSentence": "No state of mind or passage of time can perform the alchemy needed to convert nonacts into acts.",
-        "partOfSpeech": "noun",
-        "difficulty": 3,
-        "pattern": "blends",
-        "pronunciation": "nonact",
-        "etymology": "From non- + act.",
-        "distractors": [
-            "nonnact",
-            "nonacct",
-            "nanact"
         ],
         "theme": "everyday"
     },
@@ -15164,22 +14829,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
         "theme": "people"
     },
 {
-        "word": "overhot",
-        "definition": "Excessively hot.",
-        "exampleSentence": "Laurentius assigns this reason, because the liver overhot draws the meat undigested out of the stomach, and burneth the humours.",
-        "partOfSpeech": "adjective",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "overhot",
-        "etymology": "From over- + hot.",
-        "distractors": [
-            "ovverhot",
-            "overrhot",
-            "ovarhot"
-        ],
-        "theme": "sensory"
-    },
-{
         "word": "reoffer",
         "definition": "An offer that has been made before.",
         "exampleSentence": "The reoffer was only good for a limited time, the same as the original offer had been.",
@@ -15562,22 +15211,6 @@ export const TIER_2_PIPELINE_B_WORDS: SpellingWord[] = [
             "oatsend"
         ],
         "theme": "communication"
-    },
-{
-        "word": "outskin",
-        "definition": "To surpass in skinning.",
-        "exampleSentence": "There was a big woman in the camp and she could outskin any of the men.",
-        "partOfSpeech": "verb",
-        "difficulty": 3,
-        "pattern": "prefixes",
-        "pronunciation": "outskin",
-        "etymology": "From out- + skin.",
-        "distractors": [
-            "outtskin",
-            "oatskin",
-            "oetskin"
-        ],
-        "theme": "everyday"
     },
 {
         "word": "misfall",
