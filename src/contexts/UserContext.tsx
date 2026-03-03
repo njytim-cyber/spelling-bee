@@ -12,7 +12,7 @@ import { useFirebaseAuth } from '../hooks/useFirebaseAuth';
 import { STORAGE_KEYS } from '../config';
 import type { ChalkTheme } from '../utils/chalkThemes';
 import type { Dialect } from '../domains/spelling/words/types';
-import type { GradeLevel } from '../domains/spelling/spellingCategories';
+import type { Level } from '../domains/spelling/spellingCategories';
 
 interface UserContextValue {
   // Stats
@@ -42,8 +42,8 @@ interface UserContextValue {
   sendEmailLink: (email: string) => Promise<void>;
 
   // Settings
-  grade: string;
-  onGradeChange: (grade: GradeLevel) => void;
+  level: string;
+  onLevelChange: (level: Level) => void;
   dialect: string;
   onDialectChange: (d: Dialect) => void;
 }
@@ -76,13 +76,13 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const [activeTrailId, setActiveTrailId] = useLocalState(STORAGE_KEYS.trail, '', uid);
 
   // Settings
-  const [grade, setGrade] = useLocalState(STORAGE_KEYS.grade, '', uid);
+  const [level, setLevel] = useLocalState(STORAGE_KEYS.grade, '', uid);
   const [dialect, setDialect] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
 
   const onCostumeChange = useCallback((id: string) => setActiveCostume(id), [setActiveCostume]);
   const onThemeChange = useCallback((theme: ChalkTheme) => setActiveTheme(theme.id), [setActiveTheme]);
   const onTrailChange = useCallback((id: string) => setActiveTrailId(id), [setActiveTrailId]);
-  const onGradeChange = useCallback((g: GradeLevel) => setGrade(g), [setGrade]);
+  const onLevelChange = useCallback((l: Level) => setLevel(l), [setLevel]);
   const onDialectChange = useCallback((d: Dialect) => setDialect(d), [setDialect]);
 
   const value = useMemo<UserContextValue>(() => ({
@@ -106,8 +106,8 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     isAnonymous: user?.isAnonymous ?? true,
     linkGoogle,
     sendEmailLink,
-    grade: grade as string,
-    onGradeChange,
+    level: level as string,
+    onLevelChange,
     dialect: dialect as string,
     onDialectChange,
   }), [
@@ -115,7 +115,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
     activeCostume, onCostumeChange, activeTheme, onThemeChange,
     activeTrailId, onTrailChange, user?.displayName, setDisplayName,
-    user?.isAnonymous, linkGoogle, sendEmailLink, grade, onGradeChange,
+    user?.isAnonymous, linkGoogle, sendEmailLink, level, onLevelChange,
     dialect, onDialectChange,
   ]);
 

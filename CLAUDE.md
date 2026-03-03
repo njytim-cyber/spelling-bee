@@ -55,9 +55,10 @@ src/
 ```
 
 ### Key Patterns
-- **Grade levels**: 5 grades (Seedling/Sprout/Growing/Climbing/Summit) gate difficulty floor and default category. Selected during onboarding, stored in UserContext.
+- **Levels**: 10 levels (Level 1–10), each mapped 1:1 to difficulty values 1–10. Selected during onboarding, stored in UserContext. No K-12 grade names.
+- **Session-based play**: User picks a level from the curriculum, then chooses session size (10/20/50 words). SRS determines mix (max 20% review, rest new).
 - **Category → Generator**: `spellingCategories.ts` defines IDs/groups, `spellingGenerator.ts` maps them to word selection logic via `selectWordPool()`
-- **Adaptive difficulty**: `useDifficulty` hook adjusts within the grade's range based on answer speed
+- **Adaptive difficulty**: `useDifficulty` hook adjusts within the level's range based on answer speed
 - **Leitner boxes**: Words progress through boxes 0-4 based on correct/incorrect answers, with increasing review delays
 - **Lazy loading**: Tiers 1-2 core words are eager-loaded. Pipeline expansions + tiers 3-9 load on demand via `ensureAllTiers()`. Registry version counter triggers re-renders.
 - **Stats merge**: Local-first with Firestore sync. `mergeStats()` takes the best of each field from local vs. cloud
@@ -68,17 +69,18 @@ Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, diffic
 
 **117,324 total words** — 2,796 hand-curated + 91,569 pipeline across 9 tiers.
 
-| Tier | Grade Level | Difficulty | Words |
-|------|-------------|-----------|-------|
-| 1 | Seedling (K–1st) | 1-2 | 510 + 14,997 pipeline |
-| 2 | Sprout (2nd–3rd) | 3-4 | 505 + 14,571 pipeline |
-| 3 | Growing (4th–5th) | 5-6 | 505 + 15,000 pipeline |
-| 4 | Climbing (6th–7th) | 7-8 | 504 + 13,000 pipeline |
-| 5 | Summit (8th+) | 9-10 | 481 + 110 expansion + 10,000 pipeline |
-| 6 | Pipeline-only | 7 | 8,000 |
-| 7 | Pipeline-only | 8 | 6,000 |
-| 8 | Pipeline-only | 9 | 5,000 |
-| 9 | Pipeline-only | 10 | 5,000 |
+| Tier | Level | Difficulty | Words |
+|------|-------|-----------|-------|
+| 1 | Level 1 | 1 | 510 + 14,997 pipeline |
+| 2 | Level 2 | 2 | 505 + 14,571 pipeline |
+| 3 | Level 3 | 3 | 505 + 15,000 pipeline |
+| 4 | Level 4 | 4 | 504 + 13,000 pipeline |
+| 5 | Level 5 | 5 | 481 + 110 expansion + 10,000 pipeline |
+| 6 | Level 6 | 6 | 8,000 |
+| 7 | Level 7 | 7 | 6,000 |
+| 8 | Level 8 | 8 | 5,000 |
+| 9 | Level 9 | 9 | 5,000 |
+| — | Level 10 | 10 | (words from tiers 5, 9 at difficulty 10) |
 | Scripps | Competition | 8-10 | 259 |
 | State | Competition | 8-10 | 96 |
 

@@ -12,7 +12,7 @@ import { simulateNpcTurns } from '../hooks/useBeeSimulation';
 // ── Extracted pickBeeWord logic ─────────────────────────────────────────────
 
 function pickBeeWord(round: number): SpellingWord {
-    const diffLevel = Math.min(5, 1 + Math.floor(round / 3));
+    const diffLevel = Math.min(10, 1 + Math.floor(round / 3));
     const [minDiff, maxDiff] = difficultyRange(diffLevel);
 
     const all = getAllWords();
@@ -59,15 +59,15 @@ describe('Bee simulation (pickBeeWord)', () => {
         }
     });
 
-    it('difficulty level plateaus at round 12+', () => {
-        // diffLevel = min(5, 1 + floor(round/3))
-        // round 12 → 1+4 = 5 (max)
-        // round 20 → 1+6 capped to 5
-        const word12 = pickBeeWord(12);
-        const word20 = pickBeeWord(20);
-        // Both should use difficulty level 5 so same difficulty range
-        expect(word12.difficulty).toBeGreaterThanOrEqual(1);
-        expect(word20.difficulty).toBeGreaterThanOrEqual(1);
+    it('difficulty level plateaus at round 27+', () => {
+        // diffLevel = min(10, 1 + floor(round/3))
+        // round 27 → 1+9 = 10 (max)
+        // round 40 → 1+13 capped to 10
+        const word27 = pickBeeWord(27);
+        const word40 = pickBeeWord(40);
+        // Both should use difficulty level 10 so same difficulty range
+        expect(word27.difficulty).toBeGreaterThanOrEqual(1);
+        expect(word40.difficulty).toBeGreaterThanOrEqual(1);
     });
 });
 

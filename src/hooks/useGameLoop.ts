@@ -75,7 +75,7 @@ export function useGameLoop(
     generateFiniteSet?: (categoryId: string, challengeId: string | null) => EngineItem[],
     /** Optional callback fired after every answer with the item, correctness, and response time. */
     onAnswer?: (item: EngineItem, correct: boolean, responseTimeMs: number) => void,
-    /** Minimum adaptive difficulty level (from grade selection). */
+    /** Minimum adaptive difficulty level (from level selection). */
     minLevel = 1,
 ) {
     const { level, recordAnswer } = useDifficulty(minLevel);

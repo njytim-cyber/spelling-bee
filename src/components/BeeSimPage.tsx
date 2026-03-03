@@ -39,10 +39,10 @@ import type { CharacterStyle } from '../utils/characterStyles';
 import type { SpellingWord } from '../domains/spelling/words/types';
 
 const BEE_LEVELS: { id: BeeLevel; label: string; desc: string; emoji: string }[] = [
-    { id: 'classroom', label: 'Classroom', desc: 'Grades K-3 · Easy words, generous timer', emoji: '🏫' },
-    { id: 'district', label: 'District', desc: 'Grades 2-5 · Moderate difficulty', emoji: '🏙️' },
-    { id: 'state', label: 'State', desc: 'Grades 4-8 · Tough words, faster pace', emoji: '🗺️' },
-    { id: 'national', label: 'National', desc: 'Competition level · Hardest words', emoji: '🏆' },
+    { id: 'classroom', label: 'Classroom', desc: 'Levels 1\u20133 · Easy words, generous timer', emoji: '🏫' },
+    { id: 'district', label: 'District', desc: 'Levels 2\u20135 · Moderate difficulty', emoji: '🏙️' },
+    { id: 'state', label: 'State', desc: 'Levels 4\u20138 · Tough words, faster pace', emoji: '🗺️' },
+    { id: 'national', label: 'National', desc: 'Levels 7\u201310 · Hardest words', emoji: '🏆' },
 ];
 
 /** Primary info buttons always visible; secondary hidden behind "More..." */

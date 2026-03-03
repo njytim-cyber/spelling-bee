@@ -31,6 +31,11 @@ export type SpellingCategory =
     | 'tier-3'
     | 'tier-4'
     | 'tier-5'
+    | 'tier-6'
+    | 'tier-7'
+    | 'tier-8'
+    | 'tier-9'
+    | 'tier-10'
     // Semantic themes (42)
     | 'theme-animals' | 'theme-plants' | 'theme-weather' | 'theme-earth'
     | 'theme-food' | 'theme-body' | 'theme-health' | 'theme-home'
@@ -52,18 +57,24 @@ export type SpellingCategory =
 
 export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'origins' | 'competition' | 'practice';
 
-// ── Grade levels ─────────────────────────────────────────────────────────────
+// ── Levels ───────────────────────────────────────────────────────────────────
 
-export type GradeLevel = 'tier-1' | 'tier-2' | 'tier-3' | 'tier-4' | 'tier-5';
+export type Level = 'tier-1' | 'tier-2' | 'tier-3' | 'tier-4' | 'tier-5'
+    | 'tier-6' | 'tier-7' | 'tier-8' | 'tier-9' | 'tier-10';
 
-export interface GradeConfig {
-    id: GradeLevel;
+/** @deprecated Use Level instead */
+export type GradeLevel = Level;
+
+export interface LevelConfig {
+    id: Level;
     label: string;
-    grades: string;
     defaultCategory: SpellingCategory;
-    /** Minimum adaptive difficulty level (1-5). useDifficulty will never drop below this. */
+    /** Minimum adaptive difficulty level (1-10). Equals the level number. */
     minDifficultyLevel: number;
 }
+
+/** @deprecated Use LevelConfig instead */
+export type GradeConfig = LevelConfig;
 
 // ── Category entries ──────────────────────────────────────────────────────────
 
@@ -181,14 +192,14 @@ const iFrench = I(<>
     <path d="M8 18c-2 1-3 2-3 3h14c0-1-1-2-3-3" />
 </>);
 
-// Tier 1 K-1st — small seedling
+// Tier 1 — seedling
 const iTier1 = I(<>
     <path d="M12 20v-8" />
     <path d="M12 12c-3-1-5-4-4-7 3 0 5 3 4 7z" />
     <path d="M12 14c3-1 5-4 4-7-3 0-5 3-4 7z" />
 </>);
 
-// Tier 2 2nd-3rd — small plant with leaves
+// Tier 2 — small plant
 const iTier2 = I(<>
     <path d="M12 20v-12" />
     <path d="M12 14c-4 0-6-3-5-6 3 0 6 2 5 6z" />
@@ -196,22 +207,51 @@ const iTier2 = I(<>
     <path d="M9 20h6" />
 </>);
 
-// Tier 3 4th-5th — tree
+// Tier 3 — tree
 const iTier3 = I(<>
     <path d="M12 22v-6" />
     <path d="M12 4c-5 0-8 4-8 8 0 3 3 5 8 5s8-2 8-5c0-4-3-8-8-8z" />
 </>);
 
-// Tier 4 6th-7th — mountain
+// Tier 4 — mountain
 const iTier4 = I(<>
     <path d="M3 20L10 6l3 5 3-3 5 12H3z" />
 </>);
 
-// Tier 5 8th+ — mountain with flag
+// Tier 5 — mountain with flag
 const iTier5 = I(<>
     <path d="M3 21L12 5l9 16H3z" />
     <line x1="12" y1="5" x2="12" y2="2" />
     <path d="M12 2l5 2-5 2" />
+</>);
+
+// Tier 6 — shield
+const iTier6 = I(<>
+    <path d="M12 3l8 4v5c0 5-3.5 9-8 11-4.5-2-8-6-8-11V7l8-4z" />
+</>);
+
+// Tier 7 — crown
+const iTier7 = I(<>
+    <path d="M3 18h18l-2-10-4 4-3-6-3 6-4-4-2 10z" />
+    <path d="M3 18v2h18v-2" />
+</>);
+
+// Tier 8 — diamond
+const iTier8 = I(<>
+    <path d="M6 3h12l4 7-10 12L2 10l4-7z" />
+    <path d="M2 10h20" />
+    <path d="M12 22l-2-12 2-7 2 7-2 12z" />
+</>);
+
+// Tier 9 — flame
+const iTier9 = I(<>
+    <path d="M12 2c-2 4-6 6-6 11a6 6 0 0 0 12 0c0-5-4-7-6-11z" />
+    <path d="M12 22c-2 0-3-1.5-3-3 0-2 3-4 3-6 0 2 3 4 3 6 0 1.5-1 3-3 3z" />
+</>);
+
+// Tier 10 — star champion
+const iTier10 = I(<>
+    <polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9" />
 </>);
 
 // Theme: Animals — paw print
@@ -543,29 +583,34 @@ const iCustom = I(<>
 export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     // Daily
     { id: 'daily', icon: iDaily, label: 'Daily', group: 'daily' },
-    // Basic (K-1st)
+    // Basic
     { id: 'cvc', icon: iCvc, label: 'CVC Words', group: 'basic' },
     { id: 'blends', icon: iBlends, label: 'Blends', group: 'basic' },
-    // Core (2nd-3rd)
+    // Core
     { id: 'digraphs', icon: iDigraphs, label: 'Digraphs', group: 'core' },
     { id: 'silent-e', icon: iSilentE, label: 'Silent E', group: 'core' },
     { id: 'vowel-teams', icon: iVowelTeams, label: 'Vowel Teams', group: 'core' },
     { id: 'r-controlled', icon: iRControlled, label: 'R-Controlled', group: 'core' },
     { id: 'diphthongs', icon: iDiphthongs, label: 'Diphthongs', group: 'core' },
-    // Advanced (4th-5th)
+    // Advanced
     { id: 'prefixes', icon: iPrefixes, label: 'Prefixes', group: 'advanced' },
     { id: 'suffixes', icon: iSuffixes, label: 'Suffixes', group: 'advanced' },
     { id: 'multisyllable', icon: iMulti, label: 'Multisyllable', group: 'advanced' },
-    // Expert (6th-8th)
+    // Expert
     { id: 'latin-roots', icon: iLatin, label: 'Latin Roots', group: 'expert' },
     { id: 'greek-roots', icon: iGreek, label: 'Greek Roots', group: 'expert' },
     { id: 'french-origin', icon: iFrench, label: 'French Origin', group: 'expert' },
-    // By Grade (tier)
-    { id: 'tier-1', icon: iTier1, label: 'K-1st', group: 'tier' },
-    { id: 'tier-2', icon: iTier2, label: '2nd-3rd', group: 'tier' },
-    { id: 'tier-3', icon: iTier3, label: '4th-5th', group: 'tier' },
-    { id: 'tier-4', icon: iTier4, label: '6th-7th', group: 'tier' },
-    { id: 'tier-5', icon: iTier5, label: '8th+', group: 'tier' },
+    // By Level
+    { id: 'tier-1', icon: iTier1, label: 'Level 1', group: 'tier' },
+    { id: 'tier-2', icon: iTier2, label: 'Level 2', group: 'tier' },
+    { id: 'tier-3', icon: iTier3, label: 'Level 3', group: 'tier' },
+    { id: 'tier-4', icon: iTier4, label: 'Level 4', group: 'tier' },
+    { id: 'tier-5', icon: iTier5, label: 'Level 5', group: 'tier' },
+    { id: 'tier-6', icon: iTier6, label: 'Level 6', group: 'tier' },
+    { id: 'tier-7', icon: iTier7, label: 'Level 7', group: 'tier' },
+    { id: 'tier-8', icon: iTier8, label: 'Level 8', group: 'tier' },
+    { id: 'tier-9', icon: iTier9, label: 'Level 9', group: 'tier' },
+    { id: 'tier-10', icon: iTier10, label: 'Level 10', group: 'tier' },
     // Semantic themes (42) — sorted by approximate word count descending
     { id: 'theme-people', icon: iPeople, label: 'People', group: 'themes' },
     { id: 'theme-feelings', icon: iFeelings, label: 'Feelings', group: 'themes' },
@@ -625,31 +670,47 @@ export const SPELLING_GROUP_LABELS: Record<SpellingGroup, string> = {
     core: 'Core',
     advanced: 'Advanced',
     expert: 'Expert',
-    tier: 'By Grade',
+    tier: 'By Level',
     themes: 'Themes',
     origins: 'By Origin',
     competition: 'Competition',
     practice: 'Practice',
 };
 
-// ── Grade level config ───────────────────────────────────────────────────────
+// ── Level config ─────────────────────────────────────────────────────────────
 
-export const GRADE_LEVELS: readonly GradeConfig[] = [
-    { id: 'tier-1', label: 'Seedling', grades: 'K – 1st', defaultCategory: 'tier-1', minDifficultyLevel: 1 },
-    { id: 'tier-2', label: 'Sprout', grades: '2nd – 3rd', defaultCategory: 'tier-2', minDifficultyLevel: 2 },
-    { id: 'tier-3', label: 'Growing', grades: '4th – 5th', defaultCategory: 'tier-3', minDifficultyLevel: 3 },
-    { id: 'tier-4', label: 'Climbing', grades: '6th – 7th', defaultCategory: 'tier-4', minDifficultyLevel: 4 },
-    { id: 'tier-5', label: 'Summit', grades: '8th+', defaultCategory: 'tier-5', minDifficultyLevel: 5 },
+export const LEVELS: readonly LevelConfig[] = [
+    { id: 'tier-1', label: 'Level 1', defaultCategory: 'tier-1', minDifficultyLevel: 1 },
+    { id: 'tier-2', label: 'Level 2', defaultCategory: 'tier-2', minDifficultyLevel: 2 },
+    { id: 'tier-3', label: 'Level 3', defaultCategory: 'tier-3', minDifficultyLevel: 3 },
+    { id: 'tier-4', label: 'Level 4', defaultCategory: 'tier-4', minDifficultyLevel: 4 },
+    { id: 'tier-5', label: 'Level 5', defaultCategory: 'tier-5', minDifficultyLevel: 5 },
+    { id: 'tier-6', label: 'Level 6', defaultCategory: 'tier-6', minDifficultyLevel: 6 },
+    { id: 'tier-7', label: 'Level 7', defaultCategory: 'tier-7', minDifficultyLevel: 7 },
+    { id: 'tier-8', label: 'Level 8', defaultCategory: 'tier-8', minDifficultyLevel: 8 },
+    { id: 'tier-9', label: 'Level 9', defaultCategory: 'tier-9', minDifficultyLevel: 9 },
+    { id: 'tier-10', label: 'Level 10', defaultCategory: 'tier-10', minDifficultyLevel: 10 },
 ] as const;
 
-/** Icon for a grade level (reuses the tier icon from SPELLING_CATEGORIES). */
+/** @deprecated Use LEVELS instead */
+export const GRADE_LEVELS = LEVELS;
+
+/** Icon for a level (reuses the tier icon from SPELLING_CATEGORIES). */
 // eslint-disable-next-line react-refresh/only-export-components
-export function gradeIcon(grade: GradeLevel): ReactNode {
-    return SPELLING_CATEGORIES.find(c => c.id === grade)?.icon;
+export function levelIcon(level: Level): ReactNode {
+    return SPELLING_CATEGORIES.find(c => c.id === level)?.icon;
 }
 
-/** Lookup helper: get grade config by ID. Falls back to tier-1. */
+/** @deprecated Use levelIcon instead */
 // eslint-disable-next-line react-refresh/only-export-components
-export function getGradeConfig(grade: GradeLevel): GradeConfig {
-    return GRADE_LEVELS.find(g => g.id === grade) ?? GRADE_LEVELS[0];
+export const gradeIcon = levelIcon;
+
+/** Lookup helper: get level config by ID. Falls back to tier-1. */
+// eslint-disable-next-line react-refresh/only-export-components
+export function getLevelConfig(level: Level): LevelConfig {
+    return LEVELS.find(g => g.id === level) ?? LEVELS[0];
 }
+
+/** @deprecated Use getLevelConfig instead */
+// eslint-disable-next-line react-refresh/only-export-components
+export const getGradeConfig = getLevelConfig;

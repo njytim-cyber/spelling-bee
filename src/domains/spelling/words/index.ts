@@ -45,18 +45,15 @@ export function wordsByPatternAndDifficulty(
 }
 
 /**
- * Maps adaptive difficulty level (1-5 from useDifficulty) to a word
- * difficulty range [min, max] inclusive.
+ * Maps adaptive difficulty level (1-10 from useDifficulty) to a word
+ * difficulty range [min, max] inclusive. Centered 3-wide window around
+ * the target level for variety while staying close.
  */
 export function difficultyRange(level: number): [DifficultyTier, DifficultyTier] {
-    switch (level) {
-        case 1: return [1, 2];
-        case 2: return [1, 4];
-        case 3: return [3, 6];
-        case 4: return [5, 8];
-        case 5: return [7, 10];
-        default: return [1, 4];
-    }
+    const clamped = Math.max(1, Math.min(10, Math.round(level)));
+    const min = Math.max(1, clamped - 1) as DifficultyTier;
+    const max = Math.min(10, clamped + 1) as DifficultyTier;
+    return [min, max];
 }
 
 /** Get words matching a specific semantic theme. Uses cached index. */

@@ -124,7 +124,7 @@ const WordRow = memo(function WordRow({
                                 </>
                             ) : (
                                 <p className="text-[11px] ui text-[rgb(var(--color-fg))]/30">
-                                    Word details unavailable. Try switching to a higher grade level.
+                                    Word details unavailable. Try switching to a higher level.
                                 </p>
                             )}
                         </div>

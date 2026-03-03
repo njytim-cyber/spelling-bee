@@ -10,9 +10,9 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'grades' | 'topics' | 'compete' | 'origins';
+type Tab = 'levels' | 'topics' | 'compete' | 'origins';
 
-const GRADE_GROUPS: SpellingGroup[] = ['tier'];
+const LEVEL_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
 const ORIGIN_GROUPS: SpellingGroup[] = ['origins'];
 
@@ -21,10 +21,10 @@ const COMP_WORD_IDS: SpellingCategory[] = ['wotc-one', 'wotc-two', 'wotc-three']
 /** Competition game-mode categories (different UI entirely) */
 const COMP_MODE_IDS: SpellingCategory[] = ['bee', 'written-test'];
 
-const TABS: Tab[] = ['grades', 'topics', 'compete', 'origins'];
-const TAB_LABELS: Record<Tab, string> = { grades: 'Grades', topics: 'Topics', compete: 'Compete', origins: 'Origins' };
+const TABS: Tab[] = ['levels', 'topics', 'compete', 'origins'];
+const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', compete: 'Compete', origins: 'Origins' };
 const TAB_DESCRIPTIONS: Record<Tab, string> = {
-    grades: 'Words by school grade level',
+    levels: 'Words by difficulty level',
     topics: 'Practice specific phonics patterns',
     compete: 'Competition words & spelling bee modes',
     origins: 'Words grouped by language of origin',
@@ -33,9 +33,9 @@ const SWIPE_THRESHOLD = 50;
 
 export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
     const [open, setOpen] = useState(false);
-    const [tab, setTab] = useState<Tab>('grades');
+    const [tab, setTab] = useState<Tab>('levels');
 
-    const gradeGroups = useMemo(() => GRADE_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
+    const levelGroups = useMemo(() => LEVEL_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const themeGroups = useMemo(() => THEME_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const originGroups = useMemo(() => ORIGIN_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
 
@@ -192,7 +192,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             transition={{ duration: 0.15 }}
                                         >
                                             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mb-3 text-center">{TAB_DESCRIPTIONS[tab]}</div>
-                                            {tab === 'grades' ? renderGrid(gradeGroups)
+                                            {tab === 'levels' ? renderGrid(levelGroups)
                                                 : tab === 'topics' ? renderGrid(themeGroups)
                                                 : tab === 'compete' ? renderCompete()
                                                 : renderGrid(originGroups)}

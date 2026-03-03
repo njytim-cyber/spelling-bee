@@ -100,8 +100,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
         sendEmailLink,
         updateBadge,
         dialect,
-        grade,
-        onGradeChange,
+        level,
+        onLevelChange,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -661,8 +661,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                     <SettingsModal
                         dialect={dialect}
                         onDialectChange={onDialectChange}
-                        grade={grade}
-                        onGradeChange={onGradeChange}
+                        level={level}
+                        onLevelChange={onLevelChange}
                         onClose={() => setShowSettings(false)}
                     />
                 )}

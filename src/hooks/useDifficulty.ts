@@ -1,13 +1,13 @@
 import { useState, useCallback, useRef } from 'react';
 
-const MAX_LEVEL = 5;
+const MAX_LEVEL = 10;
 const FAST_THRESHOLD_MS = 1500;
 const SLOW_THRESHOLD_MS = 4000;
 const FAST_STREAK_TO_LEVEL_UP = 3;
 const SLOW_STREAK_TO_LEVEL_DOWN = 2;
 
 export function useDifficulty(minLevel = 1) {
-    const [level, setLevel] = useState(Math.max(2, minLevel));
+    const [level, setLevel] = useState(minLevel);
     const fastCount = useRef(0);
     const slowCount = useRef(0);
 

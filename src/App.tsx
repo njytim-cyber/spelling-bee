@@ -8,8 +8,8 @@ import { ScoreCounter } from './components/ScoreCounter';
 import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
-import type { SpellingCategory, GradeLevel } from './domains/spelling/spellingCategories';
-import { getGradeConfig } from './domains/spelling/spellingCategories';
+import type { SpellingCategory, Level } from './domains/spelling/spellingCategories';
+import { getLevelConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { useReducedMotion } from './hooks/useReducedMotion';
@@ -185,8 +185,8 @@ function AppInner() {
     activeCostume,
     activeTheme,
     activeTrailId,
-    grade,
-    onGradeChange,
+    level,
+    onLevelChange,
     dialect,
     onDialectChange,
   } = useUser();
@@ -241,7 +241,7 @@ function AppInner() {
   const [questionType, setQuestionTypeRaw] = useState<QuestionType>(() => {
     if (challengeId) return 'challenge';
     const stored = localStorage.getItem(STORAGE_KEYS.grade);
-    if (stored) return getGradeConfig(stored as GradeLevel).defaultCategory;
+    if (stored) return getLevelConfig(stored as Level).defaultCategory;
     return 'cvc';
   });
   const prevCategoryRef = useRef(questionType);
@@ -253,6 +253,11 @@ function AppInner() {
     }
     setQuestionTypeRaw(type);
   }, [openModal]);
+
+  // ── Session mode (from Path page curriculum) ──
+  const [sessionSize, setSessionSize] = useState<number | null>(null);
+  const [sessionAnswered, setSessionAnswered] = useState(0);
+  const sessionComplete = sessionSize !== null && sessionAnswered >= sessionSize;
 
   const handleDialectChange = useCallback(async (d: Dialect) => {
     onDialectChange(d);
@@ -290,7 +295,9 @@ function AppInner() {
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
     const word = item.meta?.['word'] as string | undefined;
     if (word) recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
-  }, [recordAttempt]);
+    // Track session progress
+    if (sessionSize !== null) setSessionAnswered(n => n + 1);
+  }, [recordAttempt, sessionSize]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
   const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
@@ -312,10 +319,10 @@ function AppInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reviewQueue, wordRegistryVersion]);
 
-  // ── Grade config (needed before useGameLoop) ──
-  const gradeConfig = useMemo(
-    () => grade ? getGradeConfig(grade as GradeLevel) : null,
-    [grade],
+  // ── Level config (needed before useGameLoop) ──
+  const levelConfig = useMemo(
+    () => level ? getLevelConfig(level as Level) : null,
+    [level],
   );
 
   // Initialize onboarding state on mount
@@ -355,7 +362,7 @@ function AppInner() {
     GAME_CONFIG,
     generateFiniteSet,
     onAnswer,
-    gradeConfig?.minDifficultyLevel ?? 1,
+    levelConfig?.minDifficultyLevel ?? 1,
   );
 
   // ── Shield consumed toast ──
@@ -574,13 +581,13 @@ function AppInner() {
     }
   }, [activeTab, handleTabChange]);
 
-  const handleOnboardingComplete = useCallback((d: Dialect, g: GradeLevel) => {
+  const handleOnboardingComplete = useCallback((d: Dialect, l: Level) => {
     onDialectChange(d);
-    onGradeChange(g);
-    const config = getGradeConfig(g);
+    onLevelChange(l);
+    const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);
     setShowOnboarding(false);
-  }, [onDialectChange, onGradeChange, setQuestionType, setShowOnboarding]);
+  }, [onDialectChange, onLevelChange, setQuestionType, setShowOnboarding]);
 
   // ── Chalk themes ──
   useEffect(() => {
@@ -789,10 +796,10 @@ function AppInner() {
                   )}
                 </div>
               )}
-              {/* Grade level label — hidden in review/challenge modes */}
-              {gradeConfig && questionType !== 'review' && questionType !== 'challenge' && (
+              {/* Level label — hidden in review/challenge modes */}
+              {levelConfig && questionType !== 'review' && questionType !== 'challenge' && (
                 <div className="mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40 font-medium">
-                  {gradeConfig.label} <span className="text-[rgb(var(--color-fg))]/20">{gradeConfig.grades}</span>
+                  {levelConfig.label}
                 </div>
               )}
             </div>}
@@ -816,7 +823,7 @@ function AppInner() {
             <div className="flex-1 flex flex-col min-h-0">
               {questionType === 'bee' ? (
                 <BeeSimPage
-                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
                   onAnswer={(word, correct, ms, typed) => {
                     recordAttempt(word, 'bee', correct, ms, typed);
                   }}
@@ -825,7 +832,7 @@ function AppInner() {
               ) : (questionType === 'guided' || guidedMode) ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') { const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : gradeConfig?.defaultCategory ?? 'cvc'); } }}
+                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') { const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : levelConfig?.defaultCategory ?? 'cvc'); } }}
                     onAnswer={(word, correct, ms, typed) => {
                       recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
                     }}
@@ -836,7 +843,7 @@ function AppInner() {
                 </Suspense>
               ) : questionType === 'written-test' ? (
                 <WrittenTestPage
-                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
                 />
               ) : questionType === 'review' && reviewQueue.length === 0 && totalAnswered === 0 ? (
                 <div className="flex-1 flex flex-col items-center justify-center px-6 gap-3">
@@ -846,7 +853,7 @@ function AppInner() {
                     No words are due for review. Words you get wrong are added here and come back on a schedule so you remember them.
                   </p>
                   <button
-                    onClick={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                    onClick={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
                     className="mt-2 px-5 py-2 rounded-xl text-sm ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
                   >
                     Back to Play
@@ -857,7 +864,7 @@ function AppInner() {
                   correct={totalCorrect}
                   total={totalAnswered}
                   score={score}
-                  onExit={() => setQuestionType(gradeConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
                   mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
                 />
               ) : (
@@ -888,6 +895,35 @@ function AppInner() {
                 </AnimatePresence>
               )}
             </div>
+
+            {/* ── Session complete overlay ── */}
+            {sessionComplete && (
+              <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
+                <div className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-gold)]/30 text-center">
+                  <div className="text-2xl chalk text-[var(--color-gold)] font-bold mb-2">Session Complete!</div>
+                  <div className="text-sm ui text-[rgb(var(--color-fg))]/60 mb-1">
+                    {sessionSize} words practiced
+                  </div>
+                  <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-4">
+                    {totalCorrect} correct out of {totalAnswered}
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => { setSessionSize(null); setSessionAnswered(0); setActiveTab('path'); }}
+                      className="flex-1 py-2.5 rounded-xl text-sm ui font-medium text-[rgb(var(--color-fg))]/60 bg-[rgb(var(--color-fg))]/10 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
+                    >
+                      Back to Path
+                    </button>
+                    <button
+                      onClick={() => { setSessionAnswered(0); }}
+                      className="flex-1 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                      Play Again
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* ── TikTok-style action buttons — hidden during immersive sub-modes ── */}
             {questionType !== 'bee' && questionType !== 'guided' && questionType !== 'written-test' && !guidedMode && (
@@ -1001,10 +1037,20 @@ function AppInner() {
               }}
               onPractice={(cat) => {
                 setQuestionType(cat as QuestionType);
-                // If practicing a tier category, also update grade level to match
                 if (cat.startsWith('tier-')) {
-                  onGradeChange(cat as GradeLevel);
+                  onLevelChange(cat as Level);
                 }
+                setSessionSize(null);
+                setSessionAnswered(0);
+                setActiveTab('game');
+              }}
+              onStartSession={(cat, size) => {
+                setQuestionType(cat as QuestionType);
+                if (cat.startsWith('tier-')) {
+                  onLevelChange(cat as Level);
+                }
+                setSessionSize(size);
+                setSessionAnswered(0);
                 setActiveTab('game');
               }}
             />
@@ -1135,7 +1181,7 @@ function AppInner() {
           <OnboardingModal
             onComplete={handleOnboardingComplete}
             currentDialect={dialect as Dialect}
-            currentGrade={grade as GradeLevel}
+            currentLevel={level as Level}
           />
         )}
       </AnimatePresence>

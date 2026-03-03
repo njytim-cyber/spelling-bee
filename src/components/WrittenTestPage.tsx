@@ -14,7 +14,7 @@ interface Props {
     onComplete?: (score: number, total: number) => void;
 }
 
-const DIFFICULTY_LABELS = ['Easy (K-2)', 'Medium (2-4)', 'Standard (3-6)', 'Hard (5-8)', 'Expert (7-10)'];
+const DIFFICULTY_LABELS = ['Easy (1-2)', 'Medium (2-4)', 'Standard (3-6)', 'Hard (5-8)', 'Expert (7-10)'];
 
 export const WrittenTestPage = memo(function WrittenTestPage({ onExit, onComplete }: Props) {
     const {

@@ -424,71 +424,8 @@ export function getMistakeInsights(records: Record<string, WordRecord>): Mistake
         .slice(0, 3);
 }
 
-// ── Grade-level progress ─────────────────────────────────────────────────────
-
-export interface GradeLevelProgress {
-    gradeId: string;
-    label: string;
-    grades: string;
-    totalWords: number;
-    masteredWords: number;
-    progress: number; // 0-1
-}
-
-/**
- * Returns progress toward mastering words at each grade level.
- * Only returns levels where the student has attempted at least 1 word.
- */
-export function getGradeLevelProgress(records: Record<string, WordRecord>): GradeLevelProgress[] {
-    const wordMap = getWordMap();
-
-    // Group words by difficulty tier
-    const tiers: Record<string, { mastered: number; total: number }> = {};
-    for (const r of Object.values(records)) {
-        const detail = wordMap.get(r.word);
-        if (!detail) continue;
-        const tier = diffToTier(detail.difficulty);
-        if (!tiers[tier]) tiers[tier] = { mastered: 0, total: 0 };
-        tiers[tier].total++;
-        if (r.box >= 3) tiers[tier].mastered++;
-    }
-
-    // Get total available words per tier from the word bank
-    const TIER_INFO: { id: string; label: string; grades: string; minDiff: number; maxDiff: number }[] = [
-        { id: 'tier-1', label: 'Seedling', grades: 'K – 1st', minDiff: 1, maxDiff: 2 },
-        { id: 'tier-2', label: 'Sprout', grades: '2nd – 3rd', minDiff: 3, maxDiff: 4 },
-        { id: 'tier-3', label: 'Growing', grades: '4th – 5th', minDiff: 5, maxDiff: 6 },
-        { id: 'tier-4', label: 'Climbing', grades: '6th – 7th', minDiff: 7, maxDiff: 8 },
-        { id: 'tier-5', label: 'Summit', grades: '8th+', minDiff: 9, maxDiff: 10 },
-    ];
-
-    return TIER_INFO
-        .map(t => {
-            const studied = tiers[t.id] ?? { mastered: 0, total: 0 };
-            if (studied.total === 0) return null;
-            // Count total available words for this tier
-            let available = 0;
-            for (const w of wordMap.values()) {
-                if (w.difficulty >= t.minDiff && w.difficulty <= t.maxDiff) available++;
-            }
-            return {
-                gradeId: t.id,
-                label: t.label,
-                grades: t.grades,
-                totalWords: available,
-                masteredWords: studied.mastered,
-                progress: available > 0 ? studied.mastered / available : 0,
-            };
-        })
-        .filter((x): x is GradeLevelProgress => x !== null);
-}
-
 function diffToTier(diff: number): string {
-    if (diff <= 2) return 'tier-1';
-    if (diff <= 4) return 'tier-2';
-    if (diff <= 6) return 'tier-3';
-    if (diff <= 8) return 'tier-4';
-    return 'tier-5';
+    return `tier-${Math.max(1, Math.min(10, Math.round(diff)))}`;
 }
 
 // ── Adaptive difficulty nudge ────────────────────────────────────────────────
@@ -520,13 +457,12 @@ export function getDifficultyNudge(records: Record<string, WordRecord>): Difficu
         tiers[tier].words++;
     }
 
-    const ORDER = ['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5'];
+    const ORDER = ['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'tier-6', 'tier-7', 'tier-8', 'tier-9', 'tier-10'];
     const LABELS: Record<string, string> = {
-        'tier-1': 'Seedling (K–1st)',
-        'tier-2': 'Sprout (2nd–3rd)',
-        'tier-3': 'Growing (4th–5th)',
-        'tier-4': 'Climbing (6th–7th)',
-        'tier-5': 'Summit (8th+)',
+        'tier-1': 'Level 1', 'tier-2': 'Level 2', 'tier-3': 'Level 3',
+        'tier-4': 'Level 4', 'tier-5': 'Level 5', 'tier-6': 'Level 6',
+        'tier-7': 'Level 7', 'tier-8': 'Level 8', 'tier-9': 'Level 9',
+        'tier-10': 'Level 10',
     };
 
     for (let i = 0; i < ORDER.length - 1; i++) {

@@ -16,9 +16,9 @@ export interface WordPack {
 }
 
 const PACKS: Omit<WordPack, 'downloaded'>[] = [
-    { id: 'k-3rd', label: 'K – 3rd', description: 'CVC, blends, digraphs, silent-e, vowel teams', tiers: [1, 2] },
-    { id: '4th-5th', label: '4th – 5th', description: 'Prefixes, suffixes, multisyllable', tiers: [3] },
-    { id: '6th-plus', label: '6th+', description: 'Latin/Greek roots, competition words', tiers: [4, 5] },
+    { id: 'levels-1-3', label: 'Levels 1–3', description: 'CVC, blends, digraphs, silent-e, vowel teams', tiers: [1, 2, 3] },
+    { id: 'levels-4-6', label: 'Levels 4–6', description: 'Prefixes, suffixes, multisyllable', tiers: [4, 5, 6] },
+    { id: 'levels-7-10', label: 'Levels 7–10', description: 'Latin/Greek roots, competition words', tiers: [7, 8, 9] },
 ];
 
 /** Get the status of all word packs. */

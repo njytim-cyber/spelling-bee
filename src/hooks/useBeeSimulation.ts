@@ -22,10 +22,10 @@ export type BeeLevel = 'classroom' | 'district' | 'state' | 'national';
 
 /** Minimum difficulty level per bee level (the floor — rounds still ramp up from here) */
 const BEE_LEVEL_FLOOR: Record<BeeLevel, number> = {
-    classroom: 1,   // starts at kindergarten, ramps to ~6
-    district: 2,    // starts at grade 2-3, ramps to ~8
-    state: 3,       // starts at grade 4-5, ramps to ~9
-    national: 4,    // starts at grade 6+, ramps to 10
+    classroom: 1,   // starts at level 1, ramps to ~6
+    district: 3,    // starts at level 3, ramps to ~8
+    state: 5,       // starts at level 5, ramps to ~9
+    national: 7,    // starts at level 7, ramps to 10
 };
 
 /** Timer duration per bee level (seconds). null = no timer. */
@@ -98,8 +98,8 @@ function redactWord(sentence: string, word: string): string {
 function pickBeeWord(round: number, category?: string, hardMode = false, beeLevel: BeeLevel = 'classroom'): SpellingWord {
     // Difficulty ramps from the bee level's floor
     const floor = BEE_LEVEL_FLOOR[beeLevel];
-    const diffLevel = Math.min(5, floor + Math.floor(round / 3));
-    const effectiveDifficulty = hardMode ? Math.min(5, diffLevel + 1) : diffLevel;
+    const diffLevel = Math.min(10, floor + Math.floor(round / 3));
+    const effectiveDifficulty = hardMode ? Math.min(10, diffLevel + 1) : diffLevel;
     const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
 
     const pool = selectWordPool(category, minDiff, maxDiff, hardMode);

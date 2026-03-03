@@ -191,9 +191,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 {onOpenWotc && (
                     <div className="flex gap-2">
                         {([
-                            { tier: 'wotc-one' as const, label: 'One Bee', desc: 'Grades K\u20132' },
-                            { tier: 'wotc-two' as const, label: 'Two Bee', desc: 'Grades 3\u20135' },
-                            { tier: 'wotc-three' as const, label: 'Three Bee', desc: 'Grades 6\u20138' },
+                            { tier: 'wotc-one' as const, label: 'One Bee', desc: 'Levels 1\u20132' },
+                            { tier: 'wotc-two' as const, label: 'Two Bee', desc: 'Levels 3\u20136' },
+                            { tier: 'wotc-three' as const, label: 'Three Bee', desc: 'Levels 7\u201310' },
                         ]).map(t => (
                             <button
                                 key={t.tier}

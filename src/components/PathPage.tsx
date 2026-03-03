@@ -2,21 +2,25 @@
  * components/PathPage.tsx
  *
  * Study Dashboard — the "Path" tab. Shows a single clear CTA,
- * compact study plan, and accordion-style curriculum grouped by tier.
+ * compact study plan, and flat 10-level curriculum.
  */
 import { memo, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
-import { evaluateCurriculum, type PhaseProgress } from '../domains/spelling/curriculum';
+import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/curriculum';
 import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
+import type { DifficultyTier } from '../domains/spelling/words/types';
+import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
 
 interface Props {
     records: Record<string, WordRecord>;
     onPractice?: (category: string) => void;
+    /** Start a structured session: category + word count */
+    onStartSession?: (category: string, sessionSize: number) => void;
     reviewDueCount?: number;
     hardestWordCount?: number;
     onDrillHardest?: () => void;
@@ -70,246 +74,119 @@ function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?
     );
 }
 
-// ── Tier group labels ───────────────────────────────────────────────────────
+// ── Session size picker modal ────────────────────────────────────────────────
 
-const TIER_META: Record<string, { label: string; grades: string; diffRange: [number, number] }> = {
-    'tier-1': { label: 'Seedling', grades: 'K \u2013 1st', diffRange: [1, 2] },
-    'tier-2': { label: 'Sprout', grades: '2nd \u2013 3rd', diffRange: [3, 4] },
-    'tier-3': { label: 'Growing', grades: '4th \u2013 5th', diffRange: [5, 6] },
-    'tier-4': { label: 'Climbing', grades: '6th \u2013 8th', diffRange: [7, 8] },
-    'tier-5': { label: 'Summit', grades: '8th+', diffRange: [9, 10] },
-};
+const SESSION_SIZES = [10, 20, 50] as const;
 
-function getTierWordCounts(): Record<string, number> {
-    const counts: Record<string, number> = {};
-    for (const [tier, meta] of Object.entries(TIER_META)) {
-        counts[tier] = wordsByDifficulty(meta.diffRange[0] as 1, meta.diffRange[1] as 10).length;
-    }
-    return counts;
-}
-
-interface TierGroup {
-    grade: string;
-    label: string;
-    grades: string;
-    wordCount: number;
-    phases: Array<PhaseProgress & { index: number }>;
-    /** Is the current active phase inside this tier? */
-    isCurrent: boolean;
-    /** Are all phases in this tier complete? */
-    isComplete: boolean;
-    /** Are all phases locked? */
-    isLocked: boolean;
-    /** 0-1 progress across the tier's mastery gates */
-    progress: number;
-}
-
-function groupByTier(phases: PhaseProgress[], currentPhaseIndex: number, wordCounts: Record<string, number>): TierGroup[] {
-    const groups = new Map<string, TierGroup>();
-
-    phases.forEach((pp, i) => {
-        const g = pp.phase.grade;
-        if (!groups.has(g)) {
-            const meta = TIER_META[g] ?? { label: g, grades: '' };
-            groups.set(g, {
-                grade: g,
-                label: meta.label,
-                grades: meta.grades,
-                wordCount: wordCounts[g] ?? 0,
-                phases: [],
-                isCurrent: false,
-                isComplete: true,
-                isLocked: true,
-                progress: 0,
-            });
-        }
-        const group = groups.get(g)!;
-        group.phases.push({ ...pp, index: i });
-        if (i === currentPhaseIndex) group.isCurrent = true;
-        if (pp.unlocked) group.isLocked = false;
-        const phaseComplete = pp.unlocked && pp.masteredWords >= pp.phase.masteryGate && pp.accuracy >= pp.phase.accuracyGate;
-        if (!phaseComplete) group.isComplete = false;
-    });
-
-    // Compute tier-level progress: average of phase progresses within the tier
-    for (const group of groups.values()) {
-        const lastPhase = group.phases[group.phases.length - 1];
-        group.progress = lastPhase ? lastPhase.progress : 0;
-    }
-
-    return Array.from(groups.values());
-}
-
-// ── Accordion tier header ───────────────────────────────────────────────────
-
-function TierAccordion({ group, expanded, onToggle, onPractice }: {
-    group: TierGroup;
-    expanded: boolean;
-    onToggle: () => void;
-    onPractice?: (category: string) => void;
+function SessionPicker({ level, onPick, onClose }: {
+    level: LevelProgress;
+    onPick: (size: number) => void;
+    onClose: () => void;
 }) {
     return (
-        <div className="mb-2">
-            {/* Header row */}
-            <button
-                onClick={onToggle}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-colors relative overflow-hidden ${
-                    group.isCurrent
-                        ? 'bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30'
-                        : group.isComplete
-                        ? 'bg-[var(--color-correct)]/5 border border-[var(--color-correct)]/15'
-                        : group.isLocked
-                        ? 'bg-[rgb(var(--color-fg))]/[0.02] border border-[rgb(var(--color-fg))]/5'
-                        : 'bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8'
-                }`}
+        <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+        >
+            <motion.div
+                className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/10"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={e => e.stopPropagation()}
             >
-                {/* Subtle progress bar at bottom of header */}
-                {!group.isLocked && group.progress > 0 && group.progress < 1 && (
-                    <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[rgb(var(--color-fg))]/5">
-                        <div
-                            className={`h-full transition-all ${group.isCurrent ? 'bg-[var(--color-gold)]/60' : 'bg-[var(--color-correct)]/40'}`}
-                            style={{ width: `${Math.round(group.progress * 100)}%` }}
-                        />
+                <div className="text-center mb-4">
+                    <div className="text-lg chalk text-[var(--color-gold)] font-bold">{level.label}</div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-1">
+                        {level.totalWords.toLocaleString()} words available
                     </div>
-                )}
+                </div>
+                <div className="text-xs ui text-[rgb(var(--color-fg))]/50 text-center mb-3">
+                    How many words?
+                </div>
+                <div className="flex gap-2">
+                    {SESSION_SIZES.map(size => (
+                        <button
+                            key={size}
+                            onClick={() => onPick(size)}
+                            className="flex-1 py-3 rounded-xl text-sm ui font-bold text-[var(--color-chalk)] bg-[rgb(var(--color-fg))]/[0.05] border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/10 transition-colors"
+                        >
+                            {size}
+                        </button>
+                    ))}
+                </div>
+                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 text-center mt-3">
+                    Review words make up to 20% of each session
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+}
 
-                {/* Status icon */}
-                <span className={`text-base shrink-0 ${
-                    group.isComplete ? 'text-[var(--color-correct)]' :
-                    group.isCurrent ? 'text-[var(--color-gold)]' :
-                    group.isLocked ? 'text-[rgb(var(--color-fg))]/30' :
-                    'text-[rgb(var(--color-fg))]/40'
-                }`}>
-                    {group.isComplete ? '\u2713' : group.isLocked ? '\uD83D\uDD12' : '\u25B6'}
-                </span>
+// ── Level row ────────────────────────────────────────────────────────────────
 
-                {/* Tier label */}
-                <div className="flex-1 min-w-0 text-left">
-                    <div className="flex items-baseline gap-1.5">
-                        <span className={`text-sm ui font-medium ${
-                            group.isCurrent ? 'text-[var(--color-gold)]' :
-                            group.isComplete ? 'text-[var(--color-correct)]' :
-                            group.isLocked ? 'text-[rgb(var(--color-fg))]/45' :
-                            'text-[rgb(var(--color-fg))]/70'
-                        }`}>
-                            {group.label}
-                        </span>
-                        <span className={`text-[10px] ui ${
-                            group.isLocked ? 'text-[rgb(var(--color-fg))]/30' : 'text-[rgb(var(--color-fg))]/40'
-                        }`}>
-                            {group.wordCount.toLocaleString()} words
-                        </span>
-                    </div>
-                    <span className={`text-[10px] ui ${
-                        group.isLocked ? 'text-[rgb(var(--color-fg))]/30' : 'text-[rgb(var(--color-fg))]/40'
-                    }`}>
-                        {group.grades}
+function LevelRow({ lp, onClick }: { lp: LevelProgress; onClick: () => void }) {
+    const pct = lp.totalWords > 0 ? lp.mastered / lp.totalWords : 0;
+    const icon = levelIcon(lp.tierId as Level);
+
+    return (
+        <button
+            onClick={onClick}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors mb-2"
+        >
+            {/* Icon */}
+            <span className="shrink-0 w-6 h-6 text-[rgb(var(--color-fg))]/50">{icon}</span>
+
+            {/* Label + progress */}
+            <div className="flex-1 min-w-0 text-left">
+                <div className="flex items-baseline gap-1.5">
+                    <span className="text-sm ui font-medium text-[rgb(var(--color-fg))]/70">
+                        {lp.label}
+                    </span>
+                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
+                        {lp.totalWords.toLocaleString()} words
                     </span>
                 </div>
+                {/* Progress bar */}
+                <div className="flex items-center gap-2 mt-1">
+                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                        <div
+                            className="h-full rounded-full bg-[var(--color-gold)] transition-all"
+                            style={{ width: `${Math.round(pct * 100)}%` }}
+                        />
+                    </div>
+                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
+                        {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords}
+                    </span>
+                </div>
+            </div>
 
-                {/* Chevron */}
-                <span className={`text-[rgb(var(--color-fg))]/30 text-xs transition-transform duration-200 ${expanded ? 'rotate-90' : ''}`}>
-                    {'\u25B6'}
-                </span>
-            </button>
-
-            {/* Expandable phase list */}
-            <AnimatePresence>
-                {expanded && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.15 }}
-                        className="overflow-hidden"
-                    >
-                        <div className="pl-4 pt-1.5 space-y-1.5">
-                            {group.phases.map((pp, phaseIdx) => {
-                                const isComplete = pp.unlocked && pp.masteredWords >= pp.phase.masteryGate && pp.accuracy >= pp.phase.accuracyGate;
-                                const isLocked = !pp.unlocked;
-                                const isCurrent = group.isCurrent && pp.index === group.phases.find(p =>
-                                    p.unlocked && p.masteredWords < p.phase.masteryGate)?.index;
-                                // Find the previous phase to show its gate as unlock criteria
-                                const prevPhase = phaseIdx > 0 ? group.phases[phaseIdx - 1] : null;
-
-                                return (
-                                    <div
-                                        key={pp.phase.id}
-                                        className={`flex items-center gap-2.5 px-3 py-2 rounded-xl ${
-                                            isCurrent ? 'bg-[var(--color-gold)]/5' : ''
-                                        }`}
-                                    >
-                                        <span className={`text-xs shrink-0 ${
-                                            isComplete ? 'text-[var(--color-correct)]' :
-                                            isCurrent ? 'text-[var(--color-gold)]' :
-                                            'text-[rgb(var(--color-fg))]/30'
-                                        }`}>
-                                            {isComplete ? '\u2713' : isLocked ? '\uD83D\uDD12' : '\u25B6'}
-                                        </span>
-
-                                        <div className="flex-1 min-w-0">
-                                            <span className={`text-xs ui font-medium ${
-                                                isCurrent ? 'text-[var(--color-gold)]' :
-                                                isComplete ? 'text-[var(--color-correct)]/80' :
-                                                isLocked ? 'text-[rgb(var(--color-fg))]/40' :
-                                                'text-[rgb(var(--color-fg))]/60'
-                                            }`}>
-                                                {pp.phase.name}
-                                            </span>
-                                            <span className={`text-[9px] ui ml-1.5 ${
-                                                isLocked ? 'text-[rgb(var(--color-fg))]/25' : 'text-[rgb(var(--color-fg))]/35'
-                                            }`}>
-                                                {isLocked && prevPhase
-                                                    ? `Master ${prevPhase.phase.masteryGate} words at ${Math.round(prevPhase.phase.accuracyGate * 100)}%+ to unlock`
-                                                    : pp.phase.description}
-                                            </span>
-
-                                            {!isLocked && (
-                                                <div className="flex items-center gap-2 mt-1">
-                                                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
-                                                        <div
-                                                            className={`h-full rounded-full transition-all ${
-                                                                isComplete ? 'bg-[var(--color-correct)]' :
-                                                                isCurrent ? 'bg-[var(--color-gold)]' :
-                                                                'bg-[rgb(var(--color-fg))]/15'
-                                                            }`}
-                                                            style={{ width: `${Math.round(pp.progress * 100)}%` }}
-                                                        />
-                                                    </div>
-                                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
-                                                        {pp.masteredWords}/{pp.phase.masteryGate}
-                                                    </span>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {isCurrent && onPractice && pp.phase.categories[0] && (
-                                            <button
-                                                onClick={() => onPractice(pp.phase.categories[0])}
-                                                className="shrink-0 px-2.5 py-1 rounded-lg text-[9px] ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                                            >
-                                                Go
-                                            </button>
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+            {/* Play indicator */}
+            <span className="text-[rgb(var(--color-fg))]/30 text-xs shrink-0">{'\u25B6'}</span>
+        </button>
     );
+}
+
+// ── Helper: word count by single difficulty ──────────────────────────────────
+
+function wordCountByDifficulty(diff: DifficultyTier): number {
+    return wordsByDifficulty(diff, diff).length;
 }
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
     const registryVersion = getRegistryVersion();
-    const curriculum = useMemo(() => evaluateCurriculum(records), [records]);
+    const levelProgress = useMemo(
+        () => evaluateLevelProgress(records, wordCountByDifficulty),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [records, registryVersion],
+    );
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount, hardestWordCount), [records, reviewDueCount, hardestWordCount]);
     const difficultyNudge = useMemo(() => getDifficultyNudge(records), [records]);
-    const tierWordCounts = useMemo(() => getTierWordCounts(), [registryVersion]);
 
     // Root mastery data
     const rootMasteryData = useMemo(() => computeRootMastery(records, WORD_ROOTS), [records]);
@@ -322,10 +199,8 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
     // Study Tools modal
     const [studyToolsTab, setStudyToolsTab] = useState<StudyTab | null>(null);
 
-    // Accordion: expand the tier containing the current phase by default
-    const tierGroups = useMemo(() => groupByTier(curriculum.phases, curriculum.currentPhaseIndex, tierWordCounts), [curriculum, tierWordCounts]);
-    const currentTierGrade = curriculum.phases[curriculum.currentPhaseIndex]?.phase.grade ?? '';
-    const [expandedTier, setExpandedTier] = useState<string | null>(currentTierGrade);
+    // Session picker
+    const [pickerLevel, setPickerLevel] = useState<LevelProgress | null>(null);
 
     const totalWords = Object.keys(records).length;
 
@@ -350,6 +225,22 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
         } else if (onPractice) {
             onPractice(category);
         }
+    };
+
+    const handleLevelClick = (lp: LevelProgress) => {
+        if (onStartSession) {
+            setPickerLevel(lp);
+        } else if (onPractice) {
+            // Fallback: just start freeplay at this tier
+            onPractice(lp.tierId);
+        }
+    };
+
+    const handleSessionPick = (size: number) => {
+        if (pickerLevel && onStartSession) {
+            onStartSession(pickerLevel.tierId, size);
+        }
+        setPickerLevel(null);
     };
 
     return (
@@ -449,20 +340,29 @@ export const PathPage = memo(function PathPage({ records, onPractice, reviewDueC
                 </section>
             )}
 
-            {/* ── Curriculum (accordion by tier) ── */}
+            {/* ── Curriculum — flat 10-level list ── */}
             <section>
                 <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Curriculum</h3>
-                {tierGroups.map(group => (
-                    <TierAccordion
-                        key={group.grade}
-                        group={group}
-                        expanded={expandedTier === group.grade}
-                        onToggle={() => setExpandedTier(prev => prev === group.grade ? null : group.grade)}
-                        onPractice={onPractice}
+                {levelProgress.map(lp => (
+                    <LevelRow
+                        key={lp.tierId}
+                        lp={lp}
+                        onClick={() => handleLevelClick(lp)}
                     />
                 ))}
             </section>
         </div>
+
+        {/* Session picker modal */}
+        <AnimatePresence>
+            {pickerLevel && (
+                <SessionPicker
+                    level={pickerLevel}
+                    onPick={handleSessionPick}
+                    onClose={() => setPickerLevel(null)}
+                />
+            )}
+        </AnimatePresence>
 
         {/* Study Tools Modal */}
         <AnimatePresence>

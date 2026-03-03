@@ -183,46 +183,44 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             onPanEnd={handlePanEnd}
         >
             {/* Problem expression / prompt */}
-            <motion.div className="text-center mb-8 landscape-compact-mb pr-12" animate={reducedMotion ? {} : pulseAnim}>
+            <motion.div className="text-center mb-8 landscape-compact-mb px-14" animate={reducedMotion ? {} : pulseAnim}>
                 {/* Vocab mode label */}
                 {p.meta?.['mode'] === 'vocab' && (
                     <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 font-semibold">
                         Which word matches?
                     </div>
                 )}
+                {/* Speaker icon — own line above pill */}
+                {ttsSupported && typeof p.meta?.['word'] === 'string' && (
+                    <button
+                        type="button"
+                        onClick={handleSpeak}
+                        className="mb-2 w-10 h-10 mx-auto flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
+                        aria-label="Hear pronunciation"
+                    >
+                        <IconSpeaker className="w-5 h-5" />
+                    </button>
+                )}
+                {/* Part of speech tag — above definition */}
+                {typeof p.meta?.['partOfSpeech'] === 'string' && (
+                    <div className="mb-2">
+                        <span className="text-[10px] ui uppercase tracking-widest text-[rgb(var(--color-fg))]/30 border border-[rgb(var(--color-fg))]/15 rounded-full px-2.5 py-0.5">
+                            {p.meta['partOfSpeech']}
+                        </span>
+                    </div>
+                )}
+                {/* Definition */}
                 {typeof p.meta?.['definition'] === 'string' ? (
-                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 break-words ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full break-words ${(p.meta['definition'] as string).length > 40 ? 'text-lg' : (p.meta['definition'] as string).length > 25 ? 'text-xl' : 'text-2xl'}`}>
                         {p.meta['definition']}
                     </div>
                 ) : (
-                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full px-2 break-words ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
+                    <div className={`landscape-question ui font-bold leading-tight tracking-wider text-[var(--color-chalk)] max-w-full break-words ${displayText.length > 15 ? 'text-xl' : displayText.length > 10 ? 'text-2xl' : 'text-3xl'}`}>
                         {displayText}
                     </div>
                 )}
-                {/* Rich metadata row: part of speech + pronunciation button */}
-                {(typeof p.meta?.['partOfSpeech'] === 'string' || ttsSupported) && (
-                    <div className="mt-2 flex flex-col items-center gap-1">
-                        <div className="flex items-center justify-center gap-2">
-                            {typeof p.meta?.['partOfSpeech'] === 'string' && (
-                                <span className="text-xs ui text-[rgb(var(--color-fg))]/40 italic">
-                                    ({p.meta['partOfSpeech']})
-                                </span>
-                            )}
-                            {ttsSupported && typeof p.meta?.['word'] === 'string' && (
-                                <button
-                                    type="button"
-                                    onClick={handleSpeak}
-                                    className="w-10 h-10 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
-                                    aria-label="Hear pronunciation"
-                                >
-                                    <IconSpeaker className="w-5 h-5" />
-                                </button>
-                            )}
-                        </div>
-                        {ttsFailed && (
-                            <span className="text-[9px] ui text-[var(--color-wrong)]/50">audio unavailable</span>
-                        )}
-                    </div>
+                {ttsFailed && (
+                    <span className="text-[9px] ui text-[var(--color-wrong)]/50 mt-1 block">audio unavailable</span>
                 )}
                 {/* Example sentence — shown after answering (frozen state) */}
                 {frozen && typeof p.meta?.['exampleSentence'] === 'string' && (
