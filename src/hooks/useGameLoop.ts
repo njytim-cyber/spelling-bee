@@ -158,7 +158,7 @@ export function useGameLoop(
         if (fresh[0]) fresh[0].startTime = Date.now();
 
         setItems(fresh);
-        setGs(INITIAL_STATE);
+        setGs(prev => ({ ...INITIAL_STATE, score: prev.score }));
         sessionMisses.current.clear();
     }, [categoryId, buildInitialSet]);
 

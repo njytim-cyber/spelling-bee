@@ -47,16 +47,16 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'challenge': null,
     'ghost': null,
     'review': null,
-    'tier-1': null,
-    'tier-2': null,
-    'tier-3': null,
-    'tier-4': null,
-    'tier-5': null,
-    'tier-6': null,
-    'tier-7': null,
-    'tier-8': null,
-    'tier-9': null,
-    'tier-10': null,
+    'level-1': null,
+    'level-2': null,
+    'level-3': null,
+    'level-4': null,
+    'level-5': null,
+    'level-6': null,
+    'level-7': null,
+    'level-8': null,
+    'level-9': null,
+    'level-10': null,
     'vocab': null,
     'origin-latin': null,
     'origin-greek': null,
@@ -193,18 +193,18 @@ function runtimeFallbackDistractors(correct: string, rng: () => number): string[
 
 // ── Word selection ───────────────────────────────────────────────────────────
 
-/** Fixed difficulty range for tier-N and WOTC categories */
-const TIER_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
-    'tier-1': [1, 1],
-    'tier-2': [2, 2],
-    'tier-3': [3, 3],
-    'tier-4': [4, 4],
-    'tier-5': [5, 5],
-    'tier-6': [6, 6],
-    'tier-7': [7, 7],
-    'tier-8': [8, 8],
-    'tier-9': [9, 9],
-    'tier-10': [10, 10],
+/** Fixed difficulty range for level-N and WOTC categories */
+const LEVEL_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
+    'level-1': [1, 1],
+    'level-2': [2, 2],
+    'level-3': [3, 3],
+    'level-4': [4, 4],
+    'level-5': [5, 5],
+    'level-6': [6, 6],
+    'level-7': [7, 7],
+    'level-8': [8, 8],
+    'level-9': [9, 9],
+    'level-10': [10, 10],
     'wotc-one': [1, 2],
     'wotc-two': [3, 6],
     'wotc-three': [7, 10],
@@ -242,6 +242,16 @@ export function selectWordPool(
         pool = wordsByDifficulty(min, max);
     }
 
+    // Widen difficulty range gradually rather than falling back to the entire
+    // word bank, which would serve easy words at hard levels (and vice-versa).
+    if (pool.length === 0) {
+        for (let spread = 1; spread <= 3 && pool.length === 0; spread++) {
+            const widerMin = Math.max(1, min - spread) as DifficultyTier;
+            const widerMax = Math.min(10, max + spread) as DifficultyTier;
+            pool = wordsByDifficulty(widerMin, widerMax);
+        }
+    }
+    // True last resort — should only happen if no tiers are loaded at all
     if (pool.length === 0) pool = getAllWords();
 
     return pool;
@@ -252,7 +262,7 @@ function pickRichWord(
     difficulty: number,
     rng: () => number,
 ): SpellingWord {
-    const tierRange = TIER_RANGES[category];
+    const tierRange = LEVEL_RANGES[category];
 
     let effectiveMin: DifficultyTier;
     let effectiveMax: DifficultyTier;

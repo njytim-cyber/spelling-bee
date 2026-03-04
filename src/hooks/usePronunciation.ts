@@ -7,7 +7,7 @@
  */
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { STORAGE_KEYS } from '../config';
-import { synthesizeCloud } from '../services/cloudTts';
+import { synthesizeCloud, getCloudVoiceGender } from '../services/cloudTts';
 
 interface UsePronunciationReturn {
     /** Speak the given text aloud */
@@ -95,6 +95,35 @@ export function usePronunciation(): UsePronunciationReturn {
         setIsSpeaking(false);
     }, []);
 
+    /** Pick a browser voice matching dialect + cloud voice gender */
+    const pickFallbackVoice = useCallback((): SpeechSynthesisVoice | null => {
+        if (!supported) return null;
+        const voices = speechSynthesis.getVoices();
+        const dialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
+        const langPref = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+        const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
+        const wantMale = cloudVoice ? getCloudVoiceGender(cloudVoice) === 'male' : false;
+
+        // Browser voice names often contain "Male"/"Female" or gendered names like "David"/"Zira"
+        const genderMatch = (v: SpeechSynthesisVoice) => {
+            const n = v.name.toLowerCase();
+            if (wantMale) return n.includes('male') || n.includes('david') || n.includes('mark') || n.includes('james');
+            return n.includes('female') || n.includes('zira') || n.includes('eva') || n.includes('clara');
+        };
+
+        // Best: dialect + gender match
+        const byLang = voices.filter(v => v.lang === langPref);
+        const exact = byLang.find(v => genderMatch(v) && v.localService)
+            ?? byLang.find(v => genderMatch(v));
+        if (exact) return exact;
+
+        // Good enough: dialect match (ignore gender)
+        return byLang.find(v => v.localService)
+            ?? byLang[0]
+            ?? voices.find(v => v.lang.startsWith('en'))
+            ?? null;
+    }, []);
+
     /** Speak using browser Web Speech API */
     const speakBrowser = useCallback((text: string) => {
         if (!supported) {
@@ -110,7 +139,9 @@ export function usePronunciation(): UsePronunciationReturn {
         const storedRate = localStorage.getItem(STORAGE_KEYS.ttsRate);
         utterance.rate = storedRate ? parseFloat(storedRate) : 1.0;
         utterance.pitch = 1;
-        if (voiceRef.current) utterance.voice = voiceRef.current;
+        // Pick a voice matching the user's cloud voice gender (not a stale mount-time pick)
+        const voice = pickFallbackVoice() ?? voiceRef.current;
+        if (voice) utterance.voice = voice;
 
         utterance.onstart = () => { if (mountedRef.current) setIsSpeaking(true); };
         utterance.onend = () => { if (mountedRef.current) setIsSpeaking(false); };
@@ -125,7 +156,7 @@ export function usePronunciation(): UsePronunciationReturn {
 
         utteranceRef.current = utterance;
         speechSynthesis.speak(utterance);
-    }, []);
+    }, [pickFallbackVoice]);
 
     /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
     const speak = useCallback((text: string) => {

@@ -5,7 +5,7 @@ import {
     getDialect,
     setDialect,
     resolveUsKey,
-    ensureAllTiers,
+    ensureAllWords,
     loadCompetitionPack,
 } from '../domains/spelling/words/registry';
 import { UK_OVERRIDES } from '../domains/spelling/words/uk-overrides';
@@ -15,7 +15,7 @@ describe('UK dialect support', () => {
     let usWordCount: number;
 
     beforeAll(async () => {
-        await ensureAllTiers();
+        await ensureAllWords();
         await loadCompetitionPack('scripps');
         await loadCompetitionPack('state-bee');
         versionBeforeDialect = getRegistryVersion();

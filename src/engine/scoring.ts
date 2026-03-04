@@ -15,10 +15,10 @@ export function scoreCorrect(streak: number, isFast: boolean): number {
 }
 
 /**
- * Score after a wrong answer (never below 0).
+ * Score after a wrong answer (no penalty — score stays the same).
  */
 export function scorePenalty(current: number): number {
-    return Math.max(0, current - 5);
+    return current;
 }
 
 /** Ms threshold below which an answer is considered "fast" */

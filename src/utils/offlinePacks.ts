@@ -5,7 +5,7 @@
  * "Downloading a pack" pre-fetches the dynamic import chunks so they
  * are in the browser/service worker cache for offline use.
  */
-import { ensureAllTiers, getLoadedTiers } from '../domains/spelling/words/registry';
+import { ensureAllWords, getLoadedTiers } from '../domains/spelling/words/registry';
 
 export interface WordPack {
     id: string;
@@ -36,5 +36,5 @@ export function getPackStatus(): WordPack[] {
  */
 export async function downloadPack(): Promise<void> {
     // All tiers load together now
-    await ensureAllTiers();
+    await ensureAllWords();
 }

@@ -20,7 +20,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
     const isFirstTime = !currentLevel;
     const [step, setStep] = useState<'welcome' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
     const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
-    const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'tier-1' : null));
+    const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'level-1' : null));
 
     const handleDialectNext = () => {
         if (selectedDialect) {

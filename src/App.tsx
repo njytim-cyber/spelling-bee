@@ -70,7 +70,7 @@ import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE, NAV_TABS } from './config';
-import { ensureAllTiers, getRegistryVersion, setDialect } from './domains/spelling/words';
+import { ensureAllWords, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
@@ -250,6 +250,12 @@ function AppInner() {
     }
     return c;
   });
+  // Migrate legacy tier-N → level-N in stored grade
+  (() => {
+    const g = localStorage.getItem(STORAGE_KEYS.grade);
+    if (g?.startsWith('tier-')) localStorage.setItem(STORAGE_KEYS.grade, g.replace('tier-', 'level-'));
+  })();
+
   const [questionType, setQuestionTypeRaw] = useState<QuestionType>(() => {
     if (challengeId) return 'challenge';
     const stored = localStorage.getItem(STORAGE_KEYS.grade);
@@ -285,7 +291,7 @@ function AppInner() {
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
   useEffect(() => {
     let cancelled = false;
-    ensureAllTiers().then(async () => {
+    ensureAllWords().then(async () => {
       // Apply stored dialect after tiers are loaded
       const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
       if (stored === 'en-GB') await setDialect(stored as Dialect);
@@ -311,11 +317,9 @@ function AppInner() {
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string }>>([]);
   const prevQuestionTypeRef = useRef(questionType);
-  const [scoreResetFlash, fireScoreReset] = useTimedFlag(2500);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
-      if (score > 0) fireScoreReset();
       prevQuestionTypeRef.current = questionType;
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -791,8 +795,7 @@ function AppInner() {
               })()}
               <div className="relative pointer-events-auto" onClick={() => setShowScoreHelp(h => !h)}>
                 <ScoreCounter value={score} />
-                {totalAnswered === 0 && !scoreResetFlash && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
-                {scoreResetFlash && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mt-0.5 text-center animate-pulse">New topic — score reset</div>}
+                {totalAnswered === 0 && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
               </div>
               {/* Score explainer tooltip */}
               <AnimatePresence>
@@ -808,7 +811,7 @@ function AppInner() {
                     <div>Correct = <span className="text-[var(--color-correct)]">+10 pts</span> base</div>
                     <div>Every 5-streak = <span className="text-[var(--color-gold)]">+5 bonus</span></div>
                     <div>Fast answer (&lt;1.2s) = <span className="text-[var(--color-gold)]">+2 speed bonus</span></div>
-                    <div>Wrong = <span className="text-[var(--color-wrong)]">-5 pts</span> (min 0)</div>
+                    <div>Wrong = <span className="text-[rgb(var(--color-fg))]/40">no penalty</span> (streak resets)</div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1165,18 +1168,24 @@ function AppInner() {
                 setGuidedMode(true);
                 setActiveTab('game');
               }}
-              onPractice={(cat) => {
+              onPractice={async (cat) => {
+                await ensureAllWords();
+                setWordRegistryVersion(getRegistryVersion());
                 setQuestionType(cat as QuestionType);
-                if (cat.startsWith('tier-')) {
+                if (cat.startsWith('level-')) {
                   onLevelChange(cat as Level);
                 }
                 setSessionSize(null);
                 setSessionAnswered(0);
                 setActiveTab('game');
               }}
-              onStartSession={(cat, size) => {
+              onStartSession={async (cat, size) => {
+                // Ensure all words are loaded before starting — prevents
+                // high-level sessions from falling back to easy words.
+                await ensureAllWords();
+                setWordRegistryVersion(getRegistryVersion());
                 setQuestionType(cat as QuestionType);
-                if (cat.startsWith('tier-')) {
+                if (cat.startsWith('level-')) {
                   onLevelChange(cat as Level);
                 }
                 setSessionSize(size);

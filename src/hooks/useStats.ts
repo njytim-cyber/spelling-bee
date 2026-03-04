@@ -103,6 +103,16 @@ const EMPTY_STATS: Stats = {
     weeklyXPWeek: '',
 };
 
+/** Migrate legacy tier-N keys → level-N in a byType record */
+function migrateByTypeKeys(bt: Record<string, TypeStat>): Record<string, TypeStat> {
+    const out: Record<string, TypeStat> = {};
+    for (const [k, v] of Object.entries(bt)) {
+        const key = k.startsWith('tier-') ? k.replace('tier-', 'level-') : k;
+        out[key] = v;
+    }
+    return out;
+}
+
 /** Load from localStorage (fast, synchronous) */
 function loadStatsLocal(): Stats {
     try {
@@ -112,7 +122,7 @@ function loadStatsLocal(): Stats {
         return {
             ...EMPTY_STATS,
             ...parsed,
-            byType: { ...EMPTY_STATS.byType, ...parsed.byType },
+            byType: { ...EMPTY_STATS.byType, ...migrateByTypeKeys(parsed.byType ?? {}) },
         };
     } catch {
         return EMPTY_STATS;
@@ -180,7 +190,7 @@ async function loadStatsCloud(uid: string): Promise<Stats | null> {
             return {
                 ...EMPTY_STATS,
                 ...cloud,
-                byType: { ...EMPTY_STATS.byType, ...cloud.byType },
+                byType: { ...EMPTY_STATS.byType, ...migrateByTypeKeys(cloud.byType ?? {}) },
             };
         }
     } catch (err) {

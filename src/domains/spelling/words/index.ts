@@ -3,7 +3,7 @@
  *
  * Re-exports word types and provides lookup utilities.
  * Backed by the dynamic registry — tier 1-2 are always available,
- * tier 3-5 load on demand via ensureAllTiers().
+ * tier 3-5 load on demand via ensureAllWords().
  *
  * Pattern and theme lookups use cached indexes (O(1) via Map)
  * that are lazily built and auto-invalidated on tier/dialect changes.
@@ -14,7 +14,7 @@ import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymology
 
 export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier, CompetitionList } from './types';
 export { COMPETITION_LISTS } from './competitionLists';
-export { ensureAllTiers, ensurePipelineWords, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
+export { ensureAllWords, ensurePipelineWords, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
 export { getRootsForWord, formatRootHint, highlightRoot, rootFragments, computeRootMastery } from './rootUtils';
 export type { RootMasteryEntry } from './rootUtils';
 

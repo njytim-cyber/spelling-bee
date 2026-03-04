@@ -8,7 +8,7 @@ import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
 import { useReducedMotion, type MotionPreference } from '../hooks/useReducedMotion';
 import type { Dialect } from '../domains/spelling/words/types';
-import { CLOUD_VOICES, synthesizeCloud } from '../services/cloudTts';
+import { CLOUD_VOICES, synthesizeCloud, getCloudVoiceGender } from '../services/cloudTts';
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 import { LEVELS, type Level } from '../domains/spelling/spellingCategories';
@@ -71,25 +71,45 @@ export const SettingsModal = memo(function SettingsModal({
         previewVoice(voiceId);
     };
 
+    const [previewError, setPreviewError] = useState(false);
+
     const previewVoice = async (voiceId: string) => {
         const previewWord = dialect === 'en-GB' ? 'colour' : 'color';
         setPreviewLoading(true);
+        setPreviewError(false);
 
         try {
             const url = await synthesizeCloud(previewWord, voiceId, ttsRate);
             const audio = new Audio(url);
             audio.onended = () => setPreviewLoading(false);
-            audio.onerror = () => setPreviewLoading(false);
+            audio.onerror = () => {
+                setPreviewLoading(false);
+                setPreviewError(true);
+            };
             await audio.play();
         } catch {
             setPreviewLoading(false);
-            // Fallback to browser TTS
+            // Fallback to browser TTS with gender-matched voice
             if ('speechSynthesis' in window) {
+                const wantMale = getCloudVoiceGender(voiceId) === 'male';
+                const voices = speechSynthesis.getVoices();
+                const langPref = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+                const byLang = voices.filter(v => v.lang === langPref);
+                const genderMatch = (v: SpeechSynthesisVoice) => {
+                    const n = v.name.toLowerCase();
+                    if (wantMale) return n.includes('male') || n.includes('david') || n.includes('mark') || n.includes('james');
+                    return n.includes('female') || n.includes('zira') || n.includes('eva') || n.includes('clara');
+                };
+                const voice = byLang.find(v => genderMatch(v)) ?? byLang[0] ?? null;
+
                 speechSynthesis.cancel();
                 const u = new SpeechSynthesisUtterance(previewWord);
                 u.rate = ttsRate;
-                u.lang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+                u.lang = langPref;
+                if (voice) u.voice = voice;
                 speechSynthesis.speak(u);
+            } else {
+                setPreviewError(true);
             }
         }
     };
@@ -276,6 +296,11 @@ export const SettingsModal = memo(function SettingsModal({
                             </button>
                         ))}
                     </div>
+                    {previewError && (
+                        <p className="text-[10px] ui text-[var(--color-wrong)] mt-1.5">
+                            Preview unavailable — voice will work during play
+                        </p>
+                    )}
                 </section>
         </ModalShell>
     );

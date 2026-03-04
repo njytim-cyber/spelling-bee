@@ -16,7 +16,7 @@ export interface LevelProgress {
     level: number;
     /** Display label from LEVELS */
     label: string;
-    /** Tier ID (e.g. 'tier-3') */
+    /** Level ID (e.g. 'level-3') */
     tierId: string;
     /** Total words available at this difficulty */
     totalWords: number;

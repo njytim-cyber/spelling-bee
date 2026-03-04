@@ -424,8 +424,8 @@ export function getMistakeInsights(records: Record<string, WordRecord>): Mistake
         .slice(0, 3);
 }
 
-function diffToTier(diff: number): string {
-    return `tier-${Math.max(1, Math.min(10, Math.round(diff)))}`;
+function diffToLevel(diff: number): string {
+    return `level-${Math.max(1, Math.min(10, Math.round(diff)))}`;
 }
 
 // ── Adaptive difficulty nudge ────────────────────────────────────────────────
@@ -445,38 +445,38 @@ export interface DifficultyNudge {
 export function getDifficultyNudge(records: Record<string, WordRecord>): DifficultyNudge | null {
     const wordMap = getWordMap();
 
-    // Group by tier
-    const tiers: Record<string, { attempts: number; correct: number; words: number }> = {};
+    // Group by level
+    const levels: Record<string, { attempts: number; correct: number; words: number }> = {};
     for (const r of Object.values(records)) {
         const detail = wordMap.get(r.word);
         if (!detail) continue;
-        const tier = diffToTier(detail.difficulty);
-        if (!tiers[tier]) tiers[tier] = { attempts: 0, correct: 0, words: 0 };
-        tiers[tier].attempts += r.attempts;
-        tiers[tier].correct += r.correct;
-        tiers[tier].words++;
+        const lvl = diffToLevel(detail.difficulty);
+        if (!levels[lvl]) levels[lvl] = { attempts: 0, correct: 0, words: 0 };
+        levels[lvl].attempts += r.attempts;
+        levels[lvl].correct += r.correct;
+        levels[lvl].words++;
     }
 
-    const ORDER = ['tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5', 'tier-6', 'tier-7', 'tier-8', 'tier-9', 'tier-10'];
+    const ORDER = ['level-1', 'level-2', 'level-3', 'level-4', 'level-5', 'level-6', 'level-7', 'level-8', 'level-9', 'level-10'];
     const LABELS: Record<string, string> = {
-        'tier-1': 'Level 1', 'tier-2': 'Level 2', 'tier-3': 'Level 3',
-        'tier-4': 'Level 4', 'tier-5': 'Level 5', 'tier-6': 'Level 6',
-        'tier-7': 'Level 7', 'tier-8': 'Level 8', 'tier-9': 'Level 9',
-        'tier-10': 'Level 10',
+        'level-1': 'Level 1', 'level-2': 'Level 2', 'level-3': 'Level 3',
+        'level-4': 'Level 4', 'level-5': 'Level 5', 'level-6': 'Level 6',
+        'level-7': 'Level 7', 'level-8': 'Level 8', 'level-9': 'Level 9',
+        'level-10': 'Level 10',
     };
 
     for (let i = 0; i < ORDER.length - 1; i++) {
-        const tier = ORDER[i];
-        const stats = tiers[tier];
+        const lvl = ORDER[i];
+        const stats = levels[lvl];
         if (!stats || stats.words < 20 || stats.attempts < 20) continue;
         const acc = stats.correct / stats.attempts;
         if (acc >= 0.85) {
             const next = ORDER[i + 1];
             // Only nudge if student hasn't already moved up
-            const nextStats = tiers[next];
+            const nextStats = levels[next];
             if (nextStats && nextStats.words >= 10) continue;
             return {
-                currentLabel: LABELS[tier],
+                currentLabel: LABELS[lvl],
                 nextLabel: LABELS[next],
                 nextCategory: next,
                 accuracy: acc,

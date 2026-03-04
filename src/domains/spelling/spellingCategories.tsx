@@ -26,16 +26,16 @@ export type SpellingCategory =
     | 'daily'
     | 'challenge'
     | 'ghost'
-    | 'tier-1'
-    | 'tier-2'
-    | 'tier-3'
-    | 'tier-4'
-    | 'tier-5'
-    | 'tier-6'
-    | 'tier-7'
-    | 'tier-8'
-    | 'tier-9'
-    | 'tier-10'
+    | 'level-1'
+    | 'level-2'
+    | 'level-3'
+    | 'level-4'
+    | 'level-5'
+    | 'level-6'
+    | 'level-7'
+    | 'level-8'
+    | 'level-9'
+    | 'level-10'
     // Semantic themes (42)
     | 'theme-animals' | 'theme-plants' | 'theme-weather' | 'theme-earth'
     | 'theme-food' | 'theme-body' | 'theme-health' | 'theme-home'
@@ -59,8 +59,8 @@ export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' |
 
 // ── Levels ───────────────────────────────────────────────────────────────────
 
-export type Level = 'tier-1' | 'tier-2' | 'tier-3' | 'tier-4' | 'tier-5'
-    | 'tier-6' | 'tier-7' | 'tier-8' | 'tier-9' | 'tier-10';
+export type Level = 'level-1' | 'level-2' | 'level-3' | 'level-4' | 'level-5'
+    | 'level-6' | 'level-7' | 'level-8' | 'level-9' | 'level-10';
 
 /** @deprecated Use Level instead */
 export type GradeLevel = Level;
@@ -622,16 +622,16 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'greek-roots', icon: iGreek, label: 'Greek Roots', group: 'expert' },
     { id: 'french-origin', icon: iFrench, label: 'French Origin', group: 'expert' },
     // By Level
-    { id: 'tier-1', icon: iTier1, label: 'Level 1', group: 'tier' },
-    { id: 'tier-2', icon: iTier2, label: 'Level 2', group: 'tier' },
-    { id: 'tier-3', icon: iTier3, label: 'Level 3', group: 'tier' },
-    { id: 'tier-4', icon: iTier4, label: 'Level 4', group: 'tier' },
-    { id: 'tier-5', icon: iTier5, label: 'Level 5', group: 'tier' },
-    { id: 'tier-6', icon: iTier6, label: 'Level 6', group: 'tier' },
-    { id: 'tier-7', icon: iTier7, label: 'Level 7', group: 'tier' },
-    { id: 'tier-8', icon: iTier8, label: 'Level 8', group: 'tier' },
-    { id: 'tier-9', icon: iTier9, label: 'Level 9', group: 'tier' },
-    { id: 'tier-10', icon: iTier10, label: 'Level 10', group: 'tier' },
+    { id: 'level-1', icon: iTier1, label: 'Level 1', group: 'tier' },
+    { id: 'level-2', icon: iTier2, label: 'Level 2', group: 'tier' },
+    { id: 'level-3', icon: iTier3, label: 'Level 3', group: 'tier' },
+    { id: 'level-4', icon: iTier4, label: 'Level 4', group: 'tier' },
+    { id: 'level-5', icon: iTier5, label: 'Level 5', group: 'tier' },
+    { id: 'level-6', icon: iTier6, label: 'Level 6', group: 'tier' },
+    { id: 'level-7', icon: iTier7, label: 'Level 7', group: 'tier' },
+    { id: 'level-8', icon: iTier8, label: 'Level 8', group: 'tier' },
+    { id: 'level-9', icon: iTier9, label: 'Level 9', group: 'tier' },
+    { id: 'level-10', icon: iTier10, label: 'Level 10', group: 'tier' },
     // Semantic themes (42) — sorted by approximate word count descending
     { id: 'theme-people', icon: iPeople, label: 'People', group: 'themes' },
     { id: 'theme-feelings', icon: iFeelings, label: 'Feelings', group: 'themes' },
@@ -701,16 +701,16 @@ export const SPELLING_GROUP_LABELS: Record<SpellingGroup, string> = {
 // ── Level config ─────────────────────────────────────────────────────────────
 
 export const LEVELS: readonly LevelConfig[] = [
-    { id: 'tier-1', label: 'Level 1', defaultCategory: 'tier-1', minDifficultyLevel: 1 },
-    { id: 'tier-2', label: 'Level 2', defaultCategory: 'tier-2', minDifficultyLevel: 2 },
-    { id: 'tier-3', label: 'Level 3', defaultCategory: 'tier-3', minDifficultyLevel: 3 },
-    { id: 'tier-4', label: 'Level 4', defaultCategory: 'tier-4', minDifficultyLevel: 4 },
-    { id: 'tier-5', label: 'Level 5', defaultCategory: 'tier-5', minDifficultyLevel: 5 },
-    { id: 'tier-6', label: 'Level 6', defaultCategory: 'tier-6', minDifficultyLevel: 6 },
-    { id: 'tier-7', label: 'Level 7', defaultCategory: 'tier-7', minDifficultyLevel: 7 },
-    { id: 'tier-8', label: 'Level 8', defaultCategory: 'tier-8', minDifficultyLevel: 8 },
-    { id: 'tier-9', label: 'Level 9', defaultCategory: 'tier-9', minDifficultyLevel: 9 },
-    { id: 'tier-10', label: 'Level 10', defaultCategory: 'tier-10', minDifficultyLevel: 10 },
+    { id: 'level-1', label: 'Level 1', defaultCategory: 'level-1', minDifficultyLevel: 1 },
+    { id: 'level-2', label: 'Level 2', defaultCategory: 'level-2', minDifficultyLevel: 2 },
+    { id: 'level-3', label: 'Level 3', defaultCategory: 'level-3', minDifficultyLevel: 3 },
+    { id: 'level-4', label: 'Level 4', defaultCategory: 'level-4', minDifficultyLevel: 4 },
+    { id: 'level-5', label: 'Level 5', defaultCategory: 'level-5', minDifficultyLevel: 5 },
+    { id: 'level-6', label: 'Level 6', defaultCategory: 'level-6', minDifficultyLevel: 6 },
+    { id: 'level-7', label: 'Level 7', defaultCategory: 'level-7', minDifficultyLevel: 7 },
+    { id: 'level-8', label: 'Level 8', defaultCategory: 'level-8', minDifficultyLevel: 8 },
+    { id: 'level-9', label: 'Level 9', defaultCategory: 'level-9', minDifficultyLevel: 9 },
+    { id: 'level-10', label: 'Level 10', defaultCategory: 'level-10', minDifficultyLevel: 10 },
 ] as const;
 
 /** @deprecated Use LEVELS instead */

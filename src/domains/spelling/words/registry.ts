@@ -322,7 +322,7 @@ export async function ensurePipelineWords(): Promise<void> {
  * Returns immediately if already loaded. Safe to call multiple times.
  * Loads all missing tiers in parallel for maximum speed.
  */
-export async function ensureAllTiers(): Promise<void> {
+export async function ensureAllWords(): Promise<void> {
     const allTiers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const missing = allTiers.filter(t => !loadedTiers.has(t));
     const pipelineMissing = [1, 2].filter(t => !loadedPipeline.has(t));

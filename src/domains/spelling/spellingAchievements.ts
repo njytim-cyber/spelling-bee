@@ -83,7 +83,7 @@ const CORE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
         desc: 'Spell 10+ words in every category',
         check: s => {
             const META = ['daily', 'challenge', 'ghost', 'review'];
-            const entries = Object.entries(s.byType).filter(([k]) => !META.includes(k) && !k.startsWith('tier-'));
+            const entries = Object.entries(s.byType).filter(([k]) => !META.includes(k) && !k.startsWith('level-'));
             if (entries.length < 4) return false;
             return entries.every(([, t]) => t.solved >= 10);
         },

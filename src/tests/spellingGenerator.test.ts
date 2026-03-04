@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
 import { getAllWords } from '../domains/spelling/words';
-import { ensureAllTiers } from '../domains/spelling/words/registry';
+import { ensureAllWords } from '../domains/spelling/words/registry';
 
 describe('spellingGenerator.ts', () => {
 
-    const CATEGORIES = ['cvc', 'blends', 'digraphs', 'silent-e', 'vowel-teams', 'tier-1'] as const;
+    const CATEGORIES = ['cvc', 'blends', 'digraphs', 'silent-e', 'vowel-teams', 'level-1'] as const;
 
     describe('EngineItem shape', () => {
         it('produces an item with 3 unique options where options[correctIndex] === answer', () => {
@@ -60,14 +60,14 @@ describe('spellingGenerator.ts', () => {
     describe('Difficulty filtering', () => {
         it('level 1 words have difficulty ≤ 2', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(1, 'tier-1');
+                const item = generateSpellingItem(1, 'level-1');
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
         });
 
         it('level 5 words have difficulty ≤ 10', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(5, 'tier-5');
+                const item = generateSpellingItem(5, 'level-5');
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(10);
             }
         });
@@ -94,11 +94,11 @@ describe('spellingGenerator.ts', () => {
         });
     });
 
-    describe('Tier category', () => {
-        it('tier-1 generates words from difficulty 1-2 range', () => {
+    describe('Level category', () => {
+        it('level-1 generates words from difficulty 1-2 range', () => {
             const answers = new Set<string>();
             for (let i = 0; i < 100; i++) {
-                const item = generateSpellingItem(1, 'tier-1');
+                const item = generateSpellingItem(1, 'level-1');
                 answers.add(item.answer as string);
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
@@ -109,7 +109,7 @@ describe('spellingGenerator.ts', () => {
 
     describe('Full word bank audit', () => {
         it('every word has at least 2 pre-baked distractors', async () => {
-            await ensureAllTiers();
+            await ensureAllWords();
             const allWords = getAllWords();
             const failures: string[] = [];
 
@@ -135,12 +135,12 @@ describe('spellingGenerator.ts', () => {
         }, 120_000);
 
         it('generated items always have 3 unique options', async () => {
-            await ensureAllTiers();
+            await ensureAllWords();
             const failures: string[] = [];
 
             for (let diff = 1; diff <= 5; diff++) {
                 for (let i = 0; i < 50; i++) {
-                    const item = generateSpellingItem(diff, 'tier-1');
+                    const item = generateSpellingItem(diff, 'level-1');
                     if (new Set(item.options).size < 3) {
                         failures.push(`${item.answer} (diff=${diff}): only ${new Set(item.options).size} unique options`);
                     }

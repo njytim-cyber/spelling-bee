@@ -9,42 +9,50 @@ import { STORAGE_KEYS } from '../config';
 
 // ── Voice catalog ────────────────────────────────────────────────────────────
 
+export type VoiceGender = 'male' | 'female';
+
 export interface CloudVoice {
     id: string;        // e.g. 'en-US-Neural2-A'
-    label: string;     // e.g. 'US - Voice A (Male)'
+    label: string;     // e.g. 'US - Andrew (Calm)'
     langCode: string;  // e.g. 'en-US'
+    gender: VoiceGender;
 }
 
 export const CLOUD_VOICES: CloudVoice[] = [
-    // US English (9 voices) — friendly names describe tone/character
-    { id: 'en-US-Neural2-A', label: 'US - Andrew (Calm)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-C', label: 'US - Clara (Warm)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-D', label: 'US - David (Clear)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-E', label: 'US - Emily (Bright)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-F', label: 'US - Fiona (Friendly)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-G', label: 'US - Grace (Gentle)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-H', label: 'US - Hannah (Steady)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-I', label: 'US - Isaac (Deep)', langCode: 'en-US' },
-    { id: 'en-US-Neural2-J', label: 'US - James (Strong)', langCode: 'en-US' },
+    // US English (9 voices) — genders per Google Cloud TTS docs
+    { id: 'en-US-Neural2-A', label: 'US - Andrew (Calm)',      langCode: 'en-US', gender: 'male' },
+    { id: 'en-US-Neural2-C', label: 'US - Clara (Warm)',       langCode: 'en-US', gender: 'female' },
+    { id: 'en-US-Neural2-D', label: 'US - David (Clear)',      langCode: 'en-US', gender: 'male' },
+    { id: 'en-US-Neural2-E', label: 'US - Emily (Bright)',     langCode: 'en-US', gender: 'female' },
+    { id: 'en-US-Neural2-F', label: 'US - Fiona (Friendly)',   langCode: 'en-US', gender: 'female' },
+    { id: 'en-US-Neural2-G', label: 'US - Grace (Gentle)',     langCode: 'en-US', gender: 'female' },
+    { id: 'en-US-Neural2-H', label: 'US - Hannah (Steady)',    langCode: 'en-US', gender: 'female' },
+    { id: 'en-US-Neural2-I', label: 'US - Isaac (Deep)',       langCode: 'en-US', gender: 'male' },
+    { id: 'en-US-Neural2-J', label: 'US - James (Strong)',     langCode: 'en-US', gender: 'male' },
     // British English (7 voices)
-    { id: 'en-GB-Neural2-A', label: 'UK - Alice (Poised)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-B', label: 'UK - Benjamin (Warm)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-C', label: 'UK - Charlotte (Bright)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-D', label: 'UK - Daniel (Clear)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-F', label: 'UK - Florence (Soft)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-N', label: 'UK - Nathan (Steady)', langCode: 'en-GB' },
-    { id: 'en-GB-Neural2-O', label: 'UK - Olivia (Gentle)', langCode: 'en-GB' },
+    { id: 'en-GB-Neural2-A', label: 'UK - Alice (Poised)',     langCode: 'en-GB', gender: 'female' },
+    { id: 'en-GB-Neural2-B', label: 'UK - Benjamin (Warm)',    langCode: 'en-GB', gender: 'male' },
+    { id: 'en-GB-Neural2-C', label: 'UK - Charlotte (Bright)', langCode: 'en-GB', gender: 'female' },
+    { id: 'en-GB-Neural2-D', label: 'UK - Daniel (Clear)',     langCode: 'en-GB', gender: 'male' },
+    { id: 'en-GB-Neural2-F', label: 'UK - Florence (Soft)',    langCode: 'en-GB', gender: 'female' },
+    { id: 'en-GB-Neural2-N', label: 'UK - Naomi (Steady)',     langCode: 'en-GB', gender: 'female' },
+    { id: 'en-GB-Neural2-O', label: 'UK - Oliver (Gentle)',    langCode: 'en-GB', gender: 'male' },
     // Australian English (4 voices)
-    { id: 'en-AU-Neural2-A', label: 'AU - Amelia (Bright)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-B', label: 'AU - Blake (Relaxed)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-C', label: 'AU - Chloe (Friendly)', langCode: 'en-AU' },
-    { id: 'en-AU-Neural2-D', label: 'AU - Dylan (Calm)', langCode: 'en-AU' },
+    { id: 'en-AU-Neural2-A', label: 'AU - Amelia (Bright)',    langCode: 'en-AU', gender: 'female' },
+    { id: 'en-AU-Neural2-B', label: 'AU - Blake (Relaxed)',    langCode: 'en-AU', gender: 'male' },
+    { id: 'en-AU-Neural2-C', label: 'AU - Chloe (Friendly)',   langCode: 'en-AU', gender: 'female' },
+    { id: 'en-AU-Neural2-D', label: 'AU - Dylan (Calm)',       langCode: 'en-AU', gender: 'male' },
     // Indian English (4 voices)
-    { id: 'en-IN-Neural2-A', label: 'IN - Ananya (Clear)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-B', label: 'IN - Bhaskar (Warm)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-C', label: 'IN - Chetan (Steady)', langCode: 'en-IN' },
-    { id: 'en-IN-Neural2-D', label: 'IN - Diya (Gentle)', langCode: 'en-IN' },
+    { id: 'en-IN-Neural2-A', label: 'IN - Ananya (Clear)',     langCode: 'en-IN', gender: 'female' },
+    { id: 'en-IN-Neural2-B', label: 'IN - Bhaskar (Warm)',     langCode: 'en-IN', gender: 'male' },
+    { id: 'en-IN-Neural2-C', label: 'IN - Chetan (Steady)',    langCode: 'en-IN', gender: 'male' },
+    { id: 'en-IN-Neural2-D', label: 'IN - Diya (Gentle)',      langCode: 'en-IN', gender: 'female' },
 ];
+
+/** Look up the gender of a cloud voice by ID. Defaults to 'female'. */
+export function getCloudVoiceGender(voiceId: string): VoiceGender {
+    return CLOUD_VOICES.find(v => v.id === voiceId)?.gender ?? 'female';
+}
 
 /** Filter voices matching the active dialect (en-US or en-GB). */
 export function voicesForDialect(dialect: string): CloudVoice[] {

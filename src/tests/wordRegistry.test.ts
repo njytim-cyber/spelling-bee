@@ -4,7 +4,7 @@ import {
     getLoadedWords,
     getLoadedTiers,
     getLoadedPacks,
-    ensureAllTiers,
+    ensureAllWords,
 } from '../domains/spelling/words/registry';
 
 describe('wordRegistry.ts', () => {
@@ -27,9 +27,9 @@ describe('wordRegistry.ts', () => {
         expect(unique.size / words.length).toBeGreaterThan(0.9);
     });
 
-    it('ensureAllTiers loads tiers 3-9', async () => {
+    it('ensureAllWords loads tiers 3-9', async () => {
         const wordsBefore = getLoadedWords().length;
-        await ensureAllTiers();
+        await ensureAllWords();
         for (let t = 3; t <= 9; t++) {
             expect(getLoadedTiers().has(t)).toBe(true);
         }
@@ -37,15 +37,15 @@ describe('wordRegistry.ts', () => {
     }, 60_000);
 
     it('version increments after tier load', async () => {
-        // ensureAllTiers was already called — version should be > 0
+        // ensureAllWords was already called — version should be > 0
         expect(getRegistryVersion()).toBeGreaterThan(0);
     });
 
     it('re-loading is idempotent', async () => {
-        await ensureAllTiers();
+        await ensureAllWords();
         const v1 = getRegistryVersion();
         const count1 = getLoadedWords().length;
-        await ensureAllTiers();
+        await ensureAllWords();
         expect(getRegistryVersion()).toBe(v1);
         expect(getLoadedWords().length).toBe(count1);
     });

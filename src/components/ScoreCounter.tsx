@@ -23,7 +23,7 @@ export const ScoreCounter = memo(function ScoreCounter({ value }: { value: numbe
 
     return (
         <motion.div
-            className="chalk text-[var(--color-gold)] text-7xl leading-none tabular-nums"
+            className="chalk text-[var(--color-gold)] text-7xl leading-none tabular-nums text-center"
             key={value}
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 0.3 }}
