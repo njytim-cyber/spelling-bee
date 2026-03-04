@@ -12,6 +12,7 @@ import type { SpellingWord } from '../domains/spelling/words';
 import { STORAGE_KEYS } from '../config';
 import { printStudySheet } from '../utils/printStudySheet';
 import { EtymologyExplainer } from './EtymologyExplainer';
+import { extractLanguage, type LanguageOfOrigin } from '../utils/etymologyParser';
 
 const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost', 'Mastered'];
 const BOX_COLORS = [
@@ -135,9 +136,23 @@ const WordRow = memo(function WordRow({
     );
 });
 
+const ORIGIN_TABS: { key: LanguageOfOrigin | 'all'; label: string }[] = [
+    { key: 'all', label: 'All' },
+    { key: 'Latin', label: 'Latin' },
+    { key: 'Greek', label: 'Greek' },
+    { key: 'French', label: 'French' },
+    { key: 'German', label: 'Germanic' },
+    { key: 'English', label: 'English' },
+    { key: 'Other', label: 'Other' },
+];
+
 export const WordBookContent = memo(function WordBookContent({ records }: { records: Record<string, WordRecord> }) {
     const [boxFilter, setBoxFilter] = useState<number | null>(null);
     const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+    const [originFilter, setOriginFilter] = useState<LanguageOfOrigin | 'all'>('all');
+    const [diffMin, setDiffMin] = useState(1);
+    const [diffMax, setDiffMax] = useState(10);
+    const [showFilters, setShowFilters] = useState(false);
     const [search, setSearch] = useState('');
     const [expandedWord, setExpandedWord] = useState<string | null>(null);
     const [displayLimit, setDisplayLimit] = useState(50);
@@ -146,7 +161,7 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     // Reset display limit on filter change
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    useEffect(() => { setDisplayLimit(50); }, [boxFilter, categoryFilter, search]);
+    useEffect(() => { setDisplayLimit(50); }, [boxFilter, categoryFilter, search, originFilter, diffMin, diffMax]);
 
     const allRecords = useMemo(() => Object.values(records), [records]);
     const totalWords = allRecords.length;
@@ -168,6 +183,18 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
         let list = allRecords;
         if (boxFilter !== null) list = list.filter(r => Math.min(r.box, 4) === boxFilter);
         if (categoryFilter !== null) list = list.filter(r => r.category === categoryFilter);
+        if (originFilter !== 'all') {
+            list = list.filter(r => {
+                const detail = wordMap.get(r.word);
+                return detail && extractLanguage(detail.etymology) === originFilter;
+            });
+        }
+        if (diffMin > 1 || diffMax < 10) {
+            list = list.filter(r => {
+                const detail = wordMap.get(r.word);
+                return detail && detail.difficulty >= diffMin && detail.difficulty <= diffMax;
+            });
+        }
         if (search.trim()) {
             const q = search.trim().toLowerCase();
             list = list.filter(r => r.word.toLowerCase().includes(q));
@@ -178,7 +205,7 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
             const bAcc = b.attempts > 0 ? b.correct / b.attempts : 0;
             return aAcc - bAcc;
         });
-    }, [allRecords, boxFilter, categoryFilter, search]);
+    }, [allRecords, boxFilter, categoryFilter, search, originFilter, diffMin, diffMax, wordMap]);
 
     const toggleWord = useCallback((word: string) => {
         setExpandedWord(prev => prev === word ? null : word);
@@ -256,6 +283,58 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
                     </button>
                 ))}
             </div>
+
+            {/* Origin filter tabs */}
+            <div className="flex gap-1 overflow-x-auto mb-2 pb-1 scrollbar-none">
+                {ORIGIN_TABS.map(tab => (
+                    <button
+                        key={tab.key}
+                        onClick={() => setOriginFilter(originFilter === tab.key ? 'all' : tab.key)}
+                        className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${originFilter === tab.key
+                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                            }`}
+                    >
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+
+            {/* Filters toggle */}
+            <button
+                onClick={() => setShowFilters(v => !v)}
+                className="w-full mb-2 text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors text-center"
+            >
+                {showFilters ? 'Hide filters' : 'More filters...'}
+            </button>
+
+            {/* Difficulty range filter */}
+            {showFilters && (
+                <div className="mb-3 px-1">
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-1.5">Difficulty range</div>
+                    <div className="flex items-center gap-2">
+                        <select
+                            value={diffMin}
+                            onChange={e => { const v = Number(e.target.value); setDiffMin(v); if (v > diffMax) setDiffMax(v); }}
+                            className="flex-1 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
+                        >
+                            {Array.from({ length: 10 }, (_, i) => i + 1).map(d => (
+                                <option key={d} value={d} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">Level {d}</option>
+                            ))}
+                        </select>
+                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30">to</span>
+                        <select
+                            value={diffMax}
+                            onChange={e => { const v = Number(e.target.value); setDiffMax(v); if (v < diffMin) setDiffMin(v); }}
+                            className="flex-1 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
+                        >
+                            {Array.from({ length: 10 }, (_, i) => i + 1).map(d => (
+                                <option key={d} value={d} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">Level {d}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            )}
 
             {/* Category filter */}
             {categories.length > 1 && (

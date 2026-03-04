@@ -11,6 +11,7 @@ interface LeaderboardEntry {
     uid: string;
     displayName: string;
     totalXP: number;
+    weeklyXP: number;
     bestStreak: number;
     activeThemeId?: string;
     activeCostume?: string;
@@ -19,8 +20,11 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
+type LeaderboardTab = 'allTime' | 'weekly';
+
 interface Props {
     userXP: number;
+    userWeeklyXP: number;
     userStreak: number;
     uid: string | null;
     displayName: string;
@@ -33,9 +37,10 @@ interface Props {
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
+    const [lbTab, setLbTab] = useState<LeaderboardTab>('allTime');
     const [selectedPlayer, setSelectedPlayer] = useState<LeaderboardEntry | null>(null);
     const [pingCooldown, setPingCooldown] = useState(false);
     const [pingCountdown, setPingCountdown] = useState(0);
@@ -108,6 +113,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 uid: doc.id,
                 displayName: doc.data().displayName || 'Anonymous',
                 totalXP: doc.data().totalXP || 0,
+                weeklyXP: doc.data().weeklyXP || 0,
                 bestStreak: doc.data().bestStreak || 0,
                 activeThemeId: doc.data().activeThemeId || 'classic',
                 activeCostume: doc.data().activeCostume || '',
@@ -128,20 +134,23 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
         const userIdx = uid ? list.findIndex(e => e.uid === uid) : -1;
         if (userIdx === -1 && uid) {
             list.push({
-                uid, displayName: displayName || 'You', totalXP: userXP, bestStreak: userStreak,
+                uid, displayName: displayName || 'You', totalXP: userXP, weeklyXP: userWeeklyXP, bestStreak: userStreak,
                 activeThemeId, activeCostume,
             });
         } else if (userIdx >= 0) {
             list = list.map((e, i) => i === userIdx ? {
                 ...e,
                 totalXP: Math.max(e.totalXP, userXP),
+                weeklyXP: Math.max(e.weeklyXP, userWeeklyXP),
                 bestStreak: Math.max(e.bestStreak, userStreak),
                 activeThemeId,
                 activeCostume,
             } : e);
         }
+        const isWeekly = lbTab === 'weekly';
         return list
-            .sort((a, b) => b.totalXP - a.totalXP)
+            .sort((a, b) => isWeekly ? b.weeklyXP - a.weeklyXP : b.totalXP - a.totalXP)
+            .filter(e => isWeekly ? e.weeklyXP > 0 : true)
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
 
@@ -229,10 +238,26 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                 </div>
             </div>
 
-            {/* Your bee stats */}
-            {/* Leaderboard header */}
+            {/* Leaderboard header + tab toggle */}
             <div className="w-full max-w-sm mb-2">
-                <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
+                <div className="flex items-center justify-between">
+                    <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
+                    <div className="flex rounded-lg overflow-hidden border border-[rgb(var(--color-fg))]/10">
+                        {(['allTime', 'weekly'] as const).map(tab => (
+                            <button
+                                key={tab}
+                                onClick={() => setLbTab(tab)}
+                                className={`px-3 py-1 text-[10px] ui font-semibold transition-colors ${
+                                    lbTab === tab
+                                        ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)]'
+                                        : 'text-[rgb(var(--color-fg))]/35 hover:text-[rgb(var(--color-fg))]/50'
+                                }`}
+                            >
+                                {tab === 'allTime' ? 'All Time' : 'This Week'}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
             {/* Loading skeleton */}
@@ -315,9 +340,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                             {/* Score */}
                             <div className="text-right">
                                 <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                    {entry.totalXP.toLocaleString()}
+                                    {(lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()}
                                 </div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">XP</div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">{lbTab === 'weekly' ? 'wk' : 'XP'}</div>
                             </div>
                             <div className="text-right w-10">
                                 <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
@@ -362,7 +387,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userStreak, uid, di
                                     >
                                         {selectedPlayer.displayName}
                                     </h3>
-                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} &bull; {selectedPlayer.totalXP.toLocaleString()} XP</p>
+                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} &bull; {selectedPlayer.totalXP.toLocaleString()} XP{selectedPlayer.weeklyXP > 0 ? ` · ${selectedPlayer.weeklyXP.toLocaleString()} this week` : ''}</p>
                                 </div>
                             </div>
 

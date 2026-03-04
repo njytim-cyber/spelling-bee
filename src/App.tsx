@@ -48,7 +48,8 @@ import { generateSpellingItem, generateItemForWord } from './domains/spelling/sp
 import { generateVocabItem } from './domains/spelling/vocabGenerator';
 import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
 import { generateEtymologyItem } from './domains/spelling/etymologyGenerator';
-import { generateChallenge } from './utils/dailyChallenge';
+import { generateChallenge, generateDailyChallenge } from './utils/dailyChallenge';
+import type { DailyChallengeSize } from './utils/dailyChallenge';
 import { useWordHistory } from './hooks/useWordHistory';
 import type { WordRecord } from './hooks/useWordHistory';
 import { WORD_ROOTS } from './domains/spelling/words/roots';
@@ -93,10 +94,13 @@ function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]
   };
 }
 
-function makeGenerateFiniteSet() {
+function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
   return (categoryId: string, challengeId: string | null): EngineItem[] => {
     if (challengeId) {
       return generateChallenge(challengeId);
+    }
+    if (categoryId === 'daily') {
+      return generateDailyChallenge(dailySize).problems;
     }
     return Array.from({ length: 10 }, (_, i) =>
       generateSpellingItem(2 + Math.floor(i / 4), categoryId || 'cvc', false)
@@ -227,6 +231,8 @@ function AppInner() {
 
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
+  const [dailySize, setDailySize] = useState<DailyChallengeSize>(10);
+  const [showDailySizePicker, setShowDailySizePicker] = useState(false);
 
   // ── Check URL for challenge link ──
   const [challengeId] = useState<string | null>(() => {
@@ -251,8 +257,12 @@ function AppInner() {
       openModal('showCustomLists');
       return;
     }
+    if (type === 'daily' && !dailyCompleted) {
+      setShowDailySizePicker(true);
+      return;
+    }
     setQuestionTypeRaw(type);
-  }, [openModal]);
+  }, [openModal, dailyCompleted]);
 
   // ── Session mode (from Path page curriculum) ──
   const [sessionSize, setSessionSize] = useState<number | null>(null);
@@ -279,7 +289,7 @@ function AppInner() {
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
+  const { records: wordRecords, recentAttempts, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
 
   // Root-family drill queue — maps root's example words to WordRecord[] for GuidedSpellingPage
   const drillRootQueue = useMemo(() => {
@@ -304,7 +314,7 @@ function AppInner() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateItem = useMemo(() => makeGenerateItem(activeCustomList?.words), [wordRegistryVersion, activeCustomList]);
   const generateFiniteSet = useMemo(() => {
-    const baseFn = makeGenerateFiniteSet();
+    const baseFn = makeGenerateFiniteSet(dailySize);
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
       if (categoryId === 'review' && reviewQueue.length > 0) {
         return reviewQueue.slice(0, 10).map(r => {
@@ -317,7 +327,7 @@ function AppInner() {
       return baseFn(categoryId, challengeId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reviewQueue, wordRegistryVersion]);
+  }, [reviewQueue, wordRegistryVersion, dailySize]);
 
   // ── Level config (needed before useGameLoop) ──
   const levelConfig = useMemo(
@@ -1143,7 +1153,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 
@@ -1154,6 +1164,8 @@ function AppInner() {
               onDialectChange={handleDialectChange}
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
+              recentAttempts={recentAttempts}
+              wordRecords={wordRecords}
             /></Suspense>
           </motion.div>
         )}
@@ -1208,6 +1220,55 @@ function AppInner() {
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
+
+        {/* ── Daily Size Picker ── */}
+        <AnimatePresence>
+          {showDailySizePicker && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowDailySizePicker(false)}
+            >
+              <motion.div
+                className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/10"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="text-center mb-4">
+                  <div className="text-lg chalk text-[var(--color-gold)] font-bold">📅 Daily Challenge</div>
+                  <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-1">
+                    Same words for everyone today
+                  </div>
+                </div>
+                <div className="text-xs ui text-[rgb(var(--color-fg))]/50 text-center mb-3">
+                  How many words?
+                </div>
+                <div className="flex gap-2">
+                  {([10, 25, 50] as const).map(size => (
+                    <button
+                      key={size}
+                      onClick={() => {
+                        setDailySize(size);
+                        setShowDailySizePicker(false);
+                        setQuestionTypeRaw('daily');
+                      }}
+                      className="flex-1 flex flex-col items-center gap-1 py-3 rounded-xl text-sm ui font-bold text-[var(--color-chalk)] bg-[rgb(var(--color-fg))]/[0.05] border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/10 transition-colors"
+                    >
+                      <span>{size}</span>
+                      <span className="text-[9px] ui font-normal text-[rgb(var(--color-fg))]/35">
+                        {size === 10 ? 'Quick' : size === 25 ? 'Standard' : 'Marathon'}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* ── Custom Lists Modal ── */}
         <AnimatePresence>

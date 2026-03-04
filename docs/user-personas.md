@@ -240,106 +240,106 @@ Four student personas representing the app's core audience. No parents, no teach
 
 ### Wave 1: Quick wins (small effort, high impact)
 
-- [ ] **1. Level recommendation in onboarding** *(Mia)*
+- [x] **1. Level recommendation in onboarding** *(Mia)*
   - Pre-select Level 1, add "Not sure? Start here!" hint text
   - Files: `OnboardingModal.tsx`
   - Effort: ~20 lines changed
 
-- [ ] **2. Minimum accuracy gate** *(Marcus)*
+- [x] **2. Minimum accuracy gate** *(Marcus)*
   - Gentle interstitial when rolling accuracy < 40% after 5+ answers
   - Files: `useGameLoop.ts`, `ProblemView.tsx` or new `AccuracyGate` component
   - Effort: ~80 lines new
 
-- [ ] **3. Competition prep tracker** *(Sofia)*
+- [x] **3. Competition prep tracker** *(Sofia)*
   - Scripps/State/WOTC mastery % cards on PathPage
   - Files: `PathPage.tsx`, reads from `competitionLists.ts` + `useWordHistory`
   - Effort: ~100 lines new
 
-- [ ] **4. Improvement celebrations** *(Marcus)*
+- [x] **4. Improvement celebrations** *(Marcus)*
   - Weekly accuracy trend toast on session start
   - Files: `App.tsx`, `useStats.ts` (add weekly snapshot), new toast component or inline
   - Effort: ~60 lines new
 
-- [ ] **5. Forgiving streaks for Level 1-3** *(Mia)*
+- [x] **5. Forgiving streaks for Level 1-3** *(Mia)*
   - 1 free miss before streak breaks at low levels
   - Files: `useGameLoop.ts` (modify wrong-answer handler)
   - Effort: ~15 lines changed
 
-- [ ] **6. Keyboard shortcuts** *(Sofia)*
+- [x] **6. Keyboard shortcuts** *(Sofia)*
   - Space=audio, 1/2/3=answers, ?=help overlay
   - Files: `ProblemView.tsx` (extend existing KEY_MAP handler)
   - Effort: ~40 lines new
 
 ### Wave 2: Medium effort, high value
 
-- [ ] **7. Error pattern dashboard** *(Jayden, Sofia)*
+- [x] **7. Error pattern dashboard** *(Jayden, Sofia)*
   - Per-category accuracy breakdown with "Drill weak spots" action
   - Files: `PathPage.tsx` or `MePage.tsx`, reads `byType` from stats
   - Effort: ~120 lines new
 
-- [ ] **8. Simpler wrong-answer panel for low levels** *(Mia)*
+- [x] **8. Simpler wrong-answer panel for low levels** *(Mia)*
   - Hide etymology/origin for levels 1-3
   - Files: `ProblemView.tsx` (conditional render based on level)
   - Effort: ~20 lines changed
 
-- [ ] **9. Review words reframed** *(Marcus)*
+- [x] **9. Review words reframed** *(Marcus)*
   - "to master" instead of "to review," rewrite CTA copy
   - Files: `BottomNav.tsx`, `PathPage.tsx`
   - Effort: ~10 lines changed
 
-- [ ] **10. Pattern tooltips on PathPage** *(Mia)*
+- [x] **10. Pattern tooltips on PathPage** *(Mia)*
   - Tap-to-reveal explanations for phonics categories
   - Files: `PathPage.tsx`
   - Effort: ~60 lines new
 
-- [ ] **11. Hint system after repeated misses** *(Marcus, Mia)*
+- [x] **11. Hint system after repeated misses** *(Marcus, Mia)*
   - Auto-highlight correct answer after 2 wrong on same word
   - Files: `useGameLoop.ts`, `ProblemView.tsx`
   - Effort: ~40 lines new
 
 ### Wave 3: Larger features (future versions)
 
-- [ ] **12. Weekly leaderboard tab** *(Jayden)*
+- [x] **12. Weekly leaderboard tab** *(Jayden)*
   - Separate "This Week" XP tracking + Firestore field + weekly reset
   - Files: `LeaguePage.tsx`, `useStats.ts`, Firestore schema
   - Effort: ~200 lines new + Cloud Function
 
-- [ ] **13. Tiered cosmetic unlocks** *(Jayden)*
+- [x] **13. Tiered cosmetic unlocks** *(Jayden)*
   - Lock conditions per trail/theme, greyed preview, unlock toasts
   - Files: `MePage.tsx`, `useStats.ts`, new unlock-conditions config
   - Effort: ~200 lines new
 
-- [ ] **14. Weekly goal tracker** *(Marcus)*
+- [x] **14. Weekly goal tracker** *(Marcus)*
   - Set word count target, show progress bar, weekly reset
   - Files: `App.tsx`, new `useWeeklyGoal` hook, `config.ts`
   - Effort: ~150 lines new
 
-- [ ] **15. Filter word book by origin** *(Sofia)*
+- [x] **15. Filter word book by origin** *(Sofia)*
   - Origin-language tabs in WordBookModal
   - Files: `WordBookModal.tsx`
   - Effort: ~80 lines new
 
-- [ ] **16. Mature stats dashboard** *(Sofia)*
+- [x] **16. Mature stats dashboard** *(Sofia)*
   - Toggle cosmetics grid for analytics view on MePage
   - Files: `MePage.tsx`, new analytics component
   - Effort: ~200 lines new
 
-- [ ] **17. Real-time 1v1 multiplayer** *(Jayden)*
+- [x] **17. Real-time 1v1 multiplayer** *(Jayden)*
   - Shared word sets, real-time scoring, invite flow
   - Files: New multiplayer infrastructure
   - Effort: Large — full feature build
 
-- [ ] **18. Bee Sim format improvements** *(Sofia)*
+- [x] **18. Bee Sim format improvements** *(Sofia)*
   - "Ask the pronouncer" buttons for definition/origin/sentence
   - Files: `BeeSimPage.tsx`
   - Effort: ~100 lines new
 
-- [ ] **19. Longer daily challenge sizes** *(Jayden)*
+- [x] **19. Longer daily challenge sizes** *(Jayden)*
   - 10/25/50 word daily options
   - Files: `App.tsx`, daily challenge generator
   - Effort: ~60 lines new
 
-- [ ] **20. Focused study set filters** *(Sofia)*
+- [x] **20. Focused study set filters** *(Sofia)*
   - Difficulty + origin + pattern filter in WordBookModal
   - Files: `WordBookModal.tsx`
   - Effort: ~120 lines new

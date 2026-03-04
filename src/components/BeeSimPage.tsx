@@ -278,6 +278,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
     const [missedWords, setMissedWords] = useState<MissedWord[]>([]);
     const [correctWords, setCorrectWords] = useState<SpellingWord[]>([]);
     const [diffRange, setDiffRange] = useState<[number, number]>([10, 1]); // [min, max]
+    const [totalAsks, setTotalAsks] = useState(0);
 
     // Track difficulty range
     const trackDifficulty = useCallback((d: number) => {
@@ -339,6 +340,12 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
         }
         prevPhaseRef.current = phase;
     }, [phase, lastResult, streak, bestStreak, soundOn, currentWord, typedSpelling, trackDifficulty]);
+
+    // Track info asks
+    const handleRequestInfo = useCallback((type: Parameters<typeof requestInfo>[0]) => {
+        if (type !== 'repeat' && type !== 'pronounceAgain') setTotalAsks(n => n + 1);
+        requestInfo(type);
+    }, [requestInfo]);
 
     // Reset showMoreInfo when phase changes to asking (new word)
     useEffect(() => {
@@ -576,7 +583,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                             return (
                                                 <button
                                                     key={type}
-                                                    onClick={() => requestInfo(type)}
+                                                    onClick={() => handleRequestInfo(type)}
                                                     disabled={alreadyAsked}
                                                     aria-label={`Request ${label.toLowerCase()}`}
                                                     className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs ui font-medium transition-colors ${
@@ -614,7 +621,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                                     return (
                                                         <button
                                                             key={type}
-                                                            onClick={() => requestInfo(type)}
+                                                            onClick={() => handleRequestInfo(type)}
                                                             disabled={alreadyAsked}
                                                             aria-label={`Request ${label.toLowerCase()}`}
                                                             className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs ui font-medium transition-colors ${
@@ -692,7 +699,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                     {/* Pronounce Again — available during spelling phase */}
                                     {ttsSupported && (
                                         <button
-                                            onClick={() => requestInfo('pronounceAgain')}
+                                            onClick={() => handleRequestInfo('pronounceAgain')}
                                             className="mb-2 w-full flex items-center justify-center gap-1.5 text-xs ui font-medium border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-2 transition-colors"
                                         >
                                             <IconSpeaker className="w-3.5 h-3.5" />
@@ -798,7 +805,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                 <div className="text-4xl chalk text-[var(--color-gold)] mb-1">{wordsCorrect}</div>
                                 <div className="text-sm ui text-[rgb(var(--color-fg))]/60 font-medium">words spelled correctly</div>
                             </div>
-                            <div className="grid grid-cols-3 gap-3 text-center">
+                            <div className="grid grid-cols-4 gap-3 text-center">
                                 <div>
                                     <div className="text-lg chalk text-[var(--color-streak-fire)]">{bestStreak}</div>
                                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Best Streak</div>
@@ -810,6 +817,10 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                 <div>
                                     <div className="text-lg chalk text-[rgb(var(--color-fg))]/70">{diffMin !== 10 ? `${diffMin}-${diffMax}` : '-'}</div>
                                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Difficulty</div>
+                                </div>
+                                <div>
+                                    <div className="text-lg chalk text-[rgb(var(--color-fg))]/70">{totalAsks}</div>
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Asks</div>
                                 </div>
                             </div>
                         </motion.div>
@@ -946,7 +957,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                             <div className="text-5xl chalk text-[var(--color-gold)] mb-2 font-bold">{wordsCorrect}</div>
                             <div className="text-sm ui text-[rgb(var(--color-fg))]/70 font-semibold">words spelled perfectly</div>
 
-                            <div className="grid grid-cols-3 gap-3 text-center mt-4">
+                            <div className="grid grid-cols-4 gap-3 text-center mt-4">
                                 <div>
                                     <div className="text-lg chalk text-[var(--color-streak-fire)]">{bestStreak}</div>
                                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Best Streak</div>
@@ -958,6 +969,10 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                 <div>
                                     <div className="text-lg chalk text-[rgb(var(--color-fg))]/70">{diffMin !== 10 ? `${diffMin}-${diffMax}` : '-'}</div>
                                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Difficulty</div>
+                                </div>
+                                <div>
+                                    <div className="text-lg chalk text-[rgb(var(--color-fg))]/70">{totalAsks}</div>
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Asks</div>
                                 </div>
                             </div>
 

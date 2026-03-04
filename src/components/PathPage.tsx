@@ -4,7 +4,7 @@
  * Study Dashboard — the "Path" tab. Shows a single clear CTA,
  * compact study plan, and flat 10-level curriculum.
  */
-import { memo, useMemo, useState } from 'react';
+import { memo, useMemo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/curriculum';
@@ -15,6 +15,7 @@ import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, wordsByList, getRegistryVersion, COMPETITION_LISTS } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
+import { STORAGE_KEYS } from '../config';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -328,6 +329,138 @@ function WeakPatterns({ patterns, onPractice }: { patterns: AccuracyBar[]; onPra
     );
 }
 
+// ── Weekly goal tracker ────────────────────────────────────────────────────────
+
+function getWeekKey(): string {
+    const now = new Date();
+    const jan1 = new Date(now.getFullYear(), 0, 1);
+    const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+}
+
+interface WeeklyGoalData {
+    weekKey: string;
+    target: number;
+    progress: number;
+}
+
+function loadWeeklyGoal(): WeeklyGoalData | null {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEYS.weeklyGoal);
+        if (!raw) return null;
+        const data = JSON.parse(raw);
+        if (data.weekKey !== getWeekKey()) {
+            // New week — reset progress but keep target
+            return { weekKey: getWeekKey(), target: data.target, progress: 0 };
+        }
+        return data;
+    } catch { return null; }
+}
+
+function saveWeeklyGoal(data: WeeklyGoalData): void {
+    localStorage.setItem(STORAGE_KEYS.weeklyGoal, JSON.stringify(data));
+}
+
+const GOAL_OPTIONS = [50, 100, 200, 500];
+
+function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
+    const [goal, setGoal] = useState<WeeklyGoalData | null>(() => loadWeeklyGoal());
+    const [showPicker, setShowPicker] = useState(false);
+
+    // Update progress based on total words studied
+    const currentProgress = totalWords;
+    if (goal && goal.progress !== currentProgress) {
+        const updated = { ...goal, progress: currentProgress, weekKey: getWeekKey() };
+        saveWeeklyGoal(updated);
+        // Don't call setGoal here to avoid render loop — it will pick up next render
+    }
+
+    const handleSetGoal = useCallback((target: number) => {
+        const data: WeeklyGoalData = { weekKey: getWeekKey(), target, progress: currentProgress };
+        saveWeeklyGoal(data);
+        setGoal(data);
+        setShowPicker(false);
+    }, [currentProgress]);
+
+    if (!goal) {
+        return (
+            <button
+                onClick={() => setShowPicker(true)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 mb-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-dashed border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 transition-colors"
+            >
+                <span className="text-base">🎯</span>
+                <span className="text-xs ui text-[rgb(var(--color-fg))]/40">Set a weekly goal</span>
+                {showPicker && (
+                    <div className="flex gap-2 ml-2">
+                        {GOAL_OPTIONS.map(n => (
+                            <button
+                                key={n}
+                                onClick={(e) => { e.stopPropagation(); handleSetGoal(n); }}
+                                className="px-2 py-1 rounded-lg text-[10px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                            >
+                                {n}
+                            </button>
+                        ))}
+                    </div>
+                )}
+            </button>
+        );
+    }
+
+    const pct = Math.min(100, Math.round((currentProgress / goal.target) * 100));
+    const complete = currentProgress >= goal.target;
+
+    return (
+        <div className="mb-3 px-3 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
+            <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-1.5">
+                    <span className="text-sm">{complete ? '🎉' : '🎯'}</span>
+                    <span className="text-xs ui text-[rgb(var(--color-fg))]/60 font-medium">
+                        {complete ? 'Goal complete!' : `${currentProgress}/${goal.target} this week`}
+                    </span>
+                </div>
+                <button
+                    onClick={() => setShowPicker(true)}
+                    className="text-[9px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
+                >
+                    change
+                </button>
+            </div>
+            <div className="h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                <div
+                    className={`h-full rounded-full transition-all ${complete ? 'bg-[var(--color-correct)]' : 'bg-[var(--color-gold)]'}`}
+                    style={{ width: `${pct}%` }}
+                />
+            </div>
+            <AnimatePresence>
+                {showPicker && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="flex gap-2 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
+                            {GOAL_OPTIONS.map(n => (
+                                <button
+                                    key={n}
+                                    onClick={() => handleSetGoal(n)}
+                                    className={`flex-1 py-1.5 rounded-lg text-[10px] ui transition-colors ${goal.target === n
+                                        ? 'text-[var(--color-gold)] bg-[var(--color-gold)]/15 font-semibold'
+                                        : 'text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5 hover:bg-[rgb(var(--color-fg))]/10'
+                                    }`}
+                                >
+                                    {n}
+                                </button>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
 // ── Main component ───────────────────────────────────────────────────────────
 
 export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
@@ -403,7 +536,8 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
             <h2 className="text-xl ui font-bold text-[var(--color-gold)] text-center mb-1">
                 Path to Champion
             </h2>
-            <div className="mb-4" />
+            {/* Weekly goal tracker */}
+            {totalWords > 0 && <WeeklyGoalTracker totalWords={totalWords} />}
 
             {/* First-time empty state */}
             {totalWords === 0 && (

@@ -19,6 +19,10 @@ interface Props {
     onDialectChange: (d: Dialect) => void;
     masteredCount: number;
     uniqueWordsAttempted: number;
+    /** Recent word attempts for stats dashboard */
+    recentAttempts?: Array<{ word: string; category: string; correct: boolean; timestamp: number; responseTimeMs: number }>;
+    /** Per-word records for pattern analysis */
+    wordRecords?: Record<string, { word: string; category: string; attempts: number; correct: number; box: number }>;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -81,7 +85,7 @@ const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-d
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 const MASTERY_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('word-'));
 
-export const MePage = memo(function MePage({ unlocked, onDialectChange, masteredCount, uniqueWordsAttempted }: Props) {
+export const MePage = memo(function MePage({ unlocked, onDialectChange, masteredCount, uniqueWordsAttempted, recentAttempts = [], wordRecords = {} }: Props) {
     // Get user state from context
     const {
         stats,
@@ -107,6 +111,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
     const activeBadge = stats.activeBadgeId || '';
     const [showRanks, setShowRanks] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [showStats, setShowStats] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
@@ -129,6 +134,63 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
         const pct = (masteredCount / totalWords) * 100;
         return pct >= 1 ? `${Math.round(pct)}%` : pct > 0 ? `${pct.toFixed(1)}%` : '0%';
     }, [masteredCount, totalWords]);
+
+    // ── Stats dashboard data ──
+    /** Rolling accuracy per day (last 7 days) for sparkline */
+    const [todayKey] = useState(() => {
+        const now = new Date();
+        return now.toISOString().slice(0, 10); // YYYY-MM-DD, stable for component lifetime
+    });
+    const dailyAccuracy = useMemo(() => {
+        const days: { label: string; correct: number; total: number }[] = [];
+        const todayMs = new Date(todayKey).getTime();
+        for (let i = 6; i >= 0; i--) {
+            const d = new Date(todayMs - i * 86400000);
+            const key = d.toISOString().slice(5, 10); // MM-DD
+            days.push({ label: key, correct: 0, total: 0 });
+        }
+        for (const a of recentAttempts) {
+            const d = new Date(a.timestamp);
+            const key = d.toISOString().slice(5, 10);
+            const entry = days.find(e => e.label === key);
+            if (entry) {
+                entry.total++;
+                if (a.correct) entry.correct++;
+            }
+        }
+        return days;
+    }, [recentAttempts, todayKey]);
+
+    /** Category accuracy heatmap */
+    const categoryStats = useMemo(() => {
+        const cats: Record<string, { attempts: number; correct: number }> = {};
+        for (const r of Object.values(wordRecords)) {
+            if (r.attempts === 0) continue;
+            if (!cats[r.category]) cats[r.category] = { attempts: 0, correct: 0 };
+            cats[r.category].attempts += r.attempts;
+            cats[r.category].correct += r.correct;
+        }
+        return Object.entries(cats)
+            .map(([cat, s]) => ({ category: cat, accuracy: Math.round((s.correct / s.attempts) * 100), attempts: s.attempts }))
+            .filter(c => c.attempts >= 3)
+            .sort((a, b) => a.accuracy - b.accuracy);
+    }, [wordRecords]);
+
+    /** Leitner box distribution */
+    const boxDistribution = useMemo(() => {
+        const boxes = [0, 0, 0, 0, 0]; // boxes 0-4
+        for (const r of Object.values(wordRecords)) {
+            boxes[Math.min(r.box, 4)]++;
+        }
+        return boxes;
+    }, [wordRecords]);
+
+    /** Average response time (last 50 attempts) */
+    const avgResponseMs = useMemo(() => {
+        const recent = recentAttempts.slice(0, 50);
+        if (recent.length === 0) return 0;
+        return Math.round(recent.reduce((sum, a) => sum + a.responseTimeMs, 0) / recent.length);
+    }, [recentAttempts]);
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20 landscape-compact-pb">
@@ -350,6 +412,115 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                     </div>
                 )}
             </motion.div>
+
+            {/* Stats toggle */}
+            {stats.sessionsPlayed >= 3 && (
+                <button
+                    onClick={() => setShowStats(s => !s)}
+                    className="mb-4 px-4 py-1.5 rounded-lg text-[10px] ui font-semibold uppercase tracking-wider border transition-colors text-[rgb(var(--color-fg))]/40 border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:text-[var(--color-gold)]"
+                >
+                    {showStats ? 'Hide Stats' : 'View Stats'}
+                </button>
+            )}
+
+            {/* ── Stats Dashboard ── */}
+            <AnimatePresence>
+                {showStats && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="w-full max-w-sm mb-6 overflow-hidden"
+                    >
+                        {/* 7-day accuracy sparkline */}
+                        <div className="mb-4">
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">7-Day Accuracy</div>
+                            <div className="flex items-end justify-center gap-1 h-16">
+                                {dailyAccuracy.map((d, i) => {
+                                    const pct = d.total > 0 ? Math.round((d.correct / d.total) * 100) : 0;
+                                    const height = d.total > 0 ? Math.max(8, (pct / 100) * 56) : 4;
+                                    return (
+                                        <div key={i} className="flex flex-col items-center gap-0.5">
+                                            <div className="text-[8px] ui text-[rgb(var(--color-fg))]/25">
+                                                {d.total > 0 ? `${pct}%` : ''}
+                                            </div>
+                                            <div
+                                                className={`w-6 rounded-t transition-all ${
+                                                    d.total === 0 ? 'bg-[rgb(var(--color-fg))]/5' :
+                                                    pct >= 80 ? 'bg-[var(--color-correct)]/60' :
+                                                    pct >= 60 ? 'bg-[var(--color-gold)]/50' :
+                                                    'bg-[var(--color-wrong)]/40'
+                                                }`}
+                                                style={{ height }}
+                                            />
+                                            <div className="text-[7px] ui text-[rgb(var(--color-fg))]/20">{d.label.slice(3)}</div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Speed stat */}
+                        {avgResponseMs > 0 && (
+                            <div className="text-center mb-4">
+                                <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">{(avgResponseMs / 1000).toFixed(1)}s</span>
+                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 ml-1">avg response</span>
+                            </div>
+                        )}
+
+                        {/* Leitner box distribution */}
+                        <div className="mb-4">
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Learning Progress</div>
+                            <div className="flex items-end justify-center gap-2">
+                                {['New', 'Day 1', 'Day 3', 'Week', 'Done'].map((label, i) => {
+                                    const count = boxDistribution[i];
+                                    const maxCount = Math.max(...boxDistribution, 1);
+                                    const height = Math.max(4, (count / maxCount) * 48);
+                                    return (
+                                        <div key={i} className="flex flex-col items-center gap-0.5">
+                                            <div className="text-[8px] ui text-[rgb(var(--color-fg))]/30">{count}</div>
+                                            <div
+                                                className={`w-10 rounded-t ${
+                                                    i === 4 ? 'bg-[var(--color-correct)]/50' :
+                                                    i >= 2 ? 'bg-[var(--color-gold)]/40' :
+                                                    'bg-[rgb(var(--color-fg))]/10'
+                                                }`}
+                                                style={{ height }}
+                                            />
+                                            <div className="text-[7px] ui text-[rgb(var(--color-fg))]/25">{label}</div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Category accuracy heatmap */}
+                        {categoryStats.length > 0 && (
+                            <div className="mb-2">
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Category Strengths</div>
+                                <div className="space-y-1">
+                                    {categoryStats.slice(0, 8).map(c => (
+                                        <div key={c.category} className="flex items-center gap-2">
+                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40 w-20 text-right truncate">{c.category}</div>
+                                            <div className="flex-1 h-2.5 rounded-full bg-[rgb(var(--color-fg))]/5 overflow-hidden">
+                                                <div
+                                                    className={`h-full rounded-full transition-all ${
+                                                        c.accuracy >= 80 ? 'bg-[var(--color-correct)]/60' :
+                                                        c.accuracy >= 60 ? 'bg-[var(--color-gold)]/50' :
+                                                        'bg-[var(--color-wrong)]/40'
+                                                    }`}
+                                                    style={{ width: `${c.accuracy}%` }}
+                                                />
+                                            </div>
+                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 w-8">{c.accuracy}%</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* ── Consolidated Content ── */}
             <div className="w-full">

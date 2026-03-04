@@ -52,6 +52,10 @@ export interface Stats {
     // Streak freeze — purchased with XP, consumed before shields on 1-day gap
     streakFreezes: number;
 
+    // Weekly XP for weekly leaderboard
+    weeklyXP: number;
+    weeklyXPWeek: string; // YYYY-WNN key, resets each Monday
+
     // Cosmetics for Leaderboard broadcast
     activeThemeId?: string;
     activeCostume?: string;
@@ -60,6 +64,14 @@ export interface Stats {
 }
 
 const STORAGE_KEY = STORAGE_KEYS.stats;
+
+/** Get ISO week key for weekly leaderboard (resets each Monday) */
+function currentWeekKey(): string {
+    const now = new Date();
+    const jan1 = new Date(now.getFullYear(), 0, 1);
+    const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+}
 
 const EMPTY_TYPE: TypeStat = { solved: 0, correct: 0 };
 
@@ -110,6 +122,8 @@ const EMPTY_STATS: Stats = {
     beeBestLevel: '',
     beeWins: 0,
     streakFreezes: 0,
+    weeklyXP: 0,
+    weeklyXPWeek: '',
 };
 
 /** Load from localStorage (fast, synchronous) */
@@ -141,6 +155,8 @@ async function saveStatsCloud(uid: string, s: Stats) {
         await setDoc(doc(db, FIRESTORE.USERS, uid), {
             // Top-level leaderboard-queryable fields
             totalXP: s.totalXP,
+            weeklyXP: s.weeklyXPWeek === currentWeekKey() ? (s.weeklyXP || 0) : 0,
+            weeklyXPWeek: s.weeklyXPWeek || '',
             bestStreak: Math.max(s.bestStreak || 0, s.hardModeBestStreak || 0, s.timedModeBestStreak || 0, s.ultimateBestStreak || 0),
             totalSolved: s.totalSolved,
             accuracy,
@@ -382,12 +398,17 @@ export function useStats(uid: string | null) {
 
             const isPerfect = answered > 0 && correct === answered;
             const isUltimate = hardMode && timedMode;
+            // Weekly XP — reset if new week
+            const wk = currentWeekKey();
+            const weeklyXP = (prev.weeklyXPWeek === wk ? prev.weeklyXP : 0) + score;
             return {
                 ...prev,
                 lastDailyDate,
                 todayDailySolved,
                 todayDailyCorrect,
                 totalXP: prev.totalXP + score,
+                weeklyXP,
+                weeklyXPWeek: wk,
                 totalSolved: prev.totalSolved + answered,
                 totalCorrect: prev.totalCorrect + correct,
                 bestStreak: Math.max(prev.bestStreak, bestStreak),
@@ -431,9 +452,12 @@ export function useStats(uid: string | null) {
     }, []);
 
     const recordBeeResult = useCallback((round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => {
+        const wk = currentWeekKey();
         setStats(prev => ({
             ...prev,
             totalXP: prev.totalXP + xp,
+            weeklyXP: (prev.weeklyXPWeek === wk ? prev.weeklyXP : 0) + xp,
+            weeklyXPWeek: wk,
             beeSessions: prev.beeSessions + 1,
             beeBestRound: Math.max(prev.beeBestRound, round),
             beeWordsCorrect: prev.beeWordsCorrect + wordsCorrect,
