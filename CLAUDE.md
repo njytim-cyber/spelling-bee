@@ -18,7 +18,7 @@ npm run verify    # Full check: lint + tsc + test + build
 - **Tailwind CSS 4** (via Vite plugin, utility-first)
 - **Framer Motion** (animations, swipe gestures, AnimatePresence)
 - **Firebase** (Auth + Firestore for cloud sync, leaderboards, pings)
-- **Vitest** + React Testing Library (11 test files, 121 tests)
+- **Vitest** + React Testing Library (11 test files, 127 tests)
 - **PWA** via vite-plugin-pwa with offline caching
 
 ## Architecture
@@ -62,6 +62,11 @@ src/
 - **Leitner boxes**: Words progress through boxes 0-4 based on correct/incorrect answers, with increasing review delays
 - **Lazy loading**: Tiers 1-2 core words are eager-loaded. Pipeline expansions + tiers 3-9 load on demand via `ensureAllTiers()`. Registry version counter triggers re-renders.
 - **Stats merge**: Local-first with Firestore sync. `mergeStats()` takes the best of each field from local vs. cloud
+- **Weekly XP**: `weeklyXP` + `weeklyXPWeek` fields in stats, reset each Monday. Firestore synced for weekly leaderboard.
+- **Weekly goal**: localStorage-based goal tracker on PathPage (50/100/200/500 words), resets each week
+- **Stats dashboard**: MePage "View Stats" toggle showing 7-day accuracy sparkline, Leitner box distribution, category heatmap
+- **Daily challenge sizes**: 10 (Quick) / 25 (Standard) / 50 (Marathon), all using same daily seed
+- **Word book filters**: Origin tabs (Latin/Greek/French/Germanic/English/Other) + difficulty range selectors
 - **Modal pattern**: `AnimatePresence` + `motion.div` with overlay click-to-close, consistent 340px width
 
 ### Word Bank Structure
