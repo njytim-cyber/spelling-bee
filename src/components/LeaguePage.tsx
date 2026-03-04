@@ -21,7 +21,7 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
-type LeaderboardTab = 'allTime' | 'weekly' | 'accuracy';
+type LeaderboardTab = 'allTime' | 'weekly';
 
 interface Props {
     userXP: number;
@@ -35,11 +35,10 @@ interface Props {
     onOpenMultiplayer?: () => void;
     onOpenBee?: () => void;
     onOpenWrittenTest?: () => void;
-    onOpenWotc?: (tier: 'wotc-one' | 'wotc-two' | 'wotc-three') => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [lbTab, setLbTab] = useState<LeaderboardTab>('allTime');
@@ -154,12 +153,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         return list
             .sort((a, b) =>
                 lbTab === 'weekly' ? b.weeklyXP - a.weeklyXP :
-                lbTab === 'accuracy' ? b.accuracy - a.accuracy || b.totalXP - a.totalXP :
                 b.totalXP - a.totalXP
             )
             .filter(e =>
                 lbTab === 'weekly' ? e.weeklyXP > 0 :
-                lbTab === 'accuracy' ? e.accuracy > 0 :
                 true
             )
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
@@ -207,26 +204,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </button>
                 )}
 
-                {/* WOTC tiers */}
-                {onOpenWotc && (
-                    <div className="flex gap-2">
-                        {([
-                            { tier: 'wotc-one' as const, label: 'One Bee', desc: 'Levels 1\u20132' },
-                            { tier: 'wotc-two' as const, label: 'Two Bee', desc: 'Levels 3\u20136' },
-                            { tier: 'wotc-three' as const, label: 'Three Bee', desc: 'Levels 7\u201310' },
-                        ]).map(t => (
-                            <button
-                                key={t.tier}
-                                onClick={() => onOpenWotc(t.tier)}
-                                className="flex-1 flex flex-col items-center gap-1 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
-                            >
-                                <span className="text-sm ui font-semibold text-[rgb(var(--color-fg))]/80">{t.label}</span>
-                                <span className="text-[9px] ui text-[rgb(var(--color-fg))]/35">{t.desc}</span>
-                            </button>
-                        ))}
-                    </div>
-                )}
-
                 <div className="flex gap-2">
                     {onOpenWrittenTest && (
                         <button
@@ -257,7 +234,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 <div className="flex items-center justify-between">
                     <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
                     <div className="flex rounded-lg overflow-hidden border border-[rgb(var(--color-fg))]/10">
-                        {(['allTime', 'weekly', 'accuracy'] as const).map(tab => (
+                        {(['allTime', 'weekly'] as const).map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setLbTab(tab)}
@@ -267,7 +244,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                         : 'text-[rgb(var(--color-fg))]/35 hover:text-[rgb(var(--color-fg))]/50'
                                 }`}
                             >
-                                {tab === 'allTime' ? 'All Time' : tab === 'weekly' ? 'This Week' : 'Accuracy'}
+                                {tab === 'allTime' ? 'All Time' : 'This Week'}
                             </button>
                         ))}
                     </div>
@@ -354,13 +331,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             {/* Score */}
                             <div className="text-right">
                                 <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                    {lbTab === 'accuracy'
-                                        ? `${entry.accuracy}%`
-                                        : (lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()
-                                    }
+                                    {(lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()}
                                 </div>
                                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">
-                                    {lbTab === 'accuracy' ? 'acc' : lbTab === 'weekly' ? 'wk' : 'XP'}
+                                    {lbTab === 'weekly' ? 'wk' : 'XP'}
                                 </div>
                             </div>
                             <div className="text-right w-10">

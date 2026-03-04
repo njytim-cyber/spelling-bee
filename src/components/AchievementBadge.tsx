@@ -97,6 +97,99 @@ const AllRounder = ({ size = 48, unlocked }: BadgeProps) => (
     </svg>
 );
 
+/* ── Learning Badges ── */
+
+/** Circular arrows — Reviewer */
+const Reviewer = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-correct)' : 'var(--color-locked)' }}>
+        <path d="M34 14a14 14 0 1 1-20 0" {...S} strokeWidth="2.5" />
+        <path d="M28 8l6 6-6 6" {...S} strokeWidth="2.5" />
+    </svg>
+);
+
+/** Brain — Memory Master */
+const MemoryMaster = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M24 38c-7 0-12-5-12-12 0-4 2-7 4-9 1-1 1-3 0-4 2-3 5-5 8-5s6 2 8 5c-1 1-1 3 0 4 2 2 4 5 4 9 0 7-5 12-12 12z" {...S} strokeWidth="2.5" />
+        <path d="M24 14v24" {...S} strokeWidth="1.5" opacity="0.3" />
+        <path d="M18 22c3 2 6 2 12 0" {...S} strokeWidth="1.5" opacity="0.3" />
+        <path d="M18 30c3-2 6-2 12 0" {...S} strokeWidth="1.5" opacity="0.3" />
+    </svg>
+);
+
+/** Rising arrow — Comeback Kid */
+const ComebackKid = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-correct)' : 'var(--color-locked)' }}>
+        <path d="M8 36c4-4 8-16 16-20s12 0 16-8" {...S} strokeWidth="2.5" />
+        <path d="M34 8h6v6" {...S} strokeWidth="2.5" />
+    </svg>
+);
+
+/* ── Bee Simulation Badges ── */
+
+/** Bee — Bee Debut */
+const BeeDebut = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <ellipse cx="24" cy="26" rx="10" ry="12" {...S} strokeWidth="2.5" />
+        <line x1="14" y1="22" x2="34" y2="22" {...S} strokeWidth="2" />
+        <line x1="14" y1="28" x2="34" y2="28" {...S} strokeWidth="2" />
+        <circle cx="20" cy="18" r="1.5" fill="currentColor" opacity="0.5" />
+        <circle cx="28" cy="18" r="1.5" fill="currentColor" opacity="0.5" />
+        <path d="M18 10c-4-4-8-4-8 0" {...S} strokeWidth="2" />
+        <path d="M30 10c4-4 8-4 8 0" {...S} strokeWidth="2" />
+    </svg>
+);
+
+/** Shield — No Help Needed */
+const NoHelp = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-correct)' : 'var(--color-locked)' }}>
+        <path d="M24 6L8 14v12c0 10 16 16 16 16s16-6 16-16V14z" {...S} strokeWidth="2.5" />
+        <path d="M18 24l4 4 8-8" {...S} strokeWidth="2.5" />
+    </svg>
+);
+
+/** Trophy — Bee Champion */
+const BeeChampion = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M16 8h16v14c0 5-4 8-8 8s-8-3-8-8z" {...S} strokeWidth="2.5" />
+        <path d="M16 12H10c0 6 3 8 6 8" {...S} strokeWidth="2" />
+        <path d="M32 12h6c0 6-3 8-6 8" {...S} strokeWidth="2" />
+        <line x1="24" y1="30" x2="24" y2="36" {...S} strokeWidth="2.5" />
+        <line x1="16" y1="36" x2="32" y2="36" {...S} strokeWidth="2.5" />
+    </svg>
+);
+
+/* ── Tournament Badges ── */
+
+/** Ticket — Tournament Entry */
+const TournamentEntry = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <rect x="6" y="14" width="36" height="20" rx="3" {...S} strokeWidth="2.5" />
+        <line x1="16" y1="14" x2="16" y2="34" {...S} strokeWidth="2" strokeDasharray="3 3" />
+        <path d="M24 20l2 4 4 0-3 3 1 4-4-2-4 2 1-4-3-3 4 0z" {...S} strokeWidth="1.5" />
+    </svg>
+);
+
+/** Shield with 10 — Tournament Survivor */
+const TournamentSurvivor = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M24 6L8 14v12c0 10 16 16 16 16s16-6 16-16V14z" {...S} strokeWidth="2.5" />
+        <text x="24" y="29" textAnchor="middle" fill="currentColor" fontSize="12" fontFamily="var(--font-ui)" fontWeight="bold">10</text>
+    </svg>
+);
+
+/** Crossed swords — Spelling Gladiator */
+const SpellingGladiator = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M12 8l24 28" {...S} strokeWidth="2.5" />
+        <path d="M36 8L12 36" {...S} strokeWidth="2.5" />
+        <path d="M10 10l6 0M10 10l0 6" {...S} strokeWidth="2" />
+        <path d="M38 10l-6 0M38 10l0 6" {...S} strokeWidth="2" />
+        <circle cx="24" cy="22" r="6" {...S} strokeWidth="2" />
+        <path d="M24 18l2 3 3 0-2 2 1 3-4-1-4 1 1-3-2-2 3 0z" {...S} strokeWidth="1" />
+    </svg>
+);
+
 /* ── Hard Mode Skull Badges ── */
 
 /** Skull — Skull Initiate */
@@ -310,7 +403,7 @@ const WordOmniscient = ({ size = 48, unlocked }: BadgeProps) => (
 
 /** Map from achievement ID to SVG component */
 const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
-    'first-steps': FirstSteps,
+    'first-word': FirstSteps,
     'streak-5': OnFire,
     'streak-20': Unstoppable,
     'century': Century,
@@ -318,6 +411,18 @@ const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
     'sharpshooter': Sharpshooter,
     'dedicated': Dedicated,
     'all-rounder': AllRounder,
+    // Learning
+    'reviewer': Reviewer,
+    'memory-master': MemoryMaster,
+    'comeback-kid': ComebackKid,
+    // Bee simulation
+    'bee-debut': BeeDebut,
+    'no-help': NoHelp,
+    'bee-champion': BeeChampion,
+    // Tournament
+    'tournament-enter': TournamentEntry,
+    'tournament-10': TournamentSurvivor,
+    'tournament-20': SpellingGladiator,
     // Hard mode skulls
     'skull-initiate': SkullInitiate,
     'skull-warrior': SkullWarrior,

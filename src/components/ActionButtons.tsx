@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { QuestionTypePicker } from './QuestionTypePicker';
 import type { SpellingCategory } from '../domains/spelling/spellingCategories';
+import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 
 interface Props {
     questionType: SpellingCategory;
@@ -53,13 +54,14 @@ export const ActionButtons = memo(function ActionButtons({
 }: Props) {
     // Hide hard/timed toggles during full-screen modes that have their own controls
     const hideToggles = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
+    const categoryLabel = SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? '';
 
     return (
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
             {/* Question type */}
             <div className="relative">
                 <QuestionTypePicker current={questionType} onChange={onTypeChange} />
-                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Topic</span>
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">{categoryLabel}</span>
             </div>
 
             {/* MCQ / Text mode toggle */}

@@ -48,14 +48,13 @@ export type SpellingCategory =
     | 'theme-society' | 'theme-travel' | 'theme-everyday'
     | 'vocab'
     | 'origin-latin' | 'origin-greek' | 'origin-french' | 'origin-german' | 'origin-other'
-    | 'wotc-one' | 'wotc-two' | 'wotc-three'
     | 'written-test'
     | 'guided'
     | 'roots'
     | 'etymology'
     | 'custom';
 
-export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'origins' | 'competition' | 'practice';
+export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' | 'tier' | 'themes' | 'origins' | 'practice';
 
 // ── Levels ───────────────────────────────────────────────────────────────────
 
@@ -528,40 +527,12 @@ const iVocab = I(<>
     <circle cx="12" cy="14.5" r="0.5" fill="currentColor" stroke="none" />
 </>);
 
-// WOTC: One Bee — single bee
-const iWotcOne = I(<>
-    <circle cx="12" cy="10" r="5" />
-    <path d="M9 15c0 2 1.5 4 3 4s3-2 3-4" />
-    <path d="M8 8l-3-3 M16 8l3-3" />
-</>);
-
-// WOTC: Two Bee — two bees
-const iWotcTwo = I(<>
-    <circle cx="8" cy="10" r="4" />
-    <circle cx="16" cy="10" r="4" />
-    <path d="M5 8l-2-2 M11 8l-1-2 M13 8l1-2 M19 8l2-2" />
-</>);
-
-// WOTC: Three Bee — trophy bee
-const iWotcThree = I(<>
-    <path d="M8 3h8v5a4 4 0 0 1-8 0V3z" />
-    <path d="M8 5H5c0 3 1.5 4 3 4 M16 5h3c0 3-1.5 4-3 4" />
-    <line x1="12" y1="12" x2="12" y2="16" />
-    <path d="M8 16h8 M9 19h6" />
-</>);
-
-// Bee Sim — microphone (spelling bee stage)
+// Competition — microphone (spelling bee stage)
 const iBeeSim = I(<>
     <path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z" />
     <path d="M19 11a7 7 0 0 1-14 0" />
     <line x1="12" y1="18" x2="12" y2="23" />
     <line x1="8" y1="23" x2="16" y2="23" />
-</>);
-
-// Guided Spelling — pencil writing letters
-const iGuided = I(<>
-    <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
-    <path d="M15 5l4 4" />
 </>);
 
 // Written Test — clipboard with checklist
@@ -663,13 +634,6 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'theme-society', icon: iSociety, label: 'Society', group: 'themes' },
     { id: 'theme-academic', icon: iAcademic, label: 'Academic', group: 'themes' },
     { id: 'theme-art', icon: iArt, label: 'Arts', group: 'themes' },
-    // Competition (WOTC tiers)
-    { id: 'wotc-one', icon: iWotcOne, label: 'One Bee', group: 'competition' },
-    { id: 'wotc-two', icon: iWotcTwo, label: 'Two Bee', group: 'competition' },
-    { id: 'wotc-three', icon: iWotcThree, label: 'Three Bee', group: 'competition' },
-    { id: 'guided', icon: iGuided, label: 'Guided Spell', group: 'competition' },
-    { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'competition' },
-    { id: 'bee', icon: iBeeSim, label: 'Bee Sim', group: 'competition' },
     // Origins (by etymology / language of origin)
     { id: 'origin-latin', icon: iOriginLatin, label: 'Latin', group: 'origins' },
     { id: 'origin-greek', icon: iOriginGreek, label: 'Greek', group: 'origins' },
@@ -677,6 +641,8 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'origin-german', icon: iOriginGerman, label: 'German', group: 'origins' },
     { id: 'origin-other', icon: iOriginOther, label: 'Other Origins', group: 'origins' },
     // Practice
+    { id: 'bee', icon: iBeeSim, label: 'Competition', group: 'practice' },
+    { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'practice' },
     { id: 'review', icon: iReview, label: 'Review', group: 'practice' },
     { id: 'vocab', icon: iVocab, label: 'Vocab Quiz', group: 'practice' },
     { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'practice' },
@@ -694,7 +660,6 @@ export const SPELLING_GROUP_LABELS: Record<SpellingGroup, string> = {
     tier: 'By Level',
     themes: 'Themes',
     origins: 'By Origin',
-    competition: 'Competition',
     practice: 'Practice',
 };
 

@@ -388,6 +388,7 @@ function AppInner() {
     speedBonus,
     wrongStreak,
     handleSwipe,
+    handleTypedAnswer,
     dismissWrongAnswer,
     timerProgress,
     dailyComplete,
@@ -703,7 +704,7 @@ function AppInner() {
   }, [themeMode, setThemeMode]);
 
   // True when in a full-screen sub-mode that hides standard game chrome
-  const isImmersive = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test' || guidedMode;
+  const isImmersive = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
 
   const defaultCategory = levelConfig?.defaultCategory ?? 'cvc';
 
@@ -784,8 +785,7 @@ function AppInner() {
                 const progress = totalAnswered + problems.length > 0 ? `${totalAnswered}/${totalAnswered + problems.length}` : null;
                 const ProgressDot = () => progress ? <><span className="text-[rgb(var(--color-fg))]/30">·</span><span className="text-[rgb(var(--color-fg))]/40">{progress}</span></> : null;
                 const modeLabels: Partial<Record<string, string>> = {
-                  challenge: '⚔️ Challenge', daily: '📅 Daily Challenge', review: '📖 Almost Mastered',
-                  'wotc-one': '🐝 One Bee · Levels 1–2', 'wotc-two': '🐝🐝 Two Bee · Levels 3–6', 'wotc-three': '🐝🐝🐝 Three Bee · Levels 7–10',
+                  challenge: '⚔️ Challenge', daily: '📅 Daily Challenge', review: '📖 Review',
                 };
                 const label = modeLabels[questionType];
                 if (!label) return null;
@@ -939,10 +939,10 @@ function AppInner() {
                   }}
                   onBeeResult={recordBeeResult}
                 />
-              ) : (questionType === 'guided' || guidedMode) ? (
+              ) : questionType === 'guided' ? (
                 <Suspense fallback={<LoadingFallback />}>
                   <GuidedSpellingPage
-                    onExit={() => { setDrillHardest(false); setDrillRootId(null); setGuidedMode(false); if (questionType === 'guided') { const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : levelConfig?.defaultCategory ?? 'cvc'); } }}
+                    onExit={() => { setDrillHardest(false); setDrillRootId(null); const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : levelConfig?.defaultCategory ?? 'cvc'); }}
                     onAnswer={(word, correct, ms, typed) => {
                       recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
                     }}
@@ -994,11 +994,13 @@ function AppInner() {
                         frozen={frozen}
                         highlightCorrect={isFirstQuestion || hintWord}
                         showHints={totalCorrect < 4}
-                        showTutorial={isFirstQuestion}
+                        showTutorial={isFirstQuestion && !guidedMode}
                         wrongAnswer={flash === 'wrong' && !isFirstQuestion}
                         onDismissWrong={dismissWrongAnswer}
                         onSwipe={handleSwipe}
                         level={levelConfig?.minDifficultyLevel ?? 1}
+                        guidedMode={guidedMode}
+                        onTypedAnswer={handleTypedAnswer}
                       />
                     </motion.div>
                   )}
@@ -1207,7 +1209,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 

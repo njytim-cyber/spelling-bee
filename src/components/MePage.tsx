@@ -813,34 +813,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 reset stats
             </button>
 
-            {/* Export my data (GDPR portability) */}
-            <button
-                onClick={() => {
-                    const data: Record<string, unknown> = { exportedAt: new Date().toISOString() };
-                    // Gather all app localStorage keys
-                    for (const key of Object.keys(localStorage)) {
-                        if (key.startsWith('spell-bee')) {
-                            try { data[key] = JSON.parse(localStorage.getItem(key)!); }
-                            catch { data[key] = localStorage.getItem(key); }
-                        }
-                    }
-                    // Add computed stats
-                    data._stats = stats;
-                    data._achievements = [...unlocked];
-                    data._wordRecords = wordRecords;
-                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `spelling-bee-data-${new Date().toISOString().slice(0, 10)}.json`;
-                    a.click();
-                    URL.revokeObjectURL(url);
-                }}
-                className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-2 hover:text-[rgb(var(--color-fg))]/40 transition-colors uppercase tracking-widest"
-            >
-                export my data
-            </button>
-
             {/* Delete account */}
             <button
                 onClick={() => setDeleteConfirm(true)}

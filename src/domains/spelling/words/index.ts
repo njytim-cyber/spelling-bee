@@ -9,12 +9,11 @@
  * that are lazily built and auto-invalidated on tier/dialect changes.
  */
 import type { SpellingWord, PhonicsPattern, DifficultyTier, SemanticTheme } from './types';
-import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme, getCachedByList, getCachedByDifficulty } from './registry';
+import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme, getCachedByDifficulty } from './registry';
 import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymologyParser';
 
-export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect, WotcTier, CompetitionList } from './types';
-export { COMPETITION_LISTS } from './competitionLists';
-export { ensureAllWords, ensurePipelineWords, getRegistryVersion, loadCompetitionPack, getDialect, setDialect, resolveUsKey } from './registry';
+export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect } from './types';
+export { ensureAllWords, ensurePipelineWords, getRegistryVersion, getDialect, setDialect, resolveUsKey } from './registry';
 export { getRootsForWord, formatRootHint, highlightRoot, rootFragments, computeRootMastery } from './rootUtils';
 export type { RootMasteryEntry } from './rootUtils';
 
@@ -95,25 +94,3 @@ export function wordsByLanguageAndDifficulty(
     );
 }
 
-/** Map difficulty to Scripps WOTC tier: ≤2 → One Bee, ≤6 → Two Bee, ≤10 → Three Bee */
-export function getWotcTier(difficulty: number): import('./types').WotcTier {
-    if (difficulty <= 2) return 'one-bee';
-    if (difficulty <= 6) return 'two-bee';
-    return 'three-bee';
-}
-
-/** Get words matching a WOTC tier. */
-export function wordsByWotcTier(tier: import('./types').WotcTier): SpellingWord[] {
-    const ranges: Record<string, [DifficultyTier, DifficultyTier]> = {
-        'one-bee': [1, 2],
-        'two-bee': [3, 6],
-        'three-bee': [7, 10],
-    };
-    const [min, max] = ranges[tier];
-    return wordsByDifficulty(min, max);
-}
-
-/** Get words belonging to a competition list. Uses cached index. */
-export function wordsByList(listId: string): SpellingWord[] {
-    return getCachedByList(listId);
-}

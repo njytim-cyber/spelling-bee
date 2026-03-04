@@ -56,6 +56,9 @@ export type ItemGenerator = (
     rng?: () => number,
 ) => EngineItem;
 
+/** Reverse map: correctIndex → swipe direction (for typed-answer → swipe delegation) */
+const DIRS_BY_INDEX: Record<number, 'left' | 'down' | 'right'> = { 0: 'left', 1: 'down', 2: 'right' };
+
 // ── Hook ──────────────────────────────────────────────────────────────────────
 
 export function useGameLoop(
@@ -343,6 +346,91 @@ export function useGameLoop(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
+    // ── Handle typed answer (text-entry / guided mode) ────────────────────────
+    const handleTypedAnswer = useCallback((typed: string) => {
+        if (frozenRef.current || items.length === 0) return;
+        const current = items[0];
+        if (!current) return;
+
+        const correctWord = typeof current.meta?.['word'] === 'string'
+            ? (current.meta['word'] as string)
+            : String(current.options[current.correctIndex]);
+        const correct = typed.trim().toLowerCase() === correctWord.toLowerCase();
+
+        if (correct) {
+            // Map to the correct option's swipe direction so handleSwipe processes it
+            const correctDir = DIRS_BY_INDEX[current.correctIndex];
+            if (correctDir) handleSwipe(correctDir);
+        } else {
+            // Wrong: trigger the wrong-answer flow
+            const tts = Date.now() - (current.startTime ?? Date.now());
+            onAnswerRef.current?.(current, false, tts);
+            const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
+            if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
+            setGs(prev => {
+                const isTutorial = prev.totalAnswered === 0;
+                if (isTutorial) {
+                    frozenRef.current = true;
+                    scheduleChalkReset(failPauseMs);
+                    return { ...prev, flash: 'wrong' as const, chalkState: 'fail' as ChalkState, frozen: true };
+                }
+
+                recordAnswer(tts, false);
+
+                if (streakShields > 0 && prev.streak > 0 && onConsumeShield) {
+                    onConsumeShield();
+                    frozenRef.current = true;
+                    scheduleChalkReset(failPauseMs);
+                    return {
+                        ...prev,
+                        totalAnswered: prev.totalAnswered + 1,
+                        answerHistory: [...prev.answerHistory, false].slice(-50),
+                        flash: 'wrong' as const,
+                        chalkState: 'fail' as ChalkState,
+                        frozen: true,
+                        shieldBroken: true,
+                    };
+                }
+
+                const canForgive = minLevel <= 3 && !timedMode
+                    && prev.streak > 0 && !prev.streakForgiven;
+
+                frozenRef.current = true;
+                scheduleChalkReset(failPauseMs);
+
+                if (canForgive) {
+                    return {
+                        ...prev,
+                        totalAnswered: prev.totalAnswered + 1,
+                        answerHistory: [...prev.answerHistory, false].slice(-50),
+                        score: scorePenalty(prev.score),
+                        flash: 'wrong' as const,
+                        chalkState: 'fail' as ChalkState,
+                        milestone: '',
+                        frozen: true,
+                        streakForgiven: true,
+                    };
+                }
+
+                const wrongStreak = prev.wrongStreak + 1;
+                return {
+                    ...prev,
+                    streak: 0,
+                    totalAnswered: prev.totalAnswered + 1,
+                    answerHistory: [...prev.answerHistory, false].slice(-50),
+                    score: scorePenalty(prev.score),
+                    flash: 'wrong' as const,
+                    chalkState: (wrongStreak >= 3 ? 'struggling' : 'fail') as ChalkState,
+                    milestone: '',
+                    wrongStreak,
+                    frozen: true,
+                    streakForgiven: false,
+                };
+            });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [items, handleSwipe, recordAnswer, scheduleChalkReset, safeTimeout, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs]);
+
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     const pausedRef = useRef(paused);
     pausedRef.current = paused;
@@ -434,6 +522,7 @@ export function useGameLoop(
         ...gs,
         level,
         handleSwipe,
+        handleTypedAnswer,
         dismissWrongAnswer,
         timerProgress,
         dailyComplete,

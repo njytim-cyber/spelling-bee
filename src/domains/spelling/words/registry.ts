@@ -2,13 +2,12 @@
  * words/registry.ts
  *
  * Dynamic word loading registry. Tier 1-2 are eagerly loaded.
- * Tier 3-5 and competition packs load on demand via dynamic import().
+ * Tier 3-9 load on demand via dynamic import().
  * Supports dialect switching (en-US / en-GB) via UK overrides.
  */
 import type { SpellingWord, Dialect } from './types';
 import { TIER_1_WORDS } from './tier1';
 import { TIER_2_WORDS } from './tier2';
-import { applyCompetitionTags } from './competitionLists';
 
 // ── UK override types ────────────────────────────────────────────────────────
 
@@ -28,7 +27,6 @@ let baseWords: SpellingWord[] = [...TIER_1_WORDS, ...TIER_2_WORDS];
 /** Active word list (may have UK overlays applied) */
 let loadedWords: SpellingWord[] = [...baseWords];
 const loadedTiers = new Set<number>([1, 2]);
-const loadedPacks = new Set<string>();
 let version = 0;
 
 let currentDialect: Dialect = 'en-US';
@@ -48,7 +46,6 @@ const cacheState = {
     wordMap: { valid: false, data: null } as CacheState<Map<string, SpellingWord>>,
     byPattern: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
     byTheme: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
-    byList: { valid: false, data: null } as CacheState<Map<string, SpellingWord[]>>,
     byDifficulty: { valid: false, data: null } as CacheState<Map<number, SpellingWord[]>>,
 };
 
@@ -56,7 +53,6 @@ function invalidateCaches(): void {
     cacheState.wordMap.valid = false;
     cacheState.byPattern.valid = false;
     cacheState.byTheme.valid = false;
-    cacheState.byList.valid = false;
     cacheState.byDifficulty.valid = false;
 }
 
@@ -130,31 +126,6 @@ export function getCachedByTheme(theme: string): SpellingWord[] {
     return ensureThemeCache().get(theme) ?? [];
 }
 
-/** Words belonging to a competition list. Builds index lazily. */
-function ensureListCache(): Map<string, SpellingWord[]> {
-    if (cacheState.byList.valid && cacheState.byList.data) {
-        return cacheState.byList.data;
-    }
-
-    const map = new Map<string, SpellingWord[]>();
-    for (const w of loadedWords) {
-        if (!w.lists) continue;
-        for (const listId of w.lists) {
-            let arr = map.get(listId);
-            if (!arr) { arr = []; map.set(listId, arr); }
-            arr.push(w);
-        }
-    }
-
-    cacheState.byList.data = map;
-    cacheState.byList.valid = true;
-    return map;
-}
-
-export function getCachedByList(listId: string): SpellingWord[] {
-    return ensureListCache().get(listId) ?? [];
-}
-
 /** Words grouped by difficulty value (1-10). Builds index lazily. */
 function ensureDifficultyCache(): Map<number, SpellingWord[]> {
     if (cacheState.byDifficulty.valid && cacheState.byDifficulty.data) {
@@ -199,11 +170,6 @@ export function getLoadedWords(): SpellingWord[] {
 /** Set of tier numbers currently loaded. */
 export function getLoadedTiers(): ReadonlySet<number> {
     return loadedTiers;
-}
-
-/** Set of competition pack IDs currently loaded. */
-export function getLoadedPacks(): ReadonlySet<string> {
-    return loadedPacks;
 }
 
 /** Current active dialect. */
@@ -259,7 +225,6 @@ function rebuildLoadedWords(): void {
             };
         });
     }
-    applyCompetitionTags(loadedWords);
     invalidateCaches();
 }
 
@@ -367,32 +332,3 @@ export async function ensureAllWords(): Promise<void> {
     }
 }
 
-// ── Competition packs ────────────────────────────────────────────────────────
-
-const packImporters: Record<string, () => Promise<{ default?: SpellingWord[]; [key: string]: unknown }>> = {
-    scripps: () => import('./tier5-scripps'),
-    'state-bee': () => import('./tier5-state'),
-};
-
-/**
- * Load a competition word pack (scripps, state-bee).
- * No-op if already loaded. Files may not exist yet — fails silently.
- */
-export async function loadCompetitionPack(packId: string): Promise<void> {
-    if (loadedPacks.has(packId)) return;
-    const importer = packImporters[packId];
-    if (!importer) return;
-
-    const mod = await importer();
-    const packKey = Object.keys(mod).find(k => k.includes('WORDS'));
-    const words = packKey ? (mod[packKey] as SpellingWord[]) : [];
-
-    if (words.length > 0) {
-        const existing = new Set(baseWords.map(w => w.word));
-        const unique = words.filter(w => !existing.has(w.word));
-        baseWords = [...baseWords, ...unique];
-        rebuildLoadedWords();
-        loadedPacks.add(packId);
-        version++;
-    }
-}

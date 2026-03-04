@@ -17,9 +17,6 @@ export type PartOfSpeech =
 /** 1 = Kindergarten CVC, 10 = national spelling bee championship */
 export type DifficultyTier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
-/** Scripps Words of the Champions tiers */
-export type WotcTier = 'one-bee' | 'two-bee' | 'three-bee';
-
 /** Phonics pattern categories — superset of the original 5 SpellingCategory patterns */
 export type PhonicsPattern =
     | 'cvc' | 'blends' | 'digraphs' | 'silent-e' | 'vowel-teams'
@@ -63,20 +60,4 @@ export interface SpellingWord {
     theme?: SemanticTheme;
     /** Optional secondary patterns */
     secondaryPatterns?: PhonicsPattern[];
-    /** Source provenance tag for competition word packs */
-    source?: 'core' | 'scripps' | 'state-bee';
-    /** Competition word lists this word belongs to (e.g. 'school-bee-study', 'spell-it-g') */
-    lists?: string[];
-}
-
-/**
- * Competition word list metadata.
- * Each list is a curated collection (e.g. Scripps School Bee Study List).
- * Words reference lists by ID; lists are registered here with display info.
- */
-export interface CompetitionList {
-    id: string;
-    name: string;
-    description: string;
-    difficulty: 'beginner' | 'intermediate' | 'advanced' | 'championship';
 }

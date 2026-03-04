@@ -3,7 +3,6 @@ import {
     getRegistryVersion,
     getLoadedWords,
     getLoadedTiers,
-    getLoadedPacks,
     ensureAllWords,
 } from '../domains/spelling/words/registry';
 
@@ -48,10 +47,6 @@ describe('wordRegistry.ts', () => {
         await ensureAllWords();
         expect(getRegistryVersion()).toBe(v1);
         expect(getLoadedWords().length).toBe(count1);
-    });
-
-    it('competition packs start empty', () => {
-        expect(getLoadedPacks().size).toBe(0);
     });
 
     it('every loaded word has required fields', () => {

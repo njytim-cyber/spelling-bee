@@ -63,9 +63,6 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'origin-french': null,
     'origin-german': null,
     'origin-other': null,
-    'wotc-one': null,
-    'wotc-two': null,
-    'wotc-three': null,
     'written-test': null,
     'roots': null,
     'etymology': null,
@@ -193,7 +190,7 @@ function runtimeFallbackDistractors(correct: string, rng: () => number): string[
 
 // ── Word selection ───────────────────────────────────────────────────────────
 
-/** Fixed difficulty range for level-N and WOTC categories */
+/** Fixed difficulty range for level-N categories */
 const LEVEL_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
     'level-1': [1, 1],
     'level-2': [2, 2],
@@ -205,9 +202,6 @@ const LEVEL_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
     'level-8': [8, 8],
     'level-9': [9, 9],
     'level-10': [10, 10],
-    'wotc-one': [1, 2],
-    'wotc-two': [3, 6],
-    'wotc-three': [7, 10],
 };
 
 /**

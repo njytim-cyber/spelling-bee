@@ -39,12 +39,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         pronunciation: 'sen-tur',
         distractors: ['centar', 'sentre', 'centere'],
     },
-    'accouterments': {
-        word: 'accoutrements',
-        pronunciation: 'uh-koo-truh-muhnts',
-        distractors: ['accoutremants', 'acoutrements', 'accoutrments'],
-    },
-
     // ── -ize → -ise ─────────────────────────────────────────────────────────
     'civilization': {
         word: 'civilisation',
@@ -66,30 +60,10 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         pronunciation: 'os-truh-syz',
         distractors: ['ostrasise', 'ostrecise', 'ostraccise'],
     },
-    'pasteurize': {
-        word: 'pasteurise',
-        pronunciation: 'pas-chur-yz',
-        distractors: ['pasteurese', 'pasturise', 'pastuerise'],
-    },
     'scrutinize': {
         word: 'scrutinise',
         pronunciation: 'skroo-tuh-nyz',
         distractors: ['scrutinese', 'scrutanise', 'scutinise'],
-    },
-    'soliloquize': {
-        word: 'soliloquise',
-        pronunciation: 'suh-lil-uh-kwyz',
-        distractors: ['soliloquese', 'soliliquise', 'soliloqise'],
-    },
-    'rontgenize': {
-        word: 'rontgenise',
-        pronunciation: 'rent-guh-nyz',
-        distractors: ['rontgenese', 'rongenise', 'rontginise'],
-    },
-    'haussmannize': {
-        word: 'haussmannise',
-        pronunciation: 'hows-muh-nyz',
-        distractors: ['haussmanise', 'hausmannise', 'haussmannese'],
     },
     'aggrandizement': {
         word: 'aggrandisement',
@@ -120,11 +94,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         pronunciation: 'dy-uh-ree-uh',
         distractors: ['diarhoea', 'diarrhea', 'diarrhoeia'],
     },
-    'logorrhea': {
-        word: 'logorrhoea',
-        pronunciation: 'log-uh-ree-uh',
-        distractors: ['logorhoea', 'logorrhea', 'logorrhoeia'],
-    },
     'synesthesia': {
         word: 'synaesthesia',
         pronunciation: 'sin-uhs-thee-zhuh',
@@ -140,12 +109,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         pronunciation: 'hem-uh-rij',
         distractors: ['haemorrage', 'haemorrhge', 'haemorrahge'],
     },
-    'hemorrhoid': {
-        word: 'haemorrhoid',
-        pronunciation: 'hem-uh-royd',
-        distractors: ['haemorroid', 'haemorrhid', 'haemorhoyd'],
-    },
-
     // ── Miscellaneous ───────────────────────────────────────────────────────
     'plow': {
         word: 'plough',

@@ -5,6 +5,8 @@ import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { EtymologyExplainer } from './EtymologyExplainer';
+import { SpellingInput } from './SpellingInput';
+import { SpellingDiffView } from './SpellingDiffView';
 import { IconSpeaker } from './Icons';
 
 /** Arrow-key → swipe direction map for desktop play */
@@ -29,6 +31,10 @@ interface Props {
     onSwipe: (dir: 'left' | 'right' | 'up' | 'down') => void;
     /** Current difficulty level (1-10). Used to simplify wrong-answer panel for beginners. */
     level?: number;
+    /** Text-entry mode: show SpellingInput instead of MCQ pills */
+    guidedMode?: boolean;
+    /** Handler for typed answers (text-entry mode) */
+    onTypedAnswer?: (typed: string) => void;
 }
 
 const DIRS: Array<'left' | 'down' | 'right'> = ['left', 'down', 'right'];
@@ -110,15 +116,20 @@ const AnswerOption = memo(function AnswerOption({
 
 const DIR_HINTS = ['← swipe left', 'swipe down ↓', 'swipe right →'];
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe, level = 5 }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe, level = 5, guidedMode, onTypedAnswer }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
     const { reducedMotion } = useReducedMotion();
     const [showEtymology, setShowEtymology] = useState(false);
     const [showShortcuts, setShowShortcuts] = useState(false);
+
+    // Text-entry mode state
+    const [typed, setTyped] = useState('');
+    const [lastTyped, setLastTyped] = useState('');
+
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    useEffect(() => { setShowEtymology(false); }, [p.id]);
+    useEffect(() => { setShowEtymology(false); setTyped(''); setLastTyped(''); }, [p.id]);
 
     const handleSpeak = useCallback(() => {
         const word = p.meta?.['word'];
@@ -150,8 +161,19 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const onDismissWrongRef = useRef(onDismissWrong);
     useEffect(() => { onDismissWrongRef.current = onDismissWrong; }, [onDismissWrong]);
 
+    const guidedModeRef = useRef(guidedMode);
+    useEffect(() => { guidedModeRef.current = guidedMode; }, [guidedMode]);
+
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
+            // In guided mode, SpellingInput handles its own keyboard — only intercept dismiss
+            if (guidedModeRef.current) {
+                if ((e.key === 'Escape') && frozenRef.current) {
+                    e.preventDefault();
+                    onDismissWrongRef.current?.();
+                }
+                return;
+            }
             // Enter/Escape dismiss wrong-answer panel when frozen
             if ((e.key === 'Enter' || e.key === 'Escape') && frozenRef.current) {
                 e.preventDefault();
@@ -180,22 +202,27 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         return () => window.removeEventListener('keydown', handler);
     }, []);
 
+    // Text-entry submit handler
+    const handleTypedSubmit = useCallback(() => {
+        if (!onTypedAnswer || typed.trim().length === 0) return;
+        setLastTyped(typed.trim());
+        onTypedAnswer(typed);
+    }, [typed, onTypedAnswer]);
+
     const leftGlow = useTransform(x, [-140, -50, 0], [1, 0.3, 0]);
     const rightGlow = useTransform(x, [0, 50, 140], [0, 0.3, 1]);
     const downGlow = useTransform(y, [0, 50, 140], [0, 0.3, 1]);
     const glows = [leftGlow, downGlow, rightGlow];
 
-
-
     const handlePan = (_: unknown, info: PanInfo) => {
-        if (!frozen) {
+        if (!frozen && !guidedMode) {
             x.set(info.offset.x);
             y.set(info.offset.y);
         }
     };
 
     const handlePanEnd = (_: unknown, info: PanInfo) => {
-        if (frozen) return;
+        if (frozen || guidedMode) return;
         // Snap the local touch point back to 0 so the answer glows recede naturally
         animate(x, 0, { duration: 0.3, bounce: 0 });
         animate(y, 0, { duration: 0.3, bounce: 0 });
@@ -262,33 +289,51 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 )}
             </motion.div>
 
-            {/* Answer options */}
-            <div className="flex flex-col items-center gap-3 w-full max-w-[var(--content-w)]">
-                {p.options.map((opt, i) => (
-                    <div key={`${opt}-${i}`} className="w-full">
-                        <AnswerOption
-                            value={opt}
-                            label={p.optionLabels?.[i]}
-                            dir={DIRS[i]}
-                            glow={glows[i]}
-                            frozen={frozen}
-                            onSwipe={onSwipe}
-                            highlighted={highlightCorrect && i === p.correctIndex}
-                            correctFlash={frozen && i === p.correctIndex}
-                            reducedMotion={reducedMotion}
-                        />
-                        {showTutorial && !frozen && (
-                            <div className={`text-[9px] ui mt-0.5 ${
-                                highlightCorrect && i === p.correctIndex
-                                    ? 'text-[var(--color-gold)]/60 font-medium text-center'
-                                    : `text-[rgb(var(--color-fg))]/25 ${i === 0 ? 'text-left pl-2' : i === 2 ? 'text-right pr-2' : 'text-center'}`
-                            }`}>
-                                {highlightCorrect && i === p.correctIndex ? '↑ tap or swipe this one' : DIR_HINTS[i]}
-                            </div>
-                        )}
+            {/* Answer area: text input (guided) or MCQ pills */}
+            {guidedMode && !frozen ? (
+                <div className="w-full max-w-[var(--content-w)]">
+                    <SpellingInput
+                        value={typed}
+                        onChange={setTyped}
+                        onSubmit={handleTypedSubmit}
+                        disabled={frozen}
+                    />
+                </div>
+            ) : guidedMode && frozen ? (
+                /* In guided mode when frozen (after answer), show the correct word prominently */
+                <div className="flex flex-col items-center gap-2 w-full max-w-[var(--content-w)]">
+                    <div className={`text-2xl ui font-bold tracking-widest uppercase ${wrongAnswer ? 'text-[var(--color-correct)]' : 'text-[var(--color-correct)]'}`}>
+                        {typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex])}
                     </div>
-                ))}
-            </div>
+                </div>
+            ) : (
+                <div className="flex flex-col items-center gap-3 w-full max-w-[var(--content-w)]">
+                    {p.options.map((opt, i) => (
+                        <div key={`${opt}-${i}`} className="w-full">
+                            <AnswerOption
+                                value={opt}
+                                label={p.optionLabels?.[i]}
+                                dir={DIRS[i]}
+                                glow={glows[i]}
+                                frozen={frozen}
+                                onSwipe={onSwipe}
+                                highlighted={highlightCorrect && i === p.correctIndex}
+                                correctFlash={frozen && i === p.correctIndex}
+                                reducedMotion={reducedMotion}
+                            />
+                            {showTutorial && !frozen && (
+                                <div className={`text-[9px] ui mt-0.5 ${
+                                    highlightCorrect && i === p.correctIndex
+                                        ? 'text-[var(--color-gold)]/60 font-medium text-center'
+                                        : `text-[rgb(var(--color-fg))]/25 ${i === 0 ? 'text-left pl-2' : i === 2 ? 'text-right pr-2' : 'text-center'}`
+                                }`}>
+                                    {highlightCorrect && i === p.correctIndex ? '↑ tap or swipe this one' : DIR_HINTS[i]}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {/* Wrong-answer detail panel — tap to dismiss */}
             {frozen && wrongAnswer && onDismissWrong && (
@@ -311,6 +356,16 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             })()}
                         </div>
                     </div>
+
+                    {/* Spelling diff — show what the user typed vs correct (guided mode only) */}
+                    {guidedMode && lastTyped && (
+                        <div className="mb-2">
+                            <SpellingDiffView
+                                typed={lastTyped}
+                                correct={typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex])}
+                            />
+                        </div>
+                    )}
 
                     {/* Definition */}
                     {typeof p.meta?.['definition'] === 'string' && p.meta['mode'] !== 'vocab' && (
@@ -373,8 +428,8 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 </motion.div>
             )}
 
-            {/* Hints — swipe/tap instructions for early questions */}
-            {showHints && !wrongAnswer && !frozen && (
+            {/* Hints — swipe/tap instructions for early questions (MCQ only) */}
+            {!guidedMode && showHints && !wrongAnswer && !frozen && (
                 <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
                     <span className="text-[10px] ui tracking-wider">{showTutorial ? 'swipe or tap your answer · swipe ↑ to skip' : 'swipe ↑ to skip'}</span>
                     {/* Desktop keyboard hint — show on first question for pointer devices */}
@@ -397,11 +452,11 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     onClick={() => setShowShortcuts(false)}
                 >
                     <div
-                        className="w-[280px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/10"
+                        className="w-[280px] bg-[var(--color-board)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/15 shadow-lg"
                         onClick={e => e.stopPropagation()}
                     >
                         <h3 className="text-sm ui font-bold text-[var(--color-chalk)] mb-3 text-center">Keyboard Shortcuts</h3>
-                        <div className="space-y-2 text-xs ui text-[rgb(var(--color-fg))]/60">
+                        <div className="space-y-2.5 text-xs ui text-[rgb(var(--color-fg))]/60">
                             {[
                                 ['←  or  1', 'Option 1 (left)'],
                                 ['↓  or  2', 'Option 2 (center)'],
@@ -411,9 +466,9 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                                 ['Space / R', 'Replay audio'],
                                 ['?', 'Toggle this help'],
                             ].map(([key, desc]) => (
-                                <div key={key} className="flex items-center justify-between">
-                                    <span className="font-mono text-[var(--color-gold)] text-[11px]">{key}</span>
-                                    <span>{desc}</span>
+                                <div key={key} className="flex items-center justify-between gap-3">
+                                    <kbd className="font-mono text-[var(--color-gold)] text-[11px] bg-[rgb(var(--color-fg))]/[0.06] px-1.5 py-0.5 rounded">{key}</kbd>
+                                    <span className="text-right">{desc}</span>
                                 </div>
                             ))}
                         </div>
