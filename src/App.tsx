@@ -351,6 +351,7 @@ function AppInner() {
     timerProgress,
     dailyComplete,
     shieldBroken,
+    hintWord,
   } = useGameLoop(
     generateItem,
     questionType,
@@ -752,7 +753,7 @@ function AppInner() {
               ) : questionType === 'review' ? (
                 <div className="flex flex-col items-center mb-2">
                   <div className="text-xs ui text-[var(--color-gold)] flex items-center gap-2">
-                    <span>📖 Review</span>
+                    <span>📖 Almost Mastered</span>
                     {(totalAnswered + problems.length) > 0 && (
                       <>
                         <span className="text-[rgb(var(--color-fg))]/30">·</span>
@@ -761,7 +762,7 @@ function AppInner() {
                     )}
                   </div>
                   {totalAnswered === 0 && (
-                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">Words you missed come back for practice</div>
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">These words are almost learned — one more practice!</div>
                   )}
                 </div>
               ) : null}
@@ -902,7 +903,7 @@ function AppInner() {
                   <span className="text-4xl">📖</span>
                   <h2 className="text-lg chalk text-[var(--color-chalk)]">All caught up!</h2>
                   <p className="text-xs ui text-[rgb(var(--color-fg))]/40 text-center max-w-[260px]">
-                    No words are due for review. Words you get wrong are added here and come back on a schedule so you remember them.
+                    No words to practice right now. Words you miss come back on a schedule until they&apos;re fully mastered.
                   </p>
                   <button
                     onClick={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
@@ -933,12 +934,13 @@ function AppInner() {
                       <ProblemView
                         problem={currentProblem}
                         frozen={frozen}
-                        highlightCorrect={isFirstQuestion}
+                        highlightCorrect={isFirstQuestion || hintWord}
                         showHints={totalCorrect < 4}
                         showTutorial={isFirstQuestion}
                         wrongAnswer={flash === 'wrong' && !isFirstQuestion}
                         onDismissWrong={dismissWrongAnswer}
                         onSwipe={handleSwipe}
+                        level={levelConfig?.minDifficultyLevel ?? 1}
                       />
                     </motion.div>
                   )}

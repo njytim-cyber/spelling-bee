@@ -27,6 +27,8 @@ interface Props {
     wrongAnswer?: boolean;
     onDismissWrong?: () => void;
     onSwipe: (dir: 'left' | 'right' | 'up' | 'down') => void;
+    /** Current difficulty level (1-10). Used to simplify wrong-answer panel for beginners. */
+    level?: number;
 }
 
 const DIRS: Array<'left' | 'down' | 'right'> = ['left', 'down', 'right'];
@@ -108,7 +110,7 @@ const AnswerOption = memo(function AnswerOption({
 
 const DIR_HINTS = ['← swipe left', 'swipe down ↓', 'swipe right →'];
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe, level = 5 }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
@@ -308,8 +310,8 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                         </div>
                     )}
 
-                    {/* Etymology — toggle between simple and full explainer */}
-                    {typeof p.meta?.['etymology'] === 'string' && (
+                    {/* Etymology — toggle between simple and full explainer (hidden for levels 1-3) */}
+                    {level >= 4 && typeof p.meta?.['etymology'] === 'string' && (
                         showEtymology ? (
                             <div className="mb-2">
                                 <EtymologyExplainer
@@ -337,7 +339,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                                 <span>Hear it</span>
                             </button>
                         )}
-                        {typeof p.meta?.['etymology'] === 'string' && !showEtymology && (
+                        {level >= 4 && typeof p.meta?.['etymology'] === 'string' && !showEtymology && (
                             <button
                                 type="button"
                                 onClick={() => setShowEtymology(true)}

@@ -90,6 +90,8 @@ export function useGameLoop(
     onAnswerRef.current = onAnswer;
 
     const chalkTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    /** Per-word miss count within current session (for hint system) */
+    const sessionMisses = useRef(new Map<string, number>());
     const startedRef = useRef(false);
     const prevCategoryId = useRef(categoryId);
     const prevHard = useRef(hardMode);
@@ -163,6 +165,7 @@ export function useGameLoop(
         // Only reset score/stats when category changes; hard mode toggle just refreshes questions
         if (categoryChanged) {
             setGs(INITIAL_STATE);
+            sessionMisses.current.clear();
         }
     }, [categoryId, hardMode, buildInitialSet]);
 
@@ -259,6 +262,9 @@ export function useGameLoop(
             }, autoAdvanceMs);
         } else {
             onAnswerRef.current?.(current, false, tts);
+            // Track per-word misses for hint system
+            const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
+            if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
             setGs(prev => {
                 const isTutorial = prev.totalAnswered === 0;
                 if (isTutorial) {
@@ -413,6 +419,10 @@ export function useGameLoop(
         gs.totalAnswered > 0 &&
         items.length === 0;
 
+    // Hint system: highlight correct answer when a word has been missed 2+ times this session
+    const currentWord = typeof items[0]?.meta?.['word'] === 'string' ? items[0].meta['word'] as string : '';
+    const hintWord = currentWord !== '' && (sessionMisses.current.get(currentWord) ?? 0) >= 2;
+
     return {
         problems: items,  // alias kept for backward compat with ProblemView/App expectations
         ...gs,
@@ -422,5 +432,6 @@ export function useGameLoop(
         timerProgress,
         dailyComplete,
         dailyDateLabel: dailyRef.current?.dateLabel ?? '',
+        hintWord,
     };
 }

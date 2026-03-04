@@ -8,7 +8,7 @@ import { memo, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/curriculum';
-import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
+import { getStudyPlan, getDifficultyNudge, getPatternAccuracy, type PracticeRecommendation, type AccuracyBar } from '../utils/errorPatterns';
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
@@ -26,6 +26,26 @@ interface Props {
     onDrillHardest?: () => void;
     onDrillRoot?: (rootId: string) => void;
 }
+
+// ── Pattern tooltips for phonics abbreviations ──────────────────────────────
+
+const PATTERN_TOOLTIPS: Record<string, string> = {
+    'CVC': 'Consonant-Vowel-Consonant, like c-a-t',
+    'Blends': 'Two consonants together, like bl- in "black"',
+    'Digraphs': 'Two letters making one sound, like sh- in "ship"',
+    'Silent E': 'A silent "e" changes the vowel, like "cap" → "cape"',
+    'Vowel Teams': 'Two vowels together, like "ea" in "team"',
+    'R-Controlled': 'A vowel + r changes the sound, like "ar" in "car"',
+    'Diphthongs': 'Vowel sounds that glide, like "oi" in "coin"',
+    'Prefixes': 'Letters added before a word, like "un-" in "undo"',
+    'Suffixes': 'Letters added after a word, like "-ing" in "running"',
+    'Compound': 'Two words joined together, like "sun" + "flower"',
+    'Multisyllable': 'Words with many parts, like "but-ter-fly"',
+    'Irregular': 'Words that don\'t follow normal rules',
+    'Latin Roots': 'Words from Latin, like "rupt" in "erupt"',
+    'Greek Roots': 'Words from Greek, like "graph" in "paragraph"',
+    'French Origin': 'Words from French, like "ballet"',
+};
 
 // ── Priority label/color mapping ────────────────────────────────────────────
 
@@ -51,24 +71,38 @@ const ctaGlowTransition = { duration: 2.2, repeat: Infinity, ease: 'easeInOut' a
 
 function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?: (category: string) => void }) {
     const style = PRIORITY_STYLES[rec.priority ?? 'weak'];
+    const [showTooltip, setShowTooltip] = useState(false);
+    const tooltip = PATTERN_TOOLTIPS[rec.label];
     return (
-        <div className={`flex items-center justify-between py-2 px-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border ${style.border}`}>
-            <div className="min-w-0">
-                <div className="flex items-center gap-1.5">
-                    <span className={`text-[9px] ui px-1.5 py-0.5 rounded-full font-semibold ${style.badge}`}>
-                        {style.text}
-                    </span>
-                    <span className="text-sm ui text-[rgb(var(--color-fg))]/70 font-medium">{rec.label}</span>
+        <div className={`py-2 px-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border ${style.border}`}>
+            <div className="flex items-center justify-between">
+                <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                        <span className={`text-[9px] ui px-1.5 py-0.5 rounded-full font-semibold ${style.badge}`}>
+                            {style.text}
+                        </span>
+                        <span
+                            className={`text-sm ui text-[rgb(var(--color-fg))]/70 font-medium ${tooltip ? 'underline decoration-dotted decoration-[rgb(var(--color-fg))]/20 cursor-help' : ''}`}
+                            onClick={tooltip ? (e) => { e.stopPropagation(); setShowTooltip(v => !v); } : undefined}
+                        >
+                            {rec.label}
+                        </span>
+                    </div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">{rec.reason}</div>
                 </div>
-                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">{rec.reason}</div>
+                {onPractice && (
+                    <button
+                        onClick={() => onPractice(rec.category)}
+                        className="shrink-0 ml-2 px-3 py-1 rounded-lg text-[10px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                        Practice
+                    </button>
+                )}
             </div>
-            {onPractice && (
-                <button
-                    onClick={() => onPractice(rec.category)}
-                    className="shrink-0 ml-2 px-3 py-1 rounded-lg text-[10px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                >
-                    Practice
-                </button>
+            {showTooltip && tooltip && (
+                <div className="mt-1.5 text-[10px] ui text-[rgb(var(--color-fg))]/50 bg-[rgb(var(--color-fg))]/[0.04] rounded-lg px-2.5 py-1.5">
+                    {tooltip}
+                </div>
             )}
         </div>
     );
@@ -119,7 +153,7 @@ function SessionPicker({ level, onPick, onClose }: {
                     ))}
                 </div>
                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 text-center mt-3">
-                    Review words make up to 20% of each session
+                    Words to master make up to 20% of each session
                 </div>
             </motion.div>
         </motion.div>
@@ -244,6 +278,56 @@ function CompetitionPrep({ records, registryVersion }: { records: Record<string,
     );
 }
 
+// ── Weak patterns section ────────────────────────────────────────────────────
+
+function WeakPatterns({ patterns, onPractice }: { patterns: AccuracyBar[]; onPractice?: (category: string) => void }) {
+    // Show top 5 weakest patterns (already sorted by accuracy ascending)
+    const weak = patterns.filter(p => p.attempts >= 5).slice(0, 5);
+    if (weak.length === 0) return null;
+
+    return (
+        <section className="mb-4">
+            <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Weak Spots</h3>
+            <div className="space-y-1.5">
+                {weak.map(p => {
+                    const pct = Math.round(p.accuracy * 100);
+                    const barColor = pct >= 80 ? 'bg-[var(--color-correct)]' : pct >= 60 ? 'bg-[var(--color-gold)]' : 'bg-[var(--color-wrong)]';
+                    const tooltip = PATTERN_TOOLTIPS[p.label];
+                    return (
+                        <div key={p.key} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-baseline gap-1.5">
+                                    <span className="text-xs ui text-[rgb(var(--color-fg))]/70 font-medium">{p.label}</span>
+                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{p.attempts} words</span>
+                                    {tooltip && (
+                                        <span className="text-[9px] ui text-[rgb(var(--color-fg))]/20" title={tooltip}>?</span>
+                                    )}
+                                </div>
+                                <div className="flex items-center gap-2 mt-0.5">
+                                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                                        <div className={`h-full rounded-full ${barColor} transition-all`} style={{ width: `${pct}%` }} />
+                                    </div>
+                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums w-[30px] text-right">
+                                        {pct}%
+                                    </span>
+                                </div>
+                            </div>
+                            {onPractice && pct < 80 && (
+                                <button
+                                    onClick={() => onPractice(p.key)}
+                                    className="shrink-0 px-2 py-1 rounded-lg text-[9px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                                >
+                                    Drill
+                                </button>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
+        </section>
+    );
+}
+
 // ── Main component ───────────────────────────────────────────────────────────
 
 export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
@@ -255,6 +339,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
     );
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount, hardestWordCount), [records, reviewDueCount, hardestWordCount]);
     const difficultyNudge = useMemo(() => getDifficultyNudge(records), [records]);
+    const patternAccuracy = useMemo(() => getPatternAccuracy(records), [records]);
 
     // Root mastery data
     const rootMasteryData = useMemo(() => computeRootMastery(records, WORD_ROOTS), [records]);
@@ -407,6 +492,9 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     </div>
                 </section>
             )}
+
+            {/* ── Weak patterns dashboard ── */}
+            {totalWords >= 10 && <WeakPatterns patterns={patternAccuracy} onPractice={onPractice} />}
 
             {/* ── Curriculum — flat 10-level list ── */}
             <section>

@@ -246,8 +246,8 @@ export function getStudyPlan(
     if (reviewDueCount > 0) {
         plan.push({
             category: 'review',
-            label: `Review ${reviewDueCount} Word${reviewDueCount === 1 ? '' : 's'}`,
-            reason: `${reviewDueCount} word${reviewDueCount === 1 ? '' : 's'} ready for spaced review`,
+            label: `${reviewDueCount} Word${reviewDueCount === 1 ? '' : 's'} to Master`,
+            reason: `${reviewDueCount} word${reviewDueCount === 1 ? '' : 's'} almost learned — one more practice!`,
             priority: 'review',
             wordCount: reviewDueCount,
         });
