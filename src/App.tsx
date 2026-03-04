@@ -18,6 +18,7 @@ import { useReducedMotion } from './hooks/useReducedMotion';
 import { useTimedFlag, useTimedMessage } from './hooks/useTimedState';
 import { OfflineBanner } from './components/OfflineBanner';
 import { ReloadPrompt } from './components/ReloadPrompt';
+import { onErrorToast } from './utils/errorToast';
 import { UserProvider, useUser } from './contexts/UserContext';
 import { useAppModals } from './hooks/useAppModals';
 /** Retry a dynamic import once on chunk-load failure (Cloudflare Pages cache busting) */
@@ -296,6 +297,8 @@ function AppInner() {
       const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
       if (stored === 'en-GB') await setDialect(stored as Dialect);
       if (!cancelled) setWordRegistryVersion(getRegistryVersion());
+    }).catch(err => {
+      console.warn('Failed to load word registry:', err);
     });
     return () => { cancelled = true; };
   }, []);
@@ -403,6 +406,10 @@ function AppInner() {
     levelConfig?.minDifficultyLevel ?? 1,
     activeTab !== 'game', // pause timer when not on game tab
   );
+
+  // ── Global error toast ──
+  const [errorToast, fireErrorToast] = useTimedMessage(4000);
+  useEffect(() => onErrorToast(fireErrorToast), [fireErrorToast]);
 
   // ── Shield consumed toast ──
   const [shieldToast, fireShieldToast] = useTimedFlag(3000);
@@ -535,6 +542,8 @@ function AppInner() {
         clearTimeout(pingTimer);
         pingTimer = setTimeout(() => setPingMessage(null), 6000);
       }
+    }, (err) => {
+      console.warn('Ping listener error:', err);
     });
     return () => { unsub(); clearTimeout(pingTimer); };
   }, [uid]);
@@ -559,7 +568,7 @@ function AppInner() {
         setUnlocked(restored);
         unlockedRef.current = restored;
       }
-    });
+    }).catch(() => { /* handled internally */ });
   }, [uid]);
 
   // Check achievements whenever navigating away from game (i.e. stats recorded)
@@ -1265,6 +1274,7 @@ function AppInner() {
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
         <Toast visible={timedToast} icon="⏱️" title="Timer ON — 10s per question" subtitle="Wrong if time runs out. Tap stopwatch to turn off." />
+        <Toast visible={!!errorToast} icon="⚠️" title={errorToast} toastKey={errorToast} />
 
         {/* ── Daily Size Picker ── */}
         <AnimatePresence>

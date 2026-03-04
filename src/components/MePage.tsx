@@ -6,7 +6,7 @@ import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 
@@ -125,6 +125,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         linkGoogle,
         sendEmailLink,
         updateBadge,
+        deleteAccount,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -136,6 +137,8 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const [showEmailInput, setShowEmailInput] = useState(false);
     const [emailInput, setEmailInput] = useState('');
     const [emailSent, setEmailSent] = useState(false);
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [deleting, setDeleting] = useState(false);
 
     // Memoize expensive rank calculations
     const rankInfo = useMemo(() => getRank(stats.totalXP), [stats.totalXP]);
@@ -810,6 +813,42 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 reset stats
             </button>
 
+            {/* Export my data (GDPR portability) */}
+            <button
+                onClick={() => {
+                    const data: Record<string, unknown> = { exportedAt: new Date().toISOString() };
+                    // Gather all app localStorage keys
+                    for (const key of Object.keys(localStorage)) {
+                        if (key.startsWith('spell-bee')) {
+                            try { data[key] = JSON.parse(localStorage.getItem(key)!); }
+                            catch { data[key] = localStorage.getItem(key); }
+                        }
+                    }
+                    // Add computed stats
+                    data._stats = stats;
+                    data._achievements = [...unlocked];
+                    data._wordRecords = wordRecords;
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `spelling-bee-data-${new Date().toISOString().slice(0, 10)}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                }}
+                className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-2 hover:text-[rgb(var(--color-fg))]/40 transition-colors uppercase tracking-widest"
+            >
+                export my data
+            </button>
+
+            {/* Delete account */}
+            <button
+                onClick={() => setDeleteConfirm(true)}
+                className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-2 hover:text-[var(--color-wrong)]/60 transition-colors uppercase tracking-widest"
+            >
+                delete account
+            </button>
+
             {/* Rank list modal */}
             <AnimatePresence>
                 {showRanks && (
@@ -878,6 +917,50 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                 className="flex-1 py-2.5 rounded-xl border border-[var(--color-streak-fire)]/40 bg-[var(--color-streak-fire)]/10 text-sm ui text-[var(--color-streak-fire)] hover:bg-[var(--color-streak-fire)]/20 transition-colors"
                             >
                                 reset
+                            </button>
+                        </div>
+                    </ModalShell>
+                )}
+            </AnimatePresence>
+
+            {/* Delete account confirmation modal */}
+            <AnimatePresence>
+                {deleteConfirm && (
+                    <ModalShell onClose={() => !deleting && setDeleteConfirm(false)} ariaLabel="Delete account confirmation" className="w-[min(300px,90vw)] text-center">
+                        <div className="mb-3 flex justify-center text-[var(--color-wrong)]">
+                            <IconTrash className="w-10 h-10" />
+                        </div>
+                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base font-semibold mb-2">
+                            Delete your account?
+                        </p>
+                        <p className="ui text-[rgb(var(--color-fg))]/50 text-xs leading-relaxed mb-6">
+                            This permanently removes all your data including scores, achievements, word history, and leaderboard entries. This cannot be undone.
+                        </p>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setDeleteConfirm(false)}
+                                disabled={deleting}
+                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors disabled:opacity-50"
+                            >
+                                cancel
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    setDeleting(true);
+                                    try {
+                                        await deleteAccount();
+                                        // Auth listener will auto-create a new anonymous account
+                                    } catch (err) {
+                                        console.warn('Delete account failed:', err);
+                                    } finally {
+                                        setDeleting(false);
+                                        setDeleteConfirm(false);
+                                    }
+                                }}
+                                disabled={deleting}
+                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 text-sm ui text-[var(--color-wrong)] hover:bg-[var(--color-wrong)]/20 transition-colors disabled:opacity-50"
+                            >
+                                {deleting ? 'deleting...' : 'delete forever'}
                             </button>
                         </div>
                     </ModalShell>

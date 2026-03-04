@@ -1,18 +1,28 @@
 {
-  "name": "Math Swipe",
-  "short_name": "Math Swipe",
-  "description": "Swipe your way to mental math mastery. Fast, fun, addictive.",
+  "name": "Spelling Bee",
+  "short_name": "Spell Bee",
+  "description": "Swipe your way to spelling mastery. Fast, fun, addictive. Challenge your friends!",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1b1b1b",
-  "theme_color": "#1b1b1b",
+  "background_color": "#1a1a24",
+  "theme_color": "#1a1a24",
   "icons": [
     {
       "src": "/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }

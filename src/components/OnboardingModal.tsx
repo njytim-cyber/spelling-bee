@@ -18,7 +18,7 @@ interface Props {
 
 export const OnboardingModal = memo(function OnboardingModal({ onComplete, currentDialect, currentLevel }: Props) {
     const isFirstTime = !currentLevel;
-    const [step, setStep] = useState<'welcome' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
+    const [step, setStep] = useState<'welcome' | 'age' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
     const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
     const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'level-1' : null));
 
@@ -75,11 +75,53 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
 
                         <motion.button
                             whileTap={{ scale: 0.92 }}
-                            onClick={() => setStep('dialect')}
+                            onClick={() => setStep('age')}
                             className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
                         >
                             Get Started
                         </motion.button>
+                    </motion.div>
+                ) : step === 'age' ? (
+                    <motion.div
+                        key="age"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="flex flex-col items-center w-full max-w-sm"
+                    >
+                        <div className="text-6xl mb-4">🐝</div>
+                        <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
+                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">One quick question first</p>
+
+                        <div className="w-full bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-5 mb-6">
+                            <p className="text-sm ui text-[var(--color-chalk)] text-center leading-relaxed mb-1">
+                                Are you 13 years old or older?
+                            </p>
+                            <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center">
+                                If you&apos;re younger, a parent or guardian should set this up
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col gap-2.5 w-full">
+                            <motion.button
+                                whileTap={{ scale: 0.96 }}
+                                onClick={() => setStep('dialect')}
+                                className="w-full px-5 py-3.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                            >
+                                Yes, I&apos;m 13 or older
+                            </motion.button>
+                            <motion.button
+                                whileTap={{ scale: 0.96 }}
+                                onClick={() => setStep('dialect')}
+                                className="w-full px-5 py-3.5 rounded-xl border-2 border-[rgb(var(--color-fg))]/15 text-base ui text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
+                            >
+                                I have parent/guardian permission
+                            </motion.button>
+                        </div>
+
+                        <p className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-4 leading-relaxed max-w-[260px]">
+                            Spelling Bee works fully without an account. Sign-in and cloud sync are optional features for users 13+.
+                        </p>
                     </motion.div>
                 ) : step === 'dialect' ? (
                     <motion.div
@@ -118,7 +160,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                             {isFirstTime && (
                                 <motion.button
                                     whileTap={{ scale: 0.92 }}
-                                    onClick={() => setStep('welcome')}
+                                    onClick={() => setStep('age')}
                                     className="px-6 py-3 rounded-xl border-2 border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5 text-base ui text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/10 transition-colors"
                                 >
                                     Back

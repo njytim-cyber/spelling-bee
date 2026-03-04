@@ -40,6 +40,7 @@ interface UserContextValue {
   isAnonymous: boolean;
   linkGoogle: () => Promise<void>;
   sendEmailLink: (email: string) => Promise<void>;
+  deleteAccount: () => Promise<void>;
 
   // Settings
   level: string;
@@ -68,7 +69,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     updateCosmetics
   } = useStats(uid);
 
-  const { user, setDisplayName, linkGoogle, sendEmailLink } = useFirebaseAuth();
+  const { user, setDisplayName, linkGoogle, sendEmailLink, deleteAccount } = useFirebaseAuth();
 
   // Cosmetics
   const [activeCostume, setActiveCostume] = useLocalState(STORAGE_KEYS.costume, '', uid);
@@ -106,6 +107,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     isAnonymous: user?.isAnonymous ?? true,
     linkGoogle,
     sendEmailLink,
+    deleteAccount,
     level: level as string,
     onLevelChange,
     dialect: dialect as string,
@@ -115,7 +117,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
     activeCostume, onCostumeChange, activeTheme, onThemeChange,
     activeTrailId, onTrailChange, user?.displayName, setDisplayName,
-    user?.isAnonymous, linkGoogle, sendEmailLink, level, onLevelChange,
+    user?.isAnonymous, linkGoogle, sendEmailLink, deleteAccount, level, onLevelChange,
     dialect, onDialectChange,
   ]);
 

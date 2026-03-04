@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* ── Self-hosted fonts (no Google CDN dependency) ── */
+@font-face {
+  font-family: 'Fredericka the Great';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/fredericka-the-great-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Architects Daughter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/architects-daughter-latin.woff2') format('woff2');
+}
+
 /* ── Theme ── */
 @theme {
   --font-chalk: "Fredericka the Great", cursive;

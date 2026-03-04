@@ -10,11 +10,13 @@ import {
     signInWithEmailLink,
     linkWithCredential,
     EmailAuthProvider,
+    deleteUser,
     type User,
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, deleteDoc, collection, query, where, getDocs, writeBatch, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../utils/firebase';
 import { STORAGE_KEYS } from '../config';
+import { showErrorToast } from '../utils/errorToast';
 
 /** Random display name generator */
 const ADJECTIVES = ['Swift', 'Clever', 'Bold', 'Quick', 'Bright', 'Sharp', 'Keen', 'Cool', 'Lucky', 'Epic'];
@@ -170,6 +172,7 @@ export function useFirebaseAuth() {
                 await signInWithPopup(auth, provider);
             } else {
                 console.error('Google link failed:', err);
+                showErrorToast('Google sign-in failed');
             }
         }
     }, [user]);
@@ -180,9 +183,48 @@ export function useFirebaseAuth() {
             url: window.location.origin,
             handleCodeInApp: true,
         };
-        await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-        localStorage.setItem(STORAGE_KEYS.emailForSignin, email);
+        try {
+            await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+            localStorage.setItem(STORAGE_KEYS.emailForSignin, email);
+        } catch (err) {
+            console.warn('Failed to send email link:', err);
+            throw err; // Re-throw so callers can show error UI
+        }
     }, []);
 
-    return { user, loading, setDisplayName, linkGoogle, sendEmailLink };
+    /** Permanently delete account and all associated cloud data */
+    const deleteAccount = useCallback(async () => {
+        const currentUser = auth.currentUser;
+        if (!currentUser) throw new Error('Not signed in');
+
+        const uid = currentUser.uid;
+
+        try {
+            // 1. Delete user profile document
+            await deleteDoc(doc(db, 'users', uid));
+
+            // 2. Delete pings targeted at this user
+            const pingsQ = query(collection(db, 'pings'), where('targetUid', '==', uid));
+            const pingsSnap = await getDocs(pingsQ);
+            if (!pingsSnap.empty) {
+                const batch = writeBatch(db);
+                pingsSnap.docs.forEach(d => batch.delete(d.ref));
+                await batch.commit();
+            }
+
+            // 3. Clear all local storage keys with our prefix
+            const keysToRemove = Object.keys(localStorage).filter(k => k.startsWith('spell-bee'));
+            keysToRemove.forEach(k => localStorage.removeItem(k));
+
+            // 4. Delete Firebase Auth account
+            await deleteUser(currentUser);
+
+            // State will reset via onAuthStateChanged → new anonymous sign-in
+        } catch (err) {
+            console.warn('Account deletion failed:', err);
+            throw err;
+        }
+    }, []);
+
+    return { user, loading, setDisplayName, linkGoogle, sendEmailLink, deleteAccount };
 }

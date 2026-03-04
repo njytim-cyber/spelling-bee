@@ -18,20 +18,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'prompt',
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}', 'fonts/*.woff2'],
         globIgnores: ['**/tier*-pipeline*.js', '**/words-tier*.js'],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024, // 8 MiB — tier chunks are large
         runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: { cacheName: 'google-fonts-stylesheets', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: { cacheName: 'google-fonts-webfonts', expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 } },
-          },
           {
             urlPattern: /(words-tier|tier\d+-pipeline).*\.js$/,
             handler: 'CacheFirst',
@@ -55,9 +45,12 @@ export default defineConfig({
     }),
   ],
   build: {
+    chunkSizeWarningLimit: 2000, // Word tier chunks are intentionally large
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // Vendor: React rarely changes — separate cache lifetime
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) return 'react-vendor';
           if (id.includes('firebase/app') || id.includes('firebase/auth') || id.includes('firebase/firestore')) return 'firebase';
           if (id.includes('framer-motion')) return 'framer-motion';
           // Group lazy-loaded word tiers into per-tier chunks

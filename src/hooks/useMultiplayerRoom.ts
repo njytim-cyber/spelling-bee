@@ -7,6 +7,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { collection, doc, setDoc, updateDoc, onSnapshot, query, where, getDocs, serverTimestamp, runTransaction } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import { showErrorToast } from '../utils/errorToast';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
 import type { EngineItem } from '../engine/domain';
 
@@ -96,6 +97,10 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
             } else if (data.status === 'finished') {
                 setPhase('finished');
             }
+        }, (err) => {
+            console.warn('Room listener error:', err);
+            setError('Lost connection to room. Please try again.');
+            showErrorToast('Lost connection to room');
         });
         unsubRef.current = unsub;
     }, []); // Remove phase from deps — use ref instead
@@ -129,72 +134,93 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
             createdAt: serverTimestamp(),
         };
 
-        await setDoc(roomRef, room);
-        setRoomId(roomRef.id);
-        setRoomCode(code);
-        setPhase('lobby');
-        subscribeToRoom(roomRef.id);
+        try {
+            await setDoc(roomRef, room);
+            setRoomId(roomRef.id);
+            setRoomCode(code);
+            setPhase('lobby');
+            subscribeToRoom(roomRef.id);
+        } catch (err) {
+            console.warn('Failed to create room:', err);
+            setError('Failed to create room. Please try again.');
+            setPhase('idle');
+        }
     }, [uid, displayName, subscribeToRoom]);
 
     const joinRoom = useCallback(async (code: string) => {
         if (!uid) { setError('Must be signed in'); return; }
         setError(null);
 
-        const q = query(collection(db, 'rooms'), where('roomCode', '==', code.toUpperCase()), where('status', '==', 'waiting'));
-        const snap = await getDocs(q);
+        try {
+            const q = query(collection(db, 'rooms'), where('roomCode', '==', code.toUpperCase()), where('status', '==', 'waiting'));
+            const snap = await getDocs(q);
 
-        if (snap.empty) {
-            setError('Room not found or already started');
-            return;
-        }
+            if (snap.empty) {
+                setError('Room not found or already started');
+                return;
+            }
 
-        const roomDoc = snap.docs[0];
-        const data = roomDoc.data() as RoomData;
+            const roomDoc = snap.docs[0];
+            const data = roomDoc.data() as RoomData;
 
-        if (Object.keys(data.players).length >= 2) {
-            setError('Room is full');
-            return;
-        }
+            if (Object.keys(data.players).length >= 2) {
+                setError('Room is full');
+                return;
+            }
 
-        if (data.players[uid]) {
-            // Already in this room
+            if (data.players[uid]) {
+                // Already in this room
+                setRoomId(roomDoc.id);
+                setRoomCode(code.toUpperCase());
+                setPhase('lobby');
+                subscribeToRoom(roomDoc.id);
+                return;
+            }
+
+            await updateDoc(roomDoc.ref, {
+                [`players.${uid}`]: {
+                    displayName,
+                    ready: false,
+                    score: 0,
+                    answers: new Array(10).fill(null),
+                    results: new Array(10).fill(null),
+                },
+            });
+
             setRoomId(roomDoc.id);
             setRoomCode(code.toUpperCase());
             setPhase('lobby');
             subscribeToRoom(roomDoc.id);
-            return;
+        } catch (err) {
+            console.warn('Failed to join room:', err);
+            setError('Failed to join room. Please try again.');
         }
-
-        await updateDoc(roomDoc.ref, {
-            [`players.${uid}`]: {
-                displayName,
-                ready: false,
-                score: 0,
-                answers: new Array(10).fill(null),
-                results: new Array(10).fill(null),
-            },
-        });
-
-        setRoomId(roomDoc.id);
-        setRoomCode(code.toUpperCase());
-        setPhase('lobby');
-        subscribeToRoom(roomDoc.id);
     }, [uid, displayName, subscribeToRoom]);
 
     const setReady = useCallback(async () => {
         if (!roomId || !uid) return;
-        await updateDoc(doc(db, 'rooms', roomId), {
-            [`players.${uid}.ready`]: true,
-        });
+        try {
+            await updateDoc(doc(db, 'rooms', roomId), {
+                [`players.${uid}.ready`]: true,
+            });
+        } catch (err) {
+            console.warn('Failed to set ready:', err);
+            setError('Failed to ready up. Please try again.');
+        }
     }, [roomId, uid]);
 
     const startMatch = useCallback(async () => {
         if (!roomId || !uid) return;
-        const roomRef = doc(db, 'rooms', roomId);
-        await updateDoc(roomRef, {
-            status: 'playing',
-            currentRound: 0,
-        });
+        try {
+            const roomRef = doc(db, 'rooms', roomId);
+            await updateDoc(roomRef, {
+                status: 'playing',
+                currentRound: 0,
+            });
+        } catch (err) {
+            console.warn('Failed to start match:', err);
+            setError('Failed to start match. Please try again.');
+        }
     }, [roomId, uid]);
 
     const submitAnswer = useCallback(async (round: number, spelling: string) => {
@@ -203,41 +229,46 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
         const word = roomData.words[round];
         const isCorrect = spelling.toLowerCase() === word.word.toLowerCase();
 
-        await runTransaction(db, async (tx) => {
-            const roomRef = doc(db, 'rooms', roomId);
-            const snap = await tx.get(roomRef);
-            if (!snap.exists()) return;
+        try {
+            await runTransaction(db, async (tx) => {
+                const roomRef = doc(db, 'rooms', roomId);
+                const snap = await tx.get(roomRef);
+                if (!snap.exists()) return;
 
-            const data = snap.data() as RoomData;
-            const player = data.players[uid];
-            if (!player) return;
+                const data = snap.data() as RoomData;
+                const player = data.players[uid];
+                if (!player) return;
 
-            const newAnswers = [...player.answers];
-            newAnswers[round] = spelling;
-            const newResults = [...player.results];
-            newResults[round] = isCorrect;
-            const newScore = player.score + (isCorrect ? 1 : 0);
+                const newAnswers = [...player.answers];
+                newAnswers[round] = spelling;
+                const newResults = [...player.results];
+                newResults[round] = isCorrect;
+                const newScore = player.score + (isCorrect ? 1 : 0);
 
-            tx.update(roomRef, {
-                [`players.${uid}.answers.${round}`]: spelling,
-                [`players.${uid}.results.${round}`]: isCorrect,
-                [`players.${uid}.score`]: newScore,
-            });
+                tx.update(roomRef, {
+                    [`players.${uid}.answers.${round}`]: spelling,
+                    [`players.${uid}.results.${round}`]: isCorrect,
+                    [`players.${uid}.score`]: newScore,
+                });
 
-            // Check if both players have answered this round
-            const otherPlayers = Object.entries(data.players).filter(([id]) => id !== uid);
-            const allAnswered = otherPlayers.every(([, p]) => p.answers[round] !== null);
+                // Check if both players have answered this round
+                const otherPlayers = Object.entries(data.players).filter(([id]) => id !== uid);
+                const allAnswered = otherPlayers.every(([, p]) => p.answers[round] !== null);
 
-            if (allAnswered) {
-                // Advance round
-                const nextRound = round + 1;
-                if (nextRound >= data.roundCount) {
-                    tx.update(roomRef, { status: 'finished', currentRound: nextRound });
-                } else {
-                    tx.update(roomRef, { currentRound: nextRound });
+                if (allAnswered) {
+                    // Advance round
+                    const nextRound = round + 1;
+                    if (nextRound >= data.roundCount) {
+                        tx.update(roomRef, { status: 'finished', currentRound: nextRound });
+                    } else {
+                        tx.update(roomRef, { currentRound: nextRound });
+                    }
                 }
-            }
-        });
+            });
+        } catch (err) {
+            console.warn('Failed to submit answer:', err);
+            setError('Failed to submit answer. Please try again.');
+        }
     }, [roomId, uid, roomData]);
 
     const forceSubmitEmpty = useCallback(async (round: number) => {

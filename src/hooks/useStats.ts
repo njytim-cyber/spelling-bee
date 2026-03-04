@@ -178,7 +178,7 @@ async function loadStatsCloud(uid: string): Promise<Stats | null> {
 
             if (localVersion && cloudVersion && parseInt(localVersion) > cloudVersion) {
                 // Local is newer, skip cloud merge
-                console.log('Local stats are newer than cloud, skipping merge');
+                // Local stats are newer than cloud — skip merge
                 return null;
             }
 

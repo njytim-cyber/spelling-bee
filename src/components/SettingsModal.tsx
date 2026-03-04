@@ -302,6 +302,12 @@ export const SettingsModal = memo(function SettingsModal({
                         </p>
                     )}
                 </section>
+
+                {/* Legal */}
+                <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10 flex justify-center gap-4">
+                    <a href="/privacy.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</a>
+                    <a href="/terms.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</a>
+                </section>
         </ModalShell>
     );
 });
