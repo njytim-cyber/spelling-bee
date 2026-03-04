@@ -48,6 +48,7 @@ export const STORAGE_KEYS = {
     stickFigureStyle: `${STORAGE_PREFIX}-stick-figure-style`,
     weeklySnapshot: `${STORAGE_PREFIX}-weekly-snapshot`,
     weeklyGoal: `${STORAGE_PREFIX}-weekly-goal`,
+    reviewExplained: `${STORAGE_PREFIX}-review-explained`,
 } as const;
 
 /**

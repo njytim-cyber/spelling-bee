@@ -307,6 +307,8 @@ function AppInner() {
     if (word) recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
     // Track session progress
     if (sessionSize !== null) setSessionAnswered(n => n + 1);
+    // Dismiss score help on first answer
+    setShowScoreHelp(false);
   }, [recordAttempt, sessionSize]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
@@ -444,7 +446,18 @@ function AppInner() {
 
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
-  const toggleTimedMode = useCallback(() => setTimedMode(t => !t), []);
+  const [timedToast, setTimedToast] = useState(false);
+  const [showScoreHelp, setShowScoreHelp] = useState(false);
+  const toggleTimedMode = useCallback(() => {
+    setTimedMode(t => {
+      if (!t) {
+        // Turning ON — show a brief warning
+        setTimedToast(true);
+        setTimeout(() => setTimedToast(false), 3000);
+      }
+      return !t;
+    });
+  }, []);
 
   // ── Score floater ──
   const prevScoreRef = useRef(0);
@@ -775,8 +788,35 @@ function AppInner() {
                     <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">These words are almost learned — one more practice!</div>
                   )}
                 </div>
+              ) : questionType === 'wotc-one' ? (
+                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝 One Bee · Levels 1–2</div>
+              ) : questionType === 'wotc-two' ? (
+                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝🐝 Two Bee · Levels 3–6</div>
+              ) : questionType === 'wotc-three' ? (
+                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝🐝🐝 Three Bee · Levels 7–10</div>
               ) : null}
-              <ScoreCounter value={score} />
+              <div className="relative pointer-events-auto" onClick={() => setShowScoreHelp(h => !h)}>
+                <ScoreCounter value={score} />
+                {totalAnswered === 0 && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
+              </div>
+              {/* Score explainer tooltip */}
+              <AnimatePresence>
+                {showScoreHelp && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                    className="pointer-events-auto mt-2 w-56 bg-[var(--color-surface)] border border-[rgb(var(--color-fg))]/15 rounded-xl p-3 text-[10px] ui text-[rgb(var(--color-fg))]/60 space-y-1"
+                    onClick={() => setShowScoreHelp(false)}
+                  >
+                    <div className="font-semibold text-[var(--color-gold)] text-xs mb-1">How scoring works</div>
+                    <div>Correct = <span className="text-[var(--color-correct)]">+10 pts</span> base</div>
+                    <div>Every 5-streak = <span className="text-[var(--color-gold)]">+5 bonus</span></div>
+                    <div>Fast answer (&lt;1.2s) = <span className="text-[var(--color-gold)]">+2 speed bonus</span></div>
+                    <div>Wrong = <span className="text-[var(--color-wrong)]">-5 pts</span> (min 0)</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Shield count */}
               {/* Screen reader announcement for game feedback */}
@@ -1220,6 +1260,7 @@ function AppInner() {
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
+        <Toast visible={timedToast} icon="⏱️" title="Timer ON — 10s per question" subtitle="Wrong if time runs out. Tap stopwatch to turn off." />
 
         {/* ── Daily Size Picker ── */}
         <AnimatePresence>

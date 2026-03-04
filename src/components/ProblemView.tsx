@@ -50,13 +50,13 @@ const glowAnim = {
 
 const glowTransition = { duration: 1.2, repeat: Infinity, ease: 'easeInOut' as const };
 
-/** Single answer option */
+/** Single answer option — correct flash animation with stronger glow for visibility */
 const correctFlashAnim = {
     scale: [1, 1.15, 1],
     boxShadow: [
-        '0 0 0 0 rgba(74,222,128,0)',
-        '0 0 20px 6px rgba(74,222,128,0.6)',
-        '0 0 0 0 rgba(74,222,128,0)',
+        '0 0 0 0 rgba(34,197,94,0)',
+        '0 0 24px 8px rgba(34,197,94,0.7)',
+        '0 0 0 0 rgba(34,197,94,0)',
     ],
 };
 
@@ -94,7 +94,7 @@ const AnswerOption = memo(function AnswerOption({
             <motion.div
                 className={`w-full px-4 py-3.5 rounded-2xl border-2 bg-[var(--color-surface)] flex items-center justify-center ui font-bold active:scale-[0.97] transition-transform ${
                     text.length > 10 ? 'text-[17px]' : text.length > 7 ? 'text-[20px]' : 'text-[24px]'
-                } ${correctFlash ? 'border-[var(--color-correct)] text-[var(--color-correct)]'
+                } ${correctFlash ? 'border-[var(--color-correct)] text-[var(--color-correct)] bg-[var(--color-correct)]/10'
                     : highlighted ? 'border-[var(--color-gold)] text-[var(--color-gold)]'
                         : 'border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)]'
                     }`}

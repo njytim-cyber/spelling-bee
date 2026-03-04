@@ -17,9 +17,9 @@ interface Props {
 }
 
 export const OnboardingModal = memo(function OnboardingModal({ onComplete, currentDialect, currentLevel }: Props) {
-    const [step, setStep] = useState<'dialect' | 'level'>('dialect');
-    const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
     const isFirstTime = !currentLevel;
+    const [step, setStep] = useState<'welcome' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
+    const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
     const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'tier-1' : null));
 
     const handleDialectNext = () => {
@@ -37,7 +37,51 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
     return (
         <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[var(--color-board)] px-6">
             <AnimatePresence mode="wait">
-                {step === 'dialect' ? (
+                {step === 'welcome' ? (
+                    <motion.div
+                        key="welcome"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="flex flex-col items-center w-full max-w-sm"
+                    >
+                        <div className="text-6xl mb-4">🐝</div>
+                        <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
+                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Learn to spell 117,000+ words</p>
+
+                        {/* How to play */}
+                        <div className="w-full space-y-3 mb-8">
+                            {[
+                                { icon: '🔊', title: 'Listen', desc: 'Hear a word and read its definition' },
+                                { icon: '👆', title: 'Pick the correct spelling', desc: 'Tap or swipe one of 3 options' },
+                                { icon: '📈', title: 'Build streaks for bonus points', desc: '10 pts + streak bonus + speed bonus' },
+                                { icon: '🧠', title: 'Words you miss come back', desc: 'Spaced repetition helps you remember' },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 + i * 0.1 }}
+                                    className="flex items-start gap-3 px-4 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8"
+                                >
+                                    <span className="text-xl shrink-0">{item.icon}</span>
+                                    <div>
+                                        <div className="text-sm ui font-bold text-[var(--color-chalk)]">{item.title}</div>
+                                        <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40">{item.desc}</div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <motion.button
+                            whileTap={{ scale: 0.92 }}
+                            onClick={() => setStep('dialect')}
+                            className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
+                        >
+                            Get Started
+                        </motion.button>
+                    </motion.div>
+                ) : step === 'dialect' ? (
                     <motion.div
                         key="dialect"
                         initial={{ opacity: 0, x: -20 }}
@@ -70,14 +114,25 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                             ))}
                         </div>
 
-                        <motion.button
-                            whileTap={{ scale: 0.92 }}
-                            disabled={!selectedDialect}
-                            onClick={handleDialectNext}
-                            className="mt-8 px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                        >
-                            Next
-                        </motion.button>
+                        <div className="flex gap-3 mt-8">
+                            {isFirstTime && (
+                                <motion.button
+                                    whileTap={{ scale: 0.92 }}
+                                    onClick={() => setStep('welcome')}
+                                    className="px-6 py-3 rounded-xl border-2 border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5 text-base ui text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/10 transition-colors"
+                                >
+                                    Back
+                                </motion.button>
+                            )}
+                            <motion.button
+                                whileTap={{ scale: 0.92 }}
+                                disabled={!selectedDialect}
+                                onClick={handleDialectNext}
+                                className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                            >
+                                Next
+                            </motion.button>
+                        </div>
                     </motion.div>
                 ) : (
                     <motion.div

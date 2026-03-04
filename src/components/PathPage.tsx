@@ -529,6 +529,15 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
         setPickerLevel(null);
     };
 
+    // Review explainer — show once when user first sees review words
+    const REVIEW_EXPLAINED_KEY = STORAGE_KEYS.reviewExplained;
+    const [reviewExplainerDismissed, setReviewExplainerDismissed] = useState(() => !!localStorage.getItem(REVIEW_EXPLAINED_KEY));
+    const showReviewExplainer = reviewDueCount > 0 && !reviewExplainerDismissed;
+    const dismissReviewExplainer = useCallback(() => {
+        localStorage.setItem(REVIEW_EXPLAINED_KEY, '1');
+        setReviewExplainerDismissed(true);
+    }, [REVIEW_EXPLAINED_KEY]);
+
     return (
         <>
         <div className="flex-1 flex flex-col min-h-0 overflow-y-auto px-4 pt-[calc(env(safe-area-inset-top,12px)+16px)] pb-4">
@@ -538,6 +547,23 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
             </h2>
             {/* Weekly goal tracker */}
             {totalWords > 0 && <WeeklyGoalTracker totalWords={totalWords} />}
+
+            {/* Review system explainer — shows once */}
+            {showReviewExplainer && (
+                <div className="mb-3 p-3 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/20 relative">
+                    <button
+                        onClick={dismissReviewExplainer}
+                        className="absolute top-2 right-2 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors text-xs"
+                        aria-label="Dismiss"
+                    >
+                        &times;
+                    </button>
+                    <div className="text-sm ui font-bold text-[var(--color-gold)] mb-1">🧠 What&apos;s &ldquo;{reviewDueCount} to review&rdquo;?</div>
+                    <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50 leading-relaxed pr-4">
+                        Words you&apos;ve missed are scheduled for review using <span className="font-semibold">spaced repetition</span>. Each time you get a word right, it moves up a learning box. After 4 correct reviews, it&apos;s fully mastered. This is the most effective way to build lasting memory.
+                    </div>
+                </div>
+            )}
 
             {/* First-time empty state */}
             {totalWords === 0 && (

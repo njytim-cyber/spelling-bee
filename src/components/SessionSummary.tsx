@@ -55,8 +55,18 @@ function buildShareText(
 
 const PERFECT_CELEBRATIONS = ['🏆 PERFECT', '💯 FLAWLESS', '✨ UNSTOPPABLE', '🎯 BULLSEYE', '👑 NAILED IT'];
 
+/** Encouraging titles for non-perfect sessions — always positive */
+function getEncouragingTitle(accuracy: number, streak: number, solved: number): { title: string; subtitle: string } {
+    if (accuracy >= 90) return { title: '🌟 Amazing!', subtitle: 'Nearly flawless — keep it up!' };
+    if (accuracy >= 70) return { title: '💪 Great work!', subtitle: 'You\'re really improving' };
+    if (accuracy >= 50) return { title: '📚 Good practice!', subtitle: `You just practiced ${solved} words — that's progress` };
+    if (streak >= 3) return { title: '🔥 Nice streaks!', subtitle: 'Building momentum — try again to beat your score' };
+    if (solved >= 10) return { title: '🏃 Good effort!', subtitle: 'The more you practice, the easier it gets' };
+    return { title: '🌱 Keep going!', subtitle: 'Every word you see helps you learn' };
+}
+
 export const SessionSummary = memo(function SessionSummary({
-    solved, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
+    solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     hardMode, timedMode, onDrillHardest, hardestWordCount,
     totalXP, streakFreezes, onPurchaseFreeze,
 }: Props) {
@@ -230,20 +240,26 @@ export const SessionSummary = memo(function SessionSummary({
                             >
                                 {PERFECT_CELEBRATIONS[solved % PERFECT_CELEBRATIONS.length]}
                             </motion.div>
-                        ) : (
-                            <h3 className="text-xl ui font-bold text-[var(--color-gold)] mb-4">
-                                {hardMode && timedMode ? '💀⏱️ ' : hardMode ? '💀 ' : timedMode ? '⏱️ ' : ''}Done
-                            </h3>
-                        )}
+                        ) : (() => {
+                            const msg = getEncouragingTitle(accuracy, streak, solved);
+                            return (
+                                <div className="mb-4 text-center">
+                                    <h3 className="text-xl ui font-bold text-[var(--color-gold)]">
+                                        {hardMode && timedMode ? '💀⏱️ ' : hardMode ? '💀 ' : timedMode ? '⏱️ ' : ''}{msg.title}
+                                    </h3>
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">{msg.subtitle}</div>
+                                </div>
+                            );
+                        })()}
 
                         <div className="flex justify-center gap-6 mb-4">
                             <div className="text-center">
-                                <div className="text-2xl ui font-bold text-[rgb(var(--color-fg))]/80">{solved}</div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">solved</div>
+                                <div className="text-2xl ui font-bold text-[var(--color-correct)]">{correct}</div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">correct</div>
                             </div>
-                            <div className="text-center min-w-[60px]">
-                                <div className="text-2xl ui font-bold text-[var(--color-correct)]">{accuracy}%</div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">accuracy</div>
+                            <div className="text-center">
+                                <div className="text-2xl ui font-bold text-[rgb(var(--color-fg))]/80">{solved}</div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">answered</div>
                             </div>
                             <div className="text-center">
                                 <div className="text-2xl ui font-bold text-[var(--color-streak-fire)]">{streak}🔥</div>

@@ -39,7 +39,8 @@
   --color-surface: rgba(235, 228, 218, 0.50);
   /* Warm tan surface — clearly visible on off-white */
   --color-locked: rgba(26, 26, 46, 0.08);
-  --color-correct: #15803d;
+  --color-correct: #16a34a;
+  /* green-600 — brighter than green-700 for stronger flash visibility */
   --color-wrong: #b91c1c;
   --color-gold: #92400e;
   /* Amber-800 — richer, more contrast on light bg */
