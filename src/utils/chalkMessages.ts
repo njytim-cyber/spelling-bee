@@ -34,7 +34,7 @@ export interface ChalkMessageOverrides {
 
 const BASE_IDLE = [
     'You got this! 💪', 'Take your time 🌟', 'I believe in you!',
-    'Focus mode: ON 🎯', 'Ready when you are!',
+    'Let\'s get it! 🎯', 'Ready when you are!',
     'Let\'s gooo! 🚀', 'Deep breaths… here we go 🧘',
     'Your brain is warming up 🔥', 'Every problem is a win 🏅',
     'You\'re getting sharper! ✏️',

@@ -11,6 +11,8 @@ import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import type { Dialect } from '../domains/spelling/words/types';
+import { getSessionsByDay } from '../utils/sessionHistory';
+import { spellingHint } from '../utils/spellingDiff';
 
 // Removed tab switching - now showing everything on one page
 
@@ -22,7 +24,7 @@ interface Props {
     /** Recent word attempts for stats dashboard */
     recentAttempts?: Array<{ word: string; category: string; correct: boolean; timestamp: number; responseTimeMs: number }>;
     /** Per-word records for pattern analysis */
-    wordRecords?: Record<string, { word: string; category: string; attempts: number; correct: number; box: number }>;
+    wordRecords?: Record<string, { word: string; category: string; attempts: number; correct: number; box: number; misspellings?: string[] }>;
 }
 
 /** Ranks with progressive XP thresholds (gets harder to level up) */
@@ -191,6 +193,32 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
         if (recent.length === 0) return 0;
         return Math.round(recent.reduce((sum, a) => sum + a.responseTimeMs, 0) / recent.length);
     }, [recentAttempts]);
+
+    /** 30-day session history for trend chart */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const sessionTrend = useMemo(() => getSessionsByDay(30), [stats.sessionsPlayed]);
+
+    /** Common mistake patterns from misspellings */
+    const mistakePatterns = useMemo(() => {
+        const patterns: Record<string, { count: number; examples: string[] }> = {};
+        for (const r of Object.values(wordRecords)) {
+            if (!r.misspellings?.length) continue;
+            for (const typo of r.misspellings) {
+                const hint = spellingHint(typo, r.word);
+                if (!hint) continue;
+                if (!patterns[hint]) patterns[hint] = { count: 0, examples: [] };
+                patterns[hint].count++;
+                if (patterns[hint].examples.length < 2 && !patterns[hint].examples.includes(r.word)) {
+                    patterns[hint].examples.push(r.word);
+                }
+            }
+        }
+        return Object.entries(patterns)
+            .map(([pattern, data]) => ({ pattern, ...data }))
+            .filter(p => p.count >= 2)
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 5);
+    }, [wordRecords]);
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20 landscape-compact-pb">
@@ -460,6 +488,53 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                             </div>
                         </div>
 
+                        {/* 30-day accuracy trend chart */}
+                        {sessionTrend.some(d => d.sessions > 0) && (() => {
+                            const activeDays = sessionTrend.filter(d => d.sessions > 0);
+                            if (activeDays.length < 2) return null;
+                            const maxXP = Math.max(...activeDays.map(d => d.xp), 1);
+                            const W = 280, H = 80, padX = 0, padY = 4;
+                            // Build accuracy line points
+                            const pts = sessionTrend.map((d, i) => {
+                                const x = padX + (i / (sessionTrend.length - 1)) * (W - 2 * padX);
+                                const y = d.sessions > 0
+                                    ? H - padY - ((d.accuracy / 100) * (H - 2 * padY))
+                                    : -1; // no data
+                                return { x, y, d };
+                            });
+                            const validPts = pts.filter(p => p.y >= 0);
+                            const line = validPts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+                            return (
+                                <div className="mb-4">
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">30-Day Trend</div>
+                                    <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ height: 80 }}>
+                                        {/* XP bars (background) */}
+                                        {sessionTrend.map((d, i) => {
+                                            if (d.sessions === 0) return null;
+                                            const bw = W / sessionTrend.length * 0.7;
+                                            const bx = (i / sessionTrend.length) * W + bw * 0.2;
+                                            const bh = Math.max(2, (d.xp / maxXP) * (H - 2 * padY));
+                                            return <rect key={i} x={bx} y={H - padY - bh} width={bw} height={bh} rx={1.5} fill="rgb(var(--color-fg))" opacity={0.06} />;
+                                        })}
+                                        {/* Accuracy line */}
+                                        {validPts.length >= 2 && <path d={line} fill="none" stroke="var(--color-gold)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" opacity={0.7} />}
+                                        {/* Dots */}
+                                        {validPts.map((p, i) => (
+                                            <circle key={i} cx={p.x} cy={p.y} r={2.5}
+                                                fill={p.d.accuracy >= 80 ? 'var(--color-correct)' : p.d.accuracy >= 60 ? 'var(--color-gold)' : 'var(--color-wrong)'}
+                                                opacity={0.8}
+                                            />
+                                        ))}
+                                    </svg>
+                                    <div className="flex justify-between text-[7px] ui text-[rgb(var(--color-fg))]/20 mt-0.5">
+                                        <span>{sessionTrend[0]?.date.slice(5)}</span>
+                                        <span className="text-[rgb(var(--color-fg))]/30">accuracy % · bars = XP</span>
+                                        <span>{sessionTrend[sessionTrend.length - 1]?.date.slice(5)}</span>
+                                    </div>
+                                </div>
+                            );
+                        })()}
+
                         {/* Speed stat */}
                         {avgResponseMs > 0 && (
                             <div className="text-center mb-4">
@@ -513,6 +588,25 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                                                 />
                                             </div>
                                             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 w-8">{c.accuracy}%</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Mistake patterns */}
+                        {mistakePatterns.length > 0 && (
+                            <div className="mb-4">
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Common Mistakes</div>
+                                <div className="space-y-1.5">
+                                    {mistakePatterns.map(p => (
+                                        <div key={p.pattern} className="flex items-center gap-2">
+                                            <span className="text-[9px] ui text-[var(--color-wrong)]/70 w-28 text-right truncate">{p.pattern}</span>
+                                            <div className="flex-1 flex items-center gap-1">
+                                                <div className="h-2 rounded-full bg-[var(--color-wrong)]/30" style={{ width: `${Math.min(100, (p.count / mistakePatterns[0].count) * 100)}%`, minWidth: 8 }} />
+                                                <span className="text-[8px] ui text-[rgb(var(--color-fg))]/25">{p.count}x</span>
+                                            </div>
+                                            <span className="text-[8px] ui text-[rgb(var(--color-fg))]/20 w-16 truncate">{p.examples.join(', ')}</span>
                                         </div>
                                     ))}
                                 </div>

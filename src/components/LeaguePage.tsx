@@ -13,6 +13,7 @@ interface LeaderboardEntry {
     totalXP: number;
     weeklyXP: number;
     bestStreak: number;
+    accuracy: number;
     activeThemeId?: string;
     activeCostume?: string;
     activeBadgeId?: string;
@@ -20,12 +21,13 @@ interface LeaderboardEntry {
     isYou?: boolean;
 }
 
-type LeaderboardTab = 'allTime' | 'weekly';
+type LeaderboardTab = 'allTime' | 'weekly' | 'accuracy';
 
 interface Props {
     userXP: number;
     userWeeklyXP: number;
     userStreak: number;
+    userAccuracy: number;
     uid: string | null;
     displayName: string;
     activeThemeId: string;
@@ -37,7 +39,7 @@ interface Props {
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest, onOpenWotc }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [lbTab, setLbTab] = useState<LeaderboardTab>('allTime');
@@ -115,6 +117,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 totalXP: doc.data().totalXP || 0,
                 weeklyXP: doc.data().weeklyXP || 0,
                 bestStreak: doc.data().bestStreak || 0,
+                accuracy: doc.data().accuracy || 0,
                 activeThemeId: doc.data().activeThemeId || 'classic',
                 activeCostume: doc.data().activeCostume || '',
                 activeBadgeId: doc.data().activeBadgeId || '',
@@ -135,7 +138,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         if (userIdx === -1 && uid) {
             list.push({
                 uid, displayName: displayName || 'You', totalXP: userXP, weeklyXP: userWeeklyXP, bestStreak: userStreak,
-                activeThemeId, activeCostume,
+                accuracy: userAccuracy, activeThemeId, activeCostume,
             });
         } else if (userIdx >= 0) {
             list = list.map((e, i) => i === userIdx ? {
@@ -143,14 +146,22 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 totalXP: Math.max(e.totalXP, userXP),
                 weeklyXP: Math.max(e.weeklyXP, userWeeklyXP),
                 bestStreak: Math.max(e.bestStreak, userStreak),
+                accuracy: userAccuracy,
                 activeThemeId,
                 activeCostume,
             } : e);
         }
-        const isWeekly = lbTab === 'weekly';
         return list
-            .sort((a, b) => isWeekly ? b.weeklyXP - a.weeklyXP : b.totalXP - a.totalXP)
-            .filter(e => isWeekly ? e.weeklyXP > 0 : true)
+            .sort((a, b) =>
+                lbTab === 'weekly' ? b.weeklyXP - a.weeklyXP :
+                lbTab === 'accuracy' ? b.accuracy - a.accuracy || b.totalXP - a.totalXP :
+                b.totalXP - a.totalXP
+            )
+            .filter(e =>
+                lbTab === 'weekly' ? e.weeklyXP > 0 :
+                lbTab === 'accuracy' ? e.accuracy > 0 :
+                true
+            )
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     })();
 
@@ -229,10 +240,13 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     {onOpenMultiplayer && (
                         <button
                             onClick={onOpenMultiplayer}
-                            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
+                            className="flex-1 flex flex-col items-center justify-center gap-0.5 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
                         >
-                            <span className="text-sm">⚔️</span>
-                            <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">1v1 Match</span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-sm">⚔️</span>
+                                <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">1v1 Match</span>
+                            </div>
+                            <span className="text-[9px] ui text-[rgb(var(--color-fg))]/35">Race a ghost of another player</span>
                         </button>
                     )}
                 </div>
@@ -243,7 +257,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 <div className="flex items-center justify-between">
                     <h3 className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50 uppercase tracking-wider">Leaderboard</h3>
                     <div className="flex rounded-lg overflow-hidden border border-[rgb(var(--color-fg))]/10">
-                        {(['allTime', 'weekly'] as const).map(tab => (
+                        {(['allTime', 'weekly', 'accuracy'] as const).map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setLbTab(tab)}
@@ -253,7 +267,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                         : 'text-[rgb(var(--color-fg))]/35 hover:text-[rgb(var(--color-fg))]/50'
                                 }`}
                             >
-                                {tab === 'allTime' ? 'All Time' : 'This Week'}
+                                {tab === 'allTime' ? 'All Time' : tab === 'weekly' ? 'This Week' : 'Accuracy'}
                             </button>
                         ))}
                     </div>
@@ -340,9 +354,14 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             {/* Score */}
                             <div className="text-right">
                                 <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                    {(lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()}
+                                    {lbTab === 'accuracy'
+                                        ? `${entry.accuracy}%`
+                                        : (lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()
+                                    }
                                 </div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">{lbTab === 'weekly' ? 'wk' : 'XP'}</div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">
+                                    {lbTab === 'accuracy' ? 'acc' : lbTab === 'weekly' ? 'wk' : 'XP'}
+                                </div>
                             </div>
                             <div className="text-right w-10">
                                 <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">

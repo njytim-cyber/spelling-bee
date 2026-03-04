@@ -71,6 +71,7 @@ import { ensureAllTiers, getRegistryVersion, setDialect } from './domains/spelli
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
+import { recordSessionHistory } from './utils/sessionHistory';
 
 type Tab = 'game' | 'path' | 'league' | 'me';
 const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
@@ -181,6 +182,7 @@ function AppInner() {
   // User state from context
   const {
     stats,
+    accuracy,
     recordSession,
     recordBeeResult,
     consumeShield,
@@ -305,11 +307,18 @@ function AppInner() {
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string }>>([]);
   const prevQuestionTypeRef = useRef(questionType);
+  const [scoreResetFlash, setScoreResetFlash] = useState(false);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
+      // Show brief "score reset" note when switching categories (not on first render)
+      if (prevQuestionTypeRef.current !== questionType && score > 0) {
+        setScoreResetFlash(true);
+        setTimeout(() => setScoreResetFlash(false), 2500);
+      }
       prevQuestionTypeRef.current = questionType;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionType]);
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
@@ -662,6 +671,7 @@ function AppInner() {
     if (tab !== 'game' && guidedMode) setGuidedMode(false);
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
+      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
       setShowSummary(true);
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
@@ -821,7 +831,8 @@ function AppInner() {
               ) : null}
               <div className="relative pointer-events-auto" onClick={() => setShowScoreHelp(h => !h)}>
                 <ScoreCounter value={score} />
-                {totalAnswered === 0 && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
+                {totalAnswered === 0 && !scoreResetFlash && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
+                {scoreResetFlash && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mt-0.5 text-center animate-pulse">New topic — score reset</div>}
               </div>
               {/* Score explainer tooltip */}
               <AnimatePresence>
@@ -1220,7 +1231,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} onOpenWotc={(tier) => { setQuestionType(tier); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 

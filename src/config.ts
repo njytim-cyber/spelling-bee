@@ -49,6 +49,7 @@ export const STORAGE_KEYS = {
     weeklySnapshot: `${STORAGE_PREFIX}-weekly-snapshot`,
     weeklyGoal: `${STORAGE_PREFIX}-weekly-goal`,
     reviewExplained: `${STORAGE_PREFIX}-review-explained`,
+    sessionHistory: `${STORAGE_PREFIX}-session-history`,
 } as const;
 
 /**

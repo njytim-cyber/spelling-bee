@@ -10,18 +10,20 @@ interface Props {
     reviewQueueCount?: number;
 }
 
-type Tab = 'levels' | 'topics' | 'origins';
+type Tab = 'levels' | 'topics' | 'origins' | 'practice';
 
 const LEVEL_GROUPS: SpellingGroup[] = ['tier'];
 const THEME_GROUPS: SpellingGroup[] = ['themes'];
 const ORIGIN_GROUPS: SpellingGroup[] = ['origins'];
+const PRACTICE_GROUPS: SpellingGroup[] = ['practice'];
 
-const TABS: Tab[] = ['levels', 'topics', 'origins'];
-const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', origins: 'Origins' };
+const TABS: Tab[] = ['levels', 'topics', 'origins', 'practice'];
+const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', origins: 'Origins', practice: 'More' };
 const TAB_DESCRIPTIONS: Record<Tab, string> = {
     levels: 'Words by difficulty level',
     topics: 'Practice specific phonics patterns',
     origins: 'Words grouped by language of origin',
+    practice: 'Roots, review, and custom lists',
 };
 const SWIPE_THRESHOLD = 50;
 
@@ -32,6 +34,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
     const levelGroups = useMemo(() => LEVEL_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const themeGroups = useMemo(() => THEME_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
     const originGroups = useMemo(() => ORIGIN_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
+    const practiceGroups = useMemo(() => PRACTICE_GROUPS.filter(g => SPELLING_CATEGORIES.some(t => t.group === g)), []);
 
     const currentEntry = SPELLING_CATEGORIES.find(t => t.id === current);
 
@@ -157,7 +160,8 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mb-3 text-center">{TAB_DESCRIPTIONS[tab]}</div>
                                             {tab === 'levels' ? renderGrid(levelGroups)
                                                 : tab === 'topics' ? renderGrid(themeGroups)
-                                                : renderGrid(originGroups)}
+                                                : tab === 'origins' ? renderGrid(originGroups)
+                                                : renderGrid(practiceGroups)}
                                         </motion.div>
                                     </AnimatePresence>
                                 </motion.div>
