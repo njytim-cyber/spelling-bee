@@ -75,8 +75,8 @@ export function useGameLoop(
      * to produce the entire fixed problem list (daily / challenge).
      */
     generateFiniteSet?: (categoryId: string, challengeId: string | null) => EngineItem[],
-    /** Optional callback fired after every answer with the item, correctness, and response time. */
-    onAnswer?: (item: EngineItem, correct: boolean, responseTimeMs: number) => void,
+    /** Optional callback fired after every answer with the item, correctness, response time, and typed text (if typed mode). */
+    onAnswer?: (item: EngineItem, correct: boolean, responseTimeMs: number, typed?: string) => void,
     /** Minimum adaptive difficulty level (from level selection). */
     minLevel = 1,
     /** When true, pauses the timer (e.g. user switched to another tab). */
@@ -92,6 +92,8 @@ export function useGameLoop(
     onAnswerRef.current = onAnswer;
 
     const chalkTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    /** Typed text from handleTypedAnswer, consumed by handleSwipe on delegation */
+    const pendingTypedText = useRef<string | undefined>(undefined);
     /** Per-word miss count within current session (for hint system) */
     const sessionMisses = useRef(new Map<string, number>());
     const startedRef = useRef(false);
@@ -218,7 +220,9 @@ export function useGameLoop(
         const correct = selectedValue === current.answer;
 
         if (correct) {
-            onAnswerRef.current?.(current, true, tts);
+            const typedText = pendingTypedText.current;
+            pendingTypedText.current = undefined;
+            onAnswerRef.current?.(current, true, tts, typedText);
             recordAnswer(tts, true);
             const isFast = tts < FAST_ANSWER_MS;
             correctCountRef.current += 1;
@@ -257,7 +261,9 @@ export function useGameLoop(
                 advanceProblem();
             }, autoAdvanceMs);
         } else {
-            onAnswerRef.current?.(current, false, tts);
+            const typedText = pendingTypedText.current;
+            pendingTypedText.current = undefined;
+            onAnswerRef.current?.(current, false, tts, typedText);
             // Track per-word misses for hint system
             const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
             if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
@@ -359,12 +365,13 @@ export function useGameLoop(
 
         if (correct) {
             // Map to the correct option's swipe direction so handleSwipe processes it
+            pendingTypedText.current = typed;
             const correctDir = DIRS_BY_INDEX[current.correctIndex];
             if (correctDir) handleSwipe(correctDir);
         } else {
             // Wrong: trigger the wrong-answer flow
             const tts = Date.now() - (current.startTime ?? Date.now());
-            onAnswerRef.current?.(current, false, tts);
+            onAnswerRef.current?.(current, false, tts, typed);
             const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
             if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
             setGs(prev => {

@@ -23,6 +23,7 @@ export interface SpellingAchievementStats {
     // Adaptive learning
     masteredWordCount: number;
     reviewedWords: number;
+    typedCorrect: number;
     // Bee simulation
     beeSessions: number;
     beeNoHelpStreak: number;
@@ -105,6 +106,7 @@ const LEARNING_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
     { id: 'reviewer', name: 'Reviewer', desc: 'Complete a review session', check: s => s.reviewedWords >= 1 },
     { id: 'memory-master', name: 'Memory Master', desc: 'Master 20 words (Leitner box 4)', check: s => s.masteredWordCount >= 20 },
     { id: 'comeback-kid', name: 'Comeback Kid', desc: 'Review 50 words', check: s => s.reviewedWords >= 50 },
+    { id: 'true-speller', name: 'True Speller', desc: 'Type 50 words correctly', check: s => s.typedCorrect >= 50 },
 ];
 
 // ── Bee simulation achievements ──────────────────────────────────────────────

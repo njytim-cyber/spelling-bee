@@ -60,7 +60,8 @@ export type ChalkState =
     | 'fail'
     | 'streak'
     | 'comeback'
-    | 'struggling';
+    | 'struggling'
+    | 'celebrate';
 
 export type FeedbackFlash = 'none' | 'correct' | 'wrong';
 

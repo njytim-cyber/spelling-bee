@@ -7,6 +7,8 @@ import { describe, it, expect } from 'vitest';
 
 // ── Inline the pure Leitner logic from useWordHistory.ts ────────────────────
 
+type AnswerMode = 'mcq' | 'typed';
+
 interface WordRecord {
     word: string;
     category: string;
@@ -16,6 +18,10 @@ interface WordRecord {
     lastCorrect: number;
     box: number;
     nextReview: number;
+    mcqAttempts?: number;
+    mcqCorrect?: number;
+    typedAttempts?: number;
+    typedCorrect?: number;
 }
 
 const BOX_DELAY_MS: Record<number, number> = {
@@ -32,10 +38,12 @@ function recordAttempt(
     category: string,
     correct: boolean,
     now: number,
+    mode?: AnswerMode,
 ): WordRecord {
     const newBox = existing
         ? (correct ? Math.min(existing.box + 1, 4) : 0)
         : (correct ? 1 : 0);
+    const isMcq = mode !== 'typed';
 
     return {
         word: word.toLowerCase(),
@@ -46,6 +54,10 @@ function recordAttempt(
         lastCorrect: correct ? now : (existing?.lastCorrect ?? 0),
         box: newBox,
         nextReview: now + (BOX_DELAY_MS[newBox] ?? 0),
+        mcqAttempts: (existing?.mcqAttempts ?? 0) + (isMcq ? 1 : 0),
+        mcqCorrect: (existing?.mcqCorrect ?? 0) + (isMcq && correct ? 1 : 0),
+        typedAttempts: (existing?.typedAttempts ?? 0) + (!isMcq ? 1 : 0),
+        typedCorrect: (existing?.typedCorrect ?? 0) + (!isMcq && correct ? 1 : 0),
     };
 }
 
@@ -213,6 +225,49 @@ describe('Leitner spaced repetition (useWordHistory logic)', () => {
         it('returns 0 when no mastered words', () => {
             const r = recordAttempt(undefined, 'new', 'cvc', true, NOW);
             expect(getMasteredCount({ new: r })).toBe(0);
+        });
+    });
+
+    describe('answer mode tracking', () => {
+        it('MCQ mode increments mcq counters', () => {
+            const r = recordAttempt(undefined, 'apple', 'cvc', true, NOW, 'mcq');
+            expect(r.mcqAttempts).toBe(1);
+            expect(r.mcqCorrect).toBe(1);
+            expect(r.typedAttempts).toBe(0);
+            expect(r.typedCorrect).toBe(0);
+        });
+
+        it('typed mode increments typed counters', () => {
+            const r = recordAttempt(undefined, 'apple', 'cvc', true, NOW, 'typed');
+            expect(r.typedAttempts).toBe(1);
+            expect(r.typedCorrect).toBe(1);
+            expect(r.mcqAttempts).toBe(0);
+            expect(r.mcqCorrect).toBe(0);
+        });
+
+        it('undefined mode defaults to MCQ (backward compat)', () => {
+            const r = recordAttempt(undefined, 'apple', 'cvc', true, NOW);
+            expect(r.mcqAttempts).toBe(1);
+            expect(r.mcqCorrect).toBe(1);
+            expect(r.typedAttempts).toBe(0);
+        });
+
+        it('incorrect typed does not increment typedCorrect', () => {
+            const r = recordAttempt(undefined, 'apple', 'cvc', false, NOW, 'typed');
+            expect(r.typedAttempts).toBe(1);
+            expect(r.typedCorrect).toBe(0);
+        });
+
+        it('counters accumulate across modes', () => {
+            let r = recordAttempt(undefined, 'cat', 'cvc', true, NOW, 'mcq');
+            r = recordAttempt(r, 'cat', 'cvc', true, NOW + 1000, 'typed');
+            r = recordAttempt(r, 'cat', 'cvc', false, NOW + 2000, 'mcq');
+            expect(r.mcqAttempts).toBe(2);
+            expect(r.mcqCorrect).toBe(1);
+            expect(r.typedAttempts).toBe(1);
+            expect(r.typedCorrect).toBe(1);
+            expect(r.attempts).toBe(3);
+            expect(r.correct).toBe(2);
         });
     });
 });

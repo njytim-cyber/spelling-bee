@@ -65,6 +65,7 @@ export const STORAGE_TO_FIRESTORE: Record<string, string> = {
     [STORAGE_KEYS.dialect]: 'dialect',
     [STORAGE_KEYS.seasonalTheme]: 'seasonalTheme',
     [STORAGE_KEYS.stickFigureStyle]: 'stickFigureStyle',
+    [STORAGE_KEYS.customLists]: 'customLists',
 };
 
 // ── Firestore collection names ────────────────────────────────────────────────

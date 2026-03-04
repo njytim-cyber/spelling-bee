@@ -53,7 +53,7 @@ export const ActionButtons = memo(function ActionButtons({
     guidedMode, onGuidedModeToggle,
 }: Props) {
     // Hide hard/timed toggles during full-screen modes that have their own controls
-    const hideToggles = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
+    const hideToggles = questionType === 'bee' || questionType === 'guided';
     const categoryLabel = SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? '';
 
     return (

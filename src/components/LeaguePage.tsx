@@ -32,13 +32,11 @@ interface Props {
     displayName: string;
     activeThemeId: string;
     activeCostume: string;
-    onOpenMultiplayer?: () => void;
     onOpenBee?: () => void;
-    onOpenWrittenTest?: () => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenMultiplayer, onOpenBee, onOpenWrittenTest }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee }: Props) {
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [lbTab, setLbTab] = useState<LeaderboardTab>('allTime');
@@ -204,29 +202,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </button>
                 )}
 
-                <div className="flex gap-2">
-                    {onOpenWrittenTest && (
-                        <button
-                            onClick={onOpenWrittenTest}
-                            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
-                        >
-                            <span className="text-sm">📋</span>
-                            <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">Written Test</span>
-                        </button>
-                    )}
-                    {onOpenMultiplayer && (
-                        <button
-                            onClick={onOpenMultiplayer}
-                            className="flex-1 flex flex-col items-center justify-center gap-0.5 py-3 rounded-2xl border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
-                        >
-                            <div className="flex items-center gap-2">
-                                <span className="text-sm">⚔️</span>
-                                <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/80">1v1 Match</span>
-                            </div>
-                            <span className="text-[9px] ui text-[rgb(var(--color-fg))]/35">Race a ghost of another player</span>
-                        </button>
-                    )}
-                </div>
             </div>
 
             {/* Leaderboard header + tab toggle */}

@@ -7,7 +7,7 @@
 import type { WordRecord } from '../hooks/useWordHistory';
 import type { SpellingWord } from '../domains/spelling/words/types';
 
-const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost', 'Mastered'];
+const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
 
 /**
  * Opens a print-friendly study sheet in a new window.

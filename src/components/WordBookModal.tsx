@@ -10,11 +10,10 @@ import type { WordRecord } from '../hooks/useWordHistory';
 import { getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words';
 import { STORAGE_KEYS } from '../config';
-import { printStudySheet } from '../utils/printStudySheet';
 import { EtymologyExplainer } from './EtymologyExplainer';
 import { extractLanguage, type LanguageOfOrigin } from '../utils/etymologyParser';
 
-const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost', 'Mastered'];
+const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
 const BOX_COLORS = [
     'text-[var(--color-wrong)]',
     'text-[var(--color-wrong)]/70',
@@ -246,17 +245,9 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
                 )}
             </div>
 
-            {/* Summary + Print */}
-            <div className="flex items-center justify-between text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
+            {/* Summary */}
+            <div className="text-xs ui text-[rgb(var(--color-fg))]/50 mb-3">
                 <span>{totalWords} word{totalWords !== 1 ? 's' : ''} &middot; {masteredWords} mastered</span>
-                {filteredWords.length > 0 && (
-                    <button
-                        onClick={() => printStudySheet('Spelling Bee Study Sheet', filteredWords, wordMap)}
-                        className="text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                    >
-                        Print
-                    </button>
-                )}
             </div>
 
             {/* Box filter chips */}

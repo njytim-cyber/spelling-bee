@@ -18,12 +18,12 @@ const ORIGIN_GROUPS: SpellingGroup[] = ['origins'];
 const PRACTICE_GROUPS: SpellingGroup[] = ['practice'];
 
 const TABS: Tab[] = ['levels', 'topics', 'origins', 'practice'];
-const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', origins: 'Origins', practice: 'More' };
+const TAB_LABELS: Record<Tab, string> = { levels: 'Levels', topics: 'Topics', origins: 'Origins', practice: 'My Lists' };
 const TAB_DESCRIPTIONS: Record<Tab, string> = {
     levels: 'Words by difficulty level',
     topics: 'Practice specific phonics patterns',
     origins: 'Words grouped by language of origin',
-    practice: 'Roots, review, and custom lists',
+    practice: 'Your custom word lists',
 };
 const SWIPE_THRESHOLD = 50;
 

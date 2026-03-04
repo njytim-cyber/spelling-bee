@@ -8,13 +8,14 @@ import { memo, useMemo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/curriculum';
-import { getStudyPlan, getDifficultyNudge, getPatternAccuracy, type PracticeRecommendation, type AccuracyBar } from '../utils/errorPatterns';
+import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
+import { IconBook, IconTree, IconChart } from './Icons';
 import { STORAGE_KEYS } from '../config';
 
 interface Props {
@@ -211,56 +212,6 @@ function wordCountByDifficulty(diff: DifficultyTier): number {
     return wordsByDifficulty(diff, diff).length;
 }
 
-// ── Weak patterns section ────────────────────────────────────────────────────
-
-function WeakPatterns({ patterns, onPractice }: { patterns: AccuracyBar[]; onPractice?: (category: string) => void }) {
-    // Show top 5 weakest patterns (already sorted by accuracy ascending)
-    const weak = patterns.filter(p => p.attempts >= 5).slice(0, 5);
-    if (weak.length === 0) return null;
-
-    return (
-        <section className="mb-4">
-            <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Weak Spots</h3>
-            <div className="space-y-1.5">
-                {weak.map(p => {
-                    const pct = Math.round(p.accuracy * 100);
-                    const barColor = pct >= 80 ? 'bg-[var(--color-correct)]' : pct >= 60 ? 'bg-[var(--color-gold)]' : 'bg-[var(--color-wrong)]';
-                    const tooltip = PATTERN_TOOLTIPS[p.label];
-                    return (
-                        <div key={p.key} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-baseline gap-1.5">
-                                    <span className="text-xs ui text-[rgb(var(--color-fg))]/70 font-medium">{p.label}</span>
-                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{p.attempts} words</span>
-                                    {tooltip && (
-                                        <span className="text-[9px] ui text-[rgb(var(--color-fg))]/20" title={tooltip}>?</span>
-                                    )}
-                                </div>
-                                <div className="flex items-center gap-2 mt-0.5">
-                                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
-                                        <div className={`h-full rounded-full ${barColor} transition-all`} style={{ width: `${pct}%` }} />
-                                    </div>
-                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums w-[30px] text-right">
-                                        {pct}%
-                                    </span>
-                                </div>
-                            </div>
-                            {onPractice && pct < 80 && (
-                                <button
-                                    onClick={() => onPractice(p.key)}
-                                    className="shrink-0 px-2 py-1 rounded-lg text-[9px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                                >
-                                    Drill
-                                </button>
-                            )}
-                        </div>
-                    );
-                })}
-            </div>
-        </section>
-    );
-}
-
 // ── Weekly goal tracker ────────────────────────────────────────────────────────
 
 function getWeekKey(): string {
@@ -404,8 +355,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
     );
     const recommendations = useMemo(() => getStudyPlan(records, reviewDueCount, hardestWordCount), [records, reviewDueCount, hardestWordCount]);
     const difficultyNudge = useMemo(() => getDifficultyNudge(records), [records]);
-    const patternAccuracy = useMemo(() => getPatternAccuracy(records), [records]);
-
     // Root mastery data
     const rootMasteryData = useMemo(() => computeRootMastery(records, WORD_ROOTS), [records]);
     const rootMasteryMap = useMemo(() => {
@@ -567,16 +516,16 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Study Tools</h3>
                     <div className="flex gap-2">
                         {([
-                            { tab: 'words' as StudyTab, icon: '\uD83D\uDCD6', label: 'Words', desc: `${totalWords} studied` },
-                            { tab: 'roots' as StudyTab, icon: '\uD83C\uDF33', label: 'Roots', desc: 'Etymology' },
-                            { tab: 'analytics' as StudyTab, icon: '\uD83D\uDCCA', label: 'Analytics', desc: 'Patterns' },
+                            { tab: 'words' as StudyTab, Icon: IconBook, label: 'Words', desc: `${totalWords} studied` },
+                            { tab: 'roots' as StudyTab, Icon: IconTree, label: 'Roots', desc: 'Etymology' },
+                            { tab: 'analytics' as StudyTab, Icon: IconChart, label: 'Analytics', desc: 'Report card' },
                         ]).map(t => (
                             <button
                                 key={t.tab}
                                 onClick={() => setStudyToolsTab(t.tab)}
                                 className="flex-1 flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors"
                             >
-                                <span className="text-base">{t.icon}</span>
+                                <t.Icon className="w-5 h-5 text-[rgb(var(--color-fg))]/50" />
                                 <span className="text-[11px] ui text-[rgb(var(--color-fg))]/60 font-medium">{t.label}</span>
                                 <span className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{t.desc}</span>
                             </button>
@@ -584,9 +533,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     </div>
                 </section>
             )}
-
-            {/* ── Weak patterns dashboard ── */}
-            {totalWords >= 10 && <WeakPatterns patterns={patternAccuracy} onPractice={onPractice} />}
 
             {/* ── Curriculum — flat 10-level list ── */}
             <section>
@@ -625,7 +571,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                         onDrillRoot(rootId);
                     } : undefined}
                     rootMastery={rootMasteryMap}
-                    onPractice={onPractice}
                 />
             )}
         </AnimatePresence>

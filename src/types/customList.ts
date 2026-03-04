@@ -13,9 +13,13 @@ export interface CustomWord {
     pronunciation?: string;
     /** Part of speech */
     partOfSpeech?: string;
+    /** Example sentence from word bank */
+    exampleSentence?: string;
+    /** Difficulty 1-10 from word bank */
+    difficulty?: number;
     /** Whether this word was found in and enriched from the word bank */
     enriched: boolean;
-    /** Pre-baked distractors (from word bank) */
+    /** Pre-baked distractors (from word bank) — stripped during serialization, re-enriched on load */
     distractors?: string[];
 }
 

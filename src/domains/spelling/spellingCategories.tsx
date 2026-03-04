@@ -48,7 +48,6 @@ export type SpellingCategory =
     | 'theme-society' | 'theme-travel' | 'theme-everyday'
     | 'vocab'
     | 'origin-latin' | 'origin-greek' | 'origin-french' | 'origin-german' | 'origin-other'
-    | 'written-test'
     | 'guided'
     | 'roots'
     | 'etymology'
@@ -514,36 +513,6 @@ const iOriginOther = I(<>
     <path d="M12 3c3 3 3 15 0 18" />
 </>);
 
-// Review — circular arrow
-const iReview = I(<>
-    <path d="M21 12a9 9 0 1 1-3-6.7" />
-    <polyline points="21 3 21 9 15 9" />
-</>);
-
-// Vocab — book with question mark
-const iVocab = I(<>
-    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v16H6.5a2.5 2.5 0 0 0 0 5H20" />
-    <path d="M12 8v4" />
-    <circle cx="12" cy="14.5" r="0.5" fill="currentColor" stroke="none" />
-</>);
-
-// Competition — microphone (spelling bee stage)
-const iBeeSim = I(<>
-    <path d="M12 1a4 4 0 0 0-4 4v6a4 4 0 0 0 8 0V5a4 4 0 0 0-4-4z" />
-    <path d="M19 11a7 7 0 0 1-14 0" />
-    <line x1="12" y1="18" x2="12" y2="23" />
-    <line x1="8" y1="23" x2="16" y2="23" />
-</>);
-
-// Written Test — clipboard with checklist
-const iWrittenTest = I(<>
-    <rect x="5" y="2" width="14" height="20" rx="2" />
-    <path d="M9 2v2h6V2" />
-    <line x1="9" y1="10" x2="15" y2="10" />
-    <line x1="9" y1="14" x2="15" y2="14" />
-    <line x1="9" y1="18" x2="12" y2="18" />
-</>);
-
 // Roots — tree with branching roots
 const iRoots = I(<>
     <line x1="12" y1="4" x2="12" y2="14" />
@@ -640,13 +609,9 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'origin-french', icon: iOriginFrench, label: 'French', group: 'origins' },
     { id: 'origin-german', icon: iOriginGerman, label: 'German', group: 'origins' },
     { id: 'origin-other', icon: iOriginOther, label: 'Other Origins', group: 'origins' },
-    // Practice
-    { id: 'bee', icon: iBeeSim, label: 'Competition', group: 'practice' },
-    { id: 'written-test', icon: iWrittenTest, label: 'Written Test', group: 'practice' },
-    { id: 'review', icon: iReview, label: 'Review', group: 'practice' },
-    { id: 'vocab', icon: iVocab, label: 'Vocab Quiz', group: 'practice' },
-    { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'practice' },
-    { id: 'etymology', icon: iEtymology, label: 'Etymology Quiz', group: 'practice' },
+    { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'origins' },
+    { id: 'etymology', icon: iEtymology, label: 'Etymology Quiz', group: 'origins' },
+    // My Lists
     { id: 'custom', icon: iCustom, label: 'My Lists', group: 'practice' },
 ];
 

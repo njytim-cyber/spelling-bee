@@ -264,7 +264,6 @@ export const db = initializeFirestore(app, {
 | AchievementBadge | 14 KB | 3 KB |
 | LeaguePage | 12 KB | 4 KB |
 | GuidedSpellingPage | 12 KB | 4 KB |
-| WrittenTestPage | 10 KB | 3 KB |
 | MultiplayerMatch | 7 KB | 2 KB |
 
 Page-level code splitting is excellent — all use `React.lazy()` with a retry wrapper.
@@ -486,6 +485,15 @@ Each tier is a single monolith. Level 5 downloads 4.3 MB in one request even tho
 1. **Firebase (Google Cloud)** — all data (required for core functionality)
 2. **Google Cloud TTS API** — text to synthesize, voice settings (server-side only)
 3. **Google Fonts** — no user data (IP address visible to Google, standard for any CDN)
+
+---
+
+## Post-Audit Removals
+
+| Feature | Action | Reason |
+|---------|--------|--------|
+| Written Test | REMOVED | Mock Scripps Round 3 — copyrighted format. Deleted `WrittenTestPage`, `useWrittenTest`, `writtenTestGenerator`, category entry, and all references. |
+| 1v1 Match button | HIDDEN | Multiplayer is not ready for launch. Code retained, button removed from Compete page. See `FEATURE-BACKLOG.md`. |
 
 ---
 

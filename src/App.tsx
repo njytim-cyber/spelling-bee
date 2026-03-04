@@ -59,7 +59,6 @@ import type { WordRecord } from './hooks/useWordHistory';
 import { WORD_ROOTS } from './domains/spelling/words/roots';
 const PathPage = lazy(() => lazyRetry(() => import('./components/PathPage')).then(m => ({ default: m.PathPage })));
 const BeeSimPage = lazy(() => lazyRetry(() => import('./components/BeeSimPage')).then(m => ({ default: m.BeeSimPage })));
-const WrittenTestPage = lazy(() => lazyRetry(() => import('./components/WrittenTestPage')).then(m => ({ default: m.WrittenTestPage })));
 const GuidedSpellingPage = lazy(() => lazyRetry(() => import('./components/GuidedSpellingPage')).then(m => ({ default: m.GuidedSpellingPage })));
 const MultiplayerLobby = lazy(() => lazyRetry(() => import('./components/MultiplayerLobby')).then(m => ({ default: m.MultiplayerLobby })));
 const MultiplayerMatch = lazy(() => lazyRetry(() => import('./components/MultiplayerMatch')).then(m => ({ default: m.MultiplayerMatch })));
@@ -76,6 +75,9 @@ import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 import { recordSessionHistory } from './utils/sessionHistory';
+import { useUnlockTracker } from './hooks/useUnlockTracker';
+import { UnlockCelebration } from './components/UnlockCelebration';
+import { Confetti } from './components/Confetti';
 
 type Tab = 'game' | 'path' | 'league' | 'me';
 const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
@@ -220,7 +222,7 @@ function AppInner() {
   const mp = useMultiplayerRoom(uid, user?.displayName ?? 'Player');
 
   // ── Custom Word Lists ──
-  const customLists = useCustomLists();
+  const customLists = useCustomLists(uid);
   const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
 
   // ── Hardest-words drill override ──
@@ -304,7 +306,16 @@ function AppInner() {
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recentAttempts, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
+  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
+
+  // Missed words for custom list suggestions (box 0, at least 2 attempts, sorted by worst accuracy)
+  const missedWords = useMemo(() =>
+    Object.values(wordRecords)
+      .filter(r => r.box === 0 && r.attempts >= 2)
+      .sort((a, b) => (a.correct / a.attempts) - (b.correct / b.attempts))
+      .slice(0, 20),
+    [wordRecords],
+  );
 
   // Root-family drill queue — maps root's example words to WordRecord[] for GuidedSpellingPage
   const drillRootQueue = useMemo(() => {
@@ -318,21 +329,21 @@ function AppInner() {
   }, [drillRootId, wordRecords]);
 
   // ── Session word log (for post-game review) ──
-  const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string }>>([]);
+  const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string; mode?: 'mcq' | 'typed' }>>([]);
   const prevQuestionTypeRef = useRef(questionType);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
       prevQuestionTypeRef.current = questionType;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionType]);
 
-  const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
+  const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number, typed?: string) => {
     const word = item.meta?.['word'] as string | undefined;
     if (word) {
-      recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
-      sessionWordsRef.current.push({ word, correct, definition: item.meta?.['definition'] as string | undefined });
+      const mode = typed !== undefined ? 'typed' as const : 'mcq' as const;
+      recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs, !correct ? typed : undefined, mode);
+      sessionWordsRef.current.push({ word, correct, definition: item.meta?.['definition'] as string | undefined, mode });
     }
     // Track session progress
     if (sessionSize !== null) setSessionAnswered(n => n + 1);
@@ -580,6 +591,7 @@ function AppInner() {
       // New achievement stats from word history & modes
       masteredWordCount: masteredCount,
       reviewedWords: Object.values(wordRecords).reduce((sum, r) => sum + r.attempts, 0),
+      typedCorrect: Object.values(wordRecords).reduce((sum, r) => sum + (r.typedCorrect ?? 0), 0),
       beeSessions: 0, // tracked per-session, not persisted yet
       beeNoHelpStreak: 0,
       beeBestRun: 0,
@@ -592,11 +604,12 @@ function AppInner() {
       fresh.forEach(id => next.add(id));
       setUnlocked(next);
       saveUnlocked(next, uid);
-      // Show toast for first new unlock
+      // Show toast + confetti for first new unlock
       const badge = EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === fresh[0]);
       if (badge) {
         setUnlockToast({ name: badge.name, desc: badge.desc });
-        const t = setTimeout(() => setUnlockToast(null), 3500);
+        setShowAchievementConfetti(true);
+        const t = setTimeout(() => { setUnlockToast(null); setShowAchievementConfetti(false); }, 3500);
         return () => clearTimeout(t);
       }
     }
@@ -604,6 +617,46 @@ function AppInner() {
 
   // ── Personal best detection ──
   const showPB = usePersonalBest(bestStreak, stats.bestStreak);
+
+  // ── Unlock tracker (rank-ups, themes, trails, mastery) ──
+  const {
+    newRank: unlockNewRank, newThemes: unlockNewThemes, newTrails: unlockNewTrails, newMastery: unlockNewMastery,
+    clearRank: unlockClearRank, clearThemes: unlockClearThemes, clearTrails: unlockClearTrails, clearMastery: unlockClearMastery,
+  } = useUnlockTracker(stats, Math.max(stats.bestStreak, bestStreak));
+
+  // Chalk theme unlock toast
+  const [themeUnlockToast, setThemeUnlockToast] = useState<{ name: string; color: string } | null>(null);
+  useEffect(() => {
+    if (unlockNewThemes.length > 0) {
+      const theme = unlockNewThemes[0];
+      setThemeUnlockToast({ name: theme.name, color: theme.color });
+      const t = setTimeout(() => { setThemeUnlockToast(null); unlockClearThemes(); }, 4000);
+      return () => clearTimeout(t);
+    }
+  }, [unlockNewThemes, unlockClearThemes]);
+
+  // Trail unlock toast
+  const [trailUnlockToast, fireTrailUnlockToast] = useTimedMessage(4000);
+  useEffect(() => {
+    if (unlockNewTrails.length > 0) {
+      fireTrailUnlockToast(unlockNewTrails[0].name);
+      const t = setTimeout(unlockClearTrails, 4000);
+      return () => clearTimeout(t);
+    }
+  }, [unlockNewTrails, unlockClearTrails, fireTrailUnlockToast]);
+
+  // Mastery level-up toast (post-Transcendent progression)
+  const [masteryLevelToast, fireMasteryLevelToast] = useTimedMessage(4000);
+  useEffect(() => {
+    if (unlockNewMastery) {
+      fireMasteryLevelToast(`Mastery Level ${unlockNewMastery}`);
+      const t = setTimeout(unlockClearMastery, 4000);
+      return () => clearTimeout(t);
+    }
+  }, [unlockNewMastery, unlockClearMastery, fireMasteryLevelToast]);
+
+  // Achievement confetti burst
+  const [showAchievementConfetti, setShowAchievementConfetti] = useState(false);
 
   // ── Streak near-miss detection (just missed 5/10/20/50) ──
   const NEAR_MISS_THRESHOLDS = [5, 10, 20, 50];
@@ -704,7 +757,7 @@ function AppInner() {
   }, [themeMode, setThemeMode]);
 
   // True when in a full-screen sub-mode that hides standard game chrome
-  const isImmersive = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test';
+  const isImmersive = questionType === 'bee' || questionType === 'guided';
 
   const defaultCategory = levelConfig?.defaultCategory ?? 'cvc';
 
@@ -935,7 +988,7 @@ function AppInner() {
                 <BeeSimPage
                   onExit={() => setQuestionType(defaultCategory)}
                   onAnswer={(word, correct, ms, typed) => {
-                    recordAttempt(word, 'bee', correct, ms, typed);
+                    recordAttempt(word, 'bee', correct, ms, !correct ? typed : undefined, 'typed');
                   }}
                   onBeeResult={recordBeeResult}
                 />
@@ -944,17 +997,13 @@ function AppInner() {
                   <GuidedSpellingPage
                     onExit={() => { setDrillHardest(false); setDrillRootId(null); const prev = prevCategoryRef.current; setQuestionType(prev !== 'guided' ? prev : levelConfig?.defaultCategory ?? 'cvc'); }}
                     onAnswer={(word, correct, ms, typed) => {
-                      recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, typed);
+                      recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, !correct ? typed : undefined, 'typed');
                     }}
                     reviewQueue={drillRootId ? drillRootQueue : drillHardest ? hardestWords : reviewQueue}
                     masteredCount={masteredCount}
                     onOpenBee={() => setQuestionType('bee')}
                   />
                 </Suspense>
-              ) : questionType === 'written-test' ? (
-                <WrittenTestPage
-                  onExit={() => setQuestionType(defaultCategory)}
-                />
               ) : questionType === 'review' && reviewQueue.length === 0 && totalAnswered === 0 ? (
                 <div className="flex-1 flex flex-col items-center justify-center px-6 gap-3">
                   <span className="text-4xl">📖</span>
@@ -1085,7 +1134,7 @@ function AppInner() {
             {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
             {!isImmersive && (
               <div className="landscape-hide">
-                <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
+                <BeeBuddy state={unlockNewRank || unlockNewThemes.length > 0 || unlockNewTrails.length > 0 || showAchievementConfetti ? 'celebrate' : chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
               </div>
             )}
 
@@ -1209,7 +1258,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenMultiplayer={() => openModal('showMultiplayerLobby')} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} onOpenWrittenTest={() => { setQuestionType('written-test'); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} /></Suspense>
           </motion.div>
         )}
 
@@ -1219,8 +1268,6 @@ function AppInner() {
               unlocked={unlocked}
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
-              recentAttempts={recentAttempts}
-              wordRecords={wordRecords}
             /></Suspense>
           </motion.div>
         )}
@@ -1270,13 +1317,29 @@ function AppInner() {
         <WeeklyRecap stats={stats} />
 
         {/* ── Toasts ── */}
-        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} />
+        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} stampEffect />
         <Toast visible={shieldToast} icon="🛡️" title="Shield saved your streak!" subtitle={`${stats.streakShields} shield${stats.streakShields !== 1 ? 's' : ''} left`} />
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
         <Toast visible={timedToast} icon="⏱️" title="Timer ON — 10s per question" subtitle="Wrong if time runs out. Tap stopwatch to turn off." />
         <Toast visible={!!errorToast} icon="⚠️" title={errorToast} toastKey={errorToast} />
+
+        {/* ── Unlock celebration toasts ── */}
+        <Toast visible={!!themeUnlockToast} icon="🎨" title={`${themeUnlockToast?.name} unlocked!`} subtitle="New chalk color available on Me page" color={themeUnlockToast?.color} toastKey={themeUnlockToast?.name} stampEffect />
+        <Toast visible={!!trailUnlockToast} icon="✨" title={`${trailUnlockToast} unlocked!`} subtitle="New swipe trail available on Me page" toastKey={trailUnlockToast ?? undefined} stampEffect />
+        <Toast visible={!!masteryLevelToast} icon="⭐" title={masteryLevelToast} subtitle="The journey continues!" toastKey={masteryLevelToast ?? undefined} stampEffect />
+
+        {/* ── Achievement confetti ── */}
+        <Confetti trigger={showAchievementConfetti} />
+
+        {/* ── Rank-up celebration (full-screen) ── */}
+        <UnlockCelebration
+          rank={unlockNewRank}
+          newThemes={unlockNewThemes.map(t => t.name)}
+          newTrails={unlockNewTrails.map(t => t.name)}
+          onDismiss={unlockClearRank}
+        />
 
         {/* ── Daily Size Picker ── */}
         <AnimatePresence>
@@ -1332,8 +1395,15 @@ function AppInner() {
           {showCustomLists && (
             <CustomListsModal
               lists={customLists.lists}
-              onCreate={customLists.createList}
+              maxLists={customLists.MAX_LISTS}
+              onCreateFromWords={customLists.createListFromWords}
               onDelete={customLists.deleteList}
+              onRename={customLists.renameList}
+              onDuplicate={customLists.duplicateList}
+              onAddWord={customLists.addWordToList}
+              onRemoveWord={customLists.removeWordFromList}
+              wordRecords={wordRecords}
+              missedWords={missedWords}
               onPractice={(listId) => {
                 setActiveCustomListId(listId);
                 closeModal('showCustomLists');

@@ -20,6 +20,7 @@ const ANIMS: Record<ChalkState, TargetAndTransition> = {
     streak: { y: [0, -8, 0], scale: [1, 1.1, 1], rotate: [0, -3, 3, 0], transition: { repeat: Infinity, duration: 0.7, ease: 'easeInOut' as const } },
     comeback: { scale: [1, 1.2, 1], y: [0, -10, 0], transition: { duration: 0.5 } },
     struggling: { x: [-8, 8, -6, 6, -3, 3, 0], y: [0, 3, 0], transition: { duration: 0.55 } },
+    celebrate: { y: [0, -18, -4, -14, 0], scale: [1, 1.3, 1.1, 1.2, 1], rotate: [0, -8, 8, -4, 0], transition: { duration: 0.8, ease: 'easeOut' as const } },
 };
 
 // ── Wing flutter speeds per state ─────────────────────────────────────────────
@@ -31,6 +32,7 @@ const WING_FLUTTER: Record<ChalkState, TargetAndTransition> = {
     streak: { scaleX: [1, 0.15, 1], transition: { repeat: Infinity, duration: 0.1, ease: 'easeInOut' as const } },
     comeback: { scaleX: [1, 0.3, 1], transition: { repeat: Infinity, duration: 0.2, ease: 'easeInOut' as const } },
     struggling: { scaleX: [1, 0.85, 1], transition: { repeat: Infinity, duration: 1.0, ease: 'easeInOut' as const } },
+    celebrate: { scaleX: [1, 0.1, 1], transition: { repeat: Infinity, duration: 0.08, ease: 'easeInOut' as const } },
 };
 
 // ── Bee body parts (static SVG) ───────────────────────────────────────────────
@@ -129,6 +131,18 @@ const FACES: Record<ChalkState, React.ReactNode> = {
             <line x1="42" y1="53" x2="58" y2="53" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
             {/* Sweat drop */}
             <ellipse cx="70" cy="36" rx="2" ry="3.5" fill="currentColor" opacity="0.4" />
+        </>
+    ),
+    celebrate: (
+        <>
+            {/* Star eyes */}
+            <path d="M42 40 l-2-4 -2 4 -4 0.5 3 2.5 -1 4 4-2 4 2 -1-4 3-2.5z" fill="currentColor" opacity="0.9" />
+            <path d="M58 40 l-2-4 -2 4 -4 0.5 3 2.5 -1 4 4-2 4 2 -1-4 3-2.5z" fill="currentColor" opacity="0.9" />
+            {/* Wide-open grin */}
+            <path d="M 38 50 Q 50 66 62 50" stroke="currentColor" strokeWidth="2.5" fill="none" />
+            {/* Rosy cheeks */}
+            <circle cx="34" cy="48" r="4" fill="currentColor" opacity="0.15" />
+            <circle cx="66" cy="48" r="4" fill="currentColor" opacity="0.15" />
         </>
     ),
 };

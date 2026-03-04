@@ -264,12 +264,31 @@ export function getStudyPlan(
         });
     }
 
-    // 3. Weakest area drill (limit to 1)
+    // 3. "Level Up" nudge — swipe accuracy much higher than typed
+    const recordArr = Object.values(records);
+    let mcqTotal = 0, mcqRight = 0, typedTotal = 0, typedRight = 0;
+    for (const r of recordArr) {
+        mcqTotal += r.mcqAttempts ?? 0;
+        mcqRight += r.mcqCorrect ?? 0;
+        typedTotal += r.typedAttempts ?? 0;
+        typedRight += r.typedCorrect ?? 0;
+    }
+    const mcqAcc = mcqTotal >= 10 ? mcqRight / mcqTotal : -1;
+    const typedAcc = typedTotal >= 10 ? typedRight / typedTotal : -1;
+    if (mcqAcc >= 0 && typedAcc >= 0 && mcqAcc - typedAcc >= 0.2) {
+        plan.push({
+            category: 'guided',
+            label: 'Level Up: Type Mode',
+            reason: 'You know these words — now try spelling them!',
+            priority: 'explore',
+        });
+    }
+
+    // 4. Weakest area drill (limit to 1)
     const weakRecs = getRecommendations(records);
     plan.push(...weakRecs.slice(0, 1));
 
-    // 3. Suggest etymology quiz if user has enough data but hasn't tried it
-    const recordArr = Object.values(records);
+    // 5. Suggest etymology quiz if user has enough data but hasn't tried it
     const totalAttempts = recordArr.reduce((sum, r) => sum + r.attempts, 0);
     const hasEtymologyAttempts = recordArr.some(r => r.category === 'etymology');
     if (totalAttempts >= 20 && !hasEtymologyAttempts) {
@@ -281,7 +300,7 @@ export function getStudyPlan(
         });
     }
 
-    // 4. Suggest bee sim for users who haven't tried it
+    // 6. Suggest bee sim for users who haven't tried it
     const hasBeeAttempts = recordArr.some(r => r.category === 'bee');
     if (totalAttempts >= 30 && !hasBeeAttempts) {
         plan.push({
@@ -292,7 +311,7 @@ export function getStudyPlan(
         });
     }
 
-    // 5. Progress nudge — suggest harder categories if mastery is high
+    // 7. Progress nudge — suggest harder categories if mastery is high
     const attemptedCount = recordArr.length;
     const mastered = recordArr.filter(r => r.box >= 4).length;
     const masteryRate = attemptedCount > 0 ? mastered / attemptedCount : 0;
@@ -555,7 +574,7 @@ export function getImprovements(records: Record<string, WordRecord>): { word: st
         .slice(0, 3);
 }
 
-const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Almost Mastered', 'Mastered'];
+const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
 
 /**
  * Assemble up to 4 personalized coaching cards from analytics data.

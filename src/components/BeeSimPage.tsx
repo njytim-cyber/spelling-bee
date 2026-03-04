@@ -30,8 +30,6 @@ import {
     playWrongSound,
     playVictorySound,
     playStreakSound,
-    getSoundEnabled,
-    setSoundEnabled,
 } from '../utils/soundEffects';
 import { STORAGE_KEYS } from '../config';
 import type { SeasonalTheme } from '../utils/seasonalThemes';
@@ -56,7 +54,7 @@ const SECONDARY_INFO = [
     ['partOfSpeech', 'Part of Speech', IconType],
     ['origin', 'Origin', IconGlobe],
     ['roots', 'Roots', IconGitBranch],
-    ['spellInSections', 'Sections', IconGrid],
+    ['spellInSections', 'Syllables', IconGrid],
 ] as const;
 
 /** Difficulty dots: 5 pips filled proportionally to difficulty 1-10 */
@@ -266,13 +264,14 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
     // Festive features state
     const [showConfetti, setShowConfetti] = useState(false);
     const [confettiIntensity, setConfettiIntensity] = useState<'normal' | 'epic'>('normal');
-    const [soundOn, setSoundOn] = useState(getSoundEnabled());
+    // Sound always on in bee mode (a spelling bee is conducted verbally)
+    const soundOn = true;
     const [streak, setStreak] = useState(0);
     const [bestStreak, setBestStreak] = useState(0);
     const [showRoundBanner, setShowRoundBanner] = useState(false);
     const [showStreakBadge, setShowStreakBadge] = useState(false);
     const [motivationalMessage, setMotivationalMessage] = useState('');
-    const [showMoreInfo, setShowMoreInfo] = useState(false);
+    // showMoreInfo removed — all info buttons always visible
 
     // Session tracking for richer summaries (state, not refs, since used in render)
     const [missedWords, setMissedWords] = useState<MissedWord[]>([]);
@@ -347,10 +346,10 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
         requestInfo(type);
     }, [requestInfo]);
 
-    // Reset showMoreInfo when phase changes to asking (new word)
+    // Auto-enter spelling mode when asking phase begins (no "Ready to Spell" gate)
     useEffect(() => {
-        if (phase === 'asking') queueMicrotask(() => setShowMoreInfo(false));
-    }, [phase]);
+        if (phase === 'asking') moveToSpelling();
+    }, [phase, moveToSpelling]);
 
     // Round transitions with banner
     useEffect(() => {
@@ -420,22 +419,52 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
 
     const [diffMin, diffMax] = diffRange;
 
+    // Fun loading messages that rotate
+    const [loadingMsg, setLoadingMsg] = useState(0);
+    const LOADING_MESSAGES = [
+        'Sharpening pencils...',
+        'Warming up vocal cords...',
+        'Polishing the microphone...',
+        'Arranging the audience...',
+        'Shuffling the word cards...',
+    ];
+    useEffect(() => {
+        if (currentWord) return;
+        const id = setInterval(() => setLoadingMsg(n => (n + 1) % LOADING_MESSAGES.length), 1200);
+        return () => clearInterval(id);
+    }, [currentWord, LOADING_MESSAGES.length]);
+
+    const levelInfo = BEE_LEVELS.find(l => l.id === beeLevel);
+
     // Still loading first word
     if (!currentWord) {
         return (
             <div className="flex-1 flex flex-col items-center justify-center px-6 pb-4">
-                <div className="flex flex-col items-center gap-4 w-full max-w-[var(--content-w)]">
-                    {/* Skeleton classroom */}
-                    <div className="w-full h-[280px] bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
-                    {/* Skeleton buttons */}
-                    <div className="flex gap-2">
-                        <div className="w-24 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
-                        <div className="w-32 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
-                        <div className="w-24 h-10 bg-[rgb(var(--color-fg))]/5 rounded-xl animate-pulse" />
+                <div className="flex flex-col items-center gap-6 w-full max-w-[var(--content-w)]">
+                    <motion.div
+                        className="text-7xl"
+                        animate={{ y: [0, -18, 0], rotate: [0, -8, 8, 0] }}
+                        transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                        🐝
+                    </motion.div>
+                    <div className="text-center">
+                        <h2 className="text-2xl chalk text-[var(--color-gold)] font-bold">
+                            {levelInfo?.emoji} {levelInfo?.label} Spelling Bee
+                        </h2>
                     </div>
-                    <p className="text-sm ui text-[rgb(var(--color-fg))]/40 animate-pulse">
-                        Loading spelling bee...
-                    </p>
+                    <AnimatePresence mode="wait">
+                        <motion.p
+                            key={loadingMsg}
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            transition={{ duration: 0.25 }}
+                            className="text-sm ui text-[rgb(var(--color-fg))]/50 italic"
+                        >
+                            {LOADING_MESSAGES[loadingMsg]}
+                        </motion.p>
+                    </AnimatePresence>
                 </div>
             </div>
         );
@@ -503,24 +532,26 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                 >
                     <ChevronLeft />
                 </button>
-                <div className="text-sm ui text-[rgb(var(--color-fg))]/50 font-medium truncate flex-1">
-                    Round {round + 1} · {wordsCorrect}/{wordsAttempted} correct
-                    {streak >= 2 && <span className="ml-2 text-[var(--color-streak-fire)]">🔥{streak}</span>}
+                <div className="flex-1 flex flex-col items-center leading-tight">
+                    <div className="flex items-center gap-1.5">
+                        <span className="text-base chalk text-[var(--color-gold)] font-bold">Round {round + 1}</span>
+                        {streak >= 2 && (
+                            <motion.span
+                                key={streak}
+                                initial={{ scale: 1.4 }}
+                                animate={{ scale: 1 }}
+                                className="text-sm text-[var(--color-streak-fire)] font-bold"
+                            >
+                                🔥{streak}
+                            </motion.span>
+                        )}
+                    </div>
+                    <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50">
+                        <span className="text-[var(--color-correct)] font-semibold">{wordsCorrect}</span>
+                        <span>/{wordsAttempted} correct</span>
+                    </div>
                 </div>
-                {/* Sound toggle */}
-                <button
-                    onClick={() => {
-                        const newState = !soundOn;
-                        setSoundOn(newState);
-                        setSoundEnabled(newState);
-                    }}
-                    className="w-8 h-8 flex items-center justify-center text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors shrink-0"
-                    aria-label={soundOn ? 'Mute sounds' : 'Enable sounds'}
-                    title={soundOn ? 'Mute sounds' : 'Enable sounds'}
-                >
-                    <span className="text-lg">{soundOn ? '🔊' : '🔇'}</span>
-                </button>
-                <span className="text-xs ui px-2 py-1 text-[var(--color-gold)]/60 shrink-0">
+                <span className="text-[10px] ui px-2 py-0.5 rounded-full border border-[var(--color-gold)]/30 text-[var(--color-gold)]/70 shrink-0">
                     {BEE_LEVELS.find(l => l.id === beeLevel)?.label}
                 </span>
             </div>
@@ -564,9 +595,9 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                             wordDifficulty={currentWord?.difficulty || 5}
                         />
 
-                        {/* Asking phase — player requests info one at a time */}
+                        {/* Info buttons + spelling input — visible during asking & spelling */}
                         <AnimatePresence>
-                            {phase === 'asking' && (
+                            {(phase === 'asking' || phase === 'spelling') && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 12 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -576,10 +607,10 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                     {/* Difficulty indicator */}
                                     <DifficultyDots difficulty={currentWord.difficulty} />
 
-                                    {/* Primary info buttons — always visible */}
+                                    {/* Info buttons — all visible */}
                                     <div className="flex flex-wrap justify-center gap-2">
-                                        {PRIMARY_INFO.map(([type, label, Icon]) => {
-                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat';
+                                        {[...PRIMARY_INFO, ...SECONDARY_INFO].map(([type, label, Icon]) => {
+                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat' && type !== 'spellInSections';
                                             return (
                                                 <button
                                                     key={type}
@@ -597,47 +628,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                                 </button>
                                             );
                                         })}
-
-                                        {/* More/Less toggle */}
-                                        <button
-                                            onClick={() => setShowMoreInfo(v => !v)}
-                                            className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs ui font-medium border border-[rgb(var(--color-fg))]/15 text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
-                                        >
-                                            {showMoreInfo ? 'Less' : 'More...'}
-                                        </button>
                                     </div>
-
-                                    {/* Secondary info buttons — expanded */}
-                                    <AnimatePresence>
-                                        {showMoreInfo && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="flex flex-wrap justify-center gap-2 overflow-hidden"
-                                            >
-                                                {SECONDARY_INFO.map(([type, label, Icon]) => {
-                                                    const alreadyAsked = state.infoRequested.has(type) && type !== 'spellInSections';
-                                                    return (
-                                                        <button
-                                                            key={type}
-                                                            onClick={() => handleRequestInfo(type)}
-                                                            disabled={alreadyAsked}
-                                                            aria-label={`Request ${label.toLowerCase()}`}
-                                                            className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs ui font-medium transition-colors ${
-                                                                alreadyAsked
-                                                                    ? 'bg-[rgb(var(--color-fg))]/5 text-[rgb(var(--color-fg))]/25 cursor-default border border-transparent'
-                                                                    : 'border border-[var(--color-gold)]/30 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/50'
-                                                            }`}
-                                                        >
-                                                            <Icon className="w-3.5 h-3.5" />
-                                                            {label}
-                                                        </button>
-                                                    );
-                                                })}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
 
                                     {/* Revealed info cards */}
                                     <div className="w-full space-y-2">
@@ -651,7 +642,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                                     className={`bg-[rgb(var(--color-fg))]/8 px-4 py-3 text-sm ui text-[rgb(var(--color-fg))]/70 overflow-hidden ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
                                                 >
                                                     <span className="text-xs text-[var(--color-gold)] uppercase font-bold tracking-wide">
-                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Sections' : key === 'roots' ? 'Roots' : key}:{' '}
+                                                        {key === 'partOfSpeech' ? 'Part of Speech' : key === 'spellInSections' ? 'Syllables' : key === 'roots' ? 'Roots' : key}:{' '}
                                                     </span>
                                                     {value}
                                                 </motion.div>
@@ -659,72 +650,38 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                         </AnimatePresence>
                                     </div>
 
-                                    {/* Ready to spell button - primary CTA */}
-                                    <button
-                                        onClick={moveToSpelling}
-                                        className="mt-4 px-8 py-3 rounded-xl border-[3px] border-[var(--color-gold)]/60 bg-[var(--color-gold)]/15 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/25 hover:border-[var(--color-gold)]/80 transition-colors"
-                                    >
-                                        Ready to Spell
-                                    </button>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-
-                        {/* Inline spelling input */}
-                        <AnimatePresence>
-                            {phase === 'spelling' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 12, height: 0 }}
-                                    animate={{ opacity: 1, y: 0, height: 'auto' }}
-                                    exit={{ opacity: 0, y: 12, height: 0 }}
-                                    transition={{ duration: 0.3, ease: 'easeOut' }}
-                                    className="w-full overflow-hidden"
-                                >
-                                    {/* Show any previously requested info during spelling */}
-                                    {Object.keys(infoResponses).length > 0 && (
-                                        <div className="w-full space-y-1.5 mb-3">
-                                            {Object.entries(infoResponses).map(([key, value], idx) => (
-                                                <div
-                                                    key={key}
-                                                    className={`bg-[rgb(var(--color-fg))]/8 px-3 py-2 text-xs ui text-[rgb(var(--color-fg))]/65 ${idx % 2 === 0 ? 'hand-drawn-box' : 'hand-drawn-box-alt'}`}
+                                    {/* Spelling input — inline with info buttons (no separate phase gate) */}
+                                    {phase === 'spelling' && (
+                                        <div className="w-full mt-2">
+                                            {ttsSupported && (
+                                                <button
+                                                    onClick={() => handleRequestInfo('pronounceAgain')}
+                                                    className="mb-2 w-full flex items-center justify-center gap-1.5 text-xs ui font-medium border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-2 transition-colors"
                                                 >
-                                                    <span className="text-[11px] text-[var(--color-gold)] uppercase font-bold tracking-wide">
-                                                        {key === 'partOfSpeech' ? 'POS' : key}:{' '}
-                                                    </span>
-                                                    {value}
-                                                </div>
-                                            ))}
+                                                    <IconSpeaker className="w-3.5 h-3.5" />
+                                                    Pronounce Again
+                                                </button>
+                                            )}
+                                            <SpellingInput
+                                                value={typedSpelling}
+                                                onChange={updateTyping}
+                                                onSubmit={() => {
+                                                    submitSpelling();
+                                                    if (onAnswer && currentWord) {
+                                                        const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
+                                                        onAnswer(currentWord.word, correct, Date.now(), correct ? undefined : typedSpelling.trim());
+                                                    }
+                                                }}
+                                            />
+                                            {ttsSupported && typedSpelling.trim().length > 0 && (
+                                                <button
+                                                    onClick={readBackSpelling}
+                                                    className="mt-2 w-full text-center text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                                                >
+                                                    Hear My Spelling
+                                                </button>
+                                            )}
                                         </div>
-                                    )}
-                                    {/* Pronounce Again — available during spelling phase */}
-                                    {ttsSupported && (
-                                        <button
-                                            onClick={() => handleRequestInfo('pronounceAgain')}
-                                            className="mb-2 w-full flex items-center justify-center gap-1.5 text-xs ui font-medium border border-[var(--color-gold)]/40 text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 rounded-lg px-3 py-2 transition-colors"
-                                        >
-                                            <IconSpeaker className="w-3.5 h-3.5" />
-                                            Pronounce Again
-                                        </button>
-                                    )}
-                                    <SpellingInput
-                                        value={typedSpelling}
-                                        onChange={updateTyping}
-                                        onSubmit={() => {
-                                            submitSpelling();
-                                            if (onAnswer && currentWord) {
-                                                const correct = typedSpelling.trim().toLowerCase() === currentWord.word.toLowerCase();
-                                                onAnswer(currentWord.word, correct, Date.now(), correct ? undefined : typedSpelling.trim());
-                                            }
-                                        }}
-                                    />
-                                    {/* Hear My Spelling — reads back letter-by-letter like speaking into the mic */}
-                                    {ttsSupported && typedSpelling.trim().length > 0 && (
-                                        <button
-                                            onClick={readBackSpelling}
-                                            className="mt-2 w-full text-center text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                                        >
-                                            Hear My Spelling
-                                        </button>
                                     )}
                                 </motion.div>
                             )}

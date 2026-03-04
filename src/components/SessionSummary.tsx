@@ -6,6 +6,7 @@ interface SessionWord {
     word: string;
     correct: boolean;
     definition?: string;
+    mode?: 'mcq' | 'typed';
 }
 
 interface Props {
@@ -69,6 +70,22 @@ function getEncouragingTitle(accuracy: number, streak: number, solved: number): 
     if (streak >= 3) return { title: '🔥 Nice streaks!', subtitle: 'Building momentum — try again to beat your score' };
     if (solved >= 10) return { title: '🏃 Good effort!', subtitle: 'The more you practice, the easier it gets' };
     return { title: '🌱 Keep going!', subtitle: 'Every word you see helps you learn' };
+}
+
+/** Positive insight about typed vs MCQ in this session. Returns null if not applicable. */
+function getModeInsight(words: SessionWord[]): string | null {
+    let typedCount = 0, typedCorrect = 0, mcqCount = 0, mcqCorrect = 0;
+    for (const w of words) {
+        if (w.mode === 'typed') { typedCount++; if (w.correct) typedCorrect++; }
+        else { mcqCount++; if (w.correct) mcqCorrect++; }
+    }
+    if (typedCount === 0) return null;
+    if (mcqCount === 0) return null; // Pure typed session — no comparison to make
+    const typedAcc = typedCount > 0 ? typedCorrect / typedCount : 0;
+    const mcqAcc = mcqCount > 0 ? mcqCorrect / mcqCount : 0;
+    if (typedAcc >= mcqAcc) return 'Your spelling is even better than your recognition!';
+    if (typedAcc >= 0.6) return 'Good typing practice — you\'re building real spelling muscle!';
+    return 'Every typed word builds muscle memory — keep at it!';
 }
 
 export const SessionSummary = memo(function SessionSummary({
@@ -287,6 +304,14 @@ export const SessionSummary = memo(function SessionSummary({
                                 ))}
                             </div>
                         )}
+
+                        {/* Mode insight */}
+                        {(() => {
+                            const insight = getModeInsight(sessionWords);
+                            return insight ? (
+                                <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">{insight}</p>
+                            ) : null;
+                        })()}
 
                         {/* Word review toggle */}
                         {sessionWords.length > 0 && (() => {

@@ -4,14 +4,12 @@ import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievem
 import { AchievementBadge } from './AchievementBadge';
 import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
+import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS } from '../config';
 import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
-
-import { getSessionsByDay } from '../utils/sessionHistory';
-import { spellingHint } from '../utils/spellingDiff';
 
 // Removed tab switching - now showing everything on one page
 
@@ -19,63 +17,6 @@ interface Props {
     unlocked: Set<string>;
     masteredCount: number;
     uniqueWordsAttempted: number;
-    /** Recent word attempts for stats dashboard */
-    recentAttempts?: Array<{ word: string; category: string; correct: boolean; timestamp: number; responseTimeMs: number }>;
-    /** Per-word records for pattern analysis */
-    wordRecords?: Record<string, { word: string; category: string; attempts: number; correct: number; box: number; misspellings?: string[] }>;
-}
-
-/** Ranks with progressive XP thresholds (gets harder to level up) */
-const RANKS = [
-    { name: 'Beginner', emoji: '🌱', xp: 0 },
-    { name: 'Learner', emoji: '📚', xp: 100 },
-    { name: 'Speller', emoji: '🔤', xp: 300 },
-    { name: 'Wordsmith', emoji: '✏️', xp: 600 },
-    { name: 'Linguist', emoji: '🗣️', xp: 1000 },
-    { name: 'Lexicon', emoji: '📖', xp: 1800 },
-    { name: 'Word Wizard', emoji: '🧙', xp: 3000 },
-    { name: 'Grandmaster', emoji: '♟️', xp: 5000 },
-    { name: 'Legend', emoji: '👑', xp: 8000 },
-    { name: 'Mythic', emoji: '🌌', xp: 12000 },
-    { name: 'Transcendent', emoji: '✨', xp: 20000 },
-];
-
-function getRank(xp: number) {
-    let rank = RANKS[0];
-    let nextRank: typeof RANKS[number] | null = RANKS[1];
-    for (let i = RANKS.length - 1; i >= 0; i--) {
-        if (xp >= RANKS[i].xp) {
-            rank = RANKS[i];
-            nextRank = RANKS[i + 1] || null;
-            break;
-        }
-    }
-    const progress = nextRank
-        ? (xp - rank.xp) / (nextRank.xp - rank.xp)
-        : 1;
-    return { rank, nextRank, progress };
-}
-
-/** Mastery levels — post-max-rank infinite progression:
- *  ML1→ML2 costs 25k XP, each subsequent level 10k more. */
-const MASTERY_BASE = 25000;
-const MASTERY_SCALE = 10000;
-const MAX_RANK_XP = 20000;
-
-function getMasteryInfo(xp: number) {
-    if (xp < MAX_RANK_XP) return null;
-    let remaining = xp - MAX_RANK_XP;
-    let level = 1;
-    let levelStartXp = MAX_RANK_XP;
-    while (true) {
-        const cost = MASTERY_BASE + (level - 1) * MASTERY_SCALE;
-        if (remaining < cost) {
-            return { level, progress: remaining / cost, xpForNext: levelStartXp + cost };
-        }
-        remaining -= cost;
-        levelStartXp += cost;
-        level++;
-    }
 }
 
 // Derive achievement sublists from the single spelling array
@@ -88,26 +29,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-/** Check if a cosmetic item is unlocked based on rank/streak/solved thresholds */
-function checkUnlock(
-    rankIdx: number, bestStreak: number, totalSolved: number,
-    item: { minLevel?: number; minStreak?: number; minSolved?: number },
-): { available: boolean; hint?: string } {
-    const rankOk = !item.minLevel || rankIdx >= item.minLevel - 1;
-    const streakOk = !item.minStreak || bestStreak >= item.minStreak;
-    const solvedOk = !item.minSolved || totalSolved >= item.minSolved;
-    const available = rankOk && streakOk && solvedOk;
-    const hint = !available
-        ? [
-            !rankOk && `Reach ${RANKS[(item.minLevel ?? 1) - 1]?.name ?? 'next rank'}`,
-            !streakOk && `${item.minStreak}-streak needed`,
-            !solvedOk && `Solve ${item.minSolved} words`,
-        ].filter(Boolean).join(' · ')
-        : undefined;
-    return { available, hint };
-}
-
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, recentAttempts = [], wordRecords = {} }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted }: Props) {
     // Get user state from context
     const {
         stats,
@@ -130,7 +52,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     const activeBadge = stats.activeBadgeId || '';
     const [showRanks, setShowRanks] = useState(false);
-    const [showStats, setShowStats] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
@@ -155,89 +76,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         const pct = (masteredCount / totalWords) * 100;
         return pct >= 1 ? `${Math.round(pct)}%` : pct > 0 ? `${pct.toFixed(1)}%` : '0%';
     }, [masteredCount, totalWords]);
-
-    // ── Stats dashboard data ──
-    /** Rolling accuracy per day (last 7 days) for sparkline */
-    const [todayKey] = useState(() => {
-        const now = new Date();
-        return now.toISOString().slice(0, 10); // YYYY-MM-DD, stable for component lifetime
-    });
-    const dailyAccuracy = useMemo(() => {
-        const days: { label: string; correct: number; total: number }[] = [];
-        const todayMs = new Date(todayKey).getTime();
-        for (let i = 6; i >= 0; i--) {
-            const d = new Date(todayMs - i * 86400000);
-            const key = d.toISOString().slice(5, 10); // MM-DD
-            days.push({ label: key, correct: 0, total: 0 });
-        }
-        for (const a of recentAttempts) {
-            const d = new Date(a.timestamp);
-            const key = d.toISOString().slice(5, 10);
-            const entry = days.find(e => e.label === key);
-            if (entry) {
-                entry.total++;
-                if (a.correct) entry.correct++;
-            }
-        }
-        return days;
-    }, [recentAttempts, todayKey]);
-
-    /** Category accuracy heatmap */
-    const categoryStats = useMemo(() => {
-        const cats: Record<string, { attempts: number; correct: number }> = {};
-        for (const r of Object.values(wordRecords)) {
-            if (r.attempts === 0) continue;
-            if (!cats[r.category]) cats[r.category] = { attempts: 0, correct: 0 };
-            cats[r.category].attempts += r.attempts;
-            cats[r.category].correct += r.correct;
-        }
-        return Object.entries(cats)
-            .map(([cat, s]) => ({ category: cat, accuracy: Math.round((s.correct / s.attempts) * 100), attempts: s.attempts }))
-            .filter(c => c.attempts >= 3)
-            .sort((a, b) => a.accuracy - b.accuracy);
-    }, [wordRecords]);
-
-    /** Leitner box distribution */
-    const boxDistribution = useMemo(() => {
-        const boxes = [0, 0, 0, 0, 0]; // boxes 0-4
-        for (const r of Object.values(wordRecords)) {
-            boxes[Math.min(r.box, 4)]++;
-        }
-        return boxes;
-    }, [wordRecords]);
-
-    /** Average response time (last 50 attempts) */
-    const avgResponseMs = useMemo(() => {
-        const recent = recentAttempts.slice(0, 50);
-        if (recent.length === 0) return 0;
-        return Math.round(recent.reduce((sum, a) => sum + a.responseTimeMs, 0) / recent.length);
-    }, [recentAttempts]);
-
-    /** 30-day session history for trend chart */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const sessionTrend = useMemo(() => getSessionsByDay(30), [stats.sessionsPlayed]);
-
-    /** Common mistake patterns from misspellings */
-    const mistakePatterns = useMemo(() => {
-        const patterns: Record<string, { count: number; examples: string[] }> = {};
-        for (const r of Object.values(wordRecords)) {
-            if (!r.misspellings?.length) continue;
-            for (const typo of r.misspellings) {
-                const hint = spellingHint(typo, r.word);
-                if (!hint) continue;
-                if (!patterns[hint]) patterns[hint] = { count: 0, examples: [] };
-                patterns[hint].count++;
-                if (patterns[hint].examples.length < 2 && !patterns[hint].examples.includes(r.word)) {
-                    patterns[hint].examples.push(r.word);
-                }
-            }
-        }
-        return Object.entries(patterns)
-            .map(([pattern, data]) => ({ pattern, ...data }))
-            .filter(p => p.count >= 2)
-            .sort((a, b) => b.count - a.count)
-            .slice(0, 5);
-    }, [wordRecords]);
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-[calc(env(safe-area-inset-top,12px)+48px)] pb-20 landscape-compact-pb">
@@ -449,205 +287,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     </div>
                 )}
             </motion.div>
-
-            {/* Stats toggle */}
-            {stats.sessionsPlayed >= 3 && (
-                <button
-                    onClick={() => setShowStats(s => !s)}
-                    className="mb-4 px-4 py-1.5 rounded-lg text-[10px] ui font-semibold uppercase tracking-wider border transition-colors text-[rgb(var(--color-fg))]/40 border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:text-[var(--color-gold)]"
-                >
-                    {showStats ? 'Hide Stats' : 'View Stats'}
-                </button>
-            )}
-
-            {/* ── Stats Dashboard ── */}
-            <AnimatePresence>
-                {showStats && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="w-full max-w-sm mb-6 overflow-hidden"
-                    >
-                        {/* 7-day accuracy sparkline */}
-                        <div className="mb-4">
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">7-Day Accuracy</div>
-                            <div className="flex items-end justify-center gap-1 h-16">
-                                {dailyAccuracy.map((d, i) => {
-                                    const pct = d.total > 0 ? Math.round((d.correct / d.total) * 100) : 0;
-                                    const height = d.total > 0 ? Math.max(8, (pct / 100) * 56) : 4;
-                                    return (
-                                        <div key={i} className="flex flex-col items-center gap-0.5">
-                                            <div className="text-[8px] ui text-[rgb(var(--color-fg))]/25">
-                                                {d.total > 0 ? `${pct}%` : ''}
-                                            </div>
-                                            <div
-                                                className={`w-6 rounded-t transition-all ${
-                                                    d.total === 0 ? 'bg-[rgb(var(--color-fg))]/5' :
-                                                    pct >= 80 ? 'bg-[var(--color-correct)]/60' :
-                                                    pct >= 60 ? 'bg-[var(--color-gold)]/50' :
-                                                    'bg-[var(--color-wrong)]/40'
-                                                }`}
-                                                style={{ height }}
-                                            />
-                                            <div className="text-[7px] ui text-[rgb(var(--color-fg))]/20">{d.label.slice(3)}</div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
-                        {/* 30-day accuracy trend chart */}
-                        {sessionTrend.some(d => d.sessions > 0) && (() => {
-                            const activeDays = sessionTrend.filter(d => d.sessions > 0);
-                            if (activeDays.length < 2) return null;
-                            const maxXP = Math.max(...activeDays.map(d => d.xp), 1);
-                            const W = 280, H = 80, padX = 0, padY = 4;
-                            // Build accuracy line points
-                            const pts = sessionTrend.map((d, i) => {
-                                const x = padX + (i / (sessionTrend.length - 1)) * (W - 2 * padX);
-                                const y = d.sessions > 0
-                                    ? H - padY - ((d.accuracy / 100) * (H - 2 * padY))
-                                    : -1; // no data
-                                return { x, y, d };
-                            });
-                            const validPts = pts.filter(p => p.y >= 0);
-                            const line = validPts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-                            return (
-                                <div className="mb-4">
-                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">30-Day Trend</div>
-                                    <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ height: 80 }}>
-                                        {/* XP bars (background) */}
-                                        {sessionTrend.map((d, i) => {
-                                            if (d.sessions === 0) return null;
-                                            const bw = W / sessionTrend.length * 0.7;
-                                            const bx = (i / sessionTrend.length) * W + bw * 0.2;
-                                            const bh = Math.max(2, (d.xp / maxXP) * (H - 2 * padY));
-                                            return <rect key={i} x={bx} y={H - padY - bh} width={bw} height={bh} rx={1.5} fill="rgb(var(--color-fg))" opacity={0.06} />;
-                                        })}
-                                        {/* Accuracy line */}
-                                        {validPts.length >= 2 && <path d={line} fill="none" stroke="var(--color-gold)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" opacity={0.7} />}
-                                        {/* Dots */}
-                                        {validPts.map((p, i) => (
-                                            <circle key={i} cx={p.x} cy={p.y} r={2.5}
-                                                fill={p.d.accuracy >= 80 ? 'var(--color-correct)' : p.d.accuracy >= 60 ? 'var(--color-gold)' : 'var(--color-wrong)'}
-                                                opacity={0.8}
-                                            />
-                                        ))}
-                                    </svg>
-                                    <div className="flex justify-between text-[7px] ui text-[rgb(var(--color-fg))]/20 mt-0.5">
-                                        <span>{sessionTrend[0]?.date.slice(5)}</span>
-                                        <span className="text-[rgb(var(--color-fg))]/30">accuracy % · bars = XP</span>
-                                        <span>{sessionTrend[sessionTrend.length - 1]?.date.slice(5)}</span>
-                                    </div>
-                                </div>
-                            );
-                        })()}
-
-                        {/* Speed stat */}
-                        {avgResponseMs > 0 && (
-                            <div className="text-center mb-4">
-                                <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">{(avgResponseMs / 1000).toFixed(1)}s</span>
-                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 ml-1">avg response</span>
-                            </div>
-                        )}
-
-                        {/* Leitner box distribution */}
-                        <div className="mb-4">
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Learning Progress</div>
-                            <div className="flex items-end justify-center gap-2">
-                                {['New', 'Day 1', 'Day 3', 'Week', 'Done'].map((label, i) => {
-                                    const count = boxDistribution[i];
-                                    const maxCount = Math.max(...boxDistribution, 1);
-                                    const height = Math.max(4, (count / maxCount) * 48);
-                                    return (
-                                        <div key={i} className="flex flex-col items-center gap-0.5">
-                                            <div className="text-[8px] ui text-[rgb(var(--color-fg))]/30">{count}</div>
-                                            <div
-                                                className={`w-10 rounded-t ${
-                                                    i === 4 ? 'bg-[var(--color-correct)]/50' :
-                                                    i >= 2 ? 'bg-[var(--color-gold)]/40' :
-                                                    'bg-[rgb(var(--color-fg))]/10'
-                                                }`}
-                                                style={{ height }}
-                                            />
-                                            <div className="text-[7px] ui text-[rgb(var(--color-fg))]/25">{label}</div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
-                        {/* Category accuracy heatmap */}
-                        {categoryStats.length > 0 && (
-                            <div className="mb-4">
-                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Category Strengths</div>
-                                <div className="space-y-1">
-                                    {categoryStats.slice(0, 8).map(c => (
-                                        <div key={c.category} className="flex items-center gap-2">
-                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40 w-20 text-right truncate">{c.category}</div>
-                                            <div className="flex-1 h-2.5 rounded-full bg-[rgb(var(--color-fg))]/5 overflow-hidden">
-                                                <div
-                                                    className={`h-full rounded-full transition-all ${
-                                                        c.accuracy >= 80 ? 'bg-[var(--color-correct)]/60' :
-                                                        c.accuracy >= 60 ? 'bg-[var(--color-gold)]/50' :
-                                                        'bg-[var(--color-wrong)]/40'
-                                                    }`}
-                                                    style={{ width: `${c.accuracy}%` }}
-                                                />
-                                            </div>
-                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 w-8">{c.accuracy}%</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Mistake patterns */}
-                        {mistakePatterns.length > 0 && (
-                            <div className="mb-4">
-                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Common Mistakes</div>
-                                <div className="space-y-1.5">
-                                    {mistakePatterns.map(p => (
-                                        <div key={p.pattern} className="flex items-center gap-2">
-                                            <span className="text-[9px] ui text-[var(--color-wrong)]/70 w-28 text-right truncate">{p.pattern}</span>
-                                            <div className="flex-1 flex items-center gap-1">
-                                                <div className="h-2 rounded-full bg-[var(--color-wrong)]/30" style={{ width: `${Math.min(100, (p.count / mistakePatterns[0].count) * 100)}%`, minWidth: 8 }} />
-                                                <span className="text-[8px] ui text-[rgb(var(--color-fg))]/25">{p.count}x</span>
-                                            </div>
-                                            <span className="text-[8px] ui text-[rgb(var(--color-fg))]/20 w-16 truncate">{p.examples.join(', ')}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* CSV Export */}
-                        {Object.keys(wordRecords).length > 0 && (
-                            <button
-                                onClick={() => {
-                                    const rows = [['word', 'category', 'attempts', 'correct', 'accuracy', 'box']];
-                                    for (const r of Object.values(wordRecords)) {
-                                        const acc = r.attempts > 0 ? Math.round((r.correct / r.attempts) * 100) : 0;
-                                        rows.push([r.word, r.category, String(r.attempts), String(r.correct), `${acc}%`, String(r.box)]);
-                                    }
-                                    const csv = rows.map(r => r.join(',')).join('\n');
-                                    const blob = new Blob([csv], { type: 'text/csv' });
-                                    const url = URL.createObjectURL(blob);
-                                    const a = document.createElement('a');
-                                    a.href = url;
-                                    a.download = `spelling-bee-words-${new Date().toISOString().slice(0, 10)}.csv`;
-                                    a.click();
-                                    URL.revokeObjectURL(url);
-                                }}
-                                className="w-full py-2 rounded-xl text-[10px] ui text-[rgb(var(--color-fg))]/30 border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:text-[var(--color-gold)] transition-colors"
-                            >
-                                📊 Export word data (CSV)
-                            </button>
-                        )}
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             {/* ── Consolidated Content ── */}
             <div className="w-full">

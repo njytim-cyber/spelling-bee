@@ -24,6 +24,7 @@ describe('achievements.ts', () => {
         timedModePerfects: 0,
         masteredWordCount: 0,
         reviewedWords: 0,
+        typedCorrect: 0,
         beeSessions: 0,
         beeNoHelpStreak: 0,
         beeBestRun: 0,

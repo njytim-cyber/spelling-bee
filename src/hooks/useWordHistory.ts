@@ -9,6 +9,8 @@ import { STORAGE_KEYS } from '../config';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
+export type AnswerMode = 'mcq' | 'typed';
+
 export interface WordAttempt {
     word: string;
     category: string;
@@ -17,6 +19,8 @@ export interface WordAttempt {
     responseTimeMs: number;
     /** What the student actually typed (only stored on incorrect attempts) */
     typed?: string;
+    /** Answer mode: 'mcq' for swipe/multiple-choice, 'typed' for text entry */
+    mode?: AnswerMode;
 }
 
 export interface WordRecord {
@@ -32,6 +36,12 @@ export interface WordRecord {
     nextReview: number;
     /** Recent misspellings (last 5) for mistake-pattern analysis */
     misspellings?: string[];
+    /** MCQ/swipe attempt and correct counts */
+    mcqAttempts?: number;
+    mcqCorrect?: number;
+    /** Typed-answer attempt and correct counts */
+    typedAttempts?: number;
+    typedCorrect?: number;
 }
 
 interface WordHistory {
@@ -91,11 +101,13 @@ export function useWordHistory() {
         correct: boolean,
         responseTimeMs: number,
         typed?: string,
+        mode?: AnswerMode,
     ) => {
         setHistory(prev => {
             const now = Date.now();
             const key = word.toLowerCase();
             const existing = prev.records[key];
+            const isMcq = mode !== 'typed';
 
             const newBox = existing
                 ? (correct ? Math.min(existing.box + 1, 4) : 0)
@@ -117,11 +129,16 @@ export function useWordHistory() {
                 box: newBox,
                 nextReview: now + (BOX_DELAY_MS[newBox] ?? 0),
                 ...(nextMisspellings.length > 0 ? { misspellings: nextMisspellings } : {}),
+                mcqAttempts: (existing?.mcqAttempts ?? 0) + (isMcq ? 1 : 0),
+                mcqCorrect: (existing?.mcqCorrect ?? 0) + (isMcq && correct ? 1 : 0),
+                typedAttempts: (existing?.typedAttempts ?? 0) + (!isMcq ? 1 : 0),
+                typedCorrect: (existing?.typedCorrect ?? 0) + (!isMcq && correct ? 1 : 0),
             };
 
             const attempt: WordAttempt = {
                 word: key, category, correct, timestamp: now, responseTimeMs,
                 ...((!correct && typed) ? { typed: typed.trim().toLowerCase() } : {}),
+                mode: isMcq ? 'mcq' : 'typed',
             };
 
             // Update sorted index: remove old entry, add new, re-sort
@@ -202,9 +219,9 @@ export function useWordHistory() {
             .sort((a, b) => (a.correct / a.attempts) - (b.correct / b.attempts)),
     [history.records]);
 
-    /** Count of words at Leitner box 4 (mastered) */
+    /** Count of truly mastered words: box 4 AND at least one typed attempt */
     const masteredCount = useMemo(() =>
-        Object.values(history.records).filter(r => r.box >= 4).length,
+        Object.values(history.records).filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1).length,
     [history.records]);
 
     /** Count of unique words the student has ever attempted */

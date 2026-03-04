@@ -64,7 +64,6 @@ src/
 - **Stats merge**: Local-first with Firestore sync. `mergeStats()` takes the best of each field from local vs. cloud
 - **Weekly XP**: `weeklyXP` + `weeklyXPWeek` fields in stats, reset each Monday. Firestore synced for weekly leaderboard.
 - **Weekly goal**: localStorage-based goal tracker on PathPage (50/100/200/500 words), resets each week
-- **Stats dashboard**: MePage "View Stats" toggle showing 7-day accuracy sparkline, Leitner box distribution, category heatmap
 - **Daily challenge sizes**: 10 (Quick) / 25 (Standard) / 50 (Marathon), all using same daily seed
 - **Word book filters**: Origin tabs (Latin/Greek/French/Germanic/English/Other) + difficulty range selectors
 - **Modal pattern**: `AnimatePresence` + `motion.div` with overlay click-to-close, consistent 340px width
@@ -170,3 +169,7 @@ Tests live in `src/tests/`. Run with `npx vitest run`. Key test areas:
 
 ## Pre-push Hook
 `npm run verify` runs automatically before every `git push`. It runs lint, type-check, tests, and build — blocks push on failure.
+
+## Related Documents
+- `BETA-READINESS.md` — Comprehensive audit: functionality, performance, security, privacy, action items
+- `FEATURE-BACKLOG.md` — Post-launch features (multiplayer, parent dashboard, completionist progress)

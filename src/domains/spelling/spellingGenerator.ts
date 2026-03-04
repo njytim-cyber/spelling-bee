@@ -63,7 +63,6 @@ const CATEGORY_TO_PATTERN: Record<string, PhonicsPattern | null> = {
     'origin-french': null,
     'origin-german': null,
     'origin-other': null,
-    'written-test': null,
     'roots': null,
     'etymology': null,
     'custom': null,

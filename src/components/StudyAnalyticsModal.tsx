@@ -1,234 +1,228 @@
 /**
  * components/StudyAnalyticsModal.tsx
  *
- * Shows personalized coaching cards, error patterns, and category trends.
- * Sub-tabs: Overview | Patterns | Origins | Themes.
- * Opens from tapping the accuracy stat on MePage or from Study Tools on PathPage.
+ * Synthesized "report card" — strengths, areas for improvement, and spelling traps.
+ * Updates live as the student plays. No raw data dumps or drill buttons.
  */
-import { memo, useMemo, useState } from 'react';
+import { memo, useMemo } from 'react';
 import type { WordRecord } from '../hooks/useWordHistory';
-import {
-    getCategoryAccuracy,
-    getPatternAccuracy,
-    getOriginAccuracy,
-    getThemeAccuracy,
-    getCoachingCards,
-    type AccuracyBar,
-    type CoachingCard,
-} from '../utils/errorPatterns';
-import { printStudySheet } from '../utils/printStudySheet';
+import { getPatternAccuracy, getMistakeInsights, type AccuracyBar } from '../utils/errorPatterns';
 import { getWordMap } from '../domains/spelling/words';
 
-type AnalyticsTab = 'overview' | 'patterns' | 'origins' | 'themes';
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
-const TABS: { id: AnalyticsTab; label: string }[] = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'patterns', label: 'Patterns' },
-    { id: 'origins', label: 'Origins' },
-    { id: 'themes', label: 'Themes' },
-];
+/** Classify words by Leitner box into mastery buckets.
+ *  Box 4 with no typed attempts = "familiar" (recognition only, not true mastery). */
+function getMasterySnapshot(records: Record<string, WordRecord>) {
+    let total = 0, mastered = 0, familiar = 0, reviewing = 0, learning = 0, struggling = 0;
+    for (const r of Object.values(records)) {
+        total++;
+        if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) mastered++;
+        else if (r.box >= 3) familiar++;
+        else if (r.box === 2) reviewing++;
+        else if (r.attempts >= 3 && r.correct / r.attempts < 0.5) struggling++;
+        else learning++;
+    }
+    return { total, mastered, familiar, reviewing, learning, struggling };
+}
 
-const CARD_STYLES: Record<CoachingCard['type'], { icon: string; border: string; bg: string; accent: string }> = {
-    improved: { icon: '\u2728', border: 'border-[var(--color-correct)]/25', bg: 'bg-[var(--color-correct)]/5', accent: 'text-[var(--color-correct)]' },
-    trap:     { icon: '\u26A0\uFE0F', border: 'border-[var(--color-gold)]/25', bg: 'bg-[var(--color-gold)]/5', accent: 'text-[var(--color-gold)]' },
-    weakness: { icon: '\uD83C\uDFAF', border: 'border-[var(--color-wrong)]/25', bg: 'bg-[var(--color-wrong)]/5', accent: 'text-[var(--color-wrong)]' },
-    levelup:  { icon: '\uD83D\uDE80', border: 'border-[var(--color-timed)]/25', bg: 'bg-[var(--color-timed)]/5', accent: 'text-[var(--color-timed)]' },
-};
+/** Split patterns into strengths (≥80%) and weaknesses (<80%). */
+function splitPatterns(patterns: AccuracyBar[]): { strengths: AccuracyBar[]; weaknesses: AccuracyBar[] } {
+    const strengths: AccuracyBar[] = [];
+    const weaknesses: AccuracyBar[] = [];
+    for (const p of patterns) {
+        if (p.accuracy >= 0.8) strengths.push(p);
+        else weaknesses.push(p);
+    }
+    // Strengths: best first. Weaknesses: worst first (already sorted that way).
+    strengths.sort((a, b) => b.accuracy - a.accuracy);
+    return { strengths, weaknesses };
+}
 
-function CoachingCardView({ card, onPractice }: { card: CoachingCard; onPractice?: (category: string) => void }) {
-    const style = CARD_STYLES[card.type];
+/** Aggregate MCQ vs Typed accuracy across all word records. */
+function getModeBreakdown(records: Record<string, WordRecord>) {
+    let mcqAttempts = 0, mcqCorrect = 0, typedAttempts = 0, typedCorrect = 0;
+    for (const r of Object.values(records)) {
+        mcqAttempts += r.mcqAttempts ?? 0;
+        mcqCorrect += r.mcqCorrect ?? 0;
+        typedAttempts += r.typedAttempts ?? 0;
+        typedCorrect += r.typedCorrect ?? 0;
+    }
+    return { mcqAttempts, mcqCorrect, typedAttempts, typedCorrect };
+}
+
+/** Count how many words in a pattern are progressing (box 2+). */
+function patternProgress(records: Record<string, WordRecord>, patternKey: string): { improving: number; total: number } {
+    const wordMap = getWordMap();
+    let improving = 0, total = 0;
+    for (const r of Object.values(records)) {
+        const detail = wordMap.get(r.word);
+        if (detail?.pattern === patternKey) {
+            total++;
+            if (r.box >= 2) improving++;
+        }
+    }
+    return { improving, total };
+}
+
+// ── Components ───────────────────────────────────────────────────────────────
+
+function SnapshotBar({ label, count, total, color }: { label: string; count: number; total: number; color: string }) {
+    const pct = total > 0 ? Math.round((count / total) * 100) : 0;
     return (
-        <div className={`rounded-xl px-4 py-3 ${style.bg} border ${style.border}`}>
-            <div className="flex items-start gap-2.5">
-                <span className="text-base shrink-0 mt-0.5">{style.icon}</span>
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                        <span className={`text-sm ui font-bold ${style.accent}`}>{card.title}</span>
-                        {card.stat && (
-                            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 shrink-0">{card.stat}</span>
-                        )}
-                    </div>
-                    <p className="text-xs ui text-[rgb(var(--color-fg))]/50 mt-0.5">{card.detail}</p>
-                    {card.tip && (
-                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/35 italic mt-1">{card.tip}</p>
-                    )}
-                    {card.cta && onPractice && (
-                        <button
-                            onClick={() => onPractice(card.cta!.category)}
-                            className="mt-2 px-3 py-1 rounded-lg text-[10px] ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
-                            {card.cta.label}
-                        </button>
-                    )}
-                </div>
+        <div className="flex items-center gap-2">
+            <span className="text-[11px] ui text-[rgb(var(--color-fg))]/50 w-20 shrink-0">{label}</span>
+            <div className="flex-1 h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
             </div>
+            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/35 tabular-nums w-8 text-right shrink-0">{count}</span>
         </div>
     );
 }
 
-function AccuracyBarRow({ bar }: { bar: AccuracyBar }) {
+function PatternRow({ bar, progress }: { bar: AccuracyBar; progress?: { improving: number; total: number } }) {
+    const pct = Math.round(bar.accuracy * 100);
     return (
-        <div className="mb-2">
-            <div className="flex justify-between text-xs ui text-[rgb(var(--color-fg))]/60 mb-0.5">
-                <span>{bar.label}</span>
-                <span>{Math.round(bar.accuracy * 100)}% ({bar.attempts})</span>
-            </div>
-            <div className="h-1.5 bg-[rgb(var(--color-fg))]/10 rounded-full overflow-hidden">
+        <div className="flex items-center gap-2 py-1.5">
+            <span className="text-xs ui text-[rgb(var(--color-fg))]/60 w-28 shrink-0 truncate">{bar.label}</span>
+            <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
                 <div
-                    className={`h-full rounded-full transition-all ${
-                        bar.accuracy >= 0.8 ? 'bg-[var(--color-correct)]' :
-                        bar.accuracy >= 0.5 ? 'bg-[var(--color-gold)]' :
-                        'bg-[var(--color-wrong)]'
-                    }`}
-                    style={{ width: `${Math.round(bar.accuracy * 100)}%` }}
+                    className={`h-full rounded-full ${pct >= 80 ? 'bg-[var(--color-correct)]' : pct >= 50 ? 'bg-[var(--color-gold)]' : 'bg-[var(--color-wrong)]'}`}
+                    style={{ width: `${pct}%` }}
                 />
             </div>
+            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/35 tabular-nums w-9 text-right shrink-0">{pct}%</span>
+            {progress && progress.total > 0 && (
+                <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 w-12 text-right shrink-0">
+                    {progress.improving}/{progress.total}
+                </span>
+            )}
         </div>
     );
 }
+
+// ── Main ─────────────────────────────────────────────────────────────────────
 
 interface AnalyticsContentProps {
     records: Record<string, WordRecord>;
     onPractice?: (category: string) => void;
 }
 
-export const AnalyticsContent = memo(function AnalyticsContent({ records, onPractice }: AnalyticsContentProps) {
-    const [tab, setTab] = useState<AnalyticsTab>('overview');
+export const AnalyticsContent = memo(function AnalyticsContent({ records }: AnalyticsContentProps) {
+    const patterns = useMemo(() => getPatternAccuracy(records), [records]);
+    const { strengths, weaknesses } = useMemo(() => splitPatterns(patterns), [patterns]);
+    const snapshot = useMemo(() => getMasterySnapshot(records), [records]);
+    const mistakeInsights = useMemo(() => getMistakeInsights(records), [records]);
+    const modeBreakdown = useMemo(() => getModeBreakdown(records), [records]);
+    const hasModeData = modeBreakdown.mcqAttempts > 0 || modeBreakdown.typedAttempts > 0;
 
-    const coachingCards = useMemo(() => getCoachingCards(records), [records]);
-    const categoryAccuracy = useMemo(() => getCategoryAccuracy(records), [records]);
-    const patternAccuracy = useMemo(() => getPatternAccuracy(records), [records]);
-    const originAccuracy = useMemo(() => getOriginAccuracy(records), [records]);
-    const themeAccuracy = useMemo(() => getThemeAccuracy(records), [records]);
+    // Pre-compute progress for weaknesses
+    const weaknessProgress = useMemo(() => {
+        const map = new Map<string, { improving: number; total: number }>();
+        for (const w of weaknesses) {
+            map.set(w.key, patternProgress(records, w.key));
+        }
+        return map;
+    }, [weaknesses, records]);
 
     const totalWords = Object.keys(records).length;
 
     if (totalWords === 0) {
         return (
             <div className="text-center text-sm ui text-[rgb(var(--color-fg))]/40 py-8">
-                Play some rounds to see your analytics!
+                Play some rounds to see your report card!
             </div>
         );
     }
 
     return (
-        <>
-            {/* Print */}
-            <div className="flex justify-end mb-2">
-                <button
-                    onClick={() => printStudySheet('Study Analytics', Object.values(records), getWordMap())}
-                    className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                >
-                    Print
-                </button>
-            </div>
-
-            {/* Sub-tab bar */}
-            <div className="flex gap-1 mb-3 overflow-x-auto scrollbar-none">
-                {TABS.map(t => {
-                    const hasData = t.id === 'overview' ? true :
-                        t.id === 'patterns' ? patternAccuracy.length > 0 :
-                        t.id === 'origins' ? originAccuracy.length > 0 :
-                        themeAccuracy.length > 0;
-
-                    return (
-                        <button
-                            key={t.id}
-                            onClick={() => setTab(t.id)}
-                            className={`shrink-0 px-2.5 py-1 rounded-lg text-[10px] ui transition-colors ${
-                                tab === t.id
-                                    ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                    : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                            }`}
-                        >
-                            {t.label}
-                            {!hasData && <span className="ml-1 text-[8px] text-[rgb(var(--color-fg))]/20">&ndash;&ndash;</span>}
-                        </button>
-                    );
-                })}
-            </div>
-
-            {/* ── OVERVIEW TAB ── */}
-            {tab === 'overview' && (
-                <>
-                    {/* Coaching cards */}
-                    {coachingCards.length > 0 && (
-                        <section className="mb-4 space-y-2.5">
-                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-1">Your Coach</h4>
-                            {coachingCards.map(card => (
-                                <CoachingCardView key={card.id} card={card} onPractice={onPractice} />
-                            ))}
-                        </section>
+        <div className="space-y-5">
+            {/* Mastery snapshot */}
+            <section>
+                <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Overall</h4>
+                <div className="space-y-1.5 px-1">
+                    <SnapshotBar label="Mastered" count={snapshot.mastered} total={snapshot.total} color="bg-[var(--color-correct)]" />
+                    <SnapshotBar label="Familiar" count={snapshot.familiar} total={snapshot.total} color="bg-[var(--color-correct)]/60" />
+                    <SnapshotBar label="Reviewing" count={snapshot.reviewing} total={snapshot.total} color="bg-[var(--color-gold)]" />
+                    <SnapshotBar label="Learning" count={snapshot.learning} total={snapshot.total} color="bg-[var(--color-gold)]/60" />
+                    {snapshot.struggling > 0 && (
+                        <SnapshotBar label="Struggling" count={snapshot.struggling} total={snapshot.total} color="bg-[var(--color-wrong)]" />
                     )}
+                </div>
+                <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1.5 px-1">
+                    {snapshot.total} word{snapshot.total !== 1 ? 's' : ''} practiced
+                </p>
+            </section>
 
-                    {/* No coaching cards yet — early encouragement */}
-                    {coachingCards.length === 0 && (
-                        <div className="text-center py-4 mb-4">
-                            <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Keep practicing! Personalized tips will appear as you learn more words.</p>
-                        </div>
-                    )}
-
-                    {categoryAccuracy.length > 0 && (
-                        <section className="mb-4">
-                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Category Accuracy</h4>
-                            {categoryAccuracy.map(c => (
-                                <AccuracyBarRow
-                                    key={c.category}
-                                    bar={{
-                                        label: c.category,
-                                        key: c.category,
-                                        accuracy: c.accuracy,
-                                        attempts: c.attempts,
-                                        correct: Math.round(c.accuracy * c.attempts),
-                                    }}
-                                />
-                            ))}
-                        </section>
-                    )}
-                </>
-            )}
-
-            {/* ── PATTERNS TAB ── */}
-            {tab === 'patterns' && (
+            {/* MCQ vs Typed breakdown */}
+            {hasModeData && (
                 <section>
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Accuracy by Phonics Pattern</h4>
-                    {patternAccuracy.length === 0 ? (
-                        <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
-                            Need more data (3+ attempts per pattern)
-                        </div>
-                    ) : (
-                        patternAccuracy.map(bar => <AccuracyBarRow key={bar.key} bar={bar} />)
-                    )}
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">By Answer Mode</h4>
+                    <div className="space-y-1.5 px-1">
+                        {modeBreakdown.mcqAttempts > 0 && (
+                            <SnapshotBar label="Swipe" count={modeBreakdown.mcqCorrect} total={modeBreakdown.mcqAttempts} color="bg-[var(--color-gold)]" />
+                        )}
+                        {modeBreakdown.typedAttempts > 0 && (
+                            <SnapshotBar label="Typed" count={modeBreakdown.typedCorrect} total={modeBreakdown.typedAttempts} color="bg-[var(--color-correct)]" />
+                        )}
+                    </div>
                 </section>
             )}
 
-            {/* ── ORIGINS TAB ── */}
-            {tab === 'origins' && (
+            {/* Strengths */}
+            {strengths.length > 0 && (
                 <section>
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Accuracy by Language of Origin</h4>
-                    {originAccuracy.length === 0 ? (
-                        <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
-                            Need more data (3+ attempts per origin)
-                        </div>
-                    ) : (
-                        originAccuracy.map(bar => <AccuracyBarRow key={bar.key} bar={bar} />)
-                    )}
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-1">Strengths</h4>
+                    <div className="px-1">
+                        {strengths.map(s => (
+                            <PatternRow key={s.key} bar={s} />
+                        ))}
+                    </div>
                 </section>
             )}
 
-            {/* ── THEMES TAB ── */}
-            {tab === 'themes' && (
+            {/* Working on */}
+            {weaknesses.length > 0 && (
                 <section>
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Accuracy by Theme</h4>
-                    {themeAccuracy.length === 0 ? (
-                        <div className="text-center text-xs ui text-[rgb(var(--color-fg))]/30 py-6">
-                            Need more data (3+ attempts per theme)
-                        </div>
-                    ) : (
-                        themeAccuracy.map(bar => <AccuracyBarRow key={bar.key} bar={bar} />)
-                    )}
+                    <div className="flex items-baseline justify-between mb-1">
+                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider">Working On</h4>
+                        <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25">progressing</span>
+                    </div>
+                    <div className="px-1">
+                        {weaknesses.map(w => (
+                            <PatternRow key={w.key} bar={w} progress={weaknessProgress.get(w.key)} />
+                        ))}
+                    </div>
                 </section>
             )}
-        </>
+
+            {/* Spelling traps */}
+            {mistakeInsights.length > 0 && (
+                <section>
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-1.5">Spelling Traps</h4>
+                    <div className="space-y-1.5 px-1">
+                        {mistakeInsights.map(ins => (
+                            <div key={ins.label} className="py-2 px-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
+                                <div className="flex items-center gap-2 mb-0.5">
+                                    <span className="text-xs ui font-medium text-[rgb(var(--color-fg))]/60">{ins.label}</span>
+                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25">{ins.count}x</span>
+                                </div>
+                                <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 leading-relaxed">{ins.detail}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {/* Nothing notable yet */}
+            {strengths.length === 0 && weaknesses.length === 0 && mistakeInsights.length === 0 && (
+                <div className="text-center py-6">
+                    <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Keep practicing!</p>
+                    <p className="text-[11px] ui text-[rgb(var(--color-fg))]/35 mt-1">
+                        Your report card fills in as you learn more words.
+                    </p>
+                </div>
+            )}
+        </div>
     );
 });
