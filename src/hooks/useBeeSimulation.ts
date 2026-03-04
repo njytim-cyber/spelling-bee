@@ -95,14 +95,13 @@ function redactWord(sentence: string, word: string): string {
     return sentence.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), blank);
 }
 
-function pickBeeWord(round: number, category?: string, hardMode = false, beeLevel: BeeLevel = 'classroom'): SpellingWord {
+function pickBeeWord(round: number, category?: string, beeLevel: BeeLevel = 'classroom'): SpellingWord {
     // Difficulty ramps from the bee level's floor
     const floor = BEE_LEVEL_FLOOR[beeLevel];
     const diffLevel = Math.min(10, floor + Math.floor(round / 3));
-    const effectiveDifficulty = hardMode ? Math.min(10, diffLevel + 1) : diffLevel;
-    const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
+    const [minDiff, maxDiff] = difficultyRange(diffLevel);
 
-    const pool = selectWordPool(category, minDiff, maxDiff, hardMode);
+    const pool = selectWordPool(category, minDiff, maxDiff);
     return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -177,7 +176,7 @@ export function simulateNpcTurns(
     return { npcResults: results, npcAlive: alive, npcScores: scores, npcSpellings: spellings };
 }
 
-export function useBeeSimulation(category?: string, hardMode = false, dictationMode = false, beeLevel: BeeLevel = 'classroom') {
+export function useBeeSimulation(category?: string, dictationMode = false, beeLevel: BeeLevel = 'classroom') {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, speakWordNumber, speakLetters, isSpeaking, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
@@ -204,7 +203,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
     } : {};
 
     const startRound = useCallback(() => {
-        const word = pickBeeWord(state.round, category, hardMode, beeLevel);
+        const word = pickBeeWord(state.round, category, beeLevel);
         if (dictationMode) {
             // Dictation: skip classroom, go straight to spelling
             setState(prev => ({
@@ -221,7 +220,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
             }));
         } else {
             setState(prev => {
-                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, hardMode, beeLevel).word);
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, prev.round, prev.eliminationMode, () => pickBeeWord(prev.round, category, beeLevel).word);
                 const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
                 return {
                     ...prev,
@@ -240,10 +239,10 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         }
         if (isSupported) speakWordNumber(word.word, state.round + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [state.round, category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
+    }, [state.round, category, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     const startSession = useCallback(() => {
-        const word = pickBeeWord(0, category, hardMode, beeLevel);
+        const word = pickBeeWord(0, category, beeLevel);
         const levelSkill = NPC_SKILL_BY_LEVEL[beeLevel];
         if (dictationMode) {
             setState({
@@ -254,7 +253,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 phase: 'spelling',
             });
         } else {
-            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, levelSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, hardMode, beeLevel).word);
+            const npc = simulateNpcTurns(INITIAL_STATE.npcAlive, levelSkill, INITIAL_STATE.npcScores, 0, true, () => pickBeeWord(0, category, beeLevel).word);
             setState({
                 ...INITIAL_STATE,
                 npcSkill: levelSkill,
@@ -268,7 +267,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         }
         if (isSupported) speakWordNumber(word.word, 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
+    }, [category, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     const pronounce = useCallback(() => {
         if (state.currentWord && isSupported) {
@@ -440,7 +439,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         // Pick word outside setState so we can speak it *after* — speaking inside
         // setState causes the browser to play the previous word on some platforms.
         const newRound = state.round + 1;
-        const word = pickBeeWord(newRound, category, hardMode, beeLevel);
+        const word = pickBeeWord(newRound, category, beeLevel);
 
         if (dictationMode) {
             setState(prev => ({
@@ -461,7 +460,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
         } else {
             let won = false;
             setState(prev => {
-                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, hardMode, beeLevel).word);
+                const npc = simulateNpcTurns(prev.npcAlive, prev.npcSkill, prev.npcScores, newRound, prev.eliminationMode, () => pickBeeWord(newRound, category, beeLevel).word);
                 const anyNpcLeft = npc.npcAlive.some((alive, i) => alive && i !== 2);
                 won = !anyNpcLeft;
                 return {
@@ -486,7 +485,7 @@ export function useBeeSimulation(category?: string, hardMode = false, dictationM
                 speakWordNumber(word.word, newRound + 1);
             }
         }
-    }, [state.round, category, hardMode, beeLevel, dictationMode, speakWordNumber, isSupported]);
+    }, [state.round, category, beeLevel, dictationMode, speakWordNumber, isSupported]);
 
     /** Force-submit an empty answer (used by timer expiry). Transitions asking→spelling→submit. */
     const forceSubmit = useCallback(() => {

@@ -133,18 +133,11 @@ const VOWELS = 'aeiou';
  * If the word has 3+ distractors, randomly select 2.
  * Falls back to simple vowel/consonant swaps if no distractors are baked.
  */
-function pickDistractors(word: SpellingWord, rng: () => number, hardMode: boolean): string[] {
+function pickDistractors(word: SpellingWord, rng: () => number): string[] {
     const correct = word.word;
     const baked = word.distractors;
 
     if (baked && baked.length >= 2) {
-        if (hardMode) {
-            const sameLenBaked = baked.filter(d => d.length === correct.length);
-            if (sameLenBaked.length >= 2) {
-                const shuffled = [...sameLenBaked].sort(() => rng() - 0.5);
-                return shuffled.slice(0, 2);
-            }
-        }
         const shuffled = [...baked].sort(() => rng() - 0.5);
         return shuffled.slice(0, 2);
     }
@@ -219,14 +212,13 @@ const TIER_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
 
 /**
  * Build a candidate pool of words for a category + difficulty range.
- * Filters by origin/theme/pattern with fallback chains, applies hard mode bias.
+ * Filters by origin/theme/pattern with fallback chains.
  * Shared by both the swipe game (pickRichWord) and the bee simulation (pickBeeWord).
  */
 export function selectWordPool(
     category: string | undefined,
     min: DifficultyTier,
     max: DifficultyTier,
-    hardMode: boolean,
 ): SpellingWord[] {
     const origin = category ? (CATEGORY_TO_ORIGIN[category] ?? null) : null;
     const theme = category ? (CATEGORY_TO_THEME[category] ?? null) : null;
@@ -252,13 +244,6 @@ export function selectWordPool(
 
     if (pool.length === 0) pool = getAllWords();
 
-    // Hard mode: bias toward the longest, hardest words in the pool
-    if (hardMode && pool.length > 3) {
-        pool = [...pool].sort((a, b) => b.difficulty - a.difficulty || b.word.length - a.word.length);
-        const cutoff = Math.max(3, Math.ceil(pool.length * 0.3));
-        pool = pool.slice(0, cutoff);
-    }
-
     return pool;
 }
 
@@ -266,7 +251,6 @@ function pickRichWord(
     category: string,
     difficulty: number,
     rng: () => number,
-    hardMode = false,
 ): SpellingWord {
     const tierRange = TIER_RANGES[category];
 
@@ -276,11 +260,10 @@ function pickRichWord(
     if (tierRange) {
         [effectiveMin, effectiveMax] = tierRange;
     } else {
-        const effectiveDifficulty = hardMode ? 5 : difficulty;
-        [effectiveMin, effectiveMax] = difficultyRange(effectiveDifficulty);
+        [effectiveMin, effectiveMax] = difficultyRange(difficulty);
     }
 
-    const pool = selectWordPool(category, effectiveMin, effectiveMax, hardMode);
+    const pool = selectWordPool(category, effectiveMin, effectiveMax);
     return pool[Math.floor(rng() * pool.length)];
 }
 
@@ -301,7 +284,7 @@ export function generateItemForWord(
     if (!richWord) return null;
 
     const correct = richWord.word;
-    const distractors = pickDistractors(richWord, rng, false);
+    const distractors = pickDistractors(richWord, rng);
     const options = [correct, ...distractors].sort(() => rng() - 0.5);
     const correctIndex = options.indexOf(correct);
 
@@ -314,7 +297,6 @@ export function generateItemForWord(
         meta: {
             word: correct,
             category,
-            hardMode: false,
             definition: richWord.definition,
             exampleSentence: richWord.exampleSentence,
             pronunciation: richWord.pronunciation,
@@ -336,12 +318,11 @@ export function generateItemForWord(
 export function generateSpellingItem(
     difficulty: number,
     category: string,
-    hardMode: boolean,
     rng: () => number = Math.random,
 ): EngineItem {
-    const richWord = pickRichWord(category, difficulty, rng, hardMode);
+    const richWord = pickRichWord(category, difficulty, rng);
     const correct = richWord.word;
-    const distractors = pickDistractors(richWord, rng, hardMode);
+    const distractors = pickDistractors(richWord, rng);
     const options = [correct, ...distractors].sort(() => rng() - 0.5);
     const correctIndex = options.indexOf(correct);
 
@@ -354,7 +335,6 @@ export function generateSpellingItem(
         meta: {
             word: correct,
             category,
-            hardMode,
             definition: richWord.definition,
             exampleSentence: richWord.exampleSentence,
             pronunciation: richWord.pronunciation,

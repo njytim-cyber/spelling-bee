@@ -42,7 +42,6 @@ function getEtymologyPool(): EtymologyEntry[] {
 export function generateEtymologyItem(
     difficulty: number,
     category: string,
-    hardMode: boolean,
     rng: () => number = Math.random,
 ): EngineItem {
     const pool = getEtymologyPool();
@@ -84,7 +83,6 @@ export function generateEtymologyItem(
             meta: {
                 word: entry.word,
                 category,
-                hardMode,
                 quizType: 'word-to-origin',
                 etymology: entry.etymology,
                 definition: detail?.definition ?? '',
@@ -102,7 +100,7 @@ export function generateEtymologyItem(
 
         if (matching.length === 0 || notMatching.length < 2) {
             // Degenerate case: fall through to type A
-            return generateEtymologyItem(difficulty, category, hardMode, rng);
+            return generateEtymologyItem(difficulty, category, rng);
         }
 
         const correct = matching[Math.floor(rng() * matching.length)];
@@ -123,7 +121,6 @@ export function generateEtymologyItem(
             meta: {
                 word: correct.word,
                 category,
-                hardMode,
                 quizType: 'origin-to-word',
                 etymology: correct.etymology,
                 definition: detail?.definition ?? '',

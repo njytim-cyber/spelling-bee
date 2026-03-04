@@ -259,7 +259,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
         npcSpellings,
         timerRemaining,
         timerTotal,
-    } = useBeeSimulation(undefined, false, false, beeLevel);
+    } = useBeeSimulation(undefined, false, beeLevel);
 
     const { phase, currentWord, round, wordsCorrect, wordsAttempted, typedSpelling, lastResult, infoResponses } = state;
 

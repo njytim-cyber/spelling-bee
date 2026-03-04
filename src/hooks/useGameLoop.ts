@@ -48,13 +48,11 @@ const INITIAL_STATE: GameState = {
  * Function the domain provides to generate one item.
  * @param difficulty  0-10 adaptive difficulty level
  * @param categoryId  The active question type/category (e.g. 'cvc')
- * @param hardMode    Whether hard mode is active
  * @param rng         Optional seeded RNG for reproducible daily/challenge sets
  */
 export type ItemGenerator = (
     difficulty: number,
     categoryId: string,
-    hardMode: boolean,
     rng?: () => number,
 ) => EngineItem;
 
@@ -63,7 +61,6 @@ export type ItemGenerator = (
 export function useGameLoop(
     generateItem: ItemGenerator,
     categoryId: string = 'cvc',
-    hardMode = false,
     challengeId: string | null = null,
     timedMode = false,
     streakShields = 0,
@@ -96,7 +93,6 @@ export function useGameLoop(
     const sessionMisses = useRef(new Map<string, number>());
     const startedRef = useRef(false);
     const prevCategoryId = useRef(categoryId);
-    const prevHard = useRef(hardMode);
     const frozenRef = useRef(false);
     const correctCountRef = useRef(0);
     const dailyRef = useRef<{ dateLabel: string } | null>(null);
@@ -132,11 +128,11 @@ export function useGameLoop(
 
     const isFinite = (id: string) => finiteTypeIds.includes(id);
 
-    const buildInitialSet = useCallback((catId: string, hard: boolean): EngineItem[] => {
+    const buildInitialSet = useCallback((catId: string): EngineItem[] => {
         if (isFinite(catId) && generateFiniteSet) {
             return generateFiniteSet(catId, challengeId);
         }
-        return Array.from({ length: bufferSize }, () => generateItem(level, catId, hard));
+        return Array.from({ length: bufferSize }, () => generateItem(level, catId));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [level, bufferSize, challengeId, generateItem, generateFiniteSet]);
 
@@ -144,7 +140,7 @@ export function useGameLoop(
     useEffect(() => {
         if (startedRef.current) return;
         startedRef.current = true;
-        const initial = buildInitialSet(categoryId, hardMode);
+        const initial = buildInitialSet(categoryId);
         if (initial[0]) initial[0].startTime = Date.now();
         if (isFinite(categoryId)) {
             dailyRef.current = { dateLabel: '' }; // populated by generateFiniteSet if needed
@@ -153,32 +149,27 @@ export function useGameLoop(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // ── Regenerate on category / hard mode change ─────────────────────────────
+    // ── Regenerate on category change ──────────────────────────────────────────
     useEffect(() => {
-        if (prevCategoryId.current === categoryId && prevHard.current === hardMode) return;
-        const categoryChanged = prevCategoryId.current !== categoryId;
+        if (prevCategoryId.current === categoryId) return;
         prevCategoryId.current = categoryId;
-        prevHard.current = hardMode;
 
-        const fresh = buildInitialSet(categoryId, hardMode);
+        const fresh = buildInitialSet(categoryId);
         if (fresh[0]) fresh[0].startTime = Date.now();
 
         setItems(fresh);
-        // Only reset score/stats when category changes; hard mode toggle just refreshes questions
-        if (categoryChanged) {
-            setGs(INITIAL_STATE);
-            sessionMisses.current.clear();
-        }
-    }, [categoryId, hardMode, buildInitialSet]);
+        setGs(INITIAL_STATE);
+        sessionMisses.current.clear();
+    }, [categoryId, buildInitialSet]);
 
     // ── Keep infinite buffer full ─────────────────────────────────────────────
     useEffect(() => {
         if (isFinite(categoryId)) return;
         if (items.length < bufferSize) {
-            setItems(prev => [...prev, generateItem(level, categoryId, hardMode)]);
+            setItems(prev => [...prev, generateItem(level, categoryId)]);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items.length, level, categoryId, hardMode]);
+    }, [items.length, level, categoryId]);
 
     // ── Advance to next problem ───────────────────────────────────────────────
     const advanceProblem = useCallback(() => {
@@ -304,7 +295,7 @@ export function useGameLoop(
                 }
 
                 // Forgiving streaks for levels 1-3: one free miss per streak
-                const canForgive = minLevel <= 3 && !hardMode && !timedMode
+                const canForgive = minLevel <= 3 && !timedMode
                     && prev.streak > 0 && !prev.streakForgiven;
 
                 // Normal wrong answer
@@ -350,7 +341,7 @@ export function useGameLoop(
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
+    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     const pausedRef = useRef(paused);

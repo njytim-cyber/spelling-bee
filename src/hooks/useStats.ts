@@ -23,25 +23,12 @@ export interface Stats {
     streakShields: number;
     lastPlayedDate: string; // YYYY-MM-DD
     byType: Record<string, TypeStat>;
-    // Hard mode tracking
-    hardModeSolved: number;
-    hardModeCorrect: number;
-    hardModeBestStreak: number;
-    hardModeSessions: number;
-    hardModePerfects: number;
     // Timed mode tracking
     timedModeSolved: number;
     timedModeCorrect: number;
     timedModeBestStreak: number;
     timedModeSessions: number;
     timedModePerfects: number;
-    // Ultimate mode (hard + timed) tracking
-    ultimateSolved: number;
-    ultimateCorrect: number;
-    ultimateBestStreak: number;
-    ultimateSessions: number;
-    ultimatePerfects: number;
-
     // Bee simulation tracking
     beeSessions: number;
     beeBestRound: number;     // furthest round reached in any bee session
@@ -101,21 +88,11 @@ const EMPTY_STATS: Stats = {
     streakShields: 0,
     lastPlayedDate: '',
     byType: buildEmptyByType(),
-    hardModeSolved: 0,
-    hardModeCorrect: 0,
-    hardModeBestStreak: 0,
-    hardModeSessions: 0,
-    hardModePerfects: 0,
     timedModeSolved: 0,
     timedModeCorrect: 0,
     timedModeBestStreak: 0,
     timedModeSessions: 0,
     timedModePerfects: 0,
-    ultimateSolved: 0,
-    ultimateCorrect: 0,
-    ultimateBestStreak: 0,
-    ultimateSessions: 0,
-    ultimatePerfects: 0,
     beeSessions: 0,
     beeBestRound: 0,
     beeWordsCorrect: 0,
@@ -157,7 +134,7 @@ async function saveStatsCloud(uid: string, s: Stats) {
             totalXP: s.totalXP,
             weeklyXP: s.weeklyXPWeek === currentWeekKey() ? (s.weeklyXP || 0) : 0,
             weeklyXPWeek: s.weeklyXPWeek || '',
-            bestStreak: Math.max(s.bestStreak || 0, s.hardModeBestStreak || 0, s.timedModeBestStreak || 0, s.ultimateBestStreak || 0),
+            bestStreak: Math.max(s.bestStreak || 0, s.timedModeBestStreak || 0),
             totalSolved: s.totalSolved,
             accuracy,
             activeThemeId: s.activeThemeId || 'classic',
@@ -253,21 +230,11 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         streakShields: Math.max(local.streakShields, cloud.streakShields),
         lastPlayedDate: local.lastPlayedDate > cloud.lastPlayedDate ? local.lastPlayedDate : cloud.lastPlayedDate,
         byType: mergedByType,
-        hardModeSolved: Math.max(local.hardModeSolved, cloud.hardModeSolved),
-        hardModeCorrect: Math.max(local.hardModeCorrect, cloud.hardModeCorrect),
-        hardModeBestStreak: Math.max(local.hardModeBestStreak, cloud.hardModeBestStreak),
-        hardModeSessions: Math.max(local.hardModeSessions, cloud.hardModeSessions),
-        hardModePerfects: Math.max(local.hardModePerfects, cloud.hardModePerfects),
         timedModeSolved: Math.max(local.timedModeSolved, cloud.timedModeSolved),
         timedModeCorrect: Math.max(local.timedModeCorrect, cloud.timedModeCorrect),
         timedModeBestStreak: Math.max(local.timedModeBestStreak, cloud.timedModeBestStreak),
         timedModeSessions: Math.max(local.timedModeSessions, cloud.timedModeSessions),
         timedModePerfects: Math.max(local.timedModePerfects, cloud.timedModePerfects),
-        ultimateSolved: Math.max(local.ultimateSolved, cloud.ultimateSolved),
-        ultimateCorrect: Math.max(local.ultimateCorrect, cloud.ultimateCorrect),
-        ultimateBestStreak: Math.max(local.ultimateBestStreak, cloud.ultimateBestStreak),
-        ultimateSessions: Math.max(local.ultimateSessions, cloud.ultimateSessions),
-        ultimatePerfects: Math.max(local.ultimatePerfects, cloud.ultimatePerfects),
         beeSessions: Math.max(local.beeSessions, cloud.beeSessions),
         beeBestRound: Math.max(local.beeBestRound, cloud.beeBestRound),
         beeWordsCorrect: Math.max(local.beeWordsCorrect, cloud.beeWordsCorrect),
@@ -344,7 +311,7 @@ export function useStats(uid: string | null) {
 
     const recordSession = useCallback((
         score: number, correct: number, answered: number,
-        bestStreak: number, questionType: string, hardMode = false, timedMode = false
+        bestStreak: number, questionType: string, timedMode = false
     ) => {
         setStats(prev => {
             const prevType = prev.byType[questionType] || { ...EMPTY_TYPE };
@@ -397,7 +364,6 @@ export function useStats(uid: string | null) {
             const lastDailyDate = isDaily ? todayDate : prev.lastDailyDate;
 
             const isPerfect = answered > 0 && correct === answered;
-            const isUltimate = hardMode && timedMode;
             // Weekly XP — reset if new week
             const wk = currentWeekKey();
             const weeklyXP = (prev.weeklyXPWeek === wk ? prev.weeklyXP : 0) + score;
@@ -424,21 +390,11 @@ export function useStats(uid: string | null) {
                         correct: prevType.correct + correct,
                     },
                 },
-                hardModeSolved: prev.hardModeSolved + (hardMode ? answered : 0),
-                hardModeCorrect: prev.hardModeCorrect + (hardMode ? correct : 0),
-                hardModeBestStreak: hardMode ? Math.max(prev.hardModeBestStreak, bestStreak) : prev.hardModeBestStreak,
-                hardModeSessions: prev.hardModeSessions + (hardMode ? 1 : 0),
-                hardModePerfects: prev.hardModePerfects + (hardMode && isPerfect ? 1 : 0),
                 timedModeSolved: prev.timedModeSolved + (timedMode ? answered : 0),
                 timedModeCorrect: prev.timedModeCorrect + (timedMode ? correct : 0),
                 timedModeBestStreak: timedMode ? Math.max(prev.timedModeBestStreak, bestStreak) : prev.timedModeBestStreak,
                 timedModeSessions: prev.timedModeSessions + (timedMode ? 1 : 0),
                 timedModePerfects: prev.timedModePerfects + (timedMode && isPerfect ? 1 : 0),
-                ultimateSolved: prev.ultimateSolved + (isUltimate ? answered : 0),
-                ultimateCorrect: prev.ultimateCorrect + (isUltimate ? correct : 0),
-                ultimateBestStreak: isUltimate ? Math.max(prev.ultimateBestStreak, bestStreak) : prev.ultimateBestStreak,
-                ultimateSessions: prev.ultimateSessions + (isUltimate ? 1 : 0),
-                ultimatePerfects: prev.ultimatePerfects + (isUltimate && isPerfect ? 1 : 0),
             };
         });
     }, []);

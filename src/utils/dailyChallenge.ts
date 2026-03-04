@@ -26,7 +26,7 @@ export function generateDailyChallenge(count: DailyChallengeSize = 10): { proble
     for (let i = 0; i < count; i++) {
         const cat = DAILY_CATEGORIES[Math.floor(rng() * DAILY_CATEGORIES.length)];
         const difficulty = 2 + Math.floor(i / 3);
-        problems.push(generateSpellingItem(difficulty, cat, false, rng));
+        problems.push(generateSpellingItem(difficulty, cat, rng));
     }
     problems.forEach((p, i) => { p.id = `daily-${seed}-${i}`; });
     return {
@@ -47,13 +47,13 @@ export function generateChallenge(challengeId: string, count: DailyChallengeSize
     for (let i = 0; i < count; i++) {
         const cat = DAILY_CATEGORIES[Math.floor(rng() * DAILY_CATEGORIES.length)];
         const difficulty = 2 + Math.floor(i / 3);
-        problems.push(generateSpellingItem(difficulty, cat, false, rng));
+        problems.push(generateSpellingItem(difficulty, cat, rng));
     }
     problems.forEach((p, i) => { p.id = `challenge-${seed}-${i}`; });
     return problems;
 }
 
-/** Create a short challenge ID from current timestamp */
+/** Create a short challenge ID from timestamp + random entropy */
 export function createChallengeId(): string {
-    return Date.now().toString(36);
+    return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
 }

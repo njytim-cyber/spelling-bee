@@ -15,7 +15,6 @@ export interface SessionRecord {
     answered: number;
     bestStreak: number;
     category: string;   // questionType
-    hardMode: boolean;
     timedMode: boolean;
 }
 
@@ -43,13 +42,13 @@ function prune(records: SessionRecord[]): SessionRecord[] {
 export function recordSessionHistory(
     score: number, correct: number, answered: number,
     bestStreak: number, category: string,
-    hardMode: boolean, timedMode: boolean,
+    timedMode: boolean,
 ) {
     if (answered === 0) return;
     const now = Date.now();
     const date = new Date(now).toISOString().slice(0, 10);
     const record: SessionRecord = {
-        date, ts: now, score, correct, answered, bestStreak, category, hardMode, timedMode,
+        date, ts: now, score, correct, answered, bestStreak, category, timedMode,
     };
     const records = prune(load());
     records.push(record);

@@ -16,7 +16,6 @@ export interface ChalkContext {
     totalAnswered: number;
     /** The active category/type ID — domain interprets this string */
     categoryId: string;
-    hardMode: boolean;
     timedMode: boolean;
 }
 
@@ -74,7 +73,6 @@ const COMEBACK = [
     'The comeback is always greater! 👑', 'From the ashes! 🔥🔥🔥',
 ];
 
-const HARD_MODE = ['Brave soul! 💀💪', 'Hard mode hero! 🦸', 'No fear! 🛡️', 'Courage level: MAX! 🏔️'];
 const TIMED_MODE = ['Beat the clock! ⏱️', 'Speed demon! 🏎️', 'Time is ticking! ⚡', 'Racing the stopwatch! 🏃‍♂️💨'];
 
 const SESSION_MILESTONES: Record<number, string[]> = {
@@ -123,7 +121,7 @@ function chance(pct: number): boolean { return Math.random() * 100 < pct; }
  * Pass domain-specific `overrides` to inject subject-flavoured quips.
  */
 export function pickChalkMessage(ctx: ChalkContext, overrides?: ChalkMessageOverrides): string {
-    const { state, streak, totalAnswered, categoryId, hardMode, timedMode } = ctx;
+    const { state, streak, totalAnswered, categoryId, timedMode } = ctx;
     const eggs = overrides?.easterEggs ?? [];
 
     // 1. Easter eggs (2% chance, any state)
@@ -142,8 +140,7 @@ export function pickChalkMessage(ctx: ChalkContext, overrides?: ChalkMessageOver
     // 4. Time-of-day (10% chance on idle)
     if (state === 'idle' && chance(10)) return pick(getTimeMessages());
 
-    // 5. Hard/timed mode acknowledgement (15% chance)
-    if (state === 'success' && hardMode && chance(15)) return pick(HARD_MODE);
+    // 5. Timed mode acknowledgement (15% chance)
     if (state === 'success' && timedMode && chance(15)) return pick(TIMED_MODE);
 
     // 6. Domain topic-specific (25% chance on success/fail)

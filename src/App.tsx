@@ -8,6 +8,8 @@ import { ScoreCounter } from './components/ScoreCounter';
 import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
 import { SwipeTrail } from './components/SwipeTrail';
+import { IconSettings } from './components/Icons';
+import { SettingsModal } from './components/SettingsModal';
 import type { SpellingCategory, Level } from './domains/spelling/spellingCategories';
 import { getLevelConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
@@ -83,16 +85,15 @@ function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]
   return (
     difficulty: number,
     categoryId: string,
-    hardMode: boolean,
     rng?: () => number,
   ): EngineItem => {
     if (categoryId === 'custom' && customPool && customPool.length > 0) {
-      return generateCustomItem(customPool, difficulty, categoryId, hardMode, rng);
+      return generateCustomItem(customPool, difficulty, categoryId, rng);
     }
-    if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, hardMode, rng);
-    if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, hardMode, rng);
-    if (categoryId === 'etymology') return generateEtymologyItem(difficulty, categoryId, hardMode, rng);
-    return generateSpellingItem(difficulty, categoryId, hardMode, rng);
+    if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, rng);
+    if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, rng);
+    if (categoryId === 'etymology') return generateEtymologyItem(difficulty, categoryId, rng);
+    return generateSpellingItem(difficulty, categoryId, rng);
   };
 }
 
@@ -105,7 +106,7 @@ function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
       return generateDailyChallenge(dailySize).problems;
     }
     return Array.from({ length: 10 }, (_, i) =>
-      generateSpellingItem(2 + Math.floor(i / 4), categoryId || 'cvc', false)
+      generateSpellingItem(2 + Math.floor(i / 4), categoryId || 'cvc')
     );
   };
 }
@@ -199,7 +200,6 @@ function AppInner() {
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
-  const [hardMode, setHardMode] = useState(false);
   const [timedMode, setTimedMode] = useState(false);
   const { reducedMotion } = useReducedMotion();
 
@@ -231,6 +231,9 @@ function AppInner() {
   // ── Guided mode toggle (MCQ vs text-entry) ──
   const [guidedMode, setGuidedMode] = useState(false);
   const toggleGuidedMode = useCallback(() => setGuidedMode(g => !g), []);
+
+  // ── Settings modal (global) ──
+  const [showSettings, setShowSettings] = useState(false);
 
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
@@ -342,7 +345,7 @@ function AppInner() {
           // Generate an item for the exact review word (not a random word from its category)
           const item = generateItemForWord(r.word, r.category || 'review');
           // Fallback if word not found in current word bank (e.g. dialect changed)
-          return item ?? generateSpellingItem(3, r.category || 'cvc', false);
+          return item ?? generateSpellingItem(3, r.category || 'cvc');
         });
       }
       return baseFn(categoryId, challengeId);
@@ -386,7 +389,6 @@ function AppInner() {
   } = useGameLoop(
     generateItem,
     questionType,
-    hardMode,
     challengeId,
     timedMode,
     stats.streakShields,
@@ -453,7 +455,6 @@ function AppInner() {
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
   const [timedToast, fireTimedToast] = useTimedFlag(3000);
-  const [hardToast, fireHardToast] = useTimedFlag(3000);
   const [showScoreHelp, setShowScoreHelp] = useState(false);
   const toggleTimedMode = useCallback(() => {
     setTimedMode(t => {
@@ -461,12 +462,6 @@ function AppInner() {
       return !t;
     });
   }, [fireTimedToast]);
-  const toggleHardMode = useCallback(() => {
-    setHardMode(h => {
-      if (!h) fireHardToast();
-      return !h;
-    });
-  }, [fireHardToast]);
 
   // ── Score floater ──
   const prevScoreRef = useRef(0);
@@ -635,14 +630,14 @@ function AppInner() {
     // Reset guided mode when leaving game tab
     if (tab !== 'game' && guidedMode) setGuidedMode(false);
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
-      recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
-      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, hardMode, timedMode);
+      recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
+      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
       setShowSummary(true);
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, hardMode, timedMode, setShowSummary, showSummary, guidedMode]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, setShowSummary, showSummary, guidedMode]);
 
   // Memoize BottomNav tabs to avoid new array each render
   const navTabs = useMemo(
@@ -712,9 +707,9 @@ function AppInner() {
           active={activeTab === 'game'}
         />
 
-        {/* ── Top-right controls (theme toggle) — game tab only, hidden during immersive sub-modes ── */}
-        {activeTab === 'game' && !isImmersive && (
-          <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-2">
+        {/* ── Top-right controls (theme + settings) — all tabs, hidden during immersive sub-modes ── */}
+        {!(activeTab === 'game' && isImmersive) && (
+          <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1">
             <button
               onClick={toggleThemeMode}
               className="w-9 h-9 flex items-center justify-center text-[rgb(var(--color-fg))]/60 active:text-[var(--color-gold)] transition-colors"
@@ -739,6 +734,13 @@ function AppInner() {
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </motion.svg>
               )}
+            </button>
+            <button
+              onClick={() => setShowSettings(true)}
+              className="w-9 h-9 flex items-center justify-center text-[rgb(var(--color-fg))]/60 active:text-[var(--color-gold)] transition-colors"
+              aria-label="Settings"
+            >
+              <IconSettings className="w-5 h-5" />
             </button>
           </div>
         )}
@@ -1058,8 +1060,6 @@ function AppInner() {
               <ActionButtons
                 questionType={questionType}
                 onTypeChange={setQuestionType}
-                hardMode={hardMode}
-                onHardModeToggle={toggleHardMode}
                 timedMode={timedMode}
                 onTimedModeToggle={toggleTimedMode}
                 timerProgress={timerProgress}
@@ -1071,7 +1071,7 @@ function AppInner() {
             {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
             {!isImmersive && (
               <div className="landscape-hide">
-                <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} hardMode={hardMode} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
+                <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
               </div>
             )}
 
@@ -1150,7 +1150,7 @@ function AppInner() {
         {/* Non-game tabs (no wrapper — each page scrolls independently) */}
         {activeTab === 'path' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <PathPage
+            <Suspense fallback={<LoadingFallback />}><PathPage
               records={wordRecords}
               reviewDueCount={reviewQueue.length}
               hardestWordCount={hardestWords.length}
@@ -1183,7 +1183,7 @@ function AppInner() {
                 setSessionAnswered(0);
                 setActiveTab('game');
               }}
-            />
+            /></Suspense>
           </motion.div>
         )}
 
@@ -1197,7 +1197,6 @@ function AppInner() {
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
             <Suspense fallback={<LoadingFallback />}><MePage
               unlocked={unlocked}
-              onDialectChange={handleDialectChange}
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
               recentAttempts={recentAttempts}
@@ -1232,7 +1231,6 @@ function AppInner() {
               pendingTabRef.current = null;
             }
           }}
-          hardMode={hardMode}
           timedMode={timedMode}
           hardestWordCount={hardestWords.length}
           onDrillHardest={() => {
@@ -1258,7 +1256,6 @@ function AppInner() {
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
         <Toast visible={timedToast} icon="⏱️" title="Timer ON — 10s per question" subtitle="Wrong if time runs out. Tap stopwatch to turn off." />
-        <Toast visible={hardToast} icon="💀" title="Hard Mode ON" subtitle="Closer distractors, harder word selection. Tap skull to turn off." />
 
         {/* ── Daily Size Picker ── */}
         <AnimatePresence>
@@ -1359,6 +1356,19 @@ function AppInner() {
           </div>
         )}
       </BlackboardLayout>
+
+      {/* ── Settings modal (global) ── */}
+      <AnimatePresence>
+        {showSettings && (
+          <SettingsModal
+            dialect={dialect}
+            onDialectChange={handleDialectChange}
+            level={level}
+            onLevelChange={onLevelChange}
+            onClose={() => setShowSettings(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* ── Onboarding (first launch) ── */}
       <AnimatePresence>

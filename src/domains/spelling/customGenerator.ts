@@ -35,7 +35,6 @@ export function generateCustomItem(
     pool: CustomWord[],
     _difficulty: number,
     _categoryId: string,
-    _hardMode: boolean,
     rng: () => number = defaultRng,
 ): EngineItem {
     if (pool.length === 0) {

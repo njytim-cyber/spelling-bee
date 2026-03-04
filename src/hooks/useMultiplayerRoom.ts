@@ -43,7 +43,7 @@ function generateMatchWords(count: number): RoomData['words'] {
     const items: EngineItem[] = [];
     for (let i = 0; i < count; i++) {
         const diff = 2 + Math.floor(i / 3); // gradually harder
-        items.push(generateSpellingItem(diff, 'cvc', false));
+        items.push(generateSpellingItem(diff, 'cvc'));
     }
     return items.map(item => ({
         word: String(item.answer),

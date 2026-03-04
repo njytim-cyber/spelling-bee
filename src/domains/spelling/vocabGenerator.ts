@@ -38,11 +38,9 @@ function pickWordDistractors(
 export function generateVocabItem(
     difficulty: number,
     category: string,
-    hardMode: boolean,
     rng: () => number = Math.random,
 ): EngineItem {
-    const effectiveDifficulty = hardMode ? 5 : difficulty;
-    const [minDiff, maxDiff] = difficultyRange(effectiveDifficulty);
+    const [minDiff, maxDiff] = difficultyRange(difficulty);
 
     let pool = wordsByDifficulty(minDiff as DifficultyTier, maxDiff as DifficultyTier);
     if (pool.length < 3) pool = getAllWords();
@@ -64,7 +62,6 @@ export function generateVocabItem(
             mode: 'vocab',
             word: correct.word,
             category,
-            hardMode,
             definition: correct.definition,
             exampleSentence: correct.exampleSentence,
             pronunciation: correct.pronunciation,

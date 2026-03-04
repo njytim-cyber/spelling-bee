@@ -18,7 +18,7 @@ function reportError(error: { message: string; stack?: string; source?: string }
     // Fire and forget — don't block the main thread
     setDoc(doc(db, 'errors', errorId), {
         message: error.message.slice(0, 500),
-        stack: (error.stack || '').slice(0, 2000),
+        stack: (error.stack || '').replace(/[A-Z]:\\Users\\[^\s:)]+/gi, '[path]').replace(/\/home\/[^\s:)]+/g, '[path]').slice(0, 2000),
         source: error.source || 'unknown',
         userAgent: navigator.userAgent.slice(0, 200),
         url: window.location.href,

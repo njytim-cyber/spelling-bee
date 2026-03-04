@@ -18,7 +18,6 @@ interface Props {
     questionType: string;
     visible: boolean;
     onDismiss: () => void;
-    hardMode?: boolean;
     timedMode?: boolean;
     onDrillHardest?: () => void;
     hardestWordCount?: number;
@@ -31,7 +30,7 @@ interface Props {
 function buildShareText(
     xp: number, streak: number, accuracy: number,
     history: boolean[], questionType: string,
-    hardMode?: boolean, timedMode?: boolean,
+    timedMode?: boolean,
 ): string {
     const emojis = history.map(ok => ok ? '🟩' : '🟥');
     const emojiRows: string[] = [];
@@ -40,7 +39,7 @@ function buildShareText(
     }
 
     const typeLabel = questionType.startsWith('mix-') ? 'Mix' : questionType.charAt(0).toUpperCase() + questionType.slice(1);
-    const modeTag = hardMode && timedMode ? ' 💀⏱️ ULTIMATE' : hardMode ? ' 💀 HARD' : timedMode ? ' ⏱️ TIMED' : '';
+    const modeTag = timedMode ? ' ⏱️ TIMED' : '';
     const headline = accuracy === 100
         ? `🐝 Spelling Bee — PERFECT! 💯${modeTag}`
         : `🐝 Spelling Bee — ${typeLabel}${modeTag}`;
@@ -74,7 +73,7 @@ function getEncouragingTitle(accuracy: number, streak: number, solved: number): 
 
 export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
-    hardMode, timedMode, onDrillHardest, hardestWordCount,
+    timedMode, onDrillHardest, hardestWordCount,
     totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
 }: Props) {
     const [copied, setCopied] = useState(false);
@@ -102,7 +101,7 @@ export const SessionSummary = memo(function SessionSummary({
     const handleShare = async () => {
         if (isSharing) return;
         setIsSharing(true);
-        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, hardMode, timedMode);
+        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, timedMode);
 
         try {
             // Attempt Rich Media Image Generation
@@ -191,7 +190,7 @@ export const SessionSummary = memo(function SessionSummary({
                                 <div className="z-10 text-center flex flex-col items-center w-full">
                                     <h1 className="text-8xl chalk text-[var(--color-gold)] mb-8">Spelling Bee</h1>
                                     <div className="text-4xl ui text-white/50 mb-16 tracking-widest uppercase">
-                                        {hardMode && timedMode ? '💀⏱️ ULTIMATE' : hardMode ? '💀 HARD MODE' : timedMode ? '⏱️ TIMED MODE' : questionType.toUpperCase()}
+                                        {timedMode ? '⏱️ TIMED MODE' : questionType.toUpperCase()}
                                     </div>
 
                                     <div className="text-[200px] mb-8">
@@ -253,7 +252,7 @@ export const SessionSummary = memo(function SessionSummary({
                             return (
                                 <div className="mb-4 text-center">
                                     <h3 className="text-xl ui font-bold text-[var(--color-gold)]">
-                                        {hardMode && timedMode ? '💀⏱️ ' : hardMode ? '💀 ' : timedMode ? '⏱️ ' : ''}{msg.title}
+                                        {timedMode ? '⏱️ ' : ''}{msg.title}
                                     </h3>
                                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">{msg.subtitle}</div>
                                 </div>

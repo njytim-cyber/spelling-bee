@@ -14,24 +14,12 @@ export interface SpellingAchievementStats {
     dayStreak: number;
     sessionsPlayed: number;
     byType: Record<string, { solved: number; correct: number }>;
-    // Hard mode
-    hardModeSolved: number;
-    hardModeCorrect: number;
-    hardModeBestStreak: number;
-    hardModeSessions: number;
-    hardModePerfects: number;
     // Timed mode
     timedModeSolved: number;
     timedModeCorrect: number;
     timedModeBestStreak: number;
     timedModeSessions: number;
     timedModePerfects: number;
-    // Ultimate (hard + timed)
-    ultimateSolved: number;
-    ultimateCorrect: number;
-    ultimateBestStreak: number;
-    ultimateSessions: number;
-    ultimatePerfects: number;
     // Adaptive learning
     masteredWordCount: number;
     reviewedWords: number;
@@ -102,17 +90,6 @@ const CORE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
     },
 ];
 
-// ── Hard mode achievements ────────────────────────────────────────────────────
-
-const HARD_MODE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
-    { id: 'skull-initiate', name: 'Hard Bee Initiate', desc: 'Complete 1 hard mode session', check: s => s.hardModeSessions >= 1 },
-    { id: 'skull-warrior', name: 'Hard Bee Warrior', desc: 'Spell 50 words on hard mode', check: s => s.hardModeSolved >= 50 },
-    { id: 'skull-legend', name: 'Hard Bee Legend', desc: 'Spell 200 words on hard mode', check: s => s.hardModeSolved >= 200 },
-    { id: 'skull-streak', name: 'Deathstreak', desc: '10× streak on hard mode', check: s => s.hardModeBestStreak >= 10 },
-    { id: 'skull-sharp', name: 'Skull Sniper', desc: '90%+ accuracy on hard (30+)', check: s => s.hardModeSolved >= 30 && (s.hardModeCorrect / s.hardModeSolved) >= 0.9 },
-    { id: 'skull-perfect', name: 'Flawless Victor', desc: 'Perfect hard mode session', check: s => s.hardModePerfects >= 1 },
-];
-
 // ── Timed mode achievements ───────────────────────────────────────────────────
 
 const TIMED_MODE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
@@ -120,14 +97,6 @@ const TIMED_MODE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
     { id: 'blitz-master', name: 'Blitz Speller', desc: 'Spell 50 words on timed mode', check: s => s.timedModeSolved >= 50 },
     { id: 'lightning', name: 'Lightning Fingers', desc: '5× streak on timed mode', check: s => s.timedModeBestStreak >= 5 },
     { id: 'time-lord', name: 'Bee Time Lord', desc: 'Perfect timed session', check: s => s.timedModePerfects >= 1 },
-];
-
-// ── Ultimate achievements ─────────────────────────────────────────────────────
-
-const ULTIMATE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
-    { id: 'ultimate-ascend', name: 'Ascended Speller', desc: 'Complete 1 ultimate session', check: s => s.ultimateSessions >= 1 },
-    { id: 'ultimate-streak', name: 'Omega Speller', desc: '5× streak on ultimate', check: s => s.ultimateBestStreak >= 5 },
-    { id: 'ultimate-perfect', name: 'Transcendence', desc: 'Perfect ultimate session', check: s => s.ultimatePerfects >= 1 },
 ];
 
 // ── Learning achievements ─────────────────────────────────────────────────────
@@ -168,9 +137,7 @@ const MASTERY_MILESTONE_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = 
 
 export const EVERY_SPELLING_ACHIEVEMENT: Achievement<SpellingAchievementStats>[] = [
     ...CORE_ACHIEVEMENTS,
-    ...HARD_MODE_ACHIEVEMENTS,
     ...TIMED_MODE_ACHIEVEMENTS,
-    ...ULTIMATE_ACHIEVEMENTS,
     ...LEARNING_ACHIEVEMENTS,
     ...MASTERY_MILESTONE_ACHIEVEMENTS,
     ...BEE_SIM_ACHIEVEMENTS,

@@ -141,7 +141,7 @@ import { COSTUMES } from '../utils/costumes';
 
 export const BeeBuddy = memo(function BeeBuddy({
     state, costume, streak = 0, totalAnswered = 0,
-    questionType = 'cvc', hardMode = false, timedMode = false,
+    questionType = 'cvc', timedMode = false,
     pingMessage = null,
     messageOverrides,
 }: {
@@ -150,7 +150,6 @@ export const BeeBuddy = memo(function BeeBuddy({
     streak?: number;
     totalAnswered?: number;
     questionType?: string;
-    hardMode?: boolean;
     timedMode?: boolean;
     pingMessage?: string | null;
     messageOverrides?: ChalkMessageOverrides;
@@ -158,19 +157,19 @@ export const BeeBuddy = memo(function BeeBuddy({
     const [message, setMessage] = useState('');
     const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
-    const ctxRef = useRef<{ state: ChalkState; streak: number; totalAnswered: number; categoryId: string; hardMode: boolean; timedMode: boolean }>(
-        { state, streak, totalAnswered, categoryId: questionType, hardMode, timedMode }
+    const ctxRef = useRef<{ state: ChalkState; streak: number; totalAnswered: number; categoryId: string; timedMode: boolean }>(
+        { state, streak, totalAnswered, categoryId: questionType, timedMode }
     );
     useEffect(() => {
-        ctxRef.current = { state, streak, totalAnswered, categoryId: questionType, hardMode, timedMode };
+        ctxRef.current = { state, streak, totalAnswered, categoryId: questionType, timedMode };
     });
 
     // Pick message when deps change (React-recommended setState-in-render pattern)
-    const depsKey = `${state}-${streak}-${totalAnswered}-${questionType}-${hardMode}-${timedMode}`;
+    const depsKey = `${state}-${streak}-${totalAnswered}-${questionType}-${timedMode}`;
     const [prevDepsKey, setPrevDepsKey] = useState('');
     if (depsKey !== prevDepsKey) {
         setPrevDepsKey(depsKey);
-        const ctx: ChalkContext = { state, streak, totalAnswered, categoryId: questionType, hardMode, timedMode };
+        const ctx: ChalkContext = { state, streak, totalAnswered, categoryId: questionType, timedMode };
         setMessage(pickChalkMessage(ctx, messageOverrides ?? {}));
     }
 
@@ -185,10 +184,10 @@ export const BeeBuddy = memo(function BeeBuddy({
     // Idle message rotation
     useEffect(() => {
         if (state !== 'idle') return;
-        const ctx: ChalkContext = { state, streak, totalAnswered, categoryId: questionType, hardMode, timedMode };
+        const ctx: ChalkContext = { state, streak, totalAnswered, categoryId: questionType, timedMode };
         const interval = setInterval(() => setMessage(pickChalkMessage({ ...ctx, state: 'idle' }, messageOverrides ?? {})), 5000);
         return () => clearInterval(interval);
-    }, [state, questionType, streak, totalAnswered, hardMode, timedMode, messageOverrides]);
+    }, [state, questionType, streak, totalAnswered, timedMode, messageOverrides]);
 
     const displayState = pingMessage ? 'comeback' : state;
     const currentMessage = pingMessage || message;

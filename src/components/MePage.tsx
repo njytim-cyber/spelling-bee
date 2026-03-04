@@ -4,13 +4,12 @@ import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievem
 import { AchievementBadge } from './AchievementBadge';
 import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
-import { SettingsModal } from './SettingsModal';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconSettings } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
-import type { Dialect } from '../domains/spelling/words/types';
+
 import { getSessionsByDay } from '../utils/sessionHistory';
 import { spellingHint } from '../utils/spellingDiff';
 
@@ -18,7 +17,6 @@ import { spellingHint } from '../utils/spellingDiff';
 
 interface Props {
     unlocked: Set<string>;
-    onDialectChange: (d: Dialect) => void;
     masteredCount: number;
     uniqueWordsAttempted: number;
     /** Recent word attempts for stats dashboard */
@@ -81,16 +79,12 @@ function getMasteryInfo(xp: number) {
 }
 
 // Derive achievement sublists from the single spelling array
-const CORE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => !a.id.startsWith('skull-') && !a.id.startsWith('ultimate-') && !a.id.startsWith('word-') && !['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
-const HARD_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('skull-'));
+const CORE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => !a.id.startsWith('word-') && !['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
 const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-demon', 'blitz-master', 'lightning', 'time-lord'].includes(a.id));
-const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 const MASTERY_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('word-'));
 
 const achievementSections = [
-    { label: '💀 hard mode', colorClass: 'text-[var(--color-skull)]', colsClass: 'grid-cols-3', items: HARD_MODE_ACHIEVEMENTS },
     { label: '⏱️ timed mode', colorClass: 'text-[var(--color-timed)]', colsClass: 'grid-cols-4', items: TIMED_MODE_ACHIEVEMENTS },
-    { label: '💀⏱️ ultimate', colorClass: 'text-[var(--color-ultimate)]', colsClass: 'grid-cols-3', items: ULTIMATE_ACHIEVEMENTS },
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
@@ -113,7 +107,7 @@ function checkUnlock(
     return { available, hint };
 }
 
-export const MePage = memo(function MePage({ unlocked, onDialectChange, masteredCount, uniqueWordsAttempted, recentAttempts = [], wordRecords = {} }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, recentAttempts = [], wordRecords = {} }: Props) {
     // Get user state from context
     const {
         stats,
@@ -131,14 +125,10 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
         linkGoogle,
         sendEmailLink,
         updateBadge,
-        dialect,
-        level,
-        onLevelChange,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
     const [showRanks, setShowRanks] = useState(false);
-    const [showSettings, setShowSettings] = useState(false);
     const [showStats, setShowStats] = useState(false);
     const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
@@ -247,17 +237,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
     }, [wordRecords]);
 
     return (
-        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-4 pb-20 landscape-compact-pb">
-            {/* Settings gear button */}
-            <motion.button
-                onClick={() => setShowSettings(true)}
-                className="self-end mb-2 opacity-40 hover:opacity-70 transition-opacity"
-                aria-label="Settings"
-                whileTap={{ scale: 0.9 }}
-            >
-                <IconSettings className="w-5 h-5" />
-            </motion.button>
-
+        <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-[calc(env(safe-area-inset-top,12px)+48px)] pb-20 landscape-compact-pb">
             {/* Display name + edit */}
             <div className="flex items-center gap-2 mb-2">
                 {editingName ? (
@@ -901,19 +881,6 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                             </button>
                         </div>
                     </ModalShell>
-                )}
-            </AnimatePresence>
-
-            {/* Settings modal */}
-            <AnimatePresence>
-                {showSettings && (
-                    <SettingsModal
-                        dialect={dialect}
-                        onDialectChange={onDialectChange}
-                        level={level}
-                        onLevelChange={onLevelChange}
-                        onClose={() => setShowSettings(false)}
-                    />
                 )}
             </AnimatePresence>
 

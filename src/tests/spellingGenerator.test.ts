@@ -11,7 +11,7 @@ describe('spellingGenerator.ts', () => {
         it('produces an item with 3 unique options where options[correctIndex] === answer', () => {
             for (const cat of CATEGORIES) {
                 for (let i = 0; i < 20; i++) {
-                    const item = generateSpellingItem(1, cat, false);
+                    const item = generateSpellingItem(1, cat);
                     expect(item.options).toHaveLength(3);
                     // All 3 options must be unique
                     expect(new Set(item.options).size).toBe(3);
@@ -26,13 +26,13 @@ describe('spellingGenerator.ts', () => {
 
         it('prompt asks which spelling is correct', () => {
             for (let i = 0; i < 20; i++) {
-                const item = generateSpellingItem(1, 'cvc', false);
+                const item = generateSpellingItem(1, 'cvc');
                 expect(item.prompt).toBe('Which spelling is correct?');
             }
         });
 
         it('has a non-empty id string', () => {
-            const item = generateSpellingItem(1, 'vowel-teams', false);
+            const item = generateSpellingItem(1, 'vowel-teams');
             expect(typeof item.id).toBe('string');
             expect(item.id.length).toBeGreaterThan(0);
         });
@@ -41,7 +41,7 @@ describe('spellingGenerator.ts', () => {
     describe('Rich metadata', () => {
         it('meta includes definition, pronunciation, and partOfSpeech', () => {
             for (const cat of CATEGORIES) {
-                const item = generateSpellingItem(1, cat, false);
+                const item = generateSpellingItem(1, cat);
                 expect(typeof item.meta?.['definition']).toBe('string');
                 expect((item.meta?.['definition'] as string).length).toBeGreaterThan(0);
                 expect(typeof item.meta?.['pronunciation']).toBe('string');
@@ -50,7 +50,7 @@ describe('spellingGenerator.ts', () => {
         });
 
         it('meta includes exampleSentence and pattern', () => {
-            const item = generateSpellingItem(1, 'cvc', false);
+            const item = generateSpellingItem(1, 'cvc');
             expect(typeof item.meta?.['exampleSentence']).toBe('string');
             expect(typeof item.meta?.['pattern']).toBe('string');
             expect(typeof item.meta?.['difficulty']).toBe('number');
@@ -60,30 +60,16 @@ describe('spellingGenerator.ts', () => {
     describe('Difficulty filtering', () => {
         it('level 1 words have difficulty ≤ 2', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(1, 'tier-1', false);
+                const item = generateSpellingItem(1, 'tier-1');
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
         });
 
         it('level 5 words have difficulty ≤ 10', () => {
             for (let i = 0; i < 30; i++) {
-                const item = generateSpellingItem(5, 'tier-5', false);
+                const item = generateSpellingItem(5, 'tier-5');
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(10);
             }
-        });
-    });
-
-    describe('Hard mode', () => {
-        it('distractors have same length as correct word in hard mode (when possible)', () => {
-            let foundSameLength = 0;
-            for (let i = 0; i < 50; i++) {
-                const item = generateSpellingItem(1, 'cvc', true);
-                const others = item.options.filter((_, idx) => idx !== item.correctIndex);
-                const allSameLen = others.every(d => (d as string).length === (item.answer as string).length);
-                if (allSameLen) foundSameLength++;
-            }
-            // Should have at least some items with same-length distractors
-            expect(foundSameLength).toBeGreaterThan(0);
         });
     });
 
@@ -94,14 +80,14 @@ describe('spellingGenerator.ts', () => {
                 seed = (seed * 1664525 + 1013904223) & 0xffffffff;
                 return (seed >>> 0) / 0x100000000;
             }
-            const item1 = generateSpellingItem(1, 'blends', false, seededRng);
+            const item1 = generateSpellingItem(1, 'blends', seededRng);
 
             seed = 12345; // reset
             function seededRng2() {
                 seed = (seed * 1664525 + 1013904223) & 0xffffffff;
                 return (seed >>> 0) / 0x100000000;
             }
-            const item2 = generateSpellingItem(1, 'blends', false, seededRng2);
+            const item2 = generateSpellingItem(1, 'blends', seededRng2);
 
             expect(item1.answer).toBe(item2.answer);
             expect(item1.options).toEqual(item2.options);
@@ -112,7 +98,7 @@ describe('spellingGenerator.ts', () => {
         it('tier-1 generates words from difficulty 1-2 range', () => {
             const answers = new Set<string>();
             for (let i = 0; i < 100; i++) {
-                const item = generateSpellingItem(1, 'tier-1', false);
+                const item = generateSpellingItem(1, 'tier-1');
                 answers.add(item.answer as string);
                 expect(item.meta?.['difficulty']).toBeLessThanOrEqual(2);
             }
@@ -154,7 +140,7 @@ describe('spellingGenerator.ts', () => {
 
             for (let diff = 1; diff <= 5; diff++) {
                 for (let i = 0; i < 50; i++) {
-                    const item = generateSpellingItem(diff, 'tier-1', false);
+                    const item = generateSpellingItem(diff, 'tier-1');
                     if (new Set(item.options).size < 3) {
                         failures.push(`${item.answer} (diff=${diff}): only ${new Set(item.options).size} unique options`);
                     }

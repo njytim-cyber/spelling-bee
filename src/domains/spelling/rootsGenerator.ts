@@ -16,7 +16,6 @@ import { WORD_ROOTS, type WordRoot } from './words/roots';
 export function generateRootQuizItem(
     _difficulty: number,
     _category: string,
-    _hardMode: boolean,
     rng: () => number = Math.random,
 ): EngineItem {
     if (WORD_ROOTS.length < 4) {

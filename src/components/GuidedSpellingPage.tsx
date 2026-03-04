@@ -39,7 +39,7 @@ interface Props {
 function pickRandomWord(round: number): SpellingWord {
     const diffLevel = Math.min(5, 1 + Math.floor(round / 4));
     const [minDiff, maxDiff] = difficultyRange(diffLevel);
-    const pool = selectWordPool(undefined, minDiff, maxDiff, false);
+    const pool = selectWordPool(undefined, minDiff, maxDiff);
     return pool[Math.floor(Math.random() * pool.length)];
 }
 

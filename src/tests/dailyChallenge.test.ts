@@ -75,11 +75,11 @@ describe('generateChallenge', () => {
 });
 
 describe('createChallengeId', () => {
-    it('returns a non-empty base-36 string', () => {
+    it('returns a non-empty string with timestamp and random entropy', () => {
         const id = createChallengeId();
         expect(typeof id).toBe('string');
         expect(id.length).toBeGreaterThan(0);
-        expect(/^[0-9a-z]+$/.test(id)).toBe(true);
+        expect(/^[0-9a-z]+-[0-9a-z]+$/.test(id)).toBe(true);
     });
 });
 
