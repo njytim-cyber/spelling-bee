@@ -13,6 +13,7 @@ import { getLevelConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
 import { useAutoSummary, usePersonalBest } from './hooks/useSessionUI';
 import { useReducedMotion } from './hooks/useReducedMotion';
+import { useTimedFlag, useTimedMessage } from './hooks/useTimedState';
 import { OfflineBanner } from './components/OfflineBanner';
 import { ReloadPrompt } from './components/ReloadPrompt';
 import { UserProvider, useUser } from './contexts/UserContext';
@@ -307,15 +308,11 @@ function AppInner() {
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string }>>([]);
   const prevQuestionTypeRef = useRef(questionType);
-  const [scoreResetFlash, setScoreResetFlash] = useState(false);
+  const [scoreResetFlash, fireScoreReset] = useTimedFlag(2500);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
-      // Show brief "score reset" note when switching categories (not on first render)
-      if (prevQuestionTypeRef.current !== questionType && score > 0) {
-        setScoreResetFlash(true);
-        setTimeout(() => setScoreResetFlash(false), 2500);
-      }
+      if (score > 0) fireScoreReset();
       prevQuestionTypeRef.current = questionType;
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -402,36 +399,26 @@ function AppInner() {
   );
 
   // ── Shield consumed toast ──
-  const [shieldToast, setShieldToast] = useState(false);
+  const [shieldToast, fireShieldToast] = useTimedFlag(3000);
   useEffect(() => {
-    if (!shieldBroken) return;
-    let t: ReturnType<typeof setTimeout>;
-    queueMicrotask(() => {
-      setShieldToast(true);
-      t = setTimeout(() => setShieldToast(false), 3000);
-    });
-    return () => clearTimeout(t);
-  }, [shieldBroken]);
+    if (shieldBroken) queueMicrotask(fireShieldToast);
+  }, [shieldBroken, fireShieldToast]);
 
   // ── Streak toast — show once per session when dayStreak > 1 ──
   const streakToastShown = useRef(false);
-  const [streakToast, setStreakToast] = useState(false);
+  const [streakToast, fireStreakToast] = useTimedFlag(3000);
   useEffect(() => {
     if (stats.dayStreak > 1 && !streakToastShown.current) {
       streakToastShown.current = true;
-      setStreakToast(true);
-      const t = setTimeout(() => setStreakToast(false), 3000);
-      return () => clearTimeout(t);
+      fireStreakToast();
     }
-  }, [stats.dayStreak]);
+  }, [stats.dayStreak, fireStreakToast]);
 
   // ── Improvement celebration — week-over-week accuracy trend ──
-  const [improvementToast, setImprovementToast] = useState('');
+  const [improvementToast, fireImprovementToast] = useTimedMessage(4000);
   useEffect(() => {
-    // Run once on mount — compare current accuracy to last week's snapshot
     try {
       const now = new Date();
-      // ISO week key: YYYY-WW
       const jan1 = new Date(now.getFullYear(), 0, 1);
       const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
       const currentWeekKey = `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
@@ -439,7 +426,6 @@ function AppInner() {
       const raw = localStorage.getItem(STORAGE_KEYS.weeklySnapshot);
       const snapshot = raw ? JSON.parse(raw) : null;
 
-      // Current accuracy from stats
       const currentAccuracy = stats.totalSolved > 0
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
@@ -447,17 +433,14 @@ function AppInner() {
       if (snapshot && snapshot.weekKey !== currentWeekKey && snapshot.accuracy > 0 && currentAccuracy > 0) {
         const diff = currentAccuracy - snapshot.accuracy;
         if (diff >= 10) {
-          setImprovementToast(`Accuracy up ${diff}% from last week!`);
-          const t = setTimeout(() => setImprovementToast(''), 4000);
-          // Save updated snapshot for this week
+          fireImprovementToast(`Accuracy up ${diff}% from last week!`);
           localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
             weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
           }));
-          return () => clearTimeout(t);
+          return;
         }
       }
 
-      // Save snapshot if none exists or it's a new week
       if (!snapshot || snapshot.weekKey !== currentWeekKey) {
         localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
           weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
@@ -469,41 +452,30 @@ function AppInner() {
 
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
-  const [timedToast, setTimedToast] = useState(false);
-  const [hardToast, setHardToast] = useState(false);
+  const [timedToast, fireTimedToast] = useTimedFlag(3000);
+  const [hardToast, fireHardToast] = useTimedFlag(3000);
   const [showScoreHelp, setShowScoreHelp] = useState(false);
   const toggleTimedMode = useCallback(() => {
     setTimedMode(t => {
-      if (!t) {
-        // Turning ON — show a brief warning
-        setTimedToast(true);
-        setTimeout(() => setTimedToast(false), 3000);
-      }
+      if (!t) fireTimedToast();
       return !t;
     });
-  }, []);
+  }, [fireTimedToast]);
   const toggleHardMode = useCallback(() => {
     setHardMode(h => {
-      if (!h) {
-        setHardToast(true);
-        setTimeout(() => setHardToast(false), 3000);
-      }
+      if (!h) fireHardToast();
       return !h;
     });
-  }, []);
+  }, [fireHardToast]);
 
   // ── Score floater ──
   const prevScoreRef = useRef(0);
-  const [pointsFloater, setPointsFloater] = useState(0);
+  const [pointsFloater, firePointsFloater] = useTimedMessage(800);
   useEffect(() => {
     const delta = score - prevScoreRef.current;
     prevScoreRef.current = score;
-    if (delta > 0) {
-      setPointsFloater(delta);
-      const t = setTimeout(() => setPointsFloater(0), 800);
-      return () => clearTimeout(t);
-    }
-  }, [score]);
+    if (delta > 0) firePointsFloater(String(delta));
+  }, [score, firePointsFloater]);
 
   const sessionAccuracy = useMemo(() =>
     answerHistory.length > 0
@@ -627,38 +599,31 @@ function AppInner() {
   // ── Streak near-miss detection (just missed 5/10/20/50) ──
   const NEAR_MISS_THRESHOLDS = [5, 10, 20, 50];
   const prevStreakRef = useRef(0);
-  const [nearMissText, setNearMissText] = useState('');
+  const [nearMissText, fireNearMiss] = useTimedMessage(2500);
   useEffect(() => {
     const prev = prevStreakRef.current;
     prevStreakRef.current = streak;
     if (streak === 0 && prev > 0) {
       const nextMilestone = NEAR_MISS_THRESHOLDS.find(m => prev >= m - 2 && prev < m);
-      if (nextMilestone) {
-        setNearMissText(`${prev}-streak! So close to ${nextMilestone}!`);
-        const t = setTimeout(() => setNearMissText(''), 2500);
-        return () => clearTimeout(t);
-      }
+      if (nextMilestone) fireNearMiss(`${prev}-streak! So close to ${nextMilestone}!`);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [streak]);
 
   // ── Mastery graduation toast (word reached box 4) ──
   const prevMasteredRef = useRef(masteredCount);
-  const [masteryToast, setMasteryToast] = useState('');
+  const [masteryToast, fireMasteryToast] = useTimedMessage(3000);
   useEffect(() => {
     const prev = prevMasteredRef.current;
     prevMasteredRef.current = masteredCount;
     if (masteredCount > prev && prev > 0) {
-      // Find the most recently mastered word
       const mastered = Object.values(wordRecords)
         .filter(r => r.box >= 4)
         .sort((a, b) => b.lastCorrect - a.lastCorrect);
       const word = mastered[0]?.word;
-      setMasteryToast(word ? `🎓 "${word}" mastered!` : '🎓 Word mastered!');
-      const t = setTimeout(() => setMasteryToast(''), 3000);
-      return () => clearTimeout(t);
+      fireMasteryToast(word ? `🎓 "${word}" mastered!` : '🎓 Word mastered!');
     }
-  }, [masteredCount, wordRecords]);
+  }, [masteredCount, wordRecords, fireMasteryToast]);
 
   const pendingTabRef = useRef<Tab | null>(null);
   const handleTabChange = useCallback((tab: Tab) => {
@@ -729,6 +694,11 @@ function AppInner() {
     setThemeMode(themeMode === 'dark' ? 'light' : 'dark');
   }, [themeMode, setThemeMode]);
 
+  // True when in a full-screen sub-mode that hides standard game chrome
+  const isImmersive = questionType === 'bee' || questionType === 'guided' || questionType === 'written-test' || guidedMode;
+
+  const defaultCategory = levelConfig?.defaultCategory ?? 'cvc';
+
   return (
     <>
       <BlackboardLayout>
@@ -743,7 +713,7 @@ function AppInner() {
         />
 
         {/* ── Top-right controls (theme toggle) — game tab only, hidden during immersive sub-modes ── */}
-        {activeTab === 'game' && questionType !== 'bee' && questionType !== 'guided' && questionType !== 'written-test' && !guidedMode && (
+        {activeTab === 'game' && !isImmersive && (
           <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-2">
             <button
               onClick={toggleThemeMode}
@@ -793,42 +763,30 @@ function AppInner() {
               />
             )}
             {/* ── Score (centered, pushed down from edge) — hidden in full-screen sub-modes ── */}
-            {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
+            {!isImmersive && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
               {/* Mode / category label — always shows what the user is doing */}
-              {questionType === 'challenge' ? (
-                <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
-                  <span>⚔️ Challenge</span>
-                  <span className="text-[rgb(var(--color-fg))]/30">·</span>
-                  <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
-                </div>
-              ) : questionType === 'daily' ? (
-                <div className="text-xs ui text-[var(--color-gold)] mb-2 flex items-center gap-2">
-                  <span>📅 Daily Challenge</span>
-                  <span className="text-[rgb(var(--color-fg))]/30">·</span>
-                  <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
-                </div>
-              ) : questionType === 'review' ? (
-                <div className="flex flex-col items-center mb-2">
-                  <div className="text-xs ui text-[var(--color-gold)] flex items-center gap-2">
-                    <span>📖 Almost Mastered</span>
-                    {(totalAnswered + problems.length) > 0 && (
-                      <>
-                        <span className="text-[rgb(var(--color-fg))]/30">·</span>
-                        <span className="text-[rgb(var(--color-fg))]/40">{totalAnswered}/{totalAnswered + problems.length}</span>
-                      </>
+              {(() => {
+                const progress = totalAnswered + problems.length > 0 ? `${totalAnswered}/${totalAnswered + problems.length}` : null;
+                const ProgressDot = () => progress ? <><span className="text-[rgb(var(--color-fg))]/30">·</span><span className="text-[rgb(var(--color-fg))]/40">{progress}</span></> : null;
+                const modeLabels: Partial<Record<string, string>> = {
+                  challenge: '⚔️ Challenge', daily: '📅 Daily Challenge', review: '📖 Almost Mastered',
+                  'wotc-one': '🐝 One Bee · Levels 1–2', 'wotc-two': '🐝🐝 Two Bee · Levels 3–6', 'wotc-three': '🐝🐝🐝 Three Bee · Levels 7–10',
+                };
+                const label = modeLabels[questionType];
+                if (!label) return null;
+                const showProgress = ['challenge', 'daily', 'review'].includes(questionType);
+                return (
+                  <div className="flex flex-col items-center mb-2">
+                    <div className="text-xs ui text-[var(--color-gold)] flex items-center gap-2">
+                      <span>{label}</span>
+                      {showProgress && <ProgressDot />}
+                    </div>
+                    {questionType === 'review' && totalAnswered === 0 && (
+                      <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">These words are almost learned — one more practice!</div>
                     )}
                   </div>
-                  {totalAnswered === 0 && (
-                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">These words are almost learned — one more practice!</div>
-                  )}
-                </div>
-              ) : questionType === 'wotc-one' ? (
-                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝 One Bee · Levels 1–2</div>
-              ) : questionType === 'wotc-two' ? (
-                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝🐝 Two Bee · Levels 3–6</div>
-              ) : questionType === 'wotc-three' ? (
-                <div className="text-xs ui text-[var(--color-gold)] mb-2">🐝🐝🐝 Three Bee · Levels 7–10</div>
-              ) : null}
+                );
+              })()}
               <div className="relative pointer-events-auto" onClick={() => setShowScoreHelp(h => !h)}>
                 <ScoreCounter value={score} />
                 {totalAnswered === 0 && !scoreResetFlash && <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5 text-center">tap for scoring info</div>}
@@ -944,7 +902,7 @@ function AppInner() {
 
             {/* ── Points earned floater ── */}
             <AnimatePresence>
-              {pointsFloater > 0 && (
+              {pointsFloater && (
                 <motion.div
                   key={'pts' + score}
                   initial={{ opacity: 1, y: 0 }}
@@ -961,7 +919,7 @@ function AppInner() {
             <div className="flex-1 flex flex-col min-h-0">
               {questionType === 'bee' ? (
                 <BeeSimPage
-                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(defaultCategory)}
                   onAnswer={(word, correct, ms, typed) => {
                     recordAttempt(word, 'bee', correct, ms, typed);
                   }}
@@ -981,7 +939,7 @@ function AppInner() {
                 </Suspense>
               ) : questionType === 'written-test' ? (
                 <WrittenTestPage
-                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(defaultCategory)}
                 />
               ) : questionType === 'review' && reviewQueue.length === 0 && totalAnswered === 0 ? (
                 <div className="flex-1 flex flex-col items-center justify-center px-6 gap-3">
@@ -991,7 +949,7 @@ function AppInner() {
                     No words to practice right now. Words you miss come back on a schedule until they&apos;re fully mastered.
                   </p>
                   <button
-                    onClick={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
+                    onClick={() => setQuestionType(defaultCategory)}
                     className="mt-2 px-5 py-2 rounded-xl text-sm ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
                   >
                     Back to Play
@@ -1002,7 +960,7 @@ function AppInner() {
                   correct={totalCorrect}
                   total={totalAnswered}
                   score={score}
-                  onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
+                  onExit={() => setQuestionType(defaultCategory)}
                   mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
                   sessionWords={sessionWordsRef.current}
                 />
@@ -1096,7 +1054,7 @@ function AppInner() {
             )}
 
             {/* ── TikTok-style action buttons — hidden during immersive sub-modes ── */}
-            {questionType !== 'bee' && questionType !== 'guided' && questionType !== 'written-test' && !guidedMode && (
+            {!isImmersive && (
               <ActionButtons
                 questionType={questionType}
                 onTypeChange={setQuestionType}
@@ -1111,7 +1069,7 @@ function AppInner() {
             )}
 
             {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
-            {questionType !== 'bee' && questionType !== 'written-test' && questionType !== 'guided' && !guidedMode && (
+            {!isImmersive && (
               <div className="landscape-hide">
                 <BeeBuddy state={chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} hardMode={hardMode} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
               </div>
@@ -1249,7 +1207,7 @@ function AppInner() {
         )}
 
         {/* ── Bottom Navigation — hidden during immersive sub-modes ── */}
-        {!(activeTab === 'game' && (questionType === 'bee' || questionType === 'guided' || questionType === 'written-test' || guidedMode)) && (
+        {!(activeTab === 'game' && isImmersive) && (
           <BottomNav
             active={activeTab}
             onChange={handleTabChange}

@@ -87,6 +87,32 @@ const TIMED_MODE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => ['speed-d
 const ULTIMATE_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('ultimate-'));
 const MASTERY_ACHIEVEMENTS = EVERY_SPELLING_ACHIEVEMENT.filter(a => a.id.startsWith('word-'));
 
+const achievementSections = [
+    { label: '💀 hard mode', colorClass: 'text-[var(--color-skull)]', colsClass: 'grid-cols-3', items: HARD_MODE_ACHIEVEMENTS },
+    { label: '⏱️ timed mode', colorClass: 'text-[var(--color-timed)]', colsClass: 'grid-cols-4', items: TIMED_MODE_ACHIEVEMENTS },
+    { label: '💀⏱️ ultimate', colorClass: 'text-[var(--color-ultimate)]', colsClass: 'grid-cols-3', items: ULTIMATE_ACHIEVEMENTS },
+    { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
+] as const;
+
+/** Check if a cosmetic item is unlocked based on rank/streak/solved thresholds */
+function checkUnlock(
+    rankIdx: number, bestStreak: number, totalSolved: number,
+    item: { minLevel?: number; minStreak?: number; minSolved?: number },
+): { available: boolean; hint?: string } {
+    const rankOk = !item.minLevel || rankIdx >= item.minLevel - 1;
+    const streakOk = !item.minStreak || bestStreak >= item.minStreak;
+    const solvedOk = !item.minSolved || totalSolved >= item.minSolved;
+    const available = rankOk && streakOk && solvedOk;
+    const hint = !available
+        ? [
+            !rankOk && `Reach ${RANKS[(item.minLevel ?? 1) - 1]?.name ?? 'next rank'}`,
+            !streakOk && `${item.minStreak}-streak needed`,
+            !solvedOk && `Solve ${item.minSolved} words`,
+        ].filter(Boolean).join(' · ')
+        : undefined;
+    return { available, hint };
+}
+
 export const MePage = memo(function MePage({ unlocked, onDialectChange, masteredCount, uniqueWordsAttempted, recentAttempts = [], wordRecords = {} }: Props) {
     // Get user state from context
     const {
@@ -654,20 +680,10 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {CHALK_THEMES.map(t => {
                                 const rankIdx = RANKS.findIndex(r => r.name === rank.name);
-                                const rankOk = rankIdx >= (t.minLevel - 1);
-                                const streakOk = !t.minStreak || stats.bestStreak >= t.minStreak;
-                                const solvedOk = !t.minSolved || stats.totalSolved >= t.minSolved;
-                                const isAvailable = rankOk && streakOk && solvedOk;
+                                const { available: isAvailable, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
-                                const unlockHint = !isAvailable
-                                    ? [
-                                        !rankOk && `Reach ${RANKS[t.minLevel - 1]?.name ?? 'next rank'}`,
-                                        !streakOk && `${t.minStreak}-streak needed`,
-                                        !solvedOk && `Solve ${t.minSolved} words`,
-                                    ].filter(Boolean).join(' · ')
-                                    : undefined;
                                 return (
                                     <button
                                         key={t.id}
@@ -694,19 +710,8 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {SWIPE_TRAILS.map(t => {
                                 const rankIdx = RANKS.findIndex(r => r.name === rank.name);
-                                const rankOk = !t.minLevel || rankIdx >= t.minLevel - 1;
-                                const streakOk = !t.minStreak || stats.bestStreak >= t.minStreak;
-                                const solvedOk = !t.minSolved || stats.totalSolved >= t.minSolved;
-                                const isUnlocked = rankOk && streakOk && solvedOk;
-
+                                const { available: isUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
-                                const unlockHint = !isUnlocked
-                                    ? [
-                                        !rankOk && `Reach ${RANKS[(t.minLevel ?? 1) - 1]?.name ?? 'next rank'}`,
-                                        !streakOk && `${t.minStreak}-streak needed`,
-                                        !solvedOk && `Solve ${t.minSolved} words`,
-                                    ].filter(Boolean).join(' · ')
-                                    : undefined;
 
                                 return (
                                     <button
@@ -783,69 +788,24 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                         })}
                     </div>
 
-                    {/* 💀 Hard Mode */}
-                    <div className="mt-5 text-xs ui text-[var(--color-skull)] uppercase tracking-widest text-center mb-2">
-                        💀 hard mode
-                    </div>
-                    <div className="grid grid-cols-3 gap-3 justify-items-center">
-                        {HARD_MODE_ACHIEVEMENTS.map(a => {
-                            const isUnlocked = unlocked.has(a.id);
-                            const isBadge = activeBadge === a.id;
-                            return (
-                                <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* ⏱️ Timed Mode */}
-                    <div className="mt-5 text-xs ui text-[var(--color-timed)] uppercase tracking-widest text-center mb-2">
-                        ⏱️ timed mode
-                    </div>
-                    <div className="grid grid-cols-4 gap-3 justify-items-center">
-                        {TIMED_MODE_ACHIEVEMENTS.map(a => {
-                            const isUnlocked = unlocked.has(a.id);
-                            const isBadge = activeBadge === a.id;
-                            return (
-                                <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* 💀⏱️ Ultimate Mode */}
-                    <div className="mt-5 text-xs ui text-[var(--color-ultimate)] uppercase tracking-widest text-center mb-2">
-                        💀⏱️ ultimate
-                    </div>
-                    <div className="grid grid-cols-3 gap-3 justify-items-center">
-                        {ULTIMATE_ACHIEVEMENTS.map(a => {
-                            const isUnlocked = unlocked.has(a.id);
-                            const isBadge = activeBadge === a.id;
-                            return (
-                                <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* 📚 Word Mastery */}
-                    <div className="mt-5 text-xs ui text-[var(--color-gold)] uppercase tracking-widest text-center mb-2">
-                        📚 word mastery
-                    </div>
-                    <div className="grid grid-cols-5 gap-3 justify-items-center">
-                        {MASTERY_ACHIEVEMENTS.map(a => {
-                            const isUnlocked = unlocked.has(a.id);
-                            const isBadge = activeBadge === a.id;
-                            return (
-                                <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                    <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
-                                </div>
-                            );
-                        })}
-                    </div>
+                    {achievementSections.map(s => (
+                        <div key={s.label}>
+                            <div className={`mt-5 text-xs ui uppercase tracking-widest text-center mb-2 ${s.colorClass}`}>
+                                {s.label}
+                            </div>
+                            <div className={`grid gap-3 justify-items-center ${s.colsClass}`}>
+                                {s.items.map(a => {
+                                    const isUnlocked = unlocked.has(a.id);
+                                    const isBadge = activeBadge === a.id;
+                                    return (
+                                        <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
+                                            <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             )}
 
