@@ -6,6 +6,8 @@ import type { SpellingCategory } from '../domains/spelling/spellingCategories';
 interface Props {
     questionType: SpellingCategory;
     onTypeChange: (type: SpellingCategory) => void;
+    hardMode: boolean;
+    onHardModeToggle: () => void;
     timedMode: boolean;
     onTimedModeToggle: () => void;
     timerProgress: number; // 0 → 1
@@ -48,6 +50,7 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
 
 export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange,
+    hardMode, onHardModeToggle,
     timedMode, onTimedModeToggle, timerProgress,
     guidedMode, onGuidedModeToggle,
 }: Props) {
@@ -93,6 +96,28 @@ export const ActionButtons = memo(function ActionButtons({
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
                 <span className="w-7 text-center text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">{guidedMode ? 'Type' : 'MCQ'}</span>
+            </motion.button>}
+
+            {/* Hard mode toggle — skull icon */}
+            {!hideToggles && !guidedMode && <motion.button
+                onClick={onHardModeToggle}
+                className={`w-11 h-11 flex flex-col items-center justify-center ${hardMode
+                    ? 'text-[var(--color-streak-fire)]'
+                    : 'text-[rgb(var(--color-fg))]/70'
+                }`}
+                whileTap={{ scale: 0.88 }}
+                aria-label={hardMode ? 'Hard mode on (closer distractors)' : 'Hard mode off'}
+            >
+                <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="12" r="1.5" />
+                    <circle cx="15" cy="12" r="1.5" />
+                    <path d="M8 20v-2a4 4 0 0 1 8 0v2" />
+                    <path d="M12 2a8 8 0 0 0-8 8v1a3 3 0 0 0 1 2.24V14a1 1 0 0 0 1 1h2l1 3h4l1-3h2a1 1 0 0 0 1-1v-.76A3 3 0 0 0 20 11v-1a8 8 0 0 0-8-8z" />
+                </svg>
+                {hardMode && (
+                    <span className="w-1 h-1 rounded-full bg-[var(--color-streak-fire)] mt-0.5" />
+                )}
+                <span className="w-7 text-center text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">Hard</span>
             </motion.button>}
 
             {/* Stopwatch / timed mode */}

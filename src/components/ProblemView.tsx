@@ -147,8 +147,17 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const speakRef = useRef(handleSpeak);
     useEffect(() => { speakRef.current = handleSpeak; }, [handleSpeak]);
 
+    const onDismissWrongRef = useRef(onDismissWrong);
+    useEffect(() => { onDismissWrongRef.current = onDismissWrong; }, [onDismissWrong]);
+
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
+            // Enter/Escape dismiss wrong-answer panel when frozen
+            if ((e.key === 'Enter' || e.key === 'Escape') && frozenRef.current) {
+                e.preventDefault();
+                onDismissWrongRef.current?.();
+                return;
+            }
             // Replay audio
             if (e.key === ' ' || e.key === 'r' || e.key === 'R') {
                 e.preventDefault();
@@ -368,6 +377,16 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             {showHints && !wrongAnswer && !frozen && (
                 <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
                     <span className="text-[10px] ui tracking-wider">{showTutorial ? 'swipe or tap your answer · swipe ↑ to skip' : 'swipe ↑ to skip'}</span>
+                    {/* Desktop keyboard hint — show on first question for pointer devices */}
+                    {showTutorial && window.matchMedia?.('(hover: hover)').matches && (
+                        <button
+                            type="button"
+                            onClick={() => setShowShortcuts(true)}
+                            className="text-[9px] ui text-[rgb(var(--color-fg))]/15 mt-1 hover:text-[var(--color-gold)]/50 transition-colors"
+                        >
+                            press ? for keyboard shortcuts
+                        </button>
+                    )}
                 </div>
             )}
 
@@ -388,6 +407,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                                 ['↓  or  2', 'Option 2 (center)'],
                                 ['→  or  3', 'Option 3 (right)'],
                                 ['↑', 'Skip word'],
+                                ['Enter / Esc', 'Continue after wrong'],
                                 ['Space / R', 'Replay audio'],
                                 ['?', 'Toggle this help'],
                             ].map(([key, desc]) => (

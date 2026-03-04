@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -8,9 +9,10 @@ interface ReloadPromptProps {
 
 /**
  * Non-intrusive toast that appears when a new version of the app is available.
- * Hidden during active gameplay. Shows on Me/League/Magic tabs or before first answer.
+ * Hidden during active gameplay. Once dismissed with "Later", stays hidden for this session.
  */
 export function ReloadPrompt({ suppress = false }: ReloadPromptProps) {
+    const [dismissed, setDismissed] = useState(false);
     const {
         needRefresh: [needRefresh, setNeedRefresh],
         updateServiceWorker,
@@ -26,10 +28,11 @@ export function ReloadPrompt({ suppress = false }: ReloadPromptProps) {
         },
     });
 
-    const visible = needRefresh && !suppress;
+    const visible = needRefresh && !suppress && !dismissed;
 
     function close() {
         setNeedRefresh(false);
+        setDismissed(true); // Stay hidden for the rest of this session
     }
 
     return (

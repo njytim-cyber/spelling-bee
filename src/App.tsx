@@ -196,7 +196,7 @@ function AppInner() {
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
-  const hardMode = false;
+  const [hardMode, setHardMode] = useState(false);
   const [timedMode, setTimedMode] = useState(false);
   const { reducedMotion } = useReducedMotion();
 
@@ -302,9 +302,22 @@ function AppInner() {
     });
   }, [drillRootId, wordRecords]);
 
+  // ── Session word log (for post-game review) ──
+  const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string }>>([]);
+  const prevQuestionTypeRef = useRef(questionType);
+  useEffect(() => {
+    if (prevQuestionTypeRef.current !== questionType) {
+      sessionWordsRef.current = [];
+      prevQuestionTypeRef.current = questionType;
+    }
+  }, [questionType]);
+
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number) => {
     const word = item.meta?.['word'] as string | undefined;
-    if (word) recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
+    if (word) {
+      recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs);
+      sessionWordsRef.current.push({ word, correct, definition: item.meta?.['definition'] as string | undefined });
+    }
     // Track session progress
     if (sessionSize !== null) setSessionAnswered(n => n + 1);
     // Dismiss score help on first answer
@@ -376,6 +389,7 @@ function AppInner() {
     generateFiniteSet,
     onAnswer,
     levelConfig?.minDifficultyLevel ?? 1,
+    activeTab !== 'game', // pause timer when not on game tab
   );
 
   // ── Shield consumed toast ──
@@ -447,6 +461,7 @@ function AppInner() {
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
   const [timedToast, setTimedToast] = useState(false);
+  const [hardToast, setHardToast] = useState(false);
   const [showScoreHelp, setShowScoreHelp] = useState(false);
   const toggleTimedMode = useCallback(() => {
     setTimedMode(t => {
@@ -456,6 +471,15 @@ function AppInner() {
         setTimeout(() => setTimedToast(false), 3000);
       }
       return !t;
+    });
+  }, []);
+  const toggleHardMode = useCallback(() => {
+    setHardMode(h => {
+      if (!h) {
+        setHardToast(true);
+        setTimeout(() => setHardToast(false), 3000);
+      }
+      return !h;
     });
   }, []);
 
@@ -969,6 +993,7 @@ function AppInner() {
                   score={score}
                   onExit={() => setQuestionType(levelConfig?.defaultCategory ?? 'cvc')}
                   mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
+                  sessionWords={sessionWordsRef.current}
                 />
               ) : (
                 <AnimatePresence mode="wait">
@@ -1064,6 +1089,8 @@ function AppInner() {
               <ActionButtons
                 questionType={questionType}
                 onTypeChange={setQuestionType}
+                hardMode={hardMode}
+                onHardModeToggle={toggleHardMode}
                 timedMode={timedMode}
                 onTimedModeToggle={toggleTimedMode}
                 timerProgress={timerProgress}
@@ -1249,6 +1276,7 @@ function AppInner() {
           totalXP={stats.totalXP}
           streakFreezes={stats.streakFreezes}
           onPurchaseFreeze={purchaseStreakFreeze}
+          sessionWords={sessionWordsRef.current}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
@@ -1261,6 +1289,7 @@ function AppInner() {
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
         <Toast visible={timedToast} icon="⏱️" title="Timer ON — 10s per question" subtitle="Wrong if time runs out. Tap stopwatch to turn off." />
+        <Toast visible={hardToast} icon="💀" title="Hard Mode ON" subtitle="Closer distractors, harder word selection. Tap skull to turn off." />
 
         {/* ── Daily Size Picker ── */}
         <AnimatePresence>

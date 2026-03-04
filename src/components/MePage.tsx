@@ -496,7 +496,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
 
                         {/* Category accuracy heatmap */}
                         {categoryStats.length > 0 && (
-                            <div className="mb-2">
+                            <div className="mb-4">
                                 <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider text-center mb-2">Category Strengths</div>
                                 <div className="space-y-1">
                                     {categoryStats.slice(0, 8).map(c => (
@@ -517,6 +517,30 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                                     ))}
                                 </div>
                             </div>
+                        )}
+
+                        {/* CSV Export */}
+                        {Object.keys(wordRecords).length > 0 && (
+                            <button
+                                onClick={() => {
+                                    const rows = [['word', 'category', 'attempts', 'correct', 'accuracy', 'box']];
+                                    for (const r of Object.values(wordRecords)) {
+                                        const acc = r.attempts > 0 ? Math.round((r.correct / r.attempts) * 100) : 0;
+                                        rows.push([r.word, r.category, String(r.attempts), String(r.correct), `${acc}%`, String(r.box)]);
+                                    }
+                                    const csv = rows.map(r => r.join(',')).join('\n');
+                                    const blob = new Blob([csv], { type: 'text/csv' });
+                                    const url = URL.createObjectURL(blob);
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = `spelling-bee-words-${new Date().toISOString().slice(0, 10)}.csv`;
+                                    a.click();
+                                    URL.revokeObjectURL(url);
+                                }}
+                                className="w-full py-2 rounded-xl text-[10px] ui text-[rgb(var(--color-fg))]/30 border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 hover:text-[var(--color-gold)] transition-colors"
+                            >
+                                📊 Export word data (CSV)
+                            </button>
                         )}
                     </motion.div>
                 )}

@@ -79,6 +79,8 @@ export function useGameLoop(
     onAnswer?: (item: EngineItem, correct: boolean, responseTimeMs: number) => void,
     /** Minimum adaptive difficulty level (from level selection). */
     minLevel = 1,
+    /** When true, pauses the timer (e.g. user switched to another tab). */
+    paused = false,
 ) {
     const { level, recordAnswer } = useDifficulty(minLevel);
     const [items, setItems] = useState<EngineItem[]>([]);
@@ -351,8 +353,19 @@ export function useGameLoop(
     }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
+    const pausedRef = useRef(paused);
+    pausedRef.current = paused;
+
+    // Also pause when the browser tab is hidden (Page Visibility API)
+    const [hidden, setHidden] = useState(false);
     useEffect(() => {
-        if (!timedMode || gs.frozen || items.length === 0) {
+        const handler = () => setHidden(document.hidden);
+        document.addEventListener('visibilitychange', handler);
+        return () => document.removeEventListener('visibilitychange', handler);
+    }, []);
+
+    useEffect(() => {
+        if (!timedMode || gs.frozen || items.length === 0 || paused || hidden) {
             cancelAnimationFrame(timerRafRef.current);
             if (!timedMode) setTimerProgress(0);
             return;
@@ -361,6 +374,8 @@ export function useGameLoop(
         setTimerProgress(0);
 
         const tick = () => {
+            // Stop ticking if paused between frames
+            if (pausedRef.current) { cancelAnimationFrame(timerRafRef.current); return; }
             const elapsed = Date.now() - timerStartRef.current;
             const p = Math.min(elapsed / config.timedModeMs, 1);
             setTimerProgress(p);
@@ -394,7 +409,7 @@ export function useGameLoop(
         timerRafRef.current = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(timerRafRef.current);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [timedMode, items[0]?.id, gs.frozen]);
+    }, [timedMode, items[0]?.id, gs.frozen, paused, hidden]);
 
     // ── Cleanup ───────────────────────────────────────────────────────────────
     useEffect(() => {

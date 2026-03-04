@@ -2,6 +2,12 @@ import { memo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useSpring, useMotionValueEvent } from 'framer-motion';
 import { createChallengeId } from '../utils/dailyChallenge';
 
+interface SessionWord {
+    word: string;
+    correct: boolean;
+    definition?: string;
+}
+
 interface Props {
     solved: number;
     correct: number;
@@ -19,6 +25,7 @@ interface Props {
     totalXP?: number;
     streakFreezes?: number;
     onPurchaseFreeze?: () => boolean;
+    sessionWords?: SessionWord[];
 }
 
 function buildShareText(
@@ -68,10 +75,11 @@ function getEncouragingTitle(accuracy: number, streak: number, solved: number): 
 export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     hardMode, timedMode, onDrillHardest, hardestWordCount,
-    totalXP, streakFreezes, onPurchaseFreeze,
+    totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
+    const [showReview, setShowReview] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     // Rolling count-up for XP
@@ -271,7 +279,7 @@ export const SessionSummary = memo(function SessionSummary({
 
                         {/* Answer history grid — compact */}
                         {answerHistory.length > 0 && (
-                            <div className="flex flex-wrap justify-center gap-[3px] mb-4 max-w-[220px] mx-auto">
+                            <div className="flex flex-wrap justify-center gap-[3px] mb-2 max-w-[220px] mx-auto">
                                 {answerHistory.map((ok, i) => (
                                     <div
                                         key={i}
@@ -280,6 +288,44 @@ export const SessionSummary = memo(function SessionSummary({
                                 ))}
                             </div>
                         )}
+
+                        {/* Word review toggle */}
+                        {sessionWords.length > 0 && (() => {
+                            const missed = sessionWords.filter(w => !w.correct);
+                            return (
+                                <>
+                                    <button
+                                        onClick={() => setShowReview(r => !r)}
+                                        className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors mb-3"
+                                    >
+                                        {showReview ? 'Hide' : 'Review'} words{missed.length > 0 ? ` (${missed.length} missed)` : ''}
+                                    </button>
+                                    <AnimatePresence>
+                                        {showReview && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: 'auto', opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="w-full overflow-hidden mb-3"
+                                            >
+                                                <div className="max-h-[30vh] overflow-y-auto rounded-lg border border-[rgb(var(--color-fg))]/10 divide-y divide-[rgb(var(--color-fg))]/5">
+                                                    {sessionWords.map((w, i) => (
+                                                        <div key={i} className="flex items-center gap-1.5 px-2.5 py-1.5">
+                                                            <span className={`text-[10px] ${w.correct ? 'text-[var(--color-correct)]' : 'text-[var(--color-wrong)]'}`}>
+                                                                {w.correct ? '✓' : '✗'}
+                                                            </span>
+                                                            <span className={`text-xs ui ${w.correct ? 'text-[rgb(var(--color-fg))]/50' : 'text-[var(--color-wrong)]'}`}>
+                                                                {w.word}
+                                                            </span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </>
+                            );
+                        })()}
 
                         {/* Share button */}
                         <motion.button
