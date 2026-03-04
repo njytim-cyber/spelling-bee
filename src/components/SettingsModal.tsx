@@ -12,6 +12,7 @@ import { CLOUD_VOICES, synthesizeCloud } from '../services/cloudTts';
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 import { LEVELS, type Level } from '../domains/spelling/spellingCategories';
+import { IconClose } from './Icons';
 
 interface Props {
     dialect: string;
@@ -106,8 +107,8 @@ export const SettingsModal = memo(function SettingsModal({
         <ModalShell onClose={onClose}>
                 <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg ui font-bold text-[var(--color-chalk)]">Settings</h3>
-                    <button onClick={onClose} className="text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60">
-                        Back
+                    <button onClick={onClose} className="opacity-40 hover:opacity-70 transition-opacity" aria-label="Close settings">
+                        <IconClose className="w-5 h-5" />
                     </button>
                 </div>
 

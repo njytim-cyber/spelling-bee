@@ -80,8 +80,10 @@ const AnswerOption = memo(function AnswerOption({
             className="gpu-layer w-full"
             style={{ scale, opacity }}
             onClick={() => !frozen && onSwipe(dir)}
+            onKeyDown={(e) => { if (frozen && (e.key === 'Enter' || e.key === ' ')) e.preventDefault(); }}
             aria-label={`Answer: ${text}`}
             aria-disabled={frozen}
+            tabIndex={frozen ? -1 : 0}
         >
             {/* Answer pill — adapts width to word length */}
             <motion.div

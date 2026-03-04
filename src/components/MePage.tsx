@@ -7,7 +7,7 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import { SettingsModal } from './SettingsModal';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconSettings } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import type { Dialect } from '../domains/spelling/words/types';
@@ -135,11 +135,11 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
             {/* Settings gear button */}
             <motion.button
                 onClick={() => setShowSettings(true)}
-                className="self-end mb-2 text-lg opacity-40 hover:opacity-70 transition-opacity"
+                className="self-end mb-2 opacity-40 hover:opacity-70 transition-opacity"
                 aria-label="Settings"
                 whileTap={{ scale: 0.9 }}
             >
-                ⚙️
+                <IconSettings className="w-5 h-5" />
             </motion.button>
 
             {/* Display name + edit */}
@@ -480,7 +480,7 @@ export const MePage = memo(function MePage({ unlocked, onDialectChange, mastered
                                         if (hasCostume) onCostumeChange(isActive ? '' : a.id);
                                         updateBadge(isBadgeEquipped ? '' : a.id);
                                     }}
-                                    className={isUnlocked ? 'cursor-pointer' : ''}
+                                    className={isUnlocked ? 'cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] rounded-xl' : ''}
                                 >
                                     <AchievementBadge
                                         achievementId={a.id}
