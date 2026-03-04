@@ -46,6 +46,7 @@ export const STORAGE_KEYS = {
     reducedMotion: `${STORAGE_PREFIX}-reduced-motion`,
     seasonalTheme: `${STORAGE_PREFIX}-seasonal-theme`,
     stickFigureStyle: `${STORAGE_PREFIX}-stick-figure-style`,
+    weeklySnapshot: `${STORAGE_PREFIX}-weekly-snapshot`,
 } as const;
 
 /**

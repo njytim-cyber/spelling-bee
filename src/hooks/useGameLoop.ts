@@ -30,6 +30,8 @@ interface GameState {
     speedBonus: boolean;
     wrongStreak: number;
     shieldBroken: boolean;
+    /** Whether the forgiving-streak free miss has been used in the current streak */
+    streakForgiven: boolean;
 }
 
 const INITIAL_STATE: GameState = {
@@ -37,7 +39,7 @@ const INITIAL_STATE: GameState = {
     totalCorrect: 0, totalAnswered: 0, answerHistory: [],
     chalkState: 'idle', flash: 'none', frozen: false,
     milestone: '', speedBonus: false, wrongStreak: 0,
-    shieldBroken: false,
+    shieldBroken: false, streakForgiven: false,
 };
 
 // ── Generator function type ───────────────────────────────────────────────────
@@ -241,6 +243,8 @@ export function useGameLoop(
                     speedBonus: isFast,
                     wrongStreak: 0,
                     frozen: true,
+                    // Reset forgiveness at start of new streak
+                    streakForgiven: prev.streak === 0 ? false : prev.streakForgiven,
                 };
             });
             frozenRef.current = true;
@@ -291,6 +295,10 @@ export function useGameLoop(
                     };
                 }
 
+                // Forgiving streaks for levels 1-3: one free miss per streak
+                const canForgive = minLevel <= 3 && !hardMode && !timedMode
+                    && prev.streak > 0 && !prev.streakForgiven;
+
                 // Normal wrong answer
                 frozenRef.current = true;
                 scheduleChalkReset(failPauseMs);
@@ -300,6 +308,21 @@ export function useGameLoop(
                         frozenRef.current = false;
                         advanceProblem();
                     }, failPauseMs);
+                }
+
+                if (canForgive) {
+                    // Forgive: keep streak alive, mark as used
+                    return {
+                        ...prev,
+                        totalAnswered: prev.totalAnswered + 1,
+                        answerHistory: [...prev.answerHistory, false].slice(-50),
+                        score: scorePenalty(prev.score),
+                        flash: 'wrong' as const,
+                        chalkState: 'fail' as ChalkState,
+                        milestone: '',
+                        frozen: true,
+                        streakForgiven: true,
+                    };
                 }
 
                 const wrongStreak = prev.wrongStreak + 1;
@@ -314,11 +337,12 @@ export function useGameLoop(
                     milestone: '',
                     wrongStreak,
                     frozen: true,
+                    streakForgiven: false,
                 };
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, hardMode, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     useEffect(() => {

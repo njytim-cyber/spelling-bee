@@ -19,7 +19,8 @@ interface Props {
 export const OnboardingModal = memo(function OnboardingModal({ onComplete, currentDialect, currentLevel }: Props) {
     const [step, setStep] = useState<'dialect' | 'level'>('dialect');
     const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
-    const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? null);
+    const isFirstTime = !currentLevel;
+    const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'tier-1' : null));
 
     const handleDialectNext = () => {
         if (selectedDialect) {
@@ -88,7 +89,10 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                     >
                         <div className="text-6xl mb-4">🐝</div>
                         <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
-                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Pick your level</p>
+                        <p className={`text-sm ui text-[rgb(var(--color-fg))]/50 ${isFirstTime ? 'mb-1' : 'mb-6'}`}>Pick your level</p>
+                        {isFirstTime && (
+                            <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-4">Not sure? Start with Level 1!</p>
+                        )}
 
                         <div className="grid grid-cols-2 gap-2 w-full max-w-[var(--content-w)]">
                             {LEVELS.map(g => (

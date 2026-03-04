@@ -12,7 +12,7 @@ import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '.
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
-import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
+import { wordsByDifficulty, wordsByList, getRegistryVersion, COMPETITION_LISTS } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
 
@@ -174,6 +174,74 @@ function LevelRow({ lp, onClick }: { lp: LevelProgress; onClick: () => void }) {
 
 function wordCountByDifficulty(diff: DifficultyTier): number {
     return wordsByDifficulty(diff, diff).length;
+}
+
+// ── Competition prep cards ─────────────────────────────────────────────────
+
+/** Show featured competition lists: Scripps, State Bee, WOTC tiers */
+const FEATURED_LISTS = ['scripps-historical', 'state-bee', 'one-bee', 'two-bee', 'three-bee', 'school-bee-study'];
+
+function CompetitionPrep({ records, registryVersion }: { records: Record<string, WordRecord>; registryVersion: number }) {
+    const listStats = useMemo(() => {
+        return FEATURED_LISTS.map(listId => {
+            const list = COMPETITION_LISTS.find(l => l.id === listId);
+            if (!list) return null;
+            const words = wordsByList(listId);
+            if (words.length === 0) return null;
+            const mastered = words.filter(w => {
+                const rec = records[w.word.toLowerCase()];
+                return rec && rec.box >= 4;
+            }).length;
+            const attempted = words.filter(w => {
+                const rec = records[w.word.toLowerCase()];
+                return rec && rec.attempts > 0;
+            }).length;
+            return { list, total: words.length, mastered, attempted };
+        }).filter(Boolean) as Array<{ list: { id: string; name: string; description: string }; total: number; mastered: number; attempted: number }>;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [records, registryVersion]);
+
+    if (listStats.length === 0) return null;
+
+    return (
+        <section className="mt-4">
+            <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Competition Prep</h3>
+            <div className="space-y-2">
+                {listStats.map(({ list, total, mastered, attempted }) => {
+                    const pct = total > 0 ? Math.round(mastered / total * 100) : 0;
+                    return (
+                        <div
+                            key={list.id}
+                            className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8"
+                        >
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-baseline gap-1.5">
+                                    <span className="text-sm ui font-medium text-[rgb(var(--color-fg))]/70">{list.name}</span>
+                                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{total} words</span>
+                                </div>
+                                <div className="flex items-center gap-2 mt-1">
+                                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full rounded-full bg-[var(--color-gold)] transition-all"
+                                            style={{ width: `${pct}%` }}
+                                        />
+                                    </div>
+                                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
+                                        {mastered}/{total} ({pct}%)
+                                    </span>
+                                </div>
+                                {attempted > 0 && attempted > mastered && (
+                                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 mt-0.5">
+                                        {attempted} attempted
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </section>
+    );
 }
 
 // ── Main component ───────────────────────────────────────────────────────────
@@ -351,6 +419,9 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     />
                 ))}
             </section>
+
+            {/* ── Competition Prep ── */}
+            {totalWords > 0 && <CompetitionPrep records={records} registryVersion={registryVersion} />}
         </div>
 
         {/* Session picker modal */}

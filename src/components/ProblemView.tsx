@@ -13,6 +13,9 @@ const KEY_MAP: Record<string, 'left' | 'right' | 'up' | 'down'> = {
     ArrowRight: 'right',
     ArrowDown: 'down',
     ArrowUp: 'up',
+    '1': 'left',
+    '2': 'down',
+    '3': 'right',
 };
 interface Props {
     problem: EngineItem;
@@ -111,6 +114,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
     const { reducedMotion } = useReducedMotion();
     const [showEtymology, setShowEtymology] = useState(false);
+    const [showShortcuts, setShowShortcuts] = useState(false);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => { setShowEtymology(false); }, [p.id]);
 
@@ -138,8 +142,23 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     useEffect(() => { onSwipeRef.current = onSwipe; }, [onSwipe]);
     useEffect(() => { frozenRef.current = frozen; }, [frozen]);
 
+    const speakRef = useRef(handleSpeak);
+    useEffect(() => { speakRef.current = handleSpeak; }, [handleSpeak]);
+
     useEffect(() => {
         const handler = (e: KeyboardEvent) => {
+            // Replay audio
+            if (e.key === ' ' || e.key === 'r' || e.key === 'R') {
+                e.preventDefault();
+                speakRef.current();
+                return;
+            }
+            // Toggle shortcut help
+            if (e.key === '?') {
+                e.preventDefault();
+                setShowShortcuts(prev => !prev);
+                return;
+            }
             const dir = KEY_MAP[e.key];
             if (dir && !frozenRef.current) {
                 e.preventDefault();
@@ -347,6 +366,42 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
             {showHints && !wrongAnswer && !frozen && (
                 <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
                     <span className="text-[10px] ui tracking-wider">{showTutorial ? 'swipe or tap your answer · swipe ↑ to skip' : 'swipe ↑ to skip'}</span>
+                </div>
+            )}
+
+            {/* Keyboard shortcut overlay */}
+            {showShortcuts && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+                    onClick={() => setShowShortcuts(false)}
+                >
+                    <div
+                        className="w-[280px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/10"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <h3 className="text-sm ui font-bold text-[var(--color-chalk)] mb-3 text-center">Keyboard Shortcuts</h3>
+                        <div className="space-y-2 text-xs ui text-[rgb(var(--color-fg))]/60">
+                            {[
+                                ['←  or  1', 'Option 1 (left)'],
+                                ['↓  or  2', 'Option 2 (center)'],
+                                ['→  or  3', 'Option 3 (right)'],
+                                ['↑', 'Skip word'],
+                                ['Space / R', 'Replay audio'],
+                                ['?', 'Toggle this help'],
+                            ].map(([key, desc]) => (
+                                <div key={key} className="flex items-center justify-between">
+                                    <span className="font-mono text-[var(--color-gold)] text-[11px]">{key}</span>
+                                    <span>{desc}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <button
+                            onClick={() => setShowShortcuts(false)}
+                            className="w-full mt-4 py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5 hover:bg-[rgb(var(--color-fg))]/10 transition-colors"
+                        >
+                            Close
+                        </button>
+                    </div>
                 </div>
             )}
         </motion.div>

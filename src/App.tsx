@@ -389,6 +389,48 @@ function AppInner() {
     }
   }, [stats.dayStreak]);
 
+  // ── Improvement celebration — week-over-week accuracy trend ──
+  const [improvementToast, setImprovementToast] = useState('');
+  useEffect(() => {
+    // Run once on mount — compare current accuracy to last week's snapshot
+    try {
+      const now = new Date();
+      // ISO week key: YYYY-WW
+      const jan1 = new Date(now.getFullYear(), 0, 1);
+      const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
+      const currentWeekKey = `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+
+      const raw = localStorage.getItem(STORAGE_KEYS.weeklySnapshot);
+      const snapshot = raw ? JSON.parse(raw) : null;
+
+      // Current accuracy from stats
+      const currentAccuracy = stats.totalSolved > 0
+        ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
+        : 0;
+
+      if (snapshot && snapshot.weekKey !== currentWeekKey && snapshot.accuracy > 0 && currentAccuracy > 0) {
+        const diff = currentAccuracy - snapshot.accuracy;
+        if (diff >= 10) {
+          setImprovementToast(`Accuracy up ${diff}% from last week!`);
+          const t = setTimeout(() => setImprovementToast(''), 4000);
+          // Save updated snapshot for this week
+          localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
+            weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
+          }));
+          return () => clearTimeout(t);
+        }
+      }
+
+      // Save snapshot if none exists or it's a new week
+      if (!snapshot || snapshot.weekKey !== currentWeekKey) {
+        localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
+          weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
+        }));
+      }
+    } catch { /* ignore localStorage errors */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
   const toggleTimedMode = useCallback(() => setTimedMode(t => !t), []);
@@ -412,6 +454,22 @@ function AppInner() {
       : 0,
     [answerHistory]
   );
+
+  // ── Accuracy gate (anti-random-swipe speed bump) ──
+  const [accuracyGateDismissed, setAccuracyGateDismissed] = useState(0); // tracks the totalAnswered at last dismiss
+  const showAccuracyGate = useMemo(() => {
+    // Never show in competitive/finite modes
+    if (['daily', 'challenge', 'review'].includes(questionType)) return false;
+    // Grace period: at least 5 answers
+    if (totalAnswered < 5) return false;
+    // Don't re-trigger until 3 more answers after last dismiss
+    if (totalAnswered - accuracyGateDismissed < 3) return false;
+    // Check rolling accuracy over last 5 answers
+    const last5 = answerHistory.slice(-5);
+    const last5Correct = last5.filter(Boolean).length;
+    // < 40% of last 5 = 0 or 1 correct out of 5
+    return last5Correct / last5.length < 0.4;
+  }, [answerHistory, totalAnswered, accuracyGateDismissed, questionType]);
 
   // ── Session summary (auto-show on daily finish) ──
   useAutoSummary(dailyComplete, setShowSummary);
@@ -888,6 +946,38 @@ function AppInner() {
               )}
             </div>
 
+            {/* ── Accuracy gate (anti-random-swipe) ── */}
+            <AnimatePresence>
+              {showAccuracyGate && !frozen && (
+                <motion.div
+                  key="accuracy-gate"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 z-40 flex items-center justify-center bg-black/60 px-6"
+                >
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    className="w-full max-w-[300px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[var(--color-gold)]/30 text-center"
+                  >
+                    <div className="text-3xl mb-2">🤔</div>
+                    <h3 className="text-lg chalk text-[var(--color-chalk)] mb-1">Let&apos;s slow down!</h3>
+                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-4">
+                      Try listening to each word before answering. Tap the speaker icon to hear it again.
+                    </p>
+                    <button
+                      onClick={() => setAccuracyGateDismissed(totalAnswered)}
+                      className="w-full py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                      Got it, I&apos;ll try harder!
+                    </button>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* ── Session complete overlay ── */}
             {sessionComplete && (
               <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
@@ -1114,6 +1204,7 @@ function AppInner() {
         <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} />
         <Toast visible={shieldToast} icon="🛡️" title="Shield saved your streak!" subtitle={`${stats.streakShields} shield${stats.streakShields !== 1 ? 's' : ''} left`} />
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
+        <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
         <Toast visible={!!masteryToast} icon="⭐" title={masteryToast} subtitle="Leitner box 4 — well earned" toastKey={masteryToast} stampEffect />
 
         {/* ── Custom Lists Modal ── */}
