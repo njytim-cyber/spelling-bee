@@ -7,12 +7,17 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift, IconShop } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift, IconShop, RankIcon } from './Icons';
 import { isItemOwned } from '../utils/cosmeticPacks';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import { AvatarBuilder } from './AvatarBuilder';
+import { AvatarSvg } from './AvatarSvg';
+import { parseAvatar } from '../utils/avatarParts';
 import type { FlairStats } from '../utils/avatarParts';
+import { ProfileSwitcher } from './ProfileSwitcher';
+import { ParentDashboard } from './ParentDashboard';
+import { printCertificate } from '../utils/certificateGenerator';
 
 // Removed tab switching - now showing everything on one page
 
@@ -22,6 +27,7 @@ interface Props {
     uniqueWordsAttempted: number;
     onUpgrade?: () => void;
     onShop?: () => void;
+    onCertificate?: (type: 'level-completion', level: number, wordsMastered: number, accuracy: number) => void;
 }
 
 // Derive achievement sublists from the single spelling array
@@ -34,7 +40,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop, onCertificate }: Props) {
     // Get user state from context
     const {
         stats,
@@ -62,6 +68,15 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         referralCount,
         shareReferral,
         purchasedPacks,
+        // Profiles (Bee Team)
+        profiles,
+        activeProfileId,
+        isParentMode,
+        canAddProfile,
+        addProfile,
+        removeProfile,
+        switchProfile,
+        customBranding,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -74,6 +89,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const [emailSent, setEmailSent] = useState(false);
     const [deleteConfirm, setDeleteConfirm] = useState(false);
     const [deleting, setDeleting] = useState(false);
+    const [showAvatarBuilder, setShowAvatarBuilder] = useState(false);
 
     // Memoize expensive rank calculations
     const rankInfo = useMemo(() => getRank(stats.totalXP), [stats.totalXP]);
@@ -105,10 +121,13 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         sessionsPlayed: stats.sessionsPlayed,
         totalXP: stats.totalXP,
         masteredCount,
-    }), [stats.dayStreak, stats.totalSolved, stats.bestStreak, stats.sessionsPlayed, stats.totalXP, masteredCount]);
+        isPremium,
+        purchasedPacks,
+    }), [stats.dayStreak, stats.totalSolved, stats.bestStreak, stats.sessionsPlayed, stats.totalXP, masteredCount, isPremium, purchasedPacks]);
 
     // Word bank mastery percentile
     const registryVersion = getRegistryVersion();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- registryVersion triggers re-count when tiers load
     const totalWords = useMemo(() => getAllWords().length, [registryVersion]);
     const masteryPercent = useMemo(() => {
         if (totalWords === 0) return '0%';
@@ -118,6 +137,39 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-[calc(env(safe-area-inset-top,12px)+48px)] pb-20 landscape-compact-pb">
+            {/* Profile switcher (Bee Team only) */}
+            {isPremium && profiles.length > 0 && (
+                <div className="w-full max-w-sm mb-4">
+                    <ProfileSwitcher
+                        profiles={profiles}
+                        activeProfileId={activeProfileId}
+                        canAddProfile={canAddProfile}
+                        onSwitch={switchProfile}
+                        onAdd={addProfile}
+                        onRemove={removeProfile}
+                    />
+                </div>
+            )}
+
+            {/* Parent Dashboard (Bee Team — when in parent mode) */}
+            {isPremium && isParentMode && profiles.length > 0 && (
+                <ParentDashboard
+                    profiles={profiles}
+                    onSwitchToProfile={switchProfile}
+                    onPrintReport={(profile, pStats) => {
+                        printCertificate({
+                            type: 'level-completion',
+                            playerName: profile.name,
+                            date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                            level: parseInt(profile.level?.replace('level-', '') || '1') || 1,
+                            wordsMastered: pStats.totalCorrect,
+                            accuracy: pStats.totalSolved > 0 ? Math.round((pStats.totalCorrect / pStats.totalSolved) * 100) : 0,
+                            customBranding: customBranding || undefined,
+                        });
+                    }}
+                />
+            )}
+
             {/* Display name + edit */}
             <div className="flex items-center gap-2 mb-2">
                 {editingName ? (
@@ -238,7 +290,9 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
             >
-                <div className="text-4xl mb-1">{rank.emoji}</div>
+                <div className="mb-1 flex justify-center text-[var(--color-gold)]">
+                    <RankIcon rank={rank.name} className="w-10 h-10" />
+                </div>
                 <button
                     onClick={() => setShowRanks(true)}
                     className="text-xl ui font-bold text-[var(--color-gold)] leading-tight hover:opacity-80 transition-opacity"
@@ -332,12 +386,25 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 <div className="flex flex-col items-center">
 
             {/* ═══════ AVATAR ═══════ */}
-                <div className="w-full max-w-sm mb-5">
-                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                        avatar
+                <button
+                    onClick={() => setShowAvatarBuilder(true)}
+                    className="mb-5 flex flex-col items-center gap-1.5 group"
+                    aria-label="Customize avatar"
+                >
+                    <div className="relative p-2.5 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/5 group-hover:border-[var(--color-gold)]/30 transition-colors">
+                        <AvatarSvg
+                            config={parseAvatar(avatarConfig)}
+                            size={64}
+                            className="text-[var(--color-chalk)]"
+                        />
+                        <span className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/30 flex items-center justify-center">
+                            <IconEdit className="w-3 h-3 text-[var(--color-gold)]" />
+                        </span>
                     </div>
-                    <AvatarBuilder config={avatarConfig} onChange={onAvatarChange} flairStats={flairStats} />
-                </div>
+                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 group-hover:text-[rgb(var(--color-fg))]/50 transition-colors">
+                        customize
+                    </span>
+                </button>
 
             {/* ═══════ REFERRAL / CHAMPION PASS ═══════ */}
                 <div className="w-full max-w-sm mb-5">
@@ -585,6 +652,38 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 </div>
             </div>
 
+            {/* ═══════ CERTIFICATES ═══════ */}
+            {onCertificate && stats.beeSessions > 0 && (
+                <div className="w-full max-w-sm mt-6">
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                        certificates
+                    </div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-3">
+                        Download certificates for your achievements
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                        {stats.beeWins > 0 && (
+                            <button
+                                onClick={() => onCertificate('level-completion', 1, masteredCount, Math.round(accuracy))}
+                                className="py-3 px-3 rounded-xl bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/8 hover:border-[var(--color-gold)]/30 transition-colors text-center"
+                            >
+                                <div className="text-2xl mb-1">🏅</div>
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/60 font-medium">Bee Winner</div>
+                            </button>
+                        )}
+                        {masteredCount >= 10 && (
+                            <button
+                                onClick={() => onCertificate('level-completion', parseInt(stats.beeBestLevel) || 1, masteredCount, Math.round(accuracy))}
+                                className="py-3 px-3 rounded-xl bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/8 hover:border-[var(--color-gold)]/30 transition-colors text-center"
+                            >
+                                <div className="text-2xl mb-1">🎓</div>
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/60 font-medium">{masteredCount} Words Mastered</div>
+                            </button>
+                        )}
+                    </div>
+                </div>
+            )}
+
             {/* Reset stats */}
             <button
                 onClick={() => {
@@ -628,7 +727,9 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                             : ''
                                             }`}
                                     >
-                                        <span className="text-xl">{r.emoji}</span>
+                                        <span className={`${isCurrent ? 'text-[var(--color-gold)]' : isReached ? 'text-[rgb(var(--color-fg))]/70' : 'text-[rgb(var(--color-fg))]/25'}`}>
+                                            <RankIcon rank={r.name} className="w-6 h-6" />
+                                        </span>
                                         <div className="flex-1">
                                             <div className={`text-sm ui font-semibold ${isCurrent ? 'text-[var(--color-gold)]' :
                                                 isReached ? 'text-[rgb(var(--color-fg))]/70' : 'text-[rgb(var(--color-fg))]/40'
@@ -725,6 +826,21 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                 {deleting ? 'deleting...' : 'delete forever'}
                             </button>
                         </div>
+                    </ModalShell>
+                )}
+            </AnimatePresence>
+
+            {/* Avatar builder modal */}
+            <AnimatePresence>
+                {showAvatarBuilder && (
+                    <ModalShell onClose={() => setShowAvatarBuilder(false)} ariaLabel="Customize avatar" className="w-[min(360px,90vw)]">
+                        <AvatarBuilder config={avatarConfig} onChange={onAvatarChange} flairStats={flairStats} />
+                        <button
+                            onClick={() => setShowAvatarBuilder(false)}
+                            className="w-full mt-4 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                        >
+                            done
+                        </button>
                     </ModalShell>
                 )}
             </AnimatePresence>

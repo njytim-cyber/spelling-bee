@@ -1,8 +1,10 @@
-import { memo } from 'react';
-import { motion } from 'framer-motion';
+import { memo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { QuestionTypePicker } from './QuestionTypePicker';
 import type { SpellingCategory } from '../domains/spelling/spellingCategories';
 import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
+import type { TimedVariant } from '../engine/domain';
+import { trackEvent } from '../utils/analytics';
 
 interface Props {
     questionType: SpellingCategory;
@@ -10,12 +12,20 @@ interface Props {
     timedMode: boolean;
     onTimedModeToggle: () => void;
     timerProgress: number; // 0 → 1
+    timedVariant: TimedVariant;
+    onTimedVariantChange: (v: TimedVariant) => void;
     /** Text-entry (guided) mode toggle */
     guidedMode: boolean;
     onGuidedModeToggle: () => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
 }
+
+const VARIANT_OPTIONS: { id: TimedVariant; label: string; sub: string; premium: boolean }[] = [
+    { id: 'normal', label: '10s', sub: 'Normal', premium: false },
+    { id: 'speed', label: '5s', sub: 'Speed', premium: true },
+    { id: 'endurance', label: '⏬', sub: 'Endurance', premium: true },
+];
 
 /** Circular countdown ring drawn as an SVG arc */
 function TimerRing({ progress, active }: { progress: number; active: boolean }) {
@@ -52,12 +62,15 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
 export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange,
     timedMode, onTimedModeToggle, timerProgress,
+    timedVariant, onTimedVariantChange,
     guidedMode, onGuidedModeToggle,
     isPremium, onUpgrade,
 }: Props) {
+    const [showVariantPicker, setShowVariantPicker] = useState(false);
     // Hide hard/timed toggles during full-screen modes that have their own controls
     const hideToggles = questionType === 'bee' || questionType === 'guided';
     const categoryLabel = SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? '';
+    const variantLabel = timedVariant === 'speed' ? '5s' : timedVariant === 'endurance' ? '⏬' : '10s';
 
     return (
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
@@ -101,39 +114,116 @@ export const ActionButtons = memo(function ActionButtons({
             </motion.button>}
 
             {/* Stopwatch / timed mode */}
-            {!hideToggles && <motion.button
-                onClick={onTimedModeToggle}
-                className={`w-11 h-11 relative flex items-center justify-center ${timedMode
-                    ? 'text-[var(--color-gold)]'
-                    : 'text-[rgb(var(--color-fg))]/70'
-                    }`}
-                whileTap={{ scale: 0.88 }}
-                aria-label={timedMode ? 'Timer on' : 'Timer off'}
-            >
-                <TimerRing progress={timerProgress} active={timedMode} />
-                <motion.svg
-                    viewBox="0 0 24 24"
-                    className="w-6 h-6 relative z-10"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    animate={timedMode ? { rotate: [0, -6, 6, -3, 3, 0] } : {}}
-                    transition={timedMode ? {
-                        duration: 1.8,
-                        repeat: Infinity,
-                        repeatDelay: 3,
-                        ease: 'easeInOut',
-                    } : {}}
+            {!hideToggles && <div className="relative">
+                <motion.button
+                    onClick={() => {
+                        if (timedMode) {
+                            setShowVariantPicker(v => !v);
+                        } else {
+                            onTimedModeToggle();
+                        }
+                    }}
+                    onDoubleClick={() => {
+                        if (timedMode) onTimedModeToggle();
+                    }}
+                    className={`w-11 h-11 relative flex items-center justify-center ${timedMode
+                        ? 'text-[var(--color-gold)]'
+                        : 'text-[rgb(var(--color-fg))]/70'
+                        }`}
+                    whileTap={{ scale: 0.88 }}
+                    aria-label={timedMode ? `Timer on (${variantLabel}) — tap to change, double-tap to turn off` : 'Timer off'}
                 >
-                    <circle cx="12" cy="14" r="7" />
-                    <line x1="12" y1="3" x2="12" y2="7" />
-                    <line x1="9" y1="3" x2="15" y2="3" />
-                    <line x1="12" y1="14" x2="12" y2="10" />
-                </motion.svg>
-                <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">Timer</span>
-            </motion.button>}
+                    <TimerRing progress={timerProgress} active={timedMode} />
+                    <motion.svg
+                        viewBox="0 0 24 24"
+                        className="w-6 h-6 relative z-10"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        animate={timedMode ? { rotate: [0, -6, 6, -3, 3, 0] } : {}}
+                        transition={timedMode ? {
+                            duration: 1.8,
+                            repeat: Infinity,
+                            repeatDelay: 3,
+                            ease: 'easeInOut',
+                        } : {}}
+                    >
+                        <circle cx="12" cy="14" r="7" />
+                        <line x1="12" y1="3" x2="12" y2="7" />
+                        <line x1="9" y1="3" x2="15" y2="3" />
+                        <line x1="12" y1="14" x2="12" y2="10" />
+                    </motion.svg>
+                    <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">
+                        {timedMode ? variantLabel : 'Timer'}
+                    </span>
+                </motion.button>
+
+                {/* Variant picker popup */}
+                <AnimatePresence>
+                    {showVariantPicker && timedMode && (
+                        <>
+                            {/* Backdrop */}
+                            <motion.div
+                                className="fixed inset-0 z-30"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={() => setShowVariantPicker(false)}
+                            />
+                            <motion.div
+                                initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                                transition={{ duration: 0.15 }}
+                                className="absolute right-14 top-0 z-40 bg-[var(--color-board)] border border-[rgb(var(--color-fg))]/15 rounded-xl shadow-lg p-1.5 min-w-[120px]"
+                            >
+                                {VARIANT_OPTIONS.map(opt => {
+                                    const locked = opt.premium && !isPremium;
+                                    const active = timedVariant === opt.id;
+                                    return (
+                                        <button
+                                            key={opt.id}
+                                            onClick={() => {
+                                                if (locked) {
+                                                    onUpgrade?.();
+                                                } else {
+                                                    onTimedVariantChange(opt.id);
+                                                    trackEvent('timed_variant_selected', { variant: opt.id });
+                                                    setShowVariantPicker(false);
+                                                }
+                                            }}
+                                            className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left transition-colors ${
+                                                active
+                                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)]'
+                                                    : locked
+                                                        ? 'text-[rgb(var(--color-fg))]/25'
+                                                        : 'text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/5'
+                                            }`}
+                                        >
+                                            <span className="text-xs ui font-semibold w-5">{opt.label}</span>
+                                            <span className="text-[10px] ui flex-1">{opt.sub}</span>
+                                            {locked && <span className="text-[8px]">🔒</span>}
+                                            {active && <span className="text-[8px]">✓</span>}
+                                        </button>
+                                    );
+                                })}
+                                {/* Turn off option */}
+                                <button
+                                    onClick={() => {
+                                        onTimedModeToggle();
+                                        setShowVariantPicker(false);
+                                    }}
+                                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-left text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors mt-0.5 border-t border-[rgb(var(--color-fg))]/5 pt-1.5"
+                                >
+                                    <span className="text-[10px] ui">Turn off timer</span>
+                                </button>
+                            </motion.div>
+                        </>
+                    )}
+                </AnimatePresence>
+            </div>}
         </div>
     );
 });

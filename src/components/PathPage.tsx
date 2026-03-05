@@ -30,6 +30,7 @@ interface Props {
     onDrillRoot?: (rootId: string) => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
+    bestStreak?: number;
     /** True when free user has exhausted daily review cap */
     isReviewLimited?: boolean;
     /** Number of reviews remaining before cap (free users only) */
@@ -367,7 +368,7 @@ function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, isPremium = false, onUpgrade, isReviewLimited = false, reviewsRemaining }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, isPremium = false, onUpgrade, bestStreak = 0, isReviewLimited = false, reviewsRemaining }: Props) {
     const registryVersion = getRegistryVersion();
     const levelProgress = useMemo(
         () => evaluateLevelProgress(records, wordCountByDifficulty),
@@ -609,6 +610,9 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                         onDrillRoot(rootId);
                     } : undefined}
                     rootMastery={rootMasteryMap}
+                    isPremium={isPremium}
+                    onUpgrade={() => { setStudyToolsTab(null); onUpgrade?.(); }}
+                    bestStreak={bestStreak}
                 />
             )}
         </AnimatePresence>

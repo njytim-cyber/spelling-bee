@@ -1,7 +1,7 @@
 # MONETIZATION.md — Implementation Checklist
 
 > Strategy source: Detailed Monetization Strategy infographic (v1.0.4)
-> Current state: **Phases 0-2.5 complete — Stripe subscriptions + one-time IAP, cosmetic shop (5 packs), referral system, paywall, content gating, trial flow, analytics, custom list/TTS gating, viral growth (streak milestones, invite-to-compete, 1v1 multiplayer). Phases 3-4 deferred (need users first).**
+> Current state: **Phases 0-3 complete — All Phase 2.5 features + Phase 3: Bee Team tier (multi-profile, parent dashboard, profile switcher), printable certificates (level completion, bee win, weekly champion with custom branding), analytics dashboards (21 trackEvent types across all features, GA4 measurementId support). Phase 4 deferred (need users first).**
 > Goal: 3-tier freemium + cosmetic IAP + viral K-factor growth
 
 ---
@@ -18,15 +18,15 @@
 
 ### 1.1 Payment Processor
 - [x] Stripe for web subscription management — `services/stripe.ts` + Cloud Functions
-- [ ] Apple IAP setup (App Store review guidelines for kids' apps)
-- [ ] Google Play Billing setup
+- [ ] Apple IAP setup (App Store review guidelines for kids' apps) — DEFERRED (native app)
+- [ ] Google Play Billing setup — DEFERRED (native app)
 - [x] Web Stripe Checkout for PWA users — `createCheckoutSession` Cloud Function
 - [x] Receipt validation Cloud Function (server-side webhook verification) — `stripeWebhook`
 
 ### 1.2 Subscription Tiers
-- [x] **Tier 1: Free** — Levels 1-3, 30 SRS reviews/day, public leaderboard, basic achievements — `FREE_LEVEL_CAP`, `FREE_DAILY_REVIEW_CAP`
+- [x] **Tier 1: Free** — Levels 1-3, 2 SRS reviews/day, public leaderboard, basic achievements — `FREE_LEVEL_CAP`, `FREE_DAILY_REVIEW_CAP`
 - [x] **Tier 2: Champion Pass ($4.99/mo or $29.99/yr)** — All 10 levels, unlimited SRS, etymology quiz, roots study, premium cosmetics — Stripe products configured
-- [ ] **Tier 3: Bee Team (~$7.99/mo or $49.99/yr)** — Family/classroom: up to 5 learner profiles, parent/teacher dashboard, custom word list creator (assigned), printable progress reports
+- [x] **Tier 3: Bee Team (~$7.99/mo or $49.99/yr)** — Family/classroom: up to 5 learner profiles, parent/teacher dashboard, profile switcher, printable certificates & reports, custom branding — UI complete in UpgradeModal (Stripe checkout TBD)
 
 ### 1.3 Trial & Conversion
 - [x] 7-day Champion Pass trial triggered at Level 3 completion — activateTrial(7) in usePremium
@@ -46,27 +46,28 @@
 - [x] Gate Levels 4-10 behind Champion Pass — UpgradeModal + isLevelPremium()
 - [x] All 10 levels exist and work — gating logic wired in PathPage + QuestionTypePicker
 - [x] "Unlock with Champion Pass" prompt when tapping Level 4+ — UpgradeModal shown
-- [x] Graceful degradation: stats, SRS boxes, word history all preserved on lapse — levels re-lock but data stays, reviews capped to 30/day
+- [x] Graceful degradation: stats, SRS boxes, word history all preserved on lapse — levels re-lock but data stays, reviews capped to 2/day
 
 ### 2.2 SRS Gating
 - [x] Leitner SRS exists (5 boxes) — daily review cap implemented for free tier
-- [x] Free tier: cap at 30 SRS reviews/day (FREE_DAILY_REVIEW_CAP in config.ts)
+- [x] Free tier: cap at 2 SRS reviews/day (FREE_DAILY_REVIEW_CAP in config.ts)
 - [x] Champion Pass: unlimited reviews
 - [x] UI indicator showing remaining free reviews (PathPage CTA + "X reviews remaining")
 
 ### 2.3 Premium Tools Gating
 - [x] Etymology data exists — etymology quiz gated as Champion-only in QuestionTypePicker
 - [x] Roots browser exists — gated as Champion-only (premium flag on CategoryEntry)
-- [ ] Advanced Timed Mode (e.g., speed rounds, endurance mode) — Champion only — DEFERRED
-- [ ] Full Analytics & Report Cards — Champion only — DEFERRED (View Stats already removed)
-- [~] Basic stats exist; need "full analytics" view behind paywall — DEFERRED
+- [x] Advanced Timed Mode — Speed Round (5s) + Endurance (shrinking timer from 10s→3s) — Champion only, variant picker on stopwatch button
+- [x] Champion Analytics — Session timeline (30-day sparkline), category breakdown heatmap, personal records, speed performance stats — in StudyAnalyticsModal, locked preview + upgrade CTA for free users
 
 ### 2.4 Cosmetics Gating
 - [x] 22 chalk themes: 4 Champion-only + 9 IAP pack items — `premium`/`packItem` flags on ChalkTheme
 - [x] 7 swipe trails: 2 Champion-only + 3 IAP pack items — `premium`/`packItem` flags on TrailConfig
 - [x] Lock icon (🔒) + UpgradeModal on premium cosmetics in MePage pickers
 - [x] Shop icon (🛒) + ShopModal on IAP pack items in MePage pickers
-- [~] 8 flair items exist (achievement-unlocked) — add paid-exclusive flair later
+- [x] 14 flair items: 8 achievement-unlocked + 3 Champion Pass exclusive (Crown, Shield, Orbit) + 3 seasonal IAP (Snowfall, Petals, Sunbeam)
+- [x] Flair lock badges (🔒 Champion, 🛒 shop) in AvatarBuilder
+- [x] Seasonal flair packs in ShopModal (Winter/Spring/Summer + All Seasons Bundle)
 
 ---
 
@@ -76,7 +77,7 @@
 - [x] 3 themed chalk packs: Neon Glow ($0.99), Pastel Dreams ($0.99), Nature's Palette ($0.99) — 9 colors total
 - [x] Trail Variety pack ($1.49) — Snowflake, Sparkle, Comet trails
 - [x] Ultimate Collection ($2.99) — all 9 colors + all 3 trails (best value)
-- [ ] Holiday icon packs (seasonal avatar accessories)
+- [x] Seasonal flair packs: Winter Wonderland ($0.99), Spring Bloom ($0.99), Summer Rays ($0.99), All Seasons Bundle ($1.99)
 - [x] Shop UI modal (browse packs, preview swatches/emoji, purchase via Stripe) — ShopModal.tsx
 - [x] "Owned" badge on purchased items + "Already owned via other packs" for redundant items
 - [x] IAP pack items in MePage pickers — 🛒 icon badge, click → shop modal
@@ -84,13 +85,13 @@
 - [x] Webhook handling — `checkout.session.completed` with `type: 'cosmetic_pack'` → Firestore `purchasedPacks` arrayUnion
 - [x] Ownership tracking — localStorage + Firestore sync via `purchasedPacks` field
 
-### 3.2 Competition Word Packs ($2.99-$4.99)
-- [ ] Scripps Regionals pack
-- [ ] State-level / SAT vocabulary pack
+### 3.2 Competition Word Packs ($2.99-$4.99) — DEFERRED
+- [ ] ~~Scripps Regionals pack~~ — removed (copyrighted content)
+- [ ] SAT vocabulary pack
 - [ ] Pack preview (sample 10 words free, rest locked)
 - [ ] Download + unlock flow
 
-### 3.3 "Bee Coach" AI Add-On ($2.99/mo)
+### 3.3 "Bee Coach" AI Add-On ($2.99/mo) — DEFERRED
 - [ ] Personalized practice recommendations (beyond current error patterns)
 - [ ] Memory tricks / mnemonics generation
 - [ ] AI-powered weakness analysis
@@ -115,7 +116,7 @@
 - [x] Session result sharing with emoji grid — EXISTS
 - [x] Challenge URL so friends play same words — EXISTS
 - [x] **Add referral code to share cards** — all share touchpoints use appendReferralFooter()
-- [ ] "Beat my score" challenge with trackable link
+- [x] "Beat my score" — challenge URL includes `&s=<score>&a=<accuracy>`, recipient sees comparison + win/lose/tie on SessionSummary
 - [x] Share achievements to social media — achievement toast "Share" action button
 - [x] Share streak milestones ("I'm on a 30-day streak!") — toast + share at 7/14/30/60/100-day milestones (STREAK_MILESTONES config)
 - [x] Share leaderboard rank changes — share button on user's own rank row
@@ -123,17 +124,17 @@
 
 ### 4.3 Challenge & Competition Virality
 - [x] "Challenge a friend" flow — challenge URL already embedded in SessionSummary share (createChallengeId)
-- [ ] Head-to-head async challenges (play same set, compare scores)
+- [x] Head-to-head async challenges — ChallengeBanner on `?c=` links shows target score, SessionSummary shows "You won!/Almost!" comparison
 - [x] 1v1 multiplayer — unhidden for Champion users on Compete page (🔒 for free → UpgradeModal)
-- [ ] Classroom challenge codes (teacher creates, students join)
-- [ ] Weekly tournament with shareable bracket
+- [x] Classroom challenge codes — teacher enters a code string, seeded → deterministic word set, students all get same words via `?class=` or Compete page button
+- [x] Weekly tournament — deterministic 25-word set from ISO week seed, same for everyone all week, card on Compete page
 
 ### 4.4 Leaderboard Virality
 - [x] Weekly XP leaderboard — EXISTS
 - [x] Rival ping system — EXISTS
 - [x] "Invite to compete" button on leaderboard — share button with referral link (LeaguePage)
-- [ ] Weekly leaderboard push notification ("New week! Defend your rank")
-- [ ] End-of-week summary push ("You finished #3 this week!")
+- [ ] Weekly leaderboard push notification ("New week! Defend your rank") — DEFERRED (needs FCM)
+- [ ] End-of-week summary push ("You finished #3 this week!") — DEFERRED (needs FCM)
 
 ---
 
@@ -160,38 +161,39 @@
 ## 6. PARENT & FAMILY FEATURES (Tier 3: Bee Team)
 
 ### 6.1 Multi-Profile Support
-- [ ] Up to 5 learner profiles per Bee Team account
-- [ ] Profile switcher UI
-- [ ] Per-profile stats, SRS boxes, achievements
-- [ ] Parent/admin profile (non-learner, dashboard-only)
+- [x] Up to 5 learner profiles per Bee Team account — `useProfiles` hook, localStorage per-profile isolation
+- [x] Profile switcher UI — `ProfileSwitcher.tsx` with avatar bar, add/remove modals
+- [x] Per-profile stats, SRS boxes, achievements — localStorage keyed by profileId
+- [x] Parent/admin profile (non-learner, dashboard-only) — `activeProfileId === null` = parent mode
 
 ### 6.2 Parent/Teacher Dashboard
-- [ ] Progress overview per child (words mastered, accuracy trends)
-- [ ] Weakness tracking (error patterns per child)
-- [ ] Weekly email digest to parent (auto-triggered)
-- [ ] Assignment feature (assign specific word lists to learners)
-- [ ] Printable progress reports / report cards
+- [x] Progress overview per child (words mastered, accuracy trends) — `ParentDashboard.tsx` with per-learner cards (XP, words, accuracy, streak)
+- [ ] Weakness tracking (error patterns per child) — DEFERRED (needs per-profile error pattern aggregation)
+- [ ] Weekly email digest to parent (auto-triggered) — DEFERRED (needs email infrastructure)
+- [ ] Assignment feature (assign specific word lists to learners) — DEFERRED
+- [x] Printable progress reports / report cards — print button on each learner card → certificate
 
 ### 6.3 Parent Achievement Emails
-- [ ] Email triggered by milestone achievements (Word Wizard, Bee Champion, etc.)
-- [ ] Include progress stats in email body
-- [ ] "Share your child's achievement" CTA in email (viral loop)
-- [ ] COPPA-compliant: parent email collected at signup, verified
+- [ ] Email triggered by milestone achievements (Word Wizard, Bee Champion, etc.) — DEFERRED
+- [ ] Include progress stats in email body — DEFERRED
+- [ ] "Share your child's achievement" CTA in email (viral loop) — DEFERRED
+- [ ] COPPA-compliant: parent email collected at signup, verified — DEFERRED
 
 ---
 
 ## 7. CERTIFICATES & SOCIAL PROOF
 
 ### 7.1 Printable Certificates
-- [ ] Level completion certificate (PDF generation)
-- [ ] Bee Simulation win certificate
-- [ ] Weekly champion certificate (top leaderboard)
-- [ ] Custom branding for Bee Team (school/class name on certificate)
+- [x] Level completion certificate (PNG generation via html-to-image + browser print) — `certificateGenerator.ts` + `CertificatePreview.tsx`
+- [x] Bee Simulation win certificate — trigger on victory screen in BeeSimPage
+- [x] Weekly champion certificate (top leaderboard) — 🏅 icon on #1 rank row in LeaguePage
+- [x] Custom branding for Bee Team (school/class name on certificate) — `customBranding` field in UserContext
+- [x] Certificate gallery in MePage — Bee Winner + Words Mastered certificates
 
 ### 7.2 Digital Badges
-- [ ] Shareable badge images for achievements
-- [ ] "Verified Speller" badge (mastered 100+ words at Level 5+)
-- [ ] Embed in social share cards
+- [ ] Shareable badge images for achievements — DEFERRED
+- [ ] "Verified Speller" badge (mastered 100+ words at Level 5+) — DEFERRED
+- [ ] Embed in social share cards — DEFERRED
 
 ---
 
@@ -200,16 +202,18 @@
 ### 8.1 Product Analytics
 - [x] Firebase Analytics initialized (lazy, browser-only) — firebase.ts + analytics.ts
 - [x] Key funnel events: `onboarding_complete`, `session_complete`, `paywall_shown`, `trial_started`, `purchase_clicked`, `referral_shared`, `level_gated`
-- [ ] Firebase Analytics dashboard setup (conversion funnels, retention cohorts)
-- [ ] Retention cohorts (Day 1, Day 7, Day 30)
-- [ ] Feature usage tracking (which modes are most popular)
+- [x] Feature usage events: `bee_sim_completed`, `timed_variant_selected`, `weekly_tournament_played`, `classroom_code_used`, `profile_created`, `profile_switched`, `certificate_downloaded`, `shop_purchase_clicked`, `pack_purchased`
+- [x] GA4 measurement ID support added to firebase config (`VITE_FIREBASE_MEASUREMENT_ID` env var)
+- [~] Firebase Analytics dashboard setup — GA4 must be enabled via Firebase Console → Analytics → Enable (not CLI-configurable). Once enabled, set `VITE_FIREBASE_MEASUREMENT_ID` in `.env`.
+- [~] Retention cohorts (Day 1, Day 7, Day 30) — built-in to GA4 once enabled
+- [x] Feature usage tracking — 21 event types across all features
 
 ### 8.2 Revenue Analytics
-- [ ] MRR / ARR tracking
-- [ ] Subscriber LTV calculation
-- [ ] Trial-to-paid conversion rate
-- [ ] Churn rate monitoring
-- [ ] Referral attribution tracking (K-factor measurement)
+- [~] MRR / ARR tracking — use Stripe Dashboard (Dashboard → Revenue)
+- [~] Subscriber LTV calculation — Stripe Dashboard → Revenue → LTV
+- [~] Trial-to-paid conversion rate — Firebase funnel: `trial_started` → `purchase_clicked`
+- [~] Churn rate monitoring — Stripe Dashboard → Subscriptions → Churn
+- [~] Referral attribution tracking (K-factor measurement) — Firestore `referrals` collection + `referral_shared` events
 
 ### 8.3 KPI Targets (from Strategy)
 - [ ] CPI < $2.00
@@ -262,7 +266,7 @@
 5. ✅ Paywall UI (UpgradeModal — chalk aesthetic, feature comparison)
 6. ✅ Level gating (Levels 4-10 behind Champion Pass)
 7. ✅ 7-day trial at Level 3 gate (activateTrial in usePremium)
-8. ✅ SRS daily review cap (Free: 30/day, Champion: unlimited)
+8. ✅ SRS daily review cap (Free: 2/day, Champion: unlimited)
 9. ✅ Premium category gating (Etymology Quiz + Word Roots = Champion-only)
 
 ### Phase 1: Payment-Ready Infrastructure ✅ DONE
@@ -285,7 +289,7 @@
 - [x] Restore purchases flow → `restoreSubscription` Cloud Function checks Stripe on login
 
 ### Phase 2: Revenue Expansion (Partial) ✅ SHOP DONE
-10. ✅ Cosmetic IAP shop — 5 packs (3 chalk + 1 trail + 1 ultimate), ShopModal, Stripe one-time payment, ownership tracking
+10. ✅ Cosmetic IAP shop — 9 packs (3 chalk + 1 trail + 1 ultimate + 3 seasonal flair + 1 seasonal bundle), ShopModal, Stripe one-time payment, ownership tracking
 11. Competition word packs — DEFERRED
 12. Bee Coach AI add-on — DEFERRED
 13. Product analytics (funnel tracking, retention cohorts)
@@ -297,18 +301,24 @@
 - ✅ 1v1 multiplayer unhidden for Champion on Compete page (🔒 for free)
 - ✅ Leaderboard "Invite to Compete" share button with referral link
 - ✅ Challenge-a-friend flow already in SessionSummary share
+- ✅ Advanced Timed Mode — Speed Round (5s) + Endurance (shrinking 10s→3s), Champion-only variant picker
+- ✅ Champion Analytics — 30-day session timeline sparkline, category breakdown heatmap, personal records, speed performance, locked preview for free users
+- ✅ "Beat my score" trackable challenge links — `&s=<score>&a=<accuracy>` in URL, comparison + ChallengeBanner
+- ✅ Weekly tournament — 25-word deterministic set per ISO week, Compete page card
+- ✅ Classroom codes — seed-based deterministic word sets, Compete page entry
 
-### Phase 3: Family & Classroom — DEFERRED (need users first)
-14. Multi-profile support (Bee Team tier)
-15. Parent/teacher dashboard
-16. Achievement emails to parents
-17. Printable certificates and report cards
+### Phase 3: Family & Classroom + Certificates + Analytics ✅ DONE
+14. ✅ Multi-profile support (Bee Team tier) — `useProfiles`, `ProfileSwitcher`, per-profile localStorage isolation
+15. ✅ Parent/teacher dashboard — `ParentDashboard.tsx` with per-learner stats cards + print reports
+16. Achievement emails to parents — DEFERRED (needs email infrastructure)
+17. ✅ Printable certificates and report cards — `certificateGenerator.ts`, `CertificatePreview.tsx`, triggers in BeeSimPage/LeaguePage/MePage
+18. ✅ Bee Team tier in UpgradeModal ($7.99/mo, $49.99/yr) — UI ready, Stripe checkout TBD
+19. ✅ Analytics dashboards — 21 event types, GA4 measurementId support, Firebase Console + Stripe Dashboard for KPIs
 
 ### Phase 4: Lifecycle & Campaigns — DEFERRED (need users first)
-18. Seasonal events framework
-19. Lifecycle notification sequences
-20. Win-back campaigns
-21. Revenue analytics dashboard
+20. Seasonal events framework
+21. Lifecycle notification sequences
+22. Win-back campaigns
 
 ---
 
@@ -319,19 +329,28 @@ These features exist and just need a monetization layer or viral enhancement:
 | Feature | Status | Monetization Action |
 |---------|--------|-------------------|
 | 10 curriculum levels | **Gated** | ✅ Levels 4-10 behind Champion Pass |
-| Leitner SRS (5 boxes) | **Capped** | ✅ Free: 30/day, Champion: unlimited |
+| Leitner SRS (5 boxes) | **Capped** | ✅ Free: 2/day, Champion: unlimited |
 | 22 chalk themes | **4 Champion, 9 IAP** | ✅ 4 Champion-only + 9 in shop packs (Neon/Pastel/Nature) |
 | 7 swipe trails | **2 Champion, 3 IAP** | ✅ 2 Champion-only + 3 in Trail Variety pack |
-| 8 flair items | Free (achievement unlock) | Add paid-exclusive flair |
+| 14 flair items | **3 Champion, 3 IAP** | ✅ 3 Champion-only (Crown/Shield/Orbit) + 3 in seasonal flair packs |
 | Session share cards | **Referral-enabled** | ✅ Referral code in all share text |
-| Challenge URLs | Free | Add referral tracking |
+| Challenge URLs | **Referral-enabled** | ✅ Referral code in challenge share text |
 | Weekly leaderboard | **Share-enabled** | ✅ Share button on user's rank row |
-| Rival pings | Free | Add "challenge" deeplink |
+| Rival pings | Free | Add "challenge" deeplink — DEFERRED |
 | Custom word lists | **Gated** | ✅ Free: 10 lists, Champion: 20 (FREE_CUSTOM_LIST_CAP) |
 | Cloud TTS | **Gated** | ✅ Free: 200/day, Champion: unlimited (synthesizeSpeech bypass) |
 | Bee Simulation | Free | Keep free (engagement) |
 | Daily Challenge | **Referral-enabled** | ✅ Referral code in share text |
 | Etymology/Roots tools | **Champion-only** | ✅ Gated in QuestionTypePicker |
-| Error pattern analysis | Free | Gate full analytics |
+| Error pattern analysis | Free | ✅ Champion Analytics (timeline, heatmap, records, speed) in Study Tools |
+| Advanced Timed Mode | **Champion-only** | ✅ Speed Round (5s) + Endurance (shrinking timer) — variant picker |
+| Weekly Tournament | Free | ✅ 25-word seeded weekly set on Compete page |
+| Classroom Codes | Free | ✅ Teacher enters code → deterministic word set for students |
+| Beat My Score | Free | ✅ Score/accuracy in challenge URL, comparison on SessionSummary |
 | 1v1 Multiplayer | **Champion-only** | ✅ Unhidden for Champions, 🔒 for free → UpgradeModal |
-| Print study sheet | Free | Add certificates for Champion |
+| Print study sheet | Free | ✅ Plus certificates (level/bee/champion) with print + download |
+| Multi-profile | **Bee Team** | ✅ Up to 5 learner profiles, per-profile stats isolation |
+| Parent Dashboard | **Bee Team** | ✅ Per-learner stats cards, print reports |
+| Certificates | Free | ✅ Bee win, weekly champion, level completion — print + PNG download |
+| Custom Branding | **Bee Team** | ✅ School/class name on certificates |
+| Analytics | Ops | ✅ 21 event types, GA4 support, Firebase + Stripe dashboards |

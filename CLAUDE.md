@@ -54,6 +54,11 @@ src/
 └── tests/               # Vitest test files
 ```
 
+### Hidden / Removed UI Elements
+- **Syllables button** in Spelling Bee — removed from `SECONDARY_INFO` in `BeeSimPage.tsx`. The `spellInSections` hook logic is retained but unreachable from UI.
+- **Rank emojis** — replaced with chalk-line SVG icons (`RankIcon` in `Icons.tsx`). Emoji field kept on `Rank` type for share text only.
+- **Leaderboard NPC backfill** — 10 NPC entries fill the Compete leaderboard when fewer than 10 real players exist. NPCs are non-interactive (no ping/race).
+
 ### Key Patterns
 - **Levels**: 10 levels (Level 1–10), each mapped 1:1 to difficulty values 1–10. Selected during onboarding, stored in UserContext. No K-12 grade names.
 - **Session-based play**: User picks a level from the curriculum, then chooses session size (10/20/50 words). SRS determines mix (max 20% review, rest new).

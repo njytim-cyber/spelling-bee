@@ -21,7 +21,6 @@ import {
     IconType,
     IconGlobe,
     IconGitBranch,
-    IconGrid,
     IconRepeat,
     IconSpeaker,
 } from './Icons';
@@ -32,6 +31,7 @@ import {
     playStreakSound,
 } from '../utils/soundEffects';
 import { STORAGE_KEYS } from '../config';
+import { trackEvent } from '../utils/analytics';
 import type { SeasonalTheme } from '../utils/seasonalThemes';
 import type { CharacterStyle } from '../utils/characterStyles';
 import type { SpellingWord } from '../domains/spelling/words/types';
@@ -54,7 +54,6 @@ const SECONDARY_INFO = [
     ['partOfSpeech', 'Part of Speech', IconType],
     ['origin', 'Origin', IconGlobe],
     ['roots', 'Roots', IconGitBranch],
-    ['spellInSections', 'Syllables', IconGrid],
 ] as const;
 
 /** Difficulty dots: 5 pips filled proportionally to difficulty 1-10 */
@@ -91,6 +90,7 @@ interface Props {
     onExit: () => void;
     onAnswer?: (word: string, correct: boolean, responseTimeMs: number, typed?: string) => void;
     onBeeResult?: (round: number, wordsCorrect: number, won: boolean, beeLevel: string, xp: number) => void;
+    onCertificate?: (beeLevel: string, roundReached: number) => void;
 }
 
 /** Compact inline feedback — correct answers advance fast, wrong answers wait for TTS spelling to finish */
@@ -156,7 +156,7 @@ function InlineFeedback({ correct, word, typed, onNext, isSpeaking }: { correct:
     );
 }
 
-export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult }: Props) {
+export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResult, onCertificate }: Props) {
     const [beeLevel, setBeeLevel] = useState<BeeLevel | null>(null);
 
     // Level selection screen — shown before the bee starts
@@ -215,7 +215,7 @@ export const BeeSimPage = memo(function BeeSimPage({ onExit, onAnswer, onBeeResu
         );
     }
 
-    return <BeeSimGame beeLevel={beeLevel} onExit={onExit} onAnswer={onAnswer} onBeeResult={onBeeResult} onChangeLevel={() => setBeeLevel(null)} />;
+    return <BeeSimGame beeLevel={beeLevel} onExit={onExit} onAnswer={onAnswer} onBeeResult={onBeeResult} onCertificate={onCertificate} onChangeLevel={() => setBeeLevel(null)} />;
 });
 
 /** Track missed words and session stats for richer summaries */
@@ -225,7 +225,7 @@ interface MissedWord {
 }
 
 /** The actual bee game — only renders after a level has been chosen */
-const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeResult, onChangeLevel }: Props & { beeLevel: BeeLevel; onChangeLevel: () => void }) {
+const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeResult, onCertificate, onChangeLevel }: Props & { beeLevel: BeeLevel; onChangeLevel: () => void }) {
     // Load user preferences from localStorage
     const [seasonalTheme] = useState<SeasonalTheme>(() => {
         const stored = localStorage.getItem(STORAGE_KEYS.seasonalTheme);
@@ -381,6 +381,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
         if ((phase === 'eliminated' || phase === 'won') && !beeResultFired.current) {
             beeResultFired.current = true;
             onBeeResult?.(round, wordsCorrect, phase === 'won', beeLevel, sessionXP);
+            trackEvent('bee_sim_completed', { level: beeLevel, won: phase === 'won', rounds: round + 1, words_correct: wordsCorrect });
 
             if (phase === 'won') {
                 queueMicrotask(() => {
@@ -610,7 +611,7 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                                     {/* Info buttons — all visible */}
                                     <div className="flex flex-wrap justify-center gap-2">
                                         {[...PRIMARY_INFO, ...SECONDARY_INFO].map(([type, label, Icon]) => {
-                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat' && type !== 'spellInSections';
+                                            const alreadyAsked = state.infoRequested.has(type) && type !== 'repeat';
                                             return (
                                                 <button
                                                     key={type}
@@ -956,11 +957,19 @@ const BeeSimGame = memo(function BeeSimGame({ beeLevel, onExit, onAnswer, onBeeR
                         )}
 
                         <motion.div
-                            className="flex gap-3 mt-4"
+                            className="flex flex-wrap justify-center gap-3 mt-4"
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.7 }}
                         >
+                            {onCertificate && (
+                                <button
+                                    onClick={() => onCertificate(BEE_LEVELS.find(l => l.id === beeLevel)?.label ?? beeLevel, round + 1)}
+                                    className="px-6 py-3 rounded-xl border-[3px] border-[var(--color-correct)]/60 bg-[var(--color-correct)]/20 text-sm ui font-bold text-[var(--color-correct)] hover:bg-[var(--color-correct)]/30 hover:scale-105 transition-all"
+                                >
+                                    🏅 Certificate
+                                </button>
+                            )}
                             <button
                                 onClick={onChangeLevel}
                                 className="px-8 py-3 rounded-xl border-[3px] border-[var(--color-gold)]/60 bg-[var(--color-gold)]/20 text-sm ui font-bold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/30 hover:scale-105 transition-all"

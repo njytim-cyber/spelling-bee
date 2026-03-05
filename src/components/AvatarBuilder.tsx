@@ -144,6 +144,8 @@ export const AvatarBuilder = memo(function AvatarBuilder({ config, onChange, fla
                             const isUnlocked = flairUnlocked[flair.index];
                             const isSelected = flair.index === parsed.flair;
                             const previewConfig = { ...parsed, flair: flair.index };
+                            const isPremiumFlair = flair.hint === 'Champion Pass';
+                            const isPackFlair = flair.hint.endsWith('Pack');
                             return (
                                 <button
                                     key={flair.index}
@@ -151,7 +153,7 @@ export const AvatarBuilder = memo(function AvatarBuilder({ config, onChange, fla
                                     aria-label={`Flair: ${flair.name}${isSelected ? ', selected' : ''}${!isUnlocked ? `, locked — ${flair.hint}` : ''}`}
                                     aria-pressed={isSelected}
                                     title={isUnlocked ? flair.name : `🔒 ${flair.hint}`}
-                                    className={`w-11 h-11 rounded-xl border-2 transition-all flex items-center justify-center p-0.5
+                                    className={`relative w-11 h-11 rounded-xl border-2 transition-all flex items-center justify-center p-0.5
                                         ${isSelected && isUnlocked
                                             ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-110'
                                             : isUnlocked
@@ -164,6 +166,12 @@ export const AvatarBuilder = memo(function AvatarBuilder({ config, onChange, fla
                                         size={28}
                                         className="text-[var(--color-chalk)]"
                                     />
+                                    {!isUnlocked && isPremiumFlair && (
+                                        <span className="absolute -top-0.5 -right-0.5 text-[8px]">🔒</span>
+                                    )}
+                                    {!isUnlocked && isPackFlair && (
+                                        <span className="absolute -top-0.5 -right-0.5 text-[8px]">🛒</span>
+                                    )}
                                 </button>
                             );
                         })}

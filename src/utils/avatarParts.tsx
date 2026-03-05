@@ -54,7 +54,7 @@ export const DEFAULT_AVATAR = 'h0-r1-e0-b1-c0-a0-f0';
 
 /** Max valid index per category key */
 const MAX_INDEX: Record<string, number> = {
-    h: 4, r: 4, e: 4, b: 4, c: 4, a: 4, f: 7,
+    h: 4, r: 4, e: 4, b: 4, c: 4, a: 4, f: 13,
 };
 
 // ── Parse / Encode ───────────────────────────────────────────────────────────
@@ -492,6 +492,8 @@ export interface FlairStats {
     sessionsPlayed: number;
     totalXP: number;
     masteredCount: number;
+    isPremium?: boolean;
+    purchasedPacks?: string[];
 }
 
 export const FLAIR_ITEMS: FlairItem[] = [
@@ -615,4 +617,118 @@ export const FLAIR_ITEMS: FlairItem[] = [
             </g>
         ),
     },
+    // ── Champion Pass exclusive flair ──
+    {
+        index: 8, name: 'Crown',
+        hint: 'Champion Pass',
+        isUnlocked: (s) => !!s.isPremium,
+        render: (ctx) => {
+            const cx = ctx.headCx;
+            const cy = ctx.headCy - ctx.headRy - 2;
+            return (
+                <g strokeOpacity={0.7}>
+                    <path d={`M${cx - 4} ${cy} L${cx - 3} ${cy - 4} L${cx} ${cy - 1} L${cx + 3} ${cy - 4} L${cx + 4} ${cy}`} fill="currentColor" fillOpacity={0.1} />
+                    <path d={`M${cx - 4} ${cy} L${cx + 4} ${cy}`} />
+                </g>
+            );
+        },
+    },
+    {
+        index: 9, name: 'Shield',
+        hint: 'Champion Pass',
+        isUnlocked: (s) => !!s.isPremium,
+        render: (ctx) => {
+            const cx = ctx.headCx;
+            const cy = ctx.shoulderY + 4;
+            return (
+                <path d={`M${cx} ${cy - 4} L${cx + 4} ${cy - 2} L${cx + 3.5} ${cy + 3} Q${cx} ${cy + 6} ${cx - 3.5} ${cy + 3} L${cx - 4} ${cy - 2} Z`}
+                    fill="currentColor" fillOpacity={0.06} strokeOpacity={0.4}
+                />
+            );
+        },
+    },
+    {
+        index: 10, name: 'Orbit',
+        hint: 'Champion Pass',
+        isUnlocked: (s) => !!s.isPremium,
+        render: (ctx) => (
+            <g strokeOpacity={0.3}>
+                <ellipse cx={ctx.headCx} cy={ctx.shoulderY + 2} rx={ctx.shoulderW + 10} ry={4}
+                    fill="none" strokeDasharray="1.5 2" transform={`rotate(-15 ${ctx.headCx} ${ctx.shoulderY + 2})`} />
+                <circle cx={ctx.headCx + ctx.shoulderW + 9} cy={ctx.shoulderY + 1} r={1.2}
+                    fill="currentColor" fillOpacity={0.2} strokeOpacity={0.5} />
+            </g>
+        ),
+    },
+    // ── Seasonal IAP pack flair ──
+    {
+        index: 11, name: 'Snowfall',
+        hint: 'Winter Pack',
+        isUnlocked: (s) => isFlairOwned('flair-snowfall', s.purchasedPacks),
+        render: (ctx) => (
+            <g strokeOpacity={0.4}>
+                {/* Tiny snowflakes falling around figure */}
+                <circle cx={ctx.headCx - ctx.headRx - 3} cy={ctx.headCy - 4} r={0.8} fill="currentColor" fillOpacity={0.15} />
+                <line x1={ctx.headCx - ctx.headRx - 3} y1={ctx.headCy - 5} x2={ctx.headCx - ctx.headRx - 3} y2={ctx.headCy - 3} />
+                <line x1={ctx.headCx - ctx.headRx - 4} y1={ctx.headCy - 4} x2={ctx.headCx - ctx.headRx - 2} y2={ctx.headCy - 4} />
+                <circle cx={ctx.headCx + ctx.headRx + 4} cy={ctx.headCy + 2} r={0.6} fill="currentColor" fillOpacity={0.1} />
+                <line x1={ctx.headCx + ctx.headRx + 4} y1={ctx.headCy + 1} x2={ctx.headCx + ctx.headRx + 4} y2={ctx.headCy + 3} />
+                <line x1={ctx.headCx + ctx.headRx + 3} y1={ctx.headCy + 2} x2={ctx.headCx + ctx.headRx + 5} y2={ctx.headCy + 2} />
+                <circle cx={ctx.headCx + 2} cy={ctx.feetY + 1} r={0.7} fill="currentColor" fillOpacity={0.12} />
+            </g>
+        ),
+    },
+    {
+        index: 12, name: 'Petals',
+        hint: 'Spring Pack',
+        isUnlocked: (s) => isFlairOwned('flair-petals', s.purchasedPacks),
+        render: (ctx) => {
+            const cx = ctx.headCx;
+            const cy = ctx.headCy - ctx.headRy - 3;
+            return (
+                <g strokeOpacity={0.35} fill="currentColor" fillOpacity={0.08}>
+                    {/* Small petal shapes drifting around head */}
+                    <ellipse cx={cx - ctx.headRx - 3} cy={cy + 2} rx={1.5} ry={0.8} transform={`rotate(-30 ${cx - ctx.headRx - 3} ${cy + 2})`} />
+                    <ellipse cx={cx + ctx.headRx + 2} cy={cy + 4} rx={1.2} ry={0.7} transform={`rotate(20 ${cx + ctx.headRx + 2} ${cy + 4})`} />
+                    <ellipse cx={cx - 3} cy={ctx.shoulderY + 10} rx={1.3} ry={0.7} transform={`rotate(-45 ${cx - 3} ${ctx.shoulderY + 10})`} />
+                </g>
+            );
+        },
+    },
+    {
+        index: 13, name: 'Sunbeam',
+        hint: 'Summer Pack',
+        isUnlocked: (s) => isFlairOwned('flair-sunbeam', s.purchasedPacks),
+        render: (ctx) => {
+            const cx = ctx.headCx;
+            const cy = ctx.headCy - ctx.headRy - 5;
+            return (
+                <g strokeOpacity={0.4}>
+                    {/* Small sun with radiating lines */}
+                    <circle cx={cx} cy={cy} r={2} fill="currentColor" fillOpacity={0.1} />
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map(a => {
+                        const rad = a * Math.PI / 180;
+                        return <line key={a} x1={cx + 3 * Math.cos(rad)} y1={cy + 3 * Math.sin(rad)} x2={cx + 4.5 * Math.cos(rad)} y2={cy + 4.5 * Math.sin(rad)} />;
+                    })}
+                </g>
+            );
+        },
+    },
+];
+
+/** Helper: check if a flair item ID is owned via purchased packs */
+function isFlairOwned(flairId: string, purchasedPacks?: string[]): boolean {
+    if (!purchasedPacks || purchasedPacks.length === 0) return false;
+    // Import would be circular — inline the check using SEASONAL_FLAIR_PACKS
+    return SEASONAL_FLAIR_PACKS.some(
+        pack => purchasedPacks.includes(pack.packId) && pack.flairIds.includes(flairId),
+    );
+}
+
+/** Mapping of seasonal packs to flair item IDs (mirrors cosmeticPacks.ts) */
+const SEASONAL_FLAIR_PACKS = [
+    { packId: 'winter-flair-pack', flairIds: ['flair-snowfall'] },
+    { packId: 'spring-flair-pack', flairIds: ['flair-petals'] },
+    { packId: 'summer-flair-pack', flairIds: ['flair-sunbeam'] },
+    { packId: 'seasonal-flair-bundle', flairIds: ['flair-snowfall', 'flair-petals', 'flair-sunbeam'] },
 ];

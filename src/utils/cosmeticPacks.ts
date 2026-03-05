@@ -19,6 +19,8 @@ export interface CosmeticPack {
     themeIds: string[];
     /** Trail IDs included in this pack */
     trailIds: string[];
+    /** Flair IDs included in this pack */
+    flairIds?: string[];
 }
 
 export const COSMETIC_PACKS: CosmeticPack[] = [
@@ -72,13 +74,58 @@ export const COSMETIC_PACKS: CosmeticPack[] = [
         themeIds: ['neon-pink', 'neon-cyan', 'neon-yellow', 'pastel-lavender', 'pastel-peach', 'pastel-sky', 'forest-green', 'ocean-deep', 'autumn-leaf'],
         trailIds: ['snowflake', 'sparkle', 'comet'],
     },
+    // ── Seasonal flair packs ──
+    {
+        id: 'winter-flair-pack',
+        name: 'Winter Wonderland',
+        description: 'Snowfall flair for your avatar',
+        price: '$0.99',
+        priceEnv: 'STRIPE_PRICE_WINTER_FLAIR',
+        emoji: '❄️',
+        themeIds: [],
+        trailIds: [],
+        flairIds: ['flair-snowfall'],
+    },
+    {
+        id: 'spring-flair-pack',
+        name: 'Spring Bloom',
+        description: 'Falling petals flair for your avatar',
+        price: '$0.99',
+        priceEnv: 'STRIPE_PRICE_SPRING_FLAIR',
+        emoji: '🌸',
+        themeIds: [],
+        trailIds: [],
+        flairIds: ['flair-petals'],
+    },
+    {
+        id: 'summer-flair-pack',
+        name: 'Summer Rays',
+        description: 'Sunbeam flair for your avatar',
+        price: '$0.99',
+        priceEnv: 'STRIPE_PRICE_SUMMER_FLAIR',
+        emoji: '☀️',
+        themeIds: [],
+        trailIds: [],
+        flairIds: ['flair-sunbeam'],
+    },
+    {
+        id: 'seasonal-flair-bundle',
+        name: 'All Seasons Bundle',
+        description: 'All 3 seasonal flair items — best value!',
+        price: '$1.99',
+        priceEnv: 'STRIPE_PRICE_SEASONAL_BUNDLE',
+        emoji: '🎁',
+        themeIds: [],
+        trailIds: [],
+        flairIds: ['flair-snowfall', 'flair-petals', 'flair-sunbeam'],
+    },
 ];
 
 /** Check if a cosmetic item ID belongs to a purchased pack */
 export function isItemOwned(itemId: string, purchasedPacks: string[]): boolean {
     return COSMETIC_PACKS.some(
         pack => purchasedPacks.includes(pack.id) &&
-            (pack.themeIds.includes(itemId) || pack.trailIds.includes(itemId)),
+            (pack.themeIds.includes(itemId) || pack.trailIds.includes(itemId) || (pack.flairIds?.includes(itemId) ?? false)),
     );
 }
 
@@ -86,6 +133,6 @@ export function isItemOwned(itemId: string, purchasedPacks: string[]): boolean {
 export function isPackRedundant(packId: string, purchasedPacks: string[]): boolean {
     const pack = COSMETIC_PACKS.find(p => p.id === packId);
     if (!pack) return false;
-    const allItems = [...pack.themeIds, ...pack.trailIds];
+    const allItems = [...pack.themeIds, ...pack.trailIds, ...(pack.flairIds ?? [])];
     return allItems.every(itemId => isItemOwned(itemId, purchasedPacks));
 }

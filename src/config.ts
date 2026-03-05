@@ -58,6 +58,8 @@ export const STORAGE_KEYS = {
     referralMilestonesClaimed: `${STORAGE_PREFIX}-referral-milestones-claimed`,
     subscriptionStatus: `${STORAGE_PREFIX}-subscription-status`,
     purchasedPacks: `${STORAGE_PREFIX}-purchased-packs`,
+    profiles: `${STORAGE_PREFIX}-profiles`,
+    customBranding: `${STORAGE_PREFIX}-custom-branding`,
 } as const;
 
 /**
@@ -90,11 +92,14 @@ export const FIRESTORE = {
 export const FREE_LEVEL_CAP = 3;
 
 /** Free users can review at most this many SRS words per day. Champion Pass = unlimited. */
-export const FREE_DAILY_REVIEW_CAP = 30;
+export const FREE_DAILY_REVIEW_CAP = 2;
 
 /** Free users can create at most this many custom lists. Champion = PREMIUM_CUSTOM_LIST_CAP. */
 export const FREE_CUSTOM_LIST_CAP = 10;
 export const PREMIUM_CUSTOM_LIST_CAP = 20;
+
+/** Max learner profiles per Bee Team account. */
+export const BEE_TEAM_MAX_PROFILES = 5;
 
 /** Streak day counts that trigger a celebratory share prompt. */
 export const STREAK_MILESTONES = [7, 14, 30, 60, 100] as const;

@@ -9,6 +9,11 @@ interface SessionWord {
     mode?: 'mcq' | 'typed';
 }
 
+export interface ChallengeTarget {
+    score: number;
+    accuracy: number;
+}
+
 interface Props {
     solved: number;
     correct: number;
@@ -27,6 +32,8 @@ interface Props {
     onPurchaseFreeze?: () => boolean;
     sessionWords?: SessionWord[];
     referralCode?: string;
+    challengeTarget?: ChallengeTarget;
+    challengeId?: string | null;
 }
 
 function buildShareText(
@@ -34,6 +41,7 @@ function buildShareText(
     history: boolean[], questionType: string,
     timedMode?: boolean,
     referralCode?: string,
+    challengeId?: string | null,
 ): string {
     const emojis = history.map(ok => ok ? '🟩' : '🟥');
     const emojiRows: string[] = [];
@@ -47,8 +55,9 @@ function buildShareText(
         ? `🐝 Spelling Bee — PERFECT! 💯${modeTag}`
         : `🐝 Spelling Bee — ${typeLabel}${modeTag}`;
 
-    // Generate a challenge link so the recipient can play the same set
-    const challengeUrl = `${window.location.origin}?c=${createChallengeId()}`;
+    // Use existing challenge ID (if playing a received challenge) or generate new one
+    const cid = challengeId ?? createChallengeId();
+    const challengeUrl = `${window.location.origin}?c=${cid}&s=${xp}&a=${accuracy}`;
 
     const subline = `⚡ ${xp} pts · 🔥 ${streak} streak · 🎯 ${accuracy}%`;
 
@@ -101,7 +110,7 @@ export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     timedMode, onDrillHardest, hardestWordCount,
     totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
-    referralCode,
+    referralCode, challengeTarget, challengeId,
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
@@ -128,7 +137,7 @@ export const SessionSummary = memo(function SessionSummary({
     const handleShare = async () => {
         if (isSharing) return;
         setIsSharing(true);
-        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, timedMode, referralCode);
+        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, timedMode, referralCode, challengeId);
 
         try {
             // Attempt Rich Media Image Generation
@@ -287,6 +296,31 @@ export const SessionSummary = memo(function SessionSummary({
                                 </div>
                             );
                         })()}
+
+                        {/* Challenge comparison */}
+                        {challengeTarget && (
+                            <div className="mb-4 px-3 py-2.5 rounded-xl border border-[var(--color-gold)]/20 bg-[var(--color-gold)]/5">
+                                <div className="flex justify-center gap-4 text-center mb-1.5">
+                                    <div>
+                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">Their score</div>
+                                        <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/50">{challengeTarget.score} pts · {challengeTarget.accuracy}%</div>
+                                    </div>
+                                    <div className="text-lg ui text-[rgb(var(--color-fg))]/20">vs</div>
+                                    <div>
+                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">Your score</div>
+                                        <div className="text-sm ui font-bold text-[var(--color-gold)]">{xpEarned} pts · {accuracy}%</div>
+                                    </div>
+                                </div>
+                                <div className="text-center text-xs ui font-semibold">
+                                    {xpEarned > challengeTarget.score
+                                        ? <span className="text-[var(--color-correct)]">You won! 🏆</span>
+                                        : xpEarned === challengeTarget.score
+                                            ? <span className="text-[var(--color-gold)]">It's a tie! 🤝</span>
+                                            : <span className="text-[var(--color-streak-fire)]">Almost! Try again 💪</span>
+                                    }
+                                </div>
+                            </div>
+                        )}
 
                         <div className="flex justify-center gap-6 mb-4">
                             <div className="text-center">

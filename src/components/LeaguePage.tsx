@@ -10,6 +10,7 @@ import { IconCrown, IconMedal, IconStar, IconShare, IconLock } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 import { trackEvent } from '../utils/analytics';
+import { getWeeklyLabel } from '../utils/weeklyTournament';
 
 interface LeaderboardEntry {
     uid: string;
@@ -28,6 +29,20 @@ interface LeaderboardEntry {
 
 type LeaderboardTab = 'allTime' | 'weekly';
 
+/** NPC entries to fill the board when real players are sparse */
+const NPC_ENTRIES: LeaderboardEntry[] = [
+    { uid: 'npc-1', displayName: 'SpellMaster99', totalXP: 8420, weeklyXP: 640, bestStreak: 42, accuracy: 91, stickFigureStyle: 'h0-r2-e1-b3-c4-a0-f0' },
+    { uid: 'npc-2', displayName: 'WordNinja', totalXP: 6150, weeklyXP: 510, bestStreak: 35, accuracy: 88, stickFigureStyle: 'h2-r4-e3-b1-c2-a1-f0' },
+    { uid: 'npc-3', displayName: 'BeeChamp', totalXP: 4800, weeklyXP: 380, bestStreak: 28, accuracy: 85, stickFigureStyle: 'h1-r0-e4-b2-c1-a3-f0' },
+    { uid: 'npc-4', displayName: 'LetterBug', totalXP: 3200, weeklyXP: 270, bestStreak: 22, accuracy: 82, stickFigureStyle: 'h3-r1-e2-b0-c3-a2-f0' },
+    { uid: 'npc-5', displayName: 'VocabHero', totalXP: 2100, weeklyXP: 190, bestStreak: 18, accuracy: 79, stickFigureStyle: 'h4-r3-e0-b4-c0-a4-f0' },
+    { uid: 'npc-6', displayName: 'AlphaAce', totalXP: 1400, weeklyXP: 120, bestStreak: 15, accuracy: 76, stickFigureStyle: 'h0-r4-e3-b1-c2-a0-f0' },
+    { uid: 'npc-7', displayName: 'QuizWhiz', totalXP: 900, weeklyXP: 80, bestStreak: 12, accuracy: 73, stickFigureStyle: 'h2-r1-e4-b3-c4-a1-f0' },
+    { uid: 'npc-8', displayName: 'Bookworm42', totalXP: 550, weeklyXP: 45, bestStreak: 9, accuracy: 70, stickFigureStyle: 'h1-r3-e1-b2-c0-a3-f0' },
+    { uid: 'npc-9', displayName: 'TinyTypist', totalXP: 280, weeklyXP: 20, bestStreak: 6, accuracy: 65, stickFigureStyle: 'h3-r2-e0-b4-c1-a2-f0' },
+    { uid: 'npc-10', displayName: 'NewBee', totalXP: 80, weeklyXP: 10, bestStreak: 3, accuracy: 60, stickFigureStyle: 'h4-r0-e2-b0-c3-a4-f0' },
+];
+
 interface Props {
     userXP: number;
     userWeeklyXP: number;
@@ -41,10 +56,13 @@ interface Props {
     isPremium?: boolean;
     onUpgrade?: () => void;
     on1v1?: () => void;
+    onWeeklyTournament?: () => void;
+    onClassroomCode?: (code: string) => void;
+    onCertificate?: (weekLabel: string, xpEarned: number) => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1 }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onClassroomCode, onCertificate }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -138,7 +156,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         return unsub;
     }, []);
 
-    // ── Build score board with current user injected (memoized) ──
+    // ── Build score board with current user injected + NPC backfill (memoized) ──
     const scoreBoard = useMemo(() => {
         let list = [...entries];
         const userIdx = uid ? list.findIndex(e => e.uid === uid) : -1;
@@ -157,6 +175,12 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 activeThemeId,
                 activeCostume,
             } : e);
+        }
+        // Backfill with NPCs so the board never looks empty
+        const realCount = list.length;
+        if (realCount < 10) {
+            const npcsNeeded = NPC_ENTRIES.filter(npc => !list.some(e => e.uid === npc.uid)).slice(0, 10 - realCount);
+            list.push(...npcsNeeded);
         }
         return list
             .sort((a, b) =>
@@ -235,6 +259,36 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     {!isPremium && <IconLock className="w-4 h-4 text-[rgb(var(--color-fg))]/30" />}
                 </button>
 
+                {/* Weekly Tournament */}
+                {onWeeklyTournament && (
+                    <button
+                        onClick={onWeeklyTournament}
+                        className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors"
+                    >
+                        <span className="text-2xl">🏅</span>
+                        <div className="text-left flex-1">
+                            <div className="text-sm ui font-bold text-[var(--color-chalk)]">Weekly Tournament</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{getWeeklyLabel()} · 25 words · same for everyone</div>
+                        </div>
+                    </button>
+                )}
+
+                {/* Classroom Code */}
+                {onClassroomCode && (
+                    <button
+                        onClick={() => {
+                            const code = prompt('Enter classroom code:');
+                            if (code?.trim()) onClassroomCode(code.trim());
+                        }}
+                        className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors"
+                    >
+                        <span className="text-2xl">📝</span>
+                        <div className="text-left flex-1">
+                            <div className="text-sm ui font-bold text-[var(--color-chalk)]">Classroom Code</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Enter a code from your teacher</div>
+                        </div>
+                    </button>
+                )}
             </div>
 
             {/* Leaderboard header + tab toggle */}
@@ -315,7 +369,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             </div>
 
                             {/* Avatar & Name & Badge */}
-                            <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && setSelectedPlayer(entry)}>
+                            <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && !entry.uid.startsWith('npc-') && setSelectedPlayer(entry)}>
                                 <AvatarSvg
                                     config={entry.stickFigureStyle}
                                     size={18}
@@ -356,20 +410,32 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                 </div>
                             </div>
                             {entry.isYou && (
-                                <button
-                                    onClick={async () => {
-                                        const xp = lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP;
-                                        const text = appendReferralFooter(
-                                            `📊 Ranked #${entry.rank} on Spelling Bee!\n⚡ ${xp.toLocaleString()} ${lbTab === 'weekly' ? 'weekly ' : ''}XP · 🔥 ${entry.bestStreak} streak · 🎯 ${entry.accuracy}%`,
-                                            referralCode,
-                                        );
-                                        await shareOrCopy(text);
-                                    }}
-                                    className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
-                                    aria-label="Share my rank"
-                                >
-                                    <IconShare className="w-4 h-4" />
-                                </button>
+                                <div className="flex items-center gap-1">
+                                    {entry.rank === 1 && onCertificate && (
+                                        <button
+                                            onClick={() => onCertificate(getWeeklyLabel(), lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP)}
+                                            className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
+                                            aria-label="Download champion certificate"
+                                            title="Champion Certificate"
+                                        >
+                                            <span className="text-sm">🏅</span>
+                                        </button>
+                                    )}
+                                    <button
+                                        onClick={async () => {
+                                            const xp = lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP;
+                                            const text = appendReferralFooter(
+                                                `📊 Ranked #${entry.rank} on Spelling Bee!\n⚡ ${xp.toLocaleString()} ${lbTab === 'weekly' ? 'weekly ' : ''}XP · 🔥 ${entry.bestStreak} streak · 🎯 ${entry.accuracy}%`,
+                                                referralCode,
+                                            );
+                                            await shareOrCopy(text);
+                                        }}
+                                        className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
+                                        aria-label="Share my rank"
+                                    >
+                                        <IconShare className="w-4 h-4" />
+                                    </button>
+                                </div>
                             )}
                         </motion.div>
                     ))}

@@ -6,6 +6,7 @@
  */
 import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft } from './ChevronLeft';
 
 interface Props {
     title: string;
@@ -25,17 +26,15 @@ export function FullScreenPanel({ title, onClose, children }: Props) {
             <div className="w-full max-w-lg mx-auto flex flex-col flex-1 min-h-0">
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 pt-[calc(env(safe-area-inset-top,12px)+12px)] pb-3">
-                    <div className="w-9" />
-                    <h3 className="text-lg ui font-bold text-[var(--color-gold)]">{title}</h3>
                     <button
                         onClick={onClose}
+                        aria-label="Back"
                         className="w-9 h-9 flex items-center justify-center rounded-lg text-[rgb(var(--color-fg))]/60 hover:text-[rgb(var(--color-fg))]/80 transition-colors"
                     >
-                        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                            <path d="M18 6L6 18" />
-                            <path d="M6 6l12 12" />
-                        </svg>
+                        <ChevronLeft />
                     </button>
+                    <h3 className="text-lg ui font-bold text-[var(--color-gold)]">{title}</h3>
+                    <div className="w-9" />
                 </div>
 
                 {/* Content */}

@@ -70,7 +70,9 @@ import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 const UpgradeModal = lazy(() => lazyRetry(() => import('./components/UpgradeModal')).then(m => ({ default: m.UpgradeModal })));
 const ShopModal = lazy(() => lazyRetry(() => import('./components/ShopModal')).then(m => ({ default: m.ShopModal })));
+const CertificatePreview = lazy(() => lazyRetry(() => import('./components/CertificatePreview')).then(m => ({ default: m.CertificatePreview })));
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
+import type { AnyCertificateData } from './utils/certificateGenerator';
 import { STORAGE_KEYS, FIRESTORE, NAV_TABS, FREE_DAILY_REVIEW_CAP, REFERRAL_MILESTONES, STREAK_MILESTONES } from './config';
 import { appendReferralFooter, shareOrCopy } from './utils/shareHelper';
 import { trackEvent } from './utils/analytics';
@@ -79,6 +81,8 @@ import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 import { recordSessionHistory } from './utils/sessionHistory';
+import { ChallengeBanner } from './components/ChallengeBanner';
+import { generateWeeklyTournament, generateClassroomChallenge } from './utils/weeklyTournament';
 import { useUnlockTracker } from './hooks/useUnlockTracker';
 import { UnlockCelebration } from './components/UnlockCelebration';
 import { Confetti } from './components/Confetti';
@@ -107,6 +111,8 @@ function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]
 function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
   return (categoryId: string, challengeId: string | null): EngineItem[] => {
     if (challengeId) {
+      if (challengeId === 'weekly-tournament') return generateWeeklyTournament();
+      if (challengeId.startsWith('classroom-')) return generateClassroomChallenge(challengeId.slice(10));
       return generateChallenge(challengeId);
     }
     if (categoryId === 'daily') {
@@ -217,6 +223,7 @@ function AppInner() {
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
   const [timedMode, setTimedMode] = useState(false);
+  const [timedVariant, setTimedVariant] = useState<import('./engine/domain').TimedVariant>('normal');
   const { reducedMotion } = useReducedMotion();
 
   // ── Modals ──
@@ -257,6 +264,9 @@ function AppInner() {
   // ── Cosmetic shop modal ──
   const [showShop, setShowShop] = useState(false);
 
+  // ── Certificate preview modal ──
+  const [certificateData, setCertificateData] = useState<AnyCertificateData | null>(null);
+
   // ── Trial banner (dismissed per session) ──
   const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
   const showTrialBanner = isTrial && !trialBannerDismissed;
@@ -266,16 +276,24 @@ function AppInner() {
   const [dailySize, setDailySize] = useState<DailyChallengeSize>(10);
   const [showDailySizePicker, setShowDailySizePicker] = useState(false);
 
-  // ── Check URL for challenge link ──
-  const [challengeId] = useState<string | null>(() => {
+  // ── Check URL for challenge link + "beat my score" params ──
+  // Read all challenge params from the original URL (before replaceState cleans it)
+  const [urlChallenge] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     const c = params.get('c');
-    if (c) {
-      // Clean URL so refresh doesn't re-trigger
-      window.history.replaceState({}, '', window.location.pathname);
+    const s = params.get('s');
+    const a = params.get('a');
+    if (c) window.history.replaceState({}, '', window.location.pathname);
+    let target: { score: number; accuracy: number } | null = null;
+    if (s && a) {
+      const score = parseInt(s, 10);
+      const accuracy = parseInt(a, 10);
+      if (!isNaN(score) && !isNaN(accuracy)) target = { score, accuracy };
     }
-    return c;
+    return { id: c, target };
   });
+  const [challengeId, setChallengeId] = useState<string | null>(urlChallenge.id);
+  const challengeTarget = urlChallenge.target;
   // Migrate legacy tier-N → level-N in stored grade
   (() => {
     const g = localStorage.getItem(STORAGE_KEYS.grade);
@@ -495,6 +513,7 @@ function AppInner() {
     questionType,
     challengeId,
     timedMode,
+    timedVariant,
     stats.streakShields,
     consumeShield,
     GAME_CONFIG,
@@ -579,6 +598,7 @@ function AppInner() {
   const toggleTimedMode = useCallback(() => {
     setTimedMode(t => {
       if (!t) fireTimedToast();
+      else setTimedVariant('normal'); // reset variant when turning off
       return !t;
     });
   }, [fireTimedToast]);
@@ -813,14 +833,14 @@ function AppInner() {
     if (tab !== 'game' && guidedMode) setGuidedMode(false);
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
-      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
+      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode, timedMode ? timedVariant : undefined);
       trackEvent('session_complete', { words: totalAnswered, accuracy: totalAnswered > 0 ? Math.round(totalCorrect / totalAnswered * 100) : 0, level: level || '' });
       setShowSummary(true);
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, setShowSummary, showSummary, guidedMode, level]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, timedVariant, setShowSummary, showSummary, guidedMode, level]);
 
   // Memoize BottomNav tabs to avoid new array each render
   const navTabs = useMemo(
@@ -973,6 +993,10 @@ function AppInner() {
                 transition={{ duration: 0.5, repeat: Infinity, ease: 'easeInOut' }}
                 style={{ width: `${(1 - timerProgress) * 100 * 4}%`, marginLeft: 'auto', marginRight: 'auto' }}
               />
+            )}
+            {/* ── Challenge banner (when playing a received challenge) ── */}
+            {challengeTarget && questionType === 'challenge' && (
+              <ChallengeBanner targetScore={challengeTarget.score} targetAccuracy={challengeTarget.accuracy} />
             )}
             {/* ── Score (centered, pushed down from edge) — hidden in full-screen sub-modes ── */}
             {!isImmersive && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
@@ -1134,6 +1158,13 @@ function AppInner() {
                     recordAttempt(word, 'bee', correct, ms, !correct ? typed : undefined, 'typed');
                   }}
                   onBeeResult={recordBeeResult}
+                  onCertificate={(beeLevel, roundReached) => setCertificateData({
+                    type: 'bee-win',
+                    playerName: user?.displayName ?? 'Spelling Bee Champion',
+                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    beeLevel,
+                    roundReached,
+                  })}
                 />
               ) : questionType === 'guided' ? (
                 <Suspense fallback={<LoadingFallback />}>
@@ -1282,6 +1313,8 @@ function AppInner() {
                 timedMode={timedMode}
                 onTimedModeToggle={toggleTimedMode}
                 timerProgress={timerProgress}
+                timedVariant={timedVariant}
+                onTimedVariantChange={setTimedVariant}
                 guidedMode={guidedMode}
                 onGuidedModeToggle={toggleGuidedMode}
                 isPremium={isPremium}
@@ -1414,13 +1447,14 @@ function AppInner() {
               }}
               isPremium={isPremium}
               onUpgrade={() => setShowUpgrade(true)}
+              bestStreak={stats.bestStreak}
             /></Suspense>
           </motion.div>
         )}
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onClassroomCode={(code) => { trackEvent('classroom_code_used'); setChallengeId(`classroom-${code}`); setQuestionType('challenge'); setSessionSize(20); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} /></Suspense>
           </motion.div>
         )}
 
@@ -1432,6 +1466,14 @@ function AppInner() {
               uniqueWordsAttempted={uniqueWordsAttempted}
               onUpgrade={() => setShowUpgrade(true)}
               onShop={() => setShowShop(true)}
+              onCertificate={(_type, level, wordsMastered, acc) => setCertificateData({
+                type: 'level-completion',
+                playerName: user?.displayName ?? 'Spelling Champion',
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                level,
+                wordsMastered,
+                accuracy: acc,
+              })}
             /></Suspense>
           </motion.div>
         )}
@@ -1476,6 +1518,8 @@ function AppInner() {
           onPurchaseFreeze={purchaseStreakFreeze}
           sessionWords={sessionWordsRef.current}
           referralCode={referralCode}
+          challengeTarget={challengeTarget ?? undefined}
+          challengeId={challengeId}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
@@ -1652,6 +1696,15 @@ function AppInner() {
         {showShop && (
           <Suspense fallback={null}>
             <ShopModal onClose={() => setShowShop(false)} />
+          </Suspense>
+        )}
+      </AnimatePresence>
+
+      {/* ── Certificate preview modal ── */}
+      <AnimatePresence>
+        {certificateData && (
+          <Suspense fallback={null}>
+            <CertificatePreview data={certificateData} onClose={() => setCertificateData(null)} />
           </Suspense>
         )}
       </AnimatePresence>

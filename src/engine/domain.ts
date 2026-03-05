@@ -41,6 +41,11 @@ export interface EngineItem {
     meta?: Record<string, unknown>;
 }
 
+// ── Timed mode variants ──────────────────────────────────────────────────
+
+/** Timed mode difficulty variants. Speed + Endurance are Champion-only. */
+export type TimedVariant = 'normal' | 'speed' | 'endurance';
+
 // ── Swipe directions ─────────────────────────────────────────────────────────
 
 export type SwipeDirection = 'left' | 'right' | 'up' | 'down';

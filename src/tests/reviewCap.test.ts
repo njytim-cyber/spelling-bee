@@ -13,8 +13,8 @@ describe('FREE_DAILY_REVIEW_CAP', () => {
         expect(Number.isInteger(FREE_DAILY_REVIEW_CAP)).toBe(true);
     });
 
-    it('equals 30', () => {
-        expect(FREE_DAILY_REVIEW_CAP).toBe(30);
+    it('equals 2', () => {
+        expect(FREE_DAILY_REVIEW_CAP).toBe(2);
     });
 });
 
@@ -42,20 +42,16 @@ describe('Review cap logic', () => {
         expect(capReviewQueue(mockQueue, 0, true)).toHaveLength(50);
     });
 
-    it('free user with 0 reviews today gets up to 30', () => {
-        expect(capReviewQueue(mockQueue, 0, false)).toHaveLength(30);
+    it('free user with 0 reviews today gets up to cap', () => {
+        expect(capReviewQueue(mockQueue, 0, false)).toHaveLength(FREE_DAILY_REVIEW_CAP);
     });
 
-    it('free user with 10 reviews today gets 20 more', () => {
-        expect(capReviewQueue(mockQueue, 10, false)).toHaveLength(20);
-    });
-
-    it('free user with 29 reviews today gets 1 more', () => {
-        expect(capReviewQueue(mockQueue, 29, false)).toHaveLength(1);
+    it('free user with 1 review today gets 1 more', () => {
+        expect(capReviewQueue(mockQueue, 1, false)).toHaveLength(FREE_DAILY_REVIEW_CAP - 1);
     });
 
     it('free user at cap gets empty queue', () => {
-        expect(capReviewQueue(mockQueue, 30, false)).toHaveLength(0);
+        expect(capReviewQueue(mockQueue, FREE_DAILY_REVIEW_CAP, false)).toHaveLength(0);
     });
 
     it('free user over cap still gets empty queue (no negatives)', () => {
@@ -63,8 +59,8 @@ describe('Review cap logic', () => {
     });
 
     it('small queue is not inflated beyond actual size', () => {
-        const smallQueue = ['a', 'b', 'c'];
-        expect(capReviewQueue(smallQueue, 0, false)).toHaveLength(3);
+        const smallQueue = ['a'];
+        expect(capReviewQueue(smallQueue, 0, false)).toHaveLength(1);
     });
 
     it('isReviewLimited is false for premium users', () => {
@@ -72,11 +68,11 @@ describe('Review cap logic', () => {
     });
 
     it('isReviewLimited is false when under cap', () => {
-        expect(isReviewLimited(29, false)).toBe(false);
+        expect(isReviewLimited(FREE_DAILY_REVIEW_CAP - 1, false)).toBe(false);
     });
 
     it('isReviewLimited is true at exactly cap', () => {
-        expect(isReviewLimited(30, false)).toBe(true);
+        expect(isReviewLimited(FREE_DAILY_REVIEW_CAP, false)).toBe(true);
     });
 
     it('isReviewLimited is true when over cap', () => {
@@ -88,9 +84,9 @@ describe('Review cap logic', () => {
     });
 
     it('reviewsRemaining counts down correctly for free user', () => {
-        expect(reviewsRemaining(0, false)).toBe(30);
-        expect(reviewsRemaining(15, false)).toBe(15);
-        expect(reviewsRemaining(30, false)).toBe(0);
+        expect(reviewsRemaining(0, false)).toBe(FREE_DAILY_REVIEW_CAP);
+        expect(reviewsRemaining(1, false)).toBe(FREE_DAILY_REVIEW_CAP - 1);
+        expect(reviewsRemaining(FREE_DAILY_REVIEW_CAP, false)).toBe(0);
     });
 
     it('reviewsRemaining never goes negative', () => {

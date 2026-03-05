@@ -53,7 +53,7 @@ describe('avatarParts', () => {
             expect(parseAvatar('x0-r1-e0-b1-c0-a0')).toEqual(defaults);  // invalid category
             expect(parseAvatar('h5-r1-e0-b1-c0-a0')).toEqual(defaults);  // index out of range (h max 4)
             expect(parseAvatar('h-1-r1-e0-b1-c0-a0')).toEqual(defaults);  // negative
-            expect(parseAvatar('h0-r1-e0-b1-c0-a0-f8')).toEqual(defaults);  // flair out of range (max 7)
+            expect(parseAvatar('h0-r1-e0-b1-c0-a0-f14')).toEqual(defaults);  // flair out of range (max 13)
         });
     });
 
@@ -81,8 +81,8 @@ describe('avatarParts', () => {
             }
         });
 
-        it('flair values 0-7 roundtrip', () => {
-            for (let f = 0; f <= 7; f++) {
+        it('flair values 0-13 roundtrip', () => {
+            for (let f = 0; f <= 13; f++) {
                 const config: AvatarConfig = { head: 0, hair: 1, expression: 0, body: 1, clothing: 0, accessory: 0, flair: f };
                 const encoded = encodeAvatar(config);
                 const reparsed = parseAvatar(encoded);
@@ -153,13 +153,13 @@ describe('avatarParts', () => {
     });
 
     describe('FLAIR_ITEMS', () => {
-        it('has 8 flair items', () => {
-            expect(FLAIR_ITEMS.length).toBe(8);
+        it('has 14 flair items', () => {
+            expect(FLAIR_ITEMS.length).toBe(14);
         });
 
-        it('indices are 0-7', () => {
+        it('indices are 0-13', () => {
             const indices = FLAIR_ITEMS.map(f => f.index);
-            expect(indices).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
+            expect(indices).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
         });
 
         it('every flair has a name', () => {
@@ -180,8 +180,12 @@ describe('avatarParts', () => {
             }
         });
 
-        it('all flairs unlock with high stats', () => {
-            const max: FlairStats = { dayStreak: 100, totalSolved: 5000, bestStreak: 100, sessionsPlayed: 200, totalXP: 10000, masteredCount: 500 };
+        it('all flairs unlock with high stats + premium + packs', () => {
+            const max: FlairStats = {
+                dayStreak: 100, totalSolved: 5000, bestStreak: 100, sessionsPlayed: 200, totalXP: 10000, masteredCount: 500,
+                isPremium: true,
+                purchasedPacks: ['winter-flair-pack', 'spring-flair-pack', 'summer-flair-pack'],
+            };
             for (const flair of FLAIR_ITEMS) {
                 expect(flair.isUnlocked(max)).toBe(true);
             }

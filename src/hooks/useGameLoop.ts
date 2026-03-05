@@ -6,7 +6,7 @@
  * Imports scoring from the engine layer; no direct math imports.
  */
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { EngineItem, GameConfig, ChalkState, FeedbackFlash } from '../engine/domain';
+import type { EngineItem, GameConfig, ChalkState, FeedbackFlash, TimedVariant } from '../engine/domain';
 import { SWIPE_TO_INDEX, DEFAULT_GAME_CONFIG } from '../engine/domain';
 import { scoreCorrect, scorePenalty, FAST_ANSWER_MS } from '../engine/scoring';
 import { useDifficulty } from './useDifficulty';
@@ -66,6 +66,7 @@ export function useGameLoop(
     categoryId: string = 'cvc',
     challengeId: string | null = null,
     timedMode = false,
+    timedVariant: TimedVariant = 'normal',
     streakShields = 0,
     onConsumeShield?: () => void,
     config: GameConfig = DEFAULT_GAME_CONFIG,
@@ -450,6 +451,12 @@ export function useGameLoop(
         return () => document.removeEventListener('visibilitychange', handler);
     }, []);
 
+    /** Compute effective timer ms based on variant. Endurance shrinks every 5 correct answers (min 3s). */
+    const effectiveTimerMs =
+        timedVariant === 'speed' ? 5000 :
+        timedVariant === 'endurance' ? Math.max(3000, config.timedModeMs - Math.floor(correctCountRef.current / 5) * 500) :
+        config.timedModeMs;
+
     useEffect(() => {
         if (!timedMode || gs.frozen || items.length === 0 || paused || hidden) {
             cancelAnimationFrame(timerRafRef.current);
@@ -459,11 +466,12 @@ export function useGameLoop(
         timerStartRef.current = Date.now();
         setTimerProgress(0);
 
+        const timerMs = effectiveTimerMs;
         const tick = () => {
             // Stop ticking if paused between frames
             if (pausedRef.current) { cancelAnimationFrame(timerRafRef.current); return; }
             const elapsed = Date.now() - timerStartRef.current;
-            const p = Math.min(elapsed / config.timedModeMs, 1);
+            const p = Math.min(elapsed / timerMs, 1);
             setTimerProgress(p);
             if (p >= 1) {
                 cancelAnimationFrame(timerRafRef.current);
@@ -495,7 +503,7 @@ export function useGameLoop(
         timerRafRef.current = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(timerRafRef.current);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [timedMode, items[0]?.id, gs.frozen, paused, hidden]);
+    }, [timedMode, timedVariant, effectiveTimerMs, items[0]?.id, gs.frozen, paused, hidden]);
 
     // ── Cleanup ───────────────────────────────────────────────────────────────
     useEffect(() => {

@@ -12,6 +12,7 @@ import { useUser } from '../contexts/UserContext';
 import { COSMETIC_PACKS, isPackRedundant } from '../utils/cosmeticPacks';
 import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
+import { FLAIR_ITEMS } from '../utils/avatarParts';
 import { purchasePack } from '../services/stripe';
 import { trackEvent } from '../utils/analytics';
 
@@ -21,6 +22,7 @@ interface Props {
 
 const THEME_MAP = new Map(CHALK_THEMES.map(t => [t.id, t]));
 const TRAIL_MAP = new Map(SWIPE_TRAILS.map(t => [t.id, t]));
+const FLAIR_MAP = new Map(FLAIR_ITEMS.map(f => [`flair-${f.name.toLowerCase()}`, f]));
 
 export const ShopModal = memo(function ShopModal({ onClose }: Props) {
     const { purchasedPacks } = useUser();
@@ -51,7 +53,7 @@ export const ShopModal = memo(function ShopModal({ onClose }: Props) {
             </div>
 
             <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-4">
-                One-time purchases — unlock new chalk colors and swipe trails forever
+                One-time purchases — unlock new chalk colors, trails, and avatar flair forever
             </p>
 
             <div className="space-y-3">
@@ -103,6 +105,15 @@ export const ShopModal = memo(function ShopModal({ onClose }: Props) {
                                     return (
                                         <span key={id} className="text-base" title={trail.name}>
                                             {trail.emoji}
+                                        </span>
+                                    );
+                                })}
+                                {(pack.flairIds ?? []).map(id => {
+                                    const flair = FLAIR_MAP.get(id);
+                                    if (!flair) return null;
+                                    return (
+                                        <span key={id} className="inline-flex items-center gap-0.5 text-[10px] ui text-[rgb(var(--color-fg))]/50 border border-[rgb(var(--color-fg))]/10 rounded-full px-1.5 py-0.5" title={flair.name}>
+                                            ✨ {flair.name}
                                         </span>
                                     );
                                 })}

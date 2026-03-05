@@ -116,6 +116,161 @@ export function IconChart({ className = 'w-6 h-6' }: IconProps) {
     );
 }
 
+// ========== Rank Progression Icons ==========
+
+/** Beginner — seedling */
+export function IconRankBeginner({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22V12" />
+            <path d="M12 12C12 8 8 6 5 7c1 3 4 5 7 5z" />
+            <path d="M12 14c0-4 4-6 7-5-1 3-4 5-7 5z" />
+        </svg>
+    );
+}
+
+/** Learner — open book */
+export function IconRankLearner({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M2 4c2-1 5-1 7 0s5 1 7 0v15c-2 1-5 1-7 0s-5-1-7 0z" />
+            <path d="M9 4v15" />
+        </svg>
+    );
+}
+
+/** Speller — letters ABC */
+export function IconRankSpeller({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 18l3-12h2l3 12" />
+            <path d="M5.5 13h5" />
+            <path d="M16 6v12" />
+            <path d="M16 6c2 0 4 1 4 3s-2 3-4 3c2 0 4 1 4 3s-2 3-4 3" />
+        </svg>
+    );
+}
+
+/** Wordsmith — pencil writing */
+export function IconRankWordsmith({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z" />
+            <path d="M15 5l4 4" />
+        </svg>
+    );
+}
+
+/** Linguist — speech bubble */
+export function IconRankLinguist({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            <path d="M8 9h8M8 13h5" />
+        </svg>
+    );
+}
+
+/** Lexicon — thick tome */
+export function IconRankLexicon({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            <path d="M8 7h8M8 11h6" />
+            <circle cx="16" cy="14" r="2" />
+        </svg>
+    );
+}
+
+/** Word Wizard — wizard hat */
+export function IconRankWizard({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2L8 14h8z" />
+            <path d="M4 20c0-3 3.5-5 8-5s8 2 8 5" />
+            <path d="M4 20h16" />
+            <circle cx="14" cy="8" r="1" />
+            <circle cx="10" cy="11" r="0.8" />
+        </svg>
+    );
+}
+
+/** Grandmaster — chess king */
+export function IconRankGrandmaster({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="2" x2="12" y2="5" />
+            <line x1="10.5" y1="3.5" x2="13.5" y2="3.5" />
+            <path d="M8 5h8l1 5H7z" />
+            <path d="M7 10l-1 6h12l-1-6" />
+            <path d="M5 19h14" />
+            <path d="M6 16h12v3H6z" />
+        </svg>
+    );
+}
+
+/** Legend — crown with gems */
+export function IconRankLegend({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 18l2-12 5 6 2-8 2 8 5-6 2 12z" />
+            <path d="M3 18h18" />
+            <circle cx="8" cy="15" r="1" />
+            <circle cx="12" cy="14" r="1" />
+            <circle cx="16" cy="15" r="1" />
+        </svg>
+    );
+}
+
+/** Mythic — galaxy / nebula swirl */
+export function IconRankMythic({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="2" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10" />
+            <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10" />
+            <path d="M2 12h20" />
+            <circle cx="12" cy="12" r="10" />
+        </svg>
+    );
+}
+
+/** Transcendent — radiant star burst */
+export function IconRankTranscendent({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="3" />
+            <line x1="12" y1="2" x2="12" y2="6" />
+            <line x1="12" y1="18" x2="12" y2="22" />
+            <line x1="2" y1="12" x2="6" y2="12" />
+            <line x1="18" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
+            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
+            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
+            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+        </svg>
+    );
+}
+
+/** Map rank name → SVG icon component */
+export function RankIcon({ rank, className = 'w-6 h-6' }: { rank: string; className?: string }) {
+    switch (rank) {
+        case 'Beginner': return <IconRankBeginner className={className} />;
+        case 'Learner': return <IconRankLearner className={className} />;
+        case 'Speller': return <IconRankSpeller className={className} />;
+        case 'Wordsmith': return <IconRankWordsmith className={className} />;
+        case 'Linguist': return <IconRankLinguist className={className} />;
+        case 'Lexicon': return <IconRankLexicon className={className} />;
+        case 'Word Wizard': return <IconRankWizard className={className} />;
+        case 'Grandmaster': return <IconRankGrandmaster className={className} />;
+        case 'Legend': return <IconRankLegend className={className} />;
+        case 'Mythic': return <IconRankMythic className={className} />;
+        case 'Transcendent': return <IconRankTranscendent className={className} />;
+        default: return <IconRankBeginner className={className} />;
+    }
+}
+
 // ========== Leaderboard Rank Icons ==========
 
 export function IconCrown({ className = 'w-6 h-6' }: IconProps) {

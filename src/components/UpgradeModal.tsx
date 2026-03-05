@@ -294,6 +294,57 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                 </motion.button>
             </div>
 
+            {/* Bee Team tier */}
+            <div className="mt-4 pt-3 border-t border-[rgb(var(--color-fg))]/5">
+                <div className="flex items-center gap-2 mb-2">
+                    <span className="text-sm">👨‍👩‍👧‍👦</span>
+                    <span className="text-xs ui font-semibold text-[rgb(var(--color-fg))]/60">Bee Team — Family & Classroom</span>
+                </div>
+                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/35 mb-2 space-y-0.5">
+                    <p>Everything in Champion Pass, plus:</p>
+                    <div className="flex items-start gap-1.5">
+                        <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
+                        <span>Up to 5 learner profiles</span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                        <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
+                        <span>Parent/teacher dashboard</span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                        <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
+                        <span>Printable certificates & reports</span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                        <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
+                        <span>Custom school/class branding</span>
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                    <motion.button
+                        onClick={() => { trackEvent('purchase_clicked', { plan: 'bee-team-monthly' }); }}
+                        whileTap={{ scale: 0.95 }}
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 text-center"
+                    >
+                        <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$7.99</span>
+                        <span className="block text-[9px] ui text-[rgb(var(--color-fg))]/30">/month</span>
+                    </motion.button>
+                    <motion.button
+                        onClick={() => { trackEvent('purchase_clicked', { plan: 'bee-team-annual' }); }}
+                        whileTap={{ scale: 0.95 }}
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative"
+                    >
+                        <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[rgb(var(--color-fg))]/20 text-[rgb(var(--color-fg))]/60 px-1.5 py-0.5 rounded-full">
+                            SAVE 48%
+                        </span>
+                        <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$49.99</span>
+                        <span className="block text-[9px] ui text-[rgb(var(--color-fg))]/30">/year</span>
+                    </motion.button>
+                </div>
+                <p className="text-[8px] ui text-[rgb(var(--color-fg))]/20 text-center mt-1.5">
+                    Coming soon — Stripe checkout for Bee Team
+                </p>
+            </div>
+
             {/* Purchase toast */}
             {purchaseToast && (
                 <p className="text-xs ui text-[var(--color-gold)] text-center animate-pulse">

@@ -16,6 +16,8 @@ import type { ChalkTheme } from '../utils/chalkThemes';
 import type { Dialect } from '../domains/spelling/words/types';
 import type { Level } from '../domains/spelling/spellingCategories';
 import { DEFAULT_AVATAR } from '../utils/avatarParts';
+import { useProfiles } from '../hooks/useProfiles';
+import type { LearnerProfile } from '../hooks/useProfiles';
 
 interface UserContextValue {
   // Stats
@@ -81,6 +83,21 @@ interface UserContextValue {
   // Purchased cosmetic packs
   purchasedPacks: string[];
   addPurchasedPack: (packId: string) => void;
+
+  // Profiles (Bee Team tier)
+  profiles: LearnerProfile[];
+  activeProfileId: string | null;
+  activeProfile: LearnerProfile | null;
+  isParentMode: boolean;
+  canAddProfile: boolean;
+  addProfile: (name: string, avatarConfig: string, level: string) => LearnerProfile | null;
+  removeProfile: (profileId: string) => void;
+  switchProfile: (profileId: string | null) => void;
+  updateProfile: (profileId: string, updates: Partial<Pick<LearnerProfile, 'name' | 'avatarConfig' | 'level'>>) => void;
+
+  // Custom branding (Bee Team)
+  customBranding: string;
+  setCustomBranding: (branding: string) => void;
 }
 
 const UserContext = createContext<UserContextValue | null>(null);
@@ -110,6 +127,12 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   // Premium & Referral
   const premium = usePremium(uid);
   const referral = useReferral(uid);
+
+  // Profiles (Bee Team)
+  const profilesHook = useProfiles(uid);
+
+  // Custom branding (Bee Team)
+  const [customBranding, setCustomBranding] = useLocalState(STORAGE_KEYS.customBranding, '', uid);
 
   // Cosmetics
   const [activeCostume, setActiveCostume] = useLocalState(STORAGE_KEYS.costume, '', uid);
@@ -193,6 +216,19 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     // Purchased packs
     purchasedPacks,
     addPurchasedPack,
+    // Profiles (Bee Team)
+    profiles: profilesHook.profiles,
+    activeProfileId: profilesHook.activeProfileId,
+    activeProfile: profilesHook.activeProfile,
+    isParentMode: profilesHook.isParentMode,
+    canAddProfile: profilesHook.canAddProfile,
+    addProfile: profilesHook.addProfile,
+    removeProfile: profilesHook.removeProfile,
+    switchProfile: profilesHook.switchProfile,
+    updateProfile: profilesHook.updateProfile,
+    // Custom branding
+    customBranding: customBranding as string,
+    setCustomBranding: (v: string) => setCustomBranding(v),
   }), [
     stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
@@ -208,6 +244,11 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     referral.referralRedeemed, referral.referralError, referral.redeemReferral,
     referral.getReferralUrl, referral.shareReferral,
     purchasedPacks, addPurchasedPack,
+    profilesHook.profiles, profilesHook.activeProfileId, profilesHook.activeProfile,
+    profilesHook.isParentMode, profilesHook.canAddProfile,
+    profilesHook.addProfile, profilesHook.removeProfile, profilesHook.switchProfile,
+    profilesHook.updateProfile,
+    customBranding, setCustomBranding,
   ]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

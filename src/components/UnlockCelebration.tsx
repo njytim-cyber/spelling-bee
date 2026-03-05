@@ -7,6 +7,7 @@
 import { memo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Confetti } from './Confetti';
+import { RankIcon } from './Icons';
 import type { Rank } from '../utils/ranks';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 
@@ -48,14 +49,14 @@ export const UnlockCelebration = memo(function UnlockCelebration({
                         className="flex flex-col items-center gap-4 px-8"
                         onClick={e => e.stopPropagation()}
                     >
-                        {/* Rank emoji with stamp effect */}
+                        {/* Rank icon with stamp effect */}
                         <motion.div
-                            className="text-7xl star-stamp"
+                            className="text-[var(--color-gold)] star-stamp"
                             initial={{ scale: 3, rotate: -15, opacity: 0 }}
                             animate={{ scale: 1, rotate: 0, opacity: 1 }}
                             transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
                         >
-                            {rank.emoji}
+                            <RankIcon rank={rank.name} className="w-20 h-20" />
                         </motion.div>
 
                         {/* Rank name */}
