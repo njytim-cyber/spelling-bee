@@ -48,6 +48,7 @@ export interface Stats {
     activeCostume?: string;
     activeTrailId?: string;
     activeBadgeId?: string; // Achievement badge shown on leaderboard
+    stickFigureStyle?: string; // Avatar config for leaderboard
 }
 
 const STORAGE_KEY = STORAGE_KEYS.stats;
@@ -151,6 +152,7 @@ async function saveStatsCloud(uid: string, s: Stats) {
             activeCostume: s.activeCostume || '',
             activeTrailId: s.activeTrailId || '',
             activeBadgeId: s.activeBadgeId || '',
+            stickFigureStyle: s.stickFigureStyle || '',
             streakShields: s.streakShields || 0,
             // Full stats blob — strip undefined values (Firestore rejects them)
             stats: JSON.parse(JSON.stringify(s)),
@@ -292,7 +294,7 @@ export function useStats(uid: string | null) {
     useEffect(() => {
         saveStatsLocal(stats);
         if (uidRef.current) {
-            // Debounce Firestore writes to reduce costs during rapid gameplay
+            // Debounce Firestore writes — 10s avoids excessive writes during rapid gameplay
             clearTimeout(cloudTimerRef.current);
             cloudTimerRef.current = setTimeout(() => {
                 if (uidRef.current) {
@@ -302,7 +304,7 @@ export function useStats(uid: string | null) {
                         .then(() => { setSyncPending(false); setSyncFailed(false); })
                         .catch(() => { setSyncPending(false); setSyncFailed(true); });
                 }
-            }, 2000);
+            }, 10_000);
         }
         return () => clearTimeout(cloudTimerRef.current);
     }, [stats]);
@@ -318,12 +320,13 @@ export function useStats(uid: string | null) {
         };
     }, []);
 
-    const updateCosmetics = useCallback((themeId: string, costumeId: string, trailId: string) => {
+    const updateCosmetics = useCallback((themeId: string, costumeId: string, trailId: string, avatarConfig?: string) => {
         setStats(prev => ({
             ...prev,
             activeThemeId: themeId,
             activeCostume: costumeId,
             activeTrailId: trailId,
+            ...(avatarConfig !== undefined && { stickFigureStyle: avatarConfig }),
         }));
     }, []);
 

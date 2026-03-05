@@ -9,7 +9,7 @@
  * extractLanguage() utility for consistent language classification.
  */
 import type { EngineItem } from '../../engine/domain';
-import { getAllWords, getWordMap } from './words';
+import { getAllWords, getWordMap, getRegistryVersion } from './words';
 import { extractLanguage, type LanguageOfOrigin } from '../../utils/etymologyParser';
 
 // Languages that appear frequently enough to quiz on
@@ -21,8 +21,14 @@ interface EtymologyEntry {
     etymology: string;
 }
 
+// Cache etymology pool — invalidated when registry loads new tiers
+let cachedPool: EtymologyEntry[] | null = null;
+let cachedPoolVersion = -1;
+
 function getEtymologyPool(): EtymologyEntry[] {
-    return getAllWords()
+    const v = getRegistryVersion();
+    if (cachedPool && cachedPoolVersion === v) return cachedPool;
+    cachedPool = getAllWords()
         .filter(w => w.etymology)
         .map(w => ({
             word: w.word,
@@ -30,6 +36,8 @@ function getEtymologyPool(): EtymologyEntry[] {
             etymology: w.etymology!,
         }))
         .filter(e => QUIZZABLE_LANGUAGES.includes(e.language));
+    cachedPoolVersion = v;
+    return cachedPool;
 }
 
 /**

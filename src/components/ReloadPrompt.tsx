@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -13,20 +13,28 @@ interface ReloadPromptProps {
  */
 export function ReloadPrompt({ suppress = false }: ReloadPromptProps) {
     const [dismissed, setDismissed] = useState(false);
+    const registrationRef = useRef<ServiceWorkerRegistration | undefined>(undefined);
     const {
         needRefresh: [needRefresh, setNeedRefresh],
         updateServiceWorker,
     } = useRegisterSW({
         onRegisteredSW(_swUrl: string, registration: ServiceWorkerRegistration | undefined) {
-            // Check for updates every 60 minutes
-            if (registration) {
-                setInterval(() => { registration.update(); }, 60 * 60 * 1000);
-            }
+            registrationRef.current = registration;
         },
         onRegisterError(error: Error) {
             console.warn('SW registration error:', error);
         },
     });
+
+    // Check for SW updates periodically, only when tab is visible
+    useEffect(() => {
+        const reg = registrationRef.current;
+        if (!reg) return;
+        const id = setInterval(() => {
+            if (!document.hidden) reg.update();
+        }, 60 * 60 * 1000);
+        return () => clearInterval(id);
+    }, []);
 
     const visible = needRefresh && !suppress && !dismissed;
 

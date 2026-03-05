@@ -196,6 +196,7 @@ function AppInner() {
     activeCostume,
     activeTheme,
     activeTrailId,
+    avatarConfig,
     level,
     onLevelChange,
     dialect,
@@ -761,8 +762,8 @@ function AppInner() {
   // Persist cosmetics to Firebase payload
   useEffect(() => {
     if (!uid) return;
-    updateCosmetics(activeTheme, activeCostume, activeTrailId);
-  }, [uid, activeTheme, activeCostume, activeTrailId, updateCosmetics]);
+    updateCosmetics(activeTheme, activeCostume, activeTrailId, avatarConfig);
+  }, [uid, activeTheme, activeCostume, activeTrailId, avatarConfig, updateCosmetics]);
 
   // ── Theme mode (dark/light) ──
   const [themeMode, setThemeMode] = useLocalState(STORAGE_KEYS.theme, 'dark', uid);

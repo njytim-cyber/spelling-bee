@@ -195,12 +195,23 @@ export const BeeBuddy = memo(function BeeBuddy({
         return () => { if (timerRef.current) clearTimeout(timerRef.current); };
     }, [message, state, pingMessage]);
 
-    // Idle message rotation
+    // Idle message rotation — pauses when tab is hidden to save CPU/battery
     useEffect(() => {
         if (state !== 'idle') return;
         const ctx: ChalkContext = { state, streak, totalAnswered, categoryId: questionType, timedMode };
-        const interval = setInterval(() => setMessage(pickChalkMessage({ ...ctx, state: 'idle' }, messageOverrides ?? {})), 5000);
-        return () => clearInterval(interval);
+        let interval: ReturnType<typeof setInterval> | undefined;
+
+        function start() {
+            if (!interval) interval = setInterval(() => setMessage(pickChalkMessage({ ...ctx, state: 'idle' }, messageOverrides ?? {})), 5000);
+        }
+        function stop() {
+            if (interval) { clearInterval(interval); interval = undefined; }
+        }
+        function onVisibility() { if (document.hidden) stop(); else start(); }
+
+        if (!document.hidden) start();
+        document.addEventListener('visibilitychange', onVisibility);
+        return () => { stop(); document.removeEventListener('visibilitychange', onVisibility); };
     }, [state, questionType, streak, totalAnswered, timedMode, messageOverrides]);
 
     const displayState = pingMessage ? 'comeback' : state;

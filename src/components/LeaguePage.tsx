@@ -1,10 +1,11 @@
-import { memo, useState, useEffect, useCallback, useRef } from 'react';
+import { memo, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
+import { AvatarSvg } from './AvatarSvg';
 import { IconCrown, IconMedal, IconStar } from './Icons';
 
 interface LeaderboardEntry {
@@ -17,6 +18,7 @@ interface LeaderboardEntry {
     activeThemeId?: string;
     activeCostume?: string;
     activeBadgeId?: string;
+    stickFigureStyle?: string;
     rank?: number;
     isYou?: boolean;
 }
@@ -118,6 +120,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 activeThemeId: doc.data().activeThemeId || 'classic',
                 activeCostume: doc.data().activeCostume || '',
                 activeBadgeId: doc.data().activeBadgeId || '',
+                stickFigureStyle: doc.data().stickFigureStyle || '',
             }));
             setEntries(data);
             setLoading(false);
@@ -128,8 +131,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         return unsub;
     }, []);
 
-    // ── Build score board with current user injected ──
-    const scoreBoard = (() => {
+    // ── Build score board with current user injected (memoized) ──
+    const scoreBoard = useMemo(() => {
         let list = [...entries];
         const userIdx = uid ? list.findIndex(e => e.uid === uid) : -1;
         if (userIdx === -1 && uid) {
@@ -158,7 +161,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 true
             )
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
-    })();
+    }, [entries, uid, displayName, userXP, userWeeklyXP, userStreak, userAccuracy, activeThemeId, activeCostume, lbTab]);
 
     // ── Rank change detection ──
     const myRank = scoreBoard.find(e => e.isYou)?.rank ?? null;
@@ -282,8 +285,14 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                  <span className="ui font-bold text-lg">{entry.rank}</span>}
                             </div>
 
-                            {/* Name & Cosmetic & Badge */}
+                            {/* Avatar & Name & Badge */}
                             <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && setSelectedPlayer(entry)}>
+                                <AvatarSvg
+                                    config={entry.stickFigureStyle}
+                                    size={18}
+                                    className="flex-shrink-0"
+                                    style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}
+                                />
                                 {entry.activeBadgeId && (
                                     <div className="flex-shrink-0 w-[18px] h-[18px]">
                                         <AchievementBadge achievementId={entry.activeBadgeId} unlocked={true} name="" desc="" />
@@ -341,13 +350,11 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                         >
                             <div className="flex items-center gap-3 mb-6">
-                                {selectedPlayer.activeCostume && COSTUMES[selectedPlayer.activeCostume] ? (
-                                    <svg viewBox="0 0 100 160" className="w-[28px] h-[44px]" style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'var(--color-chalk)' }}>
-                                        {COSTUMES[selectedPlayer.activeCostume]}
-                                    </svg>
-                                ) : (
-                                    <div className="w-[28px] h-[44px] flex items-center justify-center text-xl">👤</div>
-                                )}
+                                <AvatarSvg
+                                    config={selectedPlayer.stickFigureStyle}
+                                    size={32}
+                                    style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'var(--color-chalk)' }}
+                                />
                                 <div>
                                     <h3
                                         className="text-lg ui font-bold"

@@ -8,6 +8,7 @@ import { db } from './firebase';
 
 let reportCount = 0;
 const MAX_REPORTS = 10;
+let initialized = false;
 
 export function reportError(error: { message: string; stack?: string; source?: string }) {
     if (reportCount >= MAX_REPORTS) return;
@@ -29,6 +30,9 @@ export function reportError(error: { message: string; stack?: string; source?: s
 }
 
 export function initErrorMonitor() {
+    if (initialized) return;
+    initialized = true;
+
     window.addEventListener('error', (event) => {
         reportError({
             message: event.message || 'Unknown error',

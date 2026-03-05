@@ -10,6 +10,8 @@ import { STORAGE_KEYS } from '../config';
 import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
+import { AvatarBuilder } from './AvatarBuilder';
+import type { FlairStats } from '../utils/avatarParts';
 
 // Removed tab switching - now showing everything on one page
 
@@ -42,6 +44,8 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         onThemeChange,
         activeTrailId,
         onTrailChange,
+        avatarConfig,
+        onAvatarChange,
         displayName,
         setDisplayName,
         isAnonymous,
@@ -77,6 +81,16 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const unlockedTrails = useMemo(() =>
         SWIPE_TRAILS.filter(t => checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available).length,
     [rankIdx, stats.bestStreak, stats.totalSolved]);
+
+    // Flair unlock stats
+    const flairStats = useMemo<FlairStats>(() => ({
+        dayStreak: stats.dayStreak,
+        totalSolved: stats.totalSolved,
+        bestStreak: stats.bestStreak,
+        sessionsPlayed: stats.sessionsPlayed,
+        totalXP: stats.totalXP,
+        masteredCount,
+    }), [stats.dayStreak, stats.totalSolved, stats.bestStreak, stats.sessionsPlayed, stats.totalXP, masteredCount]);
 
     // Word bank mastery percentile
     const registryVersion = getRegistryVersion();
@@ -301,6 +315,14 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
             {/* ── Consolidated Content ── */}
             <div className="w-full">
                 <div className="flex flex-col items-center">
+
+            {/* ═══════ AVATAR ═══════ */}
+                <div className="w-full max-w-sm mb-5">
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                        avatar
+                    </div>
+                    <AvatarBuilder config={avatarConfig} onChange={onAvatarChange} flairStats={flairStats} />
+                </div>
 
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
                 <>

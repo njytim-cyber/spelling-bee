@@ -13,6 +13,7 @@ import { STORAGE_KEYS } from '../config';
 import type { ChalkTheme } from '../utils/chalkThemes';
 import type { Dialect } from '../domains/spelling/words/types';
 import type { Level } from '../domains/spelling/spellingCategories';
+import { DEFAULT_AVATAR } from '../utils/avatarParts';
 
 interface UserContextValue {
   // Stats
@@ -35,6 +36,8 @@ interface UserContextValue {
   onThemeChange: (theme: ChalkTheme) => void;
   activeTrailId: string;
   onTrailChange: (id: string) => void;
+  avatarConfig: string;
+  onAvatarChange: (config: string) => void;
 
   // Auth & Profile
   displayName: string;
@@ -79,6 +82,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const [activeCostume, setActiveCostume] = useLocalState(STORAGE_KEYS.costume, '', uid);
   const [activeTheme, setActiveTheme] = useLocalState(STORAGE_KEYS.chalkTheme, 'classic', uid);
   const [activeTrailId, setActiveTrailId] = useLocalState(STORAGE_KEYS.trail, '', uid);
+  const [avatarConfig, setAvatarConfig] = useLocalState(STORAGE_KEYS.stickFigureStyle, DEFAULT_AVATAR, uid);
 
   // Settings
   const [level, setLevel] = useLocalState(STORAGE_KEYS.grade, '', uid);
@@ -87,6 +91,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const onCostumeChange = useCallback((id: string) => setActiveCostume(id), [setActiveCostume]);
   const onThemeChange = useCallback((theme: ChalkTheme) => setActiveTheme(theme.id), [setActiveTheme]);
   const onTrailChange = useCallback((id: string) => setActiveTrailId(id), [setActiveTrailId]);
+  const onAvatarChange = useCallback((config: string) => setAvatarConfig(config), [setAvatarConfig]);
   const onLevelChange = useCallback((l: Level) => setLevel(l), [setLevel]);
   const onDialectChange = useCallback((d: Dialect) => setDialect(d), [setDialect]);
 
@@ -108,6 +113,8 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     onThemeChange,
     activeTrailId: activeTrailId as string,
     onTrailChange,
+    avatarConfig: avatarConfig as string,
+    onAvatarChange,
     displayName: user?.displayName ?? '',
     setDisplayName,
     isAnonymous: user?.isAnonymous ?? true,
@@ -122,7 +129,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
     activeCostume, onCostumeChange, activeTheme, onThemeChange,
-    activeTrailId, onTrailChange, user?.displayName, setDisplayName,
+    activeTrailId, onTrailChange, avatarConfig, onAvatarChange, user?.displayName, setDisplayName,
     user?.isAnonymous, linkGoogle, sendEmailLink, deleteAccount, level, onLevelChange,
     dialect, onDialectChange,
   ]);

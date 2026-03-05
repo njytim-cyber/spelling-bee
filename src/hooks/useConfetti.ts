@@ -28,20 +28,25 @@ export function useConfetti() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        particles.current = particles.current.filter(p => {
+        // In-place compaction avoids allocating a new array every frame
+        const ps = particles.current;
+        let writeIdx = 0;
+        for (let i = 0; i < ps.length; i++) {
+            const p = ps[i];
             p.x += p.vx;
             p.y += p.vy;
             p.vy += 0.3;
             p.life -= 0.02;
-            if (p.life <= 0) return false;
+            if (p.life <= 0) continue;
             ctx.globalAlpha = p.life;
             ctx.fillStyle = p.color;
             ctx.fillRect(p.x, p.y, p.size, p.size * 0.6);
-            return true;
-        });
+            ps[writeIdx++] = p;
+        }
+        ps.length = writeIdx;
         ctx.globalAlpha = 1;
 
-        if (particles.current.length > 0) {
+        if (ps.length > 0) {
             animRef.current = requestAnimationFrame(tickFn);
         } else {
             animRef.current = 0;
