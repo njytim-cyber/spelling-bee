@@ -13,8 +13,9 @@ import { STORAGE_KEYS } from '../config';
 import { EtymologyExplainer } from './EtymologyExplainer';
 import { extractLanguage, type LanguageOfOrigin } from '../utils/etymologyParser';
 
-const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
-const BOX_COLORS = [
+const MASTERY_LABELS = ['Practicing', 'New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
+const MASTERY_COLORS = [
+    'text-[var(--color-gold)]/50',
     'text-[var(--color-wrong)]',
     'text-[var(--color-wrong)]/70',
     'text-[var(--color-gold)]',
@@ -22,11 +23,23 @@ const BOX_COLORS = [
     'text-[var(--color-correct)]',
 ];
 
-function formatNextReview(nextReview: number, box: number): string {
-    if (box >= 4) return 'Mastered';
+/** Classify a word record into a mastery bucket (matches Analytics logic).
+ *  0=Practicing, 1=New, 2=Learning, 3=Reviewing, 4=Familiar, 5=Mastered */
+function classifyMastery(r: WordRecord): number {
+    if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) return 5; // Mastered
+    if (r.box >= 3) return 4; // Familiar
+    if (r.box === 2) return 3; // Reviewing
+    if (r.attempts >= 3 && r.correct / r.attempts < 0.5) return 0; // Practicing
+    if (r.attempts === 0) return 1; // New
+    return 2; // Learning
+}
+
+function formatNextReview(r: WordRecord): string {
+    if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) return 'Mastered';
+    if (r.box >= 4) return '—'; // Box 4 but not typed yet — no review scheduled
     const now = Date.now();
-    if (nextReview <= now) return 'Due now';
-    const hoursLeft = Math.ceil((nextReview - now) / (1000 * 60 * 60));
+    if (r.nextReview <= now) return 'Due now';
+    const hoursLeft = Math.ceil((r.nextReview - now) / (1000 * 60 * 60));
     if (hoursLeft < 24) return `${hoursLeft}h`;
     return `${Math.ceil(hoursLeft / 24)}d`;
 }
@@ -65,7 +78,7 @@ const WordRow = memo(function WordRow({
     onToggle: () => void;
 }) {
     const acc = record.attempts > 0 ? record.correct / record.attempts : 0;
-    const review = formatNextReview(record.nextReview, record.box);
+    const review = formatNextReview(record);
 
     return (
         <div className="border-b border-[rgb(var(--color-fg))]/5">
@@ -75,8 +88,8 @@ const WordRow = memo(function WordRow({
             >
                 <div className="flex items-center gap-2 min-w-0">
                     <span className="text-sm ui font-bold text-[var(--color-chalk)] truncate">{record.word}</span>
-                    <span className={`text-[9px] ui shrink-0 ${BOX_COLORS[Math.min(record.box, 4)]}`}>
-                        {BOX_LABELS[Math.min(record.box, 4)]}
+                    <span className={`text-[9px] ui shrink-0 ${MASTERY_COLORS[classifyMastery(record)]}`}>
+                        {MASTERY_LABELS[classifyMastery(record)]}
                     </span>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -164,11 +177,11 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     const allRecords = useMemo(() => Object.values(records), [records]);
     const totalWords = allRecords.length;
-    const masteredWords = useMemo(() => allRecords.filter(r => r.box >= 4).length, [allRecords]);
+    const masteredWords = useMemo(() => allRecords.filter(r => classifyMastery(r) === 5).length, [allRecords]);
 
-    const boxCounts = useMemo(() => {
-        const counts = [0, 0, 0, 0, 0];
-        for (const r of allRecords) counts[Math.min(r.box, 4)]++;
+    const masteryCounts = useMemo(() => {
+        const counts = [0, 0, 0, 0, 0, 0];
+        for (const r of allRecords) counts[classifyMastery(r)]++;
         return counts;
     }, [allRecords]);
 
@@ -180,7 +193,7 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
 
     const filteredWords = useMemo(() => {
         let list = allRecords;
-        if (boxFilter !== null) list = list.filter(r => Math.min(r.box, 4) === boxFilter);
+        if (boxFilter !== null) list = list.filter(r => classifyMastery(r) === boxFilter);
         if (categoryFilter !== null) list = list.filter(r => r.category === categoryFilter);
         if (originFilter !== 'all') {
             list = list.filter(r => {
@@ -261,18 +274,21 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
                 >
                     All ({totalWords})
                 </button>
-                {BOX_LABELS.map((label, i) => (
-                    <button
-                        key={i}
-                        onClick={() => setBoxFilter(boxFilter === i ? null : i)}
-                        className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === i
-                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
-                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
-                            }`}
-                    >
-                        {label} ({boxCounts[i]})
-                    </button>
-                ))}
+                {MASTERY_LABELS.map((label, i) => {
+                    if (masteryCounts[i] === 0) return null;
+                    return (
+                        <button
+                            key={i}
+                            onClick={() => setBoxFilter(boxFilter === i ? null : i)}
+                            className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${boxFilter === i
+                                    ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                    : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                                }`}
+                        >
+                            {label} ({masteryCounts[i]})
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Origin filter tabs */}

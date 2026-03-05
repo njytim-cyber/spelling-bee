@@ -14,16 +14,16 @@ import { getWordMap } from '../domains/spelling/words';
 /** Classify words by Leitner box into mastery buckets.
  *  Box 4 with no typed attempts = "familiar" (recognition only, not true mastery). */
 function getMasterySnapshot(records: Record<string, WordRecord>) {
-    let total = 0, mastered = 0, familiar = 0, reviewing = 0, learning = 0, struggling = 0;
+    let total = 0, mastered = 0, familiar = 0, reviewing = 0, learning = 0, practicing = 0;
     for (const r of Object.values(records)) {
         total++;
         if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) mastered++;
         else if (r.box >= 3) familiar++;
         else if (r.box === 2) reviewing++;
-        else if (r.attempts >= 3 && r.correct / r.attempts < 0.5) struggling++;
+        else if (r.attempts >= 3 && r.correct / r.attempts < 0.5) practicing++;
         else learning++;
     }
-    return { total, mastered, familiar, reviewing, learning, struggling };
+    return { total, mastered, familiar, reviewing, learning, practicing };
 }
 
 /** Split patterns into strengths (≥80%) and weaknesses (<80%). */
@@ -145,8 +145,8 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records }: Anal
                     <SnapshotBar label="Familiar" count={snapshot.familiar} total={snapshot.total} color="bg-[var(--color-correct)]/60" />
                     <SnapshotBar label="Reviewing" count={snapshot.reviewing} total={snapshot.total} color="bg-[var(--color-gold)]" />
                     <SnapshotBar label="Learning" count={snapshot.learning} total={snapshot.total} color="bg-[var(--color-gold)]/60" />
-                    {snapshot.struggling > 0 && (
-                        <SnapshotBar label="Struggling" count={snapshot.struggling} total={snapshot.total} color="bg-[var(--color-wrong)]" />
+                    {snapshot.practicing > 0 && (
+                        <SnapshotBar label="Practicing" count={snapshot.practicing} total={snapshot.total} color="bg-[var(--color-gold)]/40" />
                     )}
                 </div>
                 <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1.5 px-1">

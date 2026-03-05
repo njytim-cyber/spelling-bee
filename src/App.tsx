@@ -680,7 +680,7 @@ function AppInner() {
     prevMasteredRef.current = masteredCount;
     if (masteredCount > prev && prev > 0) {
       const mastered = Object.values(wordRecords)
-        .filter(r => r.box >= 4)
+        .filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1)
         .sort((a, b) => b.lastCorrect - a.lastCorrect);
       const word = mastered[0]?.word;
       fireMasteryToast(word ? `🎓 "${word}" mastered!` : '🎓 Word mastered!');

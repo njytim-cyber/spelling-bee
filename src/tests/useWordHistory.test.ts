@@ -86,7 +86,7 @@ function getWeakCategories(records: Record<string, WordRecord>) {
 }
 
 function getMasteredCount(records: Record<string, WordRecord>): number {
-    return Object.values(records).filter(r => r.box >= 4).length;
+    return Object.values(records).filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1).length;
 }
 
 // ── Tests ───────────────────────────────────────────────────────────────────
@@ -214,12 +214,19 @@ describe('Leitner spaced repetition (useWordHistory logic)', () => {
     });
 
     describe('mastered count', () => {
-        it('counts words at box 4', () => {
-            const mastered = recordAttempt(undefined, 'ace', 'cvc', true, NOW);
+        it('counts words at box 4 with typed attempt', () => {
+            const mastered = recordAttempt(undefined, 'ace', 'cvc', true, NOW, 'typed');
             let m = mastered;
             for (let i = 1; i <= 3; i++) m = recordAttempt(m, 'ace', 'cvc', true, NOW + i);
             const notMastered = recordAttempt(undefined, 'bat', 'cvc', true, NOW);
             expect(getMasteredCount({ ace: m, bat: notMastered })).toBe(1);
+        });
+
+        it('does not count box 4 without typed attempt', () => {
+            let m = recordAttempt(undefined, 'ace', 'cvc', true, NOW, 'mcq');
+            for (let i = 1; i <= 3; i++) m = recordAttempt(m, 'ace', 'cvc', true, NOW + i, 'mcq');
+            expect(m.box).toBe(4);
+            expect(getMasteredCount({ ace: m })).toBe(0);
         });
 
         it('returns 0 when no mastered words', () => {

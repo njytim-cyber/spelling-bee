@@ -74,7 +74,7 @@ export const CustomListsModal = memo(function CustomListsModal({
                 practiced++;
                 totalCorrect += r.correct;
                 totalAttempts += r.attempts;
-                if (r.box >= 4) mastered++;
+                if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) mastered++;
             }
         }
         const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;

@@ -313,7 +313,7 @@ export function getStudyPlan(
 
     // 7. Progress nudge — suggest harder categories if mastery is high
     const attemptedCount = recordArr.length;
-    const mastered = recordArr.filter(r => r.box >= 4).length;
+    const mastered = recordArr.filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1).length;
     const masteryRate = attemptedCount > 0 ? mastered / attemptedCount : 0;
     if (masteryRate > 0.5 && attemptedCount >= 20 && plan.length < 5) {
         const coveredPatterns = new Set<string>(recordArr.map(r => {

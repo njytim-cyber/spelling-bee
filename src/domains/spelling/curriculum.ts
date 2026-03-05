@@ -22,7 +22,7 @@ export interface LevelProgress {
     totalWords: number;
     /** Words the student has attempted at this difficulty */
     attempted: number;
-    /** Words the student has mastered (box >= 3) at this difficulty */
+    /** Words the student has mastered (box >= 4 + typed) at this difficulty */
     mastered: number;
     /** Overall accuracy for words at this difficulty */
     accuracy: number;
@@ -47,7 +47,7 @@ export function evaluateLevelProgress(
         const bucket = byDiff.get(diff) ?? { attempted: 0, correct: 0, mastered: 0 };
         bucket.attempted += 1;
         bucket.correct += rec.correct;
-        if (rec.box >= 3) bucket.mastered += 1;
+        if (rec.box >= 4 && (rec.typedAttempts ?? 0) >= 1) bucket.mastered += 1;
         byDiff.set(diff, bucket);
     }
 

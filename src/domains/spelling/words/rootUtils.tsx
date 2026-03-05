@@ -68,7 +68,7 @@ export function formatRootHint(roots: WordRoot[]): string {
 
 export interface RootMasteryEntry {
     root: WordRoot;
-    /** Count of example words with Leitner box >= 3 (almost mastered or mastered). */
+    /** Count of example words with Leitner box >= 4 and at least one typed attempt. */
     mastered: number;
     /** Total example words in the root. */
     total: number;
@@ -86,7 +86,7 @@ export function computeRootMastery(
         let mastered = 0;
         for (const example of root.examples) {
             const rec = records[example.toLowerCase()];
-            if (rec && rec.box >= 3) mastered++;
+            if (rec && rec.box >= 4 && (rec.typedAttempts ?? 0) >= 1) mastered++;
         }
         return { root, mastered, total, progress: total > 0 ? mastered / total : 0 };
     });
