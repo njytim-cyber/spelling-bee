@@ -18,7 +18,7 @@ npm run verify    # Full check: lint + tsc + test + build
 - **Tailwind CSS 4** (via Vite plugin, utility-first)
 - **Framer Motion** (animations, swipe gestures, AnimatePresence)
 - **Firebase** (Auth + Firestore for cloud sync, leaderboards, pings)
-- **Vitest** (18 test files, 251 tests)
+- **Vitest** (23 test files, 328 tests)
 - **PWA** via vite-plugin-pwa with offline caching
 
 ## Architecture
@@ -55,7 +55,6 @@ src/
 ```
 
 ### Hidden / Removed UI Elements
-- **Syllables button** in Spelling Bee — removed from `SECONDARY_INFO` in `BeeSimPage.tsx`. The `spellInSections` hook logic is retained but unreachable from UI.
 - **Rank emojis** — replaced with chalk-line SVG icons (`RankIcon` in `Icons.tsx`). Emoji field kept on `Rank` type for share text only.
 - **Leaderboard NPC backfill** — 10 NPC entries fill the Compete leaderboard when fewer than 10 real players exist. NPCs are non-interactive (no ping/race).
 
@@ -149,7 +148,7 @@ import { IconSettings, IconCheck, IconClose } from './Icons';
 
 ## Testing
 
-**Framework**: Vitest (no DOM/browser deps — tests run in Node). 18 test files, 251 tests.
+**Framework**: Vitest (no DOM/browser deps — tests run in Node). 23 test files, 328 tests.
 
 **Run**: `npx vitest run` (once) or `npm run test` (watch mode).
 
@@ -201,5 +200,4 @@ When adding a new feature, follow this checklist:
 `npm run verify` runs automatically before every `git push`. It runs lint, type-check, tests, and build — blocks push on failure.
 
 ## Related Documents
-- `BETA-READINESS.md` — Comprehensive audit: functionality, performance, security, privacy, action items
-- `FEATURE-BACKLOG.md` — Post-launch features (multiplayer, parent dashboard, completionist progress)
+- `MONETIZATION.md` — Pending monetization work (Phases 0-3 complete, remaining items)
