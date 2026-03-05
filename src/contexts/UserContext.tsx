@@ -62,8 +62,11 @@ interface UserContextValue {
   activateTrial: (days: number) => string;
   extendPass: (days: number) => string;
   setExpiryFromServer: (expiry: string) => void;
+  setPaidSubscription: (expiry: string, status: 'active' | 'canceled') => void;
   trialUsed: boolean;
   isTrial: boolean;
+  isPaidSubscriber: boolean;
+  subscriptionStatus: string;
 
   // Referral
   referralCode: string;
@@ -74,6 +77,10 @@ interface UserContextValue {
   redeemReferral: () => Promise<void>;
   getReferralUrl: () => string;
   shareReferral: () => Promise<void>;
+
+  // Purchased cosmetic packs
+  purchasedPacks: string[];
+  addPurchasedPack: (packId: string) => void;
 }
 
 const UserContext = createContext<UserContextValue | null>(null);
@@ -113,6 +120,17 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   // Settings
   const [level, setLevel] = useLocalState(STORAGE_KEYS.grade, '', uid);
   const [dialect, setDialect] = useLocalState(STORAGE_KEYS.dialect, 'en-US', uid);
+
+  // Purchased packs (JSON array of pack IDs)
+  const [purchasedPacksRaw, setPurchasedPacksRaw] = useLocalState(STORAGE_KEYS.purchasedPacks, '[]', uid);
+  const purchasedPacks = useMemo<string[]>(() => {
+    try { return JSON.parse(purchasedPacksRaw as string); } catch { return []; }
+  }, [purchasedPacksRaw]);
+  const addPurchasedPack = useCallback((packId: string) => {
+    if (!purchasedPacks.includes(packId)) {
+      setPurchasedPacksRaw(JSON.stringify([...purchasedPacks, packId]));
+    }
+  }, [purchasedPacks, setPurchasedPacksRaw]);
 
   const onCostumeChange = useCallback((id: string) => setActiveCostume(id), [setActiveCostume]);
   const onThemeChange = useCallback((theme: ChalkTheme) => setActiveTheme(theme.id), [setActiveTheme]);
@@ -158,8 +176,11 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     activateTrial: premium.activateTrial,
     extendPass: premium.extendPass,
     setExpiryFromServer: premium.setExpiryFromServer,
+    setPaidSubscription: premium.setPaidSubscription,
     trialUsed: premium.trialUsed,
     isTrial: premium.isTrial,
+    isPaidSubscriber: premium.isPaidSubscriber,
+    subscriptionStatus: premium.subscriptionStatus,
     // Referral
     referralCode: referral.referralCode,
     referralCount: referral.referralCount,
@@ -169,6 +190,9 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     redeemReferral: referral.redeemReferral,
     getReferralUrl: referral.getReferralUrl,
     shareReferral: referral.shareReferral,
+    // Purchased packs
+    purchasedPacks,
+    addPurchasedPack,
   }), [
     stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
@@ -178,10 +202,12 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     dialect, onDialectChange,
     premium.isPremium, premium.championPassExpiry, premium.daysRemaining,
     premium.activateTrial, premium.extendPass, premium.setExpiryFromServer,
-    premium.trialUsed, premium.isTrial,
+    premium.setPaidSubscription, premium.trialUsed, premium.isTrial,
+    premium.isPaidSubscriber, premium.subscriptionStatus,
     referral.referralCode, referral.referralCount, referral.pendingReferral,
     referral.referralRedeemed, referral.referralError, referral.redeemReferral,
     referral.getReferralUrl, referral.shareReferral,
+    purchasedPacks, addPurchasedPack,
   ]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

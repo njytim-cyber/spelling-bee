@@ -6,9 +6,10 @@ import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
 import { AvatarSvg } from './AvatarSvg';
-import { IconCrown, IconMedal, IconStar, IconShare } from './Icons';
+import { IconCrown, IconMedal, IconStar, IconShare, IconLock } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
+import { trackEvent } from '../utils/analytics';
 
 interface LeaderboardEntry {
     uid: string;
@@ -37,10 +38,13 @@ interface Props {
     activeThemeId: string;
     activeCostume: string;
     onOpenBee?: () => void;
+    isPremium?: boolean;
+    onUpgrade?: () => void;
+    on1v1?: () => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1 }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -157,11 +161,11 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         return list
             .sort((a, b) =>
                 lbTab === 'weekly' ? b.weeklyXP - a.weeklyXP :
-                b.totalXP - a.totalXP
+                    b.totalXP - a.totalXP
             )
             .filter(e =>
                 lbTab === 'weekly' ? e.weeklyXP > 0 :
-                true
+                    true
             )
             .map((e, i) => ({ ...e, rank: i + 1, isYou: e.uid === uid }));
     }, [entries, uid, displayName, userXP, userWeeklyXP, userStreak, userAccuracy, activeThemeId, activeCostume, lbTab]);
@@ -208,6 +212,29 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </button>
                 )}
 
+                {/* 1v1 Challenge — Champion only */}
+                <button
+                    onClick={() => {
+                        if (!isPremium) {
+                            trackEvent('level_gated', { level: '1v1' });
+                            onUpgrade?.();
+                        } else {
+                            on1v1?.();
+                        }
+                    }}
+                    className={`w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 transition-colors ${isPremium
+                        ? 'border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5'
+                        : 'border-[rgb(var(--color-fg))]/10 opacity-60'
+                        }`}
+                >
+                    <span className="text-2xl">⚔️</span>
+                    <div className="text-left flex-1">
+                        <div className={`text-sm ui font-bold ${isPremium ? 'text-[var(--color-chalk)]' : 'text-[rgb(var(--color-fg))]/50'}`}>1v1 Challenge</div>
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Real-time match against a friend</div>
+                    </div>
+                    {!isPremium && <IconLock className="w-4 h-4 text-[rgb(var(--color-fg))]/30" />}
+                </button>
+
             </div>
 
             {/* Leaderboard header + tab toggle */}
@@ -219,11 +246,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             <button
                                 key={tab}
                                 onClick={() => setLbTab(tab)}
-                                className={`px-3 py-1 text-[10px] ui font-semibold transition-colors ${
-                                    lbTab === tab
-                                        ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)]'
-                                        : 'text-[rgb(var(--color-fg))]/35 hover:text-[rgb(var(--color-fg))]/50'
-                                }`}
+                                className={`px-3 py-1 text-[10px] ui font-semibold transition-colors ${lbTab === tab
+                                    ? 'bg-[var(--color-gold)]/15 text-[var(--color-gold)]'
+                                    : 'text-[rgb(var(--color-fg))]/35 hover:text-[rgb(var(--color-fg))]/50'
+                                    }`}
                             >
                                 {tab === 'allTime' ? 'All Time' : 'This Week'}
                             </button>
@@ -283,9 +309,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                         'text-[rgb(var(--color-fg))]/60'
                                 }`}>
                                 {entry.rank === 1 ? <IconCrown className="w-5 h-5" /> :
-                                 entry.rank === 2 ? <IconMedal className="w-5 h-5" /> :
-                                 entry.rank === 3 ? <IconStar className="w-5 h-5" /> :
-                                 <span className="ui font-bold text-lg">{entry.rank}</span>}
+                                    entry.rank === 2 ? <IconMedal className="w-5 h-5" /> :
+                                        entry.rank === 3 ? <IconStar className="w-5 h-5" /> :
+                                            <span className="ui font-bold text-lg">{entry.rank}</span>}
                             </div>
 
                             {/* Avatar & Name & Badge */}
@@ -350,6 +376,23 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 </motion.div>
             )}
 
+            {/* Invite to Compete */}
+            {!loading && (
+                <button
+                    onClick={async () => {
+                        const text = appendReferralFooter(
+                            '🏆 Think you can spell better than me? Challenge me on Spelling Bee!',
+                            referralCode,
+                        );
+                        await shareOrCopy(text);
+                        trackEvent('referral_shared', { source: 'leaderboard_invite' });
+                    }}
+                    className="w-full max-w-sm mt-4 py-3 rounded-xl border border-[var(--color-gold)]/30 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-colors flex items-center justify-center gap-2"
+                >
+                    <IconShare className="w-4 h-4" /> Invite Friends to Compete
+                </button>
+            )}
+
             {/* Action Sheet Modal */}
             <AnimatePresence>
                 {selectedPlayer && (
@@ -395,11 +438,10 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                 <button
                                     onClick={() => handleAction('ping')}
                                     disabled={pingCooldown}
-                                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border transition-colors ${
-                                        pingCooldown
-                                            ? 'border-[rgb(var(--color-fg))]/10 text-[rgb(var(--color-fg))]/25 cursor-not-allowed'
-                                            : 'border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10'
-                                    }`}
+                                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border transition-colors ${pingCooldown
+                                        ? 'border-[rgb(var(--color-fg))]/10 text-[rgb(var(--color-fg))]/25 cursor-not-allowed'
+                                        : 'border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10'
+                                        }`}
                                 >
                                     <span>👋</span> {pingCooldown ? `Wait ${pingCountdown}s` : 'Ping Player'}
                                 </button>

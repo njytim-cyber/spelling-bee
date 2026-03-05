@@ -7,6 +7,8 @@ export interface TrailConfig {
     minSolved?: number; // Requires total words solved
     /** Requires Champion Pass when true */
     premium?: boolean;
+    /** Requires IAP pack purchase when true (pack ID checked separately) */
+    packItem?: boolean;
 }
 
 export const SWIPE_TRAILS: TrailConfig[] = [
@@ -36,4 +38,8 @@ export const SWIPE_TRAILS: TrailConfig[] = [
         minSolved: 500, // Lightning-fast progress
         premium: true,
     },
+    // 🛒 IAP pack items
+    { id: 'snowflake', name: 'Snowflake', emoji: '❄️', minLevel: 1, packItem: true },
+    { id: 'sparkle', name: 'Sparkle', emoji: '✨', minLevel: 1, packItem: true },
+    { id: 'comet', name: 'Comet', emoji: '☄️', minLevel: 1, packItem: true },
 ];

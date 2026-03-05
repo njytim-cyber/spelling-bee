@@ -1,4 +1,4 @@
-import { memo, useState, useMemo } from 'react';
+import { memo, useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EVERY_SPELLING_ACHIEVEMENT } from '../domains/spelling/spellingAchievements';
 import { AchievementBadge } from './AchievementBadge';
@@ -7,7 +7,8 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift, IconShop } from './Icons';
+import { isItemOwned } from '../utils/cosmeticPacks';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import { AvatarBuilder } from './AvatarBuilder';
@@ -20,6 +21,7 @@ interface Props {
     masteredCount: number;
     uniqueWordsAttempted: number;
     onUpgrade?: () => void;
+    onShop?: () => void;
 }
 
 // Derive achievement sublists from the single spelling array
@@ -32,7 +34,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop }: Props) {
     // Get user state from context
     const {
         stats,
@@ -59,6 +61,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         referralCode,
         referralCount,
         shareReferral,
+        purchasedPacks,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -81,12 +84,18 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     // Cosmetic unlock counts
     const rankIdx = useMemo(() => RANKS.findIndex(r => r.name === rank.name), [rank.name]);
+    const isThemeAvailable = useCallback((t: { id: string; premium?: boolean; packItem?: boolean; minLevel?: number; minStreak?: number; minSolved?: number }) => {
+        const rankUnlocked = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available;
+        if (t.packItem) return rankUnlocked && isItemOwned(t.id, purchasedPacks);
+        if (t.premium) return rankUnlocked && isPremium;
+        return rankUnlocked;
+    }, [rankIdx, stats.bestStreak, stats.totalSolved, purchasedPacks, isPremium]);
     const unlockedThemes = useMemo(() =>
-        CHALK_THEMES.filter(t => checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available).length,
-    [rankIdx, stats.bestStreak, stats.totalSolved]);
+        CHALK_THEMES.filter(t => isThemeAvailable(t)).length,
+    [isThemeAvailable]);
     const unlockedTrails = useMemo(() =>
-        SWIPE_TRAILS.filter(t => checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available).length,
-    [rankIdx, stats.bestStreak, stats.totalSolved]);
+        SWIPE_TRAILS.filter(t => isThemeAvailable(t)).length,
+    [isThemeAvailable]);
 
     // Flair unlock stats
     const flairStats = useMemo<FlairStats>(() => ({
@@ -410,6 +419,15 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
                 <>
+                    {/* Shop button */}
+                    <button
+                        onClick={onShop}
+                        className="flex items-center gap-1.5 text-[10px] ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors mb-3"
+                    >
+                        <IconShop className="w-3.5 h-3.5" />
+                        <span>cosmetic shop</span>
+                    </button>
+
                     {/* Chalk Themes — locked ones faded like achievements */}
                     <div className="w-full max-w-sm mb-5">
                         <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
@@ -419,17 +437,18 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                             {CHALK_THEMES.map(t => {
                                 const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const premiumLocked = !isPremium && t.premium;
-                                const isAvailable = rankUnlocked && !premiumLocked;
+                                const packLocked = t.packItem && !isItemOwned(t.id, purchasedPacks);
+                                const isAvailable = rankUnlocked && !premiumLocked && !packLocked;
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
+                                        onClick={() => packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
                                         aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        title={packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
@@ -438,6 +457,9 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                     >
                                         {premiumLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🔒</span>
+                                        )}
+                                        {packLocked && !premiumLocked && (
+                                            <span className="absolute -top-0.5 -right-0.5 text-[8px]">🛒</span>
                                         )}
                                     </button>
                                 );
@@ -454,16 +476,17 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                             {SWIPE_TRAILS.map(t => {
                                 const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const premiumLocked = !isPremium && t.premium;
-                                const isUnlocked = rankUnlocked && !premiumLocked;
+                                const packLocked = t.packItem && !isItemOwned(t.id, purchasedPacks);
+                                const isUnlocked = rankUnlocked && !premiumLocked && !packLocked;
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
 
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => premiumLocked ? onUpgrade?.() : isUnlocked && onTrailChange(t.id)}
+                                        onClick={() => packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isUnlocked && onTrailChange(t.id)}
                                         aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!isUnlocked ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        title={packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
                                         className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all relative
                                             ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
                                                 isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
@@ -472,6 +495,9 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                     >
                                         {premiumLocked && (
                                             <span className="absolute -top-1 -right-1 text-[8px]">🔒</span>
+                                        )}
+                                        {packLocked && !premiumLocked && (
+                                            <span className="absolute -top-1 -right-1 text-[8px]">🛒</span>
                                         )}
                                         <span className={`text-2xl ${isActive ? 'drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]' : ''}`}>
                                             {t.emoji}

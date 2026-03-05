@@ -1,4 +1,4 @@
-/** Chalk color themes — unlocked via rank progression, streaks, and achievements */
+/** Chalk color themes — unlocked via rank progression, streaks, achievements, or IAP packs */
 
 export interface ChalkTheme {
     id: string;
@@ -10,6 +10,8 @@ export interface ChalkTheme {
     minSolved?: number;     // Total words solved required
     /** Requires Champion Pass when true */
     premium?: boolean;
+    /** Requires IAP pack purchase when true (pack ID checked separately) */
+    packItem?: boolean;
 }
 
 export const CHALK_THEMES: ChalkTheme[] = [
@@ -29,6 +31,16 @@ export const CHALK_THEMES: ChalkTheme[] = [
     // ✨ Elite endgame unlocks (Champion Pass required)
     { id: 'void-black', name: 'Void', color: 'rgba(180, 160, 200, 0.95)', lightColor: '#312e81', minLevel: 9, premium: true }, // Legend (8000 XP)
     { id: 'prismatic', name: 'Prismatic', color: 'rgba(255, 180, 255, 0.95)', lightColor: '#86198f', minLevel: 10, premium: true }, // Mythic (12000 XP)
+    // 🛒 IAP pack items
+    { id: 'neon-pink', name: 'Neon Pink', color: 'rgba(255, 50, 200, 0.95)', lightColor: '#be185d', minLevel: 1, packItem: true },
+    { id: 'neon-cyan', name: 'Neon Cyan', color: 'rgba(0, 255, 220, 0.95)', lightColor: '#0e7490', minLevel: 1, packItem: true },
+    { id: 'neon-yellow', name: 'Neon Yellow', color: 'rgba(255, 255, 50, 0.95)', lightColor: '#a16207', minLevel: 1, packItem: true },
+    { id: 'pastel-lavender', name: 'Lavender', color: 'rgba(200, 180, 255, 0.95)', lightColor: '#7c3aed', minLevel: 1, packItem: true },
+    { id: 'pastel-peach', name: 'Peach', color: 'rgba(255, 200, 170, 0.95)', lightColor: '#c2410c', minLevel: 1, packItem: true },
+    { id: 'pastel-sky', name: 'Baby Blue', color: 'rgba(170, 210, 255, 0.95)', lightColor: '#2563eb', minLevel: 1, packItem: true },
+    { id: 'forest-green', name: 'Forest', color: 'rgba(40, 180, 80, 0.95)', lightColor: '#166534', minLevel: 1, packItem: true },
+    { id: 'ocean-deep', name: 'Ocean Deep', color: 'rgba(20, 100, 200, 0.95)', lightColor: '#1e40af', minLevel: 1, packItem: true },
+    { id: 'autumn-leaf', name: 'Autumn Leaf', color: 'rgba(200, 120, 30, 0.95)', lightColor: '#92400e', minLevel: 1, packItem: true },
 ];
 
 /**

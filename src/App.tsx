@@ -69,8 +69,9 @@ import { Toast } from './components/Toast';
 import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 const UpgradeModal = lazy(() => lazyRetry(() => import('./components/UpgradeModal')).then(m => ({ default: m.UpgradeModal })));
+const ShopModal = lazy(() => lazyRetry(() => import('./components/ShopModal')).then(m => ({ default: m.ShopModal })));
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
-import { STORAGE_KEYS, FIRESTORE, NAV_TABS, FREE_DAILY_REVIEW_CAP, REFERRAL_MILESTONES } from './config';
+import { STORAGE_KEYS, FIRESTORE, NAV_TABS, FREE_DAILY_REVIEW_CAP, REFERRAL_MILESTONES, STREAK_MILESTONES } from './config';
 import { appendReferralFooter, shareOrCopy } from './utils/shareHelper';
 import { trackEvent } from './utils/analytics';
 import { ensureAllWords, ensureTiersForLevel, getRegistryVersion, setDialect } from './domains/spelling/words';
@@ -210,6 +211,8 @@ function AppInner() {
     referralCode,
     referralCount,
     extendPass,
+    setPaidSubscription,
+    addPurchasedPack,
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
@@ -232,7 +235,7 @@ function AppInner() {
   const mp = useMultiplayerRoom(uid, user?.displayName ?? 'Player');
 
   // ── Custom Word Lists ──
-  const customLists = useCustomLists(uid);
+  const customLists = useCustomLists(uid, isPremium);
   const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
 
   // ── Hardest-words drill override ──
@@ -250,6 +253,9 @@ function AppInner() {
 
   // ── Upgrade modal (Champion Pass paywall) ──
   const [showUpgrade, setShowUpgrade] = useState(false);
+
+  // ── Cosmetic shop modal ──
+  const [showShop, setShowShop] = useState(false);
 
   // ── Trial banner (dismissed per session) ──
   const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
@@ -341,6 +347,43 @@ function AppInner() {
       }
     })();
   }, []);
+
+  // ── Stripe checkout success + subscription restore ──
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    // Pack purchase success
+    const packPurchased = params.get('pack_purchased');
+    if (packPurchased) {
+      window.history.replaceState({}, '', window.location.pathname);
+      addPurchasedPack(packPurchased);
+      trackEvent('pack_purchased', { packId: packPurchased });
+      return;
+    }
+
+    if (params.get('checkout') === 'success') {
+      // Clean URL
+      window.history.replaceState({}, '', window.location.pathname);
+      // Restore subscription from Stripe
+      import('./services/stripe').then(({ restoreSubscription }) =>
+        restoreSubscription().then(result => {
+          if (result.active && result.expiresAt) {
+            setPaidSubscription(result.expiresAt, 'active');
+          }
+        })
+      ).catch(console.warn);
+    } else if (uid) {
+      // On login, check for existing active subscription
+      import('./services/stripe').then(({ restoreSubscription }) =>
+        restoreSubscription().then(result => {
+          if (result.active && result.expiresAt) {
+            setPaidSubscription(result.expiresAt, 'active');
+          }
+        })
+      ).catch(() => { /* silent — no subscription or offline */ });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uid]);
 
   // ── Word history (Leitner spaced repetition) ──
   const { records: wordRecords, recordAttempt, cappedReviewQueue, hardestWords, masteredCount, uniqueWordsAttempted, reviewsRemaining, isReviewLimited, incrementReviewCount } = useWordHistory(isPremium);
@@ -480,6 +523,18 @@ function AppInner() {
       fireStreakToast();
     }
   }, [stats.dayStreak, fireStreakToast]);
+
+  // ── Streak milestone share prompt (7/14/30/60/100 days) ──
+  const [streakMilestoneText, fireStreakMilestone] = useTimedMessage(6000);
+  const streakMilestoneChecked = useRef<number>(0);
+  useEffect(() => {
+    if (stats.dayStreak > streakMilestoneChecked.current) {
+      streakMilestoneChecked.current = stats.dayStreak;
+      if (STREAK_MILESTONES.includes(stats.dayStreak as typeof STREAK_MILESTONES[number])) {
+        fireStreakMilestone(`🔥 ${stats.dayStreak}-day streak!`);
+      }
+    }
+  }, [stats.dayStreak, fireStreakMilestone]);
 
   // ── Improvement celebration — week-over-week accuracy trend ──
   const [improvementToast, fireImprovementToast] = useTimedMessage(4000);
@@ -729,7 +784,7 @@ function AppInner() {
       const nextMilestone = NEAR_MISS_THRESHOLDS.find(m => prev >= m - 2 && prev < m);
       if (nextMilestone) fireNearMiss(`${prev}-streak! So close to ${nextMilestone}!`);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [streak]);
 
   // ── Mastery graduation toast (word reached box 4) ──
@@ -1266,11 +1321,11 @@ function AppInner() {
             {/* ── Streak milestone popup ── */}
             {milestone && !reducedMotion && (
               <>
-              {/* Chalk snap flash before milestone */}
-              <div key={'snap' + streak} className="chalk-snap" />
-              <div key={milestone + streak} className="milestone-pop absolute inset-0 flex items-center justify-center z-40 text-8xl">
-                {milestone}
-              </div>
+                {/* Chalk snap flash before milestone */}
+                <div key={'snap' + streak} className="chalk-snap" />
+                <div key={milestone + streak} className="milestone-pop absolute inset-0 flex items-center justify-center z-40 text-8xl">
+                  {milestone}
+                </div>
               </>
             )}
 
@@ -1365,7 +1420,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} /></Suspense>
           </motion.div>
         )}
 
@@ -1376,6 +1431,7 @@ function AppInner() {
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
               onUpgrade={() => setShowUpgrade(true)}
+              onShop={() => setShowShop(true)}
             /></Suspense>
           </motion.div>
         )}
@@ -1442,6 +1498,11 @@ function AppInner() {
         <Toast visible={!!trailUnlockToast} icon="✨" title={`${trailUnlockToast} unlocked!`} subtitle="New swipe trail available on Me page" toastKey={trailUnlockToast ?? undefined} stampEffect />
         <Toast visible={!!masteryLevelToast} icon="⭐" title={masteryLevelToast} subtitle="The journey continues!" toastKey={masteryLevelToast ?? undefined} stampEffect />
         <Toast visible={!!milestoneToast} icon="🎁" title={milestoneToast} subtitle="Referral milestone reward!" toastKey={milestoneToast ?? undefined} stampEffect />
+        <Toast visible={!!streakMilestoneText} icon="🔥" title={streakMilestoneText} subtitle="Tell your friends!" toastKey={streakMilestoneText ?? undefined} stampEffect actionLabel="Share" onAction={async () => {
+          const text = appendReferralFooter(`🔥 I'm on a ${stats.dayStreak}-day spelling streak on Spelling Bee! Can you beat it?`, referralCode);
+          await shareOrCopy(text);
+          trackEvent('referral_shared', { source: 'streak_milestone' });
+        }} />
 
         {/* ── Achievement confetti ── */}
         <Confetti trigger={showAchievementConfetti} />
@@ -1509,7 +1570,7 @@ function AppInner() {
           {showCustomLists && (
             <CustomListsModal
               lists={customLists.lists}
-              maxLists={customLists.MAX_LISTS}
+              maxLists={customLists.maxLists}
               onCreateFromWords={customLists.createListFromWords}
               onDelete={customLists.deleteList}
               onRename={customLists.renameList}
@@ -1582,6 +1643,15 @@ function AppInner() {
         {showUpgrade && (
           <Suspense fallback={null}>
             <UpgradeModal onClose={() => setShowUpgrade(false)} />
+          </Suspense>
+        )}
+      </AnimatePresence>
+
+      {/* ── Cosmetic shop modal ── */}
+      <AnimatePresence>
+        {showShop && (
+          <Suspense fallback={null}>
+            <ShopModal onClose={() => setShowShop(false)} />
           </Suspense>
         )}
       </AnimatePresence>

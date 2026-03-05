@@ -16,9 +16,8 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import type { CustomWord, CustomWordList } from '../types/customList';
 import { getWordMap } from '../domains/spelling/words';
-import { STORAGE_KEYS, FIRESTORE } from '../config';
+import { STORAGE_KEYS, FIRESTORE, FREE_CUSTOM_LIST_CAP, PREMIUM_CUSTOM_LIST_CAP } from '../config';
 
-const MAX_LISTS = 20;
 const MAX_WORDS_PER_LIST = 200;
 const CLOUD_DEBOUNCE_MS = 2000;
 
@@ -135,7 +134,8 @@ export function mergeCustomLists(local: CustomWordList[], cloud: CustomWordList[
 
 // ── Hook ─────────────────────────────────────────────────────────────────────
 
-export function useCustomLists(uid: string | null) {
+export function useCustomLists(uid: string | null, isPremium = false) {
+    const maxLists = isPremium ? PREMIUM_CUSTOM_LIST_CAP : FREE_CUSTOM_LIST_CAP;
     const [lists, setLists] = useState<CustomWordList[]>(loadLists);
     const cloudTimerRef = useRef(0);
     const uidRef = useRef(uid);
@@ -184,7 +184,7 @@ export function useCustomLists(uid: string | null) {
     }, []);
 
     const createList = useCallback((name: string, rawWords: string[]): CustomWordList | null => {
-        if (listsRef.current.length >= MAX_LISTS) return null;
+        if (listsRef.current.length >= maxLists) return null;
         const words = rawWords
             .map(w => w.trim())
             .filter(w => w.length > 0)
@@ -201,10 +201,10 @@ export function useCustomLists(uid: string | null) {
         const next = [...listsRef.current, list];
         persist(next);
         return list;
-    }, [persist]);
+    }, [persist, maxLists]);
 
     const createListFromWords = useCallback((name: string, words: CustomWord[]): CustomWordList | null => {
-        if (listsRef.current.length >= MAX_LISTS) return null;
+        if (listsRef.current.length >= maxLists) return null;
         const now = new Date().toISOString();
         const list: CustomWordList = {
             id: generateId(),
@@ -216,7 +216,7 @@ export function useCustomLists(uid: string | null) {
         const next = [...listsRef.current, list];
         persist(next);
         return list;
-    }, [persist]);
+    }, [persist, maxLists]);
 
     const importFromText = useCallback((name: string, text: string): CustomWordList | null => {
         const rawWords = text.split(/[,\n]+/).map(w => w.trim()).filter(w => w.length > 0);
@@ -261,7 +261,7 @@ export function useCustomLists(uid: string | null) {
     }, [persist]);
 
     const duplicateList = useCallback((id: string): CustomWordList | null => {
-        if (listsRef.current.length >= MAX_LISTS) return null;
+        if (listsRef.current.length >= maxLists) return null;
         const source = listsRef.current.find(l => l.id === id);
         if (!source) return null;
         const now = new Date().toISOString();
@@ -275,7 +275,7 @@ export function useCustomLists(uid: string | null) {
         const next = [...listsRef.current, copy];
         persist(next);
         return copy;
-    }, [persist]);
+    }, [persist, maxLists]);
 
     const getList = useCallback((id: string) => listsRef.current.find(l => l.id === id) ?? null, []);
 
@@ -291,6 +291,6 @@ export function useCustomLists(uid: string | null) {
         renameList,
         duplicateList,
         getList,
-        MAX_LISTS,
+        maxLists,
     };
 }

@@ -56,6 +56,8 @@ export const STORAGE_KEYS = {
     reviewsToday: `${STORAGE_PREFIX}-reviews-today`,
     trialUsed: `${STORAGE_PREFIX}-trial-used`,
     referralMilestonesClaimed: `${STORAGE_PREFIX}-referral-milestones-claimed`,
+    subscriptionStatus: `${STORAGE_PREFIX}-subscription-status`,
+    purchasedPacks: `${STORAGE_PREFIX}-purchased-packs`,
 } as const;
 
 /**
@@ -72,6 +74,7 @@ export const STORAGE_TO_FIRESTORE: Record<string, string> = {
     [STORAGE_KEYS.seasonalTheme]: 'seasonalTheme',
     [STORAGE_KEYS.stickFigureStyle]: 'stickFigureStyle',
     [STORAGE_KEYS.customLists]: 'customLists',
+    [STORAGE_KEYS.purchasedPacks]: 'purchasedPacks',
 };
 
 // ── Firestore collection names ────────────────────────────────────────────────
@@ -88,6 +91,13 @@ export const FREE_LEVEL_CAP = 3;
 
 /** Free users can review at most this many SRS words per day. Champion Pass = unlimited. */
 export const FREE_DAILY_REVIEW_CAP = 30;
+
+/** Free users can create at most this many custom lists. Champion = PREMIUM_CUSTOM_LIST_CAP. */
+export const FREE_CUSTOM_LIST_CAP = 10;
+export const PREMIUM_CUSTOM_LIST_CAP = 20;
+
+/** Streak day counts that trigger a celebratory share prompt. */
+export const STREAK_MILESTONES = [7, 14, 30, 60, 100] as const;
 
 /** Referral milestone rewards: reach N referrals → earn extra Champion Pass days. */
 export const REFERRAL_MILESTONES = [

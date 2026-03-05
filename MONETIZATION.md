@@ -1,7 +1,7 @@
 # MONETIZATION.md — Implementation Checklist
 
 > Strategy source: Detailed Monetization Strategy infographic (v1.0.4)
-> Current state: **Phase 1 complete — referral system, paywall gate, share virality, content gating, cosmetics gating, trial banner, purchase UI, subscription mgmt, referral milestones, analytics**
+> Current state: **Phases 0-2.5 complete — Stripe subscriptions + one-time IAP, cosmetic shop (5 packs), referral system, paywall, content gating, trial flow, analytics, custom list/TTS gating, viral growth (streak milestones, invite-to-compete, 1v1 multiplayer). Phases 3-4 deferred (need users first).**
 > Goal: 3-tier freemium + cosmetic IAP + viral K-factor growth
 
 ---
@@ -17,15 +17,15 @@
 ## 1. PAYMENT & SUBSCRIPTION INFRASTRUCTURE
 
 ### 1.1 Payment Processor
-- [ ] Integrate RevenueCat (or Stripe for web) for subscription management
+- [x] Stripe for web subscription management — `services/stripe.ts` + Cloud Functions
 - [ ] Apple IAP setup (App Store review guidelines for kids' apps)
 - [ ] Google Play Billing setup
-- [ ] Web Stripe Checkout fallback (PWA users)
-- [ ] Receipt validation Cloud Function (server-side verification)
+- [x] Web Stripe Checkout for PWA users — `createCheckoutSession` Cloud Function
+- [x] Receipt validation Cloud Function (server-side webhook verification) — `stripeWebhook`
 
 ### 1.2 Subscription Tiers
-- [ ] **Tier 1: Free ("Sprout")** — Levels 1-3, basic SRS (~30 daily reviews), public leaderboard, basic achievements
-- [ ] **Tier 2: Champion Pass (~$4.99/mo or $29.99/yr)** — All 10 levels, unlimited SRS, full analytics, etymology quiz, roots study, advanced timed modes, locked cosmetics
+- [x] **Tier 1: Free** — Levels 1-3, 30 SRS reviews/day, public leaderboard, basic achievements — `FREE_LEVEL_CAP`, `FREE_DAILY_REVIEW_CAP`
+- [x] **Tier 2: Champion Pass ($4.99/mo or $29.99/yr)** — All 10 levels, unlimited SRS, etymology quiz, roots study, premium cosmetics — Stripe products configured
 - [ ] **Tier 3: Bee Team (~$7.99/mo or $49.99/yr)** — Family/classroom: up to 5 learner profiles, parent/teacher dashboard, custom word list creator (assigned), printable progress reports
 
 ### 1.3 Trial & Conversion
@@ -33,9 +33,9 @@
 - [x] Trial banner UI (non-intrusive, tappable → UpgradeModal, session-dismissible) — App.tsx
 - [x] Countdown timer for trial expiration — daysRemaining in trial banner + Settings
 - [x] Paywall screen design (chalk aesthetic, feature comparison table) — UpgradeModal component
-- [x] Purchase buttons ($4.99/mo, $29.99/yr) in UpgradeModal — TODO: STRIPE wire `handlePurchase()` to Stripe Checkout
+- [x] Purchase buttons ($4.99/mo, $29.99/yr) in UpgradeModal → `startCheckout()` → Stripe Checkout
 - [x] Post-trial state: trial button hidden, only purchase buttons shown — trialUsed flag
-- [ ] Restore purchases flow — TODO: STRIPE RevenueCat/Stripe customer portal link
+- [x] Restore purchases flow — `restoreSubscription()` Cloud Function checks Stripe on login
 - [x] Subscription management section in Settings — ChampionPassSection in SettingsModal (status badge + manage/upgrade button)
 
 ---
@@ -46,7 +46,7 @@
 - [x] Gate Levels 4-10 behind Champion Pass — UpgradeModal + isLevelPremium()
 - [x] All 10 levels exist and work — gating logic wired in PathPage + QuestionTypePicker
 - [x] "Unlock with Champion Pass" prompt when tapping Level 4+ — UpgradeModal shown
-- [ ] Graceful degradation: free users keep progress if subscription lapses
+- [x] Graceful degradation: stats, SRS boxes, word history all preserved on lapse — levels re-lock but data stays, reviews capped to 30/day
 
 ### 2.2 SRS Gating
 - [x] Leitner SRS exists (5 boxes) — daily review cap implemented for free tier
@@ -57,27 +57,32 @@
 ### 2.3 Premium Tools Gating
 - [x] Etymology data exists — etymology quiz gated as Champion-only in QuestionTypePicker
 - [x] Roots browser exists — gated as Champion-only (premium flag on CategoryEntry)
-- [ ] Advanced Timed Mode (e.g., speed rounds, endurance mode) — Champion only
-- [ ] Full Analytics & Report Cards — Champion only
-- [~] Basic stats exist; need "full analytics" view behind paywall
+- [ ] Advanced Timed Mode (e.g., speed rounds, endurance mode) — Champion only — DEFERRED
+- [ ] Full Analytics & Report Cards — Champion only — DEFERRED (View Stats already removed)
+- [~] Basic stats exist; need "full analytics" view behind paywall — DEFERRED
 
 ### 2.4 Cosmetics Gating
-- [x] 13 chalk themes: 4 Champion-only (Shadow Flame, Neon Pulse, Void, Prismatic) — `premium: true` on ChalkTheme
-- [x] 4 swipe trails: 2 Champion-only (Rainbow Ribbon, Static Shock) — `premium: true` on TrailConfig
-- [x] Lock icon + UpgradeModal on premium cosmetics in MePage pickers
+- [x] 22 chalk themes: 4 Champion-only + 9 IAP pack items — `premium`/`packItem` flags on ChalkTheme
+- [x] 7 swipe trails: 2 Champion-only + 3 IAP pack items — `premium`/`packItem` flags on TrailConfig
+- [x] Lock icon (🔒) + UpgradeModal on premium cosmetics in MePage pickers
+- [x] Shop icon (🛒) + ShopModal on IAP pack items in MePage pickers
 - [~] 8 flair items exist (achievement-unlocked) — add paid-exclusive flair later
 
 ---
 
 ## 3. COSMETIC IN-APP PURCHASES (One-Time)
 
-### 3.1 Cosmetic Packs ($0.99-$1.99)
-- [ ] Themed chalk packs (holiday, seasonal, neon, pastel)
-- [ ] Themed trail packs (snowflake, firework, glitter)
+### 3.1 Cosmetic Packs ($0.99-$2.99)
+- [x] 3 themed chalk packs: Neon Glow ($0.99), Pastel Dreams ($0.99), Nature's Palette ($0.99) — 9 colors total
+- [x] Trail Variety pack ($1.49) — Snowflake, Sparkle, Comet trails
+- [x] Ultimate Collection ($2.99) — all 9 colors + all 3 trails (best value)
 - [ ] Holiday icon packs (seasonal avatar accessories)
-- [ ] IAP product catalog in app stores
-- [ ] Shop UI page (browse, preview, purchase)
-- [ ] "Owned" badge on purchased items
+- [x] Shop UI modal (browse packs, preview swatches/emoji, purchase via Stripe) — ShopModal.tsx
+- [x] "Owned" badge on purchased items + "Already owned via other packs" for redundant items
+- [x] IAP pack items in MePage pickers — 🛒 icon badge, click → shop modal
+- [x] Stripe one-time payment flow — `createPackCheckout` Cloud Function + `purchasePack` client
+- [x] Webhook handling — `checkout.session.completed` with `type: 'cosmetic_pack'` → Firestore `purchasedPacks` arrayUnion
+- [x] Ownership tracking — localStorage + Firestore sync via `purchasedPacks` field
 
 ### 3.2 Competition Word Packs ($2.99-$4.99)
 - [ ] Scripps Regionals pack
@@ -112,21 +117,21 @@
 - [x] **Add referral code to share cards** — all share touchpoints use appendReferralFooter()
 - [ ] "Beat my score" challenge with trackable link
 - [x] Share achievements to social media — achievement toast "Share" action button
-- [ ] Share streak milestones ("I'm on a 30-day streak!")
+- [x] Share streak milestones ("I'm on a 30-day streak!") — toast + share at 7/14/30/60/100-day milestones (STREAK_MILESTONES config)
 - [x] Share leaderboard rank changes — share button on user's own rank row
 - [x] Weekly recap shareable card — "Share" button in WeeklyRecap component
 
 ### 4.3 Challenge & Competition Virality
-- [ ] "Challenge a friend" flow (send specific word list via link)
+- [x] "Challenge a friend" flow — challenge URL already embedded in SessionSummary share (createChallengeId)
 - [ ] Head-to-head async challenges (play same set, compare scores)
-- [~] 1v1 multiplayer exists but hidden — UNHIDE when ready
+- [x] 1v1 multiplayer — unhidden for Champion users on Compete page (🔒 for free → UpgradeModal)
 - [ ] Classroom challenge codes (teacher creates, students join)
 - [ ] Weekly tournament with shareable bracket
 
 ### 4.4 Leaderboard Virality
 - [x] Weekly XP leaderboard — EXISTS
 - [x] Rival ping system — EXISTS
-- [ ] "Invite to compete" button on leaderboard (sends referral link)
+- [x] "Invite to compete" button on leaderboard — share button with referral link (LeaguePage)
 - [ ] Weekly leaderboard push notification ("New week! Defend your rank")
 - [ ] End-of-week summary push ("You finished #3 this week!")
 
@@ -240,8 +245,8 @@
 - [x] **No interstitial ads** between rounds — CONFIRMED, no ads anywhere
 - [x] **No aggressive freeplay gating** — free tier is generous (Levels 1-3, daily challenge, leaderboard)
 - [x] **No pay-to-win leaderboard** — XP earned by playing, not buying
-- [ ] Ensure key gate is natural (Level 3 → 4 transition, not arbitrary popup)
-- [ ] Ensure referral rewards don't create leaderboard imbalance
+- [x] Key gate is natural — Level 3 → 4 boundary, trial triggered at completion (not arbitrary popup)
+- [x] Referral rewards don't affect leaderboard — rewards are Champion Pass time, not XP. Leaderboard is XP-only.
 
 ---
 
@@ -263,35 +268,43 @@
 ### Phase 1: Payment-Ready Infrastructure ✅ DONE
 10. ✅ Cosmetics gating (4 Champion themes, 2 Champion trails)
 11. ✅ Trial expiration banner (session-dismissible, tappable → UpgradeModal)
-12. ✅ Purchase buttons in UpgradeModal ($4.99/mo + $29.99/yr — TODO: STRIPE)
+12. ✅ Purchase buttons in UpgradeModal ($4.99/mo + $29.99/yr → Stripe Checkout)
 13. ✅ Subscription management in Settings (status badge, manage/upgrade)
 14. ✅ Referral milestone rewards (3/5/10 → 2wk/1mo/3mo auto-extend)
 15. ✅ Firebase Analytics (7 key funnel events)
 
-### Phase 1.5: Stripe Integration (TODO)
-- [ ] TODO: STRIPE — Create Stripe products: Champion Pass Monthly ($4.99) + Annual ($29.99)
-- [ ] TODO: STRIPE — Wire `handlePurchase('monthly'|'annual')` in UpgradeModal to Stripe Checkout session
-- [ ] TODO: STRIPE — Cloud Function webhook for `checkout.session.completed` → set championPassExpiry
-- [ ] TODO: STRIPE — Distinguish trial vs paid subscription (isTrial flag → Stripe subscription metadata)
-- [ ] TODO: STRIPE — Customer portal link in Settings "Manage" button for paid subscribers
-- [ ] TODO: STRIPE — Subscription renewal webhook → auto-extend expiry
-- [ ] TODO: STRIPE — Cancellation webhook → expiry = current period end (no immediate revoke)
-- [ ] TODO: STRIPE — Receipt/invoice emails via Stripe
-- [ ] TODO: STRIPE — Restore purchases flow (check Stripe for active subscription on login)
+### Phase 1.5: Stripe Integration ✅ DONE
+- [x] Stripe products: Champion Pass Monthly ($4.99) + Annual ($29.99) — price IDs via env vars
+- [x] Wire `handlePurchase('monthly'|'annual')` in UpgradeModal → `startCheckout()` → Stripe Checkout redirect
+- [x] Cloud Function `stripeWebhook` for `checkout.session.completed` → set championPassExpiry + subscriptionStatus
+- [x] Distinguish trial vs paid subscription — `subscriptionStatus` field ('none'|'trial'|'active'|'canceled')
+- [x] Customer portal link in Settings "Manage" button → `createPortalSession` Cloud Function
+- [x] Subscription renewal webhook → `invoice.paid` event auto-extends expiry
+- [x] Cancellation webhook → `customer.subscription.deleted` → expiry = current period end (no immediate revoke)
+- [x] Receipt/invoice emails via Stripe (automatic with Stripe Checkout)
+- [x] Restore purchases flow → `restoreSubscription` Cloud Function checks Stripe on login
 
-### Phase 2: Revenue Expansion
-10. Cosmetic IAP shop (chalk packs, trail packs)
-11. Competition word packs
-12. Bee Coach AI add-on
+### Phase 2: Revenue Expansion (Partial) ✅ SHOP DONE
+10. ✅ Cosmetic IAP shop — 5 packs (3 chalk + 1 trail + 1 ultimate), ShopModal, Stripe one-time payment, ownership tracking
+11. Competition word packs — DEFERRED
+12. Bee Coach AI add-on — DEFERRED
 13. Product analytics (funnel tracking, retention cohorts)
 
-### Phase 3: Family & Classroom
+### Phase 2.5: Content Gating + Viral Growth ✅ DONE
+- ✅ Custom lists gating (Free: 10 lists, Champion: 20) — `FREE_CUSTOM_LIST_CAP` / `PREMIUM_CUSTOM_LIST_CAP`
+- ✅ Cloud TTS premium bypass (Free: 200/day, Champion: unlimited) — `synthesizeSpeech` checks `championPassExpiry`
+- ✅ Streak milestone share toast at 7/14/30/60/100-day streaks — `STREAK_MILESTONES` config + share action
+- ✅ 1v1 multiplayer unhidden for Champion on Compete page (🔒 for free)
+- ✅ Leaderboard "Invite to Compete" share button with referral link
+- ✅ Challenge-a-friend flow already in SessionSummary share
+
+### Phase 3: Family & Classroom — DEFERRED (need users first)
 14. Multi-profile support (Bee Team tier)
 15. Parent/teacher dashboard
 16. Achievement emails to parents
 17. Printable certificates and report cards
 
-### Phase 4: Lifecycle & Campaigns
+### Phase 4: Lifecycle & Campaigns — DEFERRED (need users first)
 18. Seasonal events framework
 19. Lifecycle notification sequences
 20. Win-back campaigns
@@ -307,18 +320,18 @@ These features exist and just need a monetization layer or viral enhancement:
 |---------|--------|-------------------|
 | 10 curriculum levels | **Gated** | ✅ Levels 4-10 behind Champion Pass |
 | Leitner SRS (5 boxes) | **Capped** | ✅ Free: 30/day, Champion: unlimited |
-| 13 chalk themes | **4 Gated** | ✅ Shadow Flame, Neon Pulse, Void, Prismatic = Champion |
-| 4 swipe trails | **2 Gated** | ✅ Rainbow Ribbon, Static Shock = Champion |
+| 22 chalk themes | **4 Champion, 9 IAP** | ✅ 4 Champion-only + 9 in shop packs (Neon/Pastel/Nature) |
+| 7 swipe trails | **2 Champion, 3 IAP** | ✅ 2 Champion-only + 3 in Trail Variety pack |
 | 8 flair items | Free (achievement unlock) | Add paid-exclusive flair |
 | Session share cards | **Referral-enabled** | ✅ Referral code in all share text |
 | Challenge URLs | Free | Add referral tracking |
 | Weekly leaderboard | **Share-enabled** | ✅ Share button on user's rank row |
 | Rival pings | Free | Add "challenge" deeplink |
-| Custom word lists (10 max) | Free | Unlimited for Champion |
-| Cloud TTS (200/day) | Free | Unlimited for Champion |
+| Custom word lists | **Gated** | ✅ Free: 10 lists, Champion: 20 (FREE_CUSTOM_LIST_CAP) |
+| Cloud TTS | **Gated** | ✅ Free: 200/day, Champion: unlimited (synthesizeSpeech bypass) |
 | Bee Simulation | Free | Keep free (engagement) |
 | Daily Challenge | **Referral-enabled** | ✅ Referral code in share text |
 | Etymology/Roots tools | **Champion-only** | ✅ Gated in QuestionTypePicker |
 | Error pattern analysis | Free | Gate full analytics |
-| 1v1 Multiplayer | Hidden | Unhide for Champion users |
+| 1v1 Multiplayer | **Champion-only** | ✅ Unhidden for Champions, 🔒 for free → UpgradeModal |
 | Print study sheet | Free | Add certificates for Champion |

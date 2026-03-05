@@ -10,6 +10,7 @@ import { ModalShell } from './ModalShell';
 import { IconCheck, IconClose, IconGift, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { trackEvent } from '../utils/analytics';
+import { startCheckout, openCustomerPortal } from '../services/stripe';
 
 interface Props {
     onClose: () => void;
@@ -37,6 +38,7 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
         shareReferral,
         activateTrial,
         isPremium,
+        isPaidSubscriber,
         daysRemaining,
         trialUsed,
     } = useUser();
@@ -44,15 +46,34 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
     const [trialActivated, setTrialActivated] = useState(false);
     const [copied, setCopied] = useState(false);
     const [purchaseToast, setPurchaseToast] = useState<string | null>(null);
+    const [purchasing, setPurchasing] = useState(false);
 
     // Track paywall impressions
     useState(() => { trackEvent('paywall_shown'); });
 
-    const handlePurchase = (plan: 'monthly' | 'annual') => {
+    const handlePurchase = async (plan: 'monthly' | 'annual') => {
         trackEvent('purchase_clicked', { plan });
-        // TODO: Wire to Stripe Checkout — see MONETIZATION.md
-        setPurchaseToast(plan === 'monthly' ? 'Monthly plan — coming soon!' : 'Annual plan — coming soon!');
-        setTimeout(() => setPurchaseToast(null), 2500);
+        setPurchasing(true);
+        try {
+            const url = await startCheckout(plan);
+            window.location.href = url;
+        } catch {
+            setPurchaseToast('Unable to start checkout. Please try again.');
+            setTimeout(() => setPurchaseToast(null), 3000);
+            setPurchasing(false);
+        }
+    };
+
+    const handleManageSubscription = async () => {
+        setPurchasing(true);
+        try {
+            const url = await openCustomerPortal();
+            window.location.href = url;
+        } catch {
+            setPurchaseToast('Unable to open subscription management.');
+            setTimeout(() => setPurchaseToast(null), 3000);
+            setPurchasing(false);
+        }
     };
 
     const handleStartTrial = () => {
@@ -144,11 +165,21 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                     <motion.button
                         onClick={shareReferral}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] flex items-center justify-center gap-2"
+                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] flex items-center justify-center gap-2 mb-2"
                     >
                         <IconShare className="w-4 h-4" />
                         Share & Earn More Time
                     </motion.button>
+
+                    {isPaidSubscriber && (
+                        <button
+                            onClick={handleManageSubscription}
+                            disabled={purchasing}
+                            className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
+                        >
+                            {purchasing ? 'Opening...' : 'Manage Subscription'}
+                        </button>
+                    )}
                 </div>
             </ModalShell>
         );
@@ -242,16 +273,18 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
             <div className="grid grid-cols-2 gap-2 mb-3">
                 <motion.button
                     onClick={() => handlePurchase('monthly')}
+                    disabled={purchasing}
                     whileTap={{ scale: 0.95 }}
-                    className="py-3 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-center"
+                    className="py-3 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-center disabled:opacity-50"
                 >
                     <span className="text-base ui font-bold text-[var(--color-gold)]">$4.99</span>
                     <span className="block text-[10px] ui text-[rgb(var(--color-fg))]/40">/month</span>
                 </motion.button>
                 <motion.button
                     onClick={() => handlePurchase('annual')}
+                    disabled={purchasing}
                     whileTap={{ scale: 0.95 }}
-                    className="py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-center relative"
+                    className="py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-center relative disabled:opacity-50"
                 >
                     <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-black px-1.5 py-0.5 rounded-full">
                         SAVE 50%

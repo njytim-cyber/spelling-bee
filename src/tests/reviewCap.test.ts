@@ -136,10 +136,16 @@ describe('Cosmetics premium gating', () => {
         expect(ids).toContain('prismatic');
     });
 
-    it('9 chalk themes are free', async () => {
+    it('9 chalk themes are free (non-premium, non-pack)', async () => {
         const { CHALK_THEMES } = await import('../utils/chalkThemes');
-        const freeThemes = CHALK_THEMES.filter(t => !t.premium);
+        const freeThemes = CHALK_THEMES.filter(t => !t.premium && !t.packItem);
         expect(freeThemes.length).toBe(9);
+    });
+
+    it('9 chalk themes are IAP pack items', async () => {
+        const { CHALK_THEMES } = await import('../utils/chalkThemes');
+        const packThemes = CHALK_THEMES.filter(t => t.packItem);
+        expect(packThemes).toHaveLength(9);
     });
 
     it('2 swipe trails are marked premium', async () => {
@@ -151,10 +157,16 @@ describe('Cosmetics premium gating', () => {
         expect(ids).toContain('lightning');
     });
 
-    it('2 swipe trails are free', async () => {
+    it('2 swipe trails are free (non-premium, non-pack)', async () => {
         const { SWIPE_TRAILS } = await import('../utils/trails');
-        const freeTrails = SWIPE_TRAILS.filter(t => !t.premium);
+        const freeTrails = SWIPE_TRAILS.filter(t => !t.premium && !t.packItem);
         expect(freeTrails).toHaveLength(2);
+    });
+
+    it('3 swipe trails are IAP pack items', async () => {
+        const { SWIPE_TRAILS } = await import('../utils/trails');
+        const packTrails = SWIPE_TRAILS.filter(t => t.packItem);
+        expect(packTrails).toHaveLength(3);
     });
 });
 

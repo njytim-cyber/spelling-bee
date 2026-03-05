@@ -9,6 +9,8 @@ import { useState, useCallback } from 'react';
 import { STORAGE_KEYS, FREE_LEVEL_CAP } from '../config';
 import type { Level } from '../domains/spelling/spellingCategories';
 
+type SubStatus = 'none' | 'trial' | 'active' | 'canceled';
+
 function readExpiry(uid: string | null): string {
     if (!uid) return '';
     return localStorage.getItem(`${STORAGE_KEYS.championPassExpiry}-${uid}`) || '';
@@ -19,9 +21,18 @@ function writeExpiry(uid: string | null, expiry: string) {
     localStorage.setItem(`${STORAGE_KEYS.championPassExpiry}-${uid}`, expiry);
 }
 
+function readSubStatus(): SubStatus {
+    return (localStorage.getItem(STORAGE_KEYS.subscriptionStatus) as SubStatus) || 'none';
+}
+
+function writeSubStatus(status: SubStatus) {
+    localStorage.setItem(STORAGE_KEYS.subscriptionStatus, status);
+}
+
 export function usePremium(uid: string | null) {
     const [championPassExpiry, setChampionPassExpiry] = useState(() => readExpiry(uid));
     const [trialUsed, setTrialUsed] = useState(() => localStorage.getItem(STORAGE_KEYS.trialUsed) === '1');
+    const [subscriptionStatus, setSubscriptionStatus] = useState<SubStatus>(readSubStatus);
 
     // eslint-disable-next-line react-hooks/purity -- checking current time is inherent to expiry logic
     const now = Date.now();
@@ -39,6 +50,8 @@ export function usePremium(uid: string | null) {
         setChampionPassExpiry(expiry);
         localStorage.setItem(STORAGE_KEYS.trialUsed, '1');
         setTrialUsed(true);
+        writeSubStatus('trial');
+        setSubscriptionStatus('trial');
         return expiry;
     }, [uid]);
 
@@ -62,8 +75,19 @@ export function usePremium(uid: string | null) {
         setChampionPassExpiry(best);
     }, [uid]);
 
-    /** True if this is a trial (not paid via Stripe). TODO: distinguish after Stripe hookup. */
-    const isTrial = isPremium && trialUsed;
+    /** Set paid subscription status (called after Stripe checkout or restore). */
+    const setPaidSubscription = useCallback((expiry: string, status: 'active' | 'canceled') => {
+        writeExpiry(uid, expiry);
+        setChampionPassExpiry(expiry);
+        writeSubStatus(status);
+        setSubscriptionStatus(status);
+    }, [uid]);
+
+    /** True if this is a trial (not paid via Stripe). */
+    const isTrial = isPremium && subscriptionStatus !== 'active' && subscriptionStatus !== 'canceled' && trialUsed;
+
+    /** True if user has an active Stripe subscription. */
+    const isPaidSubscriber = subscriptionStatus === 'active' || subscriptionStatus === 'canceled';
 
     return {
         isPremium,
@@ -72,8 +96,11 @@ export function usePremium(uid: string | null) {
         activateTrial,
         extendPass,
         setExpiryFromServer,
+        setPaidSubscription,
         trialUsed,
         isTrial,
+        isPaidSubscriber,
+        subscriptionStatus,
     };
 }
 

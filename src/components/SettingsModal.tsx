@@ -47,7 +47,25 @@ function getStoredCloudVoice(): string {
 }
 
 function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
-    const { isPremium, isTrial, daysRemaining } = useUser();
+    const { isPremium, isTrial, isPaidSubscriber, daysRemaining, subscriptionStatus } = useUser();
+    const [portalLoading, setPortalLoading] = useState(false);
+
+    const handleManage = async () => {
+        if (isPaidSubscriber) {
+            setPortalLoading(true);
+            try {
+                const { openCustomerPortal } = await import('../services/stripe');
+                const url = await openCustomerPortal();
+                window.location.href = url;
+            } catch {
+                // Fallback to UpgradeModal
+                onUpgrade?.();
+                setPortalLoading(false);
+            }
+        } else {
+            onUpgrade?.();
+        }
+    };
 
     return (
         <section className="mb-5">
@@ -57,7 +75,7 @@ function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
                     {isPremium ? (
                         <>
                             <span className="text-sm ui text-[var(--color-gold)] font-semibold">
-                                🏆 {isTrial ? 'Trial' : 'Active'}
+                                🏆 {isTrial ? 'Trial' : subscriptionStatus === 'canceled' ? 'Canceling' : 'Active'}
                             </span>
                             <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40 ml-2">
                                 {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} left
@@ -70,10 +88,11 @@ function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
                     )}
                 </div>
                 <button
-                    onClick={onUpgrade}
-                    className="text-xs ui text-[var(--color-gold)] hover:underline"
+                    onClick={handleManage}
+                    disabled={portalLoading}
+                    className="text-xs ui text-[var(--color-gold)] hover:underline disabled:opacity-50"
                 >
-                    {isPremium ? 'Manage' : 'Upgrade'}
+                    {portalLoading ? 'Opening...' : isPremium ? 'Manage' : 'Upgrade'}
                 </button>
             </div>
         </section>
