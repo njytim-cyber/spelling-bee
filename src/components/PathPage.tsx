@@ -15,8 +15,9 @@ import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
-import { IconBook, IconTree, IconChart } from './Icons';
+import { IconBook, IconTree, IconChart, IconLock } from './Icons';
 import { STORAGE_KEYS } from '../config';
+import { isLevelPremium } from '../hooks/usePremium';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -27,6 +28,12 @@ interface Props {
     hardestWordCount?: number;
     onDrillHardest?: () => void;
     onDrillRoot?: (rootId: string) => void;
+    isPremium?: boolean;
+    onUpgrade?: () => void;
+    /** True when free user has exhausted daily review cap */
+    isReviewLimited?: boolean;
+    /** Number of reviews remaining before cap (free users only) */
+    reviewsRemaining?: number;
 }
 
 // ── Pattern tooltips for phonics abbreviations ──────────────────────────────
@@ -164,44 +171,58 @@ function SessionPicker({ level, onPick, onClose }: {
 
 // ── Level row ────────────────────────────────────────────────────────────────
 
-function LevelRow({ lp, onClick }: { lp: LevelProgress; onClick: () => void }) {
+function LevelRow({ lp, onClick, locked = false }: { lp: LevelProgress; onClick: () => void; locked?: boolean }) {
     const pct = lp.totalWords > 0 ? lp.mastered / lp.totalWords : 0;
     const icon = levelIcon(lp.tierId as Level);
 
     return (
         <button
             onClick={onClick}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5 transition-colors mb-2"
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl border transition-colors mb-2 ${
+                locked
+                    ? 'bg-[rgb(var(--color-fg))]/[0.02] border-[rgb(var(--color-fg))]/5 opacity-60'
+                    : 'bg-[rgb(var(--color-fg))]/[0.03] border-[rgb(var(--color-fg))]/8 hover:border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/5'
+            }`}
         >
             {/* Icon */}
-            <span className="shrink-0 w-6 h-6 text-[rgb(var(--color-fg))]/50">{icon}</span>
+            <span className={`shrink-0 w-6 h-6 ${locked ? 'text-[rgb(var(--color-fg))]/25' : 'text-[rgb(var(--color-fg))]/50'}`}>
+                {locked ? <IconLock className="w-5 h-5" /> : icon}
+            </span>
 
             {/* Label + progress */}
             <div className="flex-1 min-w-0 text-left">
                 <div className="flex items-baseline gap-1.5">
-                    <span className="text-sm ui font-medium text-[rgb(var(--color-fg))]/70">
+                    <span className={`text-sm ui font-medium ${locked ? 'text-[rgb(var(--color-fg))]/40' : 'text-[rgb(var(--color-fg))]/70'}`}>
                         {lp.label}
                     </span>
-                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
-                        {lp.totalWords.toLocaleString()} words
-                    </span>
+                    {locked ? (
+                        <span className="text-[9px] ui text-[var(--color-gold)]/50 font-medium">Champion Pass</span>
+                    ) : (
+                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
+                            {lp.totalWords.toLocaleString()} words
+                        </span>
+                    )}
                 </div>
                 {/* Progress bar */}
-                <div className="flex items-center gap-2 mt-1">
-                    <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
-                        <div
-                            className="h-full rounded-full bg-[var(--color-gold)] transition-all"
-                            style={{ width: `${Math.round(pct * 100)}%` }}
-                        />
+                {!locked && (
+                    <div className="flex items-center gap-2 mt-1">
+                        <div className="flex-1 h-1 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                            <div
+                                className="h-full rounded-full bg-[var(--color-gold)] transition-all"
+                                style={{ width: `${Math.round(pct * 100)}%` }}
+                            />
+                        </div>
+                        <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
+                            {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords}
+                        </span>
                     </div>
-                    <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
-                        {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords}
-                    </span>
-                </div>
+                )}
             </div>
 
-            {/* Play indicator */}
-            <span className="text-[rgb(var(--color-fg))]/30 text-xs shrink-0">{'\u25B6'}</span>
+            {/* Play indicator or lock */}
+            <span className="text-[rgb(var(--color-fg))]/30 text-xs shrink-0">
+                {locked ? <IconLock className="w-3.5 h-3.5 text-[var(--color-gold)]/40" /> : '\u25B6'}
+            </span>
         </button>
     );
 }
@@ -346,7 +367,7 @@ function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, isPremium = false, onUpgrade, isReviewLimited = false, reviewsRemaining }: Props) {
     const registryVersion = getRegistryVersion();
     const levelProgress = useMemo(
         () => evaluateLevelProgress(records, wordCountByDifficulty),
@@ -395,6 +416,11 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
     };
 
     const handleLevelClick = (lp: LevelProgress) => {
+        // Gate premium levels
+        if (isLevelPremium(lp.tierId) && !isPremium) {
+            onUpgrade?.();
+            return;
+        }
         if (onStartSession) {
             setPickerLevel(lp);
         } else if (onPractice) {
@@ -467,8 +493,9 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
 
             {/* ── Single blinking CTA ── */}
             {ctaRec && (
+                <>
                 <motion.button
-                    onClick={handleCtaClick}
+                    onClick={isReviewLimited && ctaRec.category === 'review' ? onUpgrade : handleCtaClick}
                     className="w-full flex items-center justify-between py-3.5 px-4 mb-3 rounded-2xl bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/15 transition-colors"
                     animate={ctaGlow}
                     transition={ctaGlowTransition}
@@ -477,10 +504,20 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                         <span className={`text-[9px] ui px-1.5 py-0.5 rounded-full font-semibold ${PRIORITY_STYLES[ctaRec.priority ?? 'weak'].badge}`}>
                             {PRIORITY_STYLES[ctaRec.priority ?? 'weak'].text}
                         </span>
-                        <span className="text-sm ui text-[var(--color-gold)] font-bold">{ctaRec.label}</span>
+                        <span className="text-sm ui text-[var(--color-gold)] font-bold">
+                            {isReviewLimited && ctaRec.category === 'review' ? '🔒 Daily Limit Reached' : ctaRec.label}
+                        </span>
                     </div>
-                    <span className="text-xs ui text-[var(--color-gold)] font-medium shrink-0 ml-2">Go</span>
+                    <span className="text-xs ui text-[var(--color-gold)] font-medium shrink-0 ml-2">
+                        {isReviewLimited && ctaRec.category === 'review' ? 'Upgrade' : 'Go'}
+                    </span>
                 </motion.button>
+                {!isPremium && ctaRec.category === 'review' && !isReviewLimited && reviewsRemaining != null && (
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center -mt-2 mb-2">
+                        {reviewsRemaining} free review{reviewsRemaining === 1 ? '' : 's'} remaining today
+                    </div>
+                )}
+                </>
             )}
 
             {/* ── Remaining study plan items (compact) ── */}
@@ -542,6 +579,7 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                         key={lp.tierId}
                         lp={lp}
                         onClick={() => handleLevelClick(lp)}
+                        locked={isLevelPremium(lp.tierId) && !isPremium}
                     />
                 ))}
             </section>

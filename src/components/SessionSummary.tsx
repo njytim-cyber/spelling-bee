@@ -26,12 +26,14 @@ interface Props {
     streakFreezes?: number;
     onPurchaseFreeze?: () => boolean;
     sessionWords?: SessionWord[];
+    referralCode?: string;
 }
 
 function buildShareText(
     xp: number, streak: number, accuracy: number,
     history: boolean[], questionType: string,
     timedMode?: boolean,
+    referralCode?: string,
 ): string {
     const emojis = history.map(ok => ok ? '🟩' : '🟥');
     const emojiRows: string[] = [];
@@ -50,14 +52,21 @@ function buildShareText(
 
     const subline = `⚡ ${xp} pts · 🔥 ${streak} streak · 🎯 ${accuracy}%`;
 
-    return [
+    const lines = [
         headline,
         subline,
         '',
         ...emojiRows,
         '',
         `Can you beat me? 👉 ${challengeUrl}`,
-    ].join('\n');
+    ];
+
+    // Embed referral code if available
+    if (referralCode) {
+        lines.push(`\nJoin free → ${window.location.origin}?ref=${referralCode}`);
+    }
+
+    return lines.join('\n');
 }
 
 const PERFECT_CELEBRATIONS = ['🏆 PERFECT', '💯 FLAWLESS', '✨ UNSTOPPABLE', '🎯 BULLSEYE', '👑 NAILED IT'];
@@ -92,6 +101,7 @@ export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     timedMode, onDrillHardest, hardestWordCount,
     totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
+    referralCode,
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
@@ -118,7 +128,7 @@ export const SessionSummary = memo(function SessionSummary({
     const handleShare = async () => {
         if (isSharing) return;
         setIsSharing(true);
-        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, timedMode);
+        const text = buildShareText(xpEarned, streak, accuracy, answerHistory, questionType, timedMode, referralCode);
 
         try {
             // Attempt Rich Media Image Generation
@@ -249,7 +259,9 @@ export const SessionSummary = memo(function SessionSummary({
                                     </div>
 
                                     <div className="text-4xl ui text-white/60 tracking-wider">
-                                        spellingbee.pages.dev
+                                        {referralCode
+                                            ? `${window.location.host}?ref=${referralCode}`
+                                            : 'spellingbee.pages.dev'}
                                     </div>
                                 </div>
                             </div>

@@ -50,6 +50,12 @@ export const STORAGE_KEYS = {
     weeklyGoal: `${STORAGE_PREFIX}-weekly-goal`,
     reviewExplained: `${STORAGE_PREFIX}-review-explained`,
     sessionHistory: `${STORAGE_PREFIX}-session-history`,
+    referralCode: `${STORAGE_PREFIX}-referral-code`,
+    championPassExpiry: `${STORAGE_PREFIX}-champion-pass-expiry`,
+    pendingReferral: `${STORAGE_PREFIX}-pending-referral`,
+    reviewsToday: `${STORAGE_PREFIX}-reviews-today`,
+    trialUsed: `${STORAGE_PREFIX}-trial-used`,
+    referralMilestonesClaimed: `${STORAGE_PREFIX}-referral-milestones-claimed`,
 } as const;
 
 /**
@@ -74,7 +80,21 @@ export const FIRESTORE = {
     USERS: 'users',
     PINGS: 'pings',
     ROOMS: 'rooms',
+    REFERRALS: 'referrals',
 } as const;
+
+/** Levels at or below this number are free. Levels above require Champion Pass. */
+export const FREE_LEVEL_CAP = 3;
+
+/** Free users can review at most this many SRS words per day. Champion Pass = unlimited. */
+export const FREE_DAILY_REVIEW_CAP = 30;
+
+/** Referral milestone rewards: reach N referrals → earn extra Champion Pass days. */
+export const REFERRAL_MILESTONES = [
+    { count: 3, days: 14, label: '2 weeks' },
+    { count: 5, days: 30, label: '1 month' },
+    { count: 10, days: 90, label: '3 months' },
+] as const;
 
 // ── Bottom navigation tabs ────────────────────────────────────────────────────
 

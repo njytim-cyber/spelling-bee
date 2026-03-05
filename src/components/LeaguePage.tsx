@@ -6,7 +6,9 @@ import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
 import { AvatarSvg } from './AvatarSvg';
-import { IconCrown, IconMedal, IconStar } from './Icons';
+import { IconCrown, IconMedal, IconStar, IconShare } from './Icons';
+import { useUser } from '../contexts/UserContext';
+import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 
 interface LeaderboardEntry {
     uid: string;
@@ -39,6 +41,7 @@ interface Props {
 
 
 export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee }: Props) {
+    const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
     const [lbTab, setLbTab] = useState<LeaderboardTab>('allTime');
@@ -326,6 +329,22 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                     {entry.bestStreak > 0 ? `${entry.bestStreak}🔥` : '—'}
                                 </div>
                             </div>
+                            {entry.isYou && (
+                                <button
+                                    onClick={async () => {
+                                        const xp = lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP;
+                                        const text = appendReferralFooter(
+                                            `📊 Ranked #${entry.rank} on Spelling Bee!\n⚡ ${xp.toLocaleString()} ${lbTab === 'weekly' ? 'weekly ' : ''}XP · 🔥 ${entry.bestStreak} streak · 🎯 ${entry.accuracy}%`,
+                                            referralCode,
+                                        );
+                                        await shareOrCopy(text);
+                                    }}
+                                    className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
+                                    aria-label="Share my rank"
+                                >
+                                    <IconShare className="w-4 h-4" />
+                                </button>
+                            )}
                         </motion.div>
                     ))}
                 </motion.div>

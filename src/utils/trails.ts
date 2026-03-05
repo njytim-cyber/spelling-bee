@@ -5,6 +5,8 @@ export interface TrailConfig {
     minStreak?: number; // Requires a specific streak achievement
     minLevel?: number;  // Requires a specific global rank (1-11)
     minSolved?: number; // Requires total words solved
+    /** Requires Champion Pass when true */
+    premium?: boolean;
 }
 
 export const SWIPE_TRAILS: TrailConfig[] = [
@@ -19,6 +21,7 @@ export const SWIPE_TRAILS: TrailConfig[] = [
         name: 'Rainbow Ribbon',
         emoji: '🌈',
         minLevel: 5, // Linguist rank (1000 XP)
+        premium: true,
     },
     {
         id: 'fire',
@@ -31,5 +34,6 @@ export const SWIPE_TRAILS: TrailConfig[] = [
         name: 'Static Shock',
         emoji: '⚡',
         minSolved: 500, // Lightning-fast progress
+        premium: true,
     },
 ];

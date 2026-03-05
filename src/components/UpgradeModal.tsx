@@ -1,0 +1,272 @@
+/**
+ * components/UpgradeModal.tsx
+ *
+ * Paywall modal for Champion Pass. Shows benefits, share-to-unlock CTA,
+ * and 7-day free trial button. Chalk-aesthetic design.
+ */
+import { memo, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ModalShell } from './ModalShell';
+import { IconCheck, IconClose, IconGift, IconShare } from './Icons';
+import { useUser } from '../contexts/UserContext';
+import { trackEvent } from '../utils/analytics';
+
+interface Props {
+    onClose: () => void;
+}
+
+const FREE_FEATURES = [
+    'Levels 1\u20133 (16,000+ words)',
+    'Daily Challenge',
+    'Leaderboard & achievements',
+    'Spaced repetition (30/day)',
+    'Bee Simulation mode',
+];
+
+const PREMIUM_FEATURES = [
+    'All 10 levels (117,000+ words)',
+    'Unlimited spaced repetition',
+    'Etymology quiz & roots study',
+    'Advanced timed challenges',
+    'Premium chalk colors & trails',
+];
+
+export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
+    const {
+        referralCode,
+        shareReferral,
+        activateTrial,
+        isPremium,
+        daysRemaining,
+        trialUsed,
+    } = useUser();
+
+    const [trialActivated, setTrialActivated] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const [purchaseToast, setPurchaseToast] = useState<string | null>(null);
+
+    // Track paywall impressions
+    useState(() => { trackEvent('paywall_shown'); });
+
+    const handlePurchase = (plan: 'monthly' | 'annual') => {
+        trackEvent('purchase_clicked', { plan });
+        // TODO: Wire to Stripe Checkout — see MONETIZATION.md
+        setPurchaseToast(plan === 'monthly' ? 'Monthly plan — coming soon!' : 'Annual plan — coming soon!');
+        setTimeout(() => setPurchaseToast(null), 2500);
+    };
+
+    const handleStartTrial = () => {
+        activateTrial(7);
+        setTrialActivated(true);
+        trackEvent('trial_started');
+    };
+
+    const handleCopyCode = async () => {
+        try {
+            await navigator.clipboard.writeText(referralCode);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch {
+            // Silent fail
+        }
+    };
+
+    if (trialActivated) {
+        return (
+            <ModalShell onClose={onClose} ariaLabel="Champion Pass activated">
+                <div className="text-center">
+                    <motion.div
+                        className="text-6xl mb-4"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: [0, 1.3, 1] }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        🏆
+                    </motion.div>
+                    <h3 className="text-xl ui font-bold text-[var(--color-gold)] mb-2">
+                        Champion Pass Activated!
+                    </h3>
+                    <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">
+                        You have 7 days of full access. All 10 levels are now unlocked!
+                    </p>
+
+                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4 mb-4">
+                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2">
+                            Share your code to earn more free time:
+                        </p>
+                        <button
+                            onClick={handleCopyCode}
+                            className="text-lg ui font-bold text-[var(--color-gold)] tracking-widest"
+                        >
+                            {copied ? '✅ Copied!' : referralCode}
+                        </button>
+                    </div>
+
+                    <button
+                        onClick={onClose}
+                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)]"
+                    >
+                        Start Spelling!
+                    </button>
+                </div>
+            </ModalShell>
+        );
+    }
+
+    if (isPremium) {
+        return (
+            <ModalShell onClose={onClose} ariaLabel="Champion Pass active">
+                <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg ui font-bold text-[var(--color-gold)]">Champion Pass</h3>
+                    <button onClick={onClose} className="opacity-40 hover:opacity-70 transition-opacity">
+                        <IconClose className="w-5 h-5" />
+                    </button>
+                </div>
+                <div className="text-center">
+                    <div className="text-4xl mb-2">🏆</div>
+                    <p className="text-sm ui text-[var(--color-gold)] font-semibold mb-1">Active</p>
+                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-4">
+                        {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} remaining
+                    </p>
+
+                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4 mb-4">
+                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2">
+                            Each friend who uses your code adds 7 more days:
+                        </p>
+                        <button
+                            onClick={handleCopyCode}
+                            className="text-lg ui font-bold text-[var(--color-gold)] tracking-widest"
+                        >
+                            {copied ? '✅ Copied!' : referralCode}
+                        </button>
+                    </div>
+
+                    <motion.button
+                        onClick={shareReferral}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] flex items-center justify-center gap-2"
+                    >
+                        <IconShare className="w-4 h-4" />
+                        Share & Earn More Time
+                    </motion.button>
+                </div>
+            </ModalShell>
+        );
+    }
+
+    return (
+        <ModalShell onClose={onClose} ariaLabel="Upgrade to Champion Pass" className="w-[min(360px,90vw)]">
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg ui font-bold text-[var(--color-gold)]">Champion Pass</h3>
+                <button onClick={onClose} className="opacity-40 hover:opacity-70 transition-opacity">
+                    <IconClose className="w-5 h-5" />
+                </button>
+            </div>
+
+            {/* Feature comparison */}
+            <div className="grid grid-cols-2 gap-3 mb-5">
+                {/* Free column */}
+                <div>
+                    <div className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider mb-2 text-center">
+                        Free
+                    </div>
+                    <div className="space-y-2">
+                        {FREE_FEATURES.map(f => (
+                            <div key={f} className="flex items-start gap-1.5">
+                                <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
+                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/50 leading-tight">{f}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Champion column */}
+                <div className="bg-[var(--color-gold)]/5 rounded-xl p-2.5 border border-[var(--color-gold)]/20">
+                    <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 text-center font-semibold">
+                        🏆 Champion
+                    </div>
+                    <div className="space-y-2">
+                        {PREMIUM_FEATURES.map(f => (
+                            <div key={f} className="flex items-start gap-1.5">
+                                <IconCheck className="w-3 h-3 text-[var(--color-gold)] shrink-0 mt-0.5" />
+                                <span className="text-[10px] ui text-[var(--color-gold)]/80 leading-tight">{f}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Referral CTA */}
+            <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                    <IconGift className="w-4 h-4 text-[var(--color-gold)]" />
+                    <span className="text-xs ui font-semibold text-[var(--color-gold)]">Invite Friends, Get Free Access</span>
+                </div>
+                <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">
+                    Share your referral code. When a friend joins, you BOTH get 7 days of Champion Pass free.
+                </p>
+                <div className="flex gap-2">
+                    <button
+                        onClick={handleCopyCode}
+                        className="flex-1 py-2 rounded-lg border border-[rgb(var(--color-fg))]/15 text-xs ui text-[rgb(var(--color-fg))]/60 hover:text-[var(--color-gold)] hover:border-[var(--color-gold)]/30 transition-colors font-mono tracking-wider"
+                    >
+                        {copied ? '✅ Copied!' : referralCode}
+                    </button>
+                    <motion.button
+                        onClick={shareReferral}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-4 py-2 rounded-lg bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 text-xs ui text-[var(--color-gold)]"
+                    >
+                        <IconShare className="w-3.5 h-3.5" />
+                    </motion.button>
+                </div>
+            </div>
+
+            {/* Trial CTA — hidden if already used */}
+            {!trialUsed && (
+                <>
+                    <motion.button
+                        onClick={handleStartTrial}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui font-semibold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors mb-3"
+                    >
+                        Start 7-Day Free Trial
+                    </motion.button>
+                    <p className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mb-4">
+                        No credit card required. Full access for 7 days.
+                    </p>
+                </>
+            )}
+
+            {/* Purchase buttons */}
+            <div className="grid grid-cols-2 gap-2 mb-3">
+                <motion.button
+                    onClick={() => handlePurchase('monthly')}
+                    whileTap={{ scale: 0.95 }}
+                    className="py-3 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-center"
+                >
+                    <span className="text-base ui font-bold text-[var(--color-gold)]">$4.99</span>
+                    <span className="block text-[10px] ui text-[rgb(var(--color-fg))]/40">/month</span>
+                </motion.button>
+                <motion.button
+                    onClick={() => handlePurchase('annual')}
+                    whileTap={{ scale: 0.95 }}
+                    className="py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-center relative"
+                >
+                    <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-black px-1.5 py-0.5 rounded-full">
+                        SAVE 50%
+                    </span>
+                    <span className="text-base ui font-bold text-[var(--color-gold)]">$29.99</span>
+                    <span className="block text-[10px] ui text-[rgb(var(--color-fg))]/40">/year</span>
+                </motion.button>
+            </div>
+
+            {/* Purchase toast */}
+            {purchaseToast && (
+                <p className="text-xs ui text-[var(--color-gold)] text-center animate-pulse">
+                    {purchaseToast}
+                </p>
+            )}
+        </ModalShell>
+    );
+});

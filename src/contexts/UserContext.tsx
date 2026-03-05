@@ -9,6 +9,8 @@ import type { ReactNode } from 'react';
 import { useStats } from '../hooks/useStats';
 import { useLocalState } from '../hooks/useLocalState';
 import { useFirebaseAuth } from '../hooks/useFirebaseAuth';
+import { usePremium } from '../hooks/usePremium';
+import { useReferral } from '../hooks/useReferral';
 import { STORAGE_KEYS } from '../config';
 import type { ChalkTheme } from '../utils/chalkThemes';
 import type { Dialect } from '../domains/spelling/words/types';
@@ -52,6 +54,26 @@ interface UserContextValue {
   onLevelChange: (level: Level) => void;
   dialect: string;
   onDialectChange: (d: Dialect) => void;
+
+  // Premium / Champion Pass
+  isPremium: boolean;
+  championPassExpiry: string;
+  daysRemaining: number;
+  activateTrial: (days: number) => string;
+  extendPass: (days: number) => string;
+  setExpiryFromServer: (expiry: string) => void;
+  trialUsed: boolean;
+  isTrial: boolean;
+
+  // Referral
+  referralCode: string;
+  referralCount: number;
+  pendingReferral: string;
+  referralRedeemed: boolean;
+  referralError: string;
+  redeemReferral: () => Promise<void>;
+  getReferralUrl: () => string;
+  shareReferral: () => Promise<void>;
 }
 
 const UserContext = createContext<UserContextValue | null>(null);
@@ -77,6 +99,10 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   } = useStats(uid);
 
   const { user, setDisplayName, linkGoogle, sendEmailLink, deleteAccount } = useFirebaseAuth();
+
+  // Premium & Referral
+  const premium = usePremium(uid);
+  const referral = useReferral(uid);
 
   // Cosmetics
   const [activeCostume, setActiveCostume] = useLocalState(STORAGE_KEYS.costume, '', uid);
@@ -125,6 +151,24 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     onLevelChange,
     dialect: dialect as string,
     onDialectChange,
+    // Premium
+    isPremium: premium.isPremium,
+    championPassExpiry: premium.championPassExpiry,
+    daysRemaining: premium.daysRemaining,
+    activateTrial: premium.activateTrial,
+    extendPass: premium.extendPass,
+    setExpiryFromServer: premium.setExpiryFromServer,
+    trialUsed: premium.trialUsed,
+    isTrial: premium.isTrial,
+    // Referral
+    referralCode: referral.referralCode,
+    referralCount: referral.referralCount,
+    pendingReferral: referral.pendingReferral,
+    referralRedeemed: referral.referralRedeemed,
+    referralError: referral.referralError,
+    redeemReferral: referral.redeemReferral,
+    getReferralUrl: referral.getReferralUrl,
+    shareReferral: referral.shareReferral,
   }), [
     stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
@@ -132,6 +176,12 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     activeTrailId, onTrailChange, avatarConfig, onAvatarChange, user?.displayName, setDisplayName,
     user?.isAnonymous, linkGoogle, sendEmailLink, deleteAccount, level, onLevelChange,
     dialect, onDialectChange,
+    premium.isPremium, premium.championPassExpiry, premium.daysRemaining,
+    premium.activateTrial, premium.extendPass, premium.setExpiryFromServer,
+    premium.trialUsed, premium.isTrial,
+    referral.referralCode, referral.referralCount, referral.pendingReferral,
+    referral.referralRedeemed, referral.referralError, referral.redeemReferral,
+    referral.getReferralUrl, referral.shareReferral,
   ]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

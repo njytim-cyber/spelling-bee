@@ -68,8 +68,11 @@ import { CustomListsModal } from './components/CustomListsModal';
 import { Toast } from './components/Toast';
 import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
+const UpgradeModal = lazy(() => lazyRetry(() => import('./components/UpgradeModal')).then(m => ({ default: m.UpgradeModal })));
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
-import { STORAGE_KEYS, FIRESTORE, NAV_TABS } from './config';
+import { STORAGE_KEYS, FIRESTORE, NAV_TABS, FREE_DAILY_REVIEW_CAP, REFERRAL_MILESTONES } from './config';
+import { appendReferralFooter, shareOrCopy } from './utils/shareHelper';
+import { trackEvent } from './utils/analytics';
 import { ensureAllWords, ensureTiersForLevel, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
@@ -201,6 +204,12 @@ function AppInner() {
     onLevelChange,
     dialect,
     onDialectChange,
+    isPremium,
+    isTrial,
+    daysRemaining,
+    referralCode,
+    referralCount,
+    extendPass,
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
@@ -238,6 +247,13 @@ function AppInner() {
 
   // ── Settings modal (global) ──
   const [showSettings, setShowSettings] = useState(false);
+
+  // ── Upgrade modal (Champion Pass paywall) ──
+  const [showUpgrade, setShowUpgrade] = useState(false);
+
+  // ── Trial banner (dismissed per session) ──
+  const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
+  const showTrialBanner = isTrial && !trialBannerDismissed;
 
   // ── Daily challenge completion ──
   const [dailyCompleted, setDailyCompleted] = useState(() => isDailyComplete());
@@ -327,7 +343,7 @@ function AppInner() {
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, reviewQueue, hardestWords, masteredCount, uniqueWordsAttempted } = useWordHistory();
+  const { records: wordRecords, recordAttempt, cappedReviewQueue, hardestWords, masteredCount, uniqueWordsAttempted, reviewsRemaining, isReviewLimited, incrementReviewCount } = useWordHistory(isPremium);
 
   // Missed words for custom list suggestions (box 0, at least 2 attempts, sorted by worst accuracy)
   const missedWords = useMemo(() =>
@@ -359,18 +375,23 @@ function AppInner() {
     }
   }, [questionType]);
 
+  const questionTypeRef = useRef(questionType);
+  questionTypeRef.current = questionType;
+
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number, typed?: string) => {
     const word = item.meta?.['word'] as string | undefined;
     if (word) {
       const mode = typed !== undefined ? 'typed' as const : 'mcq' as const;
       recordAttempt(word, item.meta?.['category'] as string ?? 'cvc', correct, responseTimeMs, !correct ? typed : undefined, mode);
       sessionWordsRef.current.push({ word, correct, definition: item.meta?.['definition'] as string | undefined, mode });
+      // Increment daily review counter when playing review mode
+      if (questionTypeRef.current === 'review') incrementReviewCount();
     }
     // Track session progress
     if (sessionSize !== null) setSessionAnswered(n => n + 1);
     // Dismiss score help on first answer
     setShowScoreHelp(false);
-  }, [recordAttempt, sessionSize]);
+  }, [recordAttempt, sessionSize, incrementReviewCount]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
   const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
@@ -379,8 +400,8 @@ function AppInner() {
   const generateFiniteSet = useMemo(() => {
     const baseFn = makeGenerateFiniteSet(dailySize);
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
-      if (categoryId === 'review' && reviewQueue.length > 0) {
-        return reviewQueue.slice(0, 10).map(r => {
+      if (categoryId === 'review' && cappedReviewQueue.length > 0) {
+        return cappedReviewQueue.slice(0, 10).map(r => {
           // Generate an item for the exact review word (not a random word from its category)
           const item = generateItemForWord(r.word, r.category || 'review');
           // Fallback if word not found in current word bank (e.g. dialect changed)
@@ -390,7 +411,7 @@ function AppInner() {
       return baseFn(categoryId, challengeId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reviewQueue, wordRegistryVersion, dailySize]);
+  }, [cappedReviewQueue, wordRegistryVersion, dailySize]);
 
   // ── Level config (needed before useGameLoop) ──
   const levelConfig = useMemo(
@@ -676,6 +697,24 @@ function AppInner() {
     }
   }, [unlockNewMastery, unlockClearMastery, fireMasteryLevelToast]);
 
+  // ── Referral milestone auto-reward ──
+  const [claimedMilestones] = useState<Set<number>>(() => {
+    const stored = localStorage.getItem(STORAGE_KEYS.referralMilestonesClaimed);
+    return stored ? new Set(JSON.parse(stored) as number[]) : new Set<number>();
+  });
+  const [milestoneToast, fireMilestoneToast] = useTimedMessage(4000);
+  useEffect(() => {
+    for (const m of REFERRAL_MILESTONES) {
+      if (referralCount >= m.count && !claimedMilestones.has(m.count)) {
+        claimedMilestones.add(m.count);
+        localStorage.setItem(STORAGE_KEYS.referralMilestonesClaimed, JSON.stringify([...claimedMilestones]));
+        extendPass(m.days);
+        fireMilestoneToast(`+${m.label} Champion Pass!`);
+        break; // One toast at a time
+      }
+    }
+  }, [referralCount, claimedMilestones, extendPass, fireMilestoneToast]);
+
   // Achievement confetti burst
   const [showAchievementConfetti, setShowAchievementConfetti] = useState(false);
 
@@ -720,17 +759,18 @@ function AppInner() {
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
       recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
+      trackEvent('session_complete', { words: totalAnswered, accuracy: totalAnswered > 0 ? Math.round(totalCorrect / totalAnswered * 100) : 0, level: level || '' });
       setShowSummary(true);
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, setShowSummary, showSummary, guidedMode]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, setShowSummary, showSummary, guidedMode, level]);
 
   // Memoize BottomNav tabs to avoid new array each render
   const navTabs = useMemo(
-    () => NAV_TABS.map(t => t.id === 'path' ? { ...t, badge: reviewQueue.length } : t),
-    [reviewQueue.length],
+    () => NAV_TABS.map(t => t.id === 'path' ? { ...t, badge: cappedReviewQueue.length } : t),
+    [cappedReviewQueue.length],
   );
 
   // ── Tab swipe (non-game tabs only) ──
@@ -751,6 +791,7 @@ function AppInner() {
     const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);
     setShowOnboarding(false);
+    trackEvent('onboarding_complete', { level: l });
   }, [onDialectChange, onLevelChange, setQuestionType, setShowOnboarding]);
 
   // ── Chalk themes ──
@@ -786,6 +827,24 @@ function AppInner() {
     <>
       <BlackboardLayout>
         <OfflineBanner />
+        {/* ── Trial expiration banner ── */}
+        {showTrialBanner && (
+          <div
+            onClick={() => setShowUpgrade(true)}
+            className="fixed top-0 inset-x-0 z-40 bg-[var(--color-gold)]/20 border-b border-[var(--color-gold)]/30 text-center text-sm ui py-1.5 px-4 cursor-pointer flex items-center justify-center gap-2"
+          >
+            <span className="text-[var(--color-gold)]">
+              🏆 Champion Pass Trial · {daysRemaining}d left
+            </span>
+            <button
+              onClick={(e) => { e.stopPropagation(); setTrialBannerDismissed(true); }}
+              className="ml-2 text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 text-xs"
+              aria-label="Dismiss trial banner"
+            >
+              ✕
+            </button>
+          </div>
+        )}
         {wordLoadError && (
           <div
             onClick={loadAllWords}
@@ -1028,18 +1087,30 @@ function AppInner() {
                     onAnswer={(word, correct, ms, typed) => {
                       recordAttempt(word, drillRootId ? 'roots' : 'guided', correct, ms, !correct ? typed : undefined, 'typed');
                     }}
-                    reviewQueue={drillRootId ? drillRootQueue : drillHardest ? hardestWords : reviewQueue}
+                    reviewQueue={drillRootId ? drillRootQueue : drillHardest ? hardestWords : cappedReviewQueue}
                     masteredCount={masteredCount}
                     onOpenBee={() => setQuestionType('bee')}
                   />
                 </Suspense>
-              ) : questionType === 'review' && reviewQueue.length === 0 && totalAnswered === 0 ? (
+              ) : questionType === 'review' && cappedReviewQueue.length === 0 && totalAnswered === 0 ? (
                 <div className="flex-1 flex flex-col items-center justify-center px-6 gap-3">
-                  <span className="text-4xl">📖</span>
-                  <h2 className="text-lg chalk text-[var(--color-chalk)]">All caught up!</h2>
+                  <span className="text-4xl">{isReviewLimited ? '🔒' : '📖'}</span>
+                  <h2 className="text-lg chalk text-[var(--color-chalk)]">
+                    {isReviewLimited ? 'Daily limit reached' : 'All caught up!'}
+                  </h2>
                   <p className="text-xs ui text-[rgb(var(--color-fg))]/40 text-center max-w-[260px]">
-                    No words to practice right now. Words you miss come back on a schedule until they&apos;re fully mastered.
+                    {isReviewLimited
+                      ? `You've used all ${FREE_DAILY_REVIEW_CAP} free reviews for today. Upgrade to Champion Pass for unlimited reviews.`
+                      : 'No words to practice right now. Words you miss come back on a schedule until they\u2019re fully mastered.'}
                   </p>
+                  {isReviewLimited && (
+                    <button
+                      onClick={() => setShowUpgrade(true)}
+                      className="mt-1 px-5 py-2 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/20 transition-colors"
+                    >
+                      ⭐ Upgrade
+                    </button>
+                  )}
                   <button
                     onClick={() => setQuestionType(defaultCategory)}
                     className="mt-2 px-5 py-2 rounded-xl text-sm ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
@@ -1055,6 +1126,7 @@ function AppInner() {
                   onExit={() => setQuestionType(defaultCategory)}
                   mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
                   sessionWords={sessionWordsRef.current}
+                  referralCode={referralCode}
                 />
               ) : (
                 <AnimatePresence mode="wait">
@@ -1157,6 +1229,8 @@ function AppInner() {
                 timerProgress={timerProgress}
                 guidedMode={guidedMode}
                 onGuidedModeToggle={toggleGuidedMode}
+                isPremium={isPremium}
+                onUpgrade={() => setShowUpgrade(true)}
               />
             )}
 
@@ -1244,7 +1318,9 @@ function AppInner() {
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
             <Suspense fallback={<LoadingFallback />}><PathPage
               records={wordRecords}
-              reviewDueCount={reviewQueue.length}
+              reviewDueCount={cappedReviewQueue.length}
+              isReviewLimited={isReviewLimited}
+              reviewsRemaining={reviewsRemaining}
               hardestWordCount={hardestWords.length}
               onDrillHardest={() => {
                 setDrillHardest(true);
@@ -1281,6 +1357,8 @@ function AppInner() {
                 setSessionAnswered(0);
                 setActiveTab('game');
               }}
+              isPremium={isPremium}
+              onUpgrade={() => setShowUpgrade(true)}
             /></Suspense>
           </motion.div>
         )}
@@ -1297,6 +1375,7 @@ function AppInner() {
               unlocked={unlocked}
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
+              onUpgrade={() => setShowUpgrade(true)}
             /></Suspense>
           </motion.div>
         )}
@@ -1340,13 +1419,17 @@ function AppInner() {
           streakFreezes={stats.streakFreezes}
           onPurchaseFreeze={purchaseStreakFreeze}
           sessionWords={sessionWordsRef.current}
+          referralCode={referralCode}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
-        <WeeklyRecap stats={stats} />
+        <WeeklyRecap stats={stats} referralCode={referralCode} />
 
         {/* ── Toasts ── */}
-        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} stampEffect />
+        <Toast visible={!!unlockToast} icon="🏅" title={unlockToast?.name ?? ''} subtitle={unlockToast?.desc ?? ''} toastKey={unlockToast?.name} stampEffect actionLabel="Share" onAction={async () => {
+          const text = appendReferralFooter(`🏅 Earned "${unlockToast?.name}" in Spelling Bee!\n${unlockToast?.desc}`, referralCode);
+          await shareOrCopy(text);
+        }} />
         <Toast visible={shieldToast} icon="🛡️" title="Shield saved your streak!" subtitle={`${stats.streakShields} shield${stats.streakShields !== 1 ? 's' : ''} left`} />
         <Toast visible={streakToast} icon="🔥" title={`${stats.dayStreak}-day streak!`} subtitle="Keep it going" />
         <Toast visible={!!improvementToast} icon="📈" title={improvementToast} subtitle="Keep improving!" toastKey={improvementToast} />
@@ -1358,6 +1441,7 @@ function AppInner() {
         <Toast visible={!!themeUnlockToast} icon="🎨" title={`${themeUnlockToast?.name} unlocked!`} subtitle="New chalk color available on Me page" color={themeUnlockToast?.color} toastKey={themeUnlockToast?.name} stampEffect />
         <Toast visible={!!trailUnlockToast} icon="✨" title={`${trailUnlockToast} unlocked!`} subtitle="New swipe trail available on Me page" toastKey={trailUnlockToast ?? undefined} stampEffect />
         <Toast visible={!!masteryLevelToast} icon="⭐" title={masteryLevelToast} subtitle="The journey continues!" toastKey={masteryLevelToast ?? undefined} stampEffect />
+        <Toast visible={!!milestoneToast} icon="🎁" title={milestoneToast} subtitle="Referral milestone reward!" toastKey={milestoneToast ?? undefined} stampEffect />
 
         {/* ── Achievement confetti ── */}
         <Confetti trigger={showAchievementConfetti} />
@@ -1368,6 +1452,7 @@ function AppInner() {
           newThemes={unlockNewThemes.map(t => t.name)}
           newTrails={unlockNewTrails.map(t => t.name)}
           onDismiss={unlockClearRank}
+          referralCode={referralCode}
         />
 
         {/* ── Daily Size Picker ── */}
@@ -1486,7 +1571,18 @@ function AppInner() {
             level={level}
             onLevelChange={onLevelChange}
             onClose={() => setShowSettings(false)}
+            isPremium={isPremium}
+            onUpgrade={() => { setShowSettings(false); setShowUpgrade(true); }}
           />
+        )}
+      </AnimatePresence>
+
+      {/* ── Upgrade modal (Champion Pass paywall) ── */}
+      <AnimatePresence>
+        {showUpgrade && (
+          <Suspense fallback={null}>
+            <UpgradeModal onClose={() => setShowUpgrade(false)} />
+          </Suspense>
         )}
       </AnimatePresence>
 

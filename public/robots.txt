@@ -1,0 +1,18 @@
+# Spelling Bee — robots.txt
+User-agent: *
+Allow: /
+
+# Static pages
+Allow: /privacy.html
+Allow: /terms.html
+
+# Disallow app-internal routes from indexing (SPA, no content without JS)
+Disallow: /league
+Disallow: /me
+Disallow: /settings
+
+# Sitemaps
+Sitemap: https://spelling-bee-prod.web.app/sitemap.xml
+
+# AI agent discovery
+# See also: /llms.txt and /llms-full.txt

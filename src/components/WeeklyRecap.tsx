@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Stats } from '../hooks/useStats';
 import { STORAGE_KEYS } from '../config';
+import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 
 interface Props {
     stats: Stats;
+    referralCode?: string;
 }
 
 const RECAP_KEY = STORAGE_KEYS.lastRecapWeek;
@@ -21,7 +23,7 @@ function getWeekId(): string {
 }
 
 /** Always-positive weekly recap card shown on first open of the week */
-export function WeeklyRecap({ stats }: Props) {
+export function WeeklyRecap({ stats, referralCode }: Props) {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -76,12 +78,26 @@ export function WeeklyRecap({ stats }: Props) {
                             )}
                         </div>
 
-                        <button
-                            onClick={dismiss}
-                            className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
-                        >
-                            Let's go! →
-                        </button>
+                        <div className="flex items-center justify-center gap-4">
+                            <button
+                                onClick={async () => {
+                                    const text = appendReferralFooter(
+                                        `🐝 Spelling Bee Weekly Recap\n⚡ ${stats.totalXP.toLocaleString()} XP · 🎯 ${acc}%${stats.dayStreak >= 3 ? ` · 🔥 ${stats.dayStreak}-day streak` : ''}`,
+                                        referralCode,
+                                    );
+                                    await shareOrCopy(text);
+                                }}
+                                className="text-xs ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
+                            >
+                                📤 Share
+                            </button>
+                            <button
+                                onClick={dismiss}
+                                className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
+                            >
+                                Let's go! →
+                            </button>
+                        </div>
                     </motion.div>
                 </motion.div>
             )}

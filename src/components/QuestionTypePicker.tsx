@@ -3,11 +3,14 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
 import type { SpellingCategory, SpellingGroup } from '../domains/spelling/spellingCategories';
 import { SPELLING_CATEGORIES, SPELLING_GROUP_LABELS } from '../domains/spelling/spellingCategories';
+import { IconLock } from './Icons';
 
 interface Props {
     current: SpellingCategory;
     onChange: (type: SpellingCategory) => void;
     reviewQueueCount?: number;
+    isPremium?: boolean;
+    onUpgrade?: () => void;
 }
 
 type Tab = 'levels' | 'topics' | 'origins' | 'practice';
@@ -27,7 +30,7 @@ const TAB_DESCRIPTIONS: Record<Tab, string> = {
 };
 const SWIPE_THRESHOLD = 50;
 
-export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount }: Props) {
+export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount, isPremium = false, onUpgrade }: Props) {
     const [open, setOpen] = useState(false);
     const [tab, setTab] = useState<Tab>('levels');
 
@@ -45,18 +48,27 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
     }, [tab]);
 
     function renderItem(t: (typeof SPELLING_CATEGORIES)[number]) {
+        const locked = !isPremium && t.premium;
         return (
             <motion.button
                 key={t.id}
-                onClick={() => { onChange(t.id); setOpen(false); }}
+                onClick={() => {
+                    if (locked) { onUpgrade?.(); return; }
+                    onChange(t.id); setOpen(false);
+                }}
                 className={`flex flex-col items-center gap-1 py-2 px-1 rounded-xl transition-colors ${t.id === current
                     ? 'bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/40'
                     : 'border border-transparent active:bg-[var(--color-surface)]'
-                    }`}
+                    } ${locked ? 'opacity-50' : ''}`}
                 whileTap={{ scale: 0.92 }}
             >
-                <div className={`h-8 flex items-center justify-center ${t.id === current ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70'}`}>
+                <div className={`h-8 flex items-center justify-center relative ${t.id === current ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70'}`}>
                     {t.icon}
+                    {locked && (
+                        <span className="absolute -top-1 -right-1 text-[rgb(var(--color-fg))]/40">
+                            <IconLock className="w-3 h-3" />
+                        </span>
+                    )}
                 </div>
                 <span className={`text-[10px] ui ${t.id === current ? 'text-[var(--color-gold)]/80' : 'text-[rgb(var(--color-fg))]/40'} relative`}>
                     {t.label}

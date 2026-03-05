@@ -31,6 +31,108 @@ const DAILY_LIMIT = 200;
 /** Cloud Storage bucket subfolder for cached audio */
 const CACHE_PREFIX = 'tts-cache';
 
+// ── Referral Redemption ─────────────────────────────────────────────────────
+
+/** Max referrals a single user can generate */
+const MAX_REFERRALS = 20;
+
+/** Days of Champion Pass granted per referral */
+const REFERRAL_REWARD_DAYS = 7;
+
+export const redeemReferral = onCall(
+    {
+        region: 'us-central1',
+        cors: [
+            'https://spelling-bee-prod.web.app',
+            'https://spelling-bee-prod.firebaseapp.com',
+            /http:\/\/localhost(:\d+)?$/,
+        ],
+    },
+    async (request) => {
+        if (!request.auth) {
+            throw new HttpsError('unauthenticated', 'Must be signed in.');
+        }
+        const inviteeUid = request.auth.uid;
+
+        const { referralCode } = request.data as { referralCode?: string };
+        if (!referralCode || typeof referralCode !== 'string' || !/^SPELL-[A-Z0-9]{4}$/.test(referralCode)) {
+            throw new HttpsError('invalid-argument', 'Invalid referral code format.');
+        }
+
+        // Find referrer by code
+        const usersRef = db.collection('users');
+        const snap = await usersRef.where('referralCode', '==', referralCode).limit(1).get();
+        if (snap.empty) {
+            return { success: false, error: 'Referral code not found.' };
+        }
+
+        const referrerDoc = snap.docs[0];
+        const referrerUid = referrerDoc.id;
+        const referrerData = referrerDoc.data();
+
+        // Self-referral check
+        if (referrerUid === inviteeUid) {
+            return { success: false, error: "Can't use your own referral code." };
+        }
+
+        // Already redeemed check
+        const existingRef = await db.collection('referrals')
+            .where('inviteeUid', '==', inviteeUid)
+            .where('referrerUid', '==', referrerUid)
+            .limit(1)
+            .get();
+        if (!existingRef.empty) {
+            return { success: false, error: 'Already redeemed this referral.' };
+        }
+
+        // Max referrals check
+        const referralCount = referrerData.referralCount || 0;
+        if (referralCount >= MAX_REFERRALS) {
+            return { success: false, error: 'This referral code has reached its limit.' };
+        }
+
+        // Calculate new expiry: extend from current expiry or now
+        const rewardMs = REFERRAL_REWARD_DAYS * 24 * 60 * 60 * 1000;
+
+        const extendExpiry = (currentExpiry?: string) => {
+            const base = currentExpiry && new Date(currentExpiry) > new Date()
+                ? new Date(currentExpiry)
+                : new Date();
+            return new Date(base.getTime() + rewardMs).toISOString();
+        };
+
+        const referrerExpiry = extendExpiry(referrerData.championPassExpiry);
+        const inviteeDoc = await db.doc(`users/${inviteeUid}`).get();
+        const inviteeExpiry = extendExpiry(inviteeDoc.exists ? inviteeDoc.data()?.championPassExpiry : undefined);
+
+        // Batch write: referral doc + update both users
+        const batch = db.batch();
+
+        batch.create(db.collection('referrals').doc(), {
+            referrerUid,
+            inviteeUid,
+            referralCode,
+            createdAt: FieldValue.serverTimestamp(),
+            rewarded: true,
+        });
+
+        batch.set(db.doc(`users/${referrerUid}`), {
+            referralCount: FieldValue.increment(1),
+            championPassExpiry: referrerExpiry,
+        }, { merge: true });
+
+        batch.set(db.doc(`users/${inviteeUid}`), {
+            championPassExpiry: inviteeExpiry,
+        }, { merge: true });
+
+        await batch.commit();
+
+        return { success: true, expiresAt: inviteeExpiry };
+    },
+);
+
+// ── Text-to-Speech ──────────────────────────────────────────────────────────
+
 export const synthesizeSpeech = onCall(
     {
         region: 'us-central1',

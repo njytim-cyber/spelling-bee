@@ -1,6 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
+import { getAnalytics, isSupported as isAnalyticsSupported } from 'firebase/analytics';
+import type { Analytics } from 'firebase/analytics';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -18,3 +20,14 @@ export const auth = getAuth(app);
 export const db = initializeFirestore(app, {
     localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
 });
+
+// Initialize Analytics (browser-only, lazy)
+let analyticsInstance: Analytics | null = null;
+export async function getAnalyticsInstance(): Promise<Analytics | null> {
+    if (analyticsInstance) return analyticsInstance;
+    const supported = await isAnalyticsSupported();
+    if (supported) {
+        analyticsInstance = getAnalytics(app);
+    }
+    return analyticsInstance;
+}

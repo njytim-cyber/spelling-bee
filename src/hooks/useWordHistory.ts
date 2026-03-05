@@ -5,7 +5,7 @@
  * Data lives in localStorage only (too granular for Firestore in MVP).
  */
 import { useState, useCallback, useMemo } from 'react';
-import { STORAGE_KEYS } from '../config';
+import { STORAGE_KEYS, FREE_DAILY_REVIEW_CAP } from '../config';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -90,10 +90,34 @@ function saveHistory(h: WordHistory): void {
     } catch { /* quota exceeded — best effort */ }
 }
 
+// ── Daily review counter (localStorage, resets each calendar day) ─────────
+
+function todayKey(): string {
+    return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+function readReviewsToday(): { date: string; count: number } {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEYS.reviewsToday);
+        if (raw) {
+            const parsed = JSON.parse(raw) as { date: string; count: number };
+            if (parsed.date === todayKey()) return parsed;
+        }
+    } catch { /* corrupt — reset */ }
+    return { date: todayKey(), count: 0 };
+}
+
+function writeReviewsToday(count: number): void {
+    try {
+        localStorage.setItem(STORAGE_KEYS.reviewsToday, JSON.stringify({ date: todayKey(), count }));
+    } catch { /* best effort */ }
+}
+
 // ── Hook ─────────────────────────────────────────────────────────────────────
 
-export function useWordHistory() {
+export function useWordHistory(isPremium = false) {
     const [history, setHistory] = useState<WordHistory>(loadHistory);
+    const [reviewsUsedToday, setReviewsUsedToday] = useState(() => readReviewsToday().count);
 
     const recordAttempt = useCallback((
         word: string,
@@ -227,14 +251,42 @@ export function useWordHistory() {
     /** Count of unique words the student has ever attempted */
     const uniqueWordsAttempted = Object.keys(history.records).length;
 
+    // ── Daily review cap ──────────────────────────────────────────────────
+    const reviewCap = isPremium ? Infinity : FREE_DAILY_REVIEW_CAP;
+    const reviewsRemaining = Math.max(0, reviewCap - reviewsUsedToday);
+    const isReviewLimited = !isPremium && reviewsUsedToday >= FREE_DAILY_REVIEW_CAP;
+
+    /** Capped review queue for free users (30/day); unlimited for Champion Pass. */
+    const cappedReviewQueue = useMemo(() => {
+        if (isPremium) return reviewQueue;
+        const remaining = Math.max(0, FREE_DAILY_REVIEW_CAP - reviewsUsedToday);
+        return reviewQueue.slice(0, remaining);
+    }, [reviewQueue, isPremium, reviewsUsedToday]);
+
+    /** Call after each review word is answered to increment daily counter. */
+    const incrementReviewCount = useCallback(() => {
+        setReviewsUsedToday(prev => {
+            const next = prev + 1;
+            writeReviewsToday(next);
+            return next;
+        });
+    }, []);
+
     return {
         records: history.records,
         recentAttempts: history.recentAttempts,
         recordAttempt,
+        /** Full uncapped review queue (use cappedReviewQueue for display). */
         reviewQueue,
+        /** Review queue capped by daily limit for free users. */
+        cappedReviewQueue,
         weakCategories,
         hardestWords,
         masteredCount,
         uniqueWordsAttempted,
+        reviewsUsedToday,
+        reviewsRemaining,
+        isReviewLimited,
+        incrementReviewCount,
     };
 }

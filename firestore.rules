@@ -24,7 +24,8 @@ service cloud.firestore {
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
-                           'lastPingAt', '_statsVersion'
+                           'lastPingAt', '_statsVersion',
+                           'referralCode', 'referralCount', 'championPassExpiry'
                          ])
                        : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
                            'displayName', 'totalXP', 'bestStreak', 'totalSolved',
@@ -36,7 +37,8 @@ service cloud.firestore {
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
-                           'lastPingAt', '_statsVersion'
+                           'lastPingAt', '_statsVersion',
+                           'referralCode', 'referralCount', 'championPassExpiry'
                          ])
                       )
                    // String field constraints
@@ -92,7 +94,18 @@ service cloud.firestore {
                    && (!('preferences' in request.resource.data)
                        || request.resource.data.preferences is map)
                    && (!('byType' in request.resource.data)
-                       || request.resource.data.byType is map);
+                       || request.resource.data.byType is map)
+                   // Referral & premium fields
+                   && (!('referralCode' in request.resource.data)
+                       || (request.resource.data.referralCode is string
+                           && request.resource.data.referralCode.size() <= 20))
+                   && (!('referralCount' in request.resource.data)
+                       || (request.resource.data.referralCount is number
+                           && request.resource.data.referralCount >= 0
+                           && request.resource.data.referralCount <= 100))
+                   && (!('championPassExpiry' in request.resource.data)
+                       || (request.resource.data.championPassExpiry is string
+                           && request.resource.data.championPassExpiry.size() <= 30));
     }
 
     // ── Pings Collection (social nudges) ──
@@ -168,6 +181,17 @@ service cloud.firestore {
       // Only host can delete
       allow delete: if request.auth != null
                     && resource.data.hostUid == request.auth.uid;
+    }
+
+    // ── Referrals (managed by Cloud Function, read-only for clients) ──
+    match /referrals/{referralId} {
+      // Participants can read their own referrals
+      allow read: if request.auth != null
+                  && (resource.data.referrerUid == request.auth.uid
+                      || resource.data.inviteeUid == request.auth.uid);
+
+      // Only Cloud Functions (admin SDK) can write
+      allow write: if false;
     }
 
     // ── Web Vitals (performance monitoring) ──

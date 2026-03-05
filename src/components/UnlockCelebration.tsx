@@ -8,16 +8,18 @@ import { memo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Confetti } from './Confetti';
 import type { Rank } from '../utils/ranks';
+import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 
 interface Props {
     rank: Rank | null;
     newThemes?: string[];
     newTrails?: string[];
     onDismiss: () => void;
+    referralCode?: string;
 }
 
 export const UnlockCelebration = memo(function UnlockCelebration({
-    rank, newThemes, newTrails, onDismiss,
+    rank, newThemes, newTrails, onDismiss, referralCode,
 }: Props) {
     const unlockItems = [
         ...(newThemes?.map(n => `🎨 ${n}`) ?? []),
@@ -90,16 +92,33 @@ export const UnlockCelebration = memo(function UnlockCelebration({
                             </motion.div>
                         )}
 
-                        {/* Dismiss button */}
-                        <motion.button
+                        {/* Action buttons */}
+                        <motion.div
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.7, duration: 0.3 }}
-                            onClick={onDismiss}
-                            className="mt-2 px-8 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/20 transition-colors"
+                            className="mt-2 flex items-center gap-3"
                         >
-                            Awesome!
-                        </motion.button>
+                            <button
+                                onClick={async () => {
+                                    const unlocks = unlockItems.length > 0 ? `\nUnlocked: ${unlockItems.join(', ')}` : '';
+                                    const text = appendReferralFooter(
+                                        `🏆 Just ranked up to ${rank.name} in Spelling Bee!\n${rank.emoji}${unlocks}`,
+                                        referralCode,
+                                    );
+                                    await shareOrCopy(text);
+                                }}
+                                className="px-5 py-2.5 rounded-xl text-sm ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
+                            >
+                                📤 Share
+                            </button>
+                            <button
+                                onClick={onDismiss}
+                                className="px-8 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/20 transition-colors"
+                            >
+                                Awesome!
+                            </button>
+                        </motion.div>
                     </motion.div>
                 </motion.div>
             )}

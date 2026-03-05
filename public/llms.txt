@@ -1,0 +1,24 @@
+# Spelling Bee
+
+> A spelling practice app that uses spaced repetition to help learners master 117,000+ words.
+
+Spelling Bee is a free Progressive Web App for spelling practice and vocabulary building. It targets learners ages 6-18 and uses scientifically-backed spaced repetition (Leitner box system) with adaptive difficulty to optimize learning.
+
+## Key Facts
+
+- 117,000+ words across 10 difficulty levels
+- Free to use, works offline as a PWA
+- Spaced repetition with 5-box Leitner system
+- Adaptive difficulty adjusts in real-time based on answer speed
+- Daily challenges with global leaderboard
+- Competition/bee simulation mode for spelling bee preparation
+- Every example sentence is a real published citation, not AI-generated
+- Three-layer child safety filtering on all content
+- Cloud sync across devices via Firebase
+
+## Links
+
+- App: https://spelling-bee-prod.web.app
+- Privacy Policy: https://spelling-bee-prod.web.app/privacy.html
+- Terms of Service: https://spelling-bee-prod.web.app/terms.html
+- Full documentation for AI agents: https://spelling-bee-prod.web.app/llms-full.txt

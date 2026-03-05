@@ -12,7 +12,10 @@ import { CLOUD_VOICES, synthesizeCloud, getCloudVoiceGender } from '../services/
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 import { LEVELS, type Level } from '../domains/spelling/spellingCategories';
-import { IconClose } from './Icons';
+import { IconClose, IconLock } from './Icons';
+import { isLevelPremium } from '../hooks/usePremium';
+import { useUser } from '../contexts/UserContext';
+import { trackEvent } from '../utils/analytics';
 
 interface Props {
     dialect: string;
@@ -24,6 +27,8 @@ interface Props {
     onSeasonalThemeChange?: (theme: SeasonalTheme) => void;
     characterStyle?: CharacterStyle;
     onCharacterStyleChange?: (style: CharacterStyle) => void;
+    isPremium?: boolean;
+    onUpgrade?: () => void;
 }
 
 function getStoredRate(): number {
@@ -41,6 +46,40 @@ function getStoredCloudVoice(): string {
     return defaultVoice;
 }
 
+function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
+    const { isPremium, isTrial, daysRemaining } = useUser();
+
+    return (
+        <section className="mb-5">
+            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Champion Pass</h4>
+            <div className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/10">
+                <div>
+                    {isPremium ? (
+                        <>
+                            <span className="text-sm ui text-[var(--color-gold)] font-semibold">
+                                🏆 {isTrial ? 'Trial' : 'Active'}
+                            </span>
+                            <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40 ml-2">
+                                {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} left
+                            </span>
+                        </>
+                    ) : (
+                        <span className="text-sm ui text-[rgb(var(--color-fg))]/50">
+                            Free Plan
+                        </span>
+                    )}
+                </div>
+                <button
+                    onClick={onUpgrade}
+                    className="text-xs ui text-[var(--color-gold)] hover:underline"
+                >
+                    {isPremium ? 'Manage' : 'Upgrade'}
+                </button>
+            </div>
+        </section>
+    );
+}
+
 export const SettingsModal = memo(function SettingsModal({
     dialect,
     onDialectChange,
@@ -51,6 +90,8 @@ export const SettingsModal = memo(function SettingsModal({
     onSeasonalThemeChange,
     characterStyle = 'classic',
     onCharacterStyleChange,
+    isPremium = false,
+    onUpgrade,
 }: Props) {
     const { preference: motionPref, setPreference: setMotionPref } = useReducedMotion();
     const [ttsRate, setTtsRate] = useState(getStoredRate);
@@ -158,22 +199,37 @@ export const SettingsModal = memo(function SettingsModal({
                     <section className="mb-5">
                         <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Level</h4>
                         <div className="grid grid-cols-2 gap-1.5">
-                            {LEVELS.map(g => (
-                                <button
-                                    key={g.id}
-                                    onClick={() => onLevelChange(g.id)}
-                                    className={`px-3 py-2 rounded-xl border transition-colors text-center text-sm ui ${
-                                        level === g.id
-                                            ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
-                                            : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
-                                    }`}
-                                >
-                                    <span className="font-medium">{g.label}</span>
-                                </button>
-                            ))}
+                            {LEVELS.map(g => {
+                                const locked = isLevelPremium(g.id) && !isPremium;
+                                return (
+                                    <button
+                                        key={g.id}
+                                        onClick={() => { if (locked && onUpgrade) { trackEvent('level_gated', { level: g.id }); onUpgrade(); } else { onLevelChange(g.id); } }}
+                                        className={`px-3 py-2 rounded-xl border transition-colors text-center text-sm ui ${
+                                            locked
+                                                ? 'border-[rgb(var(--color-fg))]/8 text-[rgb(var(--color-fg))]/30'
+                                                : level === g.id
+                                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                                    : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                        }`}
+                                    >
+                                        {locked ? (
+                                            <span className="flex items-center justify-center gap-1.5">
+                                                <IconLock className="w-3 h-3" />
+                                                <span className="font-medium">{g.label}</span>
+                                            </span>
+                                        ) : (
+                                            <span className="font-medium">{g.label}</span>
+                                        )}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </section>
                 )}
+
+                {/* Champion Pass Status */}
+                <ChampionPassSection onUpgrade={onUpgrade} />
 
                 {/* Bee Sim Preferences */}
                 {(onSeasonalThemeChange || onCharacterStyleChange) && (

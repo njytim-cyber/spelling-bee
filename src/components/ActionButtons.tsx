@@ -13,6 +13,8 @@ interface Props {
     /** Text-entry (guided) mode toggle */
     guidedMode: boolean;
     onGuidedModeToggle: () => void;
+    isPremium?: boolean;
+    onUpgrade?: () => void;
 }
 
 /** Circular countdown ring drawn as an SVG arc */
@@ -51,6 +53,7 @@ export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange,
     timedMode, onTimedModeToggle, timerProgress,
     guidedMode, onGuidedModeToggle,
+    isPremium, onUpgrade,
 }: Props) {
     // Hide hard/timed toggles during full-screen modes that have their own controls
     const hideToggles = questionType === 'bee' || questionType === 'guided';
@@ -60,7 +63,7 @@ export const ActionButtons = memo(function ActionButtons({
         <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
             {/* Question type */}
             <div className="relative">
-                <QuestionTypePicker current={questionType} onChange={onTypeChange} />
+                <QuestionTypePicker current={questionType} onChange={onTypeChange} isPremium={isPremium} onUpgrade={onUpgrade} />
                 <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">{categoryLabel}</span>
             </div>
 

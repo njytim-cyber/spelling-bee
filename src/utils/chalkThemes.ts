@@ -8,6 +8,8 @@ export interface ChalkTheme {
     minLevel: number;       // Rank level required to unlock (1-11)
     minStreak?: number;     // Streak achievement required
     minSolved?: number;     // Total words solved required
+    /** Requires Champion Pass when true */
+    premium?: boolean;
 }
 
 export const CHALK_THEMES: ChalkTheme[] = [
@@ -20,13 +22,13 @@ export const CHALK_THEMES: ChalkTheme[] = [
     // 🔥 Streak unlocks
     { id: 'skull-purple', name: 'Skull Purple', color: 'rgba(200, 140, 255, 0.95)', lightColor: '#6b21a8', minLevel: 1, minStreak: 10 },
     { id: 'blood-moon', name: 'Blood Moon', color: 'rgba(255, 60, 60, 0.95)', lightColor: '#991b1b', minLevel: 1, minStreak: 20 },
-    // 🏆 High rank unlocks
-    { id: 'shadow-flame', name: 'Shadow Flame', color: 'rgba(255, 140, 20, 0.95)', lightColor: '#9a3412', minLevel: 7 }, // Word Wizard (3000 XP)
+    // 🏆 High rank unlocks (Champion Pass required)
+    { id: 'shadow-flame', name: 'Shadow Flame', color: 'rgba(255, 140, 20, 0.95)', lightColor: '#9a3412', minLevel: 7, premium: true }, // Word Wizard (3000 XP)
     { id: 'electric-blue', name: 'Electric Blue', color: 'rgba(50, 200, 255, 0.95)', lightColor: '#1d4ed8', minLevel: 1, minSolved: 50 },
-    { id: 'neon-green', name: 'Neon Pulse', color: 'rgba(20, 255, 120, 0.95)', lightColor: '#15803d', minLevel: 8 }, // Grandmaster (5000 XP)
-    // ✨ Elite endgame unlocks
-    { id: 'void-black', name: 'Void', color: 'rgba(180, 160, 200, 0.95)', lightColor: '#312e81', minLevel: 9 }, // Legend (8000 XP)
-    { id: 'prismatic', name: 'Prismatic', color: 'rgba(255, 180, 255, 0.95)', lightColor: '#86198f', minLevel: 10 }, // Mythic (12000 XP)
+    { id: 'neon-green', name: 'Neon Pulse', color: 'rgba(20, 255, 120, 0.95)', lightColor: '#15803d', minLevel: 8, premium: true }, // Grandmaster (5000 XP)
+    // ✨ Elite endgame unlocks (Champion Pass required)
+    { id: 'void-black', name: 'Void', color: 'rgba(180, 160, 200, 0.95)', lightColor: '#312e81', minLevel: 9, premium: true }, // Legend (8000 XP)
+    { id: 'prismatic', name: 'Prismatic', color: 'rgba(255, 180, 255, 0.95)', lightColor: '#86198f', minLevel: 10, premium: true }, // Mythic (12000 XP)
 ];
 
 /**

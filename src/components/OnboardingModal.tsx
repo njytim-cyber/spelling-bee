@@ -9,6 +9,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { Level } from '../domains/spelling/spellingCategories';
 import { LEVELS, levelIcon } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
+import { isLevelPremium } from '../hooks/usePremium';
+import { IconLock } from './Icons';
 
 interface Props {
     onComplete: (dialect: Dialect, level: Level) => void;
@@ -192,23 +194,31 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         )}
 
                         <div className="grid grid-cols-2 gap-2 w-full max-w-[var(--content-w)]">
-                            {LEVELS.map(g => (
-                                <motion.button
-                                    key={g.id}
-                                    whileTap={{ scale: 0.96 }}
-                                    onClick={() => setSelectedLevel(g.id)}
-                                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-colors text-left ${
-                                        selectedLevel === g.id
-                                            ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
-                                            : 'border-[rgb(var(--color-fg))]/15 hover:border-[rgb(var(--color-fg))]/30'
-                                    }`}
-                                >
-                                    <span className={`w-6 h-6 flex items-center justify-center shrink-0 ${selectedLevel === g.id ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/60'}`}>
-                                        {levelIcon(g.id)}
-                                    </span>
-                                    <div className="text-sm ui font-bold text-[var(--color-chalk)]">{g.label}</div>
-                                </motion.button>
-                            ))}
+                            {LEVELS.map(g => {
+                                const locked = isLevelPremium(g.id);
+                                return (
+                                    <motion.button
+                                        key={g.id}
+                                        whileTap={!locked ? { scale: 0.96 } : undefined}
+                                        onClick={() => !locked && setSelectedLevel(g.id)}
+                                        className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-colors text-left ${
+                                            locked
+                                                ? 'border-[rgb(var(--color-fg))]/8 opacity-50 cursor-not-allowed'
+                                                : selectedLevel === g.id
+                                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
+                                                    : 'border-[rgb(var(--color-fg))]/15 hover:border-[rgb(var(--color-fg))]/30'
+                                        }`}
+                                    >
+                                        <span className={`w-6 h-6 flex items-center justify-center shrink-0 ${locked ? 'text-[rgb(var(--color-fg))]/30' : selectedLevel === g.id ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/60'}`}>
+                                            {locked ? <IconLock className="w-4 h-4" /> : levelIcon(g.id)}
+                                        </span>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-sm ui font-bold text-[var(--color-chalk)]">{g.label}</span>
+                                            {locked && <span className="text-[9px] ui text-[var(--color-gold)]/60">Champion</span>}
+                                        </div>
+                                    </motion.button>
+                                );
+                            })}
                         </div>
 
                         <div className="flex gap-3 mt-8">

@@ -6,8 +6,8 @@ import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
-import { STORAGE_KEYS } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash } from './Icons';
+import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import { AvatarBuilder } from './AvatarBuilder';
@@ -19,6 +19,7 @@ interface Props {
     unlocked: Set<string>;
     masteredCount: number;
     uniqueWordsAttempted: number;
+    onUpgrade?: () => void;
 }
 
 // Derive achievement sublists from the single spelling array
@@ -31,7 +32,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade }: Props) {
     // Get user state from context
     const {
         stats,
@@ -53,6 +54,11 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         sendEmailLink,
         updateBadge,
         deleteAccount,
+        isPremium,
+        daysRemaining,
+        referralCode,
+        referralCount,
+        shareReferral,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -324,6 +330,84 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     <AvatarBuilder config={avatarConfig} onChange={onAvatarChange} flairStats={flairStats} />
                 </div>
 
+            {/* ═══════ REFERRAL / CHAMPION PASS ═══════ */}
+                <div className="w-full max-w-sm mb-5">
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                        invite friends
+                    </div>
+                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4">
+                        {/* Champion Pass status */}
+                        {isPremium && (
+                            <div className="flex items-center justify-center gap-1.5 text-[11px] ui text-[var(--color-gold)] mb-3">
+                                <span>👑</span>
+                                <span>Champion Pass — {daysRemaining} day{daysRemaining !== 1 ? 's' : ''} left</span>
+                            </div>
+                        )}
+
+                        {/* Referral code + copy */}
+                        <div className="flex items-center justify-center gap-2 mb-3">
+                            <div className="text-lg ui font-bold text-[var(--color-chalk)] tracking-widest">{referralCode || '...'}</div>
+                            <button
+                                onClick={async () => {
+                                    if (!referralCode) return;
+                                    try {
+                                        await navigator.clipboard.writeText(referralCode);
+                                    } catch { /* silent */ }
+                                }}
+                                className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                            >
+                                copy
+                            </button>
+                        </div>
+
+                        {/* Stats + milestone progress */}
+                        {referralCount > 0 && (
+                            <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40 text-center mb-2">
+                                {referralCount} friend{referralCount !== 1 ? 's' : ''} invited
+                            </div>
+                        )}
+                        {(() => {
+                            const next = REFERRAL_MILESTONES.find(m => referralCount < m.count);
+                            const allClaimed = !next;
+                            if (allClaimed) return referralCount > 0 ? (
+                                <div className="text-[10px] ui text-[var(--color-gold)] text-center mb-3">
+                                    All milestones earned!
+                                </div>
+                            ) : null;
+                            const prev = REFERRAL_MILESTONES.filter(m => referralCount >= m.count).pop();
+                            const base = prev ? prev.count : 0;
+                            const progress = ((referralCount - base) / (next.count - base)) * 100;
+                            return (
+                                <div className="mb-3">
+                                    <div className="flex items-center justify-between text-[9px] ui text-[rgb(var(--color-fg))]/30 mb-1">
+                                        <span>{referralCount}/{next.count} for +{next.label}</span>
+                                        <span>{next.count - referralCount} to go</span>
+                                    </div>
+                                    <div className="h-1.5 bg-[rgb(var(--color-fg))]/10 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full bg-[var(--color-gold)] rounded-full transition-all"
+                                            style={{ width: `${Math.min(100, progress)}%` }}
+                                        />
+                                    </div>
+                                </div>
+                            );
+                        })()}
+
+                        {/* Share button */}
+                        <button
+                            onClick={shareReferral}
+                            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                        >
+                            <IconGift className="w-4 h-4" />
+                            Share — you both get 7 days free
+                        </button>
+
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
+                            Share your code to unlock Champion Pass for both of you
+                        </div>
+                    </div>
+                </div>
+
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
                 <>
                     {/* Chalk Themes — locked ones faded like achievements */}
@@ -333,23 +417,29 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {CHALK_THEMES.map(t => {
-                                const { available: isAvailable, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
+                                const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
+                                const premiumLocked = !isPremium && t.premium;
+                                const isAvailable = rankUnlocked && !premiumLocked;
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => isAvailable && onThemeChange(t)}
+                                        onClick={() => premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
                                         aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={unlockHint}
+                                        title={premiumLocked ? 'Champion Pass required' : unlockHint}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
                                             }`}
                                         style={{ backgroundColor: swatchColor }}
-                                    />
+                                    >
+                                        {premiumLocked && (
+                                            <span className="absolute -top-0.5 -right-0.5 text-[8px]">🔒</span>
+                                        )}
+                                    </button>
                                 );
                             })}
                         </div>
@@ -362,22 +452,27 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {SWIPE_TRAILS.map(t => {
-                                const { available: isUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
+                                const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
+                                const premiumLocked = !isPremium && t.premium;
+                                const isUnlocked = rankUnlocked && !premiumLocked;
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
 
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => isUnlocked && onTrailChange(t.id)}
+                                        onClick={() => premiumLocked ? onUpgrade?.() : isUnlocked && onTrailChange(t.id)}
                                         aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!isUnlocked ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={unlockHint}
-                                        className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all
+                                        title={premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all relative
                                             ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
                                                 isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                     'border-[rgb(var(--color-fg))]/5 opacity-30 cursor-not-allowed bg-[var(--color-surface)]'
                                             }`}
                                     >
+                                        {premiumLocked && (
+                                            <span className="absolute -top-1 -right-1 text-[8px]">🔒</span>
+                                        )}
                                         <span className={`text-2xl ${isActive ? 'drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]' : ''}`}>
                                             {t.emoji}
                                         </span>

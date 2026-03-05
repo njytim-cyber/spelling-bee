@@ -81,6 +81,8 @@ export interface CategoryEntry {
     icon: ReactNode;
     label: string;
     group: SpellingGroup;
+    /** Requires Champion Pass when true */
+    premium?: boolean;
 }
 
 // ── SVG icon helper ─────────────────────────────────────────────────────────
@@ -609,8 +611,8 @@ export const SPELLING_CATEGORIES: ReadonlyArray<CategoryEntry> = [
     { id: 'origin-french', icon: iOriginFrench, label: 'French', group: 'origins' },
     { id: 'origin-german', icon: iOriginGerman, label: 'German', group: 'origins' },
     { id: 'origin-other', icon: iOriginOther, label: 'Other Origins', group: 'origins' },
-    { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'origins' },
-    { id: 'etymology', icon: iEtymology, label: 'Etymology Quiz', group: 'origins' },
+    { id: 'roots', icon: iRoots, label: 'Word Roots', group: 'origins', premium: true },
+    { id: 'etymology', icon: iEtymology, label: 'Etymology Quiz', group: 'origins', premium: true },
     // My Lists
     { id: 'custom', icon: iCustom, label: 'My Lists', group: 'practice' },
 ];

@@ -8,6 +8,7 @@ import { memo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getDailyStreak, getTodayLabel } from '../utils/dailyTracking';
 import { createChallengeId } from '../utils/dailyChallenge';
+import { appendReferralFooter } from '../utils/shareHelper';
 
 interface SessionWord {
     word: string;
@@ -22,6 +23,7 @@ interface Props {
     onExit: () => void;
     mode?: 'daily' | 'review' | 'challenge';
     sessionWords?: SessionWord[];
+    referralCode?: string;
 }
 
 const MODE_CONFIG = {
@@ -30,7 +32,7 @@ const MODE_CONFIG = {
     challenge: { icon: '🏆', title: 'Challenge Complete!', exitLabel: 'Back to Play' },
 };
 
-export const DailyChallengeComplete = memo(function DailyChallengeComplete({ correct, total, score, onExit, mode = 'daily', sessionWords = [] }: Props) {
+export const DailyChallengeComplete = memo(function DailyChallengeComplete({ correct, total, score, onExit, mode = 'daily', sessionWords = [], referralCode }: Props) {
     const streak = getDailyStreak();
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
     const dateLabel = getTodayLabel();
@@ -38,9 +40,10 @@ export const DailyChallengeComplete = memo(function DailyChallengeComplete({ cor
     const [showReview, setShowReview] = useState(false);
 
     const challengeUrl = `${window.location.origin}?c=${createChallengeId()}`;
-    const shareText = mode === 'daily'
+    const baseShareText = mode === 'daily'
         ? `🐝 Spelling Bee Daily ${dateLabel} — ${correct}/${total} (${pct}%)${streak > 1 ? ` | 🔥 ${streak}-day streak` : ''}\n\nCan you beat me? 👉 ${challengeUrl}`
         : `🐝 Spelling Bee ${title.replace('!', '')} — ${correct}/${total} (${pct}%)\n\nCan you beat me? 👉 ${challengeUrl}`;
+    const shareText = appendReferralFooter(baseShareText, referralCode);
 
     const handleShare = async () => {
         if (navigator.share) {
