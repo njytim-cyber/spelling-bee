@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { STORAGE_KEYS } from '../config';
+import { usePerformanceMonitor } from './usePerformanceMonitor';
 
 export type MotionPreference = 'system' | 'always' | 'never';
 
@@ -18,6 +19,7 @@ function systemWantsReduced(): boolean {
 export function useReducedMotion() {
     const [preference, setPreferenceState] = useState<MotionPreference>(readPref);
     const [systemReduced, setSystemReduced] = useState(systemWantsReduced);
+    const lowFps = usePerformanceMonitor();
 
     // Listen for OS-level changes
     useEffect(() => {
@@ -33,10 +35,12 @@ export function useReducedMotion() {
         else localStorage.setItem(STORAGE_KEYS.reducedMotion, p);
     }, []);
 
+    // If user explicitly chose 'never', respect that even on low-FPS devices.
+    // Otherwise, reduce motion if OS says so OR if FPS probe detected a slow device.
     const reducedMotion =
         preference === 'always' ? true
             : preference === 'never' ? false
-                : systemReduced;
+                : systemReduced || lowFps;
 
     return { reducedMotion, preference, setPreference } as const;
 }

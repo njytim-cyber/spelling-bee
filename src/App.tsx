@@ -70,7 +70,7 @@ import { generateCustomItem } from './domains/spelling/customGenerator';
 import { SPELLING_MESSAGE_OVERRIDES } from './domains/spelling/spellingMessages';
 import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
 import { STORAGE_KEYS, FIRESTORE, NAV_TABS } from './config';
-import { ensureAllWords, getRegistryVersion, setDialect } from './domains/spelling/words';
+import { ensureAllWords, ensureTiersForLevel, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
@@ -290,19 +290,39 @@ function AppInner() {
     setWordRegistryVersion(getRegistryVersion());
   }, [onDialectChange]);
 
-  // ── Load all word tiers ──
+  // ── Load word tiers (level-first, then background-load rest) ──
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
-  useEffect(() => {
-    let cancelled = false;
-    ensureAllWords().then(async () => {
-      // Apply stored dialect after tiers are loaded
+  const [wordLoadError, setWordLoadError] = useState(false);
+  const loadAllWords = useCallback(async () => {
+    setWordLoadError(false);
+    try {
+      await ensureAllWords();
       const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
       if (stored === 'en-GB') await setDialect(stored as Dialect);
-      if (!cancelled) setWordRegistryVersion(getRegistryVersion());
-    }).catch(err => {
+      setWordRegistryVersion(getRegistryVersion());
+    } catch (err) {
       console.warn('Failed to load word registry:', err);
-    });
-    return () => { cancelled = true; };
+      setWordLoadError(true);
+    }
+  }, []);
+  // Fast initial load: only the tiers for the user's level + neighbors
+  useEffect(() => {
+    (async () => {
+      setWordLoadError(false);
+      try {
+        const storedLevel = localStorage.getItem(STORAGE_KEYS.grade) || '';
+        const levelNum = parseInt(storedLevel.replace('level-', ''), 10) || 1;
+        await ensureTiersForLevel(levelNum);
+        const storedDialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
+        if (storedDialect === 'en-GB') await setDialect(storedDialect as Dialect);
+        setWordRegistryVersion(getRegistryVersion());
+        // Background-load remaining tiers for word book, path page, etc.
+        ensureAllWords().then(() => setWordRegistryVersion(getRegistryVersion())).catch(console.warn);
+      } catch (err) {
+        console.warn('Failed to load word registry:', err);
+        setWordLoadError(true);
+      }
+    })();
   }, []);
 
   // ── Word history (Leitner spaced repetition) ──
@@ -765,6 +785,14 @@ function AppInner() {
     <>
       <BlackboardLayout>
         <OfflineBanner />
+        {wordLoadError && (
+          <div
+            onClick={loadAllWords}
+            className="fixed top-0 inset-x-0 z-50 bg-[var(--color-wrong)] text-white text-center text-sm ui py-2 px-4 cursor-pointer"
+          >
+            Failed to load words. Tap to retry.
+          </div>
+        )}
         <ReloadPrompt suppress={activeTab === 'game'} />
         {/* ── Global Canvas Overlay (Swipe Trail) ── */}
         <SwipeTrail

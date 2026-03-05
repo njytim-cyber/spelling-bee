@@ -1,4 +1,5 @@
 import { Component, type ReactNode, type ErrorInfo } from 'react';
+import { reportError } from '../utils/errorMonitor';
 
 interface Props { children: ReactNode; }
 interface State { hasError: boolean; }
@@ -12,6 +13,11 @@ export class ErrorBoundary extends Component<Props, State> {
 
     componentDidCatch(error: Error, info: ErrorInfo) {
         console.error('App crashed:', error, info.componentStack);
+        reportError({
+            message: error.message,
+            stack: error.stack,
+            source: 'ErrorBoundary',
+        });
     }
 
     render() {

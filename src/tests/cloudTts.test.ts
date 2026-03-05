@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CLOUD_VOICES, voicesForDialect, getCloudVoiceGender } from '../services/cloudTts';
+import { CLOUD_VOICES, voicesForDialect, getCloudVoiceGender, shouldSkipCloudTts } from '../services/cloudTts';
 
 describe('Cloud TTS voice catalog', () => {
     it('has 24 Neural2 voices total', () => {
@@ -58,5 +58,10 @@ describe('Cloud TTS voice catalog', () => {
 
     it('getCloudVoiceGender defaults to female for unknown voice', () => {
         expect(getCloudVoiceGender('en-US-Neural2-Z')).toBe('female');
+    });
+
+    it('shouldSkipCloudTts returns false when no connection API', () => {
+        // Node test env has no navigator.connection
+        expect(shouldSkipCloudTts()).toBe(false);
     });
 });

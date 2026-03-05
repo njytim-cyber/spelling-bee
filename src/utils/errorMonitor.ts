@@ -9,7 +9,7 @@ import { db } from './firebase';
 let reportCount = 0;
 const MAX_REPORTS = 10;
 
-function reportError(error: { message: string; stack?: string; source?: string }) {
+export function reportError(error: { message: string; stack?: string; source?: string }) {
     if (reportCount >= MAX_REPORTS) return;
     reportCount++;
 

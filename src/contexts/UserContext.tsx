@@ -18,6 +18,8 @@ interface UserContextValue {
   // Stats
   stats: ReturnType<typeof useStats>['stats'];
   accuracy: number;
+  syncPending: boolean;
+  syncFailed: boolean;
   recordSession: ReturnType<typeof useStats>['recordSession'];
   recordBeeResult: ReturnType<typeof useStats>['recordBeeResult'];
   resetStats: ReturnType<typeof useStats>['resetStats'];
@@ -60,6 +62,8 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const {
     stats,
     accuracy,
+    syncPending,
+    syncFailed,
     recordSession,
     recordBeeResult,
     resetStats,
@@ -89,6 +93,8 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const value = useMemo<UserContextValue>(() => ({
     stats,
     accuracy,
+    syncPending,
+    syncFailed,
     recordSession,
     recordBeeResult,
     resetStats,
@@ -113,7 +119,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     dialect: dialect as string,
     onDialectChange,
   }), [
-    stats, accuracy, recordSession, recordBeeResult, resetStats,
+    stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
     updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
     activeCostume, onCostumeChange, activeTheme, onThemeChange,
     activeTrailId, onTrailChange, user?.displayName, setDisplayName,

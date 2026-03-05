@@ -76,41 +76,83 @@ export function initializeDefaultVoice(): void {
     }
 }
 
+// ── Network detection ────────────────────────────────────────────────────────
+
+/** True when the connection is too slow or metered for cloud TTS. */
+export function shouldSkipCloudTts(): boolean {
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (!conn) return false;
+    if (conn.saveData) return true;
+    if (conn.effectiveType === '2g' || conn.effectiveType === 'slow-2g') return true;
+    return false;
+}
+
 // ── Synthesis ────────────────────────────────────────────────────────────────
 
-/** In-memory audio cache (per session): cacheKey → blobUrl */
+const CLOUD_TTS_TIMEOUT_MS = 8_000;
+const AUDIO_CACHE_MAX = 50;
+
+/** LRU audio cache: cacheKey → blobUrl. Evicts oldest when full. */
 const audioCache = new Map<string, string>();
+
+/** Evict the oldest entry and revoke its blob URL. */
+function evictOldest(): void {
+    const firstKey = audioCache.keys().next().value;
+    if (firstKey != null) {
+        const url = audioCache.get(firstKey)!;
+        URL.revokeObjectURL(url);
+        audioCache.delete(firstKey);
+    }
+}
 
 /**
  * Synthesize speech via the Firebase Cloud Function.
  * Returns a blob URL for immediate playback.
- * Caches results in memory for the session.
+ * Caches results in memory (LRU, max 50 entries).
+ *
+ * Throws if the network is too slow (2G/save-data) — callers should
+ * fall back to browser TTS.
  */
 export async function synthesizeCloud(
     text: string,
     voiceName: string,
     rate: number = 1.0,
 ): Promise<string> {
+    if (shouldSkipCloudTts()) {
+        throw new Error('Cloud TTS skipped: slow/metered connection');
+    }
+
     const cacheKey = `${text.toLowerCase()}|${voiceName}|${rate}`;
     const cached = audioCache.get(cacheKey);
     if (cached) return cached;
 
-    // Lazy-load Firebase app only when synthesis is actually needed
-    const { app } = await import('../utils/firebase');
-    const functions = getFunctions(app, 'us-central1');
-    const synthesize = httpsCallable<
-        { text: string; voiceName: string; speakingRate: number },
-        { audioUrl: string; cached: boolean }
-    >(functions, 'synthesizeSpeech');
+    // Abort if the request takes longer than 8 seconds
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), CLOUD_TTS_TIMEOUT_MS);
 
-    const result = await synthesize({ text, voiceName, speakingRate: rate });
-    const audioUrl = result.data.audioUrl;
+    try {
+        // Lazy-load Firebase app only when synthesis is actually needed
+        const { app } = await import('../utils/firebase');
+        const functions = getFunctions(app, 'us-central1');
+        const synthesize = httpsCallable<
+            { text: string; voiceName: string; speakingRate: number },
+            { audioUrl: string; cached: boolean }
+        >(functions, 'synthesizeSpeech');
 
-    // Pre-fetch and cache as blob URL for instant subsequent playback
-    const response = await fetch(audioUrl);
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    audioCache.set(cacheKey, blobUrl);
+        const result = await synthesize({ text, voiceName, speakingRate: rate });
+        const audioUrl = result.data.audioUrl;
 
-    return blobUrl;
+        // Pre-fetch and cache as blob URL for instant subsequent playback
+        const response = await fetch(audioUrl, { signal: controller.signal });
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+
+        // LRU eviction: drop oldest when cache is full
+        if (audioCache.size >= AUDIO_CACHE_MAX) evictOldest();
+        audioCache.set(cacheKey, blobUrl);
+
+        return blobUrl;
+    } finally {
+        clearTimeout(timeout);
+    }
 }

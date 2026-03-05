@@ -230,6 +230,23 @@ function rebuildLoadedWords(): void {
 
 // ── Tier loading ─────────────────────────────────────────────────────────────
 
+/** Retry a dynamic import up to 3 times with exponential backoff (1s, 2s, 4s). */
+async function withRetry<T>(fn: () => Promise<T>, label: string): Promise<T> {
+    const delays = [1000, 2000, 4000];
+    let lastError: unknown;
+    for (let attempt = 0; attempt <= delays.length; attempt++) {
+        try {
+            return await fn();
+        } catch (err) {
+            lastError = err;
+            if (attempt < delays.length) {
+                await new Promise(r => setTimeout(r, delays[attempt]));
+            }
+        }
+    }
+    throw new Error(`Failed to load ${label} after ${delays.length + 1} attempts: ${lastError}`);
+}
+
 const tierImporters: Record<number, () => Promise<{ default?: SpellingWord[]; [key: string]: unknown }>> = {
     3: () => Promise.all([import('./tier3'), import('./tier3-pipeline')]).then(
         ([core, pipeline]) => ({ TIER_3_WORDS: [...core.TIER_3_WORDS, ...pipeline.TIER_3_PIPELINE_WORDS] }),
@@ -263,7 +280,9 @@ export async function ensurePipelineWords(): Promise<void> {
     const missing = [1, 2].filter(t => !loadedPipeline.has(t));
     if (missing.length === 0) return;
 
-    const modules = await Promise.all(missing.map(t => pipelineImporters[t]()));
+    const modules = await Promise.all(missing.map(t =>
+        withRetry(() => pipelineImporters[t](), `tier ${t} pipeline`),
+    ));
     const existing = new Set(baseWords.map(w => w.word));
     const newWords: SpellingWord[] = [];
 
@@ -283,6 +302,62 @@ export async function ensurePipelineWords(): Promise<void> {
 }
 
 /**
+ * Ensure only the tiers needed for a specific difficulty level are loaded.
+ * Loads the target tier plus ±1 buffer for adaptive difficulty headroom.
+ * Much faster initial load than ensureAllWords() for users at lower levels.
+ */
+export async function ensureTiersForLevel(level: number): Promise<void> {
+    // Map level to needed tiers: the level's own tier + neighbors for adaptive range
+    const needed = new Set<number>();
+    // Level 10 uses difficulty-10 words which come from tiers 5 and 9
+    if (level === 10) {
+        needed.add(5).add(8).add(9);
+    } else {
+        // Core tier for this level
+        const tier = Math.min(Math.max(level, 1), 9);
+        needed.add(tier);
+        if (tier > 1) needed.add(tier - 1); // buffer below
+        if (tier < 9) needed.add(tier + 1); // buffer above
+    }
+
+    const missingTiers = [...needed].filter(t => !loadedTiers.has(t) && tierImporters[t]);
+    // Also load pipeline for tiers 1-2 if they're in the needed set
+    const missingPipeline = [1, 2].filter(t => needed.has(t) && !loadedPipeline.has(t));
+
+    if (missingTiers.length === 0 && missingPipeline.length === 0) return;
+
+    const [modules, pipelineModules] = await Promise.all([
+        Promise.all(missingTiers.map(async (t) => {
+            return withRetry(tierImporters[t], `tier ${t}`);
+        })),
+        Promise.all(missingPipeline.map(t =>
+            withRetry(() => pipelineImporters[t](), `tier ${t} pipeline`),
+        )),
+    ]);
+
+    const newWords: SpellingWord[] = [];
+    for (let i = 0; i < missingTiers.length; i++) {
+        const mod = modules[i];
+        const tierKey = Object.keys(mod).find(k => k.startsWith('TIER_'));
+        const words = tierKey ? (mod[tierKey] as SpellingWord[]) : [];
+        newWords.push(...words);
+        loadedTiers.add(missingTiers[i]);
+    }
+    for (let i = 0; i < missingPipeline.length; i++) {
+        newWords.push(...pipelineModules[i]);
+        loadedPipeline.add(missingPipeline[i]);
+    }
+
+    if (newWords.length > 0) {
+        const existing = new Set(baseWords.map(w => w.word));
+        const unique = newWords.filter(w => !existing.has(w.word));
+        baseWords = [...baseWords, ...unique];
+        rebuildLoadedWords();
+        version++;
+    }
+}
+
+/**
  * Ensure all word tiers (1-9) are loaded, including pipeline expansions.
  * Returns immediately if already loaded. Safe to call multiple times.
  * Loads all missing tiers in parallel for maximum speed.
@@ -294,16 +369,18 @@ export async function ensureAllWords(): Promise<void> {
 
     if (missing.length === 0 && pipelineMissing.length === 0) return;
 
-    // Load all missing tiers + pipeline expansions in parallel
+    // Load all missing tiers + pipeline expansions in parallel (with retry)
     const [modules, pipelineModules] = await Promise.all([
         Promise.all(
             missing.map(async (t) => {
                 const importer = tierImporters[t];
                 if (!importer) return null;
-                return importer();
+                return withRetry(importer, `tier ${t}`);
             }),
         ),
-        Promise.all(pipelineMissing.map(t => pipelineImporters[t]())),
+        Promise.all(pipelineMissing.map(t =>
+            withRetry(() => pipelineImporters[t](), `tier ${t} pipeline`),
+        )),
     ]);
 
     const newWords: SpellingWord[] = [];

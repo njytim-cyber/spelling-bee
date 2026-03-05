@@ -261,6 +261,8 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
 
 export function useStats(uid: string | null) {
     const [stats, setStats] = useState<Stats>(loadStatsLocal);
+    const [syncPending, setSyncPending] = useState(false);
+    const [syncFailed, setSyncFailed] = useState(false);
     const uidRef = useRef(uid);
     const statsRef = useRef(stats);
 
@@ -293,7 +295,13 @@ export function useStats(uid: string | null) {
             // Debounce Firestore writes to reduce costs during rapid gameplay
             clearTimeout(cloudTimerRef.current);
             cloudTimerRef.current = setTimeout(() => {
-                if (uidRef.current) saveStatsCloud(uidRef.current, stats);
+                if (uidRef.current) {
+                    setSyncPending(true);
+                    setSyncFailed(false);
+                    saveStatsCloud(uidRef.current, stats)
+                        .then(() => { setSyncPending(false); setSyncFailed(false); })
+                        .catch(() => { setSyncPending(false); setSyncFailed(true); });
+                }
             }, 2000);
         }
         return () => clearTimeout(cloudTimerRef.current);
@@ -458,5 +466,5 @@ export function useStats(uid: string | null) {
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-    return { stats, accuracy, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze };
+    return { stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze };
 }

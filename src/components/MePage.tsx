@@ -35,6 +35,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         stats,
         accuracy,
         resetStats,
+        syncFailed,
         activeCostume,
         onCostumeChange,
         activeTheme,
@@ -67,6 +68,15 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const mastery = useMemo(() =>
         !nextRank ? getMasteryInfo(stats.totalXP) : null,
     [nextRank, stats.totalXP]);
+
+    // Cosmetic unlock counts
+    const rankIdx = useMemo(() => RANKS.findIndex(r => r.name === rank.name), [rank.name]);
+    const unlockedThemes = useMemo(() =>
+        CHALK_THEMES.filter(t => checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available).length,
+    [rankIdx, stats.bestStreak, stats.totalSolved]);
+    const unlockedTrails = useMemo(() =>
+        SWIPE_TRAILS.filter(t => checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available).length,
+    [rankIdx, stats.bestStreak, stats.totalSolved]);
 
     // Word bank mastery percentile
     const registryVersion = getRegistryVersion();
@@ -297,11 +307,10 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     {/* Chalk Themes — locked ones faded like achievements */}
                     <div className="w-full max-w-sm mb-5">
                         <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                            CHALK COLOR
+                            chalk color · {unlockedThemes}/{CHALK_THEMES.length}
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {CHALK_THEMES.map(t => {
-                                const rankIdx = RANKS.findIndex(r => r.name === rank.name);
                                 const { available: isAvailable, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
@@ -327,11 +336,10 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     {/* Swipe Trails */}
                     <div className="w-full max-w-sm mb-6">
                         <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                            SWIPE TRAIL
+                            swipe trail · {unlockedTrails}/{SWIPE_TRAILS.length}
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {SWIPE_TRAILS.map(t => {
-                                const rankIdx = RANKS.findIndex(r => r.name === rank.name);
                                 const { available: isUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
 
@@ -578,7 +586,12 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 )}
             </AnimatePresence>
 
-            {/* Version */}
+            {/* Sync status + Version */}
+            {syncFailed && (
+                <div className="text-[10px] ui text-[var(--color-wrong)]/50 mt-4">
+                    Not synced — changes saved locally
+                </div>
+            )}
             <div className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-4 tracking-widest">
                 v{__APP_VERSION__}
             </div>

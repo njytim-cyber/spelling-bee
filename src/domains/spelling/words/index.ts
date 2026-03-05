@@ -13,7 +13,7 @@ import { getLoadedWords, getCachedWordMap, getCachedByPattern, getCachedByTheme,
 import { extractLanguage, type LanguageOfOrigin } from '../../../utils/etymologyParser';
 
 export type { SpellingWord, PhonicsPattern, DifficultyTier, PartOfSpeech, SemanticTheme, Dialect } from './types';
-export { ensureAllWords, ensurePipelineWords, getRegistryVersion, getDialect, setDialect, resolveUsKey } from './registry';
+export { ensureAllWords, ensureTiersForLevel, ensurePipelineWords, getRegistryVersion, getDialect, setDialect, resolveUsKey } from './registry';
 export { getRootsForWord, formatRootHint, highlightRoot, rootFragments, computeRootMastery } from './rootUtils';
 export type { RootMasteryEntry } from './rootUtils';
 
