@@ -26,7 +26,8 @@ service cloud.firestore {
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
-                           'referralCode', 'referralCount', 'championPassExpiry'
+                           'referralCode', 'referralCount', 'championPassExpiry',
+                           'masteredWordsLevel5Plus'
                          ])
                        : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
                            'displayName', 'totalXP', 'bestStreak', 'totalSolved',
@@ -40,7 +41,8 @@ service cloud.firestore {
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
-                           'referralCode', 'referralCount', 'championPassExpiry'
+                           'referralCode', 'referralCount', 'championPassExpiry',
+                           'masteredWordsLevel5Plus'
                          ])
                       )
                    // String field constraints

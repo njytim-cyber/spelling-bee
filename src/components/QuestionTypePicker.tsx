@@ -6,12 +6,20 @@ import { SPELLING_CATEGORIES, SPELLING_GROUP_LABELS } from '../domains/spelling/
 import { ModalShell } from './ModalShell';
 import { IconLock } from './Icons';
 
+interface AssignedList {
+    id: string;
+    name: string;
+    wordCount: number;
+}
+
 interface Props {
     current: SpellingCategory;
     onChange: (type: SpellingCategory) => void;
     reviewQueueCount?: number;
     isPremium?: boolean;
     onUpgrade?: () => void;
+    assignedLists?: AssignedList[];
+    onPracticeList?: (listId: string) => void;
 }
 
 type Tab = 'levels' | 'topics' | 'origins' | 'practice';
@@ -31,7 +39,7 @@ const TAB_DESCRIPTIONS: Record<Tab, string> = {
 };
 const SWIPE_THRESHOLD = 50;
 
-export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount, isPremium = false, onUpgrade }: Props) {
+export const QuestionTypePicker = memo(function QuestionTypePicker({ current, onChange, reviewQueueCount, isPremium = false, onUpgrade, assignedLists = [], onPracticeList }: Props) {
     const [open, setOpen] = useState(false);
     const [tab, setTab] = useState<Tab>('levels');
 
@@ -158,7 +166,32 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                             {tab === 'levels' ? renderGrid(levelGroups)
                                                 : tab === 'topics' ? renderGrid(themeGroups)
                                                 : tab === 'origins' ? renderGrid(originGroups)
-                                                : renderGrid(practiceGroups)}
+                                                : <>
+                                                    {assignedLists.length > 0 && onPracticeList && (
+                                                        <div className="mb-3">
+                                                            <div className="text-[10px] ui text-[var(--color-gold)]/50 uppercase tracking-widest mb-2 px-1">
+                                                                Assigned by Parent
+                                                            </div>
+                                                            <div className="space-y-1.5">
+                                                                {assignedLists.map(list => (
+                                                                    <motion.button
+                                                                        key={list.id}
+                                                                        onClick={() => { onPracticeList(list.id); setOpen(false); }}
+                                                                        className="w-full flex items-center gap-2 px-3 py-2 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/15 hover:border-[var(--color-gold)]/30 transition-colors text-left"
+                                                                        whileTap={{ scale: 0.95 }}
+                                                                    >
+                                                                        <span className="text-base">📋</span>
+                                                                        <div className="flex-1 min-w-0">
+                                                                            <div className="text-[11px] ui font-medium text-[var(--color-gold)]/80 truncate">{list.name}</div>
+                                                                            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{list.wordCount} {list.wordCount === 1 ? 'word' : 'words'}</div>
+                                                                        </div>
+                                                                    </motion.button>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                    {renderGrid(practiceGroups)}
+                                                </>}
                                         </motion.div>
                                     </AnimatePresence>
                                 </motion.div>

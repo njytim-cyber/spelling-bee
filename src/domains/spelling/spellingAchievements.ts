@@ -31,6 +31,8 @@ export interface SpellingAchievementStats {
     // Tournament
     bestTournamentRound: number;
     tournamentSessions: number;
+    // Verified Speller
+    masteredWordsLevel5Plus: number;
 }
 
 // ── Core achievements ─────────────────────────────────────────────────────────
@@ -107,6 +109,7 @@ const LEARNING_ACHIEVEMENTS: Achievement<SpellingAchievementStats>[] = [
     { id: 'memory-master', name: 'Memory Master', desc: 'Master 20 words (Leitner box 4)', check: s => s.masteredWordCount >= 20 },
     { id: 'comeback-kid', name: 'Comeback Kid', desc: 'Review 50 words', check: s => s.reviewedWords >= 50 },
     { id: 'true-speller', name: 'True Speller', desc: 'Type 50 words correctly', check: s => s.typedCorrect >= 50 },
+    { id: 'verified-speller', name: 'Verified Speller', desc: 'Master 100+ words at Level 5+', check: s => s.masteredWordsLevel5Plus >= 100 },
 ];
 
 // ── Bee simulation achievements ──────────────────────────────────────────────

@@ -36,6 +36,7 @@ interface Props {
     referralCode?: string;
     challengeTarget?: ChallengeTarget;
     challengeId?: string | null;
+    newAchievement?: { name: string; desc: string } | null;
 }
 
 function buildShareText(
@@ -112,7 +113,7 @@ export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     timedMode, onDrillHardest, hardestWordCount,
     totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
-    referralCode, challengeTarget, challengeId,
+    referralCode, challengeTarget, challengeId, newAchievement,
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
@@ -359,6 +360,26 @@ export const SessionSummary = memo(function SessionSummary({
                                 <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">{insight}</p>
                             ) : null;
                         })()}
+
+                        {/* Achievement unlocked banner */}
+                        {newAchievement && (
+                            <motion.div
+                                className="mb-3 px-3 py-2.5 rounded-xl border border-[var(--color-gold)]/20 bg-[var(--color-gold)]/5 text-center"
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                            >
+                                <div className="text-[10px] ui text-[var(--color-gold)]/60 uppercase tracking-wider mb-0.5">
+                                    Achievement Unlocked!
+                                </div>
+                                <div className="text-sm ui font-semibold text-[var(--color-gold)]">
+                                    {newAchievement.name}
+                                </div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">
+                                    {newAchievement.desc}
+                                </div>
+                            </motion.div>
+                        )}
 
                         {/* Word review toggle */}
                         <WordReviewList words={sessionWords} />

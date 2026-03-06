@@ -21,6 +21,8 @@ export interface LearnerProfile {
 export interface ProfilesState {
     profiles: LearnerProfile[];
     activeProfileId: string | null; // null = parent/admin mode
+    /** Map of profileId → assigned custom list IDs */
+    assignments?: Record<string, string[]>;
 }
 
 function storageKey(uid: string): string {
@@ -98,6 +100,45 @@ export function useProfiles(uid: string | null) {
         }));
     }, [setState]);
 
+    const assignList = useCallback((profileId: string, listId: string) => {
+        setState(prev => {
+            const assignments = { ...(prev.assignments ?? {}) };
+            const current = assignments[profileId] ?? [];
+            if (current.includes(listId)) return prev;
+            assignments[profileId] = [...current, listId];
+            return { ...prev, assignments };
+        });
+    }, [setState]);
+
+    const unassignList = useCallback((profileId: string, listId: string) => {
+        setState(prev => {
+            const assignments = { ...(prev.assignments ?? {}) };
+            const current = assignments[profileId] ?? [];
+            assignments[profileId] = current.filter(id => id !== listId);
+            return { ...prev, assignments };
+        });
+    }, [setState]);
+
+    const getAssignedLists = useCallback((profileId: string): string[] => {
+        return state.assignments?.[profileId] ?? [];
+    }, [state.assignments]);
+
+    /** Remove a list from all profile assignments (call when a custom list is deleted). */
+    const cleanupDeletedList = useCallback((listId: string) => {
+        setState(prev => {
+            const assignments = { ...(prev.assignments ?? {}) };
+            let changed = false;
+            for (const pid of Object.keys(assignments)) {
+                const filtered = assignments[pid].filter(id => id !== listId);
+                if (filtered.length !== assignments[pid].length) {
+                    assignments[pid] = filtered;
+                    changed = true;
+                }
+            }
+            return changed ? { ...prev, assignments } : prev;
+        });
+    }, [setState]);
+
     return {
         profiles: state.profiles,
         activeProfileId: state.activeProfileId,
@@ -108,5 +149,9 @@ export function useProfiles(uid: string | null) {
         removeProfile,
         switchProfile,
         updateProfile,
+        assignList,
+        unassignList,
+        getAssignedLists,
+        cleanupDeletedList,
     };
 }

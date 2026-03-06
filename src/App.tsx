@@ -290,6 +290,9 @@ function AppInner() {
     extendPass,
     setPaidSubscription,
     addPurchasedPack,
+    activeProfileId,
+    getAssignedLists,
+    cleanupDeletedList,
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
@@ -478,7 +481,7 @@ function AppInner() {
   }, [uid]);
 
   // ── Word history (Leitner spaced repetition) ──
-  const { records: wordRecords, recordAttempt, cappedReviewQueue, hardestWords, masteredCount, uniqueWordsAttempted, reviewsRemaining, isReviewLimited, incrementReviewCount } = useWordHistory(isPremium);
+  const { records: wordRecords, recordAttempt, cappedReviewQueue, hardestWords, masteredCount, masteredWordsLevel5Plus, uniqueWordsAttempted, reviewsRemaining, isReviewLimited, incrementReviewCount } = useWordHistory(isPremium, activeProfileId);
 
   // Missed words for custom list suggestions (box 0, at least 2 attempts, sorted by worst accuracy)
   const missedWords = useMemo(() =>
@@ -530,6 +533,16 @@ function AppInner() {
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
   const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
+
+  // Assigned lists for current learner profile (parent dashboard → practice UI)
+  const assignedListData = useMemo(() => {
+    if (!activeProfileId) return [];
+    const ids = getAssignedLists(activeProfileId);
+    return ids
+      .map(id => customLists.getList(id))
+      .filter((l): l is NonNullable<typeof l> => l != null)
+      .map(l => ({ id: l.id, name: l.name, wordCount: l.words.length }));
+  }, [activeProfileId, getAssignedLists, customLists]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateItem = useMemo(() => makeGenerateItem(activeCustomList?.words), [wordRegistryVersion, activeCustomList]);
   const generateFiniteSet = useMemo(() => {
@@ -763,6 +776,7 @@ function AppInner() {
   const unlockedRef = useRef(unlocked);
   useEffect(() => { unlockedRef.current = unlocked; }, [unlocked]);
   const [unlockToast, setUnlockToast] = useState<{ name: string; desc: string } | null>(null);
+  const [latestAchievement, setLatestAchievement] = useState<{ name: string; desc: string } | null>(null);
 
   // Restore achievements from Firestore on auth
   useEffect(() => {
@@ -789,6 +803,7 @@ function AppInner() {
       beeBestRun: 0,
       bestTournamentRound: 0,
       tournamentSessions: 0,
+      masteredWordsLevel5Plus,
     };
     const fresh = checkAchievements(EVERY_SPELLING_ACHIEVEMENT, snap, unlockedRef.current);
     if (fresh.length > 0) {
@@ -800,12 +815,13 @@ function AppInner() {
       const badge = EVERY_SPELLING_ACHIEVEMENT.find(a => a.id === fresh[0]);
       if (badge) {
         setUnlockToast({ name: badge.name, desc: badge.desc });
+        setLatestAchievement({ name: badge.name, desc: badge.desc });
         setShowAchievementConfetti(true);
         const t = setTimeout(() => { setUnlockToast(null); setShowAchievementConfetti(false); }, 3500);
         return () => clearTimeout(t);
       }
     }
-  }, [stats, bestStreak, uid, masteredCount, wordRecords]);
+  }, [stats, bestStreak, uid, masteredCount, wordRecords, masteredWordsLevel5Plus]);
 
   // ── Personal best detection ──
   const showPB = usePersonalBest(bestStreak, stats.bestStreak);
@@ -1379,6 +1395,11 @@ function AppInner() {
                 onGuidedModeToggle={toggleGuidedMode}
                 isPremium={isPremium}
                 onUpgrade={() => setShowUpgrade(true)}
+                assignedLists={assignedListData}
+                onPracticeList={(listId) => {
+                  setActiveCustomListId(listId);
+                  setQuestionTypeRaw('custom');
+                }}
               />
             )}
 
@@ -1534,6 +1555,7 @@ function AppInner() {
                 wordsMastered,
                 accuracy: acc,
               })}
+              customLists={customLists.lists}
             /></Suspense>
           </motion.div>
         )}
@@ -1559,6 +1581,7 @@ function AppInner() {
           visible={showSummary}
           onDismiss={() => {
             setShowSummary(false);
+            setLatestAchievement(null);
             if (pendingTabRef.current) {
               setActiveTab(pendingTabRef.current);
               pendingTabRef.current = null;
@@ -1580,6 +1603,7 @@ function AppInner() {
           referralCode={referralCode}
           challengeTarget={challengeTarget ?? undefined}
           challengeId={challengeId}
+          newAchievement={latestAchievement}
         />
 
         {/* ── Weekly recap (first open of the week) ── */}
@@ -1676,7 +1700,7 @@ function AppInner() {
               lists={customLists.lists}
               maxLists={customLists.maxLists}
               onCreateFromWords={customLists.createListFromWords}
-              onDelete={customLists.deleteList}
+              onDelete={(listId) => { customLists.deleteList(listId); cleanupDeletedList(listId); }}
               onRename={customLists.renameList}
               onDuplicate={customLists.duplicateList}
               onAddWord={customLists.addWordToList}

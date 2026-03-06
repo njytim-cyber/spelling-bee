@@ -19,6 +19,8 @@ interface Props {
     onGuidedModeToggle: () => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
+    assignedLists?: { id: string; name: string; wordCount: number }[];
+    onPracticeList?: (listId: string) => void;
 }
 
 const VARIANT_OPTIONS: { id: TimedVariant; label: string; sub: string; premium: boolean }[] = [
@@ -81,7 +83,7 @@ export const ActionButtons = memo(function ActionButtons({
     timedMode, onTimedModeToggle, timerProgress,
     timedVariant, onTimedVariantChange,
     guidedMode, onGuidedModeToggle,
-    isPremium, onUpgrade,
+    isPremium, onUpgrade, assignedLists, onPracticeList,
 }: Props) {
     const [showVariantPicker, setShowVariantPicker] = useState(false);
     // Hide hard/timed toggles during full-screen modes that have their own controls
@@ -93,7 +95,7 @@ export const ActionButtons = memo(function ActionButtons({
         <div className="action-buttons-col absolute right-2 top-[25%] -translate-y-1/2 flex flex-col gap-[clamp(0.5rem,2vh,1rem)] z-20">
             {/* Question type */}
             <div className="relative">
-                <QuestionTypePicker current={questionType} onChange={onTypeChange} isPremium={isPremium} onUpgrade={onUpgrade} />
+                <QuestionTypePicker current={questionType} onChange={onTypeChange} isPremium={isPremium} onUpgrade={onUpgrade} assignedLists={assignedLists} onPracticeList={onPracticeList} />
                 <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 ${LABEL}`}>{categoryLabel}</span>
             </div>
 

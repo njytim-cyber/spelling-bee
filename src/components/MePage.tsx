@@ -18,6 +18,8 @@ import type { FlairStats } from '../utils/avatarParts';
 import { ProfileSwitcher } from './ProfileSwitcher';
 import { ParentDashboard } from './ParentDashboard';
 import { printCertificate } from '../utils/certificateGenerator';
+import { shareBadgeImage } from '../utils/badgeShareGenerator';
+import type { CustomWordList } from '../types/customList';
 
 // Removed tab switching - now showing everything on one page
 
@@ -28,6 +30,7 @@ interface Props {
     onUpgrade?: () => void;
     onShop?: () => void;
     onCertificate?: (type: 'level-completion', level: number, wordsMastered: number, accuracy: number) => void;
+    customLists?: CustomWordList[];
 }
 
 // Derive achievement sublists from the single spelling array
@@ -40,7 +43,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop, onCertificate }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop, onCertificate, customLists = [] }: Props) {
     // Get user state from context
     const {
         stats,
@@ -77,6 +80,9 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         removeProfile,
         switchProfile,
         customBranding,
+        assignList,
+        unassignList,
+        getAssignedLists,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -90,6 +96,16 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const [deleteConfirm, setDeleteConfirm] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const [showAvatarBuilder, setShowAvatarBuilder] = useState(false);
+
+    const handleShareBadge = useCallback((achievementName: string, achievementDesc: string) => {
+        shareBadgeImage({
+            achievementName,
+            achievementDesc,
+            playerName: displayName || 'Speller',
+            date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+            referralCode: referralCode || undefined,
+        }).catch(() => { /* silent — share cancelled or failed */ });
+    }, [displayName, referralCode]);
 
     // Memoize expensive rank calculations
     const rankInfo = useMemo(() => getRank(stats.totalXP), [stats.totalXP]);
@@ -167,6 +183,10 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                             customBranding: customBranding || undefined,
                         });
                     }}
+                    customLists={customLists}
+                    onAssign={assignList}
+                    onUnassign={unassignList}
+                    getAssignedLists={getAssignedLists}
                 />
             )}
 
@@ -622,6 +642,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                         equipped={isActive || isBadgeEquipped}
                                         name={a.name}
                                         desc={isBadgeEquipped ? '🏷️ badge' : isActive ? '✅ costume' : a.desc}
+                                        onShare={isUnlocked ? () => handleShareBadge(a.name, a.desc) : undefined}
                                     />
                                 </div>
                             );
@@ -639,7 +660,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                     const isBadge = activeBadge === a.id;
                                     return (
                                         <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                            <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} />
+                                            <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} onShare={isUnlocked ? () => handleShareBadge(a.name, a.desc) : undefined} />
                                         </div>
                                     );
                                 })}

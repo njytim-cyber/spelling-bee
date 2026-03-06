@@ -78,6 +78,7 @@ function buildStats(records: Record<string, WordRecord>, sessions: number): Spel
         masteredWordCount, reviewedWords, typedCorrect,
         beeSessions: 0, beeNoHelpStreak: 0, beeBestRun: 0,
         bestTournamentRound: 0, tournamentSessions: 0,
+        masteredWordsLevel5Plus: 0,
     };
 }
 

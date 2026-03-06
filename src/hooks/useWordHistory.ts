@@ -6,6 +6,7 @@
  */
 import { useState, useCallback, useMemo } from 'react';
 import { STORAGE_KEYS, FREE_DAILY_REVIEW_CAP } from '../config';
+import { getWordMap } from '../domains/spelling/words';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -53,7 +54,7 @@ interface WordHistory {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = STORAGE_KEYS.wordHistory;
+const BASE_STORAGE_KEY = STORAGE_KEYS.wordHistory;
 const MAX_RECENT = 200;
 
 /** Leitner box → review delay in milliseconds */
@@ -67,9 +68,9 @@ const BOX_DELAY_MS: Record<number, number> = {
 
 // ── Persistence ──────────────────────────────────────────────────────────────
 
-function loadHistory(): WordHistory {
+function loadHistory(storageKey: string): WordHistory {
     try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(storageKey);
         if (raw) {
             const loaded = JSON.parse(raw) as WordHistory;
             // Rebuild index if missing (backward compatibility)
@@ -84,9 +85,9 @@ function loadHistory(): WordHistory {
     return { records: {}, recentAttempts: [], nextReviewIndex: [] };
 }
 
-function saveHistory(h: WordHistory): void {
+function saveHistory(storageKey: string, h: WordHistory): void {
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(h));
+        localStorage.setItem(storageKey, JSON.stringify(h));
     } catch { /* quota exceeded — best effort */ }
 }
 
@@ -115,9 +116,17 @@ function writeReviewsToday(count: number): void {
 
 // ── Hook ─────────────────────────────────────────────────────────────────────
 
-export function useWordHistory(isPremium = false) {
-    const [history, setHistory] = useState<WordHistory>(loadHistory);
+export function useWordHistory(isPremium = false, profileId?: string | null) {
+    const storageKey = profileId ? `${BASE_STORAGE_KEY}-${profileId}` : BASE_STORAGE_KEY;
+    const [history, setHistory] = useState<WordHistory>(() => loadHistory(storageKey));
     const [reviewsUsedToday, setReviewsUsedToday] = useState(() => readReviewsToday().count);
+    const [prevKey, setPrevKey] = useState(storageKey);
+
+    // Reload history when profile changes
+    if (storageKey !== prevKey) {
+        setPrevKey(storageKey);
+        setHistory(loadHistory(storageKey));
+    }
 
     const recordAttempt = useCallback((
         word: string,
@@ -183,10 +192,10 @@ export function useWordHistory(isPremium = false) {
                 nextReviewIndex: newIndex,
             };
 
-            saveHistory(next);
+            saveHistory(storageKey, next);
             return next;
         });
-    }, []);
+    }, [storageKey]);
 
     /**
      * Words due for review: box < 4 and nextReview ≤ lastAttemptTime.
@@ -254,6 +263,16 @@ export function useWordHistory(isPremium = false) {
         Object.values(history.records).filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1).length,
     [history.records]);
 
+    /** Count of mastered words at difficulty 5+ (for Verified Speller achievement) */
+    const masteredWordsLevel5Plus = useMemo(() => {
+        const wordMap = getWordMap();
+        return Object.values(history.records).filter(r => {
+            if (r.box < 4 || (r.typedAttempts ?? 0) < 1) return false;
+            const detail = wordMap.get(r.word);
+            return detail != null && detail.difficulty >= 5;
+        }).length;
+    }, [history.records]);
+
     /** Count of unique words the student has ever attempted */
     const uniqueWordsAttempted = Object.keys(history.records).length;
 
@@ -289,6 +308,7 @@ export function useWordHistory(isPremium = false) {
         weakCategories,
         hardestWords,
         masteredCount,
+        masteredWordsLevel5Plus,
         uniqueWordsAttempted,
         reviewsUsedToday,
         reviewsRemaining,

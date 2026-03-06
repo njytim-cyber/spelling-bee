@@ -401,6 +401,34 @@ const WordOmniscient = ({ size = 48, unlocked }: BadgeProps) => (
     </svg>
 );
 
+/** Keyboard — True Speller (50 typed correct) */
+const TrueSpeller = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <rect x="4" y="14" width="40" height="22" rx="3" {...S} strokeWidth="2.5" />
+        {/* Top row keys */}
+        <rect x="9" y="18" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="15" y="18" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="21" y="18" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="27" y="18" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="33" y="18" width="6" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        {/* Bottom row: spacebar */}
+        <rect x="14" y="28" width="20" height="4" rx="1" {...S} strokeWidth="1.5" />
+        {/* Middle row keys */}
+        <rect x="11" y="23" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="17" y="23" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="23" y="23" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+        <rect x="29" y="23" width="4" height="4" rx="0.5" {...S} strokeWidth="1.5" />
+    </svg>
+);
+
+/** Shield with checkmark — Verified Speller (100+ mastered at Level 5+) */
+const VerifiedSpeller = ({ size = 48, unlocked }: BadgeProps) => (
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ color: unlocked ? 'var(--color-gold)' : 'var(--color-locked)' }}>
+        <path d="M24 4L6 12v12c0 10 8 17 18 20 10-3 18-10 18-20V12L24 4z" {...S} strokeWidth="2.5" />
+        <path d="M16 24l5 5 11-11" {...S} strokeWidth="2.5" />
+    </svg>
+);
+
 /** Map from achievement ID to SVG component */
 const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
     'first-word': FirstSteps,
@@ -412,6 +440,8 @@ const BADGE_MAP: Record<string, React.FC<BadgeProps>> = {
     'dedicated': Dedicated,
     'all-rounder': AllRounder,
     // Learning
+    'true-speller': TrueSpeller,
+    'verified-speller': VerifiedSpeller,
     'reviewer': Reviewer,
     'memory-master': MemoryMaster,
     'comeback-kid': ComebackKid,
@@ -453,21 +483,33 @@ interface Props {
     equipped?: boolean;
     name: string;
     desc: string;
+    onShare?: () => void;
 }
 
-export const AchievementBadge = memo(function AchievementBadge({ achievementId, unlocked, equipped, name, desc }: Props) {
+export const AchievementBadge = memo(function AchievementBadge({ achievementId, unlocked, equipped, name, desc, onShare }: Props) {
     const Icon = BADGE_MAP[achievementId];
     if (!Icon) return null;
 
     return (
         <div className={`flex flex-col items-center gap-1 w-16 ${unlocked ? '' : 'opacity-60'}`}>
-            <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center ${equipped
+            <div className={`relative w-14 h-14 rounded-2xl border flex items-center justify-center ${equipped
                 ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/5'
                 : unlocked
                     ? 'border-[rgb(var(--color-fg))]/20 bg-[var(--color-surface)]'
                     : 'border-[rgb(var(--color-fg))]/15 bg-transparent'
                 }`}>
                 <Icon size={36} unlocked={unlocked} />
+                {unlocked && onShare && (
+                    <button
+                        onClick={(e) => { e.stopPropagation(); onShare(); }}
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center shadow-sm hover:scale-110 transition-transform"
+                        aria-label={`Share ${name}`}
+                    >
+                        <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="#1a1a24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M4 8h8M8 4l4 4-4 4" />
+                        </svg>
+                    </button>
+                )}
             </div>
             <span className={`text-[10px] ui font-medium text-center leading-tight ${unlocked ? 'text-[rgb(var(--color-fg))]/60' : 'text-[rgb(var(--color-fg))]/50'
                 }`}>

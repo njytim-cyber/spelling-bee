@@ -94,6 +94,10 @@ interface UserContextValue {
   removeProfile: (profileId: string) => void;
   switchProfile: (profileId: string | null) => void;
   updateProfile: (profileId: string, updates: Partial<Pick<LearnerProfile, 'name' | 'avatarConfig' | 'level'>>) => void;
+  assignList: (profileId: string, listId: string) => void;
+  unassignList: (profileId: string, listId: string) => void;
+  getAssignedLists: (profileId: string) => string[];
+  cleanupDeletedList: (listId: string) => void;
 
   // Custom branding (Bee Team)
   customBranding: string;
@@ -226,6 +230,10 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     removeProfile: profilesHook.removeProfile,
     switchProfile: profilesHook.switchProfile,
     updateProfile: profilesHook.updateProfile,
+    assignList: profilesHook.assignList,
+    unassignList: profilesHook.unassignList,
+    getAssignedLists: profilesHook.getAssignedLists,
+    cleanupDeletedList: profilesHook.cleanupDeletedList,
     // Custom branding
     customBranding: customBranding as string,
     setCustomBranding: (v: string) => setCustomBranding(v),
@@ -247,7 +255,8 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     profilesHook.profiles, profilesHook.activeProfileId, profilesHook.activeProfile,
     profilesHook.isParentMode, profilesHook.canAddProfile,
     profilesHook.addProfile, profilesHook.removeProfile, profilesHook.switchProfile,
-    profilesHook.updateProfile,
+    profilesHook.updateProfile, profilesHook.assignList, profilesHook.unassignList,
+    profilesHook.getAssignedLists, profilesHook.cleanupDeletedList,
     customBranding, setCustomBranding,
   ]);
 

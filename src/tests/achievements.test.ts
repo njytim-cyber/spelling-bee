@@ -30,6 +30,7 @@ describe('achievements.ts', () => {
         beeBestRun: 0,
         bestTournamentRound: 0,
         tournamentSessions: 0,
+        masteredWordsLevel5Plus: 0,
     };
 
     it('awards streak-20 when best streak hits 20', () => {
@@ -194,6 +195,16 @@ describe('achievements.ts', () => {
         expect(checkSpellingAchievements(stats, new Set())).toContain('true-speller');
     });
 
+    it('awards verified-speller at 100 mastered words at Level 5+', () => {
+        const stats = { ...baseStats, masteredWordsLevel5Plus: 100 };
+        expect(checkSpellingAchievements(stats, new Set())).toContain('verified-speller');
+    });
+
+    it('does not award verified-speller below 100 mastered words at Level 5+', () => {
+        const stats = { ...baseStats, masteredWordsLevel5Plus: 99 };
+        expect(checkSpellingAchievements(stats, new Set())).not.toContain('verified-speller');
+    });
+
     // ── Bee simulation ──────────────────────────────────────────────────────
 
     it('awards bee-debut on first bee session', () => {
@@ -230,7 +241,7 @@ describe('achievements.ts', () => {
 
     // ── Meta: all 21 achievements are exercised ─────────────────────────────
 
-    it('EVERY_SPELLING_ACHIEVEMENT has 27 entries', () => {
-        expect(EVERY_SPELLING_ACHIEVEMENT).toHaveLength(27);
+    it('EVERY_SPELLING_ACHIEVEMENT has 28 entries', () => {
+        expect(EVERY_SPELLING_ACHIEVEMENT).toHaveLength(28);
     });
 });
