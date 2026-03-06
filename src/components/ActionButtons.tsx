@@ -41,7 +41,7 @@ const ICON_PROPS = {
 };
 
 const activeColor = (on: boolean) =>
-    on ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70';
+    on ? 'text-[var(--color-gold)]' : 'text-[var(--color-chalk)]/70';
 
 const BTN = 'w-11 h-11 flex items-center justify-center';
 const LABEL = 'text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap';
@@ -158,10 +158,10 @@ export const ActionButtons = memo(function ActionButtons({
                             ease: 'easeInOut',
                         } : {}}
                     >
-                        <circle cx="12" cy="14" r="7" />
-                        <line x1="12" y1="3" x2="12" y2="7" />
-                        <line x1="9" y1="3" x2="15" y2="3" />
-                        <line x1="12" y1="14" x2="12" y2="10" />
+                        <circle cx="12" cy="13" r="7" />
+                        <line x1="12" y1="2" x2="12" y2="6" />
+                        <line x1="9" y1="2" x2="15" y2="2" />
+                        <line x1="12" y1="13" x2="12" y2="9" />
                     </motion.svg>
                     <span className={`absolute -bottom-2.5 ${LABEL}`}>
                         {timedMode ? variantLabel : 'Timer'}

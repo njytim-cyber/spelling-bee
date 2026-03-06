@@ -1032,7 +1032,7 @@ function AppInner() {
           <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1">
             <button
               onClick={toggleThemeMode}
-              className="w-9 h-9 flex items-center justify-center text-[rgb(var(--color-fg))]/60 active:text-[var(--color-gold)] transition-colors"
+              className="w-9 h-9 flex items-center justify-center text-[var(--color-chalk)]/60 active:text-[var(--color-gold)] transition-colors"
               aria-label="Toggle theme"
             >
               {themeMode === 'light' ? (
@@ -1057,7 +1057,7 @@ function AppInner() {
             </button>
             <button
               onClick={() => setShowSettings(true)}
-              className="w-9 h-9 flex items-center justify-center text-[rgb(var(--color-fg))]/60 active:text-[var(--color-gold)] transition-colors"
+              className="w-9 h-9 flex items-center justify-center text-[var(--color-chalk)]/60 active:text-[var(--color-gold)] transition-colors"
               aria-label="Settings"
             >
               <IconSettings className="w-5 h-5" />

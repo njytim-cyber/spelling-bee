@@ -112,7 +112,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
             {/* Toggle button — shows current category icon */}
             <motion.button
                 onClick={() => setOpen(o => !o)}
-                className="w-11 h-11 flex items-center justify-center text-[rgb(var(--color-fg))]/50 active:text-[var(--color-gold)]"
+                className="w-11 h-11 flex items-center justify-center text-[var(--color-chalk)]/70 active:text-[var(--color-gold)]"
                 whileTap={{ scale: 0.88 }}
             >
                 {currentEntry?.icon}

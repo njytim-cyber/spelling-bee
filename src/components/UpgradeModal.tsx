@@ -321,7 +321,7 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         whileTap={{ scale: 0.95 }}
                         className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative disabled:opacity-50"
                     >
-                        <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[rgb(var(--color-fg))]/20 text-[rgb(var(--color-fg))]/60 px-1.5 py-0.5 rounded-full">
+                        <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-black px-1.5 py-0.5 rounded-full">
                             SAVE 48%
                         </span>
                         <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$49.99</span>
