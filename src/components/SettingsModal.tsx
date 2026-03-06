@@ -4,6 +4,7 @@
  * App settings: dialect, TTS voice/speed, theme toggle.
  */
 import { memo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
 import { useReducedMotion, type MotionPreference } from '../hooks/useReducedMotion';
@@ -12,7 +13,7 @@ import { CLOUD_VOICES, synthesizeCloud, getCloudVoiceGender } from '../services/
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
 import { LEVELS, type Level } from '../domains/spelling/spellingCategories';
-import { IconClose, IconLock } from './Icons';
+import { IconClose, IconLock, IconBroom, IconTrash } from './Icons';
 import { isLevelPremium } from '../hooks/usePremium';
 import { useUser } from '../contexts/UserContext';
 import { trackEvent } from '../utils/analytics';
@@ -378,6 +379,12 @@ export const SettingsModal = memo(function SettingsModal({
                     )}
                 </section>
 
+                {/* Notifications */}
+                <NotificationPreferences />
+
+                {/* Danger Zone */}
+                <DangerZone />
+
                 {/* Legal */}
                 <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10 flex justify-center gap-4">
                     <a href="/privacy.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</a>
@@ -386,3 +393,193 @@ export const SettingsModal = memo(function SettingsModal({
         </ModalShell>
     );
 });
+
+/* ─── Notification toggle section ─── */
+
+type NotifPrefs = { enabled: boolean; daily: boolean; streak: boolean; reviews: boolean; achievement: boolean; challenge: boolean; tournament: boolean };
+const NOTIF_DEFAULTS: NotifPrefs = { enabled: false, daily: true, streak: true, reviews: true, achievement: true, challenge: true, tournament: true };
+const NOTIF_TYPES = [
+    { key: 'daily' as const, label: 'Daily practice reminder' },
+    { key: 'streak' as const, label: 'Streak at risk' },
+    { key: 'reviews' as const, label: 'Reviews due' },
+    { key: 'achievement' as const, label: 'Achievement unlocked' },
+    { key: 'challenge' as const, label: 'Challenge received' },
+    { key: 'tournament' as const, label: 'Tournament starting' },
+];
+
+function Toggle({ on, onToggle, label }: { on: boolean; onToggle: () => void; label: string }) {
+    return (
+        <button role="switch" aria-checked={on} onClick={onToggle} className="flex items-center justify-between w-full py-2">
+            <span className="text-xs ui text-[rgb(var(--color-fg))]/60">{label}</span>
+            <div className={`relative w-9 h-5 rounded-full transition-colors ${on ? 'bg-[var(--color-correct)]' : 'bg-[rgb(var(--color-fg))]/15'}`}>
+                <motion.div
+                    className="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow"
+                    animate={{ left: on ? 18 : 2 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+            </div>
+        </button>
+    );
+}
+
+function NotificationPreferences() {
+    const stored = localStorage.getItem(STORAGE_KEYS.notificationPrefs);
+    const prefs: NotifPrefs = stored ? { ...NOTIF_DEFAULTS, ...JSON.parse(stored) } : NOTIF_DEFAULTS;
+    const save = (p: NotifPrefs) => localStorage.setItem(STORAGE_KEYS.notificationPrefs, JSON.stringify(p));
+
+    return (
+        <section className="mb-5 pt-4 border-t border-[rgb(var(--color-fg))]/10">
+            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Notifications</h4>
+            <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl px-4 py-2">
+                <Toggle
+                    on={prefs.enabled}
+                    onToggle={() => { const next = { ...prefs, enabled: !prefs.enabled }; save(next); }}
+                    label="Enable notifications"
+                />
+                {prefs.enabled && (
+                    <div className="border-t border-[rgb(var(--color-fg))]/5 mt-1 pt-1">
+                        {NOTIF_TYPES.map(t => (
+                            <Toggle
+                                key={t.key}
+                                on={prefs[t.key]}
+                                onToggle={() => { const next = { ...prefs, [t.key]: !prefs[t.key] }; save(next); }}
+                                label={t.label}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+            <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
+                Push notifications coming soon
+            </div>
+        </section>
+    );
+}
+
+/* ─── Danger Zone: Reset Stats + Delete Account ─── */
+
+const RESET_PROMPTS = [
+    (xp: number) => `You've earned ${xp.toLocaleString()} points! Are you sure you want to start fresh?`,
+    (_xp: number, streak: number) => `Bee Buddy will miss your ${streak}-streak record! Reset anyway?`,
+    (_xp: number, _streak: number, solved: number) => `${solved} words spelled and counting… wipe it all?`,
+    () => 'A fresh start can be beautiful! Ready to begin again?',
+    () => 'Your spelling journey so far has been amazing! Really reset?',
+    () => 'Even superheroes get a fresh origin story! Reset?',
+];
+
+function DangerZone() {
+    const { stats, resetStats, deleteAccount } = useUser();
+    const [resetConfirm, setResetConfirm] = useState<string | null>(null);
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+    const [deleteTyped, setDeleteTyped] = useState('');
+    const [deleting, setDeleting] = useState(false);
+
+    return (
+        <section className="mb-5 pt-4 border-t border-[rgb(var(--color-fg))]/10">
+            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Danger Zone</h4>
+            <div className="flex flex-col gap-2">
+                {/* Reset stats button */}
+                <button
+                    onClick={() => {
+                        const fn = RESET_PROMPTS[Math.floor(Math.random() * RESET_PROMPTS.length)];
+                        setResetConfirm(fn(stats.totalXP, stats.bestStreak, stats.totalSolved));
+                    }}
+                    className="w-full px-3 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/10 text-sm ui text-[rgb(var(--color-fg))]/40 hover:border-[var(--color-streak-fire)]/30 hover:text-[var(--color-streak-fire)]/60 transition-colors text-left"
+                >
+                    Reset Stats
+                </button>
+
+                {/* Delete account button */}
+                <button
+                    onClick={() => { setDeleteConfirm(true); setDeleteTyped(''); }}
+                    className="w-full px-3 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/10 text-sm ui text-[rgb(var(--color-fg))]/40 hover:border-[var(--color-wrong)]/30 hover:text-[var(--color-wrong)]/60 transition-colors text-left"
+                >
+                    Delete Account
+                </button>
+            </div>
+
+            {/* Reset confirmation modal */}
+            <AnimatePresence>
+                {resetConfirm && (
+                    <ModalShell onClose={() => setResetConfirm(null)} ariaLabel="Reset stats confirmation" className="w-[min(280px,90vw)] text-center">
+                        <div className="mb-3 flex justify-center text-[var(--color-streak-fire)]">
+                            <IconBroom className="w-10 h-10" />
+                        </div>
+                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
+                            {resetConfirm}
+                        </p>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setResetConfirm(null)}
+                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
+                            >
+                                cancel
+                            </button>
+                            <button
+                                onClick={() => { resetStats(); setResetConfirm(null); }}
+                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-streak-fire)]/40 bg-[var(--color-streak-fire)]/10 text-sm ui text-[var(--color-streak-fire)] hover:bg-[var(--color-streak-fire)]/20 transition-colors"
+                            >
+                                reset
+                            </button>
+                        </div>
+                    </ModalShell>
+                )}
+            </AnimatePresence>
+
+            {/* Delete account confirmation modal — type to confirm */}
+            <AnimatePresence>
+                {deleteConfirm && (
+                    <ModalShell onClose={() => !deleting && setDeleteConfirm(false)} ariaLabel="Delete account confirmation" className="w-[min(300px,90vw)] text-center">
+                        <div className="mb-3 flex justify-center text-[var(--color-wrong)]">
+                            <IconTrash className="w-10 h-10" />
+                        </div>
+                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base font-semibold mb-2">
+                            Delete your account?
+                        </p>
+                        <p className="ui text-[rgb(var(--color-fg))]/50 text-xs leading-relaxed mb-4">
+                            This permanently removes all your data including scores, achievements, word history, and leaderboard entries. This cannot be undone.
+                        </p>
+                        <p className="ui text-[rgb(var(--color-fg))]/60 text-xs mb-2">
+                            Type <span className="font-bold text-[var(--color-wrong)]">delete my account</span> to confirm:
+                        </p>
+                        <input
+                            type="text"
+                            value={deleteTyped}
+                            onChange={e => setDeleteTyped(e.target.value)}
+                            placeholder="delete my account"
+                            disabled={deleting}
+                            className="w-full px-3 py-2 rounded-xl bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))] placeholder:text-[rgb(var(--color-fg))]/20 outline-none focus:border-[var(--color-wrong)]/40 transition-colors mb-4 text-center"
+                            autoComplete="off"
+                        />
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setDeleteConfirm(false)}
+                                disabled={deleting}
+                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors disabled:opacity-50"
+                            >
+                                cancel
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    setDeleting(true);
+                                    try {
+                                        await deleteAccount();
+                                    } catch (err) {
+                                        console.warn('Delete account failed:', err);
+                                    } finally {
+                                        setDeleting(false);
+                                        setDeleteConfirm(false);
+                                    }
+                                }}
+                                disabled={deleting || deleteTyped.trim().toLowerCase() !== 'delete my account'}
+                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 text-sm ui text-[var(--color-wrong)] hover:bg-[var(--color-wrong)]/20 transition-colors disabled:opacity-30 disabled:hover:bg-[var(--color-wrong)]/10"
+                            >
+                                {deleting ? 'deleting...' : 'delete forever'}
+                            </button>
+                        </div>
+                    </ModalShell>
+                )}
+            </AnimatePresence>
+        </section>
+    );
+}

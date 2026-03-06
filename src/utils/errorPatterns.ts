@@ -179,6 +179,10 @@ export interface PracticeRecommendation {
     priority?: 'review' | 'weak' | 'explore';
     /** Number of words in this recommendation (e.g. review count) */
     wordCount?: number;
+    /** Current accuracy 0-1 (for weak-area recs) */
+    accuracy?: number;
+    /** Total attempts so far (for estimating questions to goal) */
+    attempts?: number;
 }
 
 /** Up to 3 actionable practice recommendations based on weakest areas. */
@@ -196,6 +200,8 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
                 label: p.label,
                 reason: `${Math.round(p.accuracy * 100)}% accuracy on ${p.label} words`,
                 priority: 'weak',
+                accuracy: p.accuracy,
+                attempts: p.attempts,
             });
         }
     }
@@ -210,6 +216,8 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
             label: `${o.label} Origin`,
             reason: `${Math.round(o.accuracy * 100)}% accuracy on ${o.label}-origin words`,
             priority: 'weak',
+            accuracy: o.accuracy,
+            attempts: o.attempts,
         });
     }
 
@@ -222,6 +230,8 @@ export function getRecommendations(records: Record<string, WordRecord>): Practic
             label: t.label,
             reason: `${Math.round(t.accuracy * 100)}% accuracy on ${t.label} words`,
             priority: 'weak',
+            accuracy: t.accuracy,
+            attempts: t.attempts,
         });
     }
 

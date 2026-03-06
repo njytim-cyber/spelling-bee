@@ -139,14 +139,13 @@ export function IconRankLearner({ className = 'w-6 h-6' }: IconProps) {
     );
 }
 
-/** Speller — letters ABC */
+/** Speller — quill pen */
 export function IconRankSpeller({ className = 'w-6 h-6' }: IconProps) {
     return (
         <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 18l3-12h2l3 12" />
-            <path d="M5.5 13h5" />
-            <path d="M16 6v12" />
-            <path d="M16 6c2 0 4 1 4 3s-2 3-4 3c2 0 4 1 4 3s-2 3-4 3" />
+            <path d="M20 2c-2 2-6 7-8 11l-1 4 4-1c4-2 9-6 11-8a2.83 2.83 0 0 0-4-4l-2-2z" />
+            <path d="M11 13c-2 2-4 4-7 5" />
+            <path d="M4 22c1-3 3-5 5-7" />
         </svg>
     );
 }
@@ -275,28 +274,27 @@ export function RankIcon({ rank, className = 'w-6 h-6' }: { rank: string; classN
 
 export function IconCrown({ className = 'w-6 h-6' }: IconProps) {
     return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M2 20h20L12 4 2 20z" />
-            <circle cx="12" cy="8" r="2" />
-            <circle cx="6" cy="15" r="2" />
-            <circle cx="18" cy="15" r="2" />
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor" stroke="none">
+            <path d="M5 16h14l2-9-4.5 3L12 3 7.5 10 3 7l2 9z" />
+            <rect x="4" y="17.5" width="16" height="2.5" rx="0.5" />
         </svg>
     );
 }
 
 export function IconMedal({ className = 'w-6 h-6' }: IconProps) {
     return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="15" r="7" />
-            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-            <path d="M12 11L15 8l-3-7-3 7 3 3z" />
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor" stroke="none">
+            <path d="M8 2h3v6H8z" opacity="0.5" />
+            <path d="M13 2h3v6h-3z" opacity="0.5" />
+            <circle cx="12" cy="14" r="7" />
+            <circle cx="12" cy="14" r="4" fill="var(--color-board)" opacity="0.5" />
         </svg>
     );
 }
 
 export function IconStar({ className = 'w-6 h-6' }: IconProps) {
     return (
-        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" className={className} fill="currentColor" stroke="none">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
     );

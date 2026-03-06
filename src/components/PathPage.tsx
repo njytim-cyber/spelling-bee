@@ -100,7 +100,11 @@ function RecCard({ rec, onPractice }: { rec: PracticeRecommendation; onPractice?
                             {rec.label}
                         </span>
                     </div>
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">{rec.reason}</div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">
+                        {rec.accuracy != null && rec.attempts != null
+                            ? `${Math.round(rec.accuracy * 100)}% → 70% · ~${Math.max(1, Math.ceil((0.7 * rec.attempts - rec.accuracy * rec.attempts) / 0.3))} questions`
+                            : rec.reason}
+                    </div>
                 </div>
                 {onPractice && (
                     <button
@@ -184,12 +188,8 @@ function LevelRow({ lp, onClick, locked = false }: { lp: LevelProgress; onClick:
                     <span className={`text-sm ui font-medium ${locked ? 'text-[rgb(var(--color-fg))]/40' : 'text-[rgb(var(--color-fg))]/70'}`}>
                         {lp.label}
                     </span>
-                    {locked ? (
+                    {locked && (
                         <span className="text-[9px] ui text-[var(--color-gold)]/50 font-medium">Champion Pass</span>
-                    ) : (
-                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
-                            {lp.totalWords.toLocaleString()} words
-                        </span>
                     )}
                 </div>
                 {/* Progress bar */}
@@ -202,7 +202,7 @@ function LevelRow({ lp, onClick, locked = false }: { lp: LevelProgress; onClick:
                             />
                         </div>
                         <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
-                            {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords} · {Math.round(pct * 100)}%
+                            {lp.mastered.toLocaleString()}/{lp.totalWords.toLocaleString()} · {Math.round(pct * 100)}%
                         </span>
                     </div>
                 )}
@@ -441,9 +441,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
             <h2 className="text-xl ui font-bold text-[var(--color-gold)] text-center mb-1">
                 Path to Champion
             </h2>
-            {/* Weekly goal tracker */}
-            {totalWords > 0 && <WeeklyGoalTracker totalWords={totalWords} />}
-
             {/* Review system explainer — shows once */}
             {showReviewExplainer && (
                 <div className="mb-3 p-3 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/20 relative">
@@ -477,60 +474,74 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                 </div>
             )}
 
-            {/* ── Single blinking CTA ── */}
-            {ctaRec && (
-                <>
-                <motion.button
-                    onClick={isReviewLimited && ctaRec.category === 'review' ? onUpgrade : handleCtaClick}
-                    className="w-full flex items-center justify-between py-3.5 px-4 mb-3 rounded-2xl bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/15 transition-colors"
-                    animate={ctaGlow}
-                    transition={ctaGlowTransition}
-                >
-                    <div className="flex items-center gap-2 min-w-0">
-                        <span className={`text-[9px] ui px-1.5 py-0.5 rounded-full font-semibold ${PRIORITY_STYLES[ctaRec.priority ?? 'weak'].badge}`}>
-                            {PRIORITY_STYLES[ctaRec.priority ?? 'weak'].text}
-                        </span>
-                        <span className="text-sm ui text-[var(--color-gold)] font-bold">
-                            {isReviewLimited && ctaRec.category === 'review' ? '🔒 Daily Limit Reached' : ctaRec.label}
-                        </span>
-                    </div>
-                    <span className="text-xs ui text-[var(--color-gold)] font-medium shrink-0 ml-2">
-                        {isReviewLimited && ctaRec.category === 'review' ? 'Upgrade' : 'Go'}
-                    </span>
-                </motion.button>
-                {!isPremium && ctaRec.category === 'review' && !isReviewLimited && reviewsRemaining != null && (
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center -mt-2 mb-2">
-                        {reviewsRemaining} free review{reviewsRemaining === 1 ? '' : 's'} remaining today
-                    </div>
-                )}
-                </>
-            )}
-
-            {/* ── Remaining study plan items (compact) ── */}
-            {otherRecs.length > 0 && (
+            {/* ── Study Plan (unified section) ── */}
+            {(ctaRec || otherRecs.length > 0 || totalWords > 0) && (
                 <section className="mb-4 space-y-2">
                     <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-1">Study Plan</h3>
+
+                    {/* Weekly goal */}
+                    {totalWords > 0 && <WeeklyGoalTracker totalWords={totalWords} />}
+
+                    {/* Primary CTA */}
+                    {ctaRec && (
+                        <>
+                        <motion.button
+                            onClick={isReviewLimited && ctaRec.category === 'review' ? onUpgrade : handleCtaClick}
+                            className="w-full flex items-center justify-between py-3.5 px-4 rounded-2xl bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/15 transition-colors"
+                            animate={ctaGlow}
+                            transition={ctaGlowTransition}
+                        >
+                            <div className="flex items-center gap-2 min-w-0">
+                                <span className={`text-[9px] ui px-1.5 py-0.5 rounded-full font-semibold shrink-0 ${PRIORITY_STYLES[ctaRec.priority ?? 'weak'].badge}`}>
+                                    {PRIORITY_STYLES[ctaRec.priority ?? 'weak'].text}
+                                </span>
+                                <div className="min-w-0">
+                                    <span className="text-sm ui text-[var(--color-gold)] font-bold">
+                                        {isReviewLimited && ctaRec.category === 'review' ? '🔒 Daily Limit Reached' : ctaRec.label}
+                                    </span>
+                                    {ctaRec.accuracy != null && ctaRec.attempts != null ? (
+                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/35 truncate">
+                                            {Math.round(ctaRec.accuracy * 100)}% → 70% · ~{Math.max(1, Math.ceil((0.7 * ctaRec.attempts - ctaRec.accuracy * ctaRec.attempts) / 0.3))} questions
+                                        </div>
+                                    ) : ctaRec.reason ? (
+                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/35 truncate">{ctaRec.reason}</div>
+                                    ) : null}
+                                </div>
+                            </div>
+                            <span className="text-xs ui text-[var(--color-gold)] font-medium shrink-0 ml-2">
+                                {isReviewLimited && ctaRec.category === 'review' ? 'Upgrade' : 'Go'}
+                            </span>
+                        </motion.button>
+                        {!isPremium && ctaRec.category === 'review' && !isReviewLimited && reviewsRemaining != null && (
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center -mt-1">
+                                {reviewsRemaining} free review{reviewsRemaining === 1 ? '' : 's'} remaining today
+                            </div>
+                        )}
+                        </>
+                    )}
+
+                    {/* Secondary recs */}
                     {otherRecs.map(rec => (
                         <RecCard key={rec.category} rec={rec} onPractice={handleRecPractice} />
                     ))}
-                </section>
-            )}
 
-            {/* Difficulty nudge */}
-            {difficultyNudge && onPractice && (
-                <button
-                    onClick={() => onPractice(difficultyNudge.nextCategory)}
-                    className="w-full flex items-center gap-3 py-3 px-4 mb-4 rounded-xl bg-[var(--color-correct)]/5 border border-[var(--color-correct)]/20 hover:bg-[var(--color-correct)]/10 transition-colors"
-                >
-                    <span className="text-base shrink-0">&#9889;</span>
-                    <div className="flex-1 min-w-0">
-                        <span className="text-sm ui font-medium text-[rgb(var(--color-fg))]/70">Ready for harder words!</span>
-                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40 ml-1.5">
-                            {Math.round(difficultyNudge.accuracy * 100)}% on {difficultyNudge.wordCount} words
-                        </span>
-                    </div>
-                    <span className="text-[10px] ui text-[var(--color-correct)] shrink-0 font-medium">{difficultyNudge.nextLabel.split(' ')[0]}</span>
-                </button>
+                    {/* Difficulty nudge */}
+                    {difficultyNudge && onPractice && (
+                        <button
+                            onClick={() => onPractice(difficultyNudge.nextCategory)}
+                            className="w-full flex items-center gap-3 py-3 px-4 rounded-xl bg-[var(--color-correct)]/5 border border-[var(--color-correct)]/20 hover:bg-[var(--color-correct)]/10 transition-colors"
+                        >
+                            <span className="text-base shrink-0">&#9889;</span>
+                            <div className="flex-1 min-w-0">
+                                <span className="text-sm ui font-medium text-[rgb(var(--color-fg))]/70">Ready for harder words!</span>
+                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40 ml-1.5">
+                                    {Math.round(difficultyNudge.accuracy * 100)}% on {difficultyNudge.wordCount} words
+                                </span>
+                            </div>
+                            <span className="text-[10px] ui text-[var(--color-correct)] shrink-0 font-medium">{difficultyNudge.nextLabel.split(' ')[0]}</span>
+                        </button>
+                    )}
+                </section>
             )}
 
             {/* Study Tools */}
@@ -557,46 +568,14 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                 </section>
             )}
 
-            {/* ── Overall mastery progress ── */}
-            {(() => {
-                const totalMastered = levelProgress.reduce((s, lp) => s + lp.mastered, 0);
-                const milestones = [
-                    { count: 100, name: 'Word Explorer' },
-                    { count: 500, name: 'Word Scholar' },
-                    { count: 1000, name: 'Word Professor' },
-                    { count: 5000, name: 'Word Savant' },
-                    { count: 10000, name: 'Word Omniscient' },
-                ];
-                const next = milestones.find(m => totalMastered < m.count);
-                const prev = milestones.filter(m => totalMastered >= m.count).pop();
-                const base = prev?.count ?? 0;
-                const target = next?.count ?? milestones[milestones.length - 1].count;
-                const milestonePct = next ? (totalMastered - base) / (target - base) : 1;
-                return (
-                    <section className="mb-4 px-4 py-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
-                        <div className="flex items-baseline justify-between mb-1.5">
-                            <span className="text-xs ui font-medium text-[rgb(var(--color-fg))]/60">Words Mastered</span>
-                            <span className="text-sm ui font-bold text-[var(--color-gold)] tabular-nums">{totalMastered.toLocaleString()}</span>
-                        </div>
-                        {next ? (
-                            <>
-                                <div className="h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden mb-1">
-                                    <div className="h-full rounded-full bg-[var(--color-gold)] transition-all" style={{ width: `${Math.round(milestonePct * 100)}%` }} />
-                                </div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 text-right">
-                                    Next: {next.name} ({next.count.toLocaleString()})
-                                </div>
-                            </>
-                        ) : (
-                            <div className="text-[9px] ui text-[var(--color-gold)]/60 text-center">All milestones reached!</div>
-                        )}
-                    </section>
-                );
-            })()}
-
             {/* ── Curriculum — flat 10-level list ── */}
             <section>
-                <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">Curriculum</h3>
+                <h3 className="text-xs ui text-[rgb(var(--color-fg))]/60 uppercase tracking-wider mb-2">
+                    Curriculum
+                    <span className="text-[rgb(var(--color-fg))]/30 ml-2 normal-case tracking-normal">
+                        {levelProgress.reduce((s, lp) => s + lp.mastered, 0).toLocaleString()} / {levelProgress.reduce((s, lp) => s + lp.totalWords, 0).toLocaleString()} mastered
+                    </span>
+                </h3>
                 {levelProgress.map(lp => (
                     <LevelRow
                         key={lp.tierId}

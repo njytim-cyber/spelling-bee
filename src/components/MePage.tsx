@@ -7,7 +7,7 @@ import { SWIPE_TRAILS } from '../utils/trails';
 import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconBroom, IconTag, IconTrash, IconGift, IconShop, RankIcon } from './Icons';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconTag, IconGift, IconShop, RankIcon } from './Icons';
 import { isItemOwned } from '../utils/cosmeticPacks';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
@@ -48,7 +48,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const {
         stats,
         accuracy,
-        resetStats,
         syncFailed,
         activeCostume,
         onCostumeChange,
@@ -64,7 +63,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         linkGoogle,
         sendEmailLink,
         updateBadge,
-        deleteAccount,
         isPremium,
         daysRemaining,
         referralCode,
@@ -87,14 +85,11 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     const activeBadge = stats.activeBadgeId || '';
     const [showRanks, setShowRanks] = useState(false);
-    const [resetConfirm, setResetConfirm] = useState<string | null>(null);
     const [editingName, setEditingName] = useState(false);
     const [nameInput, setNameInput] = useState(displayName);
     const [showEmailInput, setShowEmailInput] = useState(false);
     const [emailInput, setEmailInput] = useState('');
     const [emailSent, setEmailSent] = useState(false);
-    const [deleteConfirm, setDeleteConfirm] = useState(false);
-    const [deleting, setDeleting] = useState(false);
     const [showAvatarBuilder, setShowAvatarBuilder] = useState(false);
 
     const handleShareBadge = useCallback((achievementName: string, achievementDesc: string) => {
@@ -705,98 +700,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 </div>
             )}
 
-            {/* ═══════ NOTIFICATION PREFERENCES ═══════ */}
-            {(() => {
-                const NOTIF_KEY = STORAGE_KEYS.notificationPrefs;
-                type NotifPrefs = { enabled: boolean; daily: boolean; streak: boolean; reviews: boolean; achievement: boolean; challenge: boolean; tournament: boolean };
-                const defaults: NotifPrefs = { enabled: false, daily: true, streak: true, reviews: true, achievement: true, challenge: true, tournament: true };
-                const stored = localStorage.getItem(NOTIF_KEY);
-                const prefs: NotifPrefs = stored ? { ...defaults, ...JSON.parse(stored) } : defaults;
-                const save = (p: NotifPrefs) => localStorage.setItem(NOTIF_KEY, JSON.stringify(p));
-
-                const Toggle = ({ on, onToggle, label }: { on: boolean; onToggle: () => void; label: string }) => (
-                    <button
-                        role="switch"
-                        aria-checked={on}
-                        onClick={onToggle}
-                        className="flex items-center justify-between w-full py-2"
-                    >
-                        <span className="text-xs ui text-[rgb(var(--color-fg))]/60">{label}</span>
-                        <div className={`relative w-9 h-5 rounded-full transition-colors ${on ? 'bg-[var(--color-correct)]' : 'bg-[rgb(var(--color-fg))]/15'}`}>
-                            <motion.div
-                                className="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow"
-                                animate={{ left: on ? 18 : 2 }}
-                                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                            />
-                        </div>
-                    </button>
-                );
-
-                const types = [
-                    { key: 'daily' as const, label: 'Daily practice reminder' },
-                    { key: 'streak' as const, label: 'Streak at risk' },
-                    { key: 'reviews' as const, label: 'Reviews due' },
-                    { key: 'achievement' as const, label: 'Achievement unlocked' },
-                    { key: 'challenge' as const, label: 'Challenge received' },
-                    { key: 'tournament' as const, label: 'Tournament starting' },
-                ];
-
-                return (
-                    <div className="w-full max-w-sm mt-6">
-                        <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                            notifications
-                        </div>
-                        <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl px-4 py-2">
-                            <Toggle
-                                on={prefs.enabled}
-                                onToggle={() => { const next = { ...prefs, enabled: !prefs.enabled }; save(next); }}
-                                label="Enable notifications"
-                            />
-                            {prefs.enabled && (
-                                <div className="border-t border-[rgb(var(--color-fg))]/5 mt-1 pt-1">
-                                    {types.map(t => (
-                                        <Toggle
-                                            key={t.key}
-                                            on={prefs[t.key]}
-                                            onToggle={() => { const next = { ...prefs, [t.key]: !prefs[t.key] }; save(next); }}
-                                            label={t.label}
-                                        />
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
-                            Push notifications coming soon
-                        </div>
-                    </div>
-                );
-            })()}
-
-            {/* Reset stats */}
-            <button
-                onClick={() => {
-                    const prompts = [
-                        `You've earned ${stats.totalXP.toLocaleString()} points! Are you sure you want to start fresh? 🥺`,
-                        `Bee Buddy will miss your ${stats.bestStreak}-streak record! Reset anyway? 🤔`,
-                        `${stats.totalSolved} words spelled and counting… wipe it all? 😱`,
-                        'A fresh start can be beautiful! Ready to begin again? 🌱',
-                        'Your spelling journey so far has been amazing! Really reset? ✨',
-                        'Even superheroes get a fresh origin story! Reset? 🦸',
-                    ];
-                    setResetConfirm(prompts[Math.floor(Math.random() * prompts.length)]);
-                }}
-                className="text-[10px] ui text-[rgb(var(--color-fg))]/20 mt-4 hover:text-[rgb(var(--color-fg))]/40 transition-colors uppercase tracking-widest"
-            >
-                reset stats
-            </button>
-
-            {/* Delete account */}
-            <button
-                onClick={() => setDeleteConfirm(true)}
-                className="text-[10px] ui text-[rgb(var(--color-fg))]/15 mt-2 hover:text-[var(--color-wrong)]/60 transition-colors uppercase tracking-widest"
-            >
-                delete account
-            </button>
 
             {/* Rank list modal */}
             <AnimatePresence>
@@ -846,77 +749,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 )}
             </AnimatePresence>
 
-            {/* Reset confirmation modal */}
-            <AnimatePresence>
-                {resetConfirm && (
-                    <ModalShell onClose={() => setResetConfirm(null)} ariaLabel="Reset stats confirmation" className="w-[min(280px,90vw)] text-center">
-                        <div className="mb-3 flex justify-center text-[var(--color-streak-fire)]">
-                            <IconBroom className="w-10 h-10" />
-                        </div>
-                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base leading-relaxed mb-6">
-                            {resetConfirm}
-                        </p>
-                        <div className="flex gap-3">
-                            <button
-                                onClick={() => setResetConfirm(null)}
-                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
-                            >
-                                cancel
-                            </button>
-                            <button
-                                onClick={() => { resetStats(); setResetConfirm(null); }}
-                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-streak-fire)]/40 bg-[var(--color-streak-fire)]/10 text-sm ui text-[var(--color-streak-fire)] hover:bg-[var(--color-streak-fire)]/20 transition-colors"
-                            >
-                                reset
-                            </button>
-                        </div>
-                    </ModalShell>
-                )}
-            </AnimatePresence>
-
-            {/* Delete account confirmation modal */}
-            <AnimatePresence>
-                {deleteConfirm && (
-                    <ModalShell onClose={() => !deleting && setDeleteConfirm(false)} ariaLabel="Delete account confirmation" className="w-[min(300px,90vw)] text-center">
-                        <div className="mb-3 flex justify-center text-[var(--color-wrong)]">
-                            <IconTrash className="w-10 h-10" />
-                        </div>
-                        <p className="ui text-[rgb(var(--color-fg))]/80 text-base font-semibold mb-2">
-                            Delete your account?
-                        </p>
-                        <p className="ui text-[rgb(var(--color-fg))]/50 text-xs leading-relaxed mb-6">
-                            This permanently removes all your data including scores, achievements, word history, and leaderboard entries. This cannot be undone.
-                        </p>
-                        <div className="flex gap-3">
-                            <button
-                                onClick={() => setDeleteConfirm(false)}
-                                disabled={deleting}
-                                className="flex-1 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/15 text-sm ui text-[rgb(var(--color-fg))]/50 hover:text-[rgb(var(--color-fg))]/70 hover:border-[rgb(var(--color-fg))]/30 transition-colors disabled:opacity-50"
-                            >
-                                cancel
-                            </button>
-                            <button
-                                onClick={async () => {
-                                    setDeleting(true);
-                                    try {
-                                        await deleteAccount();
-                                        // Auth listener will auto-create a new anonymous account
-                                    } catch (err) {
-                                        console.warn('Delete account failed:', err);
-                                    } finally {
-                                        setDeleting(false);
-                                        setDeleteConfirm(false);
-                                    }
-                                }}
-                                disabled={deleting}
-                                className="flex-1 py-2.5 rounded-xl border border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 text-sm ui text-[var(--color-wrong)] hover:bg-[var(--color-wrong)]/20 transition-colors disabled:opacity-50"
-                            >
-                                {deleting ? 'deleting...' : 'delete forever'}
-                            </button>
-                        </div>
-                    </ModalShell>
-                )}
-            </AnimatePresence>
 
             {/* Avatar builder modal */}
             <AnimatePresence>

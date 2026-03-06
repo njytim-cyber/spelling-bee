@@ -55,7 +55,7 @@ export const BottomNav = memo(function BottomNav({ active, onChange, tabs: tabsP
     return (
         <nav className="landscape-nav mt-auto flex items-center justify-around px-2 pb-[env(safe-area-inset-bottom,4px)] pt-1 z-40 relative">
             {/* Subtle top border */}
-            <div className="absolute top-0 left-4 right-4 h-px bg-[rgb(var(--color-fg))]/10" />
+            <div className="absolute top-0 left-2 right-2 h-px bg-[rgb(var(--color-fg))]/10" />
 
             {resolvedTabs.map(tab => {
                 const isActive = tab.id === active;
@@ -82,10 +82,6 @@ export const BottomNav = memo(function BottomNav({ active, onChange, tabs: tabsP
                         <span className="text-[10px] ui tracking-wide">
                             {tab.label}
                         </span>
-                        <div
-                            className="absolute -bottom-0.5 w-1 h-1 rounded-full bg-[var(--color-gold)] transition-transform duration-200"
-                            style={{ transform: isActive ? 'scale(1)' : 'scale(0)' }}
-                        />
                     </motion.button>
                 );
             })}

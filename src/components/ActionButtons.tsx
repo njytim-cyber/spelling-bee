@@ -46,7 +46,8 @@ const activeColor = (on: boolean) =>
 const BTN = 'w-11 h-11 flex items-center justify-center';
 const LABEL = 'text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap';
 
-/** Circular countdown ring drawn as an SVG arc */
+/** Circular countdown ring drawn as an SVG arc.
+ *  cy=24 (not 22) so the ring is centred on the stopwatch clock-face (cy=13/24). */
 function TimerRing({ progress, active }: { progress: number; active: boolean }) {
     const r = 19;
     const circumference = 2 * Math.PI * r;
@@ -56,7 +57,7 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 44">
             {/* Track */}
             <circle
-                cx="22" cy="22" r={r}
+                cx="22" cy="24" r={r}
                 fill="none"
                 stroke={active ? 'rgb(var(--color-fg) / 0.12)' : 'rgb(var(--color-fg) / 0.15)'}
                 strokeWidth="2.5"
@@ -64,7 +65,7 @@ function TimerRing({ progress, active }: { progress: number; active: boolean }) 
             {/* Progress arc */}
             {active && (
                 <circle
-                    cx="22" cy="22" r={r}
+                    cx="22" cy="24" r={r}
                     fill="none"
                     stroke={progress > 0.75 ? 'var(--color-streak-fire)' : 'var(--color-gold)'}
                     strokeWidth="2.5"
@@ -92,11 +93,11 @@ export const ActionButtons = memo(function ActionButtons({
     const variantLabel = timedVariant === 'speed' ? '5s' : timedVariant === 'endurance' ? '⏬' : '10s';
 
     return (
-        <div className="action-buttons-col absolute right-2 top-[25%] -translate-y-1/2 flex flex-col gap-[clamp(0.5rem,2vh,1rem)] z-20">
+        <div className="action-buttons-col absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-[clamp(0.5rem,2vh,1rem)] z-20">
             {/* Question type */}
             <div className="relative">
                 <QuestionTypePicker current={questionType} onChange={onTypeChange} isPremium={isPremium} onUpgrade={onUpgrade} assignedLists={assignedLists} onPracticeList={onPracticeList} />
-                <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 ${LABEL}`}>{categoryLabel}</span>
+                <span className={`absolute -bottom-2.5 left-1/2 -translate-x-1/2 ${LABEL}`}>{categoryLabel}</span>
             </div>
 
             {/* MCQ / Text mode toggle */}
