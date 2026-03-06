@@ -11,6 +11,23 @@ import { app } from '../utils/firebase';
 
 const functions = getFunctions(app, 'us-central1');
 
+/** Allowed redirect URL origins for Stripe checkout/portal flows. */
+const ALLOWED_REDIRECT_ORIGINS = [
+    'https://checkout.stripe.com',
+    'https://billing.stripe.com',
+];
+
+/** Validate that a URL returned from our Cloud Functions points to a trusted Stripe domain. */
+function validateStripeUrl(url: string): string {
+    try {
+        const parsed = new URL(url);
+        if (ALLOWED_REDIRECT_ORIGINS.some(origin => parsed.origin === origin)) {
+            return url;
+        }
+    } catch { /* invalid URL */ }
+    throw new Error('Invalid redirect URL received from server');
+}
+
 interface CheckoutResult {
     sessionId: string;
     url: string;
@@ -33,7 +50,7 @@ interface RestoreResult {
 export async function startCheckout(plan: 'monthly' | 'annual'): Promise<string> {
     const fn = httpsCallable<{ plan: string }, CheckoutResult>(functions, 'createCheckoutSession');
     const result = await fn({ plan });
-    return result.data.url;
+    return validateStripeUrl(result.data.url);
 }
 
 /**
@@ -43,7 +60,7 @@ export async function startCheckout(plan: 'monthly' | 'annual'): Promise<string>
 export async function openCustomerPortal(): Promise<string> {
     const fn = httpsCallable<Record<string, never>, PortalResult>(functions, 'createPortalSession');
     const result = await fn({});
-    return result.data.url;
+    return validateStripeUrl(result.data.url);
 }
 
 /**
@@ -63,5 +80,5 @@ export async function restoreSubscription(): Promise<RestoreResult> {
 export async function purchasePack(packId: string): Promise<string> {
     const fn = httpsCallable<{ packId: string }, CheckoutResult>(functions, 'createPackCheckout');
     const result = await fn({ packId });
-    return result.data.url;
+    return validateStripeUrl(result.data.url);
 }

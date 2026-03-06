@@ -19,6 +19,7 @@ service cloud.firestore {
                            'accuracy', 'isAnonymous', 'createdAt', 'updatedAt',
                            'stats', 'achievements', 'preferences',
                            'activeThemeId', 'activeCostume', 'activeTrailId', 'activeBadgeId',
+                           'stickFigureStyle', 'weeklyXP', 'weeklyXPWeek',
                            'bestSpeedrunTime', 'speedrunHardMode', 'totalCorrect', 'sessionsPlayed',
                            'dayStreak', 'streakShields', 'lastPlayedDate', 'byType',
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
@@ -32,6 +33,7 @@ service cloud.firestore {
                            'accuracy', 'isAnonymous', 'createdAt', 'updatedAt',
                            'stats', 'achievements', 'preferences',
                            'activeThemeId', 'activeCostume', 'activeTrailId', 'activeBadgeId',
+                           'stickFigureStyle', 'weeklyXP', 'weeklyXPWeek',
                            'bestSpeedrunTime', 'speedrunHardMode', 'totalCorrect', 'sessionsPlayed',
                            'dayStreak', 'streakShields', 'lastPlayedDate', 'byType',
                            'hardModeSolved', 'hardModeCorrect', 'hardModeBestStreak', 'hardModeSessions', 'hardModePerfects',
@@ -44,7 +46,8 @@ service cloud.firestore {
                    // String field constraints
                    && (!('displayName' in request.resource.data)
                        || (request.resource.data.displayName is string
-                           && request.resource.data.displayName.size() <= 20))
+                           && request.resource.data.displayName.size() <= 20
+                           && request.resource.data.displayName.matches('^[\\w\\s\\-_.!]{1,20}$')))
                    && (!('activeBadgeId' in request.resource.data)
                        || (request.resource.data.activeBadgeId is string
                            && request.resource.data.activeBadgeId.size() <= 50))
@@ -83,6 +86,16 @@ service cloud.firestore {
                        || (request.resource.data.streakShields is number
                            && request.resource.data.streakShields >= 0
                            && request.resource.data.streakShields <= 10))
+                   && (!('stickFigureStyle' in request.resource.data)
+                       || (request.resource.data.stickFigureStyle is string
+                           && request.resource.data.stickFigureStyle.size() <= 200))
+                   && (!('weeklyXP' in request.resource.data)
+                       || (request.resource.data.weeklyXP is number
+                           && request.resource.data.weeklyXP >= 0
+                           && request.resource.data.weeklyXP <= 100000))
+                   && (!('weeklyXPWeek' in request.resource.data)
+                       || (request.resource.data.weeklyXPWeek is string
+                           && request.resource.data.weeklyXPWeek.size() <= 10))
                    // Rate-limiting: reject writes less than 1s after last update
                    && (!(resource != null && 'updatedAt' in resource.data)
                        || request.time > resource.data.updatedAt + duration.value(1, 's'))
@@ -138,6 +151,10 @@ service cloud.firestore {
       allow update: if request.auth != null
                     && resource.data.targetUid == request.auth.uid
                     && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']);
+
+      // Target user can delete their own pings (cleanup)
+      allow delete: if request.auth != null
+                    && resource.data.targetUid == request.auth.uid;
     }
 
     // ── Error Reports (monitoring) ──

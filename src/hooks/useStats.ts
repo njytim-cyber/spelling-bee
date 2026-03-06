@@ -276,11 +276,18 @@ export function useStats(uid: string | null) {
         statsRef.current = stats;
     }, [stats]);
 
+    // Track mounted state to avoid setState after unmount
+    const mountedRef = useRef(true);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => { mountedRef.current = false; };
+    }, []);
+
     // Phase 2: On mount, try to restore from Firestore if localStorage is stale
     useEffect(() => {
         if (!uid) return;
         loadStatsCloud(uid).then(cloud => {
-            if (!cloud) return;
+            if (!cloud || !mountedRef.current) return;
             setStats(prev => {
                 const merged = mergeStats(prev, cloud);
                 saveStatsLocal(merged); // update local cache
@@ -297,12 +304,12 @@ export function useStats(uid: string | null) {
             // Debounce Firestore writes — 10s avoids excessive writes during rapid gameplay
             clearTimeout(cloudTimerRef.current);
             cloudTimerRef.current = setTimeout(() => {
-                if (uidRef.current) {
+                if (uidRef.current && mountedRef.current) {
                     setSyncPending(true);
                     setSyncFailed(false);
                     saveStatsCloud(uidRef.current, stats)
-                        .then(() => { setSyncPending(false); setSyncFailed(false); })
-                        .catch(() => { setSyncPending(false); setSyncFailed(true); });
+                        .then(() => { if (mountedRef.current) { setSyncPending(false); setSyncFailed(false); } })
+                        .catch(() => { if (mountedRef.current) { setSyncPending(false); setSyncFailed(true); } });
                 }
             }, 10_000);
         }

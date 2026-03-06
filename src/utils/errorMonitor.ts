@@ -10,6 +10,23 @@ let reportCount = 0;
 const MAX_REPORTS = 10;
 let initialized = false;
 
+/** Strip sensitive query params (auth tokens, API keys) from URLs before logging. */
+function sanitizeUrl(url: string): string {
+    try {
+        const parsed = new URL(url);
+        const sensitiveParams = ['oobCode', 'apiKey', 'code', 'token', 'key', 'secret'];
+        for (const param of sensitiveParams) {
+            if (parsed.searchParams.has(param)) {
+                parsed.searchParams.set(param, '[REDACTED]');
+            }
+        }
+        return parsed.toString();
+    } catch {
+        // If URL parsing fails, strip everything after '?'
+        return url.split('?')[0] || url;
+    }
+}
+
 export function reportError(error: { message: string; stack?: string; source?: string }) {
     if (reportCount >= MAX_REPORTS) return;
     reportCount++;
@@ -22,7 +39,7 @@ export function reportError(error: { message: string; stack?: string; source?: s
         stack: (error.stack || '').replace(/[A-Z]:\\Users\\[^\s:)]+/gi, '[path]').replace(/\/home\/[^\s:)]+/g, '[path]').slice(0, 2000),
         source: error.source || 'unknown',
         userAgent: navigator.userAgent.slice(0, 200),
-        url: window.location.href,
+        url: sanitizeUrl(window.location.href),
         timestamp: serverTimestamp(),
     }).catch(() => {
         // Silently fail — error monitoring shouldn't cause more errors

@@ -165,11 +165,17 @@ export function useWordHistory(isPremium = false) {
                 mode: isMcq ? 'mcq' : 'typed',
             };
 
-            // Update sorted index: remove old entry, add new, re-sort
-            const newIndex = [
-                ...prev.nextReviewIndex.filter(item => item.key !== key),
-                { key, nextReview: record.nextReview, box: record.box }
-            ].sort((a, b) => a.nextReview - b.nextReview);
+            // Update sorted index: remove old entry, binary-insert new entry
+            const filtered = prev.nextReviewIndex.filter(item => item.key !== key);
+            const entry = { key, nextReview: record.nextReview, box: record.box };
+            // Binary search for insertion point to maintain sort order (O(log n) vs O(n log n) re-sort)
+            let lo = 0, hi = filtered.length;
+            while (lo < hi) {
+                const mid = (lo + hi) >>> 1;
+                if (filtered[mid].nextReview <= entry.nextReview) lo = mid + 1;
+                else hi = mid;
+            }
+            const newIndex = [...filtered.slice(0, lo), entry, ...filtered.slice(lo)];
 
             const next: WordHistory = {
                 records: { ...prev.records, [key]: record },

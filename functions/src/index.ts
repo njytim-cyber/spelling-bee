@@ -223,7 +223,7 @@ export const synthesizeSpeech = onCall(
         const cacheKey = createHash('md5')
             .update(`${text.toLowerCase()}|${voiceName}|${rate}`)
             .digest('hex');
-        const bucket = storage.bucket('scribble-math-prod-tts');
+        const bucket = storage.bucket('spelling-bee-prod-tts');
         const filePath = `${CACHE_PREFIX}/${cacheKey}.mp3`;
         const file = bucket.file(filePath);
 

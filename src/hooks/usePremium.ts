@@ -5,7 +5,7 @@
  * Offline-first: expiry stored in localStorage, synced to Firestore.
  * Premium = championPassExpiry is a future ISO date string.
  */
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { STORAGE_KEYS, FREE_LEVEL_CAP } from '../config';
 import type { Level } from '../domains/spelling/spellingCategories';
 
@@ -34,7 +34,6 @@ export function usePremium(uid: string | null) {
     const [trialUsed, setTrialUsed] = useState(() => localStorage.getItem(STORAGE_KEYS.trialUsed) === '1');
     const [subscriptionStatus, setSubscriptionStatus] = useState<SubStatus>(readSubStatus);
 
-    // eslint-disable-next-line react-hooks/purity -- checking current time is inherent to expiry logic
     const now = Date.now();
     const isPremium = championPassExpiry !== '' && new Date(championPassExpiry).getTime() > now;
 
@@ -81,6 +80,39 @@ export function usePremium(uid: string | null) {
         setChampionPassExpiry(expiry);
         writeSubStatus(status);
         setSubscriptionStatus(status);
+    }, [uid]);
+
+    // Verify premium status against Firestore on mount to prevent localStorage tampering.
+    // If server says expired but localStorage says active, revoke local premium.
+    useEffect(() => {
+        if (!uid || !isPremium) return;
+        let cancelled = false;
+        (async () => {
+            try {
+                const { doc, getDoc } = await import('firebase/firestore');
+                const { db } = await import('../utils/firebase');
+                const snap = await getDoc(doc(db, 'users', uid));
+                if (cancelled) return;
+                if (snap.exists()) {
+                    const serverExpiry = snap.data().championPassExpiry;
+                    if (serverExpiry) {
+                        // Server is the source of truth for paid subscriptions
+                        const serverDate = new Date(serverExpiry).getTime();
+                        if (serverDate < Date.now() && subscriptionStatus === 'active') {
+                            // Server says expired — revoke
+                            writeExpiry(uid, serverExpiry);
+                            setChampionPassExpiry(serverExpiry);
+                            writeSubStatus('none');
+                            setSubscriptionStatus('none');
+                        }
+                    }
+                }
+            } catch {
+                // Offline — trust local cache (offline-first design)
+            }
+        })();
+        return () => { cancelled = true; };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [uid]);
 
     /** True if this is a trial (not paid via Stripe). */

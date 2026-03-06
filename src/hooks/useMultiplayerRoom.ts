@@ -33,6 +33,11 @@ export interface RoomData {
     createdAt: ReturnType<typeof serverTimestamp>;
 }
 
+/** Validate that a UID is safe for use in Firestore field paths (no dots, slashes, or control chars). */
+function isValidUid(uid: string): boolean {
+    return /^[a-zA-Z0-9_-]{1,128}$/.test(uid);
+}
+
 function generateRoomCode(): string {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let code = '';
@@ -106,7 +111,7 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
     }, []); // Remove phase from deps — use ref instead
 
     const createRoom = useCallback(async () => {
-        if (!uid) { setError('Must be signed in'); return; }
+        if (!uid || !isValidUid(uid)) { setError('Must be signed in'); return; }
         setPhase('creating');
         setError(null);
 
@@ -148,7 +153,7 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
     }, [uid, displayName, subscribeToRoom]);
 
     const joinRoom = useCallback(async (code: string) => {
-        if (!uid) { setError('Must be signed in'); return; }
+        if (!uid || !isValidUid(uid)) { setError('Must be signed in'); return; }
         setError(null);
 
         try {
@@ -225,6 +230,9 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
 
     const submitAnswer = useCallback(async (round: number, spelling: string) => {
         if (!roomId || !uid || !roomData) return;
+        if (!isValidUid(uid)) return;
+        // Validate round bounds to prevent out-of-range access
+        if (round < 0 || round >= roomData.words.length) return;
 
         const word = roomData.words[round];
         const isCorrect = spelling.toLowerCase() === word.word.toLowerCase();
