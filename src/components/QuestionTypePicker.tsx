@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, type PanInfo } from 'framer-motion';
 import type { SpellingCategory, SpellingGroup } from '../domains/spelling/spellingCategories';
 import { SPELLING_CATEGORIES, SPELLING_GROUP_LABELS } from '../domains/spelling/spellingCategories';
+import { ModalShell } from './ModalShell';
 import { IconLock } from './Icons';
 
 interface Props {
@@ -113,23 +114,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
             {createPortal(
                 <AnimatePresence>
                     {open && (
-                        <>
-                            <motion.div
-                                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.15 }}
-                                onClick={() => setOpen(false)}
-                            />
-
-                            <motion.div
-                                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl w-[min(300px,90vw)] overflow-hidden"
-                                initial={{ opacity: 0, scale: 0.85 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.85 }}
-                                transition={{ duration: 0.15 }}
-                            >
+                        <ModalShell onClose={() => setOpen(false)} ariaLabel="Question type picker" className="w-[min(300px,90vw)] p-0 overflow-hidden">
                                 {/* Tab bar */}
                                 <div className="flex border-b border-[rgb(var(--color-fg))]/10 relative">
                                     {TABS.map(t => (
@@ -177,8 +162,7 @@ export const QuestionTypePicker = memo(function QuestionTypePicker({ current, on
                                         </motion.div>
                                     </AnimatePresence>
                                 </motion.div>
-                            </motion.div>
-                        </>
+                        </ModalShell>
                     )}
                 </AnimatePresence>,
                 document.body

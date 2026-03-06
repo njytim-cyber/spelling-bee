@@ -11,6 +11,7 @@ import { LEVELS, levelIcon } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
 import { isLevelPremium } from '../hooks/usePremium';
 import { IconLock } from './Icons';
+import { Button } from './Button';
 
 interface Props {
     onComplete: (dialect: Dialect, level: Level) => void;
@@ -55,7 +56,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         <div className="w-full space-y-3 mb-8">
                             {[
                                 { icon: '🔊', title: 'Listen', desc: 'Hear a word and read its definition' },
-                                { icon: '👆', title: 'Pick the correct spelling', desc: 'Tap or swipe one of 3 options' },
+                                { icon: '👆', title: 'Pick the correct spelling', desc: 'Tap one of 3 options' },
                                 { icon: '📈', title: 'Build streaks for bonus points', desc: '10 pts + streak bonus + speed bonus' },
                                 { icon: '🧠', title: 'Words you miss come back', desc: 'Spaced repetition helps you remember' },
                             ].map((item, i) => (
@@ -75,13 +76,9 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                             ))}
                         </div>
 
-                        <motion.button
-                            whileTap={{ scale: 0.92 }}
-                            onClick={() => setStep('age')}
-                            className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
+                        <Button size="lg" onClick={() => setStep('age')}>
                             Get Started
-                        </motion.button>
+                        </Button>
                     </motion.div>
                 ) : step === 'age' ? (
                     <motion.div
@@ -105,20 +102,12 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         </div>
 
                         <div className="flex flex-col gap-2.5 w-full">
-                            <motion.button
-                                whileTap={{ scale: 0.96 }}
-                                onClick={() => setStep('dialect')}
-                                className="w-full px-5 py-3.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                            >
+                            <Button size="lg" className="w-full px-5 py-3.5 text-base" onClick={() => setStep('dialect')}>
                                 Yes, I&apos;m 13 or older
-                            </motion.button>
-                            <motion.button
-                                whileTap={{ scale: 0.96 }}
-                                onClick={() => setStep('dialect')}
-                                className="w-full px-5 py-3.5 rounded-xl border-2 border-[rgb(var(--color-fg))]/15 text-base ui text-[rgb(var(--color-fg))]/60 hover:border-[rgb(var(--color-fg))]/30 transition-colors"
-                            >
+                            </Button>
+                            <Button variant="secondary" size="lg" className="w-full px-5 py-3.5 text-base border-2 border-[rgb(var(--color-fg))]/15" onClick={() => setStep('dialect')}>
                                 I have parent/guardian permission
-                            </motion.button>
+                            </Button>
                         </div>
 
                         <p className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-4 leading-relaxed max-w-[260px]">
@@ -160,22 +149,13 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
 
                         <div className="flex gap-3 mt-8">
                             {isFirstTime && (
-                                <motion.button
-                                    whileTap={{ scale: 0.92 }}
-                                    onClick={() => setStep('age')}
-                                    className="px-6 py-3 rounded-xl border-2 border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5 text-base ui text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/10 transition-colors"
-                                >
+                                <Button variant="secondary" size="lg" className="px-6 border-2 border-[rgb(var(--color-fg))]/20" onClick={() => setStep('age')}>
                                     Back
-                                </motion.button>
+                                </Button>
                             )}
-                            <motion.button
-                                whileTap={{ scale: 0.92 }}
-                                disabled={!selectedDialect}
-                                onClick={handleDialectNext}
-                                className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
+                            <Button size="lg" disabled={!selectedDialect} onClick={handleDialectNext}>
                                 Next
-                            </motion.button>
+                            </Button>
                         </div>
                     </motion.div>
                 ) : (
@@ -222,21 +202,12 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                         </div>
 
                         <div className="flex gap-3 mt-8">
-                            <motion.button
-                                whileTap={{ scale: 0.92 }}
-                                onClick={() => setStep('dialect')}
-                                className="px-6 py-3 rounded-xl border-2 border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5 text-base ui text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/10 transition-colors"
-                            >
+                            <Button variant="secondary" size="lg" className="px-6 border-2 border-[rgb(var(--color-fg))]/20" onClick={() => setStep('dialect')}>
                                 Back
-                            </motion.button>
-                            <motion.button
-                                whileTap={{ scale: 0.92 }}
-                                disabled={!selectedLevel}
-                                onClick={handleComplete}
-                                className="px-10 py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-lg ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-                            >
+                            </Button>
+                            <Button size="lg" disabled={!selectedLevel} onClick={handleComplete}>
                                 Let&apos;s Go!
-                            </motion.button>
+                            </Button>
                         </div>
                     </motion.div>
                 )}

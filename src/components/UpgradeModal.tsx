@@ -7,6 +7,7 @@
 import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ModalShell } from './ModalShell';
+import { Button } from './Button';
 import { IconCheck, IconClose, IconGift, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { trackEvent } from '../utils/analytics';
@@ -123,12 +124,9 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         </button>
                     </div>
 
-                    <button
-                        onClick={onClose}
-                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)]"
-                    >
+                    <Button className="w-full" onClick={onClose}>
                         Start Spelling!
-                    </button>
+                    </Button>
                 </div>
             </ModalShell>
         );
@@ -162,23 +160,15 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         </button>
                     </div>
 
-                    <motion.button
-                        onClick={shareReferral}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full py-2.5 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] flex items-center justify-center gap-2 mb-2"
-                    >
+                    <Button className="w-full flex items-center justify-center gap-2 mb-2" onClick={shareReferral}>
                         <IconShare className="w-4 h-4" />
                         Share & Earn More Time
-                    </motion.button>
+                    </Button>
 
                     {isPaidSubscriber && (
-                        <button
-                            onClick={handleManageSubscription}
-                            disabled={purchasing}
-                            className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                        >
+                        <Button variant="ghost" className="w-full" onClick={handleManageSubscription} disabled={purchasing}>
                             {purchasing ? 'Opening...' : 'Manage Subscription'}
-                        </button>
+                        </Button>
                     )}
                 </div>
             </ModalShell>
@@ -256,13 +246,9 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
             {/* Trial CTA — hidden if already used */}
             {!trialUsed && (
                 <>
-                    <motion.button
-                        onClick={handleStartTrial}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-base ui font-semibold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors mb-3"
-                    >
+                    <Button size="lg" className="w-full mb-3 font-semibold text-base" onClick={handleStartTrial}>
                         Start 7-Day Free Trial
-                    </motion.button>
+                    </Button>
                     <p className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mb-4">
                         No credit card required. Full access for 7 days.
                     </p>

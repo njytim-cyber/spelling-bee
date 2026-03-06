@@ -264,7 +264,7 @@ export function getStudyPlan(
         });
     }
 
-    // 3. "Level Up" nudge — swipe accuracy much higher than typed
+    // 3. "Level Up" nudge — MCQ accuracy much higher than typed
     const recordArr = Object.values(records);
     let mcqTotal = 0, mcqRight = 0, typedTotal = 0, typedRight = 0;
     for (const r of recordArr) {

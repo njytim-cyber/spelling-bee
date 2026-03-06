@@ -1,5 +1,7 @@
 import { memo, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from './Button';
+import { InputModal } from './InputModal';
 import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
@@ -73,6 +75,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
     const [pingSuccess, setPingSuccess] = useState('');
     const [rankChange, setRankChange] = useState('');
     const prevRankRef = useRef<number | null>(null);
+    const [showClassroomInput, setShowClassroomInput] = useState(false);
     const pingSuccessTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const pingCooldownTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const pingCountdownInterval = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
@@ -276,10 +279,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 {/* Classroom Code */}
                 {onClassroomCode && (
                     <button
-                        onClick={() => {
-                            const code = prompt('Enter classroom code:');
-                            if (code?.trim()) onClassroomCode(code.trim());
-                        }}
+                        onClick={() => setShowClassroomInput(true)}
                         className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors"
                     >
                         <span className="text-2xl">📝</span>
@@ -444,7 +444,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
 
             {/* Invite to Compete */}
             {!loading && (
-                <button
+                <Button
+                    className="w-full max-w-sm mt-4 py-3 flex items-center justify-center gap-2"
                     onClick={async () => {
                         const text = appendReferralFooter(
                             '🏆 Think you can spell better than me? Challenge me on Spelling Bee!',
@@ -453,10 +454,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                         await shareOrCopy(text);
                         trackEvent('referral_shared', { source: 'leaderboard_invite' });
                     }}
-                    className="w-full max-w-sm mt-4 py-3 rounded-xl border border-[var(--color-gold)]/30 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 transition-colors flex items-center justify-center gap-2"
                 >
                     <IconShare className="w-4 h-4" /> Invite Friends to Compete
-                </button>
+                </Button>
             )}
 
             {/* Action Sheet Modal */}
@@ -529,6 +529,18 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     >
                         {pingSuccess || rankChange}
                     </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Classroom code input modal */}
+            <AnimatePresence>
+                {showClassroomInput && onClassroomCode && (
+                    <InputModal
+                        title="Classroom Code"
+                        placeholder="Enter code from your teacher"
+                        onSubmit={(code) => { onClassroomCode(code); setShowClassroomInput(false); }}
+                        onClose={() => setShowClassroomInput(false)}
+                    />
                 )}
             </AnimatePresence>
         </div>

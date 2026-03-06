@@ -1,5 +1,7 @@
 import { memo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useSpring, useMotionValueEvent } from 'framer-motion';
+import { Button } from './Button';
+import { WordReviewList } from './WordReviewList';
 import { createChallengeId } from '../utils/dailyChallenge';
 
 interface SessionWord {
@@ -114,7 +116,6 @@ export const SessionSummary = memo(function SessionSummary({
 }: Props) {
     const [copied, setCopied] = useState(false);
     const [isSharing, setIsSharing] = useState(false);
-    const [showReview, setShowReview] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     // Rolling count-up for XP
@@ -360,42 +361,7 @@ export const SessionSummary = memo(function SessionSummary({
                         })()}
 
                         {/* Word review toggle */}
-                        {sessionWords.length > 0 && (() => {
-                            const missed = sessionWords.filter(w => !w.correct);
-                            return (
-                                <>
-                                    <button
-                                        onClick={() => setShowReview(r => !r)}
-                                        className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors mb-3"
-                                    >
-                                        {showReview ? 'Hide' : 'Review'} words{missed.length > 0 ? ` (${missed.length} missed)` : ''}
-                                    </button>
-                                    <AnimatePresence>
-                                        {showReview && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: 'auto', opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                className="w-full overflow-hidden mb-3"
-                                            >
-                                                <div className="max-h-[30vh] overflow-y-auto rounded-lg border border-[rgb(var(--color-fg))]/10 divide-y divide-[rgb(var(--color-fg))]/5">
-                                                    {sessionWords.map((w, i) => (
-                                                        <div key={i} className="flex items-center gap-1.5 px-2.5 py-1.5">
-                                                            <span className={`text-[10px] ${w.correct ? 'text-[var(--color-correct)]' : 'text-[var(--color-wrong)]'}`}>
-                                                                {w.correct ? '✓' : '✗'}
-                                                            </span>
-                                                            <span className={`text-xs ui ${w.correct ? 'text-[rgb(var(--color-fg))]/50' : 'text-[var(--color-wrong)]'}`}>
-                                                                {w.word}
-                                                            </span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </>
-                            );
-                        })()}
+                        <WordReviewList words={sessionWords} />
 
                         {/* Share button */}
                         <motion.button
@@ -433,12 +399,9 @@ export const SessionSummary = memo(function SessionSummary({
                             </div>
                         ) : null}
 
-                        <button
-                            onClick={onDismiss}
-                            className="text-xs ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
-                        >
+                        <Button variant="ghost" size="sm" className="text-xs" onClick={onDismiss}>
                             continue
-                        </button>
+                        </Button>
                     </motion.div>
                 </motion.div>
             )}

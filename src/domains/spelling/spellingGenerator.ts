@@ -206,7 +206,7 @@ const LEVEL_RANGES: Record<string, [DifficultyTier, DifficultyTier]> = {
 /**
  * Build a candidate pool of words for a category + difficulty range.
  * Filters by origin/theme/pattern with fallback chains.
- * Shared by both the swipe game (pickRichWord) and the bee simulation (pickBeeWord).
+ * Shared by both the main game (pickRichWord) and the bee simulation (pickBeeWord).
  */
 export function selectWordPool(
     category: string | undefined,

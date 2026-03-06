@@ -6,6 +6,8 @@
  */
 import { memo, useMemo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from './Button';
+import { ModalShell } from './ModalShell';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/curriculum';
 import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
@@ -128,20 +130,7 @@ function SessionPicker({ level, onPick, onClose }: {
     onClose: () => void;
 }) {
     return (
-        <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-        >
-            <motion.div
-                className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[rgb(var(--color-fg))]/10"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                onClick={e => e.stopPropagation()}
-            >
+        <ModalShell onClose={onClose} ariaLabel={`${level.label} session size`} className="w-[300px] bg-[var(--color-surface)]">
                 <div className="text-center mb-4">
                     <div className="text-lg chalk text-[var(--color-gold)] font-bold">{level.label}</div>
                     <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mt-1">
@@ -165,8 +154,7 @@ function SessionPicker({ level, onPick, onClose }: {
                 <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 text-center mt-3">
                     Words to master make up to 20% of each session
                 </div>
-            </motion.div>
-        </motion.div>
+        </ModalShell>
     );
 }
 
@@ -479,15 +467,12 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     <span className="text-3xl mb-3">&#127891;</span>
                     <p className="text-sm ui text-[rgb(var(--color-fg))]/60 mb-1">Start practicing to see your progress!</p>
                     <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 max-w-[240px]">
-                        Go to the Game tab and swipe right for correct, left for wrong. Your study plan, progress, and insights will appear here.
+                        Go to the Game tab and tap the correct spelling. Your study plan, progress, and insights will appear here.
                     </p>
                     {onPractice && (
-                        <button
-                            onClick={() => onPractice('cvc')}
-                            className="mt-4 px-5 py-2 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
+                        <Button className="mt-4 px-5 py-2" onClick={() => onPractice('cvc')}>
                             Start Practicing
-                        </button>
+                        </Button>
                     )}
                 </div>
             )}

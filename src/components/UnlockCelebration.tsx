@@ -7,6 +7,7 @@
 import { memo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Confetti } from './Confetti';
+import { Button } from './Button';
 import { RankIcon } from './Icons';
 import type { Rank } from '../utils/ranks';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
@@ -100,7 +101,8 @@ export const UnlockCelebration = memo(function UnlockCelebration({
                             transition={{ delay: 0.7, duration: 0.3 }}
                             className="mt-2 flex items-center gap-3"
                         >
-                            <button
+                            <Button
+                                variant="ghost"
                                 onClick={async () => {
                                     const unlocks = unlockItems.length > 0 ? `\nUnlocked: ${unlockItems.join(', ')}` : '';
                                     const text = appendReferralFooter(
@@ -109,16 +111,12 @@ export const UnlockCelebration = memo(function UnlockCelebration({
                                     );
                                     await shareOrCopy(text);
                                 }}
-                                className="px-5 py-2.5 rounded-xl text-sm ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
                             >
                                 📤 Share
-                            </button>
-                            <button
-                                onClick={onDismiss}
-                                className="px-8 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/20 transition-colors"
-                            >
+                            </Button>
+                            <Button className="px-8" onClick={onDismiss}>
                                 Awesome!
-                            </button>
+                            </Button>
                         </motion.div>
                     </motion.div>
                 </motion.div>

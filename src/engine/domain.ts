@@ -1,7 +1,7 @@
 /**
  * engine/domain.ts
  *
- * Domain-agnostic types for the swipe game engine.
+ * Domain-agnostic types for the game engine.
  * Any educational subject (math, spelling, geography…) implements these interfaces.
  * Subject-specific logic lives in src/domains/<subject>/.
  */
@@ -45,17 +45,6 @@ export interface EngineItem {
 
 /** Timed mode difficulty variants. Speed + Endurance are Champion-only. */
 export type TimedVariant = 'normal' | 'speed' | 'endurance';
-
-// ── Swipe directions ─────────────────────────────────────────────────────────
-
-export type SwipeDirection = 'left' | 'right' | 'up' | 'down';
-
-/** Maps swipe direction to option index (engine responsibility) */
-export const SWIPE_TO_INDEX: Record<Exclude<SwipeDirection, 'up'>, number> = {
-    left: 0,
-    down: 1,
-    right: 2,
-};
 
 // ── Companion / mascot states ─────────────────────────────────────────────────
 

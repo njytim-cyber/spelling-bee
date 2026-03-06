@@ -63,13 +63,11 @@ export function TrickPractice({ trick, onClose }: Props) {
         if (isComplete) saveMastered(trick.id);
     }, [isComplete, trick.id]);
 
-    const handleSwipe = useCallback((dir: 'left' | 'right' | 'up' | 'down') => {
+    const handleAnswer = useCallback((index: number) => {
         if (frozen || !current) return;
-        const DIRS = ['left', 'down', 'right'];
-        const idx = DIRS.indexOf(dir);
-        if (idx === -1) return; // skip 'up' (skip)
+        if (index < 0 || index >= current.options.length) return;
 
-        const selectedAnswer = current.options[idx];
+        const selectedAnswer = current.options[index];
         const isCorrect = selectedAnswer === current.answer;
 
         if (isCorrect) {
@@ -101,6 +99,8 @@ export function TrickPractice({ trick, onClose }: Props) {
             }
         }
     }, [frozen, current, questions.length, trick]);
+
+    const noop = useCallback(() => {}, []);
 
     return (
         <motion.div
@@ -178,7 +178,8 @@ export function TrickPractice({ trick, onClose }: Props) {
                         problem={current}
                         frozen={frozen}
                         highlightCorrect={highlightCorrect}
-                        onSwipe={handleSwipe}
+                        onAnswer={handleAnswer}
+                        onSkip={noop}
                     />
                 </div>
             ) : null}

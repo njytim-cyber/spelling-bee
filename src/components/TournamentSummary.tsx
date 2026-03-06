@@ -5,6 +5,7 @@
  */
 import { memo } from 'react';
 import { motion } from 'framer-motion';
+import { Button } from './Button';
 import { ChevronLeft } from './ChevronLeft';
 
 interface Props {
@@ -46,19 +47,13 @@ export const TournamentSummary = memo(function TournamentSummary({ round, onRest
             )}
 
             <div className="flex gap-3 mt-2">
-                <button
-                    onClick={onRestart}
-                    className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                >
+                <Button className="px-6" onClick={onRestart}>
                     Try Again
-                </button>
-                <button
-                    onClick={onExit}
-                    className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
-                >
+                </Button>
+                <Button variant="secondary" className="px-6 flex items-center gap-1.5" onClick={onExit}>
                     <ChevronLeft className="w-4 h-4" />
                     Back
-                </button>
+                </Button>
             </div>
         </motion.div>
     );

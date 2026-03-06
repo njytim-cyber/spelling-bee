@@ -7,7 +7,7 @@
  */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { EngineItem, GameConfig, ChalkState, FeedbackFlash, TimedVariant } from '../engine/domain';
-import { SWIPE_TO_INDEX, DEFAULT_GAME_CONFIG } from '../engine/domain';
+import { DEFAULT_GAME_CONFIG } from '../engine/domain';
 import { scoreCorrect, scorePenalty, FAST_ANSWER_MS } from '../engine/scoring';
 import { useDifficulty } from './useDifficulty';
 
@@ -56,8 +56,6 @@ export type ItemGenerator = (
     rng?: () => number,
 ) => EngineItem;
 
-/** Reverse map: correctIndex → swipe direction (for typed-answer → swipe delegation) */
-const DIRS_BY_INDEX: Record<number, 'left' | 'down' | 'right'> = { 0: 'left', 1: 'down', 2: 'right' };
 
 // ── Hook ──────────────────────────────────────────────────────────────────────
 
@@ -93,7 +91,7 @@ export function useGameLoop(
     onAnswerRef.current = onAnswer;
 
     const chalkTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-    /** Typed text from handleTypedAnswer, consumed by handleSwipe on delegation */
+    /** Typed text from handleTypedAnswer, consumed by handleAnswer on delegation */
     const pendingTypedText = useRef<string | undefined>(undefined);
     /** Per-word miss count within current session (for hint system) */
     const sessionMisses = useRef(new Map<string, number>());
@@ -168,6 +166,20 @@ export function useGameLoop(
         sessionMisses.current.clear();
     }, [categoryId, buildInitialSet]);
 
+    // ── Regenerate buffer when word bank changes before user starts playing ──
+    // Prevents stale fallback words (e.g. easy words at high levels) that were
+    // generated before async tier loading completed.
+    const generatorVersionRef = useRef(generateItem);
+    useEffect(() => {
+        if (generatorVersionRef.current === generateItem) return;
+        generatorVersionRef.current = generateItem;
+        if (gs.totalAnswered > 0 || isFinite(categoryId)) return;
+        const fresh = buildInitialSet(categoryId);
+        if (fresh[0]) fresh[0].startTime = Date.now();
+        setItems(fresh);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [generateItem, gs.totalAnswered, categoryId, buildInitialSet]);
+
     // ── Keep infinite buffer full ─────────────────────────────────────────────
     useEffect(() => {
         if (isFinite(categoryId)) return;
@@ -198,26 +210,26 @@ export function useGameLoop(
         }, durationMs);
     }, []);
 
-    // ── Handle swipe ──────────────────────────────────────────────────────────
-    const handleSwipe = useCallback((direction: 'left' | 'right' | 'up' | 'down') => {
+    // ── Skip current problem ───────────────────────────────────────────────────
+    const handleSkip = useCallback(() => {
+        if (frozenRef.current || items.length === 0) return;
+        frozenRef.current = true;
+        setGs(prev => ({ ...prev, streak: 0, chalkState: 'idle', frozen: true }));
+        safeTimeout(() => {
+            setGs(prev => ({ ...prev, frozen: false }));
+            frozenRef.current = false;
+            advanceProblem();
+        }, 100);
+    }, [items, safeTimeout, advanceProblem]);
+
+    // ── Handle answer by option index ────────────────────────────────────────
+    const handleAnswer = useCallback((optionIndex: number) => {
         if (frozenRef.current || items.length === 0) return;
         const current = items[0];
         if (!current) return;
         const tts = Date.now() - (current.startTime ?? Date.now());
 
-        // Up = skip
-        if (direction === 'up') {
-            frozenRef.current = true;
-            setGs(prev => ({ ...prev, streak: 0, chalkState: 'idle', frozen: true }));
-            safeTimeout(() => {
-                setGs(prev => ({ ...prev, frozen: false }));
-                frozenRef.current = false;
-                advanceProblem();
-            }, 100);
-            return;
-        }
-
-        const selectedValue = current.options[SWIPE_TO_INDEX[direction]];
+        const selectedValue = current.options[optionIndex];
         const correct = selectedValue === current.answer;
 
         if (correct) {
@@ -365,10 +377,8 @@ export function useGameLoop(
         const correct = typed.trim().toLowerCase() === correctWord.toLowerCase();
 
         if (correct) {
-            // Map to the correct option's swipe direction so handleSwipe processes it
             pendingTypedText.current = typed;
-            const correctDir = DIRS_BY_INDEX[current.correctIndex];
-            if (correctDir) handleSwipe(correctDir);
+            handleAnswer(current.correctIndex);
         } else {
             // Wrong: trigger the wrong-answer flow
             const tts = Date.now() - (current.startTime ?? Date.now());
@@ -437,7 +447,7 @@ export function useGameLoop(
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, handleSwipe, recordAnswer, scheduleChalkReset, safeTimeout, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs]);
+    }, [items, handleAnswer, recordAnswer, scheduleChalkReset, safeTimeout, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     const pausedRef = useRef(paused);
@@ -536,7 +546,8 @@ export function useGameLoop(
         problems: items,  // alias kept for backward compat with ProblemView/App expectations
         ...gs,
         level,
-        handleSwipe,
+        handleAnswer,
+        handleSkip,
         handleTypedAnswer,
         dismissWrongAnswer,
         timerProgress,

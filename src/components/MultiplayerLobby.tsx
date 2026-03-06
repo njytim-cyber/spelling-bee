@@ -5,7 +5,8 @@
  * Shows room code, player list, and ready/start controls.
  */
 import { memo, useState } from 'react';
-import { motion } from 'framer-motion';
+import { ModalShell } from './ModalShell';
+import { Button } from './Button';
 
 interface Props {
     phase: 'idle' | 'creating' | 'lobby';
@@ -30,21 +31,7 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
     const allReady = players.length >= 2 && players.every(p => p.ready);
 
     return (
-        <>
-            <motion.div
-                className="fixed inset-0 bg-[var(--color-overlay-dim)] z-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={onClose}
-            />
-            <motion.div
-                className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-[var(--color-overlay)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-5 py-5 w-[min(340px,90vw)]"
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.85 }}
-                transition={{ duration: 0.15 }}
-            >
+        <ModalShell onClose={onClose} ariaLabel="1v1 Match">
                 <h3 className="text-lg ui font-bold text-[var(--color-gold)] text-center mb-4">1v1 Match</h3>
 
                 {phase === 'idle' && (
@@ -78,12 +65,9 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                                 <p className="text-xs ui text-[rgb(var(--color-fg))]/50 mb-4">
                                     Create a room and share the code with a friend.
                                 </p>
-                                <button
-                                    onClick={onCreate}
-                                    className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                                >
+                                <Button className="px-6" onClick={onCreate}>
                                     Create Room
-                                </button>
+                                </Button>
                             </div>
                         )}
 
@@ -100,13 +84,9 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                                     maxLength={6}
                                     className="w-full text-center text-2xl ui font-bold tracking-[0.3em] bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-xl px-4 py-3 text-[var(--color-chalk)] placeholder:text-[rgb(var(--color-fg))]/15 outline-none mb-3"
                                 />
-                                <button
-                                    onClick={() => joinCode.length === 6 && onJoin(joinCode)}
-                                    disabled={joinCode.length !== 6}
-                                    className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors disabled:opacity-30"
-                                >
+                                <Button className="px-6" onClick={() => joinCode.length === 6 && onJoin(joinCode)} disabled={joinCode.length !== 6}>
                                     Join
-                                </button>
+                                </Button>
                             </div>
                         )}
                     </>
@@ -161,12 +141,9 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                                 </button>
                             )}
                             {isHost && allReady && (
-                                <button
-                                    onClick={onStart}
-                                    className="flex-1 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                                >
+                                <Button className="flex-1" onClick={onStart}>
                                     Start Match
-                                </button>
+                                </Button>
                             )}
                         </div>
                     </>
@@ -176,13 +153,9 @@ export const MultiplayerLobby = memo(function MultiplayerLobby({
                     <div className="mt-3 text-center text-xs ui text-[var(--color-wrong)]">{error}</div>
                 )}
 
-                <button
-                    onClick={onClose}
-                    className="w-full mt-3 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                >
+                <Button variant="ghost" className="w-full mt-3" onClick={onClose}>
                     {phase === 'lobby' ? 'Leave' : 'Close'}
-                </button>
-            </motion.div>
-        </>
+                </Button>
+        </ModalShell>
     );
 });

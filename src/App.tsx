@@ -7,6 +7,7 @@ import { BeeBuddy } from './components/BeeBuddy';
 import { ScoreCounter } from './components/ScoreCounter';
 import { BottomNav } from './components/BottomNav';
 import { ActionButtons } from './components/ActionButtons';
+import { Button } from './components/Button';
 import { SwipeTrail } from './components/SwipeTrail';
 import { IconSettings } from './components/Icons';
 import { SettingsModal } from './components/SettingsModal';
@@ -190,6 +191,76 @@ function LoadingFallback() {
   );
 }
 
+const SCRAMBLE_WORDS = ['SPELLING', 'CHAMPION', 'ALPHABET', 'PRACTICE', 'LEARNING'];
+function WordsLoadingScreen() {
+  const [wordIdx] = useState(() => Math.floor(Math.random() * SCRAMBLE_WORDS.length));
+  const word = SCRAMBLE_WORDS[wordIdx];
+  // Pre-compute random rotations and scrambled letters in state initializer (pure render)
+  const [{ scrambled, rotations }] = useState(() => {
+    const arr = word.split('');
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return { scrambled: arr, rotations: arr.map(() => Math.random() * 40 - 20) };
+  });
+
+  return (
+    <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
+      {/* Animated pencil writing */}
+      <motion.div
+        className="text-4xl"
+        animate={{ x: [-20, 20, -20], rotate: [-5, 5, -5] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        ✏️
+      </motion.div>
+
+      {/* Letters unscrambling into place */}
+      <div className="flex gap-1.5">
+        {word.split('').map((_, i) => (
+          <motion.div
+            key={i}
+            className="w-9 h-11 rounded-lg bg-[var(--color-gold)]/15 border-2 border-[var(--color-gold)]/30 flex items-center justify-center text-lg chalk text-[var(--color-gold)]"
+            initial={{ opacity: 0, y: -30, rotate: rotations[i] }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ delay: 0.3 + i * 0.12, duration: 0.5, ease: 'backOut' }}
+          >
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 + i * 0.12 + 0.2 }}
+            >
+              {scrambled[i]}
+            </motion.span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Chalk dust dots */}
+      <div className="flex gap-2">
+        {[0, 1, 2, 3, 4].map(i => (
+          <motion.div
+            key={i}
+            className="w-1.5 h-1.5 rounded-full bg-[var(--color-chalk)]/40"
+            animate={{ opacity: [0.1, 0.8, 0.1], y: [0, -4, 0] }}
+            transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.15 }}
+          />
+        ))}
+      </div>
+
+      <motion.p
+        className="text-sm chalk text-[rgb(var(--color-fg))]/40 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        Loading words...
+      </motion.p>
+    </div>
+  );
+}
+
 function AppInner() {
   const { user } = useFirebaseAuth();
   const uid = user?.uid ?? null;
@@ -334,6 +405,7 @@ function AppInner() {
   // ── Load word tiers (level-first, then background-load rest) ──
   const [wordRegistryVersion, setWordRegistryVersion] = useState(() => getRegistryVersion());
   const [wordLoadError, setWordLoadError] = useState(false);
+  const [wordsReady, setWordsReady] = useState(false);
   const loadAllWords = useCallback(async () => {
     setWordLoadError(false);
     try {
@@ -341,6 +413,7 @@ function AppInner() {
       const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
       if (stored === 'en-GB') await setDialect(stored as Dialect);
       setWordRegistryVersion(getRegistryVersion());
+      setWordsReady(true);
     } catch (err) {
       console.warn('Failed to load word registry:', err);
       setWordLoadError(true);
@@ -357,6 +430,7 @@ function AppInner() {
         const storedDialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
         if (storedDialect === 'en-GB') await setDialect(storedDialect as Dialect);
         setWordRegistryVersion(getRegistryVersion());
+        setWordsReady(true);
         // Background-load remaining tiers for word book, path page, etc.
         ensureAllWords().then(() => setWordRegistryVersion(getRegistryVersion())).catch(console.warn);
       } catch (err) {
@@ -501,7 +575,8 @@ function AppInner() {
     milestone,
     speedBonus,
     wrongStreak,
-    handleSwipe,
+    handleAnswer,
+    handleSkip,
     handleTypedAnswer,
     dismissWrongAnswer,
     timerProgress,
@@ -619,7 +694,7 @@ function AppInner() {
     [answerHistory]
   );
 
-  // ── Accuracy gate (anti-random-swipe speed bump) ──
+  // ── Accuracy gate (anti-random-tap speed bump) ──
   const [accuracyGateDismissed, setAccuracyGateDismissed] = useState(0); // tracks the totalAnswered at last dismiss
   const showAccuracyGate = useMemo(() => {
     // Never show in competitive/finite modes
@@ -848,9 +923,8 @@ function AppInner() {
     [cappedReviewQueue.length],
   );
 
-  // ── Tab swipe (non-game tabs only) ──
+  // ── Tab swipe (all tabs) ──
   const handleTabSwipe = useCallback((_: unknown, info: PanInfo) => {
-    if (activeTab === 'game') return; // game uses horizontal swipe for answers
     const t = 80;
     const idx = TAB_ORDER.indexOf(activeTab);
     if ((info.offset.x < -t || info.velocity.x < -400) && idx < TAB_ORDER.length - 1) {
@@ -975,7 +1049,9 @@ function AppInner() {
           </div>
         )}
 
-        {activeTab === 'game' && (
+        {activeTab === 'game' && !wordsReady && <WordsLoadingScreen />}
+
+        {activeTab === 'game' && wordsReady && (
           <div ref={(el) => {
             // Restart CSS animation without remounting entire subtree
             if (el && (flash === 'wrong' || flash === 'correct')) {
@@ -1150,7 +1226,7 @@ function AppInner() {
             </AnimatePresence>
 
             {/* ── Main Problem Area ── */}
-            <div className="flex-1 flex flex-col min-h-0">
+            <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
               {questionType === 'bee' ? (
                 <BeeSimPage
                   onExit={() => setQuestionType(defaultCategory)}
@@ -1190,19 +1266,13 @@ function AppInner() {
                       : 'No words to practice right now. Words you miss come back on a schedule until they\u2019re fully mastered.'}
                   </p>
                   {isReviewLimited && (
-                    <button
-                      onClick={() => setShowUpgrade(true)}
-                      className="mt-1 px-5 py-2 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border-2 border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/20 transition-colors"
-                    >
+                    <Button className="mt-1 px-5 py-2" onClick={() => setShowUpgrade(true)}>
                       ⭐ Upgrade
-                    </button>
+                    </Button>
                   )}
-                  <button
-                    onClick={() => setQuestionType(defaultCategory)}
-                    className="mt-2 px-5 py-2 rounded-xl text-sm ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                  >
+                  <Button className="mt-2 px-5 py-2" onClick={() => setQuestionType(defaultCategory)}>
                     Back to Play
-                  </button>
+                  </Button>
                 </div>
               ) : dailyComplete ? (
                 <DailyChallengeComplete
@@ -1229,11 +1299,10 @@ function AppInner() {
                         problem={currentProblem}
                         frozen={frozen}
                         highlightCorrect={isFirstQuestion || hintWord}
-                        showHints={totalCorrect < 4}
-                        showTutorial={isFirstQuestion && !guidedMode}
                         wrongAnswer={flash === 'wrong' && !isFirstQuestion}
                         onDismissWrong={dismissWrongAnswer}
-                        onSwipe={handleSwipe}
+                        onAnswer={handleAnswer}
+                        onSkip={handleSkip}
                         level={levelConfig?.minDifficultyLevel ?? 1}
                         guidedMode={guidedMode}
                         onTypedAnswer={handleTypedAnswer}
@@ -1242,9 +1311,9 @@ function AppInner() {
                   )}
                 </AnimatePresence>
               )}
-            </div>
+            </motion.div>
 
-            {/* ── Accuracy gate (anti-random-swipe) ── */}
+            {/* ── Accuracy gate (anti-random-tap) ── */}
             <AnimatePresence>
               {showAccuracyGate && !frozen && (
                 <motion.div
@@ -1265,12 +1334,9 @@ function AppInner() {
                     <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-4">
                       Try listening to each word before answering. Tap the speaker icon to hear it again.
                     </p>
-                    <button
-                      onClick={() => setAccuracyGateDismissed(totalAnswered)}
-                      className="w-full py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                    >
+                    <Button className="w-full" onClick={() => setAccuracyGateDismissed(totalAnswered)}>
                       Got it, I&apos;ll try harder!
-                    </button>
+                    </Button>
                   </motion.div>
                 </motion.div>
               )}
@@ -1288,18 +1354,12 @@ function AppInner() {
                     {totalCorrect} correct out of {totalAnswered}
                   </div>
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => { setSessionSize(null); setSessionAnswered(0); setActiveTab('path'); }}
-                      className="flex-1 py-2.5 rounded-xl text-sm ui font-medium text-[rgb(var(--color-fg))]/60 bg-[rgb(var(--color-fg))]/10 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
-                    >
+                    <Button variant="secondary" className="flex-1" onClick={() => { setSessionSize(null); setSessionAnswered(0); setActiveTab('path'); }}>
                       Back to Path
-                    </button>
-                    <button
-                      onClick={() => { setSessionAnswered(0); }}
-                      className="flex-1 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                    >
+                    </Button>
+                    <Button className="flex-1" onClick={() => { setSessionAnswered(0); }}>
                       Play Again
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

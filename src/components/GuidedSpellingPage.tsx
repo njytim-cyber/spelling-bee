@@ -19,6 +19,7 @@ import { usePronunciation } from '../hooks/usePronunciation';
 import { getRootsForWord, formatRootHint } from '../domains/spelling/words/rootUtils';
 import { playDing, playBuzzer } from '../utils/beeSounds';
 import { playStreakSound } from '../utils/soundEffects';
+import { Button } from './Button';
 import { selectWordPool } from '../domains/spelling/spellingGenerator';
 import { difficultyRange, getWordMap } from '../domains/spelling/words';
 import type { SpellingWord } from '../domains/spelling/words/types';
@@ -327,19 +328,13 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                             </div>
                         </div>
                         <div className="flex gap-3 mt-2">
-                            <button
-                                onClick={handleKeepGoing}
-                                className="px-6 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/50 bg-[var(--color-gold)]/15 text-sm ui font-semibold text-[var(--color-gold)] hover:bg-[var(--color-gold)]/25 transition-colors"
-                            >
+                            <Button className="px-6" onClick={handleKeepGoing}>
                                 Keep Going
-                            </button>
-                            <button
-                                onClick={onExit}
-                                className="px-6 py-2.5 rounded-xl border border-[rgb(var(--color-fg))]/20 text-sm ui text-[rgb(var(--color-fg))]/50 hover:border-[rgb(var(--color-fg))]/40 transition-colors flex items-center gap-1.5"
-                            >
+                            </Button>
+                            <Button variant="secondary" className="px-6 flex items-center gap-1.5" onClick={onExit}>
                                 <ChevronLeft className="w-4 h-4" />
                                 Back to Play
-                            </button>
+                            </Button>
                         </div>
                     </motion.div>
                 ) : (
@@ -509,14 +504,14 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
 
                         {/* Ready for the Bee? — shown when user has mastered enough words */}
                         {onOpenBee && masteredCount != null && masteredCount >= 20 && wordsCorrect >= 5 && (
-                            <motion.button
+                            <Button
+                                className="mt-4 w-full py-3"
+                                onClick={onOpenBee}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                onClick={onOpenBee}
-                                className="mt-4 w-full py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
                             >
                                 Ready for the Spelling Bee? 🏆
-                            </motion.button>
+                            </Button>
                         )}
                     </motion.div>
                 )}

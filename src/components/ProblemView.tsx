@@ -1,6 +1,5 @@
 import { memo, useState, useEffect, useRef, useCallback } from 'react';
-import { motion, useMotionValue, useTransform, useMotionTemplate, animate, type MotionValue } from 'framer-motion';
-import type { PanInfo } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -9,26 +8,17 @@ import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { IconSpeaker } from './Icons';
 
-/** Arrow-key → swipe direction map for desktop play */
-const KEY_MAP: Record<string, 'left' | 'right' | 'up' | 'down'> = {
-    ArrowLeft: 'left',
-    ArrowRight: 'right',
-    ArrowDown: 'down',
-    ArrowUp: 'up',
-    '1': 'left',
-    '2': 'down',
-    '3': 'right',
-};
+/** Keyboard shortcuts: number keys select answer options */
+const ANSWER_KEYS: Record<string, number> = { '1': 0, '2': 1, '3': 2 };
+
 interface Props {
     problem: EngineItem;
     frozen: boolean;
     highlightCorrect?: boolean;
-    showHints?: boolean;
-    /** Show directional swipe tutorial on the very first question */
-    showTutorial?: boolean;
     wrongAnswer?: boolean;
     onDismissWrong?: () => void;
-    onSwipe: (dir: 'left' | 'right' | 'up' | 'down') => void;
+    onAnswer: (index: number) => void;
+    onSkip: () => void;
     /** Current difficulty level (1-10). Used to simplify wrong-answer panel for beginners. */
     level?: number;
     /** Text-entry mode: show SpellingInput instead of MCQ pills */
@@ -37,14 +27,12 @@ interface Props {
     onTypedAnswer?: (typed: string) => void;
 }
 
-const DIRS: Array<'left' | 'down' | 'right'> = ['left', 'down', 'right'];
-
 const pulseAnim = {
     scale: [1, 1.03, 1],
     transition: { repeat: Infinity, duration: 2, ease: 'easeInOut' as const },
 };
 
-/** Glow animation for the tutorial-highlighted answer */
+/** Glow animation for the highlighted correct answer */
 const glowAnim = {
     boxShadow: [
         '0 0 0 0 rgba(255,255,255,0)',
@@ -67,36 +55,27 @@ const correctFlashAnim = {
 };
 
 const AnswerOption = memo(function AnswerOption({
-    value, label, dir, glow, frozen, onSwipe, highlighted, correctFlash, reducedMotion,
+    value, label, index, frozen, onAnswer, highlighted, correctFlash, reducedMotion,
 }: {
-    value: number | string; label?: string; dir: 'left' | 'down' | 'right';
-    glow: MotionValue<number>; frozen: boolean;
-    onSwipe: (d: 'left' | 'right' | 'up' | 'down') => void;
+    value: number | string; label?: string; index: number;
+    frozen: boolean;
+    onAnswer: (i: number) => void;
     highlighted?: boolean;
     correctFlash?: boolean;
     reducedMotion?: boolean;
 }) {
-    const scale = useTransform(glow, [0, 0.3, 1], [1, 1.03, 1.12]);
-    const opacity = useTransform(glow, [0, 1], [0.95, 1]);
-    // Gold border + text intensity driven by drag distance
-    const borderAlpha = useTransform(glow, [0, 0.3, 1], [0, 0.3, 1]);
-    const borderColor = useMotionTemplate`rgba(251,191,36,${borderAlpha})`;
-    const shadowSpread = useTransform(glow, [0, 1], [0, 16]);
-    const boxShadow = useMotionTemplate`0 0 ${shadowSpread}px 2px rgba(251,191,36,0.4)`;
-
     const text = String(label ?? value);
 
     return (
-        <motion.button
+        <button
             className="gpu-layer w-full"
-            style={{ scale, opacity }}
-            onClick={() => !frozen && onSwipe(dir)}
+            onClick={() => !frozen && onAnswer(index)}
             onKeyDown={(e) => { if (frozen && (e.key === 'Enter' || e.key === ' ')) e.preventDefault(); }}
             aria-label={`Answer: ${text}`}
             aria-disabled={frozen}
             tabIndex={frozen ? -1 : 0}
         >
-            {/* Answer pill — adapts width to word length */}
+            {/* Answer pill — adapts font size to word length */}
             <motion.div
                 className={`w-full px-4 py-3.5 rounded-2xl border-2 bg-[var(--color-surface)] flex items-center justify-center ui font-bold active:scale-[0.97] transition-transform ${
                     text.length > 10 ? 'text-[17px]' : text.length > 7 ? 'text-[20px]' : 'text-[24px]'
@@ -104,19 +83,16 @@ const AnswerOption = memo(function AnswerOption({
                     : highlighted ? 'border-[var(--color-gold)] text-[var(--color-gold)]'
                         : 'border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)]'
                     }`}
-                style={!correctFlash && !highlighted ? { borderColor, boxShadow } : {}}
                 animate={reducedMotion ? {} : correctFlash ? correctFlashAnim : highlighted ? glowAnim : {}}
                 transition={reducedMotion ? {} : correctFlash ? { duration: 0.35 } : highlighted ? glowTransition : {}}
             >
                 {text}
             </motion.div>
-        </motion.button>
+        </button>
     );
 });
 
-const DIR_HINTS = ['← swipe left', 'swipe down ↓', 'swipe right →'];
-
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, showHints = true, showTutorial, wrongAnswer, onDismissWrong, onSwipe, level = 5, guidedMode, onTypedAnswer }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, wrongAnswer, onDismissWrong, onAnswer, onSkip, level = 5, guidedMode, onTypedAnswer }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
@@ -146,13 +122,12 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         }
     }, [p.id, p.meta, speak, ttsSupported]);
 
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    // Desktop arrow-key support (stable listener — no churn)
-    const onSwipeRef = useRef(onSwipe);
+    // Desktop keyboard support (stable listener — no churn)
+    const onAnswerRef = useRef(onAnswer);
+    const onSkipRef = useRef(onSkip);
     const frozenRef = useRef(frozen);
-    useEffect(() => { onSwipeRef.current = onSwipe; }, [onSwipe]);
+    useEffect(() => { onAnswerRef.current = onAnswer; }, [onAnswer]);
+    useEffect(() => { onSkipRef.current = onSkip; }, [onSkip]);
     useEffect(() => { frozenRef.current = frozen; }, [frozen]);
 
     const speakRef = useRef(handleSpeak);
@@ -192,10 +167,17 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 setShowShortcuts(prev => !prev);
                 return;
             }
-            const dir = KEY_MAP[e.key];
-            if (dir && !frozenRef.current) {
+            // Skip
+            if (e.key === 'ArrowUp' && !frozenRef.current) {
                 e.preventDefault();
-                onSwipeRef.current(dir);
+                onSkipRef.current();
+                return;
+            }
+            // Answer by number key
+            const idx = ANSWER_KEYS[e.key];
+            if (idx !== undefined && !frozenRef.current) {
+                e.preventDefault();
+                onAnswerRef.current(idx);
             }
         };
         window.addEventListener('keydown', handler);
@@ -209,37 +191,10 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         onTypedAnswer(typed);
     }, [typed, onTypedAnswer]);
 
-    const leftGlow = useTransform(x, [-140, -50, 0], [1, 0.3, 0]);
-    const rightGlow = useTransform(x, [0, 50, 140], [0, 0.3, 1]);
-    const downGlow = useTransform(y, [0, 50, 140], [0, 0.3, 1]);
-    const glows = [leftGlow, downGlow, rightGlow];
-
-    const handlePan = (_: unknown, info: PanInfo) => {
-        if (!frozen && !guidedMode) {
-            x.set(info.offset.x);
-            y.set(info.offset.y);
-        }
-    };
-
-    const handlePanEnd = (_: unknown, info: PanInfo) => {
-        if (frozen || guidedMode) return;
-        // Snap the local touch point back to 0 so the answer glows recede naturally
-        animate(x, 0, { duration: 0.3, bounce: 0 });
-        animate(y, 0, { duration: 0.3, bounce: 0 });
-
-        const t = 80;
-        if (info.offset.y < -t || info.velocity.y < -400) onSwipe('up');
-        else if (info.offset.y > t || info.velocity.y > 400) onSwipe('down');
-        else if (info.offset.x > t || info.velocity.x > 400) onSwipe('right');
-        else if (info.offset.x < -t || info.velocity.x < -400) onSwipe('left');
-    };
-
     return (
-        <div className="landscape-answers flex-1 overflow-y-auto overscroll-contain min-h-0 relative z-10" style={{ touchAction: 'pan-y' }}>
-        <motion.div
-            className="flex flex-col items-center justify-center min-h-full px-4 pb-20 landscape-compact-pb gpu-layer touch-none"
-            onPan={handlePan}
-            onPanEnd={handlePanEnd}
+        <div className="landscape-answers flex-1 overflow-y-auto overscroll-contain min-h-0 relative z-10">
+        <div
+            className="flex flex-col items-center justify-center min-h-full px-4 pb-20 landscape-compact-pb gpu-layer"
         >
             {/* Problem expression / prompt */}
             <motion.div className="text-center mb-8 landscape-compact-mb px-14" animate={reducedMotion ? {} : pulseAnim}>
@@ -313,23 +268,13 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                             <AnswerOption
                                 value={opt}
                                 label={p.optionLabels?.[i]}
-                                dir={DIRS[i]}
-                                glow={glows[i]}
+                                index={i}
                                 frozen={frozen}
-                                onSwipe={onSwipe}
+                                onAnswer={onAnswer}
                                 highlighted={highlightCorrect && i === p.correctIndex}
                                 correctFlash={frozen && i === p.correctIndex}
                                 reducedMotion={reducedMotion}
                             />
-                            {showTutorial && !frozen && (
-                                <div className={`text-[9px] ui mt-0.5 ${
-                                    highlightCorrect && i === p.correctIndex
-                                        ? 'text-[var(--color-gold)]/60 font-medium text-center'
-                                        : `text-[rgb(var(--color-fg))]/25 ${i === 0 ? 'text-left pl-2' : i === 2 ? 'text-right pr-2' : 'text-center'}`
-                                }`}>
-                                    {highlightCorrect && i === p.correctIndex ? '↑ tap or swipe this one' : DIR_HINTS[i]}
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>
@@ -428,23 +373,6 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 </motion.div>
             )}
 
-            {/* Hints — swipe/tap instructions for early questions (MCQ only) */}
-            {!guidedMode && showHints && !wrongAnswer && !frozen && (
-                <div className="mt-6 flex flex-col items-center text-[rgb(var(--color-fg))]/20">
-                    <span className="text-[10px] ui tracking-wider">{showTutorial ? 'swipe or tap your answer · swipe ↑ to skip' : 'swipe ↑ to skip'}</span>
-                    {/* Desktop keyboard hint — show on first question for pointer devices */}
-                    {showTutorial && window.matchMedia?.('(hover: hover)').matches && (
-                        <button
-                            type="button"
-                            onClick={() => setShowShortcuts(true)}
-                            className="text-[9px] ui text-[rgb(var(--color-fg))]/15 mt-1 hover:text-[var(--color-gold)]/50 transition-colors"
-                        >
-                            press ? for keyboard shortcuts
-                        </button>
-                    )}
-                </div>
-            )}
-
             {/* Keyboard shortcut overlay */}
             {showShortcuts && (
                 <div
@@ -458,9 +386,9 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                         <h3 className="text-sm ui font-bold text-[var(--color-chalk)] mb-3 text-center">Keyboard Shortcuts</h3>
                         <div className="space-y-2.5 text-xs ui text-[rgb(var(--color-fg))]/60">
                             {[
-                                ['←  or  1', 'Option 1 (left)'],
-                                ['↓  or  2', 'Option 2 (center)'],
-                                ['→  or  3', 'Option 3 (right)'],
+                                ['1', 'Option 1'],
+                                ['2', 'Option 2'],
+                                ['3', 'Option 3'],
                                 ['↑', 'Skip word'],
                                 ['Enter / Esc', 'Continue after wrong'],
                                 ['Space / R', 'Replay audio'],
@@ -481,7 +409,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     </div>
                 </div>
             )}
-        </motion.div>
+        </div>
         </div>
     );
 });

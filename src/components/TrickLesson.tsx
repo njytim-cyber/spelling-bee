@@ -56,7 +56,7 @@ export function TrickLesson({ trick, onClose }: Props) {
             </div>
 
             <motion.div
-                className="flex-1 flex flex-col items-center justify-center -mt-12 text-center max-w-sm mx-auto w-full touch-none"
+                className="flex-1 flex flex-col items-center justify-center -mt-12 text-center max-w-sm mx-auto w-full"
                 onPanEnd={handlePanEnd}
             >
                 <div className="text-4xl mb-4">{trick.icon}</div>

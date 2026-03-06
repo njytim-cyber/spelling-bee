@@ -16,7 +16,7 @@ npm run verify    # Full check: lint + tsc + test + build
 ## Tech Stack
 - **React 19** + **TypeScript 5.9** + **Vite 7**
 - **Tailwind CSS 4** (via Vite plugin, utility-first)
-- **Framer Motion** (animations, swipe gestures, AnimatePresence)
+- **Framer Motion** (animations, gestures, AnimatePresence)
 - **Firebase** (Auth + Firestore for cloud sync, leaderboards, pings)
 - **Vitest** (23 test files, 328 tests)
 - **PWA** via vite-plugin-pwa with offline caching
@@ -39,7 +39,7 @@ src/
 │       ├── tier[1-5].ts        # Hand-curated word files
 │       └── tier[1-9]-pipeline*.ts  # Pipeline-generated word files (lazy-loaded)
 ├── hooks/               # Custom React hooks
-│   ├── useGameLoop.ts   # Core swipe game loop (problems, scoring, streaks)
+│   ├── useGameLoop.ts   # Core game loop (problems, scoring, streaks)
 │   ├── useStats.ts      # Persistent stats (localStorage + Firestore sync)
 │   ├── useWordHistory.ts # Leitner spaced repetition (5 boxes, review queue)
 │   └── ...
@@ -60,6 +60,7 @@ src/
 
 ### Key Patterns
 - **Levels**: 10 levels (Level 1–10), each mapped 1:1 to difficulty values 1–10. Selected during onboarding, stored in UserContext. No K-12 grade names.
+- **Input model**: Answers via MCQ tap or typed entry — no swipe gestures. Keyboard: 1/2/3 for MCQ options, ↑ to skip. Pinch zoom enabled for accessibility.
 - **Session-based play**: User picks a level from the curriculum, then chooses session size (10/20/50 words). SRS determines mix (max 20% review, rest new).
 - **Category → Generator**: `spellingCategories.ts` defines IDs/groups, `spellingGenerator.ts` maps them to word selection logic via `selectWordPool()`
 - **Adaptive difficulty**: `useDifficulty` hook adjusts within the level's range based on answer speed
@@ -70,7 +71,7 @@ src/
 - **Weekly goal**: localStorage-based goal tracker on PathPage (50/100/200/500 words), resets each week
 - **Daily challenge sizes**: 10 (Quick) / 25 (Standard) / 50 (Marathon), all using same daily seed
 - **Word book filters**: Origin tabs (Latin/Greek/French/Germanic/English/Other) + difficulty range selectors
-- **Modal pattern**: `AnimatePresence` + `motion.div` with overlay click-to-close, consistent 340px width
+- **Modal pattern**: `AnimatePresence` + `motion.div` with overlay click-to-close, consistent 340px width. **NEVER use native browser dialogs** (`alert()`, `confirm()`, `prompt()`) — always use `ModalShell` or `InputModal` from `components/` to stay on-brand with the chalk aesthetic.
 
 ### Word Bank Structure
 Each `SpellingWord` has: word, definition, exampleSentence, partOfSpeech, difficulty (1-10), pattern, pronunciation, optional etymology/source.

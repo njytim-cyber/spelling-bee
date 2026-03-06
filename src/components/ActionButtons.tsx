@@ -27,6 +27,23 @@ const VARIANT_OPTIONS: { id: TimedVariant; label: string; sub: string; premium: 
     { id: 'endurance', label: '⏬', sub: 'Endurance', premium: true },
 ];
 
+const TAP = { scale: 0.88 };
+
+const ICON_PROPS = {
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+};
+
+const activeColor = (on: boolean) =>
+    on ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/70';
+
+const BTN = 'w-11 h-11 flex items-center justify-center';
+const LABEL = 'text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap';
+
 /** Circular countdown ring drawn as an SVG arc */
 function TimerRing({ progress, active }: { progress: number; active: boolean }) {
     const r = 19;
@@ -73,32 +90,29 @@ export const ActionButtons = memo(function ActionButtons({
     const variantLabel = timedVariant === 'speed' ? '5s' : timedVariant === 'endurance' ? '⏬' : '10s';
 
     return (
-        <div className="absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-4 z-20">
+        <div className="action-buttons-col absolute right-2 top-[25%] -translate-y-1/2 flex flex-col gap-[clamp(0.5rem,2vh,1rem)] z-20">
             {/* Question type */}
             <div className="relative">
                 <QuestionTypePicker current={questionType} onChange={onTypeChange} isPremium={isPremium} onUpgrade={onUpgrade} />
-                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">{categoryLabel}</span>
+                <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 ${LABEL}`}>{categoryLabel}</span>
             </div>
 
             {/* MCQ / Text mode toggle */}
             {!hideToggles && <motion.button
                 onClick={onGuidedModeToggle}
-                className={`w-11 h-11 flex flex-col items-center justify-center ${guidedMode
-                    ? 'text-[var(--color-gold)]'
-                    : 'text-[rgb(var(--color-fg))]/70'
-                }`}
-                whileTap={{ scale: 0.88 }}
+                className={`${BTN} flex-col ${activeColor(guidedMode)}`}
+                whileTap={TAP}
                 aria-label={guidedMode ? 'Text entry mode (tap for MCQ)' : 'MCQ mode (tap for text entry)'}
             >
                 {guidedMode ? (
                     /* Pencil — text entry mode */
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg {...ICON_PROPS}>
                         <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
                         <path d="M15 5l4 4" />
                     </svg>
                 ) : (
                     /* List/checklist — MCQ mode */
-                    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg {...ICON_PROPS}>
                         <path d="M11 6h9" />
                         <path d="M11 12h9" />
                         <path d="M11 18h9" />
@@ -110,7 +124,7 @@ export const ActionButtons = memo(function ActionButtons({
                 {guidedMode && (
                     <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
                 )}
-                <span className="w-7 text-center text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap -mt-0.5">{guidedMode ? 'Type' : 'MCQ'}</span>
+                <span className={`w-7 text-center -mt-0.5 ${LABEL}`}>{guidedMode ? 'Type' : 'MCQ'}</span>
             </motion.button>}
 
             {/* Stopwatch / timed mode */}
@@ -126,22 +140,14 @@ export const ActionButtons = memo(function ActionButtons({
                     onDoubleClick={() => {
                         if (timedMode) onTimedModeToggle();
                     }}
-                    className={`w-11 h-11 relative flex items-center justify-center ${timedMode
-                        ? 'text-[var(--color-gold)]'
-                        : 'text-[rgb(var(--color-fg))]/70'
-                        }`}
-                    whileTap={{ scale: 0.88 }}
+                    className={`${BTN} relative ${activeColor(timedMode)}`}
+                    whileTap={TAP}
                     aria-label={timedMode ? `Timer on (${variantLabel}) — tap to change, double-tap to turn off` : 'Timer off'}
                 >
                     <TimerRing progress={timerProgress} active={timedMode} />
                     <motion.svg
-                        viewBox="0 0 24 24"
-                        className="w-6 h-6 relative z-10"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                        {...ICON_PROPS}
+                        className="relative z-10"
                         animate={timedMode ? { rotate: [0, -6, 6, -3, 3, 0] } : {}}
                         transition={timedMode ? {
                             duration: 1.8,
@@ -155,7 +161,7 @@ export const ActionButtons = memo(function ActionButtons({
                         <line x1="9" y1="3" x2="15" y2="3" />
                         <line x1="12" y1="14" x2="12" y2="10" />
                     </motion.svg>
-                    <span className="absolute -bottom-2.5 text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap">
+                    <span className={`absolute -bottom-2.5 ${LABEL}`}>
                         {timedMode ? variantLabel : 'Timer'}
                     </span>
                 </motion.button>

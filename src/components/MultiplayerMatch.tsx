@@ -12,6 +12,7 @@ import { SpellingInput } from './SpellingInput';
 import type { RoomData, RoomPhase } from '../hooks/useMultiplayerRoom';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { ChevronLeft } from './ChevronLeft';
+import { Button } from './Button';
 
 interface Props {
     phase: RoomPhase;
@@ -134,12 +135,9 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                         })}
                     </div>
 
-                    <button
-                        onClick={onLeave}
-                        className="w-full py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                    >
+                    <Button className="w-full py-3" onClick={onLeave}>
                         Back to Lobby
-                    </button>
+                    </Button>
                 </motion.div>
             </div>
         );
@@ -231,13 +229,9 @@ export const MultiplayerMatch = memo(function MultiplayerMatch({
                             onSubmit={handleSubmit}
                         />
 
-                        <button
-                            onClick={handleSubmit}
-                            disabled={!spelling.trim()}
-                            className="mt-4 px-8 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors disabled:opacity-30"
-                        >
+                        <Button className="mt-4 px-8" onClick={handleSubmit} disabled={!spelling.trim()}>
                             Submit
-                        </button>
+                        </Button>
                     </>
                 ) : (
                     <motion.div

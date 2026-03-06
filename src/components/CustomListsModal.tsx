@@ -12,6 +12,7 @@ import type { WordRecord } from '../hooks/useWordHistory';
 import { WordAutocomplete } from './WordAutocomplete';
 import { IconCopy, IconChevronDown } from './Icons';
 import { ModalShell } from './ModalShell';
+import { Button } from './Button';
 import { enrichWord } from '../hooks/useCustomLists';
 
 const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
@@ -270,12 +271,9 @@ export const CustomListsModal = memo(function CustomListsModal({
                     )}
 
                     {lists.length < maxLists && (
-                        <button
-                            onClick={() => setMode('create')}
-                            className="w-full py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
+                        <Button className="w-full" onClick={() => setMode('create')}>
                             + Create List
-                        </button>
+                        </Button>
                     )}
                     {lists.length >= maxLists && (
                         <div className="text-[10px] ui text-[rgb(var(--color-fg))]/25 text-center mt-2">
@@ -336,19 +334,12 @@ export const CustomListsModal = memo(function CustomListsModal({
                         Words found in our bank will be auto-enriched with definitions and distractors
                     </div>
                     <div className="flex gap-2">
-                        <button
-                            onClick={() => { setMode('browse'); setNewWords([]); setNewName(''); setBulkText(''); setShowBulkPaste(false); }}
-                            className="flex-1 py-2.5 rounded-xl text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                        >
+                        <Button variant="ghost" className="flex-1" onClick={() => { setMode('browse'); setNewWords([]); setNewName(''); setBulkText(''); setShowBulkPaste(false); }}>
                             Cancel
-                        </button>
-                        <button
-                            onClick={handleCreate}
-                            disabled={!newName.trim() || (newWords.length === 0 && !bulkText.trim())}
-                            className="flex-1 py-2.5 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors disabled:opacity-30"
-                        >
+                        </Button>
+                        <Button className="flex-1" onClick={handleCreate} disabled={!newName.trim() || (newWords.length === 0 && !bulkText.trim())}>
                             Create ({newWords.length + (bulkText.trim() ? bulkText.split(/[,\n]+/).filter(w => w.trim()).length : 0)} words)
-                        </button>
+                        </Button>
                     </div>
                 </>
             )}
@@ -469,28 +460,19 @@ export const CustomListsModal = memo(function CustomListsModal({
                     </div>
 
                     <div className="flex gap-2">
-                        <button
-                            onClick={() => { setMode('browse'); setViewList(null); setExpandedWord(null); }}
-                            className="flex-1 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-                        >
+                        <Button variant="ghost" className="flex-1" onClick={() => { setMode('browse'); setViewList(null); setExpandedWord(null); }}>
                             Back
-                        </button>
-                        <button
-                            onClick={() => onPractice(currentViewList.id)}
-                            className="flex-1 py-2 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-sm ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
+                        </Button>
+                        <Button className="flex-1" onClick={() => onPractice(currentViewList.id)}>
                             Practice
-                        </button>
+                        </Button>
                     </div>
                 </>
             )}
 
-            <button
-                onClick={onClose}
-                className="w-full mt-3 py-2 text-sm ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60 transition-colors"
-            >
+            <Button variant="ghost" className="w-full mt-3" onClick={onClose}>
                 Close
-            </button>
+            </Button>
         </ModalShell>
     );
 });
