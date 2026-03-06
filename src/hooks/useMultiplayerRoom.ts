@@ -141,6 +141,8 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
 
         try {
             await setDoc(roomRef, room);
+            // Record timestamp for server-side rate limiting
+            setDoc(doc(db, 'users', uid), { lastRoomCreateAt: serverTimestamp(), updatedAt: serverTimestamp() }, { merge: true }).catch(() => {});
             setRoomId(roomRef.id);
             setRoomCode(code);
             setPhase('lobby');

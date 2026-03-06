@@ -60,6 +60,7 @@ export const STORAGE_KEYS = {
     purchasedPacks: `${STORAGE_PREFIX}-purchased-packs`,
     profiles: `${STORAGE_PREFIX}-profiles`,
     customBranding: `${STORAGE_PREFIX}-custom-branding`,
+    notificationPrefs: `${STORAGE_PREFIX}-notification-prefs`,
 } as const;
 
 /**

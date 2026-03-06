@@ -17,6 +17,7 @@ import { doc, getDoc, setDoc, deleteDoc, collection, query, where, getDocs, writ
 import { auth, db } from '../utils/firebase';
 import { STORAGE_KEYS } from '../config';
 import { showErrorToast } from '../utils/errorToast';
+import { containsProfanity } from '../utils/profanityFilter';
 
 /** Random display name generator */
 const ADJECTIVES = ['Swift', 'Clever', 'Bold', 'Quick', 'Bright', 'Sharp', 'Keen', 'Cool', 'Lucky', 'Epic'];
@@ -132,6 +133,10 @@ export function useFirebaseAuth() {
             .trim()
             .slice(0, 20);
         if (!sanitized) return;
+        if (containsProfanity(sanitized)) {
+            console.warn('Display name rejected: contains profanity');
+            return;
+        }
         localStorage.setItem(STORAGE_KEYS.displayName, sanitized);
         setUser(prev => prev ? { ...prev, displayName: sanitized } : null);
         try {
@@ -153,7 +158,8 @@ export function useFirebaseAuth() {
                 const result = await linkWithPopup(currentUser, provider);
                 const rawName = result.user.displayName || user?.displayName || randomName();
                 // Sanitize Google display name the same way as manual entry
-                const displayName = rawName.replace(/<[^>]*>/g, '').replace(/[^\w\s\-_.!]/g, '').trim().slice(0, 20) || randomName();
+                const sanitizedGoogle = rawName.replace(/<[^>]*>/g, '').replace(/[^\w\s\-_.!]/g, '').trim().slice(0, 20) || randomName();
+                const displayName = containsProfanity(sanitizedGoogle) ? randomName() : sanitizedGoogle;
                 localStorage.setItem(STORAGE_KEYS.displayName, displayName);
                 setUser(prev => prev ? { ...prev, displayName, isAnonymous: false } : null);
                 await setDoc(doc(db, 'users', currentUser.uid), {

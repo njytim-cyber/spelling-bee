@@ -47,7 +47,7 @@ interface RestoreResult {
  * Create a Stripe Checkout session and redirect to it.
  * @returns Checkout session URL (caller should redirect)
  */
-export async function startCheckout(plan: 'monthly' | 'annual'): Promise<string> {
+export async function startCheckout(plan: 'monthly' | 'annual' | 'bee-team-monthly' | 'bee-team-annual'): Promise<string> {
     const fn = httpsCallable<{ plan: string }, CheckoutResult>(functions, 'createCheckoutSession');
     const result = await fn({ plan });
     return validateStripeUrl(result.data.url);

@@ -27,7 +27,7 @@ service cloud.firestore {
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
                            'referralCode', 'referralCount', 'championPassExpiry',
-                           'masteredWordsLevel5Plus'
+                           'masteredWordsLevel5Plus', 'lastRoomCreateAt'
                          ])
                        : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
                            'displayName', 'totalXP', 'bestStreak', 'totalSolved',
@@ -42,7 +42,7 @@ service cloud.firestore {
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
                            'referralCode', 'referralCount', 'championPassExpiry',
-                           'masteredWordsLevel5Plus'
+                           'masteredWordsLevel5Plus', 'lastRoomCreateAt'
                          ])
                       )
                    // String field constraints
@@ -184,12 +184,16 @@ service cloud.firestore {
       // Any authenticated user can read rooms (needed for joining by code)
       allow read: if request.auth != null;
 
-      // Authenticated users can create rooms
+      // Authenticated users can create rooms (rate-limited: 1 per 10s)
       allow create: if request.auth != null
                     && request.resource.data.hostUid == request.auth.uid
                     && request.resource.data.roomCode is string
                     && request.resource.data.roomCode.size() == 6
-                    && request.resource.data.status == 'waiting';
+                    && request.resource.data.status == 'waiting'
+                    && (
+                         !('lastRoomCreateAt' in get(/databases/$(database)/documents/users/$(request.auth.uid)).data)
+                         || request.time > get(/databases/$(database)/documents/users/$(request.auth.uid)).data.lastRoomCreateAt + duration.value(10, 's')
+                       );
 
       // Participants can update; non-participants can only join (add themselves to players)
       allow update: if request.auth != null

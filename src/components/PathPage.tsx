@@ -17,7 +17,7 @@ import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
-import { IconBook, IconTree, IconChart, IconLock } from './Icons';
+import { IconBook, IconTree, IconChart, IconLock, IconCheck } from './Icons';
 import { STORAGE_KEYS } from '../config';
 import { isLevelPremium } from '../hooks/usePremium';
 
@@ -202,15 +202,15 @@ function LevelRow({ lp, onClick, locked = false }: { lp: LevelProgress; onClick:
                             />
                         </div>
                         <span className="text-[9px] ui text-[rgb(var(--color-fg))]/25 shrink-0 tabular-nums">
-                            {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords}
+                            {lp.mastered}/{lp.totalWords > 999 ? `${(lp.totalWords / 1000).toFixed(1)}k` : lp.totalWords} · {Math.round(pct * 100)}%
                         </span>
                     </div>
                 )}
             </div>
 
-            {/* Play indicator or lock */}
+            {/* Play indicator, lock, or completion checkmark */}
             <span className="text-[rgb(var(--color-fg))]/30 text-xs shrink-0">
-                {locked ? <IconLock className="w-3.5 h-3.5 text-[var(--color-gold)]/40" /> : '\u25B6'}
+                {locked ? <IconLock className="w-3.5 h-3.5 text-[var(--color-gold)]/40" /> : pct >= 1 ? <IconCheck className="w-4 h-4 text-[var(--color-correct)]" /> : '\u25B6'}
             </span>
         </button>
     );
@@ -556,6 +556,43 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     </div>
                 </section>
             )}
+
+            {/* ── Overall mastery progress ── */}
+            {(() => {
+                const totalMastered = levelProgress.reduce((s, lp) => s + lp.mastered, 0);
+                const milestones = [
+                    { count: 100, name: 'Word Explorer' },
+                    { count: 500, name: 'Word Scholar' },
+                    { count: 1000, name: 'Word Professor' },
+                    { count: 5000, name: 'Word Savant' },
+                    { count: 10000, name: 'Word Omniscient' },
+                ];
+                const next = milestones.find(m => totalMastered < m.count);
+                const prev = milestones.filter(m => totalMastered >= m.count).pop();
+                const base = prev?.count ?? 0;
+                const target = next?.count ?? milestones[milestones.length - 1].count;
+                const milestonePct = next ? (totalMastered - base) / (target - base) : 1;
+                return (
+                    <section className="mb-4 px-4 py-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
+                        <div className="flex items-baseline justify-between mb-1.5">
+                            <span className="text-xs ui font-medium text-[rgb(var(--color-fg))]/60">Words Mastered</span>
+                            <span className="text-sm ui font-bold text-[var(--color-gold)] tabular-nums">{totalMastered.toLocaleString()}</span>
+                        </div>
+                        {next ? (
+                            <>
+                                <div className="h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden mb-1">
+                                    <div className="h-full rounded-full bg-[var(--color-gold)] transition-all" style={{ width: `${Math.round(milestonePct * 100)}%` }} />
+                                </div>
+                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 text-right">
+                                    Next: {next.name} ({next.count.toLocaleString()})
+                                </div>
+                            </>
+                        ) : (
+                            <div className="text-[9px] ui text-[var(--color-gold)]/60 text-center">All milestones reached!</div>
+                        )}
+                    </section>
+                );
+            })()}
 
             {/* ── Curriculum — flat 10-level list ── */}
             <section>

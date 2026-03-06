@@ -52,7 +52,7 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
     // Track paywall impressions
     useState(() => { trackEvent('paywall_shown'); });
 
-    const handlePurchase = async (plan: 'monthly' | 'annual') => {
+    const handlePurchase = async (plan: 'monthly' | 'annual' | 'bee-team-monthly' | 'bee-team-annual') => {
         trackEvent('purchase_clicked', { plan });
         setPurchasing(true);
         try {
@@ -307,17 +307,19 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                     <motion.button
-                        onClick={() => { trackEvent('purchase_clicked', { plan: 'bee-team-monthly' }); }}
+                        onClick={() => handlePurchase('bee-team-monthly')}
+                        disabled={purchasing}
                         whileTap={{ scale: 0.95 }}
-                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 text-center"
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 text-center disabled:opacity-50"
                     >
                         <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$7.99</span>
                         <span className="block text-[9px] ui text-[rgb(var(--color-fg))]/30">/month</span>
                     </motion.button>
                     <motion.button
-                        onClick={() => { trackEvent('purchase_clicked', { plan: 'bee-team-annual' }); }}
+                        onClick={() => handlePurchase('bee-team-annual')}
+                        disabled={purchasing}
                         whileTap={{ scale: 0.95 }}
-                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative"
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative disabled:opacity-50"
                     >
                         <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[rgb(var(--color-fg))]/20 text-[rgb(var(--color-fg))]/60 px-1.5 py-0.5 rounded-full">
                             SAVE 48%
@@ -326,9 +328,6 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         <span className="block text-[9px] ui text-[rgb(var(--color-fg))]/30">/year</span>
                     </motion.button>
                 </div>
-                <p className="text-[8px] ui text-[rgb(var(--color-fg))]/20 text-center mt-1.5">
-                    Coming soon — Stripe checkout for Bee Team
-                </p>
             </div>
 
             {/* Purchase toast */}

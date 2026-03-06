@@ -705,6 +705,73 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 </div>
             )}
 
+            {/* ═══════ NOTIFICATION PREFERENCES ═══════ */}
+            {(() => {
+                const NOTIF_KEY = STORAGE_KEYS.notificationPrefs;
+                type NotifPrefs = { enabled: boolean; daily: boolean; streak: boolean; reviews: boolean; achievement: boolean; challenge: boolean; tournament: boolean };
+                const defaults: NotifPrefs = { enabled: false, daily: true, streak: true, reviews: true, achievement: true, challenge: true, tournament: true };
+                const stored = localStorage.getItem(NOTIF_KEY);
+                const prefs: NotifPrefs = stored ? { ...defaults, ...JSON.parse(stored) } : defaults;
+                const save = (p: NotifPrefs) => localStorage.setItem(NOTIF_KEY, JSON.stringify(p));
+
+                const Toggle = ({ on, onToggle, label }: { on: boolean; onToggle: () => void; label: string }) => (
+                    <button
+                        role="switch"
+                        aria-checked={on}
+                        onClick={onToggle}
+                        className="flex items-center justify-between w-full py-2"
+                    >
+                        <span className="text-xs ui text-[rgb(var(--color-fg))]/60">{label}</span>
+                        <div className={`relative w-9 h-5 rounded-full transition-colors ${on ? 'bg-[var(--color-correct)]' : 'bg-[rgb(var(--color-fg))]/15'}`}>
+                            <motion.div
+                                className="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow"
+                                animate={{ left: on ? 18 : 2 }}
+                                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                            />
+                        </div>
+                    </button>
+                );
+
+                const types = [
+                    { key: 'daily' as const, label: 'Daily practice reminder' },
+                    { key: 'streak' as const, label: 'Streak at risk' },
+                    { key: 'reviews' as const, label: 'Reviews due' },
+                    { key: 'achievement' as const, label: 'Achievement unlocked' },
+                    { key: 'challenge' as const, label: 'Challenge received' },
+                    { key: 'tournament' as const, label: 'Tournament starting' },
+                ];
+
+                return (
+                    <div className="w-full max-w-sm mt-6">
+                        <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
+                            notifications
+                        </div>
+                        <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl px-4 py-2">
+                            <Toggle
+                                on={prefs.enabled}
+                                onToggle={() => { const next = { ...prefs, enabled: !prefs.enabled }; save(next); }}
+                                label="Enable notifications"
+                            />
+                            {prefs.enabled && (
+                                <div className="border-t border-[rgb(var(--color-fg))]/5 mt-1 pt-1">
+                                    {types.map(t => (
+                                        <Toggle
+                                            key={t.key}
+                                            on={prefs[t.key]}
+                                            onToggle={() => { const next = { ...prefs, [t.key]: !prefs[t.key] }; save(next); }}
+                                            label={t.label}
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
+                            Push notifications coming soon
+                        </div>
+                    </div>
+                );
+            })()}
+
             {/* Reset stats */}
             <button
                 onClick={() => {

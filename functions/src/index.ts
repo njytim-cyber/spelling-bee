@@ -35,9 +35,11 @@ function getStripe(): Stripe {
 }
 
 /** Stripe Price IDs — set via `firebase functions:config:set` or env. */
-const STRIPE_PRICES = {
+const STRIPE_PRICES: Record<string, string> = {
     monthly: process.env.STRIPE_PRICE_MONTHLY || '',
     annual: process.env.STRIPE_PRICE_ANNUAL || '',
+    'bee-team-monthly': process.env.STRIPE_PRICE_BEE_TEAM_MONTHLY || '',
+    'bee-team-annual': process.env.STRIPE_PRICE_BEE_TEAM_ANNUAL || '',
 };
 
 /** Stripe Price IDs for cosmetic packs (one-time purchases). */
@@ -300,8 +302,9 @@ export const createCheckoutSession = onCall(
         const uid = request.auth.uid;
 
         const { plan } = request.data as { plan?: string };
-        if (plan !== 'monthly' && plan !== 'annual') {
-            throw new HttpsError('invalid-argument', 'Plan must be "monthly" or "annual".');
+        const validPlans = ['monthly', 'annual', 'bee-team-monthly', 'bee-team-annual'];
+        if (!plan || !validPlans.includes(plan)) {
+            throw new HttpsError('invalid-argument', 'Invalid plan.');
         }
 
         const priceId = STRIPE_PRICES[plan];

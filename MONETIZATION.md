@@ -43,9 +43,9 @@
 
 ## Pending: Parent/Family Features (Bee Team)
 
-- [ ] Per-child error pattern tracking (needs per-profile aggregation)
+- [x] Per-child error pattern tracking (profile-isolated word history + insights in parent dashboard)
 - [ ] Weekly email digest to parent
-- [ ] Assignment feature (assign word lists to learners)
+- [x] Assignment feature (assign word lists to learners, shown in practice tab)
 - [ ] Parent achievement emails (milestone + share CTA)
 - [ ] COPPA-compliant parent email verification
 
@@ -53,9 +53,9 @@
 
 ## Pending: Digital Badges & Social Proof
 
-- [ ] Shareable badge images for achievements
-- [ ] "Verified Speller" badge (mastered 100+ words at Level 5+)
-- [ ] Embed badges in share cards
+- [x] Shareable badge images for achievements (800×800 PNG share cards)
+- [x] "Verified Speller" badge (mastered 100+ words at Level 5+)
+- [x] Embed badges in share cards (session summary + badge share generator)
 
 ---
 
