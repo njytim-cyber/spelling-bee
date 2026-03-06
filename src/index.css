@@ -75,13 +75,21 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  html,
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
   body,
   #root {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    touch-action: pan-x pan-y pinch-zoom;
+    touch-action: manipulation;
     user-select: none;
     -webkit-user-select: none;
     position: fixed;

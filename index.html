@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
   <title>Spelling Bee — Word Spelling Game</title>
   <meta name="description"
     content="Swipe your way to spelling mastery. Fast, fun, addictive. Challenge your friends!" />
@@ -156,9 +156,9 @@
     font-src 'self';
     connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.cloudfunctions.net;
     img-src 'self' data:;
+    media-src 'self' blob:;
     object-src 'none';
     base-uri 'self';
-    frame-ancestors 'none';
   ">
 </head>
 
