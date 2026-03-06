@@ -491,7 +491,7 @@ export const AchievementBadge = memo(function AchievementBadge({ achievementId, 
     if (!Icon) return null;
 
     return (
-        <div className={`flex flex-col items-center gap-1 w-16 ${unlocked ? '' : 'opacity-60'}`}>
+        <div className={`group flex flex-col items-center gap-1 w-16 ${unlocked ? '' : 'opacity-60'}`}>
             <div className={`relative w-14 h-14 rounded-2xl border flex items-center justify-center ${equipped
                 ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/5'
                 : unlocked
@@ -502,7 +502,7 @@ export const AchievementBadge = memo(function AchievementBadge({ achievementId, 
                 {unlocked && onShare && (
                     <button
                         onClick={(e) => { e.stopPropagation(); onShare(); }}
-                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center shadow-sm hover:scale-110 transition-transform"
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity"
                         aria-label={`Share ${name}`}
                     >
                         <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="#1a1a24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

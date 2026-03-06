@@ -22,7 +22,7 @@ npm run verify     # Lint + typecheck + test + build
 - **Achievements** — 27 badges across core, hard mode, timed, and mastery categories
 - **Cosmetics** — chalk themes, swipe trails, stick-figure avatars with flair
 - **Champion Pass** — premium tier with all 10 levels, unlimited SRS, etymology, roots
-- **Bee Team** — family/classroom tier with 5 learner profiles + parent dashboard
+- **Bee Team** — family tier with 5 learner profiles + parent dashboard
 - **Certificates** — printable level completion, bee champion, weekly champion certificates
 - **PWA** — installable, offline-capable
 

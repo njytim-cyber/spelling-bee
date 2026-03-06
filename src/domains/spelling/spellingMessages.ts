@@ -37,7 +37,6 @@ const SPELLING_EASTER_EGGS: string[] = [
     '"Dreamt" is the only English word ending in "mt"! 🌙',
     'The word "bookkeeper" has three consecutive double-letter pairs! 👀',
     'Even Shakespeare made spelling mistakes — you\'re in good company! 🖋️',
-    '"Schoolmaster" is an anagram of "the classroom"! 🏫',
     'Bee Buddy says: spelling bees are the coolest! And bees are never wrong! 🐝',
 ];
 

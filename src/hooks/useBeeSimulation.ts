@@ -18,11 +18,10 @@ export type BeePhase = 'listening' | 'asking' | 'spelling' | 'feedback' | 'elimi
 export type InfoRequest = 'definition' | 'sentence' | 'origin' | 'partOfSpeech' | 'repeat' | 'pronounceAgain' | 'spellInSections' | 'roots';
 
 /** Bee competition level — controls starting difficulty floor */
-export type BeeLevel = 'classroom' | 'district' | 'state' | 'national';
+export type BeeLevel = 'district' | 'state' | 'national';
 
 /** Minimum difficulty level per bee level (the floor — rounds still ramp up from here) */
 const BEE_LEVEL_FLOOR: Record<BeeLevel, number> = {
-    classroom: 1,   // starts at level 1, ramps to ~6
     district: 3,    // starts at level 3, ramps to ~8
     state: 5,       // starts at level 5, ramps to ~9
     national: 7,    // starts at level 7, ramps to 10
@@ -30,7 +29,6 @@ const BEE_LEVEL_FLOOR: Record<BeeLevel, number> = {
 
 /** Timer duration per bee level (seconds). null = no timer. */
 const TIMER_DURATION: Record<BeeLevel, number | null> = {
-    classroom: null,
     district: 120,
     state: 90,
     national: 60,
@@ -61,10 +59,9 @@ export interface BeeSimState {
     timerStartedAt: number;
 }
 
-// NPC skill scales with bee level: classroom is easy, national is tough
+// NPC skill scales with bee level: district is easy, national is tough
 // [brainiac, eager, player(unused), nervous]
 const NPC_SKILL_BY_LEVEL: Record<BeeLevel, number[]> = {
-    classroom: [0.80, 0.60, 1.0, 0.35],
     district:  [0.88, 0.72, 1.0, 0.45],
     state:     [0.93, 0.80, 1.0, 0.52],
     national:  [0.96, 0.82, 1.0, 0.55],
@@ -95,7 +92,7 @@ function redactWord(sentence: string, word: string): string {
     return sentence.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), blank);
 }
 
-function pickBeeWord(round: number, category?: string, beeLevel: BeeLevel = 'classroom'): SpellingWord {
+function pickBeeWord(round: number, category?: string, beeLevel: BeeLevel = 'district'): SpellingWord {
     // Difficulty ramps from the bee level's floor
     const floor = BEE_LEVEL_FLOOR[beeLevel];
     const diffLevel = Math.min(10, floor + Math.floor(round / 3));
@@ -176,7 +173,7 @@ export function simulateNpcTurns(
     return { npcResults: results, npcAlive: alive, npcScores: scores, npcSpellings: spellings };
 }
 
-export function useBeeSimulation(category?: string, dictationMode = false, beeLevel: BeeLevel = 'classroom') {
+export function useBeeSimulation(category?: string, dictationMode = false, beeLevel: BeeLevel = 'district') {
     const [state, setState] = useState<BeeSimState>(INITIAL_STATE);
     const { speak, speakWordNumber, speakLetters, isSpeaking, isSupported } = usePronunciation();
     const startTimeRef = useRef(0);
@@ -205,7 +202,7 @@ export function useBeeSimulation(category?: string, dictationMode = false, beeLe
     const startRound = useCallback(() => {
         const word = pickBeeWord(state.round, category, beeLevel);
         if (dictationMode) {
-            // Dictation: skip classroom, go straight to spelling
+            // Dictation: go straight to spelling
             setState(prev => ({
                 ...prev,
                 ...dictationInitial,

@@ -46,18 +46,3 @@ export function generateWeeklyTournament(): EngineItem[] {
     problems.forEach((p, i) => { p.id = `tournament-${seed}-${i}`; });
     return problems;
 }
-
-/** Classroom code: just a short string seed. Same seed → same words for all students. */
-export function generateClassroomChallenge(code: string, count = 20): EngineItem[] {
-    const seed = stringSeed(`classroom-${code}`);
-    const rng = createSeededRng(seed);
-
-    const problems: EngineItem[] = [];
-    for (let i = 0; i < count; i++) {
-        const cat = CATEGORIES[Math.floor(rng() * CATEGORIES.length)];
-        const difficulty = 2 + Math.floor(i / 4);
-        problems.push(generateSpellingItem(difficulty, cat, rng));
-    }
-    problems.forEach((p, i) => { p.id = `classroom-${seed}-${i}`; });
-    return problems;
-}

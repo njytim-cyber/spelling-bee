@@ -1,7 +1,6 @@
 import { memo, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './Button';
-import { InputModal } from './InputModal';
 import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
@@ -59,12 +58,11 @@ interface Props {
     onUpgrade?: () => void;
     on1v1?: () => void;
     onWeeklyTournament?: () => void;
-    onClassroomCode?: (code: string) => void;
     onCertificate?: (weekLabel: string, xpEarned: number) => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onClassroomCode, onCertificate }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onCertificate }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -75,7 +73,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
     const [pingSuccess, setPingSuccess] = useState('');
     const [rankChange, setRankChange] = useState('');
     const prevRankRef = useRef<number | null>(null);
-    const [showClassroomInput, setShowClassroomInput] = useState(false);
     const pingSuccessTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const pingCooldownTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const pingCountdownInterval = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
@@ -276,19 +273,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </button>
                 )}
 
-                {/* Classroom Code */}
-                {onClassroomCode && (
-                    <button
-                        onClick={() => setShowClassroomInput(true)}
-                        className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors"
-                    >
-                        <span className="text-2xl">📝</span>
-                        <div className="text-left flex-1">
-                            <div className="text-sm ui font-bold text-[var(--color-chalk)]">Classroom Code</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Enter a code from your teacher</div>
-                        </div>
-                    </button>
-                )}
             </div>
 
             {/* Leaderboard header + tab toggle */}
@@ -372,7 +356,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && !entry.uid.startsWith('npc-') && setSelectedPlayer(entry)}>
                                 <AvatarSvg
                                     config={entry.stickFigureStyle}
-                                    size={18}
+                                    size={28}
                                     className="flex-shrink-0"
                                     style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}
                                 />
@@ -477,10 +461,11 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                             exit={{ y: '100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                         >
-                            <div className="flex items-center gap-3 mb-6">
+                            <div className="flex items-center gap-4 mb-4">
                                 <AvatarSvg
                                     config={selectedPlayer.stickFigureStyle}
-                                    size={32}
+                                    size={56}
+                                    animate
                                     style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'var(--color-chalk)' }}
                                 />
                                 <div>
@@ -490,8 +475,22 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                     >
                                         {selectedPlayer.displayName}
                                     </h3>
-                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} &bull; {selectedPlayer.totalXP.toLocaleString()} XP{selectedPlayer.weeklyXP > 0 ? ` · ${selectedPlayer.weeklyXP.toLocaleString()} this week` : ''}</p>
+                                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} · {selectedPlayer.totalXP.toLocaleString()} XP</p>
                                 </div>
+                            </div>
+
+                            {/* Stats row */}
+                            <div className="flex gap-2 mb-4">
+                                {[
+                                    { label: 'Best Streak', value: `${selectedPlayer.bestStreak}×` },
+                                    { label: 'Accuracy', value: `${selectedPlayer.accuracy}%` },
+                                    { label: 'This Week', value: selectedPlayer.weeklyXP.toLocaleString() + ' XP' },
+                                ].map(s => (
+                                    <div key={s.label} className="flex-1 py-2 px-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.04] text-center">
+                                        <div className="text-sm ui font-bold text-[rgb(var(--color-fg))]/70">{s.value}</div>
+                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30">{s.label}</div>
+                                    </div>
+                                ))}
                             </div>
 
                             <div className="space-y-3">
@@ -532,17 +531,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 )}
             </AnimatePresence>
 
-            {/* Classroom code input modal */}
-            <AnimatePresence>
-                {showClassroomInput && onClassroomCode && (
-                    <InputModal
-                        title="Classroom Code"
-                        placeholder="Enter code from your teacher"
-                        onSubmit={(code) => { onClassroomCode(code); setShowClassroomInput(false); }}
-                        onClose={() => setShowClassroomInput(false)}
-                    />
-                )}
-            </AnimatePresence>
         </div>
     );
 });

@@ -13,7 +13,7 @@
 - **Referral system**: SPELL-XXXX codes, both parties get 7 days, milestone rewards
 - **Certificates**: Level completion, bee champion, weekly champion — print + PNG download
 - **Analytics**: 21 tracked event types, GA4 support
-- **Social sharing**: Referral codes in all share cards, "Beat my score" challenge links, weekly tournament, classroom codes
+- **Social sharing**: Referral codes in all share cards, "Beat my score" challenge links, weekly tournament
 
 ---
 

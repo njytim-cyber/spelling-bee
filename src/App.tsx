@@ -83,7 +83,7 @@ import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 import { recordSessionHistory } from './utils/sessionHistory';
 import { ChallengeBanner } from './components/ChallengeBanner';
-import { generateWeeklyTournament, generateClassroomChallenge } from './utils/weeklyTournament';
+import { generateWeeklyTournament } from './utils/weeklyTournament';
 import { useUnlockTracker } from './hooks/useUnlockTracker';
 import { UnlockCelebration } from './components/UnlockCelebration';
 import { Confetti } from './components/Confetti';
@@ -113,7 +113,6 @@ function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
   return (categoryId: string, challengeId: string | null): EngineItem[] => {
     if (challengeId) {
       if (challengeId === 'weekly-tournament') return generateWeeklyTournament();
-      if (challengeId.startsWith('classroom-')) return generateClassroomChallenge(challengeId.slice(10));
       return generateChallenge(challengeId);
     }
     if (categoryId === 'daily') {
@@ -1144,13 +1143,6 @@ function AppInner() {
                 {flash === 'wrong' && (shieldBroken ? 'Wrong! Shield used, streak saved.' : 'Wrong! Streak reset.')}
                 {milestone && `Milestone: ${milestone}`}
               </div>
-              {stats.streakShields > 0 && streak > 0 && (
-                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1 flex items-center gap-0.5" title="Shields protect your streak from 1 wrong answer">
-                  {'🛡️'.repeat(stats.streakShields)}
-                  <span className="ml-0.5 text-[8px]">{stats.streakShields === 1 ? 'shield' : 'shields'}</span>
-                </div>
-              )}
-
               {/* Streak display */}
               <AnimatePresence>
                 {streak > 1 && (
@@ -1234,7 +1226,7 @@ function AppInner() {
                   initial={{ opacity: 1, y: 0 }}
                   animate={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,16px)+100px)] z-30 text-lg ui font-bold text-[var(--color-gold)] pointer-events-none"
+                  className="absolute left-1/2 -translate-x-1/2 top-[calc(env(safe-area-inset-top,12px)+100px)] z-30 text-lg ui font-bold text-[var(--color-gold)] pointer-events-none"
                 >
                   +{pointsFloater} pts
                 </motion.div>
@@ -1535,7 +1527,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onClassroomCode={(code) => { trackEvent('classroom_code_used'); setChallengeId(`classroom-${code}`); setQuestionType('challenge'); setSessionSize(20); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} /></Suspense>
           </motion.div>
         )}
 
