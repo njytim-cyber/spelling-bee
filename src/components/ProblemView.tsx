@@ -116,8 +116,8 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     useEffect(() => {
         const word = p.meta?.['word'];
         if (typeof word === 'string' && ttsSupported) {
-            // Small delay to let the problem render first
-            const timer = setTimeout(() => speak(word), 300);
+            // Near-instant — just enough for React to commit the DOM
+            const timer = setTimeout(() => speak(word), 50);
             return () => clearTimeout(timer);
         }
     }, [p.id, p.meta, speak, ttsSupported]);

@@ -295,8 +295,8 @@ function AppInner() {
   } = useUser();
 
   const [activeTab, setActiveTab] = useState<Tab>('game');
-  const [timedMode, setTimedMode] = useState(false);
-  const [timedVariant, setTimedVariant] = useState<import('./engine/domain').TimedVariant>('normal');
+  const timedMode = false;
+  const timedVariant: import('./engine/domain').TimedVariant = 'normal';
   const { reducedMotion } = useReducedMotion();
 
   // ── Modals ──
@@ -680,15 +680,8 @@ function AppInner() {
 
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
-  const [timedToast, fireTimedToast] = useTimedFlag(3000);
+  const [timedToast] = useTimedFlag(3000);
   const [showScoreHelp, setShowScoreHelp] = useState(false);
-  const toggleTimedMode = useCallback(() => {
-    setTimedMode(t => {
-      if (!t) fireTimedToast();
-      else setTimedVariant('normal'); // reset variant when turning off
-      return !t;
-    });
-  }, [fireTimedToast]);
 
   // ── Score floater ──
   const prevScoreRef = useRef(0);
@@ -1093,10 +1086,14 @@ function AppInner() {
             {!isImmersive && <div className="landscape-score flex flex-col items-center pt-[calc(env(safe-area-inset-top,12px)+32px)] pb-2 z-10 pointer-events-none [&_button]:pointer-events-auto">
               {/* Mode / category label — always shows what the user is doing */}
               {(() => {
-                const progress = totalAnswered + problems.length > 0 ? `${totalAnswered}/${totalAnswered + problems.length}` : null;
+                const total = totalAnswered + problems.length;
+                const progress = total > 0 ? `${totalAnswered} / ${total}` : null;
                 const ProgressDot = () => progress ? <><span className="text-[rgb(var(--color-fg))]/30">·</span><span className="text-[rgb(var(--color-fg))]/40">{progress}</span></> : null;
+                const isTournament = questionType === 'challenge' && challengeId === 'weekly-tournament';
                 const modeLabels: Partial<Record<string, string>> = {
-                  challenge: '⚔️ Challenge', daily: '📅 Daily Challenge', review: '📖 Review',
+                  challenge: isTournament ? '🏆 Weekly Tournament' : '⚔️ Challenge',
+                  daily: '📅 Daily Challenge',
+                  review: '📖 Review',
                 };
                 const label = modeLabels[questionType];
                 if (!label) return null;
@@ -1350,8 +1347,8 @@ function AppInner() {
               )}
             </AnimatePresence>
 
-            {/* ── Session complete overlay ── */}
-            {sessionComplete && (
+            {/* ── Session complete overlay (path sessions only — dailyComplete handles challenges/tournaments) ── */}
+            {sessionComplete && !dailyComplete && (
               <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
                 <div className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-gold)]/30 text-center">
                   <div className="text-2xl chalk text-[var(--color-gold)] font-bold mb-2">Session Complete!</div>
@@ -1378,11 +1375,6 @@ function AppInner() {
               <ActionButtons
                 questionType={questionType}
                 onTypeChange={setQuestionType}
-                timedMode={timedMode}
-                onTimedModeToggle={toggleTimedMode}
-                timerProgress={timerProgress}
-                timedVariant={timedVariant}
-                onTimedVariantChange={setTimedVariant}
                 guidedMode={guidedMode}
                 onGuidedModeToggle={toggleGuidedMode}
                 isPremium={isPremium}
