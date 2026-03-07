@@ -238,6 +238,7 @@ export function useGameLoop(
             onAnswerRef.current?.(current, true, tts, typedText);
             recordAnswer(tts, true);
             const isFast = tts < FAST_ANSWER_MS;
+            const multiplier = (current.meta?.['bonusMultiplier'] as number) ?? 1;
             correctCountRef.current += 1;
             let newStreak = 0;
             let milestoneEmoji = '';
@@ -252,7 +253,7 @@ export function useGameLoop(
                     totalCorrect: prev.totalCorrect + 1,
                     totalAnswered: prev.totalAnswered + 1,
                     answerHistory: [...prev.answerHistory, true].slice(-50),
-                    score: prev.score + scoreCorrect(newStreak, isFast),
+                    score: prev.score + scoreCorrect(newStreak, isFast, multiplier),
                     flash: 'correct',
                     chalkState: newStreak >= 10 ? 'streak' : (prev.wrongStreak >= 3 ? 'comeback' as ChalkState : 'success'),
                     milestone: milestoneEmoji,

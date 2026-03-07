@@ -61,6 +61,13 @@ export const STORAGE_KEYS = {
     profiles: `${STORAGE_PREFIX}-profiles`,
     customBranding: `${STORAGE_PREFIX}-custom-branding`,
     notificationPrefs: `${STORAGE_PREFIX}-notification-prefs`,
+    sharedDailyAttempt: `${STORAGE_PREFIX}-shared-daily`,
+    sharedDailyStreak: `${STORAGE_PREFIX}-shared-daily-streak`,
+    testimonialDismissed: `${STORAGE_PREFIX}-testimonial-dismissed`,
+    friendCode: `${STORAGE_PREFIX}-friend-code`,
+    friendsCache: `${STORAGE_PREFIX}-friends-cache`,
+    surpriseHistory: `${STORAGE_PREFIX}-surprise-history`,
+    droppedCosmetics: `${STORAGE_PREFIX}-dropped-cosmetics`,
 } as const;
 
 /**
@@ -87,6 +94,10 @@ export const FIRESTORE = {
     PINGS: 'pings',
     ROOMS: 'rooms',
     REFERRALS: 'referrals',
+    DAILY_WORDS: 'dailyWords',
+    TESTIMONIALS: 'testimonials',
+    FRIENDSHIPS: 'friendships',
+    FRIEND_CODES: 'friendCodes',
 } as const;
 
 /** Levels at or below this number are free. Levels above require Champion Pass. */
@@ -101,6 +112,13 @@ export const PREMIUM_CUSTOM_LIST_CAP = 20;
 
 /** Max learner profiles per Bee Team account. */
 export const BEE_TEAM_MAX_PROFILES = 5;
+
+/** Free users can add at most this many friends. Champion Pass = PREMIUM_FRIEND_CAP. */
+export const FREE_FRIEND_CAP = 5;
+export const PREMIUM_FRIEND_CAP = 20;
+
+/** Free users: 1 same-word challenge per day. Premium: unlimited. */
+export const FREE_DAILY_CHALLENGES = 1;
 
 /** Streak day counts that trigger a celebratory share prompt. */
 export const STREAK_MILESTONES = [7, 14, 30, 60, 100] as const;

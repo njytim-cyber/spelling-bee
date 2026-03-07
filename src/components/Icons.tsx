@@ -478,3 +478,13 @@ export function IconShop({ className = 'w-6 h-6' }: IconProps) {
         </svg>
     );
 }
+
+export function IconGem({ className = 'w-6 h-6' }: IconProps) {
+    return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="12 2 2 9 6 22 18 22 22 9" />
+            <polyline points="2 9 12 13 22 9" />
+            <line x1="12" y1="2" x2="12" y2="13" />
+        </svg>
+    );
+}

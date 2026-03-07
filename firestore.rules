@@ -27,7 +27,8 @@ service cloud.firestore {
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
                            'referralCode', 'referralCount', 'championPassExpiry',
-                           'masteredWordsLevel5Plus', 'lastRoomCreateAt'
+                           'masteredWordsLevel5Plus', 'lastRoomCreateAt',
+                           'friendCode'
                          ])
                        : request.resource.data.diff(resource.data).affectedKeys().hasOnly([
                            'displayName', 'totalXP', 'bestStreak', 'totalSolved',
@@ -42,7 +43,8 @@ service cloud.firestore {
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
                            'referralCode', 'referralCount', 'championPassExpiry',
-                           'masteredWordsLevel5Plus', 'lastRoomCreateAt'
+                           'masteredWordsLevel5Plus', 'lastRoomCreateAt',
+                           'friendCode'
                          ])
                       )
                    // String field constraints
@@ -120,7 +122,11 @@ service cloud.firestore {
                            && request.resource.data.referralCount <= 100))
                    && (!('championPassExpiry' in request.resource.data)
                        || (request.resource.data.championPassExpiry is string
-                           && request.resource.data.championPassExpiry.size() <= 30));
+                           && request.resource.data.championPassExpiry.size() <= 30))
+                   && (!('friendCode' in request.resource.data)
+                       || (request.resource.data.friendCode is string
+                           && request.resource.data.friendCode.size() <= 10
+                           && request.resource.data.friendCode.matches('^BEE-[A-Z2-9]{4}$')));
     }
 
     // ── Pings Collection (social nudges) ──
@@ -135,7 +141,8 @@ service cloud.firestore {
       allow create: if request.auth != null
                     && request.resource.data.keys().hasOnly([
                          'targetUid', 'senderUid', 'senderName',
-                         'createdAt', 'read'
+                         'createdAt', 'read',
+                         'type', 'roomCode'
                        ])
                     && request.resource.data.senderUid == request.auth.uid
                     && request.resource.data.senderUid != request.resource.data.targetUid
@@ -215,6 +222,137 @@ service cloud.firestore {
 
       // Only Cloud Functions (admin SDK) can write
       allow write: if false;
+    }
+
+    // ── Daily Words (shared daily word community stats) ──
+    match /dailyWords/{dateKey} {
+      // Any authenticated user can read (community stats)
+      allow read: if request.auth != null;
+
+      // Auto-created/updated on first attempt via setDoc merge + increment
+      allow create, update: if request.auth != null
+                            && dateKey.matches('^\\d{4}-\\d{2}-\\d{2}$')
+                            && request.resource.data.keys().hasOnly([
+                                 'word', 'difficulty', 'totalAttempts', 'correctCount', 'createdAt'
+                               ])
+                            && request.resource.data.word is string
+                            && request.resource.data.word.size() <= 50
+                            && request.resource.data.difficulty is number
+                            && request.resource.data.difficulty >= 1
+                            && request.resource.data.difficulty <= 10
+                            && request.resource.data.totalAttempts is number
+                            && request.resource.data.totalAttempts >= 0
+                            && request.resource.data.correctCount is number
+                            && request.resource.data.correctCount >= 0;
+
+      allow delete: if false;
+
+      // User attempts — one per user per day
+      match /attempts/{uid} {
+        allow read: if request.auth != null;
+
+        // Users can only create their OWN attempt, once
+        allow create: if request.auth != null
+                      && request.auth.uid == uid
+                      && request.resource.data.keys().hasOnly([
+                           'correct', 'attempts', 'timeMs', 'completedAt'
+                         ])
+                      && request.resource.data.correct is bool
+                      && request.resource.data.attempts is number
+                      && request.resource.data.attempts >= 1
+                      && request.resource.data.attempts <= 10
+                      && request.resource.data.timeMs is number
+                      && request.resource.data.timeMs >= 0
+                      && request.resource.data.timeMs <= 300000;
+
+        allow update, delete: if false;
+      }
+    }
+
+    // ── Testimonials (user feedback collection) ──
+    match /testimonials/{testimonialId} {
+      // Admin-only reads via console
+      allow read: if false;
+
+      // Authenticated users can submit testimonials (create only)
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly([
+                         'text', 'milestoneType', 'masteredCount', 'dayStreak',
+                         'sessionsPlayed', 'level', 'isPremium', 'displayName', 'submittedAt'
+                       ])
+                    && request.resource.data.text is string
+                    && request.resource.data.text.size() >= 5
+                    && request.resource.data.text.size() <= 500;
+
+      allow update, delete: if false;
+    }
+
+    // ── Friendships (buddy streaks + friend graph) ──
+    match /friendships/{friendshipId} {
+      // Only the two users in the friendship can read
+      allow read: if request.auth != null
+                  && request.auth.uid in resource.data.uids;
+
+      // Create: sender must be authenticated and in the uids array
+      allow create: if request.auth != null
+                    && request.auth.uid in request.resource.data.uids
+                    && request.resource.data.requestedBy == request.auth.uid
+                    && request.resource.data.keys().hasOnly([
+                         'uids', 'uidA', 'uidB', 'status', 'requestedBy',
+                         'nameA', 'nameB', 'avatarA', 'avatarB', 'themeA', 'themeB',
+                         'streakCount', 'lastActiveA', 'lastActiveB',
+                         'streakLastDate', 'longestStreak',
+                         'createdAt', 'updatedAt'
+                       ])
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.uids is list
+                    && request.resource.data.uids.size() == 2
+                    && request.resource.data.streakCount == 0
+                    && request.resource.data.nameA is string
+                    && request.resource.data.nameA.size() <= 20
+                    && request.resource.data.nameB is string
+                    && request.resource.data.nameB.size() <= 20;
+
+      // Update: only participants; restricted fields
+      allow update: if request.auth != null
+                    && request.auth.uid in resource.data.uids
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                         'status', 'nameA', 'nameB', 'avatarA', 'avatarB', 'themeA', 'themeB',
+                         'streakCount', 'lastActiveA', 'lastActiveB',
+                         'streakLastDate', 'longestStreak', 'updatedAt'
+                       ])
+                    // Status can only go pending → active (acceptance)
+                    && (resource.data.status == request.resource.data.status
+                        || (resource.data.status == 'pending'
+                            && request.resource.data.status == 'active'
+                            && request.auth.uid != resource.data.requestedBy))
+                    && request.resource.data.streakCount is number
+                    && request.resource.data.streakCount >= 0
+                    && request.resource.data.streakCount <= 3650;
+
+      // Either participant can delete (unfriend)
+      allow delete: if request.auth != null
+                    && request.auth.uid in resource.data.uids;
+    }
+
+    // ── Friend Codes (reverse lookup for adding friends) ──
+    match /friendCodes/{code} {
+      // Anyone authenticated can look up a friend code
+      allow read: if request.auth != null;
+
+      // Users can only create their own code entry
+      allow create: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid
+                    && request.resource.data.keys().hasOnly(['uid', 'createdAt'])
+                    && request.resource.data.uid is string;
+
+      // No updates or deletes (codes are permanent)
+      allow update, delete: if false;
+    }
+
+    // ── Deploy Health (written by Cloud Function, admin-only read) ──
+    match /deployHealth/{docId} {
+      allow read, write: if false;
     }
 
     // ── Web Vitals (performance monitoring) ──

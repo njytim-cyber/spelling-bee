@@ -6,10 +6,11 @@
  */
 import { memo, useMemo } from 'react';
 import type { WordRecord } from '../hooks/useWordHistory';
-import { getPatternAccuracy, getMistakeInsights, type AccuracyBar } from '../utils/errorPatterns';
+import { getPatternAccuracy, getMistakeInsights, getWeakWords, type AccuracyBar } from '../utils/errorPatterns';
 import { getWordMap } from '../domains/spelling/words';
 import { getSessionsByDay, getSessionsByCategory, getPersonalRecords, getTimedStats } from '../utils/sessionHistory';
 import { IconLock } from './Icons';
+import { Button } from './Button';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -270,12 +271,13 @@ function SpeedPerformance({ isPremium }: { isPremium: boolean }) {
 interface AnalyticsContentProps {
     records: Record<string, WordRecord>;
     onPractice?: (category: string) => void;
+    onPracticeWeaknesses?: (words: string[]) => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
     bestStreak?: number;
 }
 
-export const AnalyticsContent = memo(function AnalyticsContent({ records, isPremium = false, onUpgrade, bestStreak = 0 }: AnalyticsContentProps) {
+export const AnalyticsContent = memo(function AnalyticsContent({ records, onPracticeWeaknesses, isPremium = false, onUpgrade, bestStreak = 0 }: AnalyticsContentProps) {
     const patterns = useMemo(() => getPatternAccuracy(records), [records]);
     const { strengths, weaknesses } = useMemo(() => splitPatterns(patterns), [patterns]);
     const snapshot = useMemo(() => getMasterySnapshot(records), [records]);
@@ -360,6 +362,19 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records, isPrem
                             <PatternRow key={w.key} bar={w} progress={weaknessProgress.get(w.key)} />
                         ))}
                     </div>
+                    {onPracticeWeaknesses && (() => {
+                        const weakWords = getWeakWords(records);
+                        return weakWords.length > 0 ? (
+                            <Button
+                                size="sm"
+                                variant="secondary"
+                                className="w-full mt-3"
+                                onClick={() => onPracticeWeaknesses(weakWords)}
+                            >
+                                Practice weaknesses ({weakWords.length} words)
+                            </Button>
+                        ) : null;
+                    })()}
                 </section>
             )}
 

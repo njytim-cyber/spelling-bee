@@ -482,6 +482,427 @@ export const SPELLING_TRICKS: SpellingTrick[] = [
             { prompt: 'You ___ the answer:', answer: 'know', wrong: ['now', 'kno'] },
         ]),
     },
+
+    // ── Phonics Extras (difficulty 1-2) ───────────────────────────────────────
+
+    {
+        id: 'sh-ch-th',
+        title: 'SH, CH, TH',
+        description: 'Digraphs — two letters making one sound',
+        difficulty: 1,
+        icon: '🤫',
+        lesson: {
+            word: 'ship',
+            steps: [
+                'Some sounds need TWO letters working together.',
+                'SH makes a hushing sound: ship, fish, shoe.',
+                'CH makes a choppy sound: chip, much, church.',
+                'TH makes a buzzy or soft sound: this, think, bath.',
+            ],
+            rule: 'SH (ship, fish). CH (chip, church). TH (think, bath). Two letters, one sound.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct? __ip (a boat)', answer: 'ship', wrong: ['shipp', 'sip'] },
+            { prompt: 'Which is correct? fi__', answer: 'fish', wrong: ['fich', 'fith'] },
+            { prompt: 'Which is correct? __ink', answer: 'think', wrong: ['thinkk', 'tink'] },
+            { prompt: 'Which is correct? mu__', answer: 'much', wrong: ['mush', 'muth'] },
+            { prompt: 'Which is correct? ba__', answer: 'bath', wrong: ['bach', 'bash'] },
+        ]),
+    },
+    {
+        id: 'ar-or-er',
+        title: 'R-Controlled Vowels',
+        description: 'When R changes the vowel sound: ar, or, er/ir/ur',
+        difficulty: 2,
+        icon: '🏴‍☠️',
+        lesson: {
+            word: 'car',
+            steps: [
+                'When R follows a vowel, it changes the sound completely.',
+                'AR says /ar/ as in car, star, farm.',
+                'OR says /or/ as in for, corn, horse.',
+                'ER, IR, UR all sound the same: her, bird, turn.',
+            ],
+            rule: 'AR (car, star). OR (for, corn). ER/IR/UR all sound alike (her, bird, turn).',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct? st__', answer: 'star', wrong: ['ster', 'stor'] },
+            { prompt: 'Which is correct? f__m', answer: 'farm', wrong: ['ferm', 'form'] },
+            { prompt: 'Which is correct? h__', answer: 'her', wrong: ['har', 'hur'] },
+            { prompt: 'Which is correct? b__d', answer: 'bird', wrong: ['berd', 'burd'] },
+            { prompt: 'Which is correct? t__n', answer: 'turn', wrong: ['tern', 'tirn'] },
+            { prompt: 'Which is correct? h__se', answer: 'horse', wrong: ['harse', 'hurse'] },
+        ]),
+    },
+    {
+        id: 'long-vowel-teams',
+        title: 'Vowel Teams',
+        description: 'Two vowels together make a long sound: ea, ai, oa',
+        difficulty: 2,
+        icon: '👯',
+        lesson: {
+            word: 'team',
+            steps: [
+                'When two vowels walk together, the first one usually talks (says its name).',
+                'EA: team, read, clean.',
+                'AI: rain, wait, paint.',
+                'OA: boat, coat, road.',
+            ],
+            rule: 'EA (team, clean). AI (rain, paint). OA (boat, road). First vowel says its name.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct? t__m', answer: 'team', wrong: ['teem', 'tame'] },
+            { prompt: 'Which is correct? cl__n', answer: 'clean', wrong: ['cleen', 'clane'] },
+            { prompt: 'Which is correct? b__t', answer: 'boat', wrong: ['bote', 'boot'] },
+            { prompt: 'Which is correct? p__nt', answer: 'paint', wrong: ['paynt', 'pant'] },
+            { prompt: 'Which is correct? r__d', answer: 'road', wrong: ['rode', 'rood'] },
+        ]),
+    },
+
+    // ── Vowel Patterns Extras (difficulty 3) ──────────────────────────────────
+
+    {
+        id: 'schwa',
+        title: 'The Schwa',
+        description: 'Unstressed vowels that all sound like "uh"',
+        difficulty: 3,
+        icon: '🫥',
+        lesson: {
+            word: 'about',
+            steps: [
+                'The schwa is the laziest vowel sound — it says "uh" no matter which vowel it is.',
+                'The A in "about" sounds like "uh-bout".',
+                'The O in "lemon" sounds like "lem-uhn".',
+                'This is why we misspell: we hear "uh" but need the right letter!',
+            ],
+            rule: 'The schwa (uh) can be any vowel: about, lemon, banana, pencil. Listen for the unstressed syllable.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct? ab___t', answer: 'about', wrong: ['ubout', 'abuot'] },
+            { prompt: 'Which is correct? lem___n', answer: 'lemon', wrong: ['lemun', 'lemen'] },
+            { prompt: 'Which is correct? ban___na', answer: 'banana', wrong: ['banena', 'banuna'] },
+            { prompt: 'Which is correct? penc___l', answer: 'pencil', wrong: ['pencul', 'pencel'] },
+            { prompt: 'Which is correct? sal___d', answer: 'salad', wrong: ['salud', 'saled'] },
+        ]),
+    },
+    {
+        id: 'ough-patterns',
+        title: 'The OUGH Family',
+        description: 'One spelling, many sounds: through, though, rough, cough',
+        difficulty: 4,
+        icon: '🤯',
+        lesson: {
+            word: 'through',
+            steps: [
+                'OUGH is the trickiest letter combo in English — it has 6+ sounds!',
+                'Through = "oo" sound.',
+                'Though = "oh" sound.',
+                'Rough / tough = "uff" sound.',
+                'Cough = "off" sound. Thought = "aw" sound.',
+            ],
+            rule: 'OUGH: through (oo), though (oh), rough (uff), cough (off), thought (aw). Memorize each word!',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct? thr___', answer: 'through', wrong: ['threw', 'throu'] },
+            { prompt: 'Which is correct? th___', answer: 'though', wrong: ['tho', 'thow'] },
+            { prompt: 'Which is correct? r___', answer: 'rough', wrong: ['ruff', 'rugh'] },
+            { prompt: 'Which is correct? c___', answer: 'cough', wrong: ['coff', 'cauf'] },
+            { prompt: 'Which is correct? th___t', answer: 'thought', wrong: ['thawt', 'thot'] },
+            { prompt: 'Which is correct? en___', answer: 'enough', wrong: ['enuff', 'enugh'] },
+        ]),
+    },
+
+    // ── Tricky Endings Extras (difficulty 3-4) ────────────────────────────────
+
+    {
+        id: 'ous-eous-ious',
+        title: '-OUS Endings',
+        description: 'How to spell famous, gorgeous, and curious',
+        difficulty: 3,
+        icon: '✨',
+        lesson: {
+            word: 'famous',
+            steps: [
+                '-OUS means "full of": famous = full of fame.',
+                'After hard consonants: famous, nervous, dangerous.',
+                'After soft g/c, keep the e: gorgeous, courageous.',
+                'After i: curious, serious, mysterious.',
+            ],
+            rule: '-OUS (famous, nervous). -EOUS after soft g/c (gorgeous). -IOUS after i (curious, serious).',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'famous', wrong: ['famoeus', 'famos'] },
+            { prompt: 'Which is correct?', answer: 'gorgeous', wrong: ['gorgous', 'gorgeus'] },
+            { prompt: 'Which is correct?', answer: 'curious', wrong: ['curous', 'cureous'] },
+            { prompt: 'Which is correct?', answer: 'dangerous', wrong: ['dangereous', 'dangrous'] },
+            { prompt: 'Which is correct?', answer: 'nervous', wrong: ['nerveous', 'nervious'] },
+            { prompt: 'Which is correct?', answer: 'mysterious', wrong: ['mystereous', 'mysterous'] },
+        ]),
+    },
+    {
+        id: 'ence-ance',
+        title: '-ENCE vs -ANCE',
+        description: 'Tricky noun endings that sound the same',
+        difficulty: 4,
+        icon: '⚖️',
+        lesson: {
+            word: 'difference',
+            steps: [
+                '-ence and -ance sound identical but are spelled differently.',
+                '-ANCE is more common after hard consonants: distance, importance, performance.',
+                '-ENCE follows soft g/c or comes from -ent words: difference, evidence, intelligence.',
+                'The best strategy: learn the most common ones by heart.',
+            ],
+            rule: '-ANCE (distance, importance). -ENCE (difference, evidence). Memorize the tricky ones!',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'difference', wrong: ['differance', 'diffrence'] },
+            { prompt: 'Which is correct?', answer: 'distance', wrong: ['distence', 'distanse'] },
+            { prompt: 'Which is correct?', answer: 'importance', wrong: ['importence', 'importanse'] },
+            { prompt: 'Which is correct?', answer: 'evidence', wrong: ['evidance', 'evidanse'] },
+            { prompt: 'Which is correct?', answer: 'performance', wrong: ['performence', 'performanse'] },
+            { prompt: 'Which is correct?', answer: 'intelligence', wrong: ['intelligance', 'inteligence'] },
+        ]),
+    },
+    {
+        id: 'er-or-ar-endings',
+        title: '-ER vs -OR vs -AR',
+        description: 'Agent noun endings: teacher, doctor, calendar',
+        difficulty: 3,
+        icon: '👨‍⚕️',
+        lesson: {
+            word: 'doctor',
+            steps: [
+                '-ER, -OR, and -AR all sound the same at the end of a word.',
+                '-ER is the most common: teacher, worker, farmer.',
+                '-OR often appears in Latin-based words: doctor, actor, editor.',
+                '-AR is rare but important: calendar, regular, popular.',
+            ],
+            rule: '-ER (teacher, worker). -OR (doctor, actor). -AR (calendar, popular). When in doubt, it is probably -ER.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'doctor', wrong: ['docter', 'doctar'] },
+            { prompt: 'Which is correct?', answer: 'teacher', wrong: ['teachor', 'teachar'] },
+            { prompt: 'Which is correct?', answer: 'calendar', wrong: ['calender', 'calendor'] },
+            { prompt: 'Which is correct?', answer: 'editor', wrong: ['editer', 'editar'] },
+            { prompt: 'Which is correct?', answer: 'popular', wrong: ['populer', 'populor'] },
+            { prompt: 'Which is correct?', answer: 'author', wrong: ['auther', 'authar'] },
+        ]),
+    },
+    {
+        id: 'ful-less',
+        title: '-FUL and -LESS',
+        description: 'Adding -ful (one L!) and -less to words',
+        difficulty: 2,
+        icon: '➕',
+        lesson: {
+            word: 'beautiful',
+            steps: [
+                'The suffix -FUL means "full of" but only has ONE L!',
+                'beautiful, helpful, wonderful — never "beautifull".',
+                '-LESS means "without": careless, hopeless, fearless.',
+                'If the word ends in y, change y to i: beauty -> beautiful.',
+            ],
+            rule: '-FUL has only ONE L (beautiful, helpful). -LESS means without (careless). Y -> I before -ful (beauty -> beautiful).',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'beauty + ful = ?', answer: 'beautiful', wrong: ['beautifull', 'beautful'] },
+            { prompt: 'help + ful = ?', answer: 'helpful', wrong: ['helpfull', 'helpfal'] },
+            { prompt: 'wonder + ful = ?', answer: 'wonderful', wrong: ['wonderfull', 'wonderfal'] },
+            { prompt: 'care + less = ?', answer: 'careless', wrong: ['carless', 'careles'] },
+            { prompt: 'hope + less = ?', answer: 'hopeless', wrong: ['hopless', 'hopeles'] },
+            { prompt: 'plenty + ful = ?', answer: 'plentiful', wrong: ['plentyfull', 'plentyfal'] },
+        ]),
+    },
+
+    // ── Memory Tricks Extras (difficulty 2-3) ─────────────────────────────────
+
+    {
+        id: 'wednesday-mnemonic',
+        title: 'WEDNESDAY',
+        description: 'WED-NES-DAY — say all three parts',
+        difficulty: 2,
+        icon: '📅',
+        lesson: {
+            word: 'wednesday',
+            steps: [
+                '"Wednesday" is tricky because we don\'t pronounce the D or the first E.',
+                'Say it in three parts: WED - NES - DAY.',
+                'Exaggerate each part in your head when spelling.',
+                'Named after the Norse god Woden (Woden\'s Day).',
+            ],
+            rule: 'Say WED-NES-DAY out loud. The D and first E are silent but they are there!',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which spelling is correct?', answer: 'wednesday', wrong: ['wensday', 'wendsday'] },
+            { prompt: 'WED-NES-DAY =', answer: 'wednesday', wrong: ['wedensday', 'wensday'] },
+            { prompt: 'Which day is spelled with a silent D?', answer: 'wednesday', wrong: ['wensday', 'wendesday'] },
+        ]),
+    },
+    {
+        id: 'friend-mnemonic',
+        title: 'FRIEND',
+        description: 'FRI-END — a friend to the end',
+        difficulty: 2,
+        icon: '🤝',
+        lesson: {
+            word: 'friend',
+            steps: [
+                '"Friend" is commonly misspelled as "freind" (swapping i and e).',
+                'Remember: a FRIEND is a friend to the END.',
+                'The word END is right there inside friEND!',
+                'I before E: fr-I-E-nd.',
+            ],
+            rule: 'A FRIEND is a friend to the END. FriEND = i before e, and END is inside it.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which spelling is correct?', answer: 'friend', wrong: ['freind', 'frend'] },
+            { prompt: 'A ___ to the END:', answer: 'friend', wrong: ['freind', 'frend'] },
+            { prompt: 'Which word has END inside it?', answer: 'friend', wrong: ['freind', 'frind'] },
+        ]),
+    },
+    {
+        id: 'beautiful-mnemonic',
+        title: 'BEAUTIFUL',
+        description: 'Big Elephants Are Ugly — B.E.A.U.tiful',
+        difficulty: 2,
+        icon: '🌸',
+        lesson: {
+            word: 'beautiful',
+            steps: [
+                'The tricky part of "beautiful" is B-E-A-U at the start.',
+                'Remember: Big Elephants Are Ugly (but beautiful inside!).',
+                'B-E-A-U gives you the hard part.',
+                'Then add -tiful (rhymes with dutiful).',
+            ],
+            rule: 'Big Elephants Are Ugly = B.E.A.U. + tiful = beautiful.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which spelling is correct?', answer: 'beautiful', wrong: ['beautifull', 'beutiful'] },
+            { prompt: 'B.E.A.U. + tiful =', answer: 'beautiful', wrong: ['beatiful', 'bueatiful'] },
+            { prompt: 'Big Elephants Are Ugly... tiful =', answer: 'beautiful', wrong: ['beutiful', 'beautful'] },
+        ]),
+    },
+    {
+        id: 'accommodate-mnemonic',
+        title: 'ACCOMMODATE',
+        description: 'Two Cs and two Ms — big enough to accommodate!',
+        difficulty: 3,
+        icon: '🏨',
+        lesson: {
+            word: 'accommodate',
+            steps: [
+                '"Accommodate" is one of the most misspelled words in English.',
+                'It has double C and double M: aCCoMModate.',
+                'Think: a hotel big enough to aCCoMModate — it has room for doubles!',
+                'ac-COM-mo-date — stress the COM to remember the double M.',
+            ],
+            rule: 'aCCoMModate = double C, double M. Big enough for doubles!',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'accommodate', wrong: ['accomodate', 'acommodate'] },
+            { prompt: 'Double C, double M:', answer: 'accommodate', wrong: ['acomodate', 'accomadate'] },
+            { prompt: 'Which has CC and MM?', answer: 'accommodate', wrong: ['accomodate', 'acommodate'] },
+        ]),
+    },
+    {
+        id: 'definitely-mnemonic',
+        title: 'DEFINITELY',
+        description: 'There is FINITE in deFINITEly — no A!',
+        difficulty: 3,
+        icon: '💯',
+        lesson: {
+            word: 'definitely',
+            steps: [
+                '"Definitely" is often misspelled as "definately" with an A.',
+                'Remember: there is FINITE inside de-FINITE-ly.',
+                'FINITE means "having limits" — no A anywhere!',
+                'de + finite + ly = definitely.',
+            ],
+            rule: 'There is FINITE in deFINITEly. Never "definately"!',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'definitely', wrong: ['definately', 'definatly'] },
+            { prompt: 'de + FINITE + ly =', answer: 'definitely', wrong: ['definately', 'defintely'] },
+            { prompt: 'Which has FINITE inside?', answer: 'definitely', wrong: ['definately', 'definately'] },
+        ]),
+    },
+    {
+        id: 'receive-mnemonic',
+        title: 'RECEIVE',
+        description: 'I before E except after C — reCEIve',
+        difficulty: 2,
+        icon: '📬',
+        lesson: {
+            word: 'receive',
+            steps: [
+                '"Receive" follows the classic "i before e except after c" rule.',
+                'There IS a C before the ei, so E comes first: re-CEI-ve.',
+                'Compare: beLIEve (no c, so ie) vs reCEIve (c, so ei).',
+                'Same pattern: ceiling, deceive, perceive.',
+            ],
+            rule: 'After C, E before I: reCEIve, ceiling, deCEIve. No C? I before E: beLIEve.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'Which is correct?', answer: 'receive', wrong: ['recieve', 'receeve'] },
+            { prompt: 'After C, which comes first?', answer: 'receive', wrong: ['recieve', 'receve'] },
+            { prompt: 'Which follows the C-EI rule?', answer: 'receive', wrong: ['recieve', 'reseive'] },
+        ]),
+    },
+
+    // ── Word Building (difficulty 2-3) ────────────────────────────────────────
+
+    {
+        id: 'prefixes-un-re-dis',
+        title: 'Prefixes: UN, RE, DIS',
+        description: 'Add to the front of a word — never change the spelling',
+        difficulty: 2,
+        icon: '🔗',
+        lesson: {
+            word: 'unnecessary',
+            steps: [
+                'Prefixes are added to the FRONT of a word.',
+                'UN- means "not": un + happy = unhappy. un + necessary = unnecessary.',
+                'RE- means "again": re + write = rewrite. re + play = replay.',
+                'DIS- means "opposite": dis + agree = disagree.',
+                'Key rule: NEVER change the spelling of the original word!',
+            ],
+            rule: 'Just stick the prefix on! un+happy = unhappy (double n in unnecessary). re+write = rewrite. dis+agree = disagree.',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'un + necessary = ?', answer: 'unnecessary', wrong: ['unecessary', 'unnecesary'] },
+            { prompt: 'dis + agree = ?', answer: 'disagree', wrong: ['dissagree', 'disagre'] },
+            { prompt: 're + write = ?', answer: 'rewrite', wrong: ['re-write', 'rerite'] },
+            { prompt: 'un + natural = ?', answer: 'unnatural', wrong: ['unatural', 'un-natural'] },
+            { prompt: 'dis + appear = ?', answer: 'disappear', wrong: ['dissappear', 'disapear'] },
+            { prompt: 'un + happy = ?', answer: 'unhappy', wrong: ['un-happy', 'unhaping'] },
+        ]),
+    },
+    {
+        id: 'suffixes-ment-ness',
+        title: 'Suffixes: -MENT, -NESS',
+        description: 'Add to the end — usually keep the original spelling',
+        difficulty: 2,
+        icon: '🧩',
+        lesson: {
+            word: 'excitement',
+            steps: [
+                '-MENT and -NESS are added to the END of words.',
+                '-MENT: excite + ment = excitement, enjoy + ment = enjoyment.',
+                '-NESS: happy + ness = happiness (change y to i!), kind + ness = kindness.',
+                'Usually keep the base word spelling. Y -> I before -ness.',
+            ],
+            rule: '-MENT: just add it (excitement, enjoyment). -NESS: just add it, but change Y to I (happiness, kindness).',
+        },
+        generatePractice: () => buildPractice([
+            { prompt: 'excite + ment = ?', answer: 'excitement', wrong: ['excitment', 'exsitement'] },
+            { prompt: 'happy + ness = ?', answer: 'happiness', wrong: ['happyness', 'hapiness'] },
+            { prompt: 'enjoy + ment = ?', answer: 'enjoyment', wrong: ['enjoiment', 'enjoyement'] },
+            { prompt: 'kind + ness = ?', answer: 'kindness', wrong: ['kindnes', 'kindeness'] },
+            { prompt: 'lonely + ness = ?', answer: 'loneliness', wrong: ['lonelyness', 'lonleyness'] },
+            { prompt: 'amaze + ment = ?', answer: 'amazement', wrong: ['amazment', 'amaziment'] },
+        ]),
+    },
 ];
 
 // ── Categories ───────────────────────────────────────────────────────────────
@@ -491,31 +912,37 @@ export const SPELLING_TRICK_CATEGORIES: SpellingTrickCategory[] = [
         id: 'phonics',
         label: 'Phonics Fundamentals',
         emoji: '🔊',
-        trickIds: ['magic-e', 'ck-vs-k', 'double-consonants'],
+        trickIds: ['magic-e', 'ck-vs-k', 'double-consonants', 'sh-ch-th', 'ar-or-er', 'long-vowel-teams'],
     },
     {
         id: 'vowel-patterns',
         label: 'Vowel Patterns',
         emoji: '🔡',
-        trickIds: ['i-before-e', 'ou-ow', 'oi-oy', 'ways-to-say-a'],
+        trickIds: ['i-before-e', 'ou-ow', 'oi-oy', 'ways-to-say-a', 'schwa', 'ough-patterns'],
     },
     {
         id: 'tricky-endings',
         label: 'Tricky Endings',
         emoji: '🎯',
-        trickIds: ['tion-sion', 'ible-able', 'adding-ly', 'plural-rules'],
+        trickIds: ['tion-sion', 'ible-able', 'adding-ly', 'plural-rules', 'ous-eous-ious', 'ence-ance', 'er-or-ar-endings', 'ful-less'],
     },
     {
         id: 'memory-tricks',
         label: 'Memory Tricks',
         emoji: '🧠',
-        trickIds: ['because-mnemonic', 'separate-mnemonic', 'necessary-mnemonic', 'rhythm-mnemonic'],
+        trickIds: ['because-mnemonic', 'separate-mnemonic', 'necessary-mnemonic', 'rhythm-mnemonic', 'wednesday-mnemonic', 'friend-mnemonic', 'beautiful-mnemonic', 'accommodate-mnemonic', 'definitely-mnemonic', 'receive-mnemonic'],
     },
     {
         id: 'silent-letters',
-        label: 'Silent Letters & Word Building',
+        label: 'Silent Letters',
         emoji: '👻',
         trickIds: ['silent-letters'],
+    },
+    {
+        id: 'word-building',
+        label: 'Word Building',
+        emoji: '🧩',
+        trickIds: ['prefixes-un-re-dis', 'suffixes-ment-ness'],
     },
 ];
 

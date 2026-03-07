@@ -20,10 +20,13 @@ import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
 import { IconBook, IconTree, IconChart, IconLock, IconCheck } from './Icons';
 import { STORAGE_KEYS } from '../config';
 import { isLevelPremium } from '../hooks/usePremium';
+import { SharedDailyWord } from './SharedDailyWord';
+import { BuddyStreakCard } from './BuddyStreakCard';
 
 interface Props {
     records: Record<string, WordRecord>;
     onPractice?: (category: string) => void;
+    onPracticeWeaknesses?: (words: string[]) => void;
     /** Start a structured session: category + word count */
     onStartSession?: (category: string, sessionSize: number) => void;
     reviewDueCount?: number;
@@ -33,6 +36,10 @@ interface Props {
     isPremium?: boolean;
     onUpgrade?: () => void;
     bestStreak?: number;
+    /** Friend entries for buddy streak card */
+    friends?: import('../hooks/useFriends').FriendEntry[];
+    /** Open the friends modal */
+    onOpenFriends?: () => void;
     /** True when free user has exhausted daily review cap */
     isReviewLimited?: boolean;
     /** Number of reviews remaining before cap (free users only) */
@@ -356,7 +363,7 @@ function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export const PathPage = memo(function PathPage({ records, onPractice, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, isPremium = false, onUpgrade, bestStreak = 0, isReviewLimited = false, reviewsRemaining }: Props) {
+export const PathPage = memo(function PathPage({ records, onPractice, onPracticeWeaknesses, onStartSession, reviewDueCount = 0, hardestWordCount = 0, onDrillHardest, onDrillRoot, isPremium = false, onUpgrade, bestStreak = 0, isReviewLimited = false, reviewsRemaining, friends = [], onOpenFriends }: Props) {
     const registryVersion = getRegistryVersion();
     const levelProgress = useMemo(
         () => evaluateLevelProgress(records, wordCountByDifficulty),
@@ -457,6 +464,12 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                     </div>
                 </div>
             )}
+
+            {/* Shared Daily Word — "the Wordle of spelling" */}
+            <SharedDailyWord />
+
+            {/* Buddy Streak */}
+            {onOpenFriends && <BuddyStreakCard friends={friends} onTap={onOpenFriends} />}
 
             {/* First-time empty state */}
             {totalWords === 0 && (
@@ -611,6 +624,10 @@ export const PathPage = memo(function PathPage({ records, onPractice, onStartSes
                         onDrillRoot(rootId);
                     } : undefined}
                     rootMastery={rootMasteryMap}
+                    onPracticeWeaknesses={onPracticeWeaknesses ? (words) => {
+                        setStudyToolsTab(null);
+                        onPracticeWeaknesses(words);
+                    } : undefined}
                     isPremium={isPremium}
                     onUpgrade={() => { setStudyToolsTab(null); onUpgrade?.(); }}
                     bestStreak={bestStreak}

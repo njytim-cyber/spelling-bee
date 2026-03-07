@@ -4,7 +4,7 @@
  * Consolidates user-related state (stats, cosmetics, auth) to reduce
  * prop drilling and stabilize component memoization.
  */
-import { createContext, useContext, useCallback, useMemo } from 'react';
+import { createContext, useContext, useCallback, useMemo, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useStats } from '../hooks/useStats';
 import { useLocalState } from '../hooks/useLocalState';
@@ -18,6 +18,7 @@ import type { Level } from '../domains/spelling/spellingCategories';
 import { DEFAULT_AVATAR } from '../utils/avatarParts';
 import { useProfiles } from '../hooks/useProfiles';
 import type { LearnerProfile } from '../hooks/useProfiles';
+import { setAnalyticsUserProperties } from '../utils/analytics';
 
 interface UserContextValue {
   // Stats
@@ -165,6 +166,15 @@ export function UserProvider({ children, uid }: UserProviderProps) {
   const onAvatarChange = useCallback((config: string) => setAvatarConfig(config), [setAvatarConfig]);
   const onLevelChange = useCallback((l: Level) => setLevel(l), [setLevel]);
   const onDialectChange = useCallback((d: Dialect) => setDialect(d), [setDialect]);
+
+  // Sync analytics user properties when key dimensions change
+  useEffect(() => {
+    setAnalyticsUserProperties({
+      user_level: (level as string) || null,
+      subscription_status: premium.isPaidSubscriber ? 'paid' : premium.isTrial ? 'trial' : 'free',
+      has_profile: profilesHook.profiles.length > 0 ? 'true' : 'false',
+    });
+  }, [level, premium.isPaidSubscriber, premium.isTrial, profilesHook.profiles.length]);
 
   const value = useMemo<UserContextValue>(() => ({
     stats,

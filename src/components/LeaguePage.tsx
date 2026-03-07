@@ -59,10 +59,12 @@ interface Props {
     on1v1?: () => void;
     onWeeklyTournament?: () => void;
     onCertificate?: (weekLabel: string, xpEarned: number) => void;
+    onOpenFriends?: () => void;
+    friendPendingCount?: number;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onCertificate }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onCertificate, onOpenFriends, friendPendingCount = 0 }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -258,6 +260,25 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </div>
                     {!isPremium && <IconLock className="w-4 h-4 text-[rgb(var(--color-fg))]/30" />}
                 </button>
+
+                {/* Friends */}
+                {onOpenFriends && (
+                    <button
+                        onClick={onOpenFriends}
+                        className="w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors relative"
+                    >
+                        <span className="text-2xl">🤝</span>
+                        <div className="text-left flex-1">
+                            <div className="text-sm ui font-bold text-[var(--color-chalk)]">Friends</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks & challenges</div>
+                        </div>
+                        {friendPendingCount > 0 && (
+                            <span className="absolute top-2 right-3 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
+                                {friendPendingCount}
+                            </span>
+                        )}
+                    </button>
+                )}
 
                 {/* Weekly Tournament */}
                 {onWeeklyTournament && (

@@ -8,6 +8,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { collection, doc, setDoc, updateDoc, onSnapshot, query, where, getDocs, serverTimestamp, runTransaction } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { showErrorToast } from '../utils/errorToast';
+import { trackLatency } from '../utils/analytics';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
 import type { EngineItem } from '../engine/domain';
 
@@ -19,6 +20,10 @@ export interface PlayerData {
     score: number;
     answers: (string | null)[];
     results: (boolean | null)[];
+    /** When the player finished (async challenges only) */
+    completedAt?: ReturnType<typeof serverTimestamp>;
+    /** Ms per word (async challenges only, for comparison) */
+    timePerWord?: number[];
 }
 
 export interface RoomData {
@@ -31,6 +36,10 @@ export interface RoomData {
     words: { word: string; prompt: string; options: string[]; correctIndex: number }[];
     players: Record<string, PlayerData>;
     createdAt: ReturnType<typeof serverTimestamp>;
+    /** 'realtime' for live 1v1, 'async' for same-word challenges */
+    mode?: 'realtime' | 'async';
+    /** When async challenges expire (48h) */
+    expiresAt?: ReturnType<typeof serverTimestamp>;
 }
 
 /** Validate that a UID is safe for use in Firestore field paths (no dots, slashes, or control chars). */
@@ -140,7 +149,7 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
         };
 
         try {
-            await setDoc(roomRef, room);
+            await trackLatency('multiplayer', 'create_room', () => setDoc(roomRef, room));
             // Record timestamp for server-side rate limiting
             setDoc(doc(db, 'users', uid), { lastRoomCreateAt: serverTimestamp(), updatedAt: serverTimestamp() }, { merge: true }).catch(() => {});
             setRoomId(roomRef.id);
@@ -159,8 +168,10 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
         setError(null);
 
         try {
-            const q = query(collection(db, 'rooms'), where('roomCode', '==', code.toUpperCase()), where('status', '==', 'waiting'));
-            const snap = await getDocs(q);
+            const snap = await trackLatency('multiplayer', 'join_room', () => {
+                const q = query(collection(db, 'rooms'), where('roomCode', '==', code.toUpperCase()), where('status', '==', 'waiting'));
+                return getDocs(q);
+            });
 
             if (snap.empty) {
                 setError('Room not found or already started');
@@ -240,7 +251,7 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
         const isCorrect = spelling.toLowerCase() === word.word.toLowerCase();
 
         try {
-            await runTransaction(db, async (tx) => {
+            await trackLatency('multiplayer', 'submit_answer', () => runTransaction(db, async (tx) => {
                 const roomRef = doc(db, 'rooms', roomId);
                 const snap = await tx.get(roomRef);
                 if (!snap.exists()) return;
@@ -274,7 +285,7 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
                         tx.update(roomRef, { currentRound: nextRound });
                     }
                 }
-            });
+            }));
         } catch (err) {
             console.warn('Failed to submit answer:', err);
             setError('Failed to submit answer. Please try again.');

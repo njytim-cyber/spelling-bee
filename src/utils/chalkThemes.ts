@@ -12,6 +12,8 @@ export interface ChalkTheme {
     premium?: boolean;
     /** Requires IAP pack purchase when true (pack ID checked separately) */
     packItem?: boolean;
+    /** Only obtainable via loot drops during gameplay */
+    lootDrop?: boolean;
 }
 
 export const CHALK_THEMES: ChalkTheme[] = [
@@ -41,6 +43,13 @@ export const CHALK_THEMES: ChalkTheme[] = [
     { id: 'forest-green', name: 'Forest', color: 'rgba(40, 180, 80, 0.95)', lightColor: '#166534', minLevel: 1, packItem: true },
     { id: 'ocean-deep', name: 'Ocean Deep', color: 'rgba(20, 100, 200, 0.95)', lightColor: '#1e40af', minLevel: 1, packItem: true },
     { id: 'autumn-leaf', name: 'Autumn Leaf', color: 'rgba(200, 120, 30, 0.95)', lightColor: '#92400e', minLevel: 1, packItem: true },
+    // 🎁 Loot drop exclusives — only obtainable via mid-session loot drops
+    { id: 'starlight', name: 'Starlight', color: 'rgba(220, 220, 255, 0.95)', lightColor: '#4338ca', minLevel: 1, lootDrop: true },
+    { id: 'coral-reef', name: 'Coral Reef', color: 'rgba(255, 130, 130, 0.95)', lightColor: '#dc2626', minLevel: 1, lootDrop: true },
+    { id: 'aurora', name: 'Aurora', color: 'rgba(120, 255, 200, 0.95)', lightColor: '#059669', minLevel: 1, lootDrop: true },
+    { id: 'honey-glow', name: 'Honey Glow', color: 'rgba(255, 200, 50, 0.95)', lightColor: '#d97706', minLevel: 1, lootDrop: true },
+    { id: 'frost-bite', name: 'Frost Bite', color: 'rgba(180, 230, 255, 0.95)', lightColor: '#0284c7', minLevel: 1, lootDrop: true },
+    { id: 'amethyst', name: 'Amethyst', color: 'rgba(180, 100, 255, 0.95)', lightColor: '#7c3aed', minLevel: 1, lootDrop: true },
 ];
 
 /**

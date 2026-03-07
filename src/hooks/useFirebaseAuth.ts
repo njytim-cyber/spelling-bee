@@ -18,6 +18,7 @@ import { auth, db } from '../utils/firebase';
 import { STORAGE_KEYS } from '../config';
 import { showErrorToast } from '../utils/errorToast';
 import { containsProfanity } from '../utils/profanityFilter';
+import { setAnalyticsUserId, setAnalyticsUserProperties, trackEvent } from '../utils/analytics';
 
 /** Random display name generator */
 const ADJECTIVES = ['Swift', 'Clever', 'Bold', 'Quick', 'Bright', 'Sharp', 'Keen', 'Cool', 'Lucky', 'Epic'];
@@ -52,6 +53,13 @@ export function useFirebaseAuth() {
                     isAnonymous: fbUser.isAnonymous,
                 });
                 setLoading(false);
+
+                // Analytics: identify user for retention tracking
+                setAnalyticsUserId(fbUser.uid);
+                setAnalyticsUserProperties({
+                    account_type: fbUser.isAnonymous ? 'anonymous' : 'signed_in',
+                });
+                trackEvent('app_open');
 
                 // Background: sync display name with Firestore (non-blocking)
                 const userRef = doc(db, 'users', fbUser.uid);

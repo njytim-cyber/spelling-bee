@@ -9,6 +9,7 @@ import { ModalShell } from './ModalShell';
 import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
 import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconTag, IconGift, IconShop, RankIcon } from './Icons';
 import { isItemOwned } from '../utils/cosmeticPacks';
+import { isLootDropOwned } from '../utils/lootDrop';
 import { useUser } from '../contexts/UserContext';
 import { getAllWords, getRegistryVersion } from '../domains/spelling/words';
 import { AvatarBuilder } from './AvatarBuilder';
@@ -20,6 +21,10 @@ import { ParentDashboard } from './ParentDashboard';
 import { printCertificate } from '../utils/certificateGenerator';
 import { shareBadgeImage } from '../utils/badgeShareGenerator';
 import type { CustomWordList } from '../types/customList';
+import type { WordRecord } from '../hooks/useWordHistory';
+import { getWordMap } from '../domains/spelling/words';
+import { ALL_RARITIES, RARITY_CONFIGS, getRarityConfig, type Rarity } from '../utils/rarity';
+import { TestimonialPrompt } from './TestimonialPrompt';
 
 // Removed tab switching - now showing everything on one page
 
@@ -27,10 +32,15 @@ interface Props {
     unlocked: Set<string>;
     masteredCount: number;
     uniqueWordsAttempted: number;
+    records?: Record<string, WordRecord>;
     onUpgrade?: () => void;
     onShop?: () => void;
     onCertificate?: (type: 'level-completion', level: number, wordsMastered: number, accuracy: number) => void;
     customLists?: CustomWordList[];
+    friendCode?: string;
+    friendCount?: number;
+    bestBuddyStreak?: number;
+    onOpenFriends?: () => void;
 }
 
 // Derive achievement sublists from the single spelling array
@@ -43,7 +53,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, onUpgrade, onShop, onCertificate, customLists = [] }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, records, onUpgrade, onShop, onCertificate, customLists = [], friendCode, friendCount = 0, bestBuddyStreak = 0, onOpenFriends }: Props) {
     // Get user state from context
     const {
         stats,
@@ -69,6 +79,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         referralCount,
         shareReferral,
         purchasedPacks,
+        level,
         // Profiles (Bee Team)
         profiles,
         activeProfileId,
@@ -91,6 +102,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const [emailInput, setEmailInput] = useState('');
     const [emailSent, setEmailSent] = useState(false);
     const [showAvatarBuilder, setShowAvatarBuilder] = useState(false);
+    const [showAbout, setShowAbout] = useState(false);
 
     const handleShareBadge = useCallback((achievementName: string, achievementDesc: string) => {
         shareBadgeImage({
@@ -111,7 +123,8 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     // Cosmetic unlock counts
     const rankIdx = useMemo(() => RANKS.findIndex(r => r.name === rank.name), [rank.name]);
-    const isThemeAvailable = useCallback((t: { id: string; premium?: boolean; packItem?: boolean; minLevel?: number; minStreak?: number; minSolved?: number }) => {
+    const isThemeAvailable = useCallback((t: { id: string; lootDrop?: boolean; premium?: boolean; packItem?: boolean; minLevel?: number; minStreak?: number; minSolved?: number }) => {
+        if (t.lootDrop) return isLootDropOwned(t.id);
         const rankUnlocked = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available;
         if (t.packItem) return rankUnlocked && isItemOwned(t.id, purchasedPacks);
         if (t.premium) return rankUnlocked && isPremium;
@@ -145,6 +158,21 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         const pct = (masteredCount / totalWords) * 100;
         return pct >= 1 ? `${Math.round(pct)}%` : pct > 0 ? `${pct.toFixed(1)}%` : '0%';
     }, [masteredCount, totalWords]);
+
+    // Rarity distribution for collection stats
+    const rarityCounts = useMemo(() => {
+        const counts: Record<Rarity, number> = { common: 0, uncommon: 0, rare: 0, epic: 0, legendary: 0 };
+        if (!records) return counts;
+        const wm = getWordMap();
+        for (const r of Object.values(records)) {
+            if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) {
+                const sw = wm.get(r.word);
+                if (sw) counts[getRarityConfig(sw.difficulty).rarity]++;
+            }
+        }
+        return counts;
+    }, [records]);
+    const hasCollection = Object.values(rarityCounts).some(c => c > 0);
 
     return (
         <div className="flex-1 flex flex-col items-center overflow-y-auto px-6 pt-[calc(env(safe-area-inset-top,12px)+48px)] pb-20 landscape-compact-pb">
@@ -394,6 +422,22 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                     </div>
                 )}
+                {/* Rarity distribution */}
+                {hasCollection && (
+                    <div className="flex justify-center gap-3 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
+                        {ALL_RARITIES.map(r => {
+                            const count = rarityCounts[r];
+                            if (count === 0) return null;
+                            const cfg = RARITY_CONFIGS[r];
+                            return (
+                                <div key={r} className="text-center">
+                                    <div className="text-sm ui font-bold" style={{ color: cfg.color }}>{count}</div>
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{cfg.emoji}</div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
             </motion.div>
 
             {/* ── Consolidated Content ── */}
@@ -520,27 +564,31 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                 const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
                                 const premiumLocked = !isPremium && t.premium;
                                 const packLocked = t.packItem && !isItemOwned(t.id, purchasedPacks);
-                                const isAvailable = rankUnlocked && !premiumLocked && !packLocked;
+                                const lootLocked = t.lootDrop && !isLootDropOwned(t.id);
+                                const isAvailable = lootLocked ? false : rankUnlocked && !premiumLocked && !packLocked;
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
+                                        onClick={() => lootLocked ? undefined : packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
                                         aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        title={lootLocked ? 'Found via loot drop' : packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
                                             isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
                                             }`}
                                         style={{ backgroundColor: swatchColor }}
                                     >
-                                        {premiumLocked && (
+                                        {lootLocked && (
+                                            <span className="absolute -top-0.5 -right-0.5 text-[8px]">🎁</span>
+                                        )}
+                                        {premiumLocked && !lootLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🔒</span>
                                         )}
-                                        {packLocked && !premiumLocked && (
+                                        {packLocked && !premiumLocked && !lootLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🛒</span>
                                         )}
                                     </button>
@@ -590,6 +638,30 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                     </div>
                 </>
+
+            {/* ═══════ FRIENDS ═══════ */}
+            {onOpenFriends && friendCode && (
+                <div className="w-full max-w-sm mb-4">
+                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-2">
+                        friends · {friendCount}
+                    </div>
+                    <button
+                        onClick={onOpenFriends}
+                        className="w-full flex items-center justify-between p-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 transition-colors"
+                    >
+                        <div className="flex items-center gap-3">
+                            <span className="text-lg">🤝</span>
+                            <div className="text-left">
+                                <div className="text-xs ui font-mono tracking-wider text-[rgb(var(--color-accent))]">{friendCode}</div>
+                                {bestBuddyStreak > 0 && (
+                                    <div className="text-[10px] text-[rgb(var(--color-fg))]/40">🔥 {bestBuddyStreak} day buddy streak</div>
+                                )}
+                            </div>
+                        </div>
+                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Manage →</span>
+                    </button>
+                </div>
+            )}
 
             {/* ═══════ ACHIEVEMENTS ═══════ */}
             {(
@@ -764,6 +836,41 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     </ModalShell>
                 )}
             </AnimatePresence>
+
+            {/* Testimonial prompt */}
+            <TestimonialPrompt
+                masteredCount={masteredCount}
+                dayStreak={stats.dayStreak}
+                sessionsPlayed={stats.sessionsPlayed}
+                level={level}
+                isPremium={isPremium}
+            />
+
+            {/* What makes us different */}
+            <button
+                onClick={() => setShowAbout(v => !v)}
+                className="w-full text-left text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors mt-2 mb-2"
+            >
+                {showAbout ? '\u25BE' : '\u25B8'} What makes Spelling Bee different?
+            </button>
+            {showAbout && (
+                <div className="w-full space-y-2 mb-4 animate-in fade-in">
+                    {[
+                        { icon: '\uD83E\uDDE0', title: 'Intelligent Practice', desc: 'Spaced repetition means words stay learned' },
+                        { icon: '\uD83D\uDD0D', title: 'Understands Mistakes', desc: 'Error analysis tells you WHY' },
+                        { icon: '\uD83D\uDCDA', title: '51,000+ Words', desc: '10 levels from \u201Ccat\u201D to \u201Conomatopoeia\u201D' },
+                        { icon: '\uD83D\uDD12', title: 'Privacy-First', desc: 'Offline, no ads, sign-in optional' },
+                    ].map(item => (
+                        <div key={item.title} className="flex items-start gap-2 px-3 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03]">
+                            <span className="text-sm shrink-0">{item.icon}</span>
+                            <div>
+                                <span className="text-[11px] ui font-bold text-[var(--color-chalk)]">{item.title}</span>
+                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40"> — {item.desc}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {/* Sync status + Version */}
             {syncFailed && (

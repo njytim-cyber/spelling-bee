@@ -6,7 +6,7 @@
  */
 import { useState, useEffect, useCallback } from 'react';
 import { STORAGE_KEYS } from '../config';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent, trackLatency } from '../utils/analytics';
 
 /** Characters used for referral code generation (uppercase alphanumeric, no confusing chars) */
 const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I
@@ -134,7 +134,7 @@ export function useReferral(uid: string | null): ReferralState {
                 { success: boolean; expiresAt: string; error?: string }
             >(functions, 'redeemReferral');
 
-            const result = await redeem({ referralCode: pendingReferral });
+            const result = await trackLatency('referral', 'redeem', () => redeem({ referralCode: pendingReferral }));
 
             if (result.data.success) {
                 setReferralRedeemed(true);

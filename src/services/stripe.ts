@@ -8,6 +8,7 @@
 import { httpsCallable } from 'firebase/functions';
 import { getFunctions } from 'firebase/functions';
 import { app } from '../utils/firebase';
+import { trackLatency } from '../utils/analytics';
 
 const functions = getFunctions(app, 'us-central1');
 
@@ -48,9 +49,11 @@ interface RestoreResult {
  * @returns Checkout session URL (caller should redirect)
  */
 export async function startCheckout(plan: 'monthly' | 'annual' | 'bee-team-monthly' | 'bee-team-annual'): Promise<string> {
-    const fn = httpsCallable<{ plan: string }, CheckoutResult>(functions, 'createCheckoutSession');
-    const result = await fn({ plan });
-    return validateStripeUrl(result.data.url);
+    return trackLatency('stripe', 'checkout', async () => {
+        const fn = httpsCallable<{ plan: string }, CheckoutResult>(functions, 'createCheckoutSession');
+        const result = await fn({ plan });
+        return validateStripeUrl(result.data.url);
+    });
 }
 
 /**
@@ -58,9 +61,11 @@ export async function startCheckout(plan: 'monthly' | 'annual' | 'bee-team-month
  * @returns Portal URL (caller should redirect)
  */
 export async function openCustomerPortal(): Promise<string> {
-    const fn = httpsCallable<Record<string, never>, PortalResult>(functions, 'createPortalSession');
-    const result = await fn({});
-    return validateStripeUrl(result.data.url);
+    return trackLatency('stripe', 'portal', async () => {
+        const fn = httpsCallable<Record<string, never>, PortalResult>(functions, 'createPortalSession');
+        const result = await fn({});
+        return validateStripeUrl(result.data.url);
+    });
 }
 
 /**
@@ -68,9 +73,11 @@ export async function openCustomerPortal(): Promise<string> {
  * Called on login to restore purchases.
  */
 export async function restoreSubscription(): Promise<RestoreResult> {
-    const fn = httpsCallable<Record<string, never>, RestoreResult>(functions, 'restoreSubscription');
-    const result = await fn({});
-    return result.data;
+    return trackLatency('stripe', 'restore', async () => {
+        const fn = httpsCallable<Record<string, never>, RestoreResult>(functions, 'restoreSubscription');
+        const result = await fn({});
+        return result.data;
+    });
 }
 
 /**
@@ -78,7 +85,9 @@ export async function restoreSubscription(): Promise<RestoreResult> {
  * @returns Checkout URL (caller should redirect)
  */
 export async function purchasePack(packId: string): Promise<string> {
-    const fn = httpsCallable<{ packId: string }, CheckoutResult>(functions, 'createPackCheckout');
-    const result = await fn({ packId });
-    return validateStripeUrl(result.data.url);
+    return trackLatency('stripe', 'pack_checkout', async () => {
+        const fn = httpsCallable<{ packId: string }, CheckoutResult>(functions, 'createPackCheckout');
+        const result = await fn({ packId });
+        return validateStripeUrl(result.data.url);
+    });
 }

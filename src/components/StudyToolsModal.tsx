@@ -10,9 +10,10 @@ import { FullScreenPanel } from './FullScreenPanel';
 import { WordBookContent } from './WordBookModal';
 import { RootsContent } from './RootsBrowser';
 import { AnalyticsContent } from './StudyAnalyticsModal';
-import { IconBook, IconTree, IconChart } from './Icons';
+import { IconBook, IconTree, IconChart, IconGem } from './Icons';
+import { CollectionContent } from './CollectionBrowser';
 
-export type StudyTab = 'words' | 'roots' | 'analytics';
+export type StudyTab = 'words' | 'roots' | 'analytics' | 'collection';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -20,6 +21,7 @@ interface Props {
     defaultTab?: StudyTab;
     onDrillRoot?: (rootId: string) => void;
     rootMastery?: Map<string, { mastered: number; total: number }>;
+    onPracticeWeaknesses?: (words: string[]) => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
     bestStreak?: number;
@@ -29,10 +31,11 @@ const TABS: { id: StudyTab; label: string; Icon: typeof IconBook }[] = [
     { id: 'words', label: 'Words', Icon: IconBook },
     { id: 'roots', label: 'Roots', Icon: IconTree },
     { id: 'analytics', label: 'Analytics', Icon: IconChart },
+    { id: 'collection', label: 'Collection', Icon: IconGem },
 ];
 
 export const StudyToolsModal = memo(function StudyToolsModal({
-    records, onClose, defaultTab = 'words', onDrillRoot, rootMastery, isPremium, onUpgrade, bestStreak,
+    records, onClose, defaultTab = 'words', onDrillRoot, rootMastery, onPracticeWeaknesses, isPremium, onUpgrade, bestStreak,
 }: Props) {
     const [tab, setTab] = useState<StudyTab>(defaultTab);
 
@@ -62,7 +65,8 @@ export const StudyToolsModal = memo(function StudyToolsModal({
             {/* Tab content */}
             {tab === 'words' && <WordBookContent records={records} />}
             {tab === 'roots' && <RootsContent onDrillRoot={onDrillRoot} rootMastery={rootMastery} />}
-            {tab === 'analytics' && <AnalyticsContent records={records} isPremium={isPremium} onUpgrade={onUpgrade} bestStreak={bestStreak} />}
+            {tab === 'analytics' && <AnalyticsContent records={records} onPracticeWeaknesses={onPracticeWeaknesses} isPremium={isPremium} onUpgrade={onUpgrade} bestStreak={bestStreak} />}
+            {tab === 'collection' && <CollectionContent records={records} />}
         </FullScreenPanel>
     );
 });

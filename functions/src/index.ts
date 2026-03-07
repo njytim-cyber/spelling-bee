@@ -8,8 +8,10 @@
  * 5. createPortalSession — Stripe Customer Portal for subscription management
  * 6. createPackCheckout — Stripe Checkout for one-time cosmetic pack purchases
  * 7. restoreSubscription — Check Stripe for active subscription on login
+ * 8. deployHealthCheck — Scheduled health check: error/vitals spike detection
  */
 import { onCall, onRequest, HttpsError } from 'firebase-functions/v2/https';
+import { onSchedule } from 'firebase-functions/v2/scheduler';
 import { initializeApp } from 'firebase-admin/app';
 import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
@@ -606,5 +608,111 @@ export const createPackCheckout = onCall(
         });
 
         return { sessionId: session.id, url: session.url };
+    },
+);
+
+// ── Deploy Health Check (Scheduled) ─────────────────────────────────────────
+
+/**
+ * Runs every 10 minutes. Compares recent error/vitals rates against a baseline
+ * window and writes a health status document. Logs warnings when rates spike.
+ *
+ * Health levels:
+ * - green: error rate ≤ baseline (or ≤ 2 errors in window)
+ * - yellow: error rate 2–3x baseline
+ * - red: error rate > 3x baseline OR > 5 poor vitals in window
+ *
+ * Results are written to `deployHealth/{timestamp}` and visible in
+ * Firebase Console → Cloud Logging. Wire Cloud Logging → Slack/email
+ * alerts for severity >= WARNING to get notified.
+ */
+export const deployHealthCheck = onSchedule(
+    {
+        schedule: 'every 10 minutes',
+        region: 'us-central1',
+        timeoutSeconds: 30,
+    },
+    async () => {
+        const now = Date.now();
+        const RECENT_WINDOW_MS = 10 * 60 * 1000;  // last 10 minutes
+        const BASELINE_WINDOW_MS = 60 * 60 * 1000; // prior 60 minutes
+
+        const recentStart = new Date(now - RECENT_WINDOW_MS);
+        const baselineStart = new Date(now - BASELINE_WINDOW_MS);
+        const baselineEnd = new Date(now - RECENT_WINDOW_MS);
+
+        // ── Count recent errors ──
+        const errorsRef = db.collection('errors');
+        const recentErrorsSnap = await errorsRef
+            .where('timestamp', '>=', recentStart)
+            .where('timestamp', '<=', new Date(now))
+            .count()
+            .get();
+        const recentErrors = recentErrorsSnap.data().count;
+
+        // ── Count baseline errors (prior 60 min, normalized to 10-min rate) ──
+        const baselineErrorsSnap = await errorsRef
+            .where('timestamp', '>=', baselineStart)
+            .where('timestamp', '<', baselineEnd)
+            .count()
+            .get();
+        const baselineErrorsTotal = baselineErrorsSnap.data().count;
+        // Normalize: 60-min baseline ÷ 6 = expected per 10-min window
+        const baselineErrorRate = baselineErrorsTotal / 6;
+
+        // ── Count poor vitals in recent window ──
+        const vitalsRef = db.collection('vitals');
+        const poorVitalsSnap = await vitalsRef
+            .where('timestamp', '>=', recentStart)
+            .where('timestamp', '<=', new Date(now))
+            .where('rating', '==', 'poor')
+            .count()
+            .get();
+        const poorVitals = poorVitalsSnap.data().count;
+
+        // ── Determine health level ──
+        let level: 'green' | 'yellow' | 'red' = 'green';
+        const reasons: string[] = [];
+
+        // Skip spike detection if both counts are trivially small
+        if (recentErrors > 2) {
+            const ratio = baselineErrorRate > 0
+                ? recentErrors / baselineErrorRate
+                : recentErrors; // no baseline = treat count as ratio
+
+            if (ratio > 3) {
+                level = 'red';
+                reasons.push(`Error spike: ${recentErrors} errors in 10 min (${ratio.toFixed(1)}x baseline)`);
+            } else if (ratio > 2) {
+                level = 'yellow';
+                reasons.push(`Elevated errors: ${recentErrors} in 10 min (${ratio.toFixed(1)}x baseline)`);
+            }
+        }
+
+        if (poorVitals > 5) {
+            level = 'red';
+            reasons.push(`${poorVitals} poor web vitals in 10 min`);
+        }
+
+        // ── Write health status ──
+        const status = {
+            timestamp: FieldValue.serverTimestamp(),
+            level,
+            recentErrors,
+            baselineErrorRate: Math.round(baselineErrorRate * 10) / 10,
+            poorVitals,
+            reasons,
+        };
+
+        await db.collection('deployHealth').add(status);
+
+        // ── Log warnings for Cloud Logging alerting ──
+        if (level === 'red') {
+            console.error(`[DEPLOY HEALTH] RED: ${reasons.join('; ')}`);
+        } else if (level === 'yellow') {
+            console.warn(`[DEPLOY HEALTH] YELLOW: ${reasons.join('; ')}`);
+        } else {
+            console.log(`[DEPLOY HEALTH] GREEN: ${recentErrors} errors, ${poorVitals} poor vitals`);
+        }
     },
 );

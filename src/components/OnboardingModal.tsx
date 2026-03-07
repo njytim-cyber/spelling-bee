@@ -21,7 +21,7 @@ interface Props {
 
 export const OnboardingModal = memo(function OnboardingModal({ onComplete, currentDialect, currentLevel }: Props) {
     const isFirstTime = !currentLevel;
-    const [step, setStep] = useState<'welcome' | 'age' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
+    const [step, setStep] = useState<'welcome' | 'howItWorks' | 'age' | 'dialect' | 'level'>(isFirstTime ? 'welcome' : 'dialect');
     const [selectedDialect, setSelectedDialect] = useState<Dialect | null>(currentDialect ?? null);
     const [selectedLevel, setSelectedLevel] = useState<Level | null>(currentLevel ?? (isFirstTime ? 'level-1' : null));
 
@@ -50,15 +50,14 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                     >
                         <div className="text-6xl mb-4">🐝</div>
                         <h1 className="text-2xl chalk text-[var(--color-chalk)] mb-1">Spelling Bee</h1>
-                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Learn to spell 117,000+ words</p>
+                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">Intelligent spelling practice</p>
 
-                        {/* How to play */}
-                        <div className="w-full space-y-3 mb-8">
+                        {/* Value proposition */}
+                        <div className="w-full space-y-3 mb-6">
                             {[
-                                { icon: '🔊', title: 'Listen', desc: 'Hear a word and read its definition' },
-                                { icon: '👆', title: 'Pick the correct spelling', desc: 'Tap one of 3 options' },
-                                { icon: '📈', title: 'Build streaks for bonus points', desc: '10 pts + streak bonus + speed bonus' },
-                                { icon: '🧠', title: 'Words you miss come back', desc: 'Spaced repetition helps you remember' },
+                                { icon: '🧠', title: 'Adapts to your child', desc: 'Spaced repetition means words stay learned \u2014 not just crammed for Friday\u2019s test' },
+                                { icon: '🔍', title: 'Understands mistakes', desc: 'Error analysis tells you WHY a word was misspelled, not just that it was' },
+                                { icon: '📚', title: 'Grows with you', desc: 'From \u201Ccat\u201D to \u201Conomatopoeia\u201D \u2014 51,000+ words across 10 levels' },
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
@@ -70,15 +69,82 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                                     <span className="text-xl shrink-0">{item.icon}</span>
                                     <div>
                                         <div className="text-sm ui font-bold text-[var(--color-chalk)]">{item.title}</div>
-                                        <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40">{item.desc}</div>
+                                        <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40 leading-snug">{item.desc}</div>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
 
-                        <Button size="lg" onClick={() => setStep('age')}>
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center mb-6 leading-relaxed max-w-[280px]">
+                            For homeschool families, spelling bee prep, and anyone who believes spelling matters.
+                        </p>
+
+                        <Button size="lg" onClick={() => setStep('howItWorks')}>
                             Get Started
                         </Button>
+                    </motion.div>
+                ) : step === 'howItWorks' ? (
+                    <motion.div
+                        key="howItWorks"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="flex flex-col items-center w-full max-w-sm"
+                    >
+                        <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-5">How It Works</p>
+
+                        {/* Mini demo: simulated error analysis */}
+                        <div className="w-full rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 p-4 mb-4">
+                            <div className="text-xs ui text-[rgb(var(--color-fg))]/30 mb-2">Your child spells &ldquo;necessary&rdquo; as:</div>
+                            <div className="text-lg chalk text-[var(--color-chalk)] mb-1 tracking-wide">
+                                nece<span className="text-red-400 line-through">ss</span>ary
+                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="flex items-center gap-2 mt-2 px-3 py-1.5 rounded-lg bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/20"
+                            >
+                                <span className="text-[11px] ui text-[var(--color-gold)]">Double letter confusion: <strong>ss</strong> &rarr; just <strong>s</strong></span>
+                            </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.8 }}
+                                className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-2"
+                            >
+                                We track this pattern &mdash; and bring the word back until it sticks.
+                            </motion.div>
+                        </div>
+
+                        {/* Trust signals */}
+                        <div className="w-full space-y-2 mb-5">
+                            {[
+                                { icon: '✓', text: '51,000+ words with real dictionary citations' },
+                                { icon: '✓', text: 'No AI-generated content — human-curated' },
+                                { icon: '✓', text: 'Works offline — no account required' },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 + i * 0.1 }}
+                                    className="flex items-center gap-2.5 px-3"
+                                >
+                                    <span className="text-xs text-[var(--color-gold)] font-bold shrink-0">{item.icon}</span>
+                                    <span className="text-[11px] ui text-[rgb(var(--color-fg))]/50">{item.text}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <div className="flex gap-3">
+                            <Button variant="secondary" size="lg" className="px-6 border-2 border-[rgb(var(--color-fg))]/20" onClick={() => setStep('welcome')}>
+                                Back
+                            </Button>
+                            <Button size="lg" onClick={() => setStep('age')}>
+                                Continue
+                            </Button>
+                        </div>
                     </motion.div>
                 ) : step === 'age' ? (
                     <motion.div

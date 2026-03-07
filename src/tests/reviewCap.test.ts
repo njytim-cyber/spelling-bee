@@ -132,10 +132,16 @@ describe('Cosmetics premium gating', () => {
         expect(ids).toContain('prismatic');
     });
 
-    it('9 chalk themes are free (non-premium, non-pack)', async () => {
+    it('9 chalk themes are free (non-premium, non-pack, non-loot)', async () => {
         const { CHALK_THEMES } = await import('../utils/chalkThemes');
-        const freeThemes = CHALK_THEMES.filter(t => !t.premium && !t.packItem);
+        const freeThemes = CHALK_THEMES.filter(t => !t.premium && !t.packItem && !t.lootDrop);
         expect(freeThemes.length).toBe(9);
+    });
+
+    it('6 chalk themes are loot-drop exclusive', async () => {
+        const { CHALK_THEMES } = await import('../utils/chalkThemes');
+        const lootThemes = CHALK_THEMES.filter(t => t.lootDrop);
+        expect(lootThemes.length).toBe(6);
     });
 
     it('9 chalk themes are IAP pack items', async () => {

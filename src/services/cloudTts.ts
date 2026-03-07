@@ -6,6 +6,7 @@
  */
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { STORAGE_KEYS } from '../config';
+import { trackLatency } from '../utils/analytics';
 
 // ── Voice catalog ────────────────────────────────────────────────────────────
 
@@ -131,27 +132,29 @@ export async function synthesizeCloud(
     const timeout = setTimeout(() => controller.abort(), CLOUD_TTS_TIMEOUT_MS);
 
     try {
-        // Lazy-load Firebase app only when synthesis is actually needed
-        const { app } = await import('../utils/firebase');
-        const functions = getFunctions(app, 'us-central1');
-        const synthesize = httpsCallable<
-            { text: string; voiceName: string; speakingRate: number },
-            { audioUrl: string; cached: boolean }
-        >(functions, 'synthesizeSpeech');
+        return await trackLatency('cloud_tts', 'synthesize', async () => {
+            // Lazy-load Firebase app only when synthesis is actually needed
+            const { app } = await import('../utils/firebase');
+            const functions = getFunctions(app, 'us-central1');
+            const synthesize = httpsCallable<
+                { text: string; voiceName: string; speakingRate: number },
+                { audioUrl: string; cached: boolean }
+            >(functions, 'synthesizeSpeech');
 
-        const result = await synthesize({ text, voiceName, speakingRate: rate });
-        const audioUrl = result.data.audioUrl;
+            const result = await synthesize({ text, voiceName, speakingRate: rate });
+            const audioUrl = result.data.audioUrl;
 
-        // Pre-fetch and cache as blob URL for instant subsequent playback
-        const response = await fetch(audioUrl, { signal: controller.signal });
-        const blob = await response.blob();
-        const blobUrl = URL.createObjectURL(blob);
+            // Pre-fetch and cache as blob URL for instant subsequent playback
+            const response = await fetch(audioUrl, { signal: controller.signal });
+            const blob = await response.blob();
+            const blobUrl = URL.createObjectURL(blob);
 
-        // LRU eviction: drop oldest when cache is full
-        if (audioCache.size >= AUDIO_CACHE_MAX) evictOldest();
-        audioCache.set(cacheKey, blobUrl);
+            // LRU eviction: drop oldest when cache is full
+            if (audioCache.size >= AUDIO_CACHE_MAX) evictOldest();
+            audioCache.set(cacheKey, blobUrl);
 
-        return blobUrl;
+            return blobUrl;
+        });
     } finally {
         clearTimeout(timeout);
     }
