@@ -5,6 +5,7 @@
  */
 import { createSeededRng, dateSeed, stringSeed } from './seededRng';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
+import { dateLocale } from './dateHelpers';
 import type { EngineItem } from '../engine/domain';
 
 const DAILY_CATEGORIES = ['cvc', 'blends', 'digraphs', 'silent-e', 'vowel-teams'];
@@ -31,7 +32,7 @@ export function generateDailyChallenge(count: DailyChallengeSize = 10): { proble
     problems.forEach((p, i) => { p.id = `daily-${seed}-${i}`; });
     return {
         problems,
-        dateLabel: today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        dateLabel: today.toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' }),
     };
 }
 

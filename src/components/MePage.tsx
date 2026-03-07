@@ -25,6 +25,7 @@ import type { WordRecord } from '../hooks/useWordHistory';
 import { getWordMap } from '../domains/spelling/words';
 import { ALL_RARITIES, RARITY_CONFIGS, getRarityConfig, type Rarity } from '../utils/rarity';
 import { TestimonialPrompt } from './TestimonialPrompt';
+import { dateLocale } from '../utils/dateHelpers';
 
 // Removed tab switching - now showing everything on one page
 
@@ -109,7 +110,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
             achievementName,
             achievementDesc,
             playerName: displayName || 'Speller',
-            date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+            date: new Date().toLocaleDateString(dateLocale(), { month: 'long', day: 'numeric', year: 'numeric' }),
             referralCode: referralCode || undefined,
         }).catch(() => { /* silent — share cancelled or failed */ });
     }, [displayName, referralCode]);
@@ -199,7 +200,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         printCertificate({
                             type: 'level-completion',
                             playerName: profile.name,
-                            date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                            date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }),
                             level: parseInt(profile.level?.replace('level-', '') || '1') || 1,
                             wordsMastered: pStats.totalCorrect,
                             accuracy: pStats.totalSolved > 0 ? Math.round((pStats.totalCorrect / pStats.totalSolved) * 100) : 0,

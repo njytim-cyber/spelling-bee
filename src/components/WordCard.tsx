@@ -7,6 +7,7 @@
 import { memo } from 'react';
 import type { SpellingWord } from '../domains/spelling/words/types';
 import { getRarityConfig } from '../utils/rarity';
+import { dateLocale } from '../utils/dateHelpers';
 
 interface Props {
     word: SpellingWord;
@@ -93,7 +94,7 @@ export const WordCard = memo(function WordCard({ word, masteredAt, compact, anim
             {/* Footer: mastered date + difficulty */}
             <div className="flex items-center justify-between text-[10px] ui text-[rgb(var(--color-fg))]/25 mt-3 pt-2 border-t border-[rgb(var(--color-fg))]/5">
                 {masteredAt ? (
-                    <span>Mastered {new Date(masteredAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                    <span>Mastered {new Date(masteredAt).toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' })}</span>
                 ) : (
                     <span>Level {word.difficulty}</span>
                 )}

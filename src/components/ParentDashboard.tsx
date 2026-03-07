@@ -16,6 +16,7 @@ import type { WordRecord } from '../hooks/useWordHistory';
 import type { LearnerProfile } from '../hooks/useProfiles';
 import type { CustomWordList } from '../types/customList';
 import { ModalShell } from './ModalShell';
+import { dateLocale } from '../utils/dateHelpers';
 
 
 interface Props {
@@ -85,7 +86,7 @@ function formatLastPlayed(dateStr: string): string {
     if (diff === 0) return 'Today';
     if (diff === 1) return 'Yesterday';
     if (diff < 7) return `${diff} days ago`;
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return d.toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' });
 }
 
 export const ParentDashboard = memo(function ParentDashboard({

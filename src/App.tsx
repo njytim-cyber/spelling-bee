@@ -30,6 +30,7 @@ import { FREE_FRIEND_CAP, PREMIUM_FRIEND_CAP, FREE_DAILY_CHALLENGES } from './co
 import { rollLootDrop } from './utils/lootDrop';
 import { LootDropCelebration } from './components/LootDropCelebration';
 import { recordSurprise } from './utils/surpriseHistory';
+import { dateLocale } from './utils/dateHelpers';
 /** Retry a dynamic import once on chunk-load failure (Cloudflare Pages cache busting) */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Promise<T> {
@@ -1487,7 +1488,7 @@ function AppInner() {
                   onCertificate={(beeLevel, roundReached) => setCertificateData({
                     type: 'bee-win',
                     playerName: user?.displayName ?? 'Spelling Bee Champion',
-                    date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }),
                     beeLevel,
                     roundReached,
                   })}
@@ -1894,7 +1895,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
           </motion.div>
         )}
 
@@ -1910,7 +1911,7 @@ function AppInner() {
               onCertificate={(_type, level, wordsMastered, acc) => setCertificateData({
                 type: 'level-completion',
                 playerName: user?.displayName ?? 'Spelling Champion',
-                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }),
                 level,
                 wordsMastered,
                 accuracy: acc,

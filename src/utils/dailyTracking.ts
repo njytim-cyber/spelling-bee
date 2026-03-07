@@ -6,6 +6,7 @@
  */
 
 import { STORAGE_KEYS } from '../config';
+import { dateLocale } from './dateHelpers';
 
 const STORAGE_KEY = STORAGE_KEYS.dailyResults;
 
@@ -79,5 +80,5 @@ export function getDailyStreak(): number {
 
 /** Get the date label for today (e.g., "Feb 24"). */
 export function getTodayLabel(): string {
-    return new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return new Date().toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' });
 }

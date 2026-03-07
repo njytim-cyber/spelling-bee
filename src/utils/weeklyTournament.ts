@@ -6,6 +6,7 @@
  * Scores uploaded to Firestore `weeklyTournament` collection.
  */
 import { createSeededRng, stringSeed } from './seededRng';
+import { dateLocale } from './dateHelpers';
 import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
 import type { EngineItem } from '../engine/domain';
 
@@ -28,7 +29,7 @@ export function getWeeklyLabel(): string {
     mon.setDate(mon.getDate() - ((mon.getDay() + 6) % 7)); // Monday
     const sun = new Date(mon);
     sun.setDate(sun.getDate() + 6);
-    const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const fmt = (d: Date) => d.toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' });
     return `${fmt(mon)} – ${fmt(sun)}`;
 }
 

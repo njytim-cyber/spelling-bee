@@ -27,6 +27,15 @@ export function todayISO(): string {
     return new Date().toISOString().slice(0, 10);
 }
 
+/** Get the locale string for date formatting based on user's dialect preference. */
+export function dateLocale(): string {
+    try {
+        return localStorage.getItem('spell-bee-dialect') || 'en-US';
+    } catch {
+        return 'en-US';
+    }
+}
+
 /** ISO week key for weekly leaderboard (resets each Monday). Format: "YYYY-WNN". */
 export function currentWeekKey(): string {
     const now = new Date();

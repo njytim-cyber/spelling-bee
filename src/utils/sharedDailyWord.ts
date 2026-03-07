@@ -10,6 +10,7 @@ import type { SpellingWord } from '../domains/spelling/words/types';
 import type { DifficultyTier } from '../domains/spelling/words/types';
 import { getRarityConfig } from './rarity';
 import { appendReferralFooter } from './shareHelper';
+import { dateLocale } from './dateHelpers';
 
 /** Epoch for daily word numbering (Jan 1 2026) */
 const EPOCH = new Date(2026, 0, 1).getTime();
@@ -65,7 +66,7 @@ export function formatDailyWordShare(
     communityCorrectPct: number | null,
     referralCode?: string,
 ): string {
-    const dateLabel = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const dateLabel = new Date().toLocaleDateString(dateLocale(), { month: 'short', day: 'numeric' });
     const rc = getRarityConfig(word.difficulty);
     const timeStr = (result.timeMs / 1000).toFixed(1);
 

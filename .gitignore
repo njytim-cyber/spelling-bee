@@ -45,5 +45,7 @@ scripts/pipeline/bad-words-manifest.json
 scripts/pipeline/*-current-defs.json
 scripts/pipeline/needs-manual-fix.json
 scripts/pipeline/tier6d-badwords.txt
+scripts/pipeline/uk-overrides-generated.ts
+scripts/pipeline/uk-gaps.json
 bad-words-manifest.json
 existing-words.txt
