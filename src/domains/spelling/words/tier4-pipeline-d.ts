@@ -13,7 +13,7 @@
 import type { SpellingWord } from './types';
 
 export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
-{
+    {
         "word": "statutory",
         "definition": "Of, relating to, enacted or regulated by a statute.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully statutory.",
@@ -29,7 +29,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "steadfast",
         "definition": "Fixed or unchanging; steady.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully steadfast.",
@@ -45,7 +45,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "streaming",
         "definition": "Flowing or moving in continuous succession, like fluid in a stream.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully streaming.",
@@ -61,10 +61,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "subatomic",
-        "definition": "Relating to particles that are constituents of the atom, or are smaller than an atom; such as proton, neutron, electron, etc.",
-        "exampleSentence": "The electron microscope is able to resolve detail at the subatomic level.",
+        "definition": "Smaller than an atom, such as electrons, protons, and neutrons.",
+        "exampleSentence": "Scientists use powerful accelerators to study subatomic particles.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -77,7 +77,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tasteless",
         "definition": "Having no flavour; bland; insipid.",
         "exampleSentence": "They accused the designer of being a tasteless hack.",
@@ -93,10 +93,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "tentative",
-        "definition": "Of or pertaining to a trial or trials; essaying; experimental.",
-        "exampleSentence": "He gave a tentative answer, unsure of the final outcome.",
+        "definition": "Uncertain or hesitant; not final or definite.",
+        "exampleSentence": "She made a tentative plan to visit her cousin over the weekend.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -109,7 +109,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "thankless",
         "definition": "Not appreciated or rewarded.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully thankless.",
@@ -125,7 +125,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tolerable",
         "definition": "Capable of being borne, tolerated or endured; bearable or endurable.",
         "exampleSentence": "A cabled despatch is better than nothing, but a voicecast of tolerable quality is preferable, and in certain types of story a voicecast with live or recorded actuality is best of all.",
@@ -141,10 +141,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "toothless",
-        "definition": "Having no teeth.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully toothless.",
+        "definition": "Lacking teeth; also, lacking real power or force.",
+        "exampleSentence": "The toothless puppy gnawed happily on a soft rubber toy.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -157,7 +157,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "traceable",
         "definition": "Capable of being traced; possible to track down.",
         "exampleSentence": "The course of the abandoned line is still clearly traceable.",
@@ -173,7 +173,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "turbulent",
         "definition": "Violently disturbed or agitated; tempestuous, tumultuous.",
         "exampleSentence": "It is dangerous to sail in turbulent seas.",
@@ -189,7 +189,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unchanged",
         "definition": "Not changed or altered; remaining in an original state.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully unchanged.",
@@ -205,7 +205,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "unguarded",
         "definition": "Having no guard or protection; vulnerable.",
         "exampleSentence": "I let out her secret in an unguarded moment.",
@@ -221,7 +221,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unrelated",
         "definition": "Not connected or associated.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully unrelated.",
@@ -237,7 +237,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unwilling",
         "definition": "Not willing; reluctant.",
         "exampleSentence": "We are unwilling to restore his previous privileges after his betrayal of our trust.",
@@ -253,7 +253,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "venerable",
         "definition": "Commanding respect because of age, dignity, character or position.",
         "exampleSentence": "We looked at the venerable stream not in the vivid flush of a short day that comes and departs for ever, but in the pacific yet august light of abiding memories.",
@@ -269,7 +269,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "voracious",
         "definition": "Wanting or devouring great quantities of food.",
         "exampleSentence": "He is voracious by suppertime.",
@@ -285,7 +285,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "withering",
         "definition": "Tending to destroy, devastate, overwhelm, or cause complete destruction.",
         "exampleSentence": "The D-Day troops came under withering fire.",
@@ -301,10 +301,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "curiously",
-        "definition": "In a curious manner; with curiosity; inquisitively.",
-        "exampleSentence": "He ran curiously across the field to catch the ball.",
+        "definition": "With eager interest or mild surprise.",
+        "exampleSentence": "The cat tilted its head and curiously sniffed the unfamiliar box.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -317,10 +317,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "digitally",
-        "definition": "In a digital manner.",
-        "exampleSentence": "The film was shot digitally.",
+        "definition": "Using electronic or computer-based methods.",
+        "exampleSentence": "The photograph was digitally enhanced to sharpen the blurry details.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -333,7 +333,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "intensely",
         "definition": "In an intense manner.",
         "exampleSentence": "He ran intensely across the field to catch the ball.",
@@ -349,10 +349,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "logically",
-        "definition": "In a logical manner, with logic.",
-        "exampleSentence": "He ran logically across the field to catch the ball.",
+        "definition": "In a way that follows clear reasoning.",
+        "exampleSentence": "She logically explained each step of the math problem to her classmate.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -365,7 +365,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "mockingly",
         "definition": "Said, written, or done with the intent to mock, or ridicule; with mocking effect.",
         "exampleSentence": "It then mockingly says they connect “like-minded Tesla owners with one another, facilitating a vibrant community through shared contact information.”.",
@@ -381,10 +381,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "painfully",
-        "definition": "In a painful manner; as if in pain.",
-        "exampleSentence": "He ran painfully across the field to catch the ball.",
+        "definition": "In a way that causes suffering or distress; extremely.",
+        "exampleSentence": "The waiting room was painfully quiet as everyone stared at the clock.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -397,7 +397,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "quarterly",
         "definition": "Once every quarter year (three months).",
         "exampleSentence": "He ran quarterly across the field to catch the ball.",
@@ -413,10 +413,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "weightily",
-        "definition": "In a weighty manner; ponderously; forcibly.",
-        "exampleSentence": "He ran weightily across the field to catch the ball.",
+        "definition": "With heaviness or serious importance.",
+        "exampleSentence": "The judge spoke weightily about the consequences of dishonesty.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -429,7 +429,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "wholesale",
         "definition": "In bulk or large quantity.",
         "exampleSentence": "It still feels unnerving to some, even those caught in the crossfire, to see injuries invented wholesale and lies accepted by the highest court in the land.",
@@ -445,7 +445,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "overtaken",
         "definition": "Taken by surprise; overcome.",
         "exampleSentence": "I was overtaken by events.",
@@ -460,10 +460,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "aeroplane",
-        "definition": "To fly in an aeroplane.",
-        "exampleSentence": "The rod was discarded, and then, hand over hand, the prize of them all was aeroplaned to the top of the cliff.",
+        "definition": "To travel or glide through the air.",
+        "exampleSentence": "The kite seemed to aeroplane across the sky on the gusty afternoon.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -476,7 +476,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "milkshake",
         "definition": "To administer an alkaline supplement to (a horse) to improve its racing performance.",
         "exampleSentence": "A politician was milkshaked during the protest.",
@@ -492,10 +492,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "bulldozer",
-        "definition": "To bulldoze (demolish with a bulldozer).",
-        "exampleSentence": "He promised to bulldozer as soon as he got home.",
+        "definition": "To knock down or clear away with heavy force.",
+        "exampleSentence": "The crew planned to bulldozer the crumbling shed before building a new one.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -508,7 +508,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "malignant",
         "definition": "A deviant; a person who is hostile or destructive to society.",
         "exampleSentence": "A malignant in a position of real power immediately becomes a tyrant.",
@@ -524,7 +524,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "mousetrap",
         "definition": "To trap; to trick or fool (someone) into a bad situation.",
         "exampleSentence": "The scammer is paid for each new visitor directed to his site. There is nothing wrong except that the user finds it impossible to leave the site because he is mousetrapped.",
@@ -540,10 +540,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "nursemaid",
-        "definition": "To tend to as a nursemaid.",
-        "exampleSentence": "I don't believe I have to nursemaid these two rookies through their entire probationary period.",
+        "definition": "To look after someone with constant care and attention.",
+        "exampleSentence": "I had to nursemaid the new hires through every step of the project.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -556,10 +556,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "microsoft",
-        "definition": "To Microsoftify.",
-        "exampleSentence": "You could call it the Microsofting of the wine industry. Of course, wine is unlikely to be dominated by one producer or one distributor.",
+        "definition": "To apply a large corporate style of standardization to something.",
+        "exampleSentence": "Some critics worry that big firms will microsoft the craft beer industry.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -572,7 +572,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "americano",
         "definition": "A drink made of espresso coffee diluted with hot water.",
         "exampleSentence": "And he drank americano. That was interesting. Was he lactose intolerant or did he simply prefer his coffee black?",
@@ -588,10 +588,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "doubtless",
-        "definition": "Characterized by or experiencing no doubt at all, certain; undoubted; undoubting.",
-        "exampleSentence": "There are those who have doubtless faith in revelation.",
+        "definition": "Certain; free from any uncertainty.",
+        "exampleSentence": "His talent was doubtless, impressing every judge at the competition.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -604,10 +604,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "microchip",
-        "definition": "To fit (an animal) with a microchip.",
-        "exampleSentence": "Still, doing something to protect your cat is better than doing nothing, so you should have your cat microchipped in the groin area with a registered ID.",
+        "definition": "To implant a tiny electronic tag under the skin.",
+        "exampleSentence": "The vet suggested we microchip our puppy in case she ever gets lost.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -620,10 +620,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "blockhead",
-        "definition": "To perform as a human blockhead.",
-        "exampleSentence": "Like an old-time sideshow, the acts included lying on a bed of nails, blockheading and, of course, fire-eating.",
+        "definition": "To push objects into the nasal cavity as a sideshow feat.",
+        "exampleSentence": "The circus performer would blockhead a long nail to the amazement of the crowd.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -636,10 +636,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "exercised",
-        "definition": "The property of having been exercised, used, acted upon.",
-        "exampleSentence": "Three points about this unobtrusive person showed promptly to the exercised eye that he was not a Row man pur sang.",
+        "definition": "Deeply worried, troubled, or agitated about something.",
+        "exampleSentence": "The villagers were exercised about the proposed highway cutting through their farmland.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -652,7 +652,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "distilled",
         "definition": "Having been produced by means of distillation.",
         "exampleSentence": "The distilled spirits are bottled and sold at a handsome profit.",
@@ -667,9 +667,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "backstory",
-        "definition": "The previous experiences and life of a person, specifically (narratology, especially in film, television) a character in a dramatic work.",
+        "definition": "The previous experiences and life of a person, specifically a character in a dramatic work.",
         "exampleSentence": "Learning about the backstory was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -683,7 +683,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "excelsior",
         "definition": "Loftier, yet higher, more elevated; ever upward.",
         "exampleSentence": "It was clear from the first three paragraphs that the language employed by Mr Tolkien was excelsior. He was brilliant.",
@@ -699,7 +699,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "anticivic",
         "definition": "In opposition to citizenship.",
         "exampleSentence": "Milton suggests his republicanism by spurning the anticivic implications of Epicurean garden retirement.",
@@ -715,7 +715,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "truckload",
         "definition": "The contents of a full truck or lorry.",
         "exampleSentence": "Another meme shows an empty van. “Excellent news,” it reads. “The first truckload of your thoughts and prayers has just arrived.”.",
@@ -731,10 +731,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "revolving",
-        "definition": "The act of something that revolves or turns.",
-        "exampleSentence": "The rotations of memory are the commencement of those wonderful revolvings of the intellectual faculties by which the process of reason is carried on.",
+        "definition": "Continuous spinning or turning motion.",
+        "exampleSentence": "The slow revolving of the lighthouse beam swept across the dark harbour.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -746,7 +746,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "childrens",
         "definition": "Genitive of children.",
         "exampleSentence": "Learning about the childrens was the best part of the day.",
@@ -762,10 +762,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bolognese",
-        "definition": "A native or inhabitant of the city of Bologna, capital and largest city of Emilia-Romagna, Italy, or the surrounding metropolitan city.",
-        "exampleSentence": "Learning about the bolognese was the best part of the day.",
+        "definition": "A rich Italian meat sauce served with pasta.",
+        "exampleSentence": "Grandma simmered her bolognese for hours until the flavour was perfect.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -778,7 +778,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "electrons",
         "definition": "The digital or electronic version of a document.",
         "exampleSentence": "Your presentation today was very informative. Could you email me the electrons?",
@@ -793,7 +793,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "butchered",
         "definition": "Taken apart professionally, as a butcher might.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully butchered.",
@@ -808,7 +808,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "filtering",
         "definition": "The process of passing something through a filter.",
         "exampleSentence": "Learning about the filtering was the best part of the day.",
@@ -823,10 +823,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "crestless",
-        "definition": "Having no crest.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully crestless.",
+        "definition": "Lacking a raised ridge or ornamental tuft on top.",
+        "exampleSentence": "The crestless helmet looked plain compared to the decorated ones in the museum.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -839,7 +839,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "outgunned",
         "definition": "Having insufficient guns compared to the enemy.",
         "exampleSentence": "The fighters were hugely outgunned by the regular army.",
@@ -854,10 +854,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "evolvable",
-        "definition": "Capable of evolving.",
-        "exampleSentence": "First, an evolvable system can respond quickly to change. In other words, a new system satisfying changed requirements is released onto the market quickly.",
+        "definition": "Able to change and develop over time.",
+        "exampleSentence": "Engineers designed an evolvable system that could adapt to future needs.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -870,7 +870,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "reconnect",
         "definition": "To connect again or differently.",
         "exampleSentence": "Around 5,000 visitors attended Rail Live on June 16-17, to reconnect after a two-year hiatus because of COVID restrictions.",
@@ -886,7 +886,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "theatrics",
         "definition": "Theatrical appearance or character.",
         "exampleSentence": "Learning about the theatrics was the best part of the day.",
@@ -902,7 +902,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "stringing",
         "definition": "The act by which something is strung.",
         "exampleSentence": "When a printer is extruding and has open spaces in a layer, printers pull the filament back so that stringing does not occur.",
@@ -917,7 +917,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ungrilled",
         "definition": "Not cooked on a grill.",
         "exampleSentence": "Yes, there was the tree-shadowed back wall on the alley, with the stout ungrilled door.",
@@ -933,10 +933,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "shaftment",
-        "definition": "An obsolete unit of length defined as 6 inches, which equals 2 palms or ²⁄₃ span; today 6 inches equals exactly 15.24 cm. (Before the 12th century, a shaftment was defined as 6+¹⁄₂ inches.).",
-        "exampleSentence": "A shaftment is the width of the palm and the outstretched thumb.",
+        "definition": "An old measure equal to about six inches, or a palm plus thumb width.",
+        "exampleSentence": "The archer measured the arrow's length using a shaftment as a rough guide.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -949,7 +949,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "honkingly",
         "definition": "With a honking sound.",
         "exampleSentence": "At four-thirty, the swim period was honkingly announced.",
@@ -965,7 +965,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "unpitched",
         "definition": "Not having been pitched.",
         "exampleSentence": "An unpitched tent is just a pile of fabric.",
@@ -981,7 +981,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "meterless",
         "definition": "Without meter (musical or poetical measure); arhythmic.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully meterless.",
@@ -997,7 +997,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "dreadless",
         "definition": "Feeling no dread or fear; unafraid.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully dreadless.",
@@ -1013,10 +1013,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "grapeless",
-        "definition": "Without grapes.",
-        "exampleSentence": "Cider is the local wine of this grapeless part of France.",
+        "definition": "Having no grapes; lacking grapevines.",
+        "exampleSentence": "Cider became the local drink in the grapeless northern regions.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1029,10 +1029,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "responsor",
-        "definition": "A receiver used in conjunction with an interrogator to receive and interpret signals from a transponder.",
-        "exampleSentence": "Results indicated that the responsors were affected by the illness process.",
+        "definition": "A device that receives and interprets signals from a transmitter.",
+        "exampleSentence": "The radar responsor confirmed that the aircraft was on course.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -1044,7 +1044,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "verbality",
         "definition": "The state or characteristic of consisting of words; that which consists simply of verbiage.",
         "exampleSentence": "In other words, to read a visual poem is to betray it; to restore it to verbality is to eliminate half of its meaning.",
@@ -1060,7 +1060,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "harbourer",
         "definition": "A person who harbours another.",
         "exampleSentence": "Learning about the harbourer was the best part of the day.",
@@ -1076,7 +1076,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "unarchive",
         "definition": "To extract from a digital archive.",
         "exampleSentence": "Do you know what software I need to unarchive these compressed files?",
@@ -1092,7 +1092,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yieldless",
         "definition": "Not providing any yield or return.",
         "exampleSentence": "And Death's grim hands grip hard below / At mortared seams of the yieldless stone.",
@@ -1108,10 +1108,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yieldance",
-        "definition": "The act of producing; yield.",
-        "exampleSentence": "Learning about the yieldance was the best part of the day.",
+        "definition": "The amount produced; total output or harvest.",
+        "exampleSentence": "Farmers celebrated a record yieldance after months of favourable weather.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -1124,10 +1124,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pipeliner",
-        "definition": "One who works on oil pipelines.",
-        "exampleSentence": "… The other pipeliners would hoot and often somebody hollered, 'Look at them rags!' Hence the name.\"",
+        "definition": "A worker who builds or maintains oil pipelines.",
+        "exampleSentence": "The pipeliner spent months welding joints in the remote desert.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1140,7 +1140,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "unglowing",
         "definition": "Not emitting a glow of light.",
         "exampleSentence": "Is it acceptable to share “good letters” but never share letters with neutral or unglowing commentary?",
@@ -1156,7 +1156,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "medicable",
         "definition": "Capable of being medicated.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully medicable.",
@@ -1172,7 +1172,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "misregard",
         "definition": "Wrong understanding; misconstruction.",
         "exampleSentence": "Here well I weene , whenas these rimes be red With misregard.",
@@ -1188,7 +1188,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unfeather",
         "definition": "To strip of feathers.",
         "exampleSentence": "He promised to unfeather as soon as he got home.",
@@ -1204,7 +1204,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "outkeeper",
         "definition": "An attachment to a surveyor's compass for keeping tally in chaining.",
         "exampleSentence": "This was a single dwelling, the home of one of the outkeepers.",
@@ -1219,7 +1219,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "graspless",
         "definition": "Without a grasp; relaxed.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully graspless.",
@@ -1235,7 +1235,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "uncombine",
         "definition": "To separate (things previously combined).",
         "exampleSentence": "He promised to uncombine as soon as he got home.",
@@ -1251,7 +1251,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lodgeable",
         "definition": "Capable of being lodged.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully lodgeable.",
@@ -1267,7 +1267,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "interaxis",
         "definition": "Between axes (any sense).",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully interaxis.",
@@ -1283,7 +1283,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "crankness",
         "definition": "Liability to capsize (said of a ship or other vessel).",
         "exampleSentence": "Learning about the crankness was the best part of the day.",
@@ -1299,10 +1299,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "atomicism",
-        "definition": "The view that a system as is composed of separable, independent, self-contained units that can be examined and manipulated individually.",
-        "exampleSentence": "A consciousness which has got rid of the thought of absolute being would become a prey to endless atomicism and dissolution .",
+        "definition": "A philosophy that explains reality as made up of separate, independent units.",
+        "exampleSentence": "The professor warned that extreme atomicism ignores how parts connect.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1315,7 +1315,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lutherist",
         "definition": "A scholar who studies Luther or his works.",
         "exampleSentence": "Seized by a fit of rage he denounced Lasson then and there as a Lutherist and hastening from church summoned him before the Court.",
@@ -1331,7 +1331,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "mosqueing",
         "definition": "The practice of visiting or attending a mosque.",
         "exampleSentence": "P.L. gave me an inferior dressing gown and Mary bought one that suits her fairness, otherwise no purchases. Next morning we did some mosqueing and souking ….",
@@ -1347,10 +1347,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hemingway",
-        "definition": "To speak, write or behave in a Hemingwayesque manner.",
-        "exampleSentence": "I said, “I'm a little Hemingwayed out, but we can go to Floridita after dinner if you'd like.”.",
+        "definition": "To write or act in a bold, sparse, adventurous style.",
+        "exampleSentence": "He liked to hemingway his travel stories, keeping sentences short and vivid.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -1362,10 +1362,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "rapidless",
-        "definition": "Without rapids.",
-        "exampleSentence": "\"The river itself is flat and picks up quite a bit of current in highest flows, but otherwise it is a straightforward, rapidless section of beginner water.\"",
+        "definition": "Having no rapids; calm and without turbulent water.",
+        "exampleSentence": "The rapidless stretch of river was perfect for beginner canoeists.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1378,10 +1378,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "saviorism",
-        "definition": "Belief in a savior.",
-        "exampleSentence": "Learning about the saviorism was the best part of the day.",
+        "definition": "A mindset of trying to rescue others, sometimes in a patronizing way.",
+        "exampleSentence": "The documentary criticized saviorism in overseas charity projects.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1394,7 +1394,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "fanfaring",
         "definition": "Pomp or activity to call attention to something.",
         "exampleSentence": "If you can take it, you'll find all this fanfaring a lot of fun.",
@@ -1409,7 +1409,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "shackless",
         "definition": "Without a shack or shacks.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully shackless.",
@@ -1425,7 +1425,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unrebuilt",
         "definition": "Of something damaged or destroyed: not built again, not reconstructed.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully unrebuilt.",
@@ -1441,7 +1441,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "offshorer",
         "definition": "An organization that sends work abroad, hiring foreign labour as a substitute for local labour.",
         "exampleSentence": "Is the offshorer's management committed to send the development offshore? If the offshorer is a software company developing the system for a customer, the customer might object to offshoring.",
@@ -1457,7 +1457,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "outstrain",
         "definition": "To outdo by straining.",
         "exampleSentence": "He promised to outstrain as soon as he got home.",
@@ -1473,7 +1473,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "everester",
         "definition": "Someone who climbs Mount Everest.",
         "exampleSentence": "On May 10 1993, Santosh Yadav became the first woman to climb the Everest for the second time. … The expedition was led by Bachendri Pal, India's first woman Everester.",
@@ -1489,7 +1489,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "thirsties",
         "definition": "Thirst (for something to drink, for drugs, to go somewhere, etc).",
         "exampleSentence": "Got the thirsties? Get the 20's.",
@@ -1504,10 +1504,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "treadable",
-        "definition": "Able to be trodden.",
-        "exampleSentence": "Everyone agreed that the dessert was wonderfully treadable.",
+        "definition": "Safe or suitable to walk on.",
+        "exampleSentence": "After the ice melted, the path finally became treadable again.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -1520,7 +1520,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "laureling",
         "definition": "Decorations that imitate laurel wreaths.",
         "exampleSentence": "Learning about the laureling was the best part of the day.",
@@ -1535,7 +1535,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "reconfide",
         "definition": "To communicate information that was told in confidence to a third person.",
         "exampleSentence": "If you confide it to the Secretary of the Treasury, then why go on and reconfide the same power in the President?",
@@ -1551,7 +1551,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "scrubless",
         "definition": "Without scrubby vegetation.",
         "exampleSentence": "Alternatively, waterless and scrubless hand antiseptics have become popular for preparing the surgeon's skin.",
@@ -1567,7 +1567,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "glanceful",
         "definition": "That which is perceived at a glance.",
         "exampleSentence": "Frau Ellen was bright as the poppy in flower Yet no fragrance came forth from its bloom, Her smiling lip curled with mockery sour, Her eye cast a glanceful of doom.",
@@ -1583,7 +1583,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "folderful",
         "definition": "All of the documents, papers, notes, etc. that are contained in a folder.",
         "exampleSentence": "Control Panel provides a folderful of essential property sheets and helpful wizards.",
@@ -1599,7 +1599,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "noodleism",
         "definition": "A misguided or foolish act or idea.",
         "exampleSentence": "This writer, however, with all his blunders and noodleisms, has picked up some truths, too, we must do him the justice to say: and we hope his countrymen will fructify thereupon.",
@@ -1615,7 +1615,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "hebrewist",
         "definition": "A scholar who is expert in the Hebrew language.",
         "exampleSentence": "He granted her request at once, and enfranchised the bonded Hebrewists.",
@@ -1631,7 +1631,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "martinied",
         "definition": "Served or flavoured with martini.",
         "exampleSentence": "The team had resolved to move just after a martinied lunch if they had a \"go\" sign from Julie.",
@@ -1647,7 +1647,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "misdigest",
         "definition": "To improperly break down (food) in the alimentary canal.",
         "exampleSentence": "I misdigest my food, such as I get.",
@@ -1663,7 +1663,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "misgrieve",
         "definition": "To injure in a way that creates grief.",
         "exampleSentence": "Yet in a wondrous variety of ways it is possible for a griever to misgrieve.",
@@ -1679,10 +1679,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "verseless",
-        "definition": "Without poetry.",
-        "exampleSentence": "Yet in spite of today's boom in books and libraries, some children still live in a verseless world.",
+        "definition": "Lacking poetry or verse; with no exposure to poems.",
+        "exampleSentence": "Some children still grow up in a verseless household with no nursery rhymes.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1695,7 +1695,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "misinject",
         "definition": "To inject (a substance) incorrectly.",
         "exampleSentence": "Roe admitted that he may have misinjected drugs during the abortion.",
@@ -1711,7 +1711,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "underbrow",
         "definition": "The portion of the face below the eyebrow and above the eyelid.",
         "exampleSentence": "Use wax as an underbrow cleanup and always tweeze for the shaping or arching you need.",
@@ -1727,7 +1727,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "preheroic",
         "definition": "Before becoming a hero.",
         "exampleSentence": "This final trial which the hero must endure is motivated by the reappearance of the fraternal rivals who vexed the hero in his earlier, preheroic days.",
@@ -1743,7 +1743,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "aspirined",
         "definition": "Under the influence of aspirin.",
         "exampleSentence": "Give him some aspirined insect-powder.",
@@ -1759,7 +1759,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nondemise",
         "definition": "Lack of demise; not formally transferring ownership.",
         "exampleSentence": "Learning about the nondemise was the best part of the day.",
@@ -1775,7 +1775,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "overscarf",
         "definition": "A decorative scarf worn over clothing.",
         "exampleSentence": "She unpins her white overscarf and the satiny green and yellow one underneath.",
@@ -1791,7 +1791,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "particled",
         "definition": "Formed of the specified kind of particle.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully particled.",
@@ -1807,7 +1807,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "mistackle",
         "definition": "To tackle improperly, such as when it is not legal, or not in the correct manner.",
         "exampleSentence": "… mistackled while others are neither properly grasped nor tackled at all.",
@@ -1823,7 +1823,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "outwander",
         "definition": "To go out wandering; to roam beyond bounds.",
         "exampleSentence": "He promised to outwander as soon as he got home.",
@@ -1839,10 +1839,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "founderer",
-        "definition": "One who founders.",
-        "exampleSentence": "When she and her sister were away at Williamsburg, Nancy and I were more like founderers on a raft adrift in an angry sea.",
+        "definition": "A person or thing that sinks, stumbles, or fails.",
+        "exampleSentence": "Without proper supplies, the expedition's leader became a helpless founderer in the snow.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1855,7 +1855,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "nonclause",
         "definition": "An utterance that is nonclausal, such as a noun phrase, prepositional phrase, or interjection.",
         "exampleSentence": "The corpus was searched for nonclause examples of the relevant property.",
@@ -1871,7 +1871,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "sewerable",
         "definition": "Able to be provided with sewers.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully sewerable.",
@@ -1887,10 +1887,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "accusation",
-        "definition": "The act of accusing.",
-        "exampleSentence": "They set up over his head his accusation.",
+        "definition": "A charge or claim that someone has done something wrong.",
+        "exampleSentence": "The accusation shocked the entire classroom into silence.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -1903,7 +1903,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "allegiance",
         "definition": "Loyalty to some cause, nation or ruler.",
         "exampleSentence": "It was always going to be a hot occasion for Declan Rice and Jack Grealish, the one-time Ireland internationals who subsequently switched their allegiances.",
@@ -1919,7 +1919,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "apocalypse",
         "definition": "A revealing, especially a prophecy of, or the unfolding of, supernatural events.",
         "exampleSentence": "She wrote about the apocalypse in her school report.",
@@ -1935,10 +1935,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "australian",
-        "definition": "A person from the country of Australia or of Australian descent.",
-        "exampleSentence": "An Australian was once appointed on contract, but he swore too much.",
+        "definition": "A person from the country of Australia.",
+        "exampleSentence": "An Australian in our group taught us a few slang words from back home.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -1951,10 +1951,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ballistics",
-        "definition": "The science of objects that predominantly fly under the effects of gravity, momentum and atmospheric drag, and dealing with details of their behaviour at the origin and destination of their flight, as of bullets or missiles or rockets.",
-        "exampleSentence": "She wrote about the ballistics in her school report.",
+        "definition": "The science of how bullets, missiles, and projectiles move through the air.",
+        "exampleSentence": "Detectives used ballistics to match the bullet to a specific firearm.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -1967,7 +1967,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "capitalist",
         "definition": "The owner of a considerable amount of capital; a wealthy person.",
         "exampleSentence": "She wrote about the capitalist in her school report.",
@@ -1983,7 +1983,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "cinderella",
         "definition": "A mistreated and impoverished girl.",
         "exampleSentence": "She wrote about the cinderella in her school report.",
@@ -1999,10 +1999,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "compassion",
-        "definition": "Deep awareness of the suffering of others that people have to the point of them being motivated to relieve such states.",
-        "exampleSentence": "She wrote about the compassion in her school report.",
+        "definition": "A deep feeling of sympathy and desire to help those who are suffering.",
+        "exampleSentence": "She showed great compassion by volunteering at the shelter every weekend.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2015,7 +2015,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "concussion",
         "definition": "A violent collision or shock.",
         "exampleSentence": "Then Concussion, Rapine, Pillories, / Their Catalogue of Accusations fill.",
@@ -2031,7 +2031,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "contestant",
         "definition": "A participant in a contest; specifically, a person who plays a game, as on a TV game show.",
         "exampleSentence": "She wrote about the contestant in her school report.",
@@ -2047,7 +2047,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "conviction",
         "definition": "A firmly held belief.",
         "exampleSentence": "Analogies are used in aid of Conviction: Metaphors, as means of Illustration.",
@@ -2063,7 +2063,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "courthouse",
         "definition": "A public building housing courts of law.",
         "exampleSentence": "She wrote about the courthouse in her school report.",
@@ -2079,10 +2079,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "definition",
-        "definition": "A statement of the meaning of a word, word group, sign, or symbol; especially, a dictionary definition.",
-        "exampleSentence": "She wrote about the definition in her school report.",
+        "definition": "A statement explaining the meaning of a word or phrase.",
+        "exampleSentence": "He looked up the exact definition in the dictionary before writing his essay.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2095,7 +2095,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "delegation",
         "definition": "An act of delegating.",
         "exampleSentence": "She wrote about the delegation in her school report.",
@@ -2111,7 +2111,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "demolition",
         "definition": "The process of demolishing or destroying buildings or other structures.",
         "exampleSentence": "She wrote about the demolition in her school report.",
@@ -2127,7 +2127,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dispatcher",
         "definition": "Agent noun of dispatch; one who dispatches.",
         "exampleSentence": "First see that each die has all six figures upon it, for some dice are dispatchers, made with double numbers, ….",
@@ -2143,7 +2143,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "efficiency",
         "definition": "The extent to which a resource is used for the intended purpose.",
         "exampleSentence": "The efficiency of this loudspeaker is 40%.",
@@ -2159,10 +2159,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "evaluation",
-        "definition": "An assessment, such as an annual personnel performance review used as the basis for a salary increase or bonus, or a summary of a particular situation.",
-        "exampleSentence": "The result of the semestral evaluation will go towards your final score.",
+        "definition": "A careful assessment or judgement of quality or performance.",
+        "exampleSentence": "The teacher wrote a detailed evaluation of each student's progress.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2175,7 +2175,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "excellence",
         "definition": "The quality of being excellent; brilliance.",
         "exampleSentence": "John Davies was awarded for excellence in the field of computer security.",
@@ -2191,7 +2191,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "exhibition",
         "definition": "An instance of exhibiting, or something exhibited.",
         "exampleSentence": "There was an art exhibition on in the town hall.",
@@ -2207,7 +2207,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fraternity",
         "definition": "The quality of being brothers or brotherly; brotherhood.",
         "exampleSentence": "She wrote about the fraternity in her school report.",
@@ -2223,7 +2223,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fundraiser",
         "definition": "An event undertaken to get money by voluntary contributions for a particular activity or cause.",
         "exampleSentence": "This year’s fundraiser will be a walkathon.",
@@ -2239,7 +2239,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "generosity",
         "definition": "The trait of being willing to donate money, resources, or time.",
         "exampleSentence": "We have mentioned generosity as an outstanding virtue required in Sioux life.",
@@ -2255,7 +2255,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "harassment",
         "definition": "Persistent attacks and criticism causing worry and distress.",
         "exampleSentence": "She wrote about the harassment in her school report.",
@@ -2271,7 +2271,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "homecoming",
         "definition": "The act or event of returning home.",
         "exampleSentence": "Many alumni come back for homecoming, and many freshmen are advised to flee.",
@@ -2287,10 +2287,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "indictment",
-        "definition": "An official formal accusation for a criminal offence, or the process by which it is brought to a jury.",
-        "exampleSentence": "An indictment of his ability to lead.",
+        "definition": "A formal charge accusing someone of a serious crime.",
+        "exampleSentence": "The grand jury issued an indictment against the former executive.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2303,7 +2303,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "initiative",
         "definition": "A beginning; a first move.",
         "exampleSentence": "She wrote about the initiative in her school report.",
@@ -2319,10 +2319,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "journalism",
-        "definition": "The aggregating, writing, editing, and presenting of news or news articles for widespread distribution, typically in electronic publications, broadcast news media, or printed newspapers or periodicals, for the purpose of informing the audience, relying on a style of writing characteristic for this purpose, consisting of direct presentation of facts or events and (depending on type) either with or without analysis or interpretation.",
-        "exampleSentence": "She wrote about the journalism in her school report.",
+        "definition": "The work of gathering, writing, and reporting news to the public.",
+        "exampleSentence": "Good journalism relies on verifying facts before publishing a story.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -2335,7 +2335,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "communication"
     },
-{
+    {
         "word": "liquidness",
         "definition": "The quality of being liquid (flowing state of matter).",
         "exampleSentence": "She wrote about the liquidness in her school report.",
@@ -2351,7 +2351,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "manchester",
         "definition": "A type of cotton fabric, or a piece of clothing made from such fabric.",
         "exampleSentence": "Betsy, as Muslin, had a very showy striped pink and white Manchester, pink shoes, red Ribbons in abundance and a short Apron.",
@@ -2367,7 +2367,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "mastermind",
         "definition": "A person with an extraordinary intellect or skill that is markedly superior to their peers.",
         "exampleSentence": "The first was with none other than Khalid Sheikh Mohammad (KSM), mastermind of the 9/11 attacks.",
@@ -2383,7 +2383,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "meditation",
         "definition": "A devotional exercise of, or leading to, contemplation.",
         "exampleSentence": "Her book is less a cookbook than a meditation on the craft of cookery.",
@@ -2399,10 +2399,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "membership",
-        "definition": "The state of being a member of a group or organization.",
-        "exampleSentence": "He has memberships in clubs in three cities.",
+        "definition": "The condition of belonging to a group or organization.",
+        "exampleSentence": "Her membership in the chess club gave her access to weekend tournaments.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -2415,7 +2415,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "metropolis",
         "definition": "The mother (founding) polis (city state) of a colony.",
         "exampleSentence": "Love is dead in metropolis / All contact through glove or partition.",
@@ -2431,9 +2431,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "missionary",
-        "definition": "One who is sent on a mission.",
+        "definition": "Relating to a mission.",
         "exampleSentence": "She wrote about the missionary in her school report.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -2447,7 +2447,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "parliament",
         "definition": "A formal council summoned (especially by a monarch) to discuss important issues.",
         "exampleSentence": "A group of owls is called a parliament.",
@@ -2463,7 +2463,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "percentage",
         "definition": "The amount, number or rate of something, regarded as part of a total of 100; a part of a whole.",
         "exampleSentence": "There was no percentage in staying at home.",
@@ -2479,7 +2479,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "portuguese",
         "definition": "A person native to, or living in, Portugal.",
         "exampleSentence": "With a view to securing its more efficient working, a Portuguese was placed in charge of the entire department as Vidane.",
@@ -2495,7 +2495,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "presidency",
         "definition": "The office or role of president.",
         "exampleSentence": "She wrote about the presidency in her school report.",
@@ -2511,7 +2511,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "prosperity",
         "definition": "The condition of being prosperous: having good fortune and a fortune.",
         "exampleSentence": "She wrote about the prosperity in her school report.",
@@ -2527,10 +2527,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "protestant",
-        "definition": "A member of any of several Christian denominations which separated from the Roman Catholic Church based on theological or political differences during the Reformation (or in some cases later).",
-        "exampleSentence": "MR. SEXTON said, he had always understood that the difference between Protestants and Presbyterians was not a difference of creed, but as to episcopacy and practice.",
+        "definition": "A Christian belonging to a denomination that separated from the Roman Catholic Church.",
+        "exampleSentence": "Many early settlers in New England were Protestant families seeking religious freedom.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2543,7 +2543,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "recentness",
         "definition": "The characteristic of being recent.",
         "exampleSentence": "She wrote about the recentness in her school report.",
@@ -2559,7 +2559,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "secureness",
         "definition": "The quality or state of being secure, security.",
         "exampleSentence": "A square seat, about as wide and unyielding as a table-top, was strapped securely to each donkey, and to this seat we clung, with no secureness at all.",
@@ -2575,7 +2575,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "specialist",
         "definition": "Someone who is an expert in, or devoted to, some specific branch of study or research.",
         "exampleSentence": "Most Americans mistakenly believe that they must see specialists for almost every medical problem.",
@@ -2591,7 +2591,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "starvation",
         "definition": "A condition of severe suffering due to a lack of nutrition.",
         "exampleSentence": "Fuel starvation has several causes.",
@@ -2607,7 +2607,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "stretching",
         "definition": "The act by which something is stretched.",
         "exampleSentence": "Skins must be submitted to several washings, treadings, and stretchings, before they acquire the necessary pliancy.",
@@ -2623,10 +2623,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "supervisor",
-        "definition": "A person with the official task of overseeing the work of a person or group, or of other operations and activities.",
-        "exampleSentence": "She wrote about the supervisor in her school report.",
+        "definition": "A person who oversees and directs the work of others.",
+        "exampleSentence": "The supervisor checked each station to make sure safety rules were followed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2639,7 +2639,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "technician",
         "definition": "A person who studies or practises technology; an expert in a particular technology.",
         "exampleSentence": "The lift technician found the reason the lift wasn't working.",
@@ -2655,10 +2655,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "transcript",
-        "definition": "Something which has been transcribed; a writing or composition consisting of the same words as the original; a written copy.",
-        "exampleSentence": "The Grecian learning was but a transcript of the Chaldean and Egyptian.",
+        "definition": "A written or printed copy of spoken or recorded words.",
+        "exampleSentence": "The court reporter prepared a complete transcript of the trial testimony.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -2671,10 +2671,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ultrasound",
-        "definition": "Sound with a frequency greater than the upper limit of human hearing, which is approximately 20 kilohertz.",
-        "exampleSentence": "Ultrasound as a treatment for degenerative arthritis was in its infancy. It might eventually turn out to be as effective as the Salk vaccine, or as bogus as the science of phrenology.",
+        "definition": "Sound waves above the range of human hearing, used in medical imaging.",
+        "exampleSentence": "The doctor used an ultrasound to check the health of the growing baby.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2687,7 +2687,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "underworld",
         "definition": "The world of the dead, located underneath the world of the living; the afterlife.",
         "exampleSentence": "A disproportionate amount of local politicians have connections to the underworld.",
@@ -2703,10 +2703,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "vietnamese",
-        "definition": "A person or people from Vietnam or of Vietnamese descent.",
-        "exampleSentence": "They were buried in a gravesite near Kai Tak, alongside other Vietnamese who hadn’t made it safely to shore.",
+        "definition": "A person from Vietnam, or the language spoken there.",
+        "exampleSentence": "A Vietnamese student in our class shared stories about the Lunar New Year.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -2719,10 +2719,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "volleyball",
-        "definition": "A game played on a rectangular court between two teams of two to six players which involves striking a ball back and forth over a net.",
-        "exampleSentence": "She wrote about the volleyball in her school report.",
+        "definition": "A team sport where players hit a ball back and forth over a raised net.",
+        "exampleSentence": "We played volleyball on the beach until the sun went down.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -2735,7 +2735,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "watermelon",
         "definition": "A plant of the species Citrullus lanatus, bearing a melon-like fruit.",
         "exampleSentence": "She wrote about the watermelon in her school report.",
@@ -2751,10 +2751,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "winchester",
-        "definition": "A Winchester rifle, typically a lever-action repeater.",
-        "exampleSentence": "Almost simultaneously Jim Taylor and Kit Hunter shot at each other with Winchesters.",
+        "definition": "A type of lever-action repeating rifle.",
+        "exampleSentence": "The old rancher kept a polished winchester above the fireplace.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -2767,7 +2767,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "wonderland",
         "definition": "A place full of wonder or marvels.",
         "exampleSentence": "She wrote about the wonderland in her school report.",
@@ -2783,10 +2783,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "intimidate",
-        "definition": "To make timid or afraid; to cause to feel fear or nervousness; to deter, especially by threats of violence.",
-        "exampleSentence": "He's trying to intimidate you. If you ignore him, hopefully he'll stop.",
+        "definition": "To frighten or threaten someone into doing something.",
+        "exampleSentence": "The older boys tried to intimidate the newcomers on the first day of school.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2799,7 +2799,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "jeopardize",
         "definition": "To put in jeopardy, to threaten.",
         "exampleSentence": "This mission is too important for me to allow you to jeopardize it.",
@@ -2815,9 +2815,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "accidental",
-        "definition": "Pertaining to accident and not essence; thus, inessential; incidental; secondary.",
+        "definition": "A property which is not essential; a nonessential; anything happening accidentally.",
         "exampleSentence": "The discovery was purely accidental.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -2831,10 +2831,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "authorized",
-        "definition": "Explicitly allowed.",
-        "exampleSentence": "The authorized colors of the sunset were beautiful.",
+        "definition": "Given official permission or approval.",
+        "exampleSentence": "Only authorized personnel may enter the restricted laboratory.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -2846,10 +2846,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "biological",
-        "definition": "Of or relating to biology.",
-        "exampleSentence": "The biological colors of the sunset were beautiful.",
+        "definition": "Connected with living organisms and life processes.",
+        "exampleSentence": "The students studied the biological diversity of the coral reef.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -2862,7 +2862,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "celebrated",
         "definition": "Famous or widely praised.",
         "exampleSentence": "She became a celebrated actress, but never won any major awards.",
@@ -2877,7 +2877,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "classified",
         "definition": "Sorted into classes or categories.",
         "exampleSentence": "I won't say who I'm going to the prom with; that's classified.",
@@ -2893,7 +2893,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "comforting",
         "definition": "Giving comfort, especially in the sense of soothing distress.",
         "exampleSentence": "Your comforting words help ease my mind.",
@@ -2908,7 +2908,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "compelling",
         "definition": "Very interesting; able to capture and hold one's attention.",
         "exampleSentence": "He made a compelling argument.",
@@ -2924,7 +2924,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "continuous",
         "definition": "Without stopping; without a break, cessation, or interruption.",
         "exampleSentence": "He can hear its continuous murmur.",
@@ -2940,7 +2940,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "diplomatic",
         "definition": "Concerning the relationships between the governments of countries.",
         "exampleSentence": "She spent thirty years working for Canada's diplomatic service.",
@@ -2956,7 +2956,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "frightened",
         "definition": "Afraid; suffering from fear.",
         "exampleSentence": "The frightened colors of the sunset were beautiful.",
@@ -2971,7 +2971,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "humiliated",
         "definition": "Deprived of dignity or self-respect.",
         "exampleSentence": "The humiliated colors of the sunset were beautiful.",
@@ -2986,7 +2986,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hysterical",
         "definition": "Of, or arising from hysteria.",
         "exampleSentence": "Henrietta gasped for breath; but she swallowed down the hysterical emotion, and signed with her hand for Walter to go on.",
@@ -3002,7 +3002,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "impeccable",
         "definition": "Perfect, without faults, flaws or errors.",
         "exampleSentence": "The only impeccable writers are those who never wrote.",
@@ -3018,7 +3018,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "imperative",
         "definition": "Essential; crucial; extremely important.",
         "exampleSentence": "The suits of kings are imperative.",
@@ -3034,10 +3034,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "increasing",
-        "definition": "On the increase.",
-        "exampleSentence": "The increasing colors of the sunset were beautiful.",
+        "definition": "Becoming greater in size, number, or intensity.",
+        "exampleSentence": "There is increasing demand for electric vehicles in cities worldwide.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3050,7 +3050,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "intriguing",
         "definition": "Causing a desire to know more; mysterious.",
         "exampleSentence": "A book that does not sell us the powerful, intriguing women of Rome simply as poisoners, schemers, and femmes fatales ….",
@@ -3065,7 +3065,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "irrational",
         "definition": "Not rational; unfounded, nonsensical or wrong-headed.",
         "exampleSentence": "The irrational colors of the sunset were beautiful.",
@@ -3081,7 +3081,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "maintained",
         "definition": "Showing maintenance or attention.",
         "exampleSentence": "The house had a neat, well-maintained garden in front.",
@@ -3096,10 +3096,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "miraculous",
-        "definition": "By supernatural or uncommon causes, e.g. by a god; that cannot be explained in terms of normal events.",
-        "exampleSentence": "The miraculous colors of the sunset were beautiful.",
+        "definition": "So extraordinary that it seems impossible; astonishing.",
+        "exampleSentence": "The hiker made a miraculous recovery after being lost in the mountains for a week.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3112,7 +3112,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "optimistic",
         "definition": "Expecting the best in all possible ways.",
         "exampleSentence": "The optimistic colors of the sunset were beautiful.",
@@ -3128,10 +3128,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "paranormal",
-        "definition": "Of events, experiences, or phenomenona, that cannot be explained by current scientific understanding or natural laws.",
-        "exampleSentence": "“We who study the paranormal always hope for strong readings with our equipment,” explains Nancy.",
+        "definition": "Beyond normal scientific explanation; supernatural.",
+        "exampleSentence": "The old house was rumoured to be a site of paranormal events.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -3144,7 +3144,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "prohibited",
         "definition": "Forbidden; banned; unallowed.",
         "exampleSentence": "Theater works and religious essays were the most prohibited literary genres.",
@@ -3159,10 +3159,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "provincial",
-        "definition": "Of or pertaining to Provence; Provençal.",
-        "exampleSentence": "The provincial colors of the sunset were beautiful.",
+        "definition": "Relating to a province or region outside the capital city; sometimes implying narrow in outlook.",
+        "exampleSentence": "She traded her provincial hometown for the bustling energy of the capital.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3174,7 +3174,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "refreshing",
         "definition": "That refreshes someone; pleasantly fresh and different; granting vitality and energy.",
         "exampleSentence": "Every forecast or guess has one refreshing quality: one will be right and the rest will be wrong.",
@@ -3190,7 +3190,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "relentless",
         "definition": "Unrelenting or unyielding in severity.",
         "exampleSentence": "She sniffed, too, comprehendingly, and fixed her son with a relentless eye.",
@@ -3206,7 +3206,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "satisfying",
         "definition": "That satisfies, gratifies or pleases; that removes any feeling of lack.",
         "exampleSentence": "As in much of biology, the most satisfying truths in ecology derive from manipulative experimentation. Tinker with nature and quantify how it responds.",
@@ -3222,7 +3222,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "terminated",
         "definition": "Having been the subject of termination; ended or destroyed.",
         "exampleSentence": "The terminated colors of the sunset were beautiful.",
@@ -3238,9 +3238,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "theatrical",
-        "definition": "Of or relating to the theatre.",
+        "definition": "A stage performance, especially one by amateurs.",
         "exampleSentence": "The ceremony and its scene were characterised by that high sense of the theatrical which has marked the activities of the Third Reich.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -3254,9 +3254,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "underwater",
-        "definition": "Beneath the surface of the water; of or pertaining to the region beneath the water surface.",
+        "definition": "So as to go beneath the surface of the water.",
         "exampleSentence": "Watch out for underwater obstacles.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -3270,7 +3270,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "ungrateful",
         "definition": "Not grateful; not expressing gratitude.",
         "exampleSentence": "The ungrateful colors of the sunset were beautiful.",
@@ -3286,7 +3286,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "victorious",
         "definition": "Being the winner in a contest, struggle, war, etc.",
         "exampleSentence": "The team were met with a victorious cheer.",
@@ -3302,10 +3302,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "accurately",
-        "definition": "In an accurate manner; exactly; precisely; without error or defect.",
-        "exampleSentence": "The internal NES clock must accurately measure down to milliseconds for its games to work properly.",
+        "definition": "In an exact and correct way, without mistakes.",
+        "exampleSentence": "The archer accurately hit the centre of the target from fifty metres away.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -3318,10 +3318,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "positively",
-        "definition": "In a positive manner.",
-        "exampleSentence": "I had a positively wonderful time.",
+        "definition": "In an optimistic or favourable way; absolutely.",
+        "exampleSentence": "The audience reacted positively to the young musician's debut performance.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -3334,7 +3334,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "reasonably",
         "definition": "In accordance with reason.",
         "exampleSentence": "That car goes reasonably fast.",
@@ -3350,10 +3350,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "remarkably",
-        "definition": "In a remarkable manner.",
-        "exampleSentence": "That dog is remarkably fierce.",
+        "definition": "To a surprising or impressive degree.",
+        "exampleSentence": "The rescue dog was remarkably calm during the thunderstorm.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3366,10 +3366,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "thankfully",
-        "definition": "In a thankful manner; giving thanks.",
-        "exampleSentence": "I was almost late for work, but thankfully there wasn't much traffic on the roads.",
+        "definition": "In a grateful or relieved way; luckily.",
+        "exampleSentence": "Thankfully, the rain stopped just before the outdoor wedding began.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -3382,7 +3382,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "throughout",
         "definition": "In every part; everywhere.",
         "exampleSentence": "The fight was excrutiating. Throughout, we maintained our dignity though.",
@@ -3398,10 +3398,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "greenhouse",
-        "definition": "To place (plants) in a greenhouse.",
-        "exampleSentence": "It's almost impossible to make judgements when you're being playful – as by definition it's spontaneous activity – so your baby ideas get nurtured and greenhoused better.",
+        "definition": "To grow or keep plants inside a heated glass structure.",
+        "exampleSentence": "We decided to greenhouse the tomato seedlings until the frost had passed.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -3414,7 +3414,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "concerning",
         "definition": "Causing concern; worrying.",
         "exampleSentence": "The concerning colors of the sunset were beautiful.",
@@ -3430,10 +3430,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "challenged",
-        "definition": "Disabled; lacking some physical or mental attribute or skill; used after adverbs to make politically correct adjectives.",
-        "exampleSentence": "The challenged colors of the sunset were beautiful.",
+        "definition": "Facing a difficulty or limitation in a particular area.",
+        "exampleSentence": "The vertically challenged player made up for his height with incredible speed.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -3445,7 +3445,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "associated",
         "definition": "Connected with something or another person.",
         "exampleSentence": "The disease is associated with poor sanitation.",
@@ -3460,7 +3460,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "supersolar",
         "definition": "Having features greater than those of the sun.",
         "exampleSentence": "The heat of a white dwarf is supersolar.",
@@ -3476,10 +3476,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bounceable",
-        "definition": "Able to be bounced.",
-        "exampleSentence": "That Boy's a bit too bounceable; he'll find / Swelling brings dizziness.",
+        "definition": "Able to bounce when dropped or thrown.",
+        "exampleSentence": "The children preferred the bounceable rubber ball over the heavy beanbag.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3492,7 +3492,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "practising",
         "definition": "Engaged in the practice of some activity or profession.",
         "exampleSentence": "You really should seek advice from a practising solicitor.",
@@ -3508,10 +3508,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "devastated",
-        "definition": "Ruined, ravaged.",
-        "exampleSentence": "Mary Ann was devastated when she found out her son was bullying a girl at school.",
+        "definition": "Completely destroyed, or deeply shocked and upset.",
+        "exampleSentence": "The family was devastated when the flood swept through their neighbourhood.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3523,7 +3523,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "southernly",
         "definition": "Southward, southerly.",
         "exampleSentence": "Our school experience was blissfully and southernly white.",
@@ -3539,10 +3539,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "screenless",
-        "definition": "Without a screen.",
-        "exampleSentence": "A projection type (screenless) reader makes use of any convenient reflective surface, a blank wall, for example, as its screen.",
+        "definition": "Having no screen or display.",
+        "exampleSentence": "The screenless projector beams images directly onto any flat wall.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -3555,7 +3555,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "noncapital",
         "definition": "A place that is not a capital.",
         "exampleSentence": "We can separate central places into capitals and noncapitals, as Skinner does, but in doing so we will have separated neither economy nor administration.",
@@ -3571,7 +3571,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "cookieless",
         "definition": "Without cookies (the food).",
         "exampleSentence": "Cookieless sessions enable you to take advantage of session state without relying on browser cookies.",
@@ -3587,7 +3587,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "bounceless",
         "definition": "That does not require debouncing.",
         "exampleSentence": "The bounceless colors of the sunset were beautiful.",
@@ -3603,7 +3603,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "eternalism",
         "definition": "The view that time resembles space and thus past and future events are in some sense coexistent.",
         "exampleSentence": "The first of these is eternalism, which holds that matter, energy, and intelligence—the components of the universe—are uncreated, indestructible, eternal, and forever fixed.",
@@ -3619,7 +3619,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "jacketless",
         "definition": "Without a jacket (coat).",
         "exampleSentence": "The evening, though sunless, had been warm and muggy for the season, and Tess had come out with her milking-hood only, naked-armed and jacketless; certainly not dressed for a drive.",
@@ -3635,10 +3635,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "nonspeaker",
-        "definition": "One who cannot speak; a mute.",
-        "exampleSentence": "Many visitors to France are nonspeakers of French.",
+        "definition": "A person who does not speak a particular language.",
+        "exampleSentence": "Many tourists visiting Japan are nonspeaker visitors who rely on translation apps.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3651,7 +3651,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "approacher",
         "definition": "Someone or something that approaches.",
         "exampleSentence": "She wrote about the approacher in her school report.",
@@ -3667,7 +3667,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "pretheater",
         "definition": "Before attending the theater (especially of drinks or a meal).",
         "exampleSentence": "We picked up our tickets and stopped next door to have a pretheater drink.",
@@ -3683,10 +3683,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "nonsailing",
-        "definition": "That does not sail.",
-        "exampleSentence": "I don't expect my nonsailing friends even to believe me when I tell them what the Loran is doing.",
+        "definition": "Not involved in or designed for sailing.",
+        "exampleSentence": "My nonsailing friends could never understand my love for the open sea.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3699,7 +3699,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "bouncingly",
         "definition": "With a bouncing motion.",
         "exampleSentence": "Pighius said bouncingly, The judgment of the apostolick see with a council of domestick priests, is far more certain than the judgment of an universal council of the whole earth without the Pope.",
@@ -3715,7 +3715,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "recallable",
         "definition": "Capable of being recalled (retrieved from one's memory).",
         "exampleSentence": "The number of recallable words from the list was much smaller after 24 hours.",
@@ -3731,7 +3731,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "tissueless",
         "definition": "Without biological tissue.",
         "exampleSentence": "And of all the times to be tissueless; and so much for kindness, or even simple custom. But who would actually accept a stranger's monogrammed kerchief, no matter how starched and bleached?",
@@ -3747,7 +3747,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "swingingly",
         "definition": "With a swinging motion.",
         "exampleSentence": "The party was slow to start, but by the end of the night it was going swingingly.",
@@ -3763,7 +3763,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "poisonable",
         "definition": "Capable of being poisoned.",
         "exampleSentence": "The poisonable colors of the sunset were beautiful.",
@@ -3779,7 +3779,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "precurtain",
         "definition": "Before the curtain rises at the start of a play.",
         "exampleSentence": "The cast gathered on the back porch for Ms. Barre’s precurtain notes: Think about your first line.",
@@ -3795,7 +3795,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "minoration",
         "definition": "Reduction; lessening.",
         "exampleSentence": "… we now do hope the mercies of God will consider our degenerated integrities unto some minoration of our offences ….",
@@ -3811,10 +3811,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "premonitor",
-        "definition": "One who, or that which, gives premonition; a harbinger.",
-        "exampleSentence": "When asleep, the increase of the respirations was the premonitor of resolution.",
+        "definition": "An early sign or warning of something to come.",
+        "exampleSentence": "The sudden drop in air pressure was a premonitor of the approaching storm.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3827,7 +3827,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "martialism",
         "definition": "The quality of being warlike; exercises suitable for war.",
         "exampleSentence": "Martialism, it was truly a grand path. It encompassed everything.",
@@ -3843,7 +3843,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "gatherable",
         "definition": "Capable of being gathered or collected.",
         "exampleSentence": "The Priest hood of the first born is gatherable hence because the Levites were appointed to the service of the Altar, instead of the first born.",
@@ -3859,10 +3859,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "assistless",
-        "definition": "Without aid or help.",
-        "exampleSentence": "The assistless colors of the sunset were beautiful.",
+        "definition": "Without any help or support.",
+        "exampleSentence": "The assistless traveller had to find her way through the city alone.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -3875,10 +3875,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "rewardable",
-        "definition": "Worthy of reward.",
-        "exampleSentence": "The rewardable colors of the sunset were beautiful.",
+        "definition": "Deserving praise, recognition, or a prize.",
+        "exampleSentence": "Her consistent effort throughout the semester was highly rewardable.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3891,7 +3891,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "favourless",
         "definition": "Unfavoured; having no countenance or support.",
         "exampleSentence": "The favourless colors of the sunset were beautiful.",
@@ -3907,7 +3907,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unparadise",
         "definition": "To make (something paradisaical) less like paradise; To spoil the joy of.",
         "exampleSentence": "Of what avail is learning?—What? But to unparadise man's lot!",
@@ -3923,7 +3923,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "diseaseful",
         "definition": "Full of, afflicted by, or causing diseases.",
         "exampleSentence": "The diseaseful colors of the sunset were beautiful.",
@@ -3939,7 +3939,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "savingness",
         "definition": "The quality of being careful not to waste money; frugality; parsimony.",
         "exampleSentence": "Her love of a good dinner herself, and her still keener love of the approbation she won by setting it before others, kept up perpetual warfare with her savingness ….",
@@ -3955,7 +3955,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "uniformism",
         "definition": "A policy of, or belief in, uniformity or sameness.",
         "exampleSentence": "The real issue at stake concerned differences in values and norms within cultures and countries, whereby pluralism clashed with uniformism.",
@@ -3971,10 +3971,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "councilist",
-        "definition": "One who belongs to a council; one who gives an opinion.",
-        "exampleSentence": "She wrote about the councilist in her school report.",
+        "definition": "A member of a council; an adviser.",
+        "exampleSentence": "The councilist proposed a new park in the centre of town.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -3987,7 +3987,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "unterrific",
         "definition": "Unterrifying; not causing or involving terror.",
         "exampleSentence": "It was like the dark, cold, but unterrific and comparatively soothing night, that succeeds to a day of storm and earthquake.",
@@ -4003,7 +4003,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "motionable",
         "definition": "Able to be moved or set in motion.",
         "exampleSentence": "Sway, flowers, leaning like reeds in a wave, More motionable than insects.",
@@ -4019,7 +4019,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "solutional",
         "definition": "Relating to a solution (to a problem).",
         "exampleSentence": "The solutional colors of the sunset were beautiful.",
@@ -4035,7 +4035,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "overdirect",
         "definition": "To take an excessive, overbearing role in directing (a play or film).",
         "exampleSentence": "They should neither overdirect nor underdirect the program.",
@@ -4051,7 +4051,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "superslice",
         "definition": "A knot for which there is an almost identical trivial knot.",
         "exampleSentence": "The Kinoshita-Terasaka knot K_(KT), illustrated in Fig. 1 is the first example of a superslice, which has been know at latest in 1970 by R.H. Fox, F. Hosokawa, T. Yangawa and others.",
@@ -4067,10 +4067,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "instantial",
-        "definition": "Being instantiated.",
-        "exampleSentence": "The instantial colors of the sunset were beautiful.",
+        "definition": "Serving as a specific example or instance of something.",
+        "exampleSentence": "The teacher used an instantial case to show how the theory works in practice.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4083,7 +4083,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "outbutcher",
         "definition": "To slaughter more people than.",
         "exampleSentence": "Thus, the car in the United States outbutchers the bloody shambles of Mars when matched against our soldiers killed in the World War.",
@@ -4099,7 +4099,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "underbound",
         "definition": "To provide a lower bound to.",
         "exampleSentence": "The corporate limits of a city, therefore, offer a political definition that commonly underbounds the geographic extent of the urban area.",
@@ -4115,7 +4115,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "stringable",
         "definition": "Suitable to be strung.",
         "exampleSentence": "The shells are strung today with nylon fishing line. Out of a gallon of shells, only about one third will be stringable.",
@@ -4131,10 +4131,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cultureful",
-        "definition": "Focused on culture.",
-        "exampleSentence": "I am sure I'd feel oppressed in a system where so much of leisure activity is expected to be cultureful and self-improving.",
+        "definition": "Rich in arts, learning, and cultural activities.",
+        "exampleSentence": "They planned a cultureful weekend visiting museums, galleries, and a live concert.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4147,7 +4147,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "holidayism",
         "definition": "The tendency to treat the Sabbath as a day off rather than a solemn religious occasion.",
         "exampleSentence": "We will now suppose it Wednesday, all sunshine and holidayism. The town overflowed with the human tide, but it was somewhat muddy: the million is the better of being filtered.",
@@ -4163,7 +4163,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "miscollect",
         "definition": "To make errors in the process of collecting.",
         "exampleSentence": "\"I miscollect, at times, how young you are still,\" he said. \"Too young, really, to have such responsibility.\"",
@@ -4179,7 +4179,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "underlight",
         "definition": "Illumination from underneath.",
         "exampleSentence": "But there are some minor underlights beneath the high arm and on the left of the face; these are reflected lights that bounce off nearby parts of the figure itself.",
@@ -4195,7 +4195,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mobileness",
         "definition": "The quality of being mobile.",
         "exampleSentence": "These serve as an algorithmic way to judge the “mobileness” of a site, and similar algorithms are likely to be used by the search crawlers.",
@@ -4211,7 +4211,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "replatform",
         "definition": "To migrate to a different platform.",
         "exampleSentence": "The social network's new owner decided to replatform the controversial celebrity whose account had previously been banned.",
@@ -4227,10 +4227,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "basemented",
-        "definition": "Having a basement.",
-        "exampleSentence": "Stacks of photos lined desks: forbidden images of women, basemented somewhere since the Revival.",
+        "definition": "Equipped with or stored in a basement.",
+        "exampleSentence": "The old library was a basemented building with archives hidden below street level.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -4243,7 +4243,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "antirepair",
         "definition": "Preventing or opposing the repair of equipment.",
         "exampleSentence": "The antirepair colors of the sunset were beautiful.",
@@ -4259,7 +4259,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "lipsticker",
         "definition": "A person who wears lipstick.",
         "exampleSentence": "She wrote about the lipsticker in her school report.",
@@ -4275,10 +4275,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "antimirror",
-        "definition": "An antisymmetric operation; the operation of reflection combined with a reversal of some sort (such as color, time, size, etc); the reflection of opposites.",
-        "exampleSentence": "The current disruption simulation was performed with a long \"antimirror\" trap 2MK-200 at 10 MW/cm² flow density.",
+        "definition": "A reflection that also reverses some additional property, such as charge or symmetry.",
+        "exampleSentence": "The physicist described the antimirror effect in particle collision experiments.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4291,10 +4291,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "cheerleader",
-        "definition": "A person, usually a young, attractive female, who encourages applause and cheers at a sports event, and wearing a specially-designed uniform in the official colors of the team he/she cheers for.",
-        "exampleSentence": "Given these sentiments, it is unsurprising that ultranationalists have been the main cheerleaders of closer Russia-North Korea relations.",
+        "definition": "A person who leads cheers and encourages support at sporting events.",
+        "exampleSentence": "The cheerleader rallied the crowd during the final quarter of the game.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4307,7 +4307,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "commentator",
         "definition": "A person who compiles explanations and critical notes on a text.",
         "exampleSentence": "He was a commentator for football two years before retiring.",
@@ -4323,7 +4323,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "compartment",
         "definition": "A room, or section, or chamber, typically within a vehicle.",
         "exampleSentence": "Two men were seated in a well-lit compartment of a third-class railway carriage.",
@@ -4339,7 +4339,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "consolation",
         "definition": "The act or example of consoling; the condition of being consoled.",
         "exampleSentence": "F Charles is undone, He'll find half his Acquaintance ruin'd too, and that, you know, is a consolation—.",
@@ -4355,7 +4355,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cooperative",
         "definition": "A type of company that is owned partially or wholly by its employees, customers or tenants.",
         "exampleSentence": "Among wholesalers, voluntary and cooperatives carry a far wider range and number of items in private brands than do unaffiliateds.",
@@ -4371,10 +4371,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "corporation",
-        "definition": "A body corporate, created by law or under authority of law, having a continuous existence independent of the existences of its members, and powers and liabilities distinct from those of its members.",
-        "exampleSentence": "He was a big chap with a corporation already, and a flat face rather like Dora's, and he had a thin black moustache.",
+        "definition": "A large business or organization recognized by law as a single entity.",
+        "exampleSentence": "The corporation opened new offices in three different countries last year.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4387,7 +4387,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "handwriting",
         "definition": "The act or process of writing done with the hand, rather than typed or word-processed.",
         "exampleSentence": "The show needs to portray the designer's handwriting but it should also be innovative too.",
@@ -4403,10 +4403,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "immigration",
-        "definition": "The act of immigrating; the passing or coming into a country of which one is not native born for the purpose of permanent residence.",
-        "exampleSentence": "It took ages to get through immigration last time.",
+        "definition": "The process of moving permanently to a new country.",
+        "exampleSentence": "Immigration has shaped the cultural landscape of many modern cities.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4419,7 +4419,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "inquisition",
         "definition": "An inquiry or investigation into the truth of some matter.",
         "exampleSentence": "Let not search and inquisition quail / To bring again these foolish runaways.",
@@ -4435,10 +4435,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "legislation",
-        "definition": "The act of legislating; preparation and enactment of laws.",
-        "exampleSentence": "There is a lack of legislation about human cloning.",
+        "definition": "Laws or rules created and passed by a governing body.",
+        "exampleSentence": "New legislation was introduced to protect endangered wildlife habitats.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4451,10 +4451,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mississippi",
-        "definition": "A recitation of Mississippi (the interjection).",
-        "exampleSentence": "I counted five Mississippis between each flash of lightning and the thunder crash that followed.",
+        "definition": "A one-second count used as a timing method.",
+        "exampleSentence": "Count five mississippi between lightning and thunder to estimate the storm's distance.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -4467,7 +4467,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "negotiation",
         "definition": "The process of achieving agreement through discussion.",
         "exampleSentence": "The specifics of the contract are still under negotiation.",
@@ -4483,7 +4483,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "communication"
     },
-{
+    {
         "word": "pointedness",
         "definition": "The quality of being pointed.",
         "exampleSentence": "The pointedness of her criticism was impossible to miss.",
@@ -4499,10 +4499,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "probability",
-        "definition": "The state of being probable.",
-        "exampleSentence": "The probability of an event A occurring is denoted P(A).",
+        "definition": "The likelihood that something will happen.",
+        "exampleSentence": "There is a high probability of rain this weekend according to the forecast.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4515,7 +4515,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "proceedings",
         "definition": "The course of procedure in the prosecution of an action at law.",
         "exampleSentence": "Christina and Mark Rotondo of Camillus started the court proceedings this month and filed evidence of five toughly worded notices they served their son, starting in February.",
@@ -4530,10 +4530,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "screwdriver",
-        "definition": "A hand tool or power tool which engages with the head of a screw and allows torque to be applied to turn the screw, thus driving it in or loosening it.",
-        "exampleSentence": "Celestial asked for a screwdriver and the bartender poured a good four fingers of Smirnoff into a flimsy cup before opening a can of juice.",
+        "definition": "A hand tool with a shaped tip used to turn screws.",
+        "exampleSentence": "He grabbed a screwdriver from the toolbox to tighten the loose hinge.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4546,10 +4546,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "thunderclap",
-        "definition": "A sudden, loud thunder caused by a nearby lightning strike; a shock of thunder, as opposed to a reverberating rumble.",
-        "exampleSentence": "Thunderclaps that make them quake.",
+        "definition": "A single loud crash of thunder.",
+        "exampleSentence": "A sudden thunderclap made everyone at the picnic jump.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -4562,7 +4562,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "interrogate",
         "definition": "To question or quiz, especially in a thorough and/or aggressive manner.",
         "exampleSentence": "The police interrogated the suspect at some length before they let him go.",
@@ -4578,7 +4578,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "educational",
         "definition": "Of, or relating to education.",
         "exampleSentence": "A school is an educational establishment.",
@@ -4594,7 +4594,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "everlasting",
         "definition": "Lasting or enduring forever; endless, eternal.",
         "exampleSentence": "His soul has gone to everlasting fire!",
@@ -4610,7 +4610,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "exaggerated",
         "definition": "That has been described as greater than it actually is; abnormally increased or enlarged.",
         "exampleSentence": "The Wycombe slowing begins at West Wycombe; to the High Wycombe curve itself most exaggerated respect was shown, with a minimum of 30 m.p.h.",
@@ -4625,10 +4625,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "insensitive",
-        "definition": "Expressing or feeling little or no concern, care, compassion, or consideration for the feelings, emotions, sentiments, or concerns of other people; inconsiderate or incompassionate.",
-        "exampleSentence": "It is something like the way dame Nature gathers round a foreign body an envelope of some insensitive tissue which can protect from evil that which it would otherwise harm by contact.",
+        "definition": "Showing little concern for the feelings of others.",
+        "exampleSentence": "His insensitive remark about her painting hurt her feelings.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4641,10 +4641,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "meaningless",
-        "definition": "Lacking meaning.",
-        "exampleSentence": "The word \"gugugu\" is meaningless in English.",
+        "definition": "Having no purpose, value, or significance.",
+        "exampleSentence": "Without context, the coded message was completely meaningless to outsiders.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4657,7 +4657,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "preoccupied",
         "definition": "Prepossessed; biased.",
         "exampleSentence": "Scythrop, retiring to his tower, found his study preoccupied.",
@@ -4672,10 +4672,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "prestigious",
-        "definition": "Of high prestige.",
-        "exampleSentence": "She has a prestigious job with an international organization.",
+        "definition": "Widely admired and respected; having high status.",
+        "exampleSentence": "She earned a scholarship to a prestigious university overseas.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4688,7 +4688,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "spontaneous",
         "definition": "Self-generated; happening without any apparent external cause.",
         "exampleSentence": "To make a spontaneous decision.",
@@ -4704,10 +4704,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "theoretical",
-        "definition": "Of or relating to theory; abstract; not empirical.",
-        "exampleSentence": "We may look upon this figure as representing in section a theoretical wing-form, or aerofoil.",
+        "definition": "Based on ideas and reasoning rather than practical experience.",
+        "exampleSentence": "The class explored a theoretical model before testing it in the lab.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -4720,7 +4720,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "trustworthy",
         "definition": "Deserving of trust, reliable.",
         "exampleSentence": "The storage of cryptographic secrets is one of the paramount requirements in building trustworthy systems.",
@@ -4736,7 +4736,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "accordingly",
         "definition": "Agreeably; correspondingly; suitably.",
         "exampleSentence": "He was absent when I called, and I accordingly left my card.",
@@ -4752,10 +4752,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "desperately",
-        "definition": "In a desperate manner; without regard to danger or safety; recklessly.",
-        "exampleSentence": "I could desperately do with some coffee right now.",
+        "definition": "With urgent need or intense effort; extremely.",
+        "exampleSentence": "She desperately searched every pocket for the missing house key.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4768,7 +4768,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "effectively",
         "definition": "In an efficient or effective manner; with powerful effect.",
         "exampleSentence": "On paper, the answer seems to be yes, but, effectively, the answer is no.",
@@ -4784,7 +4784,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "emotionally",
         "definition": "In an emotional manner; displaying emotion.",
         "exampleSentence": "Physically, it was easy, but emotionally it was the hardest thing I've ever done.",
@@ -4800,7 +4800,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "importantly",
         "definition": "Used to mark a statement as having importance.",
         "exampleSentence": "More importantly and closer to life, slangs help build an instant intimacy and informality.",
@@ -4816,10 +4816,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "politically",
-        "definition": "In a political manner.",
-        "exampleSentence": "Although politically he claims to be a Democrat, his actions are more Republican.",
+        "definition": "In a way connected to government, parties, or public policy.",
+        "exampleSentence": "The two candidates are politically opposed on nearly every major issue.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4832,9 +4832,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "indifferent",
-        "definition": "To some extent, in some degree (intermediate between very and not at all); moderately, tolerably, fairly.",
+        "definition": "Ambivalent; unconcerned; uninterested, apathetic.",
         "exampleSentence": "The face of the Moon appearing to me to be full of indifferent high mountains.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
@@ -4848,7 +4848,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "programming",
         "definition": "Present participle and gerund of program.",
         "exampleSentence": "I was programming a new module for the software package.",
@@ -4864,7 +4864,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "surrounding",
         "definition": "An outlying area; area in proximity to something.",
         "exampleSentence": "They require a surrounding which keeps them from sinking into apathy through tasks which they are able to solve and duties they can carry out.",
@@ -4879,7 +4879,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "distracting",
         "definition": "Causing a distraction; interfering with the ability to concentrate or focus.",
         "exampleSentence": "Please don't make a lot of loud, unnecessary noises—slamming the desk or copy machine drawer closed, etc. This is very distracting and rude.",
@@ -4894,10 +4894,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nonregister",
-        "definition": "Not a register.",
-        "exampleSentence": "Typically, the second operand may be obtained from a nonregister memory location.",
+        "definition": "Not stored in a processor register; held in general memory.",
+        "exampleSentence": "The second value was fetched from a nonregister memory location.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4910,7 +4910,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "europeanist",
         "definition": "Somebody who favors the values of Europe.",
         "exampleSentence": "A handful of graduate fellows stepped forward, looking uncertain. All Europeanists, all white.",
@@ -4926,10 +4926,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "nonoperator",
-        "definition": "One who is not an operator.",
-        "exampleSentence": "To nonprogrammers and nonoperators the most important thing about computers is that they are making us think again about the nature of problem solving.",
+        "definition": "A person who does not operate a machine or system.",
+        "exampleSentence": "The manual was written clearly enough for any nonoperator to understand.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4942,10 +4942,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "respondence",
-        "definition": "Response, answer.",
-        "exampleSentence": "Th'Angelicall soft trembling voyces made / To th'instruments diuine respondence meet ….",
+        "definition": "A reply or answering echo; a correspondence.",
+        "exampleSentence": "The choir's harmonies rose in perfect respondence to the organ's deep notes.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -4958,9 +4958,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "antiwarrior",
-        "definition": "One who has antiwar beliefs.",
+        "definition": "Opposed to warriors, soldiers and/or others who make a living from combat.",
         "exampleSentence": "And then. . . there was this gradual evolution to passionate antiwarrior.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -4974,7 +4974,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "worshipable",
         "definition": "Capable of being worshipped.",
         "exampleSentence": "In addition, Kali, spouse of Shiva, is presented as an object of devotion … who is \"the Image and Embodiment of all the … Devas.\" She is multiform, worshipable in each, \"Mother of all.\"",
@@ -4990,10 +4990,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "associatism",
-        "definition": "A self-regulatory movement in the 1920s in which community members assumed a duty of mutual obligation to support each other.",
-        "exampleSentence": "Associatism can take the form of venerating trees or the tombs of saints, seeking holy men or soothsayers as intermediaries with God, or putting one's faith in astrology.",
+        "definition": "A movement based on mutual cooperation and voluntary community support.",
+        "exampleSentence": "The town embraced associatism, with neighbours pooling resources during the drought.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -5006,7 +5006,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "supergrowth",
         "definition": "A growth upon something else.",
         "exampleSentence": "The latter is an excision of organic parts; the former, a removal of supergrowths that impede vital action.",
@@ -5022,7 +5022,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "conductable",
         "definition": "Conductive; able to be used as a conductor.",
         "exampleSentence": "This experiment is conductable without special equipment.",
@@ -5038,7 +5038,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "supervisual",
         "definition": "Strongly or predominantly visual.",
         "exampleSentence": "The heightened attention to issues of representation is precipitated, in good part, by the advent of new, supervisual media.",
@@ -5054,7 +5054,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "superbounce",
         "definition": "An extremely big bounce.",
         "exampleSentence": "Particularly, we shall study the matter bounce scenario, the singular bounce, the superbounce and a symmetric bounce scenario.",
@@ -5070,7 +5070,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "underburden",
         "definition": "To give too light a burden; to assign less than a fair share.",
         "exampleSentence": "After five days of unsatisfactory work, we came to the conclusion that the furnace was underburdened.",
@@ -5086,7 +5086,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "underdirect",
         "definition": "To exert too little artistic control when directing (a play or film).",
         "exampleSentence": "They should neither overdirect nor underdirect the program.",
@@ -5102,7 +5102,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nonarranged",
         "definition": "Based on a love match; in which the people getting married choose each other.",
         "exampleSentence": "Having had a nonarranged marriage was found to be associated with favorable attitudes toward singlehood.",
@@ -5118,7 +5118,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "preexchange",
         "definition": "An exchange that takes place beforehand.",
         "exampleSentence": "Both chiral derivatives can be produced by making use of preexchange of the β positions of 2-oxoglutarate in ²H₂O.",
@@ -5134,7 +5134,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "constantive",
         "definition": "Indicating a state of affairs with no additional connotations; denotational.",
         "exampleSentence": "When a sentence is heard, we are responsible for deciding if the sentence is performative, constantive, or both.",
@@ -5150,10 +5150,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "manipulation",
-        "definition": "The practice of manipulating or the state of being manipulated.",
-        "exampleSentence": "The dealer's manipulations could have removed cards from the deck.",
+        "definition": "Skilful handling, or the use of unfair influence over someone.",
+        "exampleSentence": "The magician's clever manipulation of the cards fooled the entire audience.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5166,10 +5166,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "surroundings",
-        "definition": "The area surrounding someone or something, together with the objects and circumstances in the vicinity; the environment or ambiance.",
-        "exampleSentence": "We like the way they live, in their penthouselike surroundings filled with fake ferns and goldfish.",
+        "definition": "The area, objects, and conditions around a person or place.",
+        "exampleSentence": "The cabin's peaceful surroundings made it an ideal place to relax.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -5181,7 +5181,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "acknowledged",
         "definition": "Generally accepted, recognized or admitted.",
         "exampleSentence": "The acknowledged surface made it hard to walk across.",
@@ -5196,9 +5196,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "agricultural",
-        "definition": "Of or pertaining to agriculture.",
+        "definition": "A product or commodity from agriculture.",
         "exampleSentence": "The agricultural surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -5212,7 +5212,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "commissioned",
         "definition": "Holding a commission; officially appointed.",
         "exampleSentence": "Completion marks the end of the process where the commissioned artwork is delivered to the client.",
@@ -5227,10 +5227,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "contaminated",
-        "definition": "Adulterated; impure.",
-        "exampleSentence": "The contaminated surface made it hard to walk across.",
+        "definition": "Made impure or unsafe by the addition of harmful substances.",
+        "exampleSentence": "Officials warned residents not to drink the contaminated well water.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5242,7 +5242,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "humanitarian",
         "definition": "Relating to people's welfare.",
         "exampleSentence": "But though personified, the function of Wisdom is mainly humanitarian: her delights are with the sons of men (Proverbs viii. 31, 32).",
@@ -5258,7 +5258,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "irresistible",
         "definition": "Impossible to resist.",
         "exampleSentence": "The irresistible surface made it hard to walk across.",
@@ -5274,7 +5274,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "overwhelming",
         "definition": "Overpowering, staggering, or irresistibly strong.",
         "exampleSentence": "God is an overwhelming responsibility.",
@@ -5290,9 +5290,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "penitentiary",
-        "definition": "Of or relating to penance; penitential.",
+        "definition": "A state or federal prison for convicted felons; a prison.",
         "exampleSentence": "The penitentiary surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -5306,10 +5306,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "presidential",
-        "definition": "Pertaining to a president or presidency.",
-        "exampleSentence": "The presidential surface made it hard to walk across.",
+        "definition": "Connected with a president or presidency.",
+        "exampleSentence": "Millions of viewers watched the presidential debate on live television.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5322,7 +5322,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "questionable",
         "definition": "Problematic; open to doubt or challenge.",
         "exampleSentence": "Tiffiny’s behavior is highly questionable.",
@@ -5338,7 +5338,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "satisfactory",
         "definition": "Done to satisfaction; adequate or sufficient.",
         "exampleSentence": "The satisfactory results of the survey led to his promotion.",
@@ -5354,7 +5354,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "unauthorized",
         "definition": "Not having any authority.",
         "exampleSentence": "The unauthorized surface made it hard to walk across.",
@@ -5370,7 +5370,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "unidentified",
         "definition": "Not identified; having an unknown or unnamed identity.",
         "exampleSentence": "The U.S. and Canada are investigating three unidentified flying objects shot down over North America in the past three days. Militaries have adjusted radars to try to spot more incursions.",
@@ -5386,7 +5386,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "incidentally",
         "definition": "In an incidental manner; not of central or critical importance.",
         "exampleSentence": "She incidentally opened the gift, excited to see what was inside.",
@@ -5402,7 +5402,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "surprisingly",
         "definition": "In a way that causes surprise because it is unexpected, or unusual.",
         "exampleSentence": "She surprisingly opened the gift, excited to see what was inside.",
@@ -5418,7 +5418,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "unbelievably",
         "definition": "In a manner that one does not or cannot believe.",
         "exampleSentence": "He gestured unbelievably. Everyone knew he was faking his illness.",
@@ -5434,7 +5434,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "unexpectedly",
         "definition": "In an unexpected manner.",
         "exampleSentence": "She unexpectedly opened the gift, excited to see what was inside.",
@@ -5450,7 +5450,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "affectionate",
         "definition": "To show affection to; to have affection for.",
         "exampleSentence": "Plutarch saith fitly of those who affectionate themselves to Monkies and little Dogges, that ….",
@@ -5466,7 +5466,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "superextreme",
         "definition": "Exceptionally extreme; of particular extremeness or extremity.",
         "exampleSentence": "Working under such limited circumstances it then is pure chance when we spot a chemical that is not superextreme in its harmful potency.",
@@ -5482,7 +5482,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nondemocracy",
         "definition": "Any political system that is not democratic.",
         "exampleSentence": "In democracy, the citizens get relatively higher benefits; the elites benefit in nondemocracy.",
@@ -5498,10 +5498,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "antitracking",
-        "definition": "Of a system or application, preventing a website from gathering or collecting personal data or information.",
-        "exampleSentence": "The antitracking surface made it hard to walk across.",
+        "definition": "Designed to prevent websites from collecting personal data.",
+        "exampleSentence": "The browser's antitracking feature blocks cookies from third-party advertisers.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -5514,10 +5514,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "depressional",
-        "definition": "Of or pertaining to psychological depression.",
-        "exampleSentence": "The depressional surface made it hard to walk across.",
+        "definition": "Connected with depression, whether geographical or psychological.",
+        "exampleSentence": "The depressional terrain collected rainwater and formed a shallow seasonal pond.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5530,7 +5530,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "solutionless",
         "definition": "Without a solution or answer.",
         "exampleSentence": "The solutionless surface made it hard to walk across.",
@@ -5546,7 +5546,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "supermaximum",
         "definition": "Greater than maximum; to the very highest degree; supermaximal.",
         "exampleSentence": "The supermaximum surface made it hard to walk across.",
@@ -5562,7 +5562,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "unconfidence",
         "definition": "Absence of confidence; uncertainty; doubt.",
         "exampleSentence": "But feelings of confidence and unconfidence are essential guides to our cognitive efforts.",
@@ -5578,10 +5578,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "intercentral",
-        "definition": "Between centres.",
-        "exampleSentence": "Intercentral nerves transmit impulses between nerve centers.",
+        "definition": "Located or occurring between two centres.",
+        "exampleSentence": "Intercentral nerves carry signals between the brain and the spinal cord.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5594,7 +5594,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "possessioner",
         "definition": "A possessor; a holder of property.",
         "exampleSentence": "Having been of old freemen and possessioners.",
@@ -5610,7 +5610,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "occasionable",
         "definition": "Capable of being occasioned or caused.",
         "exampleSentence": "This practice will fence us against immoderate displeasure occasionable by men's hard opinions.",
@@ -5626,7 +5626,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "undepression",
         "definition": "Absence or reversal of a depressed state.",
         "exampleSentence": "Take this matter of Depression; it is caused by Being Miserable, which is in turn caused by Being Fed-up. Could we but unfeed ourselves, undepression would naturally follow.",
@@ -5642,7 +5642,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "antidirected",
         "definition": "Such that the canonical mapping is injective.",
         "exampleSentence": "A digraph D is antistrong if it contains an antidirected (x,y)-trail starting and ending with a forward arc for every choice of x,y#92;inV(D).",
@@ -5658,9 +5658,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "radiationist",
-        "definition": "One whose (medical or scientific) profession is to apply radiation or radioactive material (to someone or something).",
+        "definition": "One whose profession is to apply radiation or radioactive material.",
         "exampleSentence": "The expertise of qualified oncologists, radiation therapists, and diagnostic radiationists are within close proximity of the clinic and will be used as determined by individual patient needs.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -5674,7 +5674,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "overoccupied",
         "definition": "Overly busy or engrossed.",
         "exampleSentence": "The overoccupied surface made it hard to walk across.",
@@ -5690,7 +5690,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "misinfluence",
         "definition": "A bad influence; something that misinfluences.",
         "exampleSentence": "We can supplement them; we can keep them from exerting any great misinfluence; in short , we can use them instead of being used by them .",
@@ -5706,7 +5706,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nonsignature",
         "definition": "Absence of a signature; failure to sign.",
         "exampleSentence": "Despite several decisions on nonsignature, the court cases on this subject deal only with unanimous awards.",
@@ -5722,7 +5722,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mistransport",
         "definition": "To transport the wrong thing or to the wrong place.",
         "exampleSentence": "The matter went back, I believed, to the letters. Who would be helped and who harmed when they were mistransported?",
@@ -5738,7 +5738,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "elsewhereism",
         "definition": "The act or process of thinking about something other than one's immediate surroundings.",
         "exampleSentence": "The téléroman exudes both a sense of déjà vu and “elsewhereism.”.",
@@ -5754,10 +5754,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "collaboration",
-        "definition": "The act of collaborating.",
-        "exampleSentence": "He has been charged with collaboration.",
+        "definition": "Working together with others toward a shared goal.",
+        "exampleSentence": "Their collaboration on the science project earned them first prize at the fair.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5770,7 +5770,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "correspondent",
         "definition": "Something which corresponds with something else; counterpart.",
         "exampleSentence": "Both kála and kalánka have widespread correspondents in the western Mediterranean Romance languages.",
@@ -5786,10 +5786,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "participation",
-        "definition": "The act of participating, of taking part in something.",
-        "exampleSentence": "A decision made based on the participation of the shareholders.",
+        "definition": "Joining in or taking part in an activity or event.",
+        "exampleSentence": "Participation in the school play boosted her confidence on stage.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5802,7 +5802,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "prepossession",
         "definition": "A preoccupation; having possession beforehand.",
         "exampleSentence": "The spontaneous intellect of man always defines the divine which it feels in ways that harmonise with its temporary intellectual prepossessions.",
@@ -5818,10 +5818,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "republication",
-        "definition": "The act of publishing again.",
-        "exampleSentence": "His republication of the old story restarted a furor that had quieted with time.",
+        "definition": "The release of a previously published work in a new edition.",
+        "exampleSentence": "The republication of the classic novel introduced it to a whole new generation.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -5834,7 +5834,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "distinguished",
         "definition": "Celebrated, well-known or eminent because of past achievements; prestigious.",
         "exampleSentence": "Let X be a topological space with a distinguished point p.",
@@ -5850,10 +5850,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "environmental",
-        "definition": "Pertaining to the environment.",
-        "exampleSentence": "That worries the government, which fears that environmental activism could become the foundation for more general political opposition.",
+        "definition": "Connected with the natural world and its protection.",
+        "exampleSentence": "The school launched an environmental campaign to reduce plastic waste.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -5866,7 +5866,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "automatically",
         "definition": "In an automatic manner.",
         "exampleSentence": "The mere existence of a dictionary of a certain variety of English does not automatically confer acceptance of that variety.",
@@ -5882,10 +5882,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "theoretically",
-        "definition": "In theory; on paper.",
-        "exampleSentence": "No, but insurance does cover it. Theoretically.",
+        "definition": "According to ideas or principles, though not always in practice.",
+        "exampleSentence": "Theoretically the bridge could hold ten trucks, but nobody wanted to test it.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -5898,7 +5898,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "unnecessarily",
         "definition": "In an unnecessary way; not by necessity.",
         "exampleSentence": "His absence was unnecessarily long.",
@@ -5914,7 +5914,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "particularist",
         "definition": "Adhering to particularism.",
         "exampleSentence": "The province's identity was fixed on traditionalist and historical attachment to particularist privilege.",
@@ -5930,7 +5930,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "overcelebrate",
         "definition": "To overindulge in activities that celebrate something; to party too hard.",
         "exampleSentence": "As you can see, I've overcelebrated the holidays.",
@@ -5946,7 +5946,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "misappearance",
         "definition": "A false appearance; An instance of seeming as other than what is the true form; an illusion.",
         "exampleSentence": "We know of no set of men who are more quick to detect any misappearance than the force having charge of the condition of the yard.",
@@ -5962,10 +5962,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "misunderstanding",
-        "definition": "A mistake as to the meaning of something or a specific point of view; erroneous interpretation or comprehension; misconception.",
-        "exampleSentence": "The worst distance between two people is misunderstanding. - Thoughtkick.",
+        "definition": "A failure to interpret something correctly; a mix-up.",
+        "exampleSentence": "A simple misunderstanding about the meeting time left half the team waiting outside.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -5978,7 +5978,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ade",
         "definition": "A drink made from a fruit, especially a fizzy one.",
         "exampleSentence": "My teacher explained what an ade is during our lesson.",
@@ -5994,7 +5994,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "ado",
         "definition": "Trouble; troublesome business; fuss, commotion.",
         "exampleSentence": "My teacher explained what an ado is during our lesson.",
@@ -6010,7 +6010,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "alt",
         "definition": "A modifier key used to change (alternate) the function of other pressed keys.",
         "exampleSentence": "My teacher explained what an alt is during our lesson.",
@@ -6026,7 +6026,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ani",
         "definition": "Any bird of the genus Crotophaga in the cuckoo family.",
         "exampleSentence": "My teacher explained what an ani is during our lesson.",
@@ -6042,7 +6042,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "baa",
         "definition": "The characteristic cry or bleating of a sheep.",
         "exampleSentence": "My teacher explained what a baa is during our lesson.",
@@ -6058,7 +6058,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "bap",
         "definition": "The ship prefix for a ship from the navy of Peru.",
         "exampleSentence": "My teacher explained what a bap is during our lesson.",
@@ -6073,7 +6073,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "cay",
         "definition": "A small, low island largely made of sand or coral.",
         "exampleSentence": "My teacher explained what a cay is during our lesson.",
@@ -6089,7 +6089,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "ded",
         "definition": "A person who inflicts dedovshchina (a kind of hazing ritual).",
         "exampleSentence": "My teacher explained what a ded is during our lesson.",
@@ -6105,7 +6105,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ese",
         "definition": "Dude, man. (Usually used vocatively).",
         "exampleSentence": "My teacher explained what an ese is during our lesson.",
@@ -6121,7 +6121,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "faa",
         "definition": "The letter ف in the Arabic script.",
         "exampleSentence": "My teacher explained what a faa is during our lesson.",
@@ -6136,10 +6136,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "fas",
-        "definition": "A border or fringe.",
-        "exampleSentence": "My teacher explained what a fas is during our lesson.",
+        "definition": "A decorative border or fringe on fabric.",
+        "exampleSentence": "The seamstress added a delicate fas along the edge of the tablecloth.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6152,10 +6152,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fop",
-        "definition": "A vain man; a dandy.",
-        "exampleSentence": "And she nearly started a fight between two young fops in plumed hats and flouncy collars: \"Clay-brained coxcomb!\" \"Mewling milk-livered maggot!\"",
+        "definition": "A man who is overly concerned with his clothes and appearance.",
+        "exampleSentence": "The fop spent an hour adjusting his silk cravat before stepping outside.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6168,10 +6168,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "hod",
-        "definition": "A three-sided box mounted on a pole for carrying bricks, mortar, or other construction materials over the shoulder.",
-        "exampleSentence": "My teacher explained what a hod is during our lesson.",
+        "definition": "A V-shaped trough on a pole, used to carry bricks on a construction site.",
+        "exampleSentence": "The labourer balanced a heavy hod of bricks on his shoulder.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6184,7 +6184,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "hue",
         "definition": "A color, or shade of color; tint; dye.",
         "exampleSentence": "In digital arts, HSV color uses hue together with saturation and value.",
@@ -6200,10 +6200,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "igd",
-        "definition": "Immunoglobulin D.",
-        "exampleSentence": "My teacher explained what an igd is during our lesson.",
+        "definition": "A type of antibody, immunoglobulin D, found on the surface of immune cells.",
+        "exampleSentence": "Researchers measured igd levels in the blood sample to check immune function.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6215,10 +6215,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ion",
-        "definition": "An atom or group of atoms bearing an electrical charge, such as the sodium and chlorine atoms in a salt solution.",
-        "exampleSentence": "My teacher explained what an ion is during our lesson.",
+        "definition": "An atom or molecule carrying an electrical charge.",
+        "exampleSentence": "A sodium ion forms when a sodium atom loses one electron.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6231,7 +6231,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "iou",
         "definition": "An informal promissory note that is not a negotiable instrument.",
         "exampleSentence": "When David couldn’t afford to match the money in the poker pot, he added an IOU for the remaining amount instead.",
@@ -6247,10 +6247,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "kob",
-        "definition": "Any of several large game fish of the family Sciaenidae, especially the kabeljou (dusky kob or great kob or perhaps the smaller squaretail kob.",
-        "exampleSentence": "My teacher explained what a kob is during our lesson.",
+        "definition": "A large African antelope found near rivers and floodplains.",
+        "exampleSentence": "A herd of kob grazed peacefully along the riverbank at sunrise.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6263,7 +6263,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "luo",
         "definition": "An ethnic group in southern Sudan, Kenya, and neighboring countries.",
         "exampleSentence": "My teacher explained what a luo is during our lesson.",
@@ -6279,7 +6279,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "mek",
         "definition": "A Papuan people living in Indonesia.",
         "exampleSentence": "My teacher explained what a mek is during our lesson.",
@@ -6294,7 +6294,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "mem",
         "definition": "A white European woman, especially the wife of an official; a memsahib.",
         "exampleSentence": "With their husbands out all day, the mems had almost nothing to do, unless they were among the few prepared to interest themselves in local charities or community work.",
@@ -6310,7 +6310,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "nad",
         "definition": "Noun animate dependent.",
         "exampleSentence": "My teacher explained what a nad is during our lesson.",
@@ -6325,7 +6325,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "ney",
         "definition": "A type of endblown flute.",
         "exampleSentence": "A few weeks later Adille phoned me to say that he had just met a person who had begun to make neys from special reeds that he found on an island in the Yarra River in Melbourne, of all places.",
@@ -6341,7 +6341,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "nox",
         "definition": "Any of the various nitrogen oxides produced during combustion.",
         "exampleSentence": "\"The NOx and particulate reductions provide clean air in the cities and communities we serve. …\"",
@@ -6357,7 +6357,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "oaf",
         "definition": "A person, especially a large male, who is clumsy or a simpleton.",
         "exampleSentence": "My teacher explained what an oaf is during our lesson.",
@@ -6373,7 +6373,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "pia",
         "definition": "Polynesian arrowroot (Tacca leontopetaloides), whose fleshy tubers yield arrowroot starch.",
         "exampleSentence": "My teacher explained what a pia is during our lesson.",
@@ -6389,7 +6389,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pud",
         "definition": "Child's hand; child's fist.",
         "exampleSentence": "The kangaroos — your Aborigines — do they keep their primitive simplicity un-Europe-tainted, with those little short fore puds, looking like a lesson framed by Nature to the pickpocket!",
@@ -6405,7 +6405,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "ras",
         "definition": "An Ethiopian king or prince.",
         "exampleSentence": "My teacher explained what a ras is during our lesson.",
@@ -6421,10 +6421,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "rus",
-        "definition": "A person from Rus.",
-        "exampleSentence": "If a Varangian claimed money from a Rus, or a Rus from a Varangian, and the debtor refused to pay, the plaintiff, accompanied by twelve witnesses, . . .",
+        "definition": "A member of an ancient people of eastern Europe and medieval Russia.",
+        "exampleSentence": "The treaty outlined trade rules between the Varangians and the Rus.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6437,7 +6437,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "sot",
         "definition": "Audio recorded to accompany vision, as opposed to audio recorded later, such as voice-over.",
         "exampleSentence": "My teacher explained what a sot is during our lesson.",
@@ -6453,10 +6453,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "sou",
-        "definition": "An old French copper coin equal to one twentieth of a livre or twelve deniers; one sou is to the livre as one shilling is to the pound.",
-        "exampleSentence": "I do not care a sou for your excuses.",
+        "definition": "An old French coin of very small value.",
+        "exampleSentence": "He hadn't a single sou left after buying bread at the market.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -6469,10 +6469,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "tau",
-        "definition": "The letter Τ /τ in the Greek alphabet; being the nineteenth letter of the Classical and Modern Greek, and the twenty-first letter of the Old and Ancient Greek alphabets.",
-        "exampleSentence": "My teacher explained what a tau is during our lesson.",
+        "definition": "The nineteenth letter of the Greek alphabet, shaped like a T.",
+        "exampleSentence": "The math teacher drew the symbol tau on the whiteboard during the lesson.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -6485,10 +6485,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "yue",
-        "definition": "Yue ware, a southern Chinese style of celadon-glazed stoneware.",
-        "exampleSentence": "My teacher explained what a yue is during our lesson.",
+        "definition": "A style of celadon-glazed stoneware from southern China.",
+        "exampleSentence": "The museum displayed a rare piece of yue pottery from the Tang dynasty.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -6501,7 +6501,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "zag",
         "definition": "One of a series of sharp turns or reversals.",
         "exampleSentence": "My teacher explained what a zag is during our lesson.",
@@ -6517,7 +6517,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "zee",
         "definition": "The name of the Latin script letter Z/z.",
         "exampleSentence": "Time to get some zees.",
@@ -6533,7 +6533,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "kaj",
         "definition": "A spirit of storm and wind;.",
         "exampleSentence": "There existed destructive female demons called parik, whose husbands were known as kaj.",
@@ -6549,10 +6549,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "bab",
-        "definition": "To fish for eels using a bab.",
-        "exampleSentence": "Sometimes we trolled or set liggers for pike, we seldom babbed for eels, it was such a slimy job.",
+        "definition": "To fish for eels using a bundle of worms on a line.",
+        "exampleSentence": "We used to bab for eels in the muddy canal behind the farm.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6565,7 +6565,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "wey",
         "definition": "An old English measure of weight containing 224 pounds; equivalent to 2 hundredweight.",
         "exampleSentence": "Than though I hadde this wouke ywonne a weye of Essex cheese.",
@@ -6581,10 +6581,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "kop",
-        "definition": "A hill or mountain.",
-        "exampleSentence": "… a zigzag line of Lee-Enfield flashes, and a charge which took the kop at a cost of ten casualties. The victors held the key to the Ladysmith lock.",
+        "definition": "A prominent hill or small mountain.",
+        "exampleSentence": "The troops scrambled up the steep kop to gain a view of the valley below.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6597,7 +6597,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "vac",
         "definition": "To vacuum; to clean with a vacuum cleaner.",
         "exampleSentence": "I went on to how Harold used to work in security on the building; he used to see Andy in the underground car-park vacking the sick out of the Merc.",
@@ -6612,7 +6612,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "ria",
         "definition": "A narrow inlet of the sea formed by a flooded unglaciated river valley.",
         "exampleSentence": "Flinders had advised Baudin to stop in Port Jackson (the ria of what is now Sydney) when in need of refreshment ….",
@@ -6628,7 +6628,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "tid",
         "definition": "Thrice per day, consumed three times per day.",
         "exampleSentence": "It has been repeatedly documented that moving patients from a TID dosing regimen to BID or OD vastly improves compliance, and thus the medicine's effectiveness.",
@@ -6644,10 +6644,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "nef",
-        "definition": "Of a line bundle on a complete algebraic variety over a field: such that the degree of its restriction to every algebraic curve in the variety is non-negative.",
-        "exampleSentence": "… this condition is the numerical consequence of the condition that for some mgt;0, the linear system #124;mD#124; is effective and free; thus nef = \"numerically (effective and free)\".",
+        "definition": "Having non-negative intersection with every curve on an algebraic variety.",
+        "exampleSentence": "The professor proved that the divisor is nef by checking every irreducible curve.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6660,10 +6660,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "sed",
-        "definition": "To edit a file or stream of text using sed.",
-        "exampleSentence": "Can you sed out those trailing spaces, please?",
+        "definition": "To process or edit text automatically using a stream editor.",
+        "exampleSentence": "She asked her colleague to sed out the trailing whitespace from every line.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6676,10 +6676,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "koi",
-        "definition": "Ornamental domesticated varieties of the Amur carp (Cyprinus rubrofuscus), of Japan and eastern Asia with red-gold or white coloring.",
-        "exampleSentence": "We sense that while it might be wonderful for Krystle and Alexis to have a catfight in a koi pond, it would be inappropriate for Joan to smack Linda with a koi.",
+        "definition": "Brightly coloured ornamental carp kept in garden ponds.",
+        "exampleSentence": "The koi glided through the clear water, flashing orange and white.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "diphthongs",
@@ -6692,7 +6692,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hof",
         "definition": "A temple, sanctuary, or hall.",
         "exampleSentence": "For each ten churches burned to ashes, one heathen hof is avenged.",
@@ -6708,7 +6708,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yar",
         "definition": "Quick and agile; easy to hand, reef and steer.",
         "exampleSentence": "The wynd was good, the Schip was yare.",
@@ -6724,7 +6724,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "sud",
         "definition": "A bubble of lather or foam (the singular of suds).",
         "exampleSentence": "There is a beer sud parked on her upper lip.",
@@ -6740,10 +6740,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dut",
-        "definition": "A snug woolly hat.",
-        "exampleSentence": "There was a kid at our school called Dean Smith who used to wear a 'Benny Dut' to demonstrate how unfathomably stupid he is.",
+        "definition": "A snug knitted woolly hat.",
+        "exampleSentence": "He pulled his dut low over his ears to keep warm on the windy hilltop.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6755,7 +6755,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "cel",
         "definition": "A piece of celluloid on which has been drawn a frame of an animated film.",
         "exampleSentence": "After Jobs’s $5 million offer was rejected, the team attempted to do a deal with Disney, then a bastion of hand-painted cel animation.",
@@ -6771,7 +6771,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "zek",
         "definition": "A prisoner at a Russian prison, especially (historical) at a Soviet labour camp.",
         "exampleSentence": "Every prisoner who recants is a potential influence on other zeks to do likewise.",
@@ -6787,10 +6787,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "dob",
-        "definition": "In the scouting movement, to chant dob to indicate that one will do one's best to follow the scouting laws.",
-        "exampleSentence": "I used to get through the dibbing and dobbing all right but during the howling I usually rolled over backwards.",
+        "definition": "To chant a scouting pledge or, informally, to inform on someone.",
+        "exampleSentence": "Nobody wanted to dob on their friend, so the mystery stayed unsolved.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6803,10 +6803,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tej",
-        "definition": "A type of honey wine or mead from Ethiopia and Eritrea typically served in a specialized glass vessel known as a berele.",
-        "exampleSentence": "She smells the mingling odors of sweat and tej inside the hot room.",
+        "definition": "An Ethiopian honey wine similar to mead.",
+        "exampleSentence": "The restaurant served tej in small glass flasks alongside the injera.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6819,7 +6819,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "eep",
         "definition": "A short scream or yelp.",
         "exampleSentence": "She encouraged them to express their teeny-tiniest selves with an “eep.”.",
@@ -6834,10 +6834,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "tur",
-        "definition": "Either of two species of wild goat native to Caucasus, West Caucasian tur Capra caucasica or East Caucasian tur Capra cylindricornis.",
-        "exampleSentence": "Then to Hanukkah's mild surprise a voice rose up and, with laconic precision, likened this rumored brother Alp to the secretion on the nether parts of a she-tur.",
+        "definition": "A species of wild mountain goat native to the Caucasus region.",
+        "exampleSentence": "Hikers spotted a tur balancing on a narrow ledge high above the valley.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6850,7 +6850,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "buk",
         "definition": "A type of self-propelled anti-aircraft missile system from the Soviet Union.",
         "exampleSentence": "But systems like our S-300 V, Buk-M1, Tor, and Osa actually destroyed all the targets with a single missile.",
@@ -6866,7 +6866,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fum",
         "definition": "To play upon a fiddle.",
         "exampleSentence": "Follow me, and fum as you go.",
@@ -6881,10 +6881,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lep",
-        "definition": "A butterfly or moth.",
-        "exampleSentence": "Butterflies and moths belong to the insect order Lepidoptera (“leps” for short), which means “scale-wing.”.",
+        "definition": "A butterfly or moth; an insect with scale-covered wings.",
+        "exampleSentence": "A bright-winged lep landed on the flower and slowly opened its wings.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6897,7 +6897,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "sav",
         "definition": "A ruthless or badass person; a savage.",
         "exampleSentence": "My teacher explained what a sav is during our lesson.",
@@ -6913,7 +6913,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "pau",
         "definition": "Done; over; finished.",
         "exampleSentence": "When the county truck was pau hauling rubbish for the day, ….",
@@ -6929,7 +6929,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "wot",
         "definition": "To know (in the sense of knowing a fact).",
         "exampleSentence": "We need to wot this before the deadline.",
@@ -6945,7 +6945,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nop",
         "definition": "A no-op; a CPU instruction that does nothing.",
         "exampleSentence": "The MIPS instruction set is rich in nops, since any instruction with zero as a destination is guaranteed to do nothing.",
@@ -6960,7 +6960,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yok",
         "definition": "A non-Jew; a Gentile.",
         "exampleSentence": "E had not only won the cup but also a great moral victory over the yoks.",
@@ -6976,10 +6976,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sug",
-        "definition": "Sugar; sweetheart.",
-        "exampleSentence": "“Hey, sug, let's go into the family room so we don't wake up your daddy, OK?”.",
+        "definition": "An informal term of endearment meaning sugar or sweetheart.",
+        "exampleSentence": "Her grandmother always greeted her with a warm smile and a cheerful hello, sug.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6991,7 +6991,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "kew",
         "definition": "The name of the Latin script letter Q/q.",
         "exampleSentence": "\"As usual I got me pees an' kews mixed up.\"",
@@ -7006,7 +7006,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "tix",
         "definition": "Tickets (passes entitling the holder to admission).",
         "exampleSentence": "Space Exploration Extravaganza: Examine Texas Space Expo: Tix Here.",
@@ -7022,7 +7022,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "loy",
         "definition": "A type of one-eared spade used in Ireland.",
         "exampleSentence": "They were wielding the tools of their livelihood, but as weapons – scythes, hoes, loys, billhooks.",
@@ -7038,7 +7038,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "noa",
         "definition": "Non-taboo; serving to replace a taboo name or term.",
         "exampleSentence": "Blå Jungfrun … is a noa name. The tabooed name of this island is Blåkulla, Blue Hill (or Rock), a recurring name of the home of the witches in the North.",
@@ -7054,10 +7054,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "xan",
-        "definition": "A Xanax tablet.",
-        "exampleSentence": "Upstairs I got Xans in an Advil bottle, I don't take them shits.",
+        "definition": "A slang term for a tablet of the anti-anxiety medication Xanax.",
+        "exampleSentence": "The doctor warned against mixing a xan with other sedatives.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7070,9 +7070,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dox",
-        "definition": "Documents, especially information sought by hackers about an individual (address, credit card numbers, etc.).",
+        "definition": "Documents, especially information sought by hackers about an individual.",
         "exampleSentence": "Judging by the lack of the 6 it would appear we have our spammer here, LETS^() PULL HIS DOX!",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -7085,7 +7085,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "zef",
         "definition": "A South African counterculture movement associated with the white lower middle class.",
         "exampleSentence": "My zef accent is very foreign / When I speak overseas they go \"I beg your pardon?\"",
@@ -7101,7 +7101,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "noy",
         "definition": "To annoy; to harm or injure.",
         "exampleSentence": "We need to noy this before the deadline.",
@@ -7117,7 +7117,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bae",
         "definition": "Darling (term of endearment).",
         "exampleSentence": "A fresh pic of you and your bae on vacay together? Who wouldn't “like” that?!?",
@@ -7133,7 +7133,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pog",
         "definition": "Awesome, excellent, remarkable.",
         "exampleSentence": "Dude, that was pog!",
@@ -7148,10 +7148,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "goh",
-        "definition": "A person invited to attend a convention, in recognition of their contributions to the convention's field, to give one or more speeches and attend convention events.",
-        "exampleSentence": "It will be readily seen that the GoH’s speech will be a convention highspot next Easter, and the Peterborough Committee are to be congratulated on an excellent choice.",
+        "definition": "A guest of honour at a fan convention, invited to give speeches.",
+        "exampleSentence": "This year's goh thrilled the audience with behind-the-scenes stories.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7164,10 +7164,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "agha",
-        "definition": "An honorific for high officials used in Turkey and certain Muslim countries.",
-        "exampleSentence": "The book had an entire chapter about the agha.",
+        "definition": "A title of respect for a high-ranking official in Turkey and neighbouring regions.",
+        "exampleSentence": "The village agha settled disputes and hosted visiting dignitaries.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -7180,7 +7180,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "airs",
         "definition": "Affected manners intended to impress others.",
         "exampleSentence": "Stop giving yourself such airs—we all know you.",
@@ -7195,10 +7195,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ajax",
-        "definition": "An ace and a jack as a starting hand in Texas hold 'em.",
-        "exampleSentence": "The book had an entire chapter about the ajax.",
+        "definition": "A starting hand in Texas hold 'em consisting of an ace and a jack.",
+        "exampleSentence": "She was dealt an ajax and decided to raise before the flop.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7211,10 +7211,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "amor",
-        "definition": "An asteroid that orbits between the orbits of Earth and Mars.",
-        "exampleSentence": "The book had an entire chapter about the amor.",
+        "definition": "An asteroid whose orbit lies between those of Earth and Mars.",
+        "exampleSentence": "The telescope tracked an amor that passed relatively close to our planet.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -7227,10 +7227,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "anoa",
-        "definition": "Either of two related species of small Indonesian water buffalo similar in appearance to deer; Bubalus quarlesi or Bubalus depressicornis.",
-        "exampleSentence": "The Celebes pig and, to a lesser degree, the anoa were the focus of the Wana's large game interests.",
+        "definition": "A small, buffalo-like mammal found only in Indonesia.",
+        "exampleSentence": "The shy anoa hid among the dense jungle undergrowth at the first sign of people.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7243,10 +7243,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "ante",
-        "definition": "A price or cost, as in up the ante.",
-        "exampleSentence": "The book had an entire chapter about the ante.",
+        "definition": "A stake or fee each player puts up before a card game begins.",
+        "exampleSentence": "Everyone tossed a dollar into the pot as the ante for the first round.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -7259,10 +7259,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "aqua",
-        "definition": "The compound water.",
-        "exampleSentence": "Ms. Rockburne, with help from a team of artists, is working on a gargantuan mural of deep blues, shimmering aquas and luminous gold leaf that is headed for the American Embassy in Kingston, Jamaica.",
+        "definition": "Water, or a light greenish-blue colour resembling water.",
+        "exampleSentence": "She painted her bedroom walls a soothing shade of aqua.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7275,10 +7275,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "asur",
-        "definition": "An evil person.",
-        "exampleSentence": "The book had an entire chapter about the asur.",
+        "definition": "A wicked or demonic figure in Hindu mythology.",
+        "exampleSentence": "In the ancient tale, the hero defeated the fearsome asur and freed the village.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -7291,10 +7291,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "awol",
-        "definition": "Absence without proper authority from the properly appointed place of duty, or from unit, organization, or other place of duty at which one is required to be at the time prescribed.",
-        "exampleSentence": "The book had an entire chapter about the awol.",
+        "definition": "Absent without official leave.",
+        "exampleSentence": "The Army had a lot of AWOL soldiers.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7307,10 +7307,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "baal",
-        "definition": "A false deity or idol.",
-        "exampleSentence": "The book had an entire chapter about the baal.",
+        "definition": "A false god or idol worshipped in ancient Middle Eastern cultures.",
+        "exampleSentence": "The prophet urged the people to stop praying to a baal and return to their faith.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7322,10 +7322,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bane",
         "definition": "A cause of misery or ruin.",
-        "exampleSentence": "The book had an entire chapter about the bane.",
+        "exampleSentence": "Beside him lies the bane of his life,.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -7338,7 +7338,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "biff",
         "definition": "A sudden, sharp blow or punch.",
         "exampleSentence": "\"Hit him a biff,\" said the Big Man.",
@@ -7353,10 +7353,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "bile",
-        "definition": "A bitter brownish-yellow or greenish-yellow secretion produced by the liver, stored in the gall bladder, and discharged into the duodenum where it aids the process of digestion.",
-        "exampleSentence": "I shall tire of my Journal if it is to contain nothing but biles and plasters and unguents.",
+        "definition": "A bitter yellow-green fluid produced by the liver to help digest fats.",
+        "exampleSentence": "After the heavy meal, she could almost taste the bile rising in her throat.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -7369,7 +7369,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "bloc",
         "definition": "A group of voters or politicians who share common goals.",
         "exampleSentence": "Like the iPod and MySpace, the BRICS bloc is a product of the benign optimism of the 2000s.",
@@ -7385,10 +7385,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "boer",
         "definition": "A Dutch colonist in South Africa during the colonial era, especially a farmer.",
-        "exampleSentence": "The book had an entire chapter about the boer.",
+        "exampleSentence": "The British soldiers captured a Boer after the battle.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -7401,7 +7401,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "boon",
         "definition": "A good thing; a thing to be thankful for or to appreciate duly.",
         "exampleSentence": "Anaesthetics are a great boon to modern surgery.",
@@ -7417,7 +7417,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bosh",
         "definition": "A fiddle (musical instrument).",
         "exampleSentence": "My father broke his bosh one night when he was in Waterford.",
@@ -7433,7 +7433,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "bren",
         "definition": "To burn (to set ablaze).",
         "exampleSentence": "And the greene grasse that groweth they shall bren,.",
@@ -7449,7 +7449,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "brie",
         "definition": "An originally French variety of soft cheese made from cow's milk.",
         "exampleSentence": "And your socks smell of angels / But your life smells of brie.",
@@ -7465,10 +7465,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "buoy",
-        "definition": "A float moored in water to mark a location, warn of danger, indicate a navigational channel or for other purposes.",
-        "exampleSentence": "The book had an entire chapter about the buoy.",
+        "definition": "A floating marker anchored in water to signal channels, hazards, or locations.",
+        "exampleSentence": "The red buoy bobbed in the waves, warning boats away from the shallow reef.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "diphthongs",
@@ -7481,10 +7481,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "calk",
-        "definition": "A pointed projection on a horseshoe to prevent its slipping.",
-        "exampleSentence": "The book had an entire chapter about the calk.",
+        "definition": "A pointed stud on a horseshoe that prevents slipping on icy ground.",
+        "exampleSentence": "The farrier added a sharp calk to each shoe before the winter ride.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -7496,10 +7496,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cleg",
-        "definition": "A light breeze.",
-        "exampleSentence": "Sir Christopher Pack did cleave like a clegg, and was very angry he could not be heard ad infinitum.",
+        "definition": "A horsefly; also, a light breeze in some dialects.",
+        "exampleSentence": "A persistent cleg buzzed around the horse's ears all afternoon.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -7512,10 +7512,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "clio",
-        "definition": "A statuette holding a globe given at the Clio Awards, an annual award program that recognizes innovation and creative excellence in advertising, design, and communication.",
-        "exampleSentence": "Fred loved to take his Clio for a spin.",
+        "definition": "A statuette awarded for excellence in advertising and design.",
+        "exampleSentence": "The agency proudly displayed its clio trophy in the front lobby.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -7528,10 +7528,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "coax",
-        "definition": "A simpleton; a dupe.",
-        "exampleSentence": "Go, you're a brainless Coax, a Toy, a Fop, I'll go no farther than your Name, Sir Gregory.",
+        "definition": "A gullible person; a fool easily tricked.",
+        "exampleSentence": "The con artist spotted an easy coax at the crowded street market.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7544,10 +7544,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "coot",
-        "definition": "Any of various aquatic birds of the genus Fulica that are mainly black with a prominent frontal shield on the forehead.",
-        "exampleSentence": "The book had an entire chapter about the coot.",
+        "definition": "A dark waterbird with a white patch on its forehead.",
+        "exampleSentence": "A pair of coot chicks paddled behind their mother across the pond.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7560,10 +7560,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "culm",
-        "definition": "Waste coal, used as a poor quality fuel.",
-        "exampleSentence": "The book had an entire chapter about the culm.",
+        "definition": "Waste or low-quality coal used as a cheap fuel.",
+        "exampleSentence": "The miners shovelled culm into the furnace to keep the forge burning.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -7576,10 +7576,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cyma",
-        "definition": "The wavelike, curved shape of a cymatium, consisting of a concave and a convex line; (loosely) the cymatium itself.",
-        "exampleSentence": "… while the double-cyma or classical curve of his mouth was not without a looseness in its close.",
+        "definition": "An S-shaped moulding profile used in classical architecture.",
+        "exampleSentence": "The carved cyma along the cornice gave the building an elegant finish.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7592,10 +7592,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dais",
-        "definition": "A raised platform in a room for a high table, a seat of honour, a throne, or other dignified occupancy, such as ancestral statues; a similar platform supporting a lectern, pulpit, etc., which may be used to speak from.",
-        "exampleSentence": "DAIS, Dess, Deas … A long board, seat or bench erected against a wall. … A pew in a church.",
+        "definition": "A low raised platform, often at one end of a hall, for speakers or honoured guests.",
+        "exampleSentence": "The principal stepped onto the dais to address the graduating class.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7608,10 +7608,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "dali",
-        "definition": "A timber tree (genus Myristica) of Guiana, whose wood is used for staves etc.",
-        "exampleSentence": "The book had an entire chapter about the dali.",
+        "definition": "A tropical timber tree of the genus Myristica, found in South America.",
+        "exampleSentence": "Barrels made from dali wood were prized for their durability.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7623,7 +7623,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "debs",
         "definition": "A debutante ball or debut.",
         "exampleSentence": "'I had my debs there,' she said, 'four years ago last summer.'",
@@ -7639,7 +7639,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "deco",
         "definition": "A friendship book in which people add decorative elements such as drawings, stickers and sequins.",
         "exampleSentence": "Regular friendship books had a variety of variations, such as slams, crams, and decos.",
@@ -7655,10 +7655,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "devi",
-        "definition": "A goddess in Vedic mythology, Hinduism and Buddhism.",
-        "exampleSentence": "The book had an entire chapter about the devi.",
+        "definition": "A goddess in Hindu and Buddhist tradition.",
+        "exampleSentence": "Worshippers placed garlands of flowers at the temple of the devi.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7670,10 +7670,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "diol",
-        "definition": "Any organic compound having two hydroxy functional groups.",
-        "exampleSentence": "The book had an entire chapter about the diol.",
+        "definition": "An organic compound containing two hydroxyl groups.",
+        "exampleSentence": "The chemist synthesised a new diol that could be used in making plastics.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7686,10 +7686,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "doer",
         "definition": "Someone who does, performs, or executes; an active person, an agent.",
-        "exampleSentence": "The book had an entire chapter about the doer.",
+        "exampleSentence": "The doer and the thinker.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -7702,7 +7702,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "doze",
         "definition": "A light, short sleep or nap.",
         "exampleSentence": "I felt much better after a short doze.",
@@ -7718,10 +7718,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "duce",
-        "definition": "An authoritarian leader, especially Benito Mussolini.",
-        "exampleSentence": "The book had an entire chapter about the duce.",
+        "definition": "A title for an authoritarian leader, especially Mussolini.",
+        "exampleSentence": "The crowd chanted the name of their duce as his motorcade rolled past.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -7734,7 +7734,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "duds",
         "definition": "Clothing, especially for work or of rough appearance.",
         "exampleSentence": "JESSE:Badger? Where you been keeping yourself? Nice duds.",
@@ -7749,10 +7749,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "duff",
-        "definition": "A stiff flour pudding, often with dried fruit, boiled in a cloth bag, or steamed.",
-        "exampleSentence": "The book had an entire chapter about the duff.",
+        "definition": "Worthless; not working properly, defective.",
+        "exampleSentence": "Why do I always get a shopping trolley with duff wheels?",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7765,10 +7765,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "duma",
-        "definition": "A Russian legislative assembly such as the historical duma of the Russian Empire or the modern lower house of the Federal Assembly (the Russian national parliament).",
-        "exampleSentence": "The book had an entire chapter about the duma.",
+        "definition": "A Russian legislative assembly or parliament.",
+        "exampleSentence": "Members of the duma debated the proposed trade agreement for weeks.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7781,7 +7781,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "dune",
         "definition": "A ridge or hill of sand piled up by currents of wind or water.",
         "exampleSentence": "Heavy line segments (lengthened for clarity) indicate locations of deep-sea dunes.",
@@ -7797,7 +7797,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "dupe",
         "definition": "A duplicate of a photographic image.",
         "exampleSentence": "And many shoppers go to Aldi for its so-called dupes of more expensive, big-brand foods and beverages.",
@@ -7813,10 +7813,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dyer",
-        "definition": "One who dyes, especially one who dyes cloth etc. as an occupation.",
-        "exampleSentence": "The book had an entire chapter about the dyer.",
+        "definition": "A person whose trade is colouring fabrics and textiles.",
+        "exampleSentence": "The dyer soaked the cloth in a deep indigo vat until it turned rich blue.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -7829,10 +7829,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "eddo",
-        "definition": "A plant (Colocasia esculenta, but often identified as Colocasia antiquorum, among numerous other synonyms), which is usually considered a variety of C. esculenta, with edible starchy tubers.",
-        "exampleSentence": "The book had an entire chapter about the eddo.",
+        "definition": "A tropical root vegetable related to taro, with starchy edible tubers.",
+        "exampleSentence": "She peeled and boiled the eddo until it was soft enough to mash.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7845,10 +7845,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "enid",
-        "definition": "Any snail in the family Enidae.",
-        "exampleSentence": "The book had an entire chapter about the enid.",
+        "definition": "A small land snail in the family Enidae.",
+        "exampleSentence": "The biologist catalogued a rare enid species found on the limestone cliff.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -7861,7 +7861,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "esop",
         "definition": "A company that implements such a plan.",
         "exampleSentence": "Another factor is that ESOPs had a rocky beginning, which for a while made them appear sketchy. A few widely publicized companies set up ESOPs purely as defenses against hostile takeovers.",
@@ -7876,7 +7876,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "exec",
         "definition": "An executive; a person employed at the executive level.",
         "exampleSentence": "“'Okay. Report to the exec's office right after inspection tomorrow, Mister Keith. Best of luck.”.",
@@ -7892,10 +7892,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "eyra",
-        "definition": "A slender, reddish-yellow wild cat (Puma yagouaroundi eyra) ranging from southern Brazil to Texas.",
-        "exampleSentence": "The book had an entire chapter about the eyra.",
+        "definition": "A slender, reddish-brown wild cat found from South America to Texas.",
+        "exampleSentence": "The eyra slipped silently through the tall grass, hunting for rodents.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7908,10 +7908,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "eyre",
-        "definition": "A journey taken by certain Medieval English itinerant judges.",
-        "exampleSentence": "The book had an entire chapter about the eyre.",
+        "definition": "A circuit court journey made by medieval English judges.",
+        "exampleSentence": "The king's justices set out on an eyre to hear cases across the countryside.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7924,10 +7924,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "fiat",
-        "definition": "An automobile manufactured by the Italian firm Fiat S.p.A.",
-        "exampleSentence": "You are jet-lagged, have a headache, can't stand driving a Fiat, it's turned dark and you cannot see or read the road signs.",
+        "definition": "A car made by the well-known Italian automaker.",
+        "exampleSentence": "She squeezed her little fiat into the last parking space on the street.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7940,10 +7940,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fife",
-        "definition": "A small shrill pipe, resembling the piccolo flute, used chiefly to accompany the drum in military music.",
-        "exampleSentence": "The book had an entire chapter about the fife.",
+        "definition": "A small, high-pitched flute used mainly in military marching music.",
+        "exampleSentence": "The sharp notes of the fife echoed across the parade ground.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -7956,7 +7956,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "fisc",
         "definition": "The public treasury of Rome.",
         "exampleSentence": "When they had resolved to appropriate to the Fisc, a certain portion of the landed property of their conquered country, it was their business to render their bank a real fund of credit ….",
@@ -7972,7 +7972,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "fizz",
         "definition": "An emission of a rapid stream of bubbles.",
         "exampleSentence": "Nathan ordered an orange fizz from the soda jerk at the counter.",
@@ -7987,7 +7987,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "flan",
         "definition": "A baked tart with a sweet or savoury filling in an open-topped pastry case.",
         "exampleSentence": "The menu includes a number of excellent fish dishes such as the … broccoli flan.",
@@ -8003,7 +8003,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "flex",
         "definition": "Flexibility, pliancy.",
         "exampleSentence": "It's an achievement to stand out from other Marvel movies in terms of special effects, but this whole movie feels like a flex for those computer wizards.",
@@ -8019,10 +8019,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "foal",
         "definition": "A young horse or other equine, especially just after birth or less than a year old.",
-        "exampleSentence": "The book had an entire chapter about the foal.",
+        "exampleSentence": "All the time, our overfraught hearts are beating at a rate that would far outstrip the fastest gallop of the fastest horses ever foaled.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8035,10 +8035,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "fore",
         "definition": "A people of Papua New Guinea.",
-        "exampleSentence": "The book had an entire chapter about the fore.",
+        "exampleSentence": "The eyes, fore duteous, now converted are.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8050,10 +8050,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "fray",
         "definition": "A noisy commotion, especially resulting from fighting; a brawl, a fight; also, a loud quarrel.",
-        "exampleSentence": "The book had an entire chapter about the fray.",
+        "exampleSentence": "Where window is open, cat maketh a fray, / yet wilde cat with two legs is worse by my fay.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8066,7 +8066,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "garb",
         "definition": "Fashion, style of dressing oneself up.",
         "exampleSentence": "You thought, because he could not speak English in the native garb, he could not therefore handle an English cudgel.",
@@ -8082,10 +8082,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "geum",
-        "definition": "Any of the genus Geum of perennial herbaceous plants.",
-        "exampleSentence": "The circles, which were ablaze with daffodils this spring, are now afloat with airy geum, cosmos, acidanthera and dahlias.",
+        "definition": "A flowering plant in the rose family, often found in gardens.",
+        "exampleSentence": "Bright orange geum blossoms added a splash of colour to the flower bed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8098,10 +8098,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gheg",
-        "definition": "Member of an Albanian people inhabiting northern Albania, Kosovo and parts of North Macedonia and Montenegro.",
-        "exampleSentence": "The book had an entire chapter about the gheg.",
+        "definition": "A member of an Albanian people from northern Albania and Kosovo.",
+        "exampleSentence": "The linguist recorded the distinct dialect spoken by the local Gheg community.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -8114,10 +8114,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "gout",
-        "definition": "An extremely painful inflammation of joints, especially of the big toe, caused by a metabolic defect resulting in the accumulation of uric acid in the blood and the deposition of urates around the joints.",
-        "exampleSentence": "The book had an entire chapter about the gout.",
+        "definition": "A painful joint condition caused by a buildup of uric acid, often in the big toe.",
+        "exampleSentence": "The doctor diagnosed him with gout and advised him to avoid red meat.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8130,10 +8130,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "goya",
-        "definition": "Bitter melon (edible fruit, especially as it is eaten by Okinawans).",
-        "exampleSentence": "The book had an entire chapter about the goya.",
+        "definition": "A bitter melon widely used in Okinawan and Asian cooking.",
+        "exampleSentence": "She stir-fried the sliced goya with eggs and tofu for a healthy lunch.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "diphthongs",
@@ -8146,7 +8146,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "graf",
         "definition": "A German or Austrian count (nobleman).",
         "exampleSentence": "Without ceremony, the Graf, on his entering the drawing-room, seated himself at the piano-forte, and proposed affording his new friends \"a leetle example\" how music was performed in Hungary.",
@@ -8162,10 +8162,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "guan",
-        "definition": "Any (member) of several species of birds in the genera Aburria, Chamaepetes, Oreophasis, Penelope, Penelopina, and Pipile, of the family Cracidae, limited to the Americas.",
-        "exampleSentence": "The book had an entire chapter about the guan.",
+        "definition": "A large tropical bird found in the forests of Central and South America.",
+        "exampleSentence": "The birdwatcher spotted a crested guan perched high in the canopy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8178,10 +8178,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "guib",
-        "definition": "The harnessed antelope (Tragelaphus scriptus), a West African antelope marked with white stripes and spots on a reddish fawn ground;.",
-        "exampleSentence": "The guib is of the mean dimensions, or four feet and a half in total length, and two and a half high at the shoulders, but rather higher at the croup.",
+        "definition": "A West African antelope with distinctive white stripes and spots.",
+        "exampleSentence": "The guib darted into the dense thicket when it sensed our approach.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8193,7 +8193,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gunk",
         "definition": "Grime, dirt, slime; any vague, messy, or unknown substance.",
         "exampleSentence": "Don't get gunk on me. I took a bath last Saturday and I'm all clean.",
@@ -8209,10 +8209,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hick",
-        "definition": "An awkward, naive, clumsy and/or rude country person.",
-        "exampleSentence": "The book had an entire chapter about the hick.",
+        "definition": "An unsophisticated person from a rural area.",
+        "exampleSentence": "The city kids unfairly dismissed him as a hick just because he grew up on a farm.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -8225,10 +8225,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "hops",
-        "definition": "The flowers of the hop plant; the vegetable matter from them supplied as pellets, shreds, or powder.",
-        "exampleSentence": "The book had an entire chapter about the hops.",
+        "definition": "The dried flowers of the hop plant, used to flavour beer.",
+        "exampleSentence": "The brewer added fresh hops to give the ale a slightly bitter taste.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8240,10 +8240,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "hurl",
         "definition": "A throw, especially a violent throw; a fling.",
-        "exampleSentence": "The book had an entire chapter about the hurl.",
+        "exampleSentence": "He managed a hurl of 50.3 metres.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8256,7 +8256,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "hype",
         "definition": "Promotion or propaganda, especially exaggerated claims.",
         "exampleSentence": "After all the hype for the diet plan, only the results ended up slim.",
@@ -8272,10 +8272,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "imam",
-        "definition": "One who leads the salat prayers in a mosque.",
-        "exampleSentence": "Sheik Mohammad Seyed Tantawi, Egypt’s highest-ranking imam, led the prayers over the coffin, covered with an Egyptian flag.",
+        "definition": "A Muslim prayer leader in a mosque.",
+        "exampleSentence": "The imam called the congregation to prayer as the sun began to set.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8288,7 +8288,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "jive",
         "definition": "A dance style popular in the 1940–50s.",
         "exampleSentence": "Don’t give me that jive. I know where you were last night.",
@@ -8304,7 +8304,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "jong",
         "definition": "A Tibetan building which makes up a prefecture; typically a monastery or fortress.",
         "exampleSentence": "When they had gone I went for a solitary ride, rounding the Jong and striking out into the country through a subsidiary village.",
@@ -8320,7 +8320,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "joss",
         "definition": "A Chinese household divinity; a Chinese idol.",
         "exampleSentence": "She had twisted a piece of heather into her mail box for good joss, and this was the safety signal.",
@@ -8336,10 +8336,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "judo",
         "definition": "A Japanese martial art and sport adapted from jujutsu.",
-        "exampleSentence": "The book had an entire chapter about the judo.",
+        "exampleSentence": "He started doing judo at the age of eight.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8352,7 +8352,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "kelp",
         "definition": "Any of several large brown algae seaweeds (order Laminariales).",
         "exampleSentence": "Underneath the area demarcated by the buoys, Ms Puckett plants kelp—a type of seaweed—on long ropes that resemble washing lines.",
@@ -8368,10 +8368,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "kiev",
-        "definition": "A dish like chicken Kiev, with substitutes for the chicken, sauces or other components, to fit dietary restrictions such as vegetarianism.",
-        "exampleSentence": "The book had an entire chapter about the kiev.",
+        "definition": "A dish of breaded, stuffed poultry, typically filled with garlic butter.",
+        "exampleSentence": "Golden butter oozed out when she cut into the crispy chicken kiev.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8383,10 +8383,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "kilt",
-        "definition": "A traditional Scottish garment, usually worn by men, having roughly the same morphology as a wrap-around skirt, with overlapping front aprons and pleated around the sides and back, and usually made of twill-woven worsted wool with a tartan pattern.",
-        "exampleSentence": "The book had an entire chapter about the kilt.",
+        "definition": "A knee-length pleated skirt, traditionally worn by Scottish men.",
+        "exampleSentence": "He wore a tartan kilt and sporran for the Highland dance competition.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -8399,10 +8399,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "kohl",
-        "definition": "A dark powder, usually powdered stibnite (an antimony ore), used as eye makeup, especially in Eastern countries.",
-        "exampleSentence": "The book had an entire chapter about the kohl.",
+        "definition": "A dark powder, usually powdered stibnite, used as eye makeup, especially in Eastern countries.",
+        "exampleSentence": "A plain, big woman with heavily kohled eyes and pudgy arms.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8415,10 +8415,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "kook",
         "definition": "An eccentric, strange or crazy person.",
-        "exampleSentence": "The book had an entire chapter about the kook.",
+        "exampleSentence": "The administration’s deep cuts to scientific and medical research have been compounded by Trump’s decision to hand control of public health to Robert F. Kennedy Jr., a bona fide kook,….",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8431,10 +8431,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "koto",
-        "definition": "A Japanese stringed instrument having numerous strings, usually seven or thirteen, that are stretched over a convex wooden sounding board and are plucked with three plectra, worn on the thumb, index finger, and middle finger of one hand.",
-        "exampleSentence": "Seated on the soft carpet with their drinks, they listened to a recording of koto, Japanese thirteen-string harp.",
+        "definition": "A traditional Japanese stringed instrument with a long, flat body.",
+        "exampleSentence": "The musician plucked the koto with ivory picks, filling the hall with gentle melodies.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8447,10 +8447,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "lego",
-        "definition": "Any of several small, coloured, plastic bricks, often made by the Lego Company, that can be made to join together and be taken apart, used to construct toy buildings, vehicles, etc.",
-        "exampleSentence": "The book had an entire chapter about the lego.",
+        "definition": "A coloured plastic building brick that snaps together with other bricks.",
+        "exampleSentence": "The children spent the rainy afternoon building a castle out of lego.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8463,10 +8463,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "liao",
         "definition": "Meats, vegetables, and other ingredients added to an otherwise plain dish.",
-        "exampleSentence": "The book had an entire chapter about the liao.",
+        "exampleSentence": "Bak Chor Mee, less mee, Auntie. No extra liao today.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8479,10 +8479,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lido",
-        "definition": "Part of the sea by a beach sectioned off for swimming and other aquatic activities.",
-        "exampleSentence": "The book had an entire chapter about the lido.",
+        "definition": "A public outdoor swimming pool or a roped-off section of beach for swimming.",
+        "exampleSentence": "On hot summer days the local lido was packed with families.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8495,10 +8495,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "lieu",
-        "definition": "A place or stead.",
-        "exampleSentence": "The book had an entire chapter about the lieu.",
+        "definition": "A place or stead; used in the phrase meaning 'instead of.'",
+        "exampleSentence": "The company offered extra holiday in lieu of a bonus this year.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8511,10 +8511,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lilo",
-        "definition": "An inflatable air mattress.",
-        "exampleSentence": "The book had an entire chapter about the lilo.",
+        "definition": "An inflatable mattress used for floating on water or as a temporary bed.",
+        "exampleSentence": "He drifted lazily across the pool on a brightly coloured lilo.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8527,7 +8527,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lode",
         "definition": "A way or path; a road.",
         "exampleSentence": "In recent years, Jack Grieve of the department of English and linguistics at the University of Birmingham in England has embraced Twitter as a bountiful lode for looking at language-use patterns.",
@@ -8543,10 +8543,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "travel"
     },
-{
+    {
         "word": "loom",
-        "definition": "A utensil; tool; a weapon; (usually in compound) an article in general.",
-        "exampleSentence": "The book had an entire chapter about the loom.",
+        "definition": "A frame or machine used for weaving thread into cloth.",
+        "exampleSentence": "The weaver sat at her loom and carefully passed the shuttle back and forth.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8559,10 +8559,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lore",
-        "definition": "All the facts and traditions about a particular subject that have been accumulated over time through education or experience.",
-        "exampleSentence": "The book had an entire chapter about the lore.",
+        "definition": "Traditional knowledge or stories passed down through generations.",
+        "exampleSentence": "Local lore claims a pirate buried treasure somewhere on the island.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8575,7 +8575,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "lout",
         "definition": "A troublemaker, often violent; a rude violent person; a yob.",
         "exampleSentence": "You see louts fresh from school kicking grey-haired servants.",
@@ -8591,10 +8591,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ludo",
-        "definition": "A children's board game in which tokens are moved around a board.",
-        "exampleSentence": "The book had an entire chapter about the ludo.",
+        "definition": "A simple board game in which players race tokens around a track.",
+        "exampleSentence": "The family gathered around the table for a noisy game of ludo.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8607,7 +8607,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lyra",
         "definition": "The middle portion of the ventral surface of the fornix of the brain.",
         "exampleSentence": "The vessels of the brain generally are often distended and gorged with blood, the lyra especially being fully injected.",
@@ -8623,10 +8623,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "lyre",
-        "definition": "An ancient stringed musical instrument (a yoke lute chordophone) of Greek origin, consisting of two arms extending from a body to a crossbar (a yoke), and strings, parallel to the soundboard, connecting the body to the yoke.",
-        "exampleSentence": "The book had an entire chapter about the lyre.",
+        "definition": "An ancient stringed instrument with two curved arms joined by a crossbar.",
+        "exampleSentence": "In Greek myths, Orpheus charmed wild animals with his golden lyre.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -8639,10 +8639,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "mach",
-        "definition": "A ratio of the speed (of an object, etc.) to the speed of sound in the fluid or other medium through which the object travels. Usually used to describe supersonic speeds; always precedes the Mach number.",
-        "exampleSentence": "The 1992 review concluded that Machs are generally less satisfied with their jobs.",
+        "definition": "A unit expressing speed as a ratio to the speed of sound.",
+        "exampleSentence": "The fighter jet broke through the clouds at over mach two.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -8655,10 +8655,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "magh",
-        "definition": "Any of various mainly Buddhist peoples of Aracan, especially bordering on Bengal, or residing near the sea.",
-        "exampleSentence": "The book had an entire chapter about the magh.",
+        "definition": "A Buddhist people from the Arakan region, near the border of Bengal.",
+        "exampleSentence": "The magh community gathered for their annual harvest festival by the river.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -8671,10 +8671,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "mali",
-        "definition": "A member of a caste in South Asia whose traditional occupation is gardening; hence, any South Asian gardener.",
-        "exampleSentence": "A nearly naked mali, watering-can in hand, was moving in the jungle of flowers like some large nectar-sucking bird.",
+        "definition": "A gardener in South Asia, or a member of the traditional gardening caste.",
+        "exampleSentence": "The mali carefully pruned the rose bushes in the courtyard each morning.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8687,10 +8687,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "masa",
-        "definition": "Maize dough made from freshly prepared hominy, used for making tortillas, tamales, etc.",
-        "exampleSentence": "The book had an entire chapter about the masa.",
+        "definition": "Corn dough made from treated maize, used to make tortillas and tamales.",
+        "exampleSentence": "She patted the masa into thin rounds before placing them on the hot griddle.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8703,10 +8703,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "maul",
         "definition": "A heavy long-handled hammer, used for splitting logs by driving a wedge into them, or in combat.",
-        "exampleSentence": "The book had an entire chapter about the maul.",
+        "exampleSentence": "The bear mauled him in a terrible way.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8719,9 +8719,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "maxi",
-        "definition": "A dress, coat or skirt having a maxi hemline.",
+        "definition": "Having a hemline at ankle length.",
         "exampleSentence": "I used to be a diehard maxi, but now I'm less optimistic about the future of Bitcoin.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -8735,10 +8735,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "meme",
-        "definition": "Any unit of (originally cultural) information, such as a practice or idea, that is transmitted verbally or by repeated action from one mind to another in a comparable way to the transmission of genes.",
-        "exampleSentence": "The book had an entire chapter about the meme.",
+        "definition": "An idea, image, or joke that spreads rapidly online or through culture.",
+        "exampleSentence": "The funny cat photo became a viral meme shared millions of times.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -8751,10 +8751,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "mind"
     },
-{
+    {
         "word": "mica",
-        "definition": "Any of a group of hydrous aluminosilicate minerals characterized by highly perfect cleavage, so that they readily separate into very thin leaves, more or less elastic.",
-        "exampleSentence": "His little eyes glittered like mica discs with curiosity, though he tried to keep up a bit of superciliousness.",
+        "definition": "A shiny mineral that splits easily into thin, flexible sheets.",
+        "exampleSentence": "Flecks of mica in the granite sparkled under the afternoon sun.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8767,10 +8767,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "miri",
-        "definition": "A member of the Mishing people of Assam.",
-        "exampleSentence": "The book had an entire chapter about the miri.",
+        "definition": "A member of the Mishing indigenous people of Assam, India.",
+        "exampleSentence": "The miri village hosted a colourful spring festival along the riverbank.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8782,10 +8782,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "miso",
-        "definition": "A thick paste made by fermentation of soybeans with the mold Aspergillus oryzae, used in making soups and sauces.",
-        "exampleSentence": "The book had an entire chapter about the miso.",
+        "definition": "A thick fermented soybean paste used in Japanese soups and sauces.",
+        "exampleSentence": "A warm bowl of miso soup was the perfect start to the meal.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8798,7 +8798,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "moat",
         "definition": "A deep, wide defensive ditch, normally filled with water, surrounding a fortified habitation.",
         "exampleSentence": "No matter how good your company's product is or how quickly the industry is growing, if there is no moat, competitors will invade your castle and burn it down.",
@@ -8814,10 +8814,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "mono",
-        "definition": "A member of a Native American people who traditionally live in the central and eastern Sierra Nevada, the Mono Basin, and adjacent areas of the Great Basin in California.",
-        "exampleSentence": "The book had an entire chapter about the mono.",
+        "definition": "Monaural or monophonic; having only a single audio channel.",
+        "exampleSentence": "…SANTA ANAS, MONOS, AND NORTHERS.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "greek-roots",
@@ -8830,10 +8830,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "mope",
-        "definition": "The act of moping.",
-        "exampleSentence": "When she gets upset, she has a little mope, and then gets over it.",
+        "definition": "A spell of gloomy, listless sadness.",
+        "exampleSentence": "After losing the game, she allowed herself a brief mope before cheering up.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -8846,10 +8846,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "moro",
-        "definition": "A Muslim inhabitant of the Philippines.",
-        "exampleSentence": "The book had an entire chapter about the moro.",
+        "definition": "A Muslim inhabitant of the southern Philippines.",
+        "exampleSentence": "The treaty was signed between the colonial government and the local moro leaders.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8862,7 +8862,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "mott",
         "definition": "A copse or small grove of trees, especially live oak or elm.",
         "exampleSentence": "We continued northwest, the grass tall with scattered thick motts of oak and the mesquites with their flickering leaves and the yuccas in bloom with their white flowers.",
@@ -8878,10 +8878,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "muss",
         "definition": "A mess (disagreeable mixture or confusion of things; disorder).",
-        "exampleSentence": "The book had an entire chapter about the muss.",
+        "exampleSentence": "Gods so! a muss, a muss, a muss, a muss.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8894,10 +8894,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "naga",
-        "definition": "A member of a conglomeration of various tribes, living in Nagaland (India) and surrounding areas, and speaking various Tibeto-Burman languages.",
-        "exampleSentence": "The book had an entire chapter about the naga.",
+        "definition": "A member of various tribal peoples of northeastern India and Myanmar.",
+        "exampleSentence": "The naga warriors performed a traditional dance at the Hornbill Festival.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8909,10 +8909,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "napa",
-        "definition": "Brassica rapa subsp. pekinensis, a kind of Chinese cabbage.",
-        "exampleSentence": "The book had an entire chapter about the napa.",
+        "definition": "A type of Chinese cabbage with broad, pale leaves.",
+        "exampleSentence": "She shredded the crisp napa cabbage for the spicy kimchi recipe.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -8925,10 +8925,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "newt",
         "definition": "A small lizard-like amphibian in the subfamily Pleurodelinae that lives in the water as an adult.",
-        "exampleSentence": "The book had an entire chapter about the newt.",
+        "exampleSentence": "If you moved first and newted someone , you were a murderer.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -8941,10 +8941,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "nike",
-        "definition": "An athletic shoe or other piece of athletic gear produced or licensed by athletic brand Nike.",
-        "exampleSentence": "One day Billy Madlock wore two different spikes, a Nike on his left foot for something like fifteen thousand dollars and an Adidas on his right foot for ten thousand.",
+        "definition": "An athletic shoe or sportswear item from the global brand.",
+        "exampleSentence": "He laced up a fresh pair of nike trainers before the morning jog.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -8957,7 +8957,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "nome",
         "definition": "A prefecture or unit of regional government in Greece.",
         "exampleSentence": "Laconia is the southernmost nome in the Peloponnese.",
@@ -8973,10 +8973,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "nrna",
-        "definition": "Nuclear RNA (the RNA found within the nucleus of eukaryotic cells).",
-        "exampleSentence": "The book had an entire chapter about the nrna.",
+        "definition": "Nuclear RNA, the RNA molecules found inside the nucleus of a cell.",
+        "exampleSentence": "The biology class examined how nrna plays a role in gene regulation.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -8988,10 +8988,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nuke",
-        "definition": "A nuclear weapon.",
-        "exampleSentence": "I can buy nukes on the black market for $40 million each.",
+        "definition": "A nuclear weapon; also, slang for reheating food in a microwave.",
+        "exampleSentence": "The documentary explored the global debate over countries that possess a nuke.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -9004,10 +9004,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "okey",
-        "definition": "A Turkish game in which players attempt to collect certain groups of tiles.",
-        "exampleSentence": "The book had an entire chapter about the okey.",
+        "definition": "A tile-based Turkish game similar to the card game rummy.",
+        "exampleSentence": "After dinner, the whole family sat down for a lively round of okey.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9020,10 +9020,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "opal",
-        "definition": "A mineral consisting, like quartz, of silica, but inferior to quartz in hardness and specific gravity, of the chemical formula SiO₂·nH₂O.",
-        "exampleSentence": "The witchery of the dawn turned the grey river-reaches to purple, gold, and opal; and it was as though the lumbering dhoni crept across the splendors of a new heaven.",
+        "definition": "A gemstone known for its shifting rainbow colours.",
+        "exampleSentence": "Her grandmother's opal ring gleamed with flashes of blue and green.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9036,10 +9036,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "orca",
-        "definition": "A sea mammal (Orcinus orca) related to dolphins and porpoises, commonly called the killer whale.",
-        "exampleSentence": "The book had an entire chapter about the orca.",
+        "definition": "A large black-and-white marine mammal, commonly called the killer whale.",
+        "exampleSentence": "The pod of orca breached the surface in perfect unison.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -9052,7 +9052,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "oval",
         "definition": "An elongated round shape resembling an egg or ellipse.",
         "exampleSentence": "At the far end of the wide corridor were the doors of a ward. The panels were frosted save for ovals of clear glass at face level.",
@@ -9068,10 +9068,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "peat",
-        "definition": "Soil formed of dead but not fully decayed plants found in bog areas, often burned as fuel.",
-        "exampleSentence": "The book had an entire chapter about the peat.",
+        "definition": "Partially decayed plant matter found in boggy areas, often dried and burned as fuel.",
+        "exampleSentence": "Farmers once cut blocks of peat from the bog and stacked them to dry.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9084,10 +9084,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "peba",
-        "definition": "An armadillo (Dasypus novemcinctus) found from Texas to Paraguay; the tatouhou.",
-        "exampleSentence": "The book had an entire chapter about the peba.",
+        "definition": "A nine-banded armadillo found from Texas to South America.",
+        "exampleSentence": "The peba rolled into a tight ball when startled by the passing hikers.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9100,7 +9100,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "peon",
         "definition": "A lowly person; a peasant or serf; a labourer who is obliged to do menial work.",
         "exampleSentence": "He is well dressed in cheap clothing. Like an office peon whose wife works in a laundry.",
@@ -9116,10 +9116,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "pika",
-        "definition": "Any of several small, furry mammals, similar to guinea pigs, but related to rabbits, of the genus Ochotona, from the mountains of North America and Asia.",
-        "exampleSentence": "The book had an entire chapter about the pika.",
+        "definition": "A small, round-eared mammal related to rabbits, living in mountain rock piles.",
+        "exampleSentence": "The pika darted between the boulders, carrying a mouthful of dried grass.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9132,7 +9132,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "puma",
         "definition": "An athletic shoe or other piece of athletic gear of a German-based brand of that name.",
         "exampleSentence": "Joe Fortune shook his head, swung his legs over the edge of the bunk, and put on his Pumas.",
@@ -9148,7 +9148,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "purr",
         "definition": "The vibrating sound made by a cat in its throat when contented.",
         "exampleSentence": "The trill of her purr echoed inside his mouth when he kissed her again. Clutching at his shirt, her fingers traveled the muscles in his back.",
@@ -9163,10 +9163,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "putt",
-        "definition": "A regular sound characterized by the sound of \"putt putt putt putt...\", such as made by some slowly stroking internal combustion engines.",
-        "exampleSentence": "The book had an entire chapter about the putt.",
+        "definition": "A gentle stroke in golf that rolls the ball along the green toward the hole.",
+        "exampleSentence": "His final putt curved left and dropped neatly into the cup for a birdie.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9179,7 +9179,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "pyre",
         "definition": "A funeral pile; a combustible heap on which corpses are burned.",
         "exampleSentence": "The effigy was set ablaze on the pyre.",
@@ -9195,10 +9195,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "rani",
-        "definition": "The wife of a rajah.",
-        "exampleSentence": "The book had an entire chapter about the rani.",
+        "definition": "An Indian queen or princess; the wife of a rajah.",
+        "exampleSentence": "The rani welcomed the visiting ambassador with a lavish banquet.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9211,7 +9211,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "rube",
         "definition": "A person of rural heritage; a yokel.",
         "exampleSentence": "You know what you look like to me, with your good bag and your cheap shoes? You look like a rube. A well scrubbed, hustling rube with a little taste.",
@@ -9227,7 +9227,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "rudd",
         "definition": "Any species of the freshwater game fishes of genus Scardinius.",
         "exampleSentence": "Within minutes of starting I had my first fish a rudd about a pound, this was followed by a tench about five pounds.",
@@ -9243,10 +9243,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "rune",
-        "definition": "A letter, or character, used in the written language of various ancient Germanic peoples, especially the Scandinavians and the Anglo-Saxons.",
-        "exampleSentence": "\"Finding you somewhere to live isn't going to be easy,\" he said. \"We must cast the runes,\" said Catweazle. \"They will tell us.\"",
+        "definition": "A letter from an ancient alphabet used by Germanic and Norse peoples.",
+        "exampleSentence": "Each rune carved on the Viking stone told part of a forgotten saga.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -9259,7 +9259,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "runt",
         "definition": "The smallest animal of a litter.",
         "exampleSentence": "Neither young poles nor old runts are durable.",
@@ -9275,7 +9275,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "rusk",
         "definition": "A rectangular, hard, dry biscuit.",
         "exampleSentence": "… he brought a large basket of rusk or biscuit, and three jars of fresh water, into the boat.",
@@ -9291,7 +9291,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "saba",
         "definition": "A sweet grape syrup made from grape must.",
         "exampleSentence": "Gar, a long, skinny fish, was cooked and served in thick grape syrup, like saba, the Italian grape must.",
@@ -9307,7 +9307,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "sass",
         "definition": "The quality of being sassy.",
         "exampleSentence": "Say—if you give me much more of your sass I'll take and bounce a rock off'n your head.",
@@ -9323,10 +9323,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "scot",
-        "definition": "A local tax, paid originally to the lord or ruler and later to a sheriff.",
-        "exampleSentence": "The book had an entire chapter about the scot.",
+        "definition": "A local tax or payment once collected in medieval towns.",
+        "exampleSentence": "Every household was expected to pay its scot to help maintain the town walls.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9339,10 +9339,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "serb",
-        "definition": "A person of Serb descent (not necessarily from Serbia). (Compare Serbian.).",
-        "exampleSentence": "Dozens of NATO peacekeepers were injured after they were attacked by ethnic Serbs in northern Kosovo, during protests over the installation of ethnically Albanian mayors.",
+        "definition": "A member of the South Slavic people native to Serbia and the Balkans.",
+        "exampleSentence": "The documentary followed a young Serb returning to his ancestral village.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -9355,10 +9355,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "shiv",
-        "definition": "A knife, especially a makeshift one fashioned from something not normally used as a weapon (like a plastic spoon or a toothbrush).",
-        "exampleSentence": "The book had an entire chapter about the shiv.",
+        "definition": "A knife, especially a makeshift one fashioned from something not normally used as a weapon.",
+        "exampleSentence": "Anyway, that's how Jimmie came to be shivved and left to bleed out in the shower.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -9371,10 +9371,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sikh",
         "definition": "An adherent of Sikhism.",
-        "exampleSentence": "The book had an entire chapter about the sikh.",
+        "exampleSentence": "A year earlier, the Canadian leader was seen at a Sikh event in Toronto where separatist flags and posters depicting an extremist Sikh leader killed in a 1984 Indian Army operation were displayed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9387,10 +9387,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sima",
-        "definition": "The lower layer of the earth's outer crust that underlies the sial and is rich in silica, iron, and magnesium.",
-        "exampleSentence": "The book had an entire chapter about the sima.",
+        "definition": "The dense, lower layer of Earth's crust, rich in silica, iron, and magnesium.",
+        "exampleSentence": "Ocean floors sit directly on the sima layer beneath the lighter continental rock.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9403,10 +9403,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "siva",
-        "definition": "Any of various birds formerly of genus Siva, now part of genus Actinodura, of barwings.",
-        "exampleSentence": "The book had an entire chapter about the siva.",
+        "definition": "A small Asian songbird, also known as a barwing.",
+        "exampleSentence": "The birdwatcher identified the melodious call as belonging to a siva.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9418,10 +9418,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "slub",
-        "definition": "A small thickened portion or knot found in yarn, caused by defects or intentionally leaving sections of the yarn unspun.",
-        "exampleSentence": "The huge bolts of cloth had to be checked for imperfections such as slubs and misweaves.",
+        "definition": "A thickened lump or knot in yarn, sometimes left intentionally for texture.",
+        "exampleSentence": "The fabric's uneven surface was created by leaving a slub every few inches.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9433,10 +9433,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "soar",
-        "definition": "The act of soaring.",
-        "exampleSentence": "The book had an entire chapter about the soar.",
+        "definition": "An upward flight or glide through the air.",
+        "exampleSentence": "The eagle began a slow soar above the canyon, riding the warm thermals.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9449,10 +9449,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "soot",
-        "definition": "Fine black or dull brown particles of amorphous carbon and tar, produced by the incomplete combustion of coal, oil etc.",
-        "exampleSentence": "The book had an entire chapter about the soot.",
+        "definition": "Black powdery carbon left behind by burning wood, coal, or oil.",
+        "exampleSentence": "A thick layer of soot coated the inside of the old chimney.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9465,10 +9465,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "sorb",
         "definition": "A member of a Slavic people living in Lusatia in eastern Germany.",
-        "exampleSentence": "The book had an entire chapter about the sorb.",
+        "exampleSentence": "The exchange of pesticide compounds between aqueous solution and the sorbed phase in soils is not instantaneous.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -9481,10 +9481,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "spec",
         "definition": "A species designated as of conservation concern according to this classification scheme.",
-        "exampleSentence": "The book had an entire chapter about the spec.",
+        "exampleSentence": "I've found some professional yards want everything specced out completely while a home builder will just do things the way he wants.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9496,10 +9496,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sulk",
-        "definition": "A state of sulking.",
-        "exampleSentence": "Leo has been in a sulk all morning.",
+        "definition": "A period of silent bad temper or resentful moodiness.",
+        "exampleSentence": "After being told no, the toddler went into a long sulk on the couch.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9512,10 +9512,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "swad",
         "definition": "A bunch, clump, mass.",
-        "exampleSentence": "The book had an entire chapter about the swad.",
+        "exampleSentence": "Country swains, and silly swads.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9528,10 +9528,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "tact",
-        "definition": "Sensitive mental touch; special skill or faculty; keen perception or discernment; ready power of appreciating and doing what is required by circumstances; the ability to say the right thing and avoid statements that will give offence or pain even if true.",
-        "exampleSentence": "By the use of tact, she was able to calm her jealous husband.",
+        "definition": "Skill in saying or doing the right thing without causing offence.",
+        "exampleSentence": "She handled the awkward situation with great tact and diplomacy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9544,10 +9544,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "tiff",
-        "definition": "An image stored in the TIFF format.",
-        "exampleSentence": "The book had an entire chapter about the tiff.",
+        "definition": "A small, petty argument or quarrel.",
+        "exampleSentence": "The siblings had a brief tiff over the remote before making up.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9559,7 +9559,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "toga",
         "definition": "A loose outer garment worn by the citizens of Ancient Rome.",
         "exampleSentence": "Or think of a decent young citizen in a toga - perhaps too much dice, you know - coming out here in the train of some prefect, or tax-gatherer, or trader even, to mend his fortunes.",
@@ -9575,7 +9575,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "toil",
         "definition": "Labour, work, especially of a grueling nature.",
         "exampleSentence": "Then toils for beasts, and lime for birds, were found.",
@@ -9591,10 +9591,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tomb",
-        "definition": "A small building, or a room within one, for the remains of the dead, with walls, a roof, and (if it is to be used for more than one corpse) a door. It may be partly or wholly in the ground (except for its entrance) in a cemetery, or it may be inside a church proper or in its crypt. Single tombs may be permanently sealed; those for families (or other groups) have doors for access whenever needed.",
-        "exampleSentence": "I'll go to the tomb unrepentant.",
+        "definition": "A stone chamber or structure built to hold the remains of the dead.",
+        "exampleSentence": "Explorers discovered an ancient tomb hidden deep inside the pyramid.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9607,10 +9607,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "tome",
         "definition": "One in a series of volumes.",
-        "exampleSentence": "The book had an entire chapter about the tome.",
+        "exampleSentence": "The professor pulled a dusty old tome from the bookshelf.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -9623,10 +9623,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "trig",
-        "definition": "A stone, block of wood, or anything else, placed under a wheel or barrel to prevent motion; a scotch; a skid.",
-        "exampleSentence": "You might as well smite that saw with your fist ; you might as well put a trig under the dam and stop it, as to practise on him.",
+        "definition": "A wedge or block placed under a wheel to stop it from rolling.",
+        "exampleSentence": "The driver kicked a trig behind the rear tyre before unloading the lorry.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -9638,10 +9638,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "tuba",
-        "definition": "A large brass musical instrument, usually in the bass range, played through a vibration of the lips upon the mouthpiece and fingering of the keys.",
-        "exampleSentence": "One version of the large tuba, popular in marching bands, is called a sousaphone in honor of bandsman John Philip Sousa.",
+        "definition": "A large brass instrument that plays deep, low notes in an orchestra or band.",
+        "exampleSentence": "The tuba player carried the heavy instrument to the front of the marching band.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9654,10 +9654,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "veda",
-        "definition": "A style of malt loaf bread (sweet, chewy, caramel-colored leavened bread made with malted wheat), traditionally produced across the UK and Ireland but today eaten mainly in Northern Ireland.",
-        "exampleSentence": "Toasted Veda with strawberry jam, one of my favourite snacks.",
+        "definition": "A traditional malt loaf bread, popular in Northern Ireland.",
+        "exampleSentence": "She toasted a thick slice of veda and spread it with butter and jam.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9670,10 +9670,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "vial",
-        "definition": "A glass or plastic vessel or bottle, especially a small tube-shaped bottle used to store medicine, perfume or other chemicals.",
-        "exampleSentence": "The book had an entire chapter about the vial.",
+        "definition": "A small glass or plastic bottle used to hold medicine or other liquids.",
+        "exampleSentence": "The nurse carefully labelled each vial of blood before sending it to the lab.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9686,7 +9686,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "vila",
         "definition": "A type of female nature spirit in Slavic mythology, similar in some ways to a fairy or nymph.",
         "exampleSentence": "She is answered, fittingly enough, by a vila, who declares that she is more beautiful than the girl.",
@@ -9702,10 +9702,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "waco",
-        "definition": "A Southern Plains Native American Wichita tribe that formerly inhabited northeastern Texas.",
-        "exampleSentence": "The book had an entire chapter about the waco.",
+        "definition": "A Native American Wichita tribe that once lived in northeastern Texas.",
+        "exampleSentence": "Archaeologists uncovered tools believed to have been made by the Waco people.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9717,7 +9717,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "wail",
         "definition": "A prolonged cry, usually high-pitched, especially as of grief or anguish.",
         "exampleSentence": "She let out a loud, doleful wail.",
@@ -9733,10 +9733,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "yawn",
-        "definition": "The action of yawning; opening the mouth widely and taking a long, rather deep breath, often because one is tired or bored.",
-        "exampleSentence": "The slideshow we sat through was such a yawn. I was glad when it finished.",
+        "definition": "An involuntary wide opening of the mouth when tired or bored.",
+        "exampleSentence": "She stifled a yawn during the long lecture and reached for her coffee.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9749,7 +9749,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "yelp",
         "definition": "An abrupt, high-pitched noise or utterance.",
         "exampleSentence": "The puppy let out a yelp when I stepped on her tail.",
@@ -9765,10 +9765,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "yeti",
-        "definition": "An unidentified humanoid animal said to live in the Himalayas.",
-        "exampleSentence": "The book had an entire chapter about the yeti.",
+        "definition": "A legendary ape-like creature said to roam the Himalayan mountains.",
+        "exampleSentence": "The expedition found large footprints that locals claimed belonged to a yeti.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9781,10 +9781,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "zarf",
-        "definition": "An ornamental container designed to hold a coffee cup or teacup and insulate it from the hand of the drinker.",
-        "exampleSentence": "The book had an entire chapter about the zarf.",
+        "definition": "A decorative holder designed to keep a hot coffee cup from burning the hand.",
+        "exampleSentence": "The antique silver zarf held the tiny porcelain coffee cup perfectly.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -9797,10 +9797,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "zeta",
-        "definition": "A member of Los Zetas, a Mexican criminal syndicate.",
-        "exampleSentence": "The book had an entire chapter about the zeta.",
+        "definition": "The sixth letter of the Greek alphabet, or a named variable in mathematics.",
+        "exampleSentence": "The professor used zeta to represent the unknown constant in the equation.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -9812,10 +9812,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "zinc",
-        "definition": "A chemical element (symbol Zn) with an atomic number of 30, a blue-silvery metal that is slightly brittle at room temperature and tarnishes slightly in moist air.",
-        "exampleSentence": "As for daytime sun protection, Dr. Bowe said mineral sunscreens made with zinc oxide may be gentler on sensitized skin than chemical formulas.",
+        "definition": "A bluish-white metal used to coat steel and in batteries and alloys.",
+        "exampleSentence": "A thin coat of zinc protects the fence posts from rust.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -9828,7 +9828,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "bide",
         "definition": "To bear; to endure; to tolerate.",
         "exampleSentence": "It’s you, it’s you must go and I must bide.",
@@ -9844,7 +9844,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "flay",
         "definition": "To cause to fly; put to flight; drive off (by frightening).",
         "exampleSentence": "If they'd let me have my way, I could have flayed him into shape.",
@@ -9860,7 +9860,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "kayo",
         "definition": "To knock someone out, or render them unconscious or senseless.",
         "exampleSentence": "When Lee Savold, a perennial heavyweight title contender, was kayoed by the great Joe Louis, he was asked by reporters, did anyone in his lengthy career hit harder than Joe?",
@@ -9876,7 +9876,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "lamb",
         "definition": "Of a sheep, to give birth.",
         "exampleSentence": "The shepherd was up all night, lambing her young ewes.",
@@ -9892,7 +9892,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "maim",
         "definition": "To wound seriously; to cause permanent loss of function of a limb or part of the body.",
         "exampleSentence": "He was maimed by a bear.",
@@ -9908,7 +9908,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "pave",
         "definition": "To cover something with paving slabs.",
         "exampleSentence": "They paved Paradise and put up a parking lot.",
@@ -9924,7 +9924,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tink",
         "definition": "To emit a high-pitched sharp or metallic noise.",
         "exampleSentence": "Jimmy heard the bells tink.",
@@ -9940,7 +9940,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "ajar",
         "definition": "Slightly turned or opened.",
         "exampleSentence": "The door is ajar.",
@@ -9956,7 +9956,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "anti",
         "definition": "Opposed to something.",
         "exampleSentence": "The anti weather made everyone want to stay inside.",
@@ -9972,7 +9972,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "arty",
         "definition": "Inclined towards the arts.",
         "exampleSentence": "“Half of these Cate Blanchett movies – they’re all just like these arty things. I’m not saying they’re bad movies, but I don’t think most of them have a shelf life,” he said.",
@@ -9987,7 +9987,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dyed",
         "definition": "Coloured or tinted with dye, or as though therewith.",
         "exampleSentence": "The dyed weather made everyone want to stay inside.",
@@ -10002,7 +10002,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "iffy",
         "definition": "Of dubious authenticity, legitimacy or legality.",
         "exampleSentence": "The iffy weather made everyone want to stay inside.",
@@ -10017,7 +10017,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lite",
         "definition": "Abridged or lesser; being a simpler or unpaid version of a product.",
         "exampleSentence": "My favorite color is lite blue!",
@@ -10033,7 +10033,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pied",
         "definition": "Having two or more colors, especially black and white.",
         "exampleSentence": "The pied weather made everyone want to stay inside.",
@@ -10049,7 +10049,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "abed",
         "definition": "In bed, or on the bed; confined to bed.",
         "exampleSentence": "Who can lie peacefully abed, while the darkness holds some secret?",
@@ -10065,7 +10065,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "anew",
         "definition": "Again, once more; afresh, in a new way, newly.",
         "exampleSentence": "She anew opened the gift, excited to see what was inside.",
@@ -10081,7 +10081,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "atop",
         "definition": "On, to, or at the top.",
         "exampleSentence": "Probably cuddled up, spooning. Netflix auto-playing atop their shared covers.",
@@ -10097,10 +10097,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "duly",
-        "definition": "In a due, fit, or becoming manner; as it ought to be; suitably; properly.",
-        "exampleSentence": "The citizen's concern was duly noted in the meeting minutes.",
+        "definition": "In the proper or expected way; as required.",
+        "exampleSentence": "The complaint was duly recorded and forwarded to the manager.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10113,7 +10113,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "idly",
         "definition": "Without specific purpose, intent or effort.",
         "exampleSentence": "I idly played with the paper, not even realizing I was folding it into a paper airplane.",
@@ -10129,7 +10129,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "orad",
         "definition": "Towards the oral opening (the mouth).",
         "exampleSentence": "This is due to the UES moving completely off the sensor as it moves orad with the swallow.",
@@ -10145,7 +10145,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "desi",
         "definition": "A particular variety of cultivated chickpea.",
         "exampleSentence": "These lighter coloured desis are now generally favoured by most markets as they look fresher, despite the majority of desis still ending up dehulled.",
@@ -10160,7 +10160,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "trod",
         "definition": "To walk heavily or laboriously; plod; tread.",
         "exampleSentence": "And avoid trodding on the inevitably wet soil around the base of the shrubs as you work.",
@@ -10176,10 +10176,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "dojo",
-        "definition": "The dojo loach, Japanese weather loach, or pond loach (Misgurnus anguillicaudatus), a freshwater fish native to East Asia.",
-        "exampleSentence": "All of us kids used to swim in the stream and fish for dojo, funa, and goby.",
+        "definition": "A freshwater loach fish native to East Asia, also called a weather loach.",
+        "exampleSentence": "Children in the village used to catch dojo in the shallow rice paddies.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10192,7 +10192,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "dord",
         "definition": "A type of ancient Irish war-horn.",
         "exampleSentence": "The dord, a form of horn with a sound like the Australian Aborigine’s didgeridoo, was clearly a sacred instrument of the Bronze Age ….",
@@ -10208,7 +10208,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "wack",
         "definition": "Annoyingly or disappointingly bad, in various senses; lousy, corny, cringy, uncool, messed up.",
         "exampleSentence": "Every record they ever made was straight-up wack.",
@@ -10224,10 +10224,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "vary",
-        "definition": "Alteration; change.",
-        "exampleSentence": "The book had an entire chapter about the vary.",
+        "definition": "A change or shift from one state to another.",
+        "exampleSentence": "There was little vary in temperature throughout the entire week.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -10240,10 +10240,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hobo",
-        "definition": "To be a hobo, tramp, bum etc.",
-        "exampleSentence": "Joe idly hoboed through half the country till he realized hoboing never gets you anywhere in life.",
+        "definition": "To travel as a wandering worker or vagrant.",
+        "exampleSentence": "He decided to hobo across the country by hopping freight trains.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10256,7 +10256,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "oxen",
         "definition": "Of, relating to, or resembling an ox; oxlike.",
         "exampleSentence": "Kvigr walked the oxen cart between the huts. There were many markings on each of the huts.",
@@ -10272,7 +10272,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "toki",
         "definition": "A Japanese crested ibis (Nipponia nippon).",
         "exampleSentence": "The few remaining toki live on Sado Island in Japan and in China.",
@@ -10288,7 +10288,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bene",
         "definition": "A prayer, especially to God; a petition; a boon.",
         "exampleSentence": "What is good for a bootless bene?",
@@ -10304,7 +10304,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "jarl",
         "definition": "A medieval Scandinavian nobleman, especially in Norway and Denmark.",
         "exampleSentence": "There were three kinds of Viking: thralls, karls and jarls. Thralls were the slaves. They were owned by karls and jarls.",
@@ -10320,10 +10320,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "noir",
-        "definition": "Of or pertaining to film noir, or the atmosphere associated with that genre.",
-        "exampleSentence": "As a neo-Sherlock Holmes, however, Mulder is also a very noir version of the classic detective (just as Scully is a very noir Watson).",
+        "definition": "Having a dark, moody, and suspenseful atmosphere, as in detective stories.",
+        "exampleSentence": "The film had a distinctly noir feel, with shadowy streets and jazz music.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "french-origin",
@@ -10336,10 +10336,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "sony",
-        "definition": "A device produced by Sony.",
-        "exampleSentence": "My memoirs. At night I leave a Sony by my bed. Night is the best time for remembering.",
+        "definition": "An electronic device made by the Japanese electronics brand.",
+        "exampleSentence": "She recorded the interview on a small, reliable sony voice recorder.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10352,7 +10352,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tarp",
         "definition": "To cover something with a tarpaulin.",
         "exampleSentence": "The load may be tarped for serious white water, but tarped or not, everything should be tied securely in case of capsize.",
@@ -10368,7 +10368,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bode",
         "definition": "A herald; a messenger.",
         "exampleSentence": "He fame of the Duke's coming was sent abroad by the bodes or messengers, despatched to prepare the towns through which he was to pass for an arrival sooner than expected, ….",
@@ -10384,10 +10384,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "conn",
-        "definition": "The duty of directing a ship, usually used with the verb to have or to take and accompanied by the article \"the.\".",
-        "exampleSentence": "The officer of the deck has the conn of the vessel; the captain took the conn when he reached the bridge.",
+        "definition": "Control over the steering and navigation of a ship.",
+        "exampleSentence": "The captain took the conn as the vessel entered the narrow strait.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -10400,7 +10400,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "kudo",
         "definition": "A compliment or praise.",
         "exampleSentence": "At this point we need to give this pilot a kudo.",
@@ -10416,10 +10416,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lutz",
-        "definition": "A jump in which the skater takes off from the back outside edge of one skate, rotates counterclockwise and lands on the back outside edge of the other skate.",
-        "exampleSentence": "Meissner fell three times, on two triple lutzes and a triple flip, to drop from fourth, the worst performance by a defending champion in at least 50 years.",
+        "definition": "A figure-skating jump launched from the back outside edge of one skate.",
+        "exampleSentence": "She landed a perfect triple lutz to thunderous applause from the crowd.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -10432,7 +10432,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "moll",
         "definition": "Minor; in the minor key.",
         "exampleSentence": "The moll weather made everyone want to stay inside.",
@@ -10448,10 +10448,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yoof",
-        "definition": "Youth (young person, young people or the state of being young).",
-        "exampleSentence": "Slash'n'sideburn pop is what you get when Manc yoof grows up angry and facially bristling.",
+        "definition": "British slang for youth or young people as a cultural group.",
+        "exampleSentence": "The magazine was aimed at the yoof market, featuring street fashion and music reviews.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -10464,7 +10464,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "bruv",
         "definition": "Brother, mate, friend.",
         "exampleSentence": "The lads in the Nags 'Ead were just talking about your bit of managerial bovver and I said to Rodney, 'Bruv, this could be my big chance.'",
@@ -10479,10 +10479,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "kiln",
-        "definition": "To bake in a kiln; to fire.",
-        "exampleSentence": "When making pottery we need to allow the bisque to dry before we kiln it.",
+        "definition": "To fire pottery or bricks in a high-temperature oven.",
+        "exampleSentence": "We need to kiln these clay pots at the right temperature so they harden properly.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -10495,10 +10495,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "gaum",
-        "definition": "A useless person.",
-        "exampleSentence": "He's a scrawny gaum of a lad named Tony Regan, the tailor's eldest son.",
+        "definition": "A clumsy, awkward, or useless person.",
+        "exampleSentence": "The grumpy foreman called the new apprentice a hopeless gaum.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -10511,7 +10511,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "hoon",
         "definition": "To drive excessively quickly, loudly or irresponsibly.",
         "exampleSentence": "… you've hooned off – it's fair to say hooned off – at quite a high speed.",
@@ -10527,10 +10527,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "girn",
         "definition": "A vocalization similar to a cat's purring.",
-        "exampleSentence": "The book had an entire chapter about the girn.",
+        "exampleSentence": "And Jim was just girning all the time. I telled him to shut it.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -10543,7 +10543,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "ryot",
         "definition": "A farmer or tiller of the soil.",
         "exampleSentence": "They are simply the rank and file — the food for fever — sharing with the ryot and the plough-bullock the honor of being the plinth on which the State rests.",
@@ -10559,7 +10559,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "bleh",
         "definition": "Mildly uncomfortable; not good.",
         "exampleSentence": "The bleh weather made everyone want to stay inside.",
@@ -10574,10 +10574,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bora",
-        "definition": "A cold, often dry, northeasterly wind which blows, sometimes in violent gusts, down from mountains on the eastern shore of the Adriatic Sea. It also applies to cold, squally, downslope winds in other parts of the world.",
-        "exampleSentence": "When the bora blew down from the mountains, announcing the winter, would he ride it on out of town?",
+        "definition": "A cold, gusty wind that blows down from mountains near the Adriatic Sea.",
+        "exampleSentence": "Sailors stayed in port when the fierce bora swept across the harbour.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -10590,7 +10590,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "fane",
         "definition": "A temple or sacred place.",
         "exampleSentence": "It was a wonderful sight to see the full moon looking down on the ruined fane of Kør.",
@@ -10606,10 +10606,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "vive",
-        "definition": "Lively, animated.",
-        "exampleSentence": "The vive weather made everyone want to stay inside.",
+        "definition": "Lively and full of energy; animated.",
+        "exampleSentence": "The audience loved the vive performance by the young dancers.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -10622,10 +10622,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "goto",
-        "definition": "To reach (a point in a program) by means of a GOTO instruction.",
-        "exampleSentence": "If we were GOTOed from 310 we GOTO 320.",
+        "definition": "To jump to a specific line or location in a computer program.",
+        "exampleSentence": "The debugger showed that the program would goto line fifty and skip the loop.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10638,7 +10638,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nene",
         "definition": "The Hawaiian goose, Branta sandvicensis, which was designated the state bird of Hawaii in 1957.",
         "exampleSentence": "The nene is a handsome bird that almost became extinct in the wild but was reintroduced successfully from ones bred in captivity.",
@@ -10654,10 +10654,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "dosa",
-        "definition": "A type of thin south Indian pancake made from fermented lentils and rice blended with water, typically served with chutney or sambar.",
-        "exampleSentence": "The book had an entire chapter about the dosa.",
+        "definition": "A thin, crispy South Indian pancake made from fermented rice and lentil batter.",
+        "exampleSentence": "He dipped a piece of hot dosa into the coconut chutney.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10670,7 +10670,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "puri",
         "definition": "A type of unleavened bread from India and Pakistan, usually deep-fried.",
         "exampleSentence": "No. 17 PURI. Take Flour, ½ ser (1lb.).",
@@ -10686,7 +10686,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "zony",
         "definition": "The offspring of a male zebra and a female pony.",
         "exampleSentence": "I am a zony. My father is a zebra and my mother is a pony.",
@@ -10702,7 +10702,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hots",
         "definition": "A condition of physical attraction toward (for) someone.",
         "exampleSentence": "I mean, this girl obviously has the hots for you man. Why do you think she's calling you?",
@@ -10717,7 +10717,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "zope",
         "definition": "A fish of species Ballerus ballerus (syn. Abramis ballerus) native to Eurasia.",
         "exampleSentence": "Before catching, more than half zopes, sandres and perches feed actively.",
@@ -10732,10 +10732,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "mora",
-        "definition": "Any tree of the genus Mora of large South American trees.",
-        "exampleSentence": "At length, somewhere about the centre of the wood, she led me to an immense mora tree, growing almost isolated, covering with its shade a large space of ground entirely free from undergrowth.",
+        "definition": "A large tropical tree of South America, valued for its strong timber.",
+        "exampleSentence": "The towering mora tree stood at the centre of the forest clearing.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -10748,10 +10748,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "sark",
-        "definition": "A shirt or smock.",
-        "exampleSentence": "The next thing the watchers saw was the laird struggling up the far bank and casting his coat from him, so that he rode in his sark.",
+        "definition": "A shirt, chemise, or undergarment in Scottish and northern English dialect.",
+        "exampleSentence": "The laird stripped off his coat and rode through the rain in just his sark.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -10764,7 +10764,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "demi",
         "definition": "A member of the demimonde; a woman maintained by a wealthy man.",
         "exampleSentence": "It’s not every one who can distinguish between a demi and a duchess.",
@@ -10780,7 +10780,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "hogo",
         "definition": "A strong, unpleasant smell.",
         "exampleSentence": "He opened and let out a hogo of medicinal rum and beer. The bad tooth was a premolar.",
@@ -10796,7 +10796,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "choo",
         "definition": "The sound of a locomotive whistle.",
         "exampleSentence": "We could hear the choo choo choo.",
@@ -10811,10 +10811,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "rath",
-        "definition": "A walled enclosure, especially in Ireland; a ringfort built sometime between the Iron Age and the Viking Age.",
-        "exampleSentence": "There are numerous Danish raths in the parish.",
+        "definition": "A circular walled enclosure or ringfort, found especially in Ireland.",
+        "exampleSentence": "The farmer ploughed carefully around the ancient rath on his land.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -10827,10 +10827,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mala",
-        "definition": "A bead or a set of beads commonly used by Hindus and Buddhists for keeping count while reciting, chanting, or mentally repeating a mantra or the name or names of a deity.",
-        "exampleSentence": "His words were like beads on the string of a mala, escaping his lips in small puffs of air.",
+        "definition": "A string of beads used by Hindus and Buddhists to count prayers or mantras.",
+        "exampleSentence": "She held a wooden mala and quietly repeated her morning prayers.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10843,7 +10843,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "gogo",
         "definition": "Grandmother; elderly woman.",
         "exampleSentence": "On the weekdays she and Bawinde worked for the South Africans, but as the weekend approached Elizabeth was anxious to get home to see if James had come to visit his gogo in the village.",
@@ -10859,10 +10859,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "nide",
-        "definition": "A nest of pheasants.",
-        "exampleSentence": "Nide of pheasants are sometimes collected in a very small space, and in the middle of the day conceal themselves very close.",
+        "definition": "A group or nest of pheasants.",
+        "exampleSentence": "A nide of pheasants burst from the hedgerow as the dog dashed past.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -10875,7 +10875,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ooid",
         "definition": "Shaped like an egg; ovoid; ovate.",
         "exampleSentence": "One thinks of everything from amphitheaters like the Colosseum to Buckminster Fuller in his more ooid modes.",
@@ -10891,7 +10891,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "suki",
         "definition": "An opening to the enemy; a weak spot that provides an advantage for one's opponent.",
         "exampleSentence": "This gluing is \"stoppage,\" and every stoppage means giving an advantage to the enemy, which is a suki.",
@@ -10907,7 +10907,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "kaya",
         "definition": "A fruit curd made from a base of coconut milk, eggs and sugar, popular in Southeast Asia.",
         "exampleSentence": "So they ate sliced Chinese white bread … spread thickly with sweet brown kaya.",
@@ -10923,7 +10923,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "gare",
         "definition": "Coarse wool on the legs of sheep.",
         "exampleSentence": "That no denyzen or foren make any refuse of wolles but cot gare & vyllayn.",
@@ -10938,10 +10938,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "vonu",
-        "definition": "The act of covertly residing in a secluded area (off the grid) and refraining from interaction with authorities, such as the government.",
-        "exampleSentence": "The legendary Rayo was a vonu pioneer. His writings are well worth reading for every libertarian and freedom seeker.",
+        "definition": "A lifestyle of living off the grid and avoiding all authority.",
+        "exampleSentence": "The couple embraced vonu, building a hidden cabin deep in the forest.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -10954,7 +10954,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "scur",
         "definition": "To move hastily; to scour.",
         "exampleSentence": "Here he whistled , and the animal , who was scurring over the field , and occasionally kicking up his heels , instantly returned with a gentle neigh.",
@@ -10970,7 +10970,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "clem",
         "definition": "To be hungry; starve.",
         "exampleSentence": "Who are half clemmed from year’s end to year’s end, and see no close to it, no hope, no finish but the pauper’s deals!",
@@ -10986,10 +10986,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sulu",
-        "definition": "A member of a prominent Moro tribe, occupying the Sulu Archipelago.",
-        "exampleSentence": "At the present time there are but few remains on the Island of Jolo of the past glory and civilization of the Sulu people.",
+        "definition": "A member of a prominent Muslim people from a Philippine island chain.",
+        "exampleSentence": "The local sulu community had a rich tradition of boat-building and trade.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11002,10 +11002,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pyet",
         "definition": "A magpie; a water ouzel.",
-        "exampleSentence": "The book had an entire chapter about the pyet.",
+        "exampleSentence": "Here cometh the worthy prelate, as pert as a pyet.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11018,7 +11018,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "dinq",
         "definition": "Not making a requisite amount of progress in one's qualifications.",
         "exampleSentence": "My mate is so dinq that he could get 100 signatures a day and he'd still be behind.",
@@ -11034,10 +11034,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "ibon",
-        "definition": "Cinnamon ibon (Hypocryptadius cinnamomeus).",
-        "exampleSentence": "The single species of ibon, the Cinnamon Ibon, is a small passerid sparrow in the monotypic genus Hypocryptadius found only on the island of Mindanao in the Philippines.",
+        "definition": "A small brown songbird found only on the island of Mindanao in the Philippines.",
+        "exampleSentence": "Researchers hiked into the cloud forest to study the rare ibon.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11050,7 +11050,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nuby",
         "definition": "An article of clothing similar to a scarf or a shawl.",
         "exampleSentence": "\"The little white nuby in my top drawer, Betty—I felt a chill striking the back of my neck.\"",
@@ -11065,10 +11065,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "jodi",
-        "definition": "Couple, duo, pair.",
-        "exampleSentence": "For the last seven years, they have been projected as India’s political jodi number one.",
+        "definition": "A pair, couple, or duo.",
+        "exampleSentence": "The commentators called them the most famous political jodi in recent history.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11080,7 +11080,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "vxer",
         "definition": "An author or creator of computer viruses.",
         "exampleSentence": "VXer targets Romanian gypsy music -- A mass-mailing virus designed to wipe Romanian gypsy music off PCs is spreading rapidly ….",
@@ -11095,7 +11095,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "cade",
         "definition": "An animal brought up or nourished by hand.",
         "exampleSentence": "Then on the verdrous Bank, where Spices rose, Rowl on the balmy Grass, or smiling play With her young Cade, her caded Lamb with Smiles Answer'd her Love, and lickt her dainty hand.",
@@ -11111,7 +11111,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "ajon",
         "definition": "A type of beer brewed from finger millet in northern and eastern Uganda.",
         "exampleSentence": "But how can I give up my malwa or ajon where drinkers must sit close together round a beer pot, often sharing the same drinking straws, thus exchanging salivary fluids?",
@@ -11127,10 +11127,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "urut",
-        "definition": "A traditional Malay massage which involves soft-tissue manipulation of the whole body to alleviate different types of conditions and ailments.",
-        "exampleSentence": "Me, I’m off for an urut session medicinal therapy for a bad back problem.",
+        "definition": "A traditional Malay massage used to treat various ailments.",
+        "exampleSentence": "She booked an urut session to help ease the pain in her lower back.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -11143,10 +11143,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "mami",
-        "definition": "A soup dish of wheat noodles or cellophane noodles mixed with meat of either pork, chicken, pork liver, beef brisket, and/or fresh or dried seafood such as shrimp or squid, and/or wonton dumplings, and vegetables, such as cabbage, carrots, spring onion, etc.",
-        "exampleSentence": "One brought two boxes of instant mami noodles.",
+        "definition": "A Filipino soup of wheat noodles with meat, dumplings, and vegetables.",
+        "exampleSentence": "On chilly mornings, a steaming bowl of mami was the perfect comfort food.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11159,10 +11159,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "stoa",
-        "definition": "In Ancient Greece, a walkway with a roof supported by colonnades, often with a wall on one side; specifically, the Great Hall in Athens.",
-        "exampleSentence": "They could not vote, attend the theater, or walk in the stoa talking philosophy.",
+        "definition": "A covered walkway supported by columns, found in ancient Greek cities.",
+        "exampleSentence": "Philosophers strolled along the marble stoa, debating ideas in the shade.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -11175,10 +11175,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "muay",
-        "definition": "The sport of Muay Thai.",
-        "exampleSentence": "”Muay” is also one of the subjects taught in the temples.",
+        "definition": "A Thai martial art known for its use of fists, elbows, knees, and shins.",
+        "exampleSentence": "She trained in muay for three years before entering her first tournament.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -11191,10 +11191,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "veny",
-        "definition": "A strike or blow.",
-        "exampleSentence": "The book had an entire chapter about the veny.",
+        "definition": "A thrust, strike, or blow, especially in fencing.",
+        "exampleSentence": "The fencer delivered a swift veny that caught her opponent off guard.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11207,10 +11207,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "saab",
-        "definition": "A Saab car or plane.",
-        "exampleSentence": "His mom shakes her head at her silly little boy as she dashes to her Saab, which is missing its bumper— Sticky’s doing, no doubt.",
+        "definition": "A car made by the Swedish manufacturer known for its safety features.",
+        "exampleSentence": "He drove his old saab through every winter without a single breakdown.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11223,7 +11223,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tock",
         "definition": "To produce such a sound.",
         "exampleSentence": "The clock chimed the hour and then audibly tocked as the pendulum swung behind the glass pane of the door.",
@@ -11238,7 +11238,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "affy",
         "definition": "An affidavit to be signed by a contest winner to confirm eligibility.",
         "exampleSentence": "The contest ended in mid November, I got the affy Christmas eve, and I picked up the car February 4th or 5th.",
@@ -11254,7 +11254,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "aett",
         "definition": "A division of the runic alphabet containing eight runes.",
         "exampleSentence": "The runic futhark is usually divided into three aetts.",
@@ -11270,7 +11270,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "bibe",
         "definition": "A type of banshee whose cry indicates someone's impending death.",
         "exampleSentence": "Sophie's face grew serious. \"Not the bibe. She comes when we dies.\"",
@@ -11286,10 +11286,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "gleg",
-        "definition": "A look or glance.",
-        "exampleSentence": "And besides, you'd do the tomb so well. Everybody feels as if they want a gleg at the skeleton in your vault.",
+        "definition": "A quick look or sharp glance.",
+        "exampleSentence": "She took a gleg out the window to check whether the postman had arrived.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -11301,7 +11301,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "cray",
         "definition": "A crayfish or lobster.",
         "exampleSentence": "The third stage occurs when the crays moult into miniature adults. They are now completely independent of the mother and leave her permanently after a week or so.",
@@ -11317,10 +11317,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "xbox",
-        "definition": "Any of the home consoles in Microsoft's Xbox product line, especially the original Xbox.",
-        "exampleSentence": "The Xbox or the Arcade Game Box? That's weird. They knocked off the look of the Xbox with the PlayStation controller.",
+        "definition": "A home gaming console made by Microsoft.",
+        "exampleSentence": "He saved up his allowance for months to buy the newest xbox.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11333,7 +11333,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "icen",
         "definition": "To make or become iced or icy; frost.",
         "exampleSentence": "He felt the Codex roll from his fingers as his other hand joined in on the icening storm.",
@@ -11349,7 +11349,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "tish",
         "definition": "A festive meal for a religious event, especially Shabbat.",
         "exampleSentence": "YPC's most popular activity has been the monthly Shabbat tish, which turns a Friday evening dinner into a Shabbat experience.",
@@ -11365,7 +11365,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "pdoc",
         "definition": "A psychotherapist or psychiatrist.",
         "exampleSentence": "<Nightshade>: not so good they changd my meds agin / <Nightshade>: my pdoc is talking abt ect.",
@@ -11381,7 +11381,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "howk",
         "definition": "To disturb by digging.",
         "exampleSentence": "But Tom … he pecked and howked the poor water-things about sadly, till they were all afraid of him, and got out of his way, or crept into their shells; so he had no one to speak to or play with.",
@@ -11396,7 +11396,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gosu",
         "definition": "A person of great skill; master; expert.",
         "exampleSentence": "It's not too late to start playing it and become a gosu before your friends.",
@@ -11412,7 +11412,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "iggy",
         "definition": "To ignore (a user on a chat system, etc.).",
         "exampleSentence": "I'm just here to tell you that iggying people who give you problems is rarely a way to personal growth.",
@@ -11428,7 +11428,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "typy",
         "definition": "Of a show animal: characteristic of its type.",
         "exampleSentence": "The copper-eyed white is the typiest, the blue-eyed white tending to be the least typy of the three. Whatever color the eyes, the white Persian is a stunning show cat. It is a genuine show stopper.",
@@ -11444,7 +11444,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "marv",
         "definition": "Marvellous, fantastic.",
         "exampleSentence": "“How's it going?” the cop inquired. “Just marv,” said Oedipa. “I'll let you know if it's hopeless.”.",
@@ -11460,10 +11460,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "elmy",
-        "definition": "Pertaining to elm trees; in which elms grow.",
-        "exampleSentence": "The elmy weather made everyone want to stay inside.",
+        "definition": "Full of elm trees; shaded by elms.",
+        "exampleSentence": "The elmy lane provided welcome shade on the hot summer walk.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11475,10 +11475,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "xeer",
-        "definition": "The traditional legal system of Somalia, believed to predate Islam, in which elders serve as mediators and people are responsible for the actions of their families.",
-        "exampleSentence": "The book had an entire chapter about the xeer.",
+        "definition": "A traditional Somali legal system in which elders mediate disputes.",
+        "exampleSentence": "Under xeer, the clan elders gathered to resolve the land disagreement peacefully.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -11490,7 +11490,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "lagg",
         "definition": "Waterlogged, marshy area around the perimeter of a (raised) bog, where water collects.",
         "exampleSentence": "Surface-water inflow is now largely confined to the lagg, or moat, often surrounding a bog's outer margins.",
@@ -11506,7 +11506,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "yowe",
         "definition": "A ewe; a female sheep.",
         "exampleSentence": "The ram was marked wi' keel at the reet o' the tail an' the yowes upon their hips.",
@@ -11522,7 +11522,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "ipof",
         "definition": "Immediate postoperative fitting.",
         "exampleSentence": "… the immediate postoperative fitting (IPOF) type plaster and is similar to the normal rigid plaster dressing without ….",
@@ -11537,7 +11537,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "wyde",
         "definition": "Two-byte unsigned data, mainly used for a Unicode character.",
         "exampleSentence": "We would then take a surrogate pair consisting of two wydes: the first from the high area, the second from the low area.",
@@ -11553,7 +11553,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "lyme",
         "definition": "To hang out (to spend time doing nothing in particular).",
         "exampleSentence": "Guests were directed to the cocktail area where they lymed and enjoyed finger food with a choice of sorrel or fruit punch.",
@@ -11568,10 +11568,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "dzud",
-        "definition": "An ecological crisis in the steppe-land of Mongolia and Central Asia causing loss of livestock, for example a drought, or a severe winter in which snow or ice block animals' access to the grass.",
-        "exampleSentence": "But the country Mongolia is currently experiencing a \"dzud\" – when a summer drought followed by a severe winter decimates the grazing areas.",
+        "definition": "A harsh Mongolian winter that kills large numbers of livestock.",
+        "exampleSentence": "The nomadic herders lost half their animals during the devastating dzud.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11584,7 +11584,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "fujo",
         "definition": "A female fan of yaoi or more broadly of slash fiction.",
         "exampleSentence": "People be like “fujos suck and fetishize gay men” and then talk about their favorite BL 😳😳.",
@@ -11600,7 +11600,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "jigo",
         "definition": "A draw in the game of go.",
         "exampleSentence": "Two of these games were jigos.",
@@ -11615,7 +11615,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "cadr",
         "definition": "Car of the cdr in Lisp. The second element in a list.",
         "exampleSentence": "If we let x denote the tree (1 2 3), then the car of x is 1, the cdr of x is (2 3), the cadr of x is 2, the caddr of x is 3, and the cdddr of x is nil.",
@@ -11631,7 +11631,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "swoe",
         "definition": "A kind of cutting hoe with sharp edges.",
         "exampleSentence": "(She told me I must buy a swoe, a long-handled weeder sold by Fiskars, that changed her life.).",
@@ -11647,7 +11647,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "dalk",
         "definition": "A hollow or depression.",
         "exampleSentence": "On a sunny September morning, with the trees still green, but the asters and fleabanes already taking over in ditch and dalk, Van set out for Ladoga, N.A.",
@@ -11663,10 +11663,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "diya",
-        "definition": "A small bowl-shaped oil lamp, usually made from clay, with a cotton wick dipped in ghee or vegetable oil, often used on religious occasions.",
-        "exampleSentence": "She is given an aarti plate with a lit diya on it.",
+        "definition": "A small clay oil lamp lit during Hindu festivals and celebrations.",
+        "exampleSentence": "Rows of glowing diya lined the doorstep on the night of Diwali.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11679,10 +11679,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "gzip",
-        "definition": "To compress using the gzip program.",
-        "exampleSentence": "Therefore, using the YUI Compressor in combination with gzipping always gives the best results.",
+        "definition": "To compress a file using a common lossless compression method.",
+        "exampleSentence": "She decided to gzip the log files to save space on the server.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11695,7 +11695,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "reop",
         "definition": "To restore (a previously deopped IRC user) to operator status.",
         "exampleSentence": "Don't reop Jack until I find out whether he's likely to cause trouble.",
@@ -11710,7 +11710,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gyil",
         "definition": "A pentatonic instrument of Africa, resembling a xylophone.",
         "exampleSentence": "“Dust Dances” (1994), the vigorous opening work here, is the fruit of a four-month visit to Ghana, where Mr. Bermel studied the gyil, an African xylophone.",
@@ -11725,7 +11725,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "warb",
         "definition": "An unkempt and useless person; a loafer.",
         "exampleSentence": "A POLICEMAN approaches a warb hanging around Sydney CBD with obviously nothing to do and says to him: \"Hey, you, there is a lockdown current at the moment. Why don't you go home and isolate yourself?\"",
@@ -11741,7 +11741,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "jawy",
         "definition": "Relating to the jaws.",
         "exampleSentence": "The jawy weather made everyone want to stay inside.",
@@ -11756,7 +11756,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "tobe",
         "definition": "A cotton garment worn in parts of northern Africa.",
         "exampleSentence": "She loved travelling to Egypt, and how she didn’t have to wear a tobe in Cairo.",
@@ -11771,7 +11771,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "pipy",
         "definition": "Resembling or characteristic of a pipe.",
         "exampleSentence": "In desolate places where dank moisture breeds / The pipy Hemlock to strange overgrowth.",
@@ -11787,10 +11787,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "kiby",
-        "definition": "Affected with kibes.",
-        "exampleSentence": "The kiby weather made everyone want to stay inside.",
+        "definition": "Affected with sore, cracked heels from cold weather.",
+        "exampleSentence": "His kiby heels ached after walking barefoot on the frozen ground.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -11803,10 +11803,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "wowf",
-        "definition": "Crazy; deranged.",
-        "exampleSentence": "\"t is very odd how Allan, who, between ourselves,\" said he to Musgrave, \"is a little wowf, seems at times to have more sense than us all put together. Observe him now.\"",
+        "definition": "Scottish dialect for crazy or slightly unhinged.",
+        "exampleSentence": "The neighbours thought old Archie was a bit wowf for keeping so many cats.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -11818,7 +11818,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "adyt",
         "definition": "The innermost sanctum of a temple, in which oracles are announced.",
         "exampleSentence": "… they afterwards broke a matter of twenty cubits, and attempted with their own hands to put the adyt and sacred places in a blaze.",
@@ -11834,7 +11834,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "frab",
         "definition": "To scold, nag, or harass.",
         "exampleSentence": "Dunna think we'll sit siking and frabbing, because hur's took up with that dainty doll.",
@@ -11849,7 +11849,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "muxy",
         "definition": "Soft, sticky, or dirty.",
         "exampleSentence": "I couldn't and wouldn't live in such a muxy kitchen.",
@@ -11864,10 +11864,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "khaf",
-        "definition": "The eleventh letter of the Hebrew and Aramaic alphabets, kaph, especially when pronounced as a fricative (rather than as a plosive).",
-        "exampleSentence": "The letter that follows yud is khaf and the letter that follows kuf is resh.",
+        "definition": "The eleventh letter of the Hebrew alphabet when pronounced as a soft fricative.",
+        "exampleSentence": "The calligrapher drew the letter khaf with a graceful curved stroke.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11879,7 +11879,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "hawm",
         "definition": "To lounge; to loiter.",
         "exampleSentence": "Guzzlin' an' soäkin' an' smoäkin' an' hawmin' about i' the laanes, ….",
@@ -11894,10 +11894,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "guhr",
-        "definition": "A loose, earthy deposit from water, found in the cavities or clefts of rocks, mostly white, but sometimes red or yellow, from a mixture of clay or ochre.",
-        "exampleSentence": "Guhr. This is a loose, earthy deposite from water, and may be siliceous.",
+        "definition": "A loose, powdery mineral deposit found in rock cavities, usually white.",
+        "exampleSentence": "The geologist scraped a sample of guhr from inside the limestone crevice.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11910,10 +11910,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "moya",
-        "definition": "Flowing mud associated with a volcanic eruption (especially in South America), formed when snow or a lake near a volcano is disrupted, or when rain or steam mixes with soil or ash during an eruption.",
-        "exampleSentence": "These are the principal tufas indicative of the boiling tufaceous mud, or moya, which once filled, even to an overflow, the valley of Rieden.",
+        "definition": "A flow of volcanic mud triggered by eruptions, snowmelt, or heavy rain.",
+        "exampleSentence": "A thick stream of moya rushed down the mountainside after the eruption.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "diphthongs",
@@ -11926,10 +11926,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "yarl",
-        "definition": "A deep, guttural vocal style with affected pronunciation, characteristic of male grunge and postgrunge singers of the 1990s and early 2000s.",
-        "exampleSentence": "One of my college kids informed me that the latest acoustic grinder hunk had covered it for a soundtrack — probably with that grungy yarl that everybody ripped off from Eddie Vedder.",
+        "definition": "A deep, growling vocal style popular among grunge singers of the 1990s.",
+        "exampleSentence": "The lead vocalist's distinctive yarl became the trademark of the band's sound.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -11942,7 +11942,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "lenj",
         "definition": "A type of traditional fishing boat, typically hand-built, used in the Persian Gulf.",
         "exampleSentence": "… in between a lenj fishing boat and a row of dhows. He cut the engine and glided the motor launch in. A dockhand was sat at the quayside edge, feet dangling over the water.",
@@ -11958,10 +11958,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "boln",
-        "definition": "Swollen; puffed out.",
-        "exampleSentence": "The boln weather made everyone want to stay inside.",
+        "definition": "Swollen or puffed out.",
+        "exampleSentence": "His boln ankle made it painful to put on his boot.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11974,7 +11974,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sloo",
         "definition": "A slough; a run or wet place.",
         "exampleSentence": "Afterwards she and Mrs. Hastings talked with the housekeeper for a while, and an hour had slipped away when Wyllard suggested that he should show her the sloo beyond the bluff .",
@@ -11989,10 +11989,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "bacn",
-        "definition": "Non-spam email messages that have been signed up for, but which the recipient does not necessarily want or have time to read.",
-        "exampleSentence": "The book had an entire chapter about the bacn.",
+        "definition": "Non-spam email you signed up for but rarely read.",
+        "exampleSentence": "Her inbox was clogged with bacn from newsletters she never opened.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12005,7 +12005,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "xorn",
         "definition": "A fictional monster that devours earthen and silicate materials and can move freely through earth.",
         "exampleSentence": "That afternoon, I summoned a Xorn—an earth elemental noted for its speed—and asked it to scout the caves of the Dragon's lair for me.",
@@ -12021,10 +12021,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "wetu",
-        "definition": "A dwelling, a domed hut similar to a wigwam, used by some Native Americans in the northeastern United States, especially the Wampanoag.",
-        "exampleSentence": "Wetus ranged in size between about 10 to 15 feet in diameter. As many as ten people lived inside.",
+        "definition": "A domed dwelling built by the Wampanoag and other northeastern Native Americans.",
+        "exampleSentence": "The guide showed us how a wetu was built with bent saplings and bark.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12037,10 +12037,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ovoo",
-        "definition": "A shamanistic cairn found in Mongolia, usually made from rocks or wood and found on or around mountains.",
-        "exampleSentence": "The book had an entire chapter about the ovoo.",
+        "definition": "A sacred stone cairn found in Mongolia, used for shamanistic offerings.",
+        "exampleSentence": "Travellers circled the ovoo three times and placed a stone on the pile for good luck.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12053,7 +12053,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ooaa",
         "definition": "Any member of the extinct species †Moho braccatus of oo birds of Hawaii.",
         "exampleSentence": "Only the ooaa still lives in the forests of Hawaii, feeding on insects and some nectar.",
@@ -12069,10 +12069,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "epub",
-        "definition": "A document encoded in EPUB format.",
-        "exampleSentence": "When it comes to EPUBs, there are two types: reflowable and fixed layout.",
+        "definition": "A widely used digital format for e-books.",
+        "exampleSentence": "She downloaded the novel as an epub so she could read it on her tablet.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12085,7 +12085,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "goam",
         "definition": "To see, to recognize, to take notice of.",
         "exampleSentence": "\"He never goam'd me,\" the aggrieved countryman would say with much bitterness.",
@@ -12101,7 +12101,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "yuko",
         "definition": "The score for a throw that lands the opponent on his or her side.",
         "exampleSentence": "As with yukos, kokas are not accumulative, so no amount of kokas are deemed equal to or greater than a yuko.",
@@ -12117,10 +12117,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "yuft",
-        "definition": "Russia leather.",
-        "exampleSentence": "About 250,000 poods of yuft are prepared annually, of which about 150,000 poods are red yuft, manufactured chiefly for foreign markets.",
+        "definition": "A type of Russian leather, known for its distinctive reddish colour.",
+        "exampleSentence": "The old bookbinder preferred yuft for its rich colour and supple feel.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12133,7 +12133,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "jhow",
         "definition": "A grassy tamarisk shrub, of species Tamarix indica, common in river-marshes.",
         "exampleSentence": "The river remains most uninteresting: the banks are low and covered chiefly with Jhow.",
@@ -12149,10 +12149,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "yeet",
-        "definition": "A type of dance involving dipping one's shoulder and swinging both hands out, while an audience repeatedly chants \"YEET yah, yah, yah, yah\".",
-        "exampleSentence": "The book had an entire chapter about the yeet.",
+        "definition": "A slang exclamation or gesture expressing forceful enthusiasm.",
+        "exampleSentence": "With a loud yeet, he hurled the basketball from half court.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12165,10 +12165,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "tran",
-        "definition": "A trans person.",
-        "exampleSentence": "The book had an entire chapter about the tran.",
+        "definition": "Informal term for a transgender person.",
+        "exampleSentence": "The support group welcomed every tran who wanted a safe space to share their story.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -12181,7 +12181,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "kiyi",
         "definition": "An official letter informing of a person killed in action.",
         "exampleSentence": "You know that Doc's been treating him for melancholy and depression... ever since he got that kiyi about his son... … Kiyi: K.I.A.: Killed In Action letter from the War Dept.",
@@ -12197,10 +12197,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "expy",
-        "definition": "A character in a work of fiction who is a stand-in for or knockoff of a character from an unrelated work or of a real person.",
-        "exampleSentence": "I like your novel but your protagonist is pretty clearly a Scooby-Doo expy.",
+        "definition": "A fictional character clearly modelled on a character from another work.",
+        "exampleSentence": "Fans quickly noticed the villain was an obvious expy of a classic Bond antagonist.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12213,10 +12213,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "gubu",
-        "definition": "A political scandal.",
-        "exampleSentence": "The GUBU had been a GUBU alright, no doubt about that, but Mr Haughey was there and the GUBU was taken care of ….",
+        "definition": "An embarrassing political scandal, from Irish slang.",
+        "exampleSentence": "The press called the minister's blunder the biggest gubu of the decade.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12229,10 +12229,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "society"
     },
-{
+    {
         "word": "myal",
-        "definition": "Relating to muscle.",
-        "exampleSentence": "The myal weather made everyone want to stay inside.",
+        "definition": "Connected with muscles or muscular tissue.",
+        "exampleSentence": "The physiotherapist focused on the myal tension in her patient's shoulder.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12245,10 +12245,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "vpip",
-        "definition": "The percentage of hands where a player voluntarily placed money in the pot, if given the opportunity to do so.",
-        "exampleSentence": "If a player voluntarily puts money in the pot every two hands, their VPIP is 50%.",
+        "definition": "A poker statistic showing how often a player voluntarily bets before the flop.",
+        "exampleSentence": "A vpip above forty percent usually signals a loose, aggressive player.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12261,7 +12261,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "quaq",
         "definition": "Frozen meat or eggs, eaten partially thawed.",
         "exampleSentence": "We ate that quaq — frozen fish — all winter, raw and dipped in seal oil.",
@@ -12276,10 +12276,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "birb",
-        "definition": "A bird, especially a small and cute one.",
-        "exampleSentence": "The book had an entire chapter about the birb.",
+        "definition": "Internet slang for a small, cute bird.",
+        "exampleSentence": "She posted a photo of the fluffy birb perched on her finger.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -12292,7 +12292,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "oaer",
         "definition": "A member of the Order of the Arrow.",
         "exampleSentence": "The OAers held their big sessions in Miami University's gym.",
@@ -12307,7 +12307,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "iqer",
         "definition": "Someone who has a specified intelligence quotient (IQ).",
         "exampleSentence": "The high-IQers were considered competent enough to proceed.",
@@ -12322,7 +12322,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "gqom",
         "definition": "A minimalistic style of house music from South Africa.",
         "exampleSentence": "South African artists include rapper Sho Madjozi, gqom acts Rude Boyz, Dominowe and Phatstoki, and sgubhu producer Sleeping Buddah.",
@@ -12338,7 +12338,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "hodl",
         "definition": "To hoard a kind of cryptocurrency, especially bitcoin.",
         "exampleSentence": "Bitcoin price continues decline. If you're hodling, bite your government passbook.",
@@ -12354,9 +12354,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "dieb",
-        "definition": "A canine of northern Africa, the African golden wolf (Canis lupaster, formerly considered an African variant of the golden jackal, Canis aureus).",
+        "definition": "A canine of northern Africa, the African golden wolf.",
         "exampleSentence": "The African jackal or dieb (C. anthus, same as in the preceding genus) ….",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -12370,10 +12370,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "dsup",
-        "definition": "A DNA-associating protein, naturally found only in tardigrades, which suppresses the occurrence of DNA breaks by radiation.",
-        "exampleSentence": "The book had an entire chapter about the dsup.",
+        "definition": "A protein from tardigrades that protects DNA from radiation damage.",
+        "exampleSentence": "Scientists studied dsup to learn how cells might resist extreme radiation.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12386,7 +12386,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "blep",
         "definition": "To extend the tongue beyond the lips, seemingly for no reason, without opening the mouth fully.",
         "exampleSentence": "You know what blepping is, right? It’s when an animal’s tongue casually pokes out of their mouth and stays there. It’s very cute, but quite odd.",
@@ -12401,10 +12401,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "puxi",
-        "definition": "The edible larvae of various flies of the genus Ephydra, found in the alkaline lakes of western North America.",
-        "exampleSentence": "They also gather aquatic insect eggs (ahuautle), brine flies (puxi), and algae (cuculito).",
+        "definition": "Edible brine fly larvae harvested from alkaline lakes in western North America.",
+        "exampleSentence": "The indigenous communities gathered puxi from the lakeshore each autumn.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12417,7 +12417,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "qene",
         "definition": "An Ethiopian literary genre that employs double entendres.",
         "exampleSentence": "These studies in qene demand great concentration as well as a contemplative spirit.",
@@ -12433,10 +12433,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "wyla",
-        "definition": "The yellow-tailed black cockatoo or funereal cockatoo, Calyptorhynchus funereus, a bird native to Australia.",
-        "exampleSentence": "The dark-plumaged funereal cockatoo or wyla (Calyptorhynchus funereus) is another Australian species.",
+        "definition": "A yellow-tailed black cockatoo native to Australia.",
+        "exampleSentence": "A flock of wyla flew overhead, their haunting calls echoing through the gum trees.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12449,10 +12449,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "bism",
-        "definition": "A devilish person.",
-        "exampleSentence": "Just that you were a 'pair o' wee bisms.'",
+        "definition": "A mischievous or devilish little person.",
+        "exampleSentence": "Her grandmother scolded the children, calling them a pair of wee bisms.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12464,10 +12464,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "audi",
-        "definition": "A car of that brand.",
-        "exampleSentence": "His wife suggested that he should buy an Audi.",
+        "definition": "A car made by the premium German automobile brand.",
+        "exampleSentence": "She bought a sleek silver audi as her first brand-new car.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12480,10 +12480,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gegg",
-        "definition": "A trick or hoax.",
-        "exampleSentence": "The whole gist of the gegg was to be here.",
+        "definition": "A trick, joke, or hoax.",
+        "exampleSentence": "The whole scheme turned out to be a clever gegg played on the newcomers.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12495,10 +12495,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "vocd",
-        "definition": "A measure of the lexical diversity of a given corpus, determined by comparing the sizes of steadily larger random samples from the corpus against their respective type-token ratios.",
-        "exampleSentence": "A paired sample t-test was conducted and results indicated no significant differences between vocd scores for younger and older participants, t(29) = 1.154, p = .253.",
+        "definition": "A statistical measure of how varied the vocabulary is in a piece of writing.",
+        "exampleSentence": "The researcher compared vocd scores between the two groups of young writers.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12511,7 +12511,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "efik",
         "definition": "A member of an ethnic group located primarily in southeastern Nigeria.",
         "exampleSentence": "The Efik people of Calabar, along with several other ethnic groups in the Cross River region, believed that twins were an evil omen.",
@@ -12526,10 +12526,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "kext",
-        "definition": "A loadable extension to the kernel of the macOS operating system.",
-        "exampleSentence": "The book had an entire chapter about the kext.",
+        "definition": "A loadable extension to the macOS operating system kernel.",
+        "exampleSentence": "The developer wrote a custom kext to support the new hardware driver.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12542,10 +12542,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mlem",
-        "definition": "The act or sound of extending the tongue to lick something, especially one's own nose, without opening the mouth fully.",
-        "exampleSentence": "When they stick out their tongues, they're doing a mlem, a blep, a blop. They bork. They boof.",
+        "definition": "The cute action of a pet sticking its tongue out slightly.",
+        "exampleSentence": "The puppy did a tiny mlem and licked peanut butter off its own nose.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12557,7 +12557,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "omao",
         "definition": "Myadestes obscurus, the Hawaiian thrush.",
         "exampleSentence": "The liquid chirps heard in the short song of an Omao.",
@@ -12573,7 +12573,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dapp",
         "definition": "Syllabic abbreviation of decentralized application.",
         "exampleSentence": "In this chapter, we will build a full DApp from scratch.",
@@ -12588,10 +12588,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nawm",
-        "definition": "Measure of the National Assembly for Wales; a type of legislation passed by the (then) National Assembly for Wales - now the Senedd - between 2008 and 2011; still used despite the change of name.",
-        "exampleSentence": "The book had an entire chapter about the nawm.",
+        "definition": "A type of law passed by the Welsh National Assembly between 2008 and 2011.",
+        "exampleSentence": "The NHS Redress Measure was the very first nawm to take effect in Wales.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12603,7 +12603,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "skiv",
         "definition": "A sovereign (the coin).",
         "exampleSentence": "'A sovereign,' she says. 'Make it two, and it's yours,' I says. So, after a little, she give me two skivs, and she took the bill and valked ^() away vith it.",
@@ -12618,7 +12618,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "vber",
         "definition": "A programmer who uses the Visual Basic language.",
         "exampleSentence": "VBers may find the syntax of C# a bit unpalatable.",
@@ -12633,10 +12633,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "ecaf",
-        "definition": "A person's face.",
-        "exampleSentence": "The book had an entire chapter about the ecaf.",
+        "definition": "Slang for a person's face (the word 'face' spelled backwards).",
+        "exampleSentence": "He pulled a goofy expression and said, 'Check out this ecaf!'",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12649,7 +12649,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "folc",
         "definition": "A fan of the television series Lois & Clark: The New Adventures of Superman.",
         "exampleSentence": "This is just a new way to get to know some more FoLCs!",
@@ -12665,7 +12665,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "communication"
     },
-{
+    {
         "word": "pept",
         "definition": "Of low quality; worthless.",
         "exampleSentence": "Been offered a^() apprenticeship but the wage is absolutely pept.",
@@ -12680,10 +12680,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mpox",
-        "definition": "A viral disease, of primates and some other mammals, related to smallpox, caused by Orthopoxvirus monkeypox.",
-        "exampleSentence": "Ebola reared its ugly head anew, including recently in Uganda. Mpox spread in strange new ways. Measles and other vaccine-preventable illnesses are making a comeback.",
+        "definition": "A viral disease related to smallpox, causing fever and a distinctive rash.",
+        "exampleSentence": "Health officials urged vaccination after several cases of mpox were confirmed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12696,7 +12696,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "notp",
         "definition": "A ship that one strongly dislikes.",
         "exampleSentence": "Usually it is best to keep your NOTP to yourself, unless you wish to start a shipping war.",
@@ -12712,10 +12712,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "gvir",
-        "definition": "A wealthy person.",
-        "exampleSentence": "They are EXTREMELY powerful in the movement as a whole, if only because they are the ones who bring the \"gvirim\" to the semi-annual Machne Israel Development Fund events.",
+        "definition": "A wealthy or influential person, especially in Jewish community life.",
+        "exampleSentence": "The gvir donated generously to build a new wing for the community centre.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -12728,7 +12728,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "zawg",
         "definition": "A fanciful variation of dog or dawg.",
         "exampleSentence": "Zawg she doesnt even have tits☠️❓.",
@@ -12744,7 +12744,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "fumf",
         "definition": "The sound of rushing air or a dull impact.",
         "exampleSentence": "I hit the Bruckner Expressway and turned the music up until I could feel the bass in my breastbone. Then I heard the fumf of a blown tire.",
@@ -12759,7 +12759,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "twag",
         "definition": "A wife or girlfriend of a tennis player.",
         "exampleSentence": "Number one TWAG (that's tennis WAG) Kim Sears put her best fashion foot forward at the opening day of Wimbledon yesterday.",
@@ -12775,10 +12775,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "yunc",
         "definition": "A young person who acts in an unusually mature or worldly manner; a young unc.",
-        "exampleSentence": "The book had an entire chapter about the yunc.",
+        "exampleSentence": "U gotta stop using carts yunc 😭😭🙏🙏🙏.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -12791,7 +12791,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "kfer",
         "definition": "A member of Kiwi Farms.",
         "exampleSentence": "Everyone KF targets is “crazy” to them, and everything KFers find funny or worthy of disdain is justified as evidence of this perceived mental illness.",
@@ -12806,7 +12806,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fmer",
         "definition": "An FM radio enthusiast.",
         "exampleSentence": "The FMer realizes the increasing sophistication of the hobby.",
@@ -12821,7 +12821,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "communication"
     },
-{
+    {
         "word": "caum",
         "definition": "To whiten with camstone.",
         "exampleSentence": "The hearth is nicely caumed, the iron ribs of the grate shine like burnished steel ….",
@@ -12836,7 +12836,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "zump",
         "definition": "To end a romantic relationship with (a person) via video conferencing.",
         "exampleSentence": "He got zumped. His ex even marked the date on her calendar.",
@@ -12852,10 +12852,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "actin",
-        "definition": "A globular structural protein that polymerizes in a helical fashion to form an actin filament (or microfilament).",
-        "exampleSentence": "He wrote the word actin on the board for everyone to see.",
+        "definition": "A protein in cells that forms filaments important for muscle movement.",
+        "exampleSentence": "Muscle fibres contract when actin and myosin filaments slide past each other.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12868,10 +12868,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "adept",
         "definition": "One fully skilled or well versed in anything; a proficient.",
-        "exampleSentence": "He wrote the word adept on the board for everyone to see.",
+        "exampleSentence": "Adept as she was, in all the arts of cunning and dissimulation, the girl Nancy could not wholly conceal the effect which the knowledge of the step she had taken, wrought upon her mind.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -12884,10 +12884,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "alamo",
-        "definition": "A poplar tree of Southwestern U.S.; a cottonwood (Populus spp.).",
-        "exampleSentence": "He wrote the word alamo on the board for everyone to see.",
+        "definition": "A poplar or cottonwood tree found in the southwestern United States.",
+        "exampleSentence": "The old alamo beside the creek provided the only shade for miles.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12900,7 +12900,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "algae",
         "definition": "Algal organisms viewed collectively or as a mass; algal growth.",
         "exampleSentence": "Although often lumped together, spirulina is a blue-green algae whereas chlorella is a green algae.",
@@ -12915,10 +12915,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "aloha",
-        "definition": "Good wishes, love.",
-        "exampleSentence": "He wrote the word aloha on the board for everyone to see.",
+        "definition": "A Hawaiian word meaning love, affection, or warm greeting.",
+        "exampleSentence": "The islanders greeted every visitor with a heartfelt aloha and a flower lei.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12931,10 +12931,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "amino",
-        "definition": "The amine functional group.",
-        "exampleSentence": "He wrote the word amino on the board for everyone to see.",
+        "definition": "An organic compound that serves as a building block of proteins.",
+        "exampleSentence": "Each amino in the chain plays a specific role in shaping the protein.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -12947,10 +12947,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "amish",
-        "definition": "A strict Anabaptist sect living mainly in Pennsylvania, Ohio, and Indiana.",
-        "exampleSentence": "He wrote the word amish on the board for everyone to see.",
+        "definition": "A strict Anabaptist community known for simple living without modern technology.",
+        "exampleSentence": "The amish family travelled to market by horse and buggy every Saturday.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -12963,10 +12963,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "aorta",
-        "definition": "The great artery which carries the blood from the heart to all parts of the body except the lungs; the main trunk of the arterial system.",
-        "exampleSentence": "Tracing their battles, I had many occasions to walk along Second Avenue, the aorta of the Lower East Side, exploring places that were once as vibrant and tumultuous as Midtown Manhattan.",
+        "definition": "The main artery that carries blood from the heart to the rest of the body.",
+        "exampleSentence": "The surgeon repaired a weakened section of the patient's aorta.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -12979,10 +12979,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "aspen",
-        "definition": "A poplar tree, especially of section Populus sect. Populus, of medium-size trees with thin, straight trunks of a greenish-white color.",
-        "exampleSentence": "Above a certain elevation, the aspens gave way to scrubby, gnarled pines.",
+        "definition": "A slender poplar tree whose leaves tremble in the slightest breeze.",
+        "exampleSentence": "The hillside glowed gold in autumn when the aspen leaves turned colour.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -12995,10 +12995,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "aztec",
-        "definition": "A hybrid defensive back position combining aspects of the safety, nickelback and linebacker positions.",
-        "exampleSentence": "Although united culturally, the Aztecs thought of themselves in terms of their particular tribal affiliations: as Mexica, Tetzcoca, Culhua, Tepaneca, etc.",
+        "definition": "A member of the powerful Mesoamerican civilisation centred in central Mexico.",
+        "exampleSentence": "The museum displayed an intricately carved calendar stone made by the Aztec.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13011,10 +13011,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "baldy",
-        "definition": "Someone who is bald.",
-        "exampleSentence": "Then he went up from there to Bethel; and as he was going up by the way, young lads came out from the city and mocked him and said to him, \"Go up, you baldy; go up, you baldhead!\"",
+        "definition": "A person with a bald head; also, a bare-topped mountain.",
+        "exampleSentence": "The children giggled and called the friendly old neighbour a lovable baldy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13027,7 +13027,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "bayou",
         "definition": "A slow-moving, often stagnant creek or river.",
         "exampleSentence": "You natural persons old and young! / You on the Mississippi and on all the branches and bayous of the Mississippi! / You friendly boatmen and mechanics! you roughs!",
@@ -13043,7 +13043,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "beaut",
         "definition": "Something or someone that is physically attractive.",
         "exampleSentence": "That new car of yours is a real beaut.",
@@ -13059,10 +13059,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "beige",
         "definition": "A slightly yellowish gray colour, as that of unbleached wool.",
-        "exampleSentence": "He wrote the word beige on the board for everyone to see.",
+        "exampleSentence": "He has no criminal record. He has no traffic tickets. His social media posts are just like... he's beige.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -13075,10 +13075,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "bends",
-        "definition": "The thickest and strongest planks in a wooden ship's side, wales.",
-        "exampleSentence": "He wrote the word bends on the board for everyone to see.",
+        "definition": "A painful condition from rising too fast in deep water, causing gas bubbles in the blood.",
+        "exampleSentence": "The diver surfaced slowly to avoid getting the bends.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -13090,7 +13090,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "beryl",
         "definition": "A mineral of pegmatite deposits, often used as a gemstone (molecular formula Be₃Al₂Si₆O₁₈).",
         "exampleSentence": "The crown was set with six beryls of excellent size and color.",
@@ -13106,10 +13106,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "bison",
-        "definition": "A large, wild bovid of the genus Bison.",
-        "exampleSentence": "He wrote the word bison on the board for everyone to see.",
+        "definition": "A large, shaggy wild ox found in North America and Europe.",
+        "exampleSentence": "A herd of bison thundered across the open plains, kicking up dust.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13122,7 +13122,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "biter",
         "definition": "Agent noun of bite; someone or something who bites or tends to bite.",
         "exampleSentence": "Not all dogs are biters.",
@@ -13138,10 +13138,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "blanc",
-        "definition": "A white person; a person of European or Caucasian descent.",
-        "exampleSentence": "He wrote the word blanc on the board for everyone to see.",
+        "definition": "A white person; also, a blank or white space.",
+        "exampleSentence": "The term blanc appeared frequently in colonial-era French documents.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -13154,7 +13154,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "bling",
         "definition": "An ostentatious display of richness or style.",
         "exampleSentence": "Apparently also the Saudis gave him as presents fabulous bling, …vast necklaces encrusted with jewels and rubies.",
@@ -13170,10 +13170,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "bower",
-        "definition": "A bedroom or private apartments, especially for a woman in a medieval castle.",
-        "exampleSentence": "He wrote the word bower on the board for everyone to see.",
+        "definition": "A sheltered, leafy garden alcove or a private room in a castle.",
+        "exampleSentence": "The queen retreated to her bower to read quietly among the climbing roses.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -13186,7 +13186,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "brawn",
         "definition": "Strong muscles or lean flesh, especially of the arm, leg or thumb.",
         "exampleSentence": "It was brawn and shape for high tea.",
@@ -13202,10 +13202,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "caddy",
-        "definition": "A Cadillac car.",
-        "exampleSentence": "He wrote the word caddy on the board for everyone to see.",
+        "definition": "Act as a caddie and carry clubs for a player.",
+        "exampleSentence": "She pulled up in a shiny black Caddy at six o'clock.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13218,10 +13218,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cajun",
-        "definition": "A member of the ethnic group descending from Acadia, primarily French-speaking Catholic and living in Southern Louisiana and Maine.",
-        "exampleSentence": "He wrote the word cajun on the board for everyone to see.",
+        "definition": "A person of French-Acadian descent living mainly in southern Louisiana.",
+        "exampleSentence": "The cajun chef seasoned the gumbo with a secret blend of spices.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13234,10 +13234,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "capri",
         "definition": "A deep shade of sky blue between cyan and azure.",
-        "exampleSentence": "He wrote the word capri on the board for everyone to see.",
+        "exampleSentence": "… capri or chino type pants ….",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13250,7 +13250,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "carte",
         "definition": "A bill of fare; a menu.",
         "exampleSentence": "We’ll take a dram for luck, and as soon as this handless man of mine has the collops ready, we’ll dine and take a hand at the cartes as gentlemen should.",
@@ -13266,9 +13266,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "catty",
-        "definition": "A (unit of) weight used in China which is metricated in Mainland China as exactly 0.5 kg, and approximately 0.6 kg for other places.",
+        "definition": "With subtle hostility in an effort to hurt, annoy, or upset, particularly among women.",
         "exampleSentence": "Transparent yellow pieces are the best; the price is from eight to fourteen dollars per catty, according to size and quality.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -13282,10 +13282,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "chasm",
-        "definition": "A deep, steep-sided rift, gap or fissure; a gorge or abyss.",
-        "exampleSentence": "He wrote the word chasm on the board for everyone to see.",
+        "definition": "A deep, wide gap or opening in the earth.",
+        "exampleSentence": "The hikers peered nervously over the edge of the chasm far below the trail.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13298,7 +13298,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cheep",
         "definition": "A short, high-pitched sound made by a small bird.",
         "exampleSentence": "The radiation trackers clipped to our protective overalls let off soft cheeps, their frequency varying as radioactivity levels changed around us.",
@@ -13313,10 +13313,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "chino",
-        "definition": "A coarse cotton fabric commonly used to make trousers and uniforms.",
-        "exampleSentence": "He wrote the word chino on the board for everyone to see.",
+        "definition": "A sturdy cotton fabric, or trousers made from that fabric.",
+        "exampleSentence": "He paired a navy blazer with khaki chino trousers for the interview.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13329,10 +13329,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "clang",
         "definition": "A loud, ringing sound, like that made by free-hanging metal objects striking each other.",
-        "exampleSentence": "He wrote the word clang on the board for everyone to see.",
+        "exampleSentence": "A dented metal punching bag waiting to be clanged; a solitary object in the rhino's cage.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13345,10 +13345,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "clary",
-        "definition": "Clary sage (Salvia sclarea).",
-        "exampleSentence": "He wrote the word clary on the board for everyone to see.",
+        "definition": "An aromatic herb in the sage family, used in cooking and perfumes.",
+        "exampleSentence": "The gardener planted clary alongside the lavender for its sweet fragrance.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -13361,10 +13361,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "cluck",
         "definition": "The sound made by a hen, especially when brooding, or calling her chicks.",
-        "exampleSentence": "He wrote the word cluck on the board for everyone to see.",
+        "exampleSentence": "My mother clucked her tongue in disapproval.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13377,10 +13377,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "clunk",
         "definition": "A dull, metallic sound, especially one made by two bodies coming into contact.",
-        "exampleSentence": "He wrote the word clunk on the board for everyone to see.",
+        "exampleSentence": "Her old bicycle was clunking along the road.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -13392,10 +13392,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "colic",
-        "definition": "Severe pains that grip the abdomen or the disease that causes such pains (due to intestinal or bowel-related problems).",
-        "exampleSentence": "He wrote the word colic on the board for everyone to see.",
+        "definition": "Severe stomach or abdominal pain, especially in babies.",
+        "exampleSentence": "The newborn's colic kept the exhausted parents awake night after night.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13408,10 +13408,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "conch",
-        "definition": "A British Bahamian.",
-        "exampleSentence": "He wrote the word conch on the board for everyone to see.",
+        "definition": "A large spiral sea shell; also, a native of the Bahamas or Key West.",
+        "exampleSentence": "She held the smooth conch to her ear and listened for the sound of the ocean.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13424,7 +13424,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "coven",
         "definition": "A nunnery, a convent.",
         "exampleSentence": "“This is a very African area”, he said as they maneuvered their way among the covens of menacing children gathered in the halls.",
@@ -13440,10 +13440,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "crone",
-        "definition": "One of the triune goddesses of the Lady in Wicca alongside the Mother and Maiden, representing an old woman.",
-        "exampleSentence": "The Lady is often thought of as having three aspects: Maiden, Mother, and Crone.",
+        "definition": "An old woman, especially in folklore; also a wise elder figure in Wicca.",
+        "exampleSentence": "The fairy tale featured a mysterious crone who lived alone in the forest.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -13455,7 +13455,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "crore",
         "definition": "Ten million (10⁷): 10,000,000, that is, with Indian digit grouping, 1,00,00,000.",
         "exampleSentence": "The population of Gujarat is 3.39 crores.",
@@ -13471,10 +13471,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "crypt",
-        "definition": "A cave or cavern.",
-        "exampleSentence": "He wrote the word crypt on the board for everyone to see.",
+        "definition": "An underground room or vault, often beneath a church, used for burials.",
+        "exampleSentence": "The guide led the tourists down a narrow staircase into the dimly lit crypt.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -13487,7 +13487,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "cuddy",
         "definition": "A cabin, for the use of the captain, in the after part of a sailing ship under the poop deck.",
         "exampleSentence": "It was a strong measure I own, walking into your cuddy, and calling for drink as if I was the Captain ….",
@@ -13503,7 +13503,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "cuppa",
         "definition": "A cup of tea (or sometimes any hot drink).",
         "exampleSentence": "I’ve just put the kettle on – fancy a cuppa?",
@@ -13519,7 +13519,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "debit",
         "definition": "In bookkeeping, an entry in the left hand column of an account.",
         "exampleSentence": "A cash sale is recorded as debit on the cash account and as credit on the sales account.",
@@ -13535,10 +13535,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "decaf",
-        "definition": "A decaffeinated coffee, tea, or soft drink.",
-        "exampleSentence": "He wrote the word decaf on the board for everyone to see.",
+        "definition": "Coffee, tea, or another drink that has had its caffeine removed.",
+        "exampleSentence": "She ordered a decaf because she wanted to sleep well that night.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13551,7 +13551,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "decor",
         "definition": "The style of decoration of a room or building.",
         "exampleSentence": "Her living room had a lush Persian-style decor.",
@@ -13567,10 +13567,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "deity",
-        "definition": "A supernatural divine being; a god or goddess.",
-        "exampleSentence": "He wrote the word deity on the board for everyone to see.",
+        "definition": "A god or goddess; a supreme divine being.",
+        "exampleSentence": "The temple was built to honour a powerful local deity.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -13583,10 +13583,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dijon",
-        "definition": "Dijon mustard, a prepared mustard containing white wine in place of vinegar.",
-        "exampleSentence": "This is one of those dishes where you need to find a place in each bite for every flavour – intense jus, raw honey, dijon, blue cheese ….",
+        "definition": "A smooth, tangy French mustard made with white wine.",
+        "exampleSentence": "He whisked olive oil and dijon together to make a simple salad dressing.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13598,7 +13598,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ditto",
         "definition": "That which was stated before, the aforesaid, the above, the same, likewise.",
         "exampleSentence": "Mr. Zappadia gave each student a ditto of a black-and-white cow.",
@@ -13614,10 +13614,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ditty",
         "definition": "A short, simple verse or song.",
-        "exampleSentence": "He wrote the word ditty on the board for everyone to see.",
+        "exampleSentence": "Beasts fain would sing; birds ditty to their notes.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13630,10 +13630,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "dregs",
         "definition": "The sediment settled at the bottom of a liquid; the lees in a container of unfiltered wine.",
-        "exampleSentence": "He wrote the word dregs on the board for everyone to see.",
+        "exampleSentence": "I sat through the dregs of a long hectic evening.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -13645,10 +13645,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "druid",
-        "definition": "One of an order of priests among certain groups of Celts before the adoption of Abrahamic religions.",
-        "exampleSentence": "He wrote the word druid on the board for everyone to see.",
+        "definition": "A priest or spiritual leader among ancient Celtic peoples.",
+        "exampleSentence": "Legend says a druid planted the sacred oak grove on the hilltop.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -13661,7 +13661,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "dunce",
         "definition": "An unintelligent person.",
         "exampleSentence": "… Dunce, / Dotard, a-dozing at the very nonce, / After a life spent training for the sight!",
@@ -13677,10 +13677,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "duvet",
-        "definition": "A quilt or usually flat cloth bag with a filling (traditionally down) and usually an additional washable cover, used instead of blankets; often called a comforter or quilt, especially in US English.",
-        "exampleSentence": "He pulled the thick duvet over his head to block out the morning light.",
+        "definition": "A soft, thick bed covering filled with down or synthetic material.",
+        "exampleSentence": "She pulled the warm duvet up to her chin on the cold winter night.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13693,7 +13693,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "dweeb",
         "definition": "A boring, studious, or socially inept person.",
         "exampleSentence": "I may be dumb, but I'm not a dweeb.",
@@ -13709,10 +13709,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ebola",
-        "definition": "The Ebola virus.",
-        "exampleSentence": "He wrote the word ebola on the board for everyone to see.",
+        "definition": "A severe and often fatal virus causing high fever and internal bleeding.",
+        "exampleSentence": "Health workers wore protective suits while treating patients with ebola.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13725,7 +13725,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "edema",
         "definition": "An excessive accumulation of serum in tissue spaces or a body cavity.",
         "exampleSentence": "Local lymph edemas can often be found on the inside of a looped graft.",
@@ -13741,10 +13741,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "ember",
-        "definition": "A piece of coal or wood glowing by heat; a hot coal.",
-        "exampleSentence": "He wrote the word ember on the board for everyone to see.",
+        "definition": "A small, glowing piece of wood or coal remaining after a fire.",
+        "exampleSentence": "A single ember floated up from the campfire and vanished into the night sky.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -13757,7 +13757,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "emcee",
         "definition": "Master of ceremonies.",
         "exampleSentence": "\"I'm the emcee for tonight,\" he proclaimed. \"I'll announce your program.\"",
@@ -13773,10 +13773,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "emery",
-        "definition": "An impure type of corundum, often used for sanding or polishing.",
-        "exampleSentence": "He wrote the word emery on the board for everyone to see.",
+        "definition": "A hard, dark mineral used for grinding and polishing surfaces.",
+        "exampleSentence": "She filed her nails smooth with an emery board after trimming them.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13789,10 +13789,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "faker",
-        "definition": "One who fakes something.",
-        "exampleSentence": "He wrote the word faker on the board for everyone to see.",
+        "definition": "A person who pretends or deceives.",
+        "exampleSentence": "The crowd booed when they realised the magician was just a faker using hidden wires.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -13805,7 +13805,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "filly",
         "definition": "A young female horse.",
         "exampleSentence": "Hey, Homer, get a load of the gams on that filly!",
@@ -13821,10 +13821,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "fitch",
-        "definition": "A polecat, such as the European polecat (Mustela putorius), the striped polecat, steppe polecat, or black-footed polecat of America.",
-        "exampleSentence": "Striped fitch has coarser hair and is not so valuable.",
+        "definition": "A European polecat, or the dark fur obtained from it.",
+        "exampleSentence": "The trapper sold bundles of fitch fur at the winter market.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -13837,7 +13837,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fiver",
         "definition": "A Zaidi Shi'a Muslim.",
         "exampleSentence": "The three major branches or sects are the Twelvers, Seveners, and Fivers.",
@@ -13853,10 +13853,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fives",
-        "definition": "A pair of fives.",
-        "exampleSentence": "Look what the funds were on the 1st of March—what the French fives were when I bought for the count. And what they're at now.",
+        "definition": "A ball game played by hitting a ball against the walls of a court with a gloved hand.",
+        "exampleSentence": "The students played fives against the old stone wall during their lunch break.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -13868,10 +13868,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "flaps",
-        "definition": "A disease in the mouths of horses involving inflammation in the cheeks or lips.",
-        "exampleSentence": "Giges or flappes, is pimples or teates in the in side of his mouth.",
+        "definition": "Hinged surfaces on an aircraft wing, or swollen sores inside a horse's mouth.",
+        "exampleSentence": "The pilot lowered the flaps to slow the plane before landing.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -13884,7 +13884,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "foyer",
         "definition": "A lobby, corridor, or waiting room, used in a hotel, theater, etc.",
         "exampleSentence": "We had a drink in the foyer waiting for the play to start.",
@@ -13900,7 +13900,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "franc",
         "definition": "A former unit of currency of France, Belgium and Luxembourg, replaced by the euro.",
         "exampleSentence": "The last 50 franc note, released in 1993, features Saint-Exupéry and a depiction of The Little Prince.",
@@ -13916,10 +13916,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "money"
     },
-{
+    {
         "word": "friar",
-        "definition": "A member of a mendicant Christian order such as the Augustinians, Carmelites (white friars), Franciscans (grey friars) or the Dominicans (black friars).",
-        "exampleSentence": "He wrote the word friar on the board for everyone to see.",
+        "definition": "A member of a religious order such as the Franciscans or Dominicans.",
+        "exampleSentence": "A friar in a brown robe offered bread to travellers at the monastery gate.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -13932,7 +13932,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "frisk",
         "definition": "A little playful skip or leap; a brisk and lively movement.",
         "exampleSentence": "The customs officer gave me a frisk after I went through the metal detector.",
@@ -13948,7 +13948,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "fryer",
         "definition": "A machine or container for frying food.",
         "exampleSentence": "In the same vein is what happened once concerning a man who was a fryer of fish by trade.",
@@ -13964,10 +13964,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "futon",
-        "definition": "A thin mattress of tufted cotton or similar material, placed on a floor or on a raised, foldable frame as a bed.",
-        "exampleSentence": "The futon are easily aired, and may be carried about readily when moving.",
+        "definition": "A thin, foldable mattress that can serve as both a sofa and a bed.",
+        "exampleSentence": "Guests unfolded the futon and slept comfortably in the small apartment.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13980,7 +13980,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "home"
     },
-{
+    {
         "word": "garbo",
         "definition": "A rubbish collector; a garbage man.",
         "exampleSentence": "The priest would bring salvation while the garbo took the rubbish.",
@@ -13996,10 +13996,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "gaudy",
-        "definition": "A reunion held by one of the colleges of the University of Oxford for alumni, normally during the long vacation.",
-        "exampleSentence": "And since then, Mary had married and scarcely been heard of; except that she had haunted the College with a sick persistence, never missing an Old Students’ Meeting or a Gaudy.",
+        "definition": "Very showy or ornamented, now especially when excessive, or in a tasteless or vulgar manner.",
+        "exampleSentence": "Let's have one other gaudy night.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14012,7 +14012,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "genoa",
         "definition": "A staysail that resembles a jib but extends aft beyond the mast.",
         "exampleSentence": "The more the backstay is tightened, the less the headstay will sag off to leeward, forming a rigid and more efficient arc along the luff of the genoa while beating to weather.",
@@ -14027,7 +14027,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "getup",
         "definition": "Clothes, costume or outfit, especially one that is ostentatious or otherwise unusual.",
         "exampleSentence": "They wore jorts and crop tops; or strappy, S&M-influenced getups; or pajamas emblazoned with cartoons.",
@@ -14042,10 +14042,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "ghana",
-        "definition": "A style of Maltese folk singing.",
-        "exampleSentence": "He wrote the word ghana on the board for everyone to see.",
+        "definition": "A traditional style of Maltese folk singing.",
+        "exampleSentence": "The village festival ended with an evening of spirited ghana performances.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -14058,10 +14058,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "glade",
         "definition": "An open passage through a wood; a grassy open or cleared space in a forest.",
-        "exampleSentence": "He wrote the word glade on the board for everyone to see.",
+        "exampleSentence": "A glade of ice.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -14074,7 +14074,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "nature"
     },
-{
+    {
         "word": "goner",
         "definition": "Someone (or something) doomed; a hopeless case, especially someone who is bound to die soon.",
         "exampleSentence": "I'm a goner if this plan doesn't work.",
@@ -14090,10 +14090,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "grits",
-        "definition": "Coarsely ground hominy which is boiled and eaten, primarily in the Southern United States.",
-        "exampleSentence": "He wrote the word grits on the board for everyone to see.",
+        "definition": "A Southern U.S. dish of coarsely ground corn, boiled and served as a side.",
+        "exampleSentence": "She served a heaping plate of grits with butter and scrambled eggs.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -14106,10 +14106,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "gruel",
-        "definition": "A thin, watery porridge, formerly eaten primarily by the poor and the ill.",
-        "exampleSentence": "He wrote the word gruel on the board for everyone to see.",
+        "definition": "A thin porridge made by boiling grain in water or milk.",
+        "exampleSentence": "Oliver held out his bowl and famously asked for more gruel.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14122,10 +14122,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "guise",
-        "definition": "A customary way of speaking or acting; a fashion, a manner, a practice (often used formerly in such phrases as \"at his own guise\"; that is, in his own fashion, to suit himself.).",
-        "exampleSentence": "He wrote the word guise on the board for everyone to see.",
+        "definition": "A customary way of speaking or acting; a fashion, a manner, a practice.",
+        "exampleSentence": "Under the guise of patriotism.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14138,10 +14138,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "gulag",
-        "definition": "Also GULAG: the system of all Soviet labour camps and prisons in use, especially during the Stalinist period (1930s–1950s).",
-        "exampleSentence": "He wrote the word gulag on the board for everyone to see.",
+        "definition": "A forced-labour prison camp in the former Soviet Union.",
+        "exampleSentence": "Thousands of political prisoners were sent to a remote gulag in Siberia.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14154,10 +14154,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "gully",
-        "definition": "A trench, ravine or narrow channel which was worn by water flow, especially on a hillside.",
-        "exampleSentence": "A new drainage run and rainwater gullies are to be installed between the station and Oxford Road, with completion planned for December 1.",
+        "definition": "A narrow channel cut into the earth by flowing water.",
+        "exampleSentence": "Heavy rain carved a deep gully along the edge of the dirt road.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14170,7 +14170,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "gunny",
         "definition": "A coarse heavy fabric made of jute or hemp.",
         "exampleSentence": "Traffic is brisk, and goods consists of rice, gunny (hessian), maize and native implements.",
@@ -14186,10 +14186,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "guppy",
-        "definition": "A tiny freshwater fish, Poecilia reticulata, popular in home aquariums, that usually has a plain body and black or dark blue tail for the females and a more colorful tail for the males. The guppies can vary in size, but males are 4 cm (1.6”) and females are 7 cm (2.8”).",
-        "exampleSentence": "He wrote the word guppy on the board for everyone to see.",
+        "definition": "A tiny, colourful freshwater fish popular in home aquariums.",
+        "exampleSentence": "The children watched a bright orange guppy dart between the tank plants.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14202,10 +14202,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "gusto",
         "definition": "Enthusiasm; enjoyment, vigor.",
-        "exampleSentence": "He wrote the word gusto on the board for everyone to see.",
+        "exampleSentence": "He sang with more gusto than talent.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14218,10 +14218,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "haiku",
-        "definition": "A Japanese poem in three lines, the first and last consisting of five morae, and the second consisting of seven morae, usually with an emphasis on the season or a naturalistic theme.",
-        "exampleSentence": "He wrote the word haiku on the board for everyone to see.",
+        "definition": "A short Japanese poem of three lines with five, seven, and five syllables.",
+        "exampleSentence": "She wrote a simple haiku about the first snowfall of winter.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14234,10 +14234,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "heaps",
-        "definition": "A large amount.",
-        "exampleSentence": "And heaps of objections, all of them involving countless difficulties, are going to face anyone who says either that being is some two things or that it is only one.",
+        "definition": "A large, often untidy amount of something.",
+        "exampleSentence": "There were heaps of autumn leaves piled up along the garden path.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14249,10 +14249,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "heinz",
-        "definition": "A five and a seven as starting cards in Texas hold 'em.",
-        "exampleSentence": "He wrote the word heinz on the board for everyone to see.",
+        "definition": "A poker hand with a five and a seven as the starting cards.",
+        "exampleSentence": "He glanced at his heinz and decided to bluff his way through the round.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14265,10 +14265,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "hives",
-        "definition": "Itchy, swollen, red areas of the skin which can appear quickly in response to an allergen or due to other conditions.",
-        "exampleSentence": "When she recovers enough to look down at her arms … she blinks to see them covered in faint, but rising, puffy welts. Hives. She's breaking out in hives.",
+        "definition": "Itchy, swollen red patches on the skin, often caused by an allergic reaction.",
+        "exampleSentence": "She broke out in hives after eating shellfish for the first time.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -14281,10 +14281,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "horst",
-        "definition": "A block of the Earth's crust, bounded by faults, that has been raised relative to the surrounding area.",
-        "exampleSentence": "Your body is a horst and mine a graben, because horst is the opposite of graben.",
+        "definition": "A raised block of Earth's crust between two parallel faults.",
+        "exampleSentence": "The geologist pointed out the horst formation visible in the cliff face.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14297,10 +14297,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "husky",
-        "definition": "An Eskimo person.",
-        "exampleSentence": "He wrote the word husky on the board for everyone to see.",
+        "definition": "Hoarse and rough-sounding; throaty.",
+        "exampleSentence": "You look like a good, husky man to pitch in the barnyard ….",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14313,10 +14313,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "hyena",
-        "definition": "Any of the medium-sized to large feliform carnivores of the family Hyaenidae, native to Africa and Asia and noted for the sound similar to laughter which they can make if excited.",
-        "exampleSentence": "The udder of the hyena, tied on the left arm, enticed the affection of any desired woman.",
+        "definition": "A carnivorous African mammal known for its powerful jaws and cackling call.",
+        "exampleSentence": "A lone hyena prowled the edge of the camp, drawn by the scent of food.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14329,10 +14329,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "idaho",
-        "definition": "In full Idaho potato: a variety of potato grown in Idaho, especially the Russet Burbank.",
-        "exampleSentence": "He wrote the word idaho on the board for everyone to see.",
+        "definition": "A large, starchy baking potato grown in the American Northwest.",
+        "exampleSentence": "She scrubbed a big idaho potato and popped it in the oven for dinner.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14345,7 +14345,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "igloo",
         "definition": "A dome-shaped Inuit shelter, constructed of blocks cut from snow.",
         "exampleSentence": "General James Walsh signalled Strategic Air Command that the B-47 tore apart the igloo and knocked about 3 mark sixes.",
@@ -14361,10 +14361,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "weather"
     },
-{
+    {
         "word": "inuit",
-        "definition": "A member of any of several Aboriginal peoples of coastal Arctic Canada, Alaska, and Greenland.",
-        "exampleSentence": "He wrote the word inuit on the board for everyone to see.",
+        "definition": "A member of the Indigenous peoples of the Arctic regions of Canada, Alaska, and Greenland.",
+        "exampleSentence": "The Inuit carved beautiful figures from soapstone and whalebone.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14377,7 +14377,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "irons",
         "definition": "A lack of forward motion.",
         "exampleSentence": "Alice steered the boat into the wind, so we were stuck in irons.",
@@ -14392,10 +14392,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "actions"
     },
-{
+    {
         "word": "jaffa",
-        "definition": "A type of sweet orange, normally seedless.",
-        "exampleSentence": "He wrote the word jaffa on the board for everyone to see.",
+        "definition": "A type of sweet, nearly seedless orange.",
+        "exampleSentence": "She peeled a ripe jaffa and shared the segments with her little brother.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14408,10 +14408,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "jerky",
-        "definition": "Lean meat cured and preserved by cutting into thin strips and air-drying in the sun.",
-        "exampleSentence": "He wrote the word jerky on the board for everyone to see.",
+        "definition": "Lean meat that has been dried and preserved in thin strips.",
+        "exampleSentence": "He packed some beef jerky and trail mix for the long hike.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14424,10 +14424,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "jiffy",
         "definition": "A very short, unspecified length of time.",
-        "exampleSentence": "He wrote the word jiffy on the board for everyone to see.",
+        "exampleSentence": "I’ll be back in a jiffy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14440,10 +14440,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "joust",
-        "definition": "A tilting match: a mock combat between two mounted knights or men-at-arms using lances in the lists or enclosed field.",
-        "exampleSentence": "He wrote the word joust on the board for everyone to see.",
+        "definition": "A mounted combat contest between two knights using lances.",
+        "exampleSentence": "The crowd roared as the two armoured knights charged in a thrilling joust.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14456,10 +14456,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "kayak",
-        "definition": "A type of small boat, covered over by a surface deck, powered by the occupant or occupants using a double-bladed paddle in a sitting position, from a hole in the surface deck.",
-        "exampleSentence": "It’s just offshore from private property inaccessible to the general public, so a good way to approach the rock is by kayak, which can be rented in the small village of Port Austin.",
+        "definition": "A small, narrow boat propelled by a double-bladed paddle.",
+        "exampleSentence": "She paddled her kayak through the calm waters of the sheltered bay.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14472,7 +14472,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "khaki",
         "definition": "A dull, yellowish-brown colour, the colour of dust.",
         "exampleSentence": "\"Frank, it's a khaki,\" I whisper, \"keep straight on.\"",
@@ -14488,7 +14488,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "klutz",
         "definition": "A clumsy or stupid person.",
         "exampleSentence": "Well, that's all right, then, Brian. Sit down. Have a scone. Make yourself at home. You klutz!",
@@ -14504,10 +14504,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "kraft",
-        "definition": "A kind of strong, smooth brown wrapping paper.",
-        "exampleSentence": "He wrote the word kraft on the board for everyone to see.",
+        "definition": "Strong brown paper used for wrapping packages and making bags.",
+        "exampleSentence": "The shopkeeper wrapped the parcel neatly in brown kraft paper.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -14520,10 +14520,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "character"
     },
-{
+    {
         "word": "kudos",
-        "definition": "Praise; accolades.",
-        "exampleSentence": "I gave Chelsea much kudos for the birth of her first daughter.",
+        "definition": "Praise and recognition for an achievement.",
+        "exampleSentence": "She received kudos from the whole team for finishing the project ahead of schedule.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14536,7 +14536,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "laird",
         "definition": "A feudal lord in Scottish contexts.",
         "exampleSentence": "Lowland lairds allied themselves with Highland chiefs, along with Edinburgh and Glasgow burghers who worried about having to compete for markets with English merchants.",
@@ -14552,10 +14552,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "lapel",
-        "definition": "Each of the two triangular pieces of cloth on the front of a jacket or coat that are folded back below the throat, leaving a triangular opening between.",
-        "exampleSentence": "He wrote the word lapel on the board for everyone to see.",
+        "definition": "The fold of fabric on the front of a jacket, below the collar.",
+        "exampleSentence": "He pinned a small flag to his lapel before the ceremony.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14568,10 +14568,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "largo",
-        "definition": "A very slow tempo.",
-        "exampleSentence": "He wrote the word largo on the board for everyone to see.",
+        "definition": "A very slow, broad tempo in music.",
+        "exampleSentence": "The orchestra played the opening largo with deep, sustained notes.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14583,10 +14583,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "larva",
-        "definition": "An early stage of growth for some insects and amphibians, in which after hatching from their egg, insects are wingless and resemble a caterpillar or grub, and amphibians lack limbs and resemble fish.",
-        "exampleSentence": "What does a mountain newt larva eat?",
+        "definition": "The wingless, worm-like early stage of an insect's life cycle.",
+        "exampleSentence": "The caterpillar is the larva stage of a butterfly.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14599,10 +14599,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "lemur",
-        "definition": "Any strepsirrhine primate of the superfamily Lemuroidea, native only to Madagascar and some surrounding islands.",
-        "exampleSentence": "He wrote the word lemur on the board for everyone to see.",
+        "definition": "A primate with large eyes and a long tail, found only in Madagascar.",
+        "exampleSentence": "The ring-tailed lemur leapt gracefully from branch to branch.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14615,7 +14615,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "lindy",
         "definition": "A certain dance step.",
         "exampleSentence": "\"These damned Lindys!\" bubbled Janice. \"Don't they play anything for old married folks?\"",
@@ -14631,7 +14631,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "art"
     },
-{
+    {
         "word": "lingo",
         "definition": "Language, especially language peculiar to a particular group, field, or region; jargon or a dialect.",
         "exampleSentence": "\"You see, ma'am, I can't divest myself of my professional lingo,\" observed Mr. Banks.",
@@ -14647,10 +14647,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "litre",
-        "definition": "The metric unit of fluid measure, equal to one cubic decimetre. Symbol: L, l, or ℓ.",
-        "exampleSentence": "He wrote the word litre on the board for everyone to see.",
+        "definition": "A metric unit of volume equal to one thousand millilitres.",
+        "exampleSentence": "She bought a litre of fresh milk from the corner shop.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -14663,10 +14663,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "academic"
     },
-{
+    {
         "word": "llama",
-        "definition": "A South American mammal of the camel family, Lama glama, used as a domestic beast of burden and a source of wool and meat.",
-        "exampleSentence": "He wrote the word llama on the board for everyone to see.",
+        "definition": "A woolly South American animal related to camels, used for carrying loads.",
+        "exampleSentence": "The farmer led a llama loaded with supplies up the mountain trail.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14679,10 +14679,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "lotto",
-        "definition": "A game of chance similar to bingo.",
-        "exampleSentence": "He wrote the word lotto on the board for everyone to see.",
+        "definition": "A game of chance in which players match numbers for a prize.",
+        "exampleSentence": "She checked her lotto ticket hopefully, but none of the numbers matched.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14695,10 +14695,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "magma",
-        "definition": "The molten matter within the earth, the source of the material of lava flows, dikes of eruptive rocks, etc.",
-        "exampleSentence": "He wrote the word magma on the board for everyone to see.",
+        "definition": "Hot molten rock found beneath the Earth's surface.",
+        "exampleSentence": "Geologists monitored the rising magma beneath the volcano.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14710,7 +14710,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "manga",
         "definition": "A comic originating in Japan.",
         "exampleSentence": "Lately I've been reading a Brazilian manga.",
@@ -14726,10 +14726,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mater",
-        "definition": "A meninx; the dura mater, arachnoid mater, or pia mater of the brain.",
-        "exampleSentence": "“The mater will be delighted to see you again—after all those years,” he added.",
+        "definition": "An informal British term for mother.",
+        "exampleSentence": "He called home and assured the mater that he was eating well at university.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14742,10 +14742,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "merle",
-        "definition": "The Eurasian blackbird, Turdus merula.",
-        "exampleSentence": "He wrote the word merle on the board for everyone to see.",
+        "definition": "A common European blackbird with a melodious song.",
+        "exampleSentence": "A merle sang from the garden wall as the sun went down.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14758,10 +14758,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "midas",
-        "definition": "A very large champagne bottle (named after the King) with the capacity of about 30 liters, equivalent to 40 standard bottles.",
-        "exampleSentence": "He wrote the word midas on the board for everyone to see.",
+        "definition": "An exceptionally large champagne bottle holding about 30 litres.",
+        "exampleSentence": "The celebration featured a towering midas bottle that served the entire party.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14774,10 +14774,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "midge",
-        "definition": "Any of various small two-winged flies, for example, from the family Chironomidae or non-biting midges, the family Chaoboridae or phantom midges, and the family Ceratopogonidae or biting midges, all belonging to the order Diptera.",
-        "exampleSentence": "\"I am being eaten alive!\" cried Pippin. \"Midgewater! There are more midges than water!\"",
+        "definition": "A tiny flying insect, often found in swarms near water.",
+        "exampleSentence": "Clouds of midge hovered over the lake at dusk, driving the campers inside.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -14790,7 +14790,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "mimic",
         "definition": "A comic who does impressions.",
         "exampleSentence": "Jess jumped slightly at hearing Tillyʼs extremely accurate mimic of her voice.",
@@ -14806,10 +14806,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mirth",
         "definition": "The emotion usually following humor and accompanied by laughter.",
-        "exampleSentence": "He wrote the word mirth on the board for everyone to see.",
+        "exampleSentence": "Phantasmal mirth, folded away: muskperfumed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -14822,7 +14822,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "feelings"
     },
-{
+    {
         "word": "miser",
         "definition": "A person who hoards money rather than spending it; one who is cheap or extremely parsimonious.",
         "exampleSentence": "Scrooge was a typical miser: spending nothing he could save, nor enjoying his wealth.",
@@ -14838,10 +14838,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "modem",
-        "definition": "A device that encodes digital computer signals into analog telephone signals and vice versa, allowing computers to communicate over a phone line.",
-        "exampleSentence": "He wrote the word modem on the board for everyone to see.",
+        "definition": "A device that connects a computer to the internet via a phone or cable line.",
+        "exampleSentence": "She restarted the modem when the internet connection dropped out.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14854,10 +14854,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "communication"
     },
-{
+    {
         "word": "mongo",
-        "definition": "Still-usable things salvaged (by sanmen) from garbage.",
-        "exampleSentence": "He wrote the word mongo on the board for everyone to see.",
+        "definition": "Usable items salvaged from other people's rubbish or discards.",
+        "exampleSentence": "He furnished his first flat almost entirely with mongo found on collection day.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -14869,10 +14869,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "moped",
-        "definition": "A lightweight, two-wheeled vehicle equipped with a small motor and pedals, designed to go no faster than some specified speed limit.",
-        "exampleSentence": "He took his moped into work.",
+        "definition": "Melancholic, dejected.",
+        "exampleSentence": "It so far troubles them, that they become quite moped many times, and so disheartened, dejected, they dare not come abroad….",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -14885,10 +14885,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "moray",
-        "definition": "Any of the large cosmopolitan carnivorous eels of the family Muraenidae.",
-        "exampleSentence": "He wrote the word moray on the board for everyone to see.",
+        "definition": "A large, snake-like tropical eel that lives among rocks and coral.",
+        "exampleSentence": "A spotted moray peered out from a crevice in the coral reef.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -14901,10 +14901,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "morel",
-        "definition": "A true morel; any of several fungi in the genus Morchella, the upper part of which is covered with a reticulated and pitted hymenium.",
-        "exampleSentence": "He wrote the word morel on the board for everyone to see.",
+        "definition": "An edible wild mushroom with a honeycomb-textured cap.",
+        "exampleSentence": "The chef sautéed fresh morel mushrooms in butter and served them on toast.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -14917,10 +14917,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "mower",
-        "definition": "A lawnmower, a machine used to cut grass on lawns.",
-        "exampleSentence": "He wrote the word mower on the board for everyone to see.",
+        "definition": "A machine used to cut grass on lawns and fields.",
+        "exampleSentence": "Dad pushed the mower across the back garden every Sunday morning.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14933,7 +14933,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "mucus",
         "definition": "A slippery secretion from the lining of the mucous membranes.",
         "exampleSentence": "The mucus in coryza may vary from runny to viscous.",
@@ -14949,10 +14949,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "mumps",
-        "definition": "A contagious disease caused by the Mumps virus of the genus Rubulavirus, mostly occurring in childhood, which causes swelling of glands in the face and neck.",
-        "exampleSentence": "At issue is the so-called MMR vaccine, which immunizes children against measles, mumps and rubella, three potentially deadly diseases that were once common and have been mostly wiped out.",
+        "definition": "A contagious illness that causes swelling of the glands in the face and neck.",
+        "exampleSentence": "He missed a week of school after coming down with the mumps.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -14965,10 +14965,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "health"
     },
-{
+    {
         "word": "munro",
-        "definition": "Any Scottish mountain having a height of more than 3,000 feet; named after Sir Hugh Thomas Munro, Scottish mountaineer.",
-        "exampleSentence": "He wrote the word munro on the board for everyone to see.",
+        "definition": "A Scottish mountain peak over 3,000 feet high.",
+        "exampleSentence": "She set a goal to climb every munro in Scotland before her fortieth birthday.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -14981,10 +14981,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "mural",
         "definition": "A large painting, usually drawn on a wall.",
-        "exampleSentence": "He wrote the word mural on the board for everyone to see.",
+        "exampleSentence": "Its walls were devoutly muraled by artists from the John Reed Club, a Communist-controlled cultural organization.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14997,10 +14997,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "nacho",
-        "definition": "A single tortilla chip from a dish of nachos.",
-        "exampleSentence": "He wrote the word nacho on the board for everyone to see.",
+        "definition": "A crispy tortilla chip, often served with melted cheese and toppings.",
+        "exampleSentence": "He loaded each nacho with salsa, sour cream, and jalapeños.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -15013,10 +15013,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "nance",
-        "definition": "A large shrub or small tree of subtropical and tropical areas of the Americas, Byrsonima crassifolia, bearing a small, sweet, yellow fruit.",
-        "exampleSentence": "He wrote the word nance on the board for everyone to see.",
+        "definition": "A tropical shrub bearing small, sweet yellow fruit.",
+        "exampleSentence": "Children picked handfuls of ripe nance from the low-hanging branches.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -15029,10 +15029,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "nandu",
-        "definition": "Rhea (large, flightless birds).",
-        "exampleSentence": "He wrote the word nandu on the board for everyone to see.",
+        "definition": "A large, flightless bird from South America, also called a rhea.",
+        "exampleSentence": "The nandu sprinted across the open grassland at surprising speed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15045,10 +15045,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "quantity"
     },
-{
+    {
         "word": "nawab",
-        "definition": "A Muslim official in South Asia acting as a provincial deputy ruler under the Mughal empire; a local governor.",
-        "exampleSentence": "He wrote the word nawab on the board for everyone to see.",
+        "definition": "A Muslim ruler or provincial governor in South Asia.",
+        "exampleSentence": "The nawab hosted a grand feast in the palace courtyard for visiting diplomats.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15061,10 +15061,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "niner",
-        "definition": "Something nine inches long, or holding nine gallons, etc.",
-        "exampleSentence": "He wrote the word niner on the board for everyone to see.",
+        "definition": "Something associated with the number nine, such as a nine-gallon container.",
+        "exampleSentence": "In radio code, they said niner instead of nine to avoid confusion.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -15077,10 +15077,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "nomad",
-        "definition": "A member of a society or class who herd animals from pasture to pasture with no fixed home.",
-        "exampleSentence": "He wrote the word nomad on the board for everyone to see.",
+        "definition": "A person who moves from place to place with no permanent home.",
+        "exampleSentence": "The nomad followed the seasonal rains across the vast desert.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15093,10 +15093,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "nyssa",
-        "definition": "A tree of the genus Nyssa.",
-        "exampleSentence": "He wrote the word nyssa on the board for everyone to see.",
+        "definition": "A deciduous tree, also called a tupelo, often found near water.",
+        "exampleSentence": "The swamp nyssa turned brilliant scarlet in the first weeks of autumn.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15108,10 +15108,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "oldie",
         "definition": "Something or someone old.",
-        "exampleSentence": "He wrote the word oldie on the board for everyone to see.",
+        "exampleSentence": "An oldies radio station.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15124,10 +15124,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "ouija",
-        "definition": "A board, having letters of the alphabet and the words yes and no; used with a planchette during a seance to \"communicate\" with spirits.",
-        "exampleSentence": "He wrote the word ouija on the board for everyone to see.",
+        "definition": "A board printed with letters and numbers, used in séances to receive messages.",
+        "exampleSentence": "The teenagers gathered around the ouija board at the Halloween sleepover.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15140,7 +15140,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "language"
     },
-{
+    {
         "word": "oxide",
         "definition": "A binary chemical compound of oxygen with another chemical element.",
         "exampleSentence": "In fact, nitric oxide (not to be confused with nitrous oxide, or laughing gas) is one of our primary signalling molecules.",
@@ -15156,10 +15156,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "ozone",
-        "definition": "An allotrope of oxygen (symbol O₃) having three atoms in the molecule instead of the usual two; it is a toxic gas, generated from oxygen by electrical discharge.",
-        "exampleSentence": "It's got the lot: fresh sea air, ozone, seaweed. You could cut the air with a knife.",
+        "definition": "A form of oxygen with three atoms per molecule, found in the upper atmosphere.",
+        "exampleSentence": "The ozone layer shields the Earth from harmful ultraviolet radiation.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -15172,10 +15172,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "papua",
-        "definition": "A person indigenous to Papua.",
-        "exampleSentence": "The Papuas are so termed in the Malay language, from their extreme darkness, approaching to black.",
+        "definition": "An Indigenous person from the island of New Guinea.",
+        "exampleSentence": "The Papua community welcomed anthropologists who came to study their traditions.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15188,7 +15188,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "peony",
         "definition": "A flowering plant of the genus Paeonia with large fragrant flowers.",
         "exampleSentence": "The root of the Male Peony fresh gathered has been found by experience to cure the falling-sickness.",
@@ -15204,10 +15204,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "pepsi",
-        "definition": "A serving of Pepsi.",
-        "exampleSentence": "I'll have a Pepsi with that.",
+        "definition": "A well-known brand of carbonated cola drink.",
+        "exampleSentence": "She grabbed an ice-cold pepsi from the cooler on a scorching afternoon.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15220,10 +15220,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "petal",
-        "definition": "One of the component parts of the corolla of a flower. It applies particularly, but not necessarily only, when the corolla consists of separate parts, that is when the petals are not connately fused. Petals are often brightly colored.",
-        "exampleSentence": "She is freezing cold. Sputtering. Big eyes wide and wet and red. Too shocked even to cry. 'It's okay, petal, it's okay.'",
+        "definition": "One of the coloured, leaf-like parts that form a flower.",
+        "exampleSentence": "A single pink petal floated down from the cherry tree and landed on her book.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -15236,7 +15236,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "phony",
         "definition": "A person who assumes an identity or quality other than their own.",
         "exampleSentence": "He's such a phony, he doesn't believe half of what he says.",
@@ -15252,10 +15252,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "piety",
         "definition": "Reverence and devotion to God.",
-        "exampleSentence": "He wrote the word piety on the board for everyone to see.",
+        "exampleSentence": "Patriotism as piety, when done right.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15268,7 +15268,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pinot",
         "definition": "Any of several grape varieties grown in Europe and North America.",
         "exampleSentence": "How much funkiness makes a pinot taste desirably complex, and how much more really is too much? Is a pinot good if it does not taste more like fruit than stones?",
@@ -15284,10 +15284,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "pinto",
-        "definition": "A member of a mountain tribe of Native Americans living near Acapulco, Mexico.",
-        "exampleSentence": "He wrote the word pinto on the board for everyone to see.",
+        "definition": "A horse or pony with patches of white and another colour.",
+        "exampleSentence": "The pinto trotted through the meadow, its brown-and-white coat gleaming.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15300,7 +15300,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "earth"
     },
-{
+    {
         "word": "plaid",
         "definition": "A type of twilled woollen cloth, often with a tartan or chequered pattern.",
         "exampleSentence": "In battle, the plaid was customarily shrugged off before the charge bit home, and the warrior came into contact with only his long, saffron shirt (‘leine chrochach’) to preserve modesty.",
@@ -15316,7 +15316,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "plush",
         "definition": "A textile fabric with a nap or shag on one side, longer and softer than the nap of velvet.",
         "exampleSentence": "… L.A. Prop Cinema Storage, full of kids' clothing (mostly for girls), PJs, and lots of toys and plushes (there's also a substantial infant area).",
@@ -15332,7 +15332,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "clothing"
     },
-{
+    {
         "word": "polio",
         "definition": "A person who has poliomyelitis.",
         "exampleSentence": "They don't need social service workers running back and forth every month or two to see if the polios are playing stickball in the street because they never will.",
@@ -15348,7 +15348,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "people"
     },
-{
+    {
         "word": "pooch",
         "definition": "A dog of mixed breed; a mongrel.",
         "exampleSentence": "My thoughts are disturbed by a man and pooch trying to get off the front of the train. Despite hitting the door button, they refused to open.",
@@ -15364,7 +15364,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "animals"
     },
-{
+    {
         "word": "porta",
         "definition": "The part of the liver or other organ where its vessels and nerves enter; the hilum.",
         "exampleSentence": "The porta permits the passage of injection mass from the aula into the procælia.",
@@ -15380,10 +15380,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "prima",
-        "definition": "Short for prima ballerina.",
-        "exampleSentence": "He wrote the word prima on the board for everyone to see.",
+        "definition": "The leading female dancer in a ballet company.",
+        "exampleSentence": "The audience rose to their feet when the prima took her final bow.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -15396,10 +15396,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "primo",
         "definition": "The principal part of a duet.",
-        "exampleSentence": "He wrote the word primo on the board for everyone to see.",
+        "exampleSentence": "Like me, you will be so embarrassed for Earth’s primo edgelord that he feels pressed into doing something so excruciatingly conventional. This is worse than when Kate Moss was scapegoated into rehab.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -15412,7 +15412,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "puree",
         "definition": "A food that has been ground or crushed into a thick liquid or paste.",
         "exampleSentence": "Tomato sauce is generally a puree.",
@@ -15428,7 +15428,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "quake",
         "definition": "A trembling or shaking.",
         "exampleSentence": "We felt a quake in the apartment every time the train went by.",
@@ -15444,7 +15444,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "query",
         "definition": "A question, an inquiry (US), an enquiry (UK).",
         "exampleSentence": "The teacher answered the student’s query concerning biosynthesis.",
@@ -15460,10 +15460,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "resin",
-        "definition": "A viscous water-insoluble hydrocarbon exudate of certain plants, or such a substance as a component of a plant exudate; used in lacquers, varnishes and many other applications.",
-        "exampleSentence": "He wrote the word resin on the board for everyone to see.",
+        "definition": "A sticky substance produced by trees, or a synthetic version used in coatings.",
+        "exampleSentence": "Pine resin oozed from the bark where a branch had snapped off.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -15476,7 +15476,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "retro",
         "definition": "Past fashions or trends.",
         "exampleSentence": "Richard Leacock's 1981 film portrait, Louise Brooks, was shown during a retro of Ms. Brooks's films at the Walker Art Center.",
@@ -15492,7 +15492,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "time"
     },
-{
+    {
         "word": "sarin",
         "definition": "The nerve gas O-isopropyl methylphosphonofluoridate, used as a chemical weapon.",
         "exampleSentence": "The health minister in Turkey, which treated many of the attack's victims and conducted autopsies on others, said test results conducted on victims confirmed sarin gas was used.",
@@ -15508,10 +15508,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "body"
     },
-{
+    {
         "word": "satin",
-        "definition": "A cloth woven from silk, nylon or polyester with a glossy surface and a dull back. (The same weaving technique applied to cotton produces cloth termed sateen).",
-        "exampleSentence": "He wrote the word satin on the board for everyone to see.",
+        "definition": "A smooth, glossy fabric often used for formal clothing and drapery.",
+        "exampleSentence": "The bride's satin gown shimmered under the chapel lights.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15524,9 +15524,9 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "sensory"
     },
-{
+    {
         "word": "saxon",
-        "definition": "A member of an ancient West Germanic tribe that lived at the eastern North Sea coast and south of it.",
+        "definition": "Of, relating to, or characteristic of the Saxons.",
         "exampleSentence": "Not everyone from the former GDR states are Saxons – and they do not all speak Saxon, ….",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -15540,7 +15540,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "water"
     },
-{
+    {
         "word": "scamp",
         "definition": "A rascal, swindler, or rogue; a ne'er-do-well.",
         "exampleSentence": "While walking home from the bar, he was set upon by a bunch of scamps who stole his hat.",
@@ -15556,7 +15556,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "scone",
         "definition": "A small, rich, pastry or quick bread, sometimes baked on a griddle.",
         "exampleSentence": "On Wednesdays I go shopping / And have buttered scones for tea.",
@@ -15572,10 +15572,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "food"
     },
-{
+    {
         "word": "scuba",
-        "definition": "An apparatus carried by a diver, which includes a tank holding compressed, filtered air and a regulator which delivers the air to the diver at ambient pressure which can be used underwater.",
-        "exampleSentence": "He wrote the word scuba on the board for everyone to see.",
+        "definition": "Portable breathing equipment that lets divers swim freely underwater.",
+        "exampleSentence": "They strapped on their scuba gear and descended into the crystal-clear lagoon.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -15588,10 +15588,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "selma",
-        "definition": "A confrontation where authorities brutally repress those wanting civil rights, similar to Bloody Sunday in Selma, Alabama.",
-        "exampleSentence": "Shelby County has become the new Selma.",
+        "definition": "A confrontation in which authorities violently suppress civil rights protesters.",
+        "exampleSentence": "Historians warned that the crackdown risked becoming another selma.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15604,10 +15604,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "senna",
-        "definition": "Any of several plants of the tribe Cassieae, especially those of the genera Cassia and Senna, whose leaves and pods are used as a purgative and laxative.",
-        "exampleSentence": "He wrote the word senna on the board for everyone to see.",
+        "definition": "A tropical plant whose dried leaves are used as a natural laxative.",
+        "exampleSentence": "The herbalist brewed a mild tea of senna leaves for digestive relief.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -15620,10 +15620,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "shale",
         "definition": "A shell or husk; a cod or pod.",
-        "exampleSentence": "He wrote the word shale on the board for everyone to see.",
+        "exampleSentence": "The green shales of a bean.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -15636,10 +15636,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "shang",
-        "definition": "A Chinese unit of land area equivalent to 15 mu or about one hectare.",
-        "exampleSentence": "He wrote the word shang on the board for everyone to see.",
+        "definition": "A Chinese unit of land area equal to about fifteen mu, roughly one hectare.",
+        "exampleSentence": "The farmer's plot measured just over one shang of fertile rice paddy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -15651,10 +15651,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "shari",
-        "definition": "Dead wood on the main trunk of a bonsai tree.",
-        "exampleSentence": "He wrote the word shari on the board for everyone to see.",
+        "definition": "Exposed dead wood on the trunk of a styled bonsai tree.",
+        "exampleSentence": "The bonsai artist carved a striking shari along the trunk to mimic lightning damage.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -15667,10 +15667,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "plants"
     },
-{
+    {
         "word": "sieve",
-        "definition": "A device with a mesh, grate, or otherwise perforated bottom to separate, in a granular material, larger particles from smaller ones, or to separate solid objects from a liquid.",
-        "exampleSentence": "He wrote the word sieve on the board for everyone to see.",
+        "definition": "A mesh tool used to separate fine particles from coarse ones, or to strain liquids.",
+        "exampleSentence": "She poured the soup through a sieve to remove the chunks of onion.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15683,10 +15683,10 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
         ],
         "theme": "everyday"
     },
-{
+    {
         "word": "sigma",
-        "definition": "The eighteenth letter of the Classical and Modern Greek alphabets (Σ, σ), the twentieth letter of Old and Ancient.",
-        "exampleSentence": "Their names, which are expressive of some bodily or mental excellence, all end with the same letter---the letter which is called San by the Dorians, and Sigma by the Ionians.",
+        "definition": "The eighteenth letter of the Greek alphabet, often used in math and science.",
+        "exampleSentence": "The engineer used sigma notation to express the sum of the data series.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",

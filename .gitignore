@@ -40,4 +40,10 @@ dist-ssr
 # Pipeline data / build artifacts
 scripts/output/
 scripts/data/
+scripts/pipeline/opus-fixes-*.json
+scripts/pipeline/bad-words-manifest.json
+scripts/pipeline/*-current-defs.json
+scripts/pipeline/needs-manual-fix.json
+scripts/pipeline/tier6d-badwords.txt
+bad-words-manifest.json
 existing-words.txt
