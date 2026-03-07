@@ -1,6 +1,6 @@
 # Spelling Bee
 
-A spelling practice app with swipe-based gameplay, spaced repetition, and a chalkboard aesthetic. Built with React, TypeScript, Vite, and Firebase.
+A spelling practice app with MCQ and typed-entry gameplay, spaced repetition, and a chalkboard aesthetic. Built with React, TypeScript, Vite, and Firebase.
 
 ## Quick Start
 
@@ -12,9 +12,9 @@ npm run verify     # Lint + typecheck + test + build
 
 ## Features
 
-- **Swipe/MCQ gameplay** — hear a word, pick the correct spelling from 3 options
+- **MCQ + typed gameplay** — hear a word, pick the correct spelling or type it out
 - **10 difficulty levels** — from CVC words (cat, dog) to competition-level vocabulary
-- **117K word bank** — 2,796 hand-curated + 91,569 pipeline words across 9 tiers
+- **51K word bank** — quality-filtered from 560K Wiktionary candidates across 9 tiers
 - **Spaced repetition** — Leitner 5-box system tracks mastery per word
 - **Spelling Bee simulation** — multi-round competition with NPC opponents
 - **Daily challenge** — seeded RNG gives everyone the same words (10/25/50 sizes)
@@ -35,7 +35,7 @@ npm run verify     # Lint + typecheck + test + build
 | Styling | Tailwind CSS 4 |
 | Animation | Framer Motion |
 | Backend | Firebase Auth + Firestore |
-| Tests | Vitest (23 files, 328 tests) |
+| Tests | Vitest (30 files, 480 tests) |
 
 ## Project Structure
 
@@ -44,7 +44,7 @@ src/
 ├── App.tsx                  # Main app, wires hooks to UI
 ├── config.ts                # Storage keys, Firestore collections, app identity
 ├── engine/                  # Domain-agnostic game engine
-├── domains/spelling/        # Spelling-specific logic + 117K word bank
+├── domains/spelling/        # Spelling-specific logic + 51K word bank
 ├── components/              # UI components
 ├── hooks/                   # Custom React hooks
 ├── utils/                   # Pure utilities

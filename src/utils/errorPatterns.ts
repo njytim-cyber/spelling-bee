@@ -24,20 +24,23 @@ export interface WordDrillDown {
     box: number;
 }
 
-/**
- * Returns categories with > 20% error rate and at least 5 attempts,
- * sorted by worst accuracy first.
- */
-export function getErrorPatterns(records: Record<string, WordRecord>): ErrorPattern[] {
+/** Accumulate attempts/correct by category — shared by getErrorPatterns and getCategoryAccuracy. */
+function accumulateByCategory(records: Record<string, WordRecord>): Record<string, { attempts: number; correct: number }> {
     const cats: Record<string, { attempts: number; correct: number }> = {};
-
     for (const r of Object.values(records)) {
         if (!cats[r.category]) cats[r.category] = { attempts: 0, correct: 0 };
         cats[r.category].attempts += r.attempts;
         cats[r.category].correct += r.correct;
     }
+    return cats;
+}
 
-    return Object.entries(cats)
+/**
+ * Returns categories with > 20% error rate and at least 5 attempts,
+ * sorted by worst accuracy first.
+ */
+export function getErrorPatterns(records: Record<string, WordRecord>): ErrorPattern[] {
+    return Object.entries(accumulateByCategory(records))
         .map(([category, s]) => ({
             category,
             attempts: s.attempts,
@@ -49,18 +52,25 @@ export function getErrorPatterns(records: Record<string, WordRecord>): ErrorPatt
 }
 
 /**
+ * Returns up to 20 words from weak patterns (>20% error rate) that aren't yet
+ * mastered (box < 4), sorted by worst accuracy first. Used to build a focused
+ * "Practice My Weaknesses" session.
+ */
+export function getWeakWords(records: Record<string, WordRecord>): string[] {
+    const weakCats = new Set(getErrorPatterns(records).map(p => p.category));
+    if (weakCats.size === 0) return [];
+    return Object.values(records)
+        .filter(r => weakCats.has(r.category) && r.box < 4 && r.attempts >= 1)
+        .sort((a, b) => (a.correct / Math.max(a.attempts, 1)) - (b.correct / Math.max(b.attempts, 1)))
+        .slice(0, 20)
+        .map(r => r.word);
+}
+
+/**
  * Returns category accuracy breakdown (all categories with at least 1 attempt).
  */
 export function getCategoryAccuracy(records: Record<string, WordRecord>): { category: string; accuracy: number; attempts: number }[] {
-    const cats: Record<string, { attempts: number; correct: number }> = {};
-
-    for (const r of Object.values(records)) {
-        if (!cats[r.category]) cats[r.category] = { attempts: 0, correct: 0 };
-        cats[r.category].attempts += r.attempts;
-        cats[r.category].correct += r.correct;
-    }
-
-    return Object.entries(cats)
+    return Object.entries(accumulateByCategory(records))
         .map(([category, s]) => ({
             category,
             accuracy: s.attempts > 0 ? s.correct / s.attempts : 0,
@@ -95,80 +105,68 @@ export interface AccuracyBar {
     correct: number;
 }
 
-/** Accuracy breakdown by phonics pattern. */
-export function getPatternAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+/**
+ * Generic accuracy breakdown: groups records by a key function, computes accuracy per bucket.
+ * Shared by pattern/origin/theme accuracy functions to avoid near-identical boilerplate.
+ */
+function accumulateAccuracy(
+    records: Record<string, WordRecord>,
+    keyFn: (r: WordRecord, detail: ReturnType<typeof getWordMap> extends Map<string, infer V> ? V : never) => string | null,
+    labelFn: (key: string) => string,
+    minAttempts = 3,
+): AccuracyBar[] {
     const wordMap = getWordMap();
     const buckets: Record<string, { attempts: number; correct: number }> = {};
 
     for (const r of Object.values(records)) {
         const detail = wordMap.get(r.word);
-        const pattern = detail?.pattern ?? 'unknown';
-        if (!buckets[pattern]) buckets[pattern] = { attempts: 0, correct: 0 };
-        buckets[pattern].attempts += r.attempts;
-        buckets[pattern].correct += r.correct;
+        const key = keyFn(r, detail!);
+        if (!key) continue;
+        if (!buckets[key]) buckets[key] = { attempts: 0, correct: 0 };
+        buckets[key].attempts += r.attempts;
+        buckets[key].correct += r.correct;
     }
 
     return Object.entries(buckets)
-        .filter(([, s]) => s.attempts >= 3)
-        .map(([pattern, s]) => ({
-            label: formatPattern(pattern),
-            key: pattern,
+        .filter(([, s]) => s.attempts >= minAttempts)
+        .map(([key, s]) => ({
+            label: labelFn(key),
+            key,
             accuracy: s.correct / s.attempts,
             attempts: s.attempts,
             correct: s.correct,
         }))
         .sort((a, b) => a.accuracy - b.accuracy);
+}
+
+/** Accuracy breakdown by phonics pattern. */
+export function getPatternAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+    return accumulateAccuracy(
+        records,
+        (_r, detail) => detail?.pattern ?? 'unknown',
+        formatPattern,
+    );
 }
 
 /** Accuracy breakdown by language of origin. */
 export function getOriginAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
-    const wordMap = getWordMap();
-    const buckets: Record<string, { attempts: number; correct: number }> = {};
-
-    for (const r of Object.values(records)) {
-        const detail = wordMap.get(r.word);
-        const lang = detail ? extractLanguage(detail.etymology) : 'Other';
-        if (!buckets[lang]) buckets[lang] = { attempts: 0, correct: 0 };
-        buckets[lang].attempts += r.attempts;
-        buckets[lang].correct += r.correct;
-    }
-
-    return Object.entries(buckets)
-        .filter(([, s]) => s.attempts >= 3)
-        .map(([lang, s]) => ({
-            label: lang,
-            key: lang,
-            accuracy: s.correct / s.attempts,
-            attempts: s.attempts,
-            correct: s.correct,
-        }))
-        .sort((a, b) => a.accuracy - b.accuracy);
+    return accumulateAccuracy(
+        records,
+        (_r, detail) => detail ? extractLanguage(detail.etymology) : 'Other',
+        k => k,
+    );
 }
 
 /** Accuracy breakdown by semantic theme. */
 export function getThemeAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
-    const wordMap = getWordMap();
-    const buckets: Record<string, { attempts: number; correct: number }> = {};
-
-    for (const r of Object.values(records)) {
-        const detail = wordMap.get(r.word);
-        const theme = detail?.theme ?? 'none';
-        if (theme === 'none') continue;
-        if (!buckets[theme]) buckets[theme] = { attempts: 0, correct: 0 };
-        buckets[theme].attempts += r.attempts;
-        buckets[theme].correct += r.correct;
-    }
-
-    return Object.entries(buckets)
-        .filter(([, s]) => s.attempts >= 3)
-        .map(([theme, s]) => ({
-            label: theme.charAt(0).toUpperCase() + theme.slice(1),
-            key: theme,
-            accuracy: s.correct / s.attempts,
-            attempts: s.attempts,
-            correct: s.correct,
-        }))
-        .sort((a, b) => a.accuracy - b.accuracy);
+    return accumulateAccuracy(
+        records,
+        (_r, detail) => {
+            const theme = detail?.theme ?? 'none';
+            return theme === 'none' ? null : theme;
+        },
+        k => k.charAt(0).toUpperCase() + k.slice(1),
+    );
 }
 
 export interface PracticeRecommendation {
@@ -486,13 +484,7 @@ export function getDifficultyNudge(records: Record<string, WordRecord>): Difficu
         levels[lvl].words++;
     }
 
-    const ORDER = ['level-1', 'level-2', 'level-3', 'level-4', 'level-5', 'level-6', 'level-7', 'level-8', 'level-9', 'level-10'];
-    const LABELS: Record<string, string> = {
-        'level-1': 'Level 1', 'level-2': 'Level 2', 'level-3': 'Level 3',
-        'level-4': 'Level 4', 'level-5': 'Level 5', 'level-6': 'Level 6',
-        'level-7': 'Level 7', 'level-8': 'Level 8', 'level-9': 'Level 9',
-        'level-10': 'Level 10',
-    };
+    const ORDER = Array.from({ length: 10 }, (_, i) => `level-${i + 1}`);
 
     for (let i = 0; i < ORDER.length - 1; i++) {
         const lvl = ORDER[i];
@@ -505,8 +497,8 @@ export function getDifficultyNudge(records: Record<string, WordRecord>): Difficu
             const nextStats = levels[next];
             if (nextStats && nextStats.words >= 10) continue;
             return {
-                currentLabel: LABELS[lvl],
-                nextLabel: LABELS[next],
+                currentLabel: `Level ${lvl.split('-')[1]}`,
+                nextLabel: `Level ${next.split('-')[1]}`,
                 nextCategory: next,
                 accuracy: acc,
                 wordCount: stats.words,
@@ -546,6 +538,127 @@ function patternToCategory(pattern: PhonicsPattern): string | null {
     // Category IDs match pattern names for the primary patterns
     if (PATTERN_LABELS[pattern]) return pattern;
     return null;
+}
+
+// ── Inline error tips (per-word) ────────────────────────────────────────────
+
+export interface InlineErrorTip {
+    /** Short label, e.g. "Double letter" */
+    label: string;
+    /** Specific detail about this word, e.g. "Two 'l's in 'balloon'" */
+    detail: string;
+}
+
+/**
+ * Detect tricky patterns in a word and return a tip for the wrong-answer screen.
+ * Used for both MCQ and typed modes to give targeted feedback.
+ *
+ * For typed mode, pass the misspelling to get diff-aware tips.
+ * For MCQ mode, pass only the correct word to get general tricky-pattern tips.
+ */
+export function getInlineErrorTip(correctWord: string, misspelling?: string): InlineErrorTip | null {
+    const w = correctWord.toLowerCase();
+
+    // If we have a misspelling, analyze the specific error
+    if (misspelling) {
+        const m = misspelling.toLowerCase();
+
+        // Double letter errors
+        const doubleRe = /(.)\1/g;
+        const correctDoubles = new Set([...w.matchAll(doubleRe)].map(x => x[0]));
+        const typedDoubles = new Set([...m.matchAll(doubleRe)].map(x => x[0]));
+        for (const d of correctDoubles) {
+            if (!typedDoubles.has(d)) {
+                return { label: 'Double letter', detail: `"${correctWord}" has double "${d[0]}" — say it slowly to hear both` };
+            }
+        }
+        for (const d of typedDoubles) {
+            if (!correctDoubles.has(d)) {
+                return { label: 'No double needed', detail: `"${correctWord}" only has one "${d[0]}" here` };
+            }
+        }
+
+        // ie/ei confusion
+        if ((w.includes('ie') && m.includes('ei')) || (w.includes('ei') && m.includes('ie'))) {
+            return { label: 'ie vs ei', detail: '"i before e, except after c" — or when sounding like "ay" as in neighbor' };
+        }
+
+        // Silent letter drops
+        const silentPairs = ['kn', 'wr', 'gn', 'mb', 'mn', 'ps', 'pn'];
+        for (const sp of silentPairs) {
+            if (w.includes(sp) && !m.includes(sp) && m.includes(sp[1])) {
+                return { label: 'Silent letter', detail: `The "${sp[0]}" in "${sp}" is silent but must be written` };
+            }
+        }
+
+        // Vowel swap
+        if (w.length === m.length) {
+            const vowels = new Set('aeiou');
+            for (let i = 0; i < w.length; i++) {
+                if (w[i] !== m[i] && vowels.has(w[i]) && vowels.has(m[i])) {
+                    return { label: 'Vowel swap', detail: `It's "${w[i]}" not "${m[i]}" — try sounding out each syllable` };
+                }
+            }
+        }
+    }
+
+    // General tricky-pattern tips (for MCQ mode or when no specific error found)
+    const doubleRe = /(.)\1/g;
+    const doubles = [...w.matchAll(doubleRe)];
+    if (doubles.length > 0) {
+        const d = doubles[0][0];
+        return { label: 'Double letter', detail: `Watch for the double "${d[0]}" in "${correctWord}"` };
+    }
+
+    const silentPairs = ['kn', 'wr', 'gn', 'mb', 'mn', 'ps', 'pn', 'rh', 'wh'];
+    for (const sp of silentPairs) {
+        if (w.startsWith(sp) || w.includes(sp)) {
+            return { label: 'Silent letter', detail: `"${correctWord}" has a silent "${sp[0]}" in "${sp}"` };
+        }
+    }
+
+    if (w.includes('ie') || w.includes('ei')) {
+        const pattern = w.includes('ie') ? 'ie' : 'ei';
+        return { label: 'ie/ei pattern', detail: `"${correctWord}" uses "${pattern}" — watch the order` };
+    }
+
+    if (w.endsWith('tion') || w.endsWith('sion')) {
+        const suffix = w.endsWith('tion') ? '-tion' : '-sion';
+        return { label: 'Tricky ending', detail: `"${correctWord}" ends with "${suffix}"` };
+    }
+
+    return null;
+}
+
+// ── Similar words suggestion ────────────────────────────────────────────────
+
+/**
+ * Find other words the user has gotten wrong that share the same error pattern.
+ * Used on the wrong-answer screen to show "You also struggled with: ..."
+ */
+export function getSimilarMistakeWords(
+    currentWord: string,
+    errorLabel: string,
+    records: Record<string, WordRecord>,
+    limit = 3,
+): string[] {
+    const current = currentWord.toLowerCase();
+    const similar: string[] = [];
+
+    for (const [word, rec] of Object.entries(records)) {
+        if (word === current) continue;
+        if (rec.correct >= rec.attempts) continue; // never got it wrong
+        if (!rec.misspellings || rec.misspellings.length === 0) continue;
+
+        // Check if this word triggers the same error pattern
+        const tip = getInlineErrorTip(word, rec.misspellings[0]);
+        if (tip && tip.label === errorLabel) {
+            similar.push(rec.word);
+            if (similar.length >= limit) break;
+        }
+    }
+
+    return similar;
 }
 
 // ── Coaching cards ──────────────────────────────────────────────────────────

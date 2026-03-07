@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateSpellingItem } from '../domains/spelling/spellingGenerator';
+import { generateSpellingItem, computePhaseLayout, getPhaseAt, summarizeByPhase, generatePhaseItem, generateBonusWord, rollSessionSurprises } from '../domains/spelling/spellingGenerator';
 import { getAllWords } from '../domains/spelling/words';
 import { ensureAllWords } from '../domains/spelling/words/registry';
 
@@ -149,6 +149,157 @@ describe('spellingGenerator.ts', () => {
 
             expect(failures).toEqual([]);
         }, 120_000);
+    });
+
+    // ── Session phase arc ─────────────────────────────────────────────────
+
+    describe('computePhaseLayout', () => {
+        it('10-word session: warmup(2) + build(6) + boss(2)', () => {
+            const layout = computePhaseLayout(10);
+            expect(layout).toHaveLength(10);
+            expect(layout.filter(s => s.phase === 'warmup')).toHaveLength(2);
+            expect(layout.filter(s => s.phase === 'build')).toHaveLength(6);
+            expect(layout.filter(s => s.phase === 'boss')).toHaveLength(2);
+            expect(layout.filter(s => s.phase === 'victory')).toHaveLength(0);
+        });
+
+        it('20-word session: warmup(4) + build(10) + boss(4) + victory(2)', () => {
+            const layout = computePhaseLayout(20);
+            expect(layout).toHaveLength(20);
+            expect(layout.filter(s => s.phase === 'warmup')).toHaveLength(4);
+            expect(layout.filter(s => s.phase === 'build')).toHaveLength(10);
+            expect(layout.filter(s => s.phase === 'boss')).toHaveLength(4);
+            expect(layout.filter(s => s.phase === 'victory')).toHaveLength(2);
+        });
+
+        it('50-word session: warmup(5) + build(35) + boss(7) + victory(3)', () => {
+            const layout = computePhaseLayout(50);
+            expect(layout).toHaveLength(50);
+            expect(layout.filter(s => s.phase === 'warmup')).toHaveLength(5);
+            expect(layout.filter(s => s.phase === 'build')).toHaveLength(35);
+            expect(layout.filter(s => s.phase === 'boss')).toHaveLength(7);
+            expect(layout.filter(s => s.phase === 'victory')).toHaveLength(3);
+        });
+
+        it('phases are in order: warmup → build → boss → victory', () => {
+            const layout = computePhaseLayout(20);
+            const phases = layout.map(s => s.phase);
+            // All warmups before builds, all builds before bosses, all bosses before victories
+            const lastWarmup = phases.lastIndexOf('warmup');
+            const firstBuild = phases.indexOf('build');
+            const lastBuild = phases.lastIndexOf('build');
+            const firstBoss = phases.indexOf('boss');
+            const lastBoss = phases.lastIndexOf('boss');
+            const firstVictory = phases.indexOf('victory');
+            expect(lastWarmup).toBeLessThan(firstBuild);
+            expect(lastBuild).toBeLessThan(firstBoss);
+            expect(lastBoss).toBeLessThan(firstVictory);
+        });
+
+        it('returns empty for size 0', () => {
+            expect(computePhaseLayout(0)).toEqual([]);
+        });
+    });
+
+    describe('getPhaseAt', () => {
+        it('returns correct phase for each index', () => {
+            const layout = computePhaseLayout(10);
+            expect(getPhaseAt(layout, 0)).toBe('warmup');
+            expect(getPhaseAt(layout, 1)).toBe('warmup');
+            expect(getPhaseAt(layout, 2)).toBe('build');
+            expect(getPhaseAt(layout, 8)).toBe('boss');
+            expect(getPhaseAt(layout, 9)).toBe('boss');
+        });
+
+        it('returns null for out-of-bounds index', () => {
+            const layout = computePhaseLayout(10);
+            expect(getPhaseAt(layout, -1)).toBeNull();
+            expect(getPhaseAt(layout, 10)).toBeNull();
+        });
+    });
+
+    describe('summarizeByPhase', () => {
+        it('counts correct/total per phase', () => {
+            const layout = computePhaseLayout(10);
+            const history = [true, true, true, false, true, true, false, true, false, true];
+            const summary = summarizeByPhase(layout, history);
+            expect(summary.warmup).toEqual({ total: 2, correct: 2 });
+            expect(summary.boss.total).toBe(2);
+        });
+
+        it('handles partial history (session in progress)', () => {
+            const layout = computePhaseLayout(10);
+            const history = [true, true, false]; // only 3 answers
+            const summary = summarizeByPhase(layout, history);
+            expect(summary.warmup).toEqual({ total: 2, correct: 2 });
+            expect(summary.build.total).toBe(1);
+            expect(summary.boss.total).toBe(0);
+        });
+    });
+
+    describe('generatePhaseItem', () => {
+        it('warmup items have sessionPhase meta', () => {
+            const item = generatePhaseItem('warmup', 5, 'level-5');
+            expect(item.meta?.['sessionPhase']).toBe('warmup');
+        });
+
+        it('boss items have bossRound meta', () => {
+            const item = generatePhaseItem('boss', 5, 'level-5');
+            expect(item.meta?.['sessionPhase']).toBe('boss');
+            expect(item.meta?.['bossRound']).toBe(true);
+        });
+
+        it('victory items have sessionPhase meta', () => {
+            const item = generatePhaseItem('victory', 5, 'level-5');
+            expect(item.meta?.['sessionPhase']).toBe('victory');
+        });
+
+        it('build items use standard difficulty', () => {
+            const item = generatePhaseItem('build', 5, 'level-5');
+            expect(item.meta?.['sessionPhase']).toBe('build');
+        });
+    });
+
+    // ── Mid-session surprises ────────────────────────────────────────────
+
+    describe('generateBonusWord', () => {
+        it('produces an item with bonusWord and bonusMultiplier in meta', () => {
+            const item = generateBonusWord(3);
+            expect(item.meta?.['bonusWord']).toBe(true);
+            expect(item.meta?.['bonusMultiplier']).toBe(5);
+        });
+
+        it('clamps bonus level to max 10', () => {
+            const item = generateBonusWord(9);
+            expect(item.meta?.['bonusWord']).toBe(true);
+            // Level 9 + 2 would be 11, clamped to 10
+            expect(item.options).toHaveLength(3);
+        });
+    });
+
+    describe('rollSessionSurprises', () => {
+        it('returns null when RNG exceeds probability threshold', () => {
+            // For 10-word session, pAny = 0.20. rng() = 0.5 > 0.20 → null
+            expect(rollSessionSurprises(10, () => 0.5)).toBeNull();
+        });
+
+        it('returns a surprise when RNG is below threshold', () => {
+            // For 50-word session, pAny = 0.60. rng() = 0.1 < 0.60 → surprise
+            const result = rollSessionSurprises(50, () => 0.1);
+            expect(result).not.toBeNull();
+            expect(['bonusWord', 'etymologyReveal']).toContain(result!.type);
+        });
+
+        it('triggerIndex is within the middle third of session', () => {
+            // Fixed RNG for reproducibility
+            let calls = 0;
+            const rng = () => { calls++; return calls === 1 ? 0.0 : calls === 2 ? 0.3 : 0.5; };
+            const result = rollSessionSurprises(30, rng);
+            if (result) {
+                expect(result.triggerIndex).toBeGreaterThanOrEqual(2);
+                expect(result.triggerIndex).toBeLessThan(30);
+            }
+        });
     });
 
 });

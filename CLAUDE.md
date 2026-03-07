@@ -7,7 +7,7 @@ This is a spelling app. **Accuracy of word data is the most important thing.** E
 ```bash
 npm run dev       # Dev server with HMR
 npm run build     # TypeScript check + Vite production build
-npx vitest run    # Run tests once (23 files, 328 tests)
+npx vitest run    # Run tests once (30 files, 480 tests)
 npx tsc --noEmit  # Type-check only
 npm run verify    # Full check: lint + tsc + test + build (runs on pre-push)
 ```
@@ -18,7 +18,7 @@ React 19 + TypeScript 5.9 + Vite 7 + Tailwind CSS 4 + Framer Motion + Firebase (
 ## Architecture at a Glance
 - **10 levels** (Level 1–10), each mapped 1:1 to difficulty 1–10. No K-12 grade names.
 - **Session-based play**: pick level → pick size (10/20/50) → SRS determines mix (max 20% review)
-- **117K word bank**: 2,796 curated + 91,569 pipeline across 9 tiers. Tiers 1–2 eager-loaded, 3–9 lazy via `ensureAllTiers()`.
+- **50K word bank** across 9 tiers. Tiers 1–2 eager-loaded, 3–9 lazy via `ensureAllTiers()`. All definitions and examples quality-audited (20,502 fixes applied).
 - **Leitner SRS**: 5 boxes (0–4). Mastered = `box >= 4 && typedAttempts >= 1`.
 - **Input**: MCQ tap + typed entry. Keyboard: 1/2/3 for options, ↑ skip. No swipe gestures.
 - **Stats**: local-first with Firestore sync. `mergeStats()` takes best of each field.
@@ -39,6 +39,7 @@ See `docs/ARCHITECTURE.md` for full directory layout, data flow, and detailed pa
 | `src/hooks/useWordHistory.ts` | Leitner SRS |
 | `src/hooks/useStats.ts` | Stats persistence + sync |
 | `src/components/Icons.tsx` | Centralized SVG icon library |
+| `src/utils/analytics.ts` | GA4 analytics wrapper (events, user ID, properties, latency) |
 | `scripts/pipeline/export-to-app.cjs` | Pipeline export + child safety filtering |
 
 ## Documentation Map

@@ -270,6 +270,158 @@ function pickRichWord(
     return pool[Math.floor(rng() * pool.length)];
 }
 
+// ── Session phases ──────────────────────────────────────────────────────────
+
+export type SessionPhase = 'warmup' | 'build' | 'boss' | 'victory';
+
+export interface PhaseSlot {
+    phase: SessionPhase;
+    /** Index within the full session (0-based) */
+    index: number;
+}
+
+/**
+ * Compute phase layout for a session of a given size.
+ * 10-word:  warmup(2) → build(6) → boss(2)
+ * 20-word:  warmup(4) → build(10) → boss(4) → victory(2)
+ * 50-word:  warmup(5) → build(35) → boss(7) → victory(3)
+ * Other:    proportional split
+ */
+export function computePhaseLayout(sessionSize: number): PhaseSlot[] {
+    if (sessionSize <= 0) return [];
+
+    let warmup: number, boss: number, victory: number;
+
+    if (sessionSize <= 10) {
+        warmup = 2;
+        boss = 2;
+        victory = 0;
+    } else if (sessionSize <= 20) {
+        warmup = 4;
+        boss = 4;
+        victory = 2;
+    } else {
+        warmup = 5;
+        boss = 7;
+        victory = 3;
+    }
+
+    // Clamp to session size
+    const total = warmup + boss + victory;
+    if (total >= sessionSize) {
+        warmup = Math.min(warmup, Math.floor(sessionSize * 0.2));
+        boss = Math.min(boss, Math.floor(sessionSize * 0.2));
+        victory = 0;
+    }
+    const build = sessionSize - warmup - boss - victory;
+
+    const slots: PhaseSlot[] = [];
+    let idx = 0;
+    for (let i = 0; i < warmup; i++) slots.push({ phase: 'warmup', index: idx++ });
+    for (let i = 0; i < build; i++) slots.push({ phase: 'build', index: idx++ });
+    for (let i = 0; i < boss; i++) slots.push({ phase: 'boss', index: idx++ });
+    for (let i = 0; i < victory; i++) slots.push({ phase: 'victory', index: idx++ });
+    return slots;
+}
+
+/**
+ * Get the session phase for a given question index.
+ * Returns null if not in a phased session.
+ */
+export function getPhaseAt(layout: PhaseSlot[], questionIndex: number): SessionPhase | null {
+    if (questionIndex < 0 || questionIndex >= layout.length) return null;
+    return layout[questionIndex].phase;
+}
+
+/**
+ * Count results per phase from a layout and an answer history array.
+ */
+export function summarizeByPhase(
+    layout: PhaseSlot[],
+    answerHistory: boolean[],
+): Record<SessionPhase, { total: number; correct: number }> {
+    const summary: Record<SessionPhase, { total: number; correct: number }> = {
+        warmup: { total: 0, correct: 0 },
+        build: { total: 0, correct: 0 },
+        boss: { total: 0, correct: 0 },
+        victory: { total: 0, correct: 0 },
+    };
+    for (let i = 0; i < Math.min(layout.length, answerHistory.length); i++) {
+        const phase = layout[i].phase;
+        summary[phase].total++;
+        if (answerHistory[i]) summary[phase].correct++;
+    }
+    return summary;
+}
+
+/**
+ * Generate a spelling item for a specific session phase.
+ * - warmup: pulls from 1 tier below current level (easier)
+ * - build: standard difficulty at current level
+ * - boss: 1 tier above current level, typed-only flag in meta
+ * - victory: pulls from 1 tier below (easy, end on high note)
+ */
+export function generatePhaseItem(
+    phase: SessionPhase,
+    level: number,
+    category: string,
+    rng: () => number = Math.random,
+): EngineItem {
+    const clampedLevel = Math.max(1, Math.min(10, level));
+
+    switch (phase) {
+        case 'warmup': {
+            const easyLevel = Math.max(1, clampedLevel - 1);
+            const cat = `level-${easyLevel}`;
+            const item = generateSpellingItem(easyLevel, cat, rng);
+            item.meta = { ...item.meta, sessionPhase: 'warmup' };
+            return item;
+        }
+        case 'build': {
+            const item = generateSpellingItem(clampedLevel, category, rng);
+            item.meta = { ...item.meta, sessionPhase: 'build' };
+            return item;
+        }
+        case 'boss': {
+            const hardLevel = Math.min(10, clampedLevel + 1);
+            const cat = `level-${hardLevel}`;
+            const item = generateSpellingItem(hardLevel, cat, rng);
+            item.meta = { ...item.meta, sessionPhase: 'boss', bossRound: true, bonusMultiplier: 2 };
+            return item;
+        }
+        case 'victory': {
+            const easyLevel = Math.max(1, clampedLevel - 1);
+            const cat = `level-${easyLevel}`;
+            const item = generateSpellingItem(easyLevel, cat, rng);
+            item.meta = { ...item.meta, sessionPhase: 'victory' };
+            return item;
+        }
+    }
+}
+
+/**
+ * Generate a spelling item for warmup/victory using SRS data.
+ * Pulls known words from the student's Leitner boxes:
+ * - warmup: box 3+ (familiar/mastered) — confidence boosters
+ * - victory: box 4 (mastered) — end on a high note
+ * Returns null if no suitable SRS words are available.
+ */
+export function generateSRSPhaseItem(
+    phase: 'warmup' | 'victory',
+    category: string,
+    srsWords: { word: string; box: number }[],
+    rng: () => number = Math.random,
+): EngineItem | null {
+    const minBox = phase === 'warmup' ? 3 : 4;
+    const candidates = srsWords.filter(w => w.box >= minBox);
+    if (candidates.length === 0) return null;
+    const pick = candidates[Math.floor(rng() * candidates.length)];
+    const item = generateItemForWord(pick.word, category, rng);
+    if (!item) return null;
+    item.meta = { ...item.meta, sessionPhase: phase, srsReview: true };
+    return item;
+}
+
 // ── Public API ────────────────────────────────────────────────────────────────
 
 /**
@@ -347,4 +499,80 @@ export function generateSpellingItem(
             ...(richWord.etymology ? { etymology: richWord.etymology } : {}),
         },
     };
+}
+
+// ── Mid-session surprises ────────────────────────────────────────────────────
+
+export type SurpriseType = 'bonusWord' | 'etymologyReveal' | 'speedBurst' | 'lootDrop';
+
+export interface SessionSurprise {
+    type: SurpriseType;
+    /** The question index (0-based) at which this surprise triggers */
+    triggerIndex: number;
+}
+
+/**
+ * Roll for session surprises at session start.
+ * At most 1 surprise per session. Probability scales with session size.
+ *
+ * 10-word session: 20% chance of any surprise
+ * 20-word session: 40% chance
+ * 50-word session: 60% chance
+ */
+export function rollSessionSurprises(
+    sessionSize: number,
+    rng: () => number = Math.random,
+): SessionSurprise | null {
+    // Probability of getting a surprise at all
+    const pAny = Math.min(0.6, sessionSize * 0.02);
+    if (rng() > pAny) return null;
+
+    // Pick surprise type: 25% bonus word, 35% etymology reveal, 25% speed burst, 15% loot drop
+    const roll = rng();
+    const type: SurpriseType = roll < 0.25 ? 'bonusWord' : roll < 0.60 ? 'etymologyReveal' : roll < 0.85 ? 'speedBurst' : 'lootDrop';
+
+    // Pick a trigger index in the middle third of the session (not too early, not too late)
+    const third = Math.floor(sessionSize / 3);
+    const minIdx = Math.max(2, third);
+    const maxIdx = Math.min(sessionSize - 2, third * 2);
+    const triggerIndex = minIdx + Math.floor(rng() * (maxIdx - minIdx + 1));
+
+    return { type, triggerIndex };
+}
+
+/**
+ * Generate a bonus word — 2 tiers above current level.
+ * Meta includes `bonusWord: true` flag for golden UI treatment.
+ */
+export function generateBonusWord(
+    level: number,
+    rng: () => number = Math.random,
+): EngineItem {
+    const bonusLevel = Math.min(10, level + 2);
+    const cat = `level-${bonusLevel}`;
+    const item = generateSpellingItem(bonusLevel, cat, rng);
+    item.meta = {
+        ...item.meta,
+        bonusWord: true,
+        bonusMultiplier: 5,
+    };
+    return item;
+}
+
+/**
+ * Generate 3 easy MCQ items for a Speed Burst surprise.
+ * Words are 1 tier below current level for quick answering.
+ * Each carries `speedBurst: true` and 3x XP multiplier.
+ */
+export function generateSpeedBurst(
+    level: number,
+    rng: () => number = Math.random,
+): EngineItem[] {
+    const easyLevel = Math.max(1, level - 1);
+    const cat = `level-${easyLevel}`;
+    return Array.from({ length: 3 }, () => {
+        const item = generateSpellingItem(easyLevel, cat, rng);
+        item.meta = { ...item.meta, speedBurst: true, bonusMultiplier: 3 };
+        return item;
+    });
 }

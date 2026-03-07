@@ -60,9 +60,6 @@ export type SpellingGroup = 'daily' | 'basic' | 'core' | 'advanced' | 'expert' |
 export type Level = 'level-1' | 'level-2' | 'level-3' | 'level-4' | 'level-5'
     | 'level-6' | 'level-7' | 'level-8' | 'level-9' | 'level-10';
 
-/** @deprecated Use Level instead */
-export type GradeLevel = Level;
-
 export interface LevelConfig {
     id: Level;
     label: string;
@@ -70,9 +67,6 @@ export interface LevelConfig {
     /** Minimum adaptive difficulty level (1-10). Equals the level number. */
     minDifficultyLevel: number;
 }
-
-/** @deprecated Use LevelConfig instead */
-export type GradeConfig = LevelConfig;
 
 // ── Category entries ──────────────────────────────────────────────────────────
 
@@ -664,6 +658,3 @@ export function getLevelConfig(level: Level): LevelConfig {
     return LEVELS.find(g => g.id === level) ?? LEVELS[0];
 }
 
-/** @deprecated Use getLevelConfig instead */
-// eslint-disable-next-line react-refresh/only-export-components
-export const getGradeConfig = getLevelConfig;

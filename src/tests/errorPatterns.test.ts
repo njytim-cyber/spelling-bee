@@ -8,6 +8,7 @@ import {
     getImprovements,
     getStudyPlan,
     getDifficultyNudge,
+    getInlineErrorTip,
 } from '../utils/errorPatterns';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -270,5 +271,62 @@ describe('getDifficultyNudge', () => {
             { word: 'a', attempts: 5, correct: 5 },
         ]);
         expect(getDifficultyNudge(records)).toBeNull();
+    });
+});
+
+// ── getInlineErrorTip ───────────────────────────────────────────────────────
+
+describe('getInlineErrorTip', () => {
+    it('detects double letter error when misspelling drops a double', () => {
+        const tip = getInlineErrorTip('balloon', 'balon');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Double letter');
+    });
+
+    it('detects ie/ei confusion', () => {
+        const tip = getInlineErrorTip('receive', 'recieve');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('ie vs ei');
+    });
+
+    it('detects silent letter drop', () => {
+        const tip = getInlineErrorTip('knight', 'night');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Silent letter');
+    });
+
+    it('detects vowel swap', () => {
+        const tip = getInlineErrorTip('definite', 'defanite');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Vowel swap');
+    });
+
+    it('returns general double-letter tip for MCQ mode (no misspelling)', () => {
+        const tip = getInlineErrorTip('balloon');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Double letter');
+    });
+
+    it('returns silent letter tip for MCQ mode (no misspelling)', () => {
+        const tip = getInlineErrorTip('knight');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Silent letter');
+    });
+
+    it('returns ie/ei tip for MCQ mode', () => {
+        const tip = getInlineErrorTip('receive');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('ie/ei pattern');
+    });
+
+    it('returns tricky ending tip for -tion words', () => {
+        const tip = getInlineErrorTip('nation');
+        expect(tip).not.toBeNull();
+        expect(tip!.label).toBe('Tricky ending');
+    });
+
+    it('returns null for simple words with no tricky patterns', () => {
+        const tip = getInlineErrorTip('cat');
+        expect(tip).toBeNull();
     });
 });

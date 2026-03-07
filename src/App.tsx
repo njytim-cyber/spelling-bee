@@ -22,6 +22,14 @@ import { ReloadPrompt } from './components/ReloadPrompt';
 import { onErrorToast } from './utils/errorToast';
 import { UserProvider, useUser } from './contexts/UserContext';
 import { useAppModals } from './hooks/useAppModals';
+import { useFriends } from './hooks/useFriends';
+import { useSameWordChallenge } from './hooks/useSameWordChallenge';
+import { FriendsModal } from './components/FriendsModal';
+import { ChallengeCompareModal } from './components/ChallengeCompareModal';
+import { FREE_FRIEND_CAP, PREMIUM_FRIEND_CAP, FREE_DAILY_CHALLENGES } from './config';
+import { rollLootDrop } from './utils/lootDrop';
+import { LootDropCelebration } from './components/LootDropCelebration';
+import { recordSurprise } from './utils/surpriseHistory';
 /** Retry a dynamic import once on chunk-load failure (Cloudflare Pages cache busting) */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Promise<T> {
@@ -49,7 +57,8 @@ import { useLocalState } from './hooks/useLocalState';
 import { useFirebaseAuth } from './hooks/useFirebaseAuth';
 import { collection, query, where, onSnapshot, doc, updateDoc, orderBy, limit } from 'firebase/firestore';
 import { db } from './utils/firebase';
-import { generateSpellingItem, generateItemForWord } from './domains/spelling/spellingGenerator';
+import { generateSpellingItem, generateItemForWord, computePhaseLayout, getPhaseAt, summarizeByPhase, generatePhaseItem, generateSRSPhaseItem, rollSessionSurprises, generateBonusWord, generateSpeedBurst } from './domains/spelling/spellingGenerator';
+import type { SessionPhase, PhaseSlot, SessionSurprise } from './domains/spelling/spellingGenerator';
 import { generateVocabItem } from './domains/spelling/vocabGenerator';
 import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
 import { generateEtymologyItem } from './domains/spelling/etymologyGenerator';
@@ -76,7 +85,8 @@ import { DEFAULT_GAME_CONFIG, type EngineItem } from './engine/domain';
 import type { AnyCertificateData } from './utils/certificateGenerator';
 import { STORAGE_KEYS, FIRESTORE, NAV_TABS, FREE_DAILY_REVIEW_CAP, REFERRAL_MILESTONES, STREAK_MILESTONES } from './config';
 import { appendReferralFooter, shareOrCopy } from './utils/shareHelper';
-import { trackEvent } from './utils/analytics';
+import { trackEvent, trackScreenView, setAnalyticsUserProperties } from './utils/analytics';
+import { measureRetention } from './utils/retentionTracker';
 import { ensureAllWords, ensureTiersForLevel, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
@@ -86,14 +96,23 @@ import { ChallengeBanner } from './components/ChallengeBanner';
 import { generateWeeklyTournament } from './utils/weeklyTournament';
 import { useUnlockTracker } from './hooks/useUnlockTracker';
 import { UnlockCelebration } from './components/UnlockCelebration';
+import { MasteryCelebration } from './components/MasteryCelebration';
 import { Confetti } from './components/Confetti';
+import { getRarityConfig } from './utils/rarity';
+import { getWordMap } from './domains/spelling/words';
+import { CURATED_ETYMOLOGIES } from './data/curatedEtymologies';
 
 type Tab = 'game' | 'path' | 'league' | 'me';
 const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
-const GAME_CONFIG = { ...DEFAULT_GAME_CONFIG, wrongAnswerTapToDismiss: true };
+const GAME_CONFIG = { ...DEFAULT_GAME_CONFIG, wrongAnswerTapToDismiss: true, finiteTypeIds: ['daily', 'challenge', 'review', 'weakness-practice'] };
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
-function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]) {
+function makeGenerateItem(
+  customPool?: import('./types/customList').CustomWord[],
+  getPhase?: () => SessionPhase | null,
+  getSurprise?: () => { surprise: SessionSurprise | null; index: number },
+  getSRSWords?: () => { word: string; box: number }[],
+) {
   return (
     difficulty: number,
     categoryId: string,
@@ -105,6 +124,33 @@ function makeGenerateItem(customPool?: import('./types/customList').CustomWord[]
     if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, rng);
     if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, rng);
     if (categoryId === 'etymology') return generateEtymologyItem(difficulty, categoryId, rng);
+
+    // Check for surprise at this index
+    const surpriseInfo = getSurprise?.();
+    if (surpriseInfo?.surprise && surpriseInfo.index === surpriseInfo.surprise.triggerIndex && categoryId.startsWith('level-')) {
+      const levelNum = parseInt(categoryId.replace('level-', ''), 10) || difficulty;
+      if (surpriseInfo.surprise.type === 'bonusWord') {
+        return generateBonusWord(levelNum, rng);
+      }
+      if (surpriseInfo.surprise.type === 'speedBurst') {
+        // Speed burst items are injected via queue in App state — generate a normal item here
+        // The first speed burst item will be swapped in by the queue logic
+        const burstItems = generateSpeedBurst(levelNum, rng);
+        return burstItems[0];
+      }
+    }
+
+    // Session phase arc — adjust word difficulty based on phase
+    const phase = getPhase?.();
+    if (phase && categoryId.startsWith('level-')) {
+      const levelNum = parseInt(categoryId.replace('level-', ''), 10) || difficulty;
+      // SRS-aware warmup/victory: pull from mastered/familiar boxes when available
+      if ((phase === 'warmup' || phase === 'victory') && getSRSWords) {
+        const srsItem = generateSRSPhaseItem(phase, categoryId, getSRSWords(), rng);
+        if (srsItem) return srsItem;
+      }
+      return generatePhaseItem(phase, levelNum, categoryId, rng);
+    }
     return generateSpellingItem(difficulty, categoryId, rng);
   };
 }
@@ -314,6 +360,13 @@ function AppInner() {
   // ── Multiplayer ──
   const mp = useMultiplayerRoom(uid, user?.displayName ?? 'Player');
 
+  // ── Friends ──
+  const friendsState = useFriends(uid, user?.displayName ?? 'Player', avatarConfig, activeTheme);
+
+  // ── Same-Word Challenges ──
+  const challengeState = useSameWordChallenge(uid, user?.displayName ?? 'Player');
+  const [viewingChallenge, setViewingChallenge] = useState<import('./hooks/useSameWordChallenge').ChallengeInfo | null>(null);
+
   // ── Custom Word Lists ──
   const customLists = useCustomLists(uid, isPremium);
   const [activeCustomListId, setActiveCustomListId] = useState<string | null>(null);
@@ -339,6 +392,9 @@ function AppInner() {
 
   // ── Certificate preview modal ──
   const [certificateData, setCertificateData] = useState<AnyCertificateData | null>(null);
+
+  // ── Friends modal ──
+  const [showFriendsModal, setShowFriendsModal] = useState(false);
 
   // ── Trial banner (dismissed per session) ──
   const [trialBannerDismissed, setTrialBannerDismissed] = useState(false);
@@ -397,6 +453,19 @@ function AppInner() {
   const [sessionSize, setSessionSize] = useState<number | null>(null);
   const [sessionAnswered, setSessionAnswered] = useState(0);
   const sessionComplete = sessionSize !== null && sessionAnswered >= sessionSize;
+
+  // ── Session phase arc ──
+  const [phaseLayout, setPhaseLayout] = useState<PhaseSlot[]>([]);
+  const currentPhase: SessionPhase | null = phaseLayout.length > 0 ? getPhaseAt(phaseLayout, sessionAnswered) : null;
+
+  // ── Mid-session surprises ──
+  const [sessionSurprise, setSessionSurprise] = useState<SessionSurprise | null>(null);
+  const [showEtymologyReveal, setShowEtymologyReveal] = useState<{ word: string; etymology: string } | null>(null);
+  const [speedBurstQueue, setSpeedBurstQueue] = useState<EngineItem[]>([]);
+  const [speedBurstTimer, setSpeedBurstTimer] = useState<number>(0);
+  const speedBurstTimerRef = useRef<ReturnType<typeof setInterval>>(undefined);
+  const [weaknessPracticeItems, setWeaknessPracticeItems] = useState<EngineItem[]>([]);
+  const [showLootDrop, setShowLootDrop] = useState<{ id: string; name: string } | null>(null);
 
   const handleDialectChange = useCallback(async (d: Dialect) => {
     onDialectChange(d);
@@ -504,10 +573,12 @@ function AppInner() {
 
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string; mode?: 'mcq' | 'typed' }>>([]);
+  const sessionStartRef = useRef(0);
   const prevQuestionTypeRef = useRef(questionType);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
+      sessionStartRef.current = 0;
       prevQuestionTypeRef.current = questionType;
     }
   }, [questionType]);
@@ -516,6 +587,11 @@ function AppInner() {
   questionTypeRef.current = questionType;
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number, typed?: string) => {
+    // Start session timer on first answer
+    if (sessionStartRef.current === 0) {
+      sessionStartRef.current = Date.now();
+      trackEvent('session_start', { level: questionTypeRef.current, session_size: sessionSize ?? 0 });
+    }
     const word = item.meta?.['word'] as string | undefined;
     if (word) {
       const mode = typed !== undefined ? 'typed' as const : 'mcq' as const;
@@ -526,9 +602,64 @@ function AppInner() {
     }
     // Track session progress
     if (sessionSize !== null) setSessionAnswered(n => n + 1);
+    // Etymology reveal surprise — show "Did you know?" after correct answer at trigger index
+    if (correct && sessionSurpriseRef.current?.type === 'etymologyReveal'
+        && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex) {
+      const levelNum = parseInt((questionType as string).replace('level-', ''), 10) || 1;
+      // Prefer curated fun facts over raw Wiktionary strings
+      const curated = CURATED_ETYMOLOGIES.filter(e => e.minLevel <= levelNum);
+      if (curated.length > 0) {
+        const pick = curated[Math.floor(Math.random() * curated.length)];
+        setShowEtymologyReveal({ word: pick.word, etymology: pick.fact });
+      } else {
+        const etym = item.meta?.['etymology'] as string | undefined;
+        const w = item.meta?.['word'] as string | undefined;
+        if (etym && w) setShowEtymologyReveal({ word: w, etymology: etym });
+      }
+    }
+    // Speed Burst surprise — trigger 3 rapid MCQ questions with timer
+    if (sessionSurpriseRef.current?.type === 'speedBurst'
+        && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex
+        && speedBurstQueue.length === 0) {
+      const levelNum = parseInt((questionType as string).replace('level-', ''), 10) || 1;
+      const burstItems = generateSpeedBurst(levelNum);
+      setSpeedBurstQueue(burstItems);
+      setSpeedBurstTimer(5);
+      // Start countdown
+      speedBurstTimerRef.current = setInterval(() => {
+        setSpeedBurstTimer(prev => {
+          if (prev <= 1) {
+            clearInterval(speedBurstTimerRef.current);
+            setSpeedBurstQueue([]);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    // Speed Burst: pop completed item from queue
+    if (item.meta?.['speedBurst'] && speedBurstQueue.length > 0) {
+      setSpeedBurstQueue(prev => prev.slice(1));
+      if (speedBurstQueue.length <= 1) {
+        // Last burst item answered — clear timer
+        clearInterval(speedBurstTimerRef.current);
+        setSpeedBurstTimer(0);
+      }
+    }
+    // Loot Drop surprise — roll for a random unowned chalk theme
+    if (sessionSurpriseRef.current?.type === 'lootDrop'
+        && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex) {
+      const drop = rollLootDrop();
+      if (drop) setShowLootDrop(drop);
+    }
+    // Track surprise occurrence for repetition avoidance
+    if (sessionSurpriseRef.current
+        && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex) {
+      recordSurprise(sessionSurpriseRef.current.type);
+    }
     // Dismiss score help on first answer
     setShowScoreHelp(false);
-  }, [recordAttempt, sessionSize, incrementReviewCount]);
+  }, [recordAttempt, sessionSize, incrementReviewCount, speedBurstQueue, questionType]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
   const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
@@ -542,8 +673,28 @@ function AppInner() {
       .filter((l): l is NonNullable<typeof l> => l != null)
       .map(l => ({ id: l.id, name: l.name, wordCount: l.words.length }));
   }, [activeProfileId, getAssignedLists, customLists]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const generateItem = useMemo(() => makeGenerateItem(activeCustomList?.words), [wordRegistryVersion, activeCustomList]);
+  // Phase + surprise refs so the memoized generator can read current state without re-creating
+  const currentPhaseRef = useRef<SessionPhase | null>(null);
+  currentPhaseRef.current = currentPhase;
+  const sessionSurpriseRef = useRef<SessionSurprise | null>(null);
+  sessionSurpriseRef.current = sessionSurprise;
+  const sessionAnsweredRef = useRef(0);
+  sessionAnsweredRef.current = sessionAnswered;
+  const wordRecordsRef = useRef(wordRecords);
+  wordRecordsRef.current = wordRecords;
+  const generateItem = useMemo(
+    () => makeGenerateItem(
+      activeCustomList?.words,
+      () => currentPhaseRef.current,
+      () => ({ surprise: sessionSurpriseRef.current, index: sessionAnsweredRef.current }),
+      () => Object.values(wordRecordsRef.current).map(r => ({ word: r.word, box: r.box })),
+    ),
+    // wordRegistryVersion intentionally triggers refresh when async tiers load
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [wordRegistryVersion, activeCustomList],
+  );
+  const weaknessPracticeRef = useRef(weaknessPracticeItems);
+  weaknessPracticeRef.current = weaknessPracticeItems;
   const generateFiniteSet = useMemo(() => {
     const baseFn = makeGenerateFiniteSet(dailySize);
     return (categoryId: string, challengeId: string | null): EngineItem[] => {
@@ -555,10 +706,14 @@ function AppInner() {
           return item ?? generateSpellingItem(3, r.category || 'cvc');
         });
       }
+      // Weakness practice: serve pre-built item set
+      if (categoryId === 'weakness-practice' && weaknessPracticeRef.current.length > 0) {
+        return weaknessPracticeRef.current;
+      }
       return baseFn(categoryId, challengeId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cappedReviewQueue, wordRegistryVersion, dailySize]);
+  }, [cappedReviewQueue, wordRegistryVersion, dailySize, weaknessPracticeItems]);
 
   // ── Level config (needed before useGameLoop) ──
   const levelConfig = useMemo(
@@ -678,6 +833,36 @@ function AppInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // ── GA4 user properties for segmentation ──
+  useEffect(() => {
+    const masteredBucket = masteredCount === 0 ? '0'
+      : masteredCount <= 10 ? '1-10'
+      : masteredCount <= 50 ? '11-50'
+      : masteredCount <= 200 ? '51-200' : '201+';
+    const streakBucket = stats.dayStreak === 0 ? '0'
+      : stats.dayStreak <= 3 ? '1-3'
+      : stats.dayStreak <= 7 ? '4-7'
+      : stats.dayStreak <= 14 ? '8-14'
+      : stats.dayStreak <= 30 ? '15-30' : '31+';
+    const sessionsBucket = stats.sessionsPlayed === 0 ? '0'
+      : stats.sessionsPlayed <= 5 ? '1-5'
+      : stats.sessionsPlayed <= 20 ? '6-20'
+      : stats.sessionsPlayed <= 50 ? '21-50' : '51+';
+    setAnalyticsUserProperties({
+      level: level || '',
+      dialect: dialect || '',
+      is_premium: isPremium ? 'true' : 'false',
+      words_mastered_bucket: masteredBucket,
+      day_streak_bucket: streakBucket,
+      sessions_played_bucket: sessionsBucket,
+    });
+  }, [level, dialect, isPremium, masteredCount, stats.dayStreak, stats.sessionsPlayed]);
+
+  // ── Word retention measurement (once per day) ──
+  useEffect(() => {
+    measureRetention(wordRecords);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const currentProblem = problems[0];
   const isFirstQuestion = totalAnswered === 0;
   const [timedToast] = useTimedFlag(3000);
@@ -698,6 +883,33 @@ function AppInner() {
       : 0,
     [answerHistory]
   );
+
+  // ── Phase transition Bee Buddy messages ──
+  const prevPhaseRef = useRef<SessionPhase | null>(null);
+  const [phaseMessage, setPhaseMessage] = useState<string | null>(null);
+  useEffect(() => {
+    if (currentPhase && currentPhase !== prevPhaseRef.current) {
+      prevPhaseRef.current = currentPhase;
+      const msgs: Record<SessionPhase, string> = {
+        warmup: "Let's warm up!",
+        build: 'Here we go!',
+        boss: 'BOSS TIME!',
+        victory: 'Victory lap!',
+      };
+      setPhaseMessage(msgs[currentPhase]);
+      const t = setTimeout(() => setPhaseMessage(null), 2500);
+      return () => clearTimeout(t);
+    }
+    if (!currentPhase) prevPhaseRef.current = null;
+  }, [currentPhase]);
+
+  // ── Session complete phase summary (computed eagerly so no IIFE in JSX) ──
+  const sessionPhaseSummary = useMemo(() => {
+    if (phaseLayout.length === 0) return null;
+    return summarizeByPhase(phaseLayout, answerHistory);
+  }, [phaseLayout, answerHistory]);
+  const bossSummary = sessionPhaseSummary?.boss;
+  const bossFlawless = bossSummary && bossSummary.total > 0 && bossSummary.correct === bossSummary.total;
 
   // ── Accuracy gate (anti-random-tap speed bump) ──
   const [accuracyGateDismissed, setAccuracyGateDismissed] = useState(0); // tracks the totalAnswered at last dismiss
@@ -761,6 +973,7 @@ function AppInner() {
   const prevTab = useRef<Tab>('game');
   useEffect(() => {
     prevTab.current = activeTab;
+    trackScreenView(activeTab);
   }, [activeTab]);
 
   // ── Achievements ──
@@ -890,22 +1103,45 @@ function AppInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [streak]);
 
-  // ── Mastery graduation toast (word reached box 4) ──
+  // ── Mastery celebration (rarity-aware) ──
   const prevMasteredRef = useRef(masteredCount);
   const [masteryToast, fireMasteryToast] = useTimedMessage(3000);
+  const [celebrationWord, setCelebrationWord] = useState<import('./domains/spelling/words/types').SpellingWord | null>(null);
+  const [celebrationMasteredAt, setCelebrationMasteredAt] = useState<number>(0);
   useEffect(() => {
     const prev = prevMasteredRef.current;
     prevMasteredRef.current = masteredCount;
     if (masteredCount > prev && prev > 0) {
+      // Track mastery milestones for proof infrastructure
+      const milestones = [10, 25, 50, 100, 250, 500, 1000];
+      for (const m of milestones) {
+        if (prev < m && masteredCount >= m) {
+          trackEvent('mastery_milestone', { milestone: m, total_mastered: masteredCount });
+          break;
+        }
+      }
       const mastered = Object.values(wordRecords)
         .filter(r => r.box >= 4 && (r.typedAttempts ?? 0) >= 1)
         .sort((a, b) => b.lastCorrect - a.lastCorrect);
-      const word = mastered[0]?.word;
-      fireMasteryToast(word ? `🎓 "${word}" mastered!` : '🎓 Word mastered!');
+      const wordKey = mastered[0]?.word;
+      if (!wordKey) { fireMasteryToast('🎓 Word mastered!'); return; }
+      const wm = getWordMap();
+      const sw = wm.get(wordKey);
+      if (!sw) { fireMasteryToast(`🎓 "${wordKey}" mastered!`); return; }
+      const rc = getRarityConfig(sw.difficulty);
+      if (rc.rarity === 'rare' || rc.rarity === 'epic' || rc.rarity === 'legendary') {
+        // Full-screen celebration for rare+ words
+        setCelebrationWord(sw);
+        setCelebrationMasteredAt(mastered[0].lastCorrect);
+      } else {
+        // Enhanced toast for common/uncommon
+        fireMasteryToast(`${rc.emoji} "${wordKey}" collected! ${rc.label}`);
+      }
     }
   }, [masteredCount, wordRecords, fireMasteryToast]);
 
   const pendingTabRef = useRef<Tab | null>(null);
+  const { updateMyActivity } = friendsState;
   const handleTabChange = useCallback((tab: Tab) => {
     // If summary is already showing, just update the destination
     if (showSummary) {
@@ -917,13 +1153,21 @@ function AppInner() {
     if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
       recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
       recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode, timedMode ? timedVariant : undefined);
-      trackEvent('session_complete', { words: totalAnswered, accuracy: totalAnswered > 0 ? Math.round(totalCorrect / totalAnswered * 100) : 0, level: level || '' });
+      updateMyActivity(new Date().toISOString().slice(0, 10));
+      trackEvent('session_complete', {
+        words: totalAnswered,
+        accuracy: totalAnswered > 0 ? Math.round(totalCorrect / totalAnswered * 100) : 0,
+        level: level || '',
+        duration_sec: sessionStartRef.current ? Math.round((Date.now() - sessionStartRef.current) / 1000) : 0,
+        session_size: sessionSize ?? 0,
+        completed: sessionSize !== null && totalAnswered >= sessionSize,
+      });
       setShowSummary(true);
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
     }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, timedVariant, setShowSummary, showSummary, guidedMode, level]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, timedVariant, setShowSummary, showSummary, guidedMode, level, updateMyActivity, sessionSize]);
 
   // Memoize BottomNav tabs to avoid new array each render
   const navTabs = useMemo(
@@ -948,6 +1192,7 @@ function AppInner() {
     const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);
     setShowOnboarding(false);
+    localStorage.setItem(STORAGE_KEYS.onboarded, '1');
     trackEvent('onboarding_complete', { level: l });
   }, [onDialectChange, onLevelChange, setQuestionType, setShowOnboarding]);
 
@@ -1294,12 +1539,45 @@ function AppInner() {
                   {currentProblem && (
                     <motion.div
                       key={currentProblem.id}
-                      className="flex-1 flex flex-col min-h-0 relative"
+                      className={`flex-1 flex flex-col min-h-0 relative${currentPhase === 'boss' ? ' ring-1 ring-[var(--color-gold)]/30 rounded-xl' : ''}${currentProblem?.meta?.['speedBurst'] ? ' ring-1 ring-amber-400/30 rounded-xl' : ''}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
                     >
+                      {/* Session phase indicator + bonus/speed burst badge */}
+                      {(currentPhase || !!currentProblem?.meta?.['bonusWord'] || !!currentProblem?.meta?.['speedBurst']) && (
+                        <div className="flex justify-center py-1 gap-2">
+                          {currentPhase && (
+                            <span className={`text-[10px] ui px-2 py-0.5 rounded-full ${
+                              currentPhase === 'warmup' ? 'text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5' :
+                              currentPhase === 'build' ? 'text-[rgb(var(--color-fg))]/50 bg-[rgb(var(--color-fg))]/5' :
+                              currentPhase === 'boss' ? 'text-[var(--color-gold)] bg-[var(--color-gold)]/10 font-bold' :
+                              'text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5'
+                            }`}>
+                              {currentPhase === 'warmup' ? 'Warmup' :
+                               currentPhase === 'build' ? `${sessionAnswered + 1}/${sessionSize}` :
+                               currentPhase === 'boss' ? 'BOSS ROUND' :
+                               'Victory Lap'}
+                            </span>
+                          )}
+                          {!!currentProblem?.meta?.['bonusWord'] && (
+                            <span className="text-[10px] ui px-2 py-0.5 rounded-full text-[var(--color-gold)] bg-[var(--color-gold)]/15 font-bold animate-pulse">
+                              BONUS — 5x XP!
+                            </span>
+                          )}
+                          {!!currentProblem?.meta?.['bossRound'] && !currentProblem?.meta?.['bonusWord'] && (
+                            <span className="text-[10px] ui px-2 py-0.5 rounded-full text-[var(--color-gold)] bg-[var(--color-gold)]/10 font-bold">
+                              2x XP
+                            </span>
+                          )}
+                          {!!currentProblem?.meta?.['speedBurst'] && (
+                            <span className="text-[10px] ui px-2 py-0.5 rounded-full text-amber-400 bg-amber-400/15 font-bold animate-pulse">
+                              SPEED BURST — 3x XP! {speedBurstTimer > 0 && `(${speedBurstTimer}s)`}
+                            </span>
+                          )}
+                        </div>
+                      )}
                       <ProblemView
                         problem={currentProblem}
                         frozen={frozen}
@@ -1309,8 +1587,9 @@ function AppInner() {
                         onAnswer={handleAnswer}
                         onSkip={handleSkip}
                         level={levelConfig?.minDifficultyLevel ?? 1}
-                        guidedMode={guidedMode}
+                        guidedMode={guidedMode || !!currentProblem?.meta?.['bossRound']}
                         onTypedAnswer={handleTypedAnswer}
+                        wordRecords={wordRecords}
                       />
                     </motion.div>
                   )}
@@ -1352,23 +1631,100 @@ function AppInner() {
               <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/70">
                 <div className="w-[300px] bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-gold)]/30 text-center">
                   <div className="text-2xl chalk text-[var(--color-gold)] font-bold mb-2">Session Complete!</div>
+                  {bossFlawless && (
+                    <div className="text-xs ui text-[var(--color-gold)] mb-2">Flawless boss round!</div>
+                  )}
+                  {bossSummary && bossSummary.total > 0 && !bossFlawless && (
+                    <div className="text-xs ui text-[rgb(var(--color-fg))]/50 mb-2">You survived the boss round!</div>
+                  )}
                   <div className="text-sm ui text-[rgb(var(--color-fg))]/60 mb-1">
                     {sessionSize} words practiced
                   </div>
-                  <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-4">
+                  <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">
                     {totalCorrect} correct out of {totalAnswered}
                   </div>
+                  {/* Phase breakdown */}
+                  {sessionPhaseSummary && (
+                    <div className="flex justify-center gap-3 mb-4 text-[10px] ui text-[rgb(var(--color-fg))]/50">
+                      {sessionPhaseSummary.warmup.total > 0 && (
+                        <div className="flex flex-col items-center">
+                          <span className="text-[rgb(var(--color-fg))]/30">Warmup</span>
+                          <span>{sessionPhaseSummary.warmup.correct}/{sessionPhaseSummary.warmup.total}</span>
+                        </div>
+                      )}
+                      {sessionPhaseSummary.build.total > 0 && (
+                        <div className="flex flex-col items-center">
+                          <span className="text-[rgb(var(--color-fg))]/30">Build</span>
+                          <span>{sessionPhaseSummary.build.correct}/{sessionPhaseSummary.build.total}</span>
+                        </div>
+                      )}
+                      {sessionPhaseSummary.boss.total > 0 && (
+                        <div className="flex flex-col items-center">
+                          <span className="text-[var(--color-gold)]/60">Boss</span>
+                          <span className="text-[var(--color-gold)]">{sessionPhaseSummary.boss.correct}/{sessionPhaseSummary.boss.total}</span>
+                        </div>
+                      )}
+                      {sessionPhaseSummary.victory.total > 0 && (
+                        <div className="flex flex-col items-center">
+                          <span className="text-[rgb(var(--color-fg))]/30">Victory</span>
+                          <span>{sessionPhaseSummary.victory.correct}/{sessionPhaseSummary.victory.total}</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <div className="flex gap-2">
-                    <Button variant="secondary" className="flex-1" onClick={() => { setSessionSize(null); setSessionAnswered(0); setActiveTab('path'); }}>
+                    <Button variant="secondary" className="flex-1" onClick={() => { setSessionSize(null); setSessionAnswered(0); setPhaseLayout([]); setSessionSurprise(null); setSpeedBurstQueue([]); setSpeedBurstTimer(0); clearInterval(speedBurstTimerRef.current); setWeaknessPracticeItems([]); setActiveTab('path'); }}>
                       Back to Path
                     </Button>
-                    <Button className="flex-1" onClick={() => { setSessionAnswered(0); }}>
+                    <Button className="flex-1" onClick={() => { setSessionAnswered(0); setPhaseLayout(sessionSize ? computePhaseLayout(sessionSize) : []); setSessionSurprise(sessionSize ? rollSessionSurprises(sessionSize) : null); setSpeedBurstQueue([]); setSpeedBurstTimer(0); clearInterval(speedBurstTimerRef.current); setWeaknessPracticeItems([]); }}>
                       Play Again
                     </Button>
                   </div>
                 </div>
               </div>
             )}
+
+            {/* ── Etymology reveal surprise ── */}
+            <AnimatePresence>
+              {showEtymologyReveal && (
+                <motion.div
+                  key="etym-reveal"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 z-40 flex items-center justify-center bg-black/60 px-6"
+                  onClick={() => setShowEtymologyReveal(null)}
+                >
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
+                    className="w-full max-w-[300px] bg-[var(--color-surface)] rounded-2xl p-5 border border-[var(--color-gold)]/30 text-center"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <div className="text-[10px] ui text-[var(--color-gold)]/60 mb-1">Did you know?</div>
+                    <div className="text-lg chalk text-[var(--color-chalk)] mb-2">{showEtymologyReveal.word}</div>
+                    <p className="text-xs ui text-[rgb(var(--color-fg))]/60 leading-relaxed mb-4">
+                      {showEtymologyReveal.etymology}
+                    </p>
+                    <Button className="w-full" onClick={() => setShowEtymologyReveal(null)}>
+                      Cool!
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* ── Loot Drop celebration ── */}
+            <AnimatePresence>
+              {showLootDrop && (
+                <LootDropCelebration
+                  themeId={showLootDrop.id}
+                  themeName={showLootDrop.name}
+                  onDismiss={() => setShowLootDrop(null)}
+                />
+              )}
+            </AnimatePresence>
 
             {/* ── TikTok-style action buttons — hidden during immersive sub-modes ── */}
             {!isImmersive && (
@@ -1390,7 +1746,7 @@ function AppInner() {
             {/* ── Bee Buddy PiP — hidden during bee sim and full-screen sub-modes ── */}
             {!isImmersive && (
               <div className="landscape-hide">
-                <BeeBuddy state={unlockNewRank || unlockNewThemes.length > 0 || unlockNewTrails.length > 0 || showAchievementConfetti ? 'celebrate' : chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} timedMode={timedMode} pingMessage={pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
+                <BeeBuddy state={unlockNewRank || unlockNewThemes.length > 0 || unlockNewTrails.length > 0 || showAchievementConfetti ? 'celebrate' : chalkState} costume={activeCostume} streak={streak} totalAnswered={totalAnswered} questionType={questionType} timedMode={timedMode} pingMessage={phaseMessage ?? pingMessage} messageOverrides={SPELLING_MESSAGE_OVERRIDES} />
               </div>
             )}
 
@@ -1508,18 +1864,37 @@ function AppInner() {
                 }
                 setSessionSize(size);
                 setSessionAnswered(0);
+                setPhaseLayout(computePhaseLayout(size));
+                setSessionSurprise(rollSessionSurprises(size));
+                setSpeedBurstQueue([]); setSpeedBurstTimer(0); clearInterval(speedBurstTimerRef.current);
+                setActiveTab('game');
+              }}
+              onPracticeWeaknesses={async (words) => {
+                await ensureAllWords();
+                setWordRegistryVersion(getRegistryVersion());
+                const items = words.map(w => generateItemForWord(w, 'weakness-practice')).filter((x): x is EngineItem => x !== null);
+                if (items.length === 0) return;
+                setWeaknessPracticeItems(items);
+                setQuestionType('weakness-practice' as QuestionType);
+                setSessionSize(items.length);
+                setSessionAnswered(0);
+                setPhaseLayout([]);
+                setSessionSurprise(null);
+                setSpeedBurstQueue([]); setSpeedBurstTimer(0); clearInterval(speedBurstTimerRef.current);
                 setActiveTab('game');
               }}
               isPremium={isPremium}
               onUpgrade={() => setShowUpgrade(true)}
               bestStreak={stats.bestStreak}
+              friends={friendsState.friends}
+              onOpenFriends={() => setShowFriendsModal(true)}
             /></Suspense>
           </motion.div>
         )}
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
           </motion.div>
         )}
 
@@ -1529,6 +1904,7 @@ function AppInner() {
               unlocked={unlocked}
               masteredCount={masteredCount}
               uniqueWordsAttempted={uniqueWordsAttempted}
+              records={wordRecords}
               onUpgrade={() => setShowUpgrade(true)}
               onShop={() => setShowShop(true)}
               onCertificate={(_type, level, wordsMastered, acc) => setCertificateData({
@@ -1540,6 +1916,10 @@ function AppInner() {
                 accuracy: acc,
               })}
               customLists={customLists.lists}
+              friendCode={friendsState.friendCode}
+              friendCount={friendsState.friends.filter(f => f.status === 'active').length}
+              bestBuddyStreak={Math.max(0, ...friendsState.friends.filter(f => f.status === 'active').map(f => f.buddyStreak))}
+              onOpenFriends={() => setShowFriendsModal(true)}
             /></Suspense>
           </motion.div>
         )}
@@ -1618,6 +1998,13 @@ function AppInner() {
 
         {/* ── Achievement confetti ── */}
         <Confetti trigger={showAchievementConfetti} />
+
+        {/* ── Mastery celebration (rare+ full-screen card reveal) ── */}
+        <MasteryCelebration
+          word={celebrationWord}
+          masteredAt={celebrationMasteredAt}
+          onDismiss={() => setCelebrationWord(null)}
+        />
 
         {/* ── Rank-up celebration (full-screen) ── */}
         <UnlockCelebration
@@ -1765,6 +2152,49 @@ function AppInner() {
           <Suspense fallback={null}>
             <ShopModal onClose={() => setShowShop(false)} />
           </Suspense>
+        )}
+      </AnimatePresence>
+
+      {/* ── Friends modal ── */}
+      <AnimatePresence>
+        {showFriendsModal && (
+          <FriendsModal
+            onClose={() => setShowFriendsModal(false)}
+            friends={friendsState.friends}
+            pendingCount={friendsState.pendingCount}
+            friendCode={friendsState.friendCode}
+            onAddFriend={friendsState.addFriend}
+            onAcceptRequest={friendsState.acceptRequest}
+            onRemoveFriend={friendsState.removeFriend}
+            onShareCode={friendsState.shareFriendCode}
+            onChallenge={(friendUid) => {
+              const friend = friendsState.friends.find(f => f.friendUid === friendUid);
+              if (!friend) return;
+              // Enforce daily challenge cap for free users
+              if (!isPremium) {
+                const today = new Date().toISOString().slice(0, 10);
+                const todayCount = challengeState.challenges.filter(c =>
+                  c.isCreator && c.createdAt.toISOString().slice(0, 10) === today
+                ).length;
+                if (todayCount >= FREE_DAILY_CHALLENGES) return;
+              }
+              challengeState.createChallenge(friendUid, friend.friendName);
+              setShowFriendsModal(false);
+            }}
+            isPremium={isPremium}
+            friendCap={isPremium ? PREMIUM_FRIEND_CAP : FREE_FRIEND_CAP}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── Challenge compare modal ── */}
+      <AnimatePresence>
+        {viewingChallenge && (
+          <ChallengeCompareModal
+            challenge={viewingChallenge}
+            onClose={() => setViewingChallenge(null)}
+            myName={user?.displayName ?? 'You'}
+          />
         )}
       </AnimatePresence>
 

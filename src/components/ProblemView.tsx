@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useRef, useCallback } from 'react';
+import { memo, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
@@ -7,6 +7,9 @@ import { EtymologyExplainer } from './EtymologyExplainer';
 import { SpellingInput } from './SpellingInput';
 import { SpellingDiffView } from './SpellingDiffView';
 import { IconSpeaker } from './Icons';
+import { getInlineErrorTip, getSimilarMistakeWords } from '../utils/errorPatterns';
+import { trackEvent } from '../utils/analytics';
+import type { WordRecord } from '../hooks/useWordHistory';
 
 /** Keyboard shortcuts: number keys select answer options */
 const ANSWER_KEYS: Record<string, number> = { '1': 0, '2': 1, '3': 2 };
@@ -25,6 +28,8 @@ interface Props {
     guidedMode?: boolean;
     /** Handler for typed answers (text-entry mode) */
     onTypedAnswer?: (typed: string) => void;
+    /** Word history records for "similar words" suggestions on wrong answers */
+    wordRecords?: Record<string, WordRecord>;
 }
 
 const pulseAnim = {
@@ -92,7 +97,7 @@ const AnswerOption = memo(function AnswerOption({
     );
 });
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, wrongAnswer, onDismissWrong, onAnswer, onSkip, level = 5, guidedMode, onTypedAnswer }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, wrongAnswer, onDismissWrong, onAnswer, onSkip, level = 5, guidedMode, onTypedAnswer, wordRecords }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
@@ -103,6 +108,29 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     // Text-entry mode state
     const [typed, setTyped] = useState('');
     const [lastTyped, setLastTyped] = useState('');
+
+    // Inline error tip for wrong-answer panel
+    const errorTip = useMemo(() => {
+        if (!wrongAnswer) return null;
+        const word = typeof p.meta?.['word'] === 'string' ? p.meta['word'] as string : null;
+        if (!word) return null;
+        return getInlineErrorTip(word, lastTyped || undefined);
+    }, [wrongAnswer, p.meta, lastTyped]);
+
+    // Similar words that share the same error pattern
+    const similarWords = useMemo(() => {
+        if (!errorTip || !wordRecords) return [];
+        const word = typeof p.meta?.['word'] === 'string' ? p.meta['word'] as string : null;
+        if (!word) return [];
+        return getSimilarMistakeWords(word, errorTip.label, wordRecords, 3);
+    }, [errorTip, wordRecords, p.meta]);
+
+    // Track error pattern detection for analytics
+    useEffect(() => {
+        if (errorTip) {
+            trackEvent('error_pattern_detected', { pattern: errorTip.label });
+        }
+    }, [errorTip]);
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
     useEffect(() => { setShowEtymology(false); setTyped(''); setLastTyped(''); }, [p.id]);
@@ -316,6 +344,26 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     {typeof p.meta?.['definition'] === 'string' && p.meta['mode'] !== 'vocab' && (
                         <div className="text-xs ui text-[rgb(var(--color-fg))]/50 text-center mb-1.5">
                             {p.meta['definition']}
+                        </div>
+                    )}
+
+                    {/* Error pattern tip */}
+                    {errorTip && (
+                        <div className="flex items-center gap-2 bg-[var(--color-gold)]/8 rounded-lg px-3 py-2 mb-2">
+                            <span className="text-[10px] ui font-bold text-[var(--color-gold)] uppercase shrink-0">{errorTip.label}</span>
+                            <span className="text-[11px] ui text-[rgb(var(--color-fg))]/50">{errorTip.detail}</span>
+                        </div>
+                    )}
+
+                    {/* Similar words with same error pattern */}
+                    {similarWords.length > 0 && (
+                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-2">
+                            Also tricky: {similarWords.map((w, i) => (
+                                <span key={w}>
+                                    {i > 0 && ', '}
+                                    <span className="text-[var(--color-gold)] font-medium">{w}</span>
+                                </span>
+                            ))}
                         </div>
                     )}
 

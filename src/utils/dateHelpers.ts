@@ -21,3 +21,16 @@ export function yesterdayStr(): string {
     d.setDate(d.getDate() - 1);
     return formatLocalDate(d);
 }
+
+/** Today as ISO "YYYY-MM-DD" string (zero-padded). Used for review counters. */
+export function todayISO(): string {
+    return new Date().toISOString().slice(0, 10);
+}
+
+/** ISO week key for weekly leaderboard (resets each Monday). Format: "YYYY-WNN". */
+export function currentWeekKey(): string {
+    const now = new Date();
+    const jan1 = new Date(now.getFullYear(), 0, 1);
+    const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
+    return `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+}

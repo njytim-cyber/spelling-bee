@@ -7,6 +7,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import { STORAGE_KEYS, FREE_DAILY_REVIEW_CAP } from '../config';
 import { getWordMap } from '../domains/spelling/words';
+import { todayISO } from '../utils/dateHelpers';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -93,24 +94,20 @@ function saveHistory(storageKey: string, h: WordHistory): void {
 
 // ── Daily review counter (localStorage, resets each calendar day) ─────────
 
-function todayKey(): string {
-    return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-}
-
 function readReviewsToday(): { date: string; count: number } {
     try {
         const raw = localStorage.getItem(STORAGE_KEYS.reviewsToday);
         if (raw) {
             const parsed = JSON.parse(raw) as { date: string; count: number };
-            if (parsed.date === todayKey()) return parsed;
+            if (parsed.date === todayISO()) return parsed;
         }
     } catch { /* corrupt — reset */ }
-    return { date: todayKey(), count: 0 };
+    return { date: todayISO(), count: 0 };
 }
 
 function writeReviewsToday(count: number): void {
     try {
-        localStorage.setItem(STORAGE_KEYS.reviewsToday, JSON.stringify({ date: todayKey(), count }));
+        localStorage.setItem(STORAGE_KEYS.reviewsToday, JSON.stringify({ date: todayISO(), count }));
     } catch { /* best effort */ }
 }
 

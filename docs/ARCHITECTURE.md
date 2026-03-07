@@ -11,7 +11,7 @@ src/
 │   ├── spellingCategories.ts   # Category/grade/group definitions
 │   ├── spellingGenerator.ts    # Word selection + distractor generation
 │   ├── spellingAchievements.ts # Achievement definitions
-│   └── words/                  # Word bank (117K words across 9 tiers)
+│   └── words/                  # Word bank (51K words across 9 tiers)
 │       ├── registry.ts         # Lazy-loading tier registry
 │       ├── index.ts            # Lookup utilities (wordsByPattern, getWordMap, etc.)
 │       ├── tier[1-5].ts        # Hand-curated word files
@@ -84,6 +84,16 @@ User selects level → picks session size (10/20/50)
 ### Word Book
 - Origin tabs: Latin/Greek/French/Germanic/English/Other
 - Difficulty range selectors
+
+### Analytics & Telemetry
+- **GA4 via Firebase Analytics** (`src/utils/analytics.ts`): fire-and-forget wrapper, no-op in test/SSR
+- **User identity**: `setAnalyticsUserId(uid)` on auth, `setAnalyticsUserProperties()` syncs level/subscription/profile
+- **Retention signals**: `app_open` event on auth, `screen_view` on tab change — GA4 computes D1/D7/D30 from these
+- **API latency**: `trackLatency(service, operation, fn)` wraps async calls, logs `api_latency` event with `duration_ms` + `success`. Instrumented on Cloud TTS, Stripe, multiplayer, referral redeem.
+- **Web Vitals**: CLS, INP, LCP, FCP, TTFB → Firestore `vitals` collection
+- **Error monitoring**: `window.error` + `unhandledrejection` → Firestore `errors` (10/session cap, sanitized URLs)
+- **Session history**: localStorage-only, 90-day rolling window (`src/utils/sessionHistory.ts`)
+- **Word retention**: daily `word_retention_check` event for mastered words > 30 days old
 
 ### Hidden / Removed UI Elements
 - **Rank emojis** — replaced with chalk-line SVG icons (`RankIcon` in `Icons.tsx`). Emoji field kept on `Rank` type for share text only.

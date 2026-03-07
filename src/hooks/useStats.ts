@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { STORAGE_KEYS, FIRESTORE } from '../config';
-import { todayStr, yesterdayStr } from '../utils/dateHelpers';
+import { todayStr, yesterdayStr, currentWeekKey } from '../utils/dateHelpers';
 import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
 
 interface TypeStat {
@@ -52,14 +52,6 @@ export interface Stats {
 }
 
 const STORAGE_KEY = STORAGE_KEYS.stats;
-
-/** Get ISO week key for weekly leaderboard (resets each Monday) */
-function currentWeekKey(): string {
-    const now = new Date();
-    const jan1 = new Date(now.getFullYear(), 0, 1);
-    const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
-    return `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
-}
 
 const EMPTY_TYPE: TypeStat = { solved: 0, correct: 0 };
 
