@@ -1990,7 +1990,7 @@ function AppInner() {
         <Toast visible={!!errorToast} icon="⚠️" title={errorToast} toastKey={errorToast} />
 
         {/* ── Unlock celebration toasts ── */}
-        <Toast visible={!!themeUnlockToast} icon="🎨" title={`${themeUnlockToast?.name} unlocked!`} subtitle="New chalk color available on Me page" color={themeUnlockToast?.color} toastKey={themeUnlockToast?.name} stampEffect />
+        <Toast visible={!!themeUnlockToast} icon="🎨" title={`${themeUnlockToast?.name} unlocked!`} subtitle="New chalk style available on Me page" color={themeUnlockToast?.color} toastKey={themeUnlockToast?.name} stampEffect />
         <Toast visible={!!trailUnlockToast} icon="✨" title={`${trailUnlockToast} unlocked!`} subtitle="New swipe trail available on Me page" toastKey={trailUnlockToast ?? undefined} stampEffect />
         <Toast visible={!!masteryLevelToast} icon="⭐" title={masteryLevelToast} subtitle="The journey continues!" toastKey={masteryLevelToast ?? undefined} stampEffect />
         <Toast visible={!!milestoneToast} icon="🎁" title={milestoneToast} subtitle="Referral milestone reward!" toastKey={milestoneToast ?? undefined} stampEffect />

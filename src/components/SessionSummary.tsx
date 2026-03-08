@@ -87,7 +87,7 @@ const PERFECT_CELEBRATIONS = ['🏆 PERFECT', '💯 FLAWLESS', '✨ UNSTOPPABLE'
 function getEncouragingTitle(accuracy: number, streak: number, solved: number): { title: string; subtitle: string } {
     if (accuracy >= 90) return { title: '🌟 Amazing!', subtitle: 'Nearly flawless — keep it up!' };
     if (accuracy >= 70) return { title: '💪 Great work!', subtitle: 'You\'re really improving' };
-    if (accuracy >= 50) return { title: '📚 Good practice!', subtitle: `You just practiced ${solved} words — that's progress` };
+    if (accuracy >= 50) return { title: '📚 Good practice!', subtitle: `You just tackled ${solved} words — that's progress` };
     if (streak >= 3) return { title: '🔥 Nice streaks!', subtitle: 'Building momentum — try again to beat your score' };
     if (solved >= 10) return { title: '🏃 Good effort!', subtitle: 'The more you practice, the easier it gets' };
     return { title: '🌱 Keep going!', subtitle: 'Every word you see helps you learn' };

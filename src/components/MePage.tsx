@@ -450,7 +450,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                 <button
                     onClick={() => setShowAvatarBuilder(true)}
                     className="mb-5 flex flex-col items-center gap-1.5 group"
-                    aria-label="Customize avatar"
+                    aria-label={dialect === 'en-GB' ? 'Customise avatar' : 'Customize avatar'}
                 >
                     <div className="relative p-2.5 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/5 group-hover:border-[var(--color-gold)]/30 transition-colors">
                         <AvatarSvg
@@ -559,7 +559,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     {/* Chalk Themes — locked ones faded like achievements */}
                     <div className="w-full max-w-sm mb-5">
                         <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                            chalk color · {unlockedThemes}/{CHALK_THEMES.length}
+                            chalk style · {unlockedThemes}/{CHALK_THEMES.length}
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {CHALK_THEMES.map(t => {
@@ -575,7 +575,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                     <button
                                         key={t.id}
                                         onClick={() => lootLocked ? undefined : packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
-                                        aria-label={`${t.name} chalk color${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
+                                        aria-label={`${t.name} chalk style${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
                                         title={lootLocked ? 'Found via loot drop' : packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
@@ -827,7 +827,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
             {/* Avatar builder modal */}
             <AnimatePresence>
                 {showAvatarBuilder && (
-                    <ModalShell onClose={() => setShowAvatarBuilder(false)} ariaLabel="Customize avatar" className="w-[min(360px,90vw)]">
+                    <ModalShell onClose={() => setShowAvatarBuilder(false)} ariaLabel={dialect === 'en-GB' ? 'Customise avatar' : 'Customize avatar'} className="w-[min(360px,90vw)]">
                         <AvatarBuilder config={avatarConfig} onChange={onAvatarChange} flairStats={flairStats} />
                         <button
                             onClick={() => setShowAvatarBuilder(false)}

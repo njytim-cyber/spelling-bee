@@ -48,7 +48,7 @@ function getStoredCloudVoice(): string {
 }
 
 function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
-    const { isPremium, isTrial, isPaidSubscriber, daysRemaining, subscriptionStatus } = useUser();
+    const { isPremium, isTrial, isPaidSubscriber, daysRemaining, subscriptionStatus, dialect } = useUser();
     const [portalLoading, setPortalLoading] = useState(false);
 
     const handleManage = async () => {
@@ -76,7 +76,7 @@ function ChampionPassSection({ onUpgrade }: { onUpgrade?: () => void }) {
                     {isPremium ? (
                         <>
                             <span className="text-sm ui text-[var(--color-gold)] font-semibold">
-                                🏆 {isTrial ? 'Trial' : subscriptionStatus === 'canceled' ? 'Canceling' : 'Active'}
+                                🏆 {isTrial ? 'Trial' : subscriptionStatus === 'canceled' ? (dialect === 'en-GB' ? 'Cancelling' : 'Canceling') : 'Active'}
                             </span>
                             <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40 ml-2">
                                 {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} left
@@ -263,7 +263,7 @@ export const SettingsModal = memo(function SettingsModal({
                 {(onSeasonalThemeChange || onCharacterStyleChange) && (
                     <>
                         <div className="border-t border-[rgb(var(--color-fg))]/10 my-5 pt-5">
-                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-3">Spelling Bee Customization</h4>
+                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-3">{dialect === 'en-GB' ? 'Spelling Bee Customisation' : 'Spelling Bee Customization'}</h4>
                         </div>
 
                         {/* Seasonal Theme */}

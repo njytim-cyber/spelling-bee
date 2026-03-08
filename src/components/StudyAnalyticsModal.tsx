@@ -17,16 +17,16 @@ import { Button } from './Button';
 /** Classify words by Leitner box into mastery buckets.
  *  Box 4 with no typed attempts = "familiar" (recognition only, not true mastery). */
 function getMasterySnapshot(records: Record<string, WordRecord>) {
-    let total = 0, mastered = 0, familiar = 0, reviewing = 0, learning = 0, practicing = 0;
+    let total = 0, mastered = 0, familiar = 0, reviewing = 0, learning = 0, struggling = 0;
     for (const r of Object.values(records)) {
         total++;
         if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) mastered++;
         else if (r.box >= 3) familiar++;
         else if (r.box === 2) reviewing++;
-        else if (r.attempts >= 3 && r.correct / r.attempts < 0.5) practicing++;
+        else if (r.attempts >= 3 && r.correct / r.attempts < 0.5) struggling++;
         else learning++;
     }
-    return { total, mastered, familiar, reviewing, learning, practicing };
+    return { total, mastered, familiar, reviewing, learning, struggling };
 }
 
 /** Split patterns into strengths (≥80%) and weaknesses (<80%). */
@@ -314,12 +314,12 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records, onPrac
                     <SnapshotBar label="Familiar" count={snapshot.familiar} total={snapshot.total} color="bg-[var(--color-correct)]/60" />
                     <SnapshotBar label="Reviewing" count={snapshot.reviewing} total={snapshot.total} color="bg-[var(--color-gold)]" />
                     <SnapshotBar label="Learning" count={snapshot.learning} total={snapshot.total} color="bg-[var(--color-gold)]/60" />
-                    {snapshot.practicing > 0 && (
-                        <SnapshotBar label="Practicing" count={snapshot.practicing} total={snapshot.total} color="bg-[var(--color-gold)]/40" />
+                    {snapshot.struggling > 0 && (
+                        <SnapshotBar label="Tricky" count={snapshot.struggling} total={snapshot.total} color="bg-[var(--color-gold)]/40" />
                     )}
                 </div>
                 <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1.5 px-1">
-                    {snapshot.total} word{snapshot.total !== 1 ? 's' : ''} practiced
+                    {snapshot.total} word{snapshot.total !== 1 ? 's' : ''} attempted
                 </p>
             </section>
 
@@ -399,7 +399,7 @@ export const AnalyticsContent = memo(function AnalyticsContent({ records, onPrac
             {/* Nothing notable yet */}
             {strengths.length === 0 && weaknesses.length === 0 && mistakeInsights.length === 0 && (
                 <div className="text-center py-6">
-                    <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Keep practicing!</p>
+                    <p className="text-sm ui text-[rgb(var(--color-fg))]/50">Keep going!</p>
                     <p className="text-[11px] ui text-[rgb(var(--color-fg))]/35 mt-1">
                         Your report card fills in as you learn more words.
                     </p>

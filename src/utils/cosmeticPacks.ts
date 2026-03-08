@@ -1,7 +1,7 @@
 /**
  * utils/cosmeticPacks.ts
  *
- * Cosmetic IAP packs — one-time purchases of themed chalk colors and swipe trails.
+ * Cosmetic IAP packs — one-time purchases of themed chalk styles and swipe trails.
  * Each pack has a Stripe Price ID (set via env) and a list of cosmetic item IDs.
  *
  * The actual ChalkTheme / TrailConfig objects live in chalkThemes.ts / trails.ts
@@ -27,7 +27,7 @@ export const COSMETIC_PACKS: CosmeticPack[] = [
     {
         id: 'neon-pack',
         name: 'Neon Glow',
-        description: '3 electric chalk colors that light up the blackboard',
+        description: '3 electric chalk styles that light up the blackboard',
         price: '$0.99',
         priceEnv: 'STRIPE_PRICE_NEON_PACK',
         emoji: '💡',
@@ -37,7 +37,7 @@ export const COSMETIC_PACKS: CosmeticPack[] = [
     {
         id: 'pastel-pack',
         name: 'Pastel Dreams',
-        description: '3 soft chalk colors for a gentle vibe',
+        description: '3 soft chalk styles for a gentle vibe',
         price: '$0.99',
         priceEnv: 'STRIPE_PRICE_PASTEL_PACK',
         emoji: '🌸',
@@ -47,7 +47,7 @@ export const COSMETIC_PACKS: CosmeticPack[] = [
     {
         id: 'nature-pack',
         name: 'Nature\'s Palette',
-        description: '3 earthy chalk colors inspired by the great outdoors',
+        description: '3 earthy chalk styles inspired by the great outdoors',
         price: '$0.99',
         priceEnv: 'STRIPE_PRICE_NATURE_PACK',
         emoji: '🌿',
@@ -67,7 +67,7 @@ export const COSMETIC_PACKS: CosmeticPack[] = [
     {
         id: 'ultimate-pack',
         name: 'Ultimate Collection',
-        description: 'All 9 chalk colors + all 3 trails — best value!',
+        description: 'All 9 chalk styles + all 3 trails — best value!',
         price: '$2.99',
         priceEnv: 'STRIPE_PRICE_ULTIMATE_PACK',
         emoji: '👑',

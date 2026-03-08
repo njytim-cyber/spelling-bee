@@ -68,18 +68,18 @@ export const CustomListsModal = memo(function CustomListsModal({
 
     // ── List-level stats helper ──
     const getListStats = useCallback((list: CustomWordList) => {
-        let practiced = 0, totalCorrect = 0, totalAttempts = 0, mastered = 0;
+        let attempted = 0, totalCorrect = 0, totalAttempts = 0, mastered = 0;
         for (const w of list.words) {
             const r = wordRecords[w.word.toLowerCase()];
             if (r && r.attempts > 0) {
-                practiced++;
+                attempted++;
                 totalCorrect += r.correct;
                 totalAttempts += r.attempts;
                 if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) mastered++;
             }
         }
         const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
-        return { practiced, accuracy, mastered };
+        return { attempted, accuracy, mastered };
     }, [wordRecords]);
 
     // ── Create mode handlers ──
@@ -220,9 +220,9 @@ export const CustomListsModal = memo(function CustomListsModal({
                                         )}
 
                                         {/* Aggregate stats */}
-                                        {stats.practiced > 0 && (
+                                        {stats.attempted > 0 && (
                                             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mb-2">
-                                                {stats.practiced}/{list.words.length} practiced · {stats.accuracy}% accuracy{stats.mastered > 0 ? ` · ${stats.mastered} mastered` : ''}
+                                                {stats.attempted}/{list.words.length} attempted · {stats.accuracy}% accuracy{stats.mastered > 0 ? ` · ${stats.mastered} mastered` : ''}
                                             </div>
                                         )}
 
@@ -357,10 +357,10 @@ export const CustomListsModal = memo(function CustomListsModal({
                     {/* List-level stats */}
                     {(() => {
                         const stats = getListStats(currentViewList);
-                        if (stats.practiced === 0) return null;
+                        if (stats.attempted === 0) return null;
                         return (
                             <div className="text-[10px] ui text-[rgb(var(--color-fg))]/35 text-center mb-3">
-                                {stats.practiced}/{currentViewList.words.length} practiced · {stats.accuracy}% accuracy{stats.mastered > 0 ? ` · ${stats.mastered} mastered` : ''}
+                                {stats.attempted}/{currentViewList.words.length} attempted · {stats.accuracy}% accuracy{stats.mastered > 0 ? ` · ${stats.mastered} mastered` : ''}
                             </div>
                         );
                     })()}
@@ -441,7 +441,7 @@ export const CustomListsModal = memo(function CustomListsModal({
                                                             <span>{record.correct}/{record.attempts} correct</span>
                                                         </div>
                                                     ) : (
-                                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">Not practiced yet</div>
+                                                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20">Not attempted yet</div>
                                                     )}
 
                                                     <button

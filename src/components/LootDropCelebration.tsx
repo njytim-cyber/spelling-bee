@@ -68,7 +68,7 @@ export function LootDropCelebration({ themeId, themeName, onDismiss }: Props) {
                         {themeName}
                     </p>
                     <p className="text-xs text-[rgb(var(--color-fg))]/50">
-                        New chalk color unlocked!
+                        New chalk style unlocked!
                     </p>
                 </motion.div>
 

@@ -53,7 +53,7 @@ export const ShopModal = memo(function ShopModal({ onClose }: Props) {
             </div>
 
             <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-4">
-                One-time purchases — unlock new chalk colors, trails, and avatar flair forever
+                One-time purchases — unlock new chalk styles, trails, and avatar flair forever
             </p>
 
             <div className="space-y-3">

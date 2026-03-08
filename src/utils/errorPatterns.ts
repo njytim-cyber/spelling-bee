@@ -580,7 +580,7 @@ export function getInlineErrorTip(correctWord: string, misspelling?: string): In
 
         // ie/ei confusion
         if ((w.includes('ie') && m.includes('ei')) || (w.includes('ei') && m.includes('ie'))) {
-            return { label: 'ie vs ei', detail: '"i before e, except after c" — or when sounding like "ay" as in neighbor' };
+            return { label: 'ie vs ei', detail: '"i before e, except after c" — or when sounding like "ay" as in weigh' };
         }
 
         // Silent letter drops
@@ -729,7 +729,7 @@ export function getCoachingCards(
             title: ins.label,
             detail: `This tripped you up ${ins.count} times.`,
             tip: ins.detail,
-            cta: ins.category ? { label: `Practice ${formatPattern(ins.category)}`, category: ins.category } : undefined,
+            cta: ins.category ? { label: `Drill ${formatPattern(ins.category)}`, category: ins.category } : undefined,
         });
     }
 

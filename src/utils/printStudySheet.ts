@@ -6,6 +6,7 @@
  */
 import type { WordRecord } from '../hooks/useWordHistory';
 import type { SpellingWord } from '../domains/spelling/words/types';
+import { dateLocale } from './dateHelpers';
 
 const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
 
@@ -52,7 +53,7 @@ export function printStudySheet(
     // Meta
     const meta = doc.createElement('div');
     meta.className = 'meta';
-    meta.textContent = `${records.length} words \u00b7 Printed ${new Date().toLocaleDateString()}`;
+    meta.textContent = `${records.length} words \u00b7 Printed ${new Date().toLocaleDateString(dateLocale(), { day: 'numeric', month: 'long', year: 'numeric' })}`;
     doc.body.appendChild(meta);
 
     // Table

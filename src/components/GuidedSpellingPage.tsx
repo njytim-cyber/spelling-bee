@@ -448,7 +448,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
                                             transition={{ duration: SHOW_DURATION_MS / 1000, ease: 'linear' }}
                                         />
                                     </div>
-                                    <span className="text-xs ui text-[rgb(var(--color-fg))]/30">Memorize it...</span>
+                                    <span className="text-xs ui text-[rgb(var(--color-fg))]/30">Remember it...</span>
                                 </motion.div>
                             )}
 

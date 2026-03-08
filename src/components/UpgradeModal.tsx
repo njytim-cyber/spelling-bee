@@ -30,7 +30,7 @@ const PREMIUM_FEATURES = [
     'Unlimited spaced repetition',
     'Etymology quiz & roots study',
     'Advanced timed challenges',
-    'Premium chalk colors & trails',
+    'Premium chalk styles & trails',
 ];
 
 export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
