@@ -10,6 +10,8 @@ import type { EngineItem, GameConfig, ChalkState, FeedbackFlash, TimedVariant } 
 import { DEFAULT_GAME_CONFIG } from '../engine/domain';
 import { scoreCorrect, scorePenalty, FAST_ANSWER_MS } from '../engine/scoring';
 import { useDifficulty } from './useDifficulty';
+import { synthesizeCloud } from '../services/cloudTts';
+import { STORAGE_KEYS } from '../config';
 
 // Re-export engine types so callers that import from useGameLoop still work
 export type { ChalkState, FeedbackFlash };
@@ -169,14 +171,19 @@ export function useGameLoop(
     // ── Regenerate buffer when word bank changes before user starts playing ──
     // Prevents stale fallback words (e.g. easy words at high levels) that were
     // generated before async tier loading completed.
+    // Guard: skip if user already sees the first question (startTime set) to
+    // avoid a jarring flash where question A is replaced by question B.
     const generatorVersionRef = useRef(generateItem);
     useEffect(() => {
         if (generatorVersionRef.current === generateItem) return;
         generatorVersionRef.current = generateItem;
         if (gs.totalAnswered > 0 || isFinite(categoryId)) return;
-        const fresh = buildInitialSet(categoryId);
-        if (fresh[0]) fresh[0].startTime = Date.now();
-        setItems(fresh);
+        setItems(prev => {
+            if (prev[0]?.startTime) return prev;  // user already sees question — don't replace
+            const fresh = buildInitialSet(categoryId);
+            if (fresh[0]) fresh[0].startTime = Date.now();
+            return fresh;
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [generateItem, gs.totalAnswered, categoryId, buildInitialSet]);
 
@@ -188,6 +195,20 @@ export function useGameLoop(
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [items.length, level, categoryId]);
+
+    // ── Prefetch Cloud TTS for next word ─────────────────────────────────────
+    // Warms the audioCache so the next word plays instantly after answering.
+    const currentId = items[0]?.id;
+    useEffect(() => {
+        const next = items[1];
+        const word = typeof next?.meta?.['word'] === 'string' ? next.meta['word'] as string : null;
+        if (!word) return;
+        const voice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
+        if (!voice) return;
+        const rate = parseFloat(localStorage.getItem(STORAGE_KEYS.ttsRate) || '1.0');
+        synthesizeCloud(word, voice, rate).catch(() => { /* silent — fallback handles it */ });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentId]);
 
     // ── Advance to next problem ───────────────────────────────────────────────
     const advanceProblem = useCallback(() => {

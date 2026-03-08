@@ -291,7 +291,7 @@ function WordsLoadingScreen() {
 
       {/* Letters unscrambling into place */}
       <div className="flex gap-1.5">
-        {word.split('').map((_, i) => (
+        {word.split('').map((letter, i) => (
           <motion.div
             key={i}
             className="w-9 h-11 rounded-lg bg-[var(--color-gold)]/15 border-2 border-[var(--color-gold)]/30 flex items-center justify-center text-lg chalk text-[var(--color-gold)]"
@@ -299,13 +299,24 @@ function WordsLoadingScreen() {
             animate={{ opacity: 1, y: 0, rotate: 0 }}
             transition={{ delay: 0.3 + i * 0.12, duration: 0.5, ease: 'backOut' }}
           >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 + i * 0.12 + 0.2 }}
-            >
-              {scrambled[i]}
-            </motion.span>
+            {/* Show scrambled letter first, then swap to correct letter */}
+            <span>
+              <motion.span
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 0 }}
+                transition={{ delay: 1.2 + i * 0.08, duration: 0.15 }}
+                style={{ position: 'absolute' }}
+              >
+                {scrambled[i]}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 + i * 0.08, duration: 0.15 }}
+              >
+                {letter}
+              </motion.span>
+            </span>
           </motion.div>
         ))}
       </div>
@@ -509,9 +520,9 @@ function AppInner() {
   const loadAllWords = useCallback(async () => {
     setWordLoadError(false);
     try {
-      await ensureAllWords();
       const stored = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
       if (stored === 'en-GB') await setDialect(stored as Dialect);
+      await ensureAllWords();
       setWordRegistryVersion(getRegistryVersion());
       setWordsReady(true);
     } catch (err) {
@@ -524,11 +535,12 @@ function AppInner() {
     (async () => {
       setWordLoadError(false);
       try {
+        // Set dialect BEFORE loading tiers so UK users never see US spellings
+        const storedDialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
+        if (storedDialect === 'en-GB') await setDialect(storedDialect as Dialect);
         const storedLevel = localStorage.getItem(STORAGE_KEYS.grade) || '';
         const levelNum = parseInt(storedLevel.replace('level-', ''), 10) || 1;
         await ensureTiersForLevel(levelNum);
-        const storedDialect = localStorage.getItem(STORAGE_KEYS.dialect) || 'en-US';
-        if (storedDialect === 'en-GB') await setDialect(storedDialect as Dialect);
         setWordRegistryVersion(getRegistryVersion());
         setWordsReady(true);
         // Background-load remaining tiers for word book, path page, etc.
@@ -1236,6 +1248,7 @@ function AppInner() {
     const levelNum = parseInt(l.replace('level-', ''), 10) || 1;
     await ensureTiersForLevel(levelNum);
     setWordRegistryVersion(getRegistryVersion());
+    setWordsReady(true);
     onLevelChange(l);
     const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);
