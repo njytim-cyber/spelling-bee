@@ -3,11 +3,9 @@ import { motion } from 'framer-motion';
 import type { EngineItem } from '../engine/domain';
 import { usePronunciation } from '../hooks/usePronunciation';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { EtymologyExplainer } from './EtymologyExplainer';
 import { SpellingInput } from './SpellingInput';
-import { SpellingDiffView } from './SpellingDiffView';
 import { IconSpeaker } from './Icons';
-import { getInlineErrorTip, getSimilarMistakeWords } from '../utils/errorPatterns';
+import { getInlineErrorTip } from '../utils/errorPatterns';
 import { trackEvent } from '../utils/analytics';
 import type { WordRecord } from '../hooks/useWordHistory';
 
@@ -30,6 +28,8 @@ interface Props {
     onTypedAnswer?: (typed: string) => void;
     /** Word history records for "similar words" suggestions on wrong answers */
     wordRecords?: Record<string, WordRecord>;
+    /** Number of wrong answers so far in this session (for SRS promise display) */
+    sessionWrongCount?: number;
 }
 
 const pulseAnim = {
@@ -97,12 +97,11 @@ const AnswerOption = memo(function AnswerOption({
     );
 });
 
-export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, wrongAnswer, onDismissWrong, onAnswer, onSkip, level = 5, guidedMode, onTypedAnswer, wordRecords }: Props) {
+export const ProblemView = memo(function ProblemView({ problem, frozen, highlightCorrect, wrongAnswer, onDismissWrong, onAnswer, onSkip, guidedMode, onTypedAnswer, sessionWrongCount }: Props) {
     const p = problem;
     const displayText = String(p.prompt ?? '');
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
     const { reducedMotion } = useReducedMotion();
-    const [showEtymology, setShowEtymology] = useState(false);
     const [showShortcuts, setShowShortcuts] = useState(false);
 
     // Text-entry mode state
@@ -117,14 +116,6 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         return getInlineErrorTip(word, lastTyped || undefined);
     }, [wrongAnswer, p.meta, lastTyped]);
 
-    // Similar words that share the same error pattern
-    const similarWords = useMemo(() => {
-        if (!errorTip || !wordRecords) return [];
-        const word = typeof p.meta?.['word'] === 'string' ? p.meta['word'] as string : null;
-        if (!word) return [];
-        return getSimilarMistakeWords(word, errorTip.label, wordRecords, 3);
-    }, [errorTip, wordRecords, p.meta]);
-
     // Track error pattern detection for analytics
     useEffect(() => {
         if (errorTip) {
@@ -133,7 +124,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     }, [errorTip]);
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    useEffect(() => { setShowEtymology(false); setTyped(''); setLastTyped(''); }, [p.id]);
+    useEffect(() => { setTyped(''); setLastTyped(''); }, [p.id]);
 
     const handleSpeak = useCallback(() => {
         const word = p.meta?.['word'];
@@ -308,111 +299,24 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 </div>
             )}
 
-            {/* Wrong-answer detail panel — tap to dismiss */}
+            {/* Wrong-answer dismiss — tap to continue */}
             {frozen && wrongAnswer && onDismissWrong && (
                 <motion.div
-                    className="mt-4 w-full max-w-[var(--content-w)] max-h-[60vh] overflow-y-auto rounded-2xl border border-[var(--color-wrong)]/30 bg-[var(--color-wrong)]/5 px-4 py-3"
+                    className="mt-4 w-full max-w-[var(--content-w)]"
                     initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
                 >
-                    {/* Correct word — chalk write-in animation */}
-                    <div className="text-center mb-2">
-                        <span className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider">Correct spelling</span>
-                        <div className={`text-lg chalk text-[var(--color-correct)] font-bold ${reducedMotion ? '' : 'chalk-write-in'}`}>
-                            {(() => {
-                                const word = typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex]);
-                                if (reducedMotion) return word;
-                                return word.split('').map((ch, i) => (
-                                    <span key={i} style={{ animationDelay: `${i * 60}ms` }}>{ch}</span>
-                                ));
-                            })()}
-                        </div>
-                    </div>
-
-                    {/* Spelling diff — show what the user typed vs correct (guided mode only) */}
-                    {guidedMode && lastTyped && (
-                        <div className="mb-2">
-                            <SpellingDiffView
-                                typed={lastTyped}
-                                correct={typeof p.meta?.['word'] === 'string' ? p.meta['word'] : String(p.options[p.correctIndex])}
-                            />
+                    {/* SRS promise — shown for the first 3 wrong answers in a session */}
+                    {sessionWrongCount !== undefined && sessionWrongCount <= 3 && (
+                        <div className="text-[10px] ui text-[var(--color-gold)]/60 text-center mb-2">
+                            This word will come back until you get it right
                         </div>
                     )}
-
-                    {/* Definition */}
-                    {typeof p.meta?.['definition'] === 'string' && p.meta['mode'] !== 'vocab' && (
-                        <div className="text-xs ui text-[rgb(var(--color-fg))]/50 text-center mb-1.5">
-                            {p.meta['definition']}
-                        </div>
-                    )}
-
-                    {/* Error pattern tip */}
-                    {errorTip && (
-                        <div className="flex items-center gap-2 bg-[var(--color-gold)]/8 rounded-lg px-3 py-2 mb-2">
-                            <span className="text-[10px] ui font-bold text-[var(--color-gold)] uppercase shrink-0">{errorTip.label}</span>
-                            <span className="text-[11px] ui text-[rgb(var(--color-fg))]/50">{errorTip.detail}</span>
-                        </div>
-                    )}
-
-                    {/* Similar words with same error pattern */}
-                    {similarWords.length > 0 && (
-                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-2">
-                            Also tricky: {similarWords.map((w, i) => (
-                                <span key={w}>
-                                    {i > 0 && ', '}
-                                    <span className="text-[var(--color-gold)] font-medium">{w}</span>
-                                </span>
-                            ))}
-                        </div>
-                    )}
-
-                    {/* Etymology — toggle between simple and full explainer (hidden for levels 1-3) */}
-                    {level >= 4 && typeof p.meta?.['etymology'] === 'string' && (
-                        showEtymology ? (
-                            <div className="mb-2">
-                                <EtymologyExplainer
-                                    etymology={p.meta['etymology'] as string}
-                                    word={typeof p.meta?.['word'] === 'string' ? p.meta['word'] as string : undefined}
-                                />
-                            </div>
-                        ) : (
-                            <div className="text-xs ui text-[rgb(var(--color-fg))]/35 text-center italic mb-1.5">
-                                {p.meta['etymology']}
-                            </div>
-                        )
-                    )}
-
-                    {/* Action row: pronunciation + explore origin */}
-                    <div className="flex items-center justify-center gap-3 mb-2">
-                        {ttsSupported && typeof p.meta?.['word'] === 'string' && (
-                            <button
-                                type="button"
-                                onClick={handleSpeak}
-                                aria-label="Hear pronunciation"
-                                className="flex items-center gap-1 text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 transition-colors"
-                            >
-                                <IconSpeaker className="w-3.5 h-3.5" />
-                                <span>Hear it</span>
-                            </button>
-                        )}
-                        {level >= 4 && typeof p.meta?.['etymology'] === 'string' && !showEtymology && (
-                            <button
-                                type="button"
-                                onClick={() => setShowEtymology(true)}
-                                aria-label="Show word etymology"
-                                className="text-xs ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
-                            >
-                                Explore origin
-                            </button>
-                        )}
-                    </div>
-
-                    {/* Tap to continue */}
                     <motion.button
                         type="button"
                         onClick={onDismissWrong}
-                        className="w-full mt-2 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/10 text-sm ui font-medium text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
+                        className="w-full py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/10 text-sm ui font-medium text-[rgb(var(--color-fg))]/60 hover:bg-[rgb(var(--color-fg))]/15 transition-colors"
                         animate={reducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
                         transition={reducedMotion ? {} : { duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
                     >

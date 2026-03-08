@@ -293,3 +293,31 @@ export const BeeBuddy = memo(function BeeBuddy({
         </motion.div>
     );
 });
+
+// ── Standalone Bee Graphic ───────────────────────────────────────────────────
+// Just the SVG with face + wing animation — no positioning, speech bubbles, or costumes.
+// Used in onboarding/loading screens where the bee needs to be inline-centered.
+
+export const BeeGraphic = memo(function BeeGraphic({ state = 'idle', className }: { state?: ChalkState; className?: string }) {
+    return (
+        <motion.div className={className} animate={ANIMS[state]}>
+            <svg viewBox="0 0 100 130" className="w-full h-full" style={{ color: 'var(--color-chalk)' }}>
+                <motion.g
+                    animate={{ rotate: [-3, 3, -3], transition: { repeat: Infinity, duration: state === 'struggling' ? 2.5 : 1.2, ease: 'easeInOut' } }}
+                    style={{ originX: '50px', originY: '25px' }}
+                >
+                    <path d="M 42 25 Q 34 8 28 12" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.7" />
+                    <circle cx="28" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.6" />
+                    <path d="M 58 25 Q 66 8 72 12" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.7" />
+                    <circle cx="72" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.6" />
+                </motion.g>
+                <circle cx="50" cy="38" r="18" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.8" />
+                {FACES[state] || FACES.idle}
+                <motion.ellipse cx="24" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '35px', originY: '68px' }} animate={WING_FLUTTER[state]} />
+                <motion.ellipse cx="76" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '65px', originY: '68px' }} animate={WING_FLUTTER[state]} />
+                <BeeBody />
+                <BeeLegs />
+            </svg>
+        </motion.div>
+    );
+});

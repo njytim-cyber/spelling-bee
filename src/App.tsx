@@ -58,7 +58,7 @@ import { useLocalState } from './hooks/useLocalState';
 import { useFirebaseAuth } from './hooks/useFirebaseAuth';
 import { collection, query, where, onSnapshot, doc, updateDoc, orderBy, limit } from 'firebase/firestore';
 import { db } from './utils/firebase';
-import { generateSpellingItem, generateItemForWord, computePhaseLayout, getPhaseAt, summarizeByPhase, generatePhaseItem, generateSRSPhaseItem, rollSessionSurprises, generateBonusWord, generateSpeedBurst } from './domains/spelling/spellingGenerator';
+import { generateSpellingItem, generateItemForWord, computePhaseLayout, getPhaseAt, summarizeByPhase, generatePhaseItem, generateSRSPhaseItem, rollSessionSurprises, generateSpeedBurst } from './domains/spelling/spellingGenerator';
 import type { SessionPhase, PhaseSlot, SessionSurprise } from './domains/spelling/spellingGenerator';
 import { generateVocabItem } from './domains/spelling/vocabGenerator';
 import { generateRootQuizItem } from './domains/spelling/rootsGenerator';
@@ -109,12 +109,17 @@ const TAB_ORDER: Tab[] = ['game', 'path', 'league', 'me'];
 const GAME_CONFIG = { ...DEFAULT_GAME_CONFIG, wrongAnswerTapToDismiss: true, finiteTypeIds: ['daily', 'challenge', 'review', 'weakness-practice'] };
 type QuestionType = SpellingCategory; // local alias for engine compatibility
 
+interface GenerateItemFn {
+  (difficulty: number, categoryId: string, rng?: () => number): EngineItem;
+  /** Reset dedup tracking and phase counter. Call when starting a fresh buffer. */
+  reset: () => void;
+}
+
 function makeGenerateItem(
   customPool?: import('./types/customList').CustomWord[],
   getPhaseAtIndex?: (index: number) => SessionPhase | null,
-  getSurprise?: () => { surprise: SessionSurprise | null; index: number },
   getSRSWords?: () => { word: string; box: number }[],
-) {
+): GenerateItemFn {
   // Track words already in the buffer to prevent duplicate questions.
   // Covers both SRS picks and regular word selection.
   const usedWords = new Set<string>();
@@ -130,7 +135,7 @@ function makeGenerateItem(
     return item;
   };
 
-  return (
+  const generate = (
     difficulty: number,
     categoryId: string,
     rng?: () => number,
@@ -141,19 +146,6 @@ function makeGenerateItem(
     if (categoryId === 'vocab') return trackItem(generateVocabItem(difficulty, categoryId, rng));
     if (categoryId === 'roots') return trackItem(generateRootQuizItem(difficulty, categoryId, rng));
     if (categoryId === 'etymology') return trackItem(generateEtymologyItem(difficulty, categoryId, rng));
-
-    // Check for surprise at this index
-    const surpriseInfo = getSurprise?.();
-    if (surpriseInfo?.surprise && surpriseInfo.index === surpriseInfo.surprise.triggerIndex && categoryId.startsWith('level-')) {
-      const levelNum = parseInt(categoryId.replace('level-', ''), 10) || difficulty;
-      if (surpriseInfo.surprise.type === 'bonusWord') {
-        return trackItem(generateBonusWord(levelNum, rng));
-      }
-      if (surpriseInfo.surprise.type === 'speedBurst') {
-        const burstItems = generateSpeedBurst(levelNum, rng);
-        return trackItem(burstItems[0]);
-      }
-    }
 
     // Session phase arc — adjust word difficulty based on phase.
     // generationCount tracks total items generated so each one maps to
@@ -181,6 +173,9 @@ function makeGenerateItem(
     // All retries hit duplicates — accept the last one rather than blocking
     return trackItem(gen());
   }
+
+  generate.reset = () => { usedWords.clear(); generationCount = 0; };
+  return generate;
 }
 
 function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
@@ -615,11 +610,20 @@ function AppInner() {
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string; mode?: 'mcq' | 'typed' }>>([]);
   const sessionStartRef = useRef(0);
+  /** Tracks wrong answers in current session for SRS promise display */
+  const sessionWrongCountRef = useRef(0);
+  /** Consecutive fast (<3s) correct answers for level-up nudge */
+  const consecutiveFastCorrectRef = useRef(0);
+  const levelUpNudgeShownRef = useRef(false);
+  const [showLevelUpNudge, setShowLevelUpNudge] = useState(false);
   const prevQuestionTypeRef = useRef(questionType);
   useEffect(() => {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
       sessionStartRef.current = 0;
+      sessionWrongCountRef.current = 0;
+      consecutiveFastCorrectRef.current = 0;
+      levelUpNudgeShownRef.current = false;
       prevQuestionTypeRef.current = questionType;
     }
   }, [questionType]);
@@ -633,6 +637,20 @@ function AppInner() {
     if (sessionStartRef.current === 0) {
       sessionStartRef.current = Date.now();
       trackEvent('session_start', { level: questionTypeRef.current, session_size: sessionSize ?? 0 });
+    }
+    if (!correct) sessionWrongCountRef.current++;
+    // Track consecutive fast correct answers for level-up nudge
+    if (correct && responseTimeMs < 3000) {
+      consecutiveFastCorrectRef.current++;
+      const levelMatch = questionTypeRef.current.match(/^level-(\d+)$/);
+      const levelNum = levelMatch ? parseInt(levelMatch[1], 10) : 0;
+      if (consecutiveFastCorrectRef.current >= 3 && levelNum > 0 && levelNum < 10 && !levelUpNudgeShownRef.current) {
+        setShowLevelUpNudge(true);
+        levelUpNudgeShownRef.current = true;
+        consecutiveFastCorrectRef.current = 0;
+      }
+    } else {
+      consecutiveFastCorrectRef.current = 0;
     }
     const word = item.meta?.['word'] as string | undefined;
     if (word) {
@@ -728,7 +746,6 @@ function AppInner() {
     () => makeGenerateItem(
       activeCustomList?.words,
       (index: number) => phaseLayoutRef.current.length > 0 ? getPhaseAt(phaseLayoutRef.current, index) : null,
-      () => ({ surprise: sessionSurpriseRef.current, index: sessionAnsweredRef.current }),
       () => Object.values(wordRecordsRef.current).map(r => ({ word: r.word, box: r.box })),
     ),
     // wordRegistryVersion intentionally triggers refresh when async tiers load
@@ -838,6 +855,27 @@ function AppInner() {
       }
     }
   }, [stats.dayStreak, fireStreakMilestone]);
+
+  // ── Level-up nudge — auto-dismiss after 6s ──
+  useEffect(() => {
+    if (!showLevelUpNudge) return;
+    const t = setTimeout(() => setShowLevelUpNudge(false), 6000);
+    return () => clearTimeout(t);
+  }, [showLevelUpNudge]);
+
+  const handleLevelUpNudge = useCallback(() => {
+    const levelMatch = questionType.match(/^level-(\d+)$/);
+    const levelNum = levelMatch ? parseInt(levelMatch[1], 10) : 0;
+    if (levelNum > 0 && levelNum < 10) {
+      const nextLevel = `level-${levelNum + 1}` as Level;
+      onLevelChange(nextLevel);
+      setQuestionType(getLevelConfig(nextLevel).defaultCategory);
+      setSessionSize(null);
+      setSessionAnswered(0);
+      setPhaseLayout([]);
+    }
+    setShowLevelUpNudge(false);
+  }, [questionType, onLevelChange, setQuestionType, setSessionSize, setSessionAnswered, setPhaseLayout]);
 
   // ── Improvement celebration — week-over-week accuracy trend ──
   const [improvementToast, fireImprovementToast] = useTimedMessage(4000);
@@ -1652,6 +1690,7 @@ function AppInner() {
                         guidedMode={guidedMode || !!currentProblem?.meta?.['bossRound']}
                         onTypedAnswer={handleTypedAnswer}
                         wordRecords={wordRecords}
+                        sessionWrongCount={sessionWrongCountRef.current}
                       />
                     </motion.div>
                   )}
@@ -2057,6 +2096,17 @@ function AppInner() {
           await shareOrCopy(text);
           trackEvent('referral_shared', { source: 'streak_milestone' });
         }} />
+
+        {/* ── Level-up nudge ── */}
+        <Toast
+          visible={showLevelUpNudge}
+          icon="🚀"
+          title="Too easy?"
+          subtitle={`Try Level ${(parseInt(questionType.replace('level-', ''), 10) || 0) + 1}`}
+          toastKey="level-up-nudge"
+          actionLabel="Level Up"
+          onAction={handleLevelUpNudge}
+        />
 
         {/* ── Achievement confetti ── */}
         <Confetti trigger={showAchievementConfetti} />

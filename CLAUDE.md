@@ -57,7 +57,8 @@ docs/
 └── REMOVED-FEATURES.md  ← What was removed and why (do not re-implement)
 ```
 
-**When to read which doc:**
+**Before implementing any changes**, read the relevant doc(s) from the table below. Do not start writing code until you have read them — even if you think you remember the content from a previous session.
+
 - Adding/changing UI → `docs/FRONTEND.md`
 - Adding a feature or understanding data flow → `docs/ARCHITECTURE.md`
 - Adding tests or checking mastery definitions → `docs/TESTING.md`

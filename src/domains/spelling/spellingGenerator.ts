@@ -418,9 +418,26 @@ export function generateSRSPhaseItem(
     usedWords?: Set<string>,
 ): EngineItem | null {
     const minBox = phase === 'warmup' ? 3 : 4;
-    const candidates = usedWords
-        ? srsWords.filter(w => w.box >= minBox && !usedWords.has(w.word))
-        : srsWords.filter(w => w.box >= minBox);
+
+    // Extract level from category so we can filter by difficulty.
+    // Without this, a Level 1 word like "tip" could appear at Level 8.
+    const levelMatch = category.match(/^level-(\d+)$/);
+    const level = levelMatch ? parseInt(levelMatch[1], 10) : 0;
+    const wordMap = level > 0 ? getWordMap() : null;
+    // Allow words within ±2 difficulty of the current level
+    const minDiff = Math.max(1, level - 2);
+    const maxDiff = Math.min(10, level + 2);
+
+    const candidates = srsWords.filter(w => {
+        if (w.box < minBox) return false;
+        if (usedWords?.has(w.word)) return false;
+        if (wordMap) {
+            const entry = wordMap.get(w.word.toLowerCase());
+            if (entry && (entry.difficulty < minDiff || entry.difficulty > maxDiff)) return false;
+        }
+        return true;
+    });
+
     if (candidates.length === 0) return null;
     const pick = candidates[Math.floor(rng() * candidates.length)];
     const item = generateItemForWord(pick.word, category, rng);

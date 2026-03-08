@@ -52,11 +52,11 @@ const INITIAL_STATE: GameState = {
  * @param categoryId  The active question type/category (e.g. 'cvc')
  * @param rng         Optional seeded RNG for reproducible daily/challenge sets
  */
-export type ItemGenerator = (
-    difficulty: number,
-    categoryId: string,
-    rng?: () => number,
-) => EngineItem;
+export interface ItemGenerator {
+    (difficulty: number, categoryId: string, rng?: () => number): EngineItem;
+    /** Reset dedup tracking and phase counter. Call when starting a fresh buffer. */
+    reset?: () => void;
+}
 
 
 // ── Hook ──────────────────────────────────────────────────────────────────────
@@ -135,6 +135,8 @@ export function useGameLoop(
     const isFinite = (id: string) => finiteTypeIds.includes(id);
 
     const buildInitialSet = useCallback((catId: string): EngineItem[] => {
+        // Reset dedup tracking and phase counter for a fresh session
+        generateItem.reset?.();
         if (isFinite(catId) && generateFiniteSet) {
             return generateFiniteSet(catId, challengeId);
         }
@@ -412,6 +414,10 @@ export function useGameLoop(
                 if (isTutorial) {
                     frozenRef.current = true;
                     scheduleChalkReset(failPauseMs);
+                    safeTimeout(() => {
+                        setGs(p => ({ ...p, flash: 'none', frozen: false }));
+                        frozenRef.current = false;
+                    }, failPauseMs);
                     return { ...prev, flash: 'wrong' as const, chalkState: 'fail' as ChalkState, frozen: true };
                 }
 
@@ -421,6 +427,13 @@ export function useGameLoop(
                     onConsumeShield();
                     frozenRef.current = true;
                     scheduleChalkReset(failPauseMs);
+                    if (!wrongAnswerTapToDismiss) {
+                        safeTimeout(() => {
+                            setGs(p => ({ ...p, flash: 'none', frozen: false, shieldBroken: false }));
+                            frozenRef.current = false;
+                            advanceProblem();
+                        }, failPauseMs);
+                    }
                     return {
                         ...prev,
                         totalAnswered: prev.totalAnswered + 1,
@@ -437,6 +450,13 @@ export function useGameLoop(
 
                 frozenRef.current = true;
                 scheduleChalkReset(failPauseMs);
+                if (!wrongAnswerTapToDismiss) {
+                    safeTimeout(() => {
+                        setGs(p => ({ ...p, flash: 'none', frozen: false }));
+                        frozenRef.current = false;
+                        advanceProblem();
+                    }, failPauseMs);
+                }
 
                 if (canForgive) {
                     return {
@@ -468,8 +488,7 @@ export function useGameLoop(
                 };
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, handleAnswer, recordAnswer, scheduleChalkReset, safeTimeout, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs]);
+    }, [items, handleAnswer, recordAnswer, scheduleChalkReset, safeTimeout, advanceProblem, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs, wrongAnswerTapToDismiss]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     const pausedRef = useRef(paused);
