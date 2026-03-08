@@ -33,6 +33,11 @@ let currentDialect: Dialect = 'en-US';
 let ukOverrides: Record<string, UkOverride> | null = null;
 /** Reverse map: UK spelling → US canonical key (for word history) */
 let ukToUsMap: Map<string, string> | null = null;
+/** Pre-compiled regex + map for US→UK text substitution in definitions/examples */
+let ukTextRegex: RegExp | null = null;
+let ukTextMap: Record<string, string> | null = null;
+/** Stem keys sorted longest-first for greedy matching in ukTextReplace */
+let ukStemKeys: string[] | null = null;
 
 // ── Indexed caches (invalidated whenever loadedWords changes) ───────────────
 
@@ -172,9 +177,40 @@ export function getLoadedTiers(): ReadonlySet<number> {
     return loadedTiers;
 }
 
+/** Lazily-built US-keyed difficulty map (invalidated when baseWords changes). */
+let baseWordMap: Map<string, SpellingWord> | null = null;
+let baseWordMapSize = 0;
+
+function ensureBaseWordMap(): Map<string, SpellingWord> {
+    if (baseWordMap && baseWordMapSize === baseWords.length) return baseWordMap;
+    baseWordMap = new Map();
+    for (const w of baseWords) baseWordMap.set(w.word, w);
+    baseWordMapSize = baseWords.length;
+    return baseWordMap;
+}
+
+/**
+ * Look up a word by its US canonical key, regardless of current dialect.
+ * O(1) after first call (lazy-built index over baseWords).
+ */
+export function getWordByUsKey(usKey: string): SpellingWord | undefined {
+    return ensureBaseWordMap().get(usKey);
+}
+
 /** Current active dialect. */
 export function getDialect(): Dialect {
     return currentDialect;
+}
+
+/**
+ * Map a US canonical key to the current dialect's spelling.
+ * In en-US mode, returns the key unchanged.
+ * In en-GB mode, returns the UK override spelling if one exists.
+ */
+export function toDialectWord(usKey: string): string {
+    if (currentDialect !== 'en-GB' || !ukOverrides) return usKey;
+    if (!Object.hasOwn(ukOverrides, usKey)) return usKey;
+    return ukOverrides[usKey].word;
 }
 
 /**
@@ -188,6 +224,86 @@ export function resolveUsKey(word: string): string {
 }
 
 // ── Dialect management ───────────────────────────────────────────────────────
+
+/**
+ * Short stems that could cause false positives without word boundaries.
+ * e.g. "tire" inside "entire", "mom" inside "momenta", "gray" inside "grayed".
+ * These get \b word-boundary guards in the regex.
+ */
+const BOUNDARY_REQUIRED_STEMS = new Set([
+    'tire', 'mom', 'gray', 'curb', 'draft', 'plow', 'mold', 'ax',
+    'aging', 'check',
+]);
+
+/**
+ * Extract the minimal US→UK stem pairs from the override list.
+ * Groups related overrides (color, colorful, coloring, colorize) to find
+ * the shortest common stem (color→colour), enabling substring-based
+ * replacement that covers ALL inflected forms (colors, colored, colorless, etc.)
+ */
+function buildUkStemMap(overrides: Record<string, UkOverride>): [string, string][] {
+    // Extract raw pairs and group by potential stem
+    const rawPairs = Object.entries(overrides).map(([us, ov]) => [us, ov.word] as const);
+
+    // Find minimal stem pairs: for each US→UK pair, check if a shorter pair
+    // in the list is a prefix. If so, the shorter one subsumes this one.
+    // Sort shortest first to build stem set incrementally.
+    const sorted = [...rawPairs].sort((a, b) => a[0].length - b[0].length);
+    const stems: [string, string][] = [];
+
+    for (const [us, uk] of sorted) {
+        // Check if any existing stem is a prefix of this US word
+        // AND the UK word starts with that stem's UK replacement
+        let covered = false;
+        for (const [stemUs, stemUk] of stems) {
+            if (us.startsWith(stemUs) && uk.startsWith(stemUk)) {
+                covered = true;
+                break;
+            }
+        }
+        if (!covered) {
+            stems.push([us, uk]);
+        }
+    }
+
+    return stems;
+}
+
+/**
+ * Apply case-preserving US→UK substitution to a text string.
+ * Uses stem-based matching: replaces US stems wherever they appear within
+ * words to cover all inflected forms (e.g. "colors", "colorless", "multicolored").
+ * Left word-boundary prevents matching inside unrelated words.
+ */
+function ukTextReplace(text: string): string {
+    if (!ukTextRegex || !ukTextMap || !ukStemKeys) return text;
+    return text.replace(ukTextRegex, (match) => {
+        const lower = match.toLowerCase();
+        // Find which stem this match starts with (stems are sorted longest-first)
+        let stemUs = '';
+        let stemUk = '';
+        for (const key of ukStemKeys!) {
+            if (lower.startsWith(key)) {
+                stemUs = key;
+                stemUk = ukTextMap![key];
+                break;
+            }
+        }
+        if (!stemUs) return match;
+        const suffix = match.slice(stemUs.length);
+        // Preserve original casing of the stem portion
+        const origStem = match.slice(0, stemUs.length);
+        let ukResult: string;
+        if (origStem === origStem.toUpperCase()) {
+            ukResult = stemUk.toUpperCase();
+        } else if (origStem[0] === origStem[0].toUpperCase()) {
+            ukResult = stemUk[0].toUpperCase() + stemUk.slice(1);
+        } else {
+            ukResult = stemUk;
+        }
+        return ukResult + suffix;
+    });
+}
 
 /**
  * Switch the active dialect. Lazy-loads UK overrides on first en-GB use.
@@ -204,6 +320,24 @@ export async function setDialect(dialect: Dialect): Promise<void> {
         for (const [usWord, override] of Object.entries(ukOverrides)) {
             ukToUsMap.set(override.word.toLowerCase(), usWord);
         }
+        // Build pre-compiled regex for text substitution using stem-based matching.
+        // Stems are sorted longest-first so "colorful" is checked before "color".
+        const stems = buildUkStemMap(ukOverrides)
+            .sort((a, b) => b[0].length - a[0].length);
+        ukTextMap = {};
+        for (const [us, uk] of stems) ukTextMap[us] = uk;
+        ukStemKeys = stems.map(([us]) => us);
+        // Match stem followed by optional word characters (to catch inflections).
+        // Short ambiguous stems get \b guards; longer stems match inside compounds.
+        const pattern = stems
+            .map(([us]) => {
+                const escaped = us.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                return BOUNDARY_REQUIRED_STEMS.has(us)
+                    ? `\\b${escaped}\\w*`
+                    : `${escaped}\\w*`;
+            })
+            .join('|');
+        ukTextRegex = new RegExp(pattern, 'gi');
     }
     rebuildLoadedWords();
     version++;
@@ -215,13 +349,21 @@ function rebuildLoadedWords(): void {
         loadedWords = [...baseWords];
     } else {
         loadedWords = baseWords.map(w => {
-            if (!Object.hasOwn(ukOverrides!, w.word)) return w;
+            const def = ukTextReplace(w.definition);
+            const ex = ukTextReplace(w.exampleSentence);
+            if (!Object.hasOwn(ukOverrides!, w.word)) {
+                // No spelling override, but definition/example may still need UK text
+                if (def === w.definition && ex === w.exampleSentence) return w;
+                return { ...w, definition: def, exampleSentence: ex };
+            }
             const override = ukOverrides![w.word];
             return {
                 ...w,
                 word: override.word,
                 pronunciation: override.pronunciation ?? w.pronunciation,
                 distractors: override.distractors,
+                definition: def,
+                exampleSentence: ex,
             };
         });
     }

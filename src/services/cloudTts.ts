@@ -61,6 +61,11 @@ export function voicesForDialect(dialect: string): CloudVoice[] {
     return CLOUD_VOICES.filter(v => v.langCode === langCode);
 }
 
+/** Default voice for a given dialect. */
+function defaultVoiceForDialect(dialect: string): string {
+    return dialect === 'en-GB' ? 'en-GB-Neural2-A' : 'en-US-Neural2-C';
+}
+
 /**
  * Initialize default cloud voice if none is set.
  * Call this on app startup to ensure neural2 voices work by default.
@@ -70,11 +75,35 @@ export function initializeDefaultVoice(): void {
 
     const stored = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
     if (!stored) {
-        // Default to US Voice C (Female)
-        const defaultVoice = 'en-US-Neural2-C';
+        const dialect = localStorage.getItem(STORAGE_KEYS.dialect) ?? 'en-US';
+        const defaultVoice = defaultVoiceForDialect(dialect);
         localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, defaultVoice);
         localStorage.setItem(STORAGE_KEYS.ttsEngine, 'cloud');
     }
+}
+
+/**
+ * Auto-switch TTS voice when dialect changes.
+ * If the current voice doesn't match the new dialect, pick the equivalent
+ * voice in the new dialect (same letter suffix) or fall back to the default.
+ */
+export function syncVoiceToDialect(dialect: string): void {
+    if (typeof window === 'undefined') return;
+
+    const stored = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice) ?? '';
+    const current = CLOUD_VOICES.find(v => v.id === stored);
+    const targetLang = dialect === 'en-GB' ? 'en-GB' : 'en-US';
+
+    // Already using a voice matching the dialect — nothing to do
+    if (current && current.langCode === targetLang) return;
+
+    // Try to find the equivalent voice (same letter suffix) in the new dialect
+    const suffix = stored.split('-').pop() ?? '';
+    const equivalent = CLOUD_VOICES.find(
+        v => v.langCode === targetLang && v.id.endsWith(`-${suffix}`),
+    );
+    const newVoice = equivalent?.id ?? defaultVoiceForDialect(dialect);
+    localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, newVoice);
 }
 
 // ── Network detection ────────────────────────────────────────────────────────

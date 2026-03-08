@@ -13,7 +13,7 @@
  * has been verified against standard British English conventions.
  * Distractors are plausible misspellings of the UK form, not the US form.
  *
- * Coverage: 685 words across all tiers.
+ * Coverage: 669 words across all tiers.
  * Rules applied: -or>-our, -er>-re, -ize>-ise, -yze>-yse,
  *   ae/oe digraphs, double-l, -ense>-ence, -og>-ogue, misc.
  */
@@ -43,7 +43,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'acknowledgment': {
         word: 'acknowledgement',
         pronunciation: 'ak-nol-ij-muhnt',
-        distractors: ['acknowlegement', 'acknowledgment', 'acknoledgement'],
+        distractors: ['acknowlegement', 'acknowlidgement', 'acknoledgement'],
     },
     'actualize': {
         word: 'actualise',
@@ -111,8 +111,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['enaesthetic', 'anaisthetic', 'anaesthetac'],
     },
     'anesthetizer': {
-        word: 'anesthetiser',
-        distractors: ['enesthetiser', 'anisthetiser', 'anesthetaser'],
+        word: 'anaesthetiser',
+        distractors: ['enaesthetiser', 'anaesthetisir', 'anaesthetaser'],
     },
     'angelize': {
         word: 'angelise',
@@ -160,7 +160,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'aromatize': {
         word: 'aromatise',
-        distractors: ['eromatise', 'aromatisi', 'aromatase'],
+        distractors: ['eromatise', 'aromatisi', 'arometise'],
     },
     'aromatizer': {
         word: 'aromatiser',
@@ -181,14 +181,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'asphaltization': {
         word: 'asphaltisation',
         distractors: ['esphaltisation', 'asphaltasation', 'asphaltisatiun'],
-    },
-    'assize': {
-        word: 'assise',
-        distractors: ['essise', 'assisi', 'assase'],
-    },
-    'assizer': {
-        word: 'assiser',
-        distractors: ['essiser', 'assisir', 'assaser'],
     },
     'atheize': {
         word: 'atheise',
@@ -330,10 +322,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'carbonise',
         distractors: ['cerbonise', 'carbonisi', 'carbonase'],
     },
-    'catalysize': {
-        word: 'catalysise',
-        distractors: ['cetalysise', 'catalysisi', 'catalysase'],
-    },
     'catalyze': {
         word: 'catalyse',
         distractors: ['cetalyse', 'catalysi', 'caalyse'],
@@ -348,7 +336,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'catechize': {
         word: 'catechise',
-        distractors: ['cetechise', 'catichise', 'catechase'],
+        distractors: ['cetechise', 'catichise', 'catechice'],
     },
     'categorization': {
         word: 'categorisation',
@@ -394,10 +382,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'charizing': {
         word: 'charising',
         distractors: ['cherising', 'charasing', 'chaising'],
-    },
-    'check': {
-        word: 'cheque',
-        distractors: ['chique', 'cheqoe', 'chque'],
     },
     'chemicalization': {
         word: 'chemicalisation',
@@ -462,8 +446,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['colourang', 'culouring', 'colooring'],
     },
     'colorize': {
-        word: 'colorise',
-        distractors: ['colorisi', 'colorase', 'culorise'],
+        word: 'colourise',
+        distractors: ['colourisi', 'colouraise', 'culourise'],
     },
     'commercialization': {
         word: 'commercialisation',
@@ -572,7 +556,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'curb': {
         word: 'kerb',
         pronunciation: 'kurb',
-        distractors: ['kirb', 'cerb', 'kurb'],
+        distractors: ['kirb', 'cerb', 'karb'],
     },
     'customize': {
         word: 'customise',
@@ -634,10 +618,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'decolonise',
         distractors: ['dicolonise', 'decolonase', 'deculonise'],
     },
-    'decolorize': {
-        word: 'decolorise',
-        distractors: ['dicolorise', 'decolorase', 'deculorise'],
-    },
     'decolourize': {
         word: 'decolourise',
         distractors: ['dicolourise', 'decolourase', 'deculourise'],
@@ -671,8 +651,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['deformelise', 'diformalise', 'deformalase'],
     },
     'deglamorize': {
-        word: 'deglamorise',
-        distractors: ['deglemorise', 'diglamorise', 'deglamorase'],
+        word: 'deglamourise',
+        distractors: ['deglemourise', 'diglamourise', 'deglamouraise'],
     },
     'degrammaticalize': {
         word: 'degrammaticalise',
@@ -832,7 +812,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'dialing': {
         word: 'dialling',
-        distractors: ['dielling', 'daalling', 'dilling'],
+        distractors: ['dielling', 'daalling', 'diallang'],
     },
     'diarized': {
         word: 'diarised',
@@ -841,7 +821,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'diarrhea': {
         word: 'diarrhoea',
         pronunciation: 'dy-uh-ree-uh',
-        distractors: ['diarhoea', 'diarrhea', 'diarrhoeia'],
+        distractors: ['diarhoea', 'diarroea', 'diarrhoeia'],
     },
     'dichotomize': {
         word: 'dichotomise',
@@ -884,10 +864,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'dollarisation',
         distractors: ['dollerisation', 'dollarasation', 'dullarisation'],
     },
-    'downsize': {
-        word: 'downsise',
-        distractors: ['downsisi', 'downsase', 'duwnsise'],
-    },
     'draft': {
         word: 'draught',
         distractors: ['dreught', 'draoght', 'drught'],
@@ -927,7 +903,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'encyclopedia': {
         word: 'encyclopaedia',
         pronunciation: 'en-sy-kluh-pee-dee-uh',
-        distractors: ['encyclopeadia', 'encyclopaedia', 'encylopaedia'],
+        distractors: ['encyclopeadia', 'encyclopaidia', 'encylopaedia'],
     },
     'endeavor': {
         word: 'endeavour',
@@ -935,7 +911,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'endeavoring': {
         word: 'endeavouring',
-        distractors: ['endeevouring', 'indeavouring', 'endeavourang'],
+        distractors: ['endeevouring', 'endeavoaring', 'endeavourang'],
     },
     'energize': {
         word: 'energise',
@@ -951,7 +927,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'enolize': {
         word: 'enolise',
-        distractors: ['inolise', 'enolase', 'enulise'],
+        distractors: ['inolise', 'enolaise', 'enulise'],
     },
     'enrollment': {
         word: 'enrolment',
@@ -1013,10 +989,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'experimentalize': {
         word: 'experimentalise',
         distractors: ['experimentelise', 'ixperimentalise', 'experamentalise'],
-    },
-    'expertize': {
-        word: 'expertise',
-        distractors: ['ixpertise', 'expertase', 'exprtise'],
     },
     'explicitize': {
         word: 'explicitise',
@@ -1173,7 +1145,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'fulfillment': {
         word: 'fulfilment',
         pronunciation: 'ful-fil-muhnt',
-        distractors: ['fulfillment', 'fulfilmant', 'fulfiment'],
+        distractors: ['fulfilmint', 'fulfilmant', 'fulfiment'],
     },
     'funeralize': {
         word: 'funeralise',
@@ -1330,8 +1302,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['humenise', 'humanisi', 'humanase'],
     },
     'humorize': {
-        word: 'humorise',
-        distractors: ['humorisi', 'humorase', 'humurise'],
+        word: 'humourise',
+        distractors: ['humourisi', 'humouraise', 'humuurise'],
     },
     'hybridization': {
         word: 'hybridisation',
@@ -1617,10 +1589,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'mediatise',
         distractors: ['medietise', 'midiatise', 'medaatise'],
     },
-    'medieval': {
-        word: 'mediaeval',
-        distractors: ['medieeval', 'midiaeval', 'medaaeval'],
-    },
     'mediumize': {
         word: 'mediumise',
         distractors: ['midiumise', 'medaumise', 'mediomise'],
@@ -1648,10 +1616,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'metastasize': {
         word: 'metastasise',
         distractors: ['metestasise', 'mitastasise', 'metastasase'],
-    },
-    'meter': {
-        word: 'metre',
-        distractors: ['mitre', 'mettre', 'metrre'],
     },
     'metropolize': {
         word: 'metropolise',
@@ -1688,10 +1652,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'misogynize': {
         word: 'misogynise',
         distractors: ['misogynisi', 'masogynise', 'misugynise'],
-    },
-    'misprize': {
-        word: 'misprise',
-        distractors: ['misprisi', 'masprise', 'miprise'],
     },
     'missionization': {
         word: 'missionisation',
@@ -1739,7 +1699,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'mom': {
         word: 'mum',
-        distractors: ['mom', 'mume', 'mua'],
+        distractors: ['mumm', 'mume', 'mua'],
     },
     'monophthongize': {
         word: 'monophthongise',
@@ -1860,7 +1820,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'organization': {
         word: 'organisation',
-        pronunciation: 'or-guh-ny-zay-shun',
+        pronunciation: 'or-guh-ny-say-shun',
         distractors: ['organisasion', 'oganisation', 'organisaton'],
     },
     'organize': {
@@ -1888,21 +1848,9 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         pronunciation: 'os-truh-syz',
         distractors: ['ostrasise', 'ostrecise', 'ostraccise'],
     },
-    'outprize': {
-        word: 'outprise',
-        distractors: ['outprisi', 'outprase', 'uutprise'],
-    },
     'overgeneralization': {
         word: 'overgeneralisation',
         distractors: ['overgenerelisation', 'ovirgeneralisation', 'overgeneralasation'],
-    },
-    'oversize': {
-        word: 'oversise',
-        distractors: ['ovirsise', 'oversase', 'uversise'],
-    },
-    'oversized': {
-        word: 'oversised',
-        distractors: ['ovirsised', 'oversased', 'uversised'],
     },
     'overspecialize': {
         word: 'overspecialise',
@@ -2022,7 +1970,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'pizer': {
         word: 'piser',
-        distractors: ['pisir', 'paser', 'pisser'],
+        distractors: ['pisir', 'paser', 'pisor'],
     },
     'plagiarize': {
         word: 'plagiarise',
@@ -2075,7 +2023,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'polymerize': {
         word: 'polymerise',
-        distractors: ['polymirise', 'polymerase', 'pulymerise'],
+        distractors: ['polymirise', 'polymeraise', 'pulymerise'],
     },
     'portalization': {
         word: 'portalisation',
@@ -2105,10 +2053,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'privatisation',
         distractors: ['privetisation', 'pravatisation', 'privatisatiun'],
     },
-    'prizer': {
-        word: 'priser',
-        distractors: ['prisir', 'praser', 'prser'],
-    },
     'professionalization': {
         word: 'professionalisation',
         distractors: ['professionelisation', 'profissionalisation', 'professaonalisation'],
@@ -2128,10 +2072,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     'pulverization': {
         word: 'pulverisation',
         distractors: ['pulverisetion', 'pulvirisation', 'pulverasation'],
-    },
-    'pyrolysize': {
-        word: 'pyrolysise',
-        distractors: ['pyrolysisi', 'pyrolysase', 'pyrulysise'],
     },
     'quantized': {
         word: 'quantised',
@@ -2310,10 +2250,6 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         word: 'securitisation',
         distractors: ['securitisetion', 'sicuritisation', 'securatisation'],
     },
-    'seizer': {
-        word: 'seiser',
-        distractors: ['siiser', 'seaser', 'sieser'],
-    },
     'sensitization': {
         word: 'sensitisation',
         distractors: ['sensitisetion', 'sinsitisation', 'sensatisation'],
@@ -2460,8 +2396,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['solphur', 'suphur', 'sulhur'],
     },
     'sulfurized': {
-        word: 'sulfurised',
-        distractors: ['sulfurisid', 'sulfurased', 'solfurised'],
+        word: 'sulphurised',
+        distractors: ['sulphurisid', 'sulphurased', 'solphurised'],
     },
     'summarization': {
         word: 'summarisation',
@@ -2469,7 +2405,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'summarize': {
         word: 'summarise',
-        distractors: ['summerise', 'summarisi', 'summarase'],
+        distractors: ['summaryse', 'summarisi', 'summarase'],
     },
     'syllogizer': {
         word: 'syllogiser',
@@ -2673,8 +2609,8 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
         distractors: ['vepour', 'vapuur', 'vapoor'],
     },
     'vaporize': {
-        word: 'vaporise',
-        distractors: ['veporise', 'vaporisi', 'vaporase'],
+        word: 'vapourise',
+        distractors: ['vapourisi', 'vapouraise', 'vepourise'],
     },
     'vascularize': {
         word: 'vascularise',
@@ -2738,7 +2674,7 @@ export const UK_OVERRIDES: Record<string, UkOverride> = {
     },
     'volcanization': {
         word: 'volcanisation',
-        distractors: ['volcenisation', 'volcanasation', 'vulcanisation'],
+        distractors: ['volcenisation', 'volcanasation', 'volcanisatiun'],
     },
     'volumize': {
         word: 'volumise',

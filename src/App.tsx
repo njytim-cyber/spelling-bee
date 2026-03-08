@@ -90,6 +90,7 @@ import { trackEvent, trackScreenView, setAnalyticsUserProperties } from './utils
 import { measureRetention } from './utils/retentionTracker';
 import { ensureAllWords, ensureTiersForLevel, getRegistryVersion, setDialect } from './domains/spelling/words';
 import type { Dialect } from './domains/spelling/words';
+import { syncVoiceToDialect } from './services/cloudTts';
 import { DailyChallengeComplete } from './components/DailyChallengeComplete';
 import { isDailyComplete, saveDailyResult } from './utils/dailyTracking';
 import { recordSessionHistory } from './utils/sessionHistory';
@@ -470,6 +471,7 @@ function AppInner() {
 
   const handleDialectChange = useCallback(async (d: Dialect) => {
     onDialectChange(d);
+    syncVoiceToDialect(d);
     await setDialect(d);
     setWordRegistryVersion(getRegistryVersion());
   }, [onDialectChange]);
@@ -1189,6 +1191,7 @@ function AppInner() {
 
   const handleOnboardingComplete = useCallback((d: Dialect, l: Level) => {
     onDialectChange(d);
+    syncVoiceToDialect(d);
     onLevelChange(l);
     const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);

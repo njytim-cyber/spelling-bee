@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { CLOUD_VOICES, voicesForDialect, getCloudVoiceGender, shouldSkipCloudTts } from '../services/cloudTts';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { CLOUD_VOICES, voicesForDialect, getCloudVoiceGender, shouldSkipCloudTts, syncVoiceToDialect } from '../services/cloudTts';
+import { STORAGE_KEYS } from '../config';
 
 describe('Cloud TTS voice catalog', () => {
     it('has 24 Neural2 voices total', () => {
@@ -63,5 +64,36 @@ describe('Cloud TTS voice catalog', () => {
     it('shouldSkipCloudTts returns false when no connection API', () => {
         // Node test env has no navigator.connection
         expect(shouldSkipCloudTts()).toBe(false);
+    });
+});
+
+describe('syncVoiceToDialect', () => {
+    beforeEach(() => {
+        localStorage.clear();
+    });
+
+    it('switches US voice to equivalent UK voice', () => {
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, 'en-US-Neural2-C');
+        syncVoiceToDialect('en-GB');
+        expect(localStorage.getItem(STORAGE_KEYS.ttsCloudVoice)).toBe('en-GB-Neural2-C');
+    });
+
+    it('switches UK voice to equivalent US voice', () => {
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, 'en-GB-Neural2-A');
+        syncVoiceToDialect('en-US');
+        expect(localStorage.getItem(STORAGE_KEYS.ttsCloudVoice)).toBe('en-US-Neural2-A');
+    });
+
+    it('falls back to default when no equivalent suffix exists', () => {
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, 'en-US-Neural2-J');
+        syncVoiceToDialect('en-GB');
+        // en-GB has no J suffix, should fall back to en-GB-Neural2-A (default)
+        expect(localStorage.getItem(STORAGE_KEYS.ttsCloudVoice)).toBe('en-GB-Neural2-A');
+    });
+
+    it('does nothing when voice already matches dialect', () => {
+        localStorage.setItem(STORAGE_KEYS.ttsCloudVoice, 'en-GB-Neural2-B');
+        syncVoiceToDialect('en-GB');
+        expect(localStorage.getItem(STORAGE_KEYS.ttsCloudVoice)).toBe('en-GB-Neural2-B');
     });
 });

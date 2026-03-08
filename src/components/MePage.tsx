@@ -93,6 +93,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         assignList,
         unassignList,
         getAssignedLists,
+        dialect,
     } = useUser();
 
     const activeBadge = stats.activeBadgeId || '';
@@ -462,7 +463,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </span>
                     </div>
                     <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 group-hover:text-[rgb(var(--color-fg))]/50 transition-colors">
-                        customize
+                        {dialect === 'en-GB' ? 'customise' : 'customize'}
                     </span>
                 </button>
 

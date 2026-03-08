@@ -400,7 +400,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "draft",
         "definition": "A current of air, usually coming into a room or vehicle.",
-        "exampleSentence": "He left the country to avoid the draft.",
+        "exampleSentence": "She felt a cold draft coming in through the gap under the door.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",

@@ -6,7 +6,7 @@
  */
 import { useState, useCallback, useMemo } from 'react';
 import { STORAGE_KEYS, FREE_DAILY_REVIEW_CAP } from '../config';
-import { getWordMap } from '../domains/spelling/words';
+import { resolveUsKey, getWordByUsKey } from '../domains/spelling/words/registry';
 import { todayISO } from '../utils/dateHelpers';
 
 // ── Types ────────────────────────────────────────────────────────────────────
@@ -135,7 +135,7 @@ export function useWordHistory(isPremium = false, profileId?: string | null) {
     ) => {
         setHistory(prev => {
             const now = Date.now();
-            const key = word.toLowerCase();
+            const key = resolveUsKey(word.toLowerCase());
             const existing = prev.records[key];
             const isMcq = mode !== 'typed';
 
@@ -262,10 +262,10 @@ export function useWordHistory(isPremium = false, profileId?: string | null) {
 
     /** Count of mastered words at difficulty 5+ (for Verified Speller achievement) */
     const masteredWordsLevel5Plus = useMemo(() => {
-        const wordMap = getWordMap();
         return Object.values(history.records).filter(r => {
             if (r.box < 4 || (r.typedAttempts ?? 0) < 1) return false;
-            const detail = wordMap.get(r.word);
+            // Records use US canonical keys, so look up by US key regardless of dialect
+            const detail = getWordByUsKey(r.word);
             return detail != null && detail.difficulty >= 5;
         }).length;
     }, [history.records]);

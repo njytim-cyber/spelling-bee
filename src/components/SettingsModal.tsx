@@ -3,7 +3,7 @@
  *
  * App settings: dialect, TTS voice/speed, theme toggle.
  */
-import { memo, useState } from 'react';
+import { memo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
@@ -118,6 +118,14 @@ export const SettingsModal = memo(function SettingsModal({
     const [ttsCloudVoice, setTtsCloudVoice] = useState(getStoredCloudVoice);
     const [previewLoading, setPreviewLoading] = useState(false);
 
+    // Wrap onDialectChange to also re-sync displayed voice
+    const handleDialectChange = useCallback((d: Dialect) => {
+        onDialectChange(d);
+        // After App.tsx runs syncVoiceToDialect, re-read the stored voice
+        // Use setTimeout(0) so the localStorage write completes first
+        setTimeout(() => setTtsCloudVoice(getStoredCloudVoice()), 0);
+    }, [onDialectChange]);
+
     const handleRateChange = (rate: number) => {
         setTtsRate(rate);
         localStorage.setItem(STORAGE_KEYS.ttsRate, String(rate));
@@ -200,7 +208,7 @@ export const SettingsModal = memo(function SettingsModal({
                         {([['en-US', 'US English', 'color, center'], ['en-GB', 'UK English', 'colour, centre']] as const).map(([d, label, examples]) => (
                             <button
                                 key={d}
-                                onClick={() => onDialectChange(d)}
+                                onClick={() => handleDialectChange(d)}
                                 className={`flex-1 px-3 py-2.5 rounded-xl border transition-colors text-left ${
                                     dialect === d
                                         ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
@@ -273,7 +281,7 @@ export const SettingsModal = memo(function SettingsModal({
                                                     : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
                                             }`}
                                         >
-                                            {getThemeName(theme)}
+                                            {getThemeName(theme, dialect)}
                                         </button>
                                     ))}
                                 </div>

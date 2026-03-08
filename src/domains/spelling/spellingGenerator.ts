@@ -23,6 +23,7 @@ import {
     wordsByLanguageAndDifficulty,
     difficultyRange,
 } from './words';
+import { toDialectWord } from './words/registry';
 import type { LanguageOfOrigin } from '../../utils/etymologyParser';
 
 // ── Pattern → category mapping ───────────────────────────────────────────────
@@ -435,7 +436,9 @@ export function generateItemForWord(
     rng: () => number = Math.random,
 ): EngineItem | null {
     const wordMap = getWordMap();
-    const richWord = wordMap.get(wordStr.toLowerCase());
+    // Try direct lookup first, then resolve US key to current dialect spelling
+    const richWord = wordMap.get(wordStr.toLowerCase())
+        ?? wordMap.get(toDialectWord(wordStr.toLowerCase()));
     if (!richWord) return null;
 
     const correct = richWord.word;

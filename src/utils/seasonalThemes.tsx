@@ -158,7 +158,7 @@ export function getThemeDecorations(theme: SeasonalTheme): ReactElement[] {
 }
 
 /** Get theme display names */
-export function getThemeName(theme: SeasonalTheme): string {
+export function getThemeName(theme: SeasonalTheme, dialect?: string): string {
     switch (theme) {
         case 'none': return 'No decorations';
         case 'auto': return 'Auto (seasonal)';
@@ -166,6 +166,6 @@ export function getThemeName(theme: SeasonalTheme): string {
         case 'winter': return 'Winter ❄️';
         case 'spring': return 'Spring 🌸';
         case 'summer': return 'Summer ☀️';
-        case 'fall': return 'Fall 🍂';
+        case 'fall': return dialect === 'en-GB' ? 'Autumn 🍂' : 'Fall 🍂';
     }
 }
