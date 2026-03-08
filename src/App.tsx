@@ -111,50 +111,76 @@ type QuestionType = SpellingCategory; // local alias for engine compatibility
 
 function makeGenerateItem(
   customPool?: import('./types/customList').CustomWord[],
-  getPhase?: () => SessionPhase | null,
+  getPhaseAtIndex?: (index: number) => SessionPhase | null,
   getSurprise?: () => { surprise: SessionSurprise | null; index: number },
   getSRSWords?: () => { word: string; box: number }[],
 ) {
+  // Track words already in the buffer to prevent duplicate questions.
+  // Covers both SRS picks and regular word selection.
+  const usedWords = new Set<string>();
+  // Sequential counter: maps each generated item to its session position
+  // so batch-generated buffer items get the correct phase (warmup/build/
+  // boss/victory) instead of all reading phase at index 0.
+  let generationCount = 0;
+
+  const trackItem = (item: EngineItem): EngineItem => {
+    const w = typeof item.meta?.['word'] === 'string' ? item.meta['word'] as string : '';
+    if (w) usedWords.add(w);
+    generationCount++;
+    return item;
+  };
+
   return (
     difficulty: number,
     categoryId: string,
     rng?: () => number,
   ): EngineItem => {
     if (categoryId === 'custom' && customPool && customPool.length > 0) {
-      return generateCustomItem(customPool, difficulty, categoryId, rng);
+      return trackItem(generateCustomItem(customPool, difficulty, categoryId, rng));
     }
-    if (categoryId === 'vocab') return generateVocabItem(difficulty, categoryId, rng);
-    if (categoryId === 'roots') return generateRootQuizItem(difficulty, categoryId, rng);
-    if (categoryId === 'etymology') return generateEtymologyItem(difficulty, categoryId, rng);
+    if (categoryId === 'vocab') return trackItem(generateVocabItem(difficulty, categoryId, rng));
+    if (categoryId === 'roots') return trackItem(generateRootQuizItem(difficulty, categoryId, rng));
+    if (categoryId === 'etymology') return trackItem(generateEtymologyItem(difficulty, categoryId, rng));
 
     // Check for surprise at this index
     const surpriseInfo = getSurprise?.();
     if (surpriseInfo?.surprise && surpriseInfo.index === surpriseInfo.surprise.triggerIndex && categoryId.startsWith('level-')) {
       const levelNum = parseInt(categoryId.replace('level-', ''), 10) || difficulty;
       if (surpriseInfo.surprise.type === 'bonusWord') {
-        return generateBonusWord(levelNum, rng);
+        return trackItem(generateBonusWord(levelNum, rng));
       }
       if (surpriseInfo.surprise.type === 'speedBurst') {
-        // Speed burst items are injected via queue in App state — generate a normal item here
-        // The first speed burst item will be swapped in by the queue logic
         const burstItems = generateSpeedBurst(levelNum, rng);
-        return burstItems[0];
+        return trackItem(burstItems[0]);
       }
     }
 
-    // Session phase arc — adjust word difficulty based on phase
-    const phase = getPhase?.();
+    // Session phase arc — adjust word difficulty based on phase.
+    // generationCount tracks total items generated so each one maps to
+    // the correct session position (e.g. item 0 → warmup, item 4 → build).
+    const phase = getPhaseAtIndex?.(generationCount) ?? null;
     if (phase && categoryId.startsWith('level-')) {
       const levelNum = parseInt(categoryId.replace('level-', ''), 10) || difficulty;
       // SRS-aware warmup/victory: pull from mastered/familiar boxes when available
       if ((phase === 'warmup' || phase === 'victory') && getSRSWords) {
-        const srsItem = generateSRSPhaseItem(phase, categoryId, getSRSWords(), rng);
-        if (srsItem) return srsItem;
+        const srsItem = generateSRSPhaseItem(phase, categoryId, getSRSWords(), rng, usedWords);
+        if (srsItem) return trackItem(srsItem);
       }
-      return generatePhaseItem(phase, levelNum, categoryId, rng);
+      return dedup(() => generatePhaseItem(phase, levelNum, categoryId, rng));
     }
-    return generateSpellingItem(difficulty, categoryId, rng);
+    return dedup(() => generateSpellingItem(difficulty, categoryId, rng));
   };
+
+  /** Retry up to 5 times to avoid a word already in the buffer. */
+  function dedup(gen: () => EngineItem): EngineItem {
+    for (let i = 0; i < 5; i++) {
+      const item = gen();
+      const w = typeof item.meta?.['word'] === 'string' ? item.meta['word'] as string : '';
+      if (!w || !usedWords.has(w)) return trackItem(item);
+    }
+    // All retries hit duplicates — accept the last one rather than blocking
+    return trackItem(gen());
+  }
 }
 
 function makeGenerateFiniteSet(dailySize: DailyChallengeSize = 10) {
@@ -590,6 +616,7 @@ function AppInner() {
   questionTypeRef.current = questionType;
 
   const onAnswer = useCallback((item: EngineItem, correct: boolean, responseTimeMs: number, typed?: string) => {
+    hasUnrecordedAnswers.current = true;
     // Start session timer on first answer
     if (sessionStartRef.current === 0) {
       sessionStartRef.current = Date.now();
@@ -677,8 +704,8 @@ function AppInner() {
       .map(l => ({ id: l.id, name: l.name, wordCount: l.words.length }));
   }, [activeProfileId, getAssignedLists, customLists]);
   // Phase + surprise refs so the memoized generator can read current state without re-creating
-  const currentPhaseRef = useRef<SessionPhase | null>(null);
-  currentPhaseRef.current = currentPhase;
+  const phaseLayoutRef = useRef(phaseLayout);
+  phaseLayoutRef.current = phaseLayout;
   const sessionSurpriseRef = useRef<SessionSurprise | null>(null);
   sessionSurpriseRef.current = sessionSurprise;
   const sessionAnsweredRef = useRef(0);
@@ -688,7 +715,7 @@ function AppInner() {
   const generateItem = useMemo(
     () => makeGenerateItem(
       activeCustomList?.words,
-      () => currentPhaseRef.current,
+      (index: number) => phaseLayoutRef.current.length > 0 ? getPhaseAt(phaseLayoutRef.current, index) : null,
       () => ({ surprise: sessionSurpriseRef.current, index: sessionAnsweredRef.current }),
       () => Object.values(wordRecordsRef.current).map(r => ({ word: r.word, box: r.box })),
     ),
@@ -1144,6 +1171,10 @@ function AppInner() {
   }, [masteredCount, wordRecords, fireMasteryToast]);
 
   const pendingTabRef = useRef<Tab | null>(null);
+  /** Score already recorded to stats — only the delta is sent on subsequent recordings */
+  const recordedScoreRef = useRef(0);
+  /** True when the user has answered question(s) that haven't been recorded yet */
+  const hasUnrecordedAnswers = useRef(false);
   const { updateMyActivity } = friendsState;
   const handleTabChange = useCallback((tab: Tab) => {
     // If summary is already showing, just update the destination
@@ -1153,9 +1184,14 @@ function AppInner() {
     }
     // Reset guided mode when leaving game tab
     if (tab !== 'game' && guidedMode) setGuidedMode(false);
-    if (prevTab.current === 'game' && tab !== 'game' && totalAnswered > 0) {
-      recordSession(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
-      recordSessionHistory(score, totalCorrect, totalAnswered, bestStreak, questionType, timedMode, timedMode ? timedVariant : undefined);
+    // Score persists across category changes but totalCorrect/totalAnswered
+    // reset, so use score delta to prevent double-counting XP.
+    const deltaScore = score - recordedScoreRef.current;
+    if (prevTab.current === 'game' && tab !== 'game' && hasUnrecordedAnswers.current) {
+      recordSession(deltaScore, totalCorrect, totalAnswered, bestStreak, questionType, timedMode);
+      recordSessionHistory(deltaScore, totalCorrect, totalAnswered, bestStreak, questionType, timedMode, timedMode ? timedVariant : undefined);
+      recordedScoreRef.current = score;
+      hasUnrecordedAnswers.current = false;
       updateMyActivity(new Date().toISOString().slice(0, 10));
       trackEvent('session_complete', {
         words: totalAnswered,
@@ -1189,9 +1225,17 @@ function AppInner() {
     }
   }, [activeTab, handleTabChange]);
 
-  const handleOnboardingComplete = useCallback((d: Dialect, l: Level) => {
+  const handleOnboardingComplete = useCallback(async (d: Dialect, l: Level) => {
     onDialectChange(d);
     syncVoiceToDialect(d);
+    // Load UK overrides into word registry when en-GB is selected
+    if (d === 'en-GB') {
+      await setDialect(d);
+    }
+    // Ensure the tiers for the chosen level are loaded before generating items
+    const levelNum = parseInt(l.replace('level-', ''), 10) || 1;
+    await ensureTiersForLevel(levelNum);
+    setWordRegistryVersion(getRegistryVersion());
     onLevelChange(l);
     const config = getLevelConfig(l);
     setQuestionType(config.defaultCategory);
@@ -2133,7 +2177,7 @@ function AppInner() {
             dialect={dialect}
             onDialectChange={handleDialectChange}
             level={level}
-            onLevelChange={onLevelChange}
+            onLevelChange={(l) => { onLevelChange(l); setQuestionType(getLevelConfig(l).defaultCategory); setSessionSize(null); setSessionAnswered(0); setPhaseLayout([]); }}
             onClose={() => setShowSettings(false)}
             isPremium={isPremium}
             onUpgrade={() => { setShowSettings(false); setShowUpgrade(true); }}

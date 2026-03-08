@@ -406,19 +406,26 @@ export function generatePhaseItem(
  * - warmup: box 3+ (familiar/mastered) — confidence boosters
  * - victory: box 4 (mastered) — end on a high note
  * Returns null if no suitable SRS words are available.
+ *
+ * @param usedWords  Set of words already used this session — picks are excluded
+ *                   from it and added on success to prevent repeats.
  */
 export function generateSRSPhaseItem(
     phase: 'warmup' | 'victory',
     category: string,
     srsWords: { word: string; box: number }[],
     rng: () => number = Math.random,
+    usedWords?: Set<string>,
 ): EngineItem | null {
     const minBox = phase === 'warmup' ? 3 : 4;
-    const candidates = srsWords.filter(w => w.box >= minBox);
+    const candidates = usedWords
+        ? srsWords.filter(w => w.box >= minBox && !usedWords.has(w.word))
+        : srsWords.filter(w => w.box >= minBox);
     if (candidates.length === 0) return null;
     const pick = candidates[Math.floor(rng() * candidates.length)];
     const item = generateItemForWord(pick.word, category, rng);
     if (!item) return null;
+    usedWords?.add(pick.word);
     item.meta = { ...item.meta, sessionPhase: phase, srsReview: true };
     return item;
 }

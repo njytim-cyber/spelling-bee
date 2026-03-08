@@ -95,6 +95,31 @@ User selects level → picks session size (10/20/50)
 - **Session history**: localStorage-only, 90-day rolling window (`src/utils/sessionHistory.ts`)
 - **Word retention**: daily `word_retention_check` event for mastered words > 30 days old
 
+### Game Loop & Scoring Mechanics
+
+**Buffer model**: `useGameLoop` pre-generates 8 items in a buffer. As items are consumed (answered), the replenishment effect adds one at a time. Score, streak, totalCorrect, totalAnswered are tracked in `GameState`.
+
+**Score lifecycle**:
+- Score accumulates within a play session and **persists across category changes** (intentional: switching level-3 → level-5 keeps the running score)
+- `totalCorrect` and `totalAnswered` **reset** on category change (they track per-category stats)
+- `recordSession()` is called when the user leaves the game tab. It records the **score delta** (score minus what was already recorded) to prevent double-counting XP
+- The `hasUnrecordedAnswers` ref guards against recording the same session data twice on repeated tab switches
+
+**Session phases** (for sized sessions only):
+- `computePhaseLayout(size)` divides the session: warmup → build → boss → victory
+- Each phase adjusts word difficulty: warmup = 1 level easier, build = current level, boss = 1 level harder, victory = 1 level easier
+- Items are generated with a `generationCount` counter so batch-generated buffer items each get the correct phase (not all warmup)
+- SRS words (box 3+) are preferentially used for warmup/victory phases
+
+**Deduplication**:
+- `usedWords` Set in `makeGenerateItem` prevents the same word appearing twice in the buffer
+- SRS picks are excluded from the Set after selection; regular picks retry up to 5 times
+- The Set resets when the generator closure is recreated (tier load, custom list change)
+
+**Tutorial mode**: First answer (`totalAnswered === 0`) has no score penalty on wrong answer and no auto-advance — user must see the correct answer.
+
+**Forgiving streaks**: Levels 1-3 (non-timed) get one free miss per streak without breaking it.
+
 ### Hidden / Removed UI Elements
 - **Rank emojis** — replaced with chalk-line SVG icons (`RankIcon` in `Icons.tsx`). Emoji field kept on `Rank` type for share text only.
 - **Leaderboard NPC backfill** — 10 NPC entries fill the Compete leaderboard when < 10 real players. NPCs are non-interactive (no ping/race).
