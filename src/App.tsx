@@ -1358,7 +1358,8 @@ function AppInner() {
             if (el && (flash === 'wrong' || flash === 'correct')) {
               el.classList.remove('wrong-shake', 'answer-bounce');
               void el.offsetHeight; // force reflow
-              el.classList.add(flash === 'wrong' && !shieldBroken ? 'wrong-shake' : flash === 'correct' ? 'answer-bounce' : '');
+              const anim = flash === 'correct' ? 'answer-bounce' : (flash === 'wrong' && !shieldBroken) ? 'wrong-shake' : '';
+              if (anim) el.classList.add(anim);
             }
           }} className="flex-1 flex flex-col w-full min-h-0">
             {/* ── Timer urgency bar — visible pulse when time is running out ── */}

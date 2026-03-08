@@ -28,6 +28,7 @@ export const db = initializeFirestore(app, {
 let analyticsInstance: Analytics | null = null;
 export async function getAnalyticsInstance(): Promise<Analytics | null> {
     if (analyticsInstance) return analyticsInstance;
+    if (!import.meta.env.VITE_FIREBASE_MEASUREMENT_ID) return null;
     const supported = await isAnalyticsSupported();
     if (supported) {
         analyticsInstance = getAnalytics(app);
