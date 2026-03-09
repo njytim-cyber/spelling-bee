@@ -83,7 +83,7 @@ export function usePremium(uid: string | null) {
     }, [uid]);
 
     // Verify premium status against Firestore on mount to prevent localStorage tampering.
-    // If server says expired but localStorage says active, revoke local premium.
+    // Server (Firestore) is the source of truth — local can never grant more than server allows.
     useEffect(() => {
         if (!uid || !isPremium) return;
         let cancelled = false;
@@ -94,17 +94,31 @@ export function usePremium(uid: string | null) {
                 const snap = await getDoc(doc(db, 'users', uid));
                 if (cancelled) return;
                 if (snap.exists()) {
-                    const serverExpiry = snap.data().championPassExpiry;
+                    const serverExpiry = snap.data().championPassExpiry as string | undefined;
                     if (serverExpiry) {
-                        // Server is the source of truth for paid subscriptions
                         const serverDate = new Date(serverExpiry).getTime();
-                        if (serverDate < Date.now() && subscriptionStatus === 'active') {
-                            // Server says expired — revoke
+                        // Always sync to server value — server is source of truth
+                        // (prevents localStorage tampering regardless of subscription status)
+                        if (serverDate < Date.now()) {
                             writeExpiry(uid, serverExpiry);
                             setChampionPassExpiry(serverExpiry);
                             writeSubStatus('none');
                             setSubscriptionStatus('none');
+                        } else {
+                            // Server still valid — take the EARLIER of local vs server
+                            // (prevents local from extending beyond what server allows)
+                            const localDate = new Date(championPassExpiry).getTime();
+                            if (localDate > serverDate) {
+                                writeExpiry(uid, serverExpiry);
+                                setChampionPassExpiry(serverExpiry);
+                            }
                         }
+                    } else {
+                        // No server expiry at all — revoke local premium
+                        writeExpiry(uid, '');
+                        setChampionPassExpiry('');
+                        writeSubStatus('none');
+                        setSubscriptionStatus('none');
                     }
                 }
             } catch {

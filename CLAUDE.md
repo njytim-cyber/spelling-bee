@@ -7,7 +7,7 @@ This is a spelling app. **Accuracy of word data is the most important thing.** E
 ```bash
 npm run dev       # Dev server with HMR
 npm run build     # TypeScript check + Vite production build
-npx vitest run    # Run tests once (30 files, 480 tests)
+npx vitest run    # Run tests once (30 files, 492 tests)
 npx tsc --noEmit  # Type-check only
 npm run verify    # Full check: lint + tsc + test + build (runs on pre-push)
 ```

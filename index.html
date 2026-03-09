@@ -154,11 +154,12 @@
     script-src 'self' 'sha256-PQ0xol2EBS+EDcvRu/7QdrdJh5jaNc2QBgaNs3ZfvYI=';
     style-src 'self' 'unsafe-inline';
     font-src 'self';
-    connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.cloudfunctions.net;
+    connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.firebaseapp.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.cloudfunctions.net https://checkout.stripe.com https://billing.stripe.com;
     img-src 'self' data:;
     media-src 'self' blob:;
     object-src 'none';
     base-uri 'self';
+    form-action 'self' https://checkout.stripe.com https://billing.stripe.com;
   ">
 </head>
 

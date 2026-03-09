@@ -23,9 +23,14 @@ src/
 │   └── ...
 ├── components/          # UI components
 │   ├── Icons.tsx        # Centralized SVG icon library (settings, speaker, etc.)
+│   ├── BeeBuddy.tsx     # Animated bee mascot (7 emotional states, costumes)
+│   ├── PathPage.tsx     # Study dashboard (weekly goals, study plan, curriculum)
 │   ├── MePage.tsx       # Profile/stats page
-│   ├── LeaguePage.tsx   # Leaderboard
+│   ├── LeaguePage.tsx   # Leaderboard + competition cards
 │   ├── BeeSimPage.tsx   # Bee simulation mode
+│   ├── SharedDailyWord.tsx # Daily word challenge (same word for all users)
+│   ├── OnboardingModal.tsx # Dialect picker + diagnostic placement test
+│   ├── FriendsModal.tsx # Friend management (add, accept, buddy streaks)
 │   ├── WordBookModal.tsx # Vocabulary browser
 │   └── ...
 ├── utils/               # Pure utilities (themes, achievements, daily challenge)
@@ -116,10 +121,24 @@ User selects level → picks session size (10/20/50)
 - SRS picks are excluded from the Set after selection; regular picks retry up to 5 times
 - The Set resets when the generator closure is recreated (tier load, custom list change)
 
-**Tutorial mode**: First answer (`totalAnswered === 0`) has no score penalty on wrong answer and no auto-advance — user must see the correct answer.
+**Finite sets**: `GAME_CONFIG.finiteTypeIds` (`['daily', 'challenge', 'review']`) marks categories that use a fixed problem list instead of the infinite buffer. The engine calls `generateFiniteSet()` for these and skips buffer refill.
+
+**Tutorial mode**: First answer (`totalAnswered === 0`, non-finite modes only) has no score penalty on wrong answer and no auto-advance — user must see the correct answer.
 
 **Forgiving streaks**: Levels 1-3 (non-timed) get one free miss per streak without breaking it.
+
+### Onboarding & Placement
+- **Dialect picker** — first screen, choose US English or UK English
+- **Diagnostic placement test** — 5 adaptive MCQ questions (difficulties 2, 4, 6, 7, 8) → auto-place user at Level 1–8
+- Returning users skip diagnostic
+
+### Referral & Friends (Unified Code System)
+- **Single code**: SPELL-XXXX (referral code) works for both referrals and friend requests
+- `addFriend()` accepts both BEE-XXXX (legacy friend codes) and SPELL-XXXX (referral codes via Firestore query)
+- Auto-friend-add on referral redemption (`redeemedCode` state in `useReferral` → effect in App.tsx)
+- `shareReferral()` uses Web Share API with clipboard fallback
 
 ### Hidden / Removed UI Elements
 - **Rank emojis** — replaced with chalk-line SVG icons (`RankIcon` in `Icons.tsx`). Emoji field kept on `Rank` type for share text only.
 - **Leaderboard NPC backfill** — 10 NPC entries fill the Compete leaderboard when < 10 real players. NPCs are non-interactive (no ping/race).
+- **Separate friend code** — BEE-XXXX code display removed from Me page; referral code used for both purposes

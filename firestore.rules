@@ -26,7 +26,7 @@ service cloud.firestore {
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
-                           'referralCode', 'referralCount', 'championPassExpiry',
+                           'referralCode', 'referralCount',
                            'masteredWordsLevel5Plus', 'lastRoomCreateAt',
                            'friendCode'
                          ])
@@ -42,7 +42,7 @@ service cloud.firestore {
                            'timedModeSolved', 'timedModeCorrect', 'timedModeBestStreak', 'timedModeSessions', 'timedModePerfects',
                            'ultimateSolved', 'ultimateCorrect', 'ultimateBestStreak', 'ultimateSessions', 'ultimatePerfects',
                            'lastPingAt', '_statsVersion',
-                           'referralCode', 'referralCount', 'championPassExpiry',
+                           'referralCode', 'referralCount',
                            'masteredWordsLevel5Plus', 'lastRoomCreateAt',
                            'friendCode'
                          ])
@@ -73,15 +73,21 @@ service cloud.firestore {
                    && (!('totalXP' in request.resource.data)
                        || (request.resource.data.totalXP is number
                            && request.resource.data.totalXP >= 0
-                           && request.resource.data.totalXP <= 1000000))             // 1M XP cap
+                           && request.resource.data.totalXP <= 1000000
+                           // Monotonic: can only increase (prevent arbitrary inflation)
+                           && (resource == null || request.resource.data.totalXP >= resource.data.totalXP)
+                           // Max +500 XP per write (prevents single-write exploits)
+                           && (resource == null || !('totalXP' in resource.data) || request.resource.data.totalXP - resource.data.totalXP <= 500)))
                    && (!('bestStreak' in request.resource.data)
                        || (request.resource.data.bestStreak is number
                            && request.resource.data.bestStreak >= 0
-                           && request.resource.data.bestStreak <= 1000))             // 1000 streak cap
+                           && request.resource.data.bestStreak <= 1000
+                           && (resource == null || request.resource.data.bestStreak >= resource.data.bestStreak)))
                    && (!('totalSolved' in request.resource.data)
                        || (request.resource.data.totalSolved is number
                            && request.resource.data.totalSolved >= 0
-                           && request.resource.data.totalSolved <= 500000))          // 500K problems cap
+                           && request.resource.data.totalSolved <= 500000
+                           && (resource == null || request.resource.data.totalSolved >= resource.data.totalSolved)))
                    && (!('accuracy' in request.resource.data)
                        || (request.resource.data.accuracy is number
                            && request.resource.data.accuracy >= 0
@@ -96,7 +102,9 @@ service cloud.firestore {
                    && (!('weeklyXP' in request.resource.data)
                        || (request.resource.data.weeklyXP is number
                            && request.resource.data.weeklyXP >= 0
-                           && request.resource.data.weeklyXP <= 100000))
+                           && request.resource.data.weeklyXP <= 100000
+                           // Allow reset to 0 (new week) or increase only
+                           && (resource == null || request.resource.data.weeklyXP == 0 || request.resource.data.weeklyXP >= resource.data.weeklyXP)))
                    && (!('weeklyXPWeek' in request.resource.data)
                        || (request.resource.data.weeklyXPWeek is string
                            && request.resource.data.weeklyXPWeek.size() <= 10))
@@ -120,9 +128,7 @@ service cloud.firestore {
                        || (request.resource.data.referralCount is number
                            && request.resource.data.referralCount >= 0
                            && request.resource.data.referralCount <= 100))
-                   && (!('championPassExpiry' in request.resource.data)
-                       || (request.resource.data.championPassExpiry is string
-                           && request.resource.data.championPassExpiry.size() <= 30))
+                   // championPassExpiry is NOT client-writable — only Cloud Functions (admin SDK) can write it
                    && (!('friendCode' in request.resource.data)
                        || (request.resource.data.friendCode is string
                            && request.resource.data.friendCode.size() <= 10
@@ -294,9 +300,12 @@ service cloud.firestore {
                   && request.auth.uid in resource.data.uids;
 
       // Create: sender must be authenticated and in the uids array
+      // Rate-limited: 1 friend request per 5 seconds (uses user doc updatedAt)
       allow create: if request.auth != null
                     && request.auth.uid in request.resource.data.uids
                     && request.resource.data.requestedBy == request.auth.uid
+                    // Self-friend prevention
+                    && request.resource.data.uidA != request.resource.data.uidB
                     && request.resource.data.keys().hasOnly([
                          'uids', 'uidA', 'uidB', 'status', 'requestedBy',
                          'nameA', 'nameB', 'avatarA', 'avatarB', 'themeA', 'themeB',

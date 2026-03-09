@@ -70,8 +70,9 @@ const VOICE_PATTERN = /^en-(US|GB|AU|IN)-Neural2-[A-Z]$/;
 /** Max text length for synthesis */
 const MAX_TEXT_LENGTH = 100;
 
-/** Daily request limit per user */
+/** Daily request limit per user (free / premium) */
 const DAILY_LIMIT = 200;
+const DAILY_LIMIT_PREMIUM = 2000;
 
 /** Cloud Storage bucket subfolder for cached audio */
 const CACHE_PREFIX = 'tts-cache';
@@ -218,11 +219,14 @@ export const synthesizeSpeech = onCall(
         const currentCount = rateLimitSnap.exists ? (rateLimitSnap.data()?.count ?? 0) : 0;
 
         if (currentCount >= DAILY_LIMIT) {
-            // Premium users bypass TTS rate limit
+            // Premium users get a higher cap, not unlimited (cost control)
             const userDoc = await db.doc(`users/${uid}`).get();
             const expiry = userDoc.data()?.championPassExpiry as string | undefined;
             const userIsPremium = expiry && new Date(expiry) > new Date();
             if (!userIsPremium) {
+                throw new HttpsError('resource-exhausted', 'Daily TTS limit reached. Try again tomorrow.');
+            }
+            if (currentCount >= DAILY_LIMIT_PREMIUM) {
                 throw new HttpsError('resource-exhausted', 'Daily TTS limit reached. Try again tomorrow.');
             }
         }
@@ -399,9 +403,17 @@ export const stripeWebhook = onRequest(
                     break;
                 }
 
-                // Subscription: set as paid and extend expiry
+                // Subscription: validate plan against actual Stripe price ID
                 const plan = session.metadata?.plan ?? 'monthly';
-                const days = plan === 'annual' ? 365 : 30;
+                const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 });
+                const actualPriceId = lineItems.data[0]?.price?.id;
+                const expectedPriceId = STRIPE_PRICES[plan];
+                if (actualPriceId && expectedPriceId && actualPriceId !== expectedPriceId) {
+                    console.error('Plan/price mismatch:', { plan, actualPriceId, expectedPriceId, uid });
+                    break; // Don't grant premium for mismatched plan
+                }
+
+                const days = plan === 'annual' || plan === 'bee-team-annual' ? 365 : 30;
                 const expiry = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
 
                 await db.doc(`users/${uid}`).set({

@@ -5,7 +5,7 @@
  * Create room → share code → join → 10 rounds → score.
  */
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { collection, doc, setDoc, updateDoc, onSnapshot, query, where, getDocs, serverTimestamp, runTransaction } from 'firebase/firestore';
+import { collection, doc, updateDoc, onSnapshot, query, where, getDocs, serverTimestamp, runTransaction } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { showErrorToast } from '../utils/errorToast';
 import { trackLatency } from '../utils/analytics';
@@ -149,9 +149,13 @@ export function useMultiplayerRoom(uid: string | null, displayName: string) {
         };
 
         try {
-            await trackLatency('multiplayer', 'create_room', () => setDoc(roomRef, room));
-            // Record timestamp for server-side rate limiting
-            setDoc(doc(db, 'users', uid), { lastRoomCreateAt: serverTimestamp(), updatedAt: serverTimestamp() }, { merge: true }).catch(() => {});
+            // Atomic: create room + update rate-limit timestamp in one transaction
+            await trackLatency('multiplayer', 'create_room', () =>
+                runTransaction(db, async (tx) => {
+                    tx.set(roomRef, room);
+                    tx.set(doc(db, 'users', uid), { lastRoomCreateAt: serverTimestamp(), updatedAt: serverTimestamp() }, { merge: true });
+                }),
+            );
             setRoomId(roomRef.id);
             setRoomCode(code);
             setPhase('lobby');

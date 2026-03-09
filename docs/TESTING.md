@@ -1,6 +1,6 @@
 # Testing
 
-**Framework**: Vitest (no DOM/browser deps — tests run in Node). 30 test files, 480 tests.
+**Framework**: Vitest (no DOM/browser deps — tests run in Node). 30 test files, 492 tests.
 
 **Run**: `npx vitest run` (once) or `npm run test` (watch mode).
 
