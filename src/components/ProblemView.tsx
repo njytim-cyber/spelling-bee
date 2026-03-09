@@ -104,6 +104,10 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const { reducedMotion } = useReducedMotion();
     const [showShortcuts, setShowShortcuts] = useState(false);
 
+    // Suppress "audio unavailable" for a grace period on mount (TTS cold start)
+    const [ttsGrace, setTtsGrace] = useState(true);
+    useEffect(() => { const t = setTimeout(() => setTtsGrace(false), 2000); return () => clearTimeout(t); }, []);
+
     // Text-entry mode state
     const [typed, setTyped] = useState('');
     const [lastTyped, setLastTyped] = useState('');
@@ -252,7 +256,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                         {displayText}
                     </div>
                 )}
-                {ttsFailed && (
+                {ttsFailed && !ttsGrace && (
                     <span className="text-[9px] ui text-[var(--color-wrong)]/50 mt-1 block">audio unavailable</span>
                 )}
                 {/* Example sentence — shown after answering (frozen state) */}

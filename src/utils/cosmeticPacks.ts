@@ -1,11 +1,12 @@
 /**
  * utils/cosmeticPacks.ts
  *
- * Cosmetic IAP packs — one-time purchases of themed chalk styles and swipe trails.
- * Each pack has a Stripe Price ID (set via env) and a list of cosmetic item IDs.
+ * Cosmetic IAP — a single one-time purchase that unlocks all cosmetic items.
+ * Legacy packs are kept in LEGACY_PACKS so isItemOwned() still works for
+ * users who purchased individual packs before the shop simplification.
  *
  * The actual ChalkTheme / TrailConfig objects live in chalkThemes.ts / trails.ts
- * with `packItem: true`. This file just defines which items belong to which pack.
+ * with `packItem: true`. This file defines which items belong to which pack.
  */
 
 export interface CosmeticPack {
@@ -23,103 +24,41 @@ export interface CosmeticPack {
     flairIds?: string[];
 }
 
-export const COSMETIC_PACKS: CosmeticPack[] = [
-    {
-        id: 'neon-pack',
-        name: 'Neon Glow',
-        description: '3 electric chalk styles that light up the blackboard',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_NEON_PACK',
-        emoji: '💡',
-        themeIds: ['neon-pink', 'neon-cyan', 'neon-yellow'],
-        trailIds: [],
-    },
-    {
-        id: 'pastel-pack',
-        name: 'Pastel Dreams',
-        description: '3 soft chalk styles for a gentle vibe',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_PASTEL_PACK',
-        emoji: '🌸',
-        themeIds: ['pastel-lavender', 'pastel-peach', 'pastel-sky'],
-        trailIds: [],
-    },
-    {
-        id: 'nature-pack',
-        name: 'Nature\'s Palette',
-        description: '3 earthy chalk styles inspired by the great outdoors',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_NATURE_PACK',
-        emoji: '🌿',
-        themeIds: ['forest-green', 'ocean-deep', 'autumn-leaf'],
-        trailIds: [],
-    },
-    {
-        id: 'trail-pack',
-        name: 'Trail Variety',
-        description: '3 new swipe trails: Snowflake, Sparkle, and Comet',
-        price: '$1.49',
-        priceEnv: 'STRIPE_PRICE_TRAIL_PACK',
-        emoji: '🌟',
-        themeIds: [],
-        trailIds: ['snowflake', 'sparkle', 'comet'],
-    },
-    {
-        id: 'ultimate-pack',
-        name: 'Ultimate Collection',
-        description: 'All 9 chalk styles + all 3 trails — best value!',
-        price: '$2.99',
-        priceEnv: 'STRIPE_PRICE_ULTIMATE_PACK',
-        emoji: '👑',
-        themeIds: ['neon-pink', 'neon-cyan', 'neon-yellow', 'pastel-lavender', 'pastel-peach', 'pastel-sky', 'forest-green', 'ocean-deep', 'autumn-leaf'],
-        trailIds: ['snowflake', 'sparkle', 'comet'],
-    },
-    // ── Seasonal flair packs ──
-    {
-        id: 'winter-flair-pack',
-        name: 'Winter Wonderland',
-        description: 'Snowfall flair for your avatar',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_WINTER_FLAIR',
-        emoji: '❄️',
-        themeIds: [],
-        trailIds: [],
-        flairIds: ['flair-snowfall'],
-    },
-    {
-        id: 'spring-flair-pack',
-        name: 'Spring Bloom',
-        description: 'Falling petals flair for your avatar',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_SPRING_FLAIR',
-        emoji: '🌸',
-        themeIds: [],
-        trailIds: [],
-        flairIds: ['flair-petals'],
-    },
-    {
-        id: 'summer-flair-pack',
-        name: 'Summer Rays',
-        description: 'Sunbeam flair for your avatar',
-        price: '$0.99',
-        priceEnv: 'STRIPE_PRICE_SUMMER_FLAIR',
-        emoji: '☀️',
-        themeIds: [],
-        trailIds: [],
-        flairIds: ['flair-sunbeam'],
-    },
-    {
-        id: 'seasonal-flair-bundle',
-        name: 'All Seasons Bundle',
-        description: 'All 3 seasonal flair items — best value!',
-        price: '$1.99',
-        priceEnv: 'STRIPE_PRICE_SEASONAL_BUNDLE',
-        emoji: '🎁',
-        themeIds: [],
-        trailIds: [],
-        flairIds: ['flair-snowfall', 'flair-petals', 'flair-sunbeam'],
-    },
+/** The single shop offering — one purchase, everything unlocked. */
+export const EVERYTHING_PACK: CosmeticPack = {
+    id: 'everything-pack',
+    name: 'Everything Pack',
+    description: 'All chalk styles, swipe trails, and avatar flair — forever',
+    price: '$2.99',
+    priceEnv: 'STRIPE_PRICE_EVERYTHING_PACK',
+    emoji: '👑',
+    themeIds: [
+        'neon-pink', 'neon-cyan', 'neon-yellow',
+        'pastel-lavender', 'pastel-peach', 'pastel-sky',
+        'forest-green', 'ocean-deep', 'autumn-leaf',
+    ],
+    trailIds: ['snowflake', 'sparkle', 'comet'],
+    flairIds: ['flair-snowfall', 'flair-petals', 'flair-sunbeam'],
+};
+
+/**
+ * Legacy packs — kept for backwards compatibility so isItemOwned() resolves
+ * items purchased before the shop simplification. Not shown in the shop UI.
+ */
+const LEGACY_PACKS: CosmeticPack[] = [
+    { id: 'neon-pack', name: 'Neon Glow', description: '', price: '', priceEnv: '', emoji: '', themeIds: ['neon-pink', 'neon-cyan', 'neon-yellow'], trailIds: [] },
+    { id: 'pastel-pack', name: 'Pastel Dreams', description: '', price: '', priceEnv: '', emoji: '', themeIds: ['pastel-lavender', 'pastel-peach', 'pastel-sky'], trailIds: [] },
+    { id: 'nature-pack', name: "Nature's Palette", description: '', price: '', priceEnv: '', emoji: '', themeIds: ['forest-green', 'ocean-deep', 'autumn-leaf'], trailIds: [] },
+    { id: 'trail-pack', name: 'Trail Variety', description: '', price: '', priceEnv: '', emoji: '', themeIds: [], trailIds: ['snowflake', 'sparkle', 'comet'] },
+    { id: 'ultimate-pack', name: 'Ultimate Collection', description: '', price: '', priceEnv: '', emoji: '', themeIds: ['neon-pink', 'neon-cyan', 'neon-yellow', 'pastel-lavender', 'pastel-peach', 'pastel-sky', 'forest-green', 'ocean-deep', 'autumn-leaf'], trailIds: ['snowflake', 'sparkle', 'comet'] },
+    { id: 'winter-flair-pack', name: 'Winter Wonderland', description: '', price: '', priceEnv: '', emoji: '', themeIds: [], trailIds: [], flairIds: ['flair-snowfall'] },
+    { id: 'spring-flair-pack', name: 'Spring Bloom', description: '', price: '', priceEnv: '', emoji: '', themeIds: [], trailIds: [], flairIds: ['flair-petals'] },
+    { id: 'summer-flair-pack', name: 'Summer Rays', description: '', price: '', priceEnv: '', emoji: '', themeIds: [], trailIds: [], flairIds: ['flair-sunbeam'] },
+    { id: 'seasonal-flair-bundle', name: 'All Seasons Bundle', description: '', price: '', priceEnv: '', emoji: '', themeIds: [], trailIds: [], flairIds: ['flair-snowfall', 'flair-petals', 'flair-sunbeam'] },
 ];
+
+/** All packs (current + legacy) used for ownership resolution. */
+export const COSMETIC_PACKS: CosmeticPack[] = [EVERYTHING_PACK, ...LEGACY_PACKS];
 
 /** Check if a cosmetic item ID belongs to a purchased pack */
 export function isItemOwned(itemId: string, purchasedPacks: string[]): boolean {

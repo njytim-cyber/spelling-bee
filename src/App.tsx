@@ -1230,8 +1230,17 @@ function AppInner() {
       pendingTabRef.current = tab;        // defer the tab switch
       return;                             // stay on game tab to show summary
     }
+    // When returning to game tab from another tab, exit special modes
+    // (tournament, challenge, daily, review) back to normal freeplay
+    if (tab === 'game' && ['challenge', 'daily', 'review'].includes(questionType)) {
+      setChallengeId(null);
+      setSessionSize(null);
+      setSessionAnswered(0);
+      setPhaseLayout([]);
+      setQuestionTypeRaw(levelConfig?.defaultCategory ?? 'cvc');
+    }
     setActiveTab(tab);
-  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, timedVariant, setShowSummary, showSummary, guidedMode, level, updateMyActivity, sessionSize]);
+  }, [score, totalCorrect, totalAnswered, bestStreak, questionType, recordSession, timedMode, timedVariant, setShowSummary, showSummary, guidedMode, level, updateMyActivity, sessionSize, levelConfig]);
 
   // Memoize BottomNav tabs to avoid new array each render
   const navTabs = useMemo(
@@ -1297,6 +1306,9 @@ function AppInner() {
   // True when in a full-screen sub-mode that hides standard game chrome
   const isImmersive = questionType === 'bee' || questionType === 'guided';
 
+  // Track the tab the user was on before entering an immersive mode (bee sim, etc.)
+  const preImmersiveTab = useRef<Tab>('game');
+
   const defaultCategory = levelConfig?.defaultCategory ?? 'cvc';
 
   return (
@@ -1338,9 +1350,9 @@ function AppInner() {
           active={activeTab === 'game'}
         />
 
-        {/* ── Top-right controls (theme + settings) — all tabs, hidden during immersive sub-modes ── */}
+        {/* ── Top-right controls (theme + settings) — hidden during immersive sub-modes ── */}
         {!(activeTab === 'game' && isImmersive) && (
-          <div className="absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1">
+          <div className={`absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1${activeTab !== 'game' ? ' bg-[rgb(var(--color-bg))]/80 backdrop-blur-sm rounded-full px-1' : ''}`}>
             <button
               onClick={toggleThemeMode}
               className="w-9 h-9 flex items-center justify-center text-[var(--color-chalk)]/60 active:text-[var(--color-gold)] transition-colors"
@@ -1554,7 +1566,7 @@ function AppInner() {
             <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
               {questionType === 'bee' ? (
                 <BeeSimPage
-                  onExit={() => setQuestionType(defaultCategory)}
+                  onExit={() => { setQuestionType(defaultCategory); const returnTab = preImmersiveTab.current; preImmersiveTab.current = 'game'; if (returnTab !== 'game') setActiveTab(returnTab); }}
                   onAnswer={(word, correct, ms, typed) => {
                     recordAttempt(word, 'bee', correct, ms, !correct ? typed : undefined, 'typed');
                   }}
@@ -1604,7 +1616,7 @@ function AppInner() {
                   correct={totalCorrect}
                   total={totalAnswered}
                   score={score}
-                  onExit={() => setQuestionType(defaultCategory)}
+                  onExit={() => { setChallengeId(null); setSessionSize(null); setSessionAnswered(0); setQuestionType(defaultCategory); }}
                   mode={questionType === 'review' ? 'review' : questionType === 'challenge' ? 'challenge' : 'daily'}
                   sessionWords={sessionWordsRef.current}
                   referralCode={referralCode}
@@ -1618,7 +1630,7 @@ function AppInner() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.15, ease: 'easeOut' }}
+                      transition={{ duration: 0.1, ease: 'easeOut' }}
                     >
                       {/* Session phase indicator + bonus/speed burst badge */}
                       {(currentPhase || !!currentProblem?.meta?.['bonusWord'] || !!currentProblem?.meta?.['speedBurst']) && (
@@ -1970,7 +1982,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { setQuestionType('bee'); setActiveTab('game'); }} isPremium={isPremium} onUpgrade={() => setShowUpgrade(true)} on1v1={() => openModal('showMultiplayerLobby')} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { preImmersiveTab.current = 'league'; setQuestionType('bee'); setActiveTab('game'); }} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
           </motion.div>
         )}
 
@@ -2220,6 +2232,8 @@ function AppInner() {
             onClose={() => setShowSettings(false)}
             isPremium={isPremium}
             onUpgrade={() => { setShowSettings(false); setShowUpgrade(true); }}
+            themeMode={themeMode as 'dark' | 'light'}
+            onThemeModeChange={setThemeMode as (mode: 'dark' | 'light') => void}
           />
         )}
       </AnimatePresence>
@@ -2270,6 +2284,7 @@ function AppInner() {
             }}
             isPremium={isPremium}
             friendCap={isPremium ? PREMIUM_FRIEND_CAP : FREE_FRIEND_CAP}
+            referralCode={referralCode}
           />
         )}
       </AnimatePresence>

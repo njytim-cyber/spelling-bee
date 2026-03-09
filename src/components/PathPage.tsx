@@ -20,7 +20,6 @@ import { levelIcon, type Level } from '../domains/spelling/spellingCategories';
 import { IconBook, IconTree, IconChart, IconLock, IconCheck } from './Icons';
 import { STORAGE_KEYS } from '../config';
 import { isLevelPremium } from '../hooks/usePremium';
-import { SharedDailyWord } from './SharedDailyWord';
 import { BuddyStreakCard } from './BuddyStreakCard';
 
 interface Props {
@@ -242,6 +241,7 @@ interface WeeklyGoalData {
     weekKey: string;
     target: number;
     progress: number;
+    celebrated?: boolean;
 }
 
 function loadWeeklyGoal(): WeeklyGoalData | null {
@@ -250,8 +250,8 @@ function loadWeeklyGoal(): WeeklyGoalData | null {
         if (!raw) return null;
         const data = JSON.parse(raw);
         if (data.weekKey !== getWeekKey()) {
-            // New week — reset progress but keep target
-            return { weekKey: getWeekKey(), target: data.target, progress: 0 };
+            // New week — reset progress and celebration but keep target
+            return { weekKey: getWeekKey(), target: data.target, progress: 0, celebrated: false };
         }
         return data;
     } catch { return null; }
@@ -263,46 +263,79 @@ function saveWeeklyGoal(data: WeeklyGoalData): void {
 
 const GOAL_OPTIONS = [50, 100, 200, 500];
 
+const CELEBRATION_MESSAGES = [
+    { emoji: '🏆', title: 'You crushed it!', sub: 'Every word you learn is a superpower.' },
+    { emoji: '⭐', title: 'Goal smashed!', sub: 'Your dedication is paying off.' },
+    { emoji: '🚀', title: 'Unstoppable!', sub: 'You\'re building a strong vocabulary.' },
+    { emoji: '🎯', title: 'Bullseye!', sub: 'Consistency is the key to mastery.' },
+    { emoji: '🔥', title: 'On fire!', sub: 'Keep this momentum going!' },
+];
+
 function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
     const [goal, setGoal] = useState<WeeklyGoalData | null>(() => loadWeeklyGoal());
     const [showPicker, setShowPicker] = useState(false);
+    const [showCelebration, setShowCelebration] = useState(false);
 
     // Update progress based on total words studied
     const currentProgress = totalWords;
     if (goal && goal.progress !== currentProgress) {
+        const wasComplete = goal.progress >= goal.target;
+        const nowComplete = currentProgress >= goal.target;
         const updated = { ...goal, progress: currentProgress, weekKey: getWeekKey() };
         saveWeeklyGoal(updated);
-        // Don't call setGoal here to avoid render loop — it will pick up next render
+        // Show celebration when goal is first completed
+        if (!wasComplete && nowComplete && !goal.celebrated) {
+            updated.celebrated = true;
+            saveWeeklyGoal(updated);
+            queueMicrotask(() => { setGoal(updated); setShowCelebration(true); });
+        }
     }
 
+    // Pick a stable celebration message based on the goal target
+    const celebMsg = CELEBRATION_MESSAGES[(goal?.target ?? 0) % CELEBRATION_MESSAGES.length];
+
     const handleSetGoal = useCallback((target: number) => {
-        const data: WeeklyGoalData = { weekKey: getWeekKey(), target, progress: currentProgress };
+        const data: WeeklyGoalData = { weekKey: getWeekKey(), target, progress: currentProgress, celebrated: false };
         saveWeeklyGoal(data);
         setGoal(data);
         setShowPicker(false);
+        setShowCelebration(false);
     }, [currentProgress]);
 
+    const handleKeepGoal = useCallback(() => {
+        if (!goal) return;
+        // Set a new goal with the same target, applied from current progress
+        const newTarget = currentProgress + goal.target;
+        const data: WeeklyGoalData = { weekKey: getWeekKey(), target: newTarget, progress: currentProgress, celebrated: false };
+        saveWeeklyGoal(data);
+        setGoal(data);
+        setShowCelebration(false);
+    }, [goal, currentProgress]);
+
     if (!goal) {
-        return (
+        return showPicker ? (
+            <div className="w-full flex items-center justify-center gap-2 py-2.5 mb-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-dashed border-[var(--color-gold)]/30 transition-colors">
+                <span className="text-base">🎯</span>
+                <span className="text-xs ui text-[rgb(var(--color-fg))]/40">Set a weekly goal</span>
+                <div className="flex gap-2 ml-2">
+                    {GOAL_OPTIONS.map(n => (
+                        <button
+                            key={n}
+                            onClick={() => handleSetGoal(n)}
+                            className="px-2 py-1 rounded-lg text-[10px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                        >
+                            {n}
+                        </button>
+                    ))}
+                </div>
+            </div>
+        ) : (
             <button
                 onClick={() => setShowPicker(true)}
                 className="w-full flex items-center justify-center gap-2 py-2.5 mb-3 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-dashed border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/30 transition-colors"
             >
                 <span className="text-base">🎯</span>
                 <span className="text-xs ui text-[rgb(var(--color-fg))]/40">Set a weekly goal</span>
-                {showPicker && (
-                    <div className="flex gap-2 ml-2">
-                        {GOAL_OPTIONS.map(n => (
-                            <button
-                                key={n}
-                                onClick={(e) => { e.stopPropagation(); handleSetGoal(n); }}
-                                className="px-2 py-1 rounded-lg text-[10px] ui text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                            >
-                                {n}
-                            </button>
-                        ))}
-                    </div>
-                )}
             </button>
         );
     }
@@ -311,53 +344,131 @@ function WeeklyGoalTracker({ totalWords }: { totalWords: number }) {
     const complete = currentProgress >= goal.target;
 
     return (
-        <div className="mb-3 px-3 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
-            <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center gap-1.5">
-                    <span className="text-sm">{complete ? '🎉' : '🎯'}</span>
-                    <span className="text-xs ui text-[rgb(var(--color-fg))]/60 font-medium">
-                        {complete ? 'Goal complete!' : `${currentProgress}/${goal.target} this week`}
-                    </span>
+        <>
+            <div className="mb-3 px-3 py-2.5 rounded-xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8">
+                <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-1.5">
+                        <span className="text-sm">{complete ? '🎉' : '🎯'}</span>
+                        <span className="text-xs ui text-[rgb(var(--color-fg))]/60 font-medium">
+                            {complete ? 'Goal complete!' : `${currentProgress}/${goal.target} this week`}
+                        </span>
+                    </div>
+                    {complete ? (
+                        <button
+                            onClick={() => setShowCelebration(true)}
+                            className="text-[9px] ui text-[var(--color-gold)]/60 hover:text-[var(--color-gold)] transition-colors"
+                        >
+                            next goal →
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => setShowPicker(true)}
+                            className="text-[9px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
+                        >
+                            change
+                        </button>
+                    )}
                 </div>
-                <button
-                    onClick={() => setShowPicker(true)}
-                    className="text-[9px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors"
-                >
-                    change
-                </button>
+                <div className="h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
+                    <div
+                        className={`h-full rounded-full transition-all ${complete ? 'bg-[var(--color-correct)]' : 'bg-[var(--color-gold)]'}`}
+                        style={{ width: `${pct}%` }}
+                    />
+                </div>
+                <AnimatePresence>
+                    {showPicker && !showCelebration && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="flex gap-2 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
+                                {GOAL_OPTIONS.map(n => (
+                                    <button
+                                        key={n}
+                                        onClick={() => handleSetGoal(n)}
+                                        className={`flex-1 py-1.5 rounded-lg text-[10px] ui transition-colors ${goal.target === n
+                                            ? 'text-[var(--color-gold)] bg-[var(--color-gold)]/15 font-semibold'
+                                            : 'text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5 hover:bg-[rgb(var(--color-fg))]/10'
+                                        }`}
+                                    >
+                                        {n}
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-            <div className="h-1.5 bg-[rgb(var(--color-fg))]/8 rounded-full overflow-hidden">
-                <div
-                    className={`h-full rounded-full transition-all ${complete ? 'bg-[var(--color-correct)]' : 'bg-[var(--color-gold)]'}`}
-                    style={{ width: `${pct}%` }}
-                />
-            </div>
+
+            {/* Goal celebration overlay */}
             <AnimatePresence>
-                {showPicker && (
+                {showCelebration && (
                     <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-overlay-dim)]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setShowCelebration(false)}
                     >
-                        <div className="flex gap-2 mt-2 pt-2 border-t border-[rgb(var(--color-fg))]/5">
-                            {GOAL_OPTIONS.map(n => (
-                                <button
-                                    key={n}
-                                    onClick={() => handleSetGoal(n)}
-                                    className={`flex-1 py-1.5 rounded-lg text-[10px] ui transition-colors ${goal.target === n
-                                        ? 'text-[var(--color-gold)] bg-[var(--color-gold)]/15 font-semibold'
-                                        : 'text-[rgb(var(--color-fg))]/40 bg-[rgb(var(--color-fg))]/5 hover:bg-[rgb(var(--color-fg))]/10'
-                                    }`}
-                                >
-                                    {n}
-                                </button>
-                            ))}
-                        </div>
+                        <motion.div
+                            className="bg-[var(--color-board)] border border-[var(--color-gold)]/30 rounded-3xl px-8 py-7 max-w-xs w-full text-center"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <motion.div
+                                className="text-5xl mb-3"
+                                initial={{ scale: 0, rotate: -20 }}
+                                animate={{ scale: [0, 1.4, 1], rotate: [-20, 10, 0] }}
+                                transition={{ duration: 0.6, ease: 'easeOut' }}
+                            >
+                                {celebMsg.emoji}
+                            </motion.div>
+                            <h3 className="text-lg ui font-bold text-[var(--color-gold)] mb-1">
+                                {celebMsg.title}
+                            </h3>
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/50 mb-1">
+                                {goal.target} words this week
+                            </p>
+                            <p className="text-[11px] ui text-[rgb(var(--color-fg))]/40 mb-5">
+                                {celebMsg.sub}
+                            </p>
+
+                            {/* Keep going CTA */}
+                            <Button
+                                className="w-full mb-2"
+                                onClick={handleKeepGoal}
+                            >
+                                Keep going — {goal.target} more!
+                            </Button>
+
+                            {/* Change goal options */}
+                            <p className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mb-2">or set a new target</p>
+                            <div className="flex gap-2 justify-center">
+                                {GOAL_OPTIONS.filter(n => n !== goal.target).map(n => (
+                                    <button
+                                        key={n}
+                                        onClick={() => {
+                                            const data: WeeklyGoalData = { weekKey: getWeekKey(), target: currentProgress + n, progress: currentProgress, celebrated: false };
+                                            saveWeeklyGoal(data);
+                                            setGoal(data);
+                                            setShowCelebration(false);
+                                        }}
+                                        className="px-3 py-1.5 rounded-lg text-[10px] ui text-[rgb(var(--color-fg))]/50 bg-[rgb(var(--color-fg))]/5 hover:bg-[var(--color-gold)]/10 hover:text-[var(--color-gold)] border border-[rgb(var(--color-fg))]/10 transition-colors"
+                                    >
+                                        {n} words
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </>
     );
 }
 
@@ -464,9 +575,6 @@ export const PathPage = memo(function PathPage({ records, onPractice, onPractice
                     </div>
                 </div>
             )}
-
-            {/* Shared Daily Word — "the Wordle of spelling" */}
-            <SharedDailyWord />
 
             {/* Buddy Streak */}
             {onOpenFriends && <BuddyStreakCard friends={friends} onTap={onOpenFriends} />}

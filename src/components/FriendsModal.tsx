@@ -7,6 +7,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { ModalShell } from './ModalShell';
 import { Button } from './Button';
+import { IconGift, IconShare } from './Icons';
+import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 import type { FriendEntry } from '../hooks/useFriends';
 
 type Tab = 'friends' | 'requests' | 'add';
@@ -23,12 +25,13 @@ interface Props {
     onChallenge?: (friendUid: string) => void;
     isPremium?: boolean;
     friendCap: number;
+    referralCode?: string;
 }
 
 export function FriendsModal({
     onClose, friends, pendingCount, friendCode,
     onAddFriend, onAcceptRequest, onRemoveFriend, onShareCode,
-    onChallenge, isPremium, friendCap,
+    onChallenge, isPremium, friendCap, referralCode,
 }: Props) {
     const [tab, setTab] = useState<Tab>(pendingCount > 0 ? 'requests' : 'friends');
     const [codeInput, setCodeInput] = useState('');
@@ -209,6 +212,43 @@ export function FriendsModal({
                                     Friend limit reached ({friendCap}). Upgrade for more!
                                 </p>
                             )}
+                        </div>
+                    </div>
+                )}
+
+                {/* Referral CTA */}
+                {referralCode && (
+                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                            <IconGift className="w-4 h-4 text-[var(--color-gold)]" />
+                            <span className="text-xs ui font-semibold text-[var(--color-gold)]">Invite Friends, Get Free Access</span>
+                        </div>
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">
+                            Share your referral code. When a friend joins, you BOTH get 7 days of Champion Pass free.
+                        </p>
+                        <div className="flex gap-2">
+                            <button
+                                onClick={async () => {
+                                    try {
+                                        await navigator.clipboard.writeText(referralCode);
+                                    } catch { /* silent */ }
+                                }}
+                                className="flex-1 py-2 rounded-lg border border-[rgb(var(--color-fg))]/15 text-xs ui text-[rgb(var(--color-fg))]/60 hover:text-[var(--color-gold)] hover:border-[var(--color-gold)]/30 transition-colors font-mono tracking-wider"
+                            >
+                                {referralCode}
+                            </button>
+                            <button
+                                onClick={async () => {
+                                    const text = appendReferralFooter(
+                                        '🐝 Join me on Spelling Bee! Practice spelling with 50,000+ words.',
+                                        referralCode,
+                                    );
+                                    await shareOrCopy(text);
+                                }}
+                                className="px-4 py-2 rounded-lg bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 text-xs ui text-[var(--color-gold)]"
+                            >
+                                <IconShare className="w-3.5 h-3.5" />
+                            </button>
                         </div>
                     </div>
                 )}

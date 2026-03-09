@@ -30,6 +30,8 @@ interface Props {
     onCharacterStyleChange?: (style: CharacterStyle) => void;
     isPremium?: boolean;
     onUpgrade?: () => void;
+    themeMode?: 'dark' | 'light';
+    onThemeModeChange?: (mode: 'dark' | 'light') => void;
 }
 
 function getStoredRate(): number {
@@ -112,6 +114,8 @@ export const SettingsModal = memo(function SettingsModal({
     onCharacterStyleChange,
     isPremium = false,
     onUpgrade,
+    themeMode,
+    onThemeModeChange,
 }: Props) {
     const { preference: motionPref, setPreference: setMotionPref } = useReducedMotion();
     const [ttsRate, setTtsRate] = useState(getStoredRate);
@@ -221,6 +225,28 @@ export const SettingsModal = memo(function SettingsModal({
                         ))}
                     </div>
                 </section>
+
+                {/* Theme mode (dark / light) */}
+                {onThemeModeChange && themeMode && (
+                    <section className="mb-5">
+                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Appearance</h4>
+                        <div className="flex gap-2">
+                            {([['dark', 'Dark'], ['light', 'Light']] as const).map(([mode, label]) => (
+                                <button
+                                    key={mode}
+                                    onClick={() => onThemeModeChange(mode)}
+                                    className={`flex-1 px-3 py-2.5 rounded-xl border transition-colors text-center text-sm ui ${
+                                        themeMode === mode
+                                            ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
+                                            : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                    }`}
+                                >
+                                    {mode === 'dark' ? '🌙 ' : '☀️ '}{label}
+                                </button>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                 {/* Level */}
                 {onLevelChange && (

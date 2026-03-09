@@ -186,6 +186,11 @@ export const SharedDailyWord = memo(function SharedDailyWord({ referralCode }: P
                 className="w-full mb-4 px-4 py-3 rounded-2xl border-l-4 bg-[rgb(var(--color-fg))]/[0.03]"
                 style={{ borderLeftColor: rarity.color }}
             >
+                {/* Daily word label */}
+                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-1">
+                    🎯 Today&apos;s Word #{wordNumber}
+                </div>
+
                 {/* Word + rarity */}
                 <div className="flex items-center gap-2 mb-1">
                     <span className="text-lg">{rarity.emoji}</span>
@@ -207,13 +212,6 @@ export const SharedDailyWord = memo(function SharedDailyWord({ referralCode }: P
                         </span>
                     )}
                 </div>
-
-                {/* Community stats */}
-                {communityStats && communityStats.totalAttempts > 0 && (
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-2">
-                        {'\uD83D\uDCCA'} {communityStats.totalAttempts.toLocaleString()} attempted {'\u00B7'} {communityCorrectPct !== null ? `${Math.round(communityCorrectPct)}% correct` : ''}
-                    </div>
-                )}
 
                 {/* Streak */}
                 {streak > 1 && (

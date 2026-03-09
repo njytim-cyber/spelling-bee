@@ -46,6 +46,8 @@ const STRIPE_PRICES: Record<string, string> = {
 
 /** Stripe Price IDs for cosmetic packs (one-time purchases). */
 const STRIPE_PACK_PRICES: Record<string, string> = {
+    'everything-pack': process.env.STRIPE_PRICE_EVERYTHING_PACK || '',
+    // Legacy packs — kept so existing purchases validate
     'neon-pack': process.env.STRIPE_PRICE_NEON_PACK || '',
     'pastel-pack': process.env.STRIPE_PRICE_PASTEL_PACK || '',
     'nature-pack': process.env.STRIPE_PRICE_NATURE_PACK || '',
@@ -56,6 +58,8 @@ const STRIPE_PACK_PRICES: Record<string, string> = {
 const ALLOWED_ORIGINS = [
     'https://spelling-bee-prod.web.app',
     'https://spelling-bee-prod.firebaseapp.com',
+    'capacitor://localhost',
+    'http://localhost',
 ];
 
 const CORS_REGEX = /http:\/\/localhost(:\d+)?$/;

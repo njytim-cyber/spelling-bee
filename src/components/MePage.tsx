@@ -6,8 +6,8 @@ import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { RANKS, getRank, getMasteryInfo, checkUnlock } from '../utils/ranks';
 import { ModalShell } from './ModalShell';
-import { STORAGE_KEYS, REFERRAL_MILESTONES } from '../config';
-import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconTag, IconGift, IconShop, RankIcon } from './Icons';
+import { STORAGE_KEYS } from '../config';
+import { IconCheck, IconClose, IconEdit, IconCloud, IconMail, IconTag, IconShop, RankIcon } from './Icons';
 import { isItemOwned } from '../utils/cosmeticPacks';
 import { isLootDropOwned } from '../utils/lootDrop';
 import { useUser } from '../contexts/UserContext';
@@ -24,7 +24,7 @@ import type { CustomWordList } from '../types/customList';
 import type { WordRecord } from '../hooks/useWordHistory';
 import { getWordMap } from '../domains/spelling/words';
 import { ALL_RARITIES, RARITY_CONFIGS, getRarityConfig, type Rarity } from '../utils/rarity';
-import { TestimonialPrompt } from './TestimonialPrompt';
+
 import { dateLocale } from '../utils/dateHelpers';
 
 // Removed tab switching - now showing everything on one page
@@ -75,12 +75,8 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
         sendEmailLink,
         updateBadge,
         isPremium,
-        daysRemaining,
         referralCode,
-        referralCount,
-        shareReferral,
         purchasedPacks,
-        level,
         // Profiles (Bee Team)
         profiles,
         activeProfileId,
@@ -467,84 +463,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     </span>
                 </button>
 
-            {/* ═══════ REFERRAL / CHAMPION PASS ═══════ */}
-                <div className="w-full max-w-sm mb-5">
-                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-3">
-                        invite friends
-                    </div>
-                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4">
-                        {/* Champion Pass status */}
-                        {isPremium && (
-                            <div className="flex items-center justify-center gap-1.5 text-[11px] ui text-[var(--color-gold)] mb-3">
-                                <span>👑</span>
-                                <span>Champion Pass — {daysRemaining} day{daysRemaining !== 1 ? 's' : ''} left</span>
-                            </div>
-                        )}
-
-                        {/* Referral code + copy */}
-                        <div className="flex items-center justify-center gap-2 mb-3">
-                            <div className="text-lg ui font-bold text-[var(--color-chalk)] tracking-widest">{referralCode || '...'}</div>
-                            <button
-                                onClick={async () => {
-                                    if (!referralCode) return;
-                                    try {
-                                        await navigator.clipboard.writeText(referralCode);
-                                    } catch { /* silent */ }
-                                }}
-                                className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
-                            >
-                                copy
-                            </button>
-                        </div>
-
-                        {/* Stats + milestone progress */}
-                        {referralCount > 0 && (
-                            <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40 text-center mb-2">
-                                {referralCount} friend{referralCount !== 1 ? 's' : ''} invited
-                            </div>
-                        )}
-                        {(() => {
-                            const next = REFERRAL_MILESTONES.find(m => referralCount < m.count);
-                            const allClaimed = !next;
-                            if (allClaimed) return referralCount > 0 ? (
-                                <div className="text-[10px] ui text-[var(--color-gold)] text-center mb-3">
-                                    All milestones earned!
-                                </div>
-                            ) : null;
-                            const prev = REFERRAL_MILESTONES.filter(m => referralCount >= m.count).pop();
-                            const base = prev ? prev.count : 0;
-                            const progress = ((referralCount - base) / (next.count - base)) * 100;
-                            return (
-                                <div className="mb-3">
-                                    <div className="flex items-center justify-between text-[9px] ui text-[rgb(var(--color-fg))]/30 mb-1">
-                                        <span>{referralCount}/{next.count} for +{next.label}</span>
-                                        <span>{next.count - referralCount} to go</span>
-                                    </div>
-                                    <div className="h-1.5 bg-[rgb(var(--color-fg))]/10 rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full bg-[var(--color-gold)] rounded-full transition-all"
-                                            style={{ width: `${Math.min(100, progress)}%` }}
-                                        />
-                                    </div>
-                                </div>
-                            );
-                        })()}
-
-                        {/* Share button */}
-                        <button
-                            onClick={shareReferral}
-                            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                        >
-                            <IconGift className="w-4 h-4" />
-                            Share — you both get 7 days free
-                        </button>
-
-                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
-                            Share your code to unlock Champion Pass for both of you
-                        </div>
-                    </div>
-                </div>
-
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
                 <>
                     {/* Shop button */}
@@ -838,15 +756,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     </ModalShell>
                 )}
             </AnimatePresence>
-
-            {/* Testimonial prompt */}
-            <TestimonialPrompt
-                masteredCount={masteredCount}
-                dayStreak={stats.dayStreak}
-                sessionsPlayed={stats.sessionsPlayed}
-                level={level}
-                isPremium={isPremium}
-            />
 
             {/* What makes us different */}
             <button

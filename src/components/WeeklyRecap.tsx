@@ -46,7 +46,7 @@ export function WeeklyRecap({ stats, referralCode }: Props) {
         <AnimatePresence>
             {visible && (
                 <motion.div
-                    className="absolute inset-0 z-50 flex items-center justify-center bg-[var(--color-overlay-dim)]"
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-overlay-dim)]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

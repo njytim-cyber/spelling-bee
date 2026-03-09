@@ -1,15 +1,15 @@
 /**
  * components/ShopModal.tsx
  *
- * Cosmetic IAP shop — browse themed chalk color and trail packs,
- * preview contents, and purchase via Stripe one-time payment.
+ * Cosmetic shop — a single one-time purchase that unlocks
+ * all chalk styles, swipe trails, and avatar flair forever.
  */
 import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ModalShell } from './ModalShell';
 import { IconClose, IconCheck } from './Icons';
 import { useUser } from '../contexts/UserContext';
-import { COSMETIC_PACKS, isPackRedundant } from '../utils/cosmeticPacks';
+import { EVERYTHING_PACK, isPackRedundant } from '../utils/cosmeticPacks';
 import { CHALK_THEMES } from '../utils/chalkThemes';
 import { SWIPE_TRAILS } from '../utils/trails';
 import { FLAIR_ITEMS } from '../utils/avatarParts';
@@ -26,20 +26,23 @@ const FLAIR_MAP = new Map(FLAIR_ITEMS.map(f => [`flair-${f.name.toLowerCase()}`,
 
 export const ShopModal = memo(function ShopModal({ onClose }: Props) {
     const { purchasedPacks } = useUser();
-    const [purchasing, setPurchasing] = useState<string | null>(null);
+    const [purchasing, setPurchasing] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
-    const handleBuy = async (packId: string) => {
-        trackEvent('shop_purchase_clicked', { packId });
-        setPurchasing(packId);
+    const pack = EVERYTHING_PACK;
+    const owned = purchasedPacks.includes(pack.id) || isPackRedundant(pack.id, purchasedPacks);
+
+    const handleBuy = async () => {
+        trackEvent('shop_purchase_clicked', { packId: pack.id });
+        setPurchasing(true);
         setError(null);
         try {
-            const url = await purchasePack(packId);
+            const url = await purchasePack(pack.id);
             window.location.assign(url);
         } catch {
             setError('Unable to start checkout. Please try again.');
-            setPurchasing(null);
+            setPurchasing(false);
         }
     };
 
@@ -52,100 +55,91 @@ export const ShopModal = memo(function ShopModal({ onClose }: Props) {
                 </button>
             </div>
 
-            <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 text-center mb-4">
-                One-time purchases — unlock new chalk styles, trails, and avatar flair forever
-            </p>
+            <div className="border rounded-xl p-4 border-[rgb(var(--color-fg))]/10 bg-[rgb(var(--color-fg))]/[0.02]">
+                {/* Header */}
+                <div className="text-center mb-4">
+                    <span className="text-3xl">{pack.emoji}</span>
+                    <div className="text-base ui font-bold text-[rgb(var(--color-fg))]/80 mt-2">{pack.name}</div>
+                    <div className="text-[11px] ui text-[rgb(var(--color-fg))]/40 mt-0.5">
+                        One purchase — unlock everything forever
+                    </div>
+                </div>
 
-            <div className="space-y-3">
-                {COSMETIC_PACKS.map(pack => {
-                    const owned = purchasedPacks.includes(pack.id);
-                    const redundant = !owned && isPackRedundant(pack.id, purchasedPacks);
+                {/* Chalk themes preview */}
+                <div className="mb-3">
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-wider mb-1.5">
+                        {pack.themeIds.length} chalk styles
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                        {pack.themeIds.map(id => {
+                            const theme = THEME_MAP.get(id);
+                            if (!theme) return null;
+                            return (
+                                <div
+                                    key={id}
+                                    className="w-7 h-7 rounded-full border border-[rgb(var(--color-fg))]/10"
+                                    style={{ backgroundColor: isLight ? theme.lightColor : theme.color }}
+                                    title={theme.name}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
 
-                    return (
-                        <motion.div
-                            key={pack.id}
-                            className={`border rounded-xl p-3 transition-colors ${
-                                owned
-                                    ? 'border-[var(--color-correct)]/30 bg-[var(--color-correct)]/5'
-                                    : 'border-[rgb(var(--color-fg))]/10 bg-[rgb(var(--color-fg))]/[0.02]'
-                            }`}
-                        >
-                            {/* Header row */}
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="flex items-center gap-2">
-                                    <span className="text-xl">{pack.emoji}</span>
-                                    <div>
-                                        <div className="text-sm ui font-semibold text-[rgb(var(--color-fg))]/80">
-                                            {pack.name}
-                                        </div>
-                                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
-                                            {pack.description}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                {/* Trails preview */}
+                <div className="mb-3">
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-wider mb-1.5">
+                        {pack.trailIds.length} swipe trails
+                    </div>
+                    <div className="flex items-center gap-2">
+                        {pack.trailIds.map(id => {
+                            const trail = TRAIL_MAP.get(id);
+                            if (!trail) return null;
+                            return (
+                                <span key={id} className="text-xl" title={trail.name}>
+                                    {trail.emoji}
+                                </span>
+                            );
+                        })}
+                    </div>
+                </div>
 
-                            {/* Preview swatches */}
-                            <div className="flex items-center gap-1.5 mb-2.5">
-                                {pack.themeIds.map(id => {
-                                    const theme = THEME_MAP.get(id);
-                                    if (!theme) return null;
-                                    return (
-                                        <div
-                                            key={id}
-                                            className="w-6 h-6 rounded-full border border-[rgb(var(--color-fg))]/10"
-                                            style={{ backgroundColor: isLight ? theme.lightColor : theme.color }}
-                                            title={theme.name}
-                                        />
-                                    );
-                                })}
-                                {pack.trailIds.map(id => {
-                                    const trail = TRAIL_MAP.get(id);
-                                    if (!trail) return null;
-                                    return (
-                                        <span key={id} className="text-base" title={trail.name}>
-                                            {trail.emoji}
-                                        </span>
-                                    );
-                                })}
-                                {(pack.flairIds ?? []).map(id => {
-                                    const flair = FLAIR_MAP.get(id);
-                                    if (!flair) return null;
-                                    return (
-                                        <span key={id} className="inline-flex items-center gap-0.5 text-[10px] ui text-[rgb(var(--color-fg))]/50 border border-[rgb(var(--color-fg))]/10 rounded-full px-1.5 py-0.5" title={flair.name}>
-                                            ✨ {flair.name}
-                                        </span>
-                                    );
-                                })}
-                            </div>
+                {/* Flair preview */}
+                {pack.flairIds && pack.flairIds.length > 0 && (
+                    <div className="mb-4">
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 uppercase tracking-wider mb-1.5">
+                            {pack.flairIds.length} avatar flair
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                            {pack.flairIds.map(id => {
+                                const flair = FLAIR_MAP.get(id);
+                                if (!flair) return null;
+                                return (
+                                    <span key={id} className="inline-flex items-center gap-0.5 text-[10px] ui text-[rgb(var(--color-fg))]/50 border border-[rgb(var(--color-fg))]/10 rounded-full px-2 py-0.5" title={flair.name}>
+                                        ✨ {flair.name}
+                                    </span>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
 
-                            {/* Action button */}
-                            {owned ? (
-                                <div className="flex items-center gap-1 text-xs ui text-[var(--color-correct)]">
-                                    <IconCheck className="w-3.5 h-3.5" />
-                                    <span>Owned</span>
-                                </div>
-                            ) : (
-                                <motion.button
-                                    onClick={() => handleBuy(pack.id)}
-                                    disabled={purchasing !== null || redundant}
-                                    whileTap={{ scale: 0.95 }}
-                                    className={`w-full py-2 rounded-lg text-xs ui font-semibold transition-colors ${
-                                        redundant
-                                            ? 'text-[rgb(var(--color-fg))]/30 bg-[rgb(var(--color-fg))]/5 cursor-not-allowed'
-                                            : 'text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 disabled:opacity-50'
-                                    }`}
-                                >
-                                    {purchasing === pack.id
-                                        ? 'Opening checkout...'
-                                        : redundant
-                                            ? 'Already owned via other packs'
-                                            : `Buy ${pack.price}`}
-                                </motion.button>
-                            )}
-                        </motion.div>
-                    );
-                })}
+                {/* Action */}
+                {owned ? (
+                    <div className="flex items-center justify-center gap-1.5 text-sm ui text-[var(--color-correct)] py-2">
+                        <IconCheck className="w-4 h-4" />
+                        <span>You own everything!</span>
+                    </div>
+                ) : (
+                    <motion.button
+                        onClick={handleBuy}
+                        disabled={purchasing}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full py-3 rounded-xl text-sm ui font-bold text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 disabled:opacity-50 transition-colors"
+                    >
+                        {purchasing ? 'Opening checkout...' : `Unlock All — ${pack.price}`}
+                    </motion.button>
+                )}
             </div>
 
             {error && (

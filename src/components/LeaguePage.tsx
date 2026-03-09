@@ -1,17 +1,16 @@
 import { memo, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from './Button';
 import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
 import { AvatarSvg } from './AvatarSvg';
-import { IconCrown, IconMedal, IconStar, IconShare, IconLock } from './Icons';
+import { IconCrown, IconMedal, IconStar, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
-import { trackEvent } from '../utils/analytics';
 import { getWeeklyLabel } from '../utils/weeklyTournament';
+import { SharedDailyWord } from './SharedDailyWord';
 
 interface LeaderboardEntry {
     uid: string;
@@ -54,9 +53,6 @@ interface Props {
     activeThemeId: string;
     activeCostume: string;
     onOpenBee?: () => void;
-    isPremium?: boolean;
-    onUpgrade?: () => void;
-    on1v1?: () => void;
     onWeeklyTournament?: () => void;
     onCertificate?: (weekLabel: string, xpEarned: number) => void;
     onOpenFriends?: () => void;
@@ -64,7 +60,7 @@ interface Props {
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, isPremium, onUpgrade, on1v1, onWeeklyTournament, onCertificate, onOpenFriends, friendPendingCount = 0 }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, onWeeklyTournament, onCertificate, onOpenFriends, friendPendingCount = 0 }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -223,6 +219,11 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 <h2 className="text-3xl chalk text-[var(--color-gold)] mb-3">Compete</h2>
             </motion.div>
 
+            {/* Shared Daily Word — "the Wordle of spelling" */}
+            <div className="w-full max-w-sm mb-4">
+                <SharedDailyWord referralCode={referralCode ?? undefined} />
+            </div>
+
             {/* Competition mode buttons */}
             <div className="w-full max-w-sm space-y-2 mb-6">
                 {onOpenBee && (
@@ -238,30 +239,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                     </button>
                 )}
 
-                {/* 1v1 Challenge — Champion only */}
-                <button
-                    onClick={() => {
-                        if (!isPremium) {
-                            trackEvent('level_gated', { level: '1v1' });
-                            onUpgrade?.();
-                        } else {
-                            on1v1?.();
-                        }
-                    }}
-                    className={`w-full flex items-center gap-3 py-4 px-5 rounded-2xl border-2 transition-colors ${isPremium
-                        ? 'border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5'
-                        : 'border-[rgb(var(--color-fg))]/10 opacity-60'
-                        }`}
-                >
-                    <span className="text-2xl">⚔️</span>
-                    <div className="text-left flex-1">
-                        <div className={`text-sm ui font-bold ${isPremium ? 'text-[var(--color-chalk)]' : 'text-[rgb(var(--color-fg))]/50'}`}>1v1 Challenge</div>
-                        <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Real-time match against a friend</div>
-                    </div>
-                    {!isPremium && <IconLock className="w-4 h-4 text-[rgb(var(--color-fg))]/30" />}
-                </button>
-
-                {/* Friends */}
+                {/* Friends (includes 1v1 challenge via friend rows) */}
                 {onOpenFriends && (
                     <button
                         onClick={onOpenFriends}
@@ -270,7 +248,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                         <span className="text-2xl">🤝</span>
                         <div className="text-left flex-1">
                             <div className="text-sm ui font-bold text-[var(--color-chalk)]">Friends</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks & challenges</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks, challenges & 1v1</div>
                         </div>
                         {friendPendingCount > 0 && (
                             <span className="absolute top-2 right-3 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
@@ -445,23 +423,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                         </motion.div>
                     ))}
                 </motion.div>
-            )}
-
-            {/* Invite to Compete */}
-            {!loading && (
-                <Button
-                    className="w-full max-w-sm mt-4 py-3 flex items-center justify-center gap-2"
-                    onClick={async () => {
-                        const text = appendReferralFooter(
-                            '🏆 Think you can spell better than me? Challenge me on Spelling Bee!',
-                            referralCode,
-                        );
-                        await shareOrCopy(text);
-                        trackEvent('referral_shared', { source: 'leaderboard_invite' });
-                    }}
-                >
-                    <IconShare className="w-4 h-4" /> Invite Friends to Compete
-                </Button>
             )}
 
             {/* Action Sheet Modal */}

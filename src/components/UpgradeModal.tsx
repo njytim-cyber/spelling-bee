@@ -17,14 +17,6 @@ interface Props {
     onClose: () => void;
 }
 
-const FREE_FEATURES = [
-    'Levels 1\u20133 (16,000+ words)',
-    'Daily Challenge',
-    'Leaderboard & achievements',
-    'Spaced repetition (30/day)',
-    'Bee Simulation mode',
-];
-
 const PREMIUM_FEATURES = [
     'All 10 levels (117,000+ words)',
     'Unlimited spaced repetition',
@@ -184,37 +176,14 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                 </button>
             </div>
 
-            {/* Feature comparison */}
-            <div className="grid grid-cols-2 gap-3 mb-5">
-                {/* Free column */}
-                <div>
-                    <div className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase tracking-wider mb-2 text-center">
-                        Free
+            {/* Champion features */}
+            <div className="space-y-2.5 mb-5">
+                {PREMIUM_FEATURES.map(f => (
+                    <div key={f} className="flex items-start gap-2">
+                        <IconCheck className="w-3.5 h-3.5 text-[var(--color-gold)] shrink-0 mt-0.5" />
+                        <span className="text-xs ui text-[rgb(var(--color-fg))] leading-tight">{f}</span>
                     </div>
-                    <div className="space-y-2">
-                        {FREE_FEATURES.map(f => (
-                            <div key={f} className="flex items-start gap-1.5">
-                                <IconCheck className="w-3 h-3 text-[var(--color-correct)] shrink-0 mt-0.5" />
-                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/50 leading-tight">{f}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Champion column */}
-                <div className="bg-[var(--color-gold)]/5 rounded-xl p-2.5 border border-[var(--color-gold)]/20">
-                    <div className="text-xs ui text-[var(--color-gold)] uppercase tracking-wider mb-2 text-center font-semibold">
-                        🏆 Champion
-                    </div>
-                    <div className="space-y-2">
-                        {PREMIUM_FEATURES.map(f => (
-                            <div key={f} className="flex items-start gap-1.5">
-                                <IconCheck className="w-3 h-3 text-[var(--color-gold)] shrink-0 mt-0.5" />
-                                <span className="text-[10px] ui text-[var(--color-gold)]/80 leading-tight">{f}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                ))}
             </div>
 
             {/* Referral CTA */}

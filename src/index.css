@@ -36,7 +36,7 @@
   --color-fg: 255 255 255;
   /* white for dark mode — used as rgb() triple */
   --color-overlay: rgba(0, 0, 0, 0.85);
-  --color-overlay-dim: rgba(0, 0, 0, 0.60);
+  --color-overlay-dim: rgba(0, 0, 0, 0.75);
   --color-surface: rgba(255, 255, 255, 0.10);
   /* Slightly brighter surface — cards stand out from black */
   --color-locked: rgba(255, 255, 255, 0.14);
@@ -51,7 +51,7 @@
   --color-fg: 26 26 46;
   /* Navy-gray rgb triple */
   --color-overlay: rgba(250, 248, 245, 0.97);
-  --color-overlay-dim: rgba(0, 0, 0, 0.40);
+  --color-overlay-dim: rgba(0, 0, 0, 0.55);
   --color-surface: rgba(235, 228, 218, 0.50);
   /* Warm tan surface — clearly visible on off-white */
   --color-locked: rgba(26, 26, 46, 0.08);
