@@ -182,52 +182,30 @@ export const SharedDailyWord = memo(function SharedDailyWord({ referralCode }: P
     if (hasAttempted && myAttempt) {
         const timeStr = (myAttempt.timeMs / 1000).toFixed(1);
         return (
-            <div
-                className="w-full mb-4 px-4 py-3 rounded-2xl border-l-4 bg-[rgb(var(--color-fg))]/[0.03]"
-                style={{ borderLeftColor: rarity.color }}
+            <button
+                onClick={handleShare}
+                className="w-full mb-4 flex items-center gap-3 py-4 px-5 rounded-2xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 hover:bg-[var(--color-gold)]/20 transition-colors"
             >
-                {/* Daily word label */}
-                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-1">
-                    🎯 Today&apos;s Word #{wordNumber}
-                </div>
-
-                {/* Word + rarity */}
-                <div className="flex items-center gap-2 mb-1">
-                    <span className="text-lg">{rarity.emoji}</span>
-                    <span className="text-lg chalk text-[var(--color-chalk)] font-bold">{word.word}</span>
-                    <span className="text-[9px] ui px-1.5 py-0.5 rounded-full font-medium" style={{ color: rarity.color, background: `${rarity.color}15` }}>
-                        {rarity.label}
-                    </span>
-                </div>
-
-                {/* Result */}
-                <div className="flex items-center gap-2 text-xs ui text-[rgb(var(--color-fg))]/60 mb-2">
-                    {myAttempt.correct ? (
-                        <span className="text-[var(--color-correct)] font-medium">
-                            {'\u2705'} {ordinal(myAttempt.attempts)} try {'\u00B7'} {timeStr}s
+                <span className="text-2xl shrink-0">{rarity.emoji}</span>
+                <div className="text-left flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                        <span className="text-sm chalk text-[var(--color-chalk)] font-bold truncate">{word.word}</span>
+                        <span className="text-[9px] ui px-1.5 py-0.5 rounded-full font-medium shrink-0" style={{ color: rarity.color, background: `${rarity.color}15` }}>
+                            {rarity.label}
                         </span>
-                    ) : (
-                        <span className="text-[var(--color-wrong)] font-medium">
-                            {'\u274C'} Not this time
-                        </span>
-                    )}
-                </div>
-
-                {/* Streak */}
-                {streak > 1 && (
-                    <div className="text-[10px] ui text-[var(--color-gold)] font-medium mb-2">
-                        {'\uD83D\uDD25'} {streak}-day streak
                     </div>
-                )}
-
-                {/* Share button */}
-                <button
-                    onClick={handleShare}
-                    className="w-full py-2 rounded-xl text-xs ui font-medium text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
-                >
-                    {shareStatus ?? '\uD83D\uDCE4 Share Result'}
-                </button>
-            </div>
+                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">
+                        #{wordNumber} · {myAttempt.correct
+                            ? `✅ ${ordinal(myAttempt.attempts)} try · ${timeStr}s`
+                            : '❌ Not this time'
+                        }
+                        {streak > 1 ? ` · 🔥 ${streak}` : ''}
+                    </div>
+                </div>
+                <span className="text-xs ui text-[var(--color-gold)] font-medium shrink-0">
+                    {shareStatus ?? '📤 Share'}
+                </span>
+            </button>
         );
     }
 

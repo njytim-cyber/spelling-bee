@@ -325,7 +325,6 @@ function AppInner() {
     recordSession,
     recordBeeResult,
     consumeShield,
-    purchaseStreakFreeze,
     updateCosmetics,
     activeCostume,
     activeTheme,
@@ -340,6 +339,8 @@ function AppInner() {
     daysRemaining,
     referralCode,
     referralCount,
+    redeemedCode,
+    shareReferral,
     extendPass,
     setPaidSubscription,
     addPurchasedPack,
@@ -370,6 +371,11 @@ function AppInner() {
 
   // ── Friends ──
   const friendsState = useFriends(uid, user?.displayName ?? 'Player', avatarConfig, activeTheme);
+
+  // Auto-add friend when a referral code is redeemed via ?ref= deep link
+  useEffect(() => {
+    if (redeemedCode) friendsState.addFriend(redeemedCode);
+  }, [redeemedCode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Same-Word Challenges ──
   const challengeState = useSameWordChallenge(uid, user?.displayName ?? 'Player');
@@ -919,7 +925,8 @@ function AppInner() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const currentProblem = problems[0];
-  const isFirstQuestion = totalAnswered === 0;
+  const isFiniteMode = GAME_CONFIG.finiteTypeIds?.includes(questionType) ?? false;
+  const isFirstQuestion = totalAnswered === 0 && !isFiniteMode;
   const [timedToast] = useTimedFlag(3000);
   const [showScoreHelp, setShowScoreHelp] = useState(false);
 
@@ -2048,9 +2055,6 @@ function AppInner() {
             setShowSummary(false);
             pendingTabRef.current = null;
           }}
-          totalXP={stats.totalXP}
-          streakFreezes={stats.streakFreezes}
-          onPurchaseFreeze={purchaseStreakFreeze}
           sessionWords={sessionWordsRef.current}
           referralCode={referralCode}
           challengeTarget={challengeTarget ?? undefined}
@@ -2263,11 +2267,10 @@ function AppInner() {
             onClose={() => setShowFriendsModal(false)}
             friends={friendsState.friends}
             pendingCount={friendsState.pendingCount}
-            friendCode={friendsState.friendCode}
             onAddFriend={friendsState.addFriend}
             onAcceptRequest={friendsState.acceptRequest}
             onRemoveFriend={friendsState.removeFriend}
-            onShareCode={friendsState.shareFriendCode}
+            onShareCode={shareReferral}
             onChallenge={(friendUid) => {
               const friend = friendsState.friends.find(f => f.friendUid === friendUid);
               if (!friend) return;

@@ -29,9 +29,6 @@ interface Props {
     timedMode?: boolean;
     onDrillHardest?: () => void;
     hardestWordCount?: number;
-    totalXP?: number;
-    streakFreezes?: number;
-    onPurchaseFreeze?: () => boolean;
     sessionWords?: SessionWord[];
     referralCode?: string;
     challengeTarget?: ChallengeTarget;
@@ -112,7 +109,7 @@ function getModeInsight(words: SessionWord[]): string | null {
 export const SessionSummary = memo(function SessionSummary({
     solved, correct, bestStreak: streak, accuracy, xpEarned, answerHistory, questionType, visible, onDismiss,
     timedMode, onDrillHardest, hardestWordCount,
-    totalXP, streakFreezes, onPurchaseFreeze, sessionWords = [],
+    sessionWords = [],
     referralCode, challengeTarget, challengeId, newAchievement,
 }: Props) {
     const [copied, setCopied] = useState(false);
@@ -405,20 +402,6 @@ export const SessionSummary = memo(function SessionSummary({
                                 Drill {hardestWordCount} Hardest {hardestWordCount === 1 ? 'Word' : 'Words'}
                             </motion.button>
                         )}
-
-                        {/* Streak freeze purchase */}
-                        {onPurchaseFreeze && (totalXP ?? 0) >= 500 ? (
-                            <button
-                                onClick={onPurchaseFreeze}
-                                className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/40 hover:text-[var(--color-gold)] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 transition-colors mb-3"
-                            >
-                                ❄️ Streak Freeze · skip a day (500 XP){(streakFreezes ?? 0) > 0 ? ` · ${streakFreezes} owned` : ''}
-                            </button>
-                        ) : onPurchaseFreeze ? (
-                            <div className="w-full py-2 rounded-xl text-xs ui text-[rgb(var(--color-fg))]/20 border border-[rgb(var(--color-fg))]/5 text-center mb-3">
-                                ❄️ Streak Freeze · need {500 - (totalXP ?? 0)} more XP
-                            </div>
-                        ) : null}
 
                         <Button variant="ghost" size="sm" className="text-xs" onClick={onDismiss}>
                             continue

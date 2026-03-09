@@ -9,8 +9,8 @@
  */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import {
-    doc, getDoc, setDoc, deleteDoc, updateDoc,
-    collection, query, where, onSnapshot, serverTimestamp, runTransaction,
+    doc, getDoc, getDocs, setDoc, deleteDoc, updateDoc,
+    collection, query, where, onSnapshot, serverTimestamp, runTransaction, limit as firestoreLimit,
 } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { FIRESTORE, STORAGE_KEYS } from '../config';
@@ -243,13 +243,28 @@ export function useFriends(
         }
 
         try {
-            // Look up the code
+            // Look up the code — try friend codes first, then referral codes
+            let targetUid: string | null = null;
+
             const codeSnap = await getDoc(doc(db, FIRESTORE.FRIEND_CODES, normalised));
-            if (!codeSnap.exists()) {
-                return { ok: false, error: 'Code not found' };
+            if (codeSnap.exists()) {
+                targetUid = codeSnap.data().uid as string;
+            } else if (normalised.startsWith('SPELL-')) {
+                // Fall back to referral code lookup
+                const q = query(
+                    collection(db, FIRESTORE.USERS),
+                    where('referralCode', '==', normalised),
+                    firestoreLimit(1),
+                );
+                const snap = await getDocs(q);
+                if (!snap.empty) {
+                    targetUid = snap.docs[0].id;
+                }
             }
 
-            const targetUid = codeSnap.data().uid as string;
+            if (!targetUid) {
+                return { ok: false, error: 'Code not found' };
+            }
             if (targetUid === uid) {
                 return { ok: false, error: "Can't add yourself" };
             }

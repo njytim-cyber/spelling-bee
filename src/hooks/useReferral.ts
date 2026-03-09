@@ -56,6 +56,8 @@ export interface ReferralState {
     referralCount: number;
     pendingReferral: string;
     referralRedeemed: boolean;
+    /** The referral code that was just redeemed (for auto-friend-add). Empty if none. */
+    redeemedCode: string;
     referralError: string;
     redeemReferral: () => Promise<void>;
     getReferralUrl: () => string;
@@ -67,6 +69,7 @@ export function useReferral(uid: string | null): ReferralState {
     const [referralCount, setReferralCount] = useState(0);
     const [pendingReferral, setPendingReferral] = useState(() => readPendingReferral());
     const [referralRedeemed, setReferralRedeemed] = useState(false);
+    const [redeemedCode, setRedeemedCode] = useState('');
     const [referralError, setReferralError] = useState('');
 
     // Generate code on first mount if user doesn't have one
@@ -138,6 +141,7 @@ export function useReferral(uid: string | null): ReferralState {
 
             if (result.data.success) {
                 setReferralRedeemed(true);
+                setRedeemedCode(pendingReferral);
                 // Clear pending
                 localStorage.removeItem(STORAGE_KEYS.pendingReferral);
                 setPendingReferral('');
@@ -175,6 +179,7 @@ export function useReferral(uid: string | null): ReferralState {
         referralCount,
         pendingReferral,
         referralRedeemed,
+        redeemedCode,
         referralError,
         redeemReferral,
         getReferralUrl,

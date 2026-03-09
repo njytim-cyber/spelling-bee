@@ -248,7 +248,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                         <span className="text-2xl">🤝</span>
                         <div className="text-left flex-1">
                             <div className="text-sm ui font-bold text-[var(--color-chalk)]">Friends</div>
-                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks, challenges & 1v1</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks, challenges & duels</div>
                         </div>
                         {friendPendingCount > 0 && (
                             <span className="absolute top-2 right-3 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">
@@ -378,48 +378,36 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                 )}
                             </div>
 
-                            {/* Score */}
-                            <div className="text-right">
-                                <div className={`text-sm ui font-semibold ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
-                                    {(lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()}
-                                </div>
-                                <div className="text-[9px] ui text-[rgb(var(--color-fg))]/40">
-                                    {lbTab === 'weekly' ? 'wk' : 'XP'}
-                                </div>
+                            {/* Score + streak */}
+                            <div className={`text-sm ui font-semibold text-right tabular-nums ${entry.isYou ? 'text-[var(--color-gold)]' : 'text-[rgb(var(--color-fg))]/80'}`}>
+                                {(lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP).toLocaleString()}
                             </div>
-                            <div className="text-right w-10">
-                                <div className="text-xs ui font-semibold text-[var(--color-streak-fire)]">
-                                    {entry.bestStreak > 0 ? `${entry.bestStreak}🔥` : '—'}
-                                </div>
+                            <div className="text-xs ui font-semibold text-[var(--color-streak-fire)] text-right w-8">
+                                {entry.bestStreak > 0 ? `${entry.bestStreak}🔥` : '—'}
                             </div>
-                            {entry.isYou && (
-                                <div className="flex items-center gap-1">
-                                    {entry.rank === 1 && onCertificate && (
-                                        <button
-                                            onClick={() => onCertificate(getWeeklyLabel(), lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP)}
-                                            className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
-                                            aria-label="Download champion certificate"
-                                            title="Champion Certificate"
-                                        >
-                                            <span className="text-sm">🏅</span>
-                                        </button>
-                                    )}
+                            {/* Share — only on user's row, same width as streak col so rows stay aligned */}
+                            <div className="w-5 flex items-center justify-center">
+                                {entry.isYou ? (
                                     <button
                                         onClick={async () => {
                                             const xp = lbTab === 'weekly' ? entry.weeklyXP : entry.totalXP;
+                                            if (entry.rank === 1 && onCertificate) {
+                                                onCertificate(getWeeklyLabel(), xp);
+                                                return;
+                                            }
                                             const text = appendReferralFooter(
                                                 `📊 Ranked #${entry.rank} on Spelling Bee!\n⚡ ${xp.toLocaleString()} ${lbTab === 'weekly' ? 'weekly ' : ''}XP · 🔥 ${entry.bestStreak} streak · 🎯 ${entry.accuracy}%`,
                                                 referralCode,
                                             );
                                             await shareOrCopy(text);
                                         }}
-                                        className="text-[var(--color-gold)]/40 hover:text-[var(--color-gold)] transition-colors"
+                                        className="text-[rgb(var(--color-fg))]/20 hover:text-[var(--color-gold)] transition-colors"
                                         aria-label="Share my rank"
                                     >
-                                        <IconShare className="w-4 h-4" />
+                                        <IconShare className="w-3.5 h-3.5" />
                                     </button>
-                                </div>
-                            )}
+                                ) : null}
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

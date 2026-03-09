@@ -41,11 +41,14 @@ function TimerRing({ progress }: { progress: number }) {
     const circumference = 2 * Math.PI * r;
     const offset = circumference * (1 - progress);
 
+    // The stopwatch icon (24×24) is flexbox-centred inside the 44×44 button.
+    // Its clock-face circle sits at (12, 13) in icon coords, which maps to
+    // (10+12, 10+13) = (22, 23) in button coords. Centre the ring there.
     return (
-        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 48">
+        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 44">
             {/* Track */}
             <circle
-                cx="22" cy="26" r={r}
+                cx="22" cy="23" r={r}
                 fill="none"
                 stroke="rgb(var(--color-fg) / 0.12)"
                 strokeWidth="2.5"
@@ -53,7 +56,7 @@ function TimerRing({ progress }: { progress: number }) {
             {/* Progress arc */}
             {progress > 0 && (
                 <circle
-                    cx="22" cy="26" r={r}
+                    cx="22" cy="23" r={r}
                     fill="none"
                     stroke={progress > 0.75 ? 'var(--color-streak-fire)' : 'var(--color-gold)'}
                     strokeWidth="2.5"

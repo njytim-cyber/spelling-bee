@@ -17,7 +17,6 @@ interface Props {
     onClose: () => void;
     friends: FriendEntry[];
     pendingCount: number;
-    friendCode: string;
     onAddFriend: (code: string) => Promise<{ ok: boolean; error?: string }>;
     onAcceptRequest: (friendshipId: string) => Promise<void>;
     onRemoveFriend: (friendshipId: string) => Promise<void>;
@@ -29,7 +28,7 @@ interface Props {
 }
 
 export function FriendsModal({
-    onClose, friends, pendingCount, friendCode,
+    onClose, friends, pendingCount,
     onAddFriend, onAcceptRequest, onRemoveFriend, onShareCode,
     onChallenge, isPremium, friendCap, referralCode,
 }: Props) {
@@ -162,22 +161,17 @@ export function FriendsModal({
 
                 {tab === 'add' && (
                     <div className="space-y-4">
-                        {/* My code */}
-                        <div className="text-center space-y-2">
-                            <p className="text-xs text-[rgb(var(--color-fg))]/50">Your friend code</p>
-                            <div className="flex items-center justify-center gap-2">
-                                <span className="text-xl font-bold font-[family-name:var(--font-chalk)] text-[rgb(var(--color-accent))] tracking-wider">
-                                    {friendCode || '...'}
-                                </span>
-                                <Button size="sm" variant="ghost" onClick={onShareCode}>
-                                    Share
-                                </Button>
-                            </div>
-                        </div>
+                        {/* Invite via link */}
+                        <button
+                            onClick={onShareCode}
+                            className="w-full py-3 rounded-xl text-sm ui font-semibold text-[var(--color-gold)] bg-[var(--color-gold)]/10 border border-[var(--color-gold)]/30 hover:bg-[var(--color-gold)]/20 transition-colors"
+                        >
+                            📤 Send invite link
+                        </button>
 
                         {/* Add by code */}
                         <div className="space-y-2">
-                            <p className="text-xs text-[rgb(var(--color-fg))]/50">Enter a friend&apos;s code</p>
+                            <p className="text-xs text-[rgb(var(--color-fg))]/50">Or enter their code</p>
                             <div className="flex gap-2">
                                 <input
                                     ref={inputRef}
@@ -185,8 +179,8 @@ export function FriendsModal({
                                     value={codeInput}
                                     onChange={e => { setCodeInput(e.target.value); setAddStatus(null); }}
                                     onKeyDown={e => e.key === 'Enter' && handleAdd()}
-                                    placeholder="BEE-XXXX"
-                                    maxLength={8}
+                                    placeholder="SPELL-XXXX or BEE-XXXX"
+                                    maxLength={10}
                                     className="flex-1 px-3 py-2 rounded-xl text-sm
                                         bg-[rgb(var(--color-fg))]/[0.05] border border-[rgb(var(--color-fg))]/10
                                         focus:border-[rgb(var(--color-accent))]/40 focus:outline-none
@@ -224,7 +218,7 @@ export function FriendsModal({
                             <span className="text-xs ui font-semibold text-[var(--color-gold)]">Invite Friends, Get Free Access</span>
                         </div>
                         <p className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-3">
-                            Share your referral code. When a friend joins, you BOTH get 7 days of Champion Pass free.
+                            Share your code to add friends. New users also get 7 days of Champion Pass free!
                         </p>
                         <div className="flex gap-2">
                             <button

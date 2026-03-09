@@ -492,20 +492,27 @@ export const AchievementBadge = memo(function AchievementBadge({ achievementId, 
 
     return (
         <div className={`group flex flex-col items-center gap-1 w-16 ${unlocked ? '' : 'opacity-60'}`}>
-            <div className={`relative w-14 h-14 rounded-2xl border flex items-center justify-center ${equipped
-                ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/5'
+            <div className={`relative w-14 h-14 rounded-2xl border-2 flex items-center justify-center ${equipped
+                ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/5 shadow-[0_0_8px_rgba(251,191,36,0.25)]'
                 : unlocked
                     ? 'border-[rgb(var(--color-fg))]/20 bg-[var(--color-surface)]'
                     : 'border-[rgb(var(--color-fg))]/15 bg-transparent'
                 }`}>
                 <Icon size={36} unlocked={unlocked} />
+                {equipped && (
+                    <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[var(--color-gold)] flex items-center justify-center shadow-sm">
+                        <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="var(--color-surface)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M4 8l3 3 5-6" />
+                        </svg>
+                    </span>
+                )}
                 {unlocked && onShare && (
                     <button
                         onClick={(e) => { e.stopPropagation(); onShare(); }}
-                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--color-gold)] flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity"
+                        className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[rgb(var(--color-fg))]/10 flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity"
                         aria-label={`Share ${name}`}
                     >
-                        <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="#1a1a24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M4 8h8M8 4l4 4-4 4" />
                         </svg>
                     </button>

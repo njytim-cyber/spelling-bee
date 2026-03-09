@@ -36,8 +36,9 @@ export interface Stats {
     beeBestLevel: string;     // highest bee level played (classroom/district/state/national)
     beeWins: number;          // times player won (last one standing)
 
-    // Streak freeze — purchased with XP, consumed before shields on 1-day gap
+    // Streak freeze — earned at XP milestones, consumed before shields on 1-day gap
     streakFreezes: number;
+    freezesGranted: number; // how many freezes auto-awarded (1 per 500 lifetime XP)
 
     // Weekly XP for weekly leaderboard
     weeklyXP: number;
@@ -92,6 +93,7 @@ const EMPTY_STATS: Stats = {
     beeBestLevel: '',
     beeWins: 0,
     streakFreezes: 0,
+    freezesGranted: 0,
     weeklyXP: 0,
     weeklyXPWeek: '',
 };
@@ -245,6 +247,7 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         beeBestLevel: (local.beeBestLevel || '') >= (cloud.beeBestLevel || '') ? local.beeBestLevel : cloud.beeBestLevel,
         beeWins: Math.max(local.beeWins, cloud.beeWins),
         streakFreezes: Math.max(local.streakFreezes || 0, cloud.streakFreezes || 0),
+        freezesGranted: Math.max(local.freezesGranted || 0, cloud.freezesGranted || 0),
         // Preserve cosmetics from whichever side has them
         activeThemeId: local.activeThemeId || cloud.activeThemeId,
         activeCostume: local.activeCostume || cloud.activeCostume,
@@ -387,12 +390,20 @@ export function useStats(uid: string | null) {
             // Weekly XP — reset if new week
             const wk = currentWeekKey();
             const weeklyXP = (prev.weeklyXPWeek === wk ? prev.weeklyXP : 0) + score;
+            // Auto-grant streak freezes at XP milestones (1 per 500 lifetime XP, max 3 banked)
+            const newTotalXP = prev.totalXP + score;
+            const freezesGranted = prev.freezesGranted || 0;
+            const freezesEarned = Math.floor(newTotalXP / 500);
+            const newFreezes = Math.max(0, freezesEarned - freezesGranted);
+            if (newFreezes > 0) {
+                streakFreezes = Math.min(3, streakFreezes + newFreezes);
+            }
             return {
                 ...prev,
                 lastDailyDate,
                 todayDailySolved,
                 todayDailyCorrect,
-                totalXP: prev.totalXP + score,
+                totalXP: newTotalXP,
                 weeklyXP,
                 weeklyXPWeek: wk,
                 totalSolved: prev.totalSolved + answered,
@@ -402,6 +413,7 @@ export function useStats(uid: string | null) {
                 dayStreak,
                 streakShields,
                 streakFreezes,
+                freezesGranted: Math.max(freezesGranted, freezesEarned),
                 lastPlayedDate: todayDate,
                 byType: {
                     ...prev.byType,
@@ -449,24 +461,10 @@ export function useStats(uid: string | null) {
         }));
     }, []);
 
-    /** Purchase a streak freeze for 500 XP. Returns false if insufficient XP. */
-    const purchaseStreakFreeze = useCallback((): boolean => {
-        let success = false;
-        setStats(prev => {
-            if (prev.totalXP < 500) return prev;
-            success = true;
-            return {
-                ...prev,
-                totalXP: prev.totalXP - 500,
-                streakFreezes: (prev.streakFreezes || 0) + 1,
-            };
-        });
-        return success;
-    }, []);
 
     const accuracy = stats.totalSolved > 0
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-    return { stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield, purchaseStreakFreeze };
+    return { stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats, updateCosmetics, updateBadge, consumeShield };
 }

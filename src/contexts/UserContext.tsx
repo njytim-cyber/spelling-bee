@@ -31,7 +31,6 @@ interface UserContextValue {
   resetStats: ReturnType<typeof useStats>['resetStats'];
   updateBadge: ReturnType<typeof useStats>['updateBadge'];
   consumeShield: ReturnType<typeof useStats>['consumeShield'];
-  purchaseStreakFreeze: ReturnType<typeof useStats>['purchaseStreakFreeze'];
   updateCosmetics: ReturnType<typeof useStats>['updateCosmetics'];
 
   // Cosmetics
@@ -76,6 +75,7 @@ interface UserContextValue {
   referralCount: number;
   pendingReferral: string;
   referralRedeemed: boolean;
+  redeemedCode: string;
   referralError: string;
   redeemReferral: () => Promise<void>;
   getReferralUrl: () => string;
@@ -123,7 +123,6 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     resetStats,
     updateBadge,
     consumeShield,
-    purchaseStreakFreeze,
     updateCosmetics
   } = useStats(uid);
 
@@ -186,7 +185,6 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     resetStats,
     updateBadge,
     consumeShield,
-    purchaseStreakFreeze,
     updateCosmetics,
     activeCostume: activeCostume as string,
     onCostumeChange,
@@ -223,6 +221,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     referralCount: referral.referralCount,
     pendingReferral: referral.pendingReferral,
     referralRedeemed: referral.referralRedeemed,
+    redeemedCode: referral.redeemedCode,
     referralError: referral.referralError,
     redeemReferral: referral.redeemReferral,
     getReferralUrl: referral.getReferralUrl,
@@ -249,7 +248,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     setCustomBranding: (v: string) => setCustomBranding(v),
   }), [
     stats, accuracy, syncPending, syncFailed, recordSession, recordBeeResult, resetStats,
-    updateBadge, consumeShield, purchaseStreakFreeze, updateCosmetics,
+    updateBadge, consumeShield, updateCosmetics,
     activeCostume, onCostumeChange, activeTheme, onThemeChange,
     activeTrailId, onTrailChange, avatarConfig, onAvatarChange, user?.displayName, setDisplayName,
     user?.isAnonymous, linkGoogle, sendEmailLink, deleteAccount, level, onLevelChange,
@@ -259,7 +258,7 @@ export function UserProvider({ children, uid }: UserProviderProps) {
     premium.setPaidSubscription, premium.trialUsed, premium.isTrial,
     premium.isPaidSubscriber, premium.subscriptionStatus,
     referral.referralCode, referral.referralCount, referral.pendingReferral,
-    referral.referralRedeemed, referral.referralError, referral.redeemReferral,
+    referral.referralRedeemed, referral.redeemedCode, referral.referralError, referral.redeemReferral,
     referral.getReferralUrl, referral.shareReferral,
     purchasedPacks, addPurchasedPack,
     profilesHook.profiles, profilesHook.activeProfileId, profilesHook.activeProfile,

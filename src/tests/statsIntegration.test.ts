@@ -19,6 +19,7 @@ interface Stats {
     dayStreak: number;
     streakShields: number;
     streakFreezes: number;
+    freezesGranted: number;
     lastPlayedDate: string;
     byType: Record<string, TypeStat>;
     // Mode stats omitted for brevity — tested via totalXP merge
@@ -34,6 +35,7 @@ function makeStats(overrides: Partial<Stats> = {}): Stats {
         dayStreak: 0,
         streakShields: 0,
         streakFreezes: 0,
+        freezesGranted: 0,
         lastPlayedDate: '',
         byType: {},
         ...overrides,
@@ -63,6 +65,7 @@ function mergeStats(local: Stats, cloud: Stats): Stats {
         dayStreak: Math.max(local.dayStreak, cloud.dayStreak),
         streakShields: Math.max(local.streakShields, cloud.streakShields),
         streakFreezes: Math.max(local.streakFreezes || 0, cloud.streakFreezes || 0),
+        freezesGranted: Math.max(local.freezesGranted || 0, cloud.freezesGranted || 0),
         lastPlayedDate: local.lastPlayedDate > cloud.lastPlayedDate ? local.lastPlayedDate : cloud.lastPlayedDate,
         byType: mergedByType,
     };
@@ -209,20 +212,52 @@ describe('streak freeze', () => {
         expect(result.dayStreak).toBe(1); // Streak broken
     });
 
-    it('purchase deducts 500 XP and increments freeze count', () => {
-        const stats = makeStats({ totalXP: 1200, streakFreezes: 1 });
-        // Simulate purchaseStreakFreeze
-        const canBuy = stats.totalXP >= 500;
-        expect(canBuy).toBe(true);
-        const after = { ...stats, totalXP: stats.totalXP - 500, streakFreezes: stats.streakFreezes + 1 };
-        expect(after.totalXP).toBe(700);
-        expect(after.streakFreezes).toBe(2);
+    it('auto-grants freeze at 500 XP milestone', () => {
+        // User at 450 XP earns 60 → crosses 500 → gets 1 freeze
+        const prev = makeStats({ totalXP: 450, streakFreezes: 0, freezesGranted: 0 });
+        const score = 60;
+        const newTotalXP = prev.totalXP + score;
+        const freezesEarned = Math.floor(newTotalXP / 500);
+        const newFreezes = Math.max(0, freezesEarned - prev.freezesGranted);
+        expect(newTotalXP).toBe(510);
+        expect(freezesEarned).toBe(1);
+        expect(newFreezes).toBe(1);
     });
 
-    it('rejects purchase when XP insufficient', () => {
-        const stats = makeStats({ totalXP: 300, streakFreezes: 0 });
-        const canBuy = stats.totalXP >= 500;
-        expect(canBuy).toBe(false);
+    it('auto-grants multiple freezes when crossing several milestones', () => {
+        // User at 400 XP earns 700 → crosses 500 and 1000 → gets 2 freezes
+        const prev = makeStats({ totalXP: 400, streakFreezes: 0, freezesGranted: 0 });
+        const score = 700;
+        const newTotalXP = prev.totalXP + score;
+        const freezesEarned = Math.floor(newTotalXP / 500);
+        const newFreezes = Math.max(0, freezesEarned - prev.freezesGranted);
+        expect(newTotalXP).toBe(1100);
+        expect(freezesEarned).toBe(2);
+        expect(newFreezes).toBe(2);
+    });
+
+    it('does not re-grant already-granted freezes', () => {
+        // User at 600 XP with 1 already granted — earning more doesn't re-grant
+        const prev = makeStats({ totalXP: 600, streakFreezes: 1, freezesGranted: 1 });
+        const score = 50;
+        const newTotalXP = prev.totalXP + score;
+        const freezesEarned = Math.floor(newTotalXP / 500);
+        const newFreezes = Math.max(0, freezesEarned - prev.freezesGranted);
+        expect(freezesEarned).toBe(1); // Still only 1 milestone passed
+        expect(newFreezes).toBe(0);    // No new freezes
+    });
+
+    it('caps banked freezes at 3', () => {
+        // User crosses 5 milestones but freeze bank caps at 3
+        const prev = makeStats({ totalXP: 2400, streakFreezes: 2, freezesGranted: 4 });
+        const score = 200;
+        const newTotalXP = prev.totalXP + score;
+        const freezesEarned = Math.floor(newTotalXP / 500);
+        const newFreezes = Math.max(0, freezesEarned - prev.freezesGranted);
+        const banked = Math.min(3, prev.streakFreezes + newFreezes);
+        expect(freezesEarned).toBe(5);
+        expect(newFreezes).toBe(1);
+        expect(banked).toBe(3); // Capped at 3
     });
 
     it('merges streakFreezes taking max', () => {
@@ -230,5 +265,12 @@ describe('streak freeze', () => {
         const cloud = makeStats({ streakFreezes: 3 });
         const merged = mergeStats(local, cloud);
         expect(merged.streakFreezes).toBe(3);
+    });
+
+    it('merges freezesGranted taking max', () => {
+        const local = makeStats({ freezesGranted: 4 });
+        const cloud = makeStats({ freezesGranted: 6 });
+        const merged = mergeStats(local, cloud);
+        expect(merged.freezesGranted).toBe(6);
     });
 });

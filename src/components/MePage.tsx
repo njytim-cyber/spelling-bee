@@ -100,7 +100,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
     const [emailInput, setEmailInput] = useState('');
     const [emailSent, setEmailSent] = useState(false);
     const [showAvatarBuilder, setShowAvatarBuilder] = useState(false);
-    const [showAbout, setShowAbout] = useState(false);
 
     const handleShareBadge = useCallback((achievementName: string, achievementDesc: string) => {
         shareBadgeImage({
@@ -458,9 +457,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                             <IconEdit className="w-3 h-3 text-[var(--color-gold)]" />
                         </span>
                     </div>
-                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 group-hover:text-[rgb(var(--color-fg))]/50 transition-colors">
-                        {dialect === 'en-GB' ? 'customise' : 'customize'}
-                    </span>
+                    <span className="sr-only">{dialect === 'en-GB' ? 'Customise' : 'Customize'}</span>
                 </button>
 
             {/* ═══════ CHALK THEMES & TRAILS ═══════ */}
@@ -572,9 +569,13 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         <div className="flex items-center gap-3">
                             <span className="text-lg">🤝</span>
                             <div className="text-left">
-                                <div className="text-xs ui font-mono tracking-wider text-[rgb(var(--color-accent))]">{friendCode}</div>
-                                {bestBuddyStreak > 0 && (
-                                    <div className="text-[10px] text-[rgb(var(--color-fg))]/40">🔥 {bestBuddyStreak} day buddy streak</div>
+                                <div className="text-xs ui font-semibold text-[var(--color-chalk)]">
+                                    {friendCount > 0 ? `${friendCount} friend${friendCount !== 1 ? 's' : ''}` : 'Add friends'}
+                                </div>
+                                {bestBuddyStreak > 0 ? (
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">🔥 {bestBuddyStreak} day buddy streak</div>
+                                ) : (
+                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks, challenges & duels</div>
                                 )}
                             </div>
                         </div>
@@ -628,7 +629,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                         unlocked={isUnlocked}
                                         equipped={isActive || isBadgeEquipped}
                                         name={a.name}
-                                        desc={isBadgeEquipped ? '🏷️ badge' : isActive ? '✅ costume' : a.desc}
+                                        desc={a.desc}
                                         onShare={isUnlocked ? () => handleShareBadge(a.name, a.desc) : undefined}
                                     />
                                 </div>
@@ -647,7 +648,7 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                                     const isBadge = activeBadge === a.id;
                                     return (
                                         <div key={a.id} onClick={() => isUnlocked && updateBadge(isBadge ? '' : a.id)} className={isUnlocked ? 'cursor-pointer' : ''}>
-                                            <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={isBadge ? '🏷️ badge' : a.desc} onShare={isUnlocked ? () => handleShareBadge(a.name, a.desc) : undefined} />
+                                            <AchievementBadge achievementId={a.id} unlocked={isUnlocked} equipped={isBadge} name={a.name} desc={a.desc} onShare={isUnlocked ? () => handleShareBadge(a.name, a.desc) : undefined} />
                                         </div>
                                     );
                                 })}
@@ -756,32 +757,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                     </ModalShell>
                 )}
             </AnimatePresence>
-
-            {/* What makes us different */}
-            <button
-                onClick={() => setShowAbout(v => !v)}
-                className="w-full text-left text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors mt-2 mb-2"
-            >
-                {showAbout ? '\u25BE' : '\u25B8'} What makes Spelling Bee different?
-            </button>
-            {showAbout && (
-                <div className="w-full space-y-2 mb-4 animate-in fade-in">
-                    {[
-                        { icon: '\uD83E\uDDE0', title: 'Intelligent Practice', desc: 'Spaced repetition means words stay learned' },
-                        { icon: '\uD83D\uDD0D', title: 'Understands Mistakes', desc: 'Error analysis tells you WHY' },
-                        { icon: '\uD83D\uDCDA', title: '51,000+ Words', desc: '10 levels from \u201Ccat\u201D to \u201Conomatopoeia\u201D' },
-                        { icon: '\uD83D\uDD12', title: 'Privacy-First', desc: 'Offline, no ads, sign-in optional' },
-                    ].map(item => (
-                        <div key={item.title} className="flex items-start gap-2 px-3 py-2 rounded-xl bg-[rgb(var(--color-fg))]/[0.03]">
-                            <span className="text-sm shrink-0">{item.icon}</span>
-                            <div>
-                                <span className="text-[11px] ui font-bold text-[var(--color-chalk)]">{item.title}</span>
-                                <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40"> — {item.desc}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
 
             {/* Sync status + Version */}
             {syncFailed && (
