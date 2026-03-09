@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Stats } from '../hooks/useStats';
 import { STORAGE_KEYS } from '../config';
+import { currentWeekKey } from '../utils/dateHelpers';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 
 interface Props {
@@ -11,16 +12,7 @@ interface Props {
 
 const RECAP_KEY = STORAGE_KEYS.lastRecapWeek;
 
-function getWeekId(): string {
-    const now = new Date();
-    // ISO week: Monday-based
-    const d = new Date(now);
-    d.setHours(0, 0, 0, 0);
-    d.setDate(d.getDate() + 3 - ((d.getDay() + 6) % 7));
-    const week1 = new Date(d.getFullYear(), 0, 4);
-    const weekNum = 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7);
-    return `${d.getFullYear()}-W${weekNum}`;
-}
+const getWeekId = currentWeekKey;
 
 /** Always-positive weekly recap card shown on first open of the week */
 export function WeeklyRecap({ stats, referralCode }: Props) {

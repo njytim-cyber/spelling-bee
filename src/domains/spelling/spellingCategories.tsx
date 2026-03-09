@@ -639,18 +639,11 @@ export const LEVELS: readonly LevelConfig[] = [
     { id: 'level-10', label: 'Level 10', defaultCategory: 'level-10', minDifficultyLevel: 10 },
 ] as const;
 
-/** @deprecated Use LEVELS instead */
-export const GRADE_LEVELS = LEVELS;
-
 /** Icon for a level (reuses the tier icon from SPELLING_CATEGORIES). */
 // eslint-disable-next-line react-refresh/only-export-components
 export function levelIcon(level: Level): ReactNode {
     return SPELLING_CATEGORIES.find(c => c.id === level)?.icon;
 }
-
-/** @deprecated Use levelIcon instead */
-// eslint-disable-next-line react-refresh/only-export-components
-export const gradeIcon = levelIcon;
 
 /** Lookup helper: get level config by ID. Falls back to tier-1. */
 // eslint-disable-next-line react-refresh/only-export-components

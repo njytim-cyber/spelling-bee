@@ -149,7 +149,7 @@ export function getPatternAccuracy(records: Record<string, WordRecord>): Accurac
 }
 
 /** Accuracy breakdown by language of origin. */
-export function getOriginAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+function getOriginAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
     return accumulateAccuracy(
         records,
         (_r, detail) => detail ? extractLanguage(detail.etymology) : 'Other',
@@ -158,7 +158,7 @@ export function getOriginAccuracy(records: Record<string, WordRecord>): Accuracy
 }
 
 /** Accuracy breakdown by semantic theme. */
-export function getThemeAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
+function getThemeAccuracy(records: Record<string, WordRecord>): AccuracyBar[] {
     return accumulateAccuracy(
         records,
         (_r, detail) => {
@@ -661,19 +661,6 @@ export function getSimilarMistakeWords(
     return similar;
 }
 
-// ── Coaching cards ──────────────────────────────────────────────────────────
-
-export interface CoachingCard {
-    id: string;
-    type: 'improved' | 'trap' | 'weakness' | 'levelup';
-    title: string;
-    detail: string;
-    tip?: string;
-    cta?: { label: string; category: string };
-    /** Before/after stat string for improvement cards, e.g. "box 0 → box 3" */
-    stat?: string;
-}
-
 /**
  * Find "comeback" words — struggled early but now progressing in Leitner.
  * Returns up to 3 words sorted by most impressive improvement.
@@ -697,68 +684,4 @@ export function getImprovements(records: Record<string, WordRecord>): { word: st
         .slice(0, 3);
 }
 
-const BOX_LABELS = ['New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
-
-/**
- * Assemble up to 4 personalized coaching cards from analytics data.
- * Priority: improved > trap > weakness > levelup (celebration first).
- */
-export function getCoachingCards(
-    records: Record<string, WordRecord>,
-): CoachingCard[] {
-    const cards: CoachingCard[] = [];
-
-    // 1. Improvement celebrations
-    const improvements = getImprovements(records);
-    for (const imp of improvements.slice(0, 2)) {
-        cards.push({
-            id: `improved-${imp.word}`,
-            type: 'improved',
-            title: `You conquered "${imp.word}"`,
-            detail: `After ${imp.attempts} attempts, you've reached ${BOX_LABELS[imp.box]}. Keep reviewing to lock it in!`,
-            stat: `${Math.round(imp.accuracy * 100)}% accuracy`,
-        });
-    }
-
-    // 2. Spelling traps from mistake patterns
-    const insights = getMistakeInsights(records);
-    for (const ins of insights.slice(0, 2)) {
-        cards.push({
-            id: `trap-${ins.label.toLowerCase().replace(/\s+/g, '-')}`,
-            type: 'trap',
-            title: ins.label,
-            detail: `This tripped you up ${ins.count} times.`,
-            tip: ins.detail,
-            cta: ins.category ? { label: `Drill ${formatPattern(ins.category)}`, category: ins.category } : undefined,
-        });
-    }
-
-    // 3. Weakest area
-    const patterns = getPatternAccuracy(records);
-    const weakest = patterns.find(p => p.accuracy < 0.7);
-    if (weakest) {
-        const catId = patternToCategory(weakest.key as PhonicsPattern);
-        cards.push({
-            id: `weakness-${weakest.key}`,
-            type: 'weakness',
-            title: `${weakest.label} needs work`,
-            detail: `${Math.round(weakest.accuracy * 100)}% accuracy across ${weakest.attempts} attempts. Focused practice can bring this up fast.`,
-            cta: catId ? { label: `Drill ${weakest.label}`, category: catId } : undefined,
-        });
-    }
-
-    // 4. Level-up nudge
-    const nudge = getDifficultyNudge(records);
-    if (nudge) {
-        cards.push({
-            id: 'levelup',
-            type: 'levelup',
-            title: 'Ready for harder words!',
-            detail: `${Math.round(nudge.accuracy * 100)}% accuracy on ${nudge.wordCount} ${nudge.currentLabel} words. Time to try ${nudge.nextLabel}.`,
-            cta: { label: `Try ${nudge.nextLabel.split(' ')[0]}`, category: nudge.nextCategory },
-        });
-    }
-
-    return cards.slice(0, 4);
-}
 

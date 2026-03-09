@@ -120,13 +120,19 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
 
     // Cosmetic unlock counts
     const rankIdx = useMemo(() => RANKS.findIndex(r => r.name === rank.name), [rank.name]);
-    const isThemeAvailable = useCallback((t: { id: string; lootDrop?: boolean; premium?: boolean; packItem?: boolean; minLevel?: number; minStreak?: number; minSolved?: number }) => {
-        if (t.lootDrop) return isLootDropOwned(t.id);
-        const rankUnlocked = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t).available;
-        if (t.packItem) return rankUnlocked && isItemOwned(t.id, purchasedPacks);
-        if (t.premium) return rankUnlocked && isPremium;
-        return rankUnlocked;
-    }, [rankIdx, stats.bestStreak, stats.totalSolved, purchasedPacks, isPremium]);
+    type CosmeticItem = { id: string; lootDrop?: boolean; premium?: boolean; packItem?: boolean; minLevel?: number; minStreak?: number; minSolved?: number };
+    /** Compute full lock state for a cosmetic item. */
+    const getLockState = useCallback((t: CosmeticItem) => {
+        const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
+        const lootLocked = !!t.lootDrop && !isLootDropOwned(t.id);
+        const premiumLocked = !isPremium && !!t.premium;
+        const packLocked = !!t.packItem && !isItemOwned(t.id, purchasedPacks);
+        const isAvailable = lootLocked ? false : rankUnlocked && !premiumLocked && !packLocked;
+        const onClick = lootLocked ? undefined : packLocked ? onShop : premiumLocked ? onUpgrade : undefined;
+        const title = lootLocked ? 'Found via loot drop' : packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint;
+        return { isAvailable, lootLocked, premiumLocked, packLocked, onClick, title };
+    }, [rankIdx, stats.bestStreak, stats.totalSolved, purchasedPacks, isPremium, onShop, onUpgrade]);
+    const isThemeAvailable = useCallback((t: CosmeticItem) => getLockState(t).isAvailable, [getLockState]);
     const unlockedThemes = useMemo(() =>
         CHALK_THEMES.filter(t => isThemeAvailable(t)).length,
     [isThemeAvailable]);
@@ -478,34 +484,30 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {CHALK_THEMES.map(t => {
-                                const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
-                                const premiumLocked = !isPremium && t.premium;
-                                const packLocked = t.packItem && !isItemOwned(t.id, purchasedPacks);
-                                const lootLocked = t.lootDrop && !isLootDropOwned(t.id);
-                                const isAvailable = lootLocked ? false : rankUnlocked && !premiumLocked && !packLocked;
+                                const lock = getLockState(t);
                                 const isActive = activeTheme === t.id;
                                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                                 const swatchColor = isLight ? t.lightColor : t.color;
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => lootLocked ? undefined : packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isAvailable && onThemeChange(t)}
-                                        aria-label={`${t.name} chalk style${isActive ? ', selected' : ''}${!isAvailable ? ', locked' : ''}`}
+                                        onClick={() => lock.onClick ? lock.onClick() : lock.isAvailable && onThemeChange(t)}
+                                        aria-label={`${t.name} chalk style${isActive ? ', selected' : ''}${!lock.isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={lootLocked ? 'Found via loot drop' : packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        title={lock.title}
                                         className={`w-10 h-10 rounded-full border-2 transition-all relative ${isActive ? 'border-[var(--color-gold)] scale-110' :
-                                            isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
+                                            lock.isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                 'border-[rgb(var(--color-fg))]/8 opacity-40 cursor-not-allowed'
                                             }`}
                                         style={{ backgroundColor: swatchColor }}
                                     >
-                                        {lootLocked && (
+                                        {lock.lootLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🎁</span>
                                         )}
-                                        {premiumLocked && !lootLocked && (
+                                        {lock.premiumLocked && !lock.lootLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🔒</span>
                                         )}
-                                        {packLocked && !premiumLocked && !lootLocked && (
+                                        {lock.packLocked && !lock.premiumLocked && !lock.lootLocked && (
                                             <span className="absolute -top-0.5 -right-0.5 text-[8px]">🛒</span>
                                         )}
                                     </button>
@@ -521,29 +523,26 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                         <div className="flex justify-center gap-2.5 flex-wrap">
                             {SWIPE_TRAILS.map(t => {
-                                const { available: rankUnlocked, hint: unlockHint } = checkUnlock(rankIdx, stats.bestStreak, stats.totalSolved, t);
-                                const premiumLocked = !isPremium && t.premium;
-                                const packLocked = t.packItem && !isItemOwned(t.id, purchasedPacks);
-                                const isUnlocked = rankUnlocked && !premiumLocked && !packLocked;
+                                const lock = getLockState(t);
                                 const isActive = (activeTrailId || 'chalk-dust') === t.id;
 
                                 return (
                                     <button
                                         key={t.id}
-                                        onClick={() => packLocked ? onShop?.() : premiumLocked ? onUpgrade?.() : isUnlocked && onTrailChange(t.id)}
-                                        aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!isUnlocked ? ', locked' : ''}`}
+                                        onClick={() => lock.onClick ? lock.onClick() : lock.isAvailable && onTrailChange(t.id)}
+                                        aria-label={`${t.name} trail${isActive ? ', selected' : ''}${!lock.isAvailable ? ', locked' : ''}`}
                                         aria-pressed={isActive}
-                                        title={packLocked ? 'Available in shop' : premiumLocked ? 'Champion Pass required' : unlockHint}
+                                        title={lock.title}
                                         className={`w-12 h-12 flex items-center justify-center rounded-xl border-2 transition-all relative
                                             ${isActive ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 scale-105' :
-                                                isUnlocked ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
+                                                lock.isAvailable ? 'border-[rgb(var(--color-fg))]/20 hover:border-[rgb(var(--color-fg))]/40' :
                                                     'border-[rgb(var(--color-fg))]/5 opacity-30 cursor-not-allowed bg-[var(--color-surface)]'
                                             }`}
                                     >
-                                        {premiumLocked && (
+                                        {lock.premiumLocked && (
                                             <span className="absolute -top-1 -right-1 text-[8px]">🔒</span>
                                         )}
-                                        {packLocked && !premiumLocked && (
+                                        {lock.packLocked && !lock.premiumLocked && (
                                             <span className="absolute -top-1 -right-1 text-[8px]">🛒</span>
                                         )}
                                         <span className={`text-2xl ${isActive ? 'drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]' : ''}`}>

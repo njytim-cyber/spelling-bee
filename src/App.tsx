@@ -30,7 +30,7 @@ import { FREE_FRIEND_CAP, PREMIUM_FRIEND_CAP, FREE_DAILY_CHALLENGES } from './co
 import { rollLootDrop } from './utils/lootDrop';
 import { LootDropCelebration } from './components/LootDropCelebration';
 import { recordSurprise } from './utils/surpriseHistory';
-import { dateLocale } from './utils/dateHelpers';
+import { dateLocale, currentWeekKey } from './utils/dateHelpers';
 /** Retry a dynamic import once on chunk-load failure (Cloudflare Pages cache busting) */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Promise<T> {
@@ -862,10 +862,7 @@ function AppInner() {
   const [improvementToast, fireImprovementToast] = useTimedMessage(4000);
   useEffect(() => {
     try {
-      const now = new Date();
-      const jan1 = new Date(now.getFullYear(), 0, 1);
-      const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
-      const currentWeekKey = `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+      const weekKey = currentWeekKey();
 
       const raw = localStorage.getItem(STORAGE_KEYS.weeklySnapshot);
       const snapshot = raw ? JSON.parse(raw) : null;
@@ -874,20 +871,20 @@ function AppInner() {
         ? Math.round((stats.totalCorrect / stats.totalSolved) * 100)
         : 0;
 
-      if (snapshot && snapshot.weekKey !== currentWeekKey && snapshot.accuracy > 0 && currentAccuracy > 0) {
+      if (snapshot && snapshot.weekKey !== weekKey && snapshot.accuracy > 0 && currentAccuracy > 0) {
         const diff = currentAccuracy - snapshot.accuracy;
         if (diff >= 10) {
           fireImprovementToast(`Accuracy up ${diff}% from last week!`);
           localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
-            weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
+            weekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
           }));
           return;
         }
       }
 
-      if (!snapshot || snapshot.weekKey !== currentWeekKey) {
+      if (!snapshot || snapshot.weekKey !== weekKey) {
         localStorage.setItem(STORAGE_KEYS.weeklySnapshot, JSON.stringify({
-          weekKey: currentWeekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
+          weekKey, accuracy: currentAccuracy, wordCount: stats.totalSolved,
         }));
       }
     } catch { /* ignore localStorage errors */ }

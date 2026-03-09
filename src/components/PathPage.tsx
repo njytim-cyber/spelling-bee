@@ -13,6 +13,7 @@ import { evaluateLevelProgress, type LevelProgress } from '../domains/spelling/c
 import { getStudyPlan, getDifficultyNudge, type PracticeRecommendation } from '../utils/errorPatterns';
 import { StudyToolsModal, type StudyTab } from './StudyToolsModal';
 import { WORD_ROOTS } from '../domains/spelling/words/roots';
+import { currentWeekKey } from '../utils/dateHelpers';
 import { computeRootMastery } from '../domains/spelling/words/rootUtils';
 import { wordsByDifficulty, getRegistryVersion } from '../domains/spelling/words';
 import type { DifficultyTier } from '../domains/spelling/words/types';
@@ -230,12 +231,7 @@ function wordCountByDifficulty(diff: DifficultyTier): number {
 
 // ── Weekly goal tracker ────────────────────────────────────────────────────────
 
-function getWeekKey(): string {
-    const now = new Date();
-    const jan1 = new Date(now.getFullYear(), 0, 1);
-    const weekNum = Math.ceil(((now.getTime() - jan1.getTime()) / 86400000 + jan1.getDay() + 1) / 7);
-    return `${now.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
-}
+const getWeekKey = currentWeekKey;
 
 interface WeeklyGoalData {
     weekKey: string;
