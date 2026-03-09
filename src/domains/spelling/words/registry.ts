@@ -24,8 +24,9 @@ export interface UkOverride {
 
 /** US canonical word list (always the base truth) */
 let baseWords: SpellingWord[] = [...TIER_1_WORDS, ...TIER_2_WORDS];
-/** Active word list (may have UK overlays applied) */
-let loadedWords: SpellingWord[] = [...baseWords];
+/** Active word list (may have UK overlays applied). Shares reference with
+ *  baseWords in en-US mode; only diverges when UK overrides are applied. */
+let loadedWords: SpellingWord[] = baseWords;
 const loadedTiers = new Set<number>([1, 2]);
 let version = 0;
 
@@ -152,6 +153,9 @@ function ensureDifficultyCache(): Map<number, SpellingWord[]> {
 /** Words within a difficulty range [min, max]. O(1) per difficulty level via index. */
 export function getCachedByDifficulty(min: number, max: number): SpellingWord[] {
     const cache = ensureDifficultyCache();
+    // Fast path: single-level lookup (the common case) — return cached array directly
+    // instead of allocating a new one. Callers treat the result as read-only.
+    if (min === max) return cache.get(min) ?? [];
     const result: SpellingWord[] = [];
     for (let d = min; d <= max; d++) {
         const arr = cache.get(d);
@@ -346,7 +350,9 @@ export async function setDialect(dialect: Dialect): Promise<void> {
 /** Apply UK overrides to baseWords or restore US originals. */
 function rebuildLoadedWords(): void {
     if (currentDialect === 'en-US' || !ukOverrides) {
-        loadedWords = [...baseWords];
+        // en-US: share reference — no copy needed since baseWords is replaced
+        // (not mutated) on tier loads, and loadedWords is read-only downstream.
+        loadedWords = baseWords;
     } else {
         loadedWords = baseWords.map(w => {
             const def = ukTextReplace(w.definition);

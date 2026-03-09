@@ -610,8 +610,9 @@ function AppInner() {
   // ── Session word log (for post-game review) ──
   const sessionWordsRef = useRef<Array<{ word: string; correct: boolean; definition?: string; mode?: 'mcq' | 'typed' }>>([]);
   const sessionStartRef = useRef(0);
-  /** Tracks wrong answers in current session for SRS promise display */
-  const sessionWrongCountRef = useRef(0);
+  /** Tracks wrong answers in current session for SRS promise display.
+   *  State (not ref) so ProblemView re-renders with the updated count. */
+  const [sessionWrongCount, setSessionWrongCount] = useState(0);
   /** Consecutive fast (<3s) correct answers for level-up nudge */
   const consecutiveFastCorrectRef = useRef(0);
   const levelUpNudgeShownRef = useRef(false);
@@ -621,7 +622,7 @@ function AppInner() {
     if (prevQuestionTypeRef.current !== questionType) {
       sessionWordsRef.current = [];
       sessionStartRef.current = 0;
-      sessionWrongCountRef.current = 0;
+      setSessionWrongCount(0);
       consecutiveFastCorrectRef.current = 0;
       levelUpNudgeShownRef.current = false;
       prevQuestionTypeRef.current = questionType;
@@ -638,7 +639,7 @@ function AppInner() {
       sessionStartRef.current = Date.now();
       trackEvent('session_start', { level: questionTypeRef.current, session_size: sessionSize ?? 0 });
     }
-    if (!correct) sessionWrongCountRef.current++;
+    if (!correct) setSessionWrongCount(n => n + 1);
     // Track consecutive fast correct answers for level-up nudge
     if (correct && responseTimeMs < 3000) {
       consecutiveFastCorrectRef.current++;
@@ -665,7 +666,7 @@ function AppInner() {
     // Etymology reveal surprise — show "Did you know?" after correct answer at trigger index
     if (correct && sessionSurpriseRef.current?.type === 'etymologyReveal'
         && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex) {
-      const levelNum = parseInt((questionType as string).replace('level-', ''), 10) || 1;
+      const levelNum = parseInt((questionTypeRef.current as string).replace('level-', ''), 10) || 1;
       // Prefer curated fun facts over raw Wiktionary strings
       const curated = CURATED_ETYMOLOGIES.filter(e => e.minLevel <= levelNum);
       if (curated.length > 0) {
@@ -681,7 +682,7 @@ function AppInner() {
     if (sessionSurpriseRef.current?.type === 'speedBurst'
         && sessionAnsweredRef.current === sessionSurpriseRef.current.triggerIndex
         && speedBurstQueue.length === 0) {
-      const levelNum = parseInt((questionType as string).replace('level-', ''), 10) || 1;
+      const levelNum = parseInt((questionTypeRef.current as string).replace('level-', ''), 10) || 1;
       const burstItems = generateSpeedBurst(levelNum);
       setSpeedBurstQueue(burstItems);
       setSpeedBurstTimer(5);
@@ -719,7 +720,7 @@ function AppInner() {
     }
     // Dismiss score help on first answer
     setShowScoreHelp(false);
-  }, [recordAttempt, sessionSize, incrementReviewCount, speedBurstQueue, questionType]);
+  }, [recordAttempt, sessionSize, incrementReviewCount, speedBurstQueue]);
 
   // wordRegistryVersion ensures generators refresh after loading new tiers
   const activeCustomList = activeCustomListId ? customLists.getList(activeCustomListId) : null;
@@ -1690,7 +1691,7 @@ function AppInner() {
                         guidedMode={guidedMode || !!currentProblem?.meta?.['bossRound']}
                         onTypedAnswer={handleTypedAnswer}
                         wordRecords={wordRecords}
-                        sessionWrongCount={sessionWrongCountRef.current}
+                        sessionWrongCount={sessionWrongCount}
                       />
                     </motion.div>
                   )}

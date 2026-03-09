@@ -87,6 +87,11 @@ export function useGameLoop(
     const [items, setItems] = useState<EngineItem[]>([]);
     const [gs, setGs] = useState<GameState>(INITIAL_STATE);
 
+    // Ref mirror of items — lets callbacks read current items without
+    // recreating on every question advance.
+    const itemsRef = useRef(items);
+    itemsRef.current = items;
+
     const { bufferSize, autoAdvanceMs, failPauseMs, milestones, finiteTypeIds, wrongAnswerTapToDismiss } = config;
 
     const onAnswerRef = useRef(onAnswer);
@@ -235,7 +240,7 @@ export function useGameLoop(
 
     // ── Skip current problem ───────────────────────────────────────────────────
     const handleSkip = useCallback(() => {
-        if (frozenRef.current || items.length === 0) return;
+        if (frozenRef.current || itemsRef.current.length === 0) return;
         frozenRef.current = true;
         setGs(prev => ({ ...prev, streak: 0, chalkState: 'idle', frozen: true }));
         safeTimeout(() => {
@@ -243,12 +248,12 @@ export function useGameLoop(
             frozenRef.current = false;
             advanceProblem();
         }, 100);
-    }, [items, safeTimeout, advanceProblem]);
+    }, [safeTimeout, advanceProblem]);
 
     // ── Handle answer by option index ────────────────────────────────────────
     const handleAnswer = useCallback((optionIndex: number) => {
-        if (frozenRef.current || items.length === 0) return;
-        const current = items[0];
+        if (frozenRef.current || itemsRef.current.length === 0) return;
+        const current = itemsRef.current[0];
         if (!current) return;
         const tts = Date.now() - (current.startTime ?? Date.now());
 
@@ -387,12 +392,12 @@ export function useGameLoop(
             });
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items, recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
+    }, [recordAnswer, scheduleChalkReset, advanceProblem, safeTimeout, categoryId, streakShields, onConsumeShield, timedMode, minLevel, level, milestones, autoAdvanceMs, failPauseMs, wrongAnswerTapToDismiss, generateItem]);
 
     // ── Handle typed answer (text-entry / guided mode) ────────────────────────
     const handleTypedAnswer = useCallback((typed: string) => {
-        if (frozenRef.current || items.length === 0) return;
-        const current = items[0];
+        if (frozenRef.current || itemsRef.current.length === 0) return;
+        const current = itemsRef.current[0];
         if (!current) return;
 
         const correctWord = typeof current.meta?.['word'] === 'string'
@@ -488,7 +493,7 @@ export function useGameLoop(
                 };
             });
         }
-    }, [items, handleAnswer, recordAnswer, scheduleChalkReset, safeTimeout, advanceProblem, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs, wrongAnswerTapToDismiss]);
+    }, [handleAnswer, recordAnswer, scheduleChalkReset, safeTimeout, advanceProblem, streakShields, onConsumeShield, timedMode, minLevel, failPauseMs, wrongAnswerTapToDismiss]);
 
     // ── Timed mode tick + auto-skip ───────────────────────────────────────────
     const pausedRef = useRef(paused);
@@ -545,6 +550,7 @@ export function useGameLoop(
                 scheduleChalkReset(failPauseMs);
                 safeTimeout(() => {
                     setGs(prev => ({ ...prev, flash: 'none', frozen: false }));
+                    frozenRef.current = false;
                     advanceProblem();
                 }, failPauseMs);
                 return;

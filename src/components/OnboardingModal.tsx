@@ -4,12 +4,12 @@
  * First-launch setup: dialect picker + 5-question diagnostic placement test.
  * Returning users see just the dialect picker (no diagnostic).
  */
-import { memo, useState, useCallback } from 'react';
+import { memo, useState, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Level } from '../domains/spelling/spellingCategories';
 import type { Dialect } from '../domains/spelling/words/types';
 import type { EngineItem } from '../engine/domain';
-import { ensureAllWords, wordsByDifficulty } from '../domains/spelling/words';
+import { ensureAllWords, wordsByDifficulty, setDialect } from '../domains/spelling/words';
 import { generateItemForWord } from '../domains/spelling/spellingGenerator';
 import { Button } from './Button';
 import { BeeGraphic } from './BeeBuddy';
@@ -25,18 +25,23 @@ type Phase = 'dialect' | 'loading' | 'diagnostic' | 'done';
 /** Difficulty levels tested in the diagnostic (easy → hard) */
 const DIAGNOSTIC_DIFFICULTIES = [2, 4, 6, 7, 8] as const;
 
-/** Build 5 MCQ items at the diagnostic difficulty levels */
-function buildDiagnosticItems(): EngineItem[] {
-    const items: EngineItem[] = [];
+/** Each diagnostic item carries its actual difficulty for correct placement */
+interface DiagnosticItem {
+    item: EngineItem;
+    difficulty: number;
+}
+
+/** Build MCQ items at the diagnostic difficulty levels, tracking actual difficulty */
+function buildDiagnosticItems(): DiagnosticItem[] {
+    const items: DiagnosticItem[] = [];
     for (const diff of DIAGNOSTIC_DIFFICULTIES) {
         const candidates = wordsByDifficulty(diff, diff);
         if (candidates.length === 0) continue;
-        // Try a few times to get a valid item with distractors
         for (let attempt = 0; attempt < 5; attempt++) {
             const pick = candidates[Math.floor(Math.random() * candidates.length)];
             const item = generateItemForWord(pick.word, `level-${diff}`);
             if (item) {
-                items.push(item);
+                items.push({ item, difficulty: diff });
                 break;
             }
         }
@@ -44,13 +49,14 @@ function buildDiagnosticItems(): EngineItem[] {
     return items;
 }
 
-/** Map diagnostic results to the highest level the user should start at */
-function computePlacementLevel(results: boolean[]): Level {
-    // Find highest difficulty where user answered correctly
+/** Map diagnostic results to the highest level the user should start at.
+ *  Uses each item's actual difficulty (not positional index) to avoid
+ *  misalignment when some difficulty levels produce no candidates. */
+function computePlacementLevel(diagnosticItems: DiagnosticItem[], results: boolean[]): Level {
     let highestCorrectDifficulty = 1;
-    for (let i = 0; i < results.length && i < DIAGNOSTIC_DIFFICULTIES.length; i++) {
+    for (let i = 0; i < results.length && i < diagnosticItems.length; i++) {
         if (results[i]) {
-            highestCorrectDifficulty = DIAGNOSTIC_DIFFICULTIES[i];
+            highestCorrectDifficulty = diagnosticItems[i].difficulty;
         }
     }
     return `level-${highestCorrectDifficulty}` as Level;
@@ -62,12 +68,23 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
     const [phase, setPhase] = useState<Phase>('dialect');
 
     // Diagnostic state
-    const [diagnosticItems, setDiagnosticItems] = useState<EngineItem[]>([]);
+    const [diagnosticItems, setDiagnosticItems] = useState<DiagnosticItem[]>([]);
     const [diagnosticIndex, setDiagnosticIndex] = useState(0);
     const [diagnosticResults, setDiagnosticResults] = useState<boolean[]>([]);
-    const [flashIndex, setFlashIndex] = useState<number | null>(null); // which option is flashing
-    const [flashCorrect, setFlashCorrect] = useState(false); // green or red
+    const [flashIndex, setFlashIndex] = useState<number | null>(null);
+    const [flashCorrect, setFlashCorrect] = useState(false);
     const [beeState, setBeeState] = useState<'idle' | 'success' | 'fail'>('idle');
+
+    // Track the flash timeout so we can clean it up on unmount
+    const flashTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+    const mountedRef = useRef(true);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+            if (flashTimerRef.current) clearTimeout(flashTimerRef.current);
+        };
+    }, []);
 
     const handleDialectDone = useCallback(async () => {
         if (!selectedDialect) return;
@@ -78,12 +95,16 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
             return;
         }
 
-        // Start diagnostic: load all tiers then build items
+        // Start diagnostic: apply dialect FIRST so word bank uses correct spellings,
+        // then load all tiers and build items
         setPhase('loading');
+        if (selectedDialect === 'en-GB') {
+            await setDialect(selectedDialect);
+        }
         await ensureAllWords();
+        if (!mountedRef.current) return;
         const items = buildDiagnosticItems();
         if (items.length === 0) {
-            // Fallback: if no items could be built, just start at level 1
             onComplete(selectedDialect, 'level-1');
             return;
         }
@@ -95,30 +116,40 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
 
     const handleDiagnosticAnswer = useCallback((optionIndex: number) => {
         if (flashIndex !== null) return; // already flashing
-        const item = diagnosticItems[diagnosticIndex];
-        const correct = optionIndex === item.correctIndex;
+
+        const currentItem = diagnosticItems[diagnosticIndex];
+        const correct = optionIndex === currentItem.item.correctIndex;
 
         // Flash feedback
         setFlashIndex(optionIndex);
         setFlashCorrect(correct);
         setBeeState(correct ? 'success' : 'fail');
 
-        setTimeout(() => {
+        flashTimerRef.current = setTimeout(() => {
+            if (!mountedRef.current) return;
             setFlashIndex(null);
             setBeeState('idle');
-            const newResults = [...diagnosticResults, correct];
-            setDiagnosticResults(newResults);
 
-            if (diagnosticIndex + 1 >= diagnosticItems.length) {
-                // Done — compute placement
-                const level = computePlacementLevel(newResults);
-                setPhase('done');
-                onComplete(selectedDialect!, level);
-            } else {
-                setDiagnosticIndex(diagnosticIndex + 1);
-            }
+            // Use functional updates to avoid stale closure over diagnosticResults/diagnosticIndex
+            setDiagnosticResults(prev => {
+                const newResults = [...prev, correct];
+
+                // Check completion using captured values from outer scope
+                // (diagnosticItems is stable — set once and never mutated)
+                const nextIndex = prev.length + 1; // prev.length === diagnosticIndex at call time
+                if (nextIndex >= diagnosticItems.length) {
+                    setPhase('done');
+                    onComplete(selectedDialect!, computePlacementLevel(diagnosticItems, newResults));
+                } else {
+                    setDiagnosticIndex(nextIndex);
+                }
+
+                return newResults;
+            });
         }, 400);
-    }, [flashIndex, diagnosticItems, diagnosticIndex, diagnosticResults, selectedDialect, onComplete]);
+    }, [flashIndex, diagnosticItems, diagnosticIndex, selectedDialect, onComplete]);
+
+    const currentDiagnostic = diagnosticItems[diagnosticIndex]?.item;
 
     return (
         <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[var(--color-board)] px-6 overflow-y-auto">
@@ -170,7 +201,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                 )}
 
                 {/* --- Diagnostic phase --- */}
-                {phase === 'diagnostic' && diagnosticItems.length > 0 && (
+                {phase === 'diagnostic' && currentDiagnostic && (
                     <>
                         <BeeGraphic state={beeState} className="w-14 h-[72px] mb-2" />
 
@@ -206,16 +237,16 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                                 {/* Definition prompt */}
                                 <div className="text-center mb-4">
                                     <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-1">Which spelling is correct?</p>
-                                    {typeof diagnosticItems[diagnosticIndex].meta?.['definition'] === 'string' && (
+                                    {typeof currentDiagnostic.meta?.['definition'] === 'string' && (
                                         <p className="text-sm ui text-[rgb(var(--color-fg))]/60 italic">
-                                            {diagnosticItems[diagnosticIndex].meta!['definition'] as string}
+                                            {currentDiagnostic.meta!['definition'] as string}
                                         </p>
                                     )}
                                 </div>
 
                                 {/* MCQ options */}
                                 <div className="flex flex-col gap-2.5 w-full max-w-[var(--content-w)]">
-                                    {diagnosticItems[diagnosticIndex].options.map((opt, oi) => {
+                                    {currentDiagnostic.options.map((opt, oi) => {
                                         let bgClass = 'border-[rgb(var(--color-fg))]/15 hover:border-[rgb(var(--color-fg))]/30';
                                         if (flashIndex !== null) {
                                             if (oi === flashIndex) {
@@ -223,8 +254,7 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                                                     ? 'border-[var(--color-correct)] bg-[var(--color-correct)]/10'
                                                     : 'border-[var(--color-wrong)] bg-[var(--color-wrong)]/10';
                                             }
-                                            // Also highlight the correct answer on wrong
-                                            if (!flashCorrect && oi === diagnosticItems[diagnosticIndex].correctIndex) {
+                                            if (!flashCorrect && oi === currentDiagnostic.correctIndex) {
                                                 bgClass = 'border-[var(--color-correct)] bg-[var(--color-correct)]/10';
                                             }
                                         }
