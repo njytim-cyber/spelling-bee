@@ -259,64 +259,38 @@ function LoadingFallback() {
   );
 }
 
-const SCRAMBLE_WORDS = ['SPELLING', 'CHAMPION', 'ALPHABET', 'PRACTICE', 'LEARNING'];
+const WORDS_LOADING_WORDS = ['SPELLING', 'CHAMPION', 'ALPHABET', 'PRACTICE', 'LEARNING'];
 function WordsLoadingScreen() {
-  const [wordIdx] = useState(() => Math.floor(Math.random() * SCRAMBLE_WORDS.length));
-  const word = SCRAMBLE_WORDS[wordIdx];
-  // Pre-compute random rotations and scrambled letters in state initializer (pure render)
-  const [{ scrambled, rotations }] = useState(() => {
-    const arr = word.split('');
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return { scrambled: arr, rotations: arr.map(() => Math.random() * 40 - 20) };
-  });
+  const [wordIdx] = useState(() => Math.floor(Math.random() * WORDS_LOADING_WORDS.length));
+  const word = WORDS_LOADING_WORDS[wordIdx];
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
-      {/* Animated pencil writing */}
+      {/* Animated pencil */}
       <motion.div
         className="text-4xl"
-        animate={{ x: [-20, 20, -20], rotate: [-5, 5, -5] }}
+        animate={{ rotate: [-5, 5, -5] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
       >
         ✏️
       </motion.div>
 
-      {/* Letters unscrambling into place */}
+      {/* Letter tiles — readable word, no scramble */}
       <div className="flex gap-1.5">
         {word.split('').map((letter, i) => (
           <motion.div
             key={i}
             className="w-9 h-11 rounded-lg bg-[var(--color-gold)]/15 border-2 border-[var(--color-gold)]/30 flex items-center justify-center text-lg chalk text-[var(--color-gold)]"
-            initial={{ opacity: 0, y: -30, rotate: rotations[i] }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ delay: 0.3 + i * 0.12, duration: 0.5, ease: 'backOut' }}
+            initial={{ opacity: 0, y: 20, rotateX: 90 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ delay: i * 0.08, duration: 0.4, ease: 'backOut' }}
           >
-            {/* Show scrambled letter first, then swap to correct letter */}
-            <span>
-              <motion.span
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ delay: 1.2 + i * 0.08, duration: 0.15 }}
-                style={{ position: 'absolute' }}
-              >
-                {scrambled[i]}
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 + i * 0.08, duration: 0.15 }}
-              >
-                {letter}
-              </motion.span>
-            </span>
+            {letter}
           </motion.div>
         ))}
       </div>
 
-      {/* Chalk dust dots */}
+      {/* Pulsing dots */}
       <div className="flex gap-2">
         {[0, 1, 2, 3, 4].map(i => (
           <motion.div
@@ -332,7 +306,7 @@ function WordsLoadingScreen() {
         className="text-sm chalk text-[rgb(var(--color-fg))]/40 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 0.5 }}
       >
         Loading words...
       </motion.p>
