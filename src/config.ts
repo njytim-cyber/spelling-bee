@@ -68,6 +68,7 @@ export const STORAGE_KEYS = {
     friendsCache: `${STORAGE_PREFIX}-friends-cache`,
     surpriseHistory: `${STORAGE_PREFIX}-surprise-history`,
     droppedCosmetics: `${STORAGE_PREFIX}-dropped-cosmetics`,
+    typingNudgeSeen: `${STORAGE_PREFIX}-typing-nudge-seen`,
 } as const;
 
 /**

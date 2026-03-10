@@ -12,6 +12,7 @@ import { scoreCorrect, scorePenalty, FAST_ANSWER_MS } from '../engine/scoring';
 import { useDifficulty } from './useDifficulty';
 import { synthesizeCloud } from '../services/cloudTts';
 import { STORAGE_KEYS } from '../config';
+import { playSuccessSound, playWrongSound, playStreakSound } from '../utils/soundEffects';
 
 // Re-export engine types so callers that import from useGameLoop still work
 export type { ChalkState, FeedbackFlash };
@@ -293,6 +294,12 @@ export function useGameLoop(
                 };
             });
             frozenRef.current = true;
+            // Sound effects
+            if (milestoneEmoji || newStreak >= 5) {
+                playStreakSound(newStreak);
+            } else {
+                playSuccessSound();
+            }
             scheduleChalkReset(newStreak >= 10 ? 2000 : 800);
             if (milestoneEmoji) safeTimeout(() => setGs(p => ({ ...p, milestone: '' })), 1300);
             if (isFast) safeTimeout(() => setGs(p => ({ ...p, speedBonus: false })), 900);
@@ -306,6 +313,7 @@ export function useGameLoop(
             const typedText = pendingTypedText.current;
             pendingTypedText.current = undefined;
             onAnswerRef.current?.(current, false, tts, typedText);
+            playWrongSound();
             // Track per-word misses for hint system
             const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
             if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
@@ -412,6 +420,7 @@ export function useGameLoop(
             // Wrong: trigger the wrong-answer flow
             const tts = Date.now() - (current.startTime ?? Date.now());
             onAnswerRef.current?.(current, false, tts, typed);
+            playWrongSound();
             const missWord = typeof current.meta?.['word'] === 'string' ? current.meta['word'] as string : '';
             if (missWord) sessionMisses.current.set(missWord, (sessionMisses.current.get(missWord) ?? 0) + 1);
             setGs(prev => {

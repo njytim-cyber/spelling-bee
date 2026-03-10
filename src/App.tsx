@@ -395,6 +395,11 @@ function AppInner() {
   const [guidedMode, setGuidedMode] = useState(false);
   const toggleGuidedMode = useCallback(() => setGuidedMode(g => !g), []);
 
+  // ── Typing nudge (first-session tooltip + auto-escalate banner) ──
+  const typingNudgeSeen = useRef(localStorage.getItem(STORAGE_KEYS.typingNudgeSeen) === '1');
+  const [showTypingTooltip, setShowTypingTooltip] = useState(false);
+  const [showSwitchBanner, setShowSwitchBanner] = useState(false);
+
   // ── Settings modal (global) ──
   const [showSettings, setShowSettings] = useState(false);
 
@@ -836,6 +841,41 @@ function AppInner() {
       }
     }
   }, [stats.dayStreak, fireStreakMilestone]);
+
+  // ── Auto-escalate: switch to typed entry after 5 correct MCQs (Option B) ──
+  // After one typed answer (right or wrong), auto-revert back to MCQ
+  const autoEscalatedRef = useRef(false);
+  const answeredAtEscalate = useRef(0);
+  useEffect(() => {
+    if (typingNudgeSeen.current || guidedMode || streak < 5) return;
+    typingNudgeSeen.current = true;
+    localStorage.setItem(STORAGE_KEYS.typingNudgeSeen, '1');
+    autoEscalatedRef.current = true;
+    answeredAtEscalate.current = totalAnswered;
+    setGuidedMode(true);
+    setShowSwitchBanner(true);
+    const t = setTimeout(() => setShowSwitchBanner(false), 4000);
+    return () => clearTimeout(t);
+  }, [streak, guidedMode, totalAnswered]);
+
+  // Auto-revert to MCQ after one typed answer following auto-escalate
+  useEffect(() => {
+    if (!autoEscalatedRef.current || !guidedMode) return;
+    if (totalAnswered > answeredAtEscalate.current) {
+      autoEscalatedRef.current = false;
+      setGuidedMode(false);
+    }
+  }, [totalAnswered, guidedMode]);
+
+  // ── First-session tooltip: show after 3 MCQ answers if nudge not yet seen ──
+  useEffect(() => {
+    if (typingNudgeSeen.current || totalAnswered !== 3 || guidedMode) return;
+    setShowTypingTooltip(true);
+  }, [totalAnswered, guidedMode]);
+
+  const dismissTypingTooltip = useCallback(() => {
+    setShowTypingTooltip(false);
+  }, []);
 
   // ── Level-up nudge — auto-dismiss after 6s ──
   useEffect(() => {
@@ -1669,6 +1709,21 @@ function AppInner() {
                           )}
                         </div>
                       )}
+                      {/* "Switch anytime" banner after auto-escalate */}
+                      <AnimatePresence>
+                        {showSwitchBanner && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -8 }}
+                            className="text-center py-1"
+                          >
+                            <span className="text-[11px] ui text-[var(--color-gold)]">
+                              Now try typing it! You can switch anytime.
+                            </span>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                       <ProblemView
                         problem={currentProblem}
                         frozen={frozen}
@@ -1832,6 +1887,8 @@ function AppInner() {
                   setActiveCustomListId(listId);
                   setQuestionTypeRaw('custom');
                 }}
+                showTypingTooltip={showTypingTooltip}
+                onDismissTypingTooltip={dismissTypingTooltip}
               />
             )}
 

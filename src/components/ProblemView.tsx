@@ -59,14 +59,25 @@ const correctFlashAnim = {
     ],
 };
 
+/** Wrong-answer flash animation — brief red pulse before showing correct */
+const wrongFlashAnim = {
+    scale: [1, 1.05, 1],
+    boxShadow: [
+        '0 0 0 0 rgba(239,68,68,0)',
+        '0 0 16px 4px rgba(239,68,68,0.5)',
+        '0 0 0 0 rgba(239,68,68,0)',
+    ],
+};
+
 const AnswerOption = memo(function AnswerOption({
-    value, label, index, frozen, onAnswer, highlighted, correctFlash, reducedMotion,
+    value, label, index, frozen, onAnswer, highlighted, correctFlash, wrongFlash, reducedMotion,
 }: {
     value: number | string; label?: string; index: number;
     frozen: boolean;
     onAnswer: (i: number) => void;
     highlighted?: boolean;
     correctFlash?: boolean;
+    wrongFlash?: boolean;
     reducedMotion?: boolean;
 }) {
     const text = String(label ?? value);
@@ -85,11 +96,12 @@ const AnswerOption = memo(function AnswerOption({
                 className={`w-full px-4 py-3.5 rounded-2xl border-2 bg-[var(--color-surface)] flex items-center justify-center ui font-bold active:scale-[0.97] transition-transform ${
                     text.length > 10 ? 'text-[17px]' : text.length > 7 ? 'text-[20px]' : 'text-[24px]'
                 } ${correctFlash ? 'border-[var(--color-correct)] text-[var(--color-correct)] bg-[var(--color-correct)]/10'
+                    : wrongFlash ? 'border-[var(--color-wrong)] text-[var(--color-wrong)] bg-[var(--color-wrong)]/10'
                     : highlighted ? 'border-[var(--color-gold)] text-[var(--color-gold)]'
                         : 'border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)]'
                     }`}
-                animate={reducedMotion ? {} : correctFlash ? correctFlashAnim : highlighted ? glowAnim : {}}
-                transition={reducedMotion ? {} : correctFlash ? { duration: 0.35 } : highlighted ? glowTransition : {}}
+                animate={reducedMotion ? {} : correctFlash ? correctFlashAnim : wrongFlash ? wrongFlashAnim : highlighted ? glowAnim : {}}
+                transition={reducedMotion ? {} : correctFlash ? { duration: 0.35 } : wrongFlash ? { duration: 0.3 } : highlighted ? glowTransition : {}}
             >
                 {text}
             </motion.div>
@@ -103,6 +115,9 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const { speak, isSupported: ttsSupported, ttsFailed } = usePronunciation();
     const { reducedMotion } = useReducedMotion();
     const [showShortcuts, setShowShortcuts] = useState(false);
+
+    // Track which option was tapped (for wrong-flash on MCQ pills)
+    const [tappedIndex, setTappedIndex] = useState<number | null>(null);
 
     // Suppress "audio unavailable" for a grace period on mount (TTS cold start)
     const [ttsGrace, setTtsGrace] = useState(true);
@@ -128,7 +143,7 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     }, [errorTip]);
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    useEffect(() => { setTyped(''); setLastTyped(''); }, [p.id]);
+    useEffect(() => { setTyped(''); setLastTyped(''); setTappedIndex(null); }, [p.id]);
 
     const handleSpeak = useCallback(() => {
         const word = p.meta?.['word'];
@@ -206,6 +221,12 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
         window.addEventListener('keydown', handler);
         return () => window.removeEventListener('keydown', handler);
     }, []);
+
+    // MCQ answer handler — tracks tapped index for wrong-flash
+    const handleMcqAnswer = useCallback((index: number) => {
+        setTappedIndex(index);
+        onAnswer(index);
+    }, [onAnswer]);
 
     // Text-entry submit handler
     const handleTypedSubmit = useCallback(() => {
@@ -293,9 +314,10 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                                 label={p.optionLabels?.[i]}
                                 index={i}
                                 frozen={frozen}
-                                onAnswer={onAnswer}
+                                onAnswer={handleMcqAnswer}
                                 highlighted={highlightCorrect && i === p.correctIndex}
                                 correctFlash={frozen && i === p.correctIndex}
+                                wrongFlash={frozen && wrongAnswer && tappedIndex === i && i !== p.correctIndex}
                                 reducedMotion={reducedMotion}
                             />
                         </div>
@@ -311,6 +333,12 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.25 }}
                 >
+                    {/* Error tip — pattern-based hint for what went wrong */}
+                    {errorTip && (
+                        <div className="text-[11px] ui text-[var(--color-streak-fire)] text-center mb-2 px-2">
+                            <span className="font-semibold">{errorTip.label}:</span>{' '}{errorTip.detail}
+                        </div>
+                    )}
                     {/* SRS promise — shown for the first 3 wrong answers in a session */}
                     {sessionWrongCount !== undefined && sessionWrongCount <= 3 && (
                         <div className="text-[10px] ui text-[var(--color-gold)]/60 text-center mb-2">

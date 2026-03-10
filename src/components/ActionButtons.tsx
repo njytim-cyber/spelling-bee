@@ -1,5 +1,5 @@
 import { memo, useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { QuestionTypePicker } from './QuestionTypePicker';
 import type { SpellingCategory } from '../domains/spelling/spellingCategories';
 import { SPELLING_CATEGORIES } from '../domains/spelling/spellingCategories';
@@ -14,6 +14,9 @@ interface Props {
     onUpgrade?: () => void;
     assignedLists?: { id: string; name: string; wordCount: number }[];
     onPracticeList?: (listId: string) => void;
+    /** Show a tooltip pointing at the MCQ/Type toggle */
+    showTypingTooltip?: boolean;
+    onDismissTypingTooltip?: () => void;
 }
 
 const TIMER_DURATION_MS = 10_000;
@@ -118,10 +121,18 @@ export const ActionButtons = memo(function ActionButtons({
     questionType, onTypeChange,
     guidedMode, onGuidedModeToggle,
     isPremium, onUpgrade, assignedLists, onPracticeList,
+    showTypingTooltip, onDismissTypingTooltip,
 }: Props) {
     const hideToggles = questionType === 'bee' || questionType === 'guided';
     const categoryLabel = SPELLING_CATEGORIES.find(c => c.id === questionType)?.label ?? '';
     const timer = useStopwatch();
+
+    // Auto-dismiss tooltip after 5 seconds
+    useEffect(() => {
+        if (!showTypingTooltip || !onDismissTypingTooltip) return;
+        const t = setTimeout(onDismissTypingTooltip, 5000);
+        return () => clearTimeout(t);
+    }, [showTypingTooltip, onDismissTypingTooltip]);
 
     return (
         <div className="action-buttons-col absolute right-3 top-[25%] -translate-y-1/2 flex flex-col gap-[clamp(0.5rem,2vh,1rem)] z-20">
@@ -132,34 +143,56 @@ export const ActionButtons = memo(function ActionButtons({
             </div>
 
             {/* MCQ / Text mode toggle */}
-            {!hideToggles && <motion.button
-                onClick={onGuidedModeToggle}
-                className={`${BTN} flex-col ${activeColor(guidedMode)}`}
-                whileTap={TAP}
-                aria-label={guidedMode ? 'Text entry mode (tap for MCQ)' : 'MCQ mode (tap for text entry)'}
-            >
-                {guidedMode ? (
-                    /* Pencil — text entry mode */
-                    <svg {...ICON_PROPS}>
-                        <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
-                        <path d="M15 5l4 4" />
-                    </svg>
-                ) : (
-                    /* List/checklist — MCQ mode */
-                    <svg {...ICON_PROPS}>
-                        <path d="M11 6h9" />
-                        <path d="M11 12h9" />
-                        <path d="M11 18h9" />
-                        <rect x="3" y="4" width="4" height="4" rx="1" />
-                        <rect x="3" y="10" width="4" height="4" rx="1" />
-                        <rect x="3" y="16" width="4" height="4" rx="1" />
-                    </svg>
-                )}
-                {guidedMode && (
-                    <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
-                )}
-                <span className={`w-7 text-center -mt-0.5 ${LABEL}`}>{guidedMode ? 'Type' : 'MCQ'}</span>
-            </motion.button>}
+            {!hideToggles && <div className="relative">
+                <motion.button
+                    onClick={onGuidedModeToggle}
+                    className={`${BTN} flex-col ${activeColor(guidedMode)}`}
+                    whileTap={TAP}
+                    aria-label={guidedMode ? 'Text entry mode (tap for MCQ)' : 'MCQ mode (tap for text entry)'}
+                >
+                    {guidedMode ? (
+                        /* Pencil — text entry mode */
+                        <svg {...ICON_PROPS}>
+                            <path d="M17 3a2.83 2.83 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                            <path d="M15 5l4 4" />
+                        </svg>
+                    ) : (
+                        /* List/checklist — MCQ mode */
+                        <svg {...ICON_PROPS}>
+                            <path d="M11 6h9" />
+                            <path d="M11 12h9" />
+                            <path d="M11 18h9" />
+                            <rect x="3" y="4" width="4" height="4" rx="1" />
+                            <rect x="3" y="10" width="4" height="4" rx="1" />
+                            <rect x="3" y="16" width="4" height="4" rx="1" />
+                        </svg>
+                    )}
+                    {guidedMode && (
+                        <span className="w-1 h-1 rounded-full bg-[var(--color-gold)] mt-0.5" />
+                    )}
+                    <span className={`w-7 text-center -mt-0.5 ${LABEL}`}>{guidedMode ? 'Type' : 'MCQ'}</span>
+                </motion.button>
+
+                {/* First-session tooltip */}
+                <AnimatePresence>
+                    {showTypingTooltip && (
+                        <motion.div
+                            initial={{ opacity: 0, x: 8 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 8 }}
+                            transition={{ duration: 0.2 }}
+                            onClick={onDismissTypingTooltip}
+                            className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap cursor-pointer"
+                        >
+                            <div className="relative bg-[var(--color-surface)] border border-[var(--color-gold)]/40 rounded-lg px-2.5 py-1.5 shadow-lg">
+                                <span className="text-[11px] ui text-[var(--color-gold)]">Tap to type instead</span>
+                                {/* Arrow pointing right at the toggle */}
+                                <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-0 h-0 border-y-[5px] border-y-transparent border-l-[6px] border-l-[var(--color-gold)]/40" />
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>}
 
             {/* Stopwatch — simple 10s countdown timer */}
             {!hideToggles && <motion.button

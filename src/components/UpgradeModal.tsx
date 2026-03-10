@@ -230,7 +230,7 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                     onClick={() => handlePurchase('monthly')}
                     disabled={purchasing}
                     whileTap={{ scale: 0.95 }}
-                    className="py-3 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-center disabled:opacity-50"
+                    className="py-3 rounded-xl border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 text-center disabled:opacity-40"
                 >
                     <span className="text-base ui font-bold text-[var(--color-gold)]">$4.99</span>
                     <span className="block text-[10px] ui text-[rgb(var(--color-fg))]/40">/month</span>
@@ -239,9 +239,9 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                     onClick={() => handlePurchase('annual')}
                     disabled={purchasing}
                     whileTap={{ scale: 0.95 }}
-                    className="py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-center relative disabled:opacity-50"
+                    className="py-3 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[var(--color-gold)]/10 text-center relative disabled:opacity-40"
                 >
-                    <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-black px-1.5 py-0.5 rounded-full">
+                    <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-[var(--color-board)] px-1.5 py-0.5 rounded-full">
                         SAVE 50%
                     </span>
                     <span className="text-base ui font-bold text-[var(--color-gold)]">$29.99</span>
@@ -279,7 +279,7 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         onClick={() => handlePurchase('bee-team-monthly')}
                         disabled={purchasing}
                         whileTap={{ scale: 0.95 }}
-                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 text-center disabled:opacity-50"
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 text-center disabled:opacity-40"
                     >
                         <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$7.99</span>
                         <span className="block text-[9px] ui text-[rgb(var(--color-fg))]/30">/month</span>
@@ -288,9 +288,9 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
                         onClick={() => handlePurchase('bee-team-annual')}
                         disabled={purchasing}
                         whileTap={{ scale: 0.95 }}
-                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative disabled:opacity-50"
+                        className="py-2 rounded-xl border border-[rgb(var(--color-fg))]/15 bg-[rgb(var(--color-fg))]/[0.02] text-center relative disabled:opacity-40"
                     >
-                        <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-black px-1.5 py-0.5 rounded-full">
+                        <span className="absolute -top-2 right-2 text-[8px] ui font-bold bg-[var(--color-gold)] text-[var(--color-board)] px-1.5 py-0.5 rounded-full">
                             SAVE 48%
                         </span>
                         <span className="text-sm ui font-bold text-[rgb(var(--color-fg))]/60">$49.99</span>

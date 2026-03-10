@@ -9,6 +9,8 @@ import {
     getStudyPlan,
     getDifficultyNudge,
     getInlineErrorTip,
+    getWeakWords,
+    getRecommendations,
 } from '../utils/errorPatterns';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -328,5 +330,79 @@ describe('getInlineErrorTip', () => {
     it('returns null for simple words with no tricky patterns', () => {
         const tip = getInlineErrorTip('cat');
         expect(tip).toBeNull();
+    });
+});
+
+// ── getWeakWords ────────────────────────────────────────────────────────────
+
+describe('getWeakWords', () => {
+    it('returns words from weak categories (>20% error, box < 4)', () => {
+        const records = makeRecords([
+            { word: 'a', category: 'hard', attempts: 10, correct: 5, box: 1 },
+            { word: 'b', category: 'hard', attempts: 5, correct: 2, box: 2 },
+        ]);
+        const weak = getWeakWords(records);
+        expect(weak.length).toBeGreaterThan(0);
+        expect(weak).toContain('a');
+    });
+
+    it('excludes mastered words (box >= 4)', () => {
+        const records = makeRecords([
+            { word: 'a', category: 'hard', attempts: 10, correct: 5, box: 4 },
+            { word: 'b', category: 'hard', attempts: 5, correct: 2, box: 1 },
+        ]);
+        const weak = getWeakWords(records);
+        expect(weak).not.toContain('a');
+    });
+
+    it('returns empty when no weak categories exist', () => {
+        const records = makeRecords([
+            { word: 'a', category: 'easy', attempts: 10, correct: 9 },
+        ]);
+        expect(getWeakWords(records)).toHaveLength(0);
+    });
+
+    it('returns at most 20 words', () => {
+        const records = makeRecords(
+            Array.from({ length: 30 }, (_, i) => ({
+                word: `w${i}`, category: 'hard', attempts: 10, correct: 3, box: 1,
+            })),
+        );
+        expect(getWeakWords(records).length).toBeLessThanOrEqual(20);
+    });
+});
+
+// ── getRecommendations ──────────────────────────────────────────────────────
+
+describe('getRecommendations', () => {
+    it('returns at most 3 recommendations', () => {
+        const records = makeRecords(
+            Array.from({ length: 50 }, (_, i) => ({
+                word: `w${i}`, category: 'cvc', attempts: 10, correct: 3,
+            })),
+        );
+        expect(getRecommendations(records).length).toBeLessThanOrEqual(3);
+    });
+
+    it('returns empty for perfect accuracy', () => {
+        const records = makeRecords([
+            { word: 'a', category: 'cvc', attempts: 10, correct: 10 },
+        ]);
+        expect(getRecommendations(records)).toHaveLength(0);
+    });
+
+    it('recommendations have required fields', () => {
+        const records = makeRecords(
+            Array.from({ length: 20 }, (_, i) => ({
+                word: `w${i}`, category: 'cvc', attempts: 10, correct: 3,
+            })),
+        );
+        const recs = getRecommendations(records);
+        for (const rec of recs) {
+            expect(rec).toHaveProperty('category');
+            expect(rec).toHaveProperty('label');
+            expect(rec).toHaveProperty('reason');
+            expect(rec).toHaveProperty('priority');
+        }
     });
 });

@@ -117,7 +117,7 @@ export const SessionSummary = memo(function SessionSummary({
     const cardRef = useRef<HTMLDivElement>(null);
 
     // Rolling count-up for XP
-    const xpSpring = useSpring(0, { stiffness: 60, damping: 20 });
+    const xpSpring = useSpring(0, { stiffness: 90, damping: 20 });
     const [xpDisplay, setXpDisplay] = useState(0);
 
     useMotionValueEvent(xpSpring, 'change', (v) => {
@@ -206,7 +206,7 @@ export const SessionSummary = memo(function SessionSummary({
                     onClick={onDismiss}
                 >
                     <motion.div
-                        className="bg-[var(--color-board)] border border-[rgb(var(--color-fg))]/15 rounded-3xl px-8 py-6 max-w-xs w-[calc(100vw-2rem)] text-center relative overflow-hidden"
+                        className="bg-[var(--color-board)] border border-[rgb(var(--color-fg))]/15 rounded-2xl px-8 py-6 max-w-xs w-[calc(100vw-2rem)] text-center relative overflow-hidden"
                         initial={{ scale: 0.85, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.85, opacity: 0 }}

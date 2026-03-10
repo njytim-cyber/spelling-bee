@@ -288,7 +288,13 @@ export const BeeBuddy = memo(function BeeBuddy({
 
             {/* Honey pot emoji on streak (instead of fire) */}
             {displayState === 'streak' && (
-                <span className="absolute -top-1 right-0 text-xl pointer-events-none">🍯</span>
+                <motion.span
+                    className="absolute -top-1 right-0 text-xl pointer-events-none"
+                    animate={{ y: [0, -3, 0], rotate: [0, 8, -8, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }}
+                >
+                    🍯
+                </motion.span>
             )}
         </motion.div>
     );

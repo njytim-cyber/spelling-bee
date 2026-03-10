@@ -7,7 +7,7 @@ This is a spelling app. **Accuracy of word data is the most important thing.** E
 ```bash
 npm run dev       # Dev server with HMR
 npm run build     # TypeScript check + Vite production build
-npx vitest run    # Run tests once (30 files, 492 tests)
+npx vitest run    # Run tests once (31 files, 510 tests)
 npx tsc --noEmit  # Type-check only
 npm run verify    # Full check: lint + tsc + test + build (runs on pre-push)
 ```
@@ -33,13 +33,14 @@ See `docs/ARCHITECTURE.md` for full directory layout, data flow, and detailed pa
 | `src/App.tsx` | Root component |
 | `src/config.ts` | Storage keys, Firestore collections |
 | `src/domains/spelling/words/registry.ts` | Lazy-loading tier registry |
-| `src/domains/spelling/spellingCategories.ts` | Categories, curriculum |
+| `src/domains/spelling/spellingCategories.tsx` | Categories, curriculum |
 | `src/domains/spelling/spellingGenerator.ts` | Word selection + distractors |
 | `src/hooks/useGameLoop.ts` | Core game loop |
 | `src/hooks/useWordHistory.ts` | Leitner SRS |
 | `src/hooks/useStats.ts` | Stats persistence + sync |
 | `src/components/Icons.tsx` | Centralized SVG icon library |
 | `src/utils/analytics.ts` | GA4 analytics wrapper (events, user ID, properties, latency) |
+| `src/utils/dateHelpers.ts` | Date formatting, week keys, locale |
 | `scripts/pipeline/export-to-app.cjs` | Pipeline export + child safety filtering |
 
 ## Documentation Map
