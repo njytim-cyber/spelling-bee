@@ -304,11 +304,14 @@ export function useGameLoop(
             if (milestoneEmoji) safeTimeout(() => setGs(p => ({ ...p, milestone: '' })), 1300);
             if (isFast) safeTimeout(() => setGs(p => ({ ...p, speedBonus: false })), 900);
 
+            // Show example sentence for longer when present (2.5s vs default 0.5s)
+            const hasExample = typeof current.meta?.['exampleSentence'] === 'string';
+            const advanceDelay = hasExample ? Math.max(autoAdvanceMs, 2500) : autoAdvanceMs;
             safeTimeout(() => {
                 setGs(prev => ({ ...prev, flash: 'none', frozen: false }));
                 frozenRef.current = false;
                 advanceProblem();
-            }, autoAdvanceMs);
+            }, advanceDelay);
         } else {
             const typedText = pendingTypedText.current;
             pendingTypedText.current = undefined;

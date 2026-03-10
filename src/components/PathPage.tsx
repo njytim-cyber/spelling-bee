@@ -156,7 +156,7 @@ function SessionPicker({ level, onPick, onClose }: {
                         <button
                             key={size}
                             onClick={() => onPick(size)}
-                            className="flex-1 py-3 rounded-xl text-sm ui font-bold text-[var(--color-chalk)] bg-[rgb(var(--color-fg))]/[0.05] border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/10 transition-colors"
+                            className="flex-1 py-3 rounded-xl text-sm ui font-bold text-[var(--color-chalk)] bg-[var(--color-surface)] border border-[rgb(var(--color-fg))]/15 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/15 transition-colors"
                         >
                             {size}
                         </button>

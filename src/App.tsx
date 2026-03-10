@@ -532,7 +532,7 @@ function AppInner() {
     })();
   }, []);
 
-  // ── Stripe checkout success + subscription restore ──
+  // ── Stripe checkout / pack-purchase redirect (runs once on page load) ──
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
@@ -546,9 +546,9 @@ function AppInner() {
     }
 
     if (params.get('checkout') === 'success') {
-      // Clean URL
+      // Clean URL immediately so a refresh doesn't re-trigger
       window.history.replaceState({}, '', window.location.pathname);
-      // Restore subscription from Stripe
+      // Restore subscription from Stripe — runs regardless of uid timing
       import('./services/stripe').then(({ restoreSubscription }) =>
         restoreSubscription().then(result => {
           if (result.active && result.expiresAt) {
@@ -556,16 +556,20 @@ function AppInner() {
           }
         })
       ).catch(console.warn);
-    } else if (uid) {
-      // On login, check for existing active subscription
-      import('./services/stripe').then(({ restoreSubscription }) =>
-        restoreSubscription().then(result => {
-          if (result.active && result.expiresAt) {
-            setPaidSubscription(result.expiresAt, 'active');
-          }
-        })
-      ).catch(() => { /* silent — no subscription or offline */ });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ── Subscription restore on login ──
+  useEffect(() => {
+    if (!uid) return;
+    import('./services/stripe').then(({ restoreSubscription }) =>
+      restoreSubscription().then(result => {
+        if (result.active && result.expiresAt) {
+          setPaidSubscription(result.expiresAt, 'active');
+        }
+      })
+    ).catch(() => { /* silent — no subscription or offline */ });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid]);
 

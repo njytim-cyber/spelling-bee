@@ -236,10 +236,17 @@ export function selectWordPool(
         pool = wordsByDifficulty(min, max);
     }
 
-    // Widen difficulty range gradually rather than falling back to the entire
-    // word bank, which would serve easy words at hard levels (and vice-versa).
-    if (pool.length === 0) {
-        for (let spread = 1; spread <= 3 && pool.length === 0; spread++) {
+    // Widen difficulty range gradually if pool is too small to avoid repetition.
+    // Minimum 5 unique words prevents the dedup loop from giving up.
+    const MIN_POOL = 5;
+    if (pool.length < MIN_POOL && (origin || theme || pattern)) {
+        // First, try dropping difficulty constraint but keeping category
+        if (origin) pool = wordsByLanguageOfOrigin(origin);
+        else if (theme) pool = wordsByTheme(theme);
+        else if (pattern) pool = wordsByPattern(pattern);
+    }
+    if (pool.length < MIN_POOL) {
+        for (let spread = 1; spread <= 3 && pool.length < MIN_POOL; spread++) {
             const widerMin = Math.max(1, min - spread) as DifficultyTier;
             const widerMax = Math.min(10, max + spread) as DifficultyTier;
             pool = wordsByDifficulty(widerMin, widerMax);

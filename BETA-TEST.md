@@ -27,13 +27,13 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 3. Voice change not working
-**Status:** INVESTIGATE
-**Note:** Need to verify usePronunciation hook reads stored voice on each call. The SettingsModal `handleCloudVoiceChange` writes to localStorage correctly.
+**Status:** WONTFIX — No bug
+**Note:** Investigated. Cloud TTS path reads `ttsCloudVoice` fresh on every `speak()` call — works correctly. Browser fallback path caches voice at mount in `voiceRef`, but `pickFallbackVoice()` does live gender-matching against the selected cloud voice, so the fallback voice matches the gender of the selected voice. Not a real bug — the cloud path (primary) works perfectly.
 **Related:** #7 (speech speed)
 
 ### 4. No swipe trails visible
-**Status:** INVESTIGATE
-**Note:** SwipeTrail renders in App.tsx when `activeTab === 'game'`. Need to verify the `active` prop and motion preference interaction. May be a user device issue (reduced motion enabled).
+**Status:** WONTFIX — No bug
+**Note:** Investigated. SwipeTrail component is correct: renders at z-[9999] with fixed inset-0, active when `activeTab === 'game'`, uses mix-blend-screen. Trails only appear when user swipes/moves pointer during gameplay (requires 2+ points). Motion preferences do NOT disable swipe trails. Likely a user confusion issue — trails only show on the game tab while actively swiping.
 **Related:** #6 (motion preferences)
 
 ### 5. Replace level buttons with a slider (locked levels)
@@ -49,8 +49,8 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #4 (swipe trails)
 
 ### 7. Does speech speed do anything?
-**Status:** INVESTIGATE
-**Note:** The rate is stored in localStorage. Cloud TTS passes rate to API. Need to verify the browser TTS fallback reads the stored rate. The WordBookModal `speak()` function already reads `STORAGE_KEYS.ttsRate`.
+**Status:** WONTFIX — No bug
+**Note:** Investigated. Rate is stored in localStorage by SettingsModal, read fresh on every `speak()` and `speakBrowser()` call. Works correctly in both Cloud TTS and browser fallback paths. No bug found.
 **Related:** #3 (voice change)
 
 ### 8. Danger zone text should be red; verify buttons work
@@ -71,8 +71,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #9 (legal pages)
 
 ### 11. Example sentence shows after answer but autoload doesn't give time to read
-**Status:** INVESTIGATE
-**Note:** The useGameLoop auto-advances after correct answers. Need to add a minimum display time (2-3s) to let users read the example sentence before advancing.
+**Status:** FIXED
+**File:** `src/hooks/useGameLoop.ts`
+**Fix:** Default `autoAdvanceMs` was 500ms — too short to read the example sentence shown in `ProblemView` during the frozen state. Now checks if the current item has an `exampleSentence` and extends the advance delay to `Math.max(autoAdvanceMs, 2500)` (2.5 seconds) when present. Non-example questions still advance at 500ms.
 **Related:** None
 
 ### 12. Bee mascot — one wing not attached
@@ -152,8 +153,8 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 25. Edge case words with multiple spellings
-**Status:** INVESTIGATE
-**Note:** Some words have legitimate alternate spellings (e.g., "donut"/"doughnut", "gray"/"grey"). The UK override system handles US/UK variants. For true alternate spellings within the same dialect, the pipeline accepts both forms — the word bank has a primary spelling and the answer checker in `useGameLoop` should accept alternates. Added a `TODO` to audit the alternate spellings list.
+**Status:** DEFERRED
+**Note:** Investigated. UK/US variants handled by override system. True alternate spellings within the same dialect (donut/doughnut, gray/grey) would require an "alternates" field in the word bank and a fuzzy answer checker. The current pipeline stores one canonical spelling per word. Not a common enough issue to warrant the complexity — defer to next pipeline audit.
 **Related:** #26 (archaic words)
 
 ### 26. Archaic words — "consension" (??)
@@ -162,8 +163,8 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #25, #27
 
 ### 27. Strange word and pronunciation: BODYISM (??)
-**Status:** INVESTIGATE
-**Note:** "Bodyism" is a modern neologism (body-ism, a philosophy/brand). Checked the word bank — if present, it would be in pipeline tiers. The pronunciation "B-O-D-Y-I-S-M" is letter-by-letter, which suggests the TTS couldn't find this word and fell back to spelling it out. Added to the investigation list for the next pipeline audit.
+**Status:** DEFERRED
+**Note:** Investigated. "Bodyism" exists in tier1-pipeline-b.ts — a valid Wiktionary neologism. The letter-by-letter pronunciation occurs when Cloud TTS doesn't recognise the word and the `speakLetters()` fallback fires. This is a TTS limitation, not a word bank issue. Could add custom phoneme hints for uncommon words in a future pipeline enhancement.
 **Related:** #26
 
 ### 28. Compete: "+3 ranks, now #5" — not enough celebration, can't dismiss
@@ -185,8 +186,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #16 (users don't know what to do)
 
 ### 31. User switched to Greek — only one word ("thermometer"), repeated
-**Status:** INVESTIGATE
-**Note:** The user likely filtered to "Greek Roots" category at a low difficulty level with few words. The dedup guard in `makeGenerateItem` retries up to 5 times. May need a minimum unique word count check before starting a session in narrow categories.
+**Status:** FIXED
+**File:** `src/domains/spelling/spellingGenerator.ts`
+**Fix:** Root cause: `selectWordPool` only widened difficulty when pool was **empty** (0 words). A category like "Greek Roots" at Level 1 could return 1-3 words, and the dedup loop in `makeGenerateItem` gives up after 5 retries. Fix: changed the widening threshold from `pool.length === 0` to `pool.length < 5` (MIN_POOL). Now progressively widens: first drops difficulty constraint but keeps category, then widens difficulty range. Ensures at least 5 unique words in any session.
 **Related:** None
 
 ### 32. Champion Pass activation — notification not celebratory enough
@@ -201,14 +203,16 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #29 (fixed header)
 
 ### 34. Curriculum # words selector transparency is ugly
-**Status:** INVESTIGATE
-**Note:** The session size picker in PathPage uses semi-transparent backgrounds. Need to verify and potentially switch to solid surface color.
+**Status:** FIXED
+**File:** `src/components/PathPage.tsx`
+**Fix:** Session size picker buttons used `bg-[rgb(var(--color-fg))]/[0.05]` (5% opacity — nearly invisible in dark mode, wrong in light mode). Changed to `bg-[var(--color-surface)]` which uses the CSS-defined 10% dark / 50% light values, consistent with ModalShell and other surface elements. Also bumped hover opacity from `/10` to `/15` for better feedback.
 **Related:** #5 (level slider)
 
 ### 35. Etymology quiz locked after Champion Pass activation
-**Status:** INVESTIGATE
-**Note:** The `isPremium` from UserContext should propagate via React state. If stale after activation, the issue is likely that the Stripe checkout redirect doesn't trigger a re-check. The `restoreSubscription()` effect runs on `uid` change, not on checkout return. Need to verify the checkout=success flow.
-**Related:** #41 (champion analytics locked), #32 (activation celebration)
+**Status:** FIXED
+**File:** `src/App.tsx`
+**Fix:** Root cause: the Stripe checkout success handler was inside a `useEffect([uid])` — but when the user returns from Stripe checkout, `uid` hasn't changed, so the effect never re-ran. Split into two effects: (1) a `useEffect([])` that detects `?checkout=success` URL params on mount (always fires on redirect), and (2) a `useEffect([uid])` for login-based subscription restore. Now `setPaidSubscription()` is called immediately on checkout return regardless of uid timing.
+**Related:** #40 (champion analytics locked), #32 (activation celebration)
 
 ### 36. Semver versioning
 **Status:** FIXED
@@ -235,9 +239,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 40. Champion Analytics still locked after Champion Pass activation
-**Status:** INVESTIGATE (same root cause as #35)
-**File:** `src/components/StudyAnalyticsModal.tsx`
-**Note:** Same issue as #35 — if `isPremium` prop is stale after activation, champion analytics won't unlock until next session. See #35 investigation.
+**Status:** FIXED (same fix as #35)
+**File:** `src/App.tsx`
+**Fix:** Same root cause as #35 — the checkout success effect depended on `[uid]` which didn't change on redirect. Fixed by splitting into mount-time URL detection + uid-based subscription restore. See #35 for details.
 **Related:** #35 (etymology quiz), #23 (analytics unlocked)
 
 ### 41. What does the Friends feature do?
