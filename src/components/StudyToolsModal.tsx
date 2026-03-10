@@ -10,10 +10,9 @@ import { FullScreenPanel } from './FullScreenPanel';
 import { WordBookContent } from './WordBookModal';
 import { RootsContent } from './RootsBrowser';
 import { AnalyticsContent } from './StudyAnalyticsModal';
-import { IconBook, IconTree, IconChart, IconGem } from './Icons';
-import { CollectionContent } from './CollectionBrowser';
+import { IconBook, IconTree, IconChart } from './Icons';
 
-export type StudyTab = 'words' | 'roots' | 'analytics' | 'collection';
+export type StudyTab = 'words' | 'roots' | 'analytics';
 
 interface Props {
     records: Record<string, WordRecord>;
@@ -31,7 +30,6 @@ const TABS: { id: StudyTab; label: string; Icon: typeof IconBook }[] = [
     { id: 'words', label: 'Words', Icon: IconBook },
     { id: 'roots', label: 'Roots', Icon: IconTree },
     { id: 'analytics', label: 'Analytics', Icon: IconChart },
-    { id: 'collection', label: 'Collection', Icon: IconGem },
 ];
 
 export const StudyToolsModal = memo(function StudyToolsModal({
@@ -66,7 +64,6 @@ export const StudyToolsModal = memo(function StudyToolsModal({
             {tab === 'words' && <WordBookContent records={records} />}
             {tab === 'roots' && <RootsContent onDrillRoot={onDrillRoot} rootMastery={rootMastery} />}
             {tab === 'analytics' && <AnalyticsContent records={records} onPracticeWeaknesses={onPracticeWeaknesses} isPremium={isPremium} onUpgrade={onUpgrade} bestStreak={bestStreak} />}
-            {tab === 'collection' && <CollectionContent records={records} />}
         </FullScreenPanel>
     );
 });

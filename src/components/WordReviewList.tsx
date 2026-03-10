@@ -33,7 +33,10 @@ export function WordReviewList({ words, showDefinitions = false, maxHeight = '30
                 onClick={() => setShowReview(r => !r)}
                 className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors mb-3"
             >
-                {showReview ? 'Hide' : 'Review'} {showDefinitions ? `${words.length} words` : 'words'}{missed.length > 0 ? ` (${missed.length} missed)` : ''}
+                {showReview
+                    ? 'Hide words'
+                    : `Show ${words.length} word${words.length !== 1 ? 's' : ''}${missed.length > 0 ? ` · ${missed.length} missed` : ''}`
+                }
             </button>
             <AnimatePresence>
                 {showReview && (

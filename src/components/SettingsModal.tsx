@@ -12,9 +12,8 @@ import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, synthesizeCloud, getCloudVoiceGender } from '../services/cloudTts';
 import { getThemeName, type SeasonalTheme } from '../utils/seasonalThemes';
 import { CHARACTER_STYLES, type CharacterStyle } from '../utils/characterStyles';
-import { LEVELS, type Level } from '../domains/spelling/spellingCategories';
+import type { Level } from '../domains/spelling/spellingCategories';
 import { IconClose, IconLock, IconBroom, IconTrash } from './Icons';
-import { isLevelPremium } from '../hooks/usePremium';
 import { useUser } from '../contexts/UserContext';
 import { trackEvent } from '../utils/analytics';
 
@@ -248,39 +247,48 @@ export const SettingsModal = memo(function SettingsModal({
                     </section>
                 )}
 
-                {/* Level */}
-                {onLevelChange && (
-                    <section className="mb-5">
-                        <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Level</h4>
-                        <div className="grid grid-cols-2 gap-1.5">
-                            {LEVELS.map(g => {
-                                const locked = isLevelPremium(g.id) && !isPremium;
-                                return (
-                                    <button
-                                        key={g.id}
-                                        onClick={() => { if (locked && onUpgrade) { trackEvent('level_gated', { level: g.id }); onUpgrade(); } else { onLevelChange(g.id); } }}
-                                        className={`px-3 py-2 rounded-xl border transition-colors text-center text-sm ui ${
-                                            locked
-                                                ? 'border-[rgb(var(--color-fg))]/8 text-[rgb(var(--color-fg))]/30'
-                                                : level === g.id
-                                                    ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
-                                                    : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
-                                        }`}
-                                    >
-                                        {locked ? (
-                                            <span className="flex items-center justify-center gap-1.5">
-                                                <IconLock className="w-3 h-3" />
-                                                <span className="font-medium">{g.label}</span>
-                                            </span>
-                                        ) : (
-                                            <span className="font-medium">{g.label}</span>
-                                        )}
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </section>
-                )}
+                {/* Level — slider with premium lock */}
+                {onLevelChange && (() => {
+                    const currentNum = parseInt(String(level).replace('level-', ''), 10) || 1;
+                    const maxFree = 3;
+                    const maxLevel = isPremium ? 10 : maxFree;
+                    return (
+                        <section className="mb-5">
+                            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">
+                                Level: <span className="text-[var(--color-gold)]">{currentNum}</span>
+                            </h4>
+                            <div className="relative">
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="10"
+                                    step="1"
+                                    value={currentNum}
+                                    onChange={e => {
+                                        const n = parseInt(e.target.value, 10);
+                                        if (n > maxLevel) {
+                                            trackEvent('level_gated', { level: `level-${n}` });
+                                            onUpgrade?.();
+                                        } else {
+                                            onLevelChange(`level-${n}` as Level);
+                                        }
+                                    }}
+                                    className="w-full accent-[var(--color-gold)]"
+                                />
+                                <div className="flex justify-between text-[10px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">
+                                    <span>1</span>
+                                    {!isPremium && (
+                                        <span className="flex items-center gap-0.5 text-[rgb(var(--color-fg))]/25">
+                                            <IconLock className="w-2.5 h-2.5" />
+                                            4–10
+                                        </span>
+                                    )}
+                                    <span>10</span>
+                                </div>
+                            </div>
+                        </section>
+                    );
+                })()}
 
                 {/* Champion Pass Status */}
                 <ChampionPassSection onUpgrade={onUpgrade} />
@@ -346,19 +354,20 @@ export const SettingsModal = memo(function SettingsModal({
 
                 {/* Motion */}
                 <section className="mb-5">
-                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Motion</h4>
-                    <div className="flex gap-2">
-                        {([['system', 'System'], ['always', 'Reduce'], ['never', 'Full']] as const).map(([val, label]) => (
+                    <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Motion & Animations</h4>
+                    <div className="flex flex-col gap-1.5">
+                        {([['system', 'System default', 'Follows your device settings'], ['always', 'Reduced', 'Minimal animations'], ['never', 'Full', 'All animations enabled']] as const).map(([val, label, desc]) => (
                             <button
                                 key={val}
                                 onClick={() => setMotionPref(val as MotionPreference)}
-                                className={`flex-1 px-3 py-2 rounded-xl border text-sm ui transition-colors ${
+                                className={`px-3 py-2 rounded-xl border text-left transition-colors ${
                                     motionPref === val
-                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10 text-[var(--color-gold)]'
-                                        : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25'
+                                        ? 'border-[var(--color-gold)] bg-[var(--color-gold)]/10'
+                                        : 'border-[rgb(var(--color-fg))]/10 hover:border-[rgb(var(--color-fg))]/25'
                                 }`}
                             >
-                                {label}
+                                <div className={`text-sm ui font-medium ${motionPref === val ? 'text-[var(--color-gold)]' : 'text-[var(--color-chalk)]'}`}>{label}</div>
+                                <div className="text-[10px] ui text-[rgb(var(--color-fg))]/30">{desc}</div>
                             </button>
                         ))}
                     </div>
@@ -420,9 +429,14 @@ export const SettingsModal = memo(function SettingsModal({
                 <DangerZone />
 
                 {/* Legal */}
-                <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10 flex justify-center gap-4">
-                    <a href="/privacy.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</a>
-                    <a href="/terms.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</a>
+                <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10">
+                    <div className="flex justify-center gap-4 mb-2">
+                        <a href="/privacy.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</a>
+                        <a href="/terms.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</a>
+                    </div>
+                    <div className="text-center text-[9px] ui text-[rgb(var(--color-fg))]/15">
+                        v1.1.0
+                    </div>
                 </section>
         </ModalShell>
     );
@@ -509,8 +523,8 @@ function DangerZone() {
     const [deleting, setDeleting] = useState(false);
 
     return (
-        <section className="mb-5 pt-4 border-t border-[rgb(var(--color-fg))]/10">
-            <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">Danger Zone</h4>
+        <section className="mb-5 pt-4 border-t border-[var(--color-wrong)]/20">
+            <h4 className="text-xs ui text-[var(--color-wrong)]/70 uppercase mb-2">Danger Zone</h4>
             <div className="flex flex-col gap-2">
                 {/* Reset stats button */}
                 <button

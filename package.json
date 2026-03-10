@@ -1,7 +1,7 @@
 {
   "name": "spelling-bee",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

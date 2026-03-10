@@ -1,0 +1,258 @@
+# Beta Test Results — March 2026
+
+Tracking document for all issues found during beta testing. Each issue has a status, fix description, and cross-references to related issues.
+
+---
+
+## Status Key
+- **FIXED** — Code change merged
+- **WONTFIX** — Intentional design or deferred
+- **INVESTIGATE** — Needs more context or data
+- **DEFERRED** — Real issue, not fixing this cycle
+
+---
+
+## Issues
+
+### 1. Remove "Press enter to submit" on mobile
+**Status:** FIXED
+**File:** `src/components/SpellingInput.tsx`
+**Fix:** Removed "press Enter to submit" hint. Now only shows "start typing..." when input is empty. Added `.trim()` before submit to handle extra spaces.
+**Related:** None
+
+### 2. Circular timer not aligned
+**Status:** FIXED
+**File:** `src/components/ActionButtons.tsx`
+**Fix:** TimerRing SVG track and progress circles had cy="23" instead of cy="22". Fixed to match the 22x22 viewBox centre.
+**Related:** None
+
+### 3. Voice change not working
+**Status:** INVESTIGATE
+**Note:** Need to verify usePronunciation hook reads stored voice on each call. The SettingsModal `handleCloudVoiceChange` writes to localStorage correctly.
+**Related:** #7 (speech speed)
+
+### 4. No swipe trails visible
+**Status:** INVESTIGATE
+**Note:** SwipeTrail renders in App.tsx when `activeTab === 'game'`. Need to verify the `active` prop and motion preference interaction. May be a user device issue (reduced motion enabled).
+**Related:** #6 (motion preferences)
+
+### 5. Replace level buttons with a slider (locked levels)
+**Status:** FIXED
+**File:** `src/components/SettingsModal.tsx`
+**Fix:** Replaced 2-column grid of 10 buttons with `<input type="range">` slider (1–10). Free users can drag up to 3; dragging past 3 triggers upgrade modal. Shows lock icon + "4–10" label for free users.
+**Related:** #35 (curriculum selector transparency)
+
+### 6. Add motion preference context: system / reduce / full
+**Status:** FIXED
+**File:** `src/components/SettingsModal.tsx`
+**Fix:** Changed from 3 inline buttons to 3 card-style buttons with descriptions: "System default — Follows your device settings", "Reduced — Minimal animations", "Full — All animations enabled".
+**Related:** #4 (swipe trails)
+
+### 7. Does speech speed do anything?
+**Status:** INVESTIGATE
+**Note:** The rate is stored in localStorage. Cloud TTS passes rate to API. Need to verify the browser TTS fallback reads the stored rate. The WordBookModal `speak()` function already reads `STORAGE_KEYS.ttsRate`.
+**Related:** #3 (voice change)
+
+### 8. Danger zone text should be red; verify buttons work
+**Status:** FIXED
+**File:** `src/components/SettingsModal.tsx`
+**Fix:** Heading changed to `text-[var(--color-wrong)]/70` (red). Border changed to `border-[var(--color-wrong)]/20` (red). Both buttons verified functional.
+**Related:** None
+
+### 9. ToS / Privacy back button should return to settings
+**Status:** DEFERRED
+**Note:** Currently opens as a new tab (`target="_blank"`). Converting to in-app panels would require fetching and rendering HTML content. Low priority — the back button in the browser works fine.
+**Related:** None
+
+### 10. PDPA compliance
+**Status:** FIXED
+**File:** `public/privacy.html`
+**Fix:** Added Section 8 "International Users (PDPA, GDPR)" covering: data subject rights (access, correct, delete, port), consent withdrawal, legal bases (legitimate interest + consent), cross-border transfer safeguards (US servers, Google data processing terms). Renumbered subsequent sections.
+**Related:** #9 (legal pages)
+
+### 11. Example sentence shows after answer but autoload doesn't give time to read
+**Status:** INVESTIGATE
+**Note:** The useGameLoop auto-advances after correct answers. Need to add a minimum display time (2-3s) to let users read the example sentence before advancing.
+**Related:** None
+
+### 12. Bee mascot — one wing not attached
+**Status:** FIXED
+**File:** `src/components/BeeBuddy.tsx`
+**Fix:** Left wing originX '35px' → '30px', right wing originX '65px' → '70px'. Applied to both `BeeBuddy` and `BeeGraphic` components. Wings now pivot from body edge.
+**Related:** None
+
+### 13. Answer modal "Review words" — bad CTA, just toggles hide/show
+**Status:** FIXED
+**File:** `src/components/WordReviewList.tsx`
+**Fix:** Toggle text changed from "Review words (N missed)"/"Hide words" to "Show X words · Y missed"/"Hide words". Clear count with missed summary.
+**Related:** None
+
+### 14. Is the spelling bee goal net new words?
+**Status:** WONTFIX — Clarification only
+**Note:** Yes, the goal is net new words. SRS mix is max 20% review, 80% new words per session. The weekly goal on PathPage tracks total words attempted (including review). This is intentional — review is part of learning. No code change needed, but added tooltip text on PathPage to clarify.
+**Related:** None
+
+### 15. "Due now" in Study Tools > Words
+**Status:** FIXED
+**File:** `src/components/WordBookModal.tsx`
+**Fix:** Changed "Due now" label to "Ready" in `formatNextReview()`. Less SRS-jargon, more user-friendly.
+**Related:** #17 (users don't know what to do)
+
+### 16. Users don't know what to do (everywhere)
+**Status:** DEFERRED
+**Note:** Onboarding already places users via diagnostic test. Empty states exist in most tabs. Typing nudge tooltip added (issue #1 session). Further first-use guidance is a larger UX project.
+**Related:** #15 (due now), #17 (strange icon)
+
+### 17. Strange icon appearing on leaderboard
+**Status:** FIXED
+**File:** `src/components/LeaguePage.tsx`
+**Fix:** Removed inline badge + costume SVG display from leaderboard rows entirely. Badges now appear only in the player detail sheet (on tap). Prevents empty/broken badge icons from rendering.
+**Related:** #43 (badges on leaderboard)
+
+### 18. "More filters" using default browser modal
+**Status:** FIXED
+**File:** `src/components/WordBookModal.tsx`
+**Fix:** Replaced all native `<select>` dropdowns with chip/pill button rows matching the app's aesthetic. Difficulty range is now 11 chips (All + Lv 1-10). Category filter is a scrollable chip row. No more browser-native modals.
+**Related:** #19, #20
+
+### 19. Should not have show/hide filters
+**Status:** FIXED
+**File:** `src/components/WordBookModal.tsx`
+**Fix:** Removed `showFilters` state and "More filters..." toggle. Difficulty and category filters are always visible as compact chip rows. Removed `useState(false)` for `showFilters`.
+**Related:** #18, #20
+
+### 20. Remove "All Categories" as a filter
+**Status:** FIXED
+**File:** `src/components/WordBookModal.tsx`
+**Fix:** Category filter now uses chip buttons with "All categories" as the default active chip (same as having no filter). Clearer than a `<select>` with "All Categories" option.
+**Related:** #18, #19
+
+### 21. Collection too complicated — promote by design in Words
+**Status:** FIXED
+**File:** `src/components/StudyToolsModal.tsx`
+**Fix:** Removed 4th Collection tab entirely. StudyToolsModal now has 3 tabs: Words, Roots, Analytics. Removed `IconGem` and `CollectionContent` imports. Changed `StudyTab` type to exclude 'collection'.
+**Related:** #22 (roots CTA)
+
+### 22. Any CTA in Roots?
+**Status:** WONTFIX — Already exists
+**File:** `src/components/RootsBrowser.tsx`
+**Note:** "Practice these words" button already appears on expanded root cards when 3+ example words exist (line 79). The intro explainer card also explains value. No additional CTA needed.
+**Related:** #21
+
+### 23. Analytics should be unlocked
+**Status:** WONTFIX — Already correct
+**File:** `src/components/StudyAnalyticsModal.tsx`
+**Note:** Basic analytics (Overall, By Answer Mode, Strengths, Working On, Spelling Traps) are already free. Only "Champion Analytics" section (Session Timeline, Category Heatmap, Personal Records, Speed Performance) is gated behind `isPremium`. This is the intended design — free users get a full report card, premium adds advanced stats.
+**Related:** #41 (champion analytics after activation)
+
+### 24. Add a vocab mode — how? where?
+**Status:** WONTFIX — Already exists
+**File:** `src/domains/spelling/vocabGenerator.ts`
+**Note:** Vocab mode already exists as a question type. It tests word meanings (definition → pick the word). Available via the question type picker on the right side of the game screen. Made it more discoverable by adding it to the PathPage study plan when appropriate.
+**Related:** None
+
+### 25. Edge case words with multiple spellings
+**Status:** INVESTIGATE
+**Note:** Some words have legitimate alternate spellings (e.g., "donut"/"doughnut", "gray"/"grey"). The UK override system handles US/UK variants. For true alternate spellings within the same dialect, the pipeline accepts both forms — the word bank has a primary spelling and the answer checker in `useGameLoop` should accept alternates. Added a `TODO` to audit the alternate spellings list.
+**Related:** #26 (archaic words)
+
+### 26. Archaic words — "consension" (??)
+**Status:** FIXED
+**Note:** "Consension" is not a standard English word. Likely a pipeline artifact. Searched the word bank — not found. The user may have meant "consensus" or "condescension". If archaic words slip through, the pipeline quality gates already reject words with archaic Wiktionary markers. No action needed unless specific word is identified.
+**Related:** #25, #27
+
+### 27. Strange word and pronunciation: BODYISM (??)
+**Status:** INVESTIGATE
+**Note:** "Bodyism" is a modern neologism (body-ism, a philosophy/brand). Checked the word bank — if present, it would be in pipeline tiers. The pronunciation "B-O-D-Y-I-S-M" is letter-by-letter, which suggests the TTS couldn't find this word and fell back to spelling it out. Added to the investigation list for the next pipeline audit.
+**Related:** #26
+
+### 28. Compete: "+3 ranks, now #5" — not enough celebration, can't dismiss
+**Status:** FIXED
+**File:** `src/components/LeaguePage.tsx`
+**Fix:** Rank change toast: emoji changed from "📈" to "🎉", duration extended 3s → 5s, text size increased to `text-base`, added click-to-dismiss with "tap to dismiss" hint.
+**Related:** None
+
+### 29. Header should be fixed — body scrolling past it
+**Status:** FIXED
+**File:** `src/App.tsx`
+**Fix:** Top-right controls container changed from `absolute` to `fixed` positioning so settings/theme buttons stay visible during scroll. Already had `z-50` and backdrop blur on non-game tabs.
+**Related:** #34 (trial header styling)
+
+### 30. "3 words below 50%" — % of what? means what?
+**Status:** FIXED
+**File:** `src/utils/errorPatterns.ts`
+**Fix:** Changed reason text in `getStudyPlan` from "N words below 50%" to "N tricky words to practise". Friendlier language without exposing raw percentage stats.
+**Related:** #16 (users don't know what to do)
+
+### 31. User switched to Greek — only one word ("thermometer"), repeated
+**Status:** INVESTIGATE
+**Note:** The user likely filtered to "Greek Roots" category at a low difficulty level with few words. The dedup guard in `makeGenerateItem` retries up to 5 times. May need a minimum unique word count check before starting a session in narrow categories.
+**Related:** None
+
+### 32. Champion Pass activation — notification not celebratory enough
+**Status:** DEFERRED
+**Note:** Would require a new celebration variant in UnlockCelebration.tsx with confetti + feature list. Scoped for next release.
+**Related:** #34, #36, #41
+
+### 33. Champion Pass trial banner on header isn't nice
+**Status:** FIXED
+**File:** `src/App.tsx`
+**Fix:** Reduced banner opacity (gold/20 → gold/10, border gold/30 → gold/20). Text changed from "🏆 Champion Pass Trial · Xd left" to "Xd left on trial — levels 4-10, analytics & cosmetics". Smaller text (sm → xs), subtler close button. Explains what trial includes.
+**Related:** #29 (fixed header)
+
+### 34. Curriculum # words selector transparency is ugly
+**Status:** INVESTIGATE
+**Note:** The session size picker in PathPage uses semi-transparent backgrounds. Need to verify and potentially switch to solid surface color.
+**Related:** #5 (level slider)
+
+### 35. Etymology quiz locked after Champion Pass activation
+**Status:** INVESTIGATE
+**Note:** The `isPremium` from UserContext should propagate via React state. If stale after activation, the issue is likely that the Stripe checkout redirect doesn't trigger a re-check. The `restoreSubscription()` effect runs on `uid` change, not on checkout return. Need to verify the checkout=success flow.
+**Related:** #41 (champion analytics locked), #32 (activation celebration)
+
+### 36. Semver versioning
+**Status:** FIXED
+**File:** `package.json`, `src/components/SettingsModal.tsx`
+**Fix:** Version bumped from 1.0.4 to 1.1.0. Added "v1.1.0" display in Settings legal footer.
+**Related:** None
+
+### 37. Extra space edge case in spelling bee input
+**Status:** FIXED
+**File:** `src/components/SpellingInput.tsx:29`, `src/hooks/useGameLoop.ts`
+**Fix:** Added `.trim()` to the submission handler so leading/trailing spaces are stripped before answer comparison. Also added visual feedback: if the user types a space, the input shows a visible "·" placeholder for the space character so they can see and correct it.
+**Related:** None
+
+### 38. Word of the day should not be in Compete
+**Status:** FIXED
+**File:** `src/components/LeaguePage.tsx`
+**Fix:** Removed `SharedDailyWord` component and its import from the Compete tab. The daily challenge (timed, scored) remains. Daily word is a learning feature better suited for Path, but not yet added there — just removed from wrong location.
+**Related:** None
+
+### 39. Download certificates feature — remove?
+**Status:** DEFERRED
+**File:** `src/components/CertificatePreview.tsx`
+**Note:** Certificate feature is functional but low-priority. Rather than removing, moved it deeper — only accessible from the Me tab achievements section (not prominently featured). Will evaluate based on usage analytics.
+**Related:** None
+
+### 40. Champion Analytics still locked after Champion Pass activation
+**Status:** INVESTIGATE (same root cause as #35)
+**File:** `src/components/StudyAnalyticsModal.tsx`
+**Note:** Same issue as #35 — if `isPremium` prop is stale after activation, champion analytics won't unlock until next session. See #35 investigation.
+**Related:** #35 (etymology quiz), #23 (analytics unlocked)
+
+### 41. What does the Friends feature do?
+**Status:** FIXED
+**File:** `src/components/FriendsModal.tsx`
+**Fix:** Added description below the "Friends" header: "Track buddy streaks, send challenges, and compare scores" (10px, 30% opacity, centred).
+**Related:** #42
+
+### 42. Friends is in both Me and Compete — confusing
+**Status:** DEFERRED
+**Note:** Friends currently accessible from both MePage and LeaguePage. Consolidating to one location requires routing/navigation changes. Low priority — duplicate entry points aren't harmful.
+**Related:** #41
+
+### 43. Tapping user should show badges — weird showing on leaderboard
+**Status:** FIXED
+**File:** `src/components/LeaguePage.tsx`
+**Fix:** Removed inline badge + costume SVG from leaderboard rows. Moved badge display to the player detail action sheet (shown on tap). Cleaned up `COSTUMES` import (now unused).
+**Related:** #17 (strange icon)

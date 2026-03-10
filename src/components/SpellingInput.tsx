@@ -27,6 +27,8 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' && value.trim().length > 0) {
+            // Strip stray spaces before submitting
+            if (value !== value.trim()) onChange(value.trim());
             onSubmit();
         }
     };
@@ -94,10 +96,12 @@ export const SpellingInput = memo(function SpellingInput({ value, onChange, onSu
                 </motion.span>
             </div>
 
-            {/* Hint text */}
-            <p className="text-center mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40">
-                {value.length === 0 ? 'start typing...' : 'press Enter to submit'}
-            </p>
+            {/* Hint text — "press Enter" only useful on desktop with keyboards */}
+            {value.length === 0 && (
+                <p className="text-center mt-1.5 text-xs ui text-[rgb(var(--color-fg))]/40">
+                    start typing...
+                </p>
+            )}
         </div>
     );
 });

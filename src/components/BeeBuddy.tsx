@@ -260,19 +260,19 @@ export const BeeBuddy = memo(function BeeBuddy({
                 {/* Face expressions */}
                 {FACES[displayState] || FACES.idle}
 
-                {/* Wings — flutter speed varies by state */}
+                {/* Wings — flutter from body edge attachment point */}
                 <motion.ellipse
                     cx="24" cy="68"
                     rx="16" ry="20"
                     stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4"
-                    style={{ originX: '35px', originY: '68px' }}
+                    style={{ originX: '30px', originY: '68px' }}
                     animate={WING_FLUTTER[displayState]}
                 />
                 <motion.ellipse
                     cx="76" cy="68"
                     rx="16" ry="20"
                     stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4"
-                    style={{ originX: '65px', originY: '68px' }}
+                    style={{ originX: '70px', originY: '68px' }}
                     animate={WING_FLUTTER[displayState]}
                 />
 
@@ -319,8 +319,8 @@ export const BeeGraphic = memo(function BeeGraphic({ state = 'idle', className }
                 </motion.g>
                 <circle cx="50" cy="38" r="18" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.8" />
                 {FACES[state] || FACES.idle}
-                <motion.ellipse cx="24" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '35px', originY: '68px' }} animate={WING_FLUTTER[state]} />
-                <motion.ellipse cx="76" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '65px', originY: '68px' }} animate={WING_FLUTTER[state]} />
+                <motion.ellipse cx="24" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '30px', originY: '68px' }} animate={WING_FLUTTER[state]} />
+                <motion.ellipse cx="76" cy="68" rx="16" ry="20" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.4" style={{ originX: '70px', originY: '68px' }} animate={WING_FLUTTER[state]} />
                 <BeeBody />
                 <BeeLegs />
             </svg>

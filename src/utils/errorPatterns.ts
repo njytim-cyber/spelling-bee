@@ -266,7 +266,7 @@ export function getStudyPlan(
         plan.push({
             category: 'hardest',
             label: 'Hardest Words',
-            reason: `${hardestWordCount} word${hardestWordCount === 1 ? '' : 's'} below 50%`,
+            reason: `${hardestWordCount} tricky word${hardestWordCount === 1 ? '' : 's'} to practise`,
             priority: 'weak',
             wordCount: hardestWordCount,
         });

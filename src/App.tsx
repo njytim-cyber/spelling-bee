@@ -1363,14 +1363,14 @@ function AppInner() {
         {showTrialBanner && (
           <div
             onClick={() => setShowUpgrade(true)}
-            className="fixed top-0 inset-x-0 z-40 bg-[var(--color-gold)]/20 border-b border-[var(--color-gold)]/30 text-center text-sm ui py-1.5 px-4 cursor-pointer flex items-center justify-center gap-2"
+            className="fixed top-0 inset-x-0 z-40 bg-[var(--color-gold)]/10 border-b border-[var(--color-gold)]/20 text-center ui py-1.5 px-4 cursor-pointer flex items-center justify-center gap-2"
           >
-            <span className="text-[var(--color-gold)]">
-              🏆 Champion Pass Trial · {daysRemaining}d left
+            <span className="text-xs text-[var(--color-gold)]">
+              {daysRemaining}d left on trial — levels 4-10, analytics &amp; cosmetics
             </span>
             <button
               onClick={(e) => { e.stopPropagation(); setTrialBannerDismissed(true); }}
-              className="ml-2 text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/70 text-xs"
+              className="ml-1 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 text-xs"
               aria-label="Dismiss trial banner"
             >
               ✕
@@ -1396,7 +1396,7 @@ function AppInner() {
 
         {/* ── Top-right controls (theme + settings) — hidden during immersive sub-modes ── */}
         {!(activeTab === 'game' && isImmersive) && (
-          <div className={`absolute top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1${activeTab !== 'game' ? ' bg-[rgb(var(--color-bg))]/80 backdrop-blur-sm rounded-full px-1' : ''}`}>
+          <div className={`fixed top-[calc(env(safe-area-inset-top,12px)+12px)] right-4 z-50 flex items-center gap-1${activeTab !== 'game' ? ' bg-[rgb(var(--color-bg))]/80 backdrop-blur-sm rounded-full px-1' : ''}`}>
             <button
               onClick={toggleThemeMode}
               className="w-9 h-9 flex items-center justify-center text-[var(--color-chalk)]/60 active:text-[var(--color-gold)] transition-colors"

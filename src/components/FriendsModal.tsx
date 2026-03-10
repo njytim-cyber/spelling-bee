@@ -73,6 +73,9 @@ export function FriendsModal({
                 <h2 className="text-lg font-bold font-[family-name:var(--font-chalk)] text-[rgb(var(--color-accent))] text-center">
                     Friends
                 </h2>
+                <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 text-center -mt-2">
+                    Track buddy streaks, send challenges, and compare scores
+                </p>
 
                 {/* Tab buttons */}
                 <div className="flex gap-1 bg-[rgb(var(--color-fg))]/[0.05] rounded-xl p-1">

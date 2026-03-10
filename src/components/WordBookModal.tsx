@@ -38,7 +38,7 @@ function formatNextReview(r: WordRecord): string {
     if (r.box >= 4 && (r.typedAttempts ?? 0) >= 1) return 'Mastered';
     if (r.box >= 4) return '—'; // Box 4 but not typed yet — no review scheduled
     const now = Date.now();
-    if (r.nextReview <= now) return 'Due now';
+    if (r.nextReview <= now) return 'Ready';
     const hoursLeft = Math.ceil((r.nextReview - now) / (1000 * 60 * 60));
     if (hoursLeft < 24) return `${hoursLeft}h`;
     return `${Math.ceil(hoursLeft / 24)}d`;
@@ -164,7 +164,6 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
     const [originFilter, setOriginFilter] = useState<LanguageOfOrigin | 'all'>('all');
     const [diffMin, setDiffMin] = useState(1);
     const [diffMax, setDiffMax] = useState(10);
-    const [showFilters, setShowFilters] = useState(false);
     const [search, setSearch] = useState('');
     const [expandedWord, setExpandedWord] = useState<string | null>(null);
     const [displayLimit, setDisplayLimit] = useState(50);
@@ -307,54 +306,56 @@ export const WordBookContent = memo(function WordBookContent({ records }: { reco
                 ))}
             </div>
 
-            {/* Filters toggle */}
-            <button
-                onClick={() => setShowFilters(v => !v)}
-                className="w-full mb-2 text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors text-center"
-            >
-                {showFilters ? 'Hide filters' : 'More filters...'}
-            </button>
-
-            {/* Difficulty range filter */}
-            {showFilters && (
-                <div className="mb-3 px-1">
-                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40 mb-1.5">Difficulty range</div>
-                    <div className="flex items-center gap-2">
-                        <select
-                            value={diffMin}
-                            onChange={e => { const v = Number(e.target.value); setDiffMin(v); if (v > diffMax) setDiffMax(v); }}
-                            className="flex-1 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
-                        >
-                            {Array.from({ length: 10 }, (_, i) => i + 1).map(d => (
-                                <option key={d} value={d} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">Level {d}</option>
-                            ))}
-                        </select>
-                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30">to</span>
-                        <select
-                            value={diffMax}
-                            onChange={e => { const v = Number(e.target.value); setDiffMax(v); if (v < diffMin) setDiffMin(v); }}
-                            className="flex-1 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
-                        >
-                            {Array.from({ length: 10 }, (_, i) => i + 1).map(d => (
-                                <option key={d} value={d} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">Level {d}</option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-            )}
-
-            {/* Category filter */}
-            {categories.length > 1 && (
-                <select
-                    value={categoryFilter ?? ''}
-                    onChange={e => setCategoryFilter(e.target.value || null)}
-                    className="w-full mb-3 text-[11px] ui bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10 rounded-lg px-2 py-1.5 text-[rgb(var(--color-fg))]/60 outline-none appearance-none"
+            {/* Difficulty range chips */}
+            <div className="flex gap-1 overflow-x-auto mb-2 pb-1 scrollbar-none">
+                <button
+                    onClick={() => { setDiffMin(1); setDiffMax(10); }}
+                    className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${diffMin === 1 && diffMax === 10
+                        ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                        : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                    }`}
                 >
-                    <option value="" className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">All categories</option>
+                    All levels
+                </button>
+                {Array.from({ length: 10 }, (_, i) => i + 1).map(d => (
+                    <button
+                        key={d}
+                        onClick={() => { setDiffMin(d); setDiffMax(d); }}
+                        className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${diffMin === d && diffMax === d
+                            ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                            : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                    >
+                        Lv {d}
+                    </button>
+                ))}
+            </div>
+
+            {/* Category filter chips */}
+            {categories.length > 1 && (
+                <div className="flex gap-1 overflow-x-auto mb-2 pb-1 scrollbar-none">
+                    <button
+                        onClick={() => setCategoryFilter(null)}
+                        className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${categoryFilter === null
+                            ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                            : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                        }`}
+                    >
+                        All categories
+                    </button>
                     {categories.map(c => (
-                        <option key={c} value={c} className="bg-[var(--color-surface)] text-[rgb(var(--color-fg))]">{c}</option>
+                        <button
+                            key={c}
+                            onClick={() => setCategoryFilter(categoryFilter === c ? null : c)}
+                            className={`shrink-0 px-2 py-1 rounded-lg text-[10px] ui transition-colors ${categoryFilter === c
+                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)] font-semibold'
+                                : 'text-[rgb(var(--color-fg))]/40 hover:text-[rgb(var(--color-fg))]/60'
+                            }`}
+                        >
+                            {c}
+                        </button>
                     ))}
-                </select>
+                </div>
             )}
 
             {/* Word list */}

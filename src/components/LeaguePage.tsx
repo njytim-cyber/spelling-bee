@@ -3,14 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
-import { COSTUMES } from '../utils/costumes';
 import { AchievementBadge } from './AchievementBadge';
 import { AvatarSvg } from './AvatarSvg';
 import { IconCrown, IconMedal, IconStar, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 import { getWeeklyLabel } from '../utils/weeklyTournament';
-import { SharedDailyWord } from './SharedDailyWord';
+
 
 interface LeaderboardEntry {
     uid: string;
@@ -202,8 +201,8 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
         const diff = prevRankRef.current - myRank;
         prevRankRef.current = myRank;
         if (diff > 0) {
-            setRankChange(`📈 +${diff} rank${diff > 1 ? 's' : ''}! Now #${myRank}`);
-            const t = setTimeout(() => setRankChange(''), 3000);
+            setRankChange(`🎉 +${diff} rank${diff > 1 ? 's' : ''}! You're now #${myRank}!`);
+            const t = setTimeout(() => setRankChange(''), 5000);
             return () => clearTimeout(t);
         }
     }, [myRank]);
@@ -218,11 +217,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
             >
                 <h2 className="text-3xl chalk text-[var(--color-gold)] mb-3">Compete</h2>
             </motion.div>
-
-            {/* Shared Daily Word — "the Wordle of spelling" */}
-            <div className="w-full max-w-sm mb-4">
-                <SharedDailyWord referralCode={referralCode ?? undefined} />
-            </div>
 
             {/* Competition mode buttons */}
             <div className="w-full max-w-sm space-y-2 mb-6">
@@ -351,7 +345,7 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                             <span className="ui font-bold text-lg">{entry.rank}</span>}
                             </div>
 
-                            {/* Avatar & Name & Badge */}
+                            {/* Avatar & Name */}
                             <div className="flex-1 min-w-0 flex items-center gap-1.5" onClick={() => !entry.isYou && !entry.uid.startsWith('npc-') && setSelectedPlayer(entry)}>
                                 <AvatarSvg
                                     config={entry.stickFigureStyle}
@@ -359,11 +353,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                     className="flex-shrink-0"
                                     style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}
                                 />
-                                {entry.activeBadgeId && (
-                                    <div className="flex-shrink-0 w-[18px] h-[18px]">
-                                        <AchievementBadge achievementId={entry.activeBadgeId} unlocked={true} name="" desc="" />
-                                    </div>
-                                )}
                                 <div
                                     className={`text-sm ui font-semibold truncate ${entry.isYou ? '' : 'text-[rgb(var(--color-fg))]/90'}`}
                                     style={entry.activeThemeId ? { color: getThemeColor(entry.activeThemeId) } : undefined}
@@ -371,11 +360,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                     {entry.displayName}
                                     {entry.isYou && <span className="ml-1 text-xs opacity-50" style={{ color: 'rgb(var(--color-fg))' }}>(you)</span>}
                                 </div>
-                                {entry.activeCostume && COSTUMES[entry.activeCostume] && (
-                                    <svg viewBox="0 0 100 160" className="w-[14px] h-[22px] flex-shrink-0" style={{ color: getThemeColor(entry.activeThemeId) || 'var(--color-chalk)' }}>
-                                        {COSTUMES[entry.activeCostume]}
-                                    </svg>
-                                )}
                             </div>
 
                             {/* Score + streak */}
@@ -438,13 +422,20 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                     animate
                                     style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'var(--color-chalk)' }}
                                 />
-                                <div>
-                                    <h3
-                                        className="text-lg ui font-bold"
-                                        style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'rgb(var(--color-fg))' }}
-                                    >
-                                        {selectedPlayer.displayName}
-                                    </h3>
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-2">
+                                        <h3
+                                            className="text-lg ui font-bold"
+                                            style={{ color: getThemeColor(selectedPlayer.activeThemeId) || 'rgb(var(--color-fg))' }}
+                                        >
+                                            {selectedPlayer.displayName}
+                                        </h3>
+                                        {selectedPlayer.activeBadgeId && (
+                                            <div className="w-5 h-5">
+                                                <AchievementBadge achievementId={selectedPlayer.activeBadgeId} unlocked={true} name="" desc="" />
+                                            </div>
+                                        )}
+                                    </div>
                                     <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Rank #{selectedPlayer.rank} · {selectedPlayer.totalXP.toLocaleString()} XP</p>
                                 </div>
                             </div>
@@ -486,17 +477,21 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 )}
             </AnimatePresence>
 
-            {/* Ping success / rank change toast */}
+            {/* Ping success / rank change toast — tap to dismiss */}
             <AnimatePresence>
                 {(pingSuccess || rankChange) && (
                     <motion.div
                         key={pingSuccess || rankChange}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
-                        className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-5 py-3 text-sm ui text-[var(--color-gold)]"
+                        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                        onClick={() => { setPingSuccess(''); setRankChange(''); }}
+                        className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-6 py-4 text-center cursor-pointer"
                     >
-                        {pingSuccess || rankChange}
+                        <div className="text-base ui font-bold text-[var(--color-gold)]">
+                            {pingSuccess || rankChange}
+                        </div>
+                        <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mt-1">tap to dismiss</div>
                     </motion.div>
                 )}
             </AnimatePresence>
