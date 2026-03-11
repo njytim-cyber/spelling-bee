@@ -34,6 +34,11 @@ export function usePremium(uid: string | null) {
     const [trialUsed, setTrialUsed] = useState(() => localStorage.getItem(STORAGE_KEYS.trialUsed) === '1');
     const [subscriptionStatus, setSubscriptionStatus] = useState<SubStatus>(readSubStatus);
 
+    // Re-read expiry from localStorage when uid changes (e.g., anonymous → Google login)
+    useEffect(() => {
+        setChampionPassExpiry(readExpiry(uid));
+    }, [uid]);
+
     const now = Date.now();
     const isPremium = championPassExpiry !== '' && new Date(championPassExpiry).getTime() > now;
 
@@ -83,9 +88,12 @@ export function usePremium(uid: string | null) {
     }, [uid]);
 
     // Verify premium status against Firestore on mount to prevent localStorage tampering.
-    // Server (Firestore) is the source of truth — local can never grant more than server allows.
+    // Server (Firestore) is the source of truth for PAID subscriptions.
+    // Trial is local-only (Firestore rules block client writes to championPassExpiry),
+    // so missing server expiry is expected for trial users — don't revoke.
     useEffect(() => {
         if (!uid || !isPremium) return;
+        const localSubStatus = readSubStatus();
         let cancelled = false;
         (async () => {
             try {
@@ -113,13 +121,17 @@ export function usePremium(uid: string | null) {
                                 setChampionPassExpiry(serverExpiry);
                             }
                         }
-                    } else {
-                        // No server expiry at all — revoke local premium
+                    } else if (localSubStatus === 'active' || localSubStatus === 'canceled') {
+                        // Paid subscriber claims active but server has no expiry — revoke
+                        // (prevents localStorage tampering for Stripe-based subscriptions)
                         writeExpiry(uid, '');
                         setChampionPassExpiry('');
                         writeSubStatus('none');
                         setSubscriptionStatus('none');
                     }
+                    // Trial users (localSubStatus === 'trial'): no server expiry is expected
+                    // since Firestore rules block client writes to championPassExpiry.
+                    // Trust local trial state — it's capped at 7 days max anyway.
                 }
             } catch {
                 // Offline — trust local cache (offline-first design)

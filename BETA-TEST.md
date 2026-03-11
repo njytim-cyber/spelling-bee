@@ -142,10 +142,10 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #21
 
 ### 23. Analytics should be unlocked
-**Status:** WONTFIX — Already correct
-**File:** `src/components/StudyAnalyticsModal.tsx`
-**Note:** Basic analytics (Overall, By Answer Mode, Strengths, Working On, Spelling Traps) are already free. Only "Champion Analytics" section (Session Timeline, Category Heatmap, Personal Records, Speed Performance) is gated behind `isPremium`. This is the intended design — free users get a full report card, premium adds advanced stats.
-**Related:** #41 (champion analytics after activation)
+**Status:** FIXED
+**File:** `src/hooks/usePremium.ts`
+**Fix:** Two bugs in `usePremium`: (1) Server verification effect revoked trial premium — when Firestore had no `championPassExpiry` field (expected for trials, since Firestore rules block client writes), it wiped local premium on page reload. Fix: only revoke when `subscriptionStatus` is `'active'`/`'canceled'` (Stripe-sourced) and server has no expiry; trust local trial state. (2) `useState(() => readExpiry(uid))` initializer didn't re-read on uid change (login). Added `useEffect([uid])` to re-sync. Basic analytics remain free; Champion Analytics properly unlocks for trial and paid users.
+**Related:** #35/#40 (checkout success), #41 (champion analytics after activation)
 
 ### 24. Add a vocab mode — how? where?
 **Status:** WONTFIX — Already exists
