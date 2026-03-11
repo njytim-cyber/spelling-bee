@@ -45,6 +45,16 @@ scripts/pipeline/bad-words-manifest.json
 scripts/pipeline/*-current-defs.json
 scripts/pipeline/needs-manual-fix.json
 scripts/pipeline/tier6d-badwords.txt
+scripts/pipeline/meta-fixes-*.json
+scripts/pipeline/meta-template-words.json
+scripts/pipeline/missing-word-data.json
+scripts/pipeline/all-issues-manifest.json
+scripts/pipeline/tier*-meta-words.json
+scripts/pipeline/categorize-missing.cjs
+scripts/pipeline/grammar-check.cjs
+scripts/pipeline/grammar-scan.cjs
+scripts/pipeline/list-meta-templates.cjs
+scripts/find-answer-in-example.cjs
 scripts/pipeline/uk-overrides-generated.ts
 scripts/pipeline/uk-gaps.json
 bad-words-manifest.json
