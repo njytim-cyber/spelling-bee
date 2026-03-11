@@ -22,6 +22,8 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
     const pointsRef = useRef<TrailPoint[]>([]);
     const animationFrameRef = useRef<number>(0);
     const activeRef = useRef(active);
+    // Track whether pointer events work so we don't double-count with touchmove
+    const pointerWorksRef = useRef(false);
     useEffect(() => { activeRef.current = active; }, [active]);
 
     // Determine target color based on streak and unlocks
@@ -40,10 +42,15 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        // Ensure canvas scale matches screen CSS size for sharp rendering
+        // Scale canvas for high-DPI screens (mobile retina)
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+            const ctx = canvas.getContext('2d', { alpha: true });
+            if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -51,11 +58,10 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
         const ctx = canvas.getContext('2d', { alpha: true });
         if (!ctx) return;
 
-        // Pointer tracking
+        // Pointer tracking — preferred on modern browsers
         const handlePointerMove = (e: PointerEvent) => {
-            // Only capture if primary pointer (prevent multi-touch noise)
             if (!e.isPrimary) return;
-
+            pointerWorksRef.current = true;
             pointsRef.current.push({
                 x: e.clientX,
                 y: e.clientY,
@@ -63,8 +69,9 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
             });
         };
 
+        // Touch fallback — only used if pointermove doesn't fire
         const handleTouchMove = (e: TouchEvent) => {
-            // Fallback for some mobile browsers treating touch indiscriminately
+            if (pointerWorksRef.current) return; // pointer events work, skip touch
             if (e.touches.length > 0) {
                 const touch = e.touches[0];
                 pointsRef.current.push({
@@ -119,7 +126,6 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
                         ctx.strokeStyle = '#FFFFFF';
                     }
                 } else if (color === 'fire') {
-                    // Warm orange-to-yellow gradient along the swipe direction
                     const xs = points.map(p => p.x);
                     const minX = Math.min(...xs);
                     const maxX = Math.max(...xs);
@@ -157,7 +163,6 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
                     ctx.beginPath();
 
                     if (color === 'lightning') {
-                        // Jagged segments: add a small random perpendicular offset per segment
                         const dx = p2.x - p1.x;
                         const dy = p2.y - p1.y;
                         const len = Math.sqrt(dx * dx + dy * dy) || 1;
@@ -198,12 +203,12 @@ export const SwipeTrail = memo(function SwipeTrail({ streak, activeTrailId, base
             window.removeEventListener('touchmove', handleTouchMove);
             if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
         };
-    }, [getTrailColor]); // Extracted and memoized
+    }, [getTrailColor]);
 
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-[9999] pointer-events-none mix-blend-screen"
+            className="fixed inset-0 z-[9999] pointer-events-none"
         />
     );
 });

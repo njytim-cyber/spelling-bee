@@ -32,8 +32,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #7 (speech speed)
 
 ### 4. No swipe trails visible
-**Status:** WONTFIX — No bug
-**Note:** Investigated. SwipeTrail component is correct: renders at z-[9999] with fixed inset-0, active when `activeTab === 'game'`, uses mix-blend-screen. Trails only appear when user swipes/moves pointer during gameplay (requires 2+ points). Motion preferences do NOT disable swipe trails. Likely a user confusion issue — trails only show on the game tab while actively swiping.
+**Status:** FIXED
+**File:** `src/components/SwipeTrail.tsx`
+**Fix:** Three mobile issues: (1) `mix-blend-screen` CSS made trails invisible on dark backgrounds in mobile browsers — removed entirely. (2) Canvas had no `devicePixelRatio` scaling — trails were 1x on 2x/3x retina screens (blurry/thin/invisible). Added DPR-aware sizing with `setTransform()`. (3) Both `pointermove` and `touchmove` fired on mobile causing duplicate points — added `pointerWorksRef` guard so `touchmove` only fires as fallback.
 **Related:** #6 (motion preferences)
 
 ### 5. Replace level buttons with a slider (locked levels)
