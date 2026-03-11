@@ -34,8 +34,10 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
     const [result, setResult] = useState<'correct' | 'wrong' | null>(null);
     const [done, setDone] = useState(false);
     const [streak, setStreak] = useState(0);
+    const [bestStreak, setBestStreak] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
     const [hintUsed, setHintUsed] = useState(false);
+    const [hintLetter, setHintLetter] = useState<string | null>(null);
     const juice = useGameJuice();
 
     const current: SpellingWord | undefined = words[idx];
@@ -49,6 +51,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
         setNoBacktrack(true);
         setResult(null);
         setHintUsed(false);
+        setHintLetter(null);
         setShowAnswer(false);
     }, [current]);
     /* eslint-enable react-hooks/set-state-in-effect */
@@ -66,10 +69,12 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                     const streakBonus = (streak + 1) % 3 === 0 ? 5 : 0;
                     const pts = 10 + bonus + streakBonus;
                     setScore(s => s + pts);
-                    setStreak(s => s + 1);
+                    const newStreak = streak + 1;
+                    setStreak(newStreak);
+                    setBestStreak(s => Math.max(s, newStreak));
                     juice.onCorrect();
                     juice.showXpFloat(`+${pts} XP`);
-                    if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
+                    if (newStreak % 3 === 0) juice.onStreak(newStreak);
                 } else {
                     setResult('wrong');
                     setStreak(0);
@@ -92,7 +97,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
         else setIdx(i => i + 1);
     }, [idx, words.length]);
 
-    // Auto-advance after showing result (correct or wrong)
+    // Auto-advance after result
     useEffect(() => {
         if (result === 'correct') {
             const t = setTimeout(advance, 700);
@@ -105,17 +110,30 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
         }
     }, [result, advance]);
 
+    const handleHint = useCallback(() => {
+        if (!current) return;
+        setHintUsed(true);
+        setNoBacktrack(false);
+        setHintLetter(current.word[0]);
+        // Flash the hint letter then clear
+        setTimeout(() => setHintLetter(null), 2000);
+    }, [current]);
+
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
-        setScore(0); setIdx(0); setDone(false); setStreak(0); setSeed(s => s + 1);
+        setScore(0); setIdx(0); setDone(false); setStreak(0); setBestStreak(0); setSeed(s => s + 1);
     }, [score]);
 
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
+    const correctCount = words.slice(0, idx + (result === 'correct' ? 1 : 0)).length;
+    const accuracy = correctCount > 0 ? Math.round((score / (correctCount * 15)) * 100) : 0;
+    const starCount = accuracy >= 90 ? 3 : accuracy >= 60 ? 2 : 1;
+
     // ── Difficulty picker ──
     if (!difficulty) {
         return (
-            <GameShell title="Anagrams" score={0} onExit={handleExit}>
+            <GameShell title="Anagrams" score={0} onExit={handleExit} level={level}>
                 <div className="flex-1 flex flex-col items-center justify-center gap-8">
                     <div className="text-center">
                         <p className="text-2xl chalk text-[var(--color-gold)] mb-2">Choose Difficulty</p>
@@ -147,16 +165,23 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
         const finalScore = totalScore + score;
         const isNew = saveHighScore('anagrams', finalScore);
         return (
-            <GameShell title="Anagrams" score={finalScore} onExit={handleExit}>
+            <GameShell title="Anagrams" score={finalScore} onExit={handleExit} level={level}>
                 <GameOverScreen emoji="🎯" title="Round Complete!" score={score}
                     subtitle={`${streak} answer streak`} isNewHigh={isNew} highScore={getHighScore('anagrams')}
-                    onPlayAgain={handlePlayAgain} onExit={handleExit} />
+                    onPlayAgain={handlePlayAgain} onExit={handleExit}
+                    gameName="Anagrams" stars={starCount}
+                    stats={[
+                        { label: 'Streak', value: bestStreak },
+                        { label: 'Accuracy', value: `${accuracy}%` },
+                    ]}
+                />
             </GameShell>
         );
     }
 
     return (
         <GameShell title="Anagrams" score={totalScore + score} onExit={handleExit}
+            level={level}
             screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="flex items-center gap-2">
@@ -179,22 +204,32 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                     />
                 </div>
 
-                {/* Clue: definition + example */}
-                <motion.div key={idx} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-center px-2">
-                    <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-1 uppercase tracking-wider">{current.partOfSpeech}</p>
-                    <p className="text-sm ui text-[var(--color-chalk)] leading-relaxed">{current.definition}</p>
-                    {current.exampleSentence && (
-                        <p className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-1.5 italic leading-relaxed">
-                            &ldquo;{current.exampleSentence}&rdquo;
-                        </p>
-                    )}
-                    <p className="text-[10px] ui text-[rgb(var(--color-fg))]/20 mt-1">{current.word.length} letters</p>
-                </motion.div>
+                {/* Clue — slides up/down on question change */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        className="text-center px-2"
+                    >
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mb-1 uppercase tracking-wider">{current.partOfSpeech}</p>
+                        <p className="text-sm ui text-[var(--color-chalk)] leading-relaxed">{current.definition}</p>
+                        {current.exampleSentence && (
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-1.5 italic leading-relaxed">
+                                &ldquo;{current.exampleSentence}&rdquo;
+                            </p>
+                        )}
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/20 mt-1">{current.word.length} letters</p>
+                    </motion.div>
+                </AnimatePresence>
 
                 {/* Answer slots */}
                 <div className="flex gap-1.5 flex-wrap justify-center min-h-[52px]">
                     {current.word.split('').map((correctLetter, i) => {
                         const tile = placed[i];
+                        const isHintSlot = i === 0 && hintLetter;
                         return (
                             <motion.button key={i} layout whileTap={tile ? { scale: 0.9 } : undefined}
                                 onClick={() => tile && returnLetter(tile)}
@@ -203,13 +238,20 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                                         ? result === 'correct' ? 'bg-[var(--color-correct)]/20 border-2 border-[var(--color-correct)]/40 text-[var(--color-correct)] animate-[word-complete-pulse_0.6s]'
                                             : result === 'wrong' ? 'bg-[var(--color-wrong)]/20 border-2 border-[var(--color-wrong)]/40 text-[var(--color-wrong)] animate-[wrong-shake_0.3s]'
                                                 : 'bg-[rgb(var(--color-fg))]/10 border-2 border-[rgb(var(--color-fg))]/30 text-[var(--color-chalk)]'
-                                        : 'border-2 border-dashed border-[rgb(var(--color-fg))]/15'
+                                        : isHintSlot
+                                            ? 'border-2 border-[var(--color-gold)]/50 bg-[var(--color-gold)]/10 animate-[glow-pulse_2s_infinite]'
+                                            : 'border-2 border-dashed border-[rgb(var(--color-fg))]/15'
                                 }`}
                             >
-                                {/* On wrong: show correct letter; otherwise show placed tile */}
+                                {/* On wrong: reveal correct letters one-by-one */}
                                 {result === 'wrong' && showAnswer ? (
-                                    <motion.span initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                                        transition={{ type: 'spring', stiffness: 400, damping: 15 }}>{correctLetter}</motion.span>
+                                    <motion.span
+                                        initial={{ scale: 0.5, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        transition={{ delay: i * 0.08, type: 'spring', stiffness: 400, damping: 15 }}
+                                    >
+                                        {correctLetter}
+                                    </motion.span>
                                 ) : tile ? (
                                     <motion.span initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                                         transition={{ type: 'spring', stiffness: 400, damping: 15 }}>{tile.letter}</motion.span>
@@ -222,14 +264,21 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                 {/* Letter pool */}
                 <AnimatePresence mode="popLayout">
                     <div className="flex gap-1.5 flex-wrap justify-center">
-                        {pool.map(tile => (
-                            <motion.button key={tile.id} layout
-                                initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.5, opacity: 0 }} whileTap={{ scale: 0.85 }} whileHover={{ y: -2 }}
-                                onClick={() => placeLetter(tile)}
-                                className="w-10 h-10 rounded-lg bg-[rgb(var(--color-fg))]/10 border border-[rgb(var(--color-fg))]/20 flex items-center justify-center chalk text-lg text-[var(--color-chalk)] hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/10 transition-colors"
-                            >{tile.letter}</motion.button>
-                        ))}
+                        {pool.map(tile => {
+                            const isHintMatch = hintLetter && tile.letter === hintLetter && tile.id === 0;
+                            return (
+                                <motion.button key={tile.id} layout
+                                    initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                                    exit={{ scale: 0.5, opacity: 0 }} whileTap={{ scale: 0.85 }} whileHover={{ y: -2 }}
+                                    onClick={() => placeLetter(tile)}
+                                    className={`w-10 h-10 rounded-lg flex items-center justify-center chalk text-lg transition-colors ${
+                                        isHintMatch
+                                            ? 'bg-[var(--color-gold)]/20 border-2 border-[var(--color-gold)]/50 text-[var(--color-gold)] animate-pulse'
+                                            : 'bg-[rgb(var(--color-fg))]/10 border border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)] hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/10'
+                                    }`}
+                                >{tile.letter}</motion.button>
+                            );
+                        })}
                     </div>
                 </AnimatePresence>
 
@@ -237,7 +286,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                 {!result && !hintUsed && (
                     <motion.button
                         whileTap={{ scale: 0.92 }}
-                        onClick={() => { setHintUsed(true); setNoBacktrack(false); }}
+                        onClick={handleHint}
                         className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
                     >
                         💡 Show first letter

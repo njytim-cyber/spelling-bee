@@ -164,10 +164,41 @@ The grid uses `grid grid-cols-3 gap-2` with each cell being a `rounded-2xl` card
 
 ## Shared Patterns
 
-- All games use `ModalShell`-style full-screen overlay (not a modal — full game view)
-- Back button (chevron left) in top-left to exit game
+- All games use `GameShell` — full-screen overlay with animated score counter, back button, screen flash overlay, and shake support
+- `GameOverScreen` — shared celebration screen with sparkle particles, spring animations, high score badge, Play Again / Done buttons
 - XP earned shown in gold at game end, auto-added to user's stats via `recordSession()`
 - All games respect `useReducedMotion` — disable particle effects and use instant transitions
 - Words sourced from `getCachedByDifficulty(level, level)` for the user's current level
 - Game state is ephemeral (no save/resume mid-game)
 - Each game tracks `wordGames_{name}_highScore` in localStorage
+
+---
+
+## Game Juice System
+
+All 6 games use the shared `useGameJuice()` hook (`src/components/wordgames/useGameJuice.ts`) for consistent feedback:
+
+**Hook API:**
+- `juice.onCorrect()` — success sound + normal confetti + green screen flash
+- `juice.onWrong()` — wrong sound + red screen flash + screen shake
+- `juice.onStreak(count)` — streak sound + confetti (epic at multiples of 5, normal at 3)
+- `juice.onVictory()` — victory sound + epic confetti + green flash
+- `juice.showXpFloat(text)` — floating "+N XP" text (auto-fades after 800ms)
+- State values: `confettiTrigger`, `confettiIntensity`, `screenFlash`, `shake`, `xpFloat`
+
+**GameShell integration:**
+- `screenFlash` prop → radial gradient overlay with CSS animation (`screen-flash-correct` / `screen-flash-wrong`)
+- `shake` prop → `animate-[wrong-shake_0.3s]` on the outer container
+
+**CSS keyframes** (in `index.css`):
+- `screen-flash-correct` / `screen-flash-wrong` — 0.4s ease-out flash overlays
+- `word-complete-pulse` — green glow pulse on completed answer slots
+- `xp-float-up` — float + fade for XP text
+
+**Sound effects** (`src/utils/soundEffects.ts`):
+- `playSuccessSound()`, `playWrongSound()`, `playStreakSound(count)`, `playVictorySound()`
+
+**Each game renders:**
+- `<Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />`
+- Floating XP text via Framer Motion `AnimatePresence`
+- Passes `screenFlash` and `shake` to `<GameShell>`

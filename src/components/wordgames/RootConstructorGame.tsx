@@ -27,26 +27,33 @@ const DIFF_CONFIG: Record<Difficulty, { label: string; emoji: string; desc: stri
 
 const ROUND_SIZE = 8;
 
+/** Color for morpheme tile based on its role */
+function morphColor(morph: string, parts: string[], isDistractor: boolean): string {
+    if (isDistractor) return 'bg-[rgb(var(--color-fg))]/10 border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)]';
+    const idx = parts.indexOf(morph);
+    if (idx === 0 && parts.length > 1) return 'bg-blue-500/10 border-blue-400/30 text-blue-300'; // prefix
+    if (idx === parts.length - 1 && parts.length > 1) return 'bg-emerald-500/10 border-emerald-400/30 text-emerald-300'; // suffix
+    return 'bg-[var(--color-gold)]/10 border-[var(--color-gold)]/30 text-[var(--color-gold)]'; // root
+}
+
 function generateRounds(difficulty: Difficulty): RoundData[] {
     const wordMap = getWordMap();
     const cfg = DIFF_CONFIG[difficulty];
     const rounds: RoundData[] = [];
     const usedWords = new Set<string>();
 
-    // Find roots that have multi-part decomposable words
     const rootsByWord = new Map<string, { prefix: string; root: string; suffix: string }>();
     for (const r of WORD_ROOTS) {
         for (const ex of r.examples) {
             if (usedWords.has(ex) || ex.length < 5) continue;
             const w = wordMap.get(ex);
             if (!w) continue;
-            // Try to decompose: find the root in the word
-            const rootPart = r.root.split('/')[0]; // take first variant
+            const rootPart = r.root.split('/')[0];
             const rootIdx = ex.indexOf(rootPart);
             if (rootIdx < 0) continue;
             const prefix = ex.slice(0, rootIdx);
             const suffix = ex.slice(rootIdx + rootPart.length);
-            if (prefix.length === 0 && suffix.length === 0) continue; // need at least 2 parts
+            if (prefix.length === 0 && suffix.length === 0) continue;
             rootsByWord.set(ex, { prefix, root: rootPart, suffix });
         }
     }
@@ -56,7 +63,6 @@ function generateRounds(difficulty: Difficulty): RoundData[] {
         if (rounds.length >= ROUND_SIZE) break;
         if (usedWords.has(word)) continue;
 
-        // Filter by difficulty length
         if (word.length < cfg.minLen || word.length > cfg.maxLen) continue;
 
         const parts: string[] = [];
@@ -64,9 +70,7 @@ function generateRounds(difficulty: Difficulty): RoundData[] {
         parts.push(root);
         if (suffix) parts.push(suffix);
 
-        // Hard mode prefers 3+ morphemes
         if (difficulty === 'hard' && parts.length < 3) continue;
-        // Easy mode prefers exactly 2 morphemes
         if (difficulty === 'easy' && parts.length > 2) continue;
 
         usedWords.add(word);
@@ -74,7 +78,6 @@ function generateRounds(difficulty: Difficulty): RoundData[] {
         const w = wordMap.get(word);
         if (!w) continue;
 
-        // Generate distractor morphemes
         const distractors: string[] = [];
         const allRoots = WORD_ROOTS.map(r => r.root.split('/')[0]);
         const allParts = shuffle([...allRoots, 'un', 'pre', 're', 'dis', 'tion', 'ment', 'ness', 'able', 'ful', 'less', 'ing', 'ous', 'ive']);
@@ -109,6 +112,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
     const [done, setDone] = useState(false);
     const [showCorrect, setShowCorrect] = useState<string | null>(null);
     const [streak, setStreak] = useState(0);
+    const [bestStreak, setBestStreak] = useState(0);
     const juice = useGameJuice();
 
     const current = rounds[idx] as RoundData | undefined;
@@ -140,10 +144,12 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
             setShowCorrect(null);
             const pts = 15 + (firstAttempt ? 10 : 0);
             setScore(s => s + pts);
-            setStreak(s => s + 1);
+            const newStreak = streak + 1;
+            setStreak(newStreak);
+            setBestStreak(s => Math.max(s, newStreak));
             juice.onCorrect();
             juice.showXpFloat(firstAttempt ? '+25 Perfect!' : '+15 XP');
-            if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
+            if (newStreak % 3 === 0) juice.onStreak(newStreak);
         } else {
             setResult('wrong');
             setShowCorrect(current.parts.join(' + ') + ' = ' + current.word);
@@ -153,29 +159,27 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
         }
     }, [current, selected, result, firstAttempt, streak, juice]);
 
-    // Auto-advance after showing result (correct or wrong)
+    // Auto-advance after result
     useEffect(() => {
         if (!result) return;
-        if (result === 'correct') {
-            const t = setTimeout(() => {
-                setShowCorrect(null);
-                advance();
-            }, 800);
-            return () => clearTimeout(t);
-        } else {
-            const t = setTimeout(() => {
-                setShowCorrect(null);
-                advance();
-            }, 1500);
-            return () => clearTimeout(t);
-        }
+        const delay = result === 'correct' ? 800 : 1500;
+        const t = setTimeout(() => {
+            setShowCorrect(null);
+            advance();
+        }, delay);
+        return () => clearTimeout(t);
     }, [result, advance]);
 
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
-        setScore(0); setIdx(0); setDone(false); setStreak(0); setSeed(s => s + 1);
+        setScore(0); setIdx(0); setDone(false); setStreak(0); setBestStreak(0); setSeed(s => s + 1);
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
+
+    // Check if all correct morphemes are selected (hint glow)
+    const allCorrectSelected = current ? current.parts.every(p => selected.includes(p)) && selected.length === current.parts.length : false;
+
+    const starCount = bestStreak >= 6 ? 3 : bestStreak >= 3 ? 2 : 1;
 
     // ── Difficulty picker ──
     if (!difficulty) {
@@ -215,7 +219,13 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
             <GameShell title="Root Builder" score={finalScore} onExit={handleExit}>
                 <GameOverScreen emoji="🧬" title="Round Complete!" score={score}
                     isNewHigh={isNew} highScore={getHighScore('root-constructor')}
-                    onPlayAgain={handlePlayAgain} onExit={handleExit} />
+                    onPlayAgain={handlePlayAgain} onExit={handleExit}
+                    gameName="Root Builder" stars={starCount}
+                    stats={[
+                        { label: 'Streak', value: bestStreak },
+                        { label: 'Score', value: score },
+                    ]}
+                />
             </GameShell>
         );
     }
@@ -249,31 +259,47 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                     />
                 </div>
 
-                {/* Definition + example */}
-                <motion.div key={idx} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-center px-2">
-                    <p className="text-sm ui text-[var(--color-chalk)] leading-relaxed">{current.definition}</p>
-                    {current.example && (
-                        <p className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-1.5 italic leading-relaxed">
-                            &ldquo;{current.example}&rdquo;
-                        </p>
-                    )}
-                    <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1">{current.parts.length} morphemes</p>
-                </motion.div>
+                {/* Definition + example — slides on change */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        className="text-center px-2"
+                    >
+                        <p className="text-sm ui text-[var(--color-chalk)] leading-relaxed">{current.definition}</p>
+                        {current.example && (
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-1.5 italic leading-relaxed">
+                                &ldquo;{current.example}&rdquo;
+                            </p>
+                        )}
+                        <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1">{current.parts.length} morphemes</p>
+                    </motion.div>
+                </AnimatePresence>
 
-                {/* Construction zone */}
-                <div className={`flex items-center gap-1 min-h-[48px] px-4 py-2 rounded-xl border-2 transition-colors ${
+                {/* Construction zone with glow hint */}
+                <div className={`flex items-center gap-1 min-h-[48px] px-4 py-2 rounded-xl border-2 transition-all ${
                     result === 'correct' ? 'border-[var(--color-correct)]/40 bg-[var(--color-correct)]/10 animate-[word-complete-pulse_0.6s]'
                         : result === 'wrong' ? 'border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 animate-[wrong-shake_0.3s]'
-                            : 'border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5'
+                            : allCorrectSelected && !result ? 'border-[var(--color-gold)]/50 bg-[var(--color-gold)]/10 animate-[glow-pulse_2s_infinite]'
+                                : 'border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5'
                 }`}>
                     {selected.length === 0 ? (
                         <span className="text-xs ui text-[rgb(var(--color-fg))]/30">Tap morphemes to build...</span>
                     ) : (
                         selected.map((morph, i) => (
-                            <span key={`${morph}-${i}`} className="flex items-center">
+                            <motion.span
+                                key={`${morph}-${i}`}
+                                initial={{ scale: 0.5, x: -20 }}
+                                animate={{ scale: 1, x: 0 }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                                className="flex items-center"
+                            >
                                 {i > 0 && <span className="text-[rgb(var(--color-fg))]/20 mx-0.5 text-sm">+</span>}
                                 <span className="text-base chalk text-[var(--color-gold)]">{morph}</span>
-                            </span>
+                            </motion.span>
                         ))
                     )}
                 </div>
@@ -292,20 +318,21 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                     )}
                 </AnimatePresence>
 
-                {/* Morpheme tiles */}
+                {/* Morpheme tiles — color-coded */}
                 <div className="flex gap-2 flex-wrap justify-center">
                     {current.tiles.map((morph, i) => {
                         const isSelected = selected.includes(morph);
+                        const isDistractor = !current.parts.includes(morph);
+                        const colorCls = isSelected
+                            ? 'bg-[var(--color-gold)]/20 border-[var(--color-gold)]/50 text-[var(--color-gold)]'
+                            : morphColor(morph, current.parts, isDistractor);
                         return (
                             <motion.button
                                 key={`${morph}-${i}`}
                                 whileTap={{ scale: 0.9 }}
+                                layout
                                 onClick={() => toggleTile(morph)}
-                                className={`px-4 py-2 rounded-xl text-sm chalk transition-all ${
-                                    isSelected
-                                        ? 'bg-[var(--color-gold)]/20 border-2 border-[var(--color-gold)]/50 text-[var(--color-gold)]'
-                                        : 'bg-[rgb(var(--color-fg))]/10 border-2 border-[rgb(var(--color-fg))]/20 text-[var(--color-chalk)] hover:border-[var(--color-gold)]/30'
-                                }`}
+                                className={`px-4 py-2 rounded-xl text-sm chalk transition-all border-2 ${colorCls}`}
                             >
                                 {morph}
                             </motion.button>

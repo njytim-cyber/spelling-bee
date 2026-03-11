@@ -10,6 +10,7 @@ interface Props { level: number; onExit: (xpEarned: number) => void }
 
 const GRID_SIZE = 8;
 const WORD_COUNT = 6;
+const TIMER_SECS = 120;
 const COMMON_LETTERS = 'ETAOINSHRDLUCMFWYPVBGKJQXZ';
 
 interface PlacedWord {
@@ -24,14 +25,12 @@ function buildGrid(words: SpellingWord[]): { grid: string[][]; placed: PlacedWor
     const grid: string[][] = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(''));
     const placed: PlacedWord[] = [];
 
-    // Sort longest first for better placement
     const sorted = [...words].sort((a, b) => b.word.length - a.word.length);
 
     for (const w of sorted) {
         const upper = w.word.toUpperCase();
         if (upper.length > GRID_SIZE) continue;
 
-        // Try random placements
         const dirs: Direction[] = shuffle(['h', 'v'] as Direction[]);
         let success = false;
 
@@ -91,10 +90,19 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const [startCell, setStartCell] = useState<[number, number] | null>(null);
     const [done, setDone] = useState(false);
     const [startTime, setStartTime] = useState(() => Date.now());
+    const [elapsed, setElapsed] = useState(0);
     const [lastFound, setLastFound] = useState<{ word: string; def: string } | null>(null);
+    const [recentFound, setRecentFound] = useState<Set<string>>(new Set());
     const juice = useGameJuice();
     const gridRef = useRef<HTMLDivElement>(null);
     const isDragging = useRef(false);
+
+    // Timer for urgency (doesn't end the game)
+    useEffect(() => {
+        if (done) return;
+        const t = setInterval(() => setElapsed(Math.floor((Date.now() - startTime) / 1000)), 1000);
+        return () => clearInterval(t);
+    }, [done, startTime]);
 
     const foundCells = useMemo(() => {
         const set = new Set<string>();
@@ -139,13 +147,16 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
         if (match) {
             setLastFound({ word: match.word.word, def: match.word.definition });
             setTimeout(() => setLastFound(null), 2000);
+            // Brief pulse on found cells
+            const cellKeys = new Set(cells.map(([r, c]) => `${r},${c}`));
+            setRecentFound(cellKeys);
+            setTimeout(() => setRecentFound(new Set()), 500);
             setPlaced(prev => {
                 const next = prev.map(p =>
                     p.word.word === match.word.word ? { ...p, found: true } : p
                 );
                 const allFound = next.every(p => p.found);
                 if (allFound) {
-                    const elapsed = (Date.now() - startTime) / 1000;
                     const timeBonus = elapsed < 60 ? 30 : elapsed < 90 ? 15 : 0;
                     const pts = 10 + timeBonus;
                     setScore(s => s + pts);
@@ -160,7 +171,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                 return next;
             });
         }
-    }, [placed, grid, startTime, juice]);
+    }, [placed, grid, elapsed, juice]);
 
     // ── Touch events for mobile drag-to-highlight ──
     const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -219,7 +230,6 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
         setPlaced(prev => prev.map(p =>
             p.word.word === unrevealed.word.word ? { ...p, found: true } : p
         ));
-        // No score for revealed words, check completion
         const allFound = placed.every(p => p.found || p.word.word === unrevealed.word.word);
         if (allFound) setTimeout(() => setDone(true), 500);
     }, [placed]);
@@ -227,20 +237,32 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
         setScore(0); setDone(false); setSeed(s => s + 1); setStartTime(Date.now());
+        setElapsed(0); setRecentFound(new Set());
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
     // Reset placed when words change (play again)
     useEffect(() => { setPlaced(initialPlaced); }, [initialPlaced]);
 
+    const foundCount = placed.filter(p => p.found).length;
+    const timerPct = Math.max(0, 1 - elapsed / TIMER_SECS);
+    const timerColor = elapsed >= 100 ? 'var(--color-wrong)' : elapsed >= 80 ? 'var(--color-streak-fire)' : 'var(--color-gold)';
+    const starCount = elapsed < 60 ? 3 : elapsed < 90 ? 2 : 1;
+
     if (done || words.length === 0) {
         const finalScore = totalScore + score;
         const isNew = saveHighScore('word-search', finalScore);
         return (
-            <GameShell title="Word Search" score={finalScore} onExit={handleExit}>
+            <GameShell title="Word Search" score={finalScore} onExit={handleExit} level={level}>
                 <GameOverScreen emoji="🔍" title="All Found!" score={score}
                     isNewHigh={isNew} highScore={getHighScore('word-search')}
-                    onPlayAgain={handlePlayAgain} onExit={handleExit} />
+                    onPlayAgain={handlePlayAgain} onExit={handleExit}
+                    gameName="Word Search" stars={starCount}
+                    stats={[
+                        { label: 'Words', value: `${foundCount}/${placed.length}` },
+                        { label: 'Time', value: `${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}` },
+                    ]}
+                />
             </GameShell>
         );
     }
@@ -250,8 +272,29 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
             title="Word Search"
             score={totalScore + score}
             onExit={handleExit}
+            level={level}
             screenFlash={juice.screenFlash} shake={juice.shake}
-            topRight={<span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{placed.filter(p => p.found).length}/{placed.length}</span>}
+            topRight={
+                <div className="flex items-center gap-2">
+                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{foundCount}/{placed.length}</span>
+                    <div className="relative w-8 h-8">
+                        <svg viewBox="0 0 36 36" className="w-8 h-8 -rotate-90">
+                            <circle cx="18" cy="18" r="15" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.1" />
+                            <circle
+                                cx="18" cy="18" r="15" fill="none"
+                                stroke={timerColor}
+                                strokeWidth="2"
+                                strokeDasharray={`${timerPct * 94.25} 94.25`}
+                                strokeLinecap="round"
+                                className="transition-all duration-1000"
+                            />
+                        </svg>
+                        <span className="absolute inset-0 flex items-center justify-center text-[8px] ui font-bold" style={{ color: timerColor }}>
+                            {Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, '0')}
+                        </span>
+                    </div>
+                </div>
+            }
         >
             <div className="flex flex-col items-center w-full max-w-sm gap-3 mt-2">
                 {/* Word list with definitions */}
@@ -279,6 +322,16 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                     </div>
                 </div>
 
+                {/* Progress bar */}
+                <div className="w-full h-1 rounded-full bg-[rgb(var(--color-fg))]/10 overflow-hidden">
+                    <motion.div
+                        className="h-full rounded-full bg-[var(--color-correct)]"
+                        initial={false}
+                        animate={{ width: `${(foundCount / placed.length) * 100}%` }}
+                        transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                    />
+                </div>
+
                 {/* Grid */}
                 <div
                     ref={gridRef}
@@ -296,20 +349,30 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                             const key = `${r},${c}`;
                             const isFound = foundCells.has(key);
                             const isSelecting = selectingSet.has(key);
+                            const isRecentFound = recentFound.has(key);
                             return (
-                                <div
+                                <motion.div
                                     key={key}
+                                    initial={{ opacity: 0 }}
+                                    animate={{
+                                        opacity: 1,
+                                        scale: isRecentFound ? [1, 1.15, 1] : isSelecting ? 1.05 : 1,
+                                    }}
+                                    transition={{
+                                        opacity: { delay: (r * GRID_SIZE + c) * 0.01, duration: 0.15 },
+                                        scale: { duration: 0.2 },
+                                    }}
                                     onPointerDown={() => handlePointerDown(r, c)}
                                     className={`flex items-center justify-center text-sm chalk rounded-sm cursor-pointer transition-colors ${
                                         isFound
                                             ? 'bg-[var(--color-correct)]/20 text-[var(--color-correct)]'
                                             : isSelecting
-                                                ? 'bg-[var(--color-gold)]/20 text-[var(--color-gold)]'
+                                                ? 'bg-[var(--color-gold)]/25 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
                                                 : 'text-[var(--color-chalk)] hover:bg-[rgb(var(--color-fg))]/5'
                                     }`}
                                 >
                                     {letter}
-                                </div>
+                                </motion.div>
                             );
                         })
                     )}

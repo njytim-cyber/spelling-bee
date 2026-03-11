@@ -32,7 +32,6 @@ const MIN_DOWN = 3;
 
 /** Pick short, common words good for crosswords (3-7 letters). */
 function pickCrosswordWords(level: number, count: number): SpellingWord[] {
-    // Use a wide difficulty range — crossword fun comes from clues, not obscure words
     const minDiff = Math.max(1, level - 3) as DifficultyTier;
     const maxDiff = Math.min(10, level + 1) as DifficultyTier;
     let pool = wordsByDifficulty(minDiff, maxDiff).filter(w => w.word.length >= 3 && w.word.length <= 7);
@@ -56,7 +55,6 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
     const placed: PlacedWord[] = [];
     const letterGrid: (string | null)[][] = Array.from({ length: GRID_DIM }, () => Array(GRID_DIM).fill(null));
 
-    // Place first word horizontally in center
     const first = sorted[0];
     if (!first) return { grid: [], placed: [] };
     const startCol = Math.floor((GRID_DIM - first.word.length) / 2);
@@ -69,13 +67,11 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
         placed.push({ word: first, row: startRow, col: startCol, dir: 'across', number: 1 });
     }
 
-    // Try to place remaining words by intersecting with existing
     for (let wi = 1; wi < sorted.length && placed.length < TARGET_WORDS; wi++) {
         const w = sorted[wi];
         if (w.word.length > GRID_DIM) continue;
         const upper = w.word.toUpperCase();
 
-        // Decide preferred direction based on current balance
         const acrossCount = placed.filter(p => p.dir === 'across').length;
         const downCount = placed.filter(p => p.dir === 'down').length;
         const preferDown = acrossCount > downCount;
@@ -126,7 +122,6 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
             }
         }
 
-        // Prefer direction that improves balance
         if (allFits.length > 0) {
             bestFit = allFits.find(f => (preferDown ? f.dir === 'down' : f.dir === 'across')) ?? allFits[0];
         }
@@ -141,7 +136,6 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
         }
     }
 
-    // Build cell grid
     const grid: (Cell | null)[][] = Array.from({ length: GRID_DIM }, () => Array(GRID_DIM).fill(null));
     for (let r = 0; r < GRID_DIM; r++) {
         for (let c = 0; c < GRID_DIM; c++) {
@@ -168,16 +162,14 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
 export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Props) {
     const [seed, setSeed] = useState(0);
 
-    // Retry generation until we get at least MIN_ACROSS and MIN_DOWN
     const { grid: initGrid, placed } = useMemo(() => {
         for (let attempt = 0; attempt < 10; attempt++) {
-            const pool = pickCrosswordWords(level, 20); // large pool for variety
+            const pool = pickCrosswordWords(level, 20);
             const result = buildCrossword(pool);
             const ac = result.placed.filter(p => p.dir === 'across').length;
             const dn = result.placed.filter(p => p.dir === 'down').length;
             if (ac >= MIN_ACROSS && dn >= MIN_DOWN) return result;
         }
-        // Fallback: return whatever we get
         return buildCrossword(pickCrosswordWords(level, 20));
     }, [level, seed]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -190,10 +182,27 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
     const [done, setDone] = useState(false);
     const [cleanSolve, setCleanSolve] = useState(true);
     const [hintsUsed, setHintsUsed] = useState(0);
+    const [flashCells, setFlashCells] = useState<Set<string>>(new Set());
+    const [lastSolved, setLastSolved] = useState<{ word: string; def: string } | null>(null);
     const juice = useGameJuice();
     const inputRef = useRef<HTMLInputElement>(null);
+    const clueRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
     useEffect(() => { inputRef.current?.focus(); }, [activeCell]);
+
+    // Scroll to active clue
+    const activeClueIdx = useMemo(() => {
+        if (!activeCell) return null;
+        const cell = grid[activeCell[0]]?.[activeCell[1]];
+        if (!cell) return null;
+        return cell.wordIds.find(wid => placed[wid]?.dir === activeDir) ?? null;
+    }, [activeCell, activeDir, grid, placed]);
+
+    useEffect(() => {
+        if (activeClueIdx != null) {
+            clueRefs.current.get(activeClueIdx)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }, [activeClueIdx]);
 
     const handleCellClick = useCallback((r: number, c: number) => {
         const cell = grid[r]?.[c];
@@ -215,6 +224,27 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             if (!cell || cell.userLetter !== cell.letter) return false;
         }
         return true;
+    }, [placed]);
+
+    // Flash solved word cells sequentially
+    const flashWordCells = useCallback((wordIdx: number) => {
+        const pw = placed[wordIdx];
+        if (!pw) return;
+        for (let k = 0; k < pw.word.word.length; k++) {
+            const cr = pw.dir === 'down' ? pw.row + k : pw.row;
+            const cc = pw.dir === 'across' ? pw.col + k : pw.col;
+            const key = `${cr},${cc}`;
+            setTimeout(() => {
+                setFlashCells(prev => new Set(prev).add(key));
+                setTimeout(() => {
+                    setFlashCells(prev => {
+                        const next = new Set(prev);
+                        next.delete(key);
+                        return next;
+                    });
+                }, 400);
+            }, k * 60);
+        }
     }, [placed]);
 
     const handleKeyPress = useCallback((key: string) => {
@@ -250,6 +280,10 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             if (cell) {
                 for (const wid of cell.wordIds) {
                     if (!solvedWords.has(wid) && checkWordInGrid(wid, next)) {
+                        flashWordCells(wid);
+                        const pw = placed[wid];
+                        setLastSolved({ word: pw.word.word, def: pw.word.definition });
+                        setTimeout(() => setLastSolved(null), 1500);
                         setSolvedWords(prev2 => {
                             const next2 = new Set(prev2);
                             next2.add(wid);
@@ -279,7 +313,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
         if (nr < GRID_DIM && nc < GRID_DIM && grid[nr]?.[nc]) {
             setActiveCell([nr, nc]);
         }
-    }, [activeCell, activeDir, grid, done, placed, solvedWords, checkWordInGrid, cleanSolve, juice]);
+    }, [activeCell, activeDir, grid, done, placed, solvedWords, checkWordInGrid, cleanSolve, juice, flashWordCells]);
 
     const activeWordCells = useMemo(() => {
         if (!activeCell) return new Set<string>();
@@ -320,6 +354,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                         if (target) {
                             for (const wid2 of target.wordIds) {
                                 if (!solvedWords.has(wid2) && checkWordInGrid(wid2, next)) {
+                                    flashWordCells(wid2);
                                     setSolvedWords(prev2 => {
                                         const next2 = new Set(prev2);
                                         next2.add(wid2);
@@ -343,25 +378,36 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                 }
             }
         }
-    }, [done, activeCell, grid, placed, solvedWords, checkWordInGrid]);
+    }, [done, activeCell, grid, placed, solvedWords, checkWordInGrid, flashWordCells]);
 
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
-        setScore(0); setDone(false); setCleanSolve(true); setHintsUsed(0); setSolvedWords(new Set()); setActiveCell(null); setSeed(s => s + 1);
+        setScore(0); setDone(false); setCleanSolve(true); setHintsUsed(0);
+        setSolvedWords(new Set()); setActiveCell(null); setSeed(s => s + 1);
+        setLastSolved(null); setFlashCells(new Set());
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
     useEffect(() => { setGrid(initGrid); }, [initGrid]);
 
+    const starCount = cleanSolve && hintsUsed === 0 ? 3 : hintsUsed <= 2 ? 2 : 1;
+
     if (done || placed.length === 0) {
         const finalScore = totalScore + score;
         const isNew = saveHighScore('crossword', finalScore);
         return (
-            <GameShell title="Crossword" score={finalScore} onExit={handleExit}>
+            <GameShell title="Crossword" score={finalScore} onExit={handleExit} level={level}>
                 <GameOverScreen emoji="📝" title={placed.length > 0 ? 'Puzzle Complete!' : 'No words available'}
                     score={score} subtitle={cleanSolve ? 'Clean solve bonus!' : undefined}
                     isNewHigh={isNew} highScore={getHighScore('crossword')}
-                    onPlayAgain={handlePlayAgain} onExit={handleExit} />
+                    onPlayAgain={handlePlayAgain} onExit={handleExit}
+                    gameName="Crossword" stars={placed.length > 0 ? starCount : 0}
+                    stats={[
+                        { label: 'Words', value: `${solvedWords.size}/${placed.length}` },
+                        { label: 'Hints', value: hintsUsed },
+                        { label: 'Clean', value: cleanSolve ? 'Yes' : 'No' },
+                    ]}
+                />
             </GameShell>
         );
     }
@@ -374,6 +420,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             title="Crossword"
             score={totalScore + score}
             onExit={handleExit}
+            level={level}
             screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={<span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{solvedWords.size}/{placed.length}</span>}
         >
@@ -392,7 +439,16 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             />
 
             <div className="flex flex-col items-center w-full max-w-sm gap-3 mt-2">
-                {/* Grid */}
+                {/* Direction indicator */}
+                {activeCell && (
+                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 flex items-center gap-1">
+                        <span>{activeDir === 'across' ? '→' : '↓'}</span>
+                        <span>{activeDir === 'across' ? 'Across' : 'Down'}</span>
+                        <span className="text-[rgb(var(--color-fg))]/15 ml-1">(tap cell again to switch)</span>
+                    </div>
+                )}
+
+                {/* Grid with entrance animation */}
                 <div
                     className="grid gap-px"
                     style={{ gridTemplateColumns: `repeat(${GRID_DIM}, 1fr)`, width: '100%', maxWidth: '320px' }}
@@ -404,25 +460,31 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                             const isActive = activeCell?.[0] === r && activeCell?.[1] === c;
                             const isWord = activeWordCells.has(key);
                             const isSolved = cell?.wordIds.some(wid => solvedWords.has(wid));
+                            const isFlashing = flashCells.has(key);
 
                             return (
-                                <div
+                                <motion.div
                                     key={key}
+                                    initial={cell ? { opacity: 0, scale: 0.8 } : false}
+                                    animate={cell ? { opacity: 1, scale: 1 } : undefined}
+                                    transition={cell ? { delay: (r * GRID_DIM + c) * 0.008, duration: 0.2 } : undefined}
                                     onClick={() => cell && handleCellClick(r, c)}
-                                    className={`aspect-square flex items-center justify-center relative text-sm chalk rounded-sm cursor-pointer ${
+                                    className={`aspect-square flex items-center justify-center relative text-sm chalk rounded-sm cursor-pointer transition-colors duration-150 ${
                                         !cell
                                             ? 'bg-[rgb(var(--color-fg))]/[0.03]'
-                                            : isActive
-                                                ? 'border-2 border-[var(--color-gold)] bg-[var(--color-gold)]/15'
-                                                : isWord
-                                                    ? 'bg-[var(--color-gold)]/10 border border-[rgb(var(--color-fg))]/10'
-                                                    : isSolved
-                                                        ? 'bg-[var(--color-correct)]/10 border border-[rgb(var(--color-fg))]/10'
-                                                        : 'bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10'
+                                            : isFlashing
+                                                ? 'animate-[cell-solve-flash_0.4s_ease-out]'
+                                                : isActive
+                                                    ? 'border-2 border-[var(--color-gold)] bg-[var(--color-gold)]/15'
+                                                    : isWord
+                                                        ? 'bg-[var(--color-gold)]/10 border border-[rgb(var(--color-fg))]/10'
+                                                        : isSolved
+                                                            ? 'bg-[var(--color-correct)]/10 border border-[rgb(var(--color-fg))]/10'
+                                                            : 'bg-[rgb(var(--color-fg))]/5 border border-[rgb(var(--color-fg))]/10'
                                     }`}
                                 >
                                     {cell?.clueNum && (
-                                        <span className="absolute top-0 left-0.5 text-[7px] ui text-[rgb(var(--color-fg))]/40 leading-none">{cell.clueNum}</span>
+                                        <span className="absolute top-0 left-0.5 text-[9px] ui text-[rgb(var(--color-fg))]/50 leading-none font-bold">{cell.clueNum}</span>
                                     )}
                                     {cell && (
                                         <span className={`${
@@ -433,11 +495,32 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                                             {cell.userLetter}
                                         </span>
                                     )}
-                                </div>
+                                    {/* Cursor blink for active cell */}
+                                    {isActive && !cell?.userLetter && (
+                                        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-[2px] bg-[var(--color-gold)] animate-[cursor-blink_1s_infinite]" />
+                                    )}
+                                </motion.div>
                             );
                         })
                     )}
                 </div>
+
+                {/* Solved word toast */}
+                <AnimatePresence>
+                    {lastSolved && (
+                        <motion.div
+                            key={lastSolved.word}
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -5 }}
+                            className="text-center"
+                        >
+                            <span className="text-[10px] ui text-[var(--color-correct)]/60 bg-[var(--color-correct)]/10 px-3 py-1 rounded-full">
+                                {lastSolved.word}: {lastSolved.def.length > 50 ? lastSolved.def.slice(0, 50) + '…' : lastSolved.def}
+                            </span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Hint button */}
                 <motion.button
@@ -448,32 +531,54 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                     💡 Reveal a letter{hintsUsed > 0 ? ` (${hintsUsed} used)` : ''}
                 </motion.button>
 
-                {/* Clues */}
+                {/* Clues with active highlight */}
                 <div className="w-full space-y-2 max-h-[200px] overflow-y-auto">
                     {across.length > 0 && (
                         <div>
                             <h4 className="text-[10px] ui font-bold text-[rgb(var(--color-fg))]/40 uppercase">Across</h4>
-                            {across.map(pw => (
-                                <div
-                                    key={pw.number}
-                                    className={`text-xs ui py-0.5 ${solvedWords.has(placed.indexOf(pw)) ? 'text-[var(--color-correct)] line-through opacity-60' : 'text-[var(--color-chalk)]'}`}
-                                >
-                                    <span className="font-bold mr-1">{pw.number}.</span>{pw.word.definition}
-                                </div>
-                            ))}
+                            {across.map(pw => {
+                                const pidx = placed.indexOf(pw);
+                                const isActive = activeClueIdx === pidx && activeDir === 'across';
+                                return (
+                                    <div
+                                        key={pw.number}
+                                        ref={el => { if (el) clueRefs.current.set(pidx, el); }}
+                                        className={`text-xs ui py-0.5 px-1 rounded transition-colors ${
+                                            solvedWords.has(pidx)
+                                                ? 'text-[var(--color-correct)] line-through opacity-60'
+                                                : isActive
+                                                    ? 'text-[var(--color-chalk)] bg-[var(--color-gold)]/10'
+                                                    : 'text-[var(--color-chalk)]'
+                                        }`}
+                                    >
+                                        <span className="font-bold mr-1">{pw.number}.</span>{pw.word.definition}
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
                     {down.length > 0 && (
                         <div>
                             <h4 className="text-[10px] ui font-bold text-[rgb(var(--color-fg))]/40 uppercase">Down</h4>
-                            {down.map(pw => (
-                                <div
-                                    key={pw.number}
-                                    className={`text-xs ui py-0.5 ${solvedWords.has(placed.indexOf(pw)) ? 'text-[var(--color-correct)] line-through opacity-60' : 'text-[var(--color-chalk)]'}`}
-                                >
-                                    <span className="font-bold mr-1">{pw.number}.</span>{pw.word.definition}
-                                </div>
-                            ))}
+                            {down.map(pw => {
+                                const pidx = placed.indexOf(pw);
+                                const isActive = activeClueIdx === pidx && activeDir === 'down';
+                                return (
+                                    <div
+                                        key={pw.number}
+                                        ref={el => { if (el) clueRefs.current.set(pidx, el); }}
+                                        className={`text-xs ui py-0.5 px-1 rounded transition-colors ${
+                                            solvedWords.has(pidx)
+                                                ? 'text-[var(--color-correct)] line-through opacity-60'
+                                                : isActive
+                                                    ? 'text-[var(--color-chalk)] bg-[var(--color-gold)]/10'
+                                                    : 'text-[var(--color-chalk)]'
+                                        }`}
+                                    >
+                                        <span className="font-bold mr-1">{pw.number}.</span>{pw.word.definition}
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
                 </div>

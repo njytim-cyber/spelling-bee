@@ -17,9 +17,17 @@ interface Props {
     screenFlash?: 'correct' | 'wrong' | null;
     /** Screen shake on wrong answer */
     shake?: boolean;
+    /** Player level (shown as badge) */
+    level?: number;
+    /** Combo multiplier (shows badge when > 1) */
+    combo?: number;
+    /** Pause state — renders overlay */
+    paused?: boolean;
+    /** Resume callback */
+    onResume?: () => void;
 }
 
-export const GameShell = memo(function GameShell({ title, score, onExit, children, topRight, screenFlash, shake }: Props) {
+export const GameShell = memo(function GameShell({ title, score, onExit, children, topRight, screenFlash, shake, level, combo, paused, onResume }: Props) {
     // Animated score counter
     const springScore = useSpring(0, { stiffness: 100, damping: 18 });
     const displayScore = useTransform(springScore, v => Math.round(v));
@@ -75,16 +83,35 @@ export const GameShell = memo(function GameShell({ title, score, onExit, childre
                         </svg>
                         <span className="text-sm ui">Back</span>
                     </motion.button>
-                    <h2 className="text-lg chalk text-[var(--color-gold)]">{title}</h2>
+                    <div className="flex items-center gap-2">
+                        <h2 className="text-lg chalk text-[var(--color-gold)]">{title}</h2>
+                        {level != null && (
+                            <span className="text-[9px] ui font-bold text-[var(--color-gold)]/60 border border-[var(--color-gold)]/30 px-1.5 py-0.5 rounded-full">
+                                Lv.{level}
+                            </span>
+                        )}
+                    </div>
                     <div className="flex items-center gap-3">
                         {topRight}
-                        <motion.div
-                            animate={scorePop ? { scale: [1, 1.3, 1] } : {}}
-                            transition={{ duration: 0.3 }}
-                            className="text-sm chalk text-[var(--color-gold)] tabular-nums"
-                        >
-                            {displayVal} <span className="text-[10px] ui opacity-60">XP</span>
-                        </motion.div>
+                        <div className="flex items-center gap-1.5">
+                            {combo != null && combo > 1 && (
+                                <motion.span
+                                    key={combo}
+                                    initial={{ scale: 0.5, opacity: 0 }}
+                                    animate={{ scale: 1, opacity: 1 }}
+                                    className="text-[10px] ui font-bold text-[var(--color-streak-fire)] animate-[combo-pop_0.3s_ease-out]"
+                                >
+                                    x{combo}
+                                </motion.span>
+                            )}
+                            <motion.div
+                                animate={scorePop ? { scale: [1, 1.3, 1] } : {}}
+                                transition={{ duration: 0.3 }}
+                                className="text-sm chalk text-[var(--color-gold)] tabular-nums"
+                            >
+                                {displayVal} <span className="text-[10px] ui opacity-60">XP</span>
+                            </motion.div>
+                        </div>
                     </div>
                 </div>
 
@@ -92,6 +119,23 @@ export const GameShell = memo(function GameShell({ title, score, onExit, childre
                 <div className="flex-1 flex flex-col items-center overflow-y-auto px-4 pb-[calc(env(safe-area-inset-bottom,20px)+16px)]">
                     {children}
                 </div>
+
+                {/* Pause overlay */}
+                {paused && (
+                    <div
+                        className="absolute inset-0 z-[55] flex flex-col items-center justify-center bg-black/70 cursor-pointer"
+                        onClick={onResume}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="text-center"
+                        >
+                            <p className="text-3xl chalk text-[var(--color-gold)] mb-2">Paused</p>
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/40">Tap to resume</p>
+                        </motion.div>
+                    </div>
+                )}
             </motion.div>
         </AnimatePresence>
     );
@@ -110,10 +154,17 @@ interface GameOverProps {
     highScore: number;
     onPlayAgain: () => void;
     onExit: () => void;
+    /** Optional stats row */
+    stats?: { label: string; value: string | number }[];
+    /** Game name for share */
+    gameName?: string;
+    /** 1-3 star rating (0 = no stars shown) */
+    stars?: number;
 }
 
 export const GameOverScreen = memo(function GameOverScreen({
     emoji, title, score, subtitle, isNewHigh, highScore, onPlayAgain, onExit,
+    stats, gameName, stars,
 }: GameOverProps) {
     // Generate sparkle particles (stable across re-renders)
     const particles = useMemo(() => Array.from({ length: 12 }, (_, i) => ({
@@ -184,6 +235,45 @@ export const GameOverScreen = memo(function GameOverScreen({
                 ) : null}
             </motion.div>
 
+            {/* Star rating */}
+            {stars != null && stars > 0 && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex gap-1"
+                >
+                    {[1, 2, 3].map(i => (
+                        <motion.span
+                            key={i}
+                            initial={{ scale: 0, rotate: -30 }}
+                            animate={i <= stars ? { scale: 1, rotate: 0 } : { scale: 1, rotate: 0, opacity: 0.2 }}
+                            transition={{ delay: 0.35 + i * 0.15, type: 'spring', stiffness: 300, damping: 12 }}
+                            className="text-2xl"
+                        >
+                            {i <= stars ? '⭐' : '☆'}
+                        </motion.span>
+                    ))}
+                </motion.div>
+            )}
+
+            {/* Stats row */}
+            {stats && stats.length > 0 && (
+                <motion.div
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="flex gap-4"
+                >
+                    {stats.map(s => (
+                        <div key={s.label} className="text-center">
+                            <div className="text-sm chalk text-[var(--color-gold)]">{s.value}</div>
+                            <div className="text-[8px] ui text-[rgb(var(--color-fg))]/35">{s.label}</div>
+                        </div>
+                    ))}
+                </motion.div>
+            )}
+
             {/* Action buttons */}
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -207,15 +297,29 @@ export const GameOverScreen = memo(function GameOverScreen({
                 </motion.button>
             </motion.div>
 
-            {/* XP added to leaderboard note */}
-            <motion.p
+            {/* Share + leaderboard note */}
+            <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="text-[9px] ui text-[rgb(var(--color-fg))]/25"
+                className="flex flex-col items-center gap-1.5"
             >
-                XP added to your leaderboard total
-            </motion.p>
+                {gameName && (
+                    <button
+                        onClick={() => {
+                            const text = `I scored ${score} XP on ${gameName}! 🐝`;
+                            if (navigator.share) navigator.share({ text }).catch(() => {});
+                            else navigator.clipboard?.writeText(text).catch(() => {});
+                        }}
+                        className="text-[10px] ui text-[rgb(var(--color-fg))]/35 hover:text-[var(--color-gold)] transition-colors"
+                    >
+                        📤 Share Score
+                    </button>
+                )}
+                <p className="text-[9px] ui text-[rgb(var(--color-fg))]/25">
+                    XP added to your leaderboard total
+                </p>
+            </motion.div>
         </div>
     );
 });

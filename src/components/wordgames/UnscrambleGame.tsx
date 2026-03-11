@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickProgressiveWords, scrambleWord, saveHighScore, getHighScore } from './wordGameUtils';
 import { useGameJuice } from './useGameJuice';
+import { CountdownOverlay } from './CountdownOverlay';
+import { useVisibilityPause } from './useVisibilityPause';
 import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
@@ -22,7 +24,12 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
     const [flash, setFlash] = useState<'correct' | 'wrong' | null>(null);
     const [scrambled, setScrambled] = useState('');
     const [streak, setStreak] = useState(0);
+    const [bestStreak, setBestStreak] = useState(0);
+    const [combo, setCombo] = useState(1);
+    const [counting, setCounting] = useState(true);
+    const [skipReveal, setSkipReveal] = useState<string | null>(null);
     const juice = useGameJuice();
+    const { paused, resume } = useVisibilityPause();
     const inputRef = useRef<HTMLInputElement>(null);
     // eslint-disable-next-line react-hooks/purity
     const wordStartTime = useRef(Date.now());
@@ -36,9 +43,9 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
         wordStartTime.current = Date.now();
     }, [current]);
 
-    // Timer countdown
+    // Timer countdown — pauses during countdown or tab blur
     useEffect(() => {
-        if (gameOver) return;
+        if (gameOver || counting || paused) return;
         const t = setInterval(() => {
             setTimeLeft(prev => {
                 if (prev <= 1) {
@@ -49,28 +56,35 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
             });
         }, 1000);
         return () => clearInterval(t);
-    }, [gameOver]);
+    }, [gameOver, counting, paused]);
 
-    // Focus input
-    useEffect(() => { inputRef.current?.focus(); }, []);
+    // Focus input after countdown
+    useEffect(() => {
+        if (!counting) inputRef.current?.focus();
+    }, [counting]);
 
     const handleSubmit = useCallback((e?: React.FormEvent) => {
         e?.preventDefault();
-        if (!current || gameOver) return;
+        if (!current || gameOver || counting || paused) return;
         const attempt = input.trim().toLowerCase();
 
         if (attempt === current.word) {
             const elapsed = (Date.now() - wordStartTime.current) / 1000;
             const speedBonus = elapsed < 3 ? 2 : 0;
-            const pts = 5 + speedBonus;
+            const newStreak = streak + 1;
+            const newCombo = Math.min(3, 1 + Math.floor(newStreak / 3));
+            const basePts = 5 + speedBonus;
+            const pts = Math.round(basePts * newCombo);
             setScore(s => s + pts);
             setWordsCorrect(w => w + 1);
-            setStreak(s => s + 1);
+            setStreak(newStreak);
+            setBestStreak(s => Math.max(s, newStreak));
+            setCombo(newCombo);
             setFlash('correct');
             setInput('');
             juice.onCorrect();
-            juice.showXpFloat(speedBonus ? `+${pts} Fast!` : `+${pts} XP`);
-            if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
+            juice.showXpFloat(newCombo > 1 ? `+${pts} x${newCombo}!` : speedBonus ? `+${pts} Fast!` : `+${pts} XP`);
+            if (newStreak % 3 === 0) juice.onStreak(newStreak);
             setTimeout(() => {
                 setFlash(null);
                 setIdx(i => i + 1);
@@ -78,34 +92,54 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
         } else {
             setFlash('wrong');
             setStreak(0);
+            setCombo(1);
             juice.onWrong();
             setTimeout(() => setFlash(null), 300);
         }
-    }, [input, current, gameOver, streak, juice]);
+    }, [input, current, gameOver, counting, paused, streak, juice]);
 
     const handleSkip = useCallback(() => {
-        if (!current || gameOver) return;
+        if (!current || gameOver || counting || paused) return;
+        setSkipReveal(current.word);
         setStreak(0);
+        setCombo(1);
         setFlash(null);
         setInput('');
-        setIdx(i => i + 1);
-    }, [current, gameOver]);
+        setTimeout(() => {
+            setSkipReveal(null);
+            setIdx(i => i + 1);
+        }, 800);
+    }, [current, gameOver, counting, paused]);
 
     const timerPct = timeLeft / TIMER_SECS * 100;
-    const timerColor = timeLeft <= 10 ? 'var(--color-wrong)' : 'var(--color-gold)';
+    const timerColor = timeLeft <= 5 ? 'var(--color-wrong)' : timeLeft <= 10 ? 'var(--color-streak-fire)' : 'var(--color-gold)';
 
     const handlePlayAgain = useCallback(() => {
-        setScore(0); setWordsCorrect(0); setIdx(0); setTimeLeft(TIMER_SECS); setGameOver(false); setInput(''); setStreak(0);
+        setScore(0); setWordsCorrect(0); setIdx(0); setTimeLeft(TIMER_SECS);
+        setGameOver(false); setInput(''); setStreak(0); setBestStreak(0);
+        setCombo(1); setCounting(true);
     }, []);
     const handleExit = useCallback(() => onExit(score), [onExit, score]);
+
+    const handleCountdownDone = useCallback(() => setCounting(false), []);
+
+    // Star rating: 1 star = any, 2 = 10+ words, 3 = 15+ words
+    const starCount = wordsCorrect >= 15 ? 3 : wordsCorrect >= 10 ? 2 : wordsCorrect >= 1 ? 1 : 0;
 
     if (gameOver || !current) {
         const isNew = saveHighScore('unscramble', score);
         return (
-            <GameShell title="Unscramble" score={score} onExit={handleExit}>
+            <GameShell title="Unscramble" score={score} onExit={handleExit} level={level}>
                 <GameOverScreen emoji="⏱️" title="Time's Up!" score={score}
                     subtitle={`${wordsCorrect} words unscrambled`} isNewHigh={isNew} highScore={getHighScore('unscramble')}
-                    onPlayAgain={handlePlayAgain} onExit={handleExit} />
+                    onPlayAgain={handlePlayAgain} onExit={handleExit}
+                    gameName="Unscramble" stars={starCount}
+                    stats={[
+                        { label: 'Words', value: wordsCorrect },
+                        { label: 'Best Streak', value: bestStreak },
+                        { label: 'Best Combo', value: `x${Math.min(3, 1 + Math.floor(bestStreak / 3))}` },
+                    ]}
+                />
             </GameShell>
         );
     }
@@ -115,53 +149,77 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
             title="Unscramble"
             score={score}
             onExit={handleExit}
+            level={level}
+            combo={combo}
+            paused={paused}
+            onResume={resume}
             screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
-                <div className="relative w-8 h-8">
-                    {/* Timer ring */}
-                    <svg viewBox="0 0 36 36" className="w-8 h-8 -rotate-90">
+                <div className="relative w-9 h-9">
+                    <svg viewBox="0 0 36 36" className="w-9 h-9 -rotate-90">
                         <circle cx="18" cy="18" r="15" fill="none" stroke="rgb(var(--color-fg))" strokeWidth="2" opacity="0.1" />
                         <circle
                             cx="18" cy="18" r="15" fill="none"
                             stroke={timerColor}
-                            strokeWidth="2"
+                            strokeWidth="2.5"
                             strokeDasharray={`${timerPct * 0.9425} 94.25`}
                             strokeLinecap="round"
                             className="transition-all duration-1000"
                         />
                     </svg>
-                    <span className="absolute inset-0 flex items-center justify-center text-[9px] ui font-bold" style={{ color: timerColor }}>
+                    <span className={`absolute inset-0 flex items-center justify-center text-[10px] ui font-bold ${timeLeft <= 5 ? 'animate-pulse' : ''}`} style={{ color: timerColor }}>
                         {timeLeft}
                     </span>
                 </div>
             }
         >
             <div className="flex-1 flex flex-col items-center justify-center w-full max-w-sm gap-6">
-                {/* Scrambled word */}
-                <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center"
-                >
-                    <div className="flex gap-1.5 justify-center mb-3">
-                        {scrambled.split('').map((ch, i) => (
-                            <span
-                                key={`${idx}-${i}`}
-                                className="w-9 h-9 rounded-lg bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/30 flex items-center justify-center text-xl chalk text-[var(--color-gold)]"
-                            >
-                                {ch}
-                            </span>
-                        ))}
-                    </div>
-                    <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2">{current.definition}</p>
-                    <button
-                        onClick={() => setScrambled(scrambleWord(current.word))}
-                        className="text-[9px] ui text-[rgb(var(--color-fg))]/25 hover:text-[var(--color-gold)] transition-colors"
+                {/* Scrambled word — slides in from right, exits left */}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: 60 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -60 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        className="text-center"
                     >
-                        🔀 Re-shuffle
-                    </button>
-                </motion.div>
+                        <div className="flex gap-2 justify-center mb-3">
+                            {scrambled.split('').map((ch, i) => (
+                                <motion.span
+                                    key={`${idx}-${i}`}
+                                    initial={{ scale: 0, rotate: -15 }}
+                                    animate={{ scale: 1, rotate: 0 }}
+                                    transition={{ delay: i * 0.04, type: 'spring', stiffness: 400, damping: 15 }}
+                                    className="w-11 h-11 rounded-lg bg-[var(--color-gold)]/15 border border-[var(--color-gold)]/30 flex items-center justify-center text-2xl chalk text-[var(--color-gold)]"
+                                >
+                                    {ch}
+                                </motion.span>
+                            ))}
+                        </div>
+                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2">{current.definition}</p>
+                        <button
+                            onClick={() => setScrambled(scrambleWord(current.word))}
+                            className="text-[9px] ui text-[rgb(var(--color-fg))]/25 hover:text-[var(--color-gold)] transition-colors"
+                        >
+                            🔀 Re-shuffle
+                        </button>
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Skip reveal flash */}
+                <AnimatePresence>
+                    {skipReveal && (
+                        <motion.p
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="text-sm chalk text-[var(--color-wrong)]/70"
+                        >
+                            {skipReveal}
+                        </motion.p>
+                    )}
+                </AnimatePresence>
 
                 {/* Input */}
                 <form onSubmit={handleSubmit} className="w-full">
@@ -212,12 +270,13 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
                 </AnimatePresence>
             </div>
 
-            {/* Urgency vignette when timer low */}
-            {timeLeft <= 10 && (
+            {/* Urgency vignette */}
+            {timeLeft <= 5 && !counting && (
                 <div className="absolute inset-0 pointer-events-none rounded-xl animate-pulse"
-                    style={{ boxShadow: 'inset 0 0 60px rgba(248,113,113,0.15)' }} />
+                    style={{ boxShadow: 'inset 0 0 80px rgba(248,113,113,0.2)' }} />
             )}
 
+            {counting && <CountdownOverlay onComplete={handleCountdownDone} />}
             <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );

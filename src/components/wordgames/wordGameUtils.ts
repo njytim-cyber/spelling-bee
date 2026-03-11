@@ -114,8 +114,11 @@ export function getHighScore(gameId: string): number {
     }
 }
 
-/** Save high score to localStorage (only if higher). Returns true if new record. */
+/** Save high score to localStorage (only if higher). Returns true if new record.
+ *  Also marks the game as played for the current session. */
 export function saveHighScore(gameId: string, score: number): boolean {
+    // Mark as played this session (for "played today" indicator)
+    try { sessionStorage.setItem(`wordGames_${gameId}_played`, '1'); } catch { /* quota */ }
     const prev = getHighScore(gameId);
     if (score > prev) {
         try { localStorage.setItem(`wordGames_${gameId}_highScore`, String(score)); } catch { /* quota */ }

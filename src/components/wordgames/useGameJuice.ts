@@ -30,6 +30,18 @@ export interface GameJuice {
     showXpFloat: (text: string) => void;
 }
 
+type HapticStyle = 'tap' | 'success' | 'error' | 'streak';
+const HAPTIC_PATTERNS: Record<HapticStyle, number | number[]> = {
+    tap: 10,
+    success: 50,
+    error: [40, 30, 40],
+    streak: [30, 20, 30, 20, 30],
+};
+
+function triggerHaptic(style: HapticStyle) {
+    try { navigator.vibrate?.(HAPTIC_PATTERNS[style]); } catch { /* unsupported */ }
+}
+
 export function useGameJuice(): GameJuice {
     const [confettiTrigger, setConfettiTrigger] = useState(false);
     const [confettiIntensity, setConfettiIntensity] = useState<'normal' | 'epic'>('normal');
@@ -54,6 +66,7 @@ export function useGameJuice(): GameJuice {
         playSuccessSound();
         triggerConfetti('normal');
         flash('correct');
+        triggerHaptic('success');
     }, [triggerConfetti, flash]);
 
     const onWrong = useCallback(() => {
@@ -61,18 +74,21 @@ export function useGameJuice(): GameJuice {
         flash('wrong');
         setShake(true);
         setTimeout(() => setShake(false), 300);
+        triggerHaptic('error');
     }, [flash]);
 
     const onStreak = useCallback((count: number) => {
         playStreakSound(count);
         if (count % 5 === 0) triggerConfetti('epic');
         else if (count % 3 === 0) triggerConfetti('normal');
+        triggerHaptic('streak');
     }, [triggerConfetti]);
 
     const onVictory = useCallback(() => {
         playVictorySound();
         triggerConfetti('epic');
         flash('correct');
+        triggerHaptic('streak');
     }, [triggerConfetti, flash]);
 
     const showXpFloat = useCallback((text: string) => {

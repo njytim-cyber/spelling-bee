@@ -166,6 +166,31 @@ export function playVictorySound() {
     }
 }
 
+/** Play countdown beep for 3-2-1-GO. step: 0=3, 1=2, 2=1, 3=GO */
+export function playCountdownBeep(step: number) {
+    if (!soundEnabled) return;
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const freq = step === 3 ? 660 : [330, 385, 440][step] ?? 440;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = freq;
+        osc.type = step === 3 ? 'triangle' : 'sine';
+        const vol = step === 3 ? 0.25 : 0.15;
+        const dur = step === 3 ? 0.35 : 0.15;
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(vol, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + dur);
+        osc.start(now);
+        osc.stop(now + dur + 0.05);
+    } catch (e) {
+        console.warn('Sound playback failed:', e);
+    }
+}
+
 /** Play streak milestone sound - sparkly rising tones (enhanced for excitement) */
 export function playStreakSound(count: number) {
     if (!soundEnabled) return;
