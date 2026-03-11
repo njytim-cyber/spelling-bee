@@ -4,7 +4,7 @@
  * Full-viewport slide-up panel for immersive browsing experiences.
  * Used by Study Tools (and any future feature that needs more space than ModalShell).
  */
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft } from './ChevronLeft';
 
@@ -15,8 +15,18 @@ interface Props {
 }
 
 export function FullScreenPanel({ title, onClose, children }: Props) {
+    // Escape key closes panel (matches ModalShell behavior)
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [onClose]);
+
     return (
         <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={title}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}

@@ -297,11 +297,11 @@ function FriendRow({ friend, today, onRemove, onChallenge }: {
             {/* Actions */}
             <div className="flex gap-1.5 shrink-0">
                 {onChallenge && (
-                    <Button size="sm" variant="gold" onClick={onChallenge}>
+                    <Button size="sm" variant="gold" onClick={onChallenge} aria-label={`Challenge ${friend.friendName}`}>
                         ⚔️
                     </Button>
                 )}
-                <Button size="sm" variant="ghost" onClick={onRemove}>
+                <Button size="sm" variant="ghost" onClick={onRemove} aria-label={`Remove ${friend.friendName}`}>
                     ✕
                 </Button>
             </div>

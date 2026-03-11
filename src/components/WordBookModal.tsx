@@ -118,6 +118,7 @@ const WordRow = memo(function WordRow({
                                         <span className="text-xs ui text-[rgb(var(--color-fg))]/40">/{detail.pronunciation}/</span>
                                         <button
                                             onClick={(e) => { e.stopPropagation(); speak(detail.word); }}
+                                            aria-label={`Pronounce ${detail.word}`}
                                             className="text-sm hover:opacity-70 transition-opacity"
                                         >
                                             🔊

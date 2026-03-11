@@ -31,6 +31,8 @@ export function Toast({ visible, icon, title, subtitle, toastKey, stampEffect, c
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 40 }}
                     transition={{ duration: 0.2 }}
+                    role="status"
+                    aria-live="polite"
                     className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border rounded-2xl px-5 py-3 flex items-center gap-3 ${color ? '' : 'border-[var(--color-gold)]/30'}`}
                     style={borderStyle}
                 >

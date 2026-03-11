@@ -1,18 +1,21 @@
 {
   "name": "Spelling Bee",
   "short_name": "Spell Bee",
-  "description": "Swipe your way to spelling mastery. Fast, fun, addictive. Challenge your friends!",
+  "description": "Master spelling with 50,000+ words. Fast, fun, addictive. Challenge your friends!",
   "start_url": "/",
+  "scope": "/",
+  "id": "/",
   "display": "standalone",
   "orientation": "portrait",
+  "lang": "en",
+  "categories": ["education", "games"],
   "background_color": "#1a1a24",
   "theme_color": "#1a1a24",
   "icons": [
     {
       "src": "/icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/svg+xml"
     },
     {
       "src": "/icon-192.png",
@@ -23,6 +26,12 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
