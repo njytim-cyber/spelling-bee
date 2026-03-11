@@ -127,8 +127,10 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
         if (!currentItem) return;
         const word = typeof currentItem.item.meta?.['word'] === 'string'
             ? (currentItem.item.meta['word'] as string) : null;
+        const ipa = typeof currentItem.item.meta?.['pronunciation'] === 'string'
+            ? (currentItem.item.meta['pronunciation'] as string) : undefined;
         if (word && ttsSupported) {
-            const t = setTimeout(() => speak(word), 150);
+            const t = setTimeout(() => speak(word, ipa), 150);
             return () => clearTimeout(t);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -293,7 +295,9 @@ export const OnboardingModal = memo(function OnboardingModal({ onComplete, curre
                                         onClick={() => {
                                             const word = typeof currentDiagnostic.meta?.['word'] === 'string'
                                                 ? (currentDiagnostic.meta['word'] as string) : null;
-                                            if (word) speak(word);
+                                            const pron = typeof currentDiagnostic.meta?.['pronunciation'] === 'string'
+                                                ? (currentDiagnostic.meta['pronunciation'] as string) : undefined;
+                                            if (word) speak(word, pron);
                                         }}
                                         className="mb-2 w-10 h-10 mx-auto flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity"
                                         aria-label="Hear pronunciation"

@@ -144,7 +144,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
     useEffect(() => () => clearTimeout(showTimerRef.current), []);
 
     const handleRepeat = useCallback(() => {
-        if (isSupported) speak(word.word);
+        if (isSupported) speak(word.word, word.pronunciation);
     }, [word, speak, isSupported]);
 
     const handleSubmit = useCallback(() => {
@@ -178,7 +178,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
             });
 
             if (isSupported) {
-                setTimeout(() => speak(word.word), 200);
+                setTimeout(() => speak(word.word, word.pronunciation), 200);
             }
         } else {
             playBuzzer();
@@ -204,7 +204,7 @@ export const GuidedSpellingPage = memo(function GuidedSpellingPage({ onExit, onA
         if (correct) {
             playDing();
             setPhase('retype-correct');
-            if (isSupported) speak(word.word);
+            if (isSupported) speak(word.word, word.pronunciation);
         } else {
             playBuzzer();
             setPhase('showing');

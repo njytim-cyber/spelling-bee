@@ -136,9 +136,23 @@ function evictOldest(): void {
 }
 
 /**
+ * Build SSML with IPA phoneme hint for a single word.
+ * Falls back to plain text if no IPA is provided.
+ */
+function buildSsml(text: string, ipa?: string): string | undefined {
+    if (!ipa) return undefined;
+    // Wrap in <speak><phoneme> so Cloud TTS uses the IPA pronunciation
+    const escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return `<speak><phoneme alphabet="ipa" ph="${ipa}">${escaped}</phoneme></speak>`;
+}
+
+/**
  * Synthesize speech via the Firebase Cloud Function.
  * Returns a blob URL for immediate playback.
  * Caches results in memory (LRU, max 50 entries).
+ *
+ * When `ipa` is provided, sends SSML with a <phoneme> hint so Cloud TTS
+ * pronounces uncommon words correctly (e.g. "bodyism" → /ˈbɒdɪɪzəm/).
  *
  * Throws if the network is too slow (2G/save-data) — callers should
  * fall back to browser TTS.
@@ -147,12 +161,16 @@ export async function synthesizeCloud(
     text: string,
     voiceName: string,
     rate: number = 1.0,
+    ipa?: string,
 ): Promise<string> {
     if (shouldSkipCloudTts()) {
         throw new Error('Cloud TTS skipped: slow/metered connection');
     }
 
-    const cacheKey = `${text.toLowerCase()}|${voiceName}|${rate}`;
+    const ssml = buildSsml(text, ipa);
+    const cacheKey = ssml
+        ? `${ssml}|${voiceName}|${rate}`
+        : `${text.toLowerCase()}|${voiceName}|${rate}`;
     const cached = audioCache.get(cacheKey);
     if (cached) return cached;
 
@@ -166,11 +184,16 @@ export async function synthesizeCloud(
             const { app } = await import('../utils/firebase');
             const functions = getFunctions(app, 'us-central1');
             const synthesize = httpsCallable<
-                { text: string; voiceName: string; speakingRate: number },
+                { text: string; voiceName: string; speakingRate: number; ssml?: string },
                 { audioUrl: string; cached: boolean }
             >(functions, 'synthesizeSpeech');
 
-            const result = await synthesize({ text, voiceName, speakingRate: rate });
+            const payload: { text: string; voiceName: string; speakingRate: number; ssml?: string } = {
+                text, voiceName, speakingRate: rate,
+            };
+            if (ssml) payload.ssml = ssml;
+
+            const result = await synthesize(payload);
             const audioUrl = result.data.audioUrl;
 
             // Pre-fetch and cache as blob URL for instant subsequent playback

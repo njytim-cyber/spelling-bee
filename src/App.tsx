@@ -46,6 +46,13 @@ function lazyRetry<T extends Record<string, any>>(factory: () => Promise<T>): Pr
 
 const LeaguePage = lazy(() => lazyRetry(() => import('./components/LeaguePage')).then(m => ({ default: m.LeaguePage })));
 const MePage = lazy(() => lazyRetry(() => import('./components/MePage')).then(m => ({ default: m.MePage })));
+const AnagramsGame = lazy(() => lazyRetry(() => import('./components/wordgames/AnagramsGame')).then(m => ({ default: m.AnagramsGame })));
+const RootConstructorGame = lazy(() => lazyRetry(() => import('./components/wordgames/RootConstructorGame')).then(m => ({ default: m.RootConstructorGame })));
+const WordSearchGame = lazy(() => lazyRetry(() => import('./components/wordgames/WordSearchGame')).then(m => ({ default: m.WordSearchGame })));
+const TypingDefenderGame = lazy(() => lazyRetry(() => import('./components/wordgames/TypingDefenderGame')).then(m => ({ default: m.TypingDefenderGame })));
+const CrosswordGame = lazy(() => lazyRetry(() => import('./components/wordgames/CrosswordGame')).then(m => ({ default: m.CrosswordGame })));
+const UnscrambleGame = lazy(() => lazyRetry(() => import('./components/wordgames/UnscrambleGame')).then(m => ({ default: m.UnscrambleGame })));
+import type { WordGameId } from './components/WordGamesSection';
 
 import { useGameLoop } from './hooks/useGameLoop';
 import { loadUnlocked, saveUnlocked, checkAchievements, restoreUnlockedFromCloud } from './utils/achievements';
@@ -411,6 +418,9 @@ function AppInner() {
 
   // ── Certificate preview modal ──
   const [certificateData, setCertificateData] = useState<AnyCertificateData | null>(null);
+
+  // ── Word Games ──
+  const [activeWordGame, setActiveWordGame] = useState<WordGameId | null>(null);
 
   // ── Friends modal ──
   const [showFriendsModal, setShowFriendsModal] = useState(false);
@@ -1395,7 +1405,7 @@ function AppInner() {
           streak={streak}
           activeTrailId={activeTrailId}
           baseColor={CHALK_THEMES.find(t => t.id === activeTheme)?.color}
-          active={activeTab === 'game'}
+          active
         />
 
         {/* ── Top-right controls (theme + settings) — hidden during immersive sub-modes ── */}
@@ -2047,7 +2057,7 @@ function AppInner() {
 
         {activeTab === 'league' && (
           <motion.div className="flex-1 flex flex-col min-h-0" onPanEnd={handleTabSwipe}>
-            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { preImmersiveTab.current = 'league'; setQuestionType('bee'); setActiveTab('game'); }} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} /></Suspense>
+            <Suspense fallback={<LoadingFallback />}><LeaguePage userXP={stats.totalXP} userWeeklyXP={stats.weeklyXP} userStreak={stats.bestStreak} userAccuracy={accuracy} uid={uid} displayName={user?.displayName ?? 'You'} activeThemeId={activeTheme} activeCostume={activeCostume} onOpenBee={() => { preImmersiveTab.current = 'league'; setQuestionType('bee'); setActiveTab('game'); }} onWeeklyTournament={() => { trackEvent('weekly_tournament_played'); setChallengeId('weekly-tournament'); setQuestionType('challenge'); setSessionSize(25); setSessionAnswered(0); setActiveTab('game'); }} onCertificate={(weekLabel, xpEarned) => setCertificateData({ type: 'weekly-champion', playerName: user?.displayName ?? 'Weekly Champion', date: new Date().toLocaleDateString(dateLocale(), { year: 'numeric', month: 'long', day: 'numeric' }), weekLabel, xpEarned })} onOpenFriends={() => setShowFriendsModal(true)} friendPendingCount={friendsState.pendingCount} onWordGame={setActiveWordGame} /></Suspense>
           </motion.div>
         )}
 
@@ -2069,10 +2079,6 @@ function AppInner() {
                 accuracy: acc,
               })}
               customLists={customLists.lists}
-              friendCode={friendsState.friendCode}
-              friendCount={friendsState.friends.filter(f => f.status === 'active').length}
-              bestBuddyStreak={Math.max(0, ...friendsState.friends.filter(f => f.status === 'active').map(f => f.buddyStreak))}
-              onOpenFriends={() => setShowFriendsModal(true)}
             /></Suspense>
           </motion.div>
         )}
@@ -2369,6 +2375,26 @@ function AppInner() {
           </Suspense>
         )}
       </AnimatePresence>
+
+      {/* ── Word Games overlay ── */}
+      {activeWordGame && (() => {
+        const wordGameLevel = parseInt(level.replace('level-', ''), 10) || 1;
+        const handleWordGameExit = (game: string) => (xp: number) => {
+          if (xp > 0) recordSession(xp, 0, 0, 0, 'word-game');
+          trackEvent('word_game_complete', { game, xp });
+          setActiveWordGame(null);
+        };
+        return (
+          <Suspense fallback={null}>
+            {activeWordGame === 'anagrams' && <AnagramsGame level={wordGameLevel} onExit={handleWordGameExit('anagrams')} />}
+            {activeWordGame === 'root-constructor' && <RootConstructorGame level={wordGameLevel} onExit={handleWordGameExit('root-constructor')} />}
+            {activeWordGame === 'word-search' && <WordSearchGame level={wordGameLevel} onExit={handleWordGameExit('word-search')} />}
+            {activeWordGame === 'typing-defender' && <TypingDefenderGame level={wordGameLevel} onExit={handleWordGameExit('typing-defender')} />}
+            {activeWordGame === 'crossword' && <CrosswordGame level={wordGameLevel} onExit={handleWordGameExit('crossword')} />}
+            {activeWordGame === 'unscramble' && <UnscrambleGame level={wordGameLevel} onExit={handleWordGameExit('unscramble')} />}
+          </Suspense>
+        );
+      })()}
 
       {/* ── Onboarding (first launch) ── */}
       <AnimatePresence>

@@ -61,8 +61,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 9. ToS / Privacy back button should return to settings
-**Status:** DEFERRED
-**Note:** Currently opens as a new tab (`target="_blank"`). Converting to in-app panels would require fetching and rendering HTML content. Low priority — the back button in the browser works fine.
+**Status:** FIXED
+**File:** `src/components/SettingsModal.tsx`
+**Fix:** Replaced `<a target="_blank">` links with in-app `FullScreenPanel` overlays. Privacy Policy and Terms of Service now render as React components (`LegalPrivacy`, `LegalTerms`) inside slide-up panels with a back button that returns to Settings. No more browser tab switching.
 **Related:** None
 
 ### 10. PDPA compliance
@@ -101,8 +102,8 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #17 (users don't know what to do)
 
 ### 16. Users don't know what to do (everywhere)
-**Status:** DEFERRED
-**Note:** Onboarding already places users via diagnostic test. Empty states exist in most tabs. Typing nudge tooltip added (issue #1 session). Further first-use guidance is a larger UX project.
+**Status:** WONTFIX — Extensive guidance already exists
+**Note:** Comprehensive first-use guidance is in place: (1) diagnostic placement test on first launch, (2) Path tab empty state with "Start Practicing" CTA, (3) typing nudge tooltip after 3 MCQ answers, (4) auto-escalation to typing after 5 correct with "Switch anytime" banner, (5) level-up nudge after 3 fast correct answers, (6) accuracy gate modal for random-tapping, (7) review system explainer. Further tutorial/walkthrough features would be a larger UX project.
 **Related:** #15 (due now), #17 (strange icon)
 
 ### 17. Strange icon appearing on leaderboard
@@ -164,8 +165,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #25, #27
 
 ### 27. Strange word and pronunciation: BODYISM (??)
-**Status:** DEFERRED
-**Note:** Investigated. "Bodyism" exists in tier1-pipeline-b.ts — a valid Wiktionary neologism. The letter-by-letter pronunciation occurs when Cloud TTS doesn't recognise the word and the `speakLetters()` fallback fires. This is a TTS limitation, not a word bank issue. Could add custom phoneme hints for uncommon words in a future pipeline enhancement.
+**Status:** FIXED
+**File:** `src/services/cloudTts.ts`, `src/hooks/usePronunciation.ts`, `functions/src/index.ts`
+**Fix:** Root cause: `speak()` sent raw word text to Cloud TTS with no pronunciation hints. Uncommon words like "bodyism" were mispronounced. Fix: (1) Cloud Function now accepts optional `ssml` field alongside `text`, using `input: { ssml }` for SSML-based synthesis with `<phoneme alphabet="ipa">` tags. (2) Client `synthesizeCloud()` builds SSML when IPA is provided. (3) `speak()` now accepts an optional `ipa` parameter. (4) ProblemView, GuidedSpellingPage, and OnboardingModal all pass `meta.pronunciation` (IPA from Wiktionary) when speaking words. Every word in the 50K bank has IPA data — all now benefit from phoneme-accurate pronunciation.
 **Related:** #26
 
 ### 28. Compete: "+3 ranks, now #5" — not enough celebration, can't dismiss
@@ -193,8 +195,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 32. Champion Pass activation — notification not celebratory enough
-**Status:** DEFERRED
-**Note:** Would require a new celebration variant in UnlockCelebration.tsx with confetti + feature list. Scoped for next release.
+**Status:** FIXED
+**File:** `src/components/UpgradeModal.tsx`
+**Fix:** Replaced plain ModalShell trial-activated view with a full-screen celebration overlay. Features: (1) epic confetti (50 particles), (2) trophy with stamp effect animation (scale 3→1, rotate -15→0), (3) gold "Champion Pass Activated!" heading with chalk font, (4) staggered feature list (5 items revealing sequentially with checkmarks), (5) referral code section with copy-to-clipboard, (6) Share + "Let's Go!" action buttons. Full animation timeline: trophy at 0s, heading at 0.3s, features at 0.5-0.9s (0.1s stagger), referral at 1.0s, buttons at 1.2s. Click-outside-to-dismiss.
 **Related:** #34, #36, #41
 
 ### 33. Champion Pass trial banner on header isn't nice
@@ -234,9 +237,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** None
 
 ### 39. Download certificates feature — remove?
-**Status:** DEFERRED
+**Status:** WONTFIX — Already clean
 **File:** `src/components/CertificatePreview.tsx`
-**Note:** Certificate feature is functional but low-priority. Rather than removing, moved it deeper — only accessible from the Me tab achievements section (not prominently featured). Will evaluate based on usage analytics.
+**Note:** Verified: certificate feature is properly nested in Me tab achievements section, gated by progress (only visible after mastering words), lazy-loaded. Not prominently featured, not confusing. No code changes needed.
 **Related:** None
 
 ### 40. Champion Analytics still locked after Champion Pass activation
@@ -252,8 +255,9 @@ Tracking document for all issues found during beta testing. Each issue has a sta
 **Related:** #42
 
 ### 42. Friends is in both Me and Compete — confusing
-**Status:** DEFERRED
-**Note:** Friends currently accessible from both MePage and LeaguePage. Consolidating to one location requires routing/navigation changes. Low priority — duplicate entry points aren't harmful.
+**Status:** FIXED
+**File:** `src/components/MePage.tsx`, `src/App.tsx`
+**Fix:** Removed Friends section from MePage entirely (card with friend code, friend count, buddy streak). Friends is now only accessible from LeaguePage (Compete tab) where it contextually belongs alongside the leaderboard. Removed `friendCode`, `friendCount`, `bestBuddyStreak`, `onOpenFriends` props from MePage interface and App.tsx usage.
 **Related:** #41
 
 ### 43. Tapping user should show badges — weird showing on leaderboard

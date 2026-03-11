@@ -40,19 +40,19 @@ const LABEL = 'text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap';
 
 /** Circular countdown ring drawn as an SVG arc centred on the stopwatch face. */
 function TimerRing({ progress }: { progress: number }) {
-    const r = 19;
+    const r = 16;
     const circumference = 2 * Math.PI * r;
     const offset = circumference * (1 - progress);
 
-    // The stopwatch icon (24×24) is flexbox-centred inside the button
-    // (which is clamped via .action-buttons-col CSS, ~44px default).
-    // The clock-face circle sits at (12, 13) in icon coords → centre the ring at (22, 22)
-    // to stay visually centred regardless of button size.
+    // The stopwatch icon (24×24) is flexbox-centred inside the 44×44 button.
+    // Icon centre = (12, 12) maps to (22, 22) in ring coords.
+    // The clock-face circle sits at cy=13 in icon coords → cy = 22 + (13-12)*(44/24) ≈ 23.8.
+    // Use cx=22, cy=24 and r=16 so the ring hugs the clock face (r=7 in 24px ≈ 12.8 in 44px).
     return (
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 44">
             {/* Track */}
             <circle
-                cx="22" cy="22" r={r}
+                cx="22" cy="24" r={r}
                 fill="none"
                 stroke="rgb(var(--color-fg) / 0.12)"
                 strokeWidth="2.5"
@@ -60,7 +60,7 @@ function TimerRing({ progress }: { progress: number }) {
             {/* Progress arc */}
             {progress > 0 && (
                 <circle
-                    cx="22" cy="22" r={r}
+                    cx="22" cy="24" r={r}
                     fill="none"
                     stroke={progress >= 0.75 ? 'var(--color-streak-fire)' : 'var(--color-gold)'}
                     strokeWidth="2.5"

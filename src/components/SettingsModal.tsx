@@ -7,6 +7,7 @@ import { memo, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { STORAGE_KEYS } from '../config';
 import { ModalShell } from './ModalShell';
+import { FullScreenPanel } from './FullScreenPanel';
 import { useReducedMotion, type MotionPreference } from '../hooks/useReducedMotion';
 import type { Dialect } from '../domains/spelling/words/types';
 import { CLOUD_VOICES, synthesizeCloud, getCloudVoiceGender } from '../services/cloudTts';
@@ -120,6 +121,7 @@ export const SettingsModal = memo(function SettingsModal({
     const [ttsRate, setTtsRate] = useState(getStoredRate);
     const [ttsCloudVoice, setTtsCloudVoice] = useState(getStoredCloudVoice);
     const [previewLoading, setPreviewLoading] = useState(false);
+    const [legalPage, setLegalPage] = useState<'privacy' | 'terms' | null>(null);
 
     // Wrap onDialectChange to also re-sync displayed voice
     const handleDialectChange = useCallback((d: Dialect) => {
@@ -196,6 +198,7 @@ export const SettingsModal = memo(function SettingsModal({
     });
 
     return (
+        <>
         <ModalShell onClose={onClose}>
                 <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg ui font-bold text-[var(--color-chalk)]">Settings</h3>
@@ -431,14 +434,29 @@ export const SettingsModal = memo(function SettingsModal({
                 {/* Legal */}
                 <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10">
                     <div className="flex justify-center gap-4 mb-2">
-                        <a href="/privacy.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</a>
-                        <a href="/terms.html" target="_blank" rel="noopener" className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</a>
+                        <button onClick={() => setLegalPage('privacy')} className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</button>
+                        <button onClick={() => setLegalPage('terms')} className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</button>
                     </div>
                     <div className="text-center text-[9px] ui text-[rgb(var(--color-fg))]/15">
                         v1.1.0
                     </div>
                 </section>
         </ModalShell>
+
+        {/* In-app legal panels */}
+        <AnimatePresence>
+            {legalPage === 'privacy' && (
+                <FullScreenPanel title="Privacy Policy" onClose={() => setLegalPage(null)}>
+                    <LegalPrivacy />
+                </FullScreenPanel>
+            )}
+            {legalPage === 'terms' && (
+                <FullScreenPanel title="Terms of Service" onClose={() => setLegalPage(null)}>
+                    <LegalTerms />
+                </FullScreenPanel>
+            )}
+        </AnimatePresence>
+        </>
     );
 });
 
@@ -629,5 +647,90 @@ function DangerZone() {
                 )}
             </AnimatePresence>
         </section>
+    );
+}
+
+/* ─── Legal Content (rendered in-app via FullScreenPanel) ─── */
+
+const legalHeading = 'text-base ui font-semibold text-[var(--color-gold)] mt-6 mb-2';
+const legalP = 'text-sm ui text-[rgb(var(--color-fg))]/70 leading-relaxed mb-3';
+const legalLi = 'text-sm ui text-[rgb(var(--color-fg))]/70 leading-relaxed mb-1.5';
+const legalLink = 'text-[var(--color-gold)] hover:underline';
+
+function LegalPrivacy() {
+    return (
+        <div className="pb-8">
+            <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-4">Effective: March 7, 2026</p>
+            <p className={legalP}>Spelling Bee (&quot;the App&quot;) is a free educational spelling game. We take your privacy seriously and collect only the minimum data needed to provide the service.</p>
+            <h4 className={legalHeading}>1. Data We Collect</h4>
+            <p className={legalP}><strong>Account Information:</strong> When you sign in (optionally), we store your Firebase User ID, display name, and email address. Anonymous accounts are created automatically and do not require personal information.</p>
+            <p className={legalP}><strong>Game Data:</strong> Scores, streaks, accuracy, achievements, word history (spaced repetition progress), session results, and preferences (theme, voice settings, dialect).</p>
+            <p className={legalP}><strong>Usage Analytics:</strong> We use Firebase Analytics (Google Analytics 4) to understand how the App is used. This includes anonymous usage events (screens visited, sessions completed, features used), retention metrics, and device/browser type. Analytics data is linked to your Firebase User ID to measure engagement over time but is not shared with advertisers or third parties. You can opt out by using the app offline without signing in.</p>
+            <p className={legalP}><strong>Performance Data:</strong> Core Web Vitals (page load speed, interactivity metrics) and error reports (error messages, browser type) to improve app quality. These do not include personal information.</p>
+            <h4 className={legalHeading}>2. How We Use Your Data</h4>
+            <ul className="list-disc pl-5 mb-3">
+                <li className={legalLi}>To save and sync your progress across devices</li>
+                <li className={legalLi}>To display leaderboards (display name and score only)</li>
+                <li className={legalLi}>To improve app performance and fix bugs</li>
+                <li className={legalLi}>To provide text-to-speech pronunciation (text is sent to Google Cloud TTS)</li>
+            </ul>
+            <h4 className={legalHeading}>3. Data Storage</h4>
+            <p className={legalP}>Data is stored locally on your device (localStorage/IndexedDB) and synced to Google Firebase (Firestore) when online. Firebase is hosted on Google Cloud infrastructure with SOC2 certification. Data is encrypted in transit (HTTPS/TLS) and at rest.</p>
+            <h4 className={legalHeading}>4. Third-Party Services</h4>
+            <ul className="list-disc pl-5 mb-3">
+                <li className={legalLi}><strong>Google Firebase:</strong> Authentication, database, hosting, and analytics</li>
+                <li className={legalLi}><strong>Google Cloud Text-to-Speech:</strong> Word pronunciation (text only, no personal data)</li>
+                <li className={legalLi}><strong>Google Fonts:</strong> Font delivery (your IP address is visible to Google)</li>
+            </ul>
+            <p className={legalP}>We do not use advertising networks or sell data to third parties. Analytics data is used solely to improve the App.</p>
+            <h4 className={legalHeading}>5. Children&apos;s Privacy</h4>
+            <p className={legalP}>Spelling Bee is designed for learners of all ages. We do not knowingly collect personal information from children under 13 beyond what is described above. The App does not require personal information to use — anonymous accounts work fully. Parents may contact us to request deletion of their child&apos;s data.</p>
+            <h4 className={legalHeading}>6. Your Rights</h4>
+            <p className={legalP}>You have the right to:</p>
+            <ul className="list-disc pl-5 mb-3">
+                <li className={legalLi}><strong>Access</strong> your data (available in Settings)</li>
+                <li className={legalLi}><strong>Delete</strong> your account and all associated data (available in Settings)</li>
+                <li className={legalLi}><strong>Opt out</strong> of cloud sync by using the app without signing in</li>
+            </ul>
+            <h4 className={legalHeading}>7. Data Retention</h4>
+            <p className={legalP}>Game data is retained as long as your account exists. When you delete your account, all associated data is permanently removed within 30 days. Error reports and performance metrics are automatically purged after 90 days.</p>
+            <h4 className={legalHeading}>8. International Users (PDPA, GDPR)</h4>
+            <p className={legalP}>If you are located in a jurisdiction with data protection laws (such as the PDPA in Thailand, GDPR in the EU, or similar regulations), you have the right to access, correct, delete, and port your personal data. You may also withdraw consent for data processing at any time by deleting your account in Settings. We process data on the legal basis of legitimate interest (providing the service) and consent (optional sign-in and cloud sync). Data is stored on Google Cloud infrastructure with servers in the United States. By using the App, you consent to the transfer of data to the US, where it is protected under Google&apos;s data processing terms.</p>
+            <h4 className={legalHeading}>9. Changes to This Policy</h4>
+            <p className={legalP}>We may update this policy from time to time. Changes will be posted on this page with an updated effective date.</p>
+            <h4 className={legalHeading}>10. Contact</h4>
+            <p className={legalP}>For privacy inquiries or data deletion requests, contact us at: <a href="mailto:privacy@spellingbee.app" className={legalLink}>privacy@spellingbee.app</a></p>
+        </div>
+    );
+}
+
+function LegalTerms() {
+    return (
+        <div className="pb-8">
+            <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-4">Effective: March 4, 2026</p>
+            <p className={legalP}>By using Spelling Bee (&quot;the App&quot;), you agree to the following terms.</p>
+            <h4 className={legalHeading}>1. Description of Service</h4>
+            <p className={legalP}>Spelling Bee is a free educational spelling game available as a Progressive Web App. The service is provided &quot;as is&quot; without warranties of any kind.</p>
+            <h4 className={legalHeading}>2. User Accounts</h4>
+            <p className={legalP}>You may use the App anonymously or sign in with Google or email. You are responsible for maintaining the security of your account. Display names must not contain offensive, misleading, or inappropriate content.</p>
+            <h4 className={legalHeading}>3. Acceptable Use</h4>
+            <p className={legalP}>You agree not to:</p>
+            <ul className="list-disc pl-5 mb-3">
+                <li className={legalLi}>Manipulate scores, leaderboards, or game data through automated means</li>
+                <li className={legalLi}>Attempt to access other users&apos; data or accounts</li>
+                <li className={legalLi}>Use the App to harass other users (e.g., abusive ping messages)</li>
+                <li className={legalLi}>Reverse-engineer, decompile, or exploit the App&apos;s infrastructure</li>
+            </ul>
+            <h4 className={legalHeading}>4. Intellectual Property</h4>
+            <p className={legalP}>Word definitions and example sentences are sourced from Wiktionary (CC BY-SA) and WordNet 3.1 (Princeton License). The App&apos;s code, design, and branding are proprietary. You may not copy, modify, or distribute the App without permission.</p>
+            <h4 className={legalHeading}>5. Limitation of Liability</h4>
+            <p className={legalP}>The App is provided for educational purposes. We are not liable for any loss of data, progress, or scores due to technical issues. We make no guarantee of continuous availability.</p>
+            <h4 className={legalHeading}>6. Account Termination</h4>
+            <p className={legalP}>We may suspend or terminate accounts that violate these terms. You may delete your account at any time through Settings, which permanently removes all associated data.</p>
+            <h4 className={legalHeading}>7. Changes to Terms</h4>
+            <p className={legalP}>We may update these terms from time to time. Continued use of the App after changes constitutes acceptance of the new terms.</p>
+            <h4 className={legalHeading}>8. Contact</h4>
+            <p className={legalP}>Questions about these terms? Contact us at: <a href="mailto:support@spellingbee.app" className={legalLink}>support@spellingbee.app</a></p>
+        </div>
     );
 }

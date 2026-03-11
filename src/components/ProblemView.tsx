@@ -127,6 +127,17 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
     const [typed, setTyped] = useState('');
     const [lastTyped, setLastTyped] = useState('');
 
+    // Example sentence with the word blanked out (stable per question)
+    const redactedSentence = useMemo(() => {
+        const sentence = p.meta?.['exampleSentence'];
+        const word = p.meta?.['word'];
+        if (typeof sentence !== 'string' || typeof word !== 'string') return null;
+        return sentence.replace(
+            new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'),
+            '___',
+        );
+    }, [p.meta]);
+
     // Inline error tip for wrong-answer panel
     const errorTip = useMemo(() => {
         if (!wrongAnswer) return null;
@@ -147,15 +158,17 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
 
     const handleSpeak = useCallback(() => {
         const word = p.meta?.['word'];
-        if (typeof word === 'string') speak(word);
+        const ipa = p.meta?.['pronunciation'];
+        if (typeof word === 'string') speak(word, typeof ipa === 'string' ? ipa : undefined);
     }, [p.meta, speak]);
 
     // Auto-speak word when problem appears (critical for spelling app!)
     useEffect(() => {
         const word = p.meta?.['word'];
+        const ipa = p.meta?.['pronunciation'];
         if (typeof word === 'string' && ttsSupported) {
             // Near-instant — just enough for React to commit the DOM
-            const timer = setTimeout(() => speak(word), 50);
+            const timer = setTimeout(() => speak(word, typeof ipa === 'string' ? ipa : undefined), 50);
             return () => clearTimeout(timer);
         }
     }, [p.id, p.meta, speak, ttsSupported]);
@@ -280,10 +293,10 @@ export const ProblemView = memo(function ProblemView({ problem, frozen, highligh
                 {ttsFailed && !ttsGrace && (
                     <span className="text-[9px] ui text-[var(--color-wrong)]/50 mt-1 block">audio unavailable</span>
                 )}
-                {/* Example sentence — shown after answering (frozen state) */}
-                {frozen && typeof p.meta?.['exampleSentence'] === 'string' && (
-                    <div className="mt-2 text-xs ui text-[rgb(var(--color-fg))]/30 max-w-[var(--content-w)] mx-auto">
-                        &ldquo;{p.meta['exampleSentence']}&rdquo;
+                {/* Example sentence — word blanked out before answering, revealed after */}
+                {redactedSentence && (
+                    <div className="mt-2 text-[11px] ui italic text-[rgb(var(--color-fg))]/25 max-w-[var(--content-w)] mx-auto leading-relaxed">
+                        &ldquo;{frozen ? p.meta!['exampleSentence'] as string : redactedSentence}&rdquo;
                     </div>
                 )}
             </motion.div>

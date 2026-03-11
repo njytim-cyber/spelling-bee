@@ -5,9 +5,10 @@
  * and 7-day free trial button. Chalk-aesthetic design.
  */
 import { memo, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ModalShell } from './ModalShell';
 import { Button } from './Button';
+import { Confetti } from './Confetti';
 import { IconCheck, IconClose, IconGift, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { trackEvent } from '../utils/analytics';
@@ -87,40 +88,105 @@ export const UpgradeModal = memo(function UpgradeModal({ onClose }: Props) {
 
     if (trialActivated) {
         return (
-            <ModalShell onClose={onClose} ariaLabel="Champion Pass activated">
-                <div className="text-center">
+            <AnimatePresence>
+                <motion.div
+                    key="champion-celebration"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70"
+                    onClick={onClose}
+                >
+                    <Confetti trigger={true} intensity="epic" />
+
                     <motion.div
-                        className="text-6xl mb-4"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: [0, 1.3, 1] }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+                        className="flex flex-col items-center gap-4 px-8 max-w-sm"
+                        onClick={e => e.stopPropagation()}
                     >
-                        🏆
-                    </motion.div>
-                    <h3 className="text-xl ui font-bold text-[var(--color-gold)] mb-2">
-                        Champion Pass Activated!
-                    </h3>
-                    <p className="text-sm ui text-[rgb(var(--color-fg))]/50 mb-6">
-                        You have 7 days of full access. All 10 levels are now unlocked!
-                    </p>
-
-                    <div className="bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/8 rounded-xl p-4 mb-4">
-                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2">
-                            Share your code to earn more free time:
-                        </p>
-                        <button
-                            onClick={handleCopyCode}
-                            className="text-lg ui font-bold text-[var(--color-gold)] tracking-widest"
+                        {/* Trophy icon with stamp effect */}
+                        <motion.div
+                            className="text-8xl"
+                            initial={{ scale: 3, rotate: -15, opacity: 0 }}
+                            animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                            transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
                         >
-                            {copied ? '✅ Copied!' : referralCode}
-                        </button>
-                    </div>
+                            🏆
+                        </motion.div>
 
-                    <Button className="w-full" onClick={onClose}>
-                        Start Spelling!
-                    </Button>
-                </div>
-            </ModalShell>
+                        {/* Heading */}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.3, duration: 0.4 }}
+                            className="text-center"
+                        >
+                            <div className="text-2xl chalk text-[var(--color-gold)] font-bold">
+                                Champion Pass Activated!
+                            </div>
+                            <div className="text-sm ui text-[rgb(var(--color-fg))]/50 mt-1">
+                                7 days of full access
+                            </div>
+                        </motion.div>
+
+                        {/* Staggered feature list */}
+                        <motion.div
+                            initial={{ y: 15, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.4 }}
+                            className="w-full space-y-2"
+                        >
+                            {PREMIUM_FEATURES.map((feature, idx) => (
+                                <motion.div
+                                    key={feature}
+                                    initial={{ x: -15, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{ delay: 0.5 + idx * 0.1, duration: 0.3 }}
+                                    className="flex items-center gap-3 text-sm ui text-[rgb(var(--color-fg))]/60"
+                                >
+                                    <IconCheck className="w-3.5 h-3.5 text-[var(--color-gold)] shrink-0" />
+                                    <span>{feature}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+
+                        {/* Referral code */}
+                        <motion.div
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 1.0, duration: 0.3 }}
+                            className="w-full bg-[rgb(var(--color-fg))]/[0.05] border border-[rgb(var(--color-fg))]/10 rounded-xl p-4"
+                        >
+                            <p className="text-xs ui text-[rgb(var(--color-fg))]/40 mb-2 text-center">
+                                Share to earn 7 more days per friend:
+                            </p>
+                            <button
+                                onClick={handleCopyCode}
+                                className="w-full text-lg ui font-bold text-[var(--color-gold)] tracking-widest hover:opacity-70 transition-opacity text-center"
+                            >
+                                {copied ? '✅ Copied!' : referralCode}
+                            </button>
+                        </motion.div>
+
+                        {/* Action buttons */}
+                        <motion.div
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 1.2, duration: 0.3 }}
+                            className="w-full flex items-center gap-3"
+                        >
+                            <Button variant="ghost" className="flex-1" onClick={shareReferral}>
+                                <IconShare className="w-4 h-4 inline mr-1.5" /> Share
+                            </Button>
+                            <Button className="flex-1" onClick={onClose}>
+                                Let&apos;s Go!
+                            </Button>
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
+            </AnimatePresence>
         );
     }
 

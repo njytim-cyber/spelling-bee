@@ -10,10 +10,10 @@ import { STORAGE_KEYS } from '../config';
 import { synthesizeCloud, getCloudVoiceGender } from '../services/cloudTts';
 
 interface UsePronunciationReturn {
-    /** Speak the given text aloud */
-    speak: (text: string) => void;
+    /** Speak the given text aloud. Pass IPA for phoneme-accurate pronunciation. */
+    speak: (text: string, ipa?: string) => void;
     /** Announce a word with "Your word is ..." intro, like a real spelling bee pronouncer */
-    speakWord: (word: string) => void;
+    speakWord: (word: string, ipa?: string) => void;
     /** Announce a word with its number: "Word number N. Your word is ..." */
     speakWordNumber: (word: string, num: number) => void;
     /** Spell a word letter-by-letter: "word. W, O, R, D. word." */
@@ -158,8 +158,9 @@ export function usePronunciation(): UsePronunciationReturn {
         speechSynthesis.speak(utterance);
     }, [pickFallbackVoice]);
 
-    /** Speak — always tries Cloud TTS first, falls back to browser gracefully */
-    const speak = useCallback((text: string) => {
+    /** Speak — always tries Cloud TTS first, falls back to browser gracefully.
+     *  Pass IPA pronunciation for phoneme-accurate Cloud TTS (e.g. uncommon words). */
+    const speak = useCallback((text: string, ipa?: string) => {
         setUsedFallback(false);
         setTtsFailed(false);
         const cloudVoice = localStorage.getItem(STORAGE_KEYS.ttsCloudVoice);
@@ -169,7 +170,7 @@ export function usePronunciation(): UsePronunciationReturn {
         if (cloudVoice) {
             setIsSpeaking(true);
 
-            synthesizeCloud(text, cloudVoice, rate)
+            synthesizeCloud(text, cloudVoice, rate, ipa)
                 .then(url => {
                     if (!mountedRef.current) return; // Don't play if unmounted
 

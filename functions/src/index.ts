@@ -196,13 +196,17 @@ export const synthesizeSpeech = onCall(
         const uid = request.auth.uid;
 
         // ── Input validation ────────────────────────────────────────────
-        const { text, voiceName, speakingRate } = request.data as {
+        const { text, voiceName, speakingRate, ssml } = request.data as {
             text?: string;
             voiceName?: string;
             speakingRate?: number;
+            ssml?: string;
         };
 
-        if (!text || typeof text !== 'string' || text.length > MAX_TEXT_LENGTH) {
+        // Must have either text or ssml
+        const hasText = text && typeof text === 'string' && text.length <= MAX_TEXT_LENGTH;
+        const hasSsml = ssml && typeof ssml === 'string' && ssml.length <= MAX_TEXT_LENGTH * 2;
+        if (!hasText && !hasSsml) {
             throw new HttpsError('invalid-argument', `Text must be 1-${MAX_TEXT_LENGTH} characters.`);
         }
         if (!voiceName || !VOICE_PATTERN.test(voiceName)) {
@@ -232,8 +236,9 @@ export const synthesizeSpeech = onCall(
         }
 
         // ── Cache check ─────────────────────────────────────────────────
+        const cacheSource = hasSsml ? ssml : text!.toLowerCase();
         const cacheKey = createHash('md5')
-            .update(`${text.toLowerCase()}|${voiceName}|${rate}`)
+            .update(`${cacheSource}|${voiceName}|${rate}`)
             .digest('hex');
         const bucket = storage.bucket('spelling-bee-prod-tts');
         const filePath = `${CACHE_PREFIX}/${cacheKey}.mp3`;
@@ -255,8 +260,9 @@ export const synthesizeSpeech = onCall(
 
         // ── Synthesize ──────────────────────────────────────────────────
         const langCode = voiceName.slice(0, 5); // e.g. 'en-US'
+        const input = hasSsml ? { ssml } : { text: text! };
         const [response] = await ttsClient.synthesizeSpeech({
-            input: { text },
+            input,
             voice: { languageCode: langCode, name: voiceName },
             audioConfig: {
                 audioEncoding: 'MP3',
@@ -278,7 +284,7 @@ export const synthesizeSpeech = onCall(
             contentType: 'audio/mpeg',
             metadata: {
                 cacheControl: 'public, max-age=2592000', // 30 days
-                metadata: { text: text.toLowerCase(), voice: voiceName, rate: String(rate) },
+                metadata: { text: (text || '').toLowerCase(), voice: voiceName, rate: String(rate), ...(hasSsml ? { ssml: '1' } : {}) },
             },
         });
 

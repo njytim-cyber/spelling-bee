@@ -9,6 +9,8 @@ import { IconCrown, IconMedal, IconStar, IconShare } from './Icons';
 import { useUser } from '../contexts/UserContext';
 import { appendReferralFooter, shareOrCopy } from '../utils/shareHelper';
 import { getWeeklyLabel } from '../utils/weeklyTournament';
+import { WordGamesSection } from './WordGamesSection';
+import type { WordGameId } from './WordGamesSection';
 
 
 interface LeaderboardEntry {
@@ -56,10 +58,11 @@ interface Props {
     onCertificate?: (weekLabel: string, xpEarned: number) => void;
     onOpenFriends?: () => void;
     friendPendingCount?: number;
+    onWordGame?: (id: WordGameId) => void;
 }
 
 
-export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, onWeeklyTournament, onCertificate, onOpenFriends, friendPendingCount = 0 }: Props) {
+export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userStreak, userAccuracy, uid, displayName, activeThemeId, activeCostume, onOpenBee, onWeeklyTournament, onCertificate, onOpenFriends, friendPendingCount = 0, onWordGame }: Props) {
     const { referralCode } = useUser();
     const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
     const [loading, setLoading] = useState(true);
@@ -267,6 +270,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 )}
 
             </div>
+
+            {/* Word Games grid */}
+            {onWordGame && <WordGamesSection onSelectGame={onWordGame} />}
 
             {/* Leaderboard header + tab toggle */}
             <div className="w-full max-w-sm mb-2">

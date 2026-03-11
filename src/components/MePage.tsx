@@ -38,10 +38,6 @@ interface Props {
     onShop?: () => void;
     onCertificate?: (type: 'level-completion', level: number, wordsMastered: number, accuracy: number) => void;
     customLists?: CustomWordList[];
-    friendCode?: string;
-    friendCount?: number;
-    bestBuddyStreak?: number;
-    onOpenFriends?: () => void;
 }
 
 // Derive achievement sublists from the single spelling array
@@ -54,7 +50,7 @@ const achievementSections = [
     { label: '📚 word mastery', colorClass: 'text-[var(--color-gold)]', colsClass: 'grid-cols-5', items: MASTERY_ACHIEVEMENTS },
 ] as const;
 
-export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, records, onUpgrade, onShop, onCertificate, customLists = [], friendCode, friendCount = 0, bestBuddyStreak = 0, onOpenFriends }: Props) {
+export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWordsAttempted, records, onUpgrade, onShop, onCertificate, customLists = [] }: Props) {
     // Get user state from context
     const {
         stats,
@@ -554,34 +550,6 @@ export const MePage = memo(function MePage({ unlocked, masteredCount, uniqueWord
                         </div>
                     </div>
                 </>
-
-            {/* ═══════ FRIENDS ═══════ */}
-            {onOpenFriends && friendCode && (
-                <div className="w-full max-w-sm mb-4">
-                    <div className="text-sm ui text-[rgb(var(--color-fg))]/50 uppercase tracking-widest text-center mb-2">
-                        friends · {friendCount}
-                    </div>
-                    <button
-                        onClick={onOpenFriends}
-                        className="w-full flex items-center justify-between p-3 rounded-2xl bg-[rgb(var(--color-fg))]/[0.03] border border-[rgb(var(--color-fg))]/10 hover:border-[var(--color-gold)]/30 transition-colors"
-                    >
-                        <div className="flex items-center gap-3">
-                            <span className="text-lg">🤝</span>
-                            <div className="text-left">
-                                <div className="text-xs ui font-semibold text-[var(--color-chalk)]">
-                                    {friendCount > 0 ? `${friendCount} friend${friendCount !== 1 ? 's' : ''}` : 'Add friends'}
-                                </div>
-                                {bestBuddyStreak > 0 ? (
-                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">🔥 {bestBuddyStreak} day buddy streak</div>
-                                ) : (
-                                    <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Buddy streaks, challenges & duels</div>
-                                )}
-                            </div>
-                        </div>
-                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Manage →</span>
-                    </button>
-                </div>
-            )}
 
             {/* ═══════ ACHIEVEMENTS ═══════ */}
             {(
