@@ -204,6 +204,9 @@ export function FriendsModal({
                             {addStatus?.error && (
                                 <p className="text-xs text-red-500">{addStatus.error}</p>
                             )}
+                            {!addStatus && codeInput.length > 0 && codeInput.length < 8 && (
+                                <p className="text-[10px] text-[rgb(var(--color-fg))]/30">Format: SPELL-XXXX or BEE-XXXX</p>
+                            )}
                             {!isPremium && activeFriends.length >= friendCap && (
                                 <p className="text-xs text-amber-500">
                                     Friend limit reached ({friendCap}). Upgrade for more!
@@ -230,7 +233,7 @@ export function FriendsModal({
                                         await navigator.clipboard.writeText(referralCode);
                                     } catch { /* silent */ }
                                 }}
-                                className="flex-1 py-2 rounded-lg border border-[rgb(var(--color-fg))]/15 text-xs ui text-[rgb(var(--color-fg))]/60 hover:text-[var(--color-gold)] hover:border-[var(--color-gold)]/30 transition-colors font-mono tracking-wider"
+                                className="flex-1 py-2 rounded-lg border border-[var(--color-gold)]/20 bg-[var(--color-gold)]/5 text-xs ui text-[var(--color-gold)] hover:bg-[var(--color-gold)]/10 hover:border-[var(--color-gold)]/30 transition-colors font-mono tracking-wider"
                             >
                                 {referralCode}
                             </button>

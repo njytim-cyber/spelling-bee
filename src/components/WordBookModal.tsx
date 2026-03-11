@@ -15,12 +15,12 @@ import { extractLanguage, type LanguageOfOrigin } from '../utils/etymologyParser
 
 const MASTERY_LABELS = ['Practicing', 'New', 'Learning', 'Reviewing', 'Familiar', 'Mastered'];
 const MASTERY_COLORS = [
-    'text-[var(--color-gold)]/50',
-    'text-[var(--color-wrong)]',
-    'text-[var(--color-wrong)]/70',
-    'text-[var(--color-gold)]',
-    'text-[var(--color-gold)]/70',
-    'text-[var(--color-correct)]',
+    'text-[var(--color-gold)]/50',   // 0: Practicing
+    'text-[var(--color-wrong)]',      // 1: New
+    'text-[var(--color-wrong)]/70',   // 2: Learning
+    'text-[var(--color-gold)]',       // 3: Reviewing
+    'text-[var(--color-correct)]/60', // 4: Familiar (distinct from both Reviewing and Mastered)
+    'text-[var(--color-correct)]',    // 5: Mastered
 ];
 
 /** Classify a word record into a mastery bucket (matches Analytics logic).

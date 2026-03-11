@@ -254,7 +254,6 @@ export const SettingsModal = memo(function SettingsModal({
                 {onLevelChange && (() => {
                     const currentNum = parseInt(String(level).replace('level-', ''), 10) || 1;
                     const maxFree = 3;
-                    const maxLevel = isPremium ? 10 : maxFree;
                     return (
                         <section className="mb-5">
                             <h4 className="text-xs ui text-[rgb(var(--color-fg))]/40 uppercase mb-2">
@@ -264,20 +263,23 @@ export const SettingsModal = memo(function SettingsModal({
                                 <input
                                     type="range"
                                     min="1"
-                                    max="10"
+                                    max={isPremium ? 10 : maxFree}
                                     step="1"
                                     value={currentNum}
                                     onChange={e => {
                                         const n = parseInt(e.target.value, 10);
-                                        if (n > maxLevel) {
-                                            trackEvent('level_gated', { level: `level-${n}` });
-                                            onUpgrade?.();
-                                        } else {
-                                            onLevelChange(`level-${n}` as Level);
-                                        }
+                                        onLevelChange(`level-${n}` as Level);
                                     }}
                                     className="w-full accent-[var(--color-gold)]"
                                 />
+                                {!isPremium && (
+                                    <button
+                                        onClick={() => { trackEvent('level_gated', { level: 'slider' }); onUpgrade?.(); }}
+                                        className="mt-1.5 w-full text-[10px] ui text-[var(--color-gold)]/50 hover:text-[var(--color-gold)] transition-colors"
+                                    >
+                                        Unlock levels 4–10 with Champion Pass
+                                    </button>
+                                )}
                                 <div className="flex justify-between text-[10px] ui text-[rgb(var(--color-fg))]/25 mt-0.5">
                                     <span>1</span>
                                     {!isPremium && (
@@ -411,7 +413,7 @@ export const SettingsModal = memo(function SettingsModal({
                                         : 'border-[rgb(var(--color-fg))]/10 text-[var(--color-chalk)] hover:border-[rgb(var(--color-fg))]/25 disabled:opacity-50'
                                 }`}
                             >
-                                <span>{v.label}</span>
+                                <span className="truncate">{v.label}</span>
                                 {previewLoading && ttsCloudVoice === v.id && (
                                     <span className="text-[10px] text-[rgb(var(--color-fg))]/40">Playing...</span>
                                 )}
@@ -434,8 +436,8 @@ export const SettingsModal = memo(function SettingsModal({
                 {/* Legal */}
                 <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10">
                     <div className="flex justify-center gap-4 mb-2">
-                        <button onClick={() => setLegalPage('privacy')} className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</button>
-                        <button onClick={() => setLegalPage('terms')} className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</button>
+                        <button onClick={() => setLegalPage('privacy')} className="text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</button>
+                        <button onClick={() => setLegalPage('terms')} className="text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</button>
                     </div>
                     <div className="text-center text-[9px] ui text-[rgb(var(--color-fg))]/15">
                         v1.1.0
@@ -516,7 +518,7 @@ function NotificationPreferences() {
                 )}
             </div>
             <div className="text-[9px] ui text-[rgb(var(--color-fg))]/20 text-center mt-2">
-                Push notifications coming soon
+                Saved locally — push notifications require app install
             </div>
         </section>
     );

@@ -84,7 +84,7 @@ const ctaGlow = {
     ],
 };
 
-const ctaGlowTransition = { duration: 2.2, repeat: Infinity, ease: 'easeInOut' as const };
+const ctaGlowTransition = { duration: 2.2, repeat: 3, ease: 'easeInOut' as const };
 
 // ── Compact recommendation card ─────────────────────────────────────────────
 
@@ -556,21 +556,28 @@ export const PathPage = memo(function PathPage({ records, onPractice, onPractice
                 Path to Champion
             </h2>
             {/* Review system explainer — shows once */}
-            {showReviewExplainer && (
-                <div className="mb-3 p-3 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/20 relative">
-                    <button
-                        onClick={dismissReviewExplainer}
-                        className="absolute top-2 right-2 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors text-xs"
-                        aria-label="Dismiss"
+            <AnimatePresence>
+                {showReviewExplainer && (
+                    <motion.div
+                        initial={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0, marginBottom: 0, padding: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="mb-3 p-3 rounded-xl bg-[var(--color-gold)]/5 border border-[var(--color-gold)]/20 relative overflow-hidden"
                     >
-                        &times;
-                    </button>
-                    <div className="text-sm ui font-bold text-[var(--color-gold)] mb-1">🧠 What&apos;s &ldquo;Words to Master&rdquo;?</div>
-                    <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50 leading-relaxed pr-4">
-                        Words you&apos;ve missed are scheduled for review using <span className="font-semibold">spaced repetition</span>. Each time you get a word right, it moves up a learning box. After 4 correct reviews, it&apos;s fully mastered. This is the most effective way to build lasting memory.
-                    </div>
-                </div>
-            )}
+                        <button
+                            onClick={dismissReviewExplainer}
+                            className="absolute top-2 right-2 text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/50 transition-colors text-xs"
+                            aria-label="Dismiss"
+                        >
+                            &times;
+                        </button>
+                        <div className="text-sm ui font-bold text-[var(--color-gold)] mb-1">🧠 What&apos;s &ldquo;Words to Master&rdquo;?</div>
+                        <div className="text-[11px] ui text-[rgb(var(--color-fg))]/50 leading-relaxed pr-4">
+                            Words you&apos;ve missed are scheduled for review using <span className="font-semibold">spaced repetition</span>. Each time you get a word right, it moves up a learning box. After 4 correct reviews, it&apos;s fully mastered. This is the most effective way to build lasting memory.
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Buddy Streak */}
             {onOpenFriends && <BuddyStreakCard friends={friends} onTap={onOpenFriends} />}
