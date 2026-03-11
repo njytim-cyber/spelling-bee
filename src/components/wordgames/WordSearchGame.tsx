@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickWords, shuffle, saveHighScore, getHighScore } from './wordGameUtils';
 import { useGameJuice } from './useGameJuice';
+import { playTapSound } from '../../utils/soundEffects';
 import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
@@ -19,7 +20,11 @@ interface PlacedWord {
     found: boolean;
 }
 
-type Direction = 'h' | 'v';
+// dr,dc deltas for 8 directions: →, ←, ↓, ↑, ↘, ↖, ↙, ↗
+const DIRECTIONS: [number, number][] = [
+    [0, 1], [0, -1], [1, 0], [-1, 0],
+    [1, 1], [-1, -1], [1, -1], [-1, 1],
+];
 
 function buildGrid(words: SpellingWord[]): { grid: string[][]; placed: PlacedWord[] } {
     const grid: string[][] = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(''));
@@ -31,16 +36,25 @@ function buildGrid(words: SpellingWord[]): { grid: string[][]; placed: PlacedWor
         const upper = w.word.toUpperCase();
         if (upper.length > GRID_SIZE) continue;
 
-        const dirs: Direction[] = shuffle(['h', 'v'] as Direction[]);
+        const dirs = shuffle([...DIRECTIONS]);
         let success = false;
 
-        for (const dir of dirs) {
+        for (const [dr, dc] of dirs) {
             if (success) break;
-            const maxR = dir === 'v' ? GRID_SIZE - upper.length : GRID_SIZE;
-            const maxC = dir === 'h' ? GRID_SIZE - upper.length : GRID_SIZE;
-            const positions = shuffle(
-                Array.from({ length: maxR * maxC }, (_, i) => [Math.floor(i / maxC), i % maxC] as [number, number])
-            );
+            // Compute valid starting positions for this direction
+            const minR = dr < 0 ? upper.length - 1 : 0;
+            const maxR = dr > 0 ? GRID_SIZE - upper.length : GRID_SIZE - 1;
+            const minC = dc < 0 ? upper.length - 1 : 0;
+            const maxC = dc > 0 ? GRID_SIZE - upper.length : GRID_SIZE - 1;
+            if (minR > maxR || minC > maxC) continue;
+
+            const startPositions: [number, number][] = [];
+            for (let r = minR; r <= maxR; r++) {
+                for (let c = minC; c <= maxC; c++) {
+                    startPositions.push([r, c]);
+                }
+            }
+            const positions = shuffle(startPositions);
 
             for (const [r, c] of positions) {
                 if (success) break;
@@ -48,8 +62,8 @@ function buildGrid(words: SpellingWord[]): { grid: string[][]; placed: PlacedWor
                 const cells: [number, number][] = [];
 
                 for (let k = 0; k < upper.length; k++) {
-                    const cr = dir === 'v' ? r + k : r;
-                    const cc = dir === 'h' ? c + k : c;
+                    const cr = r + dr * k;
+                    const cc = c + dc * k;
                     const existing = grid[cr][cc];
                     if (existing && existing !== upper[k]) { fits = false; break; }
                     cells.push([cr, cc]);
@@ -79,6 +93,12 @@ function buildGrid(words: SpellingWord[]): { grid: string[][]; placed: PlacedWor
     return { grid, placed };
 }
 
+/** Convert grid cell [row,col] to SVG pixel center within a 320×320 SVG */
+function cellCenter(r: number, c: number): [number, number] {
+    const cell = 320 / GRID_SIZE;
+    return [c * cell + cell / 2, r * cell + cell / 2];
+}
+
 export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Props) {
     const [seed, setSeed] = useState(0);
     const words = useMemo(() => pickWords(level, WORD_COUNT).filter(w => w.word.length <= GRID_SIZE), [level, seed]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -92,7 +112,9 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const [startTime, setStartTime] = useState(() => Date.now());
     const [elapsed, setElapsed] = useState(0);
     const [lastFound, setLastFound] = useState<{ word: string; def: string } | null>(null);
-    const [recentFound, setRecentFound] = useState<Set<string>>(new Set());
+    const [flashCells, setFlashCells] = useState<Set<string>>(new Set());
+    const [wrongShake, setWrongShake] = useState(false);
+    const [streak, setStreak] = useState(0);
     const juice = useGameJuice();
     const gridRef = useRef<HTMLDivElement>(null);
     const isDragging = useRef(false);
@@ -126,15 +148,40 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     }, []);
 
     const computeLineCells = useCallback((sr: number, sc: number, cr: number, cc: number) => {
+        const dr = cr - sr;
+        const dc = cc - sc;
+        if (dr === 0 && dc === 0) return [[sr, sc]] as [number, number][];
+
+        // Snap to nearest axis: horizontal, vertical, or diagonal
+        const absDr = Math.abs(dr);
+        const absDc = Math.abs(dc);
+        let stepR: number, stepC: number, steps: number;
+
+        if (absDr === 0) {
+            // Horizontal
+            stepR = 0; stepC = dc > 0 ? 1 : -1; steps = absDc;
+        } else if (absDc === 0) {
+            // Vertical
+            stepR = dr > 0 ? 1 : -1; stepC = 0; steps = absDr;
+        } else if (absDr >= absDc * 2) {
+            // Mostly vertical — snap to vertical
+            stepR = dr > 0 ? 1 : -1; stepC = 0; steps = absDr;
+        } else if (absDc >= absDr * 2) {
+            // Mostly horizontal — snap to horizontal
+            stepR = 0; stepC = dc > 0 ? 1 : -1; steps = absDc;
+        } else {
+            // Diagonal — use the smaller magnitude as step count
+            steps = Math.min(absDr, absDc);
+            stepR = dr > 0 ? 1 : -1;
+            stepC = dc > 0 ? 1 : -1;
+        }
+
         const cells: [number, number][] = [];
-        if (cr === sr) {
-            const minC = Math.min(sc, cc);
-            const maxC = Math.max(sc, cc);
-            for (let c2 = minC; c2 <= maxC; c2++) cells.push([sr, c2]);
-        } else if (cc === sc) {
-            const minR = Math.min(sr, cr);
-            const maxR = Math.max(sr, cr);
-            for (let r2 = minR; r2 <= maxR; r2++) cells.push([r2, sc]);
+        for (let k = 0; k <= steps; k++) {
+            const r = sr + stepR * k;
+            const c = sc + stepC * k;
+            if (r < 0 || r >= GRID_SIZE || c < 0 || c >= GRID_SIZE) break;
+            cells.push([r, c]);
         }
         return cells;
     }, []);
@@ -142,15 +189,28 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const checkSelection = useCallback((cells: [number, number][]) => {
         if (cells.length < 2) return;
         const selectedWord = cells.map(([r, c]) => grid[r][c]).join('');
-        const match = placed.find(p => !p.found && p.word.word.toUpperCase() === selectedWord);
+        const reversedWord = [...selectedWord].reverse().join('');
+        const match = placed.find(p => !p.found && (
+            p.word.word.toUpperCase() === selectedWord ||
+            p.word.word.toUpperCase() === reversedWord
+        ));
 
         if (match) {
+            // ── Found a word ──
             setLastFound({ word: match.word.word, def: match.word.definition });
             setTimeout(() => setLastFound(null), 2000);
-            // Brief pulse on found cells
-            const cellKeys = new Set(cells.map(([r, c]) => `${r},${c}`));
-            setRecentFound(cellKeys);
-            setTimeout(() => setRecentFound(new Set()), 500);
+
+            // Staggered cell flash
+            cells.forEach(([r, c], i) => {
+                setTimeout(() => {
+                    setFlashCells(prev => new Set(prev).add(`${r},${c}`));
+                }, i * 50);
+            });
+            setTimeout(() => setFlashCells(new Set()), cells.length * 50 + 400);
+
+            const newStreak = streak + 1;
+            setStreak(newStreak);
+
             setPlaced(prev => {
                 const next = prev.map(p =>
                     p.word.word === match.word.word ? { ...p, found: true } : p
@@ -158,20 +218,35 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                 const allFound = next.every(p => p.found);
                 if (allFound) {
                     const timeBonus = elapsed < 60 ? 30 : elapsed < 90 ? 15 : 0;
-                    const pts = 10 + timeBonus;
+                    const streakBonus = newStreak >= 6 ? 15 : newStreak >= 3 ? 10 : 0;
+                    const pts = 10 + timeBonus + streakBonus;
                     setScore(s => s + pts);
                     juice.onVictory();
                     juice.showXpFloat(`+${pts} XP`);
-                    setTimeout(() => setDone(true), 500);
+                    // Longer celebration before done screen
+                    setTimeout(() => setDone(true), 1200);
                 } else {
-                    setScore(s => s + 10);
-                    juice.onCorrect();
-                    juice.showXpFloat('+10 XP');
+                    const streakBonus = newStreak >= 6 ? 5 : newStreak >= 3 ? 3 : 0;
+                    const pts = 10 + streakBonus;
+                    setScore(s => s + pts);
+                    if (newStreak >= 3) {
+                        juice.onStreak(newStreak);
+                        juice.showXpFloat(`+${pts} XP 🔥${newStreak}`);
+                    } else {
+                        juice.onCorrect();
+                        juice.showXpFloat(`+${pts} XP`);
+                    }
                 }
                 return next;
             });
+        } else if (cells.length >= 2) {
+            // ── Wrong selection — shake + haptic ──
+            setWrongShake(true);
+            juice.onWrong();
+            setTimeout(() => setWrongShake(false), 300);
+            setStreak(0);
         }
-    }, [placed, grid, elapsed, juice]);
+    }, [placed, grid, elapsed, juice, streak]);
 
     // ── Touch events for mobile drag-to-highlight ──
     const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -179,6 +254,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
         const touch = e.touches[0];
         const cell = getCellFromPoint(touch.clientX, touch.clientY);
         if (!cell) return;
+        playTapSound();
         isDragging.current = true;
         setStartCell(cell);
         setSelecting([cell]);
@@ -204,6 +280,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
 
     // ── Pointer events for desktop ──
     const handlePointerDown = useCallback((r: number, c: number) => {
+        playTapSound();
         isDragging.current = true;
         setStartCell([r, c]);
         setSelecting([[r, c]]);
@@ -227,6 +304,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const handleRevealWord = useCallback(() => {
         const unrevealed = placed.find(p => !p.found);
         if (!unrevealed) return;
+        setStreak(0);
         setPlaced(prev => prev.map(p =>
             p.word.word === unrevealed.word.word ? { ...p, found: true } : p
         ));
@@ -237,7 +315,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
         setScore(0); setDone(false); setSeed(s => s + 1); setStartTime(Date.now());
-        setElapsed(0); setRecentFound(new Set());
+        setElapsed(0); setFlashCells(new Set()); setStreak(0);
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
@@ -248,6 +326,14 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const timerPct = Math.max(0, 1 - elapsed / TIMER_SECS);
     const timerColor = elapsed >= 100 ? 'var(--color-wrong)' : elapsed >= 80 ? 'var(--color-streak-fire)' : 'var(--color-gold)';
     const starCount = elapsed < 60 ? 3 : elapsed < 90 ? 2 : 1;
+
+    // Build SVG overlay line for the live drag selection
+    const selectionLine = useMemo(() => {
+        if (selecting.length < 2) return null;
+        const [sy, sx] = cellCenter(selecting[0][0], selecting[0][1]);
+        const [ey, ex] = cellCenter(selecting[selecting.length - 1][0], selecting[selecting.length - 1][1]);
+        return { x1: sy, y1: sx, x2: ey, y2: ex };
+    }, [selecting]);
 
     if (done || words.length === 0) {
         const finalScore = totalScore + score;
@@ -261,6 +347,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                     stats={[
                         { label: 'Words', value: `${foundCount}/${placed.length}` },
                         { label: 'Time', value: `${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}` },
+                        { label: 'Streak', value: streak },
                     ]}
                 />
             </GameShell>
@@ -276,6 +363,16 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
             screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="flex items-center gap-2">
+                    {streak >= 2 && (
+                        <motion.span
+                            key={streak}
+                            initial={{ scale: 0.5, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="text-[10px] ui font-bold text-[var(--color-streak-fire)]"
+                        >
+                            🔥{streak}
+                        </motion.span>
+                    )}
                     <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{foundCount}/{placed.length}</span>
                     <div className="relative w-8 h-8">
                         <svg viewBox="0 0 36 36" className="w-8 h-8 -rotate-90">
@@ -332,50 +429,91 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                     />
                 </div>
 
-                {/* Grid */}
-                <div
-                    ref={gridRef}
-                    className="grid touch-none select-none"
-                    style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)`, width: '100%', aspectRatio: '1/1', maxWidth: '320px' }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                    onPointerMove={handlePointerMove}
-                    onPointerUp={handlePointerUp}
-                    onPointerLeave={handlePointerUp}
-                >
-                    {grid.map((row, r) =>
-                        row.map((letter, c) => {
-                            const key = `${r},${c}`;
-                            const isFound = foundCells.has(key);
-                            const isSelecting = selectingSet.has(key);
-                            const isRecentFound = recentFound.has(key);
+                {/* Grid + SVG overlay */}
+                <div className="relative" style={{ width: '100%', maxWidth: '320px', aspectRatio: '1/1' }}>
+                    <div
+                        ref={gridRef}
+                        className={`grid touch-none select-none absolute inset-0${wrongShake ? ' animate-[wrong-shake_0.3s]' : ''}`}
+                        style={{ gridTemplateColumns: `repeat(${GRID_SIZE}, 1fr)` }}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                        onPointerMove={handlePointerMove}
+                        onPointerUp={handlePointerUp}
+                        onPointerLeave={handlePointerUp}
+                    >
+                        {grid.map((row, r) =>
+                            row.map((letter, c) => {
+                                const key = `${r},${c}`;
+                                const isFound = foundCells.has(key);
+                                const isSelecting = selectingSet.has(key);
+                                const isFlashing = flashCells.has(key);
+                                return (
+                                    <motion.div
+                                        key={key}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{
+                                            opacity: 1,
+                                            scale: isFlashing ? [1, 1.2, 1] : isSelecting ? 1.05 : 1,
+                                        }}
+                                        transition={{
+                                            opacity: { delay: (r * GRID_SIZE + c) * 0.012, duration: 0.2 },
+                                            scale: { duration: 0.25, type: 'spring', stiffness: 300 },
+                                        }}
+                                        onPointerDown={() => handlePointerDown(r, c)}
+                                        className={`flex items-center justify-center text-sm chalk rounded-sm cursor-pointer transition-colors ${
+                                            isFlashing
+                                                ? 'animate-[cell-solve-flash_0.4s_ease-out]'
+                                                : isFound
+                                                    ? 'bg-[var(--color-correct)]/15 text-[var(--color-correct)]'
+                                                    : isSelecting
+                                                        ? 'bg-[var(--color-gold)]/25 text-[var(--color-gold)]'
+                                                        : 'text-[var(--color-chalk)] hover:bg-[rgb(var(--color-fg))]/5'
+                                        }`}
+                                    >
+                                        {letter}
+                                    </motion.div>
+                                );
+                            })
+                        )}
+                    </div>
+
+                    {/* SVG overlay — persistent highlight lines + live selection indicator */}
+                    <svg
+                        viewBox="0 0 320 320"
+                        className="absolute inset-0 w-full h-full pointer-events-none"
+                    >
+                        {/* Persistent lines for found words */}
+                        {placed.map((p, idx) => {
+                            if (!p.found || p.cells.length < 2) return null;
+                            const [x1, y1] = cellCenter(p.cells[0][0], p.cells[0][1]);
+                            const [x2, y2] = cellCenter(p.cells[p.cells.length - 1][0], p.cells[p.cells.length - 1][1]);
                             return (
-                                <motion.div
-                                    key={key}
-                                    initial={{ opacity: 0 }}
-                                    animate={{
-                                        opacity: 1,
-                                        scale: isRecentFound ? [1, 1.15, 1] : isSelecting ? 1.05 : 1,
-                                    }}
-                                    transition={{
-                                        opacity: { delay: (r * GRID_SIZE + c) * 0.01, duration: 0.15 },
-                                        scale: { duration: 0.2 },
-                                    }}
-                                    onPointerDown={() => handlePointerDown(r, c)}
-                                    className={`flex items-center justify-center text-sm chalk rounded-sm cursor-pointer transition-colors ${
-                                        isFound
-                                            ? 'bg-[var(--color-correct)]/20 text-[var(--color-correct)]'
-                                            : isSelecting
-                                                ? 'bg-[var(--color-gold)]/25 text-[var(--color-gold)] border border-[var(--color-gold)]/40'
-                                                : 'text-[var(--color-chalk)] hover:bg-[rgb(var(--color-fg))]/5'
-                                    }`}
-                                >
-                                    {letter}
-                                </motion.div>
+                                <motion.line
+                                    key={`line-${idx}`}
+                                    x1={x1} y1={y1} x2={x2} y2={y2}
+                                    stroke="var(--color-correct)"
+                                    strokeOpacity={0.35}
+                                    strokeWidth={Math.min(320 / GRID_SIZE * 0.7, 24)}
+                                    strokeLinecap="round"
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                />
                             );
-                        })
-                    )}
+                        })}
+                        {/* Live selection indicator line */}
+                        {selectionLine && (
+                            <line
+                                x1={selectionLine.x1} y1={selectionLine.y1}
+                                x2={selectionLine.x2} y2={selectionLine.y2}
+                                stroke="var(--color-gold)"
+                                strokeOpacity={0.4}
+                                strokeWidth={Math.min(320 / GRID_SIZE * 0.7, 24)}
+                                strokeLinecap="round"
+                            />
+                        )}
+                    </svg>
                 </div>
 
                 {/* Found word flash */}
