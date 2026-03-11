@@ -47,6 +47,7 @@
     "vitest": "^4.0.18"
   },
   "overrides": {
-    "minimatch": ">=10.2.1"
+    "minimatch": ">=10.2.1",
+    "serialize-javascript": ">=7.0.4"
   }
 }
