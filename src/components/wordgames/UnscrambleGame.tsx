@@ -1,7 +1,9 @@
 import { memo, useState, useCallback, useEffect, useRef, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickProgressiveWords, scrambleWord, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
 interface Props { level: number; onExit: (xpEarned: number) => void }
@@ -20,6 +22,7 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
     const [flash, setFlash] = useState<'correct' | 'wrong' | null>(null);
     const [scrambled, setScrambled] = useState('');
     const [streak, setStreak] = useState(0);
+    const juice = useGameJuice();
     const inputRef = useRef<HTMLInputElement>(null);
     // eslint-disable-next-line react-hooks/purity
     const wordStartTime = useRef(Date.now());
@@ -59,11 +62,15 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
         if (attempt === current.word) {
             const elapsed = (Date.now() - wordStartTime.current) / 1000;
             const speedBonus = elapsed < 3 ? 2 : 0;
-            setScore(s => s + 5 + speedBonus);
+            const pts = 5 + speedBonus;
+            setScore(s => s + pts);
             setWordsCorrect(w => w + 1);
             setStreak(s => s + 1);
             setFlash('correct');
             setInput('');
+            juice.onCorrect();
+            juice.showXpFloat(speedBonus ? `+${pts} Fast!` : `+${pts} XP`);
+            if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
             setTimeout(() => {
                 setFlash(null);
                 setIdx(i => i + 1);
@@ -71,9 +78,10 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
         } else {
             setFlash('wrong');
             setStreak(0);
+            juice.onWrong();
             setTimeout(() => setFlash(null), 300);
         }
-    }, [input, current, gameOver]);
+    }, [input, current, gameOver, streak, juice]);
 
     const handleSkip = useCallback(() => {
         if (!current || gameOver) return;
@@ -107,6 +115,7 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
             title="Unscramble"
             score={score}
             onExit={handleExit}
+            screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="relative w-8 h-8">
                     {/* Timer ring */}
@@ -190,7 +199,26 @@ export const UnscrambleGame = memo(function UnscrambleGame({ level, onExit }: Pr
                         {streak >= 2 && <span className="ml-1 text-[var(--color-streak-fire)]"> {streak}🔥</span>}
                     </p>
                 </div>
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+
+            {/* Urgency vignette when timer low */}
+            {timeLeft <= 10 && (
+                <div className="absolute inset-0 pointer-events-none rounded-xl animate-pulse"
+                    style={{ boxShadow: 'inset 0 0 60px rgba(248,113,113,0.15)' }} />
+            )}
+
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

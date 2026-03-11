@@ -1,7 +1,9 @@
 import { memo, useState, useCallback, useMemo, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { shuffle, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 import type { DifficultyTier } from '../../domains/spelling/words';
 import { wordsByDifficulty } from '../../domains/spelling/words';
@@ -188,6 +190,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
     const [done, setDone] = useState(false);
     const [cleanSolve, setCleanSolve] = useState(true);
     const [hintsUsed, setHintsUsed] = useState(0);
+    const juice = useGameJuice();
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => { inputRef.current?.focus(); }, [activeCell]);
@@ -252,10 +255,15 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                             next2.add(wid);
                             if (next2.size === placed.length) {
                                 const bonus = cleanSolve ? 10 : 0;
-                                setScore(s => s + 20 + bonus);
+                                const pts = 20 + bonus;
+                                setScore(s => s + pts);
                                 setDone(true);
+                                juice.onVictory();
+                                juice.showXpFloat(`+${pts} Complete!`);
                             } else {
-                                setScore(s => s + 5); // score per word
+                                setScore(s => s + 5);
+                                juice.onCorrect();
+                                juice.showXpFloat('+5 XP');
                             }
                             return next2;
                         });
@@ -271,7 +279,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
         if (nr < GRID_DIM && nc < GRID_DIM && grid[nr]?.[nc]) {
             setActiveCell([nr, nc]);
         }
-    }, [activeCell, activeDir, grid, done, placed, solvedWords, checkWordInGrid, cleanSolve]);
+    }, [activeCell, activeDir, grid, done, placed, solvedWords, checkWordInGrid, cleanSolve, juice]);
 
     const activeWordCells = useMemo(() => {
         if (!activeCell) return new Set<string>();
@@ -366,6 +374,7 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             title="Crossword"
             score={totalScore + score}
             onExit={handleExit}
+            screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={<span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{solvedWords.size}/{placed.length}</span>}
         >
             {/* Hidden input for keyboard capture */}
@@ -468,7 +477,19 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                         </div>
                     )}
                 </div>
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

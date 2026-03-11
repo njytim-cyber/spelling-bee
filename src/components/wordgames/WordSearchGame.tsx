@@ -2,6 +2,8 @@ import { memo, useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickWords, shuffle, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
 interface Props { level: number; onExit: (xpEarned: number) => void }
@@ -90,6 +92,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const [done, setDone] = useState(false);
     const [startTime, setStartTime] = useState(() => Date.now());
     const [lastFound, setLastFound] = useState<{ word: string; def: string } | null>(null);
+    const juice = useGameJuice();
     const gridRef = useRef<HTMLDivElement>(null);
     const isDragging = useRef(false);
 
@@ -144,15 +147,20 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                 if (allFound) {
                     const elapsed = (Date.now() - startTime) / 1000;
                     const timeBonus = elapsed < 60 ? 30 : elapsed < 90 ? 15 : 0;
-                    setScore(s => s + 10 + timeBonus);
+                    const pts = 10 + timeBonus;
+                    setScore(s => s + pts);
+                    juice.onVictory();
+                    juice.showXpFloat(`+${pts} XP`);
                     setTimeout(() => setDone(true), 500);
                 } else {
                     setScore(s => s + 10);
+                    juice.onCorrect();
+                    juice.showXpFloat('+10 XP');
                 }
                 return next;
             });
         }
-    }, [placed, grid, startTime]);
+    }, [placed, grid, startTime, juice]);
 
     // ── Touch events for mobile drag-to-highlight ──
     const handleTouchStart = useCallback((e: React.TouchEvent) => {
@@ -242,6 +250,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
             title="Word Search"
             score={totalScore + score}
             onExit={handleExit}
+            screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={<span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{placed.filter(p => p.found).length}/{placed.length}</span>}
         >
             <div className="flex flex-col items-center w-full max-w-sm gap-3 mt-2">
@@ -332,7 +341,19 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                         💡 Reveal a word (no XP)
                     </button>
                 )}
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

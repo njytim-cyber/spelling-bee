@@ -2,6 +2,8 @@ import { memo, useState, useCallback, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickAnagramWords, shuffle, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
 interface Props { level: number; onExit: (xpEarned: number) => void }
@@ -34,6 +36,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
     const [streak, setStreak] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
     const [hintUsed, setHintUsed] = useState(false);
+    const juice = useGameJuice();
 
     const current: SpellingWord | undefined = words[idx];
 
@@ -61,16 +64,21 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                     setResult('correct');
                     const bonus = noBacktrack ? 5 : 0;
                     const streakBonus = (streak + 1) % 3 === 0 ? 5 : 0;
-                    setScore(s => s + 10 + bonus + streakBonus);
+                    const pts = 10 + bonus + streakBonus;
+                    setScore(s => s + pts);
                     setStreak(s => s + 1);
+                    juice.onCorrect();
+                    juice.showXpFloat(`+${pts} XP`);
+                    if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
                 } else {
                     setResult('wrong');
                     setStreak(0);
+                    juice.onWrong();
                 }
             }
             return next;
         });
-    }, [result, current, noBacktrack, streak]);
+    }, [result, current, noBacktrack, streak, juice]);
 
     const returnLetter = useCallback((tile: { letter: string; id: number }) => {
         if (result) return;
@@ -149,6 +157,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
 
     return (
         <GameShell title="Anagrams" score={totalScore + score} onExit={handleExit}
+            screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="flex items-center gap-2">
                     {streak >= 2 && (
@@ -191,7 +200,7 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                                 onClick={() => tile && returnLetter(tile)}
                                 className={`w-10 h-10 rounded-lg flex items-center justify-center chalk text-lg transition-colors ${
                                     tile
-                                        ? result === 'correct' ? 'bg-[var(--color-correct)]/20 border-2 border-[var(--color-correct)]/40 text-[var(--color-correct)]'
+                                        ? result === 'correct' ? 'bg-[var(--color-correct)]/20 border-2 border-[var(--color-correct)]/40 text-[var(--color-correct)] animate-[word-complete-pulse_0.6s]'
                                             : result === 'wrong' ? 'bg-[var(--color-wrong)]/20 border-2 border-[var(--color-wrong)]/40 text-[var(--color-wrong)] animate-[wrong-shake_0.3s]'
                                                 : 'bg-[rgb(var(--color-fg))]/10 border-2 border-[rgb(var(--color-fg))]/30 text-[var(--color-chalk)]'
                                         : 'border-2 border-dashed border-[rgb(var(--color-fg))]/15'
@@ -257,7 +266,19 @@ export const AnagramsGame = memo(function AnagramsGame({ level, onExit }: Props)
                         </motion.div>
                     )}
                 </AnimatePresence>
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

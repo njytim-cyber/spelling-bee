@@ -2,6 +2,8 @@ import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickProgressiveWords, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
 interface Props { level: number; onExit: (xpEarned: number) => void }
@@ -41,6 +43,7 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
     const [gameOver, setGameOver] = useState(false);
     const [speedSetting, setSpeedSetting] = useState<SpeedSetting>('normal');
     const [lastDestroyed, setLastDestroyed] = useState<{ word: string; def: string } | null>(null);
+    const juice = useGameJuice();
     const nextId = useRef(0);
     const poolIdx = useRef(0);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -110,6 +113,7 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
                     const newLives = livesRef.current - livesLost;
                     setLives(Math.max(0, newLives));
                     setStreak(0);
+                    juice.onWrong();
                     if (newLives <= 0) setGameOver(true);
                 }
 
@@ -123,7 +127,7 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
         };
         const timer = setInterval(check, 200);
         return () => clearInterval(timer);
-    }, [gameOver, cfg.fallDuration]);
+    }, [gameOver, cfg.fallDuration, juice]);
 
     const handleInput = useCallback((val: string) => {
         if (gameOver) return;
@@ -143,14 +147,18 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
                 setInput('');
                 setDefended(d => d + 1);
                 setStreak(s => s + 1);
-                setScore(s => s + 5 + ((streak + 1) % 5 === 0 ? 10 : 0));
+                const pts = 5 + ((streak + 1) % 5 === 0 ? 10 : 0);
+                setScore(s => s + pts);
                 setLastDestroyed({ word: w.word.word, def: w.word.definition });
                 setTimeout(() => setLastDestroyed(null), 1500);
+                juice.onCorrect();
+                juice.showXpFloat(`+${pts} XP`);
+                if ((streak + 1) % 5 === 0) juice.onStreak(streak + 1);
             }
 
             return updated;
         });
-    }, [gameOver, streak]);
+    }, [gameOver, streak, juice]);
 
     const handlePlayAgain = useCallback(() => {
         setScore(0); setLives(MAX_LIVES); setDefended(0); setStreak(0); setLastDestroyed(null);
@@ -176,6 +184,7 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
             title="Type Defense"
             score={score}
             onExit={handleExit}
+            screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="flex items-center gap-2">
                     {streak >= 3 && (
@@ -292,7 +301,19 @@ export const TypingDefenderGame = memo(function TypingDefenderGame({ level, onEx
                         className="w-full py-3 px-4 rounded-xl border-2 border-[var(--color-gold)]/40 bg-[rgb(var(--color-fg))]/5 text-[var(--color-chalk)] chalk text-lg text-center placeholder:text-[rgb(var(--color-fg))]/20 focus:outline-none focus:border-[var(--color-gold)]/60"
                     />
                 </div>
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

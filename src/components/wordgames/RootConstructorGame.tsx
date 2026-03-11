@@ -2,6 +2,8 @@ import { memo, useState, useCallback, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { shuffle, saveHighScore, getHighScore } from './wordGameUtils';
+import { useGameJuice } from './useGameJuice';
+import { Confetti } from '../Confetti';
 import { WORD_ROOTS } from '../../domains/spelling/words/roots';
 import { getWordMap } from '../../domains/spelling/words';
 
@@ -106,6 +108,8 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
     const [firstAttempt, setFirstAttempt] = useState(true);
     const [done, setDone] = useState(false);
     const [showCorrect, setShowCorrect] = useState<string | null>(null);
+    const [streak, setStreak] = useState(0);
+    const juice = useGameJuice();
 
     const current = rounds[idx] as RoundData | undefined;
 
@@ -134,13 +138,20 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
         if (attempt === current.word) {
             setResult('correct');
             setShowCorrect(null);
-            setScore(s => s + 15 + (firstAttempt ? 10 : 0));
+            const pts = 15 + (firstAttempt ? 10 : 0);
+            setScore(s => s + pts);
+            setStreak(s => s + 1);
+            juice.onCorrect();
+            juice.showXpFloat(firstAttempt ? '+25 Perfect!' : '+15 XP');
+            if ((streak + 1) % 3 === 0) juice.onStreak(streak + 1);
         } else {
             setResult('wrong');
             setShowCorrect(current.parts.join(' + ') + ' = ' + current.word);
             setFirstAttempt(false);
+            setStreak(0);
+            juice.onWrong();
         }
-    }, [current, selected, result, firstAttempt]);
+    }, [current, selected, result, firstAttempt, streak, juice]);
 
     // Auto-advance after showing result (correct or wrong)
     useEffect(() => {
@@ -162,7 +173,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
 
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
-        setScore(0); setIdx(0); setDone(false); setSeed(s => s + 1);
+        setScore(0); setIdx(0); setDone(false); setStreak(0); setSeed(s => s + 1);
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
@@ -216,7 +227,16 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
             title="Root Builder"
             score={totalScore + score}
             onExit={handleExit}
-            topRight={<span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{idx + 1}/{rounds.length}</span>}
+            screenFlash={juice.screenFlash} shake={juice.shake}
+            topRight={
+                <div className="flex items-center gap-2">
+                    {streak >= 2 && (
+                        <motion.span key={streak} initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                            className="text-[10px] ui font-bold text-[var(--color-streak-fire)]">{streak}🔥</motion.span>
+                    )}
+                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{idx + 1}/{rounds.length}</span>
+                </div>
+            }
         >
             <div className="flex-1 flex flex-col items-center justify-center w-full max-w-sm gap-5">
                 {/* Progress bar */}
@@ -242,7 +262,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
 
                 {/* Construction zone */}
                 <div className={`flex items-center gap-1 min-h-[48px] px-4 py-2 rounded-xl border-2 transition-colors ${
-                    result === 'correct' ? 'border-[var(--color-correct)]/40 bg-[var(--color-correct)]/10'
+                    result === 'correct' ? 'border-[var(--color-correct)]/40 bg-[var(--color-correct)]/10 animate-[word-complete-pulse_0.6s]'
                         : result === 'wrong' ? 'border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 animate-[wrong-shake_0.3s]'
                             : 'border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5'
                 }`}>
@@ -317,7 +337,19 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                         </motion.button>
                     )}
                 </div>
+
+                {/* Floating XP */}
+                <AnimatePresence>
+                    {juice.xpFloat && (
+                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
+                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                            className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
+                            {juice.xpFloat.text}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+            <Confetti trigger={juice.confettiTrigger} intensity={juice.confettiIntensity} />
         </GameShell>
     );
 });

@@ -13,9 +13,13 @@ interface Props {
     children: ReactNode;
     /** Optional top-right widget (lives, timer, etc.) */
     topRight?: ReactNode;
+    /** Green/red screen flash overlay */
+    screenFlash?: 'correct' | 'wrong' | null;
+    /** Screen shake on wrong answer */
+    shake?: boolean;
 }
 
-export const GameShell = memo(function GameShell({ title, score, onExit, children, topRight }: Props) {
+export const GameShell = memo(function GameShell({ title, score, onExit, children, topRight, screenFlash, shake }: Props) {
     // Animated score counter
     const springScore = useSpring(0, { stiffness: 100, damping: 18 });
     const displayScore = useTransform(springScore, v => Math.round(v));
@@ -40,11 +44,25 @@ export const GameShell = memo(function GameShell({ title, score, onExit, childre
     return (
         <AnimatePresence>
             <motion.div
-                className="fixed inset-0 z-50 bg-[var(--color-board)] flex flex-col"
+                className={`fixed inset-0 z-50 bg-[var(--color-board)] flex flex-col${shake ? ' animate-[wrong-shake_0.3s]' : ''}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
             >
+                {/* Screen flash overlay */}
+                {screenFlash && (
+                    <div
+                        className="absolute inset-0 z-50 pointer-events-none"
+                        style={{
+                            background: screenFlash === 'correct'
+                                ? 'radial-gradient(circle, rgba(74,222,128,0.15) 0%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(248,113,113,0.12) 0%, transparent 70%)',
+                            animation: screenFlash === 'correct'
+                                ? 'screen-flash-correct 0.4s ease-out forwards'
+                                : 'screen-flash-wrong 0.4s ease-out forwards',
+                        }}
+                    />
+                )}
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 pt-[calc(env(safe-area-inset-top,16px)+12px)] pb-2">
                     <motion.button
