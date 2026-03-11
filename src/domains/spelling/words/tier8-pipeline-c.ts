@@ -47,7 +47,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "poetaster",
-        "definition": "A bad or talentless poet who writes clumsy verse",
+        "definition": "A bad or talentless poet who writes clumsy verse.",
         "exampleSentence": "Critics dismissed him as a mere poetaster whose rhymes lacked any real skill.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -159,7 +159,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "alpenglow",
-        "definition": "A rosy light seen on mountain peaks just after sunset or before sunrise",
+        "definition": "A rosy light seen on mountain peaks just after sunset or before sunrise.",
         "exampleSentence": "The alpenglow painted the snowy peaks a brilliant shade of pink.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -286,7 +286,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "migmatite",
-        "definition": "A rock formed when extreme heat partially melts existing rock, mixing granite-like and older layers",
+        "definition": "A rock formed when extreme heat partially melts existing rock, mixing granite-like and older layers.",
         "exampleSentence": "The geology students examined a sample of migmatite with swirling light and dark bands.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -302,7 +302,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "deistical",
-        "definition": "Connected with the belief that God created the universe but does not intervene in it",
+        "definition": "Connected with the belief that God created the universe but does not intervene in it.",
         "exampleSentence": "His deistical views held that nature alone revealed the work of a creator.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -365,7 +365,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "miasmatic",
-        "definition": "Filled with foul, poisonous vapors or an oppressive atmosphere",
+        "definition": "Filled with foul, poisonous vapors or an oppressive atmosphere.",
         "exampleSentence": "A miasmatic fog hung over the swamp, thick with the smell of decay.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -380,7 +380,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "comminute",
-        "definition": "Material that has been ground or crushed into a fine powder",
+        "definition": "Material that has been ground or crushed into a fine powder.",
         "exampleSentence": "The pharmacist mixed the comminute into a paste for the ointment.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -412,7 +412,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "midrashic",
-        "definition": "Connected with ancient Jewish commentaries that interpret biblical texts",
+        "definition": "Connected with ancient Jewish commentaries that interpret biblical texts.",
         "exampleSentence": "The rabbi offered a midrashic reading of the passage, drawing out its hidden meanings.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -586,7 +586,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "denialism",
-        "definition": "Refusal to accept well-supported facts, especially scientific or historical evidence",
+        "definition": "Refusal to accept well-supported facts, especially scientific or historical evidence.",
         "exampleSentence": "Climate denialism has slowed progress on reducing greenhouse gas emissions.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -650,7 +650,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "librarial",
-        "definition": "Connected with libraries or the work of librarians",
+        "definition": "Connected with libraries or the work of librarians.",
         "exampleSentence": "Her librarial skills helped the school organize thousands of donated books.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -682,7 +682,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "finickity",
-        "definition": "Extremely fussy and hard to please, especially about small details",
+        "definition": "Extremely fussy and hard to please, especially about small details.",
         "exampleSentence": "The finickity cat refused every brand of food except one.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -730,7 +730,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "mridangam",
-        "definition": "A barrel-shaped, two-headed drum used in South Indian classical music",
+        "definition": "A barrel-shaped, two-headed drum used in South Indian classical music.",
         "exampleSentence": "The musician tapped out complex rhythms on the mridangam with both hands.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -746,7 +746,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "brittlely",
-        "definition": "With a sharp, fragile quality that breaks or snaps easily",
+        "definition": "With a sharp, fragile quality that breaks or snaps easily.",
         "exampleSentence": "The old pages crumbled brittlely between her fingers as she turned them.",
         "partOfSpeech": "adverb",
         "difficulty": 9,
@@ -778,7 +778,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "telestial",
-        "definition": "Connected with the lowest heavenly realm in Mormon theology",
+        "definition": "Connected with the lowest heavenly realm in Mormon theology.",
         "exampleSentence": "The sermon described the telestial kingdom as the least glorious of the three.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -857,7 +857,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "attritive",
-        "definition": "Wearing something down gradually through steady friction or pressure",
+        "definition": "Wearing something down gradually through steady friction or pressure.",
         "exampleSentence": "Years of attritive erosion had smoothed the canyon walls into gentle curves.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -873,7 +873,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "putschist",
-        "definition": "A person who takes part in a sudden, violent attempt to seize power",
+        "definition": "A person who takes part in a sudden, violent attempt to seize power.",
         "exampleSentence": "The putschist was arrested hours after the failed attempt to storm the capitol.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -905,7 +905,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "definably",
-        "definition": "In a way that can be clearly identified or described",
+        "definition": "In a way that can be clearly identified or described.",
         "exampleSentence": "The two species are definably different when you compare their wing patterns.",
         "partOfSpeech": "adverb",
         "difficulty": 9,
@@ -921,7 +921,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "blackbutt",
-        "definition": "An Australian eucalyptus tree with dark, rough bark at the base of its trunk",
+        "definition": "An Australian eucalyptus tree with dark, rough bark at the base of its trunk.",
         "exampleSentence": "Builders prized blackbutt timber for its strength and resistance to termites.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -968,7 +968,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "microfoam",
-        "definition": "Milk steamed into a smooth texture of extremely tiny bubbles, used in lattes",
+        "definition": "Milk steamed into a smooth texture of extremely tiny bubbles, used in lattes.",
         "exampleSentence": "The barista created perfect microfoam that blended smoothly into the espresso.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -984,7 +984,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "archeress",
-        "definition": "A woman skilled in shooting with a bow and arrow",
+        "definition": "A woman skilled in shooting with a bow and arrow.",
         "exampleSentence": "The archeress split her opponent's arrow down the middle to win the tournament.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1000,7 +1000,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "grudgeful",
-        "definition": "Holding deep resentment and unwilling to forgive",
+        "definition": "Holding deep resentment and unwilling to forgive.",
         "exampleSentence": "He remained grudgeful toward his rival long after the competition had ended.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1016,7 +1016,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "debriefer",
-        "definition": "A person who questions someone to gather information after a mission or event",
+        "definition": "A person who questions someone to gather information after a mission or event.",
         "exampleSentence": "The debriefer asked the pilot detailed questions about what happened during the flight.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1048,7 +1048,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "lateritic",
-        "definition": "Made of or resembling laterite, a red iron-rich tropical soil",
+        "definition": "Made of or resembling laterite, a red iron-rich tropical soil.",
         "exampleSentence": "The lateritic soil gave the unpaved roads their distinctive reddish color.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1080,7 +1080,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "vaticinal",
-        "definition": "Having the power to foretell future events; prophetic",
+        "definition": "Having the power to foretell future events; prophetic.",
         "exampleSentence": "The old woman's vaticinal warnings about the flood proved eerily accurate.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1128,7 +1128,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "humbugger",
-        "definition": "A person who deceives others with tricks or false claims",
+        "definition": "A person who deceives others with tricks or false claims.",
         "exampleSentence": "The crowd realized the fortune teller was just a humbugger after his predictions failed.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1160,7 +1160,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "festivous",
-        "definition": "Joyful and celebratory, like a feast or festival",
+        "definition": "Joyful and celebratory, like a feast or festival.",
         "exampleSentence": "The festivous atmosphere in the town square drew families from miles around.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1207,7 +1207,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "surgeoncy",
-        "definition": "The official position or role of a surgeon in military, naval, or hospital service",
+        "definition": "The official position or role of a surgeon in military, naval, or hospital service.",
         "exampleSentence": "After years of training, she finally earned a surgeoncy at the naval hospital.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1287,7 +1287,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "contemper",
-        "definition": "To soften, moderate, or blend together into a balanced mixture",
+        "definition": "To soften, moderate, or blend together into a balanced mixture.",
         "exampleSentence": "The chef tried to contemper the spicy sauce by adding a touch of honey.",
         "partOfSpeech": "verb",
         "difficulty": 9,
@@ -1303,7 +1303,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "mylohyoid",
-        "definition": "Located between the lower jaw and the small bone above the throat",
+        "definition": "Located between the lower jaw and the small bone above the throat.",
         "exampleSentence": "The dentist checked the mylohyoid area beneath the tongue for any swelling.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1351,7 +1351,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "sputation",
-        "definition": "The process of spitting out saliva or mucus from the mouth",
+        "definition": "The process of spitting out saliva or mucus from the mouth.",
         "exampleSentence": "The doctor noted frequent sputation as one of the patient's symptoms.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1399,7 +1399,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "tartarian",
-        "definition": "Connected with Tartarus, the underworld of Greek mythology; hellish",
+        "definition": "Connected with Tartarus, the underworld of Greek mythology; hellish.",
         "exampleSentence": "The cave's tartarian darkness seemed to swallow every beam of the flashlight.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1479,7 +1479,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "proudling",
-        "definition": "A person who is vain and overly proud of themselves",
+        "definition": "A person who is vain and overly proud of themselves.",
         "exampleSentence": "The proudling strutted through the village, boasting about his new coat.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1495,7 +1495,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "hasmonean",
-        "definition": "Connected with the ancient Jewish dynasty that included the Maccabees",
+        "definition": "Connected with the ancient Jewish dynasty that included the Maccabees.",
         "exampleSentence": "Archaeologists uncovered hasmonean coins dating back over two thousand years.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1527,7 +1527,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "disjoiner",
-        "definition": "Something that separates or pulls connected things apart",
+        "definition": "Something that separates or pulls connected things apart.",
         "exampleSentence": "The new highway acted as a disjoiner, splitting the neighborhood in two.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1543,7 +1543,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "mortalist",
-        "definition": "Connected with the belief that the soul sleeps or dies with the body until judgment day",
+        "definition": "Connected with the belief that the soul sleeps or dies with the body until judgment day.",
         "exampleSentence": "Some early mortalist thinkers argued the soul was not naturally immortal.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1607,7 +1607,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "typhonian",
-        "definition": "Connected with Typhon, the monstrous giant of Greek mythology",
+        "definition": "Connected with Typhon, the monstrous giant of Greek mythology.",
         "exampleSentence": "Ancient writers described volcanic eruptions as typhonian fury trapped beneath the earth.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1671,7 +1671,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "armshouse",
-        "definition": "A scene or place of violence and bloodshed",
+        "definition": "A scene or place of violence and bloodshed.",
         "exampleSentence": "The battlefield was an armshouse that left both sides devastated and weary.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1831,7 +1831,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "raasclaat",
-        "definition": "A contemptible person.",
+        "definition": "Used as a vulgar intensifier in Jamaican English.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully raasclaat.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1863,7 +1863,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "dominguan",
-        "definition": "Connected with the former French colony of Saint-Domingue, now Haiti",
+        "definition": "Connected with the former French colony of Saint-Domingue, now Haiti.",
         "exampleSentence": "The museum displayed dominguan artifacts from the colonial sugar plantations.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -1895,7 +1895,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "superself",
-        "definition": "A higher or more powerful version of one's inner identity",
+        "definition": "A higher or more powerful version of one's inner identity.",
         "exampleSentence": "The philosopher described the superself as the part of us that seeks growth beyond ordinary limits.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -1943,7 +1943,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "frasmotic",
-        "definition": "Deeply and sincerely apologetic; extremely sorry",
+        "definition": "Deeply and sincerely apologetic; extremely sorry.",
         "exampleSentence": "He was so frasmotic about breaking the vase that he bought a replacement immediately.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -2007,7 +2007,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "hyalosign",
-        "definition": "A crystal-like image in film theory that fuses real and imaginary into a single moment",
+        "definition": "A crystal-like image in film theory that fuses real and imaginary into a single moment.",
         "exampleSentence": "The mirror scene functions as a hyalosign, blurring the line between actual and virtual.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2023,7 +2023,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "lectosign",
-        "definition": "A film image that demands to be read and interpreted, not merely watched",
+        "definition": "A film image that demands to be read and interpreted, not merely watched.",
         "exampleSentence": "The director filled the scene with symbols that work as a lectosign for attentive viewers.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2039,7 +2039,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "dragonewt",
-        "definition": "A fictional creature that is part dragon and part humanoid reptile",
+        "definition": "A fictional creature that is part dragon and part humanoid reptile.",
         "exampleSentence": "The player chose a dragonewt character with shimmering green scales and a long tail.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2071,7 +2071,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "abiogenist",
-        "definition": "A person who believes life can arise from non-living matter without parents",
+        "definition": "A person who believes life can arise from non-living matter without parents.",
         "exampleSentence": "The abiogenist argued that the first living cells formed from simple chemicals in ancient oceans.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2087,7 +2087,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "abiotrophy",
-        "definition": "Early breakdown of cells or tissues due to inherited genetic defects",
+        "definition": "Early breakdown of cells or tissues due to inherited genetic defects.",
         "exampleSentence": "The veterinarian diagnosed cerebellar abiotrophy after the young puppy lost its coordination.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2103,7 +2103,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "abjuration",
-        "definition": "A solemn, sworn rejection of a belief, claim, or allegiance",
+        "definition": "A solemn, sworn rejection of a belief, claim, or allegiance.",
         "exampleSentence": "The king demanded an abjuration of loyalty to any foreign ruler before granting citizenship.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2135,7 +2135,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "abominator",
-        "definition": "A person who feels intense hatred or disgust toward something",
+        "definition": "A person who feels intense hatred or disgust toward something.",
         "exampleSentence": "As an abominator of cruelty, she devoted her life to animal rescue work.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2167,7 +2167,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "abridgment",
-        "definition": "A shortened version of a book or document that keeps the main ideas",
+        "definition": "A shortened version of a book or document that keeps the main ideas.",
         "exampleSentence": "The library carried an abridgment of the novel for readers who wanted a quicker version.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2263,7 +2263,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "acromegaly",
-        "definition": "A condition where excess growth hormone causes the hands, feet, and face to enlarge",
+        "definition": "A condition where excess growth hormone causes the hands, feet, and face to enlarge.",
         "exampleSentence": "The doctor suspected acromegaly when the patient's shoes no longer fit after age forty.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2311,7 +2311,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "alpenstock",
-        "definition": "A sturdy wooden walking stick with a metal tip, used for climbing mountains",
+        "definition": "A sturdy wooden walking stick with a metal tip, used for climbing mountains.",
         "exampleSentence": "The hiker drove her alpenstock into the snow to steady herself on the steep slope.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2327,7 +2327,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "amerindian",
-        "definition": "A member of any of the indigenous peoples of North or South America",
+        "definition": "A member of any of the indigenous peoples of North or South America.",
         "exampleSentence": "The museum honored amerindian cultures with exhibits on art, language, and history.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2343,7 +2343,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "amphibrach",
-        "definition": "A three-syllable rhythm in poetry: short, long, short",
+        "definition": "A three-syllable rhythm in poetry: short, long, short.",
         "exampleSentence": "The word 'together' naturally forms an amphibrach when spoken aloud.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2391,7 +2391,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "angiosperm",
-        "definition": "A plant that produces flowers and encloses its seeds inside a fruit",
+        "definition": "A plant that produces flowers and encloses its seeds inside a fruit.",
         "exampleSentence": "An apple tree is an angiosperm because its seeds grow inside the fruit.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2455,7 +2455,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "backstitch",
-        "definition": "A strong sewing stitch that doubles back on itself for a secure seam",
+        "definition": "A strong sewing stitch that doubles back on itself for a secure seam.",
         "exampleSentence": "She used a tight backstitch along the hem so the fabric would not unravel.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2487,7 +2487,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "batrachian",
-        "definition": "A frog, toad, or similar tailless amphibian",
+        "definition": "A frog, toad, or similar tailless amphibian.",
         "exampleSentence": "The pond was home to every kind of batrachian, from tiny tree frogs to fat toads.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2503,7 +2503,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "bemusement",
-        "definition": "A feeling of puzzled confusion or mild bewilderment",
+        "definition": "A feeling of puzzled confusion or mild bewilderment.",
         "exampleSentence": "She stared at the strange painting with a look of quiet bemusement on her face.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2567,7 +2567,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "cacography",
-        "definition": "Poor spelling or handwriting, especially when full of errors",
+        "definition": "Poor spelling or handwriting, especially when full of errors.",
         "exampleSentence": "The teacher circled every mistake, calling his essay a masterpiece of cacography.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2583,7 +2583,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "cadaverine",
-        "definition": "A foul-smelling chemical produced when animal tissue decays",
+        "definition": "A foul-smelling chemical produced when animal tissue decays.",
         "exampleSentence": "The presence of cadaverine explained the terrible odor coming from the old refrigerator.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2599,7 +2599,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "carabineer",
-        "definition": "A mounted soldier armed with a short rifle called a carbine",
+        "definition": "A mounted soldier armed with a short rifle called a carbine.",
         "exampleSentence": "The carabineer galloped forward with his carbine ready as the charge began.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -2631,7 +2631,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "catabolism",
-        "definition": "The body's process of breaking down complex molecules to release stored energy",
+        "definition": "The body's process of breaking down complex molecules to release stored energy.",
         "exampleSentence": "During exercise, catabolism speeds up as your muscles burn fuel for energy.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -4470,7 +4470,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "percipient",
-        "definition": "Having the ability to perceive, especially to perceive quickly.",
+        "definition": "A person who perceives or is aware of something.",
         "exampleSentence": "In the course of investigating the haunting, I interviewed several percipients.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -6514,7 +6514,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "multicolor",
-        "definition": "A display of many colors.",
+        "definition": "Having or displaying many different colours.",
         "exampleSentence": "The multicolor colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -6674,7 +6674,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "schismatic",
-        "definition": "A person involved in a schism.",
+        "definition": "Relating to or promoting a split within an organisation.",
         "exampleSentence": "The schismatic colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -7646,7 +7646,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "catawampus",
         "definition": "Out of alignment, in disarray or disorder: crooked, askew.",
-        "exampleSentence": "\"Waal, I noticed ez the aidge o' one o' them boards war sot sorter catawampus, ...\".",
+        "exampleSentence": "\"Waal, I noticed ez the aidge o' one o' them boards war sot sorter catawampus, …\".",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -9033,7 +9033,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "squeakquel",
         "definition": "A sequel, especially one involving rodents.",
-        "exampleSentence": "Willard did come out with a sequel (a squeakquel...I had to do it) called Ben.",
+        "exampleSentence": "Willard did come out with a sequel (a squeakquel…I had to do it) called Ben.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -9864,7 +9864,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "slumgullion",
         "definition": "A stew of meat and vegetables.",
-        "exampleSentence": "“Say...if anybody cares, this vat of slumgullion is as ready as it will ever be.”.",
+        "exampleSentence": "“Say…if anybody cares, this vat of slumgullion is as ready as it will ever be.”.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "blends",
@@ -10197,7 +10197,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "atrabilious",
         "definition": "Having an excess of black bile.",
-        "exampleSentence": "Lame, lank, atrabilious Charles Grey Grey is a 32nd generation Northumberlander.",
+        "exampleSentence": "Lame, lank, atrabilious Charles Grey is a 32nd generation Northumberlander.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -10212,7 +10212,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "attitudinal",
-        "definition": "A particle that conveys the emotion, tone, mood, or feeling of the speaker.",
+        "definition": "Relating to attitudes or personal outlook.",
         "exampleSentence": "While Noice is generally positive about the police department he thinks that there are attitudinal problems among some of the rank and file.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -10371,7 +10371,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "domiciliary",
-        "definition": "A person who legally resides in a particular place.",
+        "definition": "Relating to or occurring at a person's home.",
         "exampleSentence": "The personal and domiciliary rights of the citizen were scrupulously guarded.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -13119,7 +13119,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "interpellate",
         "definition": "To interrupt (someone) so as to inform or question (that person about something).",
-        "exampleSentence": "… whereas the Palestinian subjects are interpellated as: the martyr... a young Palestinian... a Palestinian teenager.",
+        "exampleSentence": "… whereas the Palestinian subjects are interpellated as: the martyr… a young Palestinian… a Palestinian teenager.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -14044,7 +14044,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "usufructuary",
-        "definition": "A person who holds property, or the use of assets, by usufruct; a fructuary.",
+        "definition": "Relating to the right to use and enjoy the benefits of another's property.",
         "exampleSentence": "The usufructuary surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -15017,7 +15017,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "equalitarian",
-        "definition": "A person who accepts or promotes the view of equalitarianism.",
+        "definition": "Believing in or promoting equal rights for all people.",
         "exampleSentence": "In the increasingly equalitarian Britain of the postwar years, Britain's monarchy found itself subject to a questioning, scarcely articulated, of the utility of an expensive royal household.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -15034,7 +15034,7 @@ export const TIER_8_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "ultraquantum",
         "definition": "Of a state in which only the lowest Landau level (orbit with a discrete energy value) is occupied.",
-        "exampleSentence": "In an ultraquantum magnetic field, i.e., when only the lowest Landau level is occupied, plateaus of the Hall resistance are also observed at fractional s (the fractional quantum Hall effect).",
+        "exampleSentence": "In the ultraquantum limit, only the lowest energy level is occupied.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "latin-roots",

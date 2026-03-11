@@ -1851,7 +1851,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "downcast",
-        "definition": "To turn downwards, usually as a sign of discouragement, sadness, etc., or sometimes modesty.",
+        "definition": "Feeling sad or discouraged; dejected.",
         "exampleSentence": "The old house had a downcast appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -2185,7 +2185,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "lutheran",
-        "definition": "A member of any of the Christian churches which identify with the theology of Martin Luther.",
+        "definition": "Relating to the Protestant theology of Martin Luther.",
         "exampleSentence": "A Lutheran understanding of the Lord’s Supper is not the same as that of other denominations.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -2218,7 +2218,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "mutinous",
         "definition": "Likely to commit mutiny.",
-        "exampleSentence": "“My men grow mutinous day by day;",
+        "exampleSentence": "“My men grow mutinous day by day;.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
         "pattern": "latin-roots",
@@ -2662,7 +2662,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "latchkey",
-        "definition": "A key, especially to an outside door.",
+        "definition": "Relating to a child who returns to an empty home after school.",
         "exampleSentence": "When coded, it was found that 224 children were latchkey or bordering on latchkey status.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -2867,7 +2867,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "downbeat",
-        "definition": "The accented beat at the beginning of a bar.",
+        "definition": "Pessimistic or gloomy in tone.",
         "exampleSentence": "The old house had a downbeat appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -3377,8 +3377,8 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "capillary",
-        "definition": "Any of the small blood vessels in diameter) that connect arteries to veins.",
-        "exampleSentence": "Learning about the capillary was the best part of the day.",
+        "definition": "Any of the tiny blood vessels that connect arteries to veins.",
+        "exampleSentence": "Blood passes from arteries through the capillary network and into veins.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "suffixes",
@@ -3713,7 +3713,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "endocrine",
-        "definition": "Producing internal secretions that are transported around the body by the bloodstream.",
+        "definition": "A gland that secretes hormones directly into the blood.",
         "exampleSentence": "Learning about the endocrine was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 6,
@@ -5519,7 +5519,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "caesarian",
-        "definition": "A follower of Julius Caesar.",
+        "definition": "Relating to a surgical delivery of a baby through the abdomen.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully caesarian.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -6364,7 +6364,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "nighttime",
-        "definition": "The hours of darkness between sunset and sunrise; the night.",
+        "definition": "Happening or existing during the night.",
         "exampleSentence": "Discourage nighttime prowlers by installing motion-sensitive lights.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -6492,7 +6492,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "simpatico",
         "definition": "Having a compatible temperament or pleasing qualities.",
-        "exampleSentence": "\"Basically, right now, you and math are just not...simpatico.\"",
+        "exampleSentence": "\"Basically, right now, you and math are just not…simpatico.\"",
         "partOfSpeech": "adjective",
         "difficulty": 6,
         "pattern": "multisyllable",
@@ -7881,7 +7881,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "anatomical",
-        "definition": "An expression that relates to anatomy.",
+        "definition": "Relating to the structure of the body.",
         "exampleSentence": "The two species have some anatomical similarities.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -7929,7 +7929,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "articulate",
-        "definition": "To make clear or effective.",
+        "definition": "Able to speak fluently and express ideas clearly.",
         "exampleSentence": "The articulate colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -8756,7 +8756,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "stereotype",
-        "definition": "A conventional, formulaic, and often oversimplified or exaggerated conception, opinion, or image of.",
+        "definition": "Viewed or represented as a fixed, oversimplified image.",
         "exampleSentence": "Not all Zumbetonians wear plimsolls. That's just a stereotype.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -9284,7 +9284,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "apocalyptic",
         "definition": "Revelatory; prophetic.",
-        "exampleSentence": "He was apocalyptically furious.",
+        "exampleSentence": "The ancient scroll contained apocalyptic visions of what the future would bring.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
         "pattern": "multisyllable",
@@ -9473,7 +9473,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "neanderthal",
-        "definition": "A specimen of the now extinct species Homo neanderthalensis.",
+        "definition": "Relating to an extinct species of early humans.",
         "exampleSentence": "The capacity of the Neanderthal skull was 10% larger than that of modern humans.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -9537,7 +9537,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "residential",
-        "definition": "A trip during which people temporarily live together.",
+        "definition": "Designed for or occupied by people living in houses.",
         "exampleSentence": "They live in a residential neighborhood.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -10829,7 +10829,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "teg",
         "definition": "A sheep in its second year, or from the time it is weaned until it is first shorn.",
-        "exampleSentence": "One Stringor, that brought a tegg from Wresill.",
+        "exampleSentence": "The farmer kept the young teg with the rest of the flock until shearing time.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "cvc",
@@ -10955,7 +10955,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "dup",
         "definition": "To open (a door, gate etc.).",
-        "exampleSentence": "Then up he rose and donned his clothes, / And dupped the chamber door;",
+        "exampleSentence": "Then up he rose and donned his clothes, / And dupped the chamber door;.",
         "partOfSpeech": "verb",
         "difficulty": 6,
         "pattern": "cvc",
@@ -11482,7 +11482,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "dyad",
         "definition": "A set of two elements treated as one; a pair.",
-        "exampleSentence": "For each individual in a specific dyad (i.e., mother-offspring, offspring-father, sibling-sibling), ….",
+        "exampleSentence": "The mother and child formed a close dyad during the early years.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "cvc",
@@ -12199,7 +12199,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "nosh",
         "definition": "A light meal or snack.",
-        "exampleSentence": "They were noshing on fruit.",
+        "exampleSentence": "We stopped at the cafe to nosh on sandwiches and crisps.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "digraphs",
@@ -12437,7 +12437,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "razz",
         "definition": "A version of seven-card stud where the worst poker hand wins (called lowball).",
-        "exampleSentence": "No need to look like you're sat on a brush, man, we're only razzin' ya.",
+        "exampleSentence": "They played a hand of razz, where the player with the worst cards actually wins the pot.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "cvc",
@@ -13136,7 +13136,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "jain",
-        "definition": "An adherent or follower of Jainism.",
+        "definition": "Relating to the Indian religion of Jainism.",
         "exampleSentence": "The jain weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
         "difficulty": 6,
@@ -13280,7 +13280,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "zaza",
         "definition": "A parent; a gender-neutral alternative to mama or papa.",
-        "exampleSentence": "You are your zaza's daughter.",
+        "exampleSentence": "The Zaza people have their own distinct language and cultural traditions.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "multisyllable",
@@ -15081,7 +15081,7 @@ export const TIER_5_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "crony",
         "definition": "An old woman; a crone.",
-        "exampleSentence": "Marry not an old crony.",
+        "exampleSentence": "The mayor appointed his old crony to the important position.",
         "partOfSpeech": "noun",
         "difficulty": 6,
         "pattern": "blends",

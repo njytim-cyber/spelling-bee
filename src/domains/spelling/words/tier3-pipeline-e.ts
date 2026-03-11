@@ -223,7 +223,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "debateful",
         "definition": "Contentious, argumentative, full of strife.",
-        "exampleSentence": "Debatefull strife, and cruell enmitie / The famous name of knighthood fowly shend ….",
+        "exampleSentence": "The debateful neighbours argued over the fence about every little thing.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "latin-roots",
@@ -1734,7 +1734,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "overcruel",
         "definition": "Overly or excessively cruel.",
-        "exampleSentence": "Ah, I have been overcruel.",
+        "exampleSentence": "The king was overcruel to his subjects, taxing them until they had nothing.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "prefixes",
@@ -2450,7 +2450,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "undisplay",
         "definition": "To hide or remove from a display.",
-        "exampleSentence": "Some UIs tend to improve this by displaying toolbars only when they are related to any object manipulated (e.g., an image, a rectangle) and undisplaying them afterwards.",
+        "exampleSentence": "The software lets you undisplay certain columns to simplify the view.",
         "partOfSpeech": "verb",
         "difficulty": 4,
         "pattern": "latin-roots",
@@ -2528,7 +2528,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "nonrescue",
-        "definition": "Not involved in rescues.",
+        "definition": "An operation or situation that does not involve a rescue.",
         "exampleSentence": "Learning about the nonrescue was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -2673,7 +2673,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "launchful",
         "definition": "Enough to fill a launch (type of boat).",
-        "exampleSentence": "They eject a few dozen launchfuls of tourists, greedy-eyed for the scenery, whom the Messrs Reid gather in and prescribe for for a few hours or a few months as the case may be.",
+        "exampleSentence": "They eject a few dozen launchfuls of tourists, greedy-eyed for the scenery, whom the Messrs Reid gather in and prescribe for a few hours or a few months as the case may be.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -3559,7 +3559,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "surprising",
-        "definition": "A situation in which somebody is surprised.",
+        "definition": "Causing surprise; unexpected; astonishing.",
         "exampleSentence": "The surprising colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -4255,7 +4255,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "mountainer",
         "definition": "A person who lives in a mountainous area.",
-        "exampleSentence": "He also sent Embassadors to the Mountainers of the Pyrenes, & to the Gaules, to obtaine a quiet passage:",
+        "exampleSentence": "He also sent Embassadors to the Mountainers of the Pyrenes, & to the Gaules, to obtaine a quiet passage:.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -4799,7 +4799,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "overchoice",
         "definition": "An excessive amount of choice.",
-        "exampleSentence": "Finally, we show that the model also contemplates the real situation of overchoice, where a large number of similar alternatives makes the choice process harder and indecision prevail..",
+        "exampleSentence": "Finally, we show that the model also contemplates the real situation of overchoice, where a large number of similar alternatives makes the choice process harder and indecision prevail…",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "prefixes",
@@ -5576,7 +5576,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "alternative",
-        "definition": "Relating to a choice between two or more possibilities.",
+        "definition": "One of two or more available possibilities.",
         "exampleSentence": "“The cloister or a betrothed husband?” I echoed—“Is that the alternative destined for Miss Vernon?”.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -6423,7 +6423,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "superaction",
         "definition": "Supersymmetric quantum action.",
-        "exampleSentence": "We also show how the off-shell BRST-invariant quantum action can be constructed starting from a gauge-fixed superaction..",
+        "exampleSentence": "We also show how the off-shell BRST-invariant quantum action can be constructed starting from a gauge-fixed superaction…",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "latin-roots",
@@ -6567,7 +6567,7 @@ export const TIER_3_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "superenergy",
         "definition": "Highly superior energy (in any sense).",
-        "exampleSentence": "Only a few days remained before the freeze, and they spent this period in a burst of superenergy, stripping bark and storing it for their their winter's food.",
+        "exampleSentence": "Only a few days remained before the freeze, and they spent this period in a burst of superenergy, stripping bark and storing it for their winter's food.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "latin-roots",

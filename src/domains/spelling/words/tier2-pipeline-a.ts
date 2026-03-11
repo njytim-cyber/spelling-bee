@@ -63,7 +63,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "rough",
-        "definition": "The unmowed part of a golf course.",
+        "definition": "Having an uneven or irregular surface; not smooth.",
         "exampleSentence": "Being a teenager nowadays can be rough.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -288,7 +288,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "stroke",
         "definition": "An act of hitting; a blow, a hit.",
-        "exampleSentence": "Can you use the word stroke in a sentence?",
+        "exampleSentence": "The golfer's powerful stroke sent the ball soaring across the fairway.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "silent-e",
@@ -480,7 +480,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "relief",
         "definition": "A method of sculpture or other artwork in which shapes or figures protrude from a flat background.",
-        "exampleSentence": "Can you use the word relief in a sentence?",
+        "exampleSentence": "The artist carved the figures in relief so they stood out from the stone wall.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -496,7 +496,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "strain",
         "definition": "Pressure or tension placed on something, causing it to stretch or weaken.",
-        "exampleSentence": "Can you use the word strain in a sentence?",
+        "exampleSentence": "The strain on the rope increased as they pulled the heavy sled uphill.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -623,7 +623,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "positive",
-        "definition": "A thing capable of being affirmed; something real or actual.",
+        "definition": "Expressing agreement or approval; confident; optimistic.",
         "exampleSentence": "He has a positive outlook on life.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -879,7 +879,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "review",
         "definition": "A second or subsequent reading of a text or artifact in an attempt to gain new insights.",
-        "exampleSentence": "Can you use the word review in a sentence?",
+        "exampleSentence": "After a careful review of her notes, she felt ready for the test.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -1277,7 +1277,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "shadow",
         "definition": "Unofficial, informal, unauthorized, but acting as though it were.",
-        "exampleSentence": "Can you use the word shadow in a sentence?",
+        "exampleSentence": "The shadow government operated quietly behind the scenes.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -1660,7 +1660,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "hammer",
         "definition": "Someone connected with West Ham Football Club, as a fan, player, coach etc.",
-        "exampleSentence": "Can you use the word hammer in a sentence?",
+        "exampleSentence": "She swung the hammer and drove the nail into the wooden board.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -1676,7 +1676,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "screen",
         "definition": "A physical divider intended to block an area from view, or provide shelter from something dangerous.",
-        "exampleSentence": "Can you use the word screen in a sentence?",
+        "exampleSentence": "A tall folding screen divided the classroom into two separate areas.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -2138,7 +2138,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "button",
         "definition": "A knob or disc that is passed through a loop or (buttonhole), serving as a fastener.",
-        "exampleSentence": "Can you use the word button in a sentence?",
+        "exampleSentence": "She threaded the button through the buttonhole to fasten her coat.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -2154,7 +2154,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "degree",
         "definition": "A unit of measurement for temperature or angles; also, a qualification from a university.",
-        "exampleSentence": "Can you use the word degree in a sentence?",
+        "exampleSentence": "Water freezes at zero degrees on the Celsius scale.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -2234,7 +2234,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "series",
         "definition": "A number of things that follow on one after the other or are connected one after the other.",
-        "exampleSentence": "Can you use the word series in a sentence?",
+        "exampleSentence": "The library had an exciting series of adventure books on the top shelf.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -3365,7 +3365,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "branch",
         "definition": "The woody part of a tree arising from the trunk and usually dividing.",
-        "exampleSentence": "Can you use the word branch in a sentence?",
+        "exampleSentence": "A robin built its nest on the highest branch of the old oak tree.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -3413,7 +3413,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "colony",
         "definition": "A territory settled by people from another country and governed by that country.",
-        "exampleSentence": "Can you use the word colony in a sentence?",
+        "exampleSentence": "The British colony grew rapidly as more settlers arrived by ship.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "latin-roots",
@@ -3429,7 +3429,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "effect",
         "definition": "The result or outcome of a cause.",
-        "exampleSentence": "Can you use the word effect in a sentence?",
+        "exampleSentence": "The effect of the medicine was almost immediate.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -3461,7 +3461,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "morgan",
         "definition": "A breed of strong, compact horse originally from Vermont.",
-        "exampleSentence": "Can you use the word morgan in a sentence?",
+        "exampleSentence": "The morgan trotted around the ring with its head held high.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -3475,8 +3475,8 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "rubber",
-        "definition": "Not covered by funds on account.",
-        "exampleSentence": "Can you use the word rubber in a sentence?",
+        "definition": "An elastic material made from the sap of tropical plants or produced synthetically.",
+        "exampleSentence": "Tyres are made from rubber because it grips the road well.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -3508,7 +3508,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "walker",
         "definition": "A person who travels on foot; a pedestrian.",
-        "exampleSentence": "Can you use the word walker in a sentence?",
+        "exampleSentence": "The walker followed the forest trail for several miles.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -3730,7 +3730,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "steady",
-        "definition": "To stabilize; to prevent from shaking.",
+        "definition": "Firmly fixed or supported; not shaking or moving.",
         "exampleSentence": "Hold the ladder steady while I go up.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -4766,7 +4766,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "bail",
         "definition": "To release a person from jail in exchange for money as a guarantee of their return to court.",
-        "exampleSentence": "Ne none there was to reskue her, ne none to baile.",
+        "exampleSentence": "The family worked together to bail their uncle out of jail after the misunderstanding.",
         "partOfSpeech": "verb",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -4797,7 +4797,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "keen",
-        "definition": "A prolonged wail for a deceased person.",
+        "definition": "Having a sharp edge or point; eager and enthusiastic.",
         "exampleSentence": "She’s keen to learn another language.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -4813,7 +4813,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "pale",
-        "definition": "A wooden stake; a picket.",
+        "definition": "Light in colour; having little colour.",
         "exampleSentence": "He is but a pale shadow of his former self.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -5324,7 +5324,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "agency",
         "definition": "The capacity, condition, or state of acting or of exerting power.",
-        "exampleSentence": "Can you use the word agency in a sentence?",
+        "exampleSentence": "She demonstrated her agency by making decisions on her own.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -5340,7 +5340,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "backup",
         "definition": "A reserve or substitute.",
-        "exampleSentence": "Can you use the word backup in a sentence?",
+        "exampleSentence": "Always keep a backup of your important files on a separate drive.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -5356,7 +5356,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "barrel",
         "definition": "A large, round, wooden or metal container used for storing liquids like wine or oil.",
-        "exampleSentence": "Can you use the word barrel in a sentence?",
+        "exampleSentence": "The winemaker stored the juice in a large oak barrel to age.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -5436,7 +5436,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "empire",
         "definition": "A large group of territories or nations ruled by a single powerful leader or government.",
-        "exampleSentence": "Can you use the word empire in a sentence?",
+        "exampleSentence": "The Roman Empire stretched across much of Europe and beyond.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -5484,7 +5484,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "jacket",
         "definition": "A short coat worn on the upper body, often with sleeves and a front opening.",
-        "exampleSentence": "Can you use the word jacket in a sentence?",
+        "exampleSentence": "He grabbed his jacket before heading out into the chilly evening air.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -5500,7 +5500,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "jersey",
         "definition": "A close-fitting knitted garment for the upper body; also, a sports shirt with a number.",
-        "exampleSentence": "Can you use the word jersey in a sentence?",
+        "exampleSentence": "Each player wore a bright red jersey with their number on the back.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -5516,7 +5516,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "length",
         "definition": "The distance measured along the longest dimension of an object.",
-        "exampleSentence": "Can you use the word length in a sentence?",
+        "exampleSentence": "The length of the swimming pool is twenty-five metres.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -5532,7 +5532,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "object",
         "definition": "A thing that has physical existence but is not alive.",
-        "exampleSentence": "Can you use the word object in a sentence?",
+        "exampleSentence": "A mysterious metal object was found buried in the garden.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -5548,7 +5548,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "orange",
         "definition": "An evergreen tree of the genus Citrus such as Citrus sinensis which yields oranges (the fruit).",
-        "exampleSentence": "Can you use the word orange in a sentence?",
+        "exampleSentence": "She picked a ripe orange from the tree in the backyard.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -5596,7 +5596,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "prayer",
         "definition": "A practice of communicating with one's God, or with some spiritual entity.",
-        "exampleSentence": "Can you use the word prayer in a sentence?",
+        "exampleSentence": "The family gathered together for a quiet prayer before dinner.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -5612,7 +5612,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "region",
         "definition": "A large area of land that shares similar features, climate, or government.",
-        "exampleSentence": "Can you use the word region in a sentence?",
+        "exampleSentence": "The mountainous region receives heavy snowfall each winter.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -5708,7 +5708,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "wisdom",
         "definition": "An element of personal character that enables one to distinguish the wise from the unwise.",
-        "exampleSentence": "Can you use the word wisdom in a sentence?",
+        "exampleSentence": "Her grandmother's wisdom helped her make better choices every day.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -6473,7 +6473,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "domestic",
-        "definition": "A maid or household servant.",
+        "definition": "Relating to the home, household, or family.",
         "exampleSentence": "The old house had a domestic appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -6726,7 +6726,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "sensitive",
-        "definition": "A person with a paranormal sensitivity to something that most cannot perceive.",
+        "definition": "Quick to detect or respond to slight changes or influences.",
         "exampleSentence": "Thank you for being sensitive.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -6980,7 +6980,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "bust",
-        "definition": "Without any money, broke, bankrupt.",
+        "definition": "A sculpture of a person's head, shoulders, and upper chest.",
         "exampleSentence": "Paris was a bust. They wouldn't even let us see the Mona Lisa.",
         "partOfSpeech": "noun",
         "difficulty": 3,
@@ -7173,7 +7173,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "gear",
         "definition": "Equipment or paraphernalia, especially that used for an athletic endeavor.",
-        "exampleSentence": "Goe they both together to their geare.",
+        "exampleSentence": "The hikers packed all their gear into backpacks before setting off up the mountain.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -7524,7 +7524,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "warn",
         "definition": "To make (someone) aware of impending danger, evil, etc.",
-        "exampleSentence": "Hark! the clock is warning ten;",
+        "exampleSentence": "Hark! the clock is warning ten;.",
         "partOfSpeech": "verb",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -7556,7 +7556,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "fail",
         "definition": "A failure, especially of a financial transaction (a termination of an action).",
-        "exampleSentence": "The project was full of fail.",
+        "exampleSentence": "If you fail the first time, you should try again and learn from it.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -7636,7 +7636,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "china",
         "definition": "Chinaware: porcelain tableware.",
-        "exampleSentence": "Tea... Finest China, Plain (Moning).",
+        "exampleSentence": "Tea… Finest China, Plain (Moning).",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -8019,7 +8019,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "latin",
-        "definition": "A person native to ancient Rome or its Empire.",
+        "definition": "Relating to the language, people, or culture of ancient Rome.",
         "exampleSentence": "The earliest Latin culture of Ireland was heavily indebted to that of Britain….",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -8035,7 +8035,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "roman",
-        "definition": "A native or resident of Rome.",
+        "definition": "Relating to Rome or the ancient Roman Empire.",
         "exampleSentence": "You will find the term defined at the end of Roman one.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -8132,7 +8132,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "bailey",
         "definition": "An apple cultivar from New York.",
-        "exampleSentence": "Can you use the word bailey in a sentence?",
+        "exampleSentence": "The bailey apple has a sweet, crisp flavour perfect for eating fresh.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -8148,7 +8148,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "basket",
         "definition": "A lightweight container, generally round, open at the top, and tapering toward the bottom.",
-        "exampleSentence": "Can you use the word basket in a sentence?",
+        "exampleSentence": "She filled the basket with freshly picked strawberries from the garden.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -8180,7 +8180,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "cherry",
         "definition": "Someone connected with AFC Bournemouth, as a fan, player, coach etc.",
-        "exampleSentence": "Can you use the word cherry in a sentence?",
+        "exampleSentence": "The cherry tree blossomed with beautiful pink flowers every spring.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -8195,7 +8195,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "closet",
         "definition": "A small room within a house used to store clothing, food, or other household supplies.",
-        "exampleSentence": "Can you use the word closet in a sentence?",
+        "exampleSentence": "He organised his closet so every shirt had its own hanger.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -8211,7 +8211,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "cooper",
         "definition": "A person who makes or repairs wooden barrels and casks.",
-        "exampleSentence": "Can you use the word cooper in a sentence?",
+        "exampleSentence": "The cooper carefully shaped the wooden staves into a sturdy barrel.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8259,7 +8259,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "dragon",
         "definition": "A large, fearsome creature from myths and legends, often shown with wings and breathing fire.",
-        "exampleSentence": "Can you use the word dragon in a sentence?",
+        "exampleSentence": "The dragon in the story guarded a cave full of golden treasure.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "greek-roots",
@@ -8275,7 +8275,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "effort",
         "definition": "The work involved in performing an activity; exertion.",
-        "exampleSentence": "Can you use the word effort in a sentence?",
+        "exampleSentence": "It took a lot of effort to climb all the way to the top of the hill.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -8291,7 +8291,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "facing",
         "definition": "The most external portion of exterior siding.",
-        "exampleSentence": "Can you use the word facing in a sentence?",
+        "exampleSentence": "The brick facing on the front of the building gave it a classic look.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8306,7 +8306,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "fixing",
         "definition": "Present participle and gerund of fix.",
-        "exampleSentence": "Can you use the word fixing in a sentence?",
+        "exampleSentence": "Dad spent the morning fixing the broken fence in the backyard.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8321,7 +8321,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "ginger",
         "definition": "Very careful or cautious; also, delicate, sensitive.",
-        "exampleSentence": "Can you use the word ginger in a sentence?",
+        "exampleSentence": "Be very ginger with that vase because it is extremely fragile.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8337,7 +8337,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "holmes",
         "definition": "An informal term of address, like man or dude.",
-        "exampleSentence": "Can you use the word holmes in a sentence?",
+        "exampleSentence": "He greeted his friend by saying, what's up, holmes?",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "cvc",
@@ -8353,7 +8353,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "hunter",
         "definition": "A person who searches for and catches wild animals, either for food or sport.",
-        "exampleSentence": "Can you use the word hunter in a sentence?",
+        "exampleSentence": "The hunter tracked the deer through the snowy forest at dawn.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8369,7 +8369,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "impact",
         "definition": "The striking of one body against another; collision.",
-        "exampleSentence": "Can you use the word impact in a sentence?",
+        "exampleSentence": "The impact of the ball against the window shattered the glass.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -8385,7 +8385,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "junior",
         "definition": "Low in rank; having a subordinate role, job, or situation.",
-        "exampleSentence": "Can you use the word junior in a sentence?",
+        "exampleSentence": "As a junior member of the team, she handled the smaller tasks first.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -8401,7 +8401,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "morris",
         "definition": "The young of the conger eel or similar fish, originally thought to be a separate species.",
-        "exampleSentence": "Can you use the word morris in a sentence?",
+        "exampleSentence": "The fisherman pulled up a net full of wriggling morris from the sea.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -8433,7 +8433,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "needle",
         "definition": "A thin, pointed piece of metal used for sewing, knitting, or medical injections.",
-        "exampleSentence": "Can you use the word needle in a sentence?",
+        "exampleSentence": "She threaded the needle and began to stitch the torn fabric.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -8513,7 +8513,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "resort",
         "definition": "A place where people go for holidays and relaxation, often with hotels and activities.",
-        "exampleSentence": "Can you use the word resort in a sentence?",
+        "exampleSentence": "The family stayed at a seaside resort with a pool and sandy beach.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -8640,7 +8640,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "wealth",
         "definition": "Riches; a great amount of valuable assets or material possessions.",
-        "exampleSentence": "Can you use the word wealth in a sentence?",
+        "exampleSentence": "The merchant's wealth allowed him to build a grand house in town.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -10211,7 +10211,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "separated",
         "definition": "Detached; not connected or joined; two or more things stand apart.",
-        "exampleSentence": "My parents are separated.",
+        "exampleSentence": "The two villages were separated by a wide river and a dense forest.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
         "pattern": "greek-roots",
@@ -10321,7 +10321,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "understep",
-        "definition": "Not to go as far as a boundary or limit.",
+        "definition": "A step below a threshold or boundary.",
         "exampleSentence": "In the back room and understeps, recessed lights are used.",
         "partOfSpeech": "noun",
         "difficulty": 3,
@@ -10703,7 +10703,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "hail",
         "definition": "Balls or pieces of ice falling as precipitation, often in connection with a thunderstorm.",
-        "exampleSentence": "Such a Son as all men hail'd me happy;",
+        "exampleSentence": "Such a Son as all men hail'd me happy;.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -11100,7 +11100,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "bold",
-        "definition": "A dwelling; habitation; building.",
+        "definition": "Showing courage and willingness to take risks; daring.",
         "exampleSentence": "The bold weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -11705,7 +11705,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "solid",
-        "definition": "Without spaces or hyphens.",
+        "definition": "A substance that is firm and stable in shape.",
         "exampleSentence": "I prefer solids over paisleys.",
         "partOfSpeech": "noun",
         "difficulty": 3,
@@ -12057,7 +12057,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "archer",
         "definition": "A person skilled in shooting arrows using a bow.",
-        "exampleSentence": "Can you use the word archer in a sentence?",
+        "exampleSentence": "The archer drew back the bowstring and aimed at the distant target.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12073,7 +12073,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "berlin",
         "definition": "A four-wheeled carriage with a separate sheltered seat behind the body.",
-        "exampleSentence": "Can you use the word berlin in a sentence?",
+        "exampleSentence": "The elegant berlin carriage rolled smoothly along the cobbled road.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -12089,7 +12089,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "breach",
         "definition": "A gap or break in something, such as a wall, barrier, or agreement.",
-        "exampleSentence": "Can you use the word breach in a sentence?",
+        "exampleSentence": "A breach in the dam sent water flooding into the valley below.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -12105,7 +12105,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "butler",
         "definition": "A manservant having charge of wines and liquors.",
-        "exampleSentence": "Can you use the word butler in a sentence?",
+        "exampleSentence": "The butler carefully selected a fine wine for the evening meal.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12137,7 +12137,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "carter",
         "definition": "A person who transports a load on a cart that is drawn by a beast of burden.",
-        "exampleSentence": "Can you use the word carter in a sentence?",
+        "exampleSentence": "The carter loaded heavy crates onto his wagon before sunrise.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12169,7 +12169,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "clinic",
         "definition": "A small medical center where patients receive treatment or checkups.",
-        "exampleSentence": "We are all Clinicks in this point.",
+        "exampleSentence": "The doctor at the clinic checked the children's eyesight and hearing.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -12201,7 +12201,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "cowboy",
         "definition": "A man who tends free-range cattle, especially in the American West.",
-        "exampleSentence": "Can you use the word cowboy in a sentence?",
+        "exampleSentence": "The cowboy rode across the open plains herding cattle to market.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -12249,7 +12249,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "estate",
         "definition": "The collective property and liabilities of someone, especially a deceased person.",
-        "exampleSentence": "Can you use the word estate in a sentence?",
+        "exampleSentence": "After her passing, the family divided the estate among the children.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "silent-e",
@@ -12265,7 +12265,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "farmer",
         "definition": "A person who works the land and/or who keeps livestock; anyone engaged in agriculture on a farm.",
-        "exampleSentence": "Can you use the word farmer in a sentence?",
+        "exampleSentence": "The farmer planted rows of corn in the rich dark soil each spring.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12297,7 +12297,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "galaxy",
         "definition": "The Milky Way; the apparent band of concentrated stars which appears in the night sky over earth.",
-        "exampleSentence": "Can you use the word galaxy in a sentence?",
+        "exampleSentence": "On a clear night, you can see the galaxy stretching across the sky.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -12313,7 +12313,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "gossip",
         "definition": "Someone who likes to talk about other people's private or personal business.",
-        "exampleSentence": "Can you use the word gossip in a sentence?",
+        "exampleSentence": "The neighbourhood gossip always knew everyone's latest news.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -12361,7 +12361,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "jungle",
         "definition": "A thick, wild forest in a tropical region with dense vegetation and many animals.",
-        "exampleSentence": "Can you use the word jungle in a sentence?",
+        "exampleSentence": "Tall vines and thick ferns covered the floor of the tropical jungle.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "digraphs",
@@ -12441,7 +12441,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "luxury",
         "definition": "Great comfort and elegance, especially involving expensive things.",
-        "exampleSentence": "Can you use the word luxury in a sentence?",
+        "exampleSentence": "Staying in a five-star hotel was a rare luxury for the whole family.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -12488,8 +12488,8 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "mobile",
-        "definition": "Capable of being moved, especially on wheels.",
-        "exampleSentence": "Can you use the word mobile in a sentence?",
+        "definition": "A decorative structure hung so that it can turn freely in the air.",
+        "exampleSentence": "The colourful mobile above the baby's cot spun gently in the breeze.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -12504,8 +12504,8 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "motive",
-        "definition": "Causing motion; having power to move, or tending to move.",
-        "exampleSentence": "Can you use the word motive in a sentence?",
+        "definition": "A reason for doing something; a purpose.",
+        "exampleSentence": "The detective searched for a motive behind the mysterious theft.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12521,7 +12521,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "native",
         "definition": "An aboriginal inhabitant of a colonized region, especially one colonized by English-speaking people.",
-        "exampleSentence": "Can you use the word native in a sentence?",
+        "exampleSentence": "The native people of the island had lived there for thousands of years.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12648,7 +12648,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "pirate",
         "definition": "A person who robs ships at sea; also, someone who copies and distributes content illegally.",
-        "exampleSentence": "Can you use the word pirate in a sentence?",
+        "exampleSentence": "The pirate sailed across the ocean searching for treasure ships.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "r-controlled",
@@ -12711,7 +12711,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "ranger",
         "definition": "A player on any of various teams called Rangers, such as the Texas Rangers or the New York Rangers.",
-        "exampleSentence": "Can you use the word ranger in a sentence?",
+        "exampleSentence": "The ranger patrolled the national park to protect the wildlife.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12742,7 +12742,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "ritual",
         "definition": "A rite; a repeated set of actions, especially in religious contexts.",
-        "exampleSentence": "Can you use the word ritual in a sentence?",
+        "exampleSentence": "Every morning he followed the same ritual of stretching and jogging.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12790,7 +12790,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "saving",
         "definition": "A reduction in cost or expenditure.",
-        "exampleSentence": "Can you use the word saving in a sentence?",
+        "exampleSentence": "Buying in bulk offered a saving of nearly thirty percent.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -12870,7 +12870,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "sunset",
         "definition": "The moment each evening when the sun disappears below the western horizon.",
-        "exampleSentence": "Can you use the word sunset in a sentence?",
+        "exampleSentence": "The sunset painted the sky in brilliant shades of orange and pink.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "multisyllable",
@@ -12902,7 +12902,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "triple",
         "definition": "Three times or thrice the number, amount, size, etc.",
-        "exampleSentence": "Can you use the word triple in a sentence?",
+        "exampleSentence": "She ordered a triple scoop of ice cream on a waffle cone.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "silent-e",
@@ -13300,7 +13300,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "tragic",
         "definition": "An obsessive fan, a superfan.",
-        "exampleSentence": "Can you use the word tragic in a sentence?",
+        "exampleSentence": "He was such a tragic about the band that he attended every concert.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "blends",
@@ -13316,7 +13316,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "rounds",
         "definition": "A series of visits or stops made in a regular route, such as by a doctor or guard.",
-        "exampleSentence": "Can you use the word rounds in a sentence?",
+        "exampleSentence": "The doctor made her rounds through the hospital each morning.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -13346,7 +13346,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "brains",
         "definition": "The substance of a brain, as a material or foodstuff.",
-        "exampleSentence": "Can you use the word brains in a sentence?",
+        "exampleSentence": "The biology class studied a diagram showing the brains of mammals.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -13948,7 +13948,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "humming",
-        "definition": "The sound of something that hums; a hum.",
+        "definition": "Making a continuous low sound; buzzing.",
         "exampleSentence": "But at night crowds of visitors called at his cot, / For he told a right marvellous tale; / Yet a stronger attraction by chance he had got, / A barrel of old humming ale.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -14648,7 +14648,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "dreadful",
         "definition": "Genuinely horrific, awful, or alarming; dangerous, risky.",
-        "exampleSentence": "Here some... Look dreadful gay in their own sparkling blood.",
+        "exampleSentence": "Here some… Look dreadful gay in their own sparkling blood.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -14998,7 +14998,7 @@ export const TIER_2_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "spareful",
         "definition": "Abstemious; Lacking in appetite or vitality.",
-        "exampleSentence": "Lucullus was a niggard of his meat, And spareful of his cups seem'd Anthony;",
+        "exampleSentence": "Lucullus was a niggard of his meat, And spareful of his cups seem'd Anthony;.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
         "pattern": "suffixes",

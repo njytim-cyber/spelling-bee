@@ -426,7 +426,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "passive",
-        "definition": "Being subjected to an action without producing a reaction.",
+        "definition": "The form of a verb in which the subject receives the action.",
         "exampleSentence": "Reductions In Both Size And Weight Offered By Integrated Passives.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -868,7 +868,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "tracker",
         "definition": "Agent noun of track; one who, or that which, tracks or pursues, as a man or dog that follows game.",
-        "exampleSentence": "At the time, tracking chiptunes (i.e. using trackers) was the fundamental method of chipmusic-making.",
+        "exampleSentence": "The wildlife tracker followed the animal's footprints through the forest.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -1027,7 +1027,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "flatter",
         "definition": "To compliment someone, often (but not necessarily) insincerely and sometimes to win favour.",
-        "exampleSentence": "A man that flattereth his neighbour spreadeth a net for his feet.",
+        "exampleSentence": "She tried to flatter the teacher with compliments, hoping for extra time on the project.",
         "partOfSpeech": "verb",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -1448,7 +1448,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "minimal",
-        "definition": "The smallest possible amount, quantity, or degree.",
+        "definition": "Of the smallest amount or degree possible.",
         "exampleSentence": "With minimal effort, you won't be able to achieve all your dreams.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -1633,7 +1633,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "titanic",
-        "definition": "A venture that fails spectacularly, especially one perceived as overconfident.",
+        "definition": "Exceptionally large, strong, or powerful.",
         "exampleSentence": "Surely , one doesn't want another Titanic, with everyone sailing along in the serene belief that all will be well.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -2705,7 +2705,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "onliner",
         "definition": "A person who is online; a user of the Internet or similar service.",
-        "exampleSentence": "Google groups, located at http://groups.google.com, is where most onliners tap into the Internet newsgroups.",
+        "exampleSentence": "The forum was buzzing with onliners sharing their opinions about the new game update.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -2864,7 +2864,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "discage",
         "definition": "To free from, or as from, a cage.",
-        "exampleSentence": "She let me fly discaged.",
+        "exampleSentence": "The zookeeper decided to discage the bird and let it fly free.",
         "partOfSpeech": "verb",
         "difficulty": 4,
         "pattern": "silent-e",
@@ -3263,7 +3263,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "doylist",
-        "definition": "An enthusiast of the works of Arthur Conan Doyle.",
+        "definition": "Relating to analysis of fiction from the author's perspective rather than the characters'.",
         "exampleSentence": "While fans recognize and do engage in Doylist readings, they tend to find Watsonian readings more engaging. Fan fiction writers in particular engage with the text intradiegetically.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -5357,7 +5357,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "feminist",
-        "definition": "Relating to or in accordance with feminism.",
+        "definition": "A person who supports equal rights and opportunities for women.",
         "exampleSentence": "Feminist struggle takes place anytime anywhere any female or male resists sexism, sexist exploitation, and oppression.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -5705,7 +5705,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "intruder",
         "definition": "Someone who intrudes.",
-        "exampleSentence": "All intruders will be shot!",
+        "exampleSentence": "The guard dog barked fiercely when it sensed an intruder near the gate.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "latin-roots",
@@ -6451,7 +6451,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "sidewalk",
         "definition": "A paved footpath located at the side of a road, for the use of pedestrians.",
-        "exampleSentence": "Stay on the sidewalk.",
+        "exampleSentence": "The children drew colourful pictures on the sidewalk with chalk.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "vowel-teams",
@@ -8137,7 +8137,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "unwanted",
-        "definition": "Not wanted; unwelcome.",
+        "definition": "A person or thing that is not desired or welcome.",
         "exampleSentence": "I rebuffed his unwanted advances.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -8200,8 +8200,8 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "consumed",
-        "definition": "Construed with with Full of, exuding (also figuratively).",
-        "exampleSentence": "She was consumed with hatred.",
+        "definition": "Completely used up or eaten; also, filled with a strong feeling or obsession.",
+        "exampleSentence": "The fire consumed the entire building before the firefighters arrived.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "multisyllable",
@@ -8625,7 +8625,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "clanking",
-        "definition": "Having a hard nonresonant metallic sound.",
+        "definition": "A sharp sound like pieces of metal being struck together.",
         "exampleSentence": "Smalling’s challenge was weak and, when Lucas buried his shot, the night air was filled with the clanking of thousands of red plastic seats being emptied.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -9021,7 +9021,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "nonequal",
-        "definition": "Not equal; unequal, different.",
+        "definition": "A person or thing that is not equal to another.",
         "exampleSentence": "Periodic series of nonequal payments, converted into an equivalent future value.",
         "partOfSpeech": "noun",
         "difficulty": 4,
@@ -9374,7 +9374,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "underdot",
         "definition": "A dot placed below a letter, as a diacritical mark.",
-        "exampleSentence": "A with underdot = ạ.",
+        "exampleSentence": "In some writing systems, an underdot is placed beneath a letter to change its sound.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "latin-roots",
@@ -9452,7 +9452,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "overbust",
-        "definition": "The circumference of a woman's chest, measured over the breasts.",
+        "definition": "Fitting or worn over the bust; covering the chest.",
         "exampleSentence": "An overbust corset encloses the torso, extending from just under the arms to the hips.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -9516,7 +9516,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "fenceful",
         "definition": "Affording defense; defensive.",
-        "exampleSentence": "And first the Skill, of useful Arts inspir'd; Taught Artists first the carving Tool to wield, Chariots with Brass to arm, and form the fenceful shield:",
+        "exampleSentence": "And first the Skill, of useful Arts inspir'd; Taught Artists first the carving Tool to wield, Chariots with Brass to arm, and form the fenceful shield:.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -11179,7 +11179,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "prefeast",
-        "definition": "A feast held before an event.",
+        "definition": "Occurring or done before a feast or celebration.",
         "exampleSentence": "Like the previous holy day, this one too has a prefeast.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
@@ -11927,7 +11927,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "boulevard",
         "definition": "A broad, well-paved and landscaped thoroughfare.",
-        "exampleSentence": "We live on Sunset Boulevard.",
+        "exampleSentence": "The wide boulevard was lined with tall trees and outdoor cafes.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "vowel-teams",
@@ -13737,8 +13737,8 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "improving",
-        "definition": "That tends to improve someone or something to educate or morally better a person).",
-        "exampleSentence": "… nothing is so improving to the Temper as the Study of the Beauties, either of Poetry, Eloquence, Musick, or Painting.",
+        "definition": "Tending to improve someone or something; educational or morally uplifting.",
+        "exampleSentence": "Reading is one of the most improving activities a child can do.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "suffixes",
@@ -13845,7 +13845,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "justified",
         "definition": "Having a justification.",
-        "exampleSentence": "The act was fully justified.",
+        "exampleSentence": "The teacher justified the new homework policy by explaining its benefits.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "vowel-teams",
@@ -13906,7 +13906,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "paralyzed",
         "definition": "Partly or wholly incapable of movement; disabled.",
-        "exampleSentence": "We were paralyzed with fear.",
+        "exampleSentence": "The deer was paralyzed with fear when it saw the headlights of the car.",
         "partOfSpeech": "adjective",
         "difficulty": 4,
         "pattern": "greek-roots",
@@ -14931,7 +14931,7 @@ export const TIER_3_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "nonplayer",
         "definition": "Someone who is not a player.",
-        "exampleSentence": "I was one of the nonplayers.",
+        "exampleSentence": "In the game, the shopkeeper is a nonplayer character controlled by the computer.",
         "partOfSpeech": "noun",
         "difficulty": 4,
         "pattern": "latin-roots",

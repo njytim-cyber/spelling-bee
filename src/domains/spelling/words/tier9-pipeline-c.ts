@@ -539,7 +539,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "doubleness",
-        "definition": "Having two layers, sides, or contradictory aspects at once.",
+        "definition": "The quality of being double; duplicity or duality.",
         "exampleSentence": "The doubleness of his personality made it hard to trust him.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -2635,7 +2635,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "ocellation",
         "definition": "The development of eye-like markings, such as those on the wing of a butterfly or tail of a peacock.",
-        "exampleSentence": "In Pararge aegeria, increased dorsal hindwing ocellation (i.e., four spots) occurs in mid-summer (Parker, 1984; Shreeve, 1987).",
+        "exampleSentence": "The butterfly's wing ocellation helps it startle predators.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -3652,7 +3652,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "interdental",
-        "definition": "A speech sound pronounced with the tongue between the top and bottom teeth.",
+        "definition": "Situated or placed between the teeth.",
         "exampleSentence": "It is recommended to use an interdental brush, or dental floss, to clean between the teeth.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -4308,7 +4308,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "fortuneless",
         "definition": "Destitute of a fortune or portion; without money.",
-        "exampleSentence": "Manly limbs endur'd with little care / Against all hard mishaps and fortunelesse misfare.",
+        "exampleSentence": "The fortuneless orphan wandered the streets with nothing but the clothes on his back.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -6020,7 +6020,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "superherodom",
         "definition": "The realm of superheroes.",
-        "exampleSentence": "It had been another long day of superherodom for our supersized superhero... Pudgy Boy.",
+        "exampleSentence": "It had been another long day of superherodom for our supersized superhero… Pudgy Boy.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -6084,7 +6084,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "lithophagous",
         "definition": "Eating or swallowing stones or gravel, often as an aid to digestion.",
-        "exampleSentence": "The ostrich is lithophagous.",
+        "exampleSentence": "Some lithophagous birds swallow small stones to help grind food in their stomachs.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -6371,7 +6371,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "unisexuality",
-        "definition": "Having only male or only female parts in a single organism or flower.",
+        "definition": "The condition of having only male or only female reproductive organs.",
         "exampleSentence": "The botanist noted the unisexuality of the holly plant, with male and female trees growing apart.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -7659,7 +7659,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "sedentariness",
-        "definition": "The habit of spending most of one's time physically at rest, sitting or lying down, etc..",
+        "definition": "The habit of spending most of one's time physically at rest, sitting or lying down, etc.",
         "exampleSentence": "My teacher explained what a sedentariness is during our lesson.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -9096,7 +9096,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "funnification",
         "definition": "The process of making (something) fun.",
-        "exampleSentence": "And then...well, the demon lord already likes Diamond's sense of funnification.",
+        "exampleSentence": "And then…well, the demon lord already likes Diamond's sense of funnification.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -9160,7 +9160,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "compassionize",
         "definition": "To make compassionate.",
-        "exampleSentence": "We want people to be compassionized by the quilt...it has such visual impact. The quilt does the work, not us.",
+        "exampleSentence": "We want people to be compassionized by the quilt…it has such visual impact. The quilt does the work, not us.",
         "partOfSpeech": "verb",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -9746,7 +9746,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "irreducibility",
-        "definition": "Being impossible to break down into simpler parts.",
+        "definition": "The quality of being impossible to reduce or simplify further.",
         "exampleSentence": "The mathematician proved the irreducibility of the polynomial in her research paper.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -10286,7 +10286,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "stepgrandchild",
         "definition": "The stepchild of one's own child.",
-        "exampleSentence": "Other survivors are … three grandchildren; one great-grandchild; two stepdaughters; and two stepgrandchildren.",
+        "exampleSentence": "She treated every stepgrandchild with the same love and kindness as her own grandchildren.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "blends",
@@ -10509,7 +10509,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "unutterability",
-        "definition": "Being so extreme or powerful that words cannot capture it.",
+        "definition": "The quality of being too extreme or powerful for words.",
         "exampleSentence": "The unutterability of her grief left her sitting in silence for hours.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -11588,7 +11588,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "frontalization",
         "definition": "Movement towards the front.",
-        "exampleSentence": "Differences in topography (i.e., frontalization) between groups were also observed.",
+        "exampleSentence": "The brain scan revealed frontalization of activity during the language task.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -12797,7 +12797,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "microgeneration",
-        "definition": "Producing small amounts of electricity or heat locally, often from renewable sources.",
+        "definition": "The small-scale production of electricity or heat, often from renewable sources.",
         "exampleSentence": "Solar panels on the cabin roof are a simple form of microgeneration.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -13691,7 +13691,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "meretriciousness",
         "definition": "The property of being meretricious.",
-        "exampleSentence": "Can you use the word meretriciousness in a sentence?",
+        "exampleSentence": "The meretriciousness of the flashy advertisement failed to hide the poor quality of the product.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -13707,7 +13707,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "perpendicularity",
         "definition": "The condition of being perpendicular.",
-        "exampleSentence": "Can you use the word perpendicularity in a sentence?",
+        "exampleSentence": "The builder used a spirit level to check the perpendicularity of the wall before laying more bricks.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -13723,7 +13723,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "wholeheartedness",
         "definition": "The condition of being wholehearted.",
-        "exampleSentence": "Can you use the word wholeheartedness in a sentence?",
+        "exampleSentence": "Her wholeheartedness in helping the community earned her the respect of everyone in town.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -14136,7 +14136,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "multiperforation",
         "definition": "The creation of multiple perforations.",
-        "exampleSentence": "Can you use the word multiperforation in a sentence?",
+        "exampleSentence": "The machine performed a multiperforation of the metal sheet, punching dozens of tiny holes at once.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -14152,7 +14152,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "pseudodepression",
         "definition": "The signs and symptoms of depression from a non-depressive, often organic aetiology.",
-        "exampleSentence": "Can you use the word pseudodepression in a sentence?",
+        "exampleSentence": "The neurologist explained that the patient's low mood was actually pseudodepression caused by the brain injury.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -14216,7 +14216,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "consistorialrath",
         "definition": "Councillor of the consistory.",
-        "exampleSentence": "Can you use the word consistorialrath in a sentence?",
+        "exampleSentence": "The consistorialrath advised the church council on matters of law and doctrine.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -14884,7 +14884,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "gruds",
         "definition": "Underpants, underwear.",
-        "exampleSentence": "I need a new pair of gruds.",
+        "exampleSentence": "He packed several pairs of clean gruds in his bag for the camping trip.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "blends",
@@ -15086,7 +15086,7 @@ export const TIER_9_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "lieger",
         "definition": "A resident ambassador.",
-        "exampleSentence": "Can you use the word lieger in a sentence?",
+        "exampleSentence": "The king sent a trusted lieger to live at the foreign court as a permanent ambassador.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",

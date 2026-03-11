@@ -1100,7 +1100,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "troublemaking",
-        "definition": "Causing trouble; acting in a disruptive way.",
+        "definition": "The act of causing trouble or disruption.",
         "exampleSentence": "The spunky kindergartener (first grader in more recent volumes) is prone to troublemaking, often calls people names and isn’t averse to talking back to her teachers.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -1275,7 +1275,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "disciplinarian",
-        "definition": "Relating to discipline.",
+        "definition": "A person who enforces strict discipline.",
         "exampleSentence": "He is the chief disciplinarian in the school.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -2346,7 +2346,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "rollup",
         "definition": "A kind of food made by wrapping ingredients in another food, e.g. fajitas.",
-        "exampleSentence": "Can you use the word rollup in a sentence?",
+        "exampleSentence": "She ordered a chicken rollup stuffed with lettuce, tomato, and cheese for lunch.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -3505,7 +3505,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "ardency",
         "definition": "Intensity of feelings.",
-        "exampleSentence": "The Ardency of my Passion made me incapable of uttering more;",
+        "exampleSentence": "The Ardency of my Passion made me incapable of uttering more;.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -4998,7 +4998,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "hent",
         "definition": "To take hold of, to grasp.",
-        "exampleSentence": "And in the grekynge of the day Sir Gawayne hente his hors wondyrs for to seke.",
+        "exampleSentence": "The falconer moved quickly to hent the bird before it flew away.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "blends",
@@ -5440,7 +5440,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "beteem",
         "definition": "To permit; allow; suffer.",
-        "exampleSentence": "So would I (said th'enchaunter) glad and faine / Beteeme to you this sword, you to defend ….",
+        "exampleSentence": "The generous king would gladly beteem a gift to any loyal servant.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -5677,7 +5677,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "rubout",
         "definition": "An instance of erasing with a rubber.",
-        "exampleSentence": "Can you use the word rubout in a sentence?",
+        "exampleSentence": "A quick rubout with the eraser removed the pencil marks from the page.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -5741,7 +5741,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "halfer",
         "definition": "With regard to the Sleeping Beauty problem: one who argues that the probability of heads is 1/2.",
-        "exampleSentence": "Can you use the word halfer in a sentence?",
+        "exampleSentence": "In the probability debate, the halfer argued that the chance of heads was one in two.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -5820,7 +5820,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "dunger",
         "definition": "A person employed to spread or transport dung.",
-        "exampleSentence": "Can you use the word dunger in a sentence?",
+        "exampleSentence": "The dunger loaded the cart with manure and spread it across the freshly ploughed fields.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -6008,7 +6008,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "opaline",
-        "definition": "Resembling opal in having a milky white iridescence.",
+        "definition": "A type of translucent or milky glass.",
         "exampleSentence": "The attack on a sea hare by a spiny lobster causes release of the whitish opaline, followed the co-release of both opaline and ink.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -8508,7 +8508,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "subbotnik",
         "definition": "A Saturday community cleanup day in Soviet Russia.",
-        "exampleSentence": "Despite the element of coercion and a week of haranguing in the press, most subbotniki appeared to be taking their duties with good humor.",
+        "exampleSentence": "On each subbotnik, the whole neighbourhood gathered to clean up the local park.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -8601,7 +8601,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "diphyllic",
         "definition": "Liking two substances, for example oil and water, surfactant.",
-        "exampleSentence": "This led to the view that it is one of two things - viz., either a diphyllic teratoma or a true teratoma.",
+        "exampleSentence": "The rare diphyllic condition involves the presence of two separate structures.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "greek-roots",
@@ -9170,7 +9170,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "domiciliar",
-        "definition": "A member of a household; a domestic, especially one who belongs to a religious community.",
+        "definition": "Relating to a place of residence or household.",
         "exampleSentence": "By far the greatest need, it seems to me to be, is that of a domiciliar level of care.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -9583,7 +9583,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "voskresnik",
         "definition": "A Sunday community cleanup day in Soviet Russia.",
-        "exampleSentence": "During World War II, the KS and voskresniki are said to have inspired the war effort.",
+        "exampleSentence": "The community held a voskresnik on Sunday, planting trees along the main road.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -9709,7 +9709,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "retortable",
-        "definition": "To which one may produce a counterargument; answerable.",
+        "definition": "Able to be sealed in a container for heat processing.",
         "exampleSentence": "Retortable trays have a semi-rigid or rigid boy and a sealable flexible lid.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -12627,7 +12627,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "sheal",
         "definition": "To shell (remove husks, shells etc).",
-        "exampleSentence": "That's a shealed peascod.",
+        "exampleSentence": "The farmer would sheal the peas from their pods before cooking them.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "digraphs",
@@ -12642,7 +12642,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "sculp",
         "definition": "To sculpture; to carve or engrave.",
-        "exampleSentence": "The tenor of my just complaint / Were sculpt with steel on rocks of adamant !",
+        "exampleSentence": "The artist spent months learning to sculp intricate designs into blocks of marble.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "blends",
@@ -13196,7 +13196,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "dentin",
         "definition": "The hard, dense calcareous material that makes up the bulk of a tooth.",
-        "exampleSentence": "Can you use the word dentin in a sentence?",
+        "exampleSentence": "The hard dentin beneath the tooth enamel protects the sensitive nerve inside.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -13228,7 +13228,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "gagman",
         "definition": "A writer or performer of gags.",
-        "exampleSentence": "Can you use the word gagman in a sentence?",
+        "exampleSentence": "The gagman wrote funny jokes for the comedy show every week.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -13259,7 +13259,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "haymow",
         "definition": "A pile of hay stored in a barn.",
-        "exampleSentence": "Can you use the word haymow in a sentence?",
+        "exampleSentence": "The children loved to jump from the haymow into the soft pile of hay below.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -13322,7 +13322,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "mudcat",
         "definition": "A catfish, Ameiurus natalis (yellow bullhead), native to the Mississippi Delta.",
-        "exampleSentence": "Can you use the word mudcat in a sentence?",
+        "exampleSentence": "The angler pulled a whiskered mudcat out of the river and tossed it into the bucket.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -13338,7 +13338,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "papism",
         "definition": "The Roman Catholic faith.",
-        "exampleSentence": "Can you use the word papism in a sentence?",
+        "exampleSentence": "The historian wrote about the spread of papism across medieval Europe.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -13369,7 +13369,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "pyrene",
         "definition": "A polycyclic aromatic hydrocarbon containing four fused benzene rings; first isolated from coal tar.",
-        "exampleSentence": "Can you use the word pyrene in a sentence?",
+        "exampleSentence": "The chemist detected traces of pyrene in the sample taken from the old factory site.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "silent-e",
@@ -13417,7 +13417,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "washup",
         "definition": "The act by which something is washed.",
-        "exampleSentence": "Can you use the word washup in a sentence?",
+        "exampleSentence": "After the long camping trip, a good washup at the river made everyone feel refreshed.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "digraphs",
@@ -13558,7 +13558,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "ovular",
-        "definition": "A seminar for feminists.",
+        "definition": "Relating to or resembling an ovule.",
         "exampleSentence": "There were lights across the street and an ovular pool of light from Noah’s window on the grass between her and the back fence.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -13607,7 +13607,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "goaler",
         "definition": "A goalkeeper in ice hockey.",
-        "exampleSentence": "Can you use the word goaler in a sentence?",
+        "exampleSentence": "The quick goaler blocked three shots in a row to keep the score level.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -13841,7 +13841,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "liming",
         "definition": "An application of lime (calcium hydroxide or calcium oxide).",
-        "exampleSentence": "Can you use the word liming in a sentence?",
+        "exampleSentence": "The farmer spread a liming of powdered limestone across the acidic soil to improve it.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -13888,7 +13888,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "babcia",
         "definition": "A Polish grandmother.",
-        "exampleSentence": "Can you use the word babcia in a sentence?",
+        "exampleSentence": "Every Sunday, the children visited their babcia, who always had fresh pierogi waiting for them.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -13904,7 +13904,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "pittle",
         "definition": "A small or quick act of urinating (informal).",
-        "exampleSentence": "Hurry up, I need a pittle.",
+        "exampleSentence": "The child hopped from foot to foot, desperate for a pittle.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "silent-e",
@@ -14494,7 +14494,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "corban",
         "definition": "An offering to God, especially in fulfilment of a vow.",
-        "exampleSentence": "Can you use the word corban in a sentence?",
+        "exampleSentence": "The worshipper brought a corban of grain to the temple as an offering of thanks.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "r-controlled",
@@ -14525,7 +14525,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "headly",
-        "definition": "Chief, principal, or deadly (archaic).",
+        "definition": "Chief, principal, or deadly.",
         "exampleSentence": "O'er blows the filthy and contagious clouds of headly murther, spoil, and villainy.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -15005,7 +15005,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "unfire",
         "definition": "Hypothetically, to undo the firing of (a weapon).",
-        "exampleSentence": "You can't unfire a gun.",
+        "exampleSentence": "Once the arrow was released, the archer realised she could not unfire it.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "prefixes",
@@ -15705,7 +15705,7 @@ export const TIER_7_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "witling",
         "definition": "A person who feigns wit, pretending or aspiring to be witty.",
-        "exampleSentence": "\"...only a witling would call a man with my conceit a liar.\"",
+        "exampleSentence": "\"…only a witling would call a man with my conceit a liar.\"",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",

@@ -384,7 +384,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "indign",
         "definition": "Unworthy, undeserving.",
-        "exampleSentence": "Even th'Almightie selfe she did maligne, / Because to man so mercifull he was, / And unto all his creatures so benigne, / Sith she her selfe was of his grace indigne ….",
+        "exampleSentence": "He felt indign of the prize, believing others had worked harder than he had.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -1516,7 +1516,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "yichus",
         "definition": "Noble origins; pedigree.",
-        "exampleSentence": "Can you use the word yichus in a sentence?",
+        "exampleSentence": "The family took great pride in their yichus, tracing their noble ancestry back many generations.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "digraphs",
@@ -2185,7 +2185,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "antiphonal",
-        "definition": "A book of antiphons or anthems sung or chanted at a liturgy; an antiphonary or antiphoner.",
+        "definition": "Sung or recited alternately by two groups.",
         "exampleSentence": "The antiphonal hymn was sung regularly at church.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -2552,7 +2552,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "revanchism",
         "definition": "The political policy of endeavouring to regain lost territory.",
-        "exampleSentence": "Fleury had correctly grasped the wisdom of forestalling possible Austrian revanchisme over Lorraine, while France's biggest international problems emanated from England ….",
+        "exampleSentence": "The country's revanchism led it to demand the return of land lost in the war.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -2583,7 +2583,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "codominant",
-        "definition": "A species or organism that jointly dominates a region.",
+        "definition": "Sharing dominance equally with another.",
         "exampleSentence": "The codominant colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -3363,7 +3363,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "predicative",
         "definition": "Modifying a noun from within a predicate.",
-        "exampleSentence": "A predicative in Russian is an uninflected word that regularly constitutes a complete utterance when standing alone, i.e., when preceded and followed by silence.",
+        "exampleSentence": "In the sentence 'The sky is blue,' the word 'blue' is a predicative adjective.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -4031,7 +4031,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "strikethrough",
         "definition": "An horizontal line overlaid on other characters.",
-        "exampleSentence": "In HTML, wrapping text with the code <del> and </del> produces a strikethrough.",
+        "exampleSentence": "The editor drew a strikethrough across the sentence to show it should be deleted.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -4526,7 +4526,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "hydrocephalous",
         "definition": "Having a swollen head.",
-        "exampleSentence": "Hydrocephalous is the word.",
+        "exampleSentence": "The doctor diagnosed the infant with a hydrocephalous condition requiring treatment.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -5053,7 +5053,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "demineralization",
         "definition": "The chemical engineering process in which mineral salts are removed from a liquid.",
-        "exampleSentence": "Can you use the word demineralization in a sentence?",
+        "exampleSentence": "The demineralization process removed all mineral salts from the water before it entered the factory.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -5228,7 +5228,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "autopolymerisation",
-        "definition": "Self-starting chain reaction where molecules link without a catalyst",
+        "definition": "Self-starting chain reaction where molecules link without a catalyst.",
         "exampleSentence": "The chemist warned that heat could trigger autopolymerisation inside the storage tank.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -5405,7 +5405,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "diesis",
         "definition": "Any of several intervals, smaller than a tone, in ancient Greek music.",
-        "exampleSentence": "Can you use the word diesis in a sentence?",
+        "exampleSentence": "The musician explained that a diesis is a tiny interval in ancient Greek music, smaller than a semitone.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -5421,7 +5421,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "ptosis",
         "definition": "The prolapse of a bodily organ, especially drooping of the eyelid or the breasts.",
-        "exampleSentence": "Can you use the word ptosis in a sentence?",
+        "exampleSentence": "The doctor diagnosed the drooping eyelid as ptosis and referred the patient to a specialist.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -5437,7 +5437,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "schorl",
         "definition": "The most common variety of tourmaline.",
-        "exampleSentence": "Can you use the word schorl in a sentence?",
+        "exampleSentence": "The geologist identified the dark crystal in the rock sample as schorl, a variety of tourmaline.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "digraphs",
@@ -5453,7 +5453,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "unguis",
         "definition": "The nail, claw, talon, or hoof of a finger, toe, or other appendage.",
-        "exampleSentence": "Can you use the word unguis in a sentence?",
+        "exampleSentence": "The veterinarian carefully trimmed the sharp unguis on each of the cat's toes.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "prefixes",
@@ -5501,7 +5501,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "galpal",
         "definition": "A female friend or girlfriend.",
-        "exampleSentence": "Can you use the word galpal in a sentence?",
+        "exampleSentence": "She introduced her closest galpal from school, who had been her best friend for years.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -5565,7 +5565,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "capias",
         "definition": "An arrest warrant; a writ commanding officers to take a specified person or persons into custody.",
-        "exampleSentence": "Can you use the word capias in a sentence?",
+        "exampleSentence": "The judge issued a capias ordering the officers to arrest the suspect immediately.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -5581,7 +5581,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "nitter",
         "definition": "A louse that deposits nits on horses.",
-        "exampleSentence": "Can you use the word nitter in a sentence?",
+        "exampleSentence": "The stable hand treated the horses for nitters, the tiny lice that laid eggs in their manes.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -6232,7 +6232,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "boughten",
         "definition": "Having been purchased or bought (rather than homemade), storebought.",
-        "exampleSentence": "Is that a boughten chair?",
+        "exampleSentence": "Grandma always said boughten bread could never match her homemade loaves.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -9803,7 +9803,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "pronominal",
-        "definition": "A phrase that acts as a pronoun.",
+        "definition": "Relating to or serving as a pronoun.",
         "exampleSentence": "Neither of these pronominal compounds was found in current sources.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -10042,7 +10042,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "devanagari",
-        "definition": "A syllabic script used in writing Sanskrit and Hindi.",
+        "definition": "Relating to the script used for writing Hindi and Sanskrit.",
         "exampleSentence": "The etymologies gave words from Hindustani in the Devanagari script accompanied by transliterations in parentheses.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -12339,7 +12339,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "pickelhaube",
         "definition": "A spiked helmet worn by German troops, especially during the First World War.",
-        "exampleSentence": "Whereupon an outlandish production number breaks out in which the Marx Brothers play xylophone on the pickelhauben of the assembled soldiers….",
+        "exampleSentence": "The museum displayed a spiked pickelhaube helmet worn by a German soldier in 1914.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -12498,7 +12498,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "agglomerate",
         "definition": "To wind or collect into a ball; hence, to gather into a mass or anything like a mass.",
-        "exampleSentence": "It feels like doing eighty on the freeway / as little towns agglomerate and blur:",
+        "exampleSentence": "It feels like doing eighty on the freeway / as little towns agglomerate and blur:.",
         "partOfSpeech": "verb",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -13897,7 +13897,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "suprematist",
-        "definition": "An artist working in the style of Suprematism.",
+        "definition": "Relating to the art movement of Suprematism.",
         "exampleSentence": "Included are classic examples of suprematist design by Lissitzky, who served as a Russian cultural ambassador.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -14025,7 +14025,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "misdoubtful",
         "definition": "Misgiving; doubting, suspicious.",
-        "exampleSentence": "She gan to cast in her misdoubtfull mynde / A thousand fearees, that love-sicke fancies faine to fynde.",
+        "exampleSentence": "The misdoubtful traveller looked around nervously, unsure whether to trust the stranger.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "prefixes",
@@ -15267,7 +15267,7 @@ export const TIER_9_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "gibraltarian",
-        "definition": "A native or inhabitant of Gibraltar.",
+        "definition": "Relating to Gibraltar or its people.",
         "exampleSentence": "The gibraltarian surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 10,

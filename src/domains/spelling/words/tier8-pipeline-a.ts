@@ -559,7 +559,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "stog",
         "definition": "To bog down; to cause to be stuck in mud.",
-        "exampleSentence": "If any of his party are mad, they'll try it, and be stogged till the day of judgment. There are bogs..twenty feet deep.",
+        "exampleSentence": "If any of his party are mad, they'll try it, and be stogged till the day of judgment. There are bogs…twenty feet deep.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "blends",
@@ -655,7 +655,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "gemel",
         "definition": "A twin (also attributively).",
-        "exampleSentence": "Two gemells silver between two griffins passant.",
+        "exampleSentence": "The family crest showed a pair of gemel bars running across the shield.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -687,7 +687,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "infall",
         "definition": "The act or process of falling in.",
-        "exampleSentence": "Can you use the word infall in a sentence?",
+        "exampleSentence": "The infall of rain into the reservoir raised the water level overnight.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -703,7 +703,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "threap",
         "definition": "An altercation, quarrel, argument.",
-        "exampleSentence": "Can you use the word threap in a sentence?",
+        "exampleSentence": "The brothers had a loud threap over whose turn it was to feed the chickens.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -1516,7 +1516,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "drachm",
         "definition": "One sixteenth (1⁄16) of an ounce avoirdupois (1.77 g; symbol: ℨ or ʒ).",
-        "exampleSentence": "Can you use the word drachm in a sentence?",
+        "exampleSentence": "The old recipe called for one drachm of powdered ginger to flavour the cake.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -1532,7 +1532,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "exarch",
         "definition": "In the Byzantine Empire, a governor of a distant province.",
-        "exampleSentence": "Can you use the word exarch in a sentence?",
+        "exampleSentence": "The Byzantine exarch governed the distant province on behalf of the emperor.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -1627,7 +1627,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "jinker",
         "definition": "A high wheeled wagon designed to carry lumber suspended under the body of the vehicle.",
-        "exampleSentence": "Can you use the word jinker in a sentence?",
+        "exampleSentence": "The lumberjacks loaded the heavy logs onto a jinker and hauled them to the sawmill.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -1643,7 +1643,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "chasma",
         "definition": "A long, narrow, steep-sided depression on a planet, a moon, or another body in the Solar System.",
-        "exampleSentence": "Can you use the word chasma in a sentence?",
+        "exampleSentence": "The spacecraft photographed a deep chasma stretching across the surface of Mars.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -1898,7 +1898,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "greaten",
         "definition": "To become great or large; increase; dilate.",
-        "exampleSentence": "One studies how how to please his prince, the other how to greaten and secure him.",
+        "exampleSentence": "One studies how to please his prince, the other how to greaten and secure him.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -2809,7 +2809,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "homotopic",
         "definition": "Such that there is a homotopy (a continuous deformation) taking one to the other.",
-        "exampleSentence": "F and g are homotopic.",
+        "exampleSentence": "In topology, two paths are homotopic if one can be smoothly changed into the other.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -2824,7 +2824,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "placeable",
-        "definition": "Capable of being placed.",
+        "definition": "A thing that can be placed or positioned.",
         "exampleSentence": "I worked for an employment agency, doing placements. They divided the girls into placeables and unplaceables.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -3909,7 +3909,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "accommodative",
         "definition": "Supplying with or obliging; accommodating.",
-        "exampleSentence": "This fact points in a similar direction as the high MPC fact: macro stimulus can raise output substantially in circumstances when monetary policy is accommodative (e.g., at the ZLB).",
+        "exampleSentence": "The teacher took an accommodative approach, adjusting the lessons to suit each student's needs.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -4450,7 +4450,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "ovate",
-        "definition": "An egg-shaped hand axe.",
+        "definition": "Having an oval or egg-shaped outline.",
         "exampleSentence": "Slightly derived handaxes from the Mildenhall glaciofluvial sands, generally in fresh condition and dominated by ovates and cordates.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -4579,7 +4579,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "stean",
         "definition": "To pelt with stones; throw stones at; stone.",
-        "exampleSentence": "To stean a well.",
+        "exampleSentence": "The mason was hired to stean the old well with new brickwork.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -4785,7 +4785,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "crenel",
         "definition": "The space between merlons in a crenelated battlement.",
-        "exampleSentence": "Can you use the word crenel in a sentence?",
+        "exampleSentence": "The archer aimed his bow through a narrow crenel in the castle wall.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "blends",
@@ -4817,7 +4817,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "feijoa",
         "definition": "A South American evergreen shrub, Acca sellowiana.",
-        "exampleSentence": "Can you use the word feijoa in a sentence?",
+        "exampleSentence": "She picked a ripe feijoa from the bush and scooped out its sweet, fragrant flesh.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -5073,7 +5073,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "gapper",
         "definition": "A ball hit through the regions between the outfielders.",
-        "exampleSentence": "Can you use the word gapper in a sentence?",
+        "exampleSentence": "The batter hit a clean gapper that rolled between the outfielders to the fence.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -5377,7 +5377,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "karahi",
         "definition": "A deep circular vessel resembling a wok, traditionally of cast iron, used in South Asian cuisine.",
-        "exampleSentence": "Can you use the word karahi in a sentence?",
+        "exampleSentence": "The cook prepared a spicy chicken dish in a deep cast-iron karahi over the fire.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -5409,7 +5409,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "snudge",
         "definition": "A greedy, stingy person; a miser.",
-        "exampleSentence": "Can you use the word snudge in a sentence?",
+        "exampleSentence": "The old snudge refused to spend a penny, even on food for his own family.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "silent-e",
@@ -5457,7 +5457,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "redowa",
         "definition": "A dance of Czech origin with turning, leaping waltz steps.",
-        "exampleSentence": "Can you use the word redowa in a sentence?",
+        "exampleSentence": "The dancers whirled across the floor performing a graceful redowa waltz.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -5648,7 +5648,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "shlick",
         "definition": "The sound of something sliding or slipping over or into something wet, while getting some traction.",
-        "exampleSentence": "Can you use the word shlick in a sentence?",
+        "exampleSentence": "The wet boots made a shlick sound on the muddy path with every step.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -5982,7 +5982,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "honyock",
         "definition": "A person (especially a farmer) of relatively recent Central or Eastern European peasant extraction.",
-        "exampleSentence": "(Father) told me I was a honyock, kissed my mother(...), and gave me a Dutch rub.",
+        "exampleSentence": "(Father) told me I was a honyock, kissed my mother(…), and gave me a Dutch rub.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -6507,7 +6507,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "jesusly",
-        "definition": "A general intensifier.",
+        "definition": "Resembling or relating to Jesus; used as an intensifier.",
         "exampleSentence": "Whenever Webster picked up his cards, he exclaimed \"Je m’en fous! What a Jesusly hand!\"",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -6714,7 +6714,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "quadrate",
-        "definition": "Having four equal sides, the opposite sides parallel, and four right angles; square.",
+        "definition": "A square or rectangular object.",
         "exampleSentence": "A generical description quadrate to both.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -7306,7 +7306,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "arcanist",
         "definition": "A craftsman who has knowledge of a manufacturing secret.",
-        "exampleSentence": "There were on this Occasion not far from us some of the Clergy, … and also Arcanists or Dealers in Mysteries;",
+        "exampleSentence": "There were on this Occasion not far from us some of the Clergy, … and also Arcanists or Dealers in Mysteries;.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -7640,7 +7640,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "outlearn",
         "definition": "To surpass (someone) in learning.",
-        "exampleSentence": "But when as nought according to his mind / He could outlearne.",
+        "exampleSentence": "The younger student managed to outlearn all the others and finished top of the class.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "prefixes",
@@ -8819,7 +8819,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "prothetic",
         "definition": "Of, relating to, or involving prothesis.",
-        "exampleSentence": "Basque does not allow word-initial r-, adding a prothetic vowel in Latin and Romance loans (e.g. Bq. errege 'king' << Lat. regem).",
+        "exampleSentence": "The prothetic vowel at the beginning of the word makes it easier to pronounce.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -10093,7 +10093,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "resistless",
         "definition": "That cannot be resisted; irresistible.",
-        "exampleSentence": "His name was Talus, made of yron mould, / Immoveable, resistlesse, without end ….",
+        "exampleSentence": "The resistless force of the floodwaters swept away everything in its path.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -11242,8 +11242,8 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "equinoctial",
-        "definition": "The great circle midway between the celestial poles; the celestial equator.",
-        "exampleSentence": "An equinoctial gale or storm, i.e. one happening at or near the time of the equinox, in any part of the world.",
+        "definition": "Relating to or occurring at an equinox.",
+        "exampleSentence": "Sailors dreaded the equinoctial storms that struck each autumn.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -11322,7 +11322,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "thatcherite",
-        "definition": "An advocate of Thatcherism.",
+        "definition": "Relating to or supporting the political ideas of Margaret Thatcher.",
         "exampleSentence": "He has a Thatcherite outlook on life.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -11594,7 +11594,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "appellatory",
-        "definition": "A written petition or appeal.",
+        "definition": "Containing or relating to an appeal.",
         "exampleSentence": "An appellatory libel ought to contain …the name of the party appellant.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -13219,7 +13219,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "incapacitation",
-        "definition": "Being made unable to function or act normally.",
+        "definition": "The state of being unable to function or act normally.",
         "exampleSentence": "The athlete's incapacitation from a knee injury kept her off the field all season.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -13458,7 +13458,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "decentralization",
         "definition": "The process of decentralizing.",
-        "exampleSentence": "Can you use the word decentralization in a sentence?",
+        "exampleSentence": "The decentralization of government gave local councils more power to make their own decisions.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -14617,7 +14617,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "fomes",
         "definition": "The morbid matter created by a disease.",
-        "exampleSentence": "Naturall tempers... prove a great Fomes of sinne.",
+        "exampleSentence": "Naturall tempers… prove a great Fomes of sinne.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "cvc",
@@ -15144,7 +15144,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "coomb",
         "definition": "An old English measure of corn (e.g., wheat), equal to half a quarter or 4 bushels.",
-        "exampleSentence": "It was equal to half a quarter, i.e. is identical with the coomb of the eastern counties.",
+        "exampleSentence": "The farmer measured out a coomb of grain for the market.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -15191,7 +15191,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "utile",
-        "definition": "Being of use or service.",
+        "definition": "A tropical African hardwood tree.",
         "exampleSentence": "He ‘happiness utile’ does not exist, at least not yet.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -15240,7 +15240,7 @@ export const TIER_8_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "adown",
         "definition": "Down, downward; to or in a lower place.",
-        "exampleSentence": "Thrice did she sink adown.",
+        "exampleSentence": "The leaves drifted adown from the treetops in the autumn breeze.",
         "partOfSpeech": "adverb",
         "difficulty": 9,
         "pattern": "vowel-teams",

@@ -448,7 +448,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "overtaken",
         "definition": "Taken by surprise; overcome.",
-        "exampleSentence": "I was overtaken by events.",
+        "exampleSentence": "The cyclist was overtaken by a faster rider on the final stretch.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -2433,7 +2433,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "missionary",
-        "definition": "Relating to a mission.",
+        "definition": "A person sent on a religious mission to spread faith.",
         "exampleSentence": "She wrote about the missionary in her school report.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -2817,7 +2817,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "accidental",
-        "definition": "A property which is not essential; a nonessential; anything happening accidentally.",
+        "definition": "Happening by chance; not planned or intended.",
         "exampleSentence": "The discovery was purely accidental.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -3240,7 +3240,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "theatrical",
-        "definition": "A stage performance, especially one by amateurs.",
+        "definition": "Relating to acting, actors, or the theatre.",
         "exampleSentence": "The ceremony and its scene were characterised by that high sense of the theatrical which has marked the activities of the Third Reich.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -5198,7 +5198,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "agricultural",
-        "definition": "A product or commodity from agriculture.",
+        "definition": "Relating to farming or the cultivation of land.",
         "exampleSentence": "The agricultural surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -5292,7 +5292,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "penitentiary",
-        "definition": "A state or federal prison for convicted felons; a prison.",
+        "definition": "Relating to or used for punishment or reform of offenders.",
         "exampleSentence": "The penitentiary surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -5453,7 +5453,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "affectionate",
         "definition": "To show affection to; to have affection for.",
-        "exampleSentence": "Plutarch saith fitly of those who affectionate themselves to Monkies and little Dogges, that ….",
+        "exampleSentence": "She was very affectionate towards her younger siblings.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -6520,7 +6520,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "zee",
         "definition": "The name of the Latin script letter Z/z.",
-        "exampleSentence": "Time to get some zees.",
+        "exampleSentence": "In American English, the last letter of the alphabet is pronounced zee.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -6568,7 +6568,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "wey",
         "definition": "An old English measure of weight containing 224 pounds; equivalent to 2 hundredweight.",
-        "exampleSentence": "Than though I hadde this wouke ywonne a weye of Essex cheese.",
+        "exampleSentence": "The merchant weighed out a full wey of cheese, all two hundred and twenty-four pounds of it.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6600,7 +6600,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "vac",
         "definition": "To vacuum; to clean with a vacuum cleaner.",
-        "exampleSentence": "I went on to how Harold used to work in security on the building; he used to see Andy in the underground car-park vacking the sick out of the Merc.",
+        "exampleSentence": "She asked her brother to vac the living room carpet before the guests arrived.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6711,7 +6711,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "yar",
         "definition": "Quick and agile; easy to hand, reef and steer.",
-        "exampleSentence": "The wynd was good, the Schip was yare.",
+        "exampleSentence": "The yar little sailboat handled the choppy waves with ease.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "cvc",
@@ -6869,7 +6869,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "fum",
         "definition": "To play upon a fiddle.",
-        "exampleSentence": "Follow me, and fum as you go.",
+        "exampleSentence": "The giant roared, 'Fee-fi-fo-fum!' as he stomped through the castle.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7136,7 +7136,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "pog",
         "definition": "Awesome, excellent, remarkable.",
-        "exampleSentence": "Dude, that was pog!",
+        "exampleSentence": "The crowd shouted 'pog!' when the player scored an incredible goal.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "cvc",
@@ -7689,7 +7689,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "doer",
         "definition": "Someone who does, performs, or executes; an active person, an agent.",
-        "exampleSentence": "The doer and the thinker.",
+        "exampleSentence": "She was a doer who preferred action over sitting around and talking.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -8721,7 +8721,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "maxi",
-        "definition": "Having a hemline at ankle length.",
+        "definition": "A long skirt, dress, or coat reaching to the ankles.",
         "exampleSentence": "I used to be a diehard maxi, but now I'm less optimistic about the future of Bitcoin.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -9895,7 +9895,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "maim",
         "definition": "To wound seriously; to cause permanent loss of function of a limb or part of the body.",
-        "exampleSentence": "He was maimed by a bear.",
+        "exampleSentence": "The sharp machinery could maim anyone who uses it without proper training.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -9927,7 +9927,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "tink",
         "definition": "To emit a high-pitched sharp or metallic noise.",
-        "exampleSentence": "Jimmy heard the bells tink.",
+        "exampleSentence": "The tiny bell would tink softly each time the door opened.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "blends",
@@ -9943,7 +9943,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "ajar",
         "definition": "Slightly turned or opened.",
-        "exampleSentence": "The door is ajar.",
+        "exampleSentence": "She left the bedroom door slightly ajar so the cat could come and go.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -11368,7 +11368,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "pdoc",
         "definition": "A psychotherapist or psychiatrist.",
-        "exampleSentence": "<Nightshade>: not so good they changd my meds agin / <Nightshade>: my pdoc is talking abt ect.",
+        "exampleSentence": "After months of therapy, she finally found a pdoc who understood her needs.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "cvc",
@@ -11882,7 +11882,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "hawm",
         "definition": "To lounge; to loiter.",
-        "exampleSentence": "Guzzlin' an' soäkin' an' smoäkin' an' hawmin' about i' the laanes, ….",
+        "exampleSentence": "On Sunday afternoons, the boys liked to hawm around the village square doing nothing at all.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12184,7 +12184,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "kiyi",
         "definition": "An official letter informing of a person killed in action.",
-        "exampleSentence": "You know that Doc's been treating him for melancholy and depression... ever since he got that kiyi about his son... … Kiyi: K.I.A.: Killed In Action letter from the War Dept.",
+        "exampleSentence": "You know that Doc's been treating him for melancholy and depression… ever since he got that kiyi about his son… … Kiyi: K.I.A.: Killed In Action letter from the War Dept.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13062,7 +13062,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "beige",
         "definition": "A slightly yellowish gray colour, as that of unbleached wool.",
-        "exampleSentence": "He has no criminal record. He has no traffic tickets. His social media posts are just like... he's beige.",
+        "exampleSentence": "He has no criminal record. He has no traffic tickets. His social media posts are just like… he's beige.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -13125,7 +13125,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "biter",
         "definition": "Agent noun of bite; someone or something who bites or tends to bite.",
-        "exampleSentence": "Not all dogs are biters.",
+        "exampleSentence": "The puppy was a terrible biter and kept chewing on everyone's shoes.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14061,7 +14061,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "glade",
         "definition": "An open passage through a wood; a grassy open or cleared space in a forest.",
-        "exampleSentence": "A glade of ice.",
+        "exampleSentence": "The deer stood peacefully in a sunlit glade surrounded by tall trees.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "silent-e",
@@ -14427,7 +14427,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "jiffy",
         "definition": "A very short, unspecified length of time.",
-        "exampleSentence": "I’ll be back in a jiffy.",
+        "exampleSentence": "The mechanic said he would fix the flat tyre in a jiffy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -15111,7 +15111,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "oldie",
         "definition": "Something or someone old.",
-        "exampleSentence": "An oldies radio station.",
+        "exampleSentence": "The radio station played nothing but golden oldies from the 1960s.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -15623,7 +15623,7 @@ export const TIER_4_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "shale",
         "definition": "A shell or husk; a cod or pod.",
-        "exampleSentence": "The green shales of a bean.",
+        "exampleSentence": "Layers of dark shale were visible in the cliff face along the coast.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",

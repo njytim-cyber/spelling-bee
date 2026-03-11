@@ -4470,7 +4470,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "exhaustive",
         "definition": "Including every possible element: fully comprehensive.",
-        "exampleSentence": "We made an exhaustive list.",
+        "exampleSentence": "The detective conducted an exhaustive search of every room in the building.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -5279,7 +5279,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "revengeful",
         "definition": "Vengeful, vindictive.",
-        "exampleSentence": "The baser mind it selfe displayes / In cancred malice and revengefull spight ….",
+        "exampleSentence": "The revengeful villain plotted to get back at everyone who had wronged him.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -5405,7 +5405,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "tantamount",
-        "definition": "To amount to as much; to be equivalent.",
+        "definition": "Equivalent in effect or value; amounting to the same thing.",
         "exampleSentence": "“Defendants’ representations to this Court that Mr. Musk is not running DOGE are tantamount to legal gaslighting,” CREW said.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7447,7 +7447,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "thingamajig",
         "definition": "Something that one does not know the name of.",
-        "exampleSentence": "He used this, this... this thingamajig you saw him with the other day to fix the problem.",
+        "exampleSentence": "He used this, this… this thingamajig you saw him with the other day to fix the problem.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -7733,7 +7733,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "argentinian",
-        "definition": "A person from Argentina or of Argentine descent.",
+        "definition": "Relating to Argentina or its people.",
         "exampleSentence": "The FCO also disputes Fernández's claim that Britain kicked out the island's original Argentinian inhabitants.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7797,7 +7797,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "collectible",
-        "definition": "An object which someone might want to collect.",
+        "definition": "Worth collecting; of interest to a collector.",
         "exampleSentence": "Collectible stamps, collectible china, collectible Beatles memorabilia.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -8067,7 +8067,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "inoperative",
         "definition": "Not working or functioning; either idle or broken.",
-        "exampleSentence": "Let me see if I can dial this number right quick / \"I am sorry, the government you have elected is inoperative / Click. Inoperative\"",
+        "exampleSentence": "Let me see if I can dial this number right quick / \"I am sorry, the government you have elected is inoperative / Click. Inoperative\".",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -8914,7 +8914,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "incontinent",
         "definition": "Immediately, forthwith.",
-        "exampleSentence": "He says he will return incontinent:",
+        "exampleSentence": "He says he will return incontinent:.",
         "partOfSpeech": "adverb",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -9024,7 +9024,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "clericalist",
-        "definition": "An advocate of clericalism.",
+        "definition": "Supporting or advocating clerical influence in politics.",
         "exampleSentence": "What is striking in this letter is its deeply clericalist character.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -9680,7 +9680,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "carthaginian",
-        "definition": "A native or inhabitant of Carthage.",
+        "definition": "Relating to the ancient city of Carthage.",
         "exampleSentence": "The carthaginian surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -12342,7 +12342,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "seadog",
         "definition": "A sailor accustomed to the sea.",
-        "exampleSentence": "Can you use the word seadog in a sentence?",
+        "exampleSentence": "The old seadog had sailed every ocean and had stories to tell for each one.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -13057,7 +13057,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "factum",
         "definition": "Somebody's own act and deed.",
-        "exampleSentence": "Can you use the word factum in a sentence?",
+        "exampleSentence": "The lawyer presented the factum, outlining the key legal arguments of the case.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -13105,7 +13105,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "gasper",
         "definition": "A person or animal that gasps.",
-        "exampleSentence": "Can you use the word gasper in a sentence?",
+        "exampleSentence": "The runner was a real gasper by the end of the marathon.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -13120,7 +13120,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "fraist",
-        "definition": "To test, try, or put to the proof (archaic).",
+        "definition": "To test, try, or put to the proof.",
         "exampleSentence": "He found no one brave enough to fraist his strength in combat.",
         "partOfSpeech": "verb",
         "difficulty": 7,
@@ -13249,7 +13249,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "froggish",
         "definition": "Resembling or characteristic of a frog (amphibian).",
-        "exampleSentence": "Well if you feel froggish.",
+        "exampleSentence": "The pond had a distinctly froggish chorus of croaking every evening.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -13265,7 +13265,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "forthink",
         "definition": "To cause distress or regret to; cause to regret or repent; to vex.",
-        "exampleSentence": "Then gan he thinke, perforce with sword and targe / Her forth to fetch, and Proteus to constraine; / But soone he gan such folly to forthinke againe.",
+        "exampleSentence": "The harsh punishment would forthink anyone who dared to break the rules again.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -13472,7 +13472,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "mythicism",
         "definition": "The scholarly opinion that the gospels are mythological expansions of historical data.",
-        "exampleSentence": "1971 \"Individual works are all potential myths, but it is their collective adoption that actualises - if such should be the case - their 'mythicism'.\" (Levi-Strauss).",
+        "exampleSentence": "Some scholars argue that mythicism offers a more plausible explanation for the origins of certain religious texts.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -13695,7 +13695,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "childe",
         "definition": "A term of address for the eldest son of a lord or for a candidate for knighthood.",
-        "exampleSentence": "Can you use the word childe in a sentence?",
+        "exampleSentence": "The childe trained for years before earning his knighthood.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -13711,7 +13711,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "napper",
         "definition": "A person who takes a nap.",
-        "exampleSentence": "Can you use the word napper in a sentence?",
+        "exampleSentence": "The afternoon napper dozed peacefully in the armchair by the window.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -13743,7 +13743,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "sailer",
         "definition": "That which sails; a sailboat.",
-        "exampleSentence": "Can you use the word sailer in a sentence?",
+        "exampleSentence": "The sleek sailer cut through the waves with ease in the strong breeze.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -14077,7 +14077,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "septette",
         "definition": "A set of seven persons or objects.",
-        "exampleSentence": "A septette of singers.",
+        "exampleSentence": "The septette performed a beautiful arrangement of folk songs at the festival.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "french-origin",
@@ -14392,7 +14392,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "sidecast",
         "definition": "Debris left next to a construction site from sidecasting.",
-        "exampleSentence": "Calculate the 'sidecasts' that are likely to be used, e.g. centre lines, floor to ceiling heights, room dimensions.",
+        "exampleSentence": "The excavator pushed the sidecast material to the edge of the trench.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "blends",
@@ -15123,7 +15123,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "miscompose",
         "definition": "To produce a defective product or outcome.",
-        "exampleSentence": "We could easily miscompose this so that the time-scales of the two hands matched \"better\":",
+        "exampleSentence": "We could easily miscompose this so that the time-scales of the two hands matched \"better\":.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "prefixes",
@@ -15170,7 +15170,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "certifiably",
         "definition": "With the potential for certification.",
-        "exampleSentence": "He is certifiably nuts.",
+        "exampleSentence": "The diamond was certifiably genuine according to the expert gemologist.",
         "partOfSpeech": "adverb",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15423,7 +15423,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "choler",
         "definition": "Anger or irritability.",
-        "exampleSentence": "Can you use the word choler in a sentence?",
+        "exampleSentence": "His choler rose quickly when he discovered his bicycle had been stolen.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15471,7 +15471,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "seeder",
         "definition": "A device used to plant seeds; a seed drill.",
-        "exampleSentence": "Can you use the word seeder in a sentence?",
+        "exampleSentence": "The farmer attached the seeder to the tractor and planted rows of wheat.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15487,7 +15487,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "tacker",
         "definition": "A person who, or device that tacks (in various senses).",
-        "exampleSentence": "Can you use the word tacker in a sentence?",
+        "exampleSentence": "The upholsterer used a tacker to fasten the fabric to the chair frame.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15564,7 +15564,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "forsee",
-        "definition": "To overlook, neglect, or disregard (archaic).",
+        "definition": "To overlook, neglect, or disregard.",
         "exampleSentence": "Could I forsee the hidden dangers of life ahead?",
         "partOfSpeech": "verb",
         "difficulty": 7,
@@ -15581,7 +15581,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "bonder",
         "definition": "A machine or substance used to make a bond, or a person who uses such.",
-        "exampleSentence": "To avoid excessive cutting, the bond is arranged as shown in the figure, i.e. two half-bats and a one-brick bonder placed alternately.",
+        "exampleSentence": "Every fourth brick in the wall was laid as a bonder to strengthen the structure.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15660,7 +15660,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "dernly",
-        "definition": "In a stern, solemn, or imposing way (archaic).",
+        "definition": "In a stern, solemn, or imposing way.",
         "exampleSentence": "She dernly called out to him to stop what he was doing.",
         "partOfSpeech": "adverb",
         "difficulty": 7,
@@ -15789,7 +15789,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "pullen",
         "definition": "Domestic fowl; poultry.",
-        "exampleSentence": "Can you use the word pullen in a sentence?",
+        "exampleSentence": "The farmer kept a large flock of pullen in the yard behind the farmhouse.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -15853,7 +15853,7 @@ export const TIER_6_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "suiter",
         "definition": "Something having a certain number of suits.",
-        "exampleSentence": "Can you use the word suiter in a sentence?",
+        "exampleSentence": "A three-suiter suitcase is designed to hold three suits without creasing them.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",

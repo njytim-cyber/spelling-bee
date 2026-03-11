@@ -1340,7 +1340,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "earthscraper",
         "definition": "A building that is built underground; a subterranean skyscraper.",
-        "exampleSentence": "So then I dreamed up a subterranean skyscraper (or,if you will, an earthscraper) with various floors, each of them constituting a different infernal abode;",
+        "exampleSentence": "So then I dreamed up a subterranean skyscraper (or,if you will, an earthscraper) with various floors, each of them constituting a different infernal abode;.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -1467,7 +1467,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "ellingtonian",
-        "definition": "A member of Duke Ellington's band.",
+        "definition": "Relating to or characteristic of Duke Ellington's musical style.",
         "exampleSentence": "Hodges became the most striking example of the truism 'once an Ellingtonian, always an Ellingtonian '.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -2250,7 +2250,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "functionalist",
-        "definition": "Relating to functionalism.",
+        "definition": "A person who supports or practises functionalism.",
         "exampleSentence": "My teacher explained what a functionalist is during our lesson.",
         "partOfSpeech": "noun",
         "difficulty": 9,
@@ -3290,7 +3290,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "outrecuidance",
         "definition": "Presumption, arrogance, self-conceit.",
-        "exampleSentence": "“But, with my constitution and temperament - my work lies in Boston - I find your outrecuidance -\"",
+        "exampleSentence": "“But, with my constitution and temperament - my work lies in Boston - I find your outrecuidance -\".",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -3593,7 +3593,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "compatibilist",
-        "definition": "A supporter of compatibilism.",
+        "definition": "Supporting the view that free will and determinism can coexist.",
         "exampleSentence": "Such a reply is not, however, in the spirit of the compatibilist strategy of interest here.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -5812,7 +5812,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "fantasticalness",
         "definition": "The state or condition of being fantastical.",
-        "exampleSentence": "Moreover, there is nothing in it worthy the marking but this fantasticalnesse.",
+        "exampleSentence": "The fantasticalness of the dream made it hard to believe it was not real.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -5876,7 +5876,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "arteriosclerosis",
         "definition": "Hardening, narrowing or loss of elasticity in arteries or blood vessels.",
-        "exampleSentence": "Can you use the word arteriosclerosis in a sentence?",
+        "exampleSentence": "The doctor explained that arteriosclerosis causes the arteries to harden and narrow over time.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -5908,7 +5908,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "immunodeficiency",
         "definition": "A depletion in the body's natural immune system, or in some component of it.",
-        "exampleSentence": "Can you use the word immunodeficiency in a sentence?",
+        "exampleSentence": "An immunodeficiency weakens the body's ability to fight off infections and diseases.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -6611,7 +6611,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "rickle",
         "definition": "A loose, disordered collection of things; a heap; a jumble.",
-        "exampleSentence": "Can you use the word rickle in a sentence?",
+        "exampleSentence": "The desk was buried under a rickle of old papers, books, and forgotten letters.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -6960,7 +6960,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "mammee",
         "definition": "An American fruit tree, Mammea americana.",
-        "exampleSentence": "Can you use the word mammee in a sentence?",
+        "exampleSentence": "The tropical mammee tree produced large round fruits with sweet orange flesh.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -7387,7 +7387,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "technoid",
-        "definition": "A person interested in or skilled with technology.",
+        "definition": "Resembling or relating to technology.",
         "exampleSentence": "We are looking into an area in which biomorphic and technoid objects seem to exist in a Utopian atmosphere.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -8297,7 +8297,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "undoer",
         "definition": "Agent noun of undo; one who undoes.",
-        "exampleSentence": "Can you use the word undoer in a sentence?",
+        "exampleSentence": "The clever undoer picked apart every knot in the tangled rope with patience.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "prefixes",
@@ -10764,7 +10764,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "neorealist",
-        "definition": "An adherent of neorealism.",
+        "definition": "Relating to or practising neorealism.",
         "exampleSentence": "DeSanctis wasn't a neorealist; he was a follower of D'Annunzio, who took calendar-art shots of the sea.",
         "partOfSpeech": "adjective",
         "difficulty": 9,
@@ -12070,7 +12070,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "essentialize",
         "definition": "To reduce (something) to its essence.",
-        "exampleSentence": "To essentialize race by stereotyping \"what Whites do\" or \"how Blacks think\"",
+        "exampleSentence": "To essentialize race by stereotyping \"what Whites do\" or \"how Blacks think\".",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -12579,7 +12579,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "pedestrianize",
-        "definition": "To restrict access to to pedestrians only, disallowing motor vehicles and sometimes cyclists.",
+        "definition": "To restrict access to pedestrians only, disallowing motor vehicles and sometimes cyclists.",
         "exampleSentence": "Our trade has increased significantly since they pedestrianized the High Street.",
         "partOfSpeech": "verb",
         "difficulty": 9,
@@ -12883,7 +12883,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "nationalisation",
         "definition": "The act or process of making or becoming a nation.",
-        "exampleSentence": "The nationalisation of India.",
+        "exampleSentence": "The nationalisation of the railway system brought all the trains under government control.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "latin-roots",
@@ -13455,7 +13455,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "unpop",
         "definition": "To unfasten (a snap fastener).",
-        "exampleSentence": "You can't unpop a balloon.",
+        "exampleSentence": "Once the question had been asked, there was no way to unpop it.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "prefixes",
@@ -13611,7 +13611,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "brahui",
         "definition": "A pastoral people of Eastern Balochistan.",
-        "exampleSentence": "Can you use the word brahui in a sentence?",
+        "exampleSentence": "The Brahui people of Balochistan have herded goats across the highlands for generations.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -13627,7 +13627,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "cahita",
         "definition": "A member of an Indian people from central Mexico.",
-        "exampleSentence": "Can you use the word cahita in a sentence?",
+        "exampleSentence": "The Cahita people of central Mexico developed a rich tradition of farming and ceremony.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -13642,7 +13642,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "cushaw",
         "definition": "Any of certain cultivars of Cucurbita argyrosperma, one of the species of winter squash.",
-        "exampleSentence": "Can you use the word cushaw in a sentence?",
+        "exampleSentence": "Grandma grew a large striped cushaw squash in the garden for making autumn pies.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -13658,7 +13658,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "marang",
         "definition": "Artocarpus odoratissimus; an evergreen tree that bears a strong smelling fruit with a creamy pulp.",
-        "exampleSentence": "Can you use the word marang in a sentence?",
+        "exampleSentence": "The sweet marang fruit had a strong smell but a delicious creamy taste inside.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "digraphs",
@@ -13815,7 +13815,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "randan",
         "definition": "Riotous or disorderly behaviour.",
-        "exampleSentence": "Can you use the word randan in a sentence?",
+        "exampleSentence": "The rowdy randan in the street kept the neighbours awake long past midnight.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -13910,7 +13910,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "cusper",
         "definition": "A person considered to have been born on a cusp between significant generations.",
-        "exampleSentence": "Can you use the word cusper in a sentence?",
+        "exampleSentence": "As a cusper born between two generations, she felt she related to both age groups.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -14005,7 +14005,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "verism",
         "definition": "Presenting common, everyday subjects, specifically eschewing the heroic or legendary.",
-        "exampleSentence": "Can you use the word verism in a sentence?",
+        "exampleSentence": "The painter embraced verism, depicting ordinary market scenes rather than grand historical events.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -14245,7 +14245,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "lacery",
         "definition": "Lace or laces collectively.",
-        "exampleSentence": "Can you use the word lacery in a sentence?",
+        "exampleSentence": "The bride's dress was trimmed with delicate lacery along the collar and cuffs.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "suffixes",
@@ -14467,7 +14467,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "metage",
         "definition": "Measurement, especially of coal.",
-        "exampleSentence": "Can you use the word metage in a sentence?",
+        "exampleSentence": "The inspector carried out a careful metage of each wagon of coal at the mine.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "greek-roots",
@@ -14531,7 +14531,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "endoss",
         "definition": "To write on the back of (a document); to endorse.",
-        "exampleSentence": "He … Gave me a shield, in which he did endosse / His deare Redeemers badge upon the bosse ….",
+        "exampleSentence": "The clerk was asked to endoss the cheque before handing it to the bank.",
         "partOfSpeech": "verb",
         "difficulty": 9,
         "pattern": "multisyllable",
@@ -14722,7 +14722,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "tuggie",
         "definition": "The pilot who tows a glider.",
-        "exampleSentence": "Can you use the word tuggie in a sentence?",
+        "exampleSentence": "The experienced tuggie towed the glider high into the sky before releasing the cable.",
         "partOfSpeech": "noun",
         "difficulty": 9,
         "pattern": "vowel-teams",
@@ -14895,7 +14895,7 @@ export const TIER_8_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "cabosh",
-        "definition": "The entirety of something..",
+        "definition": "The entirety of something.",
         "exampleSentence": "She would drive into Leeston to that posh hairdresser's, 'Sue and Nicky', and have the whole cabosh, especially a rinse to bring out the copper glints in her hair.",
         "partOfSpeech": "noun",
         "difficulty": 9,

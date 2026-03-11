@@ -446,7 +446,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "reupload",
         "definition": "A second or subsequent upload.",
-        "exampleSentence": "Both of my reuploads failed.",
+        "exampleSentence": "After the file became corrupted, she had to reupload it to the server.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "prefixes",
@@ -4389,7 +4389,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "monotreme",
-        "definition": "Having a single trema, or aperture.",
+        "definition": "A mammal that lays eggs, such as a platypus or echidna.",
         "exampleSentence": "Learning about the monotreme was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -4549,7 +4549,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "nonperson",
-        "definition": "Not a real person; a subhuman.",
+        "definition": "A person regarded as insignificant or whose existence is denied.",
         "exampleSentence": "No nonperson is psychologically indistinguishable from you.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -6848,7 +6848,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "impelling",
         "definition": "Causing forward motion or action.",
-        "exampleSentence": "The extraordinary spectacle was a good many years ago, in school days, when theology is less impelling than curiosity ... ….",
+        "exampleSentence": "The extraordinary spectacle was a good many years ago, in school days, when theology is less impelling than curiosity … ….",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -6958,7 +6958,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "mancunian",
-        "definition": "A person raised or living in the city of Manchester, England, in the United Kingdom.",
+        "definition": "Relating to Manchester, England.",
         "exampleSentence": "Mancunians have shown their defiance in the face of terror after a suicide bomber killed 22 people in the city on Monday night.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -7262,7 +7262,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "refulgent",
         "definition": "Resplendent, or shining brightly and radiantly.",
-        "exampleSentence": "She had a refulgent smile.",
+        "exampleSentence": "The refulgent glow of the sunset painted the sky in shades of gold and crimson.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -8597,7 +8597,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "lexigraph",
         "definition": "A lexigram or ideograph, a graphical depiction of a single word.",
-        "exampleSentence": "\"He does not want them to be read as we might read a lexigraph, a postmodern painting of words such as Joseph Kosuth's red...\"",
+        "exampleSentence": "\"He does not want them to be read as we might read a lexigraph, a postmodern painting of words such as Joseph Kosuth's red…\"",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "greek-roots",
@@ -10846,7 +10846,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "brilliancy",
         "definition": "A shining quality; brilliance.",
-        "exampleSentence": "2013, Hannah Eichler, The Key to Brilliancy: How to Unlock Your Child's Genius.",
+        "exampleSentence": "The brilliancy of the diamond was immediately apparent when light struck its facets.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -15792,7 +15792,7 @@ export const TIER_7_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "depilatory",
-        "definition": "A preparation that removes hair from the body.",
+        "definition": "Used to remove unwanted hair from the body.",
         "exampleSentence": "You can do anything with electrolytic, depilatory creams and a little patience.",
         "partOfSpeech": "adjective",
         "difficulty": 8,

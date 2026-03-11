@@ -429,7 +429,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "prognostic",
-        "definition": "A sign by which a future event may be known or foretold.",
+        "definition": "Relating to or serving as a prediction of a future event.",
         "exampleSentence": "The prognostic colors of the sunset were beautiful.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -557,7 +557,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "squeezable",
-        "definition": "A product or package designed to dispense its contents when squeezed.",
+        "definition": "Capable of being squeezed.",
         "exampleSentence": "A decade later, both Heinz and Hunt's introduced a new inverted, squeezable ketchup bottle that rested on its flip-bottom cap.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -1404,7 +1404,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "inosculate",
-        "definition": "To homogenize; to make continuous.",
+        "definition": "Closely joined or blended together.",
         "exampleSentence": "This study proposes to trace the inosculate nature of the mask theme in Nietzsche's philosophy.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -1772,7 +1772,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "executable",
-        "definition": "Capable of being executed.",
+        "definition": "A computer file that can be run as a program.",
         "exampleSentence": "The program as written by the programmer is generally processed into an executable that can be run.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -2123,7 +2123,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "militarian",
-        "definition": "A person in or involved with military service.",
+        "definition": "Relating to military service or the armed forces.",
         "exampleSentence": "Anthony Cordesman is a militarian analyst at the Center for Strategic and International Studies in Washington, DC.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -2139,7 +2139,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "constative",
-        "definition": "An utterance relaying information and likely to be regarded as true or false.",
+        "definition": "Relating to a statement of fact rather than a command or question.",
         "exampleSentence": "Statements are constative utterances.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -3017,7 +3017,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "griffonage",
         "definition": "Careless handwriting; a crude or illegible scrawl.",
-        "exampleSentence": "\"We hastened to pack up our ‘trumpery’..and among the rest, my six hundred pages of griffonage.\"",
+        "exampleSentence": "\"We hastened to pack up our ‘trumpery’…and among the rest, my six hundred pages of griffonage.\"",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -3477,7 +3477,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "erewhonian",
-        "definition": "An inhabitant of the fictional land of Erewhon.",
+        "definition": "Relating to the fictional land of Erewhon.",
         "exampleSentence": "The Erewhonian conflation of mechanical energy and capitalist value extends to their attitude toward machinery.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -3684,7 +3684,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "canadarian",
-        "definition": "A Canadian: a person from, or resident of, Canada.",
+        "definition": "Relating to Canada or its people.",
         "exampleSentence": "Thank you, and likewise - even if you ARE a snooty non-humping Canadarian woman!",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -5657,7 +5657,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "pythonista",
         "definition": "Someone who uses the Python programming language.",
-        "exampleSentence": "Paul is a Pythonista.",
+        "exampleSentence": "As a dedicated Pythonista, she built all her projects using the Python programming language.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -10937,7 +10937,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "xenodochial",
-        "definition": "(obsolete) Friendly to strangers.",
+        "definition": "Friendly to strangers.",
         "exampleSentence": "They both departed from the xenodochial type, in limiting admission to the sick only, and from the city hospital tradition by depending for support entirely on privately donated funds.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -11672,7 +11672,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "contorniate",
-        "definition": "Having a furrow of this kind.",
+        "definition": "A Roman medal or coin with a grooved edge.",
         "exampleSentence": "Mr. Evans exhibited a fine contorniate, bearing the head of Nero.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -12183,7 +12183,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "megapolitan",
-        "definition": "An inhabitant of the ancient city of Megalopolis in Greece.",
+        "definition": "Relating to a very large urban area.",
         "exampleSentence": "The upshot is, we are guided by a party of shock-headed Arcadians, who are going in the direction of the excavations, and a Megapolitan boy who has probably an eye to gain.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -12295,7 +12295,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "comparandum",
         "definition": "Something that is compared; the subject of a comparison.",
-        "exampleSentence": "This finding, together with the semantic content, allows us to identify a suitable comparandum, viz. the pronoun *etero-s 'other; one or the other of two'….",
+        "exampleSentence": "The researcher chose a suitable comparandum to highlight the similarities between the two languages.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "greek-roots",
@@ -14427,7 +14427,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "intransitive",
-        "definition": "Not transitive: not having, or not taking, a direct object.",
+        "definition": "A verb that does not take a direct object.",
         "exampleSentence": "The word \"drink\" is a transitive verb in \"they drink wine\", but an intransitive one in \"they drink often.\"",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -14667,7 +14667,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "aristotelian",
-        "definition": "A proponent of the philosophical or logical theories of Aristotle.",
+        "definition": "Relating to the philosophy of Aristotle.",
         "exampleSentence": "The aristotelian surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -14715,7 +14715,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "collectivist",
-        "definition": "An advocate of collectivism.",
+        "definition": "Favouring collective ownership or control.",
         "exampleSentence": "The collectivist surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -14779,7 +14779,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "ecclesiastic",
-        "definition": "A cleric, especially one in a Christian church.",
+        "definition": "Relating to the Christian Church or its clergy.",
         "exampleSentence": "The ecclesiastic surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -14955,7 +14955,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "liverpudlian",
-        "definition": "A native or resident of Liverpool in England.",
+        "definition": "Relating to the city of Liverpool in England.",
         "exampleSentence": "The liverpudlian surface made it hard to walk across.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -15051,7 +15051,7 @@ export const TIER_7_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "neurasthenic",
-        "definition": "A person who has neurasthenia.",
+        "definition": "Relating to or suffering from chronic fatigue and weakness.",
         "exampleSentence": "They agreed to have no more family gatherings due to their father's neurasthenic presence.",
         "partOfSpeech": "adjective",
         "difficulty": 8,

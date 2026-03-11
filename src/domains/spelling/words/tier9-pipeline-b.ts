@@ -750,7 +750,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "extemporanea",
         "definition": "That which is extemporaneous; something effortless but transient or superficial.",
-        "exampleSentence": "Oh, life is a glorious cycle of song, / A medley of extemporanea;",
+        "exampleSentence": "Oh, life is a glorious cycle of song, / A medley of extemporanea;.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -3525,7 +3525,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "brachycephalic",
-        "definition": "Having a head that is short from front to back; having a broad skull with a cephalic index over 80.",
+        "definition": "A person or animal with a broad, short skull.",
         "exampleSentence": "\"Round-headed,\" he muttered. \"Brachycephalic, gray-eyed, black-haired, with suggestion of the negroid. Celtic, I presume?\"",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -4390,7 +4390,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "circumlocutory",
         "definition": "Characterised by circumlocution; overly wordy.",
-        "exampleSentence": "Another common type of error is a circumlocutory error, when the patient describes the item in several words (e.g., describing a beaver as \"an animal that eats trees\").",
+        "exampleSentence": "His circumlocutory speech took ten minutes to say what could have been said in one.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -5282,7 +5282,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "ecumenopolitan",
-        "definition": "An inhabitant of an ecumenopolis, especially one actively involved in its political arena.",
+        "definition": "Relating to a worldwide city or global urban community.",
         "exampleSentence": "The ecumenopolitan weather made everyone want to stay inside.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -5950,7 +5950,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "neurodivergent",
-        "definition": "Having an atypical neurological configuration.",
+        "definition": "A person whose brain functions differently from what is considered typical.",
         "exampleSentence": "A second input stream, like closed captions, gives neurodivergents at work a better understanding of the context.",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -5982,7 +5982,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "motherfreaking",
-        "definition": "To an extreme degree.",
+        "definition": "Used as a strong intensifier expressing extreme degree.",
         "exampleSentence": "He is one motherfreaking mean dude.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -8011,7 +8011,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "hereinelsewhere",
         "definition": "Elsewhere herein; elsewhere in this document.",
-        "exampleSentence": "Any of various appointed persons, hereinelsewhere called \"the Agent\"",
+        "exampleSentence": "Any of various appointed persons, hereinelsewhere called \"the Agent\".",
         "partOfSpeech": "adverb",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -8235,7 +8235,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "abdominocentesis",
         "definition": "Extraction of peritoneal fluid from the abdomen for evaluation, using a trocar.",
-        "exampleSentence": "Can you use the word abdominocentesis in a sentence?",
+        "exampleSentence": "The doctor performed an abdominocentesis, using a needle to drain fluid from the patient's abdomen.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -8251,7 +8251,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "acanthopterygian",
         "definition": "Any fish of the superorder Acanthopterygii.",
-        "exampleSentence": "Can you use the word acanthopterygian in a sentence?",
+        "exampleSentence": "The perch is an acanthopterygian, a spiny-finned fish found in lakes and rivers.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -8283,7 +8283,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "chlordiazepoxide",
         "definition": "A benzodiazepine derivative used as a sedative drug; trade name Librium among others.",
-        "exampleSentence": "Can you use the word chlordiazepoxide in a sentence?",
+        "exampleSentence": "The pharmacist dispensed chlordiazepoxide, a sedative prescribed to help the patient manage anxiety.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -8298,7 +8298,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "contraindication",
         "definition": "A factor or symptom which makes a certain treatment inadvisable, generally or individually.",
-        "exampleSentence": "Can you use the word contraindication in a sentence?",
+        "exampleSentence": "A known allergy to the drug is a clear contraindication, so the doctor chose a different medicine.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -8314,7 +8314,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "declassification",
         "definition": "The process of declassifying.",
-        "exampleSentence": "Can you use the word declassification in a sentence?",
+        "exampleSentence": "The declassification of the old government files allowed historians to study them for the first time.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -8377,7 +8377,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "interoperability",
         "definition": "The capability of a product or system, to interact and function with others reciprocally.",
-        "exampleSentence": "Can you use the word interoperability in a sentence?",
+        "exampleSentence": "The engineers designed the new software with interoperability in mind, so it could work with older systems.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -8393,7 +8393,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "microgametophyte",
         "definition": "Any gametophyte that develops from a microspore.",
-        "exampleSentence": "Can you use the word microgametophyte in a sentence?",
+        "exampleSentence": "In botany, a microgametophyte develops from a tiny spore and produces the male reproductive cells.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -8441,7 +8441,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "phenyltoloxamine",
         "definition": "A particular antihistamine drug with sedative and analgesic effects.",
-        "exampleSentence": "Can you use the word phenyltoloxamine in a sentence?",
+        "exampleSentence": "The doctor prescribed a medicine containing phenyltoloxamine to relieve the patient's allergy symptoms.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -8456,7 +8456,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "piezoelectricity",
         "definition": "A voltage generated by certain crystals in response to an applied mechanical stress.",
-        "exampleSentence": "Can you use the word piezoelectricity in a sentence?",
+        "exampleSentence": "A quartz crystal produces piezoelectricity, generating a small voltage when pressure is applied to it.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -8504,7 +8504,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "sociolinguistics",
         "definition": "The study of social and cultural effects on language and vice-versa.",
-        "exampleSentence": "Can you use the word sociolinguistics in a sentence?",
+        "exampleSentence": "The professor taught sociolinguistics, exploring how language changes depending on culture and social setting.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -8520,7 +8520,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "sulfamethoxazole",
         "definition": "An antibacterial sulfonamide C₁₀H₁₁N₃O3S used alone or in combination with trimethoprim.",
-        "exampleSentence": "Can you use the word sulfamethoxazole in a sentence?",
+        "exampleSentence": "The doctor prescribed sulfamethoxazole, an antibiotic used to treat the patient's bacterial infection.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -8919,7 +8919,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "xenoencyclopedia",
         "definition": "An encyclopedia of science fiction.",
-        "exampleSentence": "Can you use the word xenoencyclopedia in a sentence?",
+        "exampleSentence": "The science fiction fan browsed a xenoencyclopedia that catalogued alien worlds from hundreds of novels.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "multisyllable",
@@ -12405,7 +12405,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "catchweight",
-        "definition": "Without any weight restrictions; without being handicapped.",
+        "definition": "A contest in which no weight restrictions apply.",
         "exampleSentence": "For example, the catchweights of ham and pork loins can vary to a certain degree (Morris 2000).",
         "partOfSpeech": "noun",
         "difficulty": 10,
@@ -13053,7 +13053,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "commeasurable",
         "definition": "Commensurate; proportional.",
-        "exampleSentence": "If AB and AE are commeasurable, let AG be the common measure;",
+        "exampleSentence": "If AB and AE are commeasurable, let AG be the common measure;.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -13501,7 +13501,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "hyperexpansive",
         "definition": "Overly expansive and outgoing, tending toward chaos and confusion.",
-        "exampleSentence": "As a consequence hyperexpansive multiplication operators are investigated..",
+        "exampleSentence": "As a consequence hyperexpansive multiplication operators are investigated…",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "greek-roots",
@@ -13756,7 +13756,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "incommensuration",
         "definition": "The quality or state of being incommensurate or contradictory.",
-        "exampleSentence": "Can you use the word incommensuration in a sentence?",
+        "exampleSentence": "The philosopher discussed the incommensuration between the two value systems, arguing they could never be compared.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -13962,7 +13962,7 @@ export const TIER_9_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "kayles",
         "definition": "The game of skittles or ninepins.",
-        "exampleSentence": "Playing kayles, i.e. throwing a stick at ninepins, at Smithfield, 13th century.",
+        "exampleSentence": "The children played kayles in the courtyard, knocking down the pins with a wooden ball.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",

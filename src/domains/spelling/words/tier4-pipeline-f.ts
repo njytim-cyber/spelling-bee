@@ -601,7 +601,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "puritan",
-        "definition": "A member of a particular Protestant religious sect advocating greater purity and piety.",
+        "definition": "Having or displaying strict moral or religious principles.",
         "exampleSentence": "A pietistic protestantism, rigid, self-righteous, unintellectual, obsessed with puritan morality to the point where hypocrisy was its automatic companion, dominated this desolate epoch.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -918,7 +918,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "listing",
-        "definition": "The action of the verb to list.",
+        "definition": "Leaning or tilting to one side.",
         "exampleSentence": "What is this house's listing price?",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -1043,7 +1043,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "frantic",
         "definition": "A person who is insane or mentally unstable, madman.",
-        "exampleSentence": "… who but senseless Franticks would have thoughts so poor? My Reason forsakes the government of this weak Frame, and I am fall’n into disorder ….",
+        "exampleSentence": "The raving frantic ran through the streets, shouting about the end of the world.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -1389,7 +1389,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "lashing",
         "definition": "Present participle and gerund of lash.",
-        "exampleSentence": "The rain was lashing down.",
+        "exampleSentence": "The rain was lashing against the windows during the fierce storm.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4916,7 +4916,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "brainiac",
         "definition": "A very intelligent and usually studious, erudite person.",
-        "exampleSentence": "With all the brainiacs in the world ... you'd think somebody would come up with a sunblock for ice cream.",
+        "exampleSentence": "With all the brainiacs in the world … you'd think somebody would come up with a sunblock for ice cream.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -7544,7 +7544,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "marauder",
         "definition": "Someone who moves about in roving fashion looking for plunder.",
-        "exampleSentence": "A band of marauders.",
+        "exampleSentence": "The village built a high wall to keep out the marauders who roamed the countryside.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -8068,7 +8068,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "obituary",
-        "definition": "Relating to obituaries.",
+        "definition": "A published notice of a person's death, often with a brief biography.",
         "exampleSentence": "“You want to know the ironic thing? I wrote my son’s obituary using ChatGPT,” Mr. Taylor said.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -9212,7 +9212,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "shelfful",
         "definition": "Enough to fill a shelf.",
-        "exampleSentence": "A shelfful of books.",
+        "exampleSentence": "She had a whole shelfful of mystery novels in her bedroom.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -10159,7 +10159,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "tickling",
         "definition": "A sensation that tickles.",
-        "exampleSentence": "Ticklings and muscular aches.",
+        "exampleSentence": "The baby burst into giggles at the tickling of her tiny feet.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -10332,7 +10332,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "trilling",
         "definition": "A compound crystal consisting of three individuals.",
-        "exampleSentence": "About twins and trillings.",
+        "exampleSentence": "The songbird was trilling beautifully from its perch in the willow tree.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -11375,7 +11375,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "arterial",
-        "definition": "A high-capacity urban road.",
+        "definition": "Relating to an artery or the arteries.",
         "exampleSentence": "The old house had an arterial appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -11437,7 +11437,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "autistic",
-        "definition": "A person who has autism.",
+        "definition": "Relating to or affected by autism.",
         "exampleSentence": "Imagine being this autistic over a fictional character.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -12623,7 +12623,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "nonrigid",
-        "definition": "An airship that maintains its shape only by internal gas pressure.",
+        "definition": "Not rigid; flexible or soft in structure.",
         "exampleSentence": "The old house had a nonrigid appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -12793,7 +12793,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "pedigree",
-        "definition": "A chart, list, or record of ancestors, to show breeding, especially distinguished breeding.",
+        "definition": "Having a recorded ancestry; purebred.",
         "exampleSentence": "The old house had a pedigree appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -13652,7 +13652,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "viennese",
-        "definition": "An inhabitant or resident of Vienna.",
+        "definition": "Relating to Vienna, its people, or their culture.",
         "exampleSentence": "The old house had a viennese appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -14630,7 +14630,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "flailing",
-        "definition": "Having a lack of coordination, control, or successful outcome.",
+        "definition": "An uncontrolled or clumsy thrashing of the limbs.",
         "exampleSentence": "The drowning man's flailings soon attracted the lifeguard's attention.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -14982,7 +14982,7 @@ export const TIER_4_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "stomping",
-        "definition": "The act of one who stomps.",
+        "definition": "Vigorous and lively; used for emphasis.",
         "exampleSentence": "The old house had a stomping appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,

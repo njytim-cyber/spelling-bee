@@ -47,7 +47,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "prenex",
         "definition": "Of a formula, having all of its quantifiers at the beginning.",
-        "exampleSentence": "\"We say that #92;phi is universal iff it can be written in prenex form — i.e. with all quantifiers at the beginning — using only universal quantifiers.\"",
+        "exampleSentence": "The formula was rewritten in prenex form with all quantifiers at the front.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "blends",
@@ -873,7 +873,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "hartal",
         "definition": "The closure of shops and offices, typically as a strike.",
-        "exampleSentence": "Can you use the word hartal in a sentence?",
+        "exampleSentence": "The shopkeepers called a hartal, closing every shop in the town as a protest.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -937,7 +937,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "hangry",
         "definition": "Hungry and angry, especially when the anger is induced by the hunger.",
-        "exampleSentence": "I also get really \"hangry\".",
+        "exampleSentence": "She always got hangry by lunchtime if she skipped her morning snack.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -1001,7 +1001,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "tillet",
         "definition": "A bag made of thin glazed muslin, formerly used as a wrapper for dress goods.",
-        "exampleSentence": "Can you use the word tillet in a sentence?",
+        "exampleSentence": "The delicate tillet bag protected the fine dress fabric during shipping.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -1143,7 +1143,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "kashan",
         "definition": "A kind of decorative flat carpet.",
-        "exampleSentence": "Can you use the word kashan in a sentence?",
+        "exampleSentence": "A beautiful kashan carpet covered the floor of the grand hallway.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -1223,7 +1223,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "imzadi",
         "definition": "A person with whom one shares a profound spiritual bond; a soulmate.",
-        "exampleSentence": "Can you use the word imzadi in a sentence?",
+        "exampleSentence": "In the story, they called each other imzadi to express their deep spiritual bond.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -1335,7 +1335,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "dorito",
         "definition": "A tortilla chip of the Doritos brand.",
-        "exampleSentence": "Can you use the word dorito in a sentence?",
+        "exampleSentence": "He crunched on a cheesy dorito while watching the football match.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -1351,7 +1351,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "bissel",
         "definition": "A small amount; a bit.",
-        "exampleSentence": "Can you use the word bissel in a sentence?",
+        "exampleSentence": "Just add a bissel of salt to bring out the flavour of the soup.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -1367,7 +1367,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "cheffy",
         "definition": "Of food: elaborate and complex, like that prepared by an expert chef.",
-        "exampleSentence": "“I'm just wondering whether it might be too... cheffy. Does it really say comfort food?”.",
+        "exampleSentence": "“I'm just wondering whether it might be too… cheffy. Does it really say comfort food?”.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -1797,7 +1797,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "bittern",
         "definition": "The liquor remaining after halite (common salt) has been harvested from saline water (brine).",
-        "exampleSentence": "Now we add the bittern.",
+        "exampleSentence": "The rare bittern hid among the reeds at the edge of the marsh.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "r-controlled",
@@ -2948,7 +2948,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "mattock",
         "definition": "An agricultural tool whose blades are at right angles to the body, similar to a pickaxe.",
-        "exampleSentence": "Workmen, breaking up an old floor, have come to him, mattocks in their hands, dismayed: ‘Mr Richard, see what we have turned up ...’.",
+        "exampleSentence": "Workmen, breaking up an old floor, have come to him, mattocks in their hands, dismayed: ‘Mr Richard, see what we have turned up …’.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -3075,7 +3075,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "mordant",
-        "definition": "Having or showing a sharp or critical quality.",
+        "definition": "A substance used to fix dyes on fabric.",
         "exampleSentence": "In dyeing two mediums are required, the colouring matter and the mordant which fixes the dye in the wool.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -3267,7 +3267,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "overage",
-        "definition": "Having an age that is greater than a stipulated minimum.",
+        "definition": "An excess or surplus beyond what is needed.",
         "exampleSentence": "You're entitled to bring a bag weighing fifty pounds onto the airplane, and will be charged extra for any overage.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -5583,7 +5583,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "suffuse",
-        "definition": "To spread through or over, especially as a liquid, colour or light; to bathe.",
+        "definition": "Spread through or over in a gentle way.",
         "exampleSentence": "This limonite-colored mud is most often very suffuse and only faintly apparent.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -5616,7 +5616,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "mutable",
         "definition": "Changeable, dynamic, evolutive; inclined to change, evolve, mutate.",
-        "exampleSentence": "Hypothesis 6.14: Entropy levels within the social group may vary but must be maintained below maximum entropy on certain relevant variables (e.g., on the six globals and five mutables).",
+        "exampleSentence": "The mutable nature of language means that words change meaning over time.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -5931,7 +5931,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "gnawing",
-        "definition": "The process by which something is gnawed.",
+        "definition": "Persistently worrying or distressing.",
         "exampleSentence": "Engleitner found the constant gnawing hunger harder and harder to bear. When the rations eventually increased again and the prisoners were given stew, it did not make much difference to Engleitner.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7306,7 +7306,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "phobian",
-        "definition": "A member of Accra Hearts of Oak S.C., Ghana's premier football club.",
+        "definition": "Relating to or characterized by an irrational fear.",
         "exampleSentence": "I understood (again from the brochures) that our little Phobian virus was extremely virulent.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7898,7 +7898,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "aliquant",
         "definition": "Less than another specified integer, but not dividing it into integral parts.",
-        "exampleSentence": "5 is an aliquant part of 16.",
+        "exampleSentence": "Five is an aliquant part of sixteen because it does not divide it evenly.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -9108,7 +9108,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "casebook",
-        "definition": "Having the typical characteristics of some class of phenomenon; a textbook example.",
+        "definition": "A book containing records of legal or medical cases for study.",
         "exampleSentence": "Her shrink had told her that her own father, as she'd describe him, was practically a casebook example of an anal retentive.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -10066,7 +10066,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "effluent",
         "definition": "A stream that flows out, such as from a lake or reservoir; an outflow; effluence.",
-        "exampleSentence": "The landscape was dotted with reservoirs and many many effluent streams.",
+        "exampleSentence": "The landscape was dotted with reservoirs and many effluent streams.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -10097,7 +10097,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     },
     {
         "word": "ellipsis",
-        "definition": "A set of three dots (...) showing that words have been left out of a text.",
+        "definition": "A set of three dots (…) showing that words have been left out of a text.",
         "exampleSentence": "The editor used an ellipsis to indicate that part of the quote was omitted.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -13863,7 +13863,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "socinian",
         "definition": "A member of a particular nontrinitarian Christian denomination founded in the late 16th century.",
-        "exampleSentence": "He was a Polish Socinian.",
+        "exampleSentence": "The Socinian movement rejected traditional church teachings about the Trinity.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -15411,7 +15411,7 @@ export const TIER_6_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "enthrall",
         "definition": "To enslave; to subjugate.",
-        "exampleSentence": "… Who oft as undeservedly enthrall / His outward freedom: Tyranny must be;",
+        "exampleSentence": "… Who oft as undeservedly enthrall / His outward freedom: Tyranny must be;.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "digraphs",

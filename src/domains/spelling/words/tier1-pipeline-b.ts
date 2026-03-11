@@ -689,7 +689,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "advice",
         "definition": "An opinion offered to guide behavior in an effort to be helpful.",
-        "exampleSentence": "Can you use the word advice in a sentence?",
+        "exampleSentence": "Her grandmother gave her good advice about making friends at a new school.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "silent-e",
@@ -705,7 +705,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "animal",
         "definition": "A fan of Kesha, an American singer.",
-        "exampleSentence": "Can you use the word animal in a sentence?",
+        "exampleSentence": "The elephant is the largest land animal in the world.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -720,7 +720,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "artist",
         "definition": "A person who creates art.",
-        "exampleSentence": "Can you use the word artist in a sentence?",
+        "exampleSentence": "The artist painted a beautiful landscape of the countryside.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -736,7 +736,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "asking",
         "definition": "The act or process of posing a question or making a request.",
-        "exampleSentence": "I have an asking for you.",
+        "exampleSentence": "She kept asking questions until she finally understood the answer.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -752,7 +752,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "behind",
         "definition": "At or in the rear or back part of something.",
-        "exampleSentence": "Can you use the word behind in a sentence?",
+        "exampleSentence": "The cat was hiding behind the sofa the whole time.",
         "partOfSpeech": "noun",
         "difficulty": 1,
         "pattern": "blends",
@@ -784,7 +784,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "canful",
         "definition": "As much as a can will hold.",
-        "exampleSentence": "Can you use the word canful in a sentence?",
+        "exampleSentence": "He poured a canful of paint into the tray before starting to decorate.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -800,7 +800,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "cousin",
         "definition": "A fan of the character Lucien LaCroix from the Canadian television series Forever Knight.",
-        "exampleSentence": "Can you use the word cousin in a sentence?",
+        "exampleSentence": "My cousin is coming to visit us during the summer holidays.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "vowel-teams",
@@ -832,7 +832,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "enough",
         "definition": "An instance of being sufficient, or of doing something sufficiently.",
-        "exampleSentence": "Can you use the word enough in a sentence?",
+        "exampleSentence": "There was just enough cake left for everyone to have a small slice.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "digraphs",
@@ -848,7 +848,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "flying",
         "definition": "That flies or can fly.",
-        "exampleSentence": "Can you use the word flying in a sentence?",
+        "exampleSentence": "We watched the birds flying high above the treetops.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "digraphs",
@@ -912,7 +912,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "longer",
         "definition": "A person who yearns or feels a deep desire for something.",
-        "exampleSentence": "Can you use the word longer in a sentence?",
+        "exampleSentence": "She was a longer for the sea, always dreaming of living by the coast.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -928,7 +928,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "lovely",
         "definition": "Delightful for beauty, harmony, or grace.",
-        "exampleSentence": "Can you use the word lovely in a sentence?",
+        "exampleSentence": "What a lovely day it is for a picnic in the park.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -991,7 +991,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "police",
         "definition": "An organized group of officers whose job is to enforce laws and keep public order.",
-        "exampleSentence": "Can you use the word police in a sentence?",
+        "exampleSentence": "The police officer helped the lost child find her parents.",
         "partOfSpeech": "noun",
         "difficulty": 1,
         "pattern": "silent-e",
@@ -1070,7 +1070,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "things",
         "definition": "One's clothes, furniture, luggage, or possessions collectively; stuff.",
-        "exampleSentence": "Can you use the word things in a sentence?",
+        "exampleSentence": "Pack your things quickly so we don't miss the train.",
         "partOfSpeech": "noun",
         "difficulty": 1,
         "pattern": "digraphs",
@@ -1133,7 +1133,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "hidden",
         "definition": "Located or positioned out of sight; not visually apparent.",
-        "exampleSentence": "Hiddens are indicated thus; (e.g.) Grow (maraudinG ROWdies).",
+        "exampleSentence": "The treasure was hidden beneath the old oak tree.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -1242,7 +1242,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "momist",
         "definition": "A person who finds fault constantly; a habitual critic.",
-        "exampleSentence": "Can you use the word momist in a sentence?",
+        "exampleSentence": "The momist in the group always had a complaint about every suggestion.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -1322,7 +1322,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "nongod",
         "definition": "A being or thing that is not considered divine or a deity.",
-        "exampleSentence": "Can you use the word nongod in a sentence?",
+        "exampleSentence": "In the mythology, the hero was a nongod who relied on wit rather than divine power.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "digraphs",
@@ -1546,7 +1546,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "lotful",
         "definition": "Enough to fill a lot.",
-        "exampleSentence": "Can you use the word lotful in a sentence?",
+        "exampleSentence": "A lotful of cars filled the parking area near the stadium.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -1610,7 +1610,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "oneism",
         "definition": "A policy of oneness or unity.",
-        "exampleSentence": "Can you use the word oneism in a sentence?",
+        "exampleSentence": "The philosopher promoted oneism, believing that all of nature is connected.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "suffixes",
@@ -1688,7 +1688,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "hundred",
-        "definition": "Being ten more than ninety.",
+        "definition": "The number equal to ten times ten.",
         "exampleSentence": "He made a hundred in the historic match.",
         "partOfSpeech": "noun",
         "difficulty": 2,
@@ -1939,7 +1939,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "opening",
-        "definition": "An act or instance of making or becoming open.",
+        "definition": "Coming first; initial; beginning.",
         "exampleSentence": "The opening theme of Beethoven's Fifth Symphony is, perhaps, the most recognizable in all of European art music.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
@@ -2115,7 +2115,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "missing",
-        "definition": "Not able to be located; gone, misplaced.",
+        "definition": "A person whose whereabouts are unknown.",
         "exampleSentence": "The treatment of missings is a problem in statistical software.",
         "partOfSpeech": "noun",
         "difficulty": 2,
@@ -3289,7 +3289,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "prebreak",
-        "definition": "The initial stage of processing, in which material is prebroken.",
+        "definition": "Occurring before a break or initial stage of processing.",
         "exampleSentence": "Prebreakers are used to prebreak or crush cocoa presscakes, fats, large fruit or vegetables, whole fish, bones, etc.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
@@ -3353,7 +3353,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     },
     {
         "word": "overmost",
-        "definition": "The highest (in authority, status, or elevation).",
+        "definition": "Highest in position or rank; uppermost.",
         "exampleSentence": "Shaving which is on the overmost part of the head signifieth that between God and them ought to be nothing ne mean that should displease.",
         "partOfSpeech": "adjective",
         "difficulty": 2,
@@ -3642,7 +3642,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "unmother",
         "definition": "A woman who is not a mother.",
-        "exampleSentence": "How we lace away The hours interminable, Intricate and Pale, we nuns And all such unmothers of men;",
+        "exampleSentence": "How we lace away The hours interminable, Intricate and Pale, we nuns And all such unmothers of men;.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "latin-roots",
@@ -4531,7 +4531,7 @@ export const TIER_1_PIPELINE_B_WORDS: SpellingWord[] = [
     {
         "word": "misreason",
         "definition": "Irrational or illogical thinking.",
-        "exampleSentence": "A rift through the clouds is seen, Misrule and misreason are forced to fly, Law takes her scepter again;",
+        "exampleSentence": "A rift through the clouds is seen, Misrule and misreason are forced to fly, Law takes her scepter again;.",
         "partOfSpeech": "noun",
         "difficulty": 2,
         "pattern": "prefixes",

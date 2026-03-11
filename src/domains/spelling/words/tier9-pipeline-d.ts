@@ -490,7 +490,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "omalous",
         "definition": "Satisfying an analog of the anomaly cancellation condition.",
-        "exampleSentence": "After a short overview of the subject, we construct stable omalous bundles on some classes of surfaces of general type..",
+        "exampleSentence": "After a short overview of the subject, we construct stable omalous bundles on some classes of surfaces of general type…",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -3425,7 +3425,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "hushling",
         "definition": "A term of endearment.",
-        "exampleSentence": "Sleep, hushling, sleep ;",
+        "exampleSentence": "The mother sang softly to the hushling baby until it drifted off to sleep.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -3964,7 +3964,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "spondist",
         "definition": "An Ancient Egyptian priest responsible for pouring libations of water.",
-        "exampleSentence": "Spondists in the temple of Nebt-Hotep;",
+        "exampleSentence": "Spondists in the temple of Nebt-Hotep;.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -5167,7 +5167,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "tenebrist",
         "definition": "A painter working in the style of tenebrism.",
-        "exampleSentence": "Caravaggio was a tenebrist.",
+        "exampleSentence": "The famous tenebrist painter used dramatic shadows to create depth in his artwork.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -5449,7 +5449,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "midflight",
         "definition": "Occurring in the middle portion of a flight.",
-        "exampleSentence": "We had a midflight meal.",
+        "exampleSentence": "The pilot made an announcement midflight to update the passengers on arrival time.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "prefixes",
@@ -6590,7 +6590,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "meracious",
         "definition": "Without mixture or adulteration; strong; racy.",
-        "exampleSentence": "Her charms were now unfolded to my view, Meracious beauties, prottypes of grace;",
+        "exampleSentence": "Her charms were now unfolded to my view, Meracious beauties, prottypes of grace;.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -15228,7 +15228,7 @@ export const TIER_9_PIPELINE_D_WORDS: SpellingWord[] = [
     {
         "word": "semipublic",
         "definition": "Somewhat, but not entirely, public.",
-        "exampleSentence": "THERE are three things people think they know about Jessica Seinfeld, the semipublic wife of the popular comedian:",
+        "exampleSentence": "THERE are three things people think they know about Jessica Seinfeld, the semipublic wife of the popular comedian:.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "latin-roots",

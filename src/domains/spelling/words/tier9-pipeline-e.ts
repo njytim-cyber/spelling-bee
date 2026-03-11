@@ -1722,7 +1722,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "effectless",
         "definition": "Having no effect or advantage.",
-        "exampleSentence": "In In a Year of Thirteen Moons the transsexual Elvira makes every attempt to negate her/his will and render her/his-self effectless.",
+        "exampleSentence": "The politician's warnings proved effectless, as the public had already made up their minds.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -3884,7 +3884,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "noncollege",
-        "definition": "An institution that is not a college.",
+        "definition": "Not involving or related to a college.",
         "exampleSentence": "There was no difference between college and noncollege women in the 18- to 20-year age group but a big upsurge in binge drinking by older college women.",
         "partOfSpeech": "adjective",
         "difficulty": 10,
@@ -4650,7 +4650,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "positutely",
         "definition": "Positively and absolutely; see absitively posolutely.",
-        "exampleSentence": "\"Whatever you do, you \"absitively,\" \"positutely\"...must not panic.\"",
+        "exampleSentence": "\"Whatever you do, you \"absitively,\" \"positutely\"…must not panic.\"",
         "partOfSpeech": "adverb",
         "difficulty": 10,
         "pattern": "suffixes",
@@ -12656,7 +12656,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "degelation",
         "definition": "The conversion of a gel into a liquid.",
-        "exampleSentence": "The networks were shown to undergo chain scission predominantly, which leads to their degelation, i.e., the recovery of a thermoplastic-like behavior with loss of all elastically active chains.",
+        "exampleSentence": "Degelation of the frozen soil occurs gradually as temperatures rise in spring.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -12782,7 +12782,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "evercookie",
         "definition": "A special kind of HTTP cookie that is especially resistant to deletion by the user.",
-        "exampleSentence": "A breed of cookie known as evercookie writes data to multiple locations to make it next to impossible ever to remove it completely (http://samy.pl/evercookie/).",
+        "exampleSentence": "An evercookie stores data in so many places that clearing your browser history alone will not remove it.",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "vowel-teams",
@@ -12862,7 +12862,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "kinessence",
         "definition": "A model for dark energy with a time-dependent component.",
-        "exampleSentence": "In this case, we find that the value of statefinder pair matches with #92;LambdaCDM model and shows the kinessence like behavior for the suitable value of parameters..",
+        "exampleSentence": "In this case, we find that the value of statefinder pair matches with #92;LambdaCDM model and shows the kinessence like behavior for the suitable value of parameters…",
         "partOfSpeech": "noun",
         "difficulty": 10,
         "pattern": "latin-roots",
@@ -13020,7 +13020,7 @@ export const TIER_9_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "cyrenaican",
-        "definition": "A native or resident of Cyrenaica.",
+        "definition": "Relating to the ancient region of Cyrenaica.",
         "exampleSentence": "There are more kinds of mice in the Cyrenaican region.",
         "partOfSpeech": "adjective",
         "difficulty": 10,

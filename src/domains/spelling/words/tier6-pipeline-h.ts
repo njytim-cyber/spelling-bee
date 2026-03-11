@@ -364,7 +364,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "sheeter",
         "definition": "An industrial machine that produces a sheet of dough, fondant etc. of a regular thickness.",
-        "exampleSentence": "A boat is a red-sheeter.",
+        "exampleSentence": "The printing press operator adjusted the sheeter to cut the paper to the right size.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -936,7 +936,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "chiefdom",
         "definition": "The role or status of chief.",
-        "exampleSentence": "The privileges of chiefdom.",
+        "exampleSentence": "The chiefdom was governed by a council of elders who made all the important decisions.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -1077,7 +1077,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "fruiting",
-        "definition": "Capable of bearing fruit.",
+        "definition": "The process by which a plant produces fruit.",
         "exampleSentence": "Fruitings can consist of several thousand individual sporocarps.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -1489,7 +1489,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "chaffing",
-        "definition": "The act by which somebody is chaffed; a teasing.",
+        "definition": "Teasing or making fun of someone in a good-natured way.",
         "exampleSentence": "The P.M. at Bridge afterwards was in a very chaffing mood.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -1951,7 +1951,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "managery",
-        "definition": "The supervision or handling of affairs; management (archaic).",
+        "definition": "The supervision or handling of affairs; management.",
         "exampleSentence": "The managery of the estate fell to the eldest daughter after her father died.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -2031,7 +2031,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "bucksome",
-        "definition": "Lively, spirited, and full of energy (archaic).",
+        "definition": "Lively, spirited, and full of energy.",
         "exampleSentence": "She now begins to grow bucksome, like a lightning before death.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -3841,7 +3841,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "forcasten",
-        "definition": "Brought low; fallen from a former position (archaic).",
+        "definition": "Brought low; fallen from a former position.",
         "exampleSentence": "They judged me to be right poor by my forcasten company.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -4526,7 +4526,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "prejacent",
         "definition": "Existing previously, preexistent.",
-        "exampleSentence": "So, every exception set S that is not a subset of C(={b}) makes the prejacent statement false, i.e. makes it so that some (NPᵂ–S) (VPᵂ)=0.",
+        "exampleSentence": "The prejacent statement must be true for the overall claim to hold.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -6279,7 +6279,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "pode",
         "definition": "A contemptible person; a vile, venomous, or loathsome individual.",
-        "exampleSentence": "By God ye be a pretty pode ….",
+        "exampleSentence": "The strange little pode hopped along the garden path.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "silent-e",
@@ -7319,7 +7319,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "bluing",
         "definition": "A substance used in laundry to whiten clothes.",
-        "exampleSentence": "Can you use the word bluing in a sentence?",
+        "exampleSentence": "She added a drop of bluing to the rinse water to brighten the white sheets.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -7367,7 +7367,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "exmoor",
         "definition": "One of a breed of horned sheep of Devonshire, England, with white legs and face and black nostrils.",
-        "exampleSentence": "Can you use the word exmoor in a sentence?",
+        "exampleSentence": "The exmoor sheep had a white face and sturdy build, well-suited to the moor.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -7383,7 +7383,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "faroes",
         "definition": "A breed of domestic sheep, native to the Faroe Islands.",
-        "exampleSentence": "Can you use the word faroes in a sentence?",
+        "exampleSentence": "The hardy faroes sheep thrived on the windswept islands of the North Atlantic.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "r-controlled",
@@ -7413,7 +7413,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "gamine",
         "definition": "A (usually female) street urchin; a homeless girl.",
-        "exampleSentence": "Can you use the word gamine in a sentence?",
+        "exampleSentence": "The street gamine darted through the crowd with quick, nimble steps.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "silent-e",
@@ -7445,7 +7445,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "hatful",
         "definition": "The amount that will fit into a hat.",
-        "exampleSentence": "Can you use the word hatful in a sentence?",
+        "exampleSentence": "He won a whole hatful of prizes at the village fair.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -7586,7 +7586,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "pouter",
         "definition": "A person who habitually pouts; a sourpuss.",
-        "exampleSentence": "Can you use the word pouter in a sentence?",
+        "exampleSentence": "The pouter at the table refused to eat and crossed her arms in silence.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -7602,7 +7602,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "quapaw",
         "definition": "Any member of a Native American people who once lived in the Arkansas river valley.",
-        "exampleSentence": "Can you use the word quapaw in a sentence?",
+        "exampleSentence": "The Quapaw people once lived in villages along the lower Arkansas River.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -7617,7 +7617,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "ragbag",
         "definition": "A bag of rags and scraps.",
-        "exampleSentence": "Can you use the word ragbag in a sentence?",
+        "exampleSentence": "The costume designer searched through the ragbag for scraps of colourful fabric.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -7665,7 +7665,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "sorter",
         "definition": "A person employed to sort.",
-        "exampleSentence": "Can you use the word sorter in a sentence?",
+        "exampleSentence": "The postal sorter organised hundreds of letters into the correct pigeonholes.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -7697,7 +7697,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "theban",
         "definition": "A person from Thebes.",
-        "exampleSentence": "Can you use the word theban in a sentence?",
+        "exampleSentence": "The ancient Theban warriors were known for their courage in battle.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -7712,7 +7712,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "tophus",
         "definition": "A deposit of monosodium urate crystals in the body, caused by high levels of uric acid in the blood.",
-        "exampleSentence": "Can you use the word tophus in a sentence?",
+        "exampleSentence": "The doctor identified a chalky tophus on the patient's toe, a sign of gout.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "greek-roots",
@@ -7743,7 +7743,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "urania",
         "definition": "Any of several impure mixtures of uranium oxides.",
-        "exampleSentence": "Can you use the word urania in a sentence?",
+        "exampleSentence": "The chemist analysed a sample of urania to determine its uranium content.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -7901,7 +7901,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "beweep",
-        "definition": "To weep over or mourn deeply for something lost (archaic).",
+        "definition": "To weep over or mourn deeply for something lost.",
         "exampleSentence": "The queen would beweep her fallen soldiers every evening at dusk.",
         "partOfSpeech": "verb",
         "difficulty": 7,
@@ -8473,7 +8473,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "besing",
-        "definition": "To celebrate or praise someone or something through song or verse (archaic).",
+        "definition": "To celebrate or praise someone or something through song or verse.",
         "exampleSentence": "The poet vowed to besing the bravery of the fallen heroes.",
         "partOfSpeech": "verb",
         "difficulty": 7,
@@ -8490,7 +8490,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "jereed",
         "definition": "A blunt javelin used by the people of the Levant, especially in mock fights.",
-        "exampleSentence": "Can you use the word jereed in a sentence?",
+        "exampleSentence": "The riders practised throwing the blunt jereed javelin during the mounted game.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -8554,7 +8554,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "battel",
         "definition": "Fertile; fruitful; productive.",
-        "exampleSentence": "Can you use the word battel in a sentence?",
+        "exampleSentence": "The battel land around the village produced rich harvests every year.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -9080,7 +9080,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "outstay",
         "definition": "To stay beyond or longer than.",
-        "exampleSentence": "Podson stayed till after five, though he handsomely apologized for outstaying a call. \"The fact is, I never think of the time, when I get talking to a really intelligent woman...\"",
+        "exampleSentence": "Podson stayed till after five, though he handsomely apologized for outstaying a call. \"The fact is, I never think of the time, when I get talking to a really intelligent woman…\"",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "prefixes",
@@ -10182,7 +10182,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "webtoon",
         "definition": "An animated cartoon published on the World Wide Web.",
-        "exampleSentence": "Have a webtoon! Elf Life: http://www.elflife.com.",
+        "exampleSentence": "She spent her lunch break reading a popular webtoon on her phone.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -13268,7 +13268,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "bluewash",
         "definition": "To use a blue paint or glaze.",
-        "exampleSentence": "Corporations ...bluewash by suggesting ethical leadership and affiliating with the United Nations.",
+        "exampleSentence": "Corporations …bluewash by suggesting ethical leadership and affiliating with the United Nations.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -13690,7 +13690,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "savaging",
         "definition": "A vicious attack or criticism.",
-        "exampleSentence": "Savagings in the newspapers.",
+        "exampleSentence": "The film received a savaging from critics who called it poorly written.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "suffixes",
@@ -13859,7 +13859,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "goodwife",
-        "definition": "A respectful title for the woman who manages a household (archaic).",
+        "definition": "A respectful title for the woman who manages a household.",
         "exampleSentence": "The goodwife kept the home running smoothly while her husband was away at sea.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -14464,7 +14464,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "yeartide",
         "definition": "A specific time of year; season.",
-        "exampleSentence": "And soft the yeartides creep:",
+        "exampleSentence": "And soft the yeartides creep:.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -15103,7 +15103,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "bewonder",
-        "definition": "To gaze at with deep wonder and admiration (archaic).",
+        "definition": "To gaze at with deep wonder and admiration.",
         "exampleSentence": "The travelers stopped to bewonder the magnificent sunset over the canyon.",
         "partOfSpeech": "verb",
         "difficulty": 7,
@@ -15167,7 +15167,7 @@ export const TIER_6_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "recrayed",
-        "definition": "Cowardly; having surrendered or given up in the face of challenge (archaic).",
+        "definition": "Cowardly; having surrendered or given up in the face of challenge.",
         "exampleSentence": "The knight called his retreating rival a recrayed fool who lacked courage.",
         "partOfSpeech": "adjective",
         "difficulty": 7,

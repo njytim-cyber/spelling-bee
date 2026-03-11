@@ -207,7 +207,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "scrow",
         "definition": "The sky, the heavens.",
-        "exampleSentence": "Written in a little scrowe.",
+        "exampleSentence": "The clerk unrolled the ancient scrow to read the king's proclamation.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -383,7 +383,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "septet",
         "definition": "A group of seven musicians.",
-        "exampleSentence": "Can you use the word septet in a sentence?",
+        "exampleSentence": "The septet of musicians took the stage and began playing a lively piece together.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -431,7 +431,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "limmer",
         "definition": "A rogue; a low, base fellow.",
-        "exampleSentence": "Can you use the word limmer in a sentence?",
+        "exampleSentence": "The limmer was caught cheating at cards and thrown out of the tavern.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -511,7 +511,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "syllabic",
         "definition": "Of, relating to, or consisting of a syllable or syllables.",
-        "exampleSentence": "Most final consonants have been lost, resulting in a tonal language with a rich consonantal and vocalic inventory, but with a relatively simple syllabic structure..",
+        "exampleSentence": "Most final consonants have been lost, resulting in a tonal language with a rich consonantal and vocalic inventory, but with a relatively simple syllabic structure…",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -686,7 +686,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "jink",
         "definition": "To make a quick evasive turn or turns to confuse pursuers, incoming fire, etc.",
-        "exampleSentence": "But faith! he'll turn a corner jinkin, / An' cheat you yet.",
+        "exampleSentence": "The rabbit managed to jink left and right, escaping the fox with quick turns.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "blends",
@@ -749,7 +749,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "prill",
         "definition": "A pellet, a granule, a small bead.",
-        "exampleSentence": "The resulting solution is evaporated and converted into prills, i.e. dense flakes or grains, of solid ammonium nitrate.",
+        "exampleSentence": "The fertiliser was formed into small prills for easy spreading on the field.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -813,7 +813,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "bandog",
         "definition": "A dog that has been tied up; a mastiff or other kind of guard dog.",
-        "exampleSentence": "Can you use the word bandog in a sentence?",
+        "exampleSentence": "The fierce bandog guarded the farmyard, barking at anyone who came near the gate.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -1419,7 +1419,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "neptunian",
-        "definition": "A person under the astrological influence of the planet Neptune.",
+        "definition": "Relating to the planet Neptune.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully neptunian.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -1531,7 +1531,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "tubercular",
-        "definition": "A person who has tuberculosis.",
+        "definition": "Relating to or affected by tuberculosis.",
         "exampleSentence": "As he grew older, his tubercular thinness tended toward emaciation.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -1850,7 +1850,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "washingtonian",
-        "definition": "A native or resident of the state of Washington in the United States of America.",
+        "definition": "Relating to the U.S. state of Washington or Washington, D.C.",
         "exampleSentence": "His concern for the cause of environmental protection was very Washingtonian of him.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -2058,7 +2058,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "ferm",
-        "definition": "A fixed sum paid as rent for land or a farm (archaic).",
+        "definition": "A fixed sum paid as rent for land or a farm.",
         "exampleSentence": "The tenant owed a yearly ferm of ten bushels of grain to the lord.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -2581,7 +2581,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "abkhaz",
         "definition": "An Abkhazian; a native or inhabitant of Abkhazia, a region just east of the Black Sea.",
-        "exampleSentence": "Can you use the word abkhaz in a sentence?",
+        "exampleSentence": "The Abkhaz people have lived near the Black Sea coast for thousands of years.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -2613,7 +2613,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "cowpea",
         "definition": "Any of the plants in the species Vigna unguiculata, including the black-eyed pea.",
-        "exampleSentence": "Can you use the word cowpea in a sentence?",
+        "exampleSentence": "The farmer planted rows of cowpea in the garden, hoping for a good harvest of black-eyed peas.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -2661,7 +2661,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "mentum",
         "definition": "A chin-like projection below the mouth of certain mollusks.",
-        "exampleSentence": "Can you use the word mentum in a sentence?",
+        "exampleSentence": "The scientist studied the mentum of the snail under a microscope.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -2693,7 +2693,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "stroma",
         "definition": "The tissue structure of an organ, etc., that serves to support it.",
-        "exampleSentence": "Can you use the word stroma in a sentence?",
+        "exampleSentence": "The stroma of the leaf provides support for the cells that capture sunlight.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -3027,7 +3027,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "cautel",
         "definition": "Caution; prudence; wariness.",
-        "exampleSentence": "Can you use the word cautel in a sentence?",
+        "exampleSentence": "The traveller showed great cautel when crossing the rickety old bridge.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -3138,7 +3138,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "featly",
-        "definition": "Neatly, skillfully, and gracefully (archaic).",
+        "definition": "Neatly, skillfully, and gracefully.",
         "exampleSentence": "The dancers moved featly across the stage in perfect unison.",
         "partOfSpeech": "adverb",
         "difficulty": 8,
@@ -3187,7 +3187,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "piecer",
         "definition": "Someone or something that pieces.",
-        "exampleSentence": "Can you use the word piecer in a sentence?",
+        "exampleSentence": "The young piecer worked in the cotton mill, joining broken threads on the spinning frames.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -3379,7 +3379,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "victual",
         "definition": "To provide with a stock of victuals or food; to provision.",
-        "exampleSentence": "Hy louing voyage / Is but for two moneths victuall’d: ….",
+        "exampleSentence": "The captain ordered the crew to victual the ship before the long voyage began.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -3570,7 +3570,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "arabist",
-        "definition": "A scholar who studies Arab or Arabic culture, politics, or language.",
+        "definition": "Relating to the study of Arabic culture or language.",
         "exampleSentence": "Two of the most influential Arabist societies were established beyond the reach of Ottoman censors and police.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -4096,7 +4096,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "phrygian",
-        "definition": "A native or inhabitant of Phrygia.",
+        "definition": "Relating to ancient Phrygia or its people.",
         "exampleSentence": "‘Then one day one of the infants stretched out his little hands to the shepherd and exclaimed bekos, which is the Phrygian word for bread.’.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -4271,7 +4271,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "lucasian",
-        "definition": "A follower of the theories of American economist Robert Lucas Jr.",
+        "definition": "Relating to the Lucasian professorship or Robert Lucas's economic theories.",
         "exampleSentence": "Lucas is the intellectual leader of this approach, which I shall refer to as Lucasian.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -5229,7 +5229,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "pontifical",
-        "definition": "A book containing the offices, or formulas, used by a pontiff.",
+        "definition": "Relating to or befitting a pope; pompously dogmatic.",
         "exampleSentence": "Now had they brought the work by wondrous art / Pontifical, a ridge of pendent rock / Over the vexed abyss.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -5357,7 +5357,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "heterodont",
-        "definition": "Having teeth of different types.",
+        "definition": "An animal that has teeth of different types.",
         "exampleSentence": "Ordovician actinodontoids are probably ancestral to the heterodonts, unionaceans, and trigoniaceans.",
         "partOfSpeech": "noun",
         "difficulty": 8,
@@ -6013,7 +6013,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "extroverted",
         "definition": "Turned or thrust outwards, especially.",
-        "exampleSentence": "The external and combustible Sulphur... is... protruded and extroverted.",
+        "exampleSentence": "The external and combustible Sulphur… is… protruded and extroverted.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -6685,7 +6685,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "characterization",
         "definition": "The act or process of characterizing.",
-        "exampleSentence": "Can you use the word characterization in a sentence?",
+        "exampleSentence": "The author's characterization of the villain made him seem both frightening and sad.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -6955,7 +6955,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "caut",
         "definition": "To emit the characteristic call of a panther.",
-        "exampleSentence": "A Panther Cauteth, which word is taken from the sound of his voice.",
+        "exampleSentence": "Deep in the jungle, they heard a panther caut loudly in the darkness.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -7845,7 +7845,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "oneth",
-        "definition": "An informal or humorous ordinal form meaning 'first' in a series.",
+        "definition": "Used humorously as the ordinal form of one; first.",
         "exampleSentence": "He jokingly called himself the oneth person to arrive at the empty theater.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -8352,7 +8352,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "aswim",
         "definition": "Swimming or immersed (in or with something).",
-        "exampleSentence": "… his mind was aswim with imagined conspiracies;",
+        "exampleSentence": "… his mind was aswim with imagined conspiracies;.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8447,7 +8447,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "anomia",
         "definition": "The inability to remember names.",
-        "exampleSentence": "Can you use the word anomia in a sentence?",
+        "exampleSentence": "After the head injury, the patient suffered from anomia and could not recall familiar names.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8479,7 +8479,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "deckle",
         "definition": "A frame or edge which limits the pulp and, consequently, the size of the resulting paper.",
-        "exampleSentence": "Can you use the word deckle in a sentence?",
+        "exampleSentence": "The papermaker adjusted the deckle to set the width of the sheet before pressing the pulp.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "digraphs",
@@ -8495,7 +8495,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "dipole",
         "definition": "Any object that is oppositely charged at two points.",
-        "exampleSentence": "Can you use the word dipole in a sentence?",
+        "exampleSentence": "A bar magnet is a simple dipole, with a north pole at one end and a south pole at the other.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8511,7 +8511,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "examen",
         "definition": "Examination; inquiry.",
-        "exampleSentence": "Can you use the word examen in a sentence?",
+        "exampleSentence": "The monk performed a daily examen, quietly reviewing the events of the day.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -8575,7 +8575,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "fornix",
         "definition": "The junction where the conjunctiva lining the eyelid meets the conjunctiva overlying the sclera.",
-        "exampleSentence": "Can you use the word fornix in a sentence?",
+        "exampleSentence": "The eye doctor examined the fornix where the inner lining of the eyelid meets the eyeball.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "r-controlled",
@@ -8623,7 +8623,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "hegira",
         "definition": "A journey taken to escape from danger; an exodus.",
-        "exampleSentence": "Can you use the word hegira in a sentence?",
+        "exampleSentence": "The family's hegira from the flooded village took them to higher ground across the river.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8639,7 +8639,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "impost",
         "definition": "A tax, tariff or duty that is imposed, especially on merchandise.",
-        "exampleSentence": "Can you use the word impost in a sentence?",
+        "exampleSentence": "The king placed a heavy impost on imported silk to protect local weavers.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -8655,7 +8655,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "joggle",
         "definition": "A step formed in material by two adjacent reverse bends.",
-        "exampleSentence": "Can you use the word joggle in a sentence?",
+        "exampleSentence": "The mason cut a joggle in each stone so the blocks would lock tightly together.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "silent-e",
@@ -8751,7 +8751,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "pennon",
         "definition": "A thin, often triangular flag or streamer, especially as hung from the end of a lance or spear.",
-        "exampleSentence": "Can you use the word pennon in a sentence?",
+        "exampleSentence": "A bright pennon fluttered from the tip of the knight's lance as he rode into the tournament.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8863,7 +8863,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "secant",
         "definition": "A straight line that intersects a curve at two or more points.",
-        "exampleSentence": "Can you use the word secant in a sentence?",
+        "exampleSentence": "The teacher drew a secant line that crossed the circle at two separate points.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -8959,7 +8959,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "trepan",
         "definition": "A tool used to bore through rock when sinking shafts.",
-        "exampleSentence": "Can you use the word trepan in a sentence?",
+        "exampleSentence": "The miners used a trepan to bore through the hard rock deep underground.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "blends",
@@ -8975,7 +8975,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "tswana",
         "definition": "A Bantu people living in Botswana and South Africa.",
-        "exampleSentence": "Can you use the word tswana in a sentence?",
+        "exampleSentence": "The Tswana people of southern Africa have a rich tradition of storytelling and cattle herding.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -8991,7 +8991,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "tungus",
         "definition": "A member of any Tungusic people.",
-        "exampleSentence": "Can you use the word tungus in a sentence?",
+        "exampleSentence": "The Tungus peoples of Siberia have herded reindeer across the frozen landscape for centuries.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "digraphs",
@@ -9278,7 +9278,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "centum",
         "definition": "Satakam, set of one hundred verses connected by the same metre or topic.",
-        "exampleSentence": "Can you use the word centum in a sentence?",
+        "exampleSentence": "The poet composed a centum, a collection of one hundred verses on the theme of the seasons.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -9516,7 +9516,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "chemic",
         "definition": "A chemist or (earlier) an alchemist.",
-        "exampleSentence": "Can you use the word chemic in a sentence?",
+        "exampleSentence": "The old chemic mixed potions and powders in his cluttered workshop.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "digraphs",
@@ -9628,7 +9628,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "ownage",
         "definition": "Triumph or domination.",
-        "exampleSentence": "Can you use the word ownage in a sentence?",
+        "exampleSentence": "The champion's total ownage of the tournament left the other players speechless.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -9852,7 +9852,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "autist",
         "definition": "An autistic person, a person with autism.",
-        "exampleSentence": "Can you use the word autist in a sentence?",
+        "exampleSentence": "The young autist had a remarkable memory for maps and could draw any city from memory.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "suffixes",
@@ -9980,7 +9980,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "boatie",
         "definition": "A boater (someone who travels by boat).",
-        "exampleSentence": "Can you use the word boatie in a sentence?",
+        "exampleSentence": "The cheerful boatie spent every weekend sailing around the harbour in his small dinghy.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -10026,7 +10026,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "remord",
-        "definition": "To feel deep regret or remorse about something (archaic).",
+        "definition": "To feel deep regret or remorse about something.",
         "exampleSentence": "He began to remord his harsh words as soon as he saw her tears.",
         "partOfSpeech": "verb",
         "difficulty": 8,
@@ -10075,7 +10075,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "unseel",
         "definition": "To unstitch the seeled eyes of a hawk.",
-        "exampleSentence": "Are your eyes yet unseel'd.",
+        "exampleSentence": "The falconer began to unseel the hawk's eyes so it could hunt.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "prefixes",
@@ -10091,7 +10091,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "sleave",
         "definition": "The knotted or entangled part of silk or thread.",
-        "exampleSentence": "Can you use the word sleave in a sentence?",
+        "exampleSentence": "The knitter carefully untangled the sleave of silk before winding it onto the spool.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -10139,7 +10139,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "bawson",
         "definition": "A large, unwieldy person.",
-        "exampleSentence": "Can you use the word bawson in a sentence?",
+        "exampleSentence": "The great bawson lumbered through the doorway, knocking his head on the low beam.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "vowel-teams",
@@ -10218,7 +10218,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "dunsel",
         "definition": "Something (especially part of a vessel) that is useless, or superfluous or unnecessary.",
-        "exampleSentence": "Can you use the word dunsel in a sentence?",
+        "exampleSentence": "The old engine became a dunsel once the ship switched to the newer power system.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -10695,7 +10695,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "concuss",
         "definition": "To injure the brain of, usually temporarily, by violent impact.",
-        "exampleSentence": "The blow will concuss him.",
+        "exampleSentence": "A hard fall from the bicycle could concuss a rider who is not wearing a helmet.",
         "partOfSpeech": "verb",
         "difficulty": 8,
         "pattern": "multisyllable",
@@ -10885,7 +10885,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "terrene",
-        "definition": "The Earth's surface; the earth; the ground.",
+        "definition": "Relating to the earth; worldly rather than spiritual.",
         "exampleSentence": "For the earth was both celestial and terrene, the down here and the up there.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -11076,7 +11076,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "fortean",
-        "definition": "A follower or admirer of Charles Fort.",
+        "definition": "Relating to paranormal phenomena studied by Charles Fort.",
         "exampleSentence": "Ufology is a somewhat Fortean subject.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -11379,7 +11379,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "joycean",
-        "definition": "A person who studies or admires the works of James Joyce.",
+        "definition": "Relating to or characteristic of the writings of James Joyce.",
         "exampleSentence": "Jimson is a total nonconformist and his god is William Blake, whom he quotes endlessly in his somewhat Joycean interior monologues.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -15253,7 +15253,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "purposive",
-        "definition": "A mood indicating a purpose of the course of activity expressed by the verb.",
+        "definition": "Having or done with a definite purpose.",
         "exampleSentence": "The world was generally agreed to be a purposive one, responsive to the wishes of its Creator ….",
         "partOfSpeech": "adjective",
         "difficulty": 8,
@@ -15270,7 +15270,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "splenetic",
         "definition": "Bad-tempered, irritable, peevish, spiteful, habitually angry.",
-        "exampleSentence": "A sect, whose chief devotion lies / In odd perverse antipathies; / … / More peevish, cross, and splenetick, / Than dog distract, or monkey sick.",
+        "exampleSentence": "The splenetic old man snapped at everyone who dared to knock on his door.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "blends",
@@ -15461,7 +15461,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "infatuate",
         "definition": "Infatuated, foolishly attracted to someone.",
-        "exampleSentence": "He is infatuate about her.",
+        "exampleSentence": "The young poet was completely infatuate with the beauty of the countryside.",
         "partOfSpeech": "adjective",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -15668,7 +15668,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     {
         "word": "refusenik",
         "definition": "One of the citizens of the former Soviet Union who was refused permission to emigrate.",
-        "exampleSentence": "The refuseniki say they don’t want to change anything in the U.S.S.R., only leave it.",
+        "exampleSentence": "The brave refusenik continued to apply for permission to leave the Soviet Union.",
         "partOfSpeech": "noun",
         "difficulty": 8,
         "pattern": "latin-roots",
@@ -15747,7 +15747,7 @@ export const TIER_7_PIPELINE_A_WORDS: SpellingWord[] = [
     },
     {
         "word": "consolate",
-        "definition": "To console; to comfort.",
+        "definition": "Comforted; consoled.",
         "exampleSentence": "Ne morning, like Sir Leoline in Christabel, ‘he woke and found his lady dead,’ and remained a very consolate widower, with one small child.",
         "partOfSpeech": "adjective",
         "difficulty": 8,

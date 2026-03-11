@@ -1,6 +1,6 @@
 import { memo, useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, query, orderBy, limit, onSnapshot, where, addDoc, serverTimestamp, doc, setDoc, getDoc } from 'firebase/firestore';
+import { collection, query, orderBy, limit, onSnapshot, where, doc, getDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { getThemeColor } from '../utils/chalkThemes';
 import { AchievementBadge } from './AchievementBadge';
@@ -85,64 +85,9 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
     const [profileData, setProfileData] = useState<ProfileData | null>(null);
     const [profileLoading, setProfileLoading] = useState(false);
     const [lbExpanded, setLbExpanded] = useState(false);
-    const [pingCooldown, setPingCooldown] = useState(false);
-    const [pingCountdown, setPingCountdown] = useState(0);
-    const [pingSuccess, setPingSuccess] = useState('');
     const [rankChange, setRankChange] = useState('');
     const prevRankRef = useRef<number | null>(null);
     const profileFetchRef = useRef<string | null>(null);
-    const pingSuccessTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-    const pingCooldownTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-    const pingCountdownInterval = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
-
-    // Clean up ping timers on unmount
-    useEffect(() => () => {
-        clearTimeout(pingSuccessTimer.current);
-        clearTimeout(pingCooldownTimer.current);
-        clearInterval(pingCountdownInterval.current);
-    }, []);
-
-    const handleAction = useCallback(async (action: 'race' | 'ping') => {
-        if (!selectedPlayer) return;
-        if (action === 'race') {
-            const params = new URLSearchParams();
-            params.set('c', `ghost-${selectedPlayer.uid}`);
-            window.location.search = params.toString();
-        } else if (action === 'ping') {
-            if (pingCooldown) return;
-            setPingCooldown(true);
-            try {
-                await addDoc(collection(db, 'pings'), {
-                    targetUid: selectedPlayer.uid,
-                    senderUid: uid || 'anonymous',
-                    senderName: displayName || 'Someone',
-                    createdAt: serverTimestamp(),
-                    read: false
-                });
-                // Record lastPingAt so Firestore rule can enforce 30s server-side cooldown
-                if (uid) {
-                    setDoc(doc(db, 'users', uid), { lastPingAt: serverTimestamp() }, { merge: true })
-                        .catch(() => { /* silent */ });
-                }
-                const name = selectedPlayer.displayName;
-                setSelectedPlayer(null);
-                setPingSuccess(`Pinged ${name}!`);
-                pingSuccessTimer.current = setTimeout(() => setPingSuccess(''), 3000);
-            } catch {
-                setSelectedPlayer(null);
-            }
-            // Match the 30s server-side rule cooldown with visible countdown
-            setPingCountdown(30);
-            clearInterval(pingCountdownInterval.current);
-            pingCountdownInterval.current = setInterval(() => {
-                setPingCountdown(prev => {
-                    if (prev <= 1) { clearInterval(pingCountdownInterval.current); return 0; }
-                    return prev - 1;
-                });
-            }, 1000);
-            pingCooldownTimer.current = setTimeout(() => setPingCooldown(false), 30000);
-        }
-    }, [selectedPlayer, pingCooldown, uid, displayName]);
 
     // ── Score leaderboard query ──
     useEffect(() => {
@@ -690,26 +635,6 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                                 </div>
                             )}
 
-                            {/* Action buttons */}
-                            <div className="space-y-3">
-                                <button
-                                    onClick={() => handleAction('race')}
-                                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui text-[#422006] bg-[var(--color-gold)] active:opacity-80 transition-opacity"
-                                >
-                                    <span>⚔️</span> Ghost Race
-                                </button>
-                                <button
-                                    onClick={() => handleAction('ping')}
-                                    disabled={pingCooldown}
-                                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold ui border transition-colors ${pingCooldown
-                                        ? 'border-[rgb(var(--color-fg))]/10 text-[rgb(var(--color-fg))]/25 cursor-not-allowed'
-                                        : 'border-[var(--color-gold)]/30 text-[var(--color-gold)] active:bg-[var(--color-gold)]/10'
-                                        }`}
-                                >
-                                    <span>👋</span> {pingCooldown ? `Wait ${pingCountdown}s` : 'Ping Player'}
-                                </button>
-                            </div>
-
                             {/* Premium inspiration CTA */}
                             {onUpgrade && !currentUserIsPremium && profileData?.isPremium && (
                                 <motion.button
@@ -732,19 +657,19 @@ export const LeaguePage = memo(function LeaguePage({ userXP, userWeeklyXP, userS
                 )}
             </AnimatePresence>
 
-            {/* Ping success / rank change toast — tap to dismiss */}
+            {/* Rank change toast — tap to dismiss */}
             <AnimatePresence>
-                {(pingSuccess || rankChange) && (
+                {rankChange && (
                     <motion.div
-                        key={pingSuccess || rankChange}
+                        key={rankChange}
                         initial={{ opacity: 0, y: 20, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        onClick={() => { setPingSuccess(''); setRankChange(''); }}
+                        onClick={() => setRankChange('')}
                         className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-overlay)] border border-[var(--color-gold)]/30 rounded-2xl px-6 py-4 text-center cursor-pointer"
                     >
                         <div className="text-base ui font-bold text-[var(--color-gold)]">
-                            {pingSuccess || rankChange}
+                            {rankChange}
                         </div>
                         <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 mt-1">tap to dismiss</div>
                     </motion.div>

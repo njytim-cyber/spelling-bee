@@ -2866,7 +2866,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "unreplied",
-        "definition": "To which no reply has been given.",
+        "definition": "Not having received a reply.",
         "exampleSentence": "She had begun to take her time to reply James's letters because the unreplied letter kept him in her consciousness.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -4327,7 +4327,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "grandchild",
         "definition": "A child of someone's child.",
-        "exampleSentence": "A couple in India are suing their son and daughter-in-law – for not giving them grandchildren after six years of marriage.",
+        "exampleSentence": "The proud grandmother knitted a tiny hat for her new grandchild.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -4833,7 +4833,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "unemployed",
-        "definition": "Having no job despite being able and willing to work.",
+        "definition": "A person without a paid job.",
         "exampleSentence": "She wrote about the unemployed in her school report.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -5663,7 +5663,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "intershell",
-        "definition": "The layer between two stellar shells, particularly between the hydrogen and helium shells.",
+        "definition": "Situated or occurring between shells or layers.",
         "exampleSentence": "\"This cluster is unusual in that its outermost shell has fewer atoms than the underlying shell, and CO ligands bridge intershell metal atoms.\"",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -6924,7 +6924,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "overwicked",
         "definition": "Too wicked; wicked to an unreasonable extent.",
-        "exampleSentence": "Do not be overwicked,.",
+        "exampleSentence": "The character in the story was so overwicked that even the other villains feared him.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -6940,7 +6940,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "silentious",
         "definition": "Habitually taciturn; prone to silence.",
-        "exampleSentence": "Yet Will had very good qualities too: gentle, tractable, and, above all, grateful; silentious, even to a fault: he spoke, at any time, very little, but made it up emphatically with action;",
+        "exampleSentence": "Yet Will had very good qualities too: gentle, tractable, and, above all, grateful; silentious, even to a fault: he spoke, at any time, very little, but made it up emphatically with action;.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -7387,7 +7387,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "retreatful",
         "definition": "Furnishing or serving as a retreat.",
-        "exampleSentence": "Enabling vs to leape ashore for food, / And hide vs strait in our retreatfull flood.",
+        "exampleSentence": "The shady forest clearing was a retreatful spot, perfect for a quiet picnic.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -8936,7 +8936,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "misinclude",
         "definition": "To include (something) that should not be included.",
-        "exampleSentence": "Fossombronia foveolata Lindb. was misincluded in Dihoru's list ( 2 );",
+        "exampleSentence": "Fossombronia foveolata Lindb. was misincluded in Dihoru's list ( 2 );.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -9158,7 +9158,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "unlikelily",
         "definition": "In an unlikely manner.",
-        "exampleSentence": "Is an ascendee a nominal which ascends (e.g. by Raising), or--unlikelily--one which is ascended?",
+        "exampleSentence": "She unlikelily became the star of the show despite having no acting experience.",
         "partOfSpeech": "adverb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -10001,7 +10001,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     },
     {
         "word": "incompetent",
-        "definition": "Lacking the degree of ability and responsibility necessary to do a task successfully.",
+        "definition": "A person who lacks the skills to do a task properly.",
         "exampleSentence": "\"Lies!\" said the tallest of the sons of Ivaldi. \"I wouldn't trust those fumble-fingered incompetents to shoe a horse.\"",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -10208,7 +10208,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "bulletproof",
         "definition": "To make proof against bullets.",
-        "exampleSentence": "We have to bulletproof this program before we let the users at it; check every input, catch every possible flaw... it must not fail in use.",
+        "exampleSentence": "We have to bulletproof this program before we let the users at it; check every input, catch every possible flaw… it must not fail in use.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -12250,7 +12250,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "permanental",
         "definition": "Related to or composed of permanents.",
-        "exampleSentence": "We explore some properties of a recent representation of permanental vectors which expresses them as sums of independent vectors with components that are independent gamma random variables..",
+        "exampleSentence": "We explore some properties of a recent representation of permanental vectors which expresses them as sums of independent vectors with components that are independent gamma random variables…",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -13190,7 +13190,7 @@ export const TIER_4_PIPELINE_H_WORDS: SpellingWord[] = [
     {
         "word": "mistransfer",
         "definition": "To transfer incorrectly.",
-        "exampleSentence": "Until expert, they may mistransfer elemental rules but still preserve correct sentence patterns (e.g., Mouses eated honeys and milks.).",
+        "exampleSentence": "Young children sometimes mistransfer grammar rules, saying 'goed' instead of 'went.'",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "prefixes",

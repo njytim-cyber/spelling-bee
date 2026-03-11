@@ -1641,7 +1641,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "civilian",
-        "definition": "Not related to the military, police or other governmental professions.",
+        "definition": "A person who is not a member of the military or police.",
         "exampleSentence": "Ancient civilians and writers upon government.",
         "partOfSpeech": "noun",
         "difficulty": 3,
@@ -2506,7 +2506,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "agential",
-        "definition": "An affix that forms agent nouns.",
+        "definition": "Relating to or expressing an agent or agency.",
         "exampleSentence": "Even if the suffix be formally identical with the agential suffix, it has not the same function.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -2598,7 +2598,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "crashing",
-        "definition": "The sound or action of something that crashes.",
+        "definition": "Complete; total; utter.",
         "exampleSentence": "Advances were brought to crashing halts, and whole areas became impassable.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -3017,7 +3017,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "carrying",
         "definition": "Transporting or moving goods, people, or objects from place to place.",
-        "exampleSentence": "Carryings away of goods.",
+        "exampleSentence": "She was carrying a heavy backpack filled with books and supplies.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -4221,7 +4221,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "underleg",
         "definition": "The lower part of a leg.",
-        "exampleSentence": "The white underleg of a fox.",
+        "exampleSentence": "The fox could be identified by the white patch on its underleg.",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "latin-roots",
@@ -4621,7 +4621,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "magicful",
         "definition": "Possessing magic or magical qualities; magical.",
-        "exampleSentence": "Unicorns are nice and magicful...Their horns are gold and pretty.",
+        "exampleSentence": "Unicorns are nice and magicful…Their horns are gold and pretty.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -4780,7 +4780,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "superfat",
-        "definition": "An extremely obese person.",
+        "definition": "Extremely fat; very overweight.",
         "exampleSentence": "In workshops extraordinary scenes would unfold, for example the superfat Apple Hard turned a cartwheel, ….",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -5164,7 +5164,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "misguard",
         "definition": "To fail to guard properly.",
-        "exampleSentence": "Six prime ministers i.e. six inner enemies misguard the king.",
+        "exampleSentence": "The soldier was punished for failing to misguard the castle entrance.",
         "partOfSpeech": "verb",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -5610,7 +5610,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "enemyism",
         "definition": "The framing of potential conflict in social relations in terms of enmity.",
-        "exampleSentence": "Animism taken to its final conclusion ... is not only a perspectivism but an \"enemyism.\"",
+        "exampleSentence": "Animism taken to its final conclusion … is not only a perspectivism but an \"enemyism.\"",
         "partOfSpeech": "noun",
         "difficulty": 3,
         "pattern": "suffixes",
@@ -5642,7 +5642,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "misagree",
         "definition": "To agree on the basis of a misunderstanding, or without full engagement in what is being agreed to.",
-        "exampleSentence": "2023 \"On Misagreement: The trap of yeah,\" by Jamal Cassim, On Sight (blog), Feb 24, 2023 https://jamalcassim.com/on-misagreement/.",
+        "exampleSentence": "They seemed to misagree on the plan, each walking away with a different understanding of what was decided.",
         "partOfSpeech": "verb",
         "difficulty": 3,
         "pattern": "prefixes",
@@ -6366,7 +6366,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "terrified",
         "definition": "Extremely frightened.",
-        "exampleSentence": "Remi is terrified of spiders.",
+        "exampleSentence": "The little kitten was terrified of the loud thunderstorm outside.",
         "partOfSpeech": "adjective",
         "difficulty": 3,
         "pattern": "vowel-teams",
@@ -6597,7 +6597,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "speechful",
-        "definition": "The entire contents of a speech.",
+        "definition": "Full of speech; talkative; expressive.",
         "exampleSentence": "O they were speechful faces, gazing insistent ….",
         "partOfSpeech": "adjective",
         "difficulty": 3,
@@ -8434,7 +8434,7 @@ export const TIER_2_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "presignal",
-        "definition": "A signal that occurs before some occurrence, as a warning or to trigger an automatic preparation.",
+        "definition": "Occurring or given before a main signal.",
         "exampleSentence": "In this case, a presignal from the ATS could be interfaced with the elevator controls for that purpose.",
         "partOfSpeech": "adjective",
         "difficulty": 3,

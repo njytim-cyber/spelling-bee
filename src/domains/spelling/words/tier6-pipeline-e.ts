@@ -700,7 +700,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "diocesan",
-        "definition": "The bishop of a diocese.",
+        "definition": "Relating to or governed by a diocese.",
         "exampleSentence": "Diocesan bureaucracies were both symptom and cause of this.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -2134,7 +2134,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "vicenary",
-        "definition": "An officer in command of twenty men.",
+        "definition": "Relating to the number twenty.",
         "exampleSentence": "The old house had a vicenary appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -4353,7 +4353,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "maxonian",
-        "definition": "A native or inhabitant of Macclesfield.",
+        "definition": "Relating to Macclesfield in England.",
         "exampleSentence": "An exhibition and play will both examine the Maxonian band's legacy.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -4624,7 +4624,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "butthurt",
         "definition": "Overly annoyed or bothered by a perceived insult or injustice; needlessly offended.",
-        "exampleSentence": "\"... oh my. dont get so butthurt, ... i cant even remember what i wrote. anyhow, no i've never been to newyork. and yes i know that graffiti started there..\"",
+        "exampleSentence": "\"… oh my. dont get so butthurt, … i cant even remember what i wrote. anyhow, no i've never been to newyork. and yes i know that graffiti started there…\"",
         "partOfSpeech": "adjective",
         "difficulty": 7,
         "pattern": "digraphs",
@@ -5068,7 +5068,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "runcible",
-        "definition": "A nonce word used for humorous effect.",
+        "definition": "Used humorously or fancifully without a fixed meaning.",
         "exampleSentence": "The Dolomphious Duck, / who caught Spotted Frogs for her dinner / with a Runcible Spoon. … The Rural Runcible Raven, / who wore a White Wig and flew away / with the Carpet Broom.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7107,7 +7107,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "spesmilo",
         "definition": "An obsolete unit of Esperanto international currency with the value of one thousand spesoj.",
-        "exampleSentence": "We shall be delighted to relieve you of a pair of spesmiloj, alie a dollar, and will use your money to create more Esperanto enthusiasm.",
+        "exampleSentence": "In the Esperanto community, one spesmilo was worth roughly the same as a US dollar.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "blends",
@@ -7440,7 +7440,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "argentry",
         "definition": "Silver material, or silverness in color.",
-        "exampleSentence": "Bowls of frosted argentry.",
+        "exampleSentence": "The table was set with gleaming argentry that sparkled under the chandelier.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -7712,7 +7712,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "sursolid",
         "definition": "The fifth power of a number.",
-        "exampleSentence": "32 is the sursolid of 2.",
+        "exampleSentence": "In mathematics, a sursolid is a number raised to the fifth power.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -8078,7 +8078,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "ninesome",
         "definition": "A group of nine persons or things.",
-        "exampleSentence": "In the ninesome reel the dance is fully organized; i.e. there is no arbitrary change of partner, and quite sophisticated dance-figures occur.",
+        "exampleSentence": "The ninesome reel is a lively Scottish dance performed by nine people.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -8349,7 +8349,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "pernancy",
         "definition": "A taking or reception, as the receiving of rents or tithes in kind, the receiving of profits.",
-        "exampleSentence": "Pernancy of the profits.",
+        "exampleSentence": "The pernancy of the profits was divided among the landowners.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -9093,7 +9093,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "angelite",
         "definition": "A fan of the television series Angel.",
-        "exampleSentence": "Dear Buffyites and Angelites:",
+        "exampleSentence": "Dear Buffyites and Angelites:.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -10877,7 +10877,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     },
     {
         "word": "berytian",
-        "definition": "A native or inhabitant of Berytus.",
+        "definition": "Relating to the ancient city of Berytus.",
         "exampleSentence": "One of the inscriptions set up by the Berytian association records how its members in their meetings had honored the Athenian people with crowns ….",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -11660,7 +11660,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "straggot",
         "definition": "A heterosexual person; a breeder.",
-        "exampleSentence": "@VaughnVanessa you wouldnt be accepted by my Gay friends because ur a #STRAGGoT..sorry u cant go..lmao heheh.",
+        "exampleSentence": "@VaughnVanessa you wouldnt be accepted by my Gay friends because ur a #STRAGGoT…sorry u cant go…lmao heheh.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "blends",
@@ -12363,7 +12363,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "sinopean",
         "definition": "An inhabitant or citizen of Sinope.",
-        "exampleSentence": "A colony of Sinopeans.",
+        "exampleSentence": "The ancient Sinopean traders were known for their skilled seamanship.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "vowel-teams",
@@ -14850,7 +14850,7 @@ export const TIER_6_PIPELINE_E_WORDS: SpellingWord[] = [
     {
         "word": "defoliant",
         "definition": "An agent used to defoliate plants.",
-        "exampleSentence": "Agent Orange is a defoliant.",
+        "exampleSentence": "The farmer sprayed a defoliant to remove the leaves before harvesting the cotton.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "latin-roots",

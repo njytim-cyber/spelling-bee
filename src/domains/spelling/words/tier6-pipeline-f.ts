@@ -1244,7 +1244,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "obstruent",
-        "definition": "Causing obstruction; blocking up.",
+        "definition": "A consonant sound formed by obstructing airflow, such as a stop or fricative.",
         "exampleSentence": "Learning about the obstruent was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -1673,7 +1673,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "polyploid",
-        "definition": "Having more than the usual number of complete sets of chromosomes in a single cell.",
+        "definition": "An organism having more than two complete sets of chromosomes.",
         "exampleSentence": "Learning about the polyploid was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -1913,7 +1913,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "quintuple",
-        "definition": "Having five parts or members.",
+        "definition": "A fivefold amount or set.",
         "exampleSentence": "Learning about the quintuple was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -2183,7 +2183,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "scantling",
-        "definition": "Not plentiful; small; scanty.",
+        "definition": "A beam or piece of timber of small cross-section.",
         "exampleSentence": "Learning about the scantling was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -3043,7 +3043,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "tricolour",
-        "definition": "Having three colours.",
+        "definition": "A flag with three bands of different colours, especially the French flag.",
         "exampleSentence": "Tricolours are seen in the national flags of over twenty countries, including Belgium, France, India, Italy, Russia, The Netherlands and Ireland.",
         "partOfSpeech": "noun",
         "difficulty": 7,
@@ -3393,8 +3393,8 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "cannulate",
-        "definition": "To insert a cannula into).",
-        "exampleSentence": "He promised to cannulate as soon as he got home.",
+        "definition": "To insert a thin tube (cannula) into a body cavity, duct, or blood vessel.",
+        "exampleSentence": "The nurse had to cannulate the patient's vein before administering the medication.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -4922,7 +4922,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "impellent",
-        "definition": "An impelling power or force.",
+        "definition": "Having the quality of driving or urging forward.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully impellent.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -6071,7 +6071,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "viceregal",
-        "definition": "A viceroy or vicereine.",
+        "definition": "Relating to a viceroy or viceregal authority.",
         "exampleSentence": "This engine was used for hauling Viceregal trains, and was painted royal blue.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7125,7 +7125,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "hirundine",
-        "definition": "A member of the swallow family.",
+        "definition": "Relating to or resembling swallows.",
         "exampleSentence": "I have not met with these hirundine star-titles except in these two instances, and I think them both incorrect.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -7589,7 +7589,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "addicting",
         "definition": "Present participle and gerund of addict.",
-        "exampleSentence": "Mr. Johnson's communication states that the preparation \"has a large sale, and is addicting the public to its use\"",
+        "exampleSentence": "Mr. Johnson's communication states that the preparation \"has a large sale, and is addicting the public to its use\".",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -8941,7 +8941,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "bicoastal",
-        "definition": "A person who lives near two coasts.",
+        "definition": "Living on or involving two coasts.",
         "exampleSentence": "Chess, it seems, is even more bicoastal than the usual occasions of midwestern envy.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -9484,7 +9484,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "shimerian",
-        "definition": "A person who is associated with Shimer College.",
+        "definition": "Relating to Shimer College or its community.",
         "exampleSentence": "Carol’s path to Shimer and then Parsons is quintessentially Shimerian.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -9516,7 +9516,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "charonian",
-        "definition": "An inhabitant of Charon.",
+        "definition": "Relating to Charon, the moon of Pluto.",
         "exampleSentence": "The Charonian journey will soon be taken.",
         "partOfSpeech": "adjective",
         "difficulty": 7,
@@ -10915,7 +10915,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "molossine",
         "definition": "A bat of the genus Molossus.",
-        "exampleSentence": "The monk bat is a molossine.",
+        "exampleSentence": "The molossine bat uses echolocation to navigate through the darkness.",
         "partOfSpeech": "noun",
         "difficulty": 7,
         "pattern": "multisyllable",
@@ -11822,7 +11822,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     {
         "word": "exestuate",
         "definition": "To be agitated; to boil up; to effervesce.",
-        "exampleSentence": "Till this they were not much enraged, but now no flames could exestuate more than their fury and ravings ;",
+        "exampleSentence": "Till this they were not much enraged, but now no flames could exestuate more than their fury and ravings ;.",
         "partOfSpeech": "verb",
         "difficulty": 7,
         "pattern": "latin-roots",
@@ -13952,7 +13952,7 @@ export const TIER_6_PIPELINE_F_WORDS: SpellingWord[] = [
     },
     {
         "word": "diasporal",
-        "definition": "A diluted colloidal solution of some compound.",
+        "definition": "Relating to the dispersal of a people from their homeland.",
         "exampleSentence": "But to speak of a diasporal point of view of particular sects, or of the view of sects concerning the Jews of the Diaspora as a whole, would be misleading as too vague.",
         "partOfSpeech": "adjective",
         "difficulty": 7,

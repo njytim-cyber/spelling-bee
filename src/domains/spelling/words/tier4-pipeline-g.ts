@@ -15,7 +15,7 @@ import type { SpellingWord } from './types';
 export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "chrysler",
-        "definition": "An automobile of this make..).",
+        "definition": "An automobile made by the Chrysler corporation.",
         "exampleSentence": "He was driving a brand-new Chrysler.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -671,7 +671,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "yachtful",
         "definition": "As much as a yacht will hold.",
-        "exampleSentence": "A yachtful of celebrities.",
+        "exampleSentence": "A yachtful of tourists arrived at the harbour for the island tour.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1183,7 +1183,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "decadist",
         "definition": "A writer of a book divided into decades (ten parts).",
-        "exampleSentence": "Livy was a decadist.",
+        "exampleSentence": "The historian was a decadist who organised events into groups of ten years.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2586,7 +2586,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "unverify",
         "definition": "To annul the verification of; to remove from a verified state.",
-        "exampleSentence": "Plenty of people verified that ... her own brother verified it . . . and nobody's going to unverify it now.",
+        "exampleSentence": "Plenty of people verified that … her own brother verified it . . . and nobody's going to unverify it now.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2602,7 +2602,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "puffable",
         "definition": "Capable of being puffed.",
-        "exampleSentence": "Rice is a puffable food.",
+        "exampleSentence": "Rice is a puffable grain that expands when heated under pressure.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -2618,7 +2618,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "overcone",
         "definition": "A morphism from a diagonal overfunctor to the base category of the overcategory.",
-        "exampleSentence": "In the second approach we try to find good subdivision points in an approximating overcone that is faster to compute..",
+        "exampleSentence": "In the second approach we try to find good subdivision points in an approximating overcone that is faster to compute…",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -2682,7 +2682,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "megatron",
         "definition": "A fan of American singer-songwriter and television personality Meghan Trainor (born 1993).",
-        "exampleSentence": "This is a major moment for us Megatronz! Our Grammy-winning icon is keeping us fed!",
+        "exampleSentence": "The excited megatron camped outside the arena all night to get front-row seats at the concert.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -3639,7 +3639,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "misprobe",
         "definition": "To probe incorrectly.",
-        "exampleSentence": "The pocket pocket was probably misprobed originally, because of the lack of standardization of probing.",
+        "exampleSentence": "The pocket was probably misprobed originally, because of the lack of standardization of probing.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -4180,7 +4180,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "outrogue",
         "definition": "To commit more roguery than.",
-        "exampleSentence": "He could outrogue a lawyer.",
+        "exampleSentence": "The trickster could outrogue anyone in the village with his clever schemes.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -9298,7 +9298,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "toothache",
         "definition": "A pain or ache in a tooth.",
-        "exampleSentence": "I often have toothache.",
+        "exampleSentence": "The terrible toothache kept her awake all night until she saw the dentist.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -9437,7 +9437,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "ukrainian",
-        "definition": "Relating to Ukraine or its people or language.",
+        "definition": "A person from Ukraine or of Ukrainian descent.",
         "exampleSentence": "Learning about the ukrainian was the best part of the day.",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -10153,7 +10153,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "antarctic",
-        "definition": "The region around the south pole: Antarctica and surrounding waters.",
+        "definition": "Relating to the region around the South Pole.",
         "exampleSentence": "Scientists have known for years that the Thwaites glacier is the soft underbelly of the Antarctic ice sheet, and first found that it was unstable decades ago.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -10390,7 +10390,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "catatonic",
-        "definition": "A patient in a state of catatonia.",
+        "definition": "Relating to or affected by catatonia; immobile and unresponsive.",
         "exampleSentence": "An inspection of Table IV shows that the catatonics have the lowest mean reversal score of all the groups.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -10853,7 +10853,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "epileptic",
-        "definition": "A person who has epilepsy.",
+        "definition": "Relating to or affected by epilepsy.",
         "exampleSentence": "The children die off in vast numbers: those pale roses are all nerves. Hence, will presently burst forth the epileptic dances of the fourteenth century.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -11947,7 +11947,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "stimulant",
-        "definition": "A substance that acts to increase physiological or nervous activity in the body.",
+        "definition": "Tending to stimulate or increase activity.",
         "exampleSentence": "Everyone agreed that the dessert was wonderfully stimulant.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -13236,7 +13236,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     },
     {
         "word": "relieving",
-        "definition": "A change in colour, texture, etc. that relieves monotony.",
+        "definition": "Providing relief; easing pain or distress.",
         "exampleSentence": "Like a weary insomniac, France too greeted the relieving dawn chiefly longing for one thing only – repose.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -13450,7 +13450,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "valentino",
         "definition": "A ladies' man; a lothario.",
-        "exampleSentence": "He was a real Valentino.",
+        "exampleSentence": "With his charm and good looks, everyone called him a real Valentino.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -13855,7 +13855,7 @@ export const TIER_4_PIPELINE_G_WORDS: SpellingWord[] = [
     {
         "word": "grillable",
         "definition": "Suitable for cooking on a grill.",
-        "exampleSentence": "Hot dogs are grillable.",
+        "exampleSentence": "These vegetables are perfectly grillable and taste great with a smoky flavour.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "latin-roots",

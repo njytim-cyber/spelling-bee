@@ -414,7 +414,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "taoist",
-        "definition": "A follower of Taoism.",
+        "definition": "Relating to Taoism or its beliefs and practices.",
         "exampleSentence": "Taoist medicine follows the maxim of \"first do no harm\".",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -670,7 +670,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "chakra",
         "definition": "Any of seven centres of spiritual energy in or near the body, according to Ayurveda philosophy.",
-        "exampleSentence": "Can you use the word chakra in a sentence?",
+        "exampleSentence": "In yoga class, the teacher explained that each chakra represents a centre of energy in the body.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -861,8 +861,8 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "sullen",
-        "definition": "Having a brooding ill temper; sulky.",
-        "exampleSentence": "And let them die that age and sullens have;",
+        "definition": "A sulky, bad-tempered mood or disposition.",
+        "exampleSentence": "And let them die that age and sullens have;.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -987,7 +987,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "hectic",
         "definition": "Very busy with activity and confusion.",
-        "exampleSentence": "Can you use the word hectic in a sentence?",
+        "exampleSentence": "The morning was so hectic that she almost forgot to eat breakfast.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -1096,7 +1096,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "stalag",
         "definition": "A German prisoner-of-war camp, especially in World War II.",
-        "exampleSentence": "Can you use the word stalag in a sentence?",
+        "exampleSentence": "The prisoners of war spent three years in the stalag before being freed.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "blends",
@@ -1144,7 +1144,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "senpai",
         "definition": "The senior member of a group in Japanese arts; a mentor.",
-        "exampleSentence": "Can you use the word senpai in a sentence?",
+        "exampleSentence": "The younger student looked up to her senpai for guidance and advice.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -1320,7 +1320,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "wedger",
         "definition": "A kitchen utensil for cutting fruit and vegetables into wedges.",
-        "exampleSentence": "Can you use the word wedger in a sentence?",
+        "exampleSentence": "She used a wedger to cut the apple into neat slices for the fruit salad.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -1399,7 +1399,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "russel",
         "definition": "A twilled woolen material.",
-        "exampleSentence": "Can you use the word russel in a sentence?",
+        "exampleSentence": "The tailor chose a sturdy russel cloth for the winter coat lining.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "multisyllable",
@@ -2318,7 +2318,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "magenta",
-        "definition": "Having the color of fuchsia, fuchsine, light purple.",
+        "definition": "A bright purplish-red colour.",
         "exampleSentence": "Mrs Dibble's face blazed with a magenta uprush of blood at that ultimatum and she screamed, \"You dare try to do me out of my gin too! You dare!\"",
         "partOfSpeech": "noun",
         "difficulty": 5,
@@ -3113,7 +3113,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "starlet",
         "definition": "A young actress with a promising career ahead of her.",
-        "exampleSentence": "As I saw the love-light beam From her radiant eyes, more glorious far Than the starlet's nightly gleam :",
+        "exampleSentence": "As I saw the love-light beam From her radiant eyes, more glorious far Than the starlet's nightly gleam :.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -3638,7 +3638,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "bearded",
         "definition": "Having a beard; involving a beard.",
-        "exampleSentence": "Good sir, be a man: / Think every bearded fellow that's but yoked / May draw with you:",
+        "exampleSentence": "Good sir, be a man: / Think every bearded fellow that's but yoked / May draw with you:.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "vowel-teams",
@@ -3923,7 +3923,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "lateral",
-        "definition": "An object, such as a passage or a protrusion, that is situated on the side of something else.",
+        "definition": "Situated at, proceeding from, or directed to a side.",
         "exampleSentence": "A fish senses changes in hydrodynamic pressure with its lateral line.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -4225,7 +4225,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "thrifty",
         "definition": "Showing thrift; economical; frugal.",
-        "exampleSentence": "They han great stores, and thriftye flockes, / great freendes and feeble foes.",
+        "exampleSentence": "The thrifty shopper always compared prices before buying anything at the market.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -4257,7 +4257,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "wishful",
         "definition": "Wished-for; desired, wanted.",
-        "exampleSentence": "The cry whereof entring the hollow cave / Eftsoones brought forth the villaine, as they ment, / With hope of her some wishfull boot to have.",
+        "exampleSentence": "The wishful child pressed her face against the toy shop window, dreaming of the doll inside.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -4717,7 +4717,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "dirtbag",
         "definition": "A dirty, grimy, sleazy, or disreputable person.",
-        "exampleSentence": "I'm just a teenage dirtbag, baby. Listen to Iron Maiden, baby...with me.",
+        "exampleSentence": "I'm just a teenage dirtbag, baby. Listen to Iron Maiden, baby…with me.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "r-controlled",
@@ -4871,7 +4871,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "hogging",
         "definition": "Drooping at the ends; arching; in distinction from sagging.",
-        "exampleSentence": "Hogging pass, hogging cutter.",
+        "exampleSentence": "Stop hogging the remote control and let someone else choose a channel.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -5230,7 +5230,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "rebatch",
         "definition": "To arrange into different batches.",
-        "exampleSentence": "The inspector again rebatches the material into his company's own system and notes the details (i.e. material specification, dimensions, supplier, date received, etc.) into his batch book.",
+        "exampleSentence": "The factory had to rebatch the materials after discovering a quality issue.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "prefixes",
@@ -5693,7 +5693,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "blending",
         "definition": "The act or result of something being blended.",
-        "exampleSentence": "Blendings of old and new.",
+        "exampleSentence": "The smoothie was made by blending fresh fruit with yoghurt and honey.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -5803,7 +5803,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "browsing",
         "definition": "A place abounding with shrubs where animals may browse.",
-        "exampleSentence": "Browsings for the deer.",
+        "exampleSentence": "She spent the afternoon browsing through the shelves at the bookshop.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -6724,7 +6724,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "grooming",
         "definition": "Care for one's personal appearance, hygiene, and clothing.",
-        "exampleSentence": "I believe in good grooming.",
+        "exampleSentence": "Good grooming includes brushing your teeth and keeping your hair tidy.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -6962,7 +6962,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "kindling",
         "definition": "Small pieces of wood and twigs used to start a fire.",
-        "exampleSentence": "Go and collect some kindling.",
+        "exampleSentence": "They gathered dry sticks and kindling to start the campfire.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -8723,7 +8723,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "endanger",
         "definition": "To put (someone or something) in danger; to risk causing harm to.",
-        "exampleSentence": "He that turneth the humours back … endangereth malign ulcers.",
+        "exampleSentence": "Pollution can endanger wildlife by poisoning rivers and destroying natural habitats.",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -9057,7 +9057,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "anterior",
-        "definition": "A tooth situated at the front of the mouth.",
+        "definition": "Nearer to the front, especially of the body.",
         "exampleSentence": "Anterior to the time when mankind have become capable of being improved by free and equal discussion.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -9181,7 +9181,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "cohesive",
-        "definition": "A substance that provides cohesion.",
+        "definition": "Tending to stick together; united; well-integrated.",
         "exampleSentence": "The fourth of this group of cohesives is the anaphoric, same UT.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -9372,7 +9372,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "dyslexic",
-        "definition": "A person who has dyslexia.",
+        "definition": "Having or relating to dyslexia.",
         "exampleSentence": "She a feminist, she think I'm sexist / Twistin' my words, I think she dyslexic.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -9546,7 +9546,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "hypnotic",
-        "definition": "A person who is, or can be, hypnotized.",
+        "definition": "Relating to or producing hypnosis.",
         "exampleSentence": "The old house had a hypnotic appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -9719,7 +9719,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "mortuary",
-        "definition": "A place where dead bodies are stored prior to burial or cremation; broadly, synonym of funeral home.",
+        "definition": "Relating to death or burial.",
         "exampleSentence": "The old house had a mortuary appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -10884,7 +10884,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     },
     {
         "word": "seawater",
-        "definition": "The saltwater of a sea or ocean.",
+        "definition": "Consisting of or containing water from the sea.",
         "exampleSentence": "The old house had a seawater appearance.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
@@ -11480,7 +11480,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "unbonnet",
         "definition": "To remove a bonnet from.",
-        "exampleSentence": "\"Do nothing but rise, unbonnet yourself, and be silent\"",
+        "exampleSentence": "\"Do nothing but rise, unbonnet yourself, and be silent\".",
         "partOfSpeech": "verb",
         "difficulty": 5,
         "pattern": "latin-roots",
@@ -11846,7 +11846,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "turdless",
         "definition": "Without a turd or turds.",
-        "exampleSentence": "He was scared turdless!",
+        "exampleSentence": "The comedian's joke was so funny that the audience was laughing turdless.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "suffixes",
@@ -14201,7 +14201,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "sixteenth",
         "definition": "One of sixteen equal parts of a whole.",
-        "exampleSentence": "A sixteenth of 320 is 20.",
+        "exampleSentence": "Her sixteenth birthday party was the biggest celebration of the year.",
         "partOfSpeech": "noun",
         "difficulty": 5,
         "pattern": "digraphs",
@@ -15214,7 +15214,7 @@ export const TIER_4_PIPELINE_C_WORDS: SpellingWord[] = [
     {
         "word": "feathered",
         "definition": "Covered with feathers.",
-        "exampleSentence": "“Er...Feathered Omen, hoot not,” he continued uneasily, “Son of Tanit, hoot not!”.",
+        "exampleSentence": "“Er…Feathered Omen, hoot not,” he continued uneasily, “Son of Tanit, hoot not!”.",
         "partOfSpeech": "adjective",
         "difficulty": 5,
         "pattern": "digraphs",
