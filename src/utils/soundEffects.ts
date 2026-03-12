@@ -191,6 +191,44 @@ export function playCountdownBeep(step: number) {
     }
 }
 
+/** Play freeze bomb activation — icy crystalline descending tones */
+export function playFreezeSound() {
+    if (!soundEnabled) return;
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        // Descending crystalline tones
+        [1200, 900, 600, 450].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.frequency.value = freq;
+            osc.type = 'sine';
+            const startTime = now + i * 0.08;
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(0.12, startTime + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.25);
+            osc.start(startTime);
+            osc.stop(startTime + 0.3);
+        });
+        // Shimmer overlay
+        const shimmer = ctx.createOscillator();
+        const sGain = ctx.createGain();
+        shimmer.type = 'sine';
+        shimmer.frequency.setValueAtTime(2400, now);
+        shimmer.frequency.exponentialRampToValueAtTime(800, now + 0.5);
+        sGain.gain.setValueAtTime(0.04, now);
+        sGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+        shimmer.connect(sGain);
+        sGain.connect(ctx.destination);
+        shimmer.start(now);
+        shimmer.stop(now + 0.55);
+    } catch (e) {
+        console.warn('Sound playback failed:', e);
+    }
+}
+
 /** Play streak milestone sound - sparkly rising tones (enhanced for excitement) */
 export function playStreakSound(count: number) {
     if (!soundEnabled) return;
@@ -243,4 +281,48 @@ export function playStreakSound(count: number) {
     } catch (e) {
         console.warn('Sound playback failed:', e);
     }
+}
+
+/** Play a light tile-tap click — subtle pop for letter/morpheme placement */
+export function playTapSound() {
+    if (!soundEnabled) return;
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 880;
+        osc.type = 'sine';
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.005);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+        osc.start(now);
+        osc.stop(now + 0.07);
+    } catch { /* unsupported */ }
+}
+
+/** Play a snappy morpheme-lock sound — slightly deeper and more satisfying than tap */
+export function playSnapSound() {
+    if (!soundEnabled) return;
+    try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+        // Two quick overlapping tones for a "snap" feel
+        [660, 990].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.frequency.value = freq;
+            osc.type = 'sine';
+            const t = now + i * 0.02;
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.1, t + 0.008);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+            osc.start(t);
+            osc.stop(t + 0.1);
+        });
+    } catch { /* unsupported */ }
 }
