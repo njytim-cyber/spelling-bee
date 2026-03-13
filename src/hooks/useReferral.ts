@@ -43,9 +43,12 @@ function readPendingReferral(): string {
             ? `${window.location.pathname}?${remaining}`
             : window.location.pathname;
         window.history.replaceState({}, '', newUrl);
+        // Validate format: must be SPELL-XXXX (4 alphanumeric chars)
+        const upper = ref.toUpperCase();
+        if (!/^SPELL-[A-Z0-9]{4}$/.test(upper)) return '';
         // Store it so it survives auth flow
-        localStorage.setItem(STORAGE_KEYS.pendingReferral, ref.toUpperCase());
-        return ref.toUpperCase();
+        localStorage.setItem(STORAGE_KEYS.pendingReferral, upper);
+        return upper;
     }
     // Check localStorage
     return localStorage.getItem(STORAGE_KEYS.pendingReferral) || '';

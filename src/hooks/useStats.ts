@@ -108,17 +108,31 @@ function migrateByTypeKeys(bt: Record<string, TypeStat>): Record<string, TypeSta
     return out;
 }
 
+/** Sanity-check stats from localStorage — reject obviously tampered values. */
+function sanitizeStats(s: Stats): Stats {
+    // Clamp to Firestore-enforced maximums
+    s.totalXP = Math.max(0, Math.min(s.totalXP || 0, 1_000_000));
+    s.bestStreak = Math.max(0, Math.min(s.bestStreak || 0, 1_000));
+    s.totalSolved = Math.max(0, Math.min(s.totalSolved || 0, 500_000));
+    s.totalCorrect = Math.max(0, Math.min(s.totalCorrect || 0, s.totalSolved));
+    s.dayStreak = Math.max(0, Math.min(s.dayStreak || 0, 3_650));
+    s.streakShields = Math.max(0, Math.min(s.streakShields || 0, 10));
+    s.streakFreezes = Math.max(0, Math.min(s.streakFreezes || 0, 3));
+    s.weeklyXP = Math.max(0, Math.min(s.weeklyXP || 0, 100_000));
+    return s;
+}
+
 /** Load from localStorage (fast, synchronous) */
 function loadStatsLocal(): Stats {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return EMPTY_STATS;
         const parsed = JSON.parse(raw);
-        return {
+        return sanitizeStats({
             ...EMPTY_STATS,
             ...parsed,
             byType: { ...EMPTY_STATS.byType, ...migrateByTypeKeys(parsed.byType ?? {}) },
-        };
+        });
     } catch {
         return EMPTY_STATS;
     }

@@ -14,11 +14,16 @@ let initialized = false;
 function sanitizeUrl(url: string): string {
     try {
         const parsed = new URL(url);
-        const sensitiveParams = ['oobCode', 'apiKey', 'code', 'token', 'key', 'secret'];
-        for (const param of sensitiveParams) {
-            if (parsed.searchParams.has(param)) {
-                parsed.searchParams.set(param, '[REDACTED]');
+        const sensitiveParams = ['oobcode', 'apikey', 'code', 'token', 'key', 'secret'];
+        // Case-insensitive check: iterate all params and compare lowercased
+        const toRedact: string[] = [];
+        for (const [key] of parsed.searchParams.entries()) {
+            if (sensitiveParams.includes(key.toLowerCase())) {
+                toRedact.push(key);
             }
+        }
+        for (const key of toRedact) {
+            parsed.searchParams.set(key, '[REDACTED]');
         }
         return parsed.toString();
     } catch {

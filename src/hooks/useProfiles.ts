@@ -7,6 +7,7 @@
  */
 import { useState, useCallback } from 'react';
 import { STORAGE_KEYS } from '../config';
+import { containsProfanity } from '../utils/profanityFilter';
 
 const MAX_PROFILES = 5;
 
@@ -65,11 +66,13 @@ export function useProfiles(uid: string | null) {
 
     const addProfile = useCallback((name: string, avatarConfig: string, level: string): LearnerProfile | null => {
         let created: LearnerProfile | null = null;
+        const sanitizedName = name.slice(0, 20);
+        if (containsProfanity(sanitizedName)) return null;
         setState(prev => {
             if (prev.profiles.length >= MAX_PROFILES) return prev;
             const profile: LearnerProfile = {
                 id: nanoid8(),
-                name: name.slice(0, 20),
+                name: sanitizedName,
                 avatarConfig,
                 level,
                 createdAt: new Date().toISOString(),
@@ -92,10 +95,12 @@ export function useProfiles(uid: string | null) {
     }, [setState]);
 
     const updateProfile = useCallback((profileId: string, updates: Partial<Pick<LearnerProfile, 'name' | 'avatarConfig' | 'level'>>) => {
+        if (updates.name && containsProfanity(updates.name.slice(0, 20))) return;
+        const sanitized = updates.name ? { ...updates, name: updates.name.slice(0, 20) } : updates;
         setState(prev => ({
             ...prev,
             profiles: prev.profiles.map(p =>
-                p.id === profileId ? { ...p, ...updates } : p,
+                p.id === profileId ? { ...p, ...sanitized } : p,
             ),
         }));
     }, [setState]);

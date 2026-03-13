@@ -92,6 +92,21 @@ service cloud.firestore {
                        || (request.resource.data.accuracy is number
                            && request.resource.data.accuracy >= 0
                            && request.resource.data.accuracy <= 100))                // percentage cap
+                   // Consistency: totalCorrect must never exceed totalSolved
+                   && (!('totalCorrect' in request.resource.data)
+                       || (request.resource.data.totalCorrect is number
+                           && request.resource.data.totalCorrect >= 0
+                           && (resource == null || request.resource.data.totalCorrect >= resource.data.totalCorrect)
+                           && (!('totalSolved' in request.resource.data)
+                               || request.resource.data.totalCorrect <= request.resource.data.totalSolved)))
+                   // dayStreak: monotonic, max 3650, max +7 per write (prevents single-write streak spoofing)
+                   && (!('dayStreak' in request.resource.data)
+                       || (request.resource.data.dayStreak is number
+                           && request.resource.data.dayStreak >= 0
+                           && request.resource.data.dayStreak <= 3650
+                           && (resource == null || !('dayStreak' in resource.data)
+                               || request.resource.data.dayStreak <= resource.data.dayStreak + 7
+                               || request.resource.data.dayStreak == 1)))  // allow streak reset to 1
                    && (!('streakShields' in request.resource.data)
                        || (request.resource.data.streakShields is number
                            && request.resource.data.streakShields >= 0
@@ -104,7 +119,11 @@ service cloud.firestore {
                            && request.resource.data.weeklyXP >= 0
                            && request.resource.data.weeklyXP <= 100000
                            // Allow reset to 0 (new week) or increase only
-                           && (resource == null || request.resource.data.weeklyXP == 0 || request.resource.data.weeklyXP >= resource.data.weeklyXP)))
+                           && (resource == null || request.resource.data.weeklyXP == 0 || request.resource.data.weeklyXP >= resource.data.weeklyXP)
+                           // Max +500 per write (matches totalXP cap — prevents single-write inflation)
+                           && (resource == null || !('weeklyXP' in resource.data)
+                               || request.resource.data.weeklyXP == 0
+                               || request.resource.data.weeklyXP - resource.data.weeklyXP <= 500)))
                    && (!('weeklyXPWeek' in request.resource.data)
                        || (request.resource.data.weeklyXPWeek is string
                            && request.resource.data.weeklyXPWeek.size() <= 10))

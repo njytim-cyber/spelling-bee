@@ -40,7 +40,12 @@ export function usePremium(uid: string | null) {
     }, [uid]);
 
     const now = Date.now();
-    const isPremium = championPassExpiry !== '' && new Date(championPassExpiry).getTime() > now;
+    // Trial sanity check: trials are at most 7 days. If local expiry is more than 8 days
+    // from now AND status is 'trial', it's been tampered with — reject it.
+    const MAX_TRIAL_MS = 8 * 24 * 60 * 60 * 1000; // 8 days (1 day buffer for timezone drift)
+    const expiryTs = championPassExpiry ? new Date(championPassExpiry).getTime() : 0;
+    const trialTampered = subscriptionStatus === 'trial' && expiryTs > now + MAX_TRIAL_MS;
+    const isPremium = !trialTampered && championPassExpiry !== '' && expiryTs > now;
 
     const daysRemaining = (() => {
         if (!championPassExpiry) return 0;
