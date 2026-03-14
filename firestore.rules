@@ -378,6 +378,11 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // ── TTS Rate Limiting (managed by Cloud Function, no client access) ──
+    match /ttsRateLimit/{docId} {
+      allow read, write: if false;
+    }
+
     // ── Deploy Health (written by Cloud Function, admin-only read) ──
     match /deployHealth/{docId} {
       allow read, write: if false;

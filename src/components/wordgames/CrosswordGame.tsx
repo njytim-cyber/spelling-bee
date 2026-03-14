@@ -1,12 +1,10 @@
 import { memo, useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
-import { shuffle, saveHighScore, getHighScore } from './wordGameUtils';
+import { shuffle, pickThemedCrosswordWords, saveHighScore, getHighScore } from './wordGameUtils';
 import { useGameJuice } from './useGameJuice';
 import { Confetti } from '../Confetti';
-import type { SpellingWord } from '../../domains/spelling/words';
-import type { DifficultyTier } from '../../domains/spelling/words';
-import { wordsByDifficulty } from '../../domains/spelling/words';
+import type { SpellingWord, SemanticTheme } from '../../domains/spelling/words';
 
 interface Props { level: number; onExit: (xpEarned: number) => void }
 
@@ -25,30 +23,52 @@ interface Cell {
     clueNum?: number;
 }
 
+/* ── Theme configuration ─────────────────────────────────── */
+
+interface CrosswordTheme {
+    theme: SemanticTheme;
+    label: string;
+    emoji: string;
+    description: string;
+    group: 'world' | 'me' | 'life';
+}
+
+const CROSSWORD_THEMES: CrosswordTheme[] = [
+    // The World
+    { theme: 'animals',  label: 'Animals',      emoji: '🐾', description: 'Pets, farm & wild animals',           group: 'world' },
+    { theme: 'plants',   label: 'Plants',        emoji: '🌿', description: 'Flowers, trees & gardens',            group: 'world' },
+    { theme: 'nature',   label: 'Nature',        emoji: '🏔️', description: 'Mountains, forests & sky',             group: 'world' },
+    { theme: 'weather',  label: 'Weather',       emoji: '🌦️', description: 'Sun, rain, wind & storms',             group: 'world' },
+    { theme: 'earth',    label: 'Earth',         emoji: '🌍', description: 'Land, sea & space',                    group: 'world' },
+    // About Me
+    { theme: 'body',     label: 'My Body',       emoji: '🫀', description: 'Body parts & how we move',             group: 'me' },
+    { theme: 'feelings', label: 'Feelings',      emoji: '😊', description: 'Happy, sad & everything in between',   group: 'me' },
+    { theme: 'health',   label: 'Health',        emoji: '💪', description: 'Staying fit & well',                   group: 'me' },
+    { theme: 'food',     label: 'Food & Drink',  emoji: '🍎', description: 'Meals, snacks & ingredients',          group: 'me' },
+    { theme: 'sensory',  label: 'Senses',        emoji: '👁️', description: 'Sight, sound, taste & touch',          group: 'me' },
+    // Daily Life
+    { theme: 'home',     label: 'Home',          emoji: '🏡', description: 'Rooms, furniture & chores',            group: 'life' },
+    { theme: 'travel',   label: 'Travel',        emoji: '✈️', description: 'Trips, vehicles & places',             group: 'life' },
+    { theme: 'actions',  label: 'Action Words',  emoji: '⚡', description: 'Verbs for things we do',              group: 'life' },
+    { theme: 'everyday', label: 'Everyday',      emoji: '📦', description: 'Common things around us',             group: 'life' },
+];
+
+const THEME_GROUPS: Record<string, string> = {
+    world: 'The World',
+    me: 'About Me',
+    life: 'Daily Life',
+};
+
+type ThemeChoice = SemanticTheme | 'random';
+
+/* ── Grid constants ──────────────────────────────────────── */
+
 const GRID_DIM = 10;
 const TARGET_WORDS = 8;
 const MIN_ACROSS = 3;
 const MIN_DOWN = 3;
 
-/** Pick short, common words good for crosswords (3-7 letters). */
-function pickCrosswordWords(level: number, count: number): SpellingWord[] {
-    const minDiff = Math.max(1, level - 3) as DifficultyTier;
-    const maxDiff = Math.min(10, level + 1) as DifficultyTier;
-    let pool = wordsByDifficulty(minDiff, maxDiff).filter(w => w.word.length >= 3 && w.word.length <= 7);
-    if (pool.length < count) {
-        pool = wordsByDifficulty(1 as DifficultyTier, 10 as DifficultyTier).filter(w => w.word.length >= 3 && w.word.length <= 7);
-    }
-    const shuffled = shuffle([...pool]);
-    const seen = new Set<string>();
-    const result: SpellingWord[] = [];
-    for (const w of shuffled) {
-        if (seen.has(w.word)) continue;
-        seen.add(w.word);
-        result.push(w);
-        if (result.length >= count) break;
-    }
-    return result;
-}
+/* ── Grid builder (unchanged algorithm) ──────────────────── */
 
 function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; placed: PlacedWord[] } {
     const sorted = shuffle([...words]).sort((a, b) => b.word.length - a.word.length);
@@ -159,19 +179,38 @@ function buildCrossword(words: SpellingWord[]): { grid: (Cell | null)[][]; place
     return { grid, placed };
 }
 
+/* ── Component ───────────────────────────────────────────── */
+
 export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Props) {
+    const [selectedTheme, setSelectedTheme] = useState<ThemeChoice | null>(null);
     const [seed, setSeed] = useState(0);
 
+    // Resolve 'random' to an actual theme (re-resolves on seed change for Play Again)
+    const resolvedTheme = useMemo<SemanticTheme | null>(() => {
+        if (!selectedTheme) return null;
+        if (selectedTheme === 'random') {
+            return CROSSWORD_THEMES[Math.floor(Math.random() * CROSSWORD_THEMES.length)].theme; // eslint-disable-line react-hooks/purity
+        }
+        return selectedTheme;
+    }, [selectedTheme, seed]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const themeConfig = useMemo(
+        () => CROSSWORD_THEMES.find(t => t.theme === resolvedTheme) ?? null,
+        [resolvedTheme],
+    );
+
     const { grid: initGrid, placed } = useMemo(() => {
+        if (!resolvedTheme) return { grid: [] as (Cell | null)[][], placed: [] as PlacedWord[] };
         for (let attempt = 0; attempt < 10; attempt++) {
-            const pool = pickCrosswordWords(level, 20);
+            const { words: pool } = pickThemedCrosswordWords(level, resolvedTheme, 20);
             const result = buildCrossword(pool);
             const ac = result.placed.filter(p => p.dir === 'across').length;
             const dn = result.placed.filter(p => p.dir === 'down').length;
             if (ac >= MIN_ACROSS && dn >= MIN_DOWN) return result;
         }
-        return buildCrossword(pickCrosswordWords(level, 20));
-    }, [level, seed]); // eslint-disable-line react-hooks/exhaustive-deps
+        const { words: pool } = pickThemedCrosswordWords(level, resolvedTheme, 20);
+        return buildCrossword(pool);
+    }, [level, seed, resolvedTheme]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const [grid, setGrid] = useState(initGrid);
     const [activeCell, setActiveCell] = useState<[number, number] | null>(null);
@@ -386,19 +425,91 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
         setSolvedWords(new Set()); setActiveCell(null); setSeed(s => s + 1);
         setLastSolved(null); setFlashCells(new Set());
     }, [score]);
+
+    const handleChangeTheme = useCallback(() => {
+        setTotalScore(s => s + score);
+        setScore(0); setDone(false); setCleanSolve(true); setHintsUsed(0);
+        setSolvedWords(new Set()); setActiveCell(null); setSeed(s => s + 1);
+        setLastSolved(null); setFlashCells(new Set());
+        setSelectedTheme(null);
+    }, [score]);
+
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
     useEffect(() => { setGrid(initGrid); }, [initGrid]);
 
     const starCount = cleanSolve && hintsUsed === 0 ? 3 : hintsUsed <= 2 ? 2 : 1;
 
+    /* ── Theme picker ──────────────────────────────────── */
+
+    if (!selectedTheme) {
+        return (
+            <GameShell title="Crossword" score={0} onExit={handleExit} level={level}>
+                <div className="flex-1 flex flex-col items-center gap-6 mt-4 overflow-y-auto pb-8">
+                    <div className="text-center">
+                        <p className="text-2xl chalk text-[var(--color-gold)] mb-2">Choose a Theme</p>
+                        <p className="text-xs ui text-[rgb(var(--color-fg))]/40">
+                            Every word in the puzzle matches your theme
+                        </p>
+                    </div>
+
+                    {/* Surprise Me */}
+                    <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ y: -2 }}
+                        onClick={() => setSelectedTheme('random')}
+                        className="flex items-center gap-3 py-3.5 px-5 rounded-xl w-full max-w-[280px] border-2 border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5 hover:border-[var(--color-gold)]/50 transition-colors"
+                    >
+                        <span className="text-xl">🎲</span>
+                        <div className="text-left">
+                            <div className="text-sm chalk text-[var(--color-gold)]">Surprise Me!</div>
+                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">Random theme</div>
+                        </div>
+                    </motion.button>
+
+                    {/* Grouped themes */}
+                    {(['world', 'me', 'life'] as const).map(group => (
+                        <div key={group} className="w-full max-w-[280px]">
+                            <h4 className="text-[10px] ui font-bold text-[rgb(var(--color-fg))]/40 uppercase tracking-wider mb-2">
+                                {THEME_GROUPS[group]}
+                            </h4>
+                            <div className="flex flex-col gap-2">
+                                {CROSSWORD_THEMES.filter(t => t.group === group).map(t => (
+                                    <motion.button
+                                        key={t.theme}
+                                        whileTap={{ scale: 0.95 }}
+                                        whileHover={{ y: -2 }}
+                                        onClick={() => setSelectedTheme(t.theme)}
+                                        className="flex items-center gap-3 py-3 px-4 rounded-xl border-2 border-[rgb(var(--color-fg))]/20 hover:border-[var(--color-gold)]/40 hover:bg-[var(--color-gold)]/5 transition-colors"
+                                    >
+                                        <span className="text-lg">{t.emoji}</span>
+                                        <div className="text-left">
+                                            <div className="text-sm chalk text-[var(--color-chalk)]">{t.label}</div>
+                                            <div className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{t.description}</div>
+                                        </div>
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </GameShell>
+        );
+    }
+
+    /* ── Game over ──────────────────────────────────────── */
+
     if (done || placed.length === 0) {
         const finalScore = totalScore + score;
         const isNew = saveHighScore('crossword', finalScore);
+        if (resolvedTheme) saveHighScore(`crossword-${resolvedTheme}`, finalScore);
         return (
             <GameShell title="Crossword" score={finalScore} onExit={handleExit} level={level}>
                 <GameOverScreen emoji="📝" title={placed.length > 0 ? 'Puzzle Complete!' : 'No words available'}
-                    score={score} subtitle={cleanSolve ? 'Clean solve bonus!' : undefined}
+                    score={score}
+                    subtitle={themeConfig
+                        ? `${themeConfig.emoji} ${themeConfig.label}${cleanSolve ? ' — Clean solve!' : ''}`
+                        : cleanSolve ? 'Clean solve bonus!' : undefined}
                     isNewHigh={isNew} highScore={getHighScore('crossword')}
                     onPlayAgain={handlePlayAgain} onExit={handleExit}
                     gameName="Crossword" stars={placed.length > 0 ? starCount : 0}
@@ -408,9 +519,21 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
                         { label: 'Clean', value: cleanSolve ? 'Yes' : 'No' },
                     ]}
                 />
+                <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.7 }}
+                    onClick={handleChangeTheme}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-[10px] ui text-[rgb(var(--color-fg))]/35 hover:text-[var(--color-gold)] transition-colors mt-2"
+                >
+                    🔄 Change Theme
+                </motion.button>
             </GameShell>
         );
     }
+
+    /* ── Gameplay ───────────────────────────────────────── */
 
     const across = placed.filter(p => p.dir === 'across');
     const down = placed.filter(p => p.dir === 'down');
@@ -439,14 +562,22 @@ export const CrosswordGame = memo(function CrosswordGame({ level, onExit }: Prop
             />
 
             <div className="flex flex-col items-center w-full max-w-sm gap-3 mt-2">
-                {/* Direction indicator */}
-                {activeCell && (
-                    <div className="text-[9px] ui text-[rgb(var(--color-fg))]/30 flex items-center gap-1">
-                        <span>{activeDir === 'across' ? '→' : '↓'}</span>
-                        <span>{activeDir === 'across' ? 'Across' : 'Down'}</span>
-                        <span className="text-[rgb(var(--color-fg))]/15 ml-1">(tap cell again to switch)</span>
-                    </div>
-                )}
+                {/* Theme badge + direction indicator */}
+                <div className="flex items-center gap-3">
+                    {themeConfig && (
+                        <span className="text-[10px] ui text-[rgb(var(--color-fg))]/30 flex items-center gap-1">
+                            <span className="text-xs">{themeConfig.emoji}</span>
+                            <span>{themeConfig.label}</span>
+                        </span>
+                    )}
+                    {activeCell && (
+                        <span className="text-[9px] ui text-[rgb(var(--color-fg))]/30 flex items-center gap-1">
+                            <span>{activeDir === 'across' ? '→' : '↓'}</span>
+                            <span>{activeDir === 'across' ? 'Across' : 'Down'}</span>
+                            <span className="text-[rgb(var(--color-fg))]/15 ml-1">(tap cell again to switch)</span>
+                        </span>
+                    )}
+                </div>
 
                 {/* Grid with entrance animation */}
                 <div

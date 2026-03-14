@@ -1,0 +1,15 @@
+[
+  {
+    "origin": [
+      "https://spelling-bee-prod.web.app",
+      "https://spelling-bee-prod.firebaseapp.com",
+      "capacitor://localhost",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175"
+    ],
+    "method": ["GET"],
+    "responseHeader": ["Content-Type", "Content-Length", "Cache-Control"],
+    "maxAgeSeconds": 86400
+  }
+]

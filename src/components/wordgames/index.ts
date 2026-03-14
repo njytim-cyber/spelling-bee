@@ -4,4 +4,3 @@ export { RootConstructorGame } from './RootConstructorGame';
 export { WordSearchGame } from './WordSearchGame';
 export { TypingDefenderGame } from './TypingDefenderGame';
 export { CrosswordGame } from './CrosswordGame';
-export { UnscrambleGame } from './UnscrambleGame';

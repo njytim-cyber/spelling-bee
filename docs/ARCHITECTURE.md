@@ -90,6 +90,18 @@ User selects level → picks session size (10/20/50)
 - Origin tabs: Latin/Greek/French/Germanic/English/Other
 - Difficulty range selectors
 
+### Cloud TTS & CDN Caching
+- **4 Neural2 voices**: US male/female (`en-US-Neural2-D`/`C`), UK male/female (`en-GB-Neural2-B`/`A`)
+- **4-layer cache**: in-memory LRU (50 entries) → CDN miss cache → public Cloud Storage URL → Cloud Function fallback
+- **Cache key**: MD5 of `${text.toLowerCase()|ssml}|${voiceName}|${rate}` — client-side MD5 matches server `crypto.createHash('md5')`
+- **CDN URL**: `https://storage.googleapis.com/spelling-bee-prod-tts/tts-cache/{hash}.mp3` (public, 30-day Cache-Control)
+- **Cost control**: each word+voice+rate synthesized at most once; subsequent requests served from Cloud Storage
+- **Dedup**: client-side `inflightRequests` Map + server-side `ttsInflight` Map + server re-checks storage before synthesis (cold-start race guard)
+- **Fallback**: Cloud TTS → browser Web Speech API → silent (graceful degradation in `usePronunciation`)
+- **Rate limits**: 200/day free, 2000/day premium (Firestore `ttsRateLimit` collection, server-only)
+- **Voice migration**: `initializeDefaultVoice()` in `main.tsx` auto-migrates removed voices on startup
+- **Bucket**: `spelling-bee-prod-tts` in `us-central1`, lifecycle: 365-day auto-delete
+
 ### Analytics & Telemetry
 - **GA4 via Firebase Analytics** (`src/utils/analytics.ts`): fire-and-forget wrapper, no-op in test/SSR
 - **User identity**: `setAnalyticsUserId(uid)` on auth, `setAnalyticsUserProperties()` syncs level/subscription/profile

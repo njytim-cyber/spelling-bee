@@ -51,7 +51,6 @@ const RootConstructorGame = lazy(() => lazyRetry(() => import('./components/word
 const WordSearchGame = lazy(() => lazyRetry(() => import('./components/wordgames/WordSearchGame')).then(m => ({ default: m.WordSearchGame })));
 const TypingDefenderGame = lazy(() => lazyRetry(() => import('./components/wordgames/TypingDefenderGame')).then(m => ({ default: m.TypingDefenderGame })));
 const CrosswordGame = lazy(() => lazyRetry(() => import('./components/wordgames/CrosswordGame')).then(m => ({ default: m.CrosswordGame })));
-const UnscrambleGame = lazy(() => lazyRetry(() => import('./components/wordgames/UnscrambleGame')).then(m => ({ default: m.UnscrambleGame })));
 import type { WordGameId } from './components/WordGamesSection';
 
 import { useGameLoop } from './hooks/useGameLoop';
@@ -2391,7 +2390,6 @@ function AppInner() {
             {activeWordGame === 'word-search' && <WordSearchGame level={wordGameLevel} onExit={handleWordGameExit('word-search')} />}
             {activeWordGame === 'typing-defender' && <TypingDefenderGame level={wordGameLevel} onExit={handleWordGameExit('typing-defender')} />}
             {activeWordGame === 'crossword' && <CrosswordGame level={wordGameLevel} onExit={handleWordGameExit('crossword')} />}
-            {activeWordGame === 'unscramble' && <UnscrambleGame level={wordGameLevel} onExit={handleWordGameExit('unscramble')} />}
           </Suspense>
         );
       })()}

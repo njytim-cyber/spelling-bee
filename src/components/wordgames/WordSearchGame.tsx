@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { pickWords, shuffle, saveHighScore, getHighScore } from './wordGameUtils';
 import { useGameJuice } from './useGameJuice';
-import { playTapSound } from '../../utils/soundEffects';
+import { playTapSound, playSnapSound } from '../../utils/soundEffects';
 import { Confetti } from '../Confetti';
 import type { SpellingWord } from '../../domains/spelling/words';
 
@@ -115,6 +115,9 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const [flashCells, setFlashCells] = useState<Set<string>>(new Set());
     const [wrongShake, setWrongShake] = useState(false);
     const [streak, setStreak] = useState(0);
+    const [bestStreak, setBestStreak] = useState(0);
+    const [hintsUsed, setHintsUsed] = useState(0);
+    const [lastFindTime, setLastFindTime] = useState(() => Date.now());
     const juice = useGameJuice();
     const gridRef = useRef<HTMLDivElement>(null);
     const isDragging = useRef(false);
@@ -197,19 +200,28 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
 
         if (match) {
             // ── Found a word ──
+            playSnapSound();
             setLastFound({ word: match.word.word, def: match.word.definition });
-            setTimeout(() => setLastFound(null), 2000);
+            setTimeout(() => setLastFound(null), 2500);
 
             // Staggered cell flash
             cells.forEach(([r, c], i) => {
                 setTimeout(() => {
                     setFlashCells(prev => new Set(prev).add(`${r},${c}`));
-                }, i * 50);
+                }, i * 40);
             });
-            setTimeout(() => setFlashCells(new Set()), cells.length * 50 + 400);
+            setTimeout(() => setFlashCells(new Set()), cells.length * 40 + 500);
 
             const newStreak = streak + 1;
             setStreak(newStreak);
+            setBestStreak(s => Math.max(s, newStreak));
+
+            // Speed bonus: fast consecutive finds
+            const sinceLast = (Date.now() - lastFindTime) / 1000;
+            setLastFindTime(Date.now());
+            const speedBonus = sinceLast < 8 ? 5 : 0;
+            // Long word bonus
+            const lengthBonus = match.word.word.length >= 7 ? 5 : match.word.word.length >= 5 ? 2 : 0;
 
             setPlaced(prev => {
                 const next = prev.map(p =>
@@ -219,22 +231,28 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                 if (allFound) {
                     const timeBonus = elapsed < 60 ? 30 : elapsed < 90 ? 15 : 0;
                     const streakBonus = newStreak >= 6 ? 15 : newStreak >= 3 ? 10 : 0;
-                    const pts = 10 + timeBonus + streakBonus;
+                    const noHintBonus = hintsUsed === 0 ? 10 : 0;
+                    const pts = 10 + timeBonus + streakBonus + speedBonus + lengthBonus + noHintBonus;
                     setScore(s => s + pts);
                     juice.onVictory();
-                    juice.showXpFloat(`+${pts} XP`);
-                    // Longer celebration before done screen
+                    const labels: string[] = [];
+                    if (noHintBonus) labels.push('No hints!');
+                    if (timeBonus >= 30) labels.push('Speed!');
+                    juice.showXpFloat(`+${pts}${labels.length ? ' ' + labels.join(' ') : ''}`);
                     setTimeout(() => setDone(true), 1200);
                 } else {
                     const streakBonus = newStreak >= 6 ? 5 : newStreak >= 3 ? 3 : 0;
-                    const pts = 10 + streakBonus;
+                    const pts = 10 + streakBonus + speedBonus + lengthBonus;
                     setScore(s => s + pts);
+                    const labels: string[] = [];
+                    if (speedBonus) labels.push('Quick!');
+                    if (lengthBonus >= 5) labels.push('Long!');
                     if (newStreak >= 3) {
                         juice.onStreak(newStreak);
-                        juice.showXpFloat(`+${pts} XP 🔥${newStreak}`);
+                        juice.showXpFloat(`+${pts} 🔥${newStreak}${labels.length ? ' ' + labels.join(' ') : ''}`);
                     } else {
                         juice.onCorrect();
-                        juice.showXpFloat(`+${pts} XP`);
+                        juice.showXpFloat(`+${pts}${labels.length ? ' ' + labels.join(' ') : ''}`);
                     }
                 }
                 return next;
@@ -305,6 +323,7 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
         const unrevealed = placed.find(p => !p.found);
         if (!unrevealed) return;
         setStreak(0);
+        setHintsUsed(h => h + 1);
         setPlaced(prev => prev.map(p =>
             p.word.word === unrevealed.word.word ? { ...p, found: true } : p
         ));
@@ -315,7 +334,8 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
         setScore(0); setDone(false); setSeed(s => s + 1); setStartTime(Date.now());
-        setElapsed(0); setFlashCells(new Set()); setStreak(0);
+        setElapsed(0); setFlashCells(new Set()); setStreak(0); setBestStreak(0);
+        setHintsUsed(0); setLastFindTime(Date.now());
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
@@ -340,14 +360,19 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
         const isNew = saveHighScore('word-search', finalScore);
         return (
             <GameShell title="Word Search" score={finalScore} onExit={handleExit} level={level}>
-                <GameOverScreen emoji="🔍" title="All Found!" score={score}
+                <GameOverScreen
+                    emoji={hintsUsed === 0 && elapsed < 60 ? '👑' : '🔍'}
+                    title={hintsUsed === 0 && elapsed < 60 ? 'Perfect Search!' : 'All Found!'}
+                    score={score}
+                    subtitle={hintsUsed === 0 ? 'No hints used!' : undefined}
                     isNewHigh={isNew} highScore={getHighScore('word-search')}
                     onPlayAgain={handlePlayAgain} onExit={handleExit}
                     gameName="Word Search" stars={starCount}
                     stats={[
                         { label: 'Words', value: `${foundCount}/${placed.length}` },
                         { label: 'Time', value: `${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}` },
-                        { label: 'Streak', value: streak },
+                        { label: 'Best Streak', value: bestStreak },
+                        ...(hintsUsed > 0 ? [{ label: 'Hints', value: hintsUsed }] : []),
                     ]}
                 />
             </GameShell>
@@ -521,13 +546,14 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                     {lastFound && (
                         <motion.div
                             key={lastFound.word}
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -5 }}
+                            initial={{ opacity: 0, y: 8, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -10 }}
                             className="text-center"
                         >
-                            <span className="text-[10px] ui text-[var(--color-correct)]/60 bg-[var(--color-correct)]/10 px-3 py-1 rounded-full">
-                                {lastFound.word}: {lastFound.def.length > 50 ? lastFound.def.slice(0, 50) + '…' : lastFound.def}
+                            <span className="text-xs ui text-[var(--color-correct)]/70 bg-[var(--color-correct)]/15 px-4 py-1.5 rounded-full shadow-sm inline-block">
+                                <span className="font-bold">{lastFound.word}</span>
+                                <span className="text-[10px] opacity-70"> — {lastFound.def.length > 40 ? lastFound.def.slice(0, 40) + '…' : lastFound.def}</span>
                             </span>
                         </motion.div>
                     )}
@@ -546,8 +572,10 @@ export const WordSearchGame = memo(function WordSearchGame({ level, onExit }: Pr
                 {/* Floating XP */}
                 <AnimatePresence>
                     {juice.xpFloat && (
-                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
-                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                        <motion.div key={juice.xpFloat.key}
+                            initial={{ opacity: 1, y: 0, scale: 1 }}
+                            animate={{ opacity: 0, y: -50, scale: 1.3 }}
+                            transition={{ duration: 1, ease: 'easeOut' }}
                             className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
                             {juice.xpFloat.text}
                         </motion.div>

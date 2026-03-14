@@ -1,9 +1,10 @@
-import { memo, useState, useCallback, useEffect, useMemo } from 'react';
+import { memo, useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameShell, GameOverScreen } from './GameShell';
 import { shuffle, saveHighScore, getHighScore } from './wordGameUtils';
 import { useGameJuice } from './useGameJuice';
 import { Confetti } from '../Confetti';
+import { playSnapSound, playTapSound } from '../../utils/soundEffects';
 import { WORD_ROOTS } from '../../domains/spelling/words/roots';
 import { getWordMap } from '../../domains/spelling/words';
 
@@ -26,6 +27,17 @@ const DIFF_CONFIG: Record<Difficulty, { label: string; emoji: string; desc: stri
 };
 
 const ROUND_SIZE = 8;
+
+const CHEERS_PERFECT = ['Master builder!', 'Flawless!', 'Word architect!', 'Nailed it!', 'Brilliant!'];
+const CHEERS_CORRECT = ['Built it!', 'Nice work!', 'Got it!', 'Constructed!', 'Well done!'];
+const CHEERS_FAST = ['Speed build!', 'Rapid fire!', 'Lightning!', 'Instant!'];
+
+/** Combo multiplier based on streak */
+function getCombo(streak: number): { mult: number; label: string } {
+    if (streak >= 6) return { mult: 3, label: 'x3' };
+    if (streak >= 3) return { mult: 2, label: 'x2' };
+    return { mult: 1, label: '' };
+}
 
 /** Color for morpheme tile based on its role */
 function morphColor(morph: string, parts: string[], isDistractor: boolean): string {
@@ -113,18 +125,32 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
     const [showCorrect, setShowCorrect] = useState<string | null>(null);
     const [streak, setStreak] = useState(0);
     const [bestStreak, setBestStreak] = useState(0);
+    const [cheer, setCheer] = useState<string | null>(null);
+    const [revealWord, setRevealWord] = useState(false);
+    const [perfectRound, setPerfectRound] = useState(true);
     const juice = useGameJuice();
+    const cheerIdx = useRef(0);
+    // eslint-disable-next-line react-hooks/purity
+    const wordStartTime = useRef(Date.now());
 
     const current = rounds[idx] as RoundData | undefined;
+    const combo = getCombo(streak);
 
+    /* eslint-disable react-hooks/set-state-in-effect -- reset state when question changes */
     useEffect(() => {
-        setSelected([]); // eslint-disable-line react-hooks/set-state-in-effect
+        setSelected([]);
         setResult(null);
         setFirstAttempt(true);
+        setCheer(null);
+        setRevealWord(false);
+        wordStartTime.current = Date.now();
     }, [idx]);
+    /* eslint-enable react-hooks/set-state-in-effect */
 
     const toggleTile = useCallback((morph: string) => {
         if (result) return;
+        playSnapSound();
+        try { navigator.vibrate?.(10); } catch { /* unsupported */ }
         setSelected(prev => {
             if (prev.includes(morph)) return prev.filter(m => m !== morph);
             return [...prev, morph];
@@ -142,19 +168,36 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
         if (attempt === current.word) {
             setResult('correct');
             setShowCorrect(null);
-            const pts = 15 + (firstAttempt ? 10 : 0);
-            setScore(s => s + pts);
+            setRevealWord(true);
+            const elapsed = (Date.now() - wordStartTime.current) / 1000;
+            const speedBonus = elapsed < 5 ? 10 : elapsed < 8 ? 5 : 0;
+            const perfectBonus = firstAttempt ? 10 : 0;
             const newStreak = streak + 1;
+            const { mult } = getCombo(newStreak);
+            const basePts = 15 + speedBonus + perfectBonus;
+            const pts = Math.round(basePts * mult);
+            setScore(s => s + pts);
             setStreak(newStreak);
             setBestStreak(s => Math.max(s, newStreak));
             juice.onCorrect();
-            juice.showXpFloat(firstAttempt ? '+25 Perfect!' : '+15 XP');
+            // Rich XP label
+            const labels: string[] = [];
+            if (speedBonus >= 10) labels.push('Fast!');
+            if (mult > 1) labels.push(`x${mult}`);
+            if (firstAttempt && !speedBonus) labels.push('Perfect!');
+            juice.showXpFloat(`+${pts}${labels.length ? ' ' + labels.join(' ') : ''}`);
             if (newStreak % 3 === 0) juice.onStreak(newStreak);
+            // Pick a cheer
+            const cheers = speedBonus >= 10 ? CHEERS_FAST
+                : firstAttempt ? CHEERS_PERFECT : CHEERS_CORRECT;
+            setCheer(cheers[cheerIdx.current % cheers.length]);
+            cheerIdx.current++;
         } else {
             setResult('wrong');
             setShowCorrect(current.parts.join(' + ') + ' = ' + current.word);
             setFirstAttempt(false);
             setStreak(0);
+            setPerfectRound(false);
             juice.onWrong();
         }
     }, [current, selected, result, firstAttempt, streak, juice]);
@@ -162,7 +205,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
     // Auto-advance after result
     useEffect(() => {
         if (!result) return;
-        const delay = result === 'correct' ? 800 : 1500;
+        const delay = result === 'correct' ? 1200 : 1500;
         const t = setTimeout(() => {
             setShowCorrect(null);
             advance();
@@ -170,14 +213,22 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
         return () => clearTimeout(t);
     }, [result, advance]);
 
+    // Fire victory juice on perfect round completion
+    useEffect(() => {
+        if (done && perfectRound && score > 0) juice.onVictory();
+    }, [done, perfectRound, score, juice]);
+
     const handlePlayAgain = useCallback(() => {
         setTotalScore(s => s + score);
-        setScore(0); setIdx(0); setDone(false); setStreak(0); setBestStreak(0); setSeed(s => s + 1);
+        setScore(0); setIdx(0); setDone(false); setStreak(0); setBestStreak(0);
+        setPerfectRound(true); setSeed(s => s + 1);
     }, [score]);
     const handleExit = useCallback(() => onExit(totalScore + score), [onExit, totalScore, score]);
 
     // Check if all correct morphemes are selected (hint glow)
     const allCorrectSelected = current ? current.parts.every(p => selected.includes(p)) && selected.length === current.parts.length : false;
+    // Progress towards answer
+    const progress = current ? selected.filter(s => current.parts.includes(s)).length / current.parts.length : 0;
 
     const starCount = bestStreak >= 6 ? 3 : bestStreak >= 3 ? 2 : 1;
 
@@ -217,13 +268,20 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
         const isNew = saveHighScore('root-constructor', finalScore);
         return (
             <GameShell title="Root Builder" score={finalScore} onExit={handleExit}>
-                <GameOverScreen emoji="🧬" title="Round Complete!" score={score}
+                <GameOverScreen
+                    emoji={perfectRound && score > 0 ? '👑' : '🧬'}
+                    title={perfectRound && score > 0 ? 'Perfect Build!' : 'Round Complete!'}
+                    score={score}
+                    subtitle={perfectRound && score > 0
+                        ? `Flawless! ${bestStreak} best streak`
+                        : `${bestStreak} best streak`}
                     isNewHigh={isNew} highScore={getHighScore('root-constructor')}
                     onPlayAgain={handlePlayAgain} onExit={handleExit}
                     gameName="Root Builder" stars={starCount}
                     stats={[
-                        { label: 'Streak', value: bestStreak },
+                        { label: 'Best Streak', value: bestStreak },
                         { label: 'Score', value: score },
+                        ...(combo.mult > 1 ? [{ label: 'Best Combo', value: combo.label }] : []),
                     ]}
                 />
             </GameShell>
@@ -237,6 +295,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
             title="Root Builder"
             score={totalScore + score}
             onExit={handleExit}
+            combo={combo.mult}
             screenFlash={juice.screenFlash} shake={juice.shake}
             topRight={
                 <div className="flex items-center gap-2">
@@ -244,7 +303,22 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                         <motion.span key={streak} initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                             className="text-[10px] ui font-bold text-[var(--color-streak-fire)]">{streak}🔥</motion.span>
                     )}
-                    <span className="text-[10px] ui text-[rgb(var(--color-fg))]/40">{idx + 1}/{rounds.length}</span>
+                    <div className="flex items-center gap-1">
+                        {rounds.map((_, i) => (
+                            <motion.div
+                                key={i}
+                                animate={i === idx && !result ? { scale: [1, 1.3, 1] } : {}}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                                className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                                    i < idx || (i === idx && result === 'correct')
+                                        ? 'bg-[var(--color-correct)]'
+                                        : i === idx
+                                            ? 'bg-[var(--color-gold)]'
+                                            : 'bg-[rgb(var(--color-fg))]/15'
+                                }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             }
         >
@@ -259,7 +333,7 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                     />
                 </div>
 
-                {/* Definition + example — slides on change */}
+                {/* Definition — slides on change */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={idx}
@@ -270,39 +344,87 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                         className="text-center px-2"
                     >
                         <p className="text-sm ui text-[var(--color-chalk)] leading-relaxed">{current.definition}</p>
-                        {current.example && (
-                            <p className="text-xs ui text-[rgb(var(--color-fg))]/30 mt-1.5 italic leading-relaxed">
-                                &ldquo;{current.example}&rdquo;
-                            </p>
-                        )}
                         <p className="text-[10px] ui text-[rgb(var(--color-fg))]/30 mt-1">{current.parts.length} morphemes</p>
                     </motion.div>
                 </AnimatePresence>
 
-                {/* Construction zone with glow hint */}
-                <div className={`flex items-center gap-1 min-h-[48px] px-4 py-2 rounded-xl border-2 transition-all ${
-                    result === 'correct' ? 'border-[var(--color-correct)]/40 bg-[var(--color-correct)]/10 animate-[word-complete-pulse_0.6s]'
-                        : result === 'wrong' ? 'border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 animate-[wrong-shake_0.3s]'
-                            : allCorrectSelected && !result ? 'border-[var(--color-gold)]/50 bg-[var(--color-gold)]/10 animate-[glow-pulse_2s_infinite]'
-                                : 'border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5'
-                }`}>
+                {/* Construction zone — glow builds with progress */}
+                <div
+                    className={`flex items-center gap-1 min-h-[52px] px-5 py-2.5 rounded-xl border-2 transition-all ${
+                        result === 'correct' ? 'border-[var(--color-correct)]/50 bg-[var(--color-correct)]/10'
+                            : result === 'wrong' ? 'border-[var(--color-wrong)]/40 bg-[var(--color-wrong)]/10 animate-[wrong-shake_0.3s]'
+                                : allCorrectSelected && !result ? 'border-[var(--color-gold)]/60 bg-[var(--color-gold)]/15 animate-[glow-pulse_2s_infinite]'
+                                    : selected.length > 0
+                                        ? 'border-[var(--color-gold)]/30 bg-[var(--color-gold)]/5'
+                                        : 'border-[rgb(var(--color-fg))]/20 bg-[rgb(var(--color-fg))]/5'
+                    }`}
+                    style={{
+                        boxShadow: !result && progress > 0
+                            ? `0 0 ${12 * progress}px rgba(234, 179, 8, ${0.1 + progress * 0.15})`
+                            : 'none',
+                    }}
+                >
                     {selected.length === 0 ? (
                         <span className="text-xs ui text-[rgb(var(--color-fg))]/30">Tap morphemes to build...</span>
                     ) : (
                         selected.map((morph, i) => (
                             <motion.span
                                 key={`${morph}-${i}`}
-                                initial={{ scale: 0.5, x: -20 }}
-                                animate={{ scale: 1, x: 0 }}
-                                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                                initial={{ scale: 0, x: -20, opacity: 0 }}
+                                animate={result === 'correct'
+                                    ? { scale: 1, x: 0, opacity: 1, y: [0, -8, 0], transition: { y: { delay: i * 0.08, duration: 0.4 } } }
+                                    : { scale: 1, x: 0, opacity: 1 }
+                                }
+                                transition={{ type: 'spring', stiffness: 500, damping: 18 }}
                                 className="flex items-center"
                             >
-                                {i > 0 && <span className="text-[rgb(var(--color-fg))]/20 mx-0.5 text-sm">+</span>}
-                                <span className="text-base chalk text-[var(--color-gold)]">{morph}</span>
+                                {i > 0 && (
+                                    <motion.span
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        className="text-[rgb(var(--color-fg))]/20 mx-0.5 text-sm"
+                                    >+</motion.span>
+                                )}
+                                <span className={`text-base chalk ${result === 'correct' ? 'text-[var(--color-correct)]' : 'text-[var(--color-gold)]'}`}>{morph}</span>
                             </motion.span>
                         ))
                     )}
                 </div>
+
+                {/* Assembled word reveal on correct */}
+                <AnimatePresence>
+                    {result === 'correct' && revealWord && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.6, y: 5 }}
+                            animate={{ opacity: 1, scale: [0.6, 1.1, 1], y: 0 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 0.15 }}
+                            className="text-center"
+                        >
+                            <p className="text-xl chalk text-[var(--color-correct)]">{current.word}</p>
+                            {cheer && (
+                                <motion.p
+                                    initial={{ opacity: 0, y: 5 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.25 }}
+                                    className="text-xs ui font-bold text-[var(--color-correct)]/70 mt-0.5"
+                                >
+                                    {cheer}
+                                </motion.p>
+                            )}
+                            {streak >= 3 && (
+                                <motion.p
+                                    initial={{ opacity: 0, scale: 0.5 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="text-[10px] ui text-[var(--color-streak-fire)] mt-0.5"
+                                >
+                                    {streak} in a row! {combo.mult > 1 && combo.label}
+                                </motion.p>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Wrong answer reveal */}
                 <AnimatePresence>
@@ -318,46 +440,76 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                     )}
                 </AnimatePresence>
 
-                {/* Morpheme tiles — color-coded */}
-                <div className="flex gap-2 flex-wrap justify-center">
-                    {current.tiles.map((morph, i) => {
-                        const isSelected = selected.includes(morph);
-                        const isDistractor = !current.parts.includes(morph);
-                        const colorCls = isSelected
-                            ? 'bg-[var(--color-gold)]/20 border-[var(--color-gold)]/50 text-[var(--color-gold)]'
-                            : morphColor(morph, current.parts, isDistractor);
-                        return (
-                            <motion.button
-                                key={`${morph}-${i}`}
-                                whileTap={{ scale: 0.9 }}
-                                layout
-                                onClick={() => toggleTile(morph)}
-                                className={`px-4 py-2 rounded-xl text-sm chalk transition-all border-2 ${colorCls}`}
-                            >
-                                {morph}
-                            </motion.button>
-                        );
-                    })}
+                {/* Morpheme tiles — color-coded with staggered entrance */}
+                <div className="flex gap-2.5 flex-wrap justify-center">
+                    <AnimatePresence mode="popLayout">
+                        {current.tiles.map((morph, i) => {
+                            const isSelected = selected.includes(morph);
+                            const isDistractor = !current.parts.includes(morph);
+                            const colorCls = isSelected
+                                ? 'bg-[var(--color-gold)]/20 border-[var(--color-gold)]/50 text-[var(--color-gold)] scale-95'
+                                : morphColor(morph, current.parts, isDistractor);
+                            return (
+                                <motion.button
+                                    key={`${morph}-${i}`}
+                                    layout
+                                    initial={{ scale: 0, opacity: 0, y: 15, rotate: -5 }}
+                                    animate={{
+                                        scale: isSelected ? 0.92 : 1,
+                                        opacity: isSelected ? 0.5 : 1,
+                                        y: 0,
+                                        rotate: 0,
+                                    }}
+                                    transition={{ delay: i * 0.05, type: 'spring', stiffness: 400, damping: 18 }}
+                                    whileTap={{ scale: 0.82, rotate: -3 }}
+                                    whileHover={{ y: -4, scale: 1.06 }}
+                                    onClick={() => toggleTile(morph)}
+                                    className={`px-5 py-2.5 rounded-xl text-sm chalk transition-colors border-2 shadow-sm ${colorCls}`}
+                                    style={{
+                                        boxShadow: !isSelected && !isDistractor
+                                            ? '0 2px 8px rgba(234, 179, 8, 0.1)'
+                                            : undefined,
+                                    }}
+                                >
+                                    {morph}
+                                </motion.button>
+                            );
+                        })}
+                    </AnimatePresence>
                 </div>
 
-                {/* Submit + Skip */}
-                <div className="flex items-center gap-4">
+                {/* Submit + Clear + Skip */}
+                <div className="flex items-center gap-3">
                     <motion.button
                         whileTap={{ scale: 0.95 }}
+                        whileHover={selected.length > 0 && !result ? { scale: 1.03 } : undefined}
                         onClick={checkAnswer}
                         disabled={selected.length === 0 || !!result}
-                        className={`py-3 px-8 rounded-xl font-bold ui transition-colors ${
-                            selected.length > 0 && !result
-                                ? 'text-[#422006] bg-[var(--color-gold)]'
-                                : 'text-[rgb(var(--color-fg))]/25 bg-[rgb(var(--color-fg))]/10 cursor-not-allowed'
+                        className={`py-3 px-8 rounded-xl font-bold ui transition-all ${
+                            allCorrectSelected && !result
+                                ? 'text-[#422006] bg-[var(--color-gold)] animate-[glow-pulse_2s_infinite] shadow-[0_0_16px_rgba(234,179,8,0.3)]'
+                                : selected.length > 0 && !result
+                                    ? 'text-[#422006] bg-[var(--color-gold)]'
+                                    : 'text-[rgb(var(--color-fg))]/25 bg-[rgb(var(--color-fg))]/10 cursor-not-allowed'
                         }`}
                     >
                         Check
                     </motion.button>
+                    {selected.length > 0 && !result && (
+                        <motion.button
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => { setSelected([]); playTapSound(); }}
+                            className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[var(--color-gold)] transition-colors"
+                        >
+                            Clear
+                        </motion.button>
+                    )}
                     {!result && (
                         <motion.button
                             whileTap={{ scale: 0.9 }}
-                            onClick={advance}
+                            onClick={() => { setPerfectRound(false); setStreak(0); advance(); }}
                             className="text-[10px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors underline underline-offset-2"
                         >
                             Skip
@@ -368,8 +520,10 @@ export const RootConstructorGame = memo(function RootConstructorGame({ level: _l
                 {/* Floating XP */}
                 <AnimatePresence>
                     {juice.xpFloat && (
-                        <motion.div key={juice.xpFloat.key} initial={{ opacity: 1, y: 0 }} animate={{ opacity: 0, y: -40 }}
-                            transition={{ duration: 0.8, ease: 'easeOut' }}
+                        <motion.div key={juice.xpFloat.key}
+                            initial={{ opacity: 1, y: 0, scale: 1 }}
+                            animate={{ opacity: 0, y: -50, scale: 1.3 }}
+                            transition={{ duration: 1, ease: 'easeOut' }}
                             className="text-sm chalk text-[var(--color-gold)] font-bold pointer-events-none">
                             {juice.xpFloat.text}
                         </motion.div>

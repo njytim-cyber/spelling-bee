@@ -8,9 +8,18 @@ const hooksDir = path.join(__dirname, '..', '.git', 'hooks');
 const isWindows = process.platform === 'win32';
 const prePushCmd = isWindows ? 'npx eslint . && npx tsc -b && npx vite build' : 'npm run verify';
 
+// Stash uncommitted changes so hooks verify only what's actually committed/pushed
+const stashGuard = [
+    'STASH_NAME="pre-hook-$(date +%s)"',
+    'git stash push -q --include-untracked -m "$STASH_NAME"',
+    'STASHED=$(git stash list | head -1 | grep -c "$STASH_NAME")',
+].join('\n');
+const unstash = 'if [ "$STASHED" = "1" ]; then git stash pop -q; fi';
+const stashWrap = (cmd) => `${stashGuard}\n${cmd}\nRESULT=$?\n${unstash}\nexit $RESULT`;
+
 const hooks = [
-    ['pre-commit', 'npx eslint . && npx tsc -b'],
-    ['pre-push', prePushCmd],
+    ['pre-commit', stashWrap('npx eslint . && npx tsc -b')],
+    ['pre-push', stashWrap(prePushCmd)],
 ];
 
 fs.mkdirSync(hooksDir, { recursive: true });

@@ -6,23 +6,21 @@ import {
     IconWordSearch,
     IconTypingDefender,
     IconCrossword,
-    IconUnscramble,
 } from './Icons';
 import { getHighScore } from './wordgames/wordGameUtils';
 
-export type WordGameId = 'anagrams' | 'root-constructor' | 'word-search' | 'typing-defender' | 'crossword' | 'unscramble';
+export type WordGameId = 'anagrams' | 'root-constructor' | 'word-search' | 'typing-defender' | 'crossword';
 
 interface Props {
     onSelectGame: (id: WordGameId) => void;
 }
 
 const GAMES: { id: WordGameId; label: string; sub: string; Icon: typeof IconAnagram }[] = [
-    { id: 'anagrams', label: 'Anagrams', sub: 'Rearrange the letters', Icon: IconAnagram },
+    { id: 'anagrams', label: 'Word Scramble', sub: 'Unscramble the letters', Icon: IconAnagram },
     { id: 'root-constructor', label: 'Root Builder', sub: 'Combine morphemes', Icon: IconRootBuilder },
     { id: 'word-search', label: 'Word Search', sub: 'Find hidden words', Icon: IconWordSearch },
     { id: 'typing-defender', label: 'Type Defense', sub: 'Type before they fall', Icon: IconTypingDefender },
     { id: 'crossword', label: 'Crossword', sub: 'Solve the clues', Icon: IconCrossword },
-    { id: 'unscramble', label: 'Unscramble', sub: 'Beat the clock', Icon: IconUnscramble },
 ];
 
 /** Check if a game was played in the current session */

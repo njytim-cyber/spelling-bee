@@ -7,7 +7,7 @@ This is a spelling app. **Accuracy of word data is the most important thing.** E
 ```bash
 npm run dev       # Dev server with HMR
 npm run build     # TypeScript check + Vite production build
-npx vitest run    # Run tests once (31 files, 510 tests)
+npx vitest run    # Run tests once (31 files, 581 tests)
 npx tsc --noEmit  # Type-check only
 npm run verify    # Full check: lint + tsc + test + build (runs on pre-push)
 ```
@@ -39,6 +39,8 @@ See `docs/ARCHITECTURE.md` for full directory layout, data flow, and detailed pa
 | `src/hooks/useWordHistory.ts` | Leitner SRS |
 | `src/hooks/useStats.ts` | Stats persistence + sync |
 | `src/components/Icons.tsx` | Centralized SVG icon library |
+| `src/services/cloudTts.ts` | Cloud Neural2 TTS: 4 voices, CDN caching, MD5 keys, in-flight dedup |
+| `src/hooks/usePronunciation.ts` | TTS hook: Cloud → browser fallback, dialect-aware voice selection |
 | `src/utils/analytics.ts` | GA4 analytics wrapper (events, user ID, properties, latency) |
 | `src/utils/dateHelpers.ts` | Date formatting, week keys, locale |
 | `scripts/pipeline/export-to-app.cjs` | Pipeline export + child safety filtering |

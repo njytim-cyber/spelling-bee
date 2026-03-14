@@ -1,8 +1,8 @@
 /**
  * Shared utilities for word games.
  */
-import type { SpellingWord, DifficultyTier } from '../../domains/spelling/words';
-import { wordsByDifficulty, difficultyRange } from '../../domains/spelling/words';
+import type { SpellingWord, DifficultyTier, SemanticTheme } from '../../domains/spelling/words';
+import { wordsByDifficulty, wordsByThemeAndDifficulty, wordsByTheme, difficultyRange } from '../../domains/spelling/words';
 
 /** Fisher-Yates shuffle (in-place, returns same array). */
 export function shuffle<T>(arr: T[]): T[] {
@@ -85,6 +85,48 @@ export function pickProgressiveWords(startLevel: number, count: number, incremen
         result.push(w);
     }
     return result;
+}
+
+/** Pick themed words for crossword puzzles (3-7 letters).
+ *  Fallback chain: theme+difficulty → theme-only → pad with general words. */
+export function pickThemedCrosswordWords(
+    level: number,
+    theme: SemanticTheme,
+    count: number,
+): { words: SpellingWord[]; pureTheme: boolean } {
+    const minDiff = Math.max(1, level - 3) as DifficultyTier;
+    const maxDiff = Math.min(10, level + 1) as DifficultyTier;
+    const lenFilter = (w: SpellingWord) => w.word.length >= 3 && w.word.length <= 7;
+
+    // Step 1: Theme + difficulty
+    let pool = wordsByThemeAndDifficulty(theme, minDiff, maxDiff).filter(lenFilter);
+    // Step 2: Widen to any difficulty for this theme
+    if (pool.length < count) {
+        pool = wordsByTheme(theme).filter(lenFilter);
+    }
+
+    const seen = new Set<string>();
+    const result: SpellingWord[] = [];
+    for (const w of shuffle([...pool])) {
+        if (seen.has(w.word)) continue;
+        seen.add(w.word);
+        result.push(w);
+        if (result.length >= count) break;
+    }
+    const pureTheme = result.length >= count;
+
+    // Step 3: Pad from general pool if needed
+    if (result.length < count) {
+        const general = wordsByDifficulty(minDiff, maxDiff).filter(w => lenFilter(w) && !seen.has(w.word));
+        for (const w of shuffle([...general])) {
+            if (seen.has(w.word)) continue;
+            seen.add(w.word);
+            result.push(w);
+            if (result.length >= count) break;
+        }
+    }
+
+    return { words: result, pureTheme };
 }
 
 /** Scramble a word, ensuring the result differs from the original. */

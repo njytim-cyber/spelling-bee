@@ -64,8 +64,8 @@ const ALLOWED_ORIGINS = [
 
 const CORS_REGEX = /http:\/\/localhost(:\d+)?$/;
 
-/** Validate voice name matches allowed Neural2 pattern */
-const VOICE_PATTERN = /^en-(US|GB|AU|IN)-Neural2-[A-Z]$/;
+/** Validate voice name matches allowed Neural2 pattern (US/UK only, 4 voices) */
+const VOICE_PATTERN = /^en-(US|GB)-Neural2-[A-D]$/;
 
 /** Max text length for synthesis */
 const MAX_TEXT_LENGTH = 100;
@@ -76,6 +76,9 @@ const DAILY_LIMIT_PREMIUM = 2000;
 
 /** Cloud Storage bucket subfolder for cached audio */
 const CACHE_PREFIX = 'tts-cache';
+
+/** In-flight TTS synthesis deduplication (prevents duplicate API calls within the same instance) */
+const ttsInflight = new Map<string, Promise<{ audioBase64: string | undefined; publicUrl: string }>>();
 
 // ── Referral Redemption ─────────────────────────────────────────────────────
 
@@ -182,6 +185,8 @@ export const redeemReferral = onCall(
 export const synthesizeSpeech = onCall(
     {
         region: 'us-central1',
+        timeoutSeconds: 30,
+        memory: '256MiB',
         cors: [
             'https://spelling-bee-prod.web.app',
             'https://spelling-bee-prod.firebaseapp.com',
@@ -205,9 +210,14 @@ export const synthesizeSpeech = onCall(
 
         // Must have either text or ssml
         const hasText = text && typeof text === 'string' && text.length <= MAX_TEXT_LENGTH;
-        const hasSsml = ssml && typeof ssml === 'string' && ssml.length <= MAX_TEXT_LENGTH * 2;
+        const hasSsml = ssml && typeof ssml === 'string' && ssml.length <= MAX_TEXT_LENGTH * 3;
         if (!hasText && !hasSsml) {
             throw new HttpsError('invalid-argument', `Text must be 1-${MAX_TEXT_LENGTH} characters.`);
+        }
+        // Validate SSML structure: must be a <speak><phoneme> wrapper, not arbitrary SSML.
+        // The ph attribute may contain &quot; entities, and the text body may contain &amp;/&lt;/&gt;
+        if (hasSsml && !/^<speak><phoneme alphabet="ipa" ph="[^"]{1,150}">.{1,150}<\/phoneme><\/speak>$/.test(ssml)) {
+            throw new HttpsError('invalid-argument', 'Invalid SSML structure.');
         }
         if (!voiceName || !VOICE_PATTERN.test(voiceName)) {
             throw new HttpsError('invalid-argument', 'Invalid voice name.');
@@ -235,7 +245,7 @@ export const synthesizeSpeech = onCall(
             }
         }
 
-        // ── Cache check ─────────────────────────────────────────────────
+        // ── Cache key (deterministic, same as client) ─────────────────
         const cacheSource = hasSsml ? ssml : text!.toLowerCase();
         const cacheKey = createHash('md5')
             .update(`${cacheSource}|${voiceName}|${rate}`)
@@ -243,63 +253,82 @@ export const synthesizeSpeech = onCall(
         const bucket = storage.bucket('spelling-bee-prod-tts');
         const filePath = `${CACHE_PREFIX}/${cacheKey}.mp3`;
         const file = bucket.file(filePath);
+        const publicUrl = `https://storage.googleapis.com/spelling-bee-prod-tts/${filePath}`;
 
+        // ── Cache check ─────────────────────────────────────────────────
         const [exists] = await file.exists();
         if (exists) {
-            const [url] = await file.getSignedUrl({
-                action: 'read',
-                expires: Date.now() + 60 * 60 * 1000, // 1 hour
-            });
             // Still count toward rate limit
             await rateLimitRef.set(
                 { count: FieldValue.increment(1), date: today },
                 { merge: true },
             );
-            return { audioUrl: url, cached: true };
+            return { publicUrl, cached: true };
         }
 
-        // ── Synthesize ──────────────────────────────────────────────────
-        const langCode = voiceName.slice(0, 5); // e.g. 'en-US'
-        const input = hasSsml ? { ssml } : { text: text! };
-        const [response] = await ttsClient.synthesizeSpeech({
-            input,
-            voice: { languageCode: langCode, name: voiceName },
-            audioConfig: {
-                audioEncoding: 'MP3',
-                speakingRate: rate,
-                pitch: 0,
-            },
-        });
+        // ── Synthesize (deduplicated within instance) ───────────────────
+        // If another request for the same cache key is already in-flight,
+        // wait for it instead of calling the TTS API again.
+        let synthesisPromise = ttsInflight.get(cacheKey);
+        if (!synthesisPromise) {
+            synthesisPromise = (async () => {
+                // Re-check storage: another Cloud Function instance may have
+                // written this file between our initial check and now (cold start race)
+                const [existsNow] = await file.exists();
+                if (existsNow) {
+                    return { audioBase64: undefined, publicUrl };
+                }
 
-        if (!response.audioContent) {
-            throw new HttpsError('internal', 'TTS API returned empty audio.');
+                const langCode = voiceName.slice(0, 5); // e.g. 'en-US'
+                const ttsInput = hasSsml ? { ssml } : { text: text! };
+                const [response] = await ttsClient.synthesizeSpeech({
+                    input: ttsInput,
+                    voice: { languageCode: langCode, name: voiceName },
+                    audioConfig: {
+                        audioEncoding: 'MP3',
+                        speakingRate: rate,
+                        pitch: 0,
+                    },
+                });
+
+                if (!response.audioContent) {
+                    throw new HttpsError('internal', 'TTS API returned empty audio.');
+                }
+
+                const audioBuffer = Buffer.isBuffer(response.audioContent)
+                    ? response.audioContent
+                    : Buffer.from(response.audioContent as Uint8Array);
+
+                const audioBase64Result = audioBuffer.toString('base64');
+
+                // Upload to Cloud Storage for future CDN hits
+                await file.save(audioBuffer, {
+                    contentType: 'audio/mpeg',
+                    public: true,
+                    metadata: {
+                        cacheControl: 'public, max-age=2592000', // 30 days
+                        metadata: { text: (text || '').toLowerCase(), voice: voiceName, rate: String(rate), ...(hasSsml ? { ssml: '1' } : {}) },
+                    },
+                });
+
+                return { audioBase64: audioBase64Result, publicUrl };
+            })();
+            ttsInflight.set(cacheKey, synthesisPromise);
         }
 
-        // ── Upload to Cloud Storage ─────────────────────────────────────
-        const audioBuffer = Buffer.isBuffer(response.audioContent)
-            ? response.audioContent
-            : Buffer.from(response.audioContent as Uint8Array);
+        try {
+            const result = await synthesisPromise;
 
-        await file.save(audioBuffer, {
-            contentType: 'audio/mpeg',
-            metadata: {
-                cacheControl: 'public, max-age=2592000', // 30 days
-                metadata: { text: (text || '').toLowerCase(), voice: voiceName, rate: String(rate), ...(hasSsml ? { ssml: '1' } : {}) },
-            },
-        });
+            // Increment rate limit counter
+            await rateLimitRef.set(
+                { count: FieldValue.increment(1), date: today },
+                { merge: true },
+            );
 
-        const [url] = await file.getSignedUrl({
-            action: 'read',
-            expires: Date.now() + 60 * 60 * 1000,
-        });
-
-        // ── Increment rate limit counter ────────────────────────────────
-        await rateLimitRef.set(
-            { count: FieldValue.increment(1), date: today },
-            { merge: true },
-        );
-
-        return { audioUrl: url, cached: false };
+            return { ...result, cached: false };
+        } finally {
+            ttsInflight.delete(cacheKey);
+        }
     },
 );
 
