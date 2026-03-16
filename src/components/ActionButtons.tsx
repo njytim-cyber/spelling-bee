@@ -38,38 +38,53 @@ const activeColor = (on: boolean) =>
 const BTN = 'w-11 h-11 flex items-center justify-center';
 const LABEL = 'text-[7px] ui text-[rgb(var(--color-fg))]/30 whitespace-nowrap';
 
-/** Circular countdown ring drawn as an SVG arc centred on the stopwatch face. */
-function TimerRing({ progress }: { progress: number }) {
-    const r = 16;
+/**
+ * Stopwatch icon with integrated countdown ring — single SVG so they
+ * can never misalign across viewports, zoom levels, or devices.
+ *
+ * ViewBox 0 0 32 32: stopwatch icon centred at (16,16), ring orbits outside.
+ * Clock face r=5, ring r=13 → 6 units of clear space between them.
+ */
+function StopwatchWithRing({ progress }: { progress: number }) {
+    const r = 13;
     const circumference = 2 * Math.PI * r;
     const offset = circumference * (1 - progress);
 
-    // The stopwatch icon (24×24) is flexbox-centred inside the 44×44 button.
-    // Icon centre = (12, 12) maps to (22, 22) in ring coords.
-    // The clock-face circle sits at cy=13 in icon coords → cy = 22 + (13-12)*(44/24) ≈ 23.8.
-    // Use cx=22, cy=24 and r=16 so the ring hugs the clock face (r=7 in 24px ≈ 12.8 in 44px).
     return (
-        <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 44">
-            {/* Track */}
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor"
+            strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"
+            className="relative z-10 w-full h-full"
+        >
+            {/* Ring track (always visible) */}
             <circle
-                cx="22" cy="24" r={r}
+                cx="16" cy="16" r={r}
                 fill="none"
                 stroke="rgb(var(--color-fg) / 0.12)"
-                strokeWidth="2.5"
+                strokeWidth="2"
+                style={{ transform: 'rotate(-90deg)', transformOrigin: '16px 16px' }}
             />
-            {/* Progress arc */}
+            {/* Ring progress arc */}
             {progress > 0 && (
                 <circle
-                    cx="22" cy="24" r={r}
+                    cx="16" cy="16" r={r}
                     fill="none"
                     stroke={progress >= 0.75 ? 'var(--color-streak-fire)' : 'var(--color-gold)'}
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeDasharray={circumference}
                     strokeDashoffset={offset}
                     strokeLinecap="round"
-                    style={{ transition: 'stroke 0.3s' }}
+                    style={{
+                        transform: 'rotate(-90deg)',
+                        transformOrigin: '16px 16px',
+                        transition: 'stroke 0.3s',
+                    }}
                 />
             )}
+            {/* Stopwatch icon — centred at (16,16) */}
+            <circle cx="16" cy="16.5" r="5" />
+            <line x1="16" y1="8.5" x2="16" y2="11.5" />
+            <line x1="14" y1="8.5" x2="18" y2="8.5" />
+            <line x1="16" y1="16.5" x2="16" y2="13.5" />
         </svg>
     );
 }
@@ -202,13 +217,7 @@ export const ActionButtons = memo(function ActionButtons({
                 whileTap={TAP}
                 aria-label={timer.running ? `Timer running — ${timer.secondsLeft}s left — tap to reset` : 'Start 10s timer'}
             >
-                <TimerRing progress={timer.progress} />
-                <svg {...ICON_PROPS} className="relative z-10">
-                    <circle cx="12" cy="13" r="7" />
-                    <line x1="12" y1="2" x2="12" y2="6" />
-                    <line x1="9" y1="2" x2="15" y2="2" />
-                    <line x1="12" y1="13" x2="12" y2="9" />
-                </svg>
+                <StopwatchWithRing progress={timer.progress} />
                 <span className={`absolute -bottom-2.5 ${LABEL}`}>
                     {timer.running ? `${timer.secondsLeft}s` : 'Timer'}
                 </span>

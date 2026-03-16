@@ -32,6 +32,7 @@ interface Props {
     onUpgrade?: () => void;
     themeMode?: 'dark' | 'light';
     onThemeModeChange?: (mode: 'dark' | 'light') => void;
+    onShowWhatsNew?: () => void;
 }
 
 function getStoredRate(): number {
@@ -116,6 +117,7 @@ export const SettingsModal = memo(function SettingsModal({
     onUpgrade,
     themeMode,
     onThemeModeChange,
+    onShowWhatsNew,
 }: Props) {
     const { preference: motionPref, setPreference: setMotionPref } = useReducedMotion();
     const [ttsRate, setTtsRate] = useState(getStoredRate);
@@ -436,11 +438,14 @@ export const SettingsModal = memo(function SettingsModal({
                 {/* Legal */}
                 <section className="pt-4 border-t border-[rgb(var(--color-fg))]/10">
                     <div className="flex justify-center gap-4 mb-2">
+                        {onShowWhatsNew && (
+                            <button onClick={() => { onClose(); onShowWhatsNew(); }} className="text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">What&apos;s New</button>
+                        )}
                         <button onClick={() => setLegalPage('privacy')} className="text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Privacy Policy</button>
                         <button onClick={() => setLegalPage('terms')} className="text-[11px] ui text-[rgb(var(--color-fg))]/30 hover:text-[rgb(var(--color-fg))]/60 transition-colors">Terms of Service</button>
                     </div>
                     <div className="text-center text-[9px] ui text-[rgb(var(--color-fg))]/15">
-                        v1.1.0
+                        v{__APP_VERSION__}
                     </div>
                 </section>
         </ModalShell>

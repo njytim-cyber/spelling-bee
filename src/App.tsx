@@ -11,6 +11,8 @@ import { Button } from './components/Button';
 import { SwipeTrail } from './components/SwipeTrail';
 import { IconSettings } from './components/Icons';
 import { SettingsModal } from './components/SettingsModal';
+import { WhatsNewModal } from './components/WhatsNewModal';
+import { hasUnseenVersion } from './utils/changelog';
 import type { SpellingCategory, Level } from './domains/spelling/spellingCategories';
 import { getLevelConfig } from './domains/spelling/spellingCategories';
 import { OnboardingModal } from './components/OnboardingModal';
@@ -409,6 +411,9 @@ function AppInner() {
   // ── Settings modal (global) ──
   const [showSettings, setShowSettings] = useState(false);
 
+  // ── What's New modal ──
+  const [showWhatsNew, setShowWhatsNew] = useState(false);
+
   // ── Upgrade modal (Champion Pass paywall) ──
   const [showUpgrade, setShowUpgrade] = useState(false);
 
@@ -783,6 +788,8 @@ function AppInner() {
   useEffect(() => {
     if (!localStorage.getItem(STORAGE_KEYS.grade) || !localStorage.getItem(STORAGE_KEYS.dialect)) {
       setShowOnboarding(true);
+    } else if (hasUnseenVersion()) {
+      setShowWhatsNew(true);
     }
   }, [setShowOnboarding]);
 
@@ -2301,7 +2308,15 @@ function AppInner() {
             onUpgrade={() => { setShowSettings(false); setShowUpgrade(true); }}
             themeMode={themeMode as 'dark' | 'light'}
             onThemeModeChange={setThemeMode as (mode: 'dark' | 'light') => void}
+            onShowWhatsNew={() => { setShowSettings(false); setShowWhatsNew(true); }}
           />
+        )}
+      </AnimatePresence>
+
+      {/* ── What's New modal ── */}
+      <AnimatePresence>
+        {showWhatsNew && (
+          <WhatsNewModal onClose={() => setShowWhatsNew(false)} />
         )}
       </AnimatePresence>
 

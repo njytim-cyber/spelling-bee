@@ -69,6 +69,7 @@ export const STORAGE_KEYS = {
     surpriseHistory: `${STORAGE_PREFIX}-surprise-history`,
     droppedCosmetics: `${STORAGE_PREFIX}-dropped-cosmetics`,
     typingNudgeSeen: `${STORAGE_PREFIX}-typing-nudge-seen`,
+    lastSeenVersion: `${STORAGE_PREFIX}-last-seen-version`,
 } as const;
 
 /**
